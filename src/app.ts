@@ -16,6 +16,7 @@ class App {
     var engine = new Engine(canvas, true);
     var scene = new Scene(engine);
 
+    // 镜头
     var camera: ArcRotateCamera = new ArcRotateCamera(
       "Camera",
       Math.PI / 2,
@@ -26,23 +27,22 @@ class App {
     );
     camera.attachControl(canvas, true);
 
+    // 光源
     var light1: HemisphericLight = new HemisphericLight(
       "light1",
       new Vector3(10, 5, 5),
       scene
     );
-    // var sphere: Mesh = MeshBuilder.CreateSphere(
-    //   "sphere",
-    //   { diameter: 2 },
-    //   scene
-    // );
 
+    // 主火箭
     this._createRocket('main', 10, 2, 0, 0, 0)
+    // 辅助推进器——体积较小的火箭
     this._createRocket('r1', 4, 1, 1.5, -3, 0)
+    // 一边一个
     this._createRocket('r2', 4, 1, -1.5, -3, 0)
 
-
     // hide/show the Inspector
+    // 快捷键唤起 Babylon.js 的调试工具，非常有用，可以让你看到每个实体占据的立体空间，便于计算和调整坐标。
     window.addEventListener("keydown", (ev) => {
       // Shift+Ctrl+Alt+I
       if (ev.shiftKey && ev.ctrlKey && ev.altKey && ev.keyCode === 73) {
@@ -60,14 +60,23 @@ class App {
     });
   }
 
+  /**
+   * 封装了一个绘制火箭的方法。
+   * 火箭由三个部分组成：箭头、箭体、箭尾（就是底部喷火的地方，不知道术语叫什么，暂时先叫它箭尾吧）
+   */
   private _createRocket(
+    // 实体名称
     name: string,
+    // 箭体高度
     height: number,
+    // 箭体直径
     diameter: number,
+    // 箭体的坐标
     x: number,
     y: number,
     z: number,
   ) {
+    // 箭体是一个圆柱体
     const cylinder = MeshBuilder.CreateCylinder(name + "Cylinder", {
       height,
       diameter,
@@ -76,6 +85,7 @@ class App {
     cylinder.position.y = y
     cylinder.position.z = z
 
+    // 箭头是一个圆锥体，直径与箭体相同，高度是箭体的 1/5
     const headHeight = height / 5
     const coneHead = MeshBuilder.CreateCylinder(name + 'ConeHead', {
       height: headHeight,
@@ -83,9 +93,11 @@ class App {
       diameterBottom: diameter,
     })
     coneHead.position.x = x
+    // 箭头与箭体刚好衔接在一起
     coneHead.position.y = y + (headHeight + height) / 2
     coneHead.position.z = z
 
+    // 箭尾是一个顶面较小，底面较大的圆柱体（还算是圆柱体吗？），有点像烟囱
     const tailHeight = height / 10
     const coneTail = MeshBuilder.CreateCylinder(name + 'ConeTail', {
       height: tailHeight,
@@ -93,6 +105,7 @@ class App {
       diameterBottom: diameter * 0.8,
     })
     coneTail.position.x = x
+    // 箭尾一半嵌在箭体里，一半在箭体外面
     coneTail.position.y = y - height / 2
     coneTail.position.z = z
   }
