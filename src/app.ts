@@ -1,7 +1,16 @@
 import "@babylonjs/core/Debug/debugLayer";
 import "@babylonjs/inspector";
 import "@babylonjs/loaders/glTF";
-import { Engine, Scene, ArcRotateCamera, Vector3, HemisphericLight, Mesh, MeshBuilder } from "@babylonjs/core";
+import {
+  Engine,
+  Scene,
+  ArcRotateCamera,
+  Vector3,
+  HemisphericLight,
+  Mesh,
+  MeshBuilder,
+  CSG,
+} from "@babylonjs/core";
 
 class App {
   constructor() {
@@ -21,7 +30,7 @@ class App {
       "Camera",
       Math.PI / 2,
       Math.PI / 2,
-      20,
+      30,
       Vector3.Zero(),
       scene
     );
@@ -30,16 +39,20 @@ class App {
     // 光源
     var light1: HemisphericLight = new HemisphericLight(
       "light1",
-      new Vector3(10, 5, 5),
+      new Vector3(10, 5, 0),
       scene
     );
 
     // 主火箭
-    this._createRocket('main', 10, 2, 0, 0, 0)
+    const rocketMain = this._createRocket('main', 10, 2, 0, 0, 0, scene)
     // 辅助推进器——体积较小的火箭
-    this._createRocket('r1', 4, 1, 1.5, -3, 0)
+    const rocket1 = this._createRocket('r1', 4, 1, 1.5, -3, 0, scene)
     // 一边一个
-    this._createRocket('r2', 4, 1, -1.5, -3, 0)
+    const rocket2 = this._createRocket('r2', 4, 1, -1.5, -3, 0, scene)
+
+    // 组装成一个整体，可以直接改变整体的位置
+    const rocketWhole = Mesh.MergeMeshes([rocketMain, rocket1, rocket2])
+    rocketWhole.position.y = 5
 
     // hide/show the Inspector
     // 快捷键唤起 Babylon.js 的调试工具，非常有用，可以让你看到每个实体占据的立体空间，便于计算和调整坐标。
@@ -75,6 +88,7 @@ class App {
     x: number,
     y: number,
     z: number,
+    scene: Scene,
   ) {
     // 箭体是一个圆柱体
     const cylinder = MeshBuilder.CreateCylinder(name + "Cylinder", {
@@ -108,6 +122,28 @@ class App {
     // 箭尾一半嵌在箭体里，一半在箭体外面
     coneTail.position.y = y - height / 2
     coneTail.position.z = z
+
+    // 把三个部分组装成一个整体
+    const rocketMesh = Mesh.MergeMeshes([coneHead, cylinder, coneTail])
+    return rocketMesh
+
+    /**
+     * 也可以用 CSG 来组装
+     * https://doc.babylonjs.com/typedoc/classes/babylon.csg
+     */
+    // const headCSG = CSG.FromMesh(coneHead)
+    // const bodyCSG = CSG.FromMesh(cylinder)
+    // const tailCSG = CSG.FromMesh(coneTail)
+    // const rocketCSG = headCSG.union(bodyCSG).union(tailCSG)
+    // const rocket = rocketCSG.toMesh('rocket', null, scene)
+    // coneHead.dispose()
+    // cylinder.dispose()
+    // coneTail.dispose()
+    // scene.removeMesh(coneHead)
+    // scene.removeMesh(cylinder)
+    // scene.removeMesh(coneTail)
+
+    // return rocket
   }
 }
 new App();
