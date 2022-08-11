@@ -11,6 +11,7 @@ import {
   MeshBuilder,
   CSG,
 } from "@babylonjs/core";
+import { ExampleBasicScene } from "./components/BasicExamples";
 
 class App {
   constructor() {
@@ -31,15 +32,22 @@ class App {
       Math.PI / 2,
       Math.PI / 2,
       30,
-      Vector3.Zero(),
+      // Vector3.Zero(),
+      new Vector3(0, 5, 0),
       scene
     );
     camera.attachControl(canvas, true);
 
     // 光源
-    var light1: HemisphericLight = new HemisphericLight(
+    const light1: HemisphericLight = new HemisphericLight(
       "light1",
       new Vector3(10, 5, 0),
+      scene
+    );
+
+    const light2: HemisphericLight = new HemisphericLight(
+      "light2",
+      new Vector3(-10, 20, 0),
       scene
     );
 
@@ -146,4 +154,6 @@ class App {
     // return rocket
   }
 }
-new App();
+// new App();
+
+new ExampleBasicScene();
