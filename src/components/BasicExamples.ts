@@ -1,4 +1,5 @@
 import { BasicScene } from "../examples/BasicScene";
+import { PBR } from "../examples/PBR";
 import { StandardMaterials } from "../examples/StandardMaterials";
 
 export class ExampleBasicScene {
@@ -11,6 +12,7 @@ export class ExampleBasicScene {
     
 
     // new BasicScene(canvas);
-    new StandardMaterials(canvas);
+    // new StandardMaterials(canvas);
+    new PBR(canvas);
   }
 }
