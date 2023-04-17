@@ -3,6 +3,8 @@ import { CustomModels } from "../examples/CustomModels";
 import { PBR } from "../examples/PBR";
 import { ShadowsScene } from "../examples/Shadows";
 import { StandardMaterials } from "../examples/StandardMaterials";
+import { TexturesScene } from "../examples/Textures";
+import { RoomScene } from "../examples/Room";
 
 export class ExampleBasicScene {
   constructor() {
@@ -13,10 +15,12 @@ export class ExampleBasicScene {
     document.body.appendChild(canvas);
     
 
-    new BasicScene(canvas);
+    // new BasicScene(canvas);
     // new StandardMaterials(canvas);
     // new PBR(canvas);
     // new CustomModels(canvas);
     // new ShadowsScene(canvas);
+    // new TexturesScene(canvas);
+    new RoomScene(canvas);
   }
 }
