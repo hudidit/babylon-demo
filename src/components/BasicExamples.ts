@@ -21,6 +21,12 @@ export class ExampleBasicScene {
     // new CustomModels(canvas);
     // new ShadowsScene(canvas);
     // new TexturesScene(canvas);
-    new RoomScene(canvas);
+    const scene = new RoomScene(canvas);
+    const debugLayer = scene.scene.debugLayer;
+    debugLayer.show();
+    const inspectBtn = document.querySelector('#inspect-btn');
+    inspectBtn?.addEventListener('click', () => {
+      debugLayer.isVisible() ? debugLayer.hide() : debugLayer.show();
+    });
   }
 }
