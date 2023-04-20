@@ -13,7 +13,7 @@ import {
   ShadowGenerator,
   StandardMaterial,
   Texture,
-  Mesh
+  Mesh,
 } from "@babylonjs/core";
 
 
@@ -75,16 +75,7 @@ export class RoomScene {
       position: { z: 20 },
     }, scene);
 
-    // Create the ground of the room
-    const ground = MeshBuilder.CreateGround("ground", { width: 40, height: 40 }, scene);
-
-    // Set the position of the ground
-    ground.position.y = -5;
-
-    // Set the material of the ground
-    ground.receiveShadows = true;
-    ground.material = this.mat.get('groundMat');
-
+    const ground = this.createGround(scene);
     const brick = this.createBrick();
 
 
@@ -106,6 +97,10 @@ export class RoomScene {
     lightSphere.material = new StandardMaterial("light", scene);
     (lightSphere.material as StandardMaterial).emissiveColor = new Color3(1, 1, 0);
 
+    const diretionalLight2 = new DirectionalLight('directionalLight2', new Vector3(10, -20, 15).normalize(), scene);
+    diretionalLight2.position = new Vector3(0, 20, 0);
+    diretionalLight2.intensity = 0.5;
+
     /**
      * ShadowGenerator 的第一个参数 mapSize 值越大，阴影边界越清晰；值越小，阴影颗粒感越强。
      * 可以尝试设置成 50, 100, 200, 1024, 4096，就能够看出区别。
@@ -115,21 +110,45 @@ export class RoomScene {
 
     return scene;
   }
-  
+
   private createMaterials(scene: Scene) {
     const wallMat = new StandardMaterial('wallBricks', scene);
     const wallTexture = new Texture('https://assets.babylonjs.com/environments/bricktile.jpg', scene);
-    // wallTexture.uScale = 10;
-    // wallTexture.vScale = 10;
     wallMat.diffuseTexture = wallTexture;
+    wallMat.specularColor = new Color3(.3, .3, .3);
     this.mat.set('wallMat', wallMat);
 
     const groundMat = new StandardMaterial('groundBricks', scene);
     const groundTexture = new Texture('https://assets.babylonjs.com/environments/bricktile.jpg', scene);
-    groundTexture.uScale = 4;
-    groundTexture.vScale = 12;
+    
     groundMat.diffuseTexture = groundTexture;
+
+    // 降低反光度
+    groundMat.specularColor = new Color3(.3, .3, .3);
     this.mat.set('groundMat', groundMat);
+  }
+
+  private createGround(scene: Scene) {
+    // Create the ground of the room
+    // const ground = MeshBuilder.CreateGround("ground", { width: 40, height: 40 }, scene);
+    // CreateTiledPlane 可以翻转 tile, CreateTiledGround 不行
+    const ground = MeshBuilder.CreateTiledPlane('ground', {
+      size: 40,
+      tileWidth: 6,
+      tileHeight: 2,
+      pattern: Mesh.FLIP_TILE,
+      sideOrientation: Mesh.DOUBLESIDE,
+    }, scene);
+    ground.rotation.x = Math.PI/ 2;
+
+    // Set the position of the ground
+    ground.position.y = -5;
+
+    // Set the material of the ground
+    ground.receiveShadows = true;
+    ground.material = this.mat.get('groundMat');
+
+    return ground;
   }
 
   private createWall(name: string, { width, height, depth, position }: {
@@ -154,8 +173,8 @@ export class RoomScene {
       alignVertical: av,
       alignHorizontal: ah,
       // tileSize: 3,
-      tileWidth: 3,
-      tileHeight: 1,
+      tileWidth: 6,
+      tileHeight: 2,
     };
 
     const wall = MeshBuilder.CreateTiledBox(name, {
@@ -188,7 +207,7 @@ export class RoomScene {
       height: 3,
       depth: 1,
       tileSize: 1,
-      tileWidth: 3
+      tileWidth: 3,
     });
     brickBox.material = this.mat.get('wallMat');
     brickBox.position.x = -5;
