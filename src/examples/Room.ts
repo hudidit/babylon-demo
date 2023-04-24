@@ -83,7 +83,8 @@ export class RoomScene {
     }, scene);
 
     const ground = this.createGround(scene);
-    const brick = this.createBrick();
+    // const brick = this.createBrick();
+    const { tableMesh, tableTop } = this.createTable(scene);
 
     /**
      * 经验：
@@ -104,22 +105,32 @@ export class RoomScene {
     // pointLight.intensity = 0.7;
     // const lightToShadow = pointLight;
 
-    const spotLight1 = this.createSpotLight('spotLight1', {
-      position: new Vector3(20, 4, 0),
-      direction: new Vector3(-0.5, -1, 0),
-    }, scene);
-    const shadowGenerator = new ShadowGenerator(4096, spotLight1);
+    // const spotLight1 = this.createSpotLight('spotLight1', {
+    //   position: new Vector3(20, 4, 0),
+    //   direction: new Vector3(-0.5, -1, 0),
+    // }, scene);
+    // const shadowGenerator = new ShadowGenerator(4096, spotLight1);
     // // 照射物体的形状也会影响 FPS。根据目前的观察，物体的“高宽”比越大，FPS 越低。
-    shadowGenerator.addShadowCaster(brick, true);
+    // shadowGenerator.addShadowCaster(brick, true);
 
-    const spotLight2 = this.createSpotLight('spotLight2', {
-      position: new Vector3(0, 4, -20),
-      direction: new Vector3(0, -1, 1),
-    }, scene);
-    const shadowGenerator2 = new ShadowGenerator(4096, spotLight2);
+    // const spotLight2 = this.createSpotLight('spotLight2', {
+    //   position: new Vector3(0, 4, -20),
+    //   direction: new Vector3(0, -1, 1),
+    // }, scene);
+    // const shadowGenerator2 = new ShadowGenerator(4096, spotLight2);
     // // 照射物体的形状也会影响 FPS。根据目前的观察，物体的“高宽”比越大，FPS 越低。
-    shadowGenerator2.addShadowCaster(brick, true);
-    
+    // shadowGenerator2.addShadowCaster(brick, true);
+
+    const spotLight3 = this.createSpotLight('spotLight3', {
+      position: new Vector3(0, 20, 0),
+      direction: new Vector3(0, -1, 0),
+      intensity: 6,
+      angle: Math.PI * 0.8,
+    }, scene);
+    const shadowGenerator3 = new ShadowGenerator(4096, spotLight3);
+    shadowGenerator3.addShadowCaster(tableMesh, true);
+    // shadowGenerator3.addShadowCaster(brick, true);
+    tableMesh.position.y = 1;
 
     // const diretionalLight2 = new DirectionalLight('directionalLight2', new Vector3(10, -20, 15).normalize(), scene);
     // diretionalLight2.position = new Vector3(0, 20, 0);
@@ -147,7 +158,7 @@ export class RoomScene {
 
     const groundMat = new StandardMaterial('groundBricks', scene);
     const groundTexture = new Texture('https://assets.babylonjs.com/environments/bricktile.jpg', scene);
-    
+
     groundMat.diffuseTexture = groundTexture;
 
     // 降低反光度
@@ -157,13 +168,16 @@ export class RoomScene {
 
     const stoneMat = this.createStoneMaterial(scene);
     this.mat.set('stoneMat', stoneMat);
+
+    const woodMat = this.createWoodMaterial(scene);
+    this.mat.set('woodMat', woodMat);
   }
 
   createStoneMaterial(scene: Scene): StandardMaterial {
     const stoneMat = new StandardMaterial('stoneMat', scene);
     const uvScale = 2;
     const texArray: Texture[] = [];
-    
+
     const diffuseTex = new Texture('./textures/stone/stone_diffuse.jpg', scene);
     stoneMat.diffuseTexture = diffuseTex;
     texArray.push(diffuseTex);
@@ -188,19 +202,48 @@ export class RoomScene {
     return stoneMat;
   }
 
+  createWoodMaterial(scene: Scene): StandardMaterial {
+    const woodMat = new StandardMaterial('woodMat', scene);
+    const uvScale = 0.15;
+    const texArray: Texture[] = [];
+
+    const diffuseTex = new Texture('./textures/woodFloor/wood_floor_diff.jpg', scene);
+    woodMat.diffuseTexture = diffuseTex;
+    texArray.push(diffuseTex);
+
+    const normalTex = new Texture('./textures/woodFloor/wood_floor_normal.jpg', scene);
+    woodMat.bumpTexture = normalTex;
+    texArray.push(normalTex);
+
+    const aoTex = new Texture('./textures/woodFloor/wood_floor_ao.jpg', scene);
+    woodMat.ambientTexture = aoTex;
+    texArray.push(aoTex);
+
+    texArray.forEach((tex) => {
+      tex.uScale = uvScale;
+      tex.vScale = uvScale;
+    });
+
+    woodMat.specularColor = new Color3(.1, .1, .1);
+
+    return woodMat;
+  }
+
   private createSpotLight(name: string, {
     position,
     direction,
     angle = Math.PI * 1.6,
     exponent = 3,
+    intensity = 3,
   }: {
     position: Vector3;
     direction: Vector3;
     angle?: number;
     exponent?: number;
+    intensity?: number;
   }, scene: Scene) {
     const spotLight = new SpotLight(name, position, direction, angle, exponent, scene);
-    spotLight.intensity = 3;
+    spotLight.intensity = intensity;
     spotLight.diffuse = new Color3(1, 1, 1);
     spotLight.specular = new Color3(1, 1, 1);
     // spotLight.shadowMaxZ = 10;
@@ -227,14 +270,15 @@ export class RoomScene {
       pattern: Mesh.FLIP_TILE,
       sideOrientation: Mesh.DOUBLESIDE,
     }, scene);
-    ground.rotation.x = Math.PI/ 2;
+    ground.rotation.x = Math.PI / 2;
 
     // Set the position of the ground
     ground.position.y = -5;
 
     // Set the material of the ground
     ground.receiveShadows = true;
-    ground.material = this.mat.get('groundMat');
+    // ground.material = this.mat.get('groundMat');
+    ground.material = this.mat.get('woodMat');
 
     return ground;
   }
@@ -306,5 +350,35 @@ export class RoomScene {
     brickBox.position.z = 3;
     brickBox.receiveShadows = true;
     return brickBox;
+  }
+
+  private createTable(scene: Scene) {
+    const a = 3;
+    const b = 2;
+    const legWidth = 0.5;
+    const legHeight = 4;
+
+    const tableTop = MeshBuilder.CreateBox("table", { width: 7, height: legWidth, depth: 7 }, scene);
+
+    // To create legs for the table, you can use the MeshBuilder class and specify their dimensions, position, and other properties. For example:
+    const leg1 = MeshBuilder.CreateBox("leg1", { width: legWidth, height: legHeight, depth: legWidth }, scene);
+    leg1.position = new Vector3(-a, -b, -a);
+
+    const leg2 = MeshBuilder.CreateBox("leg2", { width: legWidth, height: legHeight, depth: legWidth }, scene);
+    leg2.position = new Vector3(a, -b, -a);
+
+    const leg3 = MeshBuilder.CreateBox("leg3", { width: legWidth, height: legHeight, depth: legWidth }, scene);
+    leg3.position = new Vector3(-a, -b, a);
+
+    const leg4 = MeshBuilder.CreateBox("leg4", { width: legWidth, height: legHeight, depth: legWidth }, scene);
+    leg4.position = new Vector3(a, -b, a);
+
+    // To combine the table top and legs into a single mesh, you can use the Mesh.MergeMeshes method again. For example:
+    const tableMesh = Mesh.MergeMeshes([tableTop, leg1, leg2, leg3, leg4], true, false, null, false, true);
+    tableMesh.position = new Vector3(5, -1, 5);
+
+    tableMesh.material = this.mat.get('stoneMat');
+
+    return {tableMesh, tableTop};
   }
 }
