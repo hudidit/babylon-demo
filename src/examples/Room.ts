@@ -14,11 +14,12 @@ import {
   StandardMaterial,
   Texture,
   Mesh,
+  AxesViewer,
 } from "@babylonjs/core";
 
 const CONFIG = {
   wall: {
-    height: 15,
+    height: 10,
   }
 };
 
@@ -63,28 +64,29 @@ export class RoomScene {
       depth: 40,
       position: { x: -20 }
     }, scene);
-    const wall2 = this.createWall('wall2', {
-      width: 0.5,
-      height: wallHeight,
-      depth: 40,
-      position: { x: 20 },
-    }, scene);
+    // const wall2 = this.createWall('wall2', {
+    //   width: 0.5,
+    //   height: wallHeight,
+    //   depth: 40,
+    //   position: { x: 20 },
+    // }, scene);
     const wall3 = this.createWall('wall3', {
       width: 40,
       height: wallHeight,
       depth: 0.5,
       position: { z: -20 },
     }, scene);
-    const wall4 = this.createWall('wall4', {
-      width: 40,
-      height: wallHeight,
-      depth: 0.5,
-      position: { z: 20 },
-    }, scene);
+    // const wall4 = this.createWall('wall4', {
+    //   width: 40,
+    //   height: wallHeight,
+    //   depth: 0.5,
+    //   position: { z: 20 },
+    // }, scene);
 
     const ground = this.createGround(scene);
     // const brick = this.createBrick();
-    const { tableMesh, tableTop } = this.createTable(scene);
+    const tableMesh = this.createTable(scene);
+    const chairs = this.createChairs(scene);
 
     /**
      * 经验：
@@ -122,15 +124,15 @@ export class RoomScene {
     // shadowGenerator2.addShadowCaster(brick, true);
 
     const spotLight3 = this.createSpotLight('spotLight3', {
-      position: new Vector3(0, 20, 0),
+      position: new Vector3(10, 20, 15),
       direction: new Vector3(0, -1, 0),
       intensity: 6,
       angle: Math.PI * 0.8,
     }, scene);
     const shadowGenerator3 = new ShadowGenerator(4096, spotLight3);
-    shadowGenerator3.addShadowCaster(tableMesh, true);
+    // shadowGenerator3.addShadowCaster(tableMesh, true);
+    shadowGenerator3.getShadowMap().renderList.push(tableMesh, ...chairs);
     // shadowGenerator3.addShadowCaster(brick, true);
-    tableMesh.position.y = 1;
 
     // const diretionalLight2 = new DirectionalLight('directionalLight2', new Vector3(10, -20, 15).normalize(), scene);
     // diretionalLight2.position = new Vector3(0, 20, 0);
@@ -146,6 +148,10 @@ export class RoomScene {
     // 设置了这个之后，降到了 20FPS；不开是 40FPS。
     // shadowGenerator.useContactHardeningShadow = true;
     // shadowGenerator.setDarkness(0.2);
+
+    // 展示坐标轴
+    // new AxesViewer(scene, 20);
+
     return scene;
   }
 
@@ -171,11 +177,14 @@ export class RoomScene {
 
     const woodMat = this.createWoodMaterial(scene);
     this.mat.set('woodMat', woodMat);
+
+    const metalMat = this.createMetalMaterial(scene);
+    this.mat.set('metalMat', metalMat);
   }
 
   createStoneMaterial(scene: Scene): StandardMaterial {
     const stoneMat = new StandardMaterial('stoneMat', scene);
-    const uvScale = 2;
+    const uvScale = .5;
     const texArray: Texture[] = [];
 
     const diffuseTex = new Texture('./textures/stone/stone_diffuse.jpg', scene);
@@ -204,7 +213,7 @@ export class RoomScene {
 
   createWoodMaterial(scene: Scene): StandardMaterial {
     const woodMat = new StandardMaterial('woodMat', scene);
-    const uvScale = 0.15;
+    const uvScale = 1;
     const texArray: Texture[] = [];
 
     const diffuseTex = new Texture('./textures/woodFloor/wood_floor_diff.jpg', scene);
@@ -227,6 +236,37 @@ export class RoomScene {
     woodMat.specularColor = new Color3(.1, .1, .1);
 
     return woodMat;
+  }
+
+  private createMetalMaterial(scene: Scene): StandardMaterial {
+    const metalMat = new StandardMaterial('metalMat', scene);
+    const uvScale = 1;
+    const texArray: Texture[] = [];
+
+    const diffuseTex = new Texture('./textures/metal/metal_diffuse.jpg', scene);
+    metalMat.diffuseTexture = diffuseTex;
+    texArray.push(diffuseTex);
+
+    const normalTex = new Texture('./textures/metal/metal_normal.jpg', scene);
+    metalMat.bumpTexture = normalTex;
+    texArray.push(normalTex);
+
+    const aoTex = new Texture('./textures/metal/metal_ao.jpg', scene);
+    metalMat.ambientTexture = aoTex;
+    texArray.push(aoTex);
+
+    const specTex = new Texture('./texture/metal/metal_spec.jpg', scene);
+    metalMat.specularTexture = specTex;
+    texArray.push(specTex);
+
+    texArray.forEach((tex) => {
+      tex.uScale = uvScale;
+      tex.vScale = uvScale;
+    });
+
+    metalMat.specularColor = new Color3(.1, .1, .1);
+
+    return metalMat;
   }
 
   private createSpotLight(name: string, {
@@ -265,8 +305,10 @@ export class RoomScene {
     // CreateTiledPlane 可以翻转 tile, CreateTiledGround 不行
     const ground = MeshBuilder.CreateTiledPlane('ground', {
       size: 40,
-      tileWidth: 6,
-      tileHeight: 2,
+      // tileWidth: 6,
+      // tileHeight: 2,
+      // texture 为正方形时，直接使用 tileSize
+      tileSize: 6,
       pattern: Mesh.FLIP_TILE,
       sideOrientation: Mesh.DOUBLESIDE,
     }, scene);
@@ -278,7 +320,8 @@ export class RoomScene {
     // Set the material of the ground
     ground.receiveShadows = true;
     // ground.material = this.mat.get('groundMat');
-    ground.material = this.mat.get('woodMat');
+    // ground.material = this.mat.get('woodMat');
+    ground.material = this.mat.get('stoneMat');
 
     return ground;
   }
@@ -375,10 +418,31 @@ export class RoomScene {
 
     // To combine the table top and legs into a single mesh, you can use the Mesh.MergeMeshes method again. For example:
     const tableMesh = Mesh.MergeMeshes([tableTop, leg1, leg2, leg3, leg4], true, false, null, false, true);
-    tableMesh.position = new Vector3(5, -1, 5);
+    tableMesh.position = new Vector3(0, -1, 0);
 
-    tableMesh.material = this.mat.get('stoneMat');
+    // tableMesh.material = this.mat.get('stoneMat');
+    tableMesh.material = this.mat.get('woodMat');
 
-    return {tableMesh, tableTop};
+    return tableMesh;
   }
+
+  private createChairs(scene: Scene) {
+    const chair = MeshBuilder.CreateCylinder("chair", {diameter: 2, height: 3});
+    chair.material = this.mat.get('metalMat');
+    chair.position = new Vector3(0, -4, 6);
+    const chair2 = chair.clone('chair2');
+    chair2.position = new Vector3(0, -4, -6);
+    const chair3 = chair.clone('chair3');
+    chair3.position = new Vector3(6, -4, 0);
+    const chair4 = chair.clone('chair4');
+    chair4.position = new Vector3(-6, -4, 0);
+
+    scene.addMesh(chair);
+    scene.addMesh(chair2);
+    scene.addMesh(chair3);
+    scene.addMesh(chair4);
+
+    return [chair, chair2, chair3, chair4];
+  }
+
 }
