@@ -180,6 +180,9 @@ export class RoomScene {
 
     const metalMat = this.createMetalMaterial(scene);
     this.mat.set('metalMat', metalMat);
+
+    const brickMat = this.createBrickMaterial(scene);
+    this.mat.set('brickMat', brickMat);
   }
 
   createStoneMaterial(scene: Scene): StandardMaterial {
@@ -208,6 +211,11 @@ export class RoomScene {
       tex.vScale = uvScale;
     });
 
+    // 颜色调暗
+    stoneMat.diffuseColor = new Color3(.5, .5, .5);
+    // 降低反光
+    stoneMat.specularColor = new Color3(.1, .1, .1);
+
     return stoneMat;
   }
 
@@ -233,6 +241,9 @@ export class RoomScene {
       tex.vScale = uvScale;
     });
 
+    // 颜色调暗
+    woodMat.diffuseColor = new Color3(.5, .5, .5);
+    // 降低反光
     woodMat.specularColor = new Color3(.1, .1, .1);
 
     return woodMat;
@@ -267,6 +278,38 @@ export class RoomScene {
     metalMat.specularColor = new Color3(.1, .1, .1);
 
     return metalMat;
+  }
+
+  private createBrickMaterial(scene: Scene): StandardMaterial {
+    const brickMat = new StandardMaterial('brickMat', scene);
+    const uvScale = .3;
+    const texArray: Texture[] = [];
+
+    const diffuseTex = new Texture('./textures/brick1/brick_diff.jpg', scene);
+    brickMat.diffuseTexture = diffuseTex;
+    texArray.push(diffuseTex);
+
+    const normalTex = new Texture('./textures/brick1/brick_normal.jpg', scene);
+    brickMat.bumpTexture = normalTex;
+    texArray.push(normalTex);
+
+    const aoTex = new Texture('./textures/brick1/brick_ao.jpg', scene);
+    brickMat.ambientTexture = aoTex;
+    texArray.push(aoTex);
+
+    texArray.forEach((tex) => {
+      tex.uScale = uvScale;
+      tex.vScale = uvScale;
+    });
+
+    brickMat.specularColor = new Color3(.1, .1, .1);
+    
+    // 颜色调暗
+    brickMat.diffuseColor = new Color3(.8, .8, .8);
+    // 降低反光
+    brickMat.specularColor = new Color3(.1, .1, .1);
+
+    return brickMat;
   }
 
   private createSpotLight(name: string, {
@@ -358,7 +401,8 @@ export class RoomScene {
       height,
       depth,
     }, scene);
-    wall.material = this.mat.get('wallMat');
+    // wall.material = this.mat.get('wallMat');
+    wall.material = this.mat.get('brickMat');
     Object.entries(position).map(([key, value]) => {
       if (key && typeof value === 'number' && !isNaN(value)) {
         wall.position[key] = value;
@@ -428,7 +472,8 @@ export class RoomScene {
 
   private createChairs(scene: Scene) {
     const chair = MeshBuilder.CreateCylinder("chair", {diameter: 2, height: 3});
-    chair.material = this.mat.get('metalMat');
+    // chair.material = this.mat.get('metalMat');
+    chair.material = this.mat.get('woodMat').clone('chairMat');
     chair.position = new Vector3(0, -4, 6);
     const chair2 = chair.clone('chair2');
     chair2.position = new Vector3(0, -4, -6);
