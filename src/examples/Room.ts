@@ -15,6 +15,7 @@ import {
   Texture,
   Mesh,
   AxesViewer,
+  CSG,
 } from "@babylonjs/core";
 
 const CONFIG = {
@@ -82,6 +83,27 @@ export class RoomScene {
     //   depth: 0.5,
     //   position: { z: 20 },
     // }, scene);
+
+    /**
+     * 使用 CSG subtract 在墙上挖一个门
+     * TODO: 现在是写死的尺寸、位置，只能在特定的位置挖洞。把画墙、挖洞的逻辑封装到一起，可以在画墙的时候指定是否挖洞。
+     */
+    const door = MeshBuilder.CreateBox("door", { width: 6, height: 9, depth: 0.8 }, scene);
+    door.position = new Vector3(0, -2, -20);
+
+    const wallCSG = CSG.FromMesh(wall3);
+    const doorCSG = CSG.FromMesh(door);
+    const wallWithDoorCSG = wallCSG.subtract(doorCSG);
+    const wallWithDoor = wallWithDoorCSG.toMesh('wallWithDoor', null, scene);
+    // TODO: 通过 CSG 合并后再转回 Mesh 需要重新设置 material，可以尝试封装
+    wallWithDoor.material = this.mat.get('brickMat');
+
+    // 销毁用来挖门的形状
+    door.dispose();
+    // 销毁原来的墙
+    wall3.dispose();
+    // 添加新的墙
+    scene.addMesh(wallWithDoor);
 
     const ground = this.createGround(scene);
     // const brick = this.createBrick();
@@ -303,7 +325,7 @@ export class RoomScene {
     });
 
     brickMat.specularColor = new Color3(.1, .1, .1);
-    
+
     // 颜色调暗
     brickMat.diffuseColor = new Color3(.8, .8, .8);
     // 降低反光
@@ -471,7 +493,7 @@ export class RoomScene {
   }
 
   private createChairs(scene: Scene) {
-    const chair = MeshBuilder.CreateCylinder("chair", {diameter: 2, height: 3});
+    const chair = MeshBuilder.CreateCylinder("chair", { diameter: 2, height: 3 });
     // chair.material = this.mat.get('metalMat');
     chair.material = this.mat.get('woodMat').clone('chairMat');
     chair.position = new Vector3(0, -4, 6);
