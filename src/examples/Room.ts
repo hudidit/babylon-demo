@@ -109,6 +109,7 @@ export class RoomScene {
     // const brick = this.createBrick();
     const tableMesh = this.createTable(scene);
     const chairs = this.createChairs(scene);
+    this.createPicture(scene);
 
     /**
      * 经验：
@@ -510,6 +511,28 @@ export class RoomScene {
     scene.addMesh(chair4);
 
     return [chair, chair2, chair3, chair4];
+  }
+
+  private createPicture(scene: Scene) {
+    // Create a texture with the image you want to display
+    // const pictureTexture = new Texture("./textures/picture_800.jpg", scene);
+    const pictureTexture = new Texture("./textures/pic2_1200.jpg", scene);
+
+    // Create a material and assign the texture to it
+    const pictureMaterial = new StandardMaterial("pictureMaterial", scene);
+    pictureMaterial.diffuseTexture = pictureTexture;
+
+    // Create a mesh for the picture and set its position and dimensions to fit inside the frame
+    const picture = MeshBuilder.CreatePlane("picture", { width: 10, height: 6, sideOrientation: Mesh.DOUBLESIDE }, scene);
+
+    // Apply the material to the picture mesh
+    picture.material = pictureMaterial;
+    picture.rotation.y = Math.PI / 2;
+    // put it on wall1
+    picture.position = new Vector3(-19.7, 0.3, 0);
+
+    // Add the picture mesh to the scene
+    scene.addMesh(picture);
   }
 
 }
