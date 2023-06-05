@@ -16,7 +16,9 @@ import {
   Mesh,
   AxesViewer,
   CSG,
+  SceneLoader,
 } from "@babylonjs/core";
+import '@babylonjs/loaders';
 
 const CONFIG = {
   wall: {
@@ -110,6 +112,8 @@ export class RoomScene {
     const tableMesh = this.createTable(scene);
     const chairs = this.createChairs(scene);
     this.createPicture(scene);
+    this.createTree(scene);
+    
 
     /**
      * 经验：
@@ -515,15 +519,16 @@ export class RoomScene {
 
   private createPicture(scene: Scene) {
     // Create a texture with the image you want to display
-    // const pictureTexture = new Texture("./textures/picture_800.jpg", scene);
-    const pictureTexture = new Texture("./textures/pic2_1200.jpg", scene);
+    // const pictureTexture = new Texture("./textures/pictures/picture_800.jpg", scene);
+    // const pictureTexture = new Texture("./textures/pictures/pic2_1200.jpg", scene);
+    const pictureTexture = new Texture("./textures/pictures/pic1.jpg", scene);
 
     // Create a material and assign the texture to it
     const pictureMaterial = new StandardMaterial("pictureMaterial", scene);
     pictureMaterial.diffuseTexture = pictureTexture;
 
     // Create a mesh for the picture and set its position and dimensions to fit inside the frame
-    const picture = MeshBuilder.CreatePlane("picture", { width: 10, height: 6, sideOrientation: Mesh.DOUBLESIDE }, scene);
+    const picture = MeshBuilder.CreatePlane("picture", { width: 8, height: 4.5, sideOrientation: Mesh.DOUBLESIDE }, scene);
 
     // Apply the material to the picture mesh
     picture.material = pictureMaterial;
@@ -533,6 +538,14 @@ export class RoomScene {
 
     // Add the picture mesh to the scene
     scene.addMesh(picture);
+  }
+
+  private async createTree(scene: Scene) {
+    const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'tree.glb', scene);
+    console.log('== load meshed', meshes);
+    const tree = meshes[0];
+    tree.position = new Vector3(15, -5, 12);
+    tree.scaling = new Vector3(0.8, 0.8, 0.8);
   }
 
 }
