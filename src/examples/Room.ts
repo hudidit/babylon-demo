@@ -17,6 +17,7 @@ import {
   AxesViewer,
   CSG,
   SceneLoader,
+  PBRMaterial,
 } from "@babylonjs/core";
 import '@babylonjs/loaders';
 
@@ -112,7 +113,8 @@ export class RoomScene {
     const tableMesh = this.createTable(scene);
     const chairs = this.createChairs(scene);
     this.createPicture(scene);
-    this.createTree(scene);
+    // this.createTree(scene);
+    const bookshelf = this.createBookshelf(scene);
     
 
     /**
@@ -542,10 +544,21 @@ export class RoomScene {
 
   private async createTree(scene: Scene) {
     const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'tree.glb', scene);
-    console.log('== load meshed', meshes);
     const tree = meshes[0];
     tree.position = new Vector3(15, -5, 12);
     tree.scaling = new Vector3(0.8, 0.8, 0.8);
+    return tree;
+  }
+
+  private async createBookshelf(scene: Scene) {
+    const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'wooden_bookshelf.glb', scene);
+    const bookshelf = meshes[0];
+    bookshelf.position = new Vector3(-16, -5, -19);
+    bookshelf.scaling = new Vector3(3, 3, 3);
+    const material = meshes[1].material;
+    (material as PBRMaterial).directIntensity = 0.5;
+    
+    return bookshelf;
   }
 
 }
