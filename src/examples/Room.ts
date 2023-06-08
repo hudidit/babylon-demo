@@ -18,6 +18,8 @@ import {
   CSG,
   SceneLoader,
   PBRMaterial,
+  PointerEventTypes,
+  Camera,
 } from "@babylonjs/core";
 import '@babylonjs/loaders';
 
@@ -115,7 +117,7 @@ export class RoomScene {
     this.createPicture(scene);
     // this.createTree(scene);
     const bookshelf = this.createBookshelf(scene);
-    
+
 
     /**
      * 经验：
@@ -181,7 +183,83 @@ export class RoomScene {
     // 展示坐标轴
     // new AxesViewer(scene, 20);
 
+    this.initPickInteraction({
+      scene,
+      ground,
+      camera
+    });
+
     return scene;
+  }
+
+  private initPickInteraction({
+    scene,
+    ground,
+    camera,
+  }: {
+    scene: Scene; 
+    ground: Mesh;
+    camera: Camera;
+  }) {
+    let startPoint;
+    let currentMesh: Mesh;
+
+    const getGroundPosition = () => {
+      const pickInfo = scene.pick(scene.pointerX, scene.pointerY, mesh => mesh === ground);
+      if (pickInfo.hit) {
+        return pickInfo.pickedPoint;
+      }
+      return null;
+    };
+
+    const pointerDown = (mesh) => {
+      currentMesh = mesh;
+      startPoint = getGroundPosition();
+      if (startPoint) {
+        setTimeout(() => {
+          camera.detachControl();
+        }, 0);
+      }
+    };
+
+    const pointerUp = () => {
+      if (startPoint) {
+        camera.attachControl();
+        startPoint = null;
+      }
+    };
+
+    const pointerMove = () => {
+      if (!startPoint) {
+        return;
+      }
+      const current = getGroundPosition();
+      if (!current) {
+        return;
+      }
+      const diff = current.subtract(startPoint);
+      currentMesh.position.addInPlace(diff);
+      startPoint = current;
+    };
+
+    scene.onPointerObservable.add((pointerInfo) => {
+      switch (pointerInfo.type) {
+        case PointerEventTypes.POINTERMOVE: {
+          pointerMove();
+          break;
+        }
+        case PointerEventTypes.POINTERDOWN: {
+          if (pointerInfo.pickInfo.hit && pointerInfo.pickInfo.pickedMesh !== ground) {
+            pointerDown(pointerInfo.pickInfo.pickedMesh);
+          }
+          break;
+        }
+        case PointerEventTypes.POINTERUP: {
+          pointerUp();
+          break;
+        }
+      }
+    });
   }
 
   private createMaterials(scene: Scene) {
@@ -557,7 +635,7 @@ export class RoomScene {
     bookshelf.scaling = new Vector3(3, 3, 3);
     const material = meshes[1].material;
     (material as PBRMaterial).directIntensity = 0.5;
-    
+
     return bookshelf;
   }
 
