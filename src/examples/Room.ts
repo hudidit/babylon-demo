@@ -102,6 +102,7 @@ export class RoomScene {
     const wallWithDoor = wallWithDoorCSG.toMesh('wallWithDoor', null, scene);
     // TODO: 通过 CSG 合并后再转回 Mesh 需要重新设置 material，可以尝试封装
     wallWithDoor.material = this.mat.get('brickMat');
+    wallWithDoor.receiveShadows = true;
 
     // 销毁用来挖门的形状
     door.dispose();
@@ -111,12 +112,13 @@ export class RoomScene {
     scene.addMesh(wallWithDoor);
 
     const ground = this.createGround(scene);
-    // const brick = this.createBrick();
     const tableMesh = this.createTable(scene);
     const chairs = this.createChairs(scene);
     this.createPicture(scene);
     // this.createTree(scene);
-    const bookshelf = this.createBookshelf(scene);
+    // const bookshelf = this.createBookshelf(scene);
+    const cabinet = this.createCabinet(scene);
+    const plant1 = this.createPlant1(scene);
 
 
     /**
@@ -183,15 +185,18 @@ export class RoomScene {
     // 展示坐标轴
     // new AxesViewer(scene, 20);
 
-    this.initPickInteraction({
-      scene,
-      ground,
-      camera
-    });
+    // this.initPickInteraction({
+    //   scene,
+    //   ground,
+    //   camera
+    // });
 
     return scene;
   }
 
+  /**
+   * 拖拽移动物体
+   */
   private initPickInteraction({
     scene,
     ground,
@@ -520,32 +525,6 @@ export class RoomScene {
     return wall;
   }
 
-  private createBrick() {
-    const pat = Mesh.FLIP_TILE;
-    // const pat = Mesh.ROTATE_TILE;
-    // const pat = Mesh.FLIP_N_ROTATE_TILE;
-    const av = Mesh.TOP;
-    const ah = Mesh.LEFT;
-    const brickBox = MeshBuilder.CreateTiledBox("brickBox", {
-      sideOrientation: Mesh.DOUBLESIDE,
-      pattern: pat,
-      alignVertical: av,
-      alignHorizontal: ah,
-      width: 10,
-      height: 1,
-      depth: 10,
-      tileSize: 1,
-      tileWidth: 3,
-    });
-    // brickBox.material = this.mat.get('wallMat');
-    brickBox.material = this.mat.get('stoneMat');
-    brickBox.position.x = 0;
-    brickBox.position.y = -2;
-    brickBox.position.z = 3;
-    brickBox.receiveShadows = true;
-    return brickBox;
-  }
-
   private createTable(scene: Scene) {
     const a = 3;
     const b = 2;
@@ -582,6 +561,7 @@ export class RoomScene {
     // chair.material = this.mat.get('metalMat');
     chair.material = this.mat.get('woodMat').clone('chairMat');
     chair.position = new Vector3(0, -4, 6);
+    chair.receiveShadows = true;
     const chair2 = chair.clone('chair2');
     chair2.position = new Vector3(0, -4, -6);
     const chair3 = chair.clone('chair3');
@@ -628,15 +608,39 @@ export class RoomScene {
     return tree;
   }
 
-  private async createBookshelf(scene: Scene) {
-    const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'wooden_bookshelf.glb', scene);
-    const bookshelf = meshes[0];
-    bookshelf.position = new Vector3(-16, -5, -19);
-    bookshelf.scaling = new Vector3(3, 3, 3);
-    const material = meshes[1].material;
-    (material as PBRMaterial).directIntensity = 0.5;
+  // private async createBookshelf(scene: Scene) {
+  //   const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'wooden_bookshelf.glb', scene);
+  //   const bookshelf = meshes[0];
+  //   bookshelf.position = new Vector3(-16, -5, -19);
+  //   bookshelf.scaling = new Vector3(3, 3, 3);
+  //   const material = meshes[1].material;
+  //   (material as PBRMaterial).directIntensity = 0.5;
 
-    return bookshelf;
+  //   return bookshelf;
+  // }
+
+  private async createCabinet(scene: Scene) {
+    const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'gothic_commode.glb', scene);
+    const cabinet = meshes[0];
+    cabinet.position = new Vector3(-16, -5, -18);
+    cabinet.scaling = new Vector3(3, 3, 3);
+    cabinet.receiveShadows = true;
+    const material = meshes[1].material;
+    (material as PBRMaterial).directIntensity = 1;
+    meshes[2].receiveShadows = true;
+    meshes.forEach(mesh => {
+      // FIXME: 没有用，import 进来的 mesh 上始终不展示阴影
+      mesh.receiveShadows = true;
+    })
+    return cabinet;
+  }
+
+  private async createPlant1(scene: Scene) {
+    const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'plant_celandines.glb', scene);
+    const plant = meshes[0];
+    plant.scaling = new Vector3(10, 10, 10);
+    plant.position = new Vector3(10, -5, 10);
+    return plant;
   }
 
 }
