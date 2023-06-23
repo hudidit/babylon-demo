@@ -142,13 +142,13 @@ export class GrassScene {
 
   private async createPlant(scene: Scene) {
     const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'plant_celandines.glb', scene);
-    console.log('== plant meshes:', meshes);
-    console.log('== child meshes:', meshes[0].getChildMeshes());
-    const plant = meshes[0].getChildMeshes()[0] as Mesh;
+    /**
+     * 对 meshes[0] 设置 scaling, position, rotation 是有效的，其他的属性修改是无效的。
+     * 需要修改 meshes[1] 的属性才有效果。
+     */
+    const plant = meshes[1] as Mesh;
     // const plant = meshes[0] as Mesh;
     plant.scaling = new Vector3(5, 5, 5);
-    // plant.scaling = new Vector3(50, 50, 50);
-    // plant.position = new Vector3(10, 0, 10);
     const plantClones: Mesh[] = [];
     for (let i = -15; i < 20; i+=5) {
       for (let j = -15; j < 20; j+=5) {
@@ -164,8 +164,6 @@ export class GrassScene {
 
   private async createTree(scene: Scene) {
     const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'tree.glb', scene);
-    console.log('== tree meshes:', meshes);
-    console.log('== child meshes:', meshes[0].getChildMeshes());
     const tree = meshes[0] as Mesh;
     tree.receiveShadows = true;
     return tree;
