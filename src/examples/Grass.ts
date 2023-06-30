@@ -58,11 +58,11 @@ export class GrassScene {
      * Lights
      */
     const hemiLight = new HemisphericLight('hemiLight', new Vector3(1, 1, 1), scene);
-    hemiLight.intensity = 0.3;
+    hemiLight.intensity = 0.1;
 
     const diretionalLight = new DirectionalLight('directionalLight', new Vector3(-10, -20, -15).normalize(), scene);
     diretionalLight.position = new Vector3(0, 20, 0);
-    diretionalLight.intensity = 0.7;
+    diretionalLight.intensity = 0.9;
     const lightToShadow = diretionalLight;
     const shadowGenerator = new ShadowGenerator(4096, lightToShadow);
 
@@ -70,15 +70,12 @@ export class GrassScene {
      * Meshes
      */
     const ground = this.createGround(scene);
-    shadowGenerator.getShadowMap().renderList.push(ground);
 
     (async () => {
       const plantClones = await this.createPlant(scene);
       plantClones.forEach(plant => {
-        // shadowGenerator.getShadowMap().renderList.push(plant);
         shadowGenerator.addShadowCaster(plant);
         plant.receiveShadows = true;
-        console.log('== clones', plant, plant.getChildMeshes())
       });
 
       const tree = await this.createTree(scene);
@@ -89,7 +86,7 @@ export class GrassScene {
     /**
      * 展示坐标轴
      */
-    new AxesViewer(scene, 20);
+    // new AxesViewer(scene, 20);
 
     return scene;
   }
@@ -148,17 +145,18 @@ export class GrassScene {
      */
     const plant = meshes[1] as Mesh;
     // const plant = meshes[0] as Mesh;
-    plant.scaling = new Vector3(5, 5, 5);
+    // plant.scaling = new Vector3(5, 5, 5);
+    // plant.scaling = new Vector3(8, 8, 8);
+    plant.scaling = new Vector3(12,12,12);
     const plantClones: Mesh[] = [];
-    for (let i = -15; i < 20; i+=5) {
-      for (let j = -15; j < 20; j+=5) {
+    for (let i = -15; i < 20; i+=7) {
+      for (let j = -15; j < 20; j+=7) {
         const plantClone = plant.clone(`plant_${i}_${j}`);
         plantClone.position = new Vector3(i, 0, j);
         plantClones.push(plantClone);
       }
     }
-    // plant.dispose();
-    plantClones.push(plant);
+    plant.dispose();
     return plantClones;
   }
 
