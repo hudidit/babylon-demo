@@ -81,12 +81,26 @@ export class GrassScene {
       const tree = await this.createTree(scene);
       shadowGenerator.addShadowCaster(tree);
     })();
-    
+
 
     /**
      * 展示坐标轴
      */
-    // new AxesViewer(scene, 20);
+    new AxesViewer(scene, 10);
+
+    // Rotate the directional light
+    const secondsPerRound = 60;
+    let rotationSpeed = 2 * Math.PI / secondsPerRound; // 10 seconds per round
+    let time = 0;
+    scene.registerBeforeRender(() => {
+      time += this.engine.getDeltaTime() / 1000; // convert from ms to s
+      diretionalLight.position = new Vector3(0, Math.cos(time * rotationSpeed) * 10, Math.sin(time * rotationSpeed) * 10);
+      // keep the light above the ground
+      if (diretionalLight.position.y <= 0) {
+        diretionalLight.position.y = -diretionalLight.position.y;
+      }
+      diretionalLight.setDirectionToTarget(Vector3.Zero());
+    });
 
     return scene;
   }
@@ -147,10 +161,10 @@ export class GrassScene {
     // const plant = meshes[0] as Mesh;
     // plant.scaling = new Vector3(5, 5, 5);
     // plant.scaling = new Vector3(8, 8, 8);
-    plant.scaling = new Vector3(12,12,12);
+    plant.scaling = new Vector3(12, 12, 12);
     const plantClones: Mesh[] = [];
-    for (let i = -15; i < 20; i+=7) {
-      for (let j = -15; j < 20; j+=7) {
+    for (let i = -15; i < 20; i += 7) {
+      for (let j = -15; j < 20; j += 7) {
         const plantClone = plant.clone(`plant_${i}_${j}`);
         plantClone.position = new Vector3(i, 0, j);
         plantClones.push(plantClone);
