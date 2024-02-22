@@ -22,8 +22,8 @@ export class ExampleBasicScene {
     // new CustomModels(canvas);
     // new ShadowsScene(canvas);
     // new TexturesScene(canvas);
-    // const scene = new RoomScene(canvas);
-    const scene = new GrassScene(canvas);
+    const scene = new RoomScene(canvas);
+    // const scene = new GrassScene(canvas);
     const debugLayer = scene.scene.debugLayer;
     debugLayer.show();
     const inspectBtn = document.querySelector('#inspect-btn');

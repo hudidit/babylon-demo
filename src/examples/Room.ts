@@ -51,14 +51,14 @@ export class RoomScene {
     /**
      * Cameras
      */
-    // const camera = new FreeCamera('camera', new Vector3(0, 3, -10), this.scene);
-    // camera.attachControl();
-    // camera.speed = 0.25;
-    const camera = new ArcRotateCamera("Camera", 0, 1, 60, Vector3.Zero(), scene);
-    camera.lowerBetaLimit = 0.1;
-    camera.upperBetaLimit = (Math.PI / 2) * 0.9;
-    camera.lowerRadiusLimit = 15;
-    camera.upperRadiusLimit = 150;
+    const camera = new FreeCamera('camera', new Vector3(0, 3, -10), this.scene);
+    camera.attachControl();
+    camera.speed = 0.5;
+    // const camera = new ArcRotateCamera("Camera", 0, 1, 60, Vector3.Zero(), scene);
+    // camera.lowerBetaLimit = 0.1;
+    // camera.upperBetaLimit = (Math.PI / 2) * 0.9;
+    // camera.lowerRadiusLimit = 15;
+    // camera.upperRadiusLimit = 150;
     camera.attachControl();
 
     const wallHeight = CONFIG.wall.height;
@@ -156,20 +156,43 @@ export class RoomScene {
     // // 照射物体的形状也会影响 FPS。根据目前的观察，物体的“高宽”比越大，FPS 越低。
     // shadowGenerator2.addShadowCaster(brick, true);
 
-    const spotLight3 = this.createSpotLight('spotLight3', {
-      position: new Vector3(10, 20, 15),
-      direction: new Vector3(0, -1, 0),
-      intensity: 6,
-      angle: Math.PI * 0.8,
-    }, scene);
-    const shadowGenerator3 = new ShadowGenerator(4096, spotLight3);
-    // shadowGenerator3.addShadowCaster(tableMesh, true);
-    shadowGenerator3.getShadowMap().renderList.push(tableMesh, ...chairs);
-    // shadowGenerator3.addShadowCaster(brick, true);
+    // const spotLight3 = this.createSpotLight('spotLight3', {
+    //   position: new Vector3(10, 20, 15),
+    //   direction: new Vector3(0, -1, 0),
+    //   intensity: 6,
+    //   angle: Math.PI * 0.8,
+    // }, scene);
+    // const shadowGenerator3 = new ShadowGenerator(4096, spotLight3);
+    // // shadowGenerator3.addShadowCaster(tableMesh, true);
+    // shadowGenerator3.getShadowMap().renderList.push(tableMesh, ...chairs);
+    // // shadowGenerator3.addShadowCaster(brick, true);
 
     // const diretionalLight2 = new DirectionalLight('directionalLight2', new Vector3(10, -20, 15).normalize(), scene);
     // diretionalLight2.position = new Vector3(0, 20, 0);
     // diretionalLight2.intensity = 0.5;
+
+    const flashlight = new SpotLight("flashlight", new Vector3(0, 10, 0), new Vector3(0, -1, 0), Math.PI / 6, 5, scene);
+    flashlight.diffuse = new Color3(1, 1, 1);
+    flashlight.specular = new Color3(1, 1, 1);
+    flashlight.intensity = 8;
+    flashlight.range = 60;
+    flashlight.angle = Math.PI / 3 * 2; // Adjust the angle for a wider spread
+    flashlight.exponent = 50;
+    flashlight.intensityMode = SpotLight.INTENSITYMODE_LUMINOUSINTENSITY
+
+    scene.registerBeforeRender(() => {
+      // flashlight.position = camera.position;
+      flashlight.position = new Vector3(
+        camera.position.x,
+        camera.position.y - 1,
+        camera.position.z,
+      );
+      flashlight.direction = camera.getForwardRay().direction;
+    });
+
+    const shadowGenerator4 = new ShadowGenerator(4096, flashlight);
+    // shadowGenerator3.addShadowCaster(tableMesh, true);
+    shadowGenerator4.getShadowMap().renderList.push(tableMesh, ...chairs);
 
     /**
      * ShadowGenerator 的第一个参数 mapSize 值越大，阴影边界越清晰；值越小，阴影颗粒感越强。
@@ -202,7 +225,7 @@ export class RoomScene {
     ground,
     camera,
   }: {
-    scene: Scene; 
+    scene: Scene;
     ground: Mesh;
     camera: Camera;
   }) {
