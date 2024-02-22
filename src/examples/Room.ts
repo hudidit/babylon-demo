@@ -25,7 +25,7 @@ import '@babylonjs/loaders';
 
 const CONFIG = {
   wall: {
-    height: 10,
+    height: 20,
   }
 };
 
@@ -53,7 +53,7 @@ export class RoomScene {
      */
     const camera = new FreeCamera('camera', new Vector3(0, 3, -10), this.scene);
     camera.attachControl();
-    camera.speed = 0.5;
+    camera.speed = 0.8;
     // const camera = new ArcRotateCamera("Camera", 0, 1, 60, Vector3.Zero(), scene);
     // camera.lowerBetaLimit = 0.1;
     // camera.upperBetaLimit = (Math.PI / 2) * 0.9;
@@ -93,7 +93,7 @@ export class RoomScene {
      * 使用 CSG subtract 在墙上挖一个门
      * TODO: 现在是写死的尺寸、位置，只能在特定的位置挖洞。把画墙、挖洞的逻辑封装到一起，可以在画墙的时候指定是否挖洞。
      */
-    const door = MeshBuilder.CreateBox("door", { width: 6, height: 9, depth: 0.8 }, scene);
+    const door = MeshBuilder.CreateBox("door", { width: 9, height: 18, depth: 0.8 }, scene);
     door.position = new Vector3(0, -2, -20);
 
     const wallCSG = CSG.FromMesh(wall3);
@@ -188,6 +188,8 @@ export class RoomScene {
         camera.position.z,
       );
       flashlight.direction = camera.getForwardRay().direction;
+
+      camera.position.y = ground.position.y + 10
     });
 
     const shadowGenerator4 = new ShadowGenerator(4096, flashlight);
@@ -609,6 +611,8 @@ export class RoomScene {
     // Create a material and assign the texture to it
     const pictureMaterial = new StandardMaterial("pictureMaterial", scene);
     pictureMaterial.diffuseTexture = pictureTexture;
+    pictureMaterial.specularColor = new Color3(0.1, 0.1, 0.1) // 较暗的反射颜色
+    pictureMaterial.specularPower = 100 // 增加 specularPower 值以减少反射强度
 
     // Create a mesh for the picture and set its position and dimensions to fit inside the frame
     const picture = MeshBuilder.CreatePlane("picture", { width: 8, height: 4.5, sideOrientation: Mesh.DOUBLESIDE }, scene);
@@ -617,7 +621,7 @@ export class RoomScene {
     picture.material = pictureMaterial;
     picture.rotation.y = Math.PI / 2;
     // put it on wall1
-    picture.position = new Vector3(-19.7, 0.3, 0);
+    picture.position = new Vector3(-19.7, 3, 0);
 
     // Add the picture mesh to the scene
     scene.addMesh(picture);
