@@ -1,6 +1,7 @@
 import {
   Engine,
   FreeCamera,
+  UniversalCamera,
   HemisphericLight,
   MeshBuilder,
   Scene,
@@ -45,21 +46,46 @@ export class RoomScene {
   }
 
   createScene() {
+    const canvas = this.canvas;
     const scene = new Scene(this.engine);
     this.createMaterials(scene);
 
     /**
      * Cameras
      */
-    const camera = new FreeCamera('camera', new Vector3(0, 3, -10), this.scene);
-    camera.attachControl();
+    // const camera = new FreeCamera('camera', new Vector3(0, 3, -10), this.scene);
+    // camera.attachControl();
+    const camera = new UniversalCamera('camera', new Vector3(0, 3, -10), this.scene);
+    camera.attachControl(this.canvas, true);
     camera.speed = 0.8;
-    // const camera = new ArcRotateCamera("Camera", 0, 1, 60, Vector3.Zero(), scene);
-    // camera.lowerBetaLimit = 0.1;
-    // camera.upperBetaLimit = (Math.PI / 2) * 0.9;
-    // camera.lowerRadiusLimit = 15;
-    // camera.upperRadiusLimit = 150;
-    camera.attachControl();
+
+    // On click event, request pointer lock
+    scene.onPointerDown = (evt) => {
+      //true/false check if we're locked, faster than checking pointerlock on each single click.
+      if (document.pointerLockElement !== this.canvas) {
+        canvas.requestPointerLock = canvas.requestPointerLock;
+        if (canvas.requestPointerLock) {
+          canvas.requestPointerLock();
+        }
+      }
+    };
+
+    // 调低镜头灵敏度
+    camera.angularSensibility = 5000
+
+    // Event listener when the pointerlock is updated (or removed by pressing ESC for example).
+    const pointerlockchange = () => {
+      // 判断当前是否锁定了鼠标
+      if (document.pointerLockElement === this.canvas) {
+        // ……
+        console.log('Pointer is locked.')
+      } else {
+        console.log('Pointer is unlocked.')
+      }
+    };
+
+    // Attach events to the document
+    document.addEventListener("pointerlockchange", pointerlockchange, false);
 
     const wallHeight = CONFIG.wall.height;
 
