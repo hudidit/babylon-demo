@@ -50,6 +50,9 @@ export class RoomScene {
     const scene = new Scene(this.engine);
     this.createMaterials(scene);
 
+    // 启用碰撞检测
+    scene.collisionsEnabled = true
+
     /**
      * Cameras
      */
@@ -158,44 +161,6 @@ export class RoomScene {
     // Create lights
     const hemiLight = new HemisphericLight('hemiLight', new Vector3(1, 1, 1), scene);
     hemiLight.intensity = 0.3;
-    // const diretionalLight = new DirectionalLight('directionalLight', new Vector3(-10, -20, -15).normalize(), scene);
-    // diretionalLight.position = new Vector3(0, 20, 0);
-    // diretionalLight.intensity = 0.7;
-    // const lightToShadow = diretionalLight;
-    // const pointLight = new PointLight("pointLight", new Vector3(0, 5, 0), scene);
-    // pointLight.intensity = 0.7;
-    // const lightToShadow = pointLight;
-
-    // const spotLight1 = this.createSpotLight('spotLight1', {
-    //   position: new Vector3(20, 4, 0),
-    //   direction: new Vector3(-0.5, -1, 0),
-    // }, scene);
-    // const shadowGenerator = new ShadowGenerator(4096, spotLight1);
-    // // 照射物体的形状也会影响 FPS。根据目前的观察，物体的“高宽”比越大，FPS 越低。
-    // shadowGenerator.addShadowCaster(brick, true);
-
-    // const spotLight2 = this.createSpotLight('spotLight2', {
-    //   position: new Vector3(0, 4, -20),
-    //   direction: new Vector3(0, -1, 1),
-    // }, scene);
-    // const shadowGenerator2 = new ShadowGenerator(4096, spotLight2);
-    // // 照射物体的形状也会影响 FPS。根据目前的观察，物体的“高宽”比越大，FPS 越低。
-    // shadowGenerator2.addShadowCaster(brick, true);
-
-    // const spotLight3 = this.createSpotLight('spotLight3', {
-    //   position: new Vector3(10, 20, 15),
-    //   direction: new Vector3(0, -1, 0),
-    //   intensity: 6,
-    //   angle: Math.PI * 0.8,
-    // }, scene);
-    // const shadowGenerator3 = new ShadowGenerator(4096, spotLight3);
-    // // shadowGenerator3.addShadowCaster(tableMesh, true);
-    // shadowGenerator3.getShadowMap().renderList.push(tableMesh, ...chairs);
-    // // shadowGenerator3.addShadowCaster(brick, true);
-
-    // const diretionalLight2 = new DirectionalLight('directionalLight2', new Vector3(10, -20, 15).normalize(), scene);
-    // diretionalLight2.position = new Vector3(0, 20, 0);
-    // diretionalLight2.intensity = 0.5;
 
     const flashlight = new SpotLight("flashlight", new Vector3(0, 10, 0), new Vector3(0, -1, 0), Math.PI / 6, 5, scene);
     flashlight.diffuse = new Color3(1, 1, 1);
@@ -241,6 +206,15 @@ export class RoomScene {
     //   ground,
     //   camera
     // });
+
+    // 设置相机的碰撞参数
+    camera.checkCollisions = true // 启用相机的碰撞检测
+    camera.ellipsoid = new Vector3(3, 3, 3) // 设置相机的碰撞检测椭球体大小，可以根据需要调整
+    /**
+     * 设置碰撞检测的物体
+     */
+    wall1.checkCollisions = true
+    wallWithDoor.checkCollisions = true
 
     return scene;
   }
