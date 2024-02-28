@@ -5,6 +5,7 @@ import { ShadowsScene } from "../examples/Shadows";
 import { StandardMaterials } from "../examples/StandardMaterials";
 import { TexturesScene } from "../examples/Textures";
 import { RoomScene } from "../examples/Room";
+import { BigRoomScene } from '../examples/BigRoom'
 import { GrassScene } from '../examples/Grass';
 
 export class ExampleBasicScene {
@@ -22,7 +23,8 @@ export class ExampleBasicScene {
     // new CustomModels(canvas);
     // new ShadowsScene(canvas);
     // new TexturesScene(canvas);
-    const scene = new RoomScene(canvas);
+    // const scene = new RoomScene(canvas)
+    const scene = new BigRoomScene(canvas)
     // const scene = new GrassScene(canvas);
     const debugLayer = scene.scene.debugLayer;
     debugLayer.show();
