@@ -1,673 +1,223 @@
 import {
-  Engine,
-  FreeCamera,
-  UniversalCamera,
-  HemisphericLight,
-  MeshBuilder,
-  Scene,
-  Vector3,
-  PointLight,
-  DirectionalLight,
-  SpotLight,
-  Color3,
-  ArcRotateCamera,
-  ShadowGenerator,
-  StandardMaterial,
-  Texture,
-  Mesh,
-  AxesViewer,
-  CSG,
-  SceneLoader,
-  PBRMaterial,
-  PointerEventTypes,
-  Camera,
+  AbstractMesh, ArcRotateCamera, Color3, Color4, CubeTexture, DirectionalLight, Engine,
+  HemisphericLight, ImageProcessingConfiguration, MeshBuilder, PBRMaterial, RenderTargetTexture, Scene,
+  SceneLoader, ShadowGenerator, SpotLight, StandardMaterial, Texture, TransformNode, Vector3,
 } from "@babylonjs/core";
-import '@babylonjs/loaders';
+import "@babylonjs/loaders/glTF";
+import { RoomFurnishings } from "./RoomFurnishings";
 
-const CONFIG = {
-  wall: {
-    height: 20,
-  }
-};
+export type RoomView = "overview" | "reading" | "desk" | "cabinet";
 
+/** A furnished, open-front study. Dimensions use the existing room's scale. */
 export class RoomScene {
+  readonly scene: Scene;
+  readonly engine: Engine;
+  private readonly camera: ArcRotateCamera;
+  private readonly shadow: ShadowGenerator;
+  private disposed = false;
 
-  scene: Scene;
-  engine: Engine;
-  mat: Map<string, StandardMaterial> = new Map();
+  constructor(private readonly canvas: HTMLCanvasElement) {
+    this.engine = new Engine(canvas, true, { stencil: true });
+    this.engine.setHardwareScalingLevel(Math.max(1, window.devicePixelRatio / 1.5));
+    this.engine.maxFPS = 30;
+    this.scene = new Scene(this.engine);
+    this.scene.clearColor = new Color4(0.14, 0.17, 0.18, 1);
+    this.scene.ambientColor = new Color3(0.12, 0.1, 0.08);
+    this.scene.skipPointerMovePicking = true;
+    this.scene.imageProcessingConfiguration.toneMappingEnabled = true;
+    this.scene.imageProcessingConfiguration.toneMappingType = ImageProcessingConfiguration.TONEMAPPING_ACES;
+    this.scene.imageProcessingConfiguration.exposure = 1.05;
+    this.scene.environmentTexture = CubeTexture.CreateFromPrefilteredData("./environment/sky.env", this.scene);
+    this.scene.iblIntensity = 0.45;
 
-  constructor(private canvas: HTMLCanvasElement) {
-    this.engine = new Engine(this.canvas, true);
-    this.scene = this.createScene();
+    this.camera = new ArcRotateCamera("study-camera", 0.8, 1.08, 66, new Vector3(0, 0, 0), this.scene);
+    this.camera.attachControl(canvas, true);
+    this.camera.lowerRadiusLimit = 9;
+    this.camera.upperRadiusLimit = 85;
+    this.camera.lowerBetaLimit = 0.2;
+    this.camera.upperBetaLimit = Math.PI / 2 - 0.03;
+    this.camera.wheelDeltaPercentage = 0.015;
+    this.camera.panningSensibility = 85;
+    this.camera.minZ = 0.2;
+    this.camera.fov = 0.65;
 
-    this.engine.runRenderLoop(() => {
-      this.scene.render();
+    const ambient = new HemisphericLight("soft-room-fill", new Vector3(0.2, 1, 0.4), this.scene);
+    ambient.intensity = 0.6;
+    ambient.diffuse = new Color3(1, 0.91, 0.79);
+    ambient.groundColor = new Color3(0.32, 0.26, 0.21);
+
+    const sunlight = new DirectionalLight("late-afternoon-sun", new Vector3(-0.65, -1, -0.45), this.scene);
+    sunlight.position = new Vector3(18, 28, 12);
+    sunlight.diffuse = new Color3(1, 0.85, 0.64);
+    sunlight.intensity = 1.45;
+    sunlight.shadowMinZ = 1;
+    sunlight.shadowMaxZ = 90;
+    sunlight.autoCalcShadowZBounds = true;
+    this.shadow = new ShadowGenerator(2048, sunlight);
+    this.shadow.usePercentageCloserFiltering = true;
+    this.shadow.filteringQuality = ShadowGenerator.QUALITY_LOW;
+    this.shadow.bias = 0.002;
+    this.shadow.normalBias = 0.03;
+    this.shadow.setDarkness(0.25);
+
+    // Match imported PBR models to the StandardMaterial furniture's attenuation.
+    const readingLight = new SpotLight("reading-lamp-light", new Vector3(16, 2.7, 5),
+      new Vector3(-0.45, -1, 0.3), Math.PI / 1.6, 2, this.scene);
+    readingLight.diffuse = new Color3(1, 0.71, 0.38);
+    readingLight.intensity = 1.7;
+    readingLight.range = 24;
+    readingLight.falloffType = SpotLight.FALLOFF_STANDARD;
+
+    const furnishings = new RoomFurnishings(this.scene);
+    this.createArchitecture(furnishings);
+    furnishings.furnish();
+    furnishings.finish().forEach(mesh => this.shadow.addShadowCaster(mesh));
+
+    // A parent keeps the glTF loader's handedness conversion intact.
+    const models = [
+      this.importModel("gothic_commode.glb", "antique-cabinet", new Vector3(-13.5, -5, -17.6), 4.7),
+      this.importModel("wooden_bookshelf.glb", "antique-bookshelf", new Vector3(11.5, -5, -17.8), 5.2),
+    ];
+    Promise.all(models).then(() => {
+      if (this.disposed) return;
+      this.scene.executeWhenReady(() => {
+        if (this.disposed) return;
+        // Static furnishings need only one completed sunlight shadow map.
+        this.shadow.getShadowMap()!.refreshRate = RenderTargetTexture.REFRESHRATE_RENDER_ONCE;
+        this.shadow.getShadowMap()!.resetRefreshCounter();
+        const status = document.querySelector("#scene-status");
+        if (status) status.textContent = "胡桃木 · 黄铜 · 苔绿织物";
+      });
+    }).catch(error => {
+      if (this.disposed) return;
+      console.error("Study model loading failed", error);
+      const status = document.querySelector("#scene-status");
+      if (status) status.textContent = "部分模型加载失败，请刷新重试";
     });
+
+    this.setView("overview");
+    window.addEventListener("resize", this.resize);
+    document.addEventListener("visibilitychange", this.visibilityChanged);
+    window.addEventListener("pagehide", this.dispose, { once: true });
+    this.visibilityChanged();
   }
 
-  createScene() {
-    const canvas = this.canvas;
-    const scene = new Scene(this.engine);
-    this.createMaterials(scene);
-
-    // 启用碰撞检测
-    scene.collisionsEnabled = true
-
-    /**
-     * Cameras
-     */
-    // const camera = new FreeCamera('camera', new Vector3(0, 3, -10), this.scene);
-    // camera.attachControl();
-    const camera = new UniversalCamera('camera', new Vector3(0, 3, -10), this.scene);
-    camera.attachControl(this.canvas, true);
-    camera.speed = 0.8;
-
-    // On click event, request pointer lock
-    scene.onPointerDown = (evt) => {
-      //true/false check if we're locked, faster than checking pointerlock on each single click.
-      if (document.pointerLockElement !== this.canvas) {
-        canvas.requestPointerLock = canvas.requestPointerLock;
-        if (canvas.requestPointerLock) {
-          canvas.requestPointerLock();
-        }
-      }
+  setView(view: RoomView) {
+    const views: Record<RoomView, { position: Vector3; target: Vector3 }> = {
+      overview: { position: new Vector3(42, 31, 45), target: new Vector3(-1, -2, -1) },
+      reading: { position: new Vector3(23, 10, 25), target: new Vector3(9, -1.5, 8) },
+      desk: { position: new Vector3(13, 12, 16), target: new Vector3(-7, -1, -3) },
+      cabinet: { position: new Vector3(0, 7, -1), target: new Vector3(-11, 0, -16) },
     };
-
-    // 调低镜头灵敏度
-    camera.angularSensibility = 5000
-
-    // Event listener when the pointerlock is updated (or removed by pressing ESC for example).
-    const pointerlockchange = () => {
-      // 判断当前是否锁定了鼠标
-      if (document.pointerLockElement === this.canvas) {
-        // ……
-        console.log('Pointer is locked.')
-      } else {
-        console.log('Pointer is unlocked.')
-      }
-    };
-
-    // Attach events to the document
-    document.addEventListener("pointerlockchange", pointerlockchange, false);
-
-    const wallHeight = CONFIG.wall.height;
-
-    // Create the walls of the room
-    const wall1 = this.createWall('wall1', {
-      width: 0.5,
-      height: wallHeight,
-      depth: 40,
-      position: { x: -20 }
-    }, scene);
-    // const wall2 = this.createWall('wall2', {
-    //   width: 0.5,
-    //   height: wallHeight,
-    //   depth: 40,
-    //   position: { x: 20 },
-    // }, scene);
-    const wall3 = this.createWall('wall3', {
-      width: 40,
-      height: wallHeight,
-      depth: 0.5,
-      position: { z: -20 },
-    }, scene);
-    // const wall4 = this.createWall('wall4', {
-    //   width: 40,
-    //   height: wallHeight,
-    //   depth: 0.5,
-    //   position: { z: 20 },
-    // }, scene);
-
-    /**
-     * 使用 CSG subtract 在墙上挖一个门
-     * TODO: 现在是写死的尺寸、位置，只能在特定的位置挖洞。把画墙、挖洞的逻辑封装到一起，可以在画墙的时候指定是否挖洞。
-     */
-    const door = MeshBuilder.CreateBox("door", { width: 9, height: 18, depth: 0.8 }, scene);
-    door.position = new Vector3(0, -2, -20);
-
-    const wallCSG = CSG.FromMesh(wall3);
-    const doorCSG = CSG.FromMesh(door);
-    const wallWithDoorCSG = wallCSG.subtract(doorCSG);
-    const wallWithDoor = wallWithDoorCSG.toMesh('wallWithDoor', null, scene);
-    // TODO: 通过 CSG 合并后再转回 Mesh 需要重新设置 material，可以尝试封装
-    wallWithDoor.material = this.mat.get('brickMat');
-    wallWithDoor.receiveShadows = true;
-
-    // 销毁用来挖门的形状
-    door.dispose();
-    // 销毁原来的墙
-    wall3.dispose();
-    // 添加新的墙
-    scene.addMesh(wallWithDoor);
-
-    const ground = this.createGround(scene);
-    const tableMesh = this.createTable(scene);
-    const chairs = this.createChairs(scene);
-    this.createPicture(scene);
-    // this.createTree(scene);
-    // const bookshelf = this.createBookshelf(scene);
-    const cabinet = this.createCabinet(scene);
-    const plant1 = this.createPlant1(scene);
-
-
-    /**
-     * 经验：
-     * 1. 阴影会显著影响 FPS。同样只有一个光源（比如一个 SpotLight），在不开阴影时，可以达到很高的 FPS（100 以上）；
-     *    在开启阴影时，FPS 只能达到 40~50。
-     * 2. 光源数量越少，FPS 越高。例如在只有 HemisphericLight，没有其他光源时，可以达到最高 FPS（在我的设备上是 165）。
-     * 3. 在不开阴影的情况下，有多个光源，也可以保持较高的 FPS（100 以上）。
-     */
-
-    // Create lights
-    const hemiLight = new HemisphericLight('hemiLight', new Vector3(1, 1, 1), scene);
-    hemiLight.intensity = 0.3;
-
-    const flashlight = new SpotLight("flashlight", new Vector3(0, 10, 0), new Vector3(0, -1, 0), Math.PI / 6, 5, scene);
-    flashlight.diffuse = new Color3(1, 1, 1);
-    flashlight.specular = new Color3(1, 1, 1);
-    flashlight.intensity = 8;
-    flashlight.range = 60;
-    flashlight.angle = Math.PI / 3 * 2; // Adjust the angle for a wider spread
-    flashlight.exponent = 50;
-    flashlight.intensityMode = SpotLight.INTENSITYMODE_LUMINOUSINTENSITY
-
-    scene.registerBeforeRender(() => {
-      // flashlight.position = camera.position;
-      flashlight.position = new Vector3(
-        camera.position.x,
-        camera.position.y - 1,
-        camera.position.z,
-      );
-      flashlight.direction = camera.getForwardRay().direction;
-
-      camera.position.y = ground.position.y + 10
-    });
-
-    const shadowGenerator4 = new ShadowGenerator(4096, flashlight);
-    // shadowGenerator3.addShadowCaster(tableMesh, true);
-    shadowGenerator4.getShadowMap().renderList.push(tableMesh, ...chairs);
-
-    /**
-     * ShadowGenerator 的第一个参数 mapSize 值越大，阴影边界越清晰；值越小，阴影颗粒感越强。
-     * 可以尝试设置成 50, 100, 200, 1024, 4096，就能够看出区别。
-     */
-    // const shadowGenerator = new ShadowGenerator(4096, lightToShadow);
-    // // // 照射物体的形状也会影响 FPS。根据目前的观察，物体的“高宽”比越大，FPS 越低。
-    // shadowGenerator.addShadowCaster(brick, true);
-    // 设置了这个之后，降到了 20FPS；不开是 40FPS。
-    // shadowGenerator.useContactHardeningShadow = true;
-    // shadowGenerator.setDarkness(0.2);
-
-    // 展示坐标轴
-    // new AxesViewer(scene, 20);
-
-    // this.initPickInteraction({
-    //   scene,
-    //   ground,
-    //   camera
-    // });
-
-    // 设置相机的碰撞参数
-    camera.checkCollisions = true // 启用相机的碰撞检测
-    camera.ellipsoid = new Vector3(3, 3, 3) // 设置相机的碰撞检测椭球体大小，可以根据需要调整
-    /**
-     * 设置碰撞检测的物体
-     */
-    wall1.checkCollisions = true
-    wallWithDoor.checkCollisions = true
-
-    return scene;
-  }
-
-  /**
-   * 拖拽移动物体
-   */
-  private initPickInteraction({
-    scene,
-    ground,
-    camera,
-  }: {
-    scene: Scene;
-    ground: Mesh;
-    camera: Camera;
-  }) {
-    let startPoint;
-    let currentMesh: Mesh;
-
-    const getGroundPosition = () => {
-      const pickInfo = scene.pick(scene.pointerX, scene.pointerY, mesh => mesh === ground);
-      if (pickInfo.hit) {
-        return pickInfo.pickedPoint;
-      }
-      return null;
-    };
-
-    const pointerDown = (mesh) => {
-      currentMesh = mesh;
-      startPoint = getGroundPosition();
-      if (startPoint) {
-        setTimeout(() => {
-          camera.detachControl();
-        }, 0);
-      }
-    };
-
-    const pointerUp = () => {
-      if (startPoint) {
-        camera.attachControl();
-        startPoint = null;
-      }
-    };
-
-    const pointerMove = () => {
-      if (!startPoint) {
-        return;
-      }
-      const current = getGroundPosition();
-      if (!current) {
-        return;
-      }
-      const diff = current.subtract(startPoint);
-      currentMesh.position.addInPlace(diff);
-      startPoint = current;
-    };
-
-    scene.onPointerObservable.add((pointerInfo) => {
-      switch (pointerInfo.type) {
-        case PointerEventTypes.POINTERMOVE: {
-          pointerMove();
-          break;
-        }
-        case PointerEventTypes.POINTERDOWN: {
-          if (pointerInfo.pickInfo.hit && pointerInfo.pickInfo.pickedMesh !== ground) {
-            pointerDown(pointerInfo.pickInfo.pickedMesh);
-          }
-          break;
-        }
-        case PointerEventTypes.POINTERUP: {
-          pointerUp();
-          break;
-        }
-      }
+    const selected = views[view];
+    this.camera.setTarget(selected.target);
+    this.camera.setPosition(selected.position);
+    this.camera.inertialAlphaOffset = this.camera.inertialBetaOffset = this.camera.inertialRadiusOffset = 0;
+    this.camera.inertialPanningX = this.camera.inertialPanningY = 0;
+    document.querySelectorAll<HTMLButtonElement>("[data-view]").forEach(button => {
+      button.setAttribute("aria-pressed", String(button.dataset.view === view));
     });
   }
 
-  private createMaterials(scene: Scene) {
-    const wallMat = new StandardMaterial('wallBricks', scene);
-    const wallTexture = new Texture('https://assets.babylonjs.com/environments/bricktile.jpg', scene);
-    wallMat.diffuseTexture = wallTexture;
-    wallMat.specularColor = new Color3(.3, .3, .3);
-    this.mat.set('wallMat', wallMat);
-
-    const groundMat = new StandardMaterial('groundBricks', scene);
-    const groundTexture = new Texture('https://assets.babylonjs.com/environments/bricktile.jpg', scene);
-
-    groundMat.diffuseTexture = groundTexture;
-
-    // 降低反光度
-    // groundMat.specularColor = new Color3(.3, .3, .3);
-    groundMat.specularColor = new Color3(.05, .05, .05);
-    this.mat.set('groundMat', groundMat);
-
-    const stoneMat = this.createStoneMaterial(scene);
-    this.mat.set('stoneMat', stoneMat);
-
-    const woodMat = this.createWoodMaterial(scene);
-    this.mat.set('woodMat', woodMat);
-
-    const metalMat = this.createMetalMaterial(scene);
-    this.mat.set('metalMat', metalMat);
-
-    const brickMat = this.createBrickMaterial(scene);
-    this.mat.set('brickMat', brickMat);
-  }
-
-  createStoneMaterial(scene: Scene): StandardMaterial {
-    const stoneMat = new StandardMaterial('stoneMat', scene);
-    const uvScale = .5;
-    const texArray: Texture[] = [];
-
-    const diffuseTex = new Texture('./textures/stone/stone_diffuse.jpg', scene);
-    stoneMat.diffuseTexture = diffuseTex;
-    texArray.push(diffuseTex);
-
-    const normalTex = new Texture('./textures/stone/stone_normal.jpg', scene);
-    stoneMat.bumpTexture = normalTex;
-    texArray.push(normalTex);
-
-    const aoTex = new Texture('./textures/stone/stone_ao.jpg', scene);
-    stoneMat.ambientTexture = aoTex;
-    texArray.push(aoTex);
-
-    const specTex = new Texture('./textures/stone/stone_spec.jpg', scene);
-    stoneMat.specularTexture = specTex;
-    texArray.push(specTex);
-
-    texArray.forEach((tex) => {
-      tex.uScale = uvScale;
-      tex.vScale = uvScale;
+  private createArchitecture(room: RoomFurnishings) {
+    const scene = this.scene;
+    const floor = new StandardMaterial("oak-floor", scene);
+    floor.diffuseTexture = new Texture("./textures/woodFloor/wood_floor_diff.jpg", scene);
+    floor.bumpTexture = new Texture("./textures/woodFloor/wood_floor_normal.jpg", scene);
+    floor.bumpTexture.level = 0.4;
+    [floor.diffuseTexture, floor.bumpTexture].forEach(texture => {
+      (texture as Texture).uScale = 5;
+      (texture as Texture).vScale = 5;
     });
-
-    // 颜色调暗
-    stoneMat.diffuseColor = new Color3(.5, .5, .5);
-    // 降低反光
-    stoneMat.specularColor = new Color3(.1, .1, .1);
-
-    return stoneMat;
-  }
-
-  createWoodMaterial(scene: Scene): StandardMaterial {
-    const woodMat = new StandardMaterial('woodMat', scene);
-    const uvScale = 1;
-    const texArray: Texture[] = [];
-
-    const diffuseTex = new Texture('./textures/woodFloor/wood_floor_diff.jpg', scene);
-    woodMat.diffuseTexture = diffuseTex;
-    texArray.push(diffuseTex);
-
-    const normalTex = new Texture('./textures/woodFloor/wood_floor_normal.jpg', scene);
-    woodMat.bumpTexture = normalTex;
-    texArray.push(normalTex);
-
-    const aoTex = new Texture('./textures/woodFloor/wood_floor_ao.jpg', scene);
-    woodMat.ambientTexture = aoTex;
-    texArray.push(aoTex);
-
-    texArray.forEach((tex) => {
-      tex.uScale = uvScale;
-      tex.vScale = uvScale;
-    });
-
-    // 颜色调暗
-    woodMat.diffuseColor = new Color3(.5, .5, .5);
-    // 降低反光
-    woodMat.specularColor = new Color3(.1, .1, .1);
-
-    return woodMat;
-  }
-
-  private createMetalMaterial(scene: Scene): StandardMaterial {
-    const metalMat = new StandardMaterial('metalMat', scene);
-    const uvScale = 1;
-    const texArray: Texture[] = [];
-
-    const diffuseTex = new Texture('./textures/metal/metal_diffuse.jpg', scene);
-    metalMat.diffuseTexture = diffuseTex;
-    texArray.push(diffuseTex);
-
-    const normalTex = new Texture('./textures/metal/metal_normal.jpg', scene);
-    metalMat.bumpTexture = normalTex;
-    texArray.push(normalTex);
-
-    const aoTex = new Texture('./textures/metal/metal_ao.jpg', scene);
-    metalMat.ambientTexture = aoTex;
-    texArray.push(aoTex);
-
-    const specTex = new Texture('./texture/metal/metal_spec.jpg', scene);
-    metalMat.specularTexture = specTex;
-    texArray.push(specTex);
-
-    texArray.forEach((tex) => {
-      tex.uScale = uvScale;
-      tex.vScale = uvScale;
-    });
-
-    metalMat.specularColor = new Color3(.1, .1, .1);
-
-    return metalMat;
-  }
-
-  private createBrickMaterial(scene: Scene): StandardMaterial {
-    const brickMat = new StandardMaterial('brickMat', scene);
-    const uvScale = .3;
-    const texArray: Texture[] = [];
-
-    const diffuseTex = new Texture('./textures/brick1/brick_diff.jpg', scene);
-    brickMat.diffuseTexture = diffuseTex;
-    texArray.push(diffuseTex);
-
-    const normalTex = new Texture('./textures/brick1/brick_normal.jpg', scene);
-    brickMat.bumpTexture = normalTex;
-    texArray.push(normalTex);
-
-    const aoTex = new Texture('./textures/brick1/brick_ao.jpg', scene);
-    brickMat.ambientTexture = aoTex;
-    texArray.push(aoTex);
-
-    texArray.forEach((tex) => {
-      tex.uScale = uvScale;
-      tex.vScale = uvScale;
-    });
-
-    brickMat.specularColor = new Color3(.1, .1, .1);
-
-    // 颜色调暗
-    brickMat.diffuseColor = new Color3(.8, .8, .8);
-    // 降低反光
-    brickMat.specularColor = new Color3(.1, .1, .1);
-
-    return brickMat;
-  }
-
-  private createSpotLight(name: string, {
-    position,
-    direction,
-    angle = Math.PI * 1.6,
-    exponent = 3,
-    intensity = 3,
-  }: {
-    position: Vector3;
-    direction: Vector3;
-    angle?: number;
-    exponent?: number;
-    intensity?: number;
-  }, scene: Scene) {
-    const spotLight = new SpotLight(name, position, direction, angle, exponent, scene);
-    spotLight.intensity = intensity;
-    spotLight.diffuse = new Color3(1, 1, 1);
-    spotLight.specular = new Color3(1, 1, 1);
-    // spotLight.shadowMaxZ = 10;
-    // spotLight.shadowMinZ = 0;
-    const lightSphere = MeshBuilder.CreateSphere('lightSphere', {
-      segments: 10,
-      diameter: 2,
-    }, scene);
-    lightSphere.position = spotLight.position;
-    lightSphere.material = new StandardMaterial("light", scene);
-    (lightSphere.material as StandardMaterial).emissiveColor = new Color3(1, 1, 0.1);
-
-    return spotLight;
-  }
-
-  private createGround(scene: Scene) {
-    // Create the ground of the room
-    // const ground = MeshBuilder.CreateGround("ground", { width: 40, height: 40 }, scene);
-    // CreateTiledPlane 可以翻转 tile, CreateTiledGround 不行
-    const ground = MeshBuilder.CreateTiledPlane('ground', {
-      size: 40,
-      // tileWidth: 6,
-      // tileHeight: 2,
-      // texture 为正方形时，直接使用 tileSize
-      tileSize: 6,
-      pattern: Mesh.FLIP_TILE,
-      sideOrientation: Mesh.DOUBLESIDE,
-    }, scene);
-    ground.rotation.x = Math.PI / 2;
-
-    // Set the position of the ground
+    floor.diffuseColor = new Color3(0.55, 0.6, 0.58);
+    floor.specularColor = new Color3(0.14, 0.11, 0.08);
+    const ground = MeshBuilder.CreateGround("oak-floor", { width: 40, height: 40 }, scene);
     ground.position.y = -5;
-
-    // Set the material of the ground
+    ground.material = floor;
     ground.receiveShadows = true;
-    // ground.material = this.mat.get('groundMat');
-    // ground.material = this.mat.get('woodMat');
-    ground.material = this.mat.get('stoneMat');
+    room.box("foundation", [40.6, 0.6, 40.6], [0, -5.4, 0], "darkWood");
 
-    return ground;
-  }
-
-  private createWall(name: string, { width, height, depth, position }: {
-    width: number;
-    height: number;
-    depth: number;
-    position: {
-      x?: number;
-      y?: number;
-      z?: number;
-    }
-  }, scene: Scene) {
-    const pat = Mesh.FLIP_TILE;
-    // const pat = Mesh.ROTATE_TILE;
-    // const pat = Mesh.FLIP_N_ROTATE_TILE;
-    const av = Mesh.TOP;
-    const ah = Mesh.LEFT;
-
-    const commonWallConfig = {
-      pattern: pat,
-      sideOrientation: Mesh.DOUBLESIDE,
-      alignVertical: av,
-      alignHorizontal: ah,
-      // tileSize: 3,
-      tileWidth: 6,
-      tileHeight: 2,
-    };
-
-    const wall = MeshBuilder.CreateTiledBox(name, {
-      ...commonWallConfig,
-      width,
-      height,
-      depth,
-    }, scene);
-    // wall.material = this.mat.get('wallMat');
-    wall.material = this.mat.get('brickMat');
-    Object.entries(position).map(([key, value]) => {
-      if (key && typeof value === 'number' && !isNaN(value)) {
-        wall.position[key] = value;
+    const brick = new StandardMaterial("warm-exposed-brick", scene);
+    brick.diffuseTexture = new Texture("./textures/brick1/brick_diff.jpg", scene);
+    brick.bumpTexture = new Texture("./textures/brick1/brick_normal.jpg", scene);
+    brick.bumpTexture.level = 0.45;
+    brick.diffuseColor = new Color3(0.75, 0.64, 0.53);
+    brick.specularColor = Color3.Black();
+    [brick.diffuseTexture, brick.bumpTexture].forEach(texture => {
+      (texture as Texture).uScale = 5;
+      (texture as Texture).vScale = 1.8;
+    });
+    const leftBack = MeshBuilder.CreateBox("back-wall-left", { width: 14, height: 14, depth: 0.5 }, scene);
+    leftBack.position.set(-13, 2, -20);
+    const rightBack = MeshBuilder.CreateBox("back-wall-right", { width: 18, height: 14, depth: 0.5 }, scene);
+    rightBack.position.set(11, 2, -20);
+    const lintel = MeshBuilder.CreateBox("door-lintel-wall", { width: 8, height: 3.2, depth: 0.5 }, scene);
+    lintel.position.set(-2, 7.4, -20);
+    const left = MeshBuilder.CreateBox("left-brick-wall", { width: 0.5, height: 14, depth: 40 }, scene);
+    left.position.set(-20, 2, 0);
+    const spans = [14, 18, 8, 40];
+    [leftBack, rightBack, lintel, left].forEach((mesh, index) => {
+      const wallMaterial = brick.clone(mesh.name + "-brick");
+      wallMaterial.diffuseTexture = brick.diffuseTexture!.clone();
+      wallMaterial.bumpTexture = brick.bumpTexture!.clone();
+      [wallMaterial.diffuseTexture, wallMaterial.bumpTexture].forEach(texture => {
+        (texture as Texture).uScale = spans[index] / 8;
+        (texture as Texture).vScale = index === 2 ? 3.2 / 8 : 14 / 8;
+      });
+      mesh.material = wallMaterial;
+      mesh.receiveShadows = true;
+      mesh.isPickable = false;
+      mesh.freezeWorldMatrix();
+      if (mesh === left) {
+        // The box's narrow side UVs rotate the brick map; use a wall-sized face.
+        const facing = MeshBuilder.CreatePlane("left-wall-brick-facing", { width: 40, height: 14 }, scene);
+        facing.position.set(-19.74, 2, 0);
+        facing.rotation.y = -Math.PI / 2;
+        facing.material = wallMaterial;
+        facing.receiveShadows = true;
+        facing.isPickable = false;
+        facing.freezeWorldMatrix();
       }
     });
-    // 接收阴影
-    wall.receiveShadows = true;
-    return wall;
+    room.architecturalDetails();
   }
 
-  private createTable(scene: Scene) {
-    const a = 3;
-    const b = 2;
-    const legWidth = 0.5;
-    const legHeight = 4;
-
-    const tableTop = MeshBuilder.CreateBox("table", { width: 7, height: legWidth, depth: 7 }, scene);
-
-    // To create legs for the table, you can use the MeshBuilder class and specify their dimensions, position, and other properties. For example:
-    const leg1 = MeshBuilder.CreateBox("leg1", { width: legWidth, height: legHeight, depth: legWidth }, scene);
-    leg1.position = new Vector3(-a, -b, -a);
-
-    const leg2 = MeshBuilder.CreateBox("leg2", { width: legWidth, height: legHeight, depth: legWidth }, scene);
-    leg2.position = new Vector3(a, -b, -a);
-
-    const leg3 = MeshBuilder.CreateBox("leg3", { width: legWidth, height: legHeight, depth: legWidth }, scene);
-    leg3.position = new Vector3(-a, -b, a);
-
-    const leg4 = MeshBuilder.CreateBox("leg4", { width: legWidth, height: legHeight, depth: legWidth }, scene);
-    leg4.position = new Vector3(a, -b, a);
-
-    // To combine the table top and legs into a single mesh, you can use the Mesh.MergeMeshes method again. For example:
-    const tableMesh = Mesh.MergeMeshes([tableTop, leg1, leg2, leg3, leg4], true, false, null, false, true);
-    tableMesh.position = new Vector3(0, -1, 0);
-
-    // tableMesh.material = this.mat.get('stoneMat');
-    tableMesh.material = this.mat.get('woodMat');
-
-    return tableMesh;
-  }
-
-  private createChairs(scene: Scene) {
-    const chair = MeshBuilder.CreateCylinder("chair", { diameter: 2, height: 3 });
-    // chair.material = this.mat.get('metalMat');
-    chair.material = this.mat.get('woodMat').clone('chairMat');
-    chair.position = new Vector3(0, -4, 6);
-    chair.receiveShadows = true;
-    const chair2 = chair.clone('chair2');
-    chair2.position = new Vector3(0, -4, -6);
-    const chair3 = chair.clone('chair3');
-    chair3.position = new Vector3(6, -4, 0);
-    const chair4 = chair.clone('chair4');
-    chair4.position = new Vector3(-6, -4, 0);
-
-    scene.addMesh(chair);
-    scene.addMesh(chair2);
-    scene.addMesh(chair3);
-    scene.addMesh(chair4);
-
-    return [chair, chair2, chair3, chair4];
-  }
-
-  private createPicture(scene: Scene) {
-    // Create a texture with the image you want to display
-    // const pictureTexture = new Texture("./textures/pictures/picture_800.jpg", scene);
-    // const pictureTexture = new Texture("./textures/pictures/pic2_1200.jpg", scene);
-    const pictureTexture = new Texture("./textures/pictures/pic1.jpg", scene);
-
-    // Create a material and assign the texture to it
-    const pictureMaterial = new StandardMaterial("pictureMaterial", scene);
-    pictureMaterial.diffuseTexture = pictureTexture;
-    pictureMaterial.specularColor = new Color3(0.1, 0.1, 0.1) // 较暗的反射颜色
-    pictureMaterial.specularPower = 100 // 增加 specularPower 值以减少反射强度
-
-    // Create a mesh for the picture and set its position and dimensions to fit inside the frame
-    const picture = MeshBuilder.CreatePlane("picture", { width: 8, height: 4.5, sideOrientation: Mesh.DOUBLESIDE }, scene);
-
-    // Apply the material to the picture mesh
-    picture.material = pictureMaterial;
-    picture.rotation.y = Math.PI / 2;
-    // put it on wall1
-    picture.position = new Vector3(-19.7, 3, 0);
-
-    // Add the picture mesh to the scene
-    scene.addMesh(picture);
-  }
-
-  private async createTree(scene: Scene) {
-    const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'tree.glb', scene);
-    const tree = meshes[0];
-    tree.position = new Vector3(15, -5, 12);
-    tree.scaling = new Vector3(0.8, 0.8, 0.8);
-    return tree;
-  }
-
-  // private async createBookshelf(scene: Scene) {
-  //   const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'wooden_bookshelf.glb', scene);
-  //   const bookshelf = meshes[0];
-  //   bookshelf.position = new Vector3(-16, -5, -19);
-  //   bookshelf.scaling = new Vector3(3, 3, 3);
-  //   const material = meshes[1].material;
-  //   (material as PBRMaterial).directIntensity = 0.5;
-
-  //   return bookshelf;
-  // }
-
-  private async createCabinet(scene: Scene) {
-    const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'gothic_commode.glb', scene);
-    const cabinet = meshes[0];
-    cabinet.position = new Vector3(-16, -5, -18);
-    cabinet.scaling = new Vector3(3, 3, 3);
-    cabinet.receiveShadows = true;
-    const material = meshes[1].material;
-    (material as PBRMaterial).directIntensity = 1;
-    meshes[2].receiveShadows = true;
-    meshes.forEach(mesh => {
-      // FIXME: 没有用，import 进来的 mesh 上始终不展示阴影
+  private async importModel(file: string, name: string, position: Vector3, scale: number) {
+    const result = await SceneLoader.ImportMeshAsync("", "./models/", file, this.scene);
+    if (this.disposed) {
+      result.meshes.forEach(mesh => mesh.dispose());
+      return;
+    }
+    const placement = new TransformNode(name, this.scene);
+    placement.position.copyFrom(position);
+    placement.scaling.setAll(scale);
+    result.meshes[0].parent = placement;
+    result.meshes.forEach((mesh: AbstractMesh) => {
       mesh.receiveShadows = true;
-    })
-    return cabinet;
+      mesh.isPickable = false;
+      if (mesh.material instanceof PBRMaterial) {
+        mesh.material.usePhysicalLightFalloff = false;
+        mesh.material.maxSimultaneousLights = 3;
+      }
+      if (mesh.getTotalVertices() > 0) this.shadow.addShadowCaster(mesh);
+      mesh.freezeWorldMatrix();
+    });
+    placement.freezeWorldMatrix();
   }
 
-  private async createPlant1(scene: Scene) {
-    const { meshes } = await SceneLoader.ImportMeshAsync('', './models/', 'plant_celandines.glb', scene);
-    const plant = meshes[0];
-    plant.scaling = new Vector3(10, 10, 10);
-    plant.position = new Vector3(10, -5, 10);
-    return plant;
-  }
-
+  private render = () => this.scene.render();
+  private resize = () => this.engine.resize();
+  private visibilityChanged = () => {
+    this.engine.stopRenderLoop(this.render);
+    if (!document.hidden && !this.disposed) this.engine.runRenderLoop(this.render);
+  };
+  private dispose = () => {
+    if (this.disposed) return;
+    this.disposed = true;
+    window.removeEventListener("resize", this.resize);
+    document.removeEventListener("visibilitychange", this.visibilityChanged);
+    this.engine.stopRenderLoop();
+    this.scene.dispose();
+    this.engine.dispose();
+  };
 }

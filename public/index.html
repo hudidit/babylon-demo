@@ -1,23 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <title>Title of Your Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>余晖书房 · Babylon.js</title>
     <style>
-      html, body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-      }
-      #inspect-btn {
-        position: fixed;
-        right: 20px;
-        top: 20px;
-        font-size: 16px;
-      }
+      * { box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #242c2e; }
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      #gameCanvas { display: block; width: 100%; height: 100%; outline: none; touch-action: none; }
+      .identity { position: fixed; top: 30px; left: 32px; z-index: 10; color: #f2e8d4; pointer-events: none; }
+      .eyebrow { color: #c5aa78; font-size: 10px; letter-spacing: 3px; margin: 0 0 10px; }
+      h1 { font-weight: 400; font-size: 29px; letter-spacing: 5px; margin: 0 0 10px; }
+      #scene-status { color: #c0c4bb; font-size: 11px; letter-spacing: 1px; margin: 0; }
+      .view-controls { position: fixed; right: 26px; bottom: 26px; display: flex; gap: 4px; padding: 6px; z-index: 10; background: #eee5d5; border-radius: 10px; box-shadow: 0 5px 25px #0003; }
+      button { font: inherit; cursor: pointer; }
+      .view-controls button { color: #56564b; border: 0; background: transparent; padding: 10px 16px; border-radius: 6px; font-size: 12px; }
+      .view-controls button[aria-pressed="true"] { background: #73503d; color: #fff2dd; }
+      .view-controls button:hover { background: #d9cbb6; color: #342c23; }
+      .view-controls button[aria-pressed="true"]:hover { background: #73503d; color: #fff2dd; }
+      button:focus-visible { outline: 2px solid #d4ad68; outline-offset: 3px; }
+      .help { position: fixed; left: 32px; bottom: 34px; color: #b9bdb4; z-index: 10; font-size: 11px; letter-spacing: 1px; pointer-events: none; }
+      #inspect-btn { position: fixed; right: 28px; top: 28px; z-index: 10000; border: 1px solid #a7ad9955; color: #c5c9bf; background: #242c2eaa; padding: 7px 12px; border-radius: 6px; font-size: 11px; }
+      @media (max-width: 640px) { .identity { left: 18px; top: 20px; } h1 { font-size: 23px; } .view-controls { right: 12px; bottom: 16px; left: 12px; justify-content: center; } .view-controls button { padding: 10px 12px; } .help { display: none; } #inspect-btn { top: 20px; right: 18px; } }
     </style>
   </head>
   <body>
-    <button id="inspect-btn">Inspect</button>
+    <div class="identity">
+      <p class="eyebrow">THE AFTERNOON STUDY</p>
+      <h1>余晖书房</h1>
+      <p id="scene-status" role="status">正在布置书房…</p>
+    </div>
+    <button id="inspect-btn">调试</button>
+    <div class="help">拖动旋转 · 滚轮缩放 · 右键平移</div>
+    <nav class="view-controls" aria-label="场景视角">
+      <button data-view="overview" aria-pressed="true">房间全景</button>
+      <button data-view="reading" aria-pressed="false">阅读区</button>
+      <button data-view="desk" aria-pressed="false">书桌</button>
+      <button data-view="cabinet" aria-pressed="false">藏书角</button>
+    </nav>
   </body>
 </html>

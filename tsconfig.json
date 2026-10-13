@@ -1,10 +1,13 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
+    "module": "esnext",
+    "moduleResolution": "node",
     "noResolve": false,
     "noImplicitAny": false,
     "sourceMap": true,
+    // Inspector 9 declarations reference internal UI modules that are not published.
+    "skipLibCheck": true,
     "preserveConstEnums":true,
     "lib": [
         "dom",

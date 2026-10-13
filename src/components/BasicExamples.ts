@@ -1,36 +1,31 @@
-import { BasicScene } from "../examples/BasicScene";
-import { CustomModels } from "../examples/CustomModels";
-import { PBR } from "../examples/PBR";
-import { ShadowsScene } from "../examples/Shadows";
-import { StandardMaterials } from "../examples/StandardMaterials";
-import { TexturesScene } from "../examples/Textures";
-import { RoomScene } from "../examples/Room";
-import { BigRoomScene } from '../examples/BigRoom'
-import { GrassScene } from '../examples/Grass';
+import { RoomScene, RoomView } from "../examples/Room";
 
 export class ExampleBasicScene {
   constructor() {
     const canvas = document.createElement("canvas");
-    canvas.style.width = "100%";
-    canvas.style.height = "100%";
     canvas.id = "gameCanvas";
+    canvas.setAttribute("aria-label", "复古书房三维场景，可拖动旋转、滚轮缩放");
     document.body.appendChild(canvas);
-    
-
-    // new BasicScene(canvas);
-    // new StandardMaterials(canvas);
-    // new PBR(canvas);
-    // new CustomModels(canvas);
-    // new ShadowsScene(canvas);
-    // new TexturesScene(canvas);
-    // const scene = new RoomScene(canvas)
-    const scene = new BigRoomScene(canvas)
-    // const scene = new GrassScene(canvas);
-    const debugLayer = scene.scene.debugLayer;
-    debugLayer.show();
-    const inspectBtn = document.querySelector('#inspect-btn');
-    inspectBtn?.addEventListener('click', () => {
-      debugLayer.isVisible() ? debugLayer.hide() : debugLayer.show();
+    const room = new RoomScene(canvas);
+    document.querySelectorAll<HTMLButtonElement>("[data-view]").forEach(button => {
+      button.addEventListener("click", () => room.setView(button.dataset.view as RoomView));
+    });
+    const inspect = document.querySelector<HTMLButtonElement>("#inspect-btn")!;
+    inspect.addEventListener("click", async () => {
+      inspect.disabled = true;
+      try {
+        if (room.scene.debugLayer.isVisible()) {
+          room.scene.debugLayer.hide();
+          room.engine.resize();
+          room.scene.render();
+        }
+        else {
+          await import("@babylonjs/inspector");
+          await room.scene.debugLayer.show({ overlay: true, embedMode: true, enablePopup: false });
+        }
+      } finally {
+        inspect.disabled = false;
+      }
     });
   }
 }
