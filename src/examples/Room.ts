@@ -1,18 +1,20 @@
 import {
   AbstractMesh, ArcRotateCamera, Color3, Color4, CubeTexture, DirectionalLight, Engine,
   HemisphericLight, ImageProcessingConfiguration, MeshBuilder, PBRMaterial, RenderTargetTexture, Scene,
-  SceneLoader, ShadowGenerator, SpotLight, StandardMaterial, Texture, TransformNode, Vector3,
+  SceneLoader, ShadowGenerator, SpotLight, StandardMaterial, Texture, TransformNode, UniversalCamera, Vector3,
 } from "@babylonjs/core";
 import "@babylonjs/loaders/glTF";
 import { RoomFurnishings } from "./RoomFurnishings";
 
-export type RoomView = "overview" | "reading" | "desk" | "cabinet";
+export type RoomView = "overview" | "reading" | "desk" | "cabinet" | "first-person";
 
-/** A furnished, open-front study. Dimensions use the existing room's scale. */
+/** A furnished study with cutaway presets and an enclosed first-person view. */
 export class RoomScene {
   readonly scene: Scene;
   readonly engine: Engine;
   private readonly camera: ArcRotateCamera;
+  private readonly firstPersonCamera: UniversalCamera;
+  private readonly interiorShell: TransformNode;
   private readonly shadow: ShadowGenerator;
   private disposed = false;
 
@@ -40,6 +42,30 @@ export class RoomScene {
     this.camera.panningSensibility = 85;
     this.camera.minZ = 0.2;
     this.camera.fov = 0.65;
+
+    this.firstPersonCamera = new UniversalCamera("study-first-person", new Vector3(4, 1, 16), this.scene);
+    this.firstPersonCamera.minZ = 0.1;
+    this.firstPersonCamera.fov = 0.95;
+    this.firstPersonCamera.speed = 0.55;
+    this.firstPersonCamera.inertia = 0.55;
+    this.firstPersonCamera.angularSensibility = 1800;
+    this.firstPersonCamera.keysUp = [87, 38];
+    this.firstPersonCamera.keysDown = [83, 40];
+    this.firstPersonCamera.keysLeft = [65, 37];
+    this.firstPersonCamera.keysRight = [68, 39];
+    this.firstPersonCamera.keysUpward = [];
+    this.firstPersonCamera.keysDownward = [];
+    this.firstPersonCamera.checkCollisions = true;
+    this.firstPersonCamera.ellipsoid.set(0.65, 2.8, 0.65);
+    this.scene.collisionsEnabled = true;
+    // Keep walking at eye level, including while looking up/down or using touch/gamepad inputs.
+    this.firstPersonCamera.onAfterCheckInputsObservable.add(() => {
+      const position = this.firstPersonCamera.position;
+      position.set(Math.max(-18.8, Math.min(18.8, position.x)), 1,
+        Math.max(-18.8, Math.min(18.8, position.z)));
+    });
+    this.interiorShell = new TransformNode("first-person-room-shell", this.scene);
+    this.interiorShell.setEnabled(false);
 
     const ambient = new HemisphericLight("soft-room-fill", new Vector3(0.2, 1, 0.4), this.scene);
     ambient.intensity = 0.6;
@@ -71,7 +97,10 @@ export class RoomScene {
     const furnishings = new RoomFurnishings(this.scene);
     this.createArchitecture(furnishings);
     furnishings.furnish();
-    furnishings.finish().forEach(mesh => this.shadow.addShadowCaster(mesh));
+    furnishings.finish().forEach(mesh => {
+      mesh.checkCollisions = true;
+      this.shadow.addShadowCaster(mesh);
+    });
 
     // A parent keeps the glTF loader's handedness conversion intact.
     const models = [
@@ -103,17 +132,38 @@ export class RoomScene {
   }
 
   setView(view: RoomView) {
-    const views: Record<RoomView, { position: Vector3; target: Vector3 }> = {
+    const firstPerson = view === "first-person";
+    this.scene.activeCamera?.detachControl();
+    this.interiorShell.setEnabled(firstPerson);
+    this.firstPersonCamera.cameraDirection.setAll(0);
+    this.firstPersonCamera.cameraRotation.setAll(0);
+    this.firstPersonCamera.movement.resetPanVelocity();
+    this.firstPersonCamera.movement.resetRotationVelocity();
+    const views: Record<Exclude<RoomView, "first-person">, { position: Vector3; target: Vector3 }> = {
       overview: { position: new Vector3(42, 31, 45), target: new Vector3(-1, -2, -1) },
       reading: { position: new Vector3(23, 10, 25), target: new Vector3(9, -1.5, 8) },
       desk: { position: new Vector3(13, 12, 16), target: new Vector3(-7, -1, -3) },
       cabinet: { position: new Vector3(0, 7, -1), target: new Vector3(-11, 0, -16) },
     };
-    const selected = views[view];
-    this.camera.setTarget(selected.target);
-    this.camera.setPosition(selected.position);
+    if (firstPerson) {
+      this.firstPersonCamera.position.set(4, 1, 16);
+      this.firstPersonCamera.setTarget(new Vector3(-3, 0, -6));
+      this.scene.activeCamera = this.firstPersonCamera;
+    } else {
+      const selected = views[view];
+      this.camera.setTarget(selected.target);
+      this.camera.setPosition(selected.position);
+      this.scene.activeCamera = this.camera;
+    }
     this.camera.inertialAlphaOffset = this.camera.inertialBetaOffset = this.camera.inertialRadiusOffset = 0;
     this.camera.inertialPanningX = this.camera.inertialPanningY = 0;
+    this.camera.movement.resetPanVelocity();
+    this.scene.activeCamera.attachControl(this.canvas, true);
+    const help = document.querySelector("#view-help");
+    const instructions = firstPerson ? "拖动环顾 · WASD / 方向键移动" : "拖动旋转 · 滚轮缩放 · 右键平移";
+    if (help) help.textContent = instructions;
+    this.canvas.setAttribute("aria-label", "复古书房三维场景，" + instructions);
+    if (firstPerson) this.canvas.focus({ preventScroll: true });
     document.querySelectorAll<HTMLButtonElement>("[data-view]").forEach(button => {
       button.setAttribute("aria-pressed", String(button.dataset.view === view));
     });
@@ -135,6 +185,7 @@ export class RoomScene {
     ground.position.y = -5;
     ground.material = floor;
     ground.receiveShadows = true;
+    ground.checkCollisions = true;
     room.box("foundation", [40.6, 0.6, 40.6], [0, -5.4, 0], "darkWood");
 
     const brick = new StandardMaterial("warm-exposed-brick", scene);
@@ -155,8 +206,14 @@ export class RoomScene {
     lintel.position.set(-2, 7.4, -20);
     const left = MeshBuilder.CreateBox("left-brick-wall", { width: 0.5, height: 14, depth: 40 }, scene);
     left.position.set(-20, 2, 0);
-    const spans = [14, 18, 8, 40];
-    [leftBack, rightBack, lintel, left].forEach((mesh, index) => {
+    const right = MeshBuilder.CreateBox("right-brick-wall", { width: 0.5, height: 14, depth: 40.5 }, scene);
+    right.position.set(20, 2, 0);
+    right.parent = this.interiorShell;
+    const front = MeshBuilder.CreateBox("front-brick-wall", { width: 40.5, height: 14, depth: 0.5 }, scene);
+    front.position.set(0, 2, 20);
+    front.parent = this.interiorShell;
+    const spans = [14, 18, 8, 40, 40.5, 40.5];
+    [leftBack, rightBack, lintel, left, right, front].forEach((mesh, index) => {
       const wallMaterial = brick.clone(mesh.name + "-brick");
       wallMaterial.diffuseTexture = brick.diffuseTexture!.clone();
       wallMaterial.bumpTexture = brick.bumpTexture!.clone();
@@ -166,13 +223,16 @@ export class RoomScene {
       });
       mesh.material = wallMaterial;
       mesh.receiveShadows = true;
+      mesh.checkCollisions = true;
       mesh.isPickable = false;
       mesh.freezeWorldMatrix();
-      if (mesh === left) {
+      if (mesh === left || mesh === right) {
         // The box's narrow side UVs rotate the brick map; use a wall-sized face.
-        const facing = MeshBuilder.CreatePlane("left-wall-brick-facing", { width: 40, height: 14 }, scene);
-        facing.position.set(-19.74, 2, 0);
-        facing.rotation.y = -Math.PI / 2;
+        const facing = MeshBuilder.CreatePlane(mesh === left ? "left-wall-brick-facing" : "right-wall-brick-facing",
+          { width: 40, height: 14 }, scene);
+        facing.position.set(mesh === left ? -19.74 : 19.74, 2, 0);
+        facing.rotation.y = mesh === left ? -Math.PI / 2 : Math.PI / 2;
+        facing.parent = mesh.parent;
         facing.material = wallMaterial;
         facing.receiveShadows = true;
         facing.isPickable = false;
@@ -180,6 +240,7 @@ export class RoomScene {
       }
     });
     room.architecturalDetails();
+    room.enclosingDetails(this.interiorShell);
   }
 
   private async importModel(file: string, name: string, position: Vector3, scale: number) {
@@ -194,6 +255,7 @@ export class RoomScene {
     result.meshes[0].parent = placement;
     result.meshes.forEach((mesh: AbstractMesh) => {
       mesh.receiveShadows = true;
+      mesh.checkCollisions = true;
       mesh.isPickable = false;
       if (mesh.material instanceof PBRMaterial) {
         mesh.material.usePhysicalLightFalloff = false;

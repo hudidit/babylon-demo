@@ -143,6 +143,45 @@ export class RoomFurnishings {
     this.bookshelfBooks();
   }
 
+  enclosingDetails(shell: TransformNode) {
+    const start = this.parts.length;
+    const plaster = new StandardMaterial("plaster-ceiling", this.scene);
+    plaster.diffuseColor = Color3.FromHexString("#e2d2af");
+    plaster.emissiveColor = new Color3(0.14, 0.12, 0.09);
+    plaster.specularColor = Color3.Black();
+    this.materials.set("plaster", plaster);
+    this.box("plaster-ceiling", [40.5, 0.5, 40.5], [0, 9.25, 0], "plaster");
+    // Close the small reveal behind the existing door as part of the interior shell.
+    this.box("door-backing", [8, 10.8, 0.2], [-2, 0.4, -20.1], "darkWood");
+    this.box("right-wainscot", [0.18, 2.5, 40], [19.65, -3.7, 0], "darkWood");
+    this.box("front-wainscot", [40, 2.5, 0.18], [0, -3.7, 19.65], "darkWood");
+    const rails: [string, number, number, number, string][] = [
+      ["baseboard", 0.32, 0.32, -4.75, "wood"],
+      ["chair-rail", 0.32, 0.16, -2.4, "wood"],
+      ["brass-inlay", 0.34, 0.045, -2.2, "brass"],
+      ["cornice", 0.65, 0.4, 8.8, "darkWood"],
+      ["cornice-gold", 0.7, 0.07, 8.52, "brass"],
+    ];
+    rails.forEach(([name, depth, height, y, material]) => {
+      this.box("right-" + name, [depth, height, 40], [19.5, y, 0], material);
+      this.box("front-" + name, [40, height, depth], [0, y, 19.5], material);
+    });
+    for (let offset = -18; offset < 20; offset += 3.2) {
+      this.box("right-panel-stile", [0.24, 2.2, 0.1], [19.5, -3.6, offset], "wood");
+      this.box("front-panel-stile", [0.1, 2.2, 0.24], [offset, -3.6, 19.5], "wood");
+    }
+    [-7, 7].forEach(offset => {
+      this.box("ceiling-beam-x", [40, 0.22, 0.3], [0, 8.9, offset], "darkWood");
+      this.box("ceiling-beam-z", [0.3, 0.22, 40], [offset, 8.9, 0], "darkWood");
+    });
+    // Merge separately so hiding the shell never hides the original furniture.
+    this.merge(this.parts.splice(start)).forEach(mesh => {
+      mesh.name = "interior-" + mesh.name;
+      mesh.parent = shell;
+      mesh.checkCollisions = true;
+    });
+  }
+
   private fabric(name: string, base: string, thread: string) {
     const texture = new DynamicTexture(name + "-weave", 128, this.scene, false);
     const ctx = texture.getContext();
@@ -439,8 +478,12 @@ export class RoomFurnishings {
   }
 
   finish(): Mesh[] {
+    return this.merge(this.parts);
+  }
+
+  private merge(parts: Mesh[]): Mesh[] {
     const groups = new Map<StandardMaterial, Mesh[]>();
-    this.parts.forEach(mesh => {
+    parts.forEach(mesh => {
       mesh.computeWorldMatrix(true);
       const material = mesh.material as StandardMaterial;
       if (!groups.has(material)) groups.set(material, []);
