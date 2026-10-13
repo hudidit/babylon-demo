@@ -351,25 +351,29 @@ export class RoomFurnishings {
     const start = this.parts.length;
     const { bounds, compartments } = measureBookshelf(meshes);
     const colors = ["burgundy", "moss", "navy", "cushion", "rust", "cream"];
+    const thicknessRatios = [0.07, 0.11, 0.055, 0.16, 0.085, 0.13, 0.06, 0.095, 0.18, 0.075, 0.12];
     compartments.forEach(({ min, max }, row) => {
       const hasVase = row === compartments.length - 2;
-      const depth = Math.min(1.15, max.z - min.z - 0.2);
-      const z = max.z - 0.12 - depth / 2;
+      const front = max.z - 0.12;
       let edge = min.x + 0.08;
-      for (let i = 0; i < (hasVase ? 8 : 10); i++) {
-        const width = 0.36 + (i % 3) * 0.06;
-        const height = (max.y - min.y - 0.16) * (0.74 + ((i * 7 + row) % 4) * 0.07);
-        if (edge + width > max.x - (hasVase ? 1.1 : 0.08)) break;
+      for (let i = 0; i < 64; i++) {
+        const height = (max.y - min.y - 0.16) * (0.72 + ((i * 7 + row * 3) % 9) * 0.03);
+        // Scale all dimensions together: mostly slim volumes, with occasional thicker editions.
+        const width = height * thicknessRatios[(i * 7 + row * 3) % thicknessRatios.length];
+        const depth = Math.min(height * (0.62 + ((i * 3 + row) % 5) * 0.035), max.z - min.z - 0.2);
+        const z = front - depth / 2 - ((i * 5 + row) % 4) * 0.015;
+        if (edge + width > max.x - (hasVase ? 1.1 : 0.28)) break;
         const x = edge + width / 2;
         const bottom = min.y + 0.015;
         this.box("shelf-book", [width, height, depth], [x, bottom + height / 2, z], colors[(i + row) % colors.length]);
-        [height * 0.15, height * 0.85].forEach(y => this.box("book-spine-gilt", [width * 0.8, 0.035, 0.02],
+        [height * 0.15, height * 0.85].forEach(y => this.box("book-spine-gilt", [width * 0.8, height * 0.02, 0.02],
           [x, bottom + y, z + depth / 2 + 0.01], "brass"));
-        edge += width + 0.08;
+        edge += width + 0.012 + ((i + row) % 3) * 0.006 + (i % 9 === 8 ? 0.1 : 0);
       }
       if (hasVase) {
         const scale = Math.min(0.7, (max.y - min.y - 0.16) / 3.35);
-        this.vase([max.x - 0.55, min.y + 0.015, z], scale);
+        const vaseZ = front - Math.min(1.15, max.z - min.z - 0.2) / 2;
+        this.vase([max.x - 0.55, min.y + 0.015, vaseZ], scale);
       }
     });
     this.sphere("shelf-sculpture", [0.7, 0.7, 0.7],
