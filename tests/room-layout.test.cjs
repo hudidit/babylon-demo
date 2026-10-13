@@ -23,6 +23,7 @@ function loadSource(name) {
 const { measureBookshelf } = loadSource("BookshelfLayout");
 const { RoomFurnishings } = loadSource("RoomFurnishings");
 const { RoomScene } = loadSource("Room");
+const { RoomLighting } = loadSource("RoomLighting");
 
 function createScene(t) {
   const engine = new babylon.NullEngine();
@@ -123,4 +124,57 @@ test("changing movement speed applies immediately and clears previous movement",
   assert.equal(room.setMovementSpeed(NaN), 1);
   assert.equal(room.setMovementSpeed(-1), 0.25);
   assert.equal(room.setMovementSpeed(100), 3);
+});
+
+test("lamp lights emit below their shades and the window is the main light source", t => {
+  const scene = createScene(t);
+  new RoomLighting(scene);
+  const furnishings = new RoomFurnishings(scene);
+  furnishings.writingTable();
+  furnishings.floorLamp();
+  scene.meshes.forEach(mesh => mesh.computeWorldMatrix(true));
+  for (const [lightName, shadeName] of [
+    ["reading-lamp-light", "linen-lampshade"], ["banker-lamp-light", "banker-green-shade"],
+  ]) {
+    const light = scene.getLightByName(lightName);
+    const shade = scene.getMeshByName(shadeName).getBoundingInfo().boundingBox;
+    assert.ok(light.position.y < shade.minimumWorld.y, `${lightName} must not be enclosed in its shade`);
+    assert.ok(Math.abs(light.position.x - (shade.minimumWorld.x + shade.maximumWorld.x) / 2) < 0.01);
+    assert.ok(Math.abs(light.position.z - (shade.minimumWorld.z + shade.maximumWorld.z) / 2) < 0.01);
+    assert.ok(light.getShadowGenerator(), `${lightName} must cast shadows`);
+  }
+  const windowLight = scene.getLightByName("window-daylight");
+  assert.ok(windowLight.position.x < -18 && windowLight.direction.x > 0, "daylight must enter from the window wall");
+  assert.ok(scene.materials.filter(material => material instanceof babylon.StandardMaterial)
+    .every(material => material.maxSimultaneousLights >= scene.lights.length));
+});
+
+test("rugs receive shadows without hiding chair legs; cached shadows refresh after enclosure changes", t => {
+  const scene = createScene(t);
+  const lighting = new RoomLighting(scene);
+  const furnishings = new RoomFurnishings(scene);
+  furnishings.chair([-3, -5, 5.1], 0);
+  furnishings.box("persian-rug", [14.5, 0.055, 13], [-3, -4.95, -0.3], "wood");
+  furnishings.box("foundation", [40.6, 0.6, 40.6], [0, -5.4, 0], "darkWood");
+  const meshes = furnishings.finish();
+  lighting.addMeshes(meshes);
+  const receivers = meshes.filter(mesh => mesh.metadata.castsShadows === false);
+  const furniture = meshes.filter(mesh => mesh.metadata.castsShadows);
+  assert.equal(receivers.length, 2, "receivers sharing furniture materials must merge separately");
+  const shadows = scene.lights.filter(light => light instanceof babylon.SpotLight)
+    .map(light => light.getShadowGenerator());
+  for (const shadow of shadows) {
+    const casters = shadow.getShadowMap().renderList;
+    assert.ok(receivers.every(mesh => mesh.receiveShadows && !casters.includes(mesh)));
+    assert.ok(furniture.every(mesh => casters.includes(mesh)), "chair geometry must cast shadows from every light");
+  }
+  lighting.freezeShadows();
+  for (const shadow of shadows) {
+    assert.equal(shadow.getShadowMap()._shouldRender(), true);
+    assert.equal(shadow.getShadowMap()._shouldRender(), false);
+  }
+  lighting.refreshShadows();
+  for (const shadow of shadows) {
+    assert.equal(shadow.getShadowMap()._shouldRender(), true, "changed walls must invalidate all cached shadows");
+  }
 });

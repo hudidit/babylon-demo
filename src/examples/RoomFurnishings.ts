@@ -22,7 +22,7 @@ export class RoomFurnishings {
       const material = new StandardMaterial(name, scene);
       material.diffuseColor = Color3.FromHexString(color);
       material.specularColor = name === "brass" ? new Color3(0.65, 0.5, 0.27) : new Color3(0.08, 0.07, 0.05);
-      material.maxSimultaneousLights = 3;
+      material.maxSimultaneousLights = 4;
       if (name === "shade") material.emissiveColor = new Color3(0.32, 0.22, 0.1);
       if (["moss", "cream", "cushion", "leaf"].includes(name)) material.specularColor.set(0.025, 0.025, 0.02);
       this.materials.set(name, material);
@@ -79,6 +79,10 @@ export class RoomFurnishings {
     mesh.material = this.materials.get(material)!;
     mesh.parent = parent || null;
     mesh.receiveShadows = true;
+    mesh.metadata = { castsShadows: ![
+      "foundation", "persian-rug", "rug-fringe", "reading-rug", "reading-rug-border", "garden-view",
+      "book-spine-gilt", "banker-lit-underside", "candle-flame",
+    ].includes(mesh.name) };
     mesh.isPickable = false;
     this.parts.push(mesh);
     return mesh;
@@ -503,17 +507,20 @@ export class RoomFurnishings {
   }
 
   private merge(parts: Mesh[]): Mesh[] {
-    const groups = new Map<StandardMaterial, Mesh[]>();
+    const groups = new Map<string, { material: StandardMaterial; castsShadows: boolean; parts: Mesh[] }>();
     parts.forEach(mesh => {
       mesh.computeWorldMatrix(true);
       const material = mesh.material as StandardMaterial;
-      if (!groups.has(material)) groups.set(material, []);
-      groups.get(material)!.push(mesh);
+      const castsShadows = mesh.metadata?.castsShadows !== false;
+      const key = material.uniqueId + ":" + castsShadows;
+      if (!groups.has(key)) groups.set(key, { material, castsShadows, parts: [] });
+      groups.get(key)!.parts.push(mesh);
     });
     const merged: Mesh[] = [];
-    groups.forEach((parts, material) => {
+    groups.forEach(({ parts, material, castsShadows }) => {
       const mesh = parts.length === 1 ? parts[0] : Mesh.MergeMeshes(parts, true, true)!;
-      mesh.name = "study-" + material.name;
+      mesh.name = "study-" + material.name + (castsShadows ? "" : "-surface");
+      mesh.metadata = { castsShadows };
       mesh.receiveShadows = true;
       mesh.isPickable = false;
       mesh.freezeWorldMatrix();

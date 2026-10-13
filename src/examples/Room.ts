@@ -1,10 +1,11 @@
 import {
-  AbstractMesh, ArcRotateCamera, Color3, Color4, CubeTexture, DirectionalLight, Engine,
-  HemisphericLight, ImageProcessingConfiguration, MeshBuilder, PBRMaterial, RenderTargetTexture, Scene,
-  SceneLoader, ShadowGenerator, SpotLight, StandardMaterial, Texture, TransformNode, UniversalCamera, Vector3,
+  AbstractMesh, ArcRotateCamera, Color3, Color4, CubeTexture, Engine,
+  ImageProcessingConfiguration, MeshBuilder, PBRMaterial, Scene,
+  SceneLoader, StandardMaterial, Texture, TransformNode, UniversalCamera, Vector3,
 } from "@babylonjs/core";
 import "@babylonjs/loaders/glTF";
 import { RoomFurnishings } from "./RoomFurnishings";
+import { RoomLighting } from "./RoomLighting";
 
 export type RoomView = "overview" | "reading" | "desk" | "cabinet" | "first-person";
 export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.55 };
@@ -16,7 +17,7 @@ export class RoomScene {
   private readonly camera: ArcRotateCamera;
   private readonly firstPersonCamera: UniversalCamera;
   private readonly interiorShell: TransformNode;
-  private readonly shadow: ShadowGenerator;
+  private readonly lighting: RoomLighting;
   private disposed = false;
   private controlsEnabled = true;
 
@@ -26,13 +27,13 @@ export class RoomScene {
     this.engine.maxFPS = 30;
     this.scene = new Scene(this.engine);
     this.scene.clearColor = new Color4(0.14, 0.17, 0.18, 1);
-    this.scene.ambientColor = new Color3(0.12, 0.1, 0.08);
+    this.scene.ambientColor = new Color3(0.08, 0.075, 0.065);
     this.scene.skipPointerMovePicking = true;
     this.scene.imageProcessingConfiguration.toneMappingEnabled = true;
     this.scene.imageProcessingConfiguration.toneMappingType = ImageProcessingConfiguration.TONEMAPPING_ACES;
     this.scene.imageProcessingConfiguration.exposure = 1.05;
     this.scene.environmentTexture = CubeTexture.CreateFromPrefilteredData("./environment/sky.env", this.scene);
-    this.scene.iblIntensity = 0.45;
+    this.scene.iblIntensity = 0.3;
 
     this.camera = new ArcRotateCamera("study-camera", 0.8, 1.08, 66, new Vector3(0, 0, 0), this.scene);
     this.camera.attachControl(canvas, true);
@@ -69,59 +70,31 @@ export class RoomScene {
     this.interiorShell = new TransformNode("first-person-room-shell", this.scene);
     this.interiorShell.setEnabled(false);
 
-    const ambient = new HemisphericLight("soft-room-fill", new Vector3(0.2, 1, 0.4), this.scene);
-    ambient.intensity = 0.6;
-    ambient.diffuse = new Color3(1, 0.91, 0.79);
-    ambient.groundColor = new Color3(0.32, 0.26, 0.21);
-
-    const sunlight = new DirectionalLight("late-afternoon-sun", new Vector3(-0.65, -1, -0.45), this.scene);
-    sunlight.position = new Vector3(18, 28, 12);
-    sunlight.diffuse = new Color3(1, 0.85, 0.64);
-    sunlight.intensity = 1.45;
-    sunlight.shadowMinZ = 1;
-    sunlight.shadowMaxZ = 90;
-    sunlight.autoCalcShadowZBounds = true;
-    this.shadow = new ShadowGenerator(2048, sunlight);
-    this.shadow.usePercentageCloserFiltering = true;
-    this.shadow.filteringQuality = ShadowGenerator.QUALITY_LOW;
-    this.shadow.bias = 0.002;
-    this.shadow.normalBias = 0.03;
-    this.shadow.setDarkness(0.25);
-
-    // Match imported PBR models to the StandardMaterial furniture's attenuation.
-    const readingLight = new SpotLight("reading-lamp-light", new Vector3(16, 2.7, 5),
-      new Vector3(-0.45, -1, 0.3), Math.PI / 1.6, 2, this.scene);
-    readingLight.diffuse = new Color3(1, 0.71, 0.38);
-    readingLight.intensity = 1.7;
-    readingLight.range = 24;
-    readingLight.falloffType = SpotLight.FALLOFF_STANDARD;
+    this.lighting = new RoomLighting(this.scene);
 
     const furnishings = new RoomFurnishings(this.scene);
     this.createArchitecture(furnishings);
     furnishings.furnish();
     furnishings.finish().forEach(mesh => {
       mesh.checkCollisions = true;
-      this.shadow.addShadowCaster(mesh);
     });
+    this.lighting.addMeshes(this.scene.meshes);
 
     // A parent keeps the glTF loader's handedness conversion intact.
     const models = [
       this.importModel("gothic_commode.glb", "antique-cabinet", new Vector3(-13.5, -5, -17.6), 4.7),
       this.importModel("wooden_bookshelf.glb", "antique-bookshelf", new Vector3(11.5, -5, -17.8), 5.2).then(meshes => {
         if (!meshes || this.disposed) return;
-        furnishings.furnishBookshelf(meshes).forEach(mesh => {
-          mesh.checkCollisions = true;
-          this.shadow.addShadowCaster(mesh);
-        });
+        const books = furnishings.furnishBookshelf(meshes);
+        books.forEach(mesh => mesh.checkCollisions = true);
+        this.lighting.addMeshes(books);
       }),
     ];
     Promise.all(models).then(() => {
       if (this.disposed) return;
       this.scene.executeWhenReady(() => {
         if (this.disposed) return;
-        // Static furnishings need only one completed sunlight shadow map.
-        this.shadow.getShadowMap()!.refreshRate = RenderTargetTexture.REFRESHRATE_RENDER_ONCE;
-        this.shadow.getShadowMap()!.resetRefreshCounter();
+        this.lighting.freezeShadows();
         const status = document.querySelector("#scene-status");
         if (status) status.textContent = "胡桃木 · 黄铜 · 苔绿织物";
       });
@@ -142,7 +115,9 @@ export class RoomScene {
   setView(view: RoomView) {
     const firstPerson = view === "first-person";
     this.scene.activeCamera?.detachControl();
+    const shellChanged = this.interiorShell.isEnabled() !== firstPerson;
     this.interiorShell.setEnabled(firstPerson);
+    if (shellChanged) this.lighting.refreshShadows();
     this.firstPersonCamera.cameraDirection.setAll(0);
     this.firstPersonCamera.cameraRotation.setAll(0);
     this.firstPersonCamera.movement.resetPanVelocity();
@@ -211,6 +186,7 @@ export class RoomScene {
     ground.position.y = -5;
     ground.material = floor;
     ground.receiveShadows = true;
+    ground.metadata = { castsShadows: false };
     ground.checkCollisions = true;
     room.box("foundation", [40.6, 0.6, 40.6], [0, -5.4, 0], "darkWood");
 
@@ -285,12 +261,12 @@ export class RoomScene {
       mesh.isPickable = false;
       if (mesh.material instanceof PBRMaterial) {
         mesh.material.usePhysicalLightFalloff = false;
-        mesh.material.maxSimultaneousLights = 3;
+        mesh.material.maxSimultaneousLights = 4;
       }
-      if (mesh.getTotalVertices() > 0) this.shadow.addShadowCaster(mesh);
       mesh.freezeWorldMatrix();
     });
     placement.freezeWorldMatrix();
+    this.lighting.addMeshes(result.meshes);
     return result.meshes;
   }
 
