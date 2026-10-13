@@ -7,6 +7,7 @@ import "@babylonjs/loaders/glTF";
 import { RoomFurnishings } from "./RoomFurnishings";
 
 export type RoomView = "overview" | "reading" | "desk" | "cabinet" | "first-person";
+export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.55 };
 
 /** A furnished study with cutaway presets and an enclosed first-person view. */
 export class RoomScene {
@@ -17,6 +18,7 @@ export class RoomScene {
   private readonly interiorShell: TransformNode;
   private readonly shadow: ShadowGenerator;
   private disposed = false;
+  private controlsEnabled = true;
 
   constructor(private readonly canvas: HTMLCanvasElement) {
     this.engine = new Engine(canvas, true, { stencil: true });
@@ -46,7 +48,7 @@ export class RoomScene {
     this.firstPersonCamera = new UniversalCamera("study-first-person", new Vector3(4, 1, 16), this.scene);
     this.firstPersonCamera.minZ = 0.1;
     this.firstPersonCamera.fov = 0.95;
-    this.firstPersonCamera.speed = 0.55;
+    this.firstPersonCamera.speed = MOVEMENT_SPEED.base;
     this.firstPersonCamera.inertia = 0.55;
     this.firstPersonCamera.angularSensibility = 1800;
     this.firstPersonCamera.keysUp = [87, 38];
@@ -105,7 +107,13 @@ export class RoomScene {
     // A parent keeps the glTF loader's handedness conversion intact.
     const models = [
       this.importModel("gothic_commode.glb", "antique-cabinet", new Vector3(-13.5, -5, -17.6), 4.7),
-      this.importModel("wooden_bookshelf.glb", "antique-bookshelf", new Vector3(11.5, -5, -17.8), 5.2),
+      this.importModel("wooden_bookshelf.glb", "antique-bookshelf", new Vector3(11.5, -5, -17.8), 5.2).then(meshes => {
+        if (!meshes || this.disposed) return;
+        furnishings.furnishBookshelf(meshes).forEach(mesh => {
+          mesh.checkCollisions = true;
+          this.shadow.addShadowCaster(mesh);
+        });
+      }),
     ];
     Promise.all(models).then(() => {
       if (this.disposed) return;
@@ -158,15 +166,33 @@ export class RoomScene {
     this.camera.inertialAlphaOffset = this.camera.inertialBetaOffset = this.camera.inertialRadiusOffset = 0;
     this.camera.inertialPanningX = this.camera.inertialPanningY = 0;
     this.camera.movement.resetPanVelocity();
-    this.scene.activeCamera.attachControl(this.canvas, true);
+    if (this.controlsEnabled) this.scene.activeCamera.attachControl(this.canvas, true);
     const help = document.querySelector("#view-help");
     const instructions = firstPerson ? "拖动环顾 · WASD / 方向键移动" : "拖动旋转 · 滚轮缩放 · 右键平移";
     if (help) help.textContent = instructions;
     this.canvas.setAttribute("aria-label", "复古书房三维场景，" + instructions);
-    if (firstPerson) this.canvas.focus({ preventScroll: true });
+    if (firstPerson && this.controlsEnabled) this.canvas.focus({ preventScroll: true });
     document.querySelectorAll<HTMLButtonElement>("[data-view]").forEach(button => {
       button.setAttribute("aria-pressed", String(button.dataset.view === view));
     });
+  }
+
+  setMovementSpeed(multiplier: number) {
+    if (!Number.isFinite(multiplier)) multiplier = MOVEMENT_SPEED.default;
+    const speed = Math.max(MOVEMENT_SPEED.min, Math.min(MOVEMENT_SPEED.max, multiplier));
+    this.firstPersonCamera.speed = MOVEMENT_SPEED.base * speed;
+    this.firstPersonCamera.cameraDirection.setAll(0);
+    this.firstPersonCamera.movement.resetPanVelocity();
+    return speed;
+  }
+
+  setControlsEnabled(enabled: boolean) {
+    this.controlsEnabled = enabled;
+    const camera = this.scene.activeCamera === this.firstPersonCamera ? this.firstPersonCamera : this.camera;
+    camera.detachControl();
+    camera.movement.resetPanVelocity();
+    camera.movement.resetRotationVelocity();
+    if (enabled) camera.attachControl(this.canvas, true);
   }
 
   private createArchitecture(room: RoomFurnishings) {
@@ -265,6 +291,7 @@ export class RoomScene {
       mesh.freezeWorldMatrix();
     });
     placement.freezeWorldMatrix();
+    return result.meshes;
   }
 
   private render = () => this.scene.render();

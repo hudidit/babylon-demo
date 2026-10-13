@@ -1,7 +1,8 @@
 import {
-  Color3, DynamicTexture, Mesh, MeshBuilder, Scene, StandardMaterial, Texture,
-  TransformNode, VertexBuffer, VertexData,
+  AbstractMesh, Color3, DynamicTexture, Mesh, MeshBuilder, Scene, StandardMaterial, Texture,
+  TransformNode, Vector3, VertexBuffer, VertexData,
 } from "@babylonjs/core";
+import { measureBookshelf } from "./BookshelfLayout";
 
 type Triple = [number, number, number];
 
@@ -140,7 +141,6 @@ export class RoomFurnishings {
     this.plant([-16, -5, 16], 1.1);
     this.plant([17, -5, 12], 0.85);
     this.cabinetAccessories();
-    this.bookshelfBooks();
   }
 
   enclosingDetails(shell: TransformNode) {
@@ -347,21 +347,34 @@ export class RoomFurnishings {
     this.bookStack([-11.2, 5.15, -18.7]);
   }
 
-  private bookshelfBooks() {
+  furnishBookshelf(meshes: AbstractMesh[]): Mesh[] {
+    const start = this.parts.length;
+    const { bounds, compartments } = measureBookshelf(meshes);
     const colors = ["burgundy", "moss", "navy", "cushion", "rust", "cream"];
-    // Fixed sequence gives a curated shelf without random layout changes on reload.
-    [1.7, 4.05, 6.5, 8.8].forEach((level, row) => {
-      for (let i = 0; i < 10; i++) {
-        if (row === 1 && i > 6) continue;
+    compartments.forEach(({ min, max }, row) => {
+      const hasVase = row === compartments.length - 2;
+      const depth = Math.min(1.15, max.z - min.z - 0.2);
+      const z = max.z - 0.12 - depth / 2;
+      let edge = min.x + 0.08;
+      for (let i = 0; i < (hasVase ? 8 : 10); i++) {
         const width = 0.36 + (i % 3) * 0.06;
-        const height = 1.45 + ((i * 7 + row) % 4) * 0.15;
-        const x = 8.65 + i * 0.54;
-        this.box("shelf-book", [width, height, 1.15], [x, -5 + level + height / 2, -16.45], colors[(i + row) % colors.length]);
-        [0.25, height - 0.25].forEach(y => this.box("book-spine-gilt", [width * 0.8, 0.035, 0.02], [x, -5 + level + y, -15.86], "brass"));
+        const height = (max.y - min.y - 0.16) * (0.74 + ((i * 7 + row) % 4) * 0.07);
+        if (edge + width > max.x - (hasVase ? 1.1 : 0.08)) break;
+        const x = edge + width / 2;
+        const bottom = min.y + 0.015;
+        this.box("shelf-book", [width, height, depth], [x, bottom + height / 2, z], colors[(i + row) % colors.length]);
+        [height * 0.15, height * 0.85].forEach(y => this.box("book-spine-gilt", [width * 0.8, 0.035, 0.02],
+          [x, bottom + y, z + depth / 2 + 0.01], "brass"));
+        edge += width + 0.08;
+      }
+      if (hasVase) {
+        const scale = Math.min(0.7, (max.y - min.y - 0.16) / 3.35);
+        this.vase([max.x - 0.55, min.y + 0.015, z], scale);
       }
     });
-    this.vase([13.5, -0.9, -16.65], 0.7);
-    this.sphere("shelf-sculpture", [0.7, 0.7, 0.7], [8.7, 6.3, -17.7], "brass");
+    this.sphere("shelf-sculpture", [0.7, 0.7, 0.7],
+      [bounds.min.x + 0.8, bounds.max.y + 0.35, (bounds.min.z + bounds.max.z) / 2], "brass");
+    return this.merge(this.parts.splice(start));
   }
 
   private bookStack(position: Triple, parent?: TransformNode) {
@@ -399,9 +412,13 @@ export class RoomFurnishings {
     this.cylinder("vase-neck", 0.6, 0.4, [0, 1.3, 0], "ceramic", g, 0.5);
     for (let i = 0; i < 5; i++) {
       const angle = i * 1.4;
-      const x = Math.sin(angle) * 0.28; const z = Math.cos(angle) * 0.28;
-      this.cylinder("dried-flower-stem", 1.8, 0.025, [x, 2.1, z], "stem", g);
-      this.sphere("dried-flower", [0.4, 0.3, 0.4], [x, 3 + (i % 2) * 0.2, z], "cushion", g);
+      const flower = new Vector3(Math.sin(angle) * 0.28, 3 + (i % 2) * 0.2, Math.cos(angle) * 0.28);
+      const root = new Vector3(Math.sin(angle) * 0.1, 1.4, Math.cos(angle) * 0.1);
+      const stem = MeshBuilder.CreateTube("dried-flower-stem", {
+        path: [root, flower], radius: 0.0125, tessellation: 8, cap: Mesh.CAP_ALL,
+      }, this.scene);
+      this.place(stem, [0, 0, 0], "stem", g);
+      this.sphere("dried-flower", [0.4, 0.3, 0.4], [flower.x, flower.y, flower.z], "cushion", g);
     }
   }
 

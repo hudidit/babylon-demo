@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "node --test tests/*.test.cjs",
     "build": "webpack",
     "typecheck": "tsc --noEmit",
     "start": "webpack serve --port 8080"

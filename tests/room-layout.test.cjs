@@ -1,0 +1,126 @@
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
+const { test } = require("node:test");
+const ts = require("typescript");
+const babylon = require("@babylonjs/core");
+require("@babylonjs/loaders/glTF");
+
+const sourceCache = new Map();
+function loadSource(name) {
+  if (sourceCache.has(name)) return sourceCache.get(name);
+  const source = fs.readFileSync(path.join(__dirname, "../src/examples", name + ".ts"), "utf8");
+  const compiled = ts.transpileModule(source, {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
+  }).outputText;
+  const module = { exports: {} };
+  new Function("require", "module", "exports", compiled)(
+    id => id.startsWith("./") ? loadSource(id.slice(2)) : require(id), module, module.exports);
+  sourceCache.set(name, module.exports);
+  return module.exports;
+}
+
+const { measureBookshelf } = loadSource("BookshelfLayout");
+const { RoomFurnishings } = loadSource("RoomFurnishings");
+const { RoomScene } = loadSource("Room");
+
+function createScene(t) {
+  const engine = new babylon.NullEngine();
+  // Canvas drawing is irrelevant to geometry; use the real meshes, materials and glTF loader.
+  const context = new Proxy({}, { get: () => () => {} });
+  engine.createCanvas = () => ({ width: 1, height: 1, getContext: () => context, remove() {} });
+  engine.getDeltaTime = () => 1000 / 30;
+  engine.getFps = () => 30;
+  t.after(() => engine.dispose());
+  return new babylon.Scene(engine);
+}
+
+for (const scale of [5.2, 3.7]) {
+  test(`books and vase fit the actual bookshelf model at scale ${scale}`, async t => {
+    const scene = createScene(t);
+    const source = new Uint8Array(fs.readFileSync(path.join(__dirname, "../public/models/wooden_bookshelf.glb")));
+    const result = await babylon.ImportMeshAsync(source, scene, {
+      pluginExtension: ".glb", pluginOptions: { gltf: { skipMaterials: true } },
+    });
+    const placement = new babylon.TransformNode("bookshelf-placement", scene);
+    placement.position.set(11.5, -5, -17.8);
+    placement.scaling.setAll(scale);
+    result.meshes[0].parent = placement;
+    const { compartments } = measureBookshelf(result.meshes);
+    assert.equal(compartments.length, 6, "the model has six interior compartments");
+    const localShelfHeights = [0.107607, 0.391878, 0.671547, 0.960453, 1.276524, 1.663383];
+    compartments.forEach((slot, row) => {
+      assert.ok(Math.abs(slot.min.y - (-5 + scale * localShelfHeights[row])) < 0.01);
+    });
+    const furnishings = new RoomFurnishings(scene);
+    const parts = [];
+    const merge = furnishings.merge.bind(furnishings);
+    furnishings.merge = meshes => {
+      meshes.forEach(mesh => {
+        mesh.computeWorldMatrix(true);
+        const box = mesh.getBoundingInfo().boundingBox;
+        parts.push({ name: mesh.name, min: box.minimumWorld.clone(), max: box.maximumWorld.clone() });
+      });
+      return merge(meshes);
+    };
+    furnishings.furnishBookshelf(result.meshes);
+    const books = parts.filter(part => part.name === "shelf-book");
+    assert.ok(books.length >= 40, "every compartment contains books");
+    for (const book of books) {
+      const slot = compartments.find(slot => Math.abs(book.min.y - slot.min.y - 0.015) < 0.002);
+      assert.ok(slot, "each book must rest on a real shelf");
+      for (const axis of ["x", "y", "z"]) {
+        assert.ok(book.min[axis] >= slot.min[axis] - 0.002 && book.max[axis] <= slot.max[axis] + 0.002,
+          `book protrudes through compartment on ${axis}`);
+      }
+    }
+    const vaseParts = parts.filter(part => /^(vase-|dried-flower)/.test(part.name));
+    const vaseSlot = compartments[compartments.length - 2];
+    assert.equal(vaseParts.length, 12);
+    for (const part of vaseParts) {
+      for (const axis of ["x", "y", "z"]) {
+        assert.ok(part.min[axis] >= vaseSlot.min[axis] - 0.002 && part.max[axis] <= vaseSlot.max[axis] + 0.002,
+          `${part.name} protrudes through compartment on ${axis}`);
+      }
+    }
+  });
+}
+
+test("all flower stems connect to both the vase neck and their flower heads", t => {
+  const scene = createScene(t);
+  const furnishings = new RoomFurnishings(scene);
+  const parent = new babylon.TransformNode("console", scene);
+  parent.rotation.y = Math.PI / 2;
+  furnishings.vase([2.5, 4.27, 0], 0.65, parent);
+  scene.meshes.forEach(mesh => mesh.computeWorldMatrix(true));
+  const neck = scene.getMeshByName("vase-neck");
+  const body = scene.getMeshByName("vase-body");
+  const stems = scene.meshes.filter(mesh => mesh.name === "dried-flower-stem");
+  const flowers = scene.meshes.filter(mesh => mesh.name === "dried-flower");
+  assert.ok(neck.intersectsMesh(body, true));
+  assert.equal(stems.length, 5);
+  stems.forEach((stem, index) => {
+    assert.ok(stem.intersectsMesh(neck, true), `stem ${index} must enter the vase neck`);
+    assert.ok(stem.intersectsMesh(flowers[index], true), `stem ${index} must reach its flower`);
+  });
+});
+
+test("changing movement speed applies immediately and clears previous movement", t => {
+  const scene = createScene(t);
+  const camera = new babylon.UniversalCamera("first-person", babylon.Vector3.Zero(), scene);
+  const room = Object.create(RoomScene.prototype);
+  room.firstPersonCamera = camera;
+  room.setMovementSpeed(1);
+  camera.cameraDirection.set(0.4, 0, 0);
+  camera._checkInputs();
+  const previous = camera.position.clone();
+  room.setMovementSpeed(0.25);
+  camera._checkInputs();
+  assert.ok(camera.position.equals(previous), "old movement must stop when speed changes");
+  const slow = camera._computeLocalCameraSpeed();
+  room.setMovementSpeed(3);
+  assert.ok(Math.abs(camera._computeLocalCameraSpeed() / slow - 12) < 0.0001);
+  assert.equal(room.setMovementSpeed(NaN), 1);
+  assert.equal(room.setMovementSpeed(-1), 0.25);
+  assert.equal(room.setMovementSpeed(100), 3);
+});
