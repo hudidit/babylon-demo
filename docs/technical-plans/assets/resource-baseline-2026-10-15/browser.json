@@ -1,0 +1,4156 @@
+{
+  "baselineCommit": "5f5ca9a98cdefbf709fa5ffe4aecfbaed7b11663",
+  "browserVersion": "155.0.8059.79",
+  "headless": true,
+  "machine": {
+    "platform": "darwin",
+    "release": "27.0.0",
+    "architecture": "arm64",
+    "cpu": "Apple M6",
+    "logicalCpuCount": 12,
+    "memoryBytes": 25769803776
+  },
+  "viewport": [
+    1280,
+    720
+  ],
+  "deviceScaleFactor": 1,
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "devicePixelRatio": 1,
+    "renderSize": [
+      1280,
+      720
+    ],
+    "glInfo": {
+      "vendor": "Google Inc. (Apple)",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M6, Unspecified Version)",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    },
+    "webglVersion": 2,
+    "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M6, Unspecified Version)",
+    "unmaskedVendor": "Google Inc. (Apple)",
+    "maxFps": 30,
+    "hardwareScaling": 1
+  },
+  "initialSceneReadyMs": 1198.1000000238419,
+  "sampleMethod": "150 scene render frames per view, discard first 30; CPU from onBeforeRender to onAfterRender, not GPU completion",
+  "records": [
+    {
+      "view": "overview",
+      "frames": 150,
+      "warmupFrames": 30,
+      "fps": 30.00882612533098,
+      "cpuMedianMs": 2.700000047683716,
+      "cpuP95Ms": 3.5,
+      "vertices": 156084,
+      "activeMeshes": 71,
+      "renderSize": [
+        1280,
+        720
+      ],
+      "camera": {
+        "position": [
+          41.99999999999999,
+          31,
+          45
+        ],
+        "target": [
+          -1,
+          -2,
+          -1
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 9
+      },
+      "samples": [
+        {
+          "startedMs": 2270.600000023842,
+          "cpuSubmissionMs": 2.3000000715255737
+        },
+        {
+          "startedMs": 2303.9000000953674,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 2337,
+          "cpuSubmissionMs": 2.4000000953674316
+        },
+        {
+          "startedMs": 2370.7000000476837,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 2404,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 2437.100000023842,
+          "cpuSubmissionMs": 2.700000047683716
+        },
+        {
+          "startedMs": 2470.5,
+          "cpuSubmissionMs": 2.700000047683716
+        },
+        {
+          "startedMs": 2503.5,
+          "cpuSubmissionMs": 2.8000000715255737
+        },
+        {
+          "startedMs": 2536.600000023842,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 2570.600000023842,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 2603.600000023842,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 2637.2000000476837,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 2670.8000000715256,
+          "cpuSubmissionMs": 3.299999952316284
+        },
+        {
+          "startedMs": 2704.100000023842,
+          "cpuSubmissionMs": 3.3000000715255737
+        },
+        {
+          "startedMs": 2737.100000023842,
+          "cpuSubmissionMs": 2.8000000715255737
+        },
+        {
+          "startedMs": 2770.5,
+          "cpuSubmissionMs": 3.700000047683716
+        },
+        {
+          "startedMs": 2803.9000000953674,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 2836.4000000953674,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 2870.3000000715256,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 2904.100000023842,
+          "cpuSubmissionMs": 2.700000047683716
+        },
+        {
+          "startedMs": 2937.4000000953674,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 2970.600000023842,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 3003.5,
+          "cpuSubmissionMs": 3.600000023841858
+        },
+        {
+          "startedMs": 3036.7000000476837,
+          "cpuSubmissionMs": 3.5
+        },
+        {
+          "startedMs": 3070.7000000476837,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 3104,
+          "cpuSubmissionMs": 3.700000047683716
+        },
+        {
+          "startedMs": 3136.5,
+          "cpuSubmissionMs": 3.4000000953674316
+        },
+        {
+          "startedMs": 3170.5,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 3203.2000000476837,
+          "cpuSubmissionMs": 3.299999952316284
+        },
+        {
+          "startedMs": 3236.5,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 3270.7000000476837,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 3303.2000000476837,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 3337.2000000476837,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 3370.600000023842,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 3404,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 3437.3000000715256,
+          "cpuSubmissionMs": 2.799999952316284
+        },
+        {
+          "startedMs": 3469.9000000953674,
+          "cpuSubmissionMs": 2.5999999046325684
+        },
+        {
+          "startedMs": 3504,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 3537,
+          "cpuSubmissionMs": 3.5
+        },
+        {
+          "startedMs": 3570.4000000953674,
+          "cpuSubmissionMs": 2.5999999046325684
+        },
+        {
+          "startedMs": 3603.9000000953674,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 3637.100000023842,
+          "cpuSubmissionMs": 2.700000047683716
+        },
+        {
+          "startedMs": 3669.7000000476837,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 3703.8000000715256,
+          "cpuSubmissionMs": 1.100000023841858
+        },
+        {
+          "startedMs": 3737,
+          "cpuSubmissionMs": 0.9000000953674316
+        },
+        {
+          "startedMs": 3770.3000000715256,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 3803.8000000715256,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 3837.100000023842,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 3870.4000000953674,
+          "cpuSubmissionMs": 2.1999999284744263
+        },
+        {
+          "startedMs": 3903.8000000715256,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 3937.100000023842,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 3970.5,
+          "cpuSubmissionMs": 2.4000000953674316
+        },
+        {
+          "startedMs": 4003.9000000953674,
+          "cpuSubmissionMs": 2.5999999046325684
+        },
+        {
+          "startedMs": 4037.100000023842,
+          "cpuSubmissionMs": 2.600000023841858
+        },
+        {
+          "startedMs": 4070.100000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 4103.900000095367,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 4137.100000023842,
+          "cpuSubmissionMs": 2.8000000715255737
+        },
+        {
+          "startedMs": 4170.5,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 4203,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 4237.100000023842,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 4269.700000047684,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 4303.900000095367,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 4337.100000023842,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 4370.5,
+          "cpuSubmissionMs": 2.3000000715255737
+        },
+        {
+          "startedMs": 4403.800000071526,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 4437.200000047684,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 4470.600000023842,
+          "cpuSubmissionMs": 3.600000023841858
+        },
+        {
+          "startedMs": 4503.900000095367,
+          "cpuSubmissionMs": 3.299999952316284
+        },
+        {
+          "startedMs": 4537.100000023842,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 4570.5,
+          "cpuSubmissionMs": 2.9000000953674316
+        },
+        {
+          "startedMs": 4603.700000047684,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 4637.100000023842,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 4670.300000071526,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 4703.600000023842,
+          "cpuSubmissionMs": 3.3000000715255737
+        },
+        {
+          "startedMs": 4737.100000023842,
+          "cpuSubmissionMs": 2.700000047683716
+        },
+        {
+          "startedMs": 4770.700000047684,
+          "cpuSubmissionMs": 3.299999952316284
+        },
+        {
+          "startedMs": 4803.900000095367,
+          "cpuSubmissionMs": 3.0999999046325684
+        },
+        {
+          "startedMs": 4837.300000071526,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 4870.5,
+          "cpuSubmissionMs": 4.100000023841858
+        },
+        {
+          "startedMs": 4904,
+          "cpuSubmissionMs": 3.700000047683716
+        },
+        {
+          "startedMs": 4937.300000071526,
+          "cpuSubmissionMs": 3.5
+        },
+        {
+          "startedMs": 4970.5,
+          "cpuSubmissionMs": 3.4000000953674316
+        },
+        {
+          "startedMs": 5003.700000047684,
+          "cpuSubmissionMs": 2.700000047683716
+        },
+        {
+          "startedMs": 5036.5,
+          "cpuSubmissionMs": 2.9000000953674316
+        },
+        {
+          "startedMs": 5070.200000047684,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 5103.800000071526,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 5137.200000047684,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 5169.900000095367,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 5203.600000023842,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 5237.100000023842,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 5270.300000071526,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 5303,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 5336.700000047684,
+          "cpuSubmissionMs": 2.799999952316284
+        },
+        {
+          "startedMs": 5370.400000095367,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 5403.300000071526,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 5437.100000023842,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 5469.5,
+          "cpuSubmissionMs": 2.3000000715255737
+        },
+        {
+          "startedMs": 5503.700000047684,
+          "cpuSubmissionMs": 3.299999952316284
+        },
+        {
+          "startedMs": 5537.100000023842,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 5570.5,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 5603.400000095367,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 5637.100000023842,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 5669.600000023842,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 5703.100000023842,
+          "cpuSubmissionMs": 1.100000023841858
+        },
+        {
+          "startedMs": 5736.800000071526,
+          "cpuSubmissionMs": 1
+        },
+        {
+          "startedMs": 5770.300000071526,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 5803.600000023842,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 5837,
+          "cpuSubmissionMs": 0.8000000715255737
+        },
+        {
+          "startedMs": 5870.300000071526,
+          "cpuSubmissionMs": 0.7999999523162842
+        },
+        {
+          "startedMs": 5903.700000047684,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 5936.800000071526,
+          "cpuSubmissionMs": 0.6999999284744263
+        },
+        {
+          "startedMs": 5970.300000071526,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 6002.700000047684,
+          "cpuSubmissionMs": 0.7999999523162842
+        },
+        {
+          "startedMs": 6037,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 6070.200000047684,
+          "cpuSubmissionMs": 0.7000000476837158
+        },
+        {
+          "startedMs": 6102.800000071526,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 6135.900000095367,
+          "cpuSubmissionMs": 0.5999999046325684
+        },
+        {
+          "startedMs": 6170.200000047684,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 6203.600000023842,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 6236.100000023842,
+          "cpuSubmissionMs": 0.6000000238418579
+        }
+      ],
+      "screenshot": "overview.jpg"
+    },
+    {
+      "view": "reading",
+      "frames": 150,
+      "warmupFrames": 30,
+      "fps": 29.998235398098064,
+      "cpuMedianMs": 2.149999976158142,
+      "cpuP95Ms": 3.100000023841858,
+      "vertices": 156084,
+      "activeMeshes": 69,
+      "renderSize": [
+        1280,
+        720
+      ],
+      "camera": {
+        "position": [
+          23,
+          10,
+          25
+        ],
+        "target": [
+          9,
+          -1.5,
+          8
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 9
+      },
+      "samples": [
+        {
+          "startedMs": 7303.200000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 7336.900000095367,
+          "cpuSubmissionMs": 1.0999999046325684
+        },
+        {
+          "startedMs": 7370.300000071526,
+          "cpuSubmissionMs": 1.1999999284744263
+        },
+        {
+          "startedMs": 7403,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 7436.5,
+          "cpuSubmissionMs": 0.9000000953674316
+        },
+        {
+          "startedMs": 7469.700000047684,
+          "cpuSubmissionMs": 0.7000000476837158
+        },
+        {
+          "startedMs": 7503.100000023842,
+          "cpuSubmissionMs": 0.7000000476837158
+        },
+        {
+          "startedMs": 7536.400000095367,
+          "cpuSubmissionMs": 0.6999999284744263
+        },
+        {
+          "startedMs": 7570.200000047684,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 7602.600000023842,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 7636,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 7670.300000071526,
+          "cpuSubmissionMs": 2.799999952316284
+        },
+        {
+          "startedMs": 7703.5,
+          "cpuSubmissionMs": 3.600000023841858
+        },
+        {
+          "startedMs": 7737.100000023842,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 7770.400000095367,
+          "cpuSubmissionMs": 2.799999952316284
+        },
+        {
+          "startedMs": 7803.100000023842,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 7836.5,
+          "cpuSubmissionMs": 2.8000000715255737
+        },
+        {
+          "startedMs": 7870.200000047684,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 7903.300000071526,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 7936.100000023842,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 7969.600000023842,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 8002.900000095367,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 8037,
+          "cpuSubmissionMs": 2.4000000953674316
+        },
+        {
+          "startedMs": 8069.900000095367,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 8103.100000023842,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 8136.300000071526,
+          "cpuSubmissionMs": 2.799999952316284
+        },
+        {
+          "startedMs": 8170.400000095367,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 8203.900000095367,
+          "cpuSubmissionMs": 3.0999999046325684
+        },
+        {
+          "startedMs": 8237,
+          "cpuSubmissionMs": 0.9000000953674316
+        },
+        {
+          "startedMs": 8270.100000023842,
+          "cpuSubmissionMs": 0.7000000476837158
+        },
+        {
+          "startedMs": 8303.200000047684,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 8336.400000095367,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 8369.5,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 8402.5,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 8436.200000047684,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 8469.600000023842,
+          "cpuSubmissionMs": 1.3000000715255737
+        },
+        {
+          "startedMs": 8503,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 8536.600000023842,
+          "cpuSubmissionMs": 2.600000023841858
+        },
+        {
+          "startedMs": 8570.400000095367,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 8602.700000047684,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 8636.5,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 8670.100000023842,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 8703,
+          "cpuSubmissionMs": 0.8000000715255737
+        },
+        {
+          "startedMs": 8736.400000095367,
+          "cpuSubmissionMs": 0.5999999046325684
+        },
+        {
+          "startedMs": 8770.200000047684,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 8803,
+          "cpuSubmissionMs": 0.40000009536743164
+        },
+        {
+          "startedMs": 8836.800000071526,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 8869.800000071526,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 8903.400000095367,
+          "cpuSubmissionMs": 0.5999999046325684
+        },
+        {
+          "startedMs": 8936.200000047684,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 8970,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 9003.5,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 9036.900000095367,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 9069.900000095367,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 9103.100000023842,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 9136.300000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 9169.700000047684,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 9202.800000071526,
+          "cpuSubmissionMs": 3.399999976158142
+        },
+        {
+          "startedMs": 9236,
+          "cpuSubmissionMs": 2.600000023841858
+        },
+        {
+          "startedMs": 9269.600000023842,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 9303.700000047684,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 9337.100000023842,
+          "cpuSubmissionMs": 2.8000000715255737
+        },
+        {
+          "startedMs": 9370.400000095367,
+          "cpuSubmissionMs": 2.799999952316284
+        },
+        {
+          "startedMs": 9403.200000047684,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 9436.900000095367,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 9469.400000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 9503.700000047684,
+          "cpuSubmissionMs": 2.799999952316284
+        },
+        {
+          "startedMs": 9536.600000023842,
+          "cpuSubmissionMs": 2.600000023841858
+        },
+        {
+          "startedMs": 9569.900000095367,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 9603.800000071526,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 9636.100000023842,
+          "cpuSubmissionMs": 1
+        },
+        {
+          "startedMs": 9669.200000047684,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 9702.900000095367,
+          "cpuSubmissionMs": 0.7999999523162842
+        },
+        {
+          "startedMs": 9736.100000023842,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 9769.5,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 9802.800000071526,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 9836.900000095367,
+          "cpuSubmissionMs": 2.5999999046325684
+        },
+        {
+          "startedMs": 9870.200000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 9903.100000023842,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 9936.300000071526,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 9970.100000023842,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 10003.5,
+          "cpuSubmissionMs": 2.8000000715255737
+        },
+        {
+          "startedMs": 10036.200000047684,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 10069.900000095367,
+          "cpuSubmissionMs": 2.0999999046325684
+        },
+        {
+          "startedMs": 10103.5,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 10136.900000095367,
+          "cpuSubmissionMs": 2.5999999046325684
+        },
+        {
+          "startedMs": 10170.300000071526,
+          "cpuSubmissionMs": 2.1999999284744263
+        },
+        {
+          "startedMs": 10203,
+          "cpuSubmissionMs": 2.3000000715255737
+        },
+        {
+          "startedMs": 10237,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 10270.200000047684,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 10303.5,
+          "cpuSubmissionMs": 2.600000023841858
+        },
+        {
+          "startedMs": 10336.5,
+          "cpuSubmissionMs": 2.700000047683716
+        },
+        {
+          "startedMs": 10370.300000071526,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 10403.600000023842,
+          "cpuSubmissionMs": 2.600000023841858
+        },
+        {
+          "startedMs": 10435.900000095367,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 10469.900000095367,
+          "cpuSubmissionMs": 2.1999999284744263
+        },
+        {
+          "startedMs": 10502.700000047684,
+          "cpuSubmissionMs": 2.799999952316284
+        },
+        {
+          "startedMs": 10536.200000047684,
+          "cpuSubmissionMs": 3.600000023841858
+        },
+        {
+          "startedMs": 10570.100000023842,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 10602.5,
+          "cpuSubmissionMs": 0.8000000715255737
+        },
+        {
+          "startedMs": 10636.700000047684,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 10669.700000047684,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 10703.400000095367,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 10736.200000047684,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 10769.900000095367,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 10802.700000047684,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 10836.800000071526,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 10870.100000023842,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 10902.900000095367,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 10936.200000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 10969.5,
+          "cpuSubmissionMs": 2.8000000715255737
+        },
+        {
+          "startedMs": 11002.800000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 11036.600000023842,
+          "cpuSubmissionMs": 0.7000000476837158
+        },
+        {
+          "startedMs": 11069.800000071526,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 11103.400000095367,
+          "cpuSubmissionMs": 0.6999999284744263
+        },
+        {
+          "startedMs": 11136.700000047684,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 11170,
+          "cpuSubmissionMs": 0.7000000476837158
+        },
+        {
+          "startedMs": 11202.800000071526,
+          "cpuSubmissionMs": 1.1999999284744263
+        },
+        {
+          "startedMs": 11236.200000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 11270.100000023842,
+          "cpuSubmissionMs": 2
+        }
+      ],
+      "screenshot": "reading.jpg"
+    },
+    {
+      "view": "desk",
+      "frames": 150,
+      "warmupFrames": 30,
+      "fps": 30.007312706097068,
+      "cpuMedianMs": 1.800000011920929,
+      "cpuP95Ms": 2.5,
+      "vertices": 156084,
+      "activeMeshes": 48,
+      "renderSize": [
+        1280,
+        720
+      ],
+      "camera": {
+        "position": [
+          12.999999999999996,
+          12,
+          16
+        ],
+        "target": [
+          -7,
+          -1,
+          -3
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 9
+      },
+      "samples": [
+        {
+          "startedMs": 12370,
+          "cpuSubmissionMs": 0.7000000476837158
+        },
+        {
+          "startedMs": 12402.5,
+          "cpuSubmissionMs": 0.9000000953674316
+        },
+        {
+          "startedMs": 12436.800000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 12470.100000023842,
+          "cpuSubmissionMs": 1.3000000715255737
+        },
+        {
+          "startedMs": 12503.400000095367,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 12536.600000023842,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 12569.300000071526,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 12602.400000095367,
+          "cpuSubmissionMs": 0.5999999046325684
+        },
+        {
+          "startedMs": 12636.700000047684,
+          "cpuSubmissionMs": 1
+        },
+        {
+          "startedMs": 12669.900000095367,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 12703.5,
+          "cpuSubmissionMs": 2.3000000715255737
+        },
+        {
+          "startedMs": 12736.800000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 12770.100000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 12803.600000023842,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 12836.900000095367,
+          "cpuSubmissionMs": 2.0999999046325684
+        },
+        {
+          "startedMs": 12870.100000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 12903.400000095367,
+          "cpuSubmissionMs": 2.1999999284744263
+        },
+        {
+          "startedMs": 12936.300000071526,
+          "cpuSubmissionMs": 2.1999999284744263
+        },
+        {
+          "startedMs": 12969.600000023842,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 13002.600000023842,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 13036.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 13070.100000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 13103.5,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 13136.600000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 13169.900000095367,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 13203.300000071526,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 13236.900000095367,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 13270.100000023842,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 13303.400000095367,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 13336.900000095367,
+          "cpuSubmissionMs": 2.0999999046325684
+        },
+        {
+          "startedMs": 13370.200000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 13403.5,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 13436.300000071526,
+          "cpuSubmissionMs": 2.1999999284744263
+        },
+        {
+          "startedMs": 13469.900000095367,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 13503.5,
+          "cpuSubmissionMs": 2.4000000953674316
+        },
+        {
+          "startedMs": 13536.600000023842,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 13569.5,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 13603.700000047684,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 13636.800000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 13670.100000023842,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 13703.5,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 13736.400000095367,
+          "cpuSubmissionMs": 2.1999999284744263
+        },
+        {
+          "startedMs": 13770,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 13803.200000047684,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 13836.800000071526,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 13869.900000095367,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 13902.800000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 13936.200000047684,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 13970,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 14002.900000095367,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 14036.600000023842,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 14069.100000023842,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 14103.400000095367,
+          "cpuSubmissionMs": 2.0999999046325684
+        },
+        {
+          "startedMs": 14136.300000071526,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 14170.200000047684,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 14203.400000095367,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 14236.800000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 14269.300000071526,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 14303.400000095367,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 14336.800000071526,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 14369.900000095367,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 14402.800000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 14436.700000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 14470,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 14503.300000071526,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 14536.600000023842,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 14569.700000047684,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 14603,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 14636.600000023842,
+          "cpuSubmissionMs": 0.30000007152557373
+        },
+        {
+          "startedMs": 14669.900000095367,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 14703,
+          "cpuSubmissionMs": 0.40000009536743164
+        },
+        {
+          "startedMs": 14736.400000095367,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 14769.800000071526,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 14803.300000071526,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 14835.800000071526,
+          "cpuSubmissionMs": 0.2999999523162842
+        },
+        {
+          "startedMs": 14869.400000095367,
+          "cpuSubmissionMs": 0.2999999523162842
+        },
+        {
+          "startedMs": 14903.200000047684,
+          "cpuSubmissionMs": 0.2999999523162842
+        },
+        {
+          "startedMs": 14936.600000023842,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 14969.700000047684,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 15002.700000047684,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 15036,
+          "cpuSubmissionMs": 0.9000000953674316
+        },
+        {
+          "startedMs": 15069.200000047684,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 15103.100000023842,
+          "cpuSubmissionMs": 1
+        },
+        {
+          "startedMs": 15136.600000023842,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 15170,
+          "cpuSubmissionMs": 0.9000000953674316
+        },
+        {
+          "startedMs": 15202.600000023842,
+          "cpuSubmissionMs": 1
+        },
+        {
+          "startedMs": 15236.600000023842,
+          "cpuSubmissionMs": 1
+        },
+        {
+          "startedMs": 15269.900000095367,
+          "cpuSubmissionMs": 0.5999999046325684
+        },
+        {
+          "startedMs": 15303.300000071526,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 15336.5,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 15369.900000095367,
+          "cpuSubmissionMs": 0.6999999284744263
+        },
+        {
+          "startedMs": 15403.200000047684,
+          "cpuSubmissionMs": 0.7000000476837158
+        },
+        {
+          "startedMs": 15436.400000095367,
+          "cpuSubmissionMs": 0.6999999284744263
+        },
+        {
+          "startedMs": 15469.900000095367,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 15502.600000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 15536.700000047684,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 15570.100000023842,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 15602.900000095367,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 15636.700000047684,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 15670,
+          "cpuSubmissionMs": 2.4000000953674316
+        },
+        {
+          "startedMs": 15703.300000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 15736.700000047684,
+          "cpuSubmissionMs": 2.700000047683716
+        },
+        {
+          "startedMs": 15770,
+          "cpuSubmissionMs": 2.700000047683716
+        },
+        {
+          "startedMs": 15803.300000071526,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 15835.600000023842,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 15870.100000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 15903.400000095367,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 15936.5,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 15970.200000047684,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 16003.400000095367,
+          "cpuSubmissionMs": 2.5
+        },
+        {
+          "startedMs": 16035.900000095367,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 16069.800000071526,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 16102.400000095367,
+          "cpuSubmissionMs": 2.1999999284744263
+        },
+        {
+          "startedMs": 16136.400000095367,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 16170,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 16203.400000095367,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 16236.700000047684,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 16270,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 16302.600000023842,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 16335.700000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        }
+      ],
+      "screenshot": "desk.jpg"
+    },
+    {
+      "view": "details",
+      "frames": 150,
+      "warmupFrames": 30,
+      "fps": 29.999747900917512,
+      "cpuMedianMs": 1.8000000715255737,
+      "cpuP95Ms": 2.100000023841858,
+      "vertices": 156084,
+      "activeMeshes": 37,
+      "renderSize": [
+        1280,
+        720
+      ],
+      "camera": {
+        "position": [
+          -0.7999999999999994,
+          1.5,
+          1.9999999999999998
+        ],
+        "target": [
+          -3.2,
+          -0.35,
+          -0.8
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 3
+      },
+      "samples": [
+        {
+          "startedMs": 17436.5,
+          "cpuSubmissionMs": 0.7000000476837158
+        },
+        {
+          "startedMs": 17469.800000071526,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 17502.800000071526,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 17536.600000023842,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 17569,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 17603.200000047684,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 17636.5,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 17669.700000047684,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 17703.100000023842,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 17736.600000023842,
+          "cpuSubmissionMs": 1.100000023841858
+        },
+        {
+          "startedMs": 17770,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 17803.300000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 17835.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 17869.900000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 17903.300000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 17936,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 17969.900000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 18003.100000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 18035.900000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 18069.900000095367,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 18103.300000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 18136.600000023842,
+          "cpuSubmissionMs": 2.3000000715255737
+        },
+        {
+          "startedMs": 18170,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 18203.200000047684,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 18236.100000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 18269.900000095367,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 18303.100000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 18336.600000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 18369.100000023842,
+          "cpuSubmissionMs": 1.2000000476837158
+        },
+        {
+          "startedMs": 18403.300000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 18436.5,
+          "cpuSubmissionMs": 1.3000000715255737
+        },
+        {
+          "startedMs": 18470,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 18503.300000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 18536.700000047684,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 18569.800000071526,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 18603.200000047684,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 18636.600000023842,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 18670,
+          "cpuSubmissionMs": 1.2000000476837158
+        },
+        {
+          "startedMs": 18703,
+          "cpuSubmissionMs": 1.4000000953674316
+        },
+        {
+          "startedMs": 18736.5,
+          "cpuSubmissionMs": 1.100000023841858
+        },
+        {
+          "startedMs": 18769.800000071526,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 18803.200000047684,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 18835.800000071526,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 18869.700000047684,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 18903.200000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 18936.600000023842,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 18969.900000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 19003.200000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 19036.5,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 19069.900000095367,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 19103.300000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 19136.600000023842,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 19169.100000023842,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 19203.200000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 19236.5,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 19269.900000095367,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 19303.200000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 19336.5,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 19369.300000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 19402.600000023842,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 19435.700000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 19469,
+          "cpuSubmissionMs": 1.4000000953674316
+        },
+        {
+          "startedMs": 19503.200000047684,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 19536.5,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 19569.800000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 19603.200000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 19636.600000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 19668.900000095367,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 19703.100000023842,
+          "cpuSubmissionMs": 1.100000023841858
+        },
+        {
+          "startedMs": 19736.5,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 19769.400000095367,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 19803.300000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 19836.400000095367,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 19869.200000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 19903.300000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 19936.5,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 19969.800000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 20003.100000023842,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 20036.5,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 20069.800000071526,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 20103.100000023842,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 20136.5,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 20169.800000071526,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 20203.200000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 20236.5,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 20269.800000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 20303.200000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 20336.5,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 20369.600000023842,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 20403.200000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 20436.5,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 20469.900000095367,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 20503.100000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 20536.5,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 20569.800000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 20603.100000023842,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 20636.400000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 20669.900000095367,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 20703.100000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 20736.400000095367,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 20769.800000071526,
+          "cpuSubmissionMs": 2.1999999284744263
+        },
+        {
+          "startedMs": 20802.300000071526,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 20836.5,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 20868.800000071526,
+          "cpuSubmissionMs": 1
+        },
+        {
+          "startedMs": 20903.200000047684,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 20935.600000023842,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 20969.800000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 21002.800000071526,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 21036.5,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 21069.400000095367,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 21102.5,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 21136.5,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 21169.900000095367,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 21203.200000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 21236.5,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 21269.800000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 21303.200000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 21335.5,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 21369,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 21403.200000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        }
+      ],
+      "screenshot": "details.jpg"
+    },
+    {
+      "view": "cabinet",
+      "frames": 150,
+      "warmupFrames": 30,
+      "fps": 30.00201694249579,
+      "cpuMedianMs": 1.7999999523162842,
+      "cpuP95Ms": 2.100000023841858,
+      "vertices": 156084,
+      "activeMeshes": 35,
+      "renderSize": [
+        1280,
+        720
+      ],
+      "camera": {
+        "position": [
+          0,
+          7.000000000000002,
+          -1
+        ],
+        "target": [
+          -11,
+          0,
+          -16
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 9
+      },
+      "samples": [
+        {
+          "startedMs": 22502.900000095367,
+          "cpuSubmissionMs": 0.6999999284744263
+        },
+        {
+          "startedMs": 22536.300000071526,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 22568.800000071526,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 22603,
+          "cpuSubmissionMs": 1.4000000953674316
+        },
+        {
+          "startedMs": 22636.300000071526,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 22669.600000023842,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 22702.600000023842,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 22736.200000047684,
+          "cpuSubmissionMs": 0.2999999523162842
+        },
+        {
+          "startedMs": 22769.600000023842,
+          "cpuSubmissionMs": 0.30000007152557373
+        },
+        {
+          "startedMs": 22803,
+          "cpuSubmissionMs": 0.9000000953674316
+        },
+        {
+          "startedMs": 22835.400000095367,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 22868.900000095367,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 22903.100000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 22935.400000095367,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 22968.900000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 23002.100000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 23035.600000023842,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 23069.300000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 23103,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 23135.600000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 23169.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 23202.200000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 23235.5,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 23268.800000071526,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 23302.900000095367,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 23335.600000023842,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 23369,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 23402.700000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 23435.5,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 23468.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 23503,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 23536.400000095367,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 23569.800000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 23602.100000023842,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 23636.400000095367,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 23669.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 23702.200000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 23735.600000023842,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 23768.700000047684,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 23803.100000023842,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 23836.300000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 23869.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 23903,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 23936.400000095367,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 23968.800000071526,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 24003,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 24035.600000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 24069.200000047684,
+          "cpuSubmissionMs": 1.2000000476837158
+        },
+        {
+          "startedMs": 24102.900000095367,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 24136,
+          "cpuSubmissionMs": 1.4000000953674316
+        },
+        {
+          "startedMs": 24169,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 24203.100000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 24236.5,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 24268.900000095367,
+          "cpuSubmissionMs": 2.0999999046325684
+        },
+        {
+          "startedMs": 24303,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 24336.400000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 24369.300000071526,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 24403,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 24435.400000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 24469.700000047684,
+          "cpuSubmissionMs": 1.2000000476837158
+        },
+        {
+          "startedMs": 24502.900000095367,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 24535.5,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 24569.800000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 24603,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 24636.300000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 24669.600000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 24703,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 24736.300000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 24769.700000047684,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 24803.100000023842,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 24836.300000071526,
+          "cpuSubmissionMs": 1.100000023841858
+        },
+        {
+          "startedMs": 24869.600000023842,
+          "cpuSubmissionMs": 1.2000000476837158
+        },
+        {
+          "startedMs": 24903,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 24936.400000095367,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 24969.5,
+          "cpuSubmissionMs": 1.4000000953674316
+        },
+        {
+          "startedMs": 25002.900000095367,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 25036.400000095367,
+          "cpuSubmissionMs": 1
+        },
+        {
+          "startedMs": 25069.600000023842,
+          "cpuSubmissionMs": 1.2000000476837158
+        },
+        {
+          "startedMs": 25102.100000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 25136.400000095367,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 25168.900000095367,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 25203,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 25236.400000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 25269.600000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 25303,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 25336.300000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 25368.800000071526,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 25402.200000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 25436.300000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 25469.600000023842,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 25502.900000095367,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 25536.300000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 25568.900000095367,
+          "cpuSubmissionMs": 2.0999999046325684
+        },
+        {
+          "startedMs": 25603,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 25636.300000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 25669.600000023842,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 25702.800000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 25736.100000023842,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 25769.600000023842,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 25803,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 25836.400000095367,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 25868.900000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 25903,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 25935.400000095367,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 25969.700000047684,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 26003,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 26036.300000071526,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 26069.700000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 26102.100000023842,
+          "cpuSubmissionMs": 1.3000000715255737
+        },
+        {
+          "startedMs": 26136.200000047684,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 26169.5,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 26202.100000023842,
+          "cpuSubmissionMs": 1.3000000715255737
+        },
+        {
+          "startedMs": 26236.300000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 26269.600000023842,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 26302.900000095367,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 26336.200000047684,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 26369.600000023842,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 26402.700000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 26436.300000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 26469.300000071526,
+          "cpuSubmissionMs": 1.2999999523162842
+        }
+      ],
+      "screenshot": "cabinet.jpg"
+    },
+    {
+      "view": "first-person",
+      "frames": 150,
+      "warmupFrames": 30,
+      "fps": 29.995210849048544,
+      "cpuMedianMs": 3.100000023841858,
+      "cpuP95Ms": 3.600000023841858,
+      "vertices": 156084,
+      "activeMeshes": 72,
+      "renderSize": [
+        1280,
+        720
+      ],
+      "camera": {
+        "position": [
+          4,
+          1,
+          16
+        ],
+        "target": [
+          -3.000000012719373,
+          2.277884592061241e-08,
+          -5.999999843207977
+        ],
+        "fov": 0.95,
+        "minZ": 0.1,
+        "lowerRadiusLimit": null
+      },
+      "samples": [
+        {
+          "startedMs": 27568.700000047684,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 27602.700000047684,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 27635.5,
+          "cpuSubmissionMs": 2.3000000715255737
+        },
+        {
+          "startedMs": 27669,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 27702.800000071526,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 27735.400000095367,
+          "cpuSubmissionMs": 0.7999999523162842
+        },
+        {
+          "startedMs": 27769.400000095367,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 27802.100000023842,
+          "cpuSubmissionMs": 0.8000000715255737
+        },
+        {
+          "startedMs": 27835.300000071526,
+          "cpuSubmissionMs": 0.7999999523162842
+        },
+        {
+          "startedMs": 27869.600000023842,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 27902.200000047684,
+          "cpuSubmissionMs": 2.700000047683716
+        },
+        {
+          "startedMs": 27935.5,
+          "cpuSubmissionMs": 2.9000000953674316
+        },
+        {
+          "startedMs": 27968.900000095367,
+          "cpuSubmissionMs": 3.799999952316284
+        },
+        {
+          "startedMs": 28002.200000047684,
+          "cpuSubmissionMs": 4
+        },
+        {
+          "startedMs": 28036.400000095367,
+          "cpuSubmissionMs": 3.5
+        },
+        {
+          "startedMs": 28068.600000023842,
+          "cpuSubmissionMs": 3.899999976158142
+        },
+        {
+          "startedMs": 28102.800000071526,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 28136.200000047684,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 28169.700000047684,
+          "cpuSubmissionMs": 3.299999952316284
+        },
+        {
+          "startedMs": 28202.300000071526,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 28236.200000047684,
+          "cpuSubmissionMs": 3.399999976158142
+        },
+        {
+          "startedMs": 28269.5,
+          "cpuSubmissionMs": 3.4000000953674316
+        },
+        {
+          "startedMs": 28303,
+          "cpuSubmissionMs": 3.600000023841858
+        },
+        {
+          "startedMs": 28335.600000023842,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 28368.800000071526,
+          "cpuSubmissionMs": 3.5
+        },
+        {
+          "startedMs": 28402.200000047684,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 28436.300000071526,
+          "cpuSubmissionMs": 3.299999952316284
+        },
+        {
+          "startedMs": 28468.900000095367,
+          "cpuSubmissionMs": 2.799999952316284
+        },
+        {
+          "startedMs": 28502.800000071526,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 28536.300000071526,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 28569.600000023842,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 28602.900000095367,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 28636.300000071526,
+          "cpuSubmissionMs": 3.399999976158142
+        },
+        {
+          "startedMs": 28669.600000023842,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 28702.200000047684,
+          "cpuSubmissionMs": 3.5
+        },
+        {
+          "startedMs": 28735.400000095367,
+          "cpuSubmissionMs": 3.5
+        },
+        {
+          "startedMs": 28768.800000071526,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 28802.300000071526,
+          "cpuSubmissionMs": 3.299999952316284
+        },
+        {
+          "startedMs": 28836.100000023842,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 28869.5,
+          "cpuSubmissionMs": 2.9000000953674316
+        },
+        {
+          "startedMs": 28902.300000071526,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 28935.600000023842,
+          "cpuSubmissionMs": 2.600000023841858
+        },
+        {
+          "startedMs": 28968.600000023842,
+          "cpuSubmissionMs": 3.399999976158142
+        },
+        {
+          "startedMs": 29002.900000095367,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 29036.200000047684,
+          "cpuSubmissionMs": 3.299999952316284
+        },
+        {
+          "startedMs": 29069.600000023842,
+          "cpuSubmissionMs": 3.3000000715255737
+        },
+        {
+          "startedMs": 29102.200000047684,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 29135.600000023842,
+          "cpuSubmissionMs": 3.3000000715255737
+        },
+        {
+          "startedMs": 29169.600000023842,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 29202.900000095367,
+          "cpuSubmissionMs": 3.299999952316284
+        },
+        {
+          "startedMs": 29236.300000071526,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 29269.5,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 29302.900000095367,
+          "cpuSubmissionMs": 3.5999999046325684
+        },
+        {
+          "startedMs": 29335.5,
+          "cpuSubmissionMs": 2.700000047683716
+        },
+        {
+          "startedMs": 29369.400000095367,
+          "cpuSubmissionMs": 3.0999999046325684
+        },
+        {
+          "startedMs": 29402.900000095367,
+          "cpuSubmissionMs": 3.5999999046325684
+        },
+        {
+          "startedMs": 29436.200000047684,
+          "cpuSubmissionMs": 3.600000023841858
+        },
+        {
+          "startedMs": 29469.400000095367,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 29502.900000095367,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 29536.100000023842,
+          "cpuSubmissionMs": 3.399999976158142
+        },
+        {
+          "startedMs": 29569.5,
+          "cpuSubmissionMs": 2.9000000953674316
+        },
+        {
+          "startedMs": 29602.200000047684,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 29636.200000047684,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 29669.5,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 29702.800000071526,
+          "cpuSubmissionMs": 3.399999976158142
+        },
+        {
+          "startedMs": 29736.100000023842,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 29769.5,
+          "cpuSubmissionMs": 3.4000000953674316
+        },
+        {
+          "startedMs": 29802.200000047684,
+          "cpuSubmissionMs": 3.5
+        },
+        {
+          "startedMs": 29835.900000095367,
+          "cpuSubmissionMs": 3.299999952316284
+        },
+        {
+          "startedMs": 29869.400000095367,
+          "cpuSubmissionMs": 2.6999999284744263
+        },
+        {
+          "startedMs": 29902.600000023842,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 29936.100000023842,
+          "cpuSubmissionMs": 2.600000023841858
+        },
+        {
+          "startedMs": 29969.5,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 30002.900000095367,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 30036.200000047684,
+          "cpuSubmissionMs": 3.899999976158142
+        },
+        {
+          "startedMs": 30069.300000071526,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 30102.200000047684,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 30135.300000071526,
+          "cpuSubmissionMs": 1
+        },
+        {
+          "startedMs": 30168.700000047684,
+          "cpuSubmissionMs": 2.799999952316284
+        },
+        {
+          "startedMs": 30202.800000071526,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 30235.600000023842,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 30269,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 30302.800000071526,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 30336.200000047684,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 30369.400000095367,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 30402.900000095367,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 30436.200000047684,
+          "cpuSubmissionMs": 3.399999976158142
+        },
+        {
+          "startedMs": 30469.5,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 30502,
+          "cpuSubmissionMs": 2.200000047683716
+        },
+        {
+          "startedMs": 30535.5,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 30569.5,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 30602.700000047684,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 30635.5,
+          "cpuSubmissionMs": 3.3000000715255737
+        },
+        {
+          "startedMs": 30669,
+          "cpuSubmissionMs": 3.5
+        },
+        {
+          "startedMs": 30702.800000071526,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 30735.600000023842,
+          "cpuSubmissionMs": 0.8000000715255737
+        },
+        {
+          "startedMs": 30769.5,
+          "cpuSubmissionMs": 2.9000000953674316
+        },
+        {
+          "startedMs": 30802.800000071526,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 30836.100000023842,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 30868.800000071526,
+          "cpuSubmissionMs": 3.399999976158142
+        },
+        {
+          "startedMs": 30902.5,
+          "cpuSubmissionMs": 3.3000000715255737
+        },
+        {
+          "startedMs": 30935.700000047684,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 30968.600000023842,
+          "cpuSubmissionMs": 3.5
+        },
+        {
+          "startedMs": 31001.900000095367,
+          "cpuSubmissionMs": 3
+        },
+        {
+          "startedMs": 31035.400000095367,
+          "cpuSubmissionMs": 3.399999976158142
+        },
+        {
+          "startedMs": 31068.800000071526,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 31102.800000071526,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 31135.800000071526,
+          "cpuSubmissionMs": 3.600000023841858
+        },
+        {
+          "startedMs": 31169.5,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 31202.600000023842,
+          "cpuSubmissionMs": 3.3000000715255737
+        },
+        {
+          "startedMs": 31236.100000023842,
+          "cpuSubmissionMs": 3.3000000715255737
+        },
+        {
+          "startedMs": 31268.700000047684,
+          "cpuSubmissionMs": 3.100000023841858
+        },
+        {
+          "startedMs": 31302.900000095367,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 31336.100000023842,
+          "cpuSubmissionMs": 3.200000047683716
+        },
+        {
+          "startedMs": 31369.300000071526,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 31402.800000071526,
+          "cpuSubmissionMs": 3.1999999284744263
+        },
+        {
+          "startedMs": 31436.200000047684,
+          "cpuSubmissionMs": 2.799999952316284
+        },
+        {
+          "startedMs": 31468.400000095367,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 31502.700000047684,
+          "cpuSubmissionMs": 2.899999976158142
+        },
+        {
+          "startedMs": 31536,
+          "cpuSubmissionMs": 2.9000000953674316
+        }
+      ],
+      "screenshot": "first-person.jpg"
+    },
+    {
+      "view": "cabinet-close",
+      "frames": 150,
+      "warmupFrames": 30,
+      "fps": 29.998235397196588,
+      "cpuMedianMs": 1.5999999046325684,
+      "cpuP95Ms": 1.899999976158142,
+      "vertices": 156084,
+      "activeMeshes": 23,
+      "renderSize": [
+        1280,
+        720
+      ],
+      "camera": {
+        "position": [
+          -11,
+          -0.9000000000000006,
+          -10
+        ],
+        "target": [
+          -13.5,
+          -2.2,
+          -16.8
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 3
+      },
+      "samples": [
+        {
+          "startedMs": 32635.5,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 32668.800000071526,
+          "cpuSubmissionMs": 0.2999999523162842
+        },
+        {
+          "startedMs": 32702.5,
+          "cpuSubmissionMs": 0.30000007152557373
+        },
+        {
+          "startedMs": 32735.900000095367,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 32769.200000047684,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 32802.5,
+          "cpuSubmissionMs": 0.40000009536743164
+        },
+        {
+          "startedMs": 32835.5,
+          "cpuSubmissionMs": 0.30000007152557373
+        },
+        {
+          "startedMs": 32869.200000047684,
+          "cpuSubmissionMs": 0.2999999523162842
+        },
+        {
+          "startedMs": 32902.5,
+          "cpuSubmissionMs": 0.40000009536743164
+        },
+        {
+          "startedMs": 32935.800000071526,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 32969.200000047684,
+          "cpuSubmissionMs": 0.2999999523162842
+        },
+        {
+          "startedMs": 33002.40000009537,
+          "cpuSubmissionMs": 0.19999992847442627
+        },
+        {
+          "startedMs": 33035.40000009537,
+          "cpuSubmissionMs": 0.19999992847442627
+        },
+        {
+          "startedMs": 33068.700000047684,
+          "cpuSubmissionMs": 0.20000004768371582
+        },
+        {
+          "startedMs": 33102.40000009537,
+          "cpuSubmissionMs": 0.2999999523162842
+        },
+        {
+          "startedMs": 33135.10000002384,
+          "cpuSubmissionMs": 0.7000000476837158
+        },
+        {
+          "startedMs": 33168.800000071526,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 33202.40000009537,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 33236.200000047684,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 33268.90000009537,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 33302.10000002384,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 33336.10000002384,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 33369,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 33402.300000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 33436.10000002384,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 33469.300000071526,
+          "cpuSubmissionMs": 1.1999999284744263
+        },
+        {
+          "startedMs": 33501.90000009537,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 33535.200000047684,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 33569.40000009537,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 33602.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 33636.10000002384,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 33669.300000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 33702.700000047684,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 33736,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 33769.300000071526,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 33802.60000002384,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 33836.10000002384,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 33869.40000009537,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 33902.40000009537,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 33935.700000047684,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 33968.60000002384,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 34002.60000002384,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 34036,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 34069.10000002384,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 34102.700000047684,
+          "cpuSubmissionMs": 1.100000023841858
+        },
+        {
+          "startedMs": 34136.10000002384,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 34168.40000009537,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 34202.700000047684,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 34236,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 34268.700000047684,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 34302.5,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 34335,
+          "cpuSubmissionMs": 1
+        },
+        {
+          "startedMs": 34369.200000047684,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 34402.60000002384,
+          "cpuSubmissionMs": 1.2000000476837158
+        },
+        {
+          "startedMs": 34435.10000002384,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 34469.200000047684,
+          "cpuSubmissionMs": 1.2000000476837158
+        },
+        {
+          "startedMs": 34502.200000047684,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 34535.90000009537,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 34569.40000009537,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 34601.800000071526,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 34636,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 34669.300000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 34702.40000009537,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 34735.90000009537,
+          "cpuSubmissionMs": 1.0999999046325684
+        },
+        {
+          "startedMs": 34768.40000009537,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 34802.300000071526,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 34835.200000047684,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 34869,
+          "cpuSubmissionMs": 1.4000000953674316
+        },
+        {
+          "startedMs": 34902.300000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 34935.90000009537,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 34969.10000002384,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 35001.700000047684,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 35036,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 35069.300000071526,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 35102.60000002384,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 35135.5,
+          "cpuSubmissionMs": 1.3000000715255737
+        },
+        {
+          "startedMs": 35168.800000071526,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 35202.60000002384,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 35235.90000009537,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 35268.800000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 35302.60000002384,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 35335.90000009537,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 35369.300000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 35402.60000002384,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 35435.300000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 35469.10000002384,
+          "cpuSubmissionMs": 1.100000023841858
+        },
+        {
+          "startedMs": 35502.5,
+          "cpuSubmissionMs": 1.100000023841858
+        },
+        {
+          "startedMs": 35535.90000009537,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 35569.300000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 35602.60000002384,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 35635.800000071526,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 35669,
+          "cpuSubmissionMs": 1.2000000476837158
+        },
+        {
+          "startedMs": 35702.700000047684,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 35736,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 35769.200000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 35801.700000047684,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 35835.10000002384,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 35869,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 35902.40000009537,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 35935.60000002384,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 35969.10000002384,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 36002,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 36035.10000002384,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 36069,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 36102.40000009537,
+          "cpuSubmissionMs": 0.8999999761581421
+        },
+        {
+          "startedMs": 36135.90000009537,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 36168.90000009537,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 36202.5,
+          "cpuSubmissionMs": 1.4000000953674316
+        },
+        {
+          "startedMs": 36235.60000002384,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 36269.10000002384,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 36302.700000047684,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 36335.90000009537,
+          "cpuSubmissionMs": 2.0999999046325684
+        },
+        {
+          "startedMs": 36368.40000009537,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 36402.60000002384,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 36435.5,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 36469.10000002384,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 36502.5,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 36535.60000002384,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 36568.700000047684,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 36602.40000009537,
+          "cpuSubmissionMs": 1.5999999046325684
+        }
+      ],
+      "screenshot": "cabinet-close.jpg"
+    },
+    {
+      "view": "bookshelf-close",
+      "frames": 150,
+      "warmupFrames": 30,
+      "fps": 29.996723047783195,
+      "cpuMedianMs": 1.7999999523162842,
+      "cpuP95Ms": 2.100000023841858,
+      "vertices": 156084,
+      "activeMeshes": 30,
+      "renderSize": [
+        1280,
+        720
+      ],
+      "camera": {
+        "position": [
+          13,
+          0.9999999999999996,
+          -11
+        ],
+        "target": [
+          11.5,
+          0.5,
+          -17.3
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 3
+      },
+      "samples": [
+        {
+          "startedMs": 37701.90000009537,
+          "cpuSubmissionMs": 0.6999999284744263
+        },
+        {
+          "startedMs": 37735.60000002384,
+          "cpuSubmissionMs": 0.8000000715255737
+        },
+        {
+          "startedMs": 37769,
+          "cpuSubmissionMs": 1.3000000715255737
+        },
+        {
+          "startedMs": 37802.40000009537,
+          "cpuSubmissionMs": 1.1999999284744263
+        },
+        {
+          "startedMs": 37835.700000047684,
+          "cpuSubmissionMs": 0.6000000238418579
+        },
+        {
+          "startedMs": 37868.90000009537,
+          "cpuSubmissionMs": 0.3999999761581421
+        },
+        {
+          "startedMs": 37902.10000002384,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 37935.5,
+          "cpuSubmissionMs": 0.30000007152557373
+        },
+        {
+          "startedMs": 37968.800000071526,
+          "cpuSubmissionMs": 0.2999999523162842
+        },
+        {
+          "startedMs": 38002.40000009537,
+          "cpuSubmissionMs": 0.5999999046325684
+        },
+        {
+          "startedMs": 38035.40000009537,
+          "cpuSubmissionMs": 1.1999999284744263
+        },
+        {
+          "startedMs": 38069.10000002384,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 38102.300000071526,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 38135,
+          "cpuSubmissionMs": 1.3000000715255737
+        },
+        {
+          "startedMs": 38169,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 38202,
+          "cpuSubmissionMs": 1.4000000953674316
+        },
+        {
+          "startedMs": 38235.90000009537,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 38269.200000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 38301.700000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 38334.90000009537,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 38369.200000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 38401.60000002384,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 38435.300000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 38468.5,
+          "cpuSubmissionMs": 1.4000000953674316
+        },
+        {
+          "startedMs": 38501.90000009537,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 38535.700000047684,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 38568.800000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 38602.10000002384,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 38635.700000047684,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 38668.800000071526,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 38702.5,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 38735.300000071526,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 38769.200000047684,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 38802.5,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 38835.700000047684,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 38868.40000009537,
+          "cpuSubmissionMs": 2.1999999284744263
+        },
+        {
+          "startedMs": 38902.5,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 38935,
+          "cpuSubmissionMs": 2.4000000953674316
+        },
+        {
+          "startedMs": 38968.60000002384,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 39001.800000071526,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 39035.800000071526,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 39068.200000047684,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 39102.5,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 39135.800000071526,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 39169.10000002384,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 39202.40000009537,
+          "cpuSubmissionMs": 2.299999952316284
+        },
+        {
+          "startedMs": 39235.800000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 39268.90000009537,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 39302.5,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 39335.800000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 39369.10000002384,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 39402.40000009537,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 39434.90000009537,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 39469,
+          "cpuSubmissionMs": 1.4000000953674316
+        },
+        {
+          "startedMs": 39502.40000009537,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 39535.700000047684,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 39568.40000009537,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 39602.5,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 39635.10000002384,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 39669.10000002384,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 39702.300000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 39735.800000071526,
+          "cpuSubmissionMs": 2.399999976158142
+        },
+        {
+          "startedMs": 39769,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 39801.800000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 39834.800000071526,
+          "cpuSubmissionMs": 2.100000023841858
+        },
+        {
+          "startedMs": 39868.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 39902.40000009537,
+          "cpuSubmissionMs": 2.0999999046325684
+        },
+        {
+          "startedMs": 39935.700000047684,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 39969.10000002384,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 40002.5,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 40034.90000009537,
+          "cpuSubmissionMs": 2.0999999046325684
+        },
+        {
+          "startedMs": 40068.40000009537,
+          "cpuSubmissionMs": 0.6999999284744263
+        },
+        {
+          "startedMs": 40102.300000071526,
+          "cpuSubmissionMs": 1.1999999284744263
+        },
+        {
+          "startedMs": 40134.90000009537,
+          "cpuSubmissionMs": 0.5
+        },
+        {
+          "startedMs": 40168,
+          "cpuSubmissionMs": 0.9000000953674316
+        },
+        {
+          "startedMs": 40202.300000071526,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 40234.90000009537,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 40268.40000009537,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 40302.40000009537,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 40335.40000009537,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 40369.10000002384,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 40402.40000009537,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 40435.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 40469,
+          "cpuSubmissionMs": 1
+        },
+        {
+          "startedMs": 40502.40000009537,
+          "cpuSubmissionMs": 1.0999999046325684
+        },
+        {
+          "startedMs": 40535.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 40568.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 40602.40000009537,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 40635.800000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 40669.10000002384,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 40702.40000009537,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 40735,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 40768.200000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 40802.40000009537,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 40834.800000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 40868.800000071526,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 40902.5,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 40935.200000047684,
+          "cpuSubmissionMs": 1.2999999523162842
+        },
+        {
+          "startedMs": 40969,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 41002.40000009537,
+          "cpuSubmissionMs": 1.5999999046325684
+        },
+        {
+          "startedMs": 41035.700000047684,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 41068.200000047684,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 41101.40000009537,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 41135.800000071526,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 41169,
+          "cpuSubmissionMs": 1.9000000953674316
+        },
+        {
+          "startedMs": 41202.40000009537,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 41235.800000071526,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 41269,
+          "cpuSubmissionMs": 2
+        },
+        {
+          "startedMs": 41301.90000009537,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 41334.800000071526,
+          "cpuSubmissionMs": 1.899999976158142
+        },
+        {
+          "startedMs": 41368.90000009537,
+          "cpuSubmissionMs": 1.7999999523162842
+        },
+        {
+          "startedMs": 41402.10000002384,
+          "cpuSubmissionMs": 1.8000000715255737
+        },
+        {
+          "startedMs": 41435.800000071526,
+          "cpuSubmissionMs": 1.600000023841858
+        },
+        {
+          "startedMs": 41468.5,
+          "cpuSubmissionMs": 1.3000000715255737
+        },
+        {
+          "startedMs": 41502.200000047684,
+          "cpuSubmissionMs": 1.399999976158142
+        },
+        {
+          "startedMs": 41535.700000047684,
+          "cpuSubmissionMs": 1.5
+        },
+        {
+          "startedMs": 41569,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 41602.300000071526,
+          "cpuSubmissionMs": 1.6999999284744263
+        },
+        {
+          "startedMs": 41635.700000047684,
+          "cpuSubmissionMs": 1.7000000476837158
+        },
+        {
+          "startedMs": 41669,
+          "cpuSubmissionMs": 1.600000023841858
+        }
+      ],
+      "screenshot": "bookshelf-close.jpg"
+    }
+  ],
+  "interactions": {
+    "beforeMovement": [
+      4,
+      1,
+      16
+    ],
+    "afterMovement": [
+      3.626629668790882,
+      1,
+      14.826550398123779
+    ],
+    "settingsOpened": true,
+    "inspectorVisible": true,
+    "inspectorDialogs": []
+  },
+  "errors": [],
+  "warnings": [
+    "The keyword 'slider-vertical' specified to an 'appearance' property is not standardized. It will be removed in the future. Use <input type=range style=\"writing-mode: vertical-lr; direction: rtl\"> instead."
+  ],
+  "playwrightVersion": "1.62.1"
+}
