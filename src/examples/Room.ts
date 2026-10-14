@@ -1,5 +1,5 @@
 import {
-  AbstractMesh, ArcRotateCamera, Color3, Color4, Engine, HDRCubeTexture,
+  AbstractMesh, ArcRotateCamera, Color3, Color4, DefaultRenderingPipeline, Engine, HDRCubeTexture,
   ImageProcessingConfiguration, MeshBuilder, PBRMaterial, Scene,
   SceneLoader, SSAO2RenderingPipeline, TransformNode, UniversalCamera, Vector3,
 } from "@babylonjs/core";
@@ -8,8 +8,9 @@ import { RoomFurnishings } from "./RoomFurnishings";
 import { RoomLighting } from "./RoomLighting";
 import { mappedMaterial, tileMaterial } from "./RoomMaterials";
 import { placeFurniture } from "./RoomFurnitureAssets";
+import { createRoomFinishing } from "./RoomFinishing";
 
-export type RoomView = "overview" | "reading" | "desk" | "cabinet" | "first-person";
+export type RoomView = "overview" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.55 };
 
 /** A furnished study with cutaway presets and an enclosed first-person view. */
@@ -21,15 +22,17 @@ export class RoomScene {
   private readonly interiorShell: TransformNode;
   private readonly lighting: RoomLighting;
   private readonly contactShadows?: SSAO2RenderingPipeline;
+  private readonly finishing: DefaultRenderingPipeline;
   private disposed = false;
   private controlsEnabled = true;
 
   constructor(private readonly canvas: HTMLCanvasElement) {
     this.engine = new Engine(canvas, true, { stencil: true });
-    this.engine.setHardwareScalingLevel(Math.max(1, window.devicePixelRatio / 1.5));
+    this.engine.setHardwareScalingLevel(1);
     this.engine.maxFPS = 30;
     this.scene = new Scene(this.engine);
-    this.scene.clearColor = new Color4(0.14, 0.17, 0.18, 1);
+    // The final image-processing pass expects a linear clear colour.
+    this.scene.clearColor = new Color4(0.14, 0.17, 0.18, 1).toLinearSpace();
     this.scene.ambientColor = new Color3(0.08, 0.075, 0.065);
     this.scene.skipPointerMovePicking = true;
     this.scene.imageProcessingConfiguration.toneMappingEnabled = true;
@@ -88,6 +91,7 @@ export class RoomScene {
       this.contactShadows.bilateralSoften = 0.5;
       this.contactShadows.textureSamples = 2;
     }
+    this.finishing = createRoomFinishing(this.scene, [this.camera, this.firstPersonCamera]);
 
     const furnishings = new RoomFurnishings(this.scene);
     this.createArchitecture(furnishings);
@@ -145,6 +149,7 @@ export class RoomScene {
       overview: { position: new Vector3(42, 31, 45), target: new Vector3(-1, -2, -1) },
       reading: { position: new Vector3(23, 10, 25), target: new Vector3(9, -1.5, 8) },
       desk: { position: new Vector3(13, 12, 16), target: new Vector3(-7, -1, -3) },
+      details: { position: new Vector3(-0.8, 1.5, 2), target: new Vector3(-3.2, -0.35, -0.8) },
       cabinet: { position: new Vector3(0, 7, -1), target: new Vector3(-11, 0, -16) },
     };
     if (firstPerson) {
@@ -153,6 +158,7 @@ export class RoomScene {
       this.scene.activeCamera = this.firstPersonCamera;
     } else {
       const selected = views[view];
+      this.camera.lowerRadiusLimit = view === "details" ? 3 : 9;
       this.camera.setTarget(selected.target);
       this.camera.setPosition(selected.position);
       this.scene.activeCamera = this.camera;
@@ -302,6 +308,7 @@ export class RoomScene {
     window.removeEventListener("resize", this.resize);
     document.removeEventListener("visibilitychange", this.visibilityChanged);
     this.engine.stopRenderLoop();
+    this.finishing.dispose();
     this.contactShadows?.dispose(true);
     this.scene.dispose();
     this.engine.dispose();

@@ -26,12 +26,13 @@ const { RoomScene } = loadSource("Room");
 const { RoomLighting } = loadSource("RoomLighting");
 const { placeFurniture } = loadSource("RoomFurnitureAssets");
 const { mappedMaterial, tileMaterial } = loadSource("RoomMaterials");
-const { beveledBox, curtainPanel, ficusLeaf } = loadSource("RoomDetailGeometry");
+const { beveledBox, creasedLetter, curtainPanel, ficusLeaf } = loadSource("RoomDetailGeometry");
+const { buildWearMask } = loadSource("RoomSurfaceDetails");
 
 function createScene(t) {
   const engine = new babylon.NullEngine();
   // Canvas drawing is irrelevant to geometry; use the real meshes, materials and glTF loader.
-  const context = new Proxy({}, { get: (_, key) => key === "createLinearGradient"
+  const context = new Proxy({}, { get: (_, key) => ["createLinearGradient", "createRadialGradient"].includes(key)
     ? () => ({ addColorStop() {} }) : () => {} });
   engine.createCanvas = () => ({ width: 1, height: 1, getContext: () => context, remove() {} });
   engine.getDeltaTime = () => 1000 / 30;
@@ -336,5 +337,72 @@ test("desk accessories, tea tray and small furniture rest on their actual suppor
   for (const name of ["side-table-base", "ottoman-foot"]) {
     assert.ok(Math.abs(bounds(scene.getMeshByName(name)).minimumWorld.y + 5) < 0.00001,
       `${name} must touch the floor`);
+  }
+});
+
+test("wear masks preserve tangent normals and keep surface variation subtle and reproducible", () => {
+  for (const kind of ["wood", "brass", "cover"]) {
+    const { size, pixels } = buildWearMask(kind);
+    assert.deepEqual(pixels, buildWearMask(kind).pixels, "wear must remain stable across reloads");
+    assert.equal(pixels.length, size * size * 4);
+    let roughnessMin = 255, roughnessMax = 0;
+    for (let i = 0; i < pixels.length; i += 4) {
+      const nx = pixels[i + 3] / 255 * 2 - 1, ny = pixels[i + 1] / 255 * 2 - 1;
+      assert.ok(Math.sqrt(1 - nx * nx - ny * ny) > 0.999,
+        "detail maps must not flatten or bend the original normal, including materials without a bump map");
+      assert.ok(pixels[i] >= 120 && pixels[i] <= 150, "albedo variation must be restrained");
+      roughnessMin = Math.min(roughnessMin, pixels[i + 2]);
+      roughnessMax = Math.max(roughnessMax, pixels[i + 2]);
+    }
+    assert.ok(roughnessMin >= 110 && roughnessMax <= 160);
+    assert.ok(roughnessMax - roughnessMin > 12, "roughness must contain actual local wear");
+  }
+});
+
+test("creased letter rests on the blotter and curls only a small distance above it", t => {
+  const scene = createScene(t), furnishings = new RoomFurnishings(scene);
+  furnishings.writingTable();
+  const letter = scene.getMeshByName("letter"), blotter = scene.getMeshByName("desk-blotter");
+  letter.computeWorldMatrix(true); blotter.computeWorldMatrix(true);
+  const paperBounds = letter.getBoundingInfo().boundingBox;
+  const support = blotter.getBoundingInfo().boundingBox.maximumWorld.y;
+  assert.ok(paperBounds.minimumWorld.y >= support && paperBounds.minimumWorld.y - support < 0.003);
+  assert.ok(paperBounds.maximumWorld.y - support > 0.04 && paperBounds.maximumWorld.y - support < 0.07);
+  assert.ok(letter.material.albedoTexture && letter.material.roughness > 0.9);
+  const mesh = creasedLetter("check-normals", scene);
+  const positions = mesh.getVerticesData(babylon.VertexBuffer.PositionKind);
+  const normals = mesh.getVerticesData(babylon.VertexBuffer.NormalKind);
+  assert.ok([...positions, ...normals].every(Number.isFinite));
+  assert.ok(normals[1] > 0.9, "the top side must face the room lights");
+});
+
+test("detail view permits close inspection and restores overview zoom limits on exit", t => {
+  const scene = createScene(t), room = Object.create(RoomScene.prototype);
+  room.camera = new babylon.ArcRotateCamera("orbit", 0.8, 1.08, 66, babylon.Vector3.Zero(), scene);
+  room.firstPersonCamera = new babylon.UniversalCamera("walking", new babylon.Vector3(4, 1, 16), scene);
+  room.interiorShell = new babylon.TransformNode("shell", scene);
+  room.interiorShell.setEnabled(false);
+  room.scene = scene; room.controlsEnabled = false;
+  room.canvas = { setAttribute() {} };
+  let refreshed = 0;
+  room.lighting = { refreshShadows() { refreshed++; } };
+  const previousDocument = global.document;
+  global.document = { querySelector: () => null, querySelectorAll: () => [] };
+  try {
+    room.setView("details");
+    room.camera._checkInputs();
+    assert.equal(scene.activeCamera, room.camera);
+    assert.ok(room.camera.radius < 6 && room.camera.lowerRadiusLimit <= room.camera.radius,
+      "the close preset must not be pushed away by the general room zoom limit");
+    room.setView("overview");
+    assert.equal(room.camera.lowerRadiusLimit, 9);
+    room.setView("first-person");
+    assert.equal(scene.activeCamera, room.firstPersonCamera);
+    assert.ok(room.interiorShell.isEnabled() && refreshed === 1);
+    room.setView("details");
+    assert.ok(!room.interiorShell.isEnabled() && refreshed === 2);
+  } finally {
+    if (previousDocument === undefined) delete global.document;
+    else global.document = previousDocument;
   }
 });

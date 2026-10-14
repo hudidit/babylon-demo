@@ -1,10 +1,11 @@
 import {
-  AbstractMesh, Color3, DynamicTexture, Material, Mesh, MeshBuilder, Scene, StandardMaterial, Texture,
+  AbstractMesh, Color3, DynamicTexture, Material, Mesh, MeshBuilder, PBRMaterial, Scene, StandardMaterial, Texture,
   TransformNode, Vector3, VertexBuffer, VertexData,
 } from "@babylonjs/core";
 import { measureBookshelf } from "./BookshelfLayout";
 import { linenMaterial, mappedMaterial, surfaceMaterial } from "./RoomMaterials";
-import { beveledBox, curtainPanel, ficusLeaf } from "./RoomDetailGeometry";
+import { beveledBox, creasedLetter, curtainPanel, ficusLeaf } from "./RoomDetailGeometry";
+import { applyWear, letterTexture, stableRandom, wearTexture } from "./RoomSurfaceDetails";
 
 type Triple = [number, number, number];
 
@@ -58,6 +59,25 @@ export class RoomFurnishings {
     pages.update();
     const paper = surfaceMaterial("book-paper", scene, "#ffffff", 0.92);
     paper.albedoTexture = pages; this.materials.set("book-paper", paper);
+    const woodWear = wearTexture("handled-wood", scene, "wood");
+    const wood = this.materials.get("wood") as PBRMaterial;
+    this.materials.set("desktop-wood", applyWear(wood.clone("desktop-wood")!, woodWear));
+    this.materials.set("coffee-wood", applyWear(wood.clone("coffee-wood")!, woodWear, 0.13, 0.28));
+    applyWear(this.materials.get("brass") as PBRMaterial,
+      wearTexture("handled-brass", scene, "brass"), 0.12, 0.3);
+    const covers = wearTexture("cloth-book-covers", scene, "cover");
+    for (const color of ["burgundy", "moss", "navy", "cushion", "rust", "cream"]) {
+      for (let variant = 0; variant < 2; variant++) {
+        const cover = (this.materials.get(color) as PBRMaterial)
+          .clone(`book-${color}-${variant}`)!;
+        cover.albedoColor = cover.albedoColor.scale(variant ? 1.035 : 0.955);
+        cover.roughness = variant ? 0.86 : 0.78;
+        this.materials.set(cover.name, applyWear(cover, covers, variant ? 0.24 : 0.16, 0.3));
+      }
+    }
+    const letter = surfaceMaterial("letter-paper", scene, "#ffffff", 0.96);
+    letter.albedoTexture = letterTexture(scene);
+    this.materials.set("letter-paper", letter);
   }
 
   box(name: string, size: Triple, position: Triple, material: string, parent?: TransformNode) {
@@ -86,6 +106,16 @@ export class RoomFurnishings {
     for (let i = 0; i < positions.length; i++) {
       const value = positions[i];
       positions[i] = Math.sign(value) * Math.pow(Math.abs(value) * 2, 0.24) * 0.5;
+    }
+    for (let i = 0; i < positions.length; i += 3) {
+      const x = positions[i], y = positions[i + 1], z = positions[i + 2];
+      if (name === "seat-cushion" && y > 0) {
+        // Wear compresses only the upper stuffing; the supported bottom stays unchanged.
+        positions[i + 1] -= y * 0.08 * Math.exp(-12 * ((x + 0.045) ** 2 + (z - 0.025) ** 2));
+      }
+      if (name === "chair-back-pad" && z < 0) {
+        positions[i + 2] += -z * 0.06 * Math.exp(-10 * ((x - 0.04) ** 2 + y ** 2));
+      }
     }
     const normals: number[] = [];
     VertexData.ComputeNormals(positions, mesh.getIndices()!, normals);
@@ -235,13 +265,24 @@ export class RoomFurnishings {
     diamond(512, 512, 110, "#344a40"); diamond(512, 512, 58, "#bd885d");
     c.globalAlpha = 0.1; c.strokeStyle = "#f2d8ab"; c.lineWidth = 1;
     for (let y = 0; y < 1024; y += 3) { c.beginPath(); c.moveTo(0, y); c.lineTo(1024, y); c.stroke(); }
-    c.globalAlpha = 1; texture.update();
-    const mat = new StandardMaterial("rug", this.scene);
-    mat.diffuseTexture = texture; mat.specularColor = Color3.Black(); this.materials.set("rug", mat);
+    c.globalAlpha = 1;
+    const fade = c.createRadialGradient(512, 512, 80, 512, 512, 600);
+    fade.addColorStop(0, "rgba(205,185,150,0.2)"); fade.addColorStop(1, "rgba(205,185,150,0)");
+    c.fillStyle = fade; c.fillRect(0, 0, 1024, 1024);
+    texture.update();
+    const mat = linenMaterial("rug", this.scene, "#ffffff", 18);
+    mat.albedoTexture = texture; mat.roughness = 0.95; mat.sheen.intensity = 0.12;
+    this.materials.set("rug", mat);
     this.box("persian-rug", [14.5, 0.055, 13], [-3, -4.95, -0.3], "rug");
+    const fringeVariation = stableRandom(357);
     for (let i = 0; i < 38; i++) {
       const x = -9.9 + i * 0.37;
-      [-7, 6.4].forEach(z => this.box("rug-fringe", [0.1, 0.025, 0.5], [x, -4.93, z], "cream"));
+      [-1, 1].forEach(side => {
+        const length = 0.4 + fringeVariation() * 0.2;
+        const z = (side < 0 ? -6.8 : 6.2) + side * (length / 2 - 0.04);
+        this.box("rug-fringe", [0.085, 0.025, length], [x, -4.95, z], "cream")
+          .rotation.x = side * Math.atan2(0.055, length);
+      });
     }
     this.cylinder("reading-rug", 0.05, 13, [10, -4.95, 10], "cream");
     this.ring("reading-rug-border", 12.5, 0.09, [10, -4.9, 10], "cushion");
@@ -249,7 +290,7 @@ export class RoomFurnishings {
 
   private writingTable() {
     const g = this.group("central-writing-table", [-3, -5, -1]);
-    this.box("table-top", [8.3, 0.4, 6], [0, 4.4, 0], "wood", g);
+    this.box("table-top", [8.3, 0.4, 6], [0, 4.4, 0], "desktop-wood", g);
     this.box("table-edge-step", [8.15, 0.1, 5.85], [0, 4.2, 0], "darkWood", g);
     [-2.55, 2.55].forEach(z => this.box("table-apron", [7.7, 0.7, 0.2], [0, 3.85, z], "darkWood", g));
     [-3.75, 3.75].forEach(x => this.box("table-apron", [0.2, 0.7, 4.9], [x, 3.85, 0], "darkWood", g));
@@ -263,7 +304,7 @@ export class RoomFurnishings {
       this.cylinder("brass-table-foot", 0.3, 0.4, [x, 0.15, z], "brass", g);
     }));
     this.box("desk-blotter", [4.1, 0.035, 2.8], [0, 4.62, 0.45], "deskLeather", g);
-    const letter = this.box("letter", [1.5, 0.02, 2], [-0.5, 4.66, 0.35], "paper", g);
+    const letter = this.place(creasedLetter("letter", this.scene), [-0.5, 4.639, 0.35], "letter-paper", g);
     letter.rotation.y = -0.2;
     this.box("pen", [0.07, 0.07, 1.5], [0.7, 4.7, 0.35], "brass", g).rotation.y = -0.25;
     this.bookStack([-2.5, 4.6, -1.5], g);
@@ -307,7 +348,7 @@ export class RoomFurnishings {
 
   private coffeeTable() {
     const g = this.group("oval-coffee-table", [9.5, -5, 12.5]);
-    const top = this.cylinder("oval-walnut-top", 0.3, 4.8, [0, 2.15, 0], "wood", g);
+    const top = this.cylinder("oval-walnut-top", 0.3, 4.8, [0, 2.15, 0], "coffee-wood", g);
     top.scaling.x = 1.45; top.scaling.z = 0.8;
     const edge = this.cylinder("coffee-table-edge", 0.09, 4.65, [0, 1.98, 0], "darkWood", g);
     edge.scaling.x = 1.45; edge.scaling.z = 0.8;
@@ -377,7 +418,9 @@ export class RoomFurnishings {
         if (edge + width > max.x - (hasVase ? 1.1 : 0.28)) break;
         const x = edge + width / 2;
         const bottom = min.y + 0.015;
-        this.box("shelf-book", [width, height, depth], [x, bottom + height / 2, z], colors[(i + row) % colors.length]);
+        const color = colors[(i + row) % colors.length];
+        const cover = `book-${color}-${(Math.floor(i / colors.length) + row) % 2}`;
+        this.box("shelf-book", [width, height, depth], [x, bottom + height / 2, z], cover);
         [height * 0.15, height * 0.85].forEach(y => this.box("book-spine-gilt", [width * 0.8, height * 0.02, 0.02],
           [x, bottom + y, z + depth / 2 + 0.01], "brass"));
         edge += width + 0.012 + ((i + row) % 3) * 0.006 + (i % 9 === 8 ? 0.1 : 0);
@@ -397,6 +440,7 @@ export class RoomFurnishings {
     const g = this.group("stacked-books", position);
     g.parent = parent || null;
     ["burgundy", "navy", "cushion"].forEach((color, i) => {
+      const cover = `book-${color}-${(Math.round(position[0] * 7 + position[2] * 5) + i) & 1}`;
       const book = this.group("closed-book", [0, i * 0.265, 0], (i - 1) * 0.13);
       book.parent = g;
       const pages = this.box("book-pages", [1.7, 0.18, 1.15], [0, 0.1325, 0], "book-paper", book);
@@ -410,8 +454,8 @@ export class RoomFurnishings {
         }
       }
       pages.setVerticesData(VertexBuffer.UVKind, uvs);
-      [0.0225, 0.2425].forEach(y => this.box("book-cover", [1.85, 0.045, 1.26], [0, y, 0], color, book));
-      this.box("book-spine", [1.85, 0.22, 0.06], [0, 0.1325, -0.61], color, book);
+      [0.0225, 0.2425].forEach(y => this.box("book-cover", [1.85, 0.045, 1.26], [0, y, 0], cover, book));
+      this.box("book-spine", [1.85, 0.22, 0.06], [0, 0.1325, -0.61], cover, book);
     });
   }
 

@@ -1,0 +1,95 @@
+{
+  "baselineCommit": "fd32f40",
+  "viewport": [
+    1280,
+    720
+  ],
+  "renderSize": [
+    1280,
+    720
+  ],
+  "frames": 150,
+  "warmupFrames": 30,
+  "comparisonDetailsPose": {
+    "position": [
+      1.6,
+      2.8,
+      4.7
+    ],
+    "target": [
+      -3,
+      -0.35,
+      -1
+    ],
+    "minRadius": 9
+  },
+  "records": [
+    {
+      "stage": "before",
+      "view": "overview",
+      "fps": 30.12581959932198,
+      "cpuMedianMs": 3,
+      "cpuP95Ms": 3.5,
+      "vertices": 155326,
+      "activeMeshes": 57,
+      "renderWidth": 1280,
+      "renderHeight": 720
+    },
+    {
+      "stage": "before",
+      "view": "details",
+      "fps": 30.022453768485853,
+      "cpuMedianMs": 2.3000000715255737,
+      "cpuP95Ms": 2.8000000715255737,
+      "vertices": 155326,
+      "activeMeshes": 32,
+      "renderWidth": 1280,
+      "renderHeight": 720
+    },
+    {
+      "stage": "before",
+      "view": "desk",
+      "fps": 29.9884078419863,
+      "cpuMedianMs": 2.700000047683716,
+      "cpuP95Ms": 3.100000023841858,
+      "vertices": 155326,
+      "activeMeshes": 43,
+      "renderWidth": 1280,
+      "renderHeight": 720
+    },
+    {
+      "stage": "after",
+      "view": "details",
+      "fps": 29.98462972725835,
+      "cpuMedianMs": 2.600000023841858,
+      "cpuP95Ms": 3.1999999284744263,
+      "vertices": 156084,
+      "activeMeshes": 37,
+      "renderWidth": 1280,
+      "renderHeight": 720
+    },
+    {
+      "stage": "after",
+      "view": "desk",
+      "fps": 29.986140859266726,
+      "cpuMedianMs": 3,
+      "cpuP95Ms": 3.5999999046325684,
+      "vertices": 156084,
+      "activeMeshes": 48,
+      "renderWidth": 1280,
+      "renderHeight": 720
+    },
+    {
+      "stage": "after",
+      "view": "overview",
+      "fps": 30.00126055716627,
+      "cpuMedianMs": 3.5,
+      "cpuP95Ms": 4,
+      "vertices": 156084,
+      "activeMeshes": 71,
+      "renderWidth": 1280,
+      "renderHeight": 720
+    }
+  ],
+  "note": "Short same-machine samples. CPU submission time is not GPU completion. Both sides use matched native viewport resolution. Detail comparison uses the original fixed pose; the delivered detail preset is closer. Temporary instrumentation is removed before delivery."
+}

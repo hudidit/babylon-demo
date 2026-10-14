@@ -72,6 +72,30 @@ export function ficusLeaf(name: string, length: number, width: number, scene: Sc
   return apply(name, positions, normals, uvs, indices, scene);
 }
 
+/** A mostly supported sheet with a small fold and one softly curled corner. */
+export function creasedLetter(name: string, scene: Scene) {
+  const positions: number[] = [], normals: number[] = [], uvs: number[] = [], indices: number[] = [];
+  const columns = 16, rows = 22;
+  for (let row = 0; row <= rows; row++) {
+    const v = row / rows;
+    for (let column = 0; column <= columns; column++) {
+      const u = column / columns;
+      const curl = Math.pow(u, 10) * Math.pow(1 - v, 10) * 0.055;
+      const fold = Math.exp(-Math.pow((v - 0.5) / 0.025, 2)) * Math.sin(u * Math.PI) * 0.007;
+      positions.push((u - 0.5) * 1.5, curl + fold, (v - 0.5) * 2);
+      uvs.push(u, v);
+    }
+  }
+  gridIndices(columns, rows, indices);
+  // The generic grid is used for vertical cloth; this X/Z sheet needs upward front faces.
+  for (let i = 0; i < indices.length; i += 3) {
+    [indices[i + 1], indices[i + 2]] = [indices[i + 2], indices[i + 1]];
+  }
+  VertexData.ComputeNormals(positions, indices, normals);
+  VertexData._ComputeSides(Mesh.DOUBLESIDE, positions, indices, normals, uvs);
+  return apply(name, positions, normals, uvs, indices, scene);
+}
+
 function gridIndices(columns: number, rows: number, indices: number[]) {
   for (let y = 0; y < rows; y++) for (let x = 0; x < columns; x++) {
     const a = y * (columns + 1) + x, b = a + 1, c = a + columns + 1, d = c + 1;
