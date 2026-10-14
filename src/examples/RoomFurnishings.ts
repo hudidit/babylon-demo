@@ -6,6 +6,7 @@ import { measureBookshelf } from "./BookshelfLayout";
 import { linenMaterial, mappedMaterial, surfaceMaterial } from "./RoomMaterials";
 import { beveledBox, creasedLetter, curtainPanel, ficusLeaf } from "./RoomDetailGeometry";
 import { applyWear, letterTexture, stableRandom, wearTexture } from "./RoomSurfaceDetails";
+import { partitionMergedCollisions } from "./RoomCollisions";
 
 type Triple = [number, number, number];
 
@@ -642,12 +643,14 @@ export class RoomFurnishings {
     });
     const merged: Mesh[] = [];
     groups.forEach(({ parts, material, castsShadows }) => {
+      const collisionParts = parts.map(part => ({ vertices: part.getTotalVertices(), indices: part.getTotalIndices() }));
       const mesh = parts.length === 1 ? parts[0] : Mesh.MergeMeshes(parts, true, true)!;
       mesh.name = "study-" + material.name + (castsShadows ? "" : "-surface");
       mesh.metadata = { castsShadows };
       mesh.receiveShadows = true;
       mesh.isPickable = false;
       mesh.freezeWorldMatrix();
+      partitionMergedCollisions(mesh, collisionParts);
       merged.push(mesh);
     });
     return merged;

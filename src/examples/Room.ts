@@ -29,7 +29,7 @@ export class RoomScene {
   constructor(private readonly canvas: HTMLCanvasElement) {
     this.engine = new Engine(canvas, true, { stencil: true });
     this.engine.setHardwareScalingLevel(1);
-    this.engine.maxFPS = 30;
+    // Render at the display refresh rate; leave Engine.maxFPS uncapped for high-refresh screens.
     this.scene = new Scene(this.engine);
     // The final image-processing pass expects a linear clear colour.
     this.scene.clearColor = new Color4(0.14, 0.17, 0.18, 1).toLinearSpace();

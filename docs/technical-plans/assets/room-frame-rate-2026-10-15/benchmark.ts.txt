@@ -1,0 +1,113 @@
+import { ArcRotateCamera, EngineInstrumentation, ShadowGenerator, Vector3 } from "@babylonjs/core";
+import { RoomScene, RoomView } from "./examples/Room";
+
+// Archived diagnostic instrumentation. Display was off; these callbacks cannot validate displayed FPS.
+// Removed from the delivered application. Do not run unless testing is authorized again.
+export function installRoomBenchmark(room: RoomScene) {
+  const profile = new URLSearchParams(location.search).get("profile");
+  if (!profile) return;
+  const engine = room.engine;
+  const scene = room.scene;
+  const ao = (room as any).contactShadows;
+  const windowShadow = scene.getLightByName("window-daylight")!.getShadowGenerator() as ShadowGenerator;
+  if (profile === "original") engine.maxFPS = 30;
+  if (profile === "legacy-collisions") scene.getCollidingSubMeshCandidates = mesh =>
+    ({ data: mesh.subMeshes, length: mesh.subMeshes.length });
+  const instrumentation = new EngineInstrumentation(engine);
+  instrumentation.captureGPUFrameTime = true;
+  const gl = (engine as any)._gl as WebGL2RenderingContext;
+  const debug = gl.getExtension("WEBGL_debug_renderer_info");
+  const records: any[] = [];
+  const report: any = {
+    baselineCommit: "5f5ca9a", profile, userAgent: navigator.userAgent,
+    renderer: debug ? gl.getParameter(debug.UNMASKED_RENDERER_WEBGL) : engine.getGlInfo().renderer,
+    webGLVersion: engine.webGLVersion, devicePixelRatio,
+    viewport: [innerWidth, innerHeight], maxFPS: engine.maxFPS ?? null,
+    hardwareScaling: engine.getHardwareScalingLevel(),
+    method: "60 warmup render frames + 240 measured render frames; FPS from render start timestamps; CPU is scene submission; GPU timer query deduplicated by counter count; Inspector closed",
+    records,
+  };
+  const panel = document.createElement("div");
+  panel.id = "benchmark-panel";
+  panel.style.cssText = "position:fixed;left:12px;top:120px;z-index:10000;color:#fff;background:#111d;padding:8px;font:12px monospace;max-width:460px";
+  const result = document.createElement("pre");
+  result.id = "benchmark-result";
+  result.style.cssText = "max-height:180px;overflow:auto;white-space:pre-wrap";
+  const raw = document.createElement("script");
+  raw.type = "application/json";
+  raw.id = "benchmark-json";
+  const summary = (values: number[]) => {
+    const sorted = [...values].sort((a, b) => a - b);
+    return values.length ? { count: values.length, median: sorted[Math.floor(sorted.length / 2)],
+      p95: sorted[Math.ceil(sorted.length * .95) - 1], max: sorted[sorted.length - 1] } : null;
+  };
+  const measure = (view: RoomView, moving: boolean) => new Promise<void>(resolve => {
+    room.setView(view);
+    const camera = scene.activeCamera!;
+    const samples: {startedMs: number; cpuMs: number}[] = [];
+    const gpu: number[] = [], fullCPU: number[] = [];
+    let count = 0, started = 0, frameStarted = 0, lastGPUCount = instrumentation.gpuFrameTimeCounter.count;
+    const begin = engine.onBeginFrameObservable.add(() => frameStarted = performance.now());
+    const before = scene.onBeforeRenderObservable.add(() => {
+      started = performance.now();
+      if (moving) {
+        if (camera instanceof ArcRotateCamera) camera.alpha += engine.getDeltaTime() * .00012;
+        else {
+          const direction = camera.getDirection(Vector3.Forward());
+          direction.y = 0;
+          (camera as any).cameraDirection.addInPlace(direction.normalize().scale(count < 150 ? .035 : -.035));
+        }
+      }
+    });
+    const after = scene.onAfterRenderObservable.add(() => {
+      count++;
+      if (count > 60) samples.push({startedMs: started, cpuMs: performance.now() - started});
+    });
+    const end = engine.onEndFrameObservable.add(() => {
+      if (count > 60) fullCPU.push(performance.now() - frameStarted);
+      const counter = instrumentation.gpuFrameTimeCounter;
+      if (counter.count !== lastGPUCount) {
+        if (count > 60) gpu.push(counter.current / 1e6);
+        lastGPUCount = counter.count;
+      }
+      if (count < 300) return;
+      scene.onBeforeRenderObservable.remove(before);
+      scene.onAfterRenderObservable.remove(after);
+      engine.onEndFrameObservable.remove(end);
+      engine.onBeginFrameObservable.remove(begin);
+      const intervals = samples.slice(1).map((frame, i) => frame.startedMs - samples[i].startedMs);
+      const record = {
+        view, moving, renderSize: [engine.getRenderWidth(), engine.getRenderHeight()],
+        fps: (samples.length - 1) * 1000 / (samples[samples.length - 1].startedMs - samples[0].startedMs),
+        frameIntervalMs: summary(intervals), over25msPercent: intervals.filter(ms => ms > 25).length / intervals.length * 100,
+        cpuSubmissionMs: summary(samples.map(frame => frame.cpuMs)), fullCpuMs: summary(fullCPU), gpuMs: summary(gpu),
+        vertices: scene.getTotalVertices(), activeMeshes: scene.getActiveMeshes().length,
+        ao: ao ? { samples: ao.samples, textureSamples: ao.textureSamples, bilateralSamples: ao.bilateralSamples } : null,
+        windowShadow: { filter: windowShadow.filter, quality: windowShadow.filteringQuality }, samples, gpu,
+      };
+      records.push(record);
+      raw.textContent = JSON.stringify(report);
+      result.textContent = records.map(r => `${r.view}${r.moving ? ' moving' : ''}: ${r.fps.toFixed(2)} fps; interval P95 ${r.frameIntervalMs.p95.toFixed(2)} ms; GPU ${r.gpuMs?.median.toFixed(2)} ms`).join('\n');
+      resolve();
+    });
+  });
+  for (const [label, views, moving] of [
+    ["测当前视角", [] as RoomView[], false],
+    ["测六视角", ["overview", "reading", "desk", "details", "cabinet", "first-person"] as RoomView[], false],
+    ["测运动", ["overview", "first-person"] as RoomView[], true],
+  ] as const) {
+    const button = document.createElement("button");
+    button.textContent = label;
+    button.addEventListener("click", async () => {
+      const buttons = panel.querySelectorAll("button");
+      buttons.forEach(b => b.disabled = true);
+      result.textContent = "采样中";
+      const current = document.querySelector<HTMLButtonElement>('[data-view][aria-pressed="true"]')?.dataset.view as RoomView;
+      for (const view of views.length ? views : [current || "overview"]) await measure(view, moving);
+      buttons.forEach(b => b.disabled = false);
+    });
+    panel.appendChild(button);
+  }
+  panel.append(profile, result, raw);
+  document.body.appendChild(panel);
+}

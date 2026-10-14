@@ -28,6 +28,91 @@ const { placeFurniture } = loadSource("RoomFurnitureAssets");
 const { mappedMaterial, tileMaterial } = loadSource("RoomMaterials");
 const { beveledBox, creasedLetter, curtainPanel, ficusLeaf } = loadSource("RoomDetailGeometry");
 const { buildWearMask } = loadSource("RoomSurfaceDetails");
+const { partitionMergedCollisions } = loadSource("RoomCollisions");
+
+function sweep(scene, position, displacement, radius = new babylon.Vector3(0.65, 2.8, 0.65)) {
+  const collider = scene.collisionCoordinator.createCollider();
+  collider._radius = radius;
+  let testedIndices = 0;
+  const collide = collider._collide;
+  collider._collide = function (...args) {
+    testedIndices += args[4] - args[3];
+    return collide.apply(this, args);
+  };
+  let result;
+  scene.collisionCoordinator.getNewPosition(position, displacement, collider, 3, null,
+    (_, finalPosition) => result = finalPosition.clone(), 0);
+  return { position: result, testedIndices };
+}
+
+test("collision partitions preserve swept collisions and cull distant geometry without extra draw calls", t => {
+  const scene = createScene(t);
+  const parts = Array.from({ length: 20 }, (_, i) => {
+    const mesh = babylon.MeshBuilder.CreateSphere("obstacle", { diameter: 3, segments: 24 }, scene);
+    mesh.position.set(i * 8, 0, 4);
+    return mesh;
+  });
+  const ranges = parts.map(part => ({ vertices: part.getTotalVertices(), indices: part.getTotalIndices() }));
+  const mesh = babylon.Mesh.MergeMeshes(parts, true, true);
+  mesh.material = new babylon.StandardMaterial("obstacles", scene);
+  mesh.checkCollisions = true;
+  mesh.freezeWorldMatrix();
+  const vertices = mesh.getVerticesData(babylon.VertexBuffer.PositionKind);
+  const indices = mesh.getIndices();
+  const fallback = scene.getCollidingSubMeshCandidates;
+  const sweeps = [
+    [[0, 0, 0], [0, 0, 8]], // Direct contact.
+    [[4, 0, 0], [0, 0, 8]], // Pass through the gap.
+    [[-2, 0, 4], [6, 0, 0]], // Side contact and sliding.
+    [[0, 6, 0], [0, 0, 8]], // Pass above the obstacles.
+    [[-5, 0, -3], [24, 0, 14]], // A large swept displacement.
+  ].map(([start, delta]) => [new babylon.Vector3(...start), new babylon.Vector3(...delta)]);
+  const baseline = sweeps.map(([start, delta]) => sweep(scene, start, delta));
+  partitionMergedCollisions(mesh, ranges);
+  const candidates = scene.getCollidingSubMeshCandidates(mesh, scene.collisionCoordinator.createCollider());
+  assert.equal(candidates.length, parts.length);
+  assert.equal(mesh.subMeshes.length, 1, "collision partitions must not split the render batch");
+  assert.equal(scene.meshes.length, 1, "collision partitions share geometry instead of adding proxy meshes");
+  assert.strictEqual(mesh.getVerticesData(babylon.VertexBuffer.PositionKind), vertices);
+  assert.strictEqual(mesh.getIndices(), indices);
+  assert.ok(baseline[0].position.z < 4, "the baseline actually blocks movement");
+  const optimized = sweeps.map(([start, delta]) => sweep(scene, start, delta));
+  optimized.forEach((result, i) => assert.ok(result.position.equalsWithEpsilon(baseline[i].position, 1e-6),
+    `sweep ${i} must keep the original precise collision response`));
+  assert.ok(optimized[0].testedIndices <= baseline[0].testedIndices / 10,
+    `a local sweep should avoid at least 90% of unrelated triangle tests (${optimized[0].testedIndices}/${baseline[0].testedIndices})`);
+  const other = babylon.MeshBuilder.CreateBox("unregistered", {}, scene);
+  assert.strictEqual(scene.getCollidingSubMeshCandidates(other, null).data, fallback(other, null).data,
+    "architecture and imported meshes continue to use the original candidate provider");
+});
+
+test("actual room collision partitions cover every merged index and preserve first-person sweeps", t => {
+  const scene = createScene(t);
+  const fallback = scene.getCollidingSubMeshCandidates;
+  const furnishings = new RoomFurnishings(scene);
+  furnishings.furnish();
+  const meshes = furnishings.finish();
+  meshes.forEach(mesh => {
+    mesh.checkCollisions = true;
+    const candidates = scene.getCollidingSubMeshCandidates(mesh, null);
+    assert.equal(candidates.data.slice(0, candidates.length).reduce((sum, part) => sum + part.indexCount, 0),
+      mesh.getTotalIndices(), "no merged triangles may be omitted");
+    assert.equal(mesh.subMeshes.length, 1);
+  });
+  const optimized = scene.getCollidingSubMeshCandidates;
+  for (const [x, z] of [[4, 16], [0, 8], [-7, 5], [-7, -1], [10, 5], [-17, 9]]) {
+    for (const [dx, dz] of [[0, -2], [2, 0], [-2, -1]]) {
+      const start = new babylon.Vector3(x, -1.8, z);
+      const delta = new babylon.Vector3(dx, 0, dz);
+      scene.getCollidingSubMeshCandidates = fallback;
+      const before = sweep(scene, start, delta);
+      scene.getCollidingSubMeshCandidates = optimized;
+      const after = sweep(scene, start, delta);
+      assert.ok(after.position.equalsWithEpsilon(before.position, 1e-6),
+        `first-person sweep from (${x}, ${z}) must retain exact collisions`);
+    }
+  }
+});
 
 function createScene(t) {
   const engine = new babylon.NullEngine();
