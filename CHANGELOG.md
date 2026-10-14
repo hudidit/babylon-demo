@@ -6,6 +6,7 @@
 
 ### 文档
 
+- 建立 [书房场景资源大小优化方案](docs/technical-plans/2026-10-14-study-resource-size-optimization.md)，保存当前 49.07 MiB 素材及 73.26 MiB 完整生产交付文件的体积基线，明确两个大 GLB 的贴图优化、生产发布清单、建议预算、程序建模备选和验收方法。状态为待实施，本次仅交付方案，未修改代码、配置或素材。
 - 建立并完成 [房间第 4～6 项细节优化方案](docs/technical-plans/2026-10-14-room-detail-optimization.md)，记录硬质家具、接触关系与窗边场景的取舍、实景来源、局部截图和验证依据，同步总方案第 1～6 项已完成的状态。
 - 建立 [阅读区光源与投影修正方案](docs/technical-plans/2026-10-14-reading-area-shadows.md)，记录三处直接光源与环境补光的职责、阴影问题及验收要求，开始修正沙发区与落地灯的落地关系。
 - 建立 [技术方案目录及索引](docs/technical-plans/README.md)，保存 [房间真实感优化方案](docs/technical-plans/2026-10-14-room-realism-optimization.md)，明确 ROI 排序、实施范围、技术取舍与验收方法。方案状态为待实施，本次未实施视觉优化。
