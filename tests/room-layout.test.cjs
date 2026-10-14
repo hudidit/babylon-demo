@@ -26,11 +26,13 @@ const { RoomScene } = loadSource("Room");
 const { RoomLighting } = loadSource("RoomLighting");
 const { placeFurniture } = loadSource("RoomFurnitureAssets");
 const { mappedMaterial, tileMaterial } = loadSource("RoomMaterials");
+const { beveledBox, curtainPanel, ficusLeaf } = loadSource("RoomDetailGeometry");
 
 function createScene(t) {
   const engine = new babylon.NullEngine();
   // Canvas drawing is irrelevant to geometry; use the real meshes, materials and glTF loader.
-  const context = new Proxy({}, { get: () => () => {} });
+  const context = new Proxy({}, { get: (_, key) => key === "createLinearGradient"
+    ? () => ({ addColorStop() {} }) : () => {} });
   engine.createCanvas = () => ({ width: 1, height: 1, getContext: () => context, remove() {} });
   engine.getDeltaTime = () => 1000 / 30;
   engine.getFps = () => 30;
@@ -253,5 +255,86 @@ test("rugs receive shadows without hiding chair legs; cached shadows refresh aft
   lighting.refreshShadows();
   for (const shadow of shadows) {
     assert.equal(shadow.getShadowMap()._shouldRender(), true, "changed walls must invalidate all cached shadows");
+  }
+});
+
+test("beveled boards keep their dimensions and have outward, finite surface normals", t => {
+  const scene = createScene(t);
+  for (const size of [[8.3, 0.4, 6], [0.2, 2.3, 0.2], [10.7, 0.2, 0.28]]) {
+    const mesh = beveledBox("board", size, 0.065, scene);
+    const positions = mesh.getVerticesData(babylon.VertexBuffer.PositionKind);
+    const normals = mesh.getVerticesData(babylon.VertexBuffer.NormalKind);
+    const fromWinding = [];
+    babylon.VertexData.ComputeNormals(positions, mesh.getIndices(), fromWinding);
+    mesh.computeWorldMatrix(true);
+    const box = mesh.getBoundingInfo().boundingBox;
+    for (let axis = 0; axis < 3; axis++) {
+      assert.ok(Math.abs(box.maximum.asArray()[axis] - size[axis] / 2) < 0.00001);
+      assert.ok(Math.abs(box.minimum.asArray()[axis] + size[axis] / 2) < 0.00001);
+    }
+    for (let i = 0; i < normals.length; i += 3) {
+      const normal = babylon.Vector3.FromArray(normals, i);
+      assert.ok(Math.abs(normal.length() - 1) < 0.00001);
+      assert.ok(babylon.Vector3.Dot(normal, babylon.Vector3.FromArray(fromWinding, i)) > 0.8,
+        "triangle winding must agree with the visible outer surface");
+      assert.ok(babylon.Vector3.Dot(normal, babylon.Vector3.FromArray(positions, i)) > 0);
+    }
+  }
+});
+
+test("stacked book covers touch the support and the next book without floating gaps", t => {
+  const scene = createScene(t);
+  const furnishings = new RoomFurnishings(scene);
+  furnishings.bookStack([0, 2, 0]);
+  const covers = scene.meshes.filter(mesh => mesh.name === "book-cover");
+  covers.forEach(mesh => mesh.computeWorldMatrix(true));
+  const bounds = covers.map(mesh => mesh.getBoundingInfo().boundingBox);
+  assert.ok(Math.abs(bounds[0].minimumWorld.y - 2) < 0.00001);
+  for (let book = 0; book < 2; book++) {
+    assert.ok(Math.abs(bounds[book * 2 + 1].maximumWorld.y - bounds[(book + 1) * 2].minimumWorld.y) < 0.00001);
+  }
+});
+
+test("cloth gathers around its tie and leaves have a thin, curved pointed silhouette", t => {
+  const scene = createScene(t);
+  const cloth = curtainPanel("cloth", 1, scene);
+  const clothPositions = cloth.getVerticesData(babylon.VertexBuffer.PositionKind);
+  const rowWidth = row => {
+    const start = row * 41 * 3;
+    return clothPositions[start + 40 * 3] - clothPositions[start];
+  };
+  assert.ok(rowWidth(23) < rowWidth(0) * 0.6, "the panel must visibly gather at the tie height");
+  assert.ok(rowWidth(36) > rowWidth(23) * 2, "cloth must spread back out toward the hem");
+  const leaf = ficusLeaf("leaf", 1.5, 0.7, scene);
+  const leafPositions = leaf.getVerticesData(babylon.VertexBuffer.PositionKind);
+  const halfVertices = leafPositions.length / 6;
+  const tipY = leafPositions[(14 * 9 + 4) * 3 + 1];
+  assert.ok(tipY < -0.2, "the tip must droop below its attachment");
+  assert.ok(Math.abs(leafPositions[14 * 9 * 3]) < 0.005, "the silhouette must taper to a point");
+  assert.ok(halfVertices > 100, "curvature must come from geometry rather than a stretched sphere");
+  assert.ok([...clothPositions, ...leafPositions].every(Number.isFinite));
+});
+
+test("desk accessories, tea tray and small furniture rest on their actual supports", t => {
+  const scene = createScene(t), furnishings = new RoomFurnishings(scene);
+  const bounds = mesh => {
+    mesh.computeWorldMatrix(true);
+    return mesh.getBoundingInfo().boundingBox;
+  };
+  furnishings.writingTable();
+  const deskY = bounds(scene.getMeshByName("table-top")).maximumWorld.y;
+  for (const name of ["book-cover", "saucer", "banker-base"]) {
+    assert.ok(Math.abs(bounds(scene.getMeshByName(name)).minimumWorld.y - deskY) < 0.00001,
+      `${name} must touch the desktop`);
+  }
+  furnishings.coffeeTable();
+  const teaTray = bounds(scene.getMeshByName("tea-tray"));
+  assert.ok(Math.abs(teaTray.minimumWorld.y - bounds(scene.getMeshByName("oval-walnut-top")).maximumWorld.y) < 0.00001);
+  const saucers = scene.meshes.filter(mesh => mesh.name === "saucer");
+  assert.ok(Math.abs(bounds(saucers[1]).minimumWorld.y - teaTray.maximumWorld.y) < 0.00001);
+  furnishings.armchair(); furnishings.sofa();
+  for (const name of ["side-table-base", "ottoman-foot"]) {
+    assert.ok(Math.abs(bounds(scene.getMeshByName(name)).minimumWorld.y + 5) < 0.00001,
+      `${name} must touch the floor`);
   }
 });

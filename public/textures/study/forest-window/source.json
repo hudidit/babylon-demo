@@ -1,0 +1,21 @@
+{
+  "asset": "Forest Slope",
+  "author": "Andreas Mischok",
+  "license": "CC0-1.0",
+  "sourcePage": "https://polyhaven.com/a/forest_slope",
+  "sourceUrl": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Tonemapped%20JPG/forest_slope.jpg",
+  "sourceMD5": "e6fb0022bb9f216edc7b2dfb58f19f15",
+  "outputSHA256": "cf9b1fd22b8afc19b8ff27363c7ed0d94319ab1fc04b65f4b95e7987fc43c14b",
+  "processing": {
+    "method": "equirectangular to rectilinear, bilinear sampling",
+    "horizontalFovDegrees": 78,
+    "verticalFovDegrees": 60,
+    "yawTurns": 0.43,
+    "pitchRadians": 0.08,
+    "outputSize": [
+      1600,
+      1165
+    ]
+  },
+  "downloadDate": "2026-10-14"
+}

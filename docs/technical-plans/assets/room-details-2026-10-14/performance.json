@@ -1,0 +1,236 @@
+{
+  "viewport": [
+    1280,
+    720
+  ],
+  "baselineRenderSize": [
+    1280,
+    720
+  ],
+  "afterRenderSize": [
+    1280,
+    720
+  ],
+  "samplesPerView": 150,
+  "discardedWarmupFrames": 30,
+  "before": [
+    {
+      "view": "desk",
+      "fps": 29.982010792809536,
+      "cpuMedianMs": 2.299999952316284,
+      "cpuP95Ms": 2.700000047683716,
+      "vertices": 94441,
+      "activeMeshes": 32,
+      "renderWidth": 1280,
+      "renderHeight": 720,
+      "position": [
+        5,
+        5,
+        9
+      ],
+      "target": [
+        -3,
+        -0.4,
+        -1
+      ]
+    },
+    {
+      "view": "joinery",
+      "fps": 29.99700029925486,
+      "cpuMedianMs": 2.100000023841858,
+      "cpuP95Ms": 2.600000023841858,
+      "vertices": 94441,
+      "activeMeshes": 29,
+      "renderWidth": 1280,
+      "renderHeight": 720,
+      "position": [
+        -9,
+        2.8,
+        17
+      ],
+      "target": [
+        -16,
+        -1.2,
+        9
+      ]
+    },
+    {
+      "view": "window",
+      "fps": 29.51303492375799,
+      "cpuMedianMs": 1.899999976158142,
+      "cpuP95Ms": 2.3000000715255737,
+      "vertices": 94441,
+      "activeMeshes": 20,
+      "renderWidth": 1280,
+      "renderHeight": 720,
+      "position": [
+        -7,
+        4.8,
+        14
+      ],
+      "target": [
+        -19,
+        1.9,
+        9
+      ]
+    }
+  ],
+  "after": [
+    {
+      "view": "desk",
+      "fps": 30.018010807199946,
+      "cpuMedianMs": 2.100000023841858,
+      "cpuP95Ms": 2.600000023841858,
+      "vertices": 155326,
+      "activeMeshes": 33,
+      "renderWidth": 1280,
+      "renderHeight": 720,
+      "position": [
+        5,
+        5,
+        9
+      ],
+      "target": [
+        -3,
+        -0.4,
+        -1
+      ]
+    },
+    {
+      "view": "joinery",
+      "fps": 30.045067601402106,
+      "cpuMedianMs": 2.200000047683716,
+      "cpuP95Ms": 2.700000047683716,
+      "vertices": 155326,
+      "activeMeshes": 30,
+      "renderWidth": 1280,
+      "renderHeight": 720,
+      "position": [
+        -9,
+        2.8,
+        17
+      ],
+      "target": [
+        -16,
+        -1.2,
+        9
+      ]
+    },
+    {
+      "view": "window",
+      "fps": 30.09328919722886,
+      "cpuMedianMs": 2,
+      "cpuP95Ms": 2.3000000715255737,
+      "vertices": 155326,
+      "activeMeshes": 21,
+      "renderWidth": 1280,
+      "renderHeight": 720,
+      "position": [
+        -7,
+        4.8,
+        14
+      ],
+      "target": [
+        -19,
+        1.9,
+        9
+      ]
+    },
+    {
+      "view": "overview",
+      "fps": 29.95805871494201,
+      "cpuMedianMs": 2.5999999046325684,
+      "cpuP95Ms": 3,
+      "vertices": 155326,
+      "activeMeshes": 57,
+      "renderWidth": 1280,
+      "renderHeight": 720,
+      "position": [
+        42,
+        31,
+        45
+      ],
+      "target": [
+        -1,
+        -2,
+        -1
+      ]
+    }
+  ],
+  "note": "CPU scene submission time, not GPU frame completion. Temporary camera and instrumentation removed before delivery. Overview before image used original hardware scaling and is illustrative only.",
+  "extraCapturePoses": {
+    "books": [
+      [
+        -2,
+        2,
+        2
+      ],
+      [
+        -5.3,
+        0,
+        -2.4
+      ]
+    ],
+    "edges": [
+      [
+        2,
+        2.5,
+        6
+      ],
+      [
+        -2,
+        -0.7,
+        1
+      ]
+    ],
+    "leaves": [
+      [
+        -11,
+        0.8,
+        18.5
+      ],
+      [
+        -16,
+        0.4,
+        16
+      ]
+    ],
+    "windowWide": [
+      [
+        -3,
+        4.8,
+        15
+      ],
+      [
+        -19,
+        1.9,
+        9
+      ]
+    ],
+    "plant": [
+      [
+        -9,
+        0.5,
+        18.5
+      ],
+      [
+        -16,
+        -0.7,
+        16
+      ]
+    ],
+    "contact": [
+      [
+        15,
+        -1.5,
+        19
+      ],
+      [
+        10,
+        -3.7,
+        11
+      ]
+    ]
+  },
+  "cameraFovRadians": 0.65
+}

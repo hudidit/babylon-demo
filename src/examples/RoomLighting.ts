@@ -29,7 +29,7 @@ export class RoomLighting {
     reading.intensity = 3.3;
     reading.range = 14;
 
-    const desk = new SpotLight("banker-lamp-light", new Vector3(-0.55, 0.85, -2.65),
+    const desk = new SpotLight("banker-lamp-light", new Vector3(-0.55, 0.8, -2.65),
       new Vector3(-0.65, -1, 0.4).normalize(), Math.PI / 1.7, 1.5, scene);
     desk.innerAngle = Math.PI / 2.5;
     desk.diffuse = new Color3(1, 0.88, 0.68);
