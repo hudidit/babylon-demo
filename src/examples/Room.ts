@@ -1,7 +1,7 @@
 import {
   AbstractMesh, ArcRotateCamera, Color3, Color4, Engine, HDRCubeTexture,
   ImageProcessingConfiguration, MeshBuilder, PBRMaterial, Scene,
-  SceneLoader, TransformNode, UniversalCamera, Vector3,
+  SceneLoader, SSAO2RenderingPipeline, TransformNode, UniversalCamera, Vector3,
 } from "@babylonjs/core";
 import "@babylonjs/loaders/glTF";
 import { RoomFurnishings } from "./RoomFurnishings";
@@ -20,6 +20,7 @@ export class RoomScene {
   private readonly firstPersonCamera: UniversalCamera;
   private readonly interiorShell: TransformNode;
   private readonly lighting: RoomLighting;
+  private readonly contactShadows?: SSAO2RenderingPipeline;
   private disposed = false;
   private controlsEnabled = true;
 
@@ -36,7 +37,7 @@ export class RoomScene {
     this.scene.imageProcessingConfiguration.exposure = 1.12;
     this.scene.environmentTexture = new HDRCubeTexture("./environment/study-interior.hdr",
       this.scene, 128, false, true, false, true);
-    this.scene.iblIntensity = 0.7;
+    this.scene.iblIntensity = 0.35;
 
     this.camera = new ArcRotateCamera("study-camera", 0.8, 1.08, 66, new Vector3(0, 0, 0), this.scene);
     this.camera.attachControl(canvas, true);
@@ -74,6 +75,19 @@ export class RoomScene {
     this.interiorShell.setEnabled(false);
 
     this.lighting = new RoomLighting(this.scene);
+    if (SSAO2RenderingPipeline.IsSupported) {
+      // Directional shadows describe the lights; short-range AO grounds feet under indirect light.
+      this.contactShadows = new SSAO2RenderingPipeline("room-contact-shadows", this.scene,
+        { ssaoRatio: 0.5, blurRatio: 1 }, [this.camera, this.firstPersonCamera]);
+      this.contactShadows.radius = 1;
+      this.contactShadows.totalStrength = 1.1;
+      this.contactShadows.base = 0;
+      this.contactShadows.samples = 16;
+      this.contactShadows.maxZ = 110;
+      this.contactShadows.bilateralSamples = 8;
+      this.contactShadows.bilateralSoften = 0.5;
+      this.contactShadows.textureSamples = 2;
+    }
 
     const furnishings = new RoomFurnishings(this.scene);
     this.createArchitecture(furnishings);
@@ -288,6 +302,7 @@ export class RoomScene {
     window.removeEventListener("resize", this.resize);
     document.removeEventListener("visibilitychange", this.visibilityChanged);
     this.engine.stopRenderLoop();
+    this.contactShadows?.dispose(true);
     this.scene.dispose();
     this.engine.dispose();
   };

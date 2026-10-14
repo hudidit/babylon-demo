@@ -146,9 +146,36 @@ test("lamp lights emit below their shades and the window is the main light sourc
     assert.ok(light.getShadowGenerator(), `${lightName} must cast shadows`);
   }
   const windowLight = scene.getLightByName("window-daylight");
+  const directSources = scene.lights.filter(light => light instanceof babylon.SpotLight);
+  assert.deepEqual(directSources.map(light => light.name).sort(),
+    ["banker-lamp-light", "reading-lamp-light", "window-daylight"], "each direct source corresponds to a visible window or lamp");
+  assert.equal(new Set(directSources.map(light => light.getShadowGenerator())).size, 3,
+    "each direct source must own an independent shadow map");
   assert.ok(windowLight.position.x < -18 && windowLight.direction.x > 0, "daylight must enter from the window wall");
   assert.ok(scene.materials.filter(material => material instanceof babylon.StandardMaterial || material instanceof babylon.PBRMaterial)
     .every(material => material.maxSimultaneousLights >= scene.lights.length));
+});
+
+test("floor lamp foot touches the floor and its stacked base joins the stem", t => {
+  const scene = createScene(t);
+  const lighting = new RoomLighting(scene);
+  const furnishings = new RoomFurnishings(scene);
+  furnishings.floorLamp();
+  const names = ["lamp-base-foot", "lamp-weighted-base", "lamp-base-shoulder", "lamp-stem"];
+  const parts = names.map(name => scene.getMeshByName(name));
+  parts.forEach(mesh => mesh.computeWorldMatrix(true));
+  const bounds = parts.map(mesh => mesh.getBoundingInfo().boundingBox);
+  assert.ok(Math.abs(bounds[0].minimumWorld.y + 5) < 0.0001, "foot must rest on the floor");
+  bounds.slice(1).forEach((box, index) => {
+    assert.ok(box.minimumWorld.y <= bounds[index].maximumWorld.y + 0.0001,
+      `${names[index + 1]} must touch or overlap the part below`);
+  });
+  const merged = furnishings.finish();
+  lighting.addMeshes(merged);
+  scene.lights.filter(light => light instanceof babylon.SpotLight).forEach(light => {
+    assert.ok(merged.every(mesh => light.getShadowGenerator().getShadowMap().renderList.includes(mesh)),
+      "the complete lamp base must cast shadows from each direct source after merging");
+  });
 });
 
 for (const [file, width, rotation, x, z] of [

@@ -290,7 +290,10 @@ export class RoomFurnishings {
 
   private floorLamp() {
     const g = this.group("brass-floor-lamp", [16, -5, 5]);
-    this.cylinder("lamp-weighted-base", 0.22, 2, [0, 0.11, 0], "brass", g);
+    // A felt foot and a sloping metal shoulder make the base's contact and thickness readable.
+    this.cylinder("lamp-base-foot", 0.045, 1.82, [0, 0.0225, 0], "black", g);
+    this.cylinder("lamp-weighted-base", 0.12, 2, [0, 0.105, 0], "brass", g, 1.9);
+    this.cylinder("lamp-base-shoulder", 0.06, 1.9, [0, 0.195, 0], "brass", g, 1.65);
     this.cylinder("lamp-stem", 7.5, 0.13, [0, 3.9, 0], "brass", g);
     this.cylinder("linen-lampshade", 2.1, 3.4, [0, 7.6, 0], "shade", g, 2.1);
     this.ring("shade-bottom-trim", 3.4, 0.07, [0, 6.55, 0], "brass", g);
