@@ -1,0 +1,230 @@
+{
+  "source": "Poly Haven",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://polyhaven.com/license",
+  "retrieved": "2026-10-14",
+  "textures": {
+    "wood_floor": {
+      "page": "https://polyhaven.com/a/wood_floor",
+      "authors": {
+        "Dimitrios Savva": "All"
+      },
+      "resolution": "1k",
+      "files": {
+        "color.jpg": {
+          "file": "public/textures/study/wood_floor/color.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor/wood_floor_diff_1k.jpg",
+          "md5": "b7e927d2bf2f8f103820ff3890c8407c",
+          "size": 734493
+        },
+        "normal.jpg": {
+          "file": "public/textures/study/wood_floor/normal.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor/wood_floor_nor_gl_1k.jpg",
+          "md5": "620f174d2c09b579c5d02d37b2106668",
+          "size": 423303
+        },
+        "arm.jpg": {
+          "file": "public/textures/study/wood_floor/arm.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor/wood_floor_arm_1k.jpg",
+          "md5": "02090ec0443778b85ba3df555236b755",
+          "size": 447855
+        }
+      }
+    },
+    "wood_table_001": {
+      "page": "https://polyhaven.com/a/wood_table_001",
+      "authors": {
+        "Dimitrios Savva": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "resolution": "1k",
+      "files": {
+        "color.jpg": {
+          "file": "public/textures/study/wood_table_001/color.jpg",
+          "size": 215573,
+          "md5": "56652a7339b16a76afad20d3585f66ea",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table_001/wood_table_001_diff_1k.jpg"
+        },
+        "normal.jpg": {
+          "file": "public/textures/study/wood_table_001/normal.jpg",
+          "size": 51927,
+          "md5": "6360e09967add8baecaa5ecc55fb5e03",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table_001/wood_table_001_nor_gl_1k.jpg"
+        },
+        "arm.jpg": {
+          "file": "public/textures/study/wood_table_001/arm.jpg",
+          "size": 214520,
+          "md5": "b39a1587c9b99e3104baedae8d5dfa48",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table_001/wood_table_001_arm_1k.jpg"
+        }
+      }
+    },
+    "brick_wall_001": {
+      "page": "https://polyhaven.com/a/brick_wall_001",
+      "authors": {
+        "Rob Tuytel": "Processing",
+        "Dimitrios Savva": "Photography"
+      },
+      "resolution": "1k",
+      "files": {
+        "color.jpg": {
+          "file": "public/textures/study/brick_wall_001/color.jpg",
+          "size": 574381,
+          "md5": "955d2d4500eb549be0f2873305782798",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brick_wall_001/brick_wall_001_diffuse_1k.jpg"
+        },
+        "normal.jpg": {
+          "file": "public/textures/study/brick_wall_001/normal.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brick_wall_001/brick_wall_001_nor_gl_1k.jpg",
+          "size": 295279,
+          "md5": "be151875ed0897fc716aeef6daac8bd5"
+        },
+        "arm.jpg": {
+          "file": "public/textures/study/brick_wall_001/arm.jpg",
+          "size": 123384,
+          "md5": "bb40df6639b15f56ecb484b350cbc45d",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brick_wall_001/brick_wall_001_arm_1k.jpg"
+        }
+      }
+    },
+    "rough_linen": {
+      "page": "https://polyhaven.com/a/rough_linen",
+      "authors": {
+        "colormass": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "resolution": "1k",
+      "files": {
+        "normal.jpg": {
+          "file": "public/textures/study/rough_linen/normal.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rough_linen/rough_linen_nor_gl_1k.jpg",
+          "md5": "3350269a2e9c472aa406bd3cc1eaf2c8",
+          "size": 916843
+        },
+        "arm.jpg": {
+          "file": "public/textures/study/rough_linen/arm.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rough_linen/rough_linen_arm_1k.jpg",
+          "md5": "ffe777973056d79d6b2a1324e8451295",
+          "size": 1191393
+        }
+      }
+    }
+  },
+  "models": {
+    "sofa_03": {
+      "page": "https://polyhaven.com/a/sofa_03",
+      "authors": {
+        "Fran Calvente": "All"
+      },
+      "file": "public/models/study/sofa_03.glb",
+      "resolution": "1k",
+      "packing": "Original glTF buffers and JPEGs embedded in GLB; geometry and images unchanged.",
+      "sourceFiles": [
+        {
+          "file": "sofa_03.gltf",
+          "size": 4465,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/sofa_03/sofa_03_1k.gltf",
+          "md5": "27f31e0500c2dd83a21fd3339ade7821"
+        },
+        {
+          "file": "textures/sofa_03_rough_1k.jpg",
+          "size": 170206,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/sofa_03/sofa_03_rough_1k.jpg",
+          "md5": "c3fe733eb2cef0424d5530e067518d60"
+        },
+        {
+          "file": "sofa_03.bin",
+          "size": 228984,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/sofa_03/sofa_03.bin",
+          "md5": "aeebfb9aed3b40300b0fb73f0e27830e"
+        },
+        {
+          "file": "textures/sofa_03_diff_1k.jpg",
+          "size": 151815,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/sofa_03/sofa_03_diff_1k.jpg",
+          "md5": "1f33a1431d98e1560a04b661e786b45b"
+        },
+        {
+          "file": "textures/sofa_03_nor_gl_1k.jpg",
+          "size": 112563,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/sofa_03/sofa_03_nor_gl_1k.jpg",
+          "md5": "dec3ec9d5d1ad2abf260e58b67e5cd0e"
+        }
+      ],
+      "sha256": "8bf6e226b6add7aaf31479dd824e50c8ce6024df48cb609b900976f6991b5a3b",
+      "bytes": 818172
+    },
+    "modern_arm_chair_01": {
+      "page": "https://polyhaven.com/a/modern_arm_chair_01",
+      "authors": {
+        "Vibrant Nordic": "All"
+      },
+      "file": "public/models/study/modern_arm_chair_01.glb",
+      "resolution": "1k",
+      "packing": "Original glTF buffers and JPEGs embedded in GLB; geometry and images unchanged.",
+      "sourceFiles": [
+        {
+          "file": "modern_arm_chair_01.gltf",
+          "size": 5121,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/modern_arm_chair_01/modern_arm_chair_01_1k.gltf",
+          "md5": "a5ce303bc2962fe98b733fcdfa5a842b"
+        },
+        {
+          "file": "textures/modern_arm_chair_01_pillow_nor_gl_1k.jpg",
+          "size": 302377,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_pillow_nor_gl_1k.jpg",
+          "md5": "6804f34108fcc755f0c84dd3c638270c"
+        },
+        {
+          "file": "textures/modern_arm_chair_01_legs_nor_gl_1k.jpg",
+          "size": 560864,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_legs_nor_gl_1k.jpg",
+          "md5": "7cece7eccf75588af5b5df9b095d2c97"
+        },
+        {
+          "file": "textures/modern_arm_chair_01_pillow_arm_1k.jpg",
+          "size": 321223,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_pillow_arm_1k.jpg",
+          "md5": "772495ddbf26ca3de4b31298f10113b9"
+        },
+        {
+          "file": "textures/modern_arm_chair_01_legs_diff_1k.jpg",
+          "size": 460937,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_legs_diff_1k.jpg",
+          "md5": "778f1897e07ff81b2bc338f3d463ad1f"
+        },
+        {
+          "file": "textures/modern_arm_chair_01_legs_arm_1k.jpg",
+          "size": 577931,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_legs_arm_1k.jpg",
+          "md5": "9c69cb001df175bddf6d1c2436567fb7"
+        },
+        {
+          "file": "modern_arm_chair_01.bin",
+          "size": 240728,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/modern_arm_chair_01/modern_arm_chair_01.bin",
+          "md5": "5a8f2ea1c79ea484140e484b2a621670"
+        },
+        {
+          "file": "textures/modern_arm_chair_01_pillow_diff_1k.jpg",
+          "size": 228851,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_pillow_diff_1k.jpg",
+          "md5": "2e4f64c633c3cb1656ad3eabdb3f0607"
+        }
+      ],
+      "sha256": "e63d43aa97f499c95f7b02cff070c78fb68017a1f423b261bbd62d8eb4452049",
+      "bytes": 2696208
+    }
+  },
+  "environment": {
+    "page": "https://polyhaven.com/a/brown_photostudio_01",
+    "authors": {
+      "Sergej Majboroda": "All"
+    },
+    "file": "public/environment/study-interior.hdr",
+    "resolution": "1k",
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/brown_photostudio_01_1k.hdr",
+    "size": 1649529,
+    "md5": "d0ba0ffbc6f86bba94236d3d2d83fc9d"
+  }
+}

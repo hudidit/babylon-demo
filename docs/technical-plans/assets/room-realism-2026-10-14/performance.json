@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-14",
+  "view": "overview",
+  "viewport": [
+    1280,
+    720
+  ],
+  "renderSize": [
+    960,
+    540
+  ],
+  "method": "120 frames after scene readiness; discard first 30 for CPU timing; FPS is engine rolling FPS at completion; same local in-app browser.",
+  "before": {
+    "codeBaseline": "511dd85",
+    "fps": 30.5,
+    "cpuMedianMs": 1.9,
+    "cpuP95Ms": 2.4,
+    "vertices": 99026,
+    "activeMeshes": 45
+  },
+  "after": {
+    "fps": 30.5,
+    "cpuMedianMs": 2.5,
+    "cpuP95Ms": 2.9,
+    "vertices": 94237,
+    "activeMeshes": 54
+  },
+  "limitations": "Short same-machine sample. CPU scene render submission only; does not measure GPU completion, cold-load latency, or other hardware. Temporary instrumentation removed before delivery."
+}

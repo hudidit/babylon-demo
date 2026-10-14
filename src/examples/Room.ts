@@ -1,11 +1,13 @@
 import {
-  AbstractMesh, ArcRotateCamera, Color3, Color4, CubeTexture, Engine,
+  AbstractMesh, ArcRotateCamera, Color3, Color4, Engine, HDRCubeTexture,
   ImageProcessingConfiguration, MeshBuilder, PBRMaterial, Scene,
-  SceneLoader, StandardMaterial, Texture, TransformNode, UniversalCamera, Vector3,
+  SceneLoader, TransformNode, UniversalCamera, Vector3,
 } from "@babylonjs/core";
 import "@babylonjs/loaders/glTF";
 import { RoomFurnishings } from "./RoomFurnishings";
 import { RoomLighting } from "./RoomLighting";
+import { mappedMaterial, tileMaterial } from "./RoomMaterials";
+import { placeFurniture } from "./RoomFurnitureAssets";
 
 export type RoomView = "overview" | "reading" | "desk" | "cabinet" | "first-person";
 export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.55 };
@@ -31,9 +33,10 @@ export class RoomScene {
     this.scene.skipPointerMovePicking = true;
     this.scene.imageProcessingConfiguration.toneMappingEnabled = true;
     this.scene.imageProcessingConfiguration.toneMappingType = ImageProcessingConfiguration.TONEMAPPING_ACES;
-    this.scene.imageProcessingConfiguration.exposure = 1.05;
-    this.scene.environmentTexture = CubeTexture.CreateFromPrefilteredData("./environment/sky.env", this.scene);
-    this.scene.iblIntensity = 0.3;
+    this.scene.imageProcessingConfiguration.exposure = 1.12;
+    this.scene.environmentTexture = new HDRCubeTexture("./environment/study-interior.hdr",
+      this.scene, 128, false, true, false, true);
+    this.scene.iblIntensity = 0.7;
 
     this.camera = new ArcRotateCamera("study-camera", 0.8, 1.08, 66, new Vector3(0, 0, 0), this.scene);
     this.camera.attachControl(canvas, true);
@@ -82,6 +85,8 @@ export class RoomScene {
 
     // A parent keeps the glTF loader's handedness conversion intact.
     const models = [
+      this.importFurniture("sofa_03.glb", "reading-sofa", new Vector3(10, -5, 6), 10.8),
+      this.importFurniture("modern_arm_chair_01.glb", "reading-armchair", new Vector3(-10, -5, 12), 3.8, Math.PI / 2),
       this.importModel("gothic_commode.glb", "antique-cabinet", new Vector3(-13.5, -5, -17.6), 4.7),
       this.importModel("wooden_bookshelf.glb", "antique-bookshelf", new Vector3(11.5, -5, -17.8), 5.2).then(meshes => {
         if (!meshes || this.disposed) return;
@@ -172,16 +177,7 @@ export class RoomScene {
 
   private createArchitecture(room: RoomFurnishings) {
     const scene = this.scene;
-    const floor = new StandardMaterial("oak-floor", scene);
-    floor.diffuseTexture = new Texture("./textures/woodFloor/wood_floor_diff.jpg", scene);
-    floor.bumpTexture = new Texture("./textures/woodFloor/wood_floor_normal.jpg", scene);
-    floor.bumpTexture.level = 0.4;
-    [floor.diffuseTexture, floor.bumpTexture].forEach(texture => {
-      (texture as Texture).uScale = 5;
-      (texture as Texture).vScale = 5;
-    });
-    floor.diffuseColor = new Color3(0.55, 0.6, 0.58);
-    floor.specularColor = new Color3(0.14, 0.11, 0.08);
+    const floor = mappedMaterial("oak-floor", scene, "wood_floor", "#e7ddd0", 5, 0.28);
     const ground = MeshBuilder.CreateGround("oak-floor", { width: 40, height: 40 }, scene);
     ground.position.y = -5;
     ground.material = floor;
@@ -190,16 +186,7 @@ export class RoomScene {
     ground.checkCollisions = true;
     room.box("foundation", [40.6, 0.6, 40.6], [0, -5.4, 0], "darkWood");
 
-    const brick = new StandardMaterial("warm-exposed-brick", scene);
-    brick.diffuseTexture = new Texture("./textures/brick1/brick_diff.jpg", scene);
-    brick.bumpTexture = new Texture("./textures/brick1/brick_normal.jpg", scene);
-    brick.bumpTexture.level = 0.45;
-    brick.diffuseColor = new Color3(0.75, 0.64, 0.53);
-    brick.specularColor = Color3.Black();
-    [brick.diffuseTexture, brick.bumpTexture].forEach(texture => {
-      (texture as Texture).uScale = 5;
-      (texture as Texture).vScale = 1.8;
-    });
+    const brick = mappedMaterial("warm-exposed-brick", scene, "brick_wall_001", "#e1d5c5", 1, 0.38);
     const leftBack = MeshBuilder.CreateBox("back-wall-left", { width: 14, height: 14, depth: 0.5 }, scene);
     leftBack.position.set(-13, 2, -20);
     const rightBack = MeshBuilder.CreateBox("back-wall-right", { width: 18, height: 14, depth: 0.5 }, scene);
@@ -216,13 +203,8 @@ export class RoomScene {
     front.parent = this.interiorShell;
     const spans = [14, 18, 8, 40, 40.5, 40.5];
     [leftBack, rightBack, lintel, left, right, front].forEach((mesh, index) => {
-      const wallMaterial = brick.clone(mesh.name + "-brick");
-      wallMaterial.diffuseTexture = brick.diffuseTexture!.clone();
-      wallMaterial.bumpTexture = brick.bumpTexture!.clone();
-      [wallMaterial.diffuseTexture, wallMaterial.bumpTexture].forEach(texture => {
-        (texture as Texture).uScale = spans[index] / 8;
-        (texture as Texture).vScale = index === 2 ? 3.2 / 8 : 14 / 8;
-      });
+      const wallMaterial = tileMaterial(brick, mesh.name + "-brick", spans[index] / 6,
+        (index === 2 ? 3.2 : 14) / 6);
       mesh.material = wallMaterial;
       mesh.receiveShadows = true;
       mesh.checkCollisions = true;
@@ -243,6 +225,30 @@ export class RoomScene {
     });
     room.architecturalDetails();
     room.enclosingDetails(this.interiorShell);
+  }
+
+  private async importFurniture(file: string, name: string, position: Vector3, width: number, rotation = 0) {
+    const result = await SceneLoader.ImportMeshAsync("", "./models/study/", file, this.scene);
+    if (this.disposed) {
+      result.meshes.forEach(mesh => mesh.dispose());
+      return;
+    }
+    result.meshes.forEach(mesh => {
+      if (mesh.material instanceof PBRMaterial) {
+        mesh.material.usePhysicalLightFalloff = false;
+        mesh.material.maxSimultaneousLights = 4;
+        mesh.material.environmentIntensity = 0.85;
+        if (mesh.material.name.includes("_pillow")) {
+          // Preserve the scanned wrinkles and roughness, with warm moss leather instead of black.
+          mesh.material.albedoTexture = null;
+          mesh.material.albedoColor = Color3.FromHexString("#596247").toLinearSpace();
+          mesh.material.roughness = 0.85;
+        }
+      }
+    });
+    placeFurniture(result.meshes, this.scene, name, position, width, rotation);
+    this.lighting.addMeshes(result.meshes);
+    return result.meshes;
   }
 
   private async importModel(file: string, name: string, position: Vector3, scale: number) {

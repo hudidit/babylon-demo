@@ -24,6 +24,8 @@ const { measureBookshelf } = loadSource("BookshelfLayout");
 const { RoomFurnishings } = loadSource("RoomFurnishings");
 const { RoomScene } = loadSource("Room");
 const { RoomLighting } = loadSource("RoomLighting");
+const { placeFurniture } = loadSource("RoomFurnitureAssets");
+const { mappedMaterial, tileMaterial } = loadSource("RoomMaterials");
 
 function createScene(t) {
   const engine = new babylon.NullEngine();
@@ -145,8 +147,56 @@ test("lamp lights emit below their shades and the window is the main light sourc
   }
   const windowLight = scene.getLightByName("window-daylight");
   assert.ok(windowLight.position.x < -18 && windowLight.direction.x > 0, "daylight must enter from the window wall");
-  assert.ok(scene.materials.filter(material => material instanceof babylon.StandardMaterial)
+  assert.ok(scene.materials.filter(material => material instanceof babylon.StandardMaterial || material instanceof babylon.PBRMaterial)
     .every(material => material.maxSimultaneousLights >= scene.lights.length));
+});
+
+for (const [file, width, rotation, x, z] of [
+  ["sofa_03", 10.8, 0, 10, 6],
+  ["modern_arm_chair_01", 3.8, Math.PI / 2, -10, 12],
+]) {
+  test(`${file} fits its room footprint and sits on the floor after glTF conversion`, async t => {
+    const scene = createScene(t);
+    const source = new Uint8Array(fs.readFileSync(path.join(__dirname, "../public/models/study", file + ".glb")));
+    const result = await babylon.ImportMeshAsync(source, scene, {
+      pluginExtension: ".glb", pluginOptions: { gltf: { skipMaterials: true } },
+    });
+    const geometry = result.meshes.filter(mesh => mesh.getTotalVertices() > 0);
+    const parents = geometry.map(mesh => mesh.parent);
+    placeFurniture(result.meshes, scene, file, new babylon.Vector3(x, -5, z), width, rotation);
+    let min = new babylon.Vector3(Infinity, Infinity, Infinity);
+    let max = new babylon.Vector3(-Infinity, -Infinity, -Infinity);
+    geometry.forEach((mesh, index) => {
+      assert.equal(mesh.parent, parents[index], "fitting must preserve the imported transform hierarchy");
+      assert.ok(mesh.checkCollisions && mesh.receiveShadows && mesh.metadata.castsShadows);
+      const bounds = mesh.getBoundingInfo().boundingBox;
+      min = babylon.Vector3.Minimize(min, bounds.minimumWorld);
+      max = babylon.Vector3.Maximize(max, bounds.maximumWorld);
+    });
+    assert.ok(Math.abs(min.y + 5) < 0.001, "lowest vertex must touch the floor");
+    assert.ok(Math.abs((min.x + max.x) / 2 - x) < 0.001);
+    assert.ok(Math.abs((min.z + max.z) / 2 - z) < 0.001);
+    const widthAxis = rotation === 0 ? "x" : "z";
+    assert.ok(Math.abs(max[widthAxis] - min[widthAxis] - width) < 0.001);
+    assert.ok(max.y < 1, "furniture must remain below the standing camera's eye level");
+  });
+}
+
+test("wall colour, normal and ARM maps tile together without modifying other walls", t => {
+  const scene = createScene(t);
+  const source = mappedMaterial("brick", scene, "brick_wall_001");
+  const wall = tileMaterial(source, "wall", 3.5, 1.2);
+  const other = tileMaterial(source, "lintel", 0.7, 0.3);
+  for (const key of ["albedoTexture", "bumpTexture", "metallicTexture"]) {
+    assert.notEqual(wall[key], source[key]);
+    assert.equal(wall[key].uScale, 3.5);
+    assert.equal(wall[key].vScale, 1.2);
+    assert.equal(other[key].uScale, 0.7);
+    assert.equal(source[key].uScale, 1);
+  }
+  assert.equal(wall.albedoTexture.gammaSpace, true);
+  assert.equal(wall.bumpTexture.gammaSpace, false);
+  assert.equal(wall.metallicTexture.gammaSpace, false);
 });
 
 test("rugs receive shadows without hiding chair legs; cached shadows refresh after enclosure changes", t => {

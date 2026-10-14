@@ -1,40 +1,50 @@
 import {
-  AbstractMesh, Color3, DynamicTexture, Mesh, MeshBuilder, Scene, StandardMaterial, Texture,
+  AbstractMesh, Color3, DynamicTexture, Material, Mesh, MeshBuilder, Scene, StandardMaterial, Texture,
   TransformNode, Vector3, VertexBuffer, VertexData,
 } from "@babylonjs/core";
 import { measureBookshelf } from "./BookshelfLayout";
+import { linenMaterial, mappedMaterial, surfaceMaterial } from "./RoomMaterials";
 
 type Triple = [number, number, number];
 
 /** Reusable, static furniture parts, merged by material to keep draw calls low. */
 export class RoomFurnishings {
-  private materials = new Map<string, StandardMaterial>();
+  private materials = new Map<string, Material>();
   private parts: Mesh[] = [];
 
   constructor(private scene: Scene) {
     const colors: Record<string, string> = {
-      wood: "#795032", darkWood: "#362a20", brass: "#b18b47", cream: "#e2d2af",
-      moss: "#4e624b", cushion: "#b69a68", rust: "#955338", burgundy: "#763c38",
-      navy: "#354756", paper: "#e2d3ac", leaf: "#506c3a", stem: "#424a28",
+      wood: "#795032", darkWood: "#362a20", brass: "#b8a077", cream: "#d9cfbb",
+      moss: "#77816a", cushion: "#b7a282", rust: "#91684f", burgundy: "#76544e",
+      navy: "#525e65", paper: "#e0d8c5", leaf: "#667955", stem: "#615841",
       ceramic: "#c3b894", soil: "#33281d", shade: "#f3dfad", black: "#272b29",
+      paintGreen: "#68715d", lampGlass: "#425e4b", deskLeather: "#59634e",
     };
     Object.entries(colors).forEach(([name, color]) => {
-      const material = new StandardMaterial(name, scene);
-      material.diffuseColor = Color3.FromHexString(color);
-      material.specularColor = name === "brass" ? new Color3(0.65, 0.5, 0.27) : new Color3(0.08, 0.07, 0.05);
-      material.maxSimultaneousLights = 4;
-      if (name === "shade") material.emissiveColor = new Color3(0.32, 0.22, 0.1);
-      if (["moss", "cream", "cushion", "leaf"].includes(name)) material.specularColor.set(0.025, 0.025, 0.02);
+      const material = surfaceMaterial(name, scene, color,
+        name === "brass" ? 0.32 : name === "ceramic" || name === "lampGlass" ? 0.26 : 0.78);
+      if (name === "brass") material.metallic = 1;
+      if (name === "shade") material.emissiveColor = new Color3(0.2, 0.13, 0.065);
+      if (["paintGreen", "lampGlass", "ceramic"].includes(name)) {
+        material.clearCoat.isEnabled = true;
+        material.clearCoat.intensity = name === "lampGlass" ? 0.45 : 0.18;
+        material.clearCoat.roughness = 0.35;
+      }
       this.materials.set(name, material);
     });
-    const wood = this.materials.get("wood")!;
-    wood.diffuseColor.set(0.45, 0.4, 0.32);
-    wood.diffuseTexture = new Texture("./textures/woodFloor/wood_floor_diff.jpg", scene);
-    wood.bumpTexture = new Texture("./textures/woodFloor/wood_floor_normal.jpg", scene);
-    wood.bumpTexture.level = 0.18;
-    this.fabric("moss", "#4e624b", "#819072");
-    this.fabric("cream", "#d6c5a3", "#eee0bf");
-    this.fabric("cushion", "#ad8754", "#d6b879");
+    for (const name of ["wood", "darkWood"]) {
+      this.materials.get(name)!.dispose();
+      const wood = mappedMaterial(name, scene, "wood_table_001",
+        name === "wood" ? "#e4dbd0" : "#b0a99d", 1, 0.16);
+      wood.clearCoat.isEnabled = true;
+      wood.clearCoat.intensity = 0.15;
+      wood.clearCoat.roughness = 0.5;
+      this.materials.set(name, wood);
+    }
+    for (const name of ["moss", "cream", "cushion"]) {
+      this.materials.get(name)!.dispose();
+      this.materials.set(name, linenMaterial(name, scene, colors[name]));
+    }
   }
 
   box(name: string, size: Triple, position: Triple, material: string, parent?: TransformNode) {
@@ -117,12 +127,12 @@ export class RoomFurnishings {
     this.box("back-cornice-gold", [40, 0.07, 0.7], [0, 8.52, -19.65], "brass");
     this.box("left-cornice-gold", [0.7, 0.07, 40], [-19.65, 8.52, 0], "brass");
 
-    this.box("green-door", [7.6, 10.7, 0.35], [-2, 0.35, -19.8], "moss");
+    this.box("green-door", [7.6, 10.7, 0.35], [-2, 0.35, -19.8], "paintGreen");
     [-6.1, 2.1].forEach(x => this.box("door-frame", [0.4, 11.3, 0.65], [x, 0.5, -19.5], "wood"));
     this.box("door-frame-top", [8.6, 0.45, 0.65], [-2, 6.1, -19.5], "wood");
     [-2.3, 2.4].forEach(y => {
       this.box("door-raised-panel", [6.25, 3.6, 0.12], [-2, y, -19.53], "darkWood");
-      this.box("door-panel-inset", [5.95, 3.3, 0.15], [-2, y, -19.45], "moss");
+      this.box("door-panel-inset", [5.95, 3.3, 0.15], [-2, y, -19.45], "paintGreen");
     });
     this.box("door-knob-plate", [0.25, 0.9, 0.08], [1, 0.1, -19.35], "brass");
     this.sphere("door-knob", [0.3, 0.3, 0.3], [1, 0.1, -19.15], "brass");
@@ -186,22 +196,6 @@ export class RoomFurnishings {
     });
   }
 
-  private fabric(name: string, base: string, thread: string) {
-    const texture = new DynamicTexture(name + "-weave", 128, this.scene, false);
-    const ctx = texture.getContext();
-    ctx.fillStyle = base; ctx.fillRect(0, 0, 128, 128);
-    ctx.strokeStyle = thread; ctx.globalAlpha = 0.15; ctx.lineWidth = 1;
-    for (let i = 0; i < 128; i += 4) {
-      ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 128); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(128, i); ctx.stroke();
-    }
-    ctx.globalAlpha = 1;
-    texture.uScale = texture.vScale = 4;
-    texture.update();
-    const mat = this.materials.get(name)!;
-    mat.diffuseColor = Color3.White(); mat.diffuseTexture = texture;
-  }
-
   private rug() {
     const texture = new DynamicTexture("woven-persian-rug", { width: 1024, height: 1024 }, this.scene, false);
     const c = texture.getContext();
@@ -247,7 +241,7 @@ export class RoomFurnishings {
       this.sphere("leg-collar", [0.65, 0.6, 0.65], [x, 2.9, z], "wood", g);
       this.cylinder("brass-table-foot", 0.3, 0.4, [x, 0.15, z], "brass", g);
     }));
-    this.box("desk-blotter", [4.1, 0.035, 2.8], [0, 4.62, 0.45], "moss", g);
+    this.box("desk-blotter", [4.1, 0.035, 2.8], [0, 4.62, 0.45], "deskLeather", g);
     const letter = this.box("letter", [1.5, 0.02, 2], [-0.5, 4.66, 0.35], "paper", g);
     letter.rotation.y = -0.2;
     this.box("pen", [0.07, 0.07, 1.5], [0.7, 4.7, 0.35], "brass", g).rotation.y = -0.25;
@@ -270,35 +264,14 @@ export class RoomFurnishings {
   }
 
   private sofa() {
-    const g = this.group("moss-reading-sofa", [10, -5, 6]);
-    [-4.6, 4.6].forEach(x => [-1.3, 1.3].forEach(z => this.cylinder("sofa-foot", 0.75, 0.3, [x, 0.38, z], "darkWood", g)));
-    this.paddedBox("sofa-base", [10.8, 1.05, 4.2], [0, 1.2, 0], "moss", g);
-    this.box("sofa-lower-trim", [10.9, 0.13, 4.22], [0, 0.77, 0], "brass", g);
-    [-2.85, 0, 2.85].forEach(x => {
-      this.paddedBox("sofa-seat-cushion", [2.8, 0.75, 3.45], [x, 1.95, 0.35], "moss", g);
-      this.paddedBox("sofa-back-cushion", [2.8, 2.65, 0.85], [x, 3.1, -1.5], "moss", g);
-      [-0.65, 0.65].forEach(dx => this.sphere("tuft-button", [0.09, 0.09, 0.09], [x + dx, 3.2, -0.99], "darkWood", g));
-    });
-    [-5, 5].forEach(x => {
-      this.paddedBox("rolled-sofa-arm", [1.25, 2.3, 4.35], [x, 2.3, 0], "moss", g);
-      this.sphere("brass-arm-end", [0.12, 0.12, 0.12], [x, 2.6, 2.2], "brass", g);
-    });
-    this.paddedBox("ochre-throw-pillow", [1.6, 1.6, 0.7], [-3.6, 2.8, -0.5], "cushion", g).rotation.z = -0.18;
-    this.paddedBox("linen-throw-pillow", [1.6, 1.6, 0.7], [3.6, 2.8, -0.5], "cream", g).rotation.z = 0.18;
-    this.box("folded-throw", [1.7, 0.15, 2.5], [2, 2.34, 0.6], "rust", g).rotation.y = 0.12;
+    // The sofa itself is an imported upholstered asset; accessories stay procedural.
     const ottoman = this.group("reading-ottoman", [15, -5, 16]);
     this.cylinder("ottoman-base", 1.2, 3.3, [0, 0.85, 0], "darkWood", ottoman);
     this.sphere("ottoman-cushion", [3.7, 1, 3.7], [0, 1.6, 0], "cushion", ottoman);
   }
 
   private armchair() {
-    const g = this.group("window-reading-armchair", [-10, -5, 12], Math.PI / 2);
-    [-1.65, 1.65].forEach(x => [-1.4, 1.4].forEach(z => this.cylinder("armchair-foot", 0.65, 0.24, [x, 0.33, z], "darkWood", g)));
-    this.paddedBox("armchair-base", [4, 1, 3.8], [0, 1.2, 0], "cushion", g);
-    this.paddedBox("armchair-seat", [3, 0.7, 3.3], [0, 1.9, 0.3], "cushion", g);
-    this.paddedBox("armchair-back", [3.3, 2.8, 0.8], [0, 3.1, -1.4], "cushion", g);
-    [-1.8, 1.8].forEach(x => this.paddedBox("armchair-arm", [0.65, 1.8, 3.8], [x, 2.25, 0], "cushion", g));
-    this.paddedBox("armchair-pillow", [1.4, 1.4, 0.65], [0.5, 2.6, -0.6], "cream", g).rotation.z = -0.2;
+    // The scanned armchair supplies the frame, cushions and their seams.
     this.cylinder("side-table-top", 0.2, 2.6, [-13.4, -2.6, 15.2], "wood");
     this.cylinder("side-table-stem", 2.15, 0.18, [-13.4, -3.75, 15.2], "brass");
     this.cylinder("side-table-base", 0.14, 1.5, [-13.4, -4.85, 15.2], "brass");
@@ -410,7 +383,7 @@ export class RoomFurnishings {
     const g = this.group("banker-lamp", position); g.parent = parent || null;
     this.cylinder("banker-base", 0.12, 1.1, [0, 0.06, 0], "brass", g);
     this.cylinder("banker-stem", 1.4, 0.1, [0, 0.8, 0], "brass", g);
-    this.sphere("banker-green-shade", [2.1, 0.8, 0.95], [0, 1.65, 0], "moss", g);
+    this.sphere("banker-green-shade", [2.1, 0.8, 0.95], [0, 1.65, 0], "lampGlass", g);
     this.box("banker-lit-underside", [1.5, 0.06, 0.65], [0, 1.38, 0], "shade", g);
   }
 
@@ -507,10 +480,10 @@ export class RoomFurnishings {
   }
 
   private merge(parts: Mesh[]): Mesh[] {
-    const groups = new Map<string, { material: StandardMaterial; castsShadows: boolean; parts: Mesh[] }>();
+    const groups = new Map<string, { material: Material; castsShadows: boolean; parts: Mesh[] }>();
     parts.forEach(mesh => {
       mesh.computeWorldMatrix(true);
-      const material = mesh.material as StandardMaterial;
+      const material = mesh.material!;
       const castsShadows = mesh.metadata?.castsShadows !== false;
       const key = material.uniqueId + ":" + castsShadows;
       if (!groups.has(key)) groups.set(key, { material, castsShadows, parts: [] });
