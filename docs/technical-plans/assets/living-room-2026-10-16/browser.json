@@ -1,0 +1,978 @@
+{
+  "browser": "155.0.8059.79",
+  "viewport": [
+    1280,
+    720
+  ],
+  "deviceScaleFactor": 1,
+  "cacheDisabled": true,
+  "fpsCpuGpuLoadTimeSampling": false,
+  "drawers": [
+    {
+      "id": "writing-drawer-1",
+      "closed": {
+        "position": [
+          -1.65,
+          3.86,
+          2.69
+        ],
+        "absolute": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          1.690000057220459
+        ],
+        "target": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          1.8300000429153442
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          -1.65,
+          3.86,
+          4.49
+        ],
+        "absolute": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          3.489999771118164
+        ],
+        "target": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          3.6299996376037598
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          -1.65,
+          3.86,
+          2.69
+        ],
+        "absolute": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          1.690000057220459
+        ],
+        "target": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          1.8300000429153442
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "writing-drawer-2",
+      "closed": {
+        "position": [
+          1.65,
+          3.86,
+          2.69
+        ],
+        "absolute": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          1.690000057220459
+        ],
+        "target": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          1.8300000429153442
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          1.65,
+          3.86,
+          4.49
+        ],
+        "absolute": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          3.489999771118164
+        ],
+        "target": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          3.6299996376037598
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          1.65,
+          3.86,
+          2.69
+        ],
+        "absolute": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          1.690000057220459
+        ],
+        "target": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          1.8300000429153442
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "console-drawer-1",
+      "closed": {
+        "position": [
+          -2.3,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          11.300000190734863
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          11.300000190734863
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          -2.3,
+          3.51,
+          2.85
+        ],
+        "absolute": [
+          -14.149999618530273,
+          -1.4900000095367432,
+          11.300000190734863
+        ],
+        "target": [
+          -14.049999237060547,
+          -1.4500000476837158,
+          11.300000190734863
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          -2.3,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          11.300000190734863
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          11.300000190734863
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "console-drawer-2",
+      "closed": {
+        "position": [
+          0,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          9
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          9
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          0,
+          3.51,
+          2.85
+        ],
+        "absolute": [
+          -14.149999618530273,
+          -1.4900000095367432,
+          9
+        ],
+        "target": [
+          -14.049999237060547,
+          -1.4500000476837158,
+          9
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          0,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          9
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          9
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "console-drawer-3",
+      "closed": {
+        "position": [
+          2.3,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          6.699999809265137
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          6.699999809265137
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          2.3,
+          3.51,
+          2.85
+        ],
+        "absolute": [
+          -14.149999618530273,
+          -1.4900000095367432,
+          6.699999809265137
+        ],
+        "target": [
+          -14.049999237060547,
+          -1.4500000476837158,
+          6.699999809265137
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          2.3,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          6.699999809265137
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          6.699999809265137
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "cabinet-drawer-1",
+      "closed": {
+        "position": [
+          -0.0014149999478831887,
+          0.35649898648262024,
+          0.2807460129261017
+        ],
+        "absolute": [
+          -13.493349075317383,
+          -3.3244547843933105,
+          -16.280494689941406
+        ],
+        "target": [
+          -13.493879663922712,
+          -3.325420748403211,
+          -17.574040188307173
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          -0.0014149999478831887,
+          0.35649898648262024,
+          0.6607460129261017
+        ],
+        "absolute": [
+          -13.493349075317383,
+          -3.3244547843933105,
+          -14.494494438171387
+        ],
+        "target": [
+          -13.493879663922712,
+          -3.325420748403211,
+          -15.788039936537155
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          -0.0014149999478831887,
+          0.35649898648262024,
+          0.2807460129261017
+        ],
+        "absolute": [
+          -13.493349075317383,
+          -3.3244547843933105,
+          -16.280494689941406
+        ],
+        "target": [
+          -13.493879663922712,
+          -3.325420748403211,
+          -17.574040188307173
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "cabinet-drawer-2",
+      "closed": {
+        "position": [
+          -0.001487000030465424,
+          0.6670479774475098,
+          0.261231005191803
+        ],
+        "absolute": [
+          -13.493011474609375,
+          -1.8648746013641357,
+          -16.372215270996094
+        ],
+        "target": [
+          -13.493878233397595,
+          -1.8660573601242731,
+          -17.664557280107122
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          -0.001487000030465424,
+          0.6670479774475098,
+          0.641231005191803
+        ],
+        "absolute": [
+          -13.493011474609375,
+          -1.8648746013641357,
+          -14.586215019226074
+        ],
+        "target": [
+          -13.493878233397595,
+          -1.8660573601242731,
+          -15.878557028337102
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          -0.001487000030465424,
+          0.6670479774475098,
+          0.261231005191803
+        ],
+        "absolute": [
+          -13.493011474609375,
+          -1.8648746013641357,
+          -16.372215270996094
+        ],
+        "target": [
+          -13.493878233397595,
+          -1.8660573601242731,
+          -17.664557280107122
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "cabinet-drawer-3",
+      "closed": {
+        "position": [
+          -0.0009110000100918114,
+          0.9869080185890198,
+          0.27112799882888794
+        ],
+        "absolute": [
+          -13.495718002319336,
+          -0.3615325093269348,
+          -16.325698852539062
+        ],
+        "target": [
+          -13.493875929788004,
+          -0.3651184646820127,
+          -17.59550768945045
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          -0.0009110000100918114,
+          0.9869080185890198,
+          0.6511279988288879
+        ],
+        "absolute": [
+          -13.495718002319336,
+          -0.3615325093269348,
+          -14.539698600769043
+        ],
+        "target": [
+          -13.493875929788004,
+          -0.3651184646820127,
+          -15.80950743768043
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          -0.0009110000100918114,
+          0.9869080185890198,
+          0.27112799882888794
+        ],
+        "absolute": [
+          -13.495718002319336,
+          -0.3615325093269348,
+          -16.325698852539062
+        ],
+        "target": [
+          -13.493875929788004,
+          -0.3651184646820127,
+          -17.59550768945045
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    }
+  ],
+  "lamps": [
+    {
+      "id": "desk-lamp",
+      "before": {
+        "intensity": 1.25,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      },
+      "off": {
+        "intensity": 0,
+        "emission": [
+          0,
+          0,
+          0
+        ]
+      },
+      "restored": {
+        "intensity": 1.25,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      }
+    },
+    {
+      "id": "floor-lamp",
+      "before": {
+        "intensity": 3.3,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      },
+      "off": {
+        "intensity": 0,
+        "emission": [
+          0,
+          0,
+          0
+        ]
+      },
+      "restored": {
+        "intensity": 3.3,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      }
+    },
+    {
+      "id": "living-lamp",
+      "before": {
+        "intensity": 2.4,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      },
+      "off": {
+        "intensity": 0,
+        "emission": [
+          0,
+          0,
+          0
+        ]
+      },
+      "restored": {
+        "intensity": 2.4,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      }
+    }
+  ],
+  "views": [
+    "overview",
+    "study",
+    "living",
+    "reading",
+    "desk",
+    "details",
+    "cabinet"
+  ],
+  "environment": {
+    "glInfo": {
+      "vendor": "Google Inc. (Apple)",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M6, Unspecified Version)",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    },
+    "staticCaptureRenderLoopStopped": true,
+    "deterministicAnimationDeltaMilliseconds": 50,
+    "geometry": {
+      "meshes": 142,
+      "vertices": 266552,
+      "materials": 64
+    },
+    "ceiling": {
+      "material": "plaster-ceiling",
+      "diffuseTexture": false
+    },
+    "interactionIds": [
+      "writing-drawer-1",
+      "writing-drawer-2",
+      "desk-letter",
+      "desk-lamp",
+      "floor-lamp",
+      "console-drawer-1",
+      "console-drawer-2",
+      "console-drawer-3",
+      "living-lamp",
+      "cabinet-drawer-1",
+      "cabinet-drawer-2",
+      "cabinet-drawer-3"
+    ]
+  },
+  "initialJsBytes": 2610018,
+  "clickGuards": {
+    "rightClickDoesNotToggle": true,
+    "dragOutAndBackDoesNotToggle": true
+  },
+  "centredLampClicks": [
+    "台灯",
+    "落地灯",
+    "客厅台灯"
+  ],
+  "passage": [
+    {
+      "direction": "study-to-living",
+      "start": [
+        16,
+        1,
+        -5
+      ],
+      "end": [
+        22.763421930580645,
+        1,
+        -4.999563641961525
+      ]
+    },
+    {
+      "direction": "living-to-study",
+      "start": [
+        24,
+        1,
+        -5
+      ],
+      "end": [
+        17.236578069419387,
+        1,
+        -4.999563641961525
+      ]
+    }
+  ],
+  "sharedWallBlocksOutsideOpening": [
+    18.683312494208433,
+    1,
+    -11.999266841254197
+  ],
+  "firstPerson": {
+    "pointerLockAcquired": true,
+    "freeMouseLook": true,
+    "rotation": [
+      0.04328774908931141,
+      -2.8335398733093324,
+      0
+    ],
+    "looked": [
+      -0.318003636372798,
+      -3.444294358257184,
+      0
+    ],
+    "start": [
+      4,
+      1,
+      16
+    ],
+    "moved": [
+      4.290933893699372,
+      1,
+      15.075299666037067
+    ],
+    "centredDrawerClick": true,
+    "escapeRestoredView": "desk",
+    "reticleHiddenOnExit": true,
+    "browserReleaseExits": true,
+    "simulatedWindowBlurExits": true,
+    "settingsPauseAndCanvasClickResume": true,
+    "deniedLockPausesMovement": true
+  },
+  "livingEntryAndEscape": true,
+  "regression": {
+    "orbitDrag": true,
+    "wheelZoom": true,
+    "settingsSpeedAndReset": true,
+    "inspectorOpenedAndClosed": true,
+    "orbitControlsWorkAfterInspector": true
+  },
+  "release": {
+    "filesVerified": 462,
+    "build": 26053074,
+    "runtime": 15871062,
+    "documentation": 39875,
+    "manifestBytes": 86348,
+    "initialStaticJsBytes": 2458887,
+    "completeBytes": 42050359
+  },
+  "interactionExtraRequests": 0,
+  "passed": true,
+  "phase": "release",
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8094/",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 6951
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/main.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 71885
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/4259.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2387002
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/brick_wall_001/color.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 574381
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/brick_wall_001/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 295279
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/brick_wall_001/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 123384
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/forest-window/view.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1155565
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/pictures/pic1.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8094/environment/study-interior.hdr",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/1203.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8094/models/study/sofa_03.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8094/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8094/models/gothic_commode.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8094/models/wooden_bookshelf.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/8558.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/336ebe45-c6ef-44fa-b7a3-a6f1ba643a98",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/e16d2887-b506-4ce5-bdef-fb4d36a8f577",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/706afeef-767b-4cce-a9a2-dfb06498b81a",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/f9a5080d-7bb9-4844-8b67-a0d608384295",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/938e8358-3166-49a6-980d-9194110cbee5",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/2c117cb6-668d-44dd-96ba-0785ac3c4b64",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/406429b4-13f5-497d-b75e-03baafa1a9d4",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/e31b66e7-fa78-4ea0-9894-875ce8d831aa",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/bf878294-bbd2-4f79-b341-bff25e8d0438",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/34f082a7-56ba-4fde-b6b7-c7abf1c09a7c",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/77e0542e-afcf-459e-829a-fe1593b0d658",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/57da4453-da9b-4e1c-a0b4-ad241d93060b",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/c16938e3-c0bb-4bd0-8db3-b4ec71cd6f07",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/eac6c7b3-66a3-49d6-af51-b9e108cf3302",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/8d2d7fe2-eea3-4fff-8981-c5588cb67b47",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/dca03842-2c64-4e98-a4cb-b02b73a718e2",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/4593.js",
+      "status": 200,
+      "phase": "regression",
+      "bytes": 14090
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/2033.js",
+      "status": 200,
+      "phase": "regression",
+      "bytes": 43100
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/1326.js",
+      "status": 200,
+      "phase": "regression",
+      "bytes": 93582
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/5081.js",
+      "status": 200,
+      "phase": "regression",
+      "bytes": 3404567
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/7665.js",
+      "status": 200,
+      "phase": "regression",
+      "bytes": 109982
+    }
+  ]
+}

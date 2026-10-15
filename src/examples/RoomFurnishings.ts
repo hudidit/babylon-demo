@@ -91,19 +91,19 @@ export class RoomFurnishings {
     return this.place(mesh, position, material, parent);
   }
 
-  private cylinder(name: string, height: number, diameter: number, position: Triple,
+  cylinder(name: string, height: number, diameter: number, position: Triple,
     material: string, parent?: TransformNode, top = diameter) {
     const mesh = CreateCylinder(name, { height, diameterBottom: diameter, diameterTop: top, tessellation: 24 }, this.scene);
     return this.place(mesh, position, material, parent);
   }
 
-  private sphere(name: string, size: Triple, position: Triple, material: string, parent?: TransformNode) {
+  sphere(name: string, size: Triple, position: Triple, material: string, parent?: TransformNode) {
     const mesh = CreateSphere(name, { diameter: 1, segments: 12 }, this.scene);
     mesh.scaling.set(...size);
     return this.place(mesh, position, material, parent);
   }
 
-  private paddedBox(name: string, size: Triple, position: Triple, material: string, parent?: TransformNode) {
+  paddedBox(name: string, size: Triple, position: Triple, material: string, parent?: TransformNode) {
     const mesh = CreateSphere(name, { diameter: 1, segments: 16, updatable: true }, this.scene);
     const positions = mesh.getVerticesData(VertexBuffer.PositionKind)!;
     // A superellipsoid gives upholstery broad, flat faces with soft corners.
@@ -129,7 +129,7 @@ export class RoomFurnishings {
     return this.place(mesh, position, material, parent);
   }
 
-  private ring(name: string, diameter: number, thickness: number, position: Triple, material: string, parent?: TransformNode) {
+  ring(name: string, diameter: number, thickness: number, position: Triple, material: string, parent?: TransformNode) {
     return this.place(CreateTorus(name, { diameter, thickness, tessellation: 32 }, this.scene), position, material, parent);
   }
 
@@ -147,11 +147,41 @@ export class RoomFurnishings {
     return mesh;
   }
 
-  private group(name: string, position: Triple, rotation = 0) {
+  group(name: string, position: Triple, rotation = 0) {
     const group = new TransformNode(name, this.scene);
     group.position.set(...position);
     group.rotation.y = rotation;
     return group;
+  }
+
+  /** Keep room and cutaway-shell batches separate while sharing the same materials. */
+  section(name: string, build: () => void, parent?: TransformNode) {
+    const start = this.parts.length;
+    build();
+    return this.merge(this.parts.splice(start)).map(mesh => {
+      mesh.name = name + "-" + mesh.name;
+      mesh.metadata = { ...mesh.metadata, room: "living" };
+      // A one-part batch still has its modeling parent; preserve its world transform.
+      mesh.setParent(parent || null);
+      mesh.freezeWorldMatrix();
+      mesh.checkCollisions = true;
+      return mesh;
+    });
+  }
+
+  tableLamp(position: Triple) {
+    const start = this.parts.length;
+    const root = this.group("living-table-lamp", position);
+    this.materials.set("living-lamp-shade", this.materials.get("shade")!.clone("living-lamp-shade")!);
+    this.cylinder("living-lamp-foot", 0.12, 1.15, [0, 0.06, 0], "brass", root);
+    this.sphere("living-lamp-body", [0.8, 1.4, 0.8], [0, 0.8, 0], "ceramic", root);
+    this.cylinder("living-lamp-neck", 0.45, 0.12, [0, 1.6, 0], "brass", root);
+    this.cylinder("living-lamp-shade", 1.5, 2.5, [0, 2.55, 0], "living-lamp-shade", root, 1.6);
+    this.ring("living-shade-trim", 2.5, 0.055, [0, 1.8, 0], "brass", root);
+    this.sphere("living-lamp-finial", [0.17, 0.25, 0.17], [0, 3.4, 0], "brass", root);
+    const meshes = this.keepInteractive(start, root, true);
+    meshes.forEach(mesh => mesh.metadata = { ...mesh.metadata, room: "living" });
+    this.lamps.push({ id: "living-lamp", label: "客厅台灯", meshes });
   }
 
   architecturalDetails() {
@@ -216,7 +246,10 @@ export class RoomFurnishings {
     this.box("plaster-ceiling", [40.5, 0.5, 40.5], [0, 9.25, 0], "plaster");
     // Close the small reveal behind the existing door as part of the interior shell.
     this.box("door-backing", [8, 10.8, 0.2], [-2, 0.4, -20.1], "darkWood");
-    this.box("right-wainscot", [0.18, 2.5, 40], [19.65, -3.7, 0], "darkWood");
+    // Match the shared wall opening; no rail, panel or collision may bridge the passage.
+    const sharedSpans = [{ length: 11, z: -14.5 }, { length: 21, z: 9.5 }];
+    sharedSpans.forEach(({ length, z }) =>
+      this.box("right-wainscot", [0.18, 2.5, length], [19.65, -3.7, z], "darkWood"));
     this.box("front-wainscot", [40, 2.5, 0.18], [0, -3.7, 19.65], "darkWood");
     const rails: [string, number, number, number, string][] = [
       ["baseboard", 0.32, 0.32, -4.75, "wood"],
@@ -226,11 +259,13 @@ export class RoomFurnishings {
       ["cornice-gold", 0.7, 0.07, 8.52, "brass"],
     ];
     rails.forEach(([name, depth, height, y, material]) => {
-      this.box("right-" + name, [depth, height, 40], [19.5, y, 0], material);
+      if (y > 6) this.box("right-" + name, [depth, height, 40], [19.5, y, 0], material);
+      else sharedSpans.forEach(({ length, z }) =>
+        this.box("right-" + name, [depth, height, length], [19.5, y, z], material));
       this.box("front-" + name, [40, height, depth], [0, y, 19.5], material);
     });
     for (let offset = -18; offset < 20; offset += 3.2) {
-      this.box("right-panel-stile", [0.24, 2.2, 0.1], [19.5, -3.6, offset], "wood");
+      if (offset < -9 || offset > -1) this.box("right-panel-stile", [0.24, 2.2, 0.1], [19.5, -3.6, offset], "wood");
       this.box("front-panel-stile", [0.1, 2.2, 0.24], [offset, -3.6, 19.5], "wood");
     }
     [-7, 7].forEach(offset => {
@@ -465,7 +500,7 @@ export class RoomFurnishings {
     return this.merge(this.parts.splice(start));
   }
 
-  private bookStack(position: Triple, parent?: TransformNode) {
+  bookStack(position: Triple, parent?: TransformNode) {
     const g = this.group("stacked-books", position);
     g.parent = parent || null;
     ["burgundy", "navy", "cushion"].forEach((color, i) => {
@@ -488,7 +523,7 @@ export class RoomFurnishings {
     });
   }
 
-  private mug(position: Triple, color: string, parent?: TransformNode) {
+  mug(position: Triple, color: string, parent?: TransformNode) {
     const g = this.group("tea-cup", position); g.parent = parent || null;
     this.cylinder("saucer", 0.045, 0.9, [0, 0.025, 0], color, g);
     this.cylinder("cup", 0.55, 0.52, [0, 0.3225, 0], color, g, 0.65);
@@ -508,7 +543,7 @@ export class RoomFurnishings {
     this.lamps.push({ id: "desk-lamp", label: "台灯", meshes: this.keepInteractive(start, g, true) });
   }
 
-  private vase(position: Triple, scale = 1, parent?: TransformNode) {
+  vase(position: Triple, scale = 1, parent?: TransformNode) {
     const g = this.group("ceramic-vase", position); g.parent = parent || null; g.scaling.setAll(scale);
     this.sphere("vase-body", [1, 1.25, 1], [0, 0.63, 0], "ceramic", g);
     this.cylinder("vase-neck", 0.6, 0.4, [0, 1.3, 0], "ceramic", g, 0.5);
@@ -550,7 +585,7 @@ export class RoomFurnishings {
     this.materials.set("leaf", leaf);
   }
 
-  private plant(position: Triple, scale: number) {
+  plant(position: Triple, scale: number) {
     const g = this.group("potted-ficus", position); g.scaling.setAll(scale);
     this.cylinder("terracotta-pot", 1.9, 1.5, [0, 0.95, 0], "rust", g, 2.2);
     this.ring("pot-rim", 2.15, 0.18, [0, 1.85, 0], "rust", g);
@@ -582,8 +617,8 @@ export class RoomFurnishings {
     }
   }
 
-  private framedArt(name: string, file: string, position: Triple, width: number, height: number) {
-    const g = this.group(name + "-frame", position, -Math.PI / 2);
+  framedArt(name: string, file: string, position: Triple, width: number, height: number, rotation = -Math.PI / 2) {
+    const g = this.group(name + "-frame", position, rotation);
     this.box("art-backing", [width + 0.7, height + 0.7, 0.2], [0, 0, 0], "darkWood", g);
     this.box("art-gilt-mat", [width + 0.25, height + 0.25, 0.07], [0, 0, -0.14], "brass", g);
     const material = new StandardMaterial(name + "-artwork", this.scene);
@@ -593,16 +628,18 @@ export class RoomFurnishings {
     this.place(image, [0, 0, -0.19], name + "-artwork", g);
   }
 
-  private window() {
-    const texture = new Texture("./textures/study/forest-window/view.jpg", this.scene);
-    texture.anisotropicFilteringLevel = 8;
-    texture.level = 0.85;
-    const mat = new StandardMaterial("window-glass", this.scene);
-    mat.disableLighting = true; mat.diffuseColor = Color3.Black();
-    mat.emissiveTexture = texture; mat.emissiveColor = Color3.Black();
-    mat.specularColor = Color3.Black();
-    this.materials.set("window-glass", mat);
-    const g = this.group("garden-window", [-19.35, 2.5, 9], -Math.PI / 2);
+  window(position: Triple = [-19.35, 2.5, 9], rotation = -Math.PI / 2, name = "garden-window") {
+    if (!this.materials.has("window-glass")) {
+      const texture = new Texture("./textures/study/forest-window/view.jpg", this.scene);
+      texture.anisotropicFilteringLevel = 8;
+      texture.level = 0.85;
+      const mat = new StandardMaterial("window-glass", this.scene);
+      mat.disableLighting = true; mat.diffuseColor = Color3.Black();
+      mat.emissiveTexture = texture; mat.emissiveColor = Color3.Black();
+      mat.specularColor = Color3.Black();
+      this.materials.set("window-glass", mat);
+    }
+    const g = this.group(name, position, rotation);
     this.box("window-casing", [11, 8.2, 0.35], [0, 0, 0], "darkWood", g);
     const plane = CreatePlane("garden-view", { width: 10.3, height: 7.5, sideOrientation: Mesh.DOUBLESIDE }, this.scene);
     this.place(plane, [0, 0, -0.21], "window-glass", g).receiveShadows = false;
@@ -641,6 +678,7 @@ export class RoomFurnishings {
       this.place(cord, [0, 0, 0], "cushion", g);
       this.cylinder("curtain-tassel", 0.26, 0.14, [side * 5.48, -1.94, -1.01], "cushion", g, 0.06);
     });
+    return g;
   }
 
   private clock() {
@@ -678,6 +716,7 @@ export class RoomFurnishings {
       const merged = this.merge(meshes, false);
       merged.forEach(mesh => {
         mesh.setParent(root); // Preserve world-space geometry baked by MergeMeshes.
+        if (root.name.startsWith("living-")) mesh.metadata = { ...mesh.metadata, room: "living" };
         mesh.checkCollisions = true;
         if (fixed) mesh.freezeWorldMatrix();
       });

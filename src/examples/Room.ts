@@ -12,11 +12,12 @@ import { cabinetDrawers, RoomInteractions } from "./RoomInteractions";
 import { RoomPointerLock } from "./RoomPointerLock";
 import { RoomItemInspection } from "./RoomItemInspection";
 import type { InspectableItem } from "./RoomInteractions";
+import { constrainWalkingPosition, createLivingRoom, createSharedWall } from "./RoomLivingRoom";
 
-export type RoomView = "overview" | "reading" | "desk" | "details" | "cabinet" | "first-person";
+export type RoomView = "overview" | "study" | "living" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.55 };
 
-/** A furnished study with cutaway presets and an enclosed first-person view. */
+/** An adjoining study and living room with cutaway presets and enclosed first-person roaming. */
 export class RoomScene {
   readonly scene: Scene;
   readonly engine: Engine;
@@ -57,7 +58,7 @@ export class RoomScene {
     this.camera = new ArcRotateCamera("study-camera", 0.8, 1.08, 66, new Vector3(0, 0, 0), this.scene);
     this.camera.attachControl(canvas, true);
     this.camera.lowerRadiusLimit = 9;
-    this.camera.upperRadiusLimit = 85;
+    this.camera.upperRadiusLimit = 145;
     this.camera.lowerBetaLimit = 0.2;
     this.camera.upperBetaLimit = Math.PI / 2 - 0.03;
     this.camera.wheelDeltaPercentage = 0.015;
@@ -82,9 +83,7 @@ export class RoomScene {
     this.scene.collisionsEnabled = true;
     // Keep walking at eye level, including while looking up/down or using touch/gamepad inputs.
     this.firstPersonCamera.onAfterCheckInputsObservable.add(() => {
-      const position = this.firstPersonCamera.position;
-      position.set(Math.max(-18.8, Math.min(18.8, position.x)), 1,
-        Math.max(-18.8, Math.min(18.8, position.z)));
+      constrainWalkingPosition(this.firstPersonCamera.position);
     });
     this.interiorShell = new TransformNode("first-person-room-shell", this.scene);
     this.interiorShell.setEnabled(false);
@@ -118,13 +117,16 @@ export class RoomScene {
     const furnishings = new RoomFurnishings(this.scene);
     this.createArchitecture(furnishings);
     furnishings.furnish();
+    createLivingRoom(this.scene, furnishings, this.interiorShell);
+    this.lighting.addLivingRoom(this.scene);
     furnishings.finish().forEach(mesh => {
       mesh.checkCollisions = true;
     });
     furnishings.drawers.forEach(drawer => this.interactions.addDrawer(drawer));
     furnishings.inspectables.forEach(item => this.interactions.addInspectable(item, item => this.openInspection(item)));
     furnishings.lamps.forEach(lamp => {
-      const material = this.scene.getMaterialByName(lamp.id === "desk-lamp" ? "desk-lamp-glow" : "floor-lamp-shade") as PBRMaterial;
+      const material = this.scene.getMaterialByName(lamp.id === "desk-lamp" ? "desk-lamp-glow"
+        : lamp.id === "living-lamp" ? "living-lamp-shade" : "floor-lamp-shade") as PBRMaterial;
       this.lighting.bindLamp(lamp.id, material);
       this.interactions.addLamp(lamp, () => this.lighting.isLampOn(lamp.id), () => this.lighting.toggleLamp(lamp.id));
     });
@@ -184,6 +186,7 @@ export class RoomScene {
   setView(view: RoomView) {
     if (this.inspection?.isOpen) return;
     const firstPerson = view === "first-person";
+    const enteringLiving = this.currentView === "living";
     if (firstPerson && this.currentView !== "first-person") this.previousView = this.currentView;
     this.currentView = view;
     if (!firstPerson) this.pointerLock?.release();
@@ -196,15 +199,17 @@ export class RoomScene {
     this.firstPersonCamera.movement.resetPanVelocity();
     this.firstPersonCamera.movement.resetRotationVelocity();
     const views: Record<Exclude<RoomView, "first-person">, { position: Vector3; target: Vector3 }> = {
-      overview: { position: new Vector3(42, 31, 45), target: new Vector3(-1, -2, -1) },
+      overview: { position: new Vector3(73, 51, 69), target: new Vector3(17, -2, 0) },
+      study: { position: new Vector3(42, 31, 45), target: new Vector3(-1, -2, -1) },
+      living: { position: new Vector3(61, 21, 30), target: new Vector3(37, -1, -1) },
       reading: { position: new Vector3(23, 10, 25), target: new Vector3(9, -1.5, 8) },
       desk: { position: new Vector3(13, 12, 16), target: new Vector3(-7, -1, -3) },
       details: { position: new Vector3(-0.8, 1.5, 2), target: new Vector3(-3.2, -0.35, -0.8) },
       cabinet: { position: new Vector3(0, 7, -1), target: new Vector3(-11, 0, -16) },
     };
     if (firstPerson) {
-      this.firstPersonCamera.position.set(4, 1, 16);
-      this.firstPersonCamera.setTarget(new Vector3(-3, 0, -6));
+      this.firstPersonCamera.position.set(enteringLiving ? 37 : 4, 1, 16);
+      this.firstPersonCamera.setTarget(new Vector3(enteringLiving ? 37 : -3, 0, enteringLiving ? -10 : -6));
       this.scene.activeCamera = this.firstPersonCamera;
     } else {
       const selected = views[view];
@@ -220,7 +225,7 @@ export class RoomScene {
     const help = document.querySelector("#view-help");
     const instructions = firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互";
     if (help) help.textContent = instructions;
-    this.canvas.setAttribute("aria-label", "复古书房三维场景，" + instructions);
+    this.canvas.setAttribute("aria-label", "复古书房与客厅三维场景，" + instructions);
     this.updateInteractionHint();
     if (firstPerson && this.controlsEnabled) {
       this.canvas.focus({ preventScroll: true });
@@ -375,14 +380,12 @@ export class RoomScene {
     lintel.position.set(-2, 7.4, -20);
     const left = CreateBox("left-brick-wall", { width: 0.5, height: 14, depth: 40 }, scene);
     left.position.set(-20, 2, 0);
-    const right = CreateBox("right-brick-wall", { width: 0.5, height: 14, depth: 40.5 }, scene);
-    right.position.set(20, 2, 0);
-    right.parent = this.interiorShell;
+    createSharedWall(scene, this.interiorShell, brick);
     const front = CreateBox("front-brick-wall", { width: 40.5, height: 14, depth: 0.5 }, scene);
     front.position.set(0, 2, 20);
     front.parent = this.interiorShell;
-    const spans = [14, 18, 8, 40, 40.5, 40.5];
-    [leftBack, rightBack, lintel, left, right, front].forEach((mesh, index) => {
+    const spans = [14, 18, 8, 40, 40.5];
+    [leftBack, rightBack, lintel, left, front].forEach((mesh, index) => {
       const wallMaterial = tileMaterial(brick, mesh.name + "-brick", spans[index] / 6,
         (index === 2 ? 3.2 : 14) / 6);
       mesh.material = wallMaterial;
@@ -390,12 +393,12 @@ export class RoomScene {
       mesh.checkCollisions = true;
       mesh.isPickable = false;
       mesh.freezeWorldMatrix();
-      if (mesh === left || mesh === right) {
+      if (mesh === left) {
         // The box's narrow side UVs rotate the brick map; use a wall-sized face.
-        const facing = CreatePlane(mesh === left ? "left-wall-brick-facing" : "right-wall-brick-facing",
+        const facing = CreatePlane("left-wall-brick-facing",
           { width: 40, height: 14 }, scene);
-        facing.position.set(mesh === left ? -19.74 : 19.74, 2, 0);
-        facing.rotation.y = mesh === left ? -Math.PI / 2 : Math.PI / 2;
+        facing.position.set(-19.74, 2, 0);
+        facing.rotation.y = -Math.PI / 2;
         facing.parent = mesh.parent;
         facing.material = wallMaterial;
         facing.receiveShadows = true;

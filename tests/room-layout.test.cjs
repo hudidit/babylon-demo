@@ -31,6 +31,87 @@ const { mappedMaterial, tileMaterial } = loadSource("RoomMaterials");
 const { beveledBox, creasedLetter, curtainPanel, ficusLeaf } = loadSource("RoomDetailGeometry");
 const { buildWearMask } = loadSource("RoomSurfaceDetails");
 const { partitionMergedCollisions } = loadSource("RoomCollisions");
+const { createLivingRoom, constrainWalkingPosition } = loadSource("RoomLivingRoom");
+
+function adjacentRooms(t) {
+  const scene = createScene(t), room = new RoomFurnishings(scene);
+  const shell = new babylon.TransformNode("shell", scene);
+  RoomScene.prototype.createArchitecture.call({ scene, interiorShell: shell }, room);
+  room.furnish();
+  createLivingRoom(scene, room, shell);
+  room.finish().forEach(mesh => mesh.checkCollisions = true);
+  scene.meshes.forEach(mesh => mesh.computeWorldMatrix(true));
+  return { scene, room, shell };
+}
+
+test("adjacent rooms have a real bidirectional passage and closed walls outside it", t => {
+  const { scene, shell } = adjacentRooms(t);
+  scene.collisionsEnabled = true;
+  for (const [x, dx, expected] of [[17, 7, 24], [24, -7, 17]]) {
+    const result = sweep(scene, new babylon.Vector3(x, -1.8, -5), new babylon.Vector3(dx, 0, 0));
+    assert.ok(Math.abs(result.position.x - expected) < 0.02, "walls, trims and casing must leave a walkable passage");
+  }
+  for (const z of [-12, 0]) {
+    const result = sweep(scene, new babylon.Vector3(17, -1.8, z), new babylon.Vector3(7, 0, 0));
+    assert.ok(result.position.x < 19.2, "shared wall outside the passage must block walking");
+  }
+  const outside = sweep(scene, new babylon.Vector3(50, -1.8, 15), new babylon.Vector3(0, 0, 10));
+  assert.ok(outside.position.z < 19.2, "living room perimeter must block walking");
+  const furniture = sweep(scene, new babylon.Vector3(37, -1.8, 15), new babylon.Vector3(0, 0, -8));
+  assert.ok(furniture.position.z > 9, "sofa remains a physical obstacle");
+  shell.setEnabled(false);
+  assert.equal(scene.getMeshByName("shared-wall-0").isEnabled(), false);
+  assert.equal(scene.getMeshByName("living-back-wall").isEnabled(), true);
+  assert.equal(scene.getMeshByName("living-oak-floor").position.y, -5);
+  for (const value of [new babylon.Vector3(37, 8, 0), new babylon.Vector3(100, -10, 30)]) {
+    constrainWalkingPosition(value);
+    assert.equal(value.y, 1); assert.ok(value.x > 20 && value.x <= 52.8 && value.z <= 18.8);
+  }
+});
+
+test("living room lamps and shadows stay in their room without taking study light slots", t => {
+  const { scene, room } = adjacentRooms(t);
+  const lighting = new RoomLighting(scene); lighting.addLivingRoom(scene);
+  const lamp = room.lamps.find(lamp => lamp.id === "living-lamp");
+  assert.ok(lamp.meshes.every(mesh => mesh.metadata.room === "living"));
+  const shade = scene.getMaterialByName("living-lamp-shade"), initial = shade.emissiveColor.clone();
+  lighting.bindLamp("living-lamp", shade); lighting.addMeshes(scene.meshes);
+  for (const light of scene.lights.filter(light => light instanceof babylon.SpotLight)) {
+    const living = light.name.startsWith("living-");
+    for (const mesh of scene.meshes.filter(mesh => mesh.getTotalVertices() > 0)) {
+      assert.equal(light.excludedMeshes.includes(mesh), (mesh.metadata?.room === "living") !== living);
+    }
+    assert.ok(light.getShadowGenerator().getShadowMap().renderList.every(mesh =>
+      (mesh.metadata?.room === "living") === living));
+  }
+  const studyIntensity = scene.getLightByName("banker-lamp-light").intensity;
+  lighting.toggleLamp("living-lamp");
+  assert.equal(scene.getLightByName("living-table-lamp-light").intensity, 0);
+  assert.ok(shade.emissiveColor.equals(babylon.Color3.Black()));
+  assert.equal(scene.getLightByName("banker-lamp-light").intensity, studyIntensity);
+  lighting.toggleLamp("living-lamp"); assert.ok(shade.emissiveColor.equals(initial));
+  lighting.freezeShadows();
+  assert.ok(scene.lights.filter(light => light instanceof babylon.SpotLight).every(light =>
+    light.getShadowGenerator().getShadowMap().refreshRate === babylon.RenderTargetTexture.REFRESHRATE_RENDER_ONCE));
+});
+
+test("section batching preserves singleton artwork/window world transforms and cutaway parenting", t => {
+  const { scene } = adjacentRooms(t);
+  const artwork = scene.getMeshByName("living-study-living-landscape-artwork");
+  const window = scene.getMeshByName("living-study-window-glass-surface");
+  assert.ok(artwork.getBoundingInfo().boundingBox.centerWorld.equalsWithEpsilon(new babylon.Vector3(37, 4, -18.66), 0.001));
+  assert.ok(window.getBoundingInfo().boundingBox.centerWorld.equalsWithEpsilon(new babylon.Vector3(48, 2.5, -19.14), 0.001));
+  const furnishings = new RoomFurnishings(scene), shell = new babylon.TransformNode("test-shell", scene);
+  const meshes = furnishings.section("singleton", () => {
+    const parent = furnishings.group("model-parent", [30, 2, -4], Math.PI / 2);
+    furnishings.box("only-part", [2, 1, 1], [0, 1, 2], "wood", parent);
+  }, shell);
+  const centre = meshes[0].getBoundingInfo().boundingBox.centerWorld;
+  assert.ok(centre.equalsWithEpsilon(new babylon.Vector3(32, 3, -4), 0.001));
+  shell.setEnabled(false); assert.ok(!meshes[0].isEnabled());
+  shell.setEnabled(true); meshes[0].computeWorldMatrix(true);
+  assert.ok(meshes[0].getBoundingInfo().boundingBox.centerWorld.equalsWithEpsilon(centre));
+});
 
 function sweep(scene, position, displacement, radius = new babylon.Vector3(0.65, 2.8, 0.65)) {
   const collider = scene.collisionCoordinator.createCollider();

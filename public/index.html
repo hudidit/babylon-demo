@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="data:," />
-    <title>余晖书房 · Babylon.js</title>
+    <title>余晖小居 · 书房与客厅</title>
     <style>
       * { box-sizing: border-box; }
       html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #242c2e; }
@@ -55,9 +55,9 @@
   </head>
   <body>
     <div class="identity">
-      <p class="eyebrow">THE AFTERNOON STUDY</p>
-      <h1>余晖书房</h1>
-      <p id="scene-status" role="status">正在布置书房…</p>
+      <p class="eyebrow">THE AFTERNOON HOME</p>
+      <h1>余晖小居</h1>
+      <p id="scene-status" role="status">正在布置书房与客厅…</p>
     </div>
     <nav class="tools" aria-label="场景工具">
       <button id="settings-btn" aria-expanded="false" aria-controls="settings-menu">设置</button>
@@ -85,7 +85,9 @@
       <div class="item-actions"><button id="item-inspection-return" autofocus>返回</button><p>ESC 返回场景</p></div>
     </dialog>
     <nav class="view-controls" aria-label="场景视角">
-      <button data-view="overview" aria-pressed="true">房间全景</button>
+      <button data-view="overview" aria-pressed="true">全屋全景</button>
+      <button data-view="study" aria-pressed="false">书房</button>
+      <button data-view="living" aria-pressed="false">客厅</button>
       <button data-view="reading" aria-pressed="false">阅读区</button>
       <button data-view="desk" aria-pressed="false">书桌</button>
       <button data-view="details" aria-pressed="false">桌面细节</button>

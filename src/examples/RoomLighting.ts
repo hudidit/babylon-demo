@@ -1,9 +1,10 @@
 import { Color3, HemisphericLight, RenderTargetTexture, ShadowGenerator, SpotLight, Vector3 } from "@babylonjs/core/pure";
 import type { AbstractMesh, PBRMaterial, Scene } from "@babylonjs/core/pure";
 
-/** Three direct sources (window, reading lamp, desk lamp) plus restrained indirect bounce. */
+/** Room-specific window/lamp sources plus the original restrained indirect bounce. */
 export class RoomLighting {
   private readonly shadows: ShadowGenerator[];
+  private readonly livingShadows = new Set<ShadowGenerator>();
   private readonly lamps = new Map<string, { light: SpotLight; intensity: number; on: boolean;
     material?: PBRMaterial; glow?: Color3 }>();
 
@@ -62,6 +63,32 @@ export class RoomLighting {
     });
   }
 
+  addLivingRoom(scene: Scene) {
+    const daylight = new SpotLight("living-window-daylight", new Vector3(48, 5.6, -18.85),
+      new Vector3(-0.35, -0.38, 1).normalize(), Math.PI / 1.5, 1, scene);
+    daylight.innerAngle = Math.PI / 2;
+    daylight.diffuse = new Color3(1, 0.96, 0.88);
+    daylight.intensity = 3.5; daylight.range = 48;
+    // The emitter sits just below the shade, above the side table.
+    const lamp = new SpotLight("living-table-lamp-light", new Vector3(45.2, -0.24, 9.2),
+      new Vector3(-0.55, -0.85, -0.45).normalize(), Math.PI / 1.7, 1.4, scene);
+    lamp.innerAngle = Math.PI / 2.4;
+    lamp.diffuse = new Color3(1, 0.85, 0.64);
+    lamp.intensity = 2.4; lamp.range = 15;
+    this.lamps.set("living-lamp", { light: lamp, intensity: lamp.intensity, on: true });
+    [daylight, lamp].forEach((light, index) => {
+      light.metadata = { room: "living" };
+      light.falloffType = SpotLight.FALLOFF_STANDARD;
+      light.specular = light.diffuse.scale(0.65);
+      light.shadowMinZ = index ? 0.1 : 0.5; light.shadowMaxZ = light.range;
+      const shadow = new ShadowGenerator(index ? 1024 : 2048, light);
+      shadow.usePercentageCloserFiltering = true;
+      shadow.filteringQuality = ShadowGenerator.QUALITY_MEDIUM;
+      shadow.bias = index ? 0.00015 : 0.0001; shadow.normalBias = 0.012;
+      this.shadows.push(shadow); this.livingShadows.add(shadow);
+    });
+  }
+
   bindLamp(id: string, material: PBRMaterial) {
     const lamp = this.lamps.get(id)!;
     lamp.material = material;
@@ -82,8 +109,15 @@ export class RoomLighting {
     meshes.forEach(mesh => {
       if (mesh.getTotalVertices() === 0) return;
       mesh.receiveShadows = true;
-      if (mesh.metadata?.castsShadows === false) return;
-      this.shadows.forEach(shadow => shadow.addShadowCaster(mesh, false));
+      this.shadows.forEach(shadow => {
+        const light = shadow.getLight() as SpotLight;
+        const matchesRoom = (mesh.metadata?.room === "living") === this.livingShadows.has(shadow);
+        if (!matchesRoom) {
+          if (!light.excludedMeshes.includes(mesh)) light.excludedMeshes.push(mesh);
+          return;
+        }
+        if (mesh.metadata?.castsShadows !== false) shadow.addShadowCaster(mesh, false);
+      });
     });
     this.refreshShadows();
   }
