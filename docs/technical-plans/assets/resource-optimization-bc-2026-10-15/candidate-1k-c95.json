@@ -1,0 +1,689 @@
+{
+  "profile": "1k-c95",
+  "browserVersion": "155.0.8059.79",
+  "machine": {
+    "cpu": "Apple M6",
+    "architecture": "arm64"
+  },
+  "sourceCodeBaseline": "7dfd21d",
+  "fpsCpuGpuSampling": false,
+  "environment": {
+    "glInfo": {
+      "vendor": "Google Inc. (Apple)",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M6, Unspecified Version)",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    },
+    "renderSize": [
+      1280,
+      720
+    ],
+    "viewport": [
+      1280,
+      720
+    ],
+    "devicePixelRatio": 1,
+    "staticCaptureRenderLoopStopped": true
+  },
+  "servedModelsViaRoute": true,
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8093/",
+      "phase": "initial",
+      "receivedBodyBytes": 4655,
+      "status": 200,
+      "contentLength": 4655,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 4866
+    },
+    {
+      "url": "http://127.0.0.1:8093/js/bundleName.js",
+      "phase": "initial",
+      "receivedBodyBytes": 8571260,
+      "status": 200,
+      "contentLength": 8571260,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 8571480
+    },
+    {
+      "url": "http://127.0.0.1:8093/js/9081.bundleName.js",
+      "phase": "initial",
+      "receivedBodyBytes": 1365,
+      "status": 200,
+      "contentLength": 1365,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 1582
+    },
+    {
+      "url": "http://127.0.0.1:8093/environment/study-interior.hdr",
+      "phase": "initial",
+      "receivedBodyBytes": 1649529,
+      "status": 200,
+      "contentLength": 1649529,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 1649758
+    },
+    {
+      "url": "http://127.0.0.1:8093/models/study/sofa_03.glb",
+      "phase": "initial",
+      "receivedBodyBytes": 818172,
+      "status": 200,
+      "contentLength": 818172,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 818400
+    },
+    {
+      "url": "http://127.0.0.1:8093/models/study/modern_arm_chair_01.glb",
+      "phase": "initial",
+      "receivedBodyBytes": 2696208,
+      "status": 200,
+      "contentLength": 2696208,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 2696437
+    },
+    {
+      "url": "http://127.0.0.1:8093/models/gothic_commode.glb",
+      "phase": "initial",
+      "receivedBodyBytes": 1893720,
+      "status": 200,
+      "contentLength": 1893720,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 1893791
+    },
+    {
+      "url": "http://127.0.0.1:8093/models/wooden_bookshelf.glb",
+      "phase": "initial",
+      "receivedBodyBytes": 3050300,
+      "status": 200,
+      "contentLength": 3050300,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 3050371
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/wood_table_001/color.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 215573,
+      "status": 200,
+      "contentLength": 215573,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 215787
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/wood_table_001/normal.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 51927,
+      "status": 200,
+      "contentLength": 51927,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 52140
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/wood_table_001/arm.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 214520,
+      "status": 200,
+      "contentLength": 214520,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 214734
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/rough_linen/normal.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 916843,
+      "status": 200,
+      "contentLength": 916843,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 917057
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/rough_linen/arm.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 1191393,
+      "status": 200,
+      "contentLength": 1191393,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 1191608
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/wood_floor/color.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 734493,
+      "status": 200,
+      "contentLength": 734493,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 734707
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/wood_floor/normal.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 423303,
+      "status": 200,
+      "contentLength": 423303,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 423517
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/wood_floor/arm.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 447855,
+      "status": 200,
+      "contentLength": 447855,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 448069
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/brick_wall_001/color.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 574381,
+      "status": 200,
+      "contentLength": 574381,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 574595
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/brick_wall_001/normal.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 295279,
+      "status": 200,
+      "contentLength": 295279,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 295493
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/brick_wall_001/arm.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 123384,
+      "status": 200,
+      "contentLength": 123384,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 123598
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/study/forest-window/view.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 1155565,
+      "status": 200,
+      "contentLength": 1155565,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 1155780
+    },
+    {
+      "url": "http://127.0.0.1:8093/textures/pictures/pic1.jpg",
+      "phase": "initial",
+      "receivedBodyBytes": 29797,
+      "status": 200,
+      "contentLength": 29797,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 30010
+    },
+    {
+      "url": "http://127.0.0.1:8093/js/8558.bundleName.js",
+      "phase": "initial",
+      "receivedBodyBytes": 12560,
+      "status": 200,
+      "contentLength": 12560,
+      "fromDiskCache": false,
+      "fromServiceWorker": false,
+      "finished": true,
+      "encodedTransferBytes": 12778
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "views": [
+    {
+      "view": "overview",
+      "vertices": 156084,
+      "activeMeshes": 71,
+      "camera": {
+        "position": [
+          41.99999999999999,
+          31,
+          45
+        ],
+        "target": [
+          -1,
+          -2,
+          -1
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 9
+      }
+    },
+    {
+      "view": "reading",
+      "vertices": 156084,
+      "activeMeshes": 69,
+      "camera": {
+        "position": [
+          23,
+          10,
+          25
+        ],
+        "target": [
+          9,
+          -1.5,
+          8
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 9
+      }
+    },
+    {
+      "view": "desk",
+      "vertices": 156084,
+      "activeMeshes": 48,
+      "camera": {
+        "position": [
+          12.999999999999996,
+          12,
+          16
+        ],
+        "target": [
+          -7,
+          -1,
+          -3
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 9
+      }
+    },
+    {
+      "view": "details",
+      "vertices": 156084,
+      "activeMeshes": 37,
+      "camera": {
+        "position": [
+          -0.7999999999999994,
+          1.5,
+          1.9999999999999998
+        ],
+        "target": [
+          -3.2,
+          -0.35,
+          -0.8
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 3
+      }
+    },
+    {
+      "view": "cabinet",
+      "vertices": 156084,
+      "activeMeshes": 35,
+      "camera": {
+        "position": [
+          0,
+          7.000000000000002,
+          -1
+        ],
+        "target": [
+          -11,
+          0,
+          -16
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 9
+      }
+    },
+    {
+      "view": "first-person",
+      "vertices": 156084,
+      "activeMeshes": 72,
+      "camera": {
+        "position": [
+          4,
+          1,
+          16
+        ],
+        "target": [
+          -3.000000012719373,
+          2.277884592061241e-8,
+          -5.999999843207977
+        ],
+        "fov": 0.95,
+        "minZ": 0.1,
+        "lowerRadiusLimit": null
+      }
+    },
+    {
+      "view": "cabinet-close",
+      "vertices": 156084,
+      "activeMeshes": 23,
+      "camera": {
+        "position": [
+          -11,
+          -0.9000000000000006,
+          -10
+        ],
+        "target": [
+          -13.5,
+          -2.2,
+          -16.8
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 3
+      }
+    },
+    {
+      "view": "bookshelf-close",
+      "vertices": 156084,
+      "activeMeshes": 30,
+      "camera": {
+        "position": [
+          13,
+          0.9999999999999996,
+          -11
+        ],
+        "target": [
+          11.5,
+          0.5,
+          -17.3
+        ],
+        "fov": 0.65,
+        "minZ": 0.2,
+        "lowerRadiusLimit": 3
+      }
+    }
+  ],
+  "models": [
+    {
+      "name": "antique-cabinet",
+      "meshes": [
+        {
+          "name": "GothicCommode_01",
+          "vertices": 1760,
+          "indices": 4554,
+          "receiveShadows": true,
+          "collisions": true,
+          "frozen": true,
+          "pickable": false,
+          "bounds": {
+            "min": [
+              -16.318240146708376,
+              -5.000000117816553,
+              -18.958771826319634
+            ],
+            "max": [
+              -10.671647854190269,
+              0.6965998483576641,
+              -16.22967252629931
+            ]
+          },
+          "castsIntoAllLights": true,
+          "textures": [
+            {
+              "name": "GothicCommode_01 (Base Color)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": false
+            },
+            {
+              "name": "GothicCommode_01 (Metallic Roughness)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": true
+            },
+            {
+              "name": "GothicCommode_01 (Normal)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": true
+            }
+          ]
+        },
+        {
+          "name": "GothicCommode_01_door03",
+          "vertices": 458,
+          "indices": 1884,
+          "receiveShadows": true,
+          "collisions": true,
+          "frozen": true,
+          "pickable": false,
+          "bounds": {
+            "min": [
+              -15.846402805919695,
+              -3.928056401851009,
+              -18.867585899744995
+            ],
+            "max": [
+              -11.14135652192573,
+              -2.7227850949554124,
+              -16.280494476869354
+            ]
+          },
+          "castsIntoAllLights": true,
+          "textures": [
+            {
+              "name": "GothicCommode_01 (Base Color)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": false
+            },
+            {
+              "name": "GothicCommode_01 (Metallic Roughness)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": true
+            },
+            {
+              "name": "GothicCommode_01 (Normal)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": true
+            }
+          ]
+        },
+        {
+          "name": "GothicCommode_01_door02",
+          "vertices": 458,
+          "indices": 1884,
+          "receiveShadows": true,
+          "collisions": true,
+          "frozen": true,
+          "pickable": false,
+          "bounds": {
+            "min": [
+              -15.84640081511094,
+              -2.4686931186252536,
+              -18.956899502290185
+            ],
+            "max": [
+              -11.14135565168425,
+              -1.2634216016232926,
+              -16.37221505792406
+            ]
+          },
+          "castsIntoAllLights": true,
+          "textures": [
+            {
+              "name": "GothicCommode_01 (Base Color)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": false
+            },
+            {
+              "name": "GothicCommode_01 (Metallic Roughness)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": true
+            },
+            {
+              "name": "GothicCommode_01 (Normal)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": true
+            }
+          ]
+        },
+        {
+          "name": "GothicCommode_01_door01",
+          "vertices": 819,
+          "indices": 3369,
+          "receiveShadows": true,
+          "collisions": true,
+          "frozen": true,
+          "pickable": false,
+          "bounds": {
+            "min": [
+              -15.846398651572258,
+              -0.9677543632539027,
+              -18.865316669398453
+            ],
+            "max": [
+              -11.14135320800375,
+              0.23751743388987734,
+              -16.325698709502447
+            ]
+          },
+          "castsIntoAllLights": true,
+          "textures": [
+            {
+              "name": "GothicCommode_01 (Base Color)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": false
+            },
+            {
+              "name": "GothicCommode_01 (Metallic Roughness)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": true
+            },
+            {
+              "name": "GothicCommode_01 (Normal)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "antique-bookshelf",
+      "meshes": [
+        {
+          "name": "wooden_bookshelf_worn",
+          "vertices": 6479,
+          "indices": 30318,
+          "receiveShadows": true,
+          "collisions": true,
+          "frozen": true,
+          "pickable": false,
+          "bounds": {
+            "min": [
+              7.927725469966106,
+              -5.0000003099441415,
+              -19.31138450324039
+            ],
+            "max": [
+              15.072274530033894,
+              5.729897963821031,
+              -16.288614125852774
+            ]
+          },
+          "castsIntoAllLights": true,
+          "textures": [
+            {
+              "name": "wooden_bookshelf_worn (Base Color)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": false
+            },
+            {
+              "name": "wooden_bookshelf_worn (Metallic Roughness)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": true
+            },
+            {
+              "name": "wooden_bookshelf_worn (Normal)",
+              "size": {
+                "width": 1024,
+                "height": 1024
+              },
+              "gammaSpace": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "interactions": null
+}

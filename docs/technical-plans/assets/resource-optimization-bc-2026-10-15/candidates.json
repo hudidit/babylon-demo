@@ -1,0 +1,2613 @@
+{
+  "sourceCommit": "fd32f40f25f25cea679df2d30d85aaeb5a4c8a70",
+  "tool": "tools/optimize-study-models.cjs",
+  "node": "v24.21.0",
+  "imageLibraries": {
+    "aom": "3.15.1",
+    "archive": "3.8.9",
+    "cairo": "1.18.6",
+    "cgif": "0.5.4",
+    "exif": "0.6.26",
+    "expat": "2.8.5",
+    "ffi": "3.8.0",
+    "fontconfig": "2.18.3",
+    "freetype": "2.14.3",
+    "fribidi": "1.0.17",
+    "glib": "2.90.0",
+    "harfbuzz": "14.5.0",
+    "heif": "1.23.5",
+    "highway": "1.4.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.19.1",
+    "mozjpeg": "0826579",
+    "pango": "1.58.2",
+    "pixman": "0.46.4",
+    "png": "1.6.58",
+    "proxy-libintl": "0.5",
+    "rsvg": "2.63.2",
+    "tiff": "4.7.2",
+    "uhdr": "2.0.2",
+    "vips": "8.18.7",
+    "webp": "1.6.0",
+    "xml2": "2.15.4",
+    "zlib-ng": "2.3.3",
+    "sharp": "0.35.5"
+  },
+  "policy": "Only JPEG payloads, buffer offsets/lengths and GLB padding change.",
+  "profiles": {
+    "1k-c85": {
+      "color": [
+        1024,
+        85
+      ],
+      "data": [
+        1024,
+        95
+      ],
+      "normal": [
+        1024,
+        95
+      ]
+    },
+    "1k-c90": {
+      "color": [
+        1024,
+        90
+      ],
+      "data": [
+        1024,
+        97
+      ],
+      "normal": [
+        1024,
+        97
+      ]
+    },
+    "1k-c95": {
+      "color": [
+        1024,
+        95
+      ],
+      "data": [
+        1024,
+        98
+      ],
+      "normal": [
+        1024,
+        98
+      ]
+    },
+    "mixed-c90": {
+      "color": [
+        2048,
+        90
+      ],
+      "data": [
+        1024,
+        97
+      ],
+      "normal": [
+        2048,
+        97
+      ]
+    },
+    "mixed-c95": {
+      "color": [
+        2048,
+        95
+      ],
+      "data": [
+        1024,
+        98
+      ],
+      "normal": [
+        2048,
+        98
+      ]
+    },
+    "detail-c85": {
+      "color": [
+        2048,
+        85
+      ],
+      "data": [
+        1024,
+        90
+      ],
+      "normal": [
+        1024,
+        95
+      ]
+    },
+    "detail-c90": {
+      "color": [
+        2048,
+        90
+      ],
+      "data": [
+        1024,
+        90
+      ],
+      "normal": [
+        1024,
+        95
+      ]
+    }
+  },
+  "models": [
+    {
+      "file": "public/models/gothic_commode.glb",
+      "sourceBytes": 24488264,
+      "sourceSha256": "02c6498b5d17c79ed915a986564ce5ccd2255ae6daf920d24a3a7d8c140ae1fc",
+      "introducedBy": "9a2d8c1dbcf55b37b91abf24320660e50db8afb5",
+      "provenance": {
+        "upstreamUrl": null,
+        "license": "unverified",
+        "note": "Existing repository asset; introduction commits contain no upstream or license record. Not part of the Poly Haven CC0 manifest."
+      },
+      "sourceIntegrity": {
+        "semanticSha256": "202903615c6cf79e64aa22bae6246b94849b8530d57b0b33dac2eac62eb3ffcd",
+        "geometryViews": [
+          {
+            "index": 0,
+            "bytes": 21120,
+            "sha256": "7bf3c71354d9a7b65714256ed33c549d9ee02cb1c9eafe574ab33813a449cc07"
+          },
+          {
+            "index": 1,
+            "bytes": 21120,
+            "sha256": "1578c57ff11908625d6571fd9344568d22575bd764fbe2a064b1cca8c6567fae"
+          },
+          {
+            "index": 2,
+            "bytes": 14080,
+            "sha256": "59b4d12af21e70cf7e96742c7ec051e4b51b77412320b93cbc07986641e24892"
+          },
+          {
+            "index": 3,
+            "bytes": 18216,
+            "sha256": "225c13e9d01796b7bcf7f6a1bb40e48e3afc163670cf0a371084c4b1c268ae9c"
+          },
+          {
+            "index": 4,
+            "bytes": 5496,
+            "sha256": "ec53f78226b47262dd8ee1edf886224eacbe73d2712cc8c6fe7f1186e567765f"
+          },
+          {
+            "index": 5,
+            "bytes": 5496,
+            "sha256": "9cf6943870524b33269afa3ce6a3fc67ce72a4f88a46f9951938d341c9eefe99"
+          },
+          {
+            "index": 6,
+            "bytes": 3664,
+            "sha256": "e393fdb87aca062b64f9bd6540211a38d5dda388be369663ee5d795d73fc9b64"
+          },
+          {
+            "index": 7,
+            "bytes": 7536,
+            "sha256": "a1207f027aceecb4d48e26861c460c0c25cae6f822c5e12d59d14b7ff534a07a"
+          },
+          {
+            "index": 8,
+            "bytes": 5496,
+            "sha256": "e063ffeeba6659405bfe081b7f7feb38c028ca44aa18822a23216c9df51cc5ec"
+          },
+          {
+            "index": 9,
+            "bytes": 5496,
+            "sha256": "044c1907895b10ddf431e28b23ea8fcad21505ac0ad6bacd33b934b4802b6527"
+          },
+          {
+            "index": 10,
+            "bytes": 3664,
+            "sha256": "6990daf31ba4f67080fb0db388cd5b4cfd811f4a115cbb4ec85fabd61b9e0d7d"
+          },
+          {
+            "index": 11,
+            "bytes": 7536,
+            "sha256": "8f09ee7180ff58d9b35f257ada7ff94eb133652fb8901dd6790895577d0c86ba"
+          },
+          {
+            "index": 12,
+            "bytes": 9828,
+            "sha256": "8958d97927c13f841941482b1c27e702837c5b15862fb68991aa749b26ece8d2"
+          },
+          {
+            "index": 13,
+            "bytes": 9828,
+            "sha256": "e87484a522fb4541ea2ec710f7c6c663b67394e4bdec5fd37e907766041aa976"
+          },
+          {
+            "index": 14,
+            "bytes": 6552,
+            "sha256": "76fa40fbd7f8de970dc7cff250c90b771e0fd3e13b2ee56590e331cfb2255ee2"
+          },
+          {
+            "index": 15,
+            "bytes": 13476,
+            "sha256": "aa59979bc38a49785298c2e8bc48c4758a17d9d489ed162c96815f5225b99a2c"
+          }
+        ]
+      },
+      "candidates": [
+        {
+          "profile": "1k-c85",
+          "bytes": 1244644,
+          "sha256": "a9772ce565d5939376fa492e1c12117e9d4eec0d8c3d814b9a6de1c6bc3076eb",
+          "images": [
+            {
+              "index": 0,
+              "name": "GothicCommode_01 (Base Color) image",
+              "bufferView": 16,
+              "kind": "color",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 85,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6695125,
+              "inputSha256": "9e95ee5fde3842125826420fe675a226dd56e3dd2a78c3e608cb3929dcf91b0e",
+              "bytes": 188267,
+              "sha256": "896807603d5d0b0e06311abf990da577abfe883fb9bc0784144decf5c8a70595",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 41.007630493316526,
+              "channelMeanAbsoluteError": [
+                1.8673877716064453,
+                1.2975616455078125,
+                1.8260784149169922
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "GothicCommode_01 (Metallic Roughness) image",
+              "bufferView": 17,
+              "kind": "data",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 10646785,
+              "inputSha256": "883c70b9604750475bc102a857f00de59c1040ae2a66e60a58d6738421df77c9",
+              "bytes": 487678,
+              "sha256": "54973c82a31cbb9baf3b5eedfcb92f1194b22d6722517f19f42b0ddc3412ce38",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 43.188811815533214,
+              "channelMeanAbsoluteError": [
+                1.5298538208007812,
+                1.0978784561157227,
+                1.1357040405273438
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "GothicCommode_01 (Normal) image",
+              "bufferView": 18,
+              "kind": "normal",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6981714,
+              "inputSha256": "b7730452d868307ae0b05c9a024ae3d58fe601c1b4cfaf6a91c844edb659e28c",
+              "bytes": 404049,
+              "sha256": "f4b0bc9e5291b95ab867f334ff5d01b5129452916818cad797b4b681c911211f",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 43.961749297403195,
+              "channelMeanAbsoluteError": [
+                1.1614799499511719,
+                0.820582389831543,
+                0.9655046463012695
+              ],
+              "normalMeanAngularErrorDegrees": 0.7438203439895943
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "202903615c6cf79e64aa22bae6246b94849b8530d57b0b33dac2eac62eb3ffcd",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 21120,
+                "sha256": "7bf3c71354d9a7b65714256ed33c549d9ee02cb1c9eafe574ab33813a449cc07"
+              },
+              {
+                "index": 1,
+                "bytes": 21120,
+                "sha256": "1578c57ff11908625d6571fd9344568d22575bd764fbe2a064b1cca8c6567fae"
+              },
+              {
+                "index": 2,
+                "bytes": 14080,
+                "sha256": "59b4d12af21e70cf7e96742c7ec051e4b51b77412320b93cbc07986641e24892"
+              },
+              {
+                "index": 3,
+                "bytes": 18216,
+                "sha256": "225c13e9d01796b7bcf7f6a1bb40e48e3afc163670cf0a371084c4b1c268ae9c"
+              },
+              {
+                "index": 4,
+                "bytes": 5496,
+                "sha256": "ec53f78226b47262dd8ee1edf886224eacbe73d2712cc8c6fe7f1186e567765f"
+              },
+              {
+                "index": 5,
+                "bytes": 5496,
+                "sha256": "9cf6943870524b33269afa3ce6a3fc67ce72a4f88a46f9951938d341c9eefe99"
+              },
+              {
+                "index": 6,
+                "bytes": 3664,
+                "sha256": "e393fdb87aca062b64f9bd6540211a38d5dda388be369663ee5d795d73fc9b64"
+              },
+              {
+                "index": 7,
+                "bytes": 7536,
+                "sha256": "a1207f027aceecb4d48e26861c460c0c25cae6f822c5e12d59d14b7ff534a07a"
+              },
+              {
+                "index": 8,
+                "bytes": 5496,
+                "sha256": "e063ffeeba6659405bfe081b7f7feb38c028ca44aa18822a23216c9df51cc5ec"
+              },
+              {
+                "index": 9,
+                "bytes": 5496,
+                "sha256": "044c1907895b10ddf431e28b23ea8fcad21505ac0ad6bacd33b934b4802b6527"
+              },
+              {
+                "index": 10,
+                "bytes": 3664,
+                "sha256": "6990daf31ba4f67080fb0db388cd5b4cfd811f4a115cbb4ec85fabd61b9e0d7d"
+              },
+              {
+                "index": 11,
+                "bytes": 7536,
+                "sha256": "8f09ee7180ff58d9b35f257ada7ff94eb133652fb8901dd6790895577d0c86ba"
+              },
+              {
+                "index": 12,
+                "bytes": 9828,
+                "sha256": "8958d97927c13f841941482b1c27e702837c5b15862fb68991aa749b26ece8d2"
+              },
+              {
+                "index": 13,
+                "bytes": 9828,
+                "sha256": "e87484a522fb4541ea2ec710f7c6c663b67394e4bdec5fd37e907766041aa976"
+              },
+              {
+                "index": 14,
+                "bytes": 6552,
+                "sha256": "76fa40fbd7f8de970dc7cff250c90b771e0fd3e13b2ee56590e331cfb2255ee2"
+              },
+              {
+                "index": 15,
+                "bytes": 13476,
+                "sha256": "aa59979bc38a49785298c2e8bc48c4758a17d9d489ed162c96815f5225b99a2c"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "1k-c90",
+          "bytes": 1573512,
+          "sha256": "7448066de75124a8fb956c6632f1be7f25e3753d3040945a9d8adcbfdbf8294b",
+          "images": [
+            {
+              "index": 0,
+              "name": "GothicCommode_01 (Base Color) image",
+              "bufferView": 16,
+              "kind": "color",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 90,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6695125,
+              "inputSha256": "9e95ee5fde3842125826420fe675a226dd56e3dd2a78c3e608cb3929dcf91b0e",
+              "bytes": 246999,
+              "sha256": "2f65d92b42eba492521e7ea9b6ea8529d71eb0ea2dfacd3aeef72d51dda263e7",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 42.17944618481974,
+              "channelMeanAbsoluteError": [
+                1.596482276916504,
+                1.1181163787841797,
+                1.61627197265625
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "GothicCommode_01 (Metallic Roughness) image",
+              "bufferView": 17,
+              "kind": "data",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 97,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 10646785,
+              "inputSha256": "883c70b9604750475bc102a857f00de59c1040ae2a66e60a58d6738421df77c9",
+              "bytes": 638454,
+              "sha256": "aee32f2def4195d3f886c0b81a472f7b2c312a5c4f07a12e465dc78b71c93d21",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 45.29005956916414,
+              "channelMeanAbsoluteError": [
+                1.1741199493408203,
+                0.8454952239990234,
+                0.9536495208740234
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "GothicCommode_01 (Normal) image",
+              "bufferView": 18,
+              "kind": "normal",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 97,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6981714,
+              "inputSha256": "b7730452d868307ae0b05c9a024ae3d58fe601c1b4cfaf6a91c844edb659e28c",
+              "bytes": 523407,
+              "sha256": "8d54e08a1eaa87d946a06fc84295e227389da1959bc93d718fac26aa67afadb9",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 46.47584720593119,
+              "channelMeanAbsoluteError": [
+                0.8613624572753906,
+                0.6253290176391602,
+                0.7564020156860352
+              ],
+              "normalMeanAngularErrorDegrees": 0.564752124248651
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "202903615c6cf79e64aa22bae6246b94849b8530d57b0b33dac2eac62eb3ffcd",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 21120,
+                "sha256": "7bf3c71354d9a7b65714256ed33c549d9ee02cb1c9eafe574ab33813a449cc07"
+              },
+              {
+                "index": 1,
+                "bytes": 21120,
+                "sha256": "1578c57ff11908625d6571fd9344568d22575bd764fbe2a064b1cca8c6567fae"
+              },
+              {
+                "index": 2,
+                "bytes": 14080,
+                "sha256": "59b4d12af21e70cf7e96742c7ec051e4b51b77412320b93cbc07986641e24892"
+              },
+              {
+                "index": 3,
+                "bytes": 18216,
+                "sha256": "225c13e9d01796b7bcf7f6a1bb40e48e3afc163670cf0a371084c4b1c268ae9c"
+              },
+              {
+                "index": 4,
+                "bytes": 5496,
+                "sha256": "ec53f78226b47262dd8ee1edf886224eacbe73d2712cc8c6fe7f1186e567765f"
+              },
+              {
+                "index": 5,
+                "bytes": 5496,
+                "sha256": "9cf6943870524b33269afa3ce6a3fc67ce72a4f88a46f9951938d341c9eefe99"
+              },
+              {
+                "index": 6,
+                "bytes": 3664,
+                "sha256": "e393fdb87aca062b64f9bd6540211a38d5dda388be369663ee5d795d73fc9b64"
+              },
+              {
+                "index": 7,
+                "bytes": 7536,
+                "sha256": "a1207f027aceecb4d48e26861c460c0c25cae6f822c5e12d59d14b7ff534a07a"
+              },
+              {
+                "index": 8,
+                "bytes": 5496,
+                "sha256": "e063ffeeba6659405bfe081b7f7feb38c028ca44aa18822a23216c9df51cc5ec"
+              },
+              {
+                "index": 9,
+                "bytes": 5496,
+                "sha256": "044c1907895b10ddf431e28b23ea8fcad21505ac0ad6bacd33b934b4802b6527"
+              },
+              {
+                "index": 10,
+                "bytes": 3664,
+                "sha256": "6990daf31ba4f67080fb0db388cd5b4cfd811f4a115cbb4ec85fabd61b9e0d7d"
+              },
+              {
+                "index": 11,
+                "bytes": 7536,
+                "sha256": "8f09ee7180ff58d9b35f257ada7ff94eb133652fb8901dd6790895577d0c86ba"
+              },
+              {
+                "index": 12,
+                "bytes": 9828,
+                "sha256": "8958d97927c13f841941482b1c27e702837c5b15862fb68991aa749b26ece8d2"
+              },
+              {
+                "index": 13,
+                "bytes": 9828,
+                "sha256": "e87484a522fb4541ea2ec710f7c6c663b67394e4bdec5fd37e907766041aa976"
+              },
+              {
+                "index": 14,
+                "bytes": 6552,
+                "sha256": "76fa40fbd7f8de970dc7cff250c90b771e0fd3e13b2ee56590e331cfb2255ee2"
+              },
+              {
+                "index": 15,
+                "bytes": 13476,
+                "sha256": "aa59979bc38a49785298c2e8bc48c4758a17d9d489ed162c96815f5225b99a2c"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "1k-c95",
+          "bytes": 1893720,
+          "sha256": "4fcf32144450407c2ca6f198c4e2d0ae47e602467fdcd0b35c5e0e046a8dbba6",
+          "images": [
+            {
+              "index": 0,
+              "name": "GothicCommode_01 (Base Color) image",
+              "bufferView": 16,
+              "kind": "color",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6695125,
+              "inputSha256": "9e95ee5fde3842125826420fe675a226dd56e3dd2a78c3e608cb3929dcf91b0e",
+              "bytes": 379493,
+              "sha256": "6baaab95f1082195eb5d985aa0dcdb416faa57774572b7e154d7284809b98f7b",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 44.24032662302934,
+              "channelMeanAbsoluteError": [
+                1.2097539901733398,
+                0.8695211410522461,
+                1.284377098083496
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "GothicCommode_01 (Metallic Roughness) image",
+              "bufferView": 17,
+              "kind": "data",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 98,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 10646785,
+              "inputSha256": "883c70b9604750475bc102a857f00de59c1040ae2a66e60a58d6738421df77c9",
+              "bytes": 746701,
+              "sha256": "2c02049eaf397af46663a98275617e7a7db249954cc300b8c37ae3e07bca45d0",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 46.74209033299437,
+              "channelMeanAbsoluteError": [
+                0.9611368179321289,
+                0.6906261444091797,
+                0.8405437469482422
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "GothicCommode_01 (Normal) image",
+              "bufferView": 18,
+              "kind": "normal",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 98,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6981714,
+              "inputSha256": "b7730452d868307ae0b05c9a024ae3d58fe601c1b4cfaf6a91c844edb659e28c",
+              "bytes": 602869,
+              "sha256": "43758cd47abd3d4f56066bc66c6af5a86d2c801e717f7267b71cae554a881237",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 48.10569309160045,
+              "channelMeanAbsoluteError": [
+                0.6998538970947266,
+                0.5155258178710938,
+                0.6509275436401367
+              ],
+              "normalMeanAngularErrorDegrees": 0.4667527995949243
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "202903615c6cf79e64aa22bae6246b94849b8530d57b0b33dac2eac62eb3ffcd",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 21120,
+                "sha256": "7bf3c71354d9a7b65714256ed33c549d9ee02cb1c9eafe574ab33813a449cc07"
+              },
+              {
+                "index": 1,
+                "bytes": 21120,
+                "sha256": "1578c57ff11908625d6571fd9344568d22575bd764fbe2a064b1cca8c6567fae"
+              },
+              {
+                "index": 2,
+                "bytes": 14080,
+                "sha256": "59b4d12af21e70cf7e96742c7ec051e4b51b77412320b93cbc07986641e24892"
+              },
+              {
+                "index": 3,
+                "bytes": 18216,
+                "sha256": "225c13e9d01796b7bcf7f6a1bb40e48e3afc163670cf0a371084c4b1c268ae9c"
+              },
+              {
+                "index": 4,
+                "bytes": 5496,
+                "sha256": "ec53f78226b47262dd8ee1edf886224eacbe73d2712cc8c6fe7f1186e567765f"
+              },
+              {
+                "index": 5,
+                "bytes": 5496,
+                "sha256": "9cf6943870524b33269afa3ce6a3fc67ce72a4f88a46f9951938d341c9eefe99"
+              },
+              {
+                "index": 6,
+                "bytes": 3664,
+                "sha256": "e393fdb87aca062b64f9bd6540211a38d5dda388be369663ee5d795d73fc9b64"
+              },
+              {
+                "index": 7,
+                "bytes": 7536,
+                "sha256": "a1207f027aceecb4d48e26861c460c0c25cae6f822c5e12d59d14b7ff534a07a"
+              },
+              {
+                "index": 8,
+                "bytes": 5496,
+                "sha256": "e063ffeeba6659405bfe081b7f7feb38c028ca44aa18822a23216c9df51cc5ec"
+              },
+              {
+                "index": 9,
+                "bytes": 5496,
+                "sha256": "044c1907895b10ddf431e28b23ea8fcad21505ac0ad6bacd33b934b4802b6527"
+              },
+              {
+                "index": 10,
+                "bytes": 3664,
+                "sha256": "6990daf31ba4f67080fb0db388cd5b4cfd811f4a115cbb4ec85fabd61b9e0d7d"
+              },
+              {
+                "index": 11,
+                "bytes": 7536,
+                "sha256": "8f09ee7180ff58d9b35f257ada7ff94eb133652fb8901dd6790895577d0c86ba"
+              },
+              {
+                "index": 12,
+                "bytes": 9828,
+                "sha256": "8958d97927c13f841941482b1c27e702837c5b15862fb68991aa749b26ece8d2"
+              },
+              {
+                "index": 13,
+                "bytes": 9828,
+                "sha256": "e87484a522fb4541ea2ec710f7c6c663b67394e4bdec5fd37e907766041aa976"
+              },
+              {
+                "index": 14,
+                "bytes": 6552,
+                "sha256": "76fa40fbd7f8de970dc7cff250c90b771e0fd3e13b2ee56590e331cfb2255ee2"
+              },
+              {
+                "index": 15,
+                "bytes": 13476,
+                "sha256": "aa59979bc38a49785298c2e8bc48c4758a17d9d489ed162c96815f5225b99a2c"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "mixed-c90",
+          "bytes": 3185000,
+          "sha256": "6d9d8446bd517deae516462e7fcd10ebdb8f35cf1e8d2d27c08dcacd10f0d71a",
+          "images": [
+            {
+              "index": 0,
+              "name": "GothicCommode_01 (Base Color) image",
+              "bufferView": 16,
+              "kind": "color",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 90,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6695125,
+              "inputSha256": "9e95ee5fde3842125826420fe675a226dd56e3dd2a78c3e608cb3929dcf91b0e",
+              "bytes": 805235,
+              "sha256": "9bc8c9e1d8c5671290191d803b8866e6b650d0a4eff4238c1911e3e1563effd1",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 45.4653213782624,
+              "channelMeanAbsoluteError": [
+                0.9837844371795654,
+                0.8943934440612793,
+                1.0027399063110352
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "GothicCommode_01 (Metallic Roughness) image",
+              "bufferView": 17,
+              "kind": "data",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 97,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 10646785,
+              "inputSha256": "883c70b9604750475bc102a857f00de59c1040ae2a66e60a58d6738421df77c9",
+              "bytes": 638454,
+              "sha256": "aee32f2def4195d3f886c0b81a472f7b2c312a5c4f07a12e465dc78b71c93d21",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 45.29005956916414,
+              "channelMeanAbsoluteError": [
+                1.1741199493408203,
+                0.8454952239990234,
+                0.9536495208740234
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "GothicCommode_01 (Normal) image",
+              "bufferView": 18,
+              "kind": "normal",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 97,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6981714,
+              "inputSha256": "b7730452d868307ae0b05c9a024ae3d58fe601c1b4cfaf6a91c844edb659e28c",
+              "bytes": 1576658,
+              "sha256": "ed77fee897f38aa7d3283943a595837baaa1cc4f3eacd4e235c3f6f5fd31b7bc",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 48.33620273271583,
+              "channelMeanAbsoluteError": [
+                0.5731456279754639,
+                0.4588184356689453,
+                0.6625216007232666
+              ],
+              "normalMeanAngularErrorDegrees": 0.39832633280916835
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "202903615c6cf79e64aa22bae6246b94849b8530d57b0b33dac2eac62eb3ffcd",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 21120,
+                "sha256": "7bf3c71354d9a7b65714256ed33c549d9ee02cb1c9eafe574ab33813a449cc07"
+              },
+              {
+                "index": 1,
+                "bytes": 21120,
+                "sha256": "1578c57ff11908625d6571fd9344568d22575bd764fbe2a064b1cca8c6567fae"
+              },
+              {
+                "index": 2,
+                "bytes": 14080,
+                "sha256": "59b4d12af21e70cf7e96742c7ec051e4b51b77412320b93cbc07986641e24892"
+              },
+              {
+                "index": 3,
+                "bytes": 18216,
+                "sha256": "225c13e9d01796b7bcf7f6a1bb40e48e3afc163670cf0a371084c4b1c268ae9c"
+              },
+              {
+                "index": 4,
+                "bytes": 5496,
+                "sha256": "ec53f78226b47262dd8ee1edf886224eacbe73d2712cc8c6fe7f1186e567765f"
+              },
+              {
+                "index": 5,
+                "bytes": 5496,
+                "sha256": "9cf6943870524b33269afa3ce6a3fc67ce72a4f88a46f9951938d341c9eefe99"
+              },
+              {
+                "index": 6,
+                "bytes": 3664,
+                "sha256": "e393fdb87aca062b64f9bd6540211a38d5dda388be369663ee5d795d73fc9b64"
+              },
+              {
+                "index": 7,
+                "bytes": 7536,
+                "sha256": "a1207f027aceecb4d48e26861c460c0c25cae6f822c5e12d59d14b7ff534a07a"
+              },
+              {
+                "index": 8,
+                "bytes": 5496,
+                "sha256": "e063ffeeba6659405bfe081b7f7feb38c028ca44aa18822a23216c9df51cc5ec"
+              },
+              {
+                "index": 9,
+                "bytes": 5496,
+                "sha256": "044c1907895b10ddf431e28b23ea8fcad21505ac0ad6bacd33b934b4802b6527"
+              },
+              {
+                "index": 10,
+                "bytes": 3664,
+                "sha256": "6990daf31ba4f67080fb0db388cd5b4cfd811f4a115cbb4ec85fabd61b9e0d7d"
+              },
+              {
+                "index": 11,
+                "bytes": 7536,
+                "sha256": "8f09ee7180ff58d9b35f257ada7ff94eb133652fb8901dd6790895577d0c86ba"
+              },
+              {
+                "index": 12,
+                "bytes": 9828,
+                "sha256": "8958d97927c13f841941482b1c27e702837c5b15862fb68991aa749b26ece8d2"
+              },
+              {
+                "index": 13,
+                "bytes": 9828,
+                "sha256": "e87484a522fb4541ea2ec710f7c6c663b67394e4bdec5fd37e907766041aa976"
+              },
+              {
+                "index": 14,
+                "bytes": 6552,
+                "sha256": "76fa40fbd7f8de970dc7cff250c90b771e0fd3e13b2ee56590e331cfb2255ee2"
+              },
+              {
+                "index": 15,
+                "bytes": 13476,
+                "sha256": "aa59979bc38a49785298c2e8bc48c4758a17d9d489ed162c96815f5225b99a2c"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "mixed-c95",
+          "bytes": 3851240,
+          "sha256": "77d0e48088999f5568197e7e82e6babb260c9eda918b77e2038edb6aa27d95c4",
+          "images": [
+            {
+              "index": 0,
+              "name": "GothicCommode_01 (Base Color) image",
+              "bufferView": 16,
+              "kind": "color",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6695125,
+              "inputSha256": "9e95ee5fde3842125826420fe675a226dd56e3dd2a78c3e608cb3929dcf91b0e",
+              "bytes": 1136528,
+              "sha256": "281462b6140a0497a32238136b5ac5633972b4d54456543209d6dedfc3d167dc",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 47.821431371482845,
+              "channelMeanAbsoluteError": [
+                0.7133035659790039,
+                0.6414942741394043,
+                0.7331011295318604
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "GothicCommode_01 (Metallic Roughness) image",
+              "bufferView": 17,
+              "kind": "data",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 98,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 10646785,
+              "inputSha256": "883c70b9604750475bc102a857f00de59c1040ae2a66e60a58d6738421df77c9",
+              "bytes": 746701,
+              "sha256": "2c02049eaf397af46663a98275617e7a7db249954cc300b8c37ae3e07bca45d0",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 46.74209033299437,
+              "channelMeanAbsoluteError": [
+                0.9611368179321289,
+                0.6906261444091797,
+                0.8405437469482422
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "GothicCommode_01 (Normal) image",
+              "bufferView": 18,
+              "kind": "normal",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 98,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6981714,
+              "inputSha256": "b7730452d868307ae0b05c9a024ae3d58fe601c1b4cfaf6a91c844edb659e28c",
+              "bytes": 1803359,
+              "sha256": "700f593b3b5ab8773fda8c0a5066a07f72d78f43ad925f4cc398d8c4115bd217",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 49.53799320417129,
+              "channelMeanAbsoluteError": [
+                0.48853206634521484,
+                0.3860790729522705,
+                0.5885875225067139
+              ],
+              "normalMeanAngularErrorDegrees": 0.34424966886117175
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "202903615c6cf79e64aa22bae6246b94849b8530d57b0b33dac2eac62eb3ffcd",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 21120,
+                "sha256": "7bf3c71354d9a7b65714256ed33c549d9ee02cb1c9eafe574ab33813a449cc07"
+              },
+              {
+                "index": 1,
+                "bytes": 21120,
+                "sha256": "1578c57ff11908625d6571fd9344568d22575bd764fbe2a064b1cca8c6567fae"
+              },
+              {
+                "index": 2,
+                "bytes": 14080,
+                "sha256": "59b4d12af21e70cf7e96742c7ec051e4b51b77412320b93cbc07986641e24892"
+              },
+              {
+                "index": 3,
+                "bytes": 18216,
+                "sha256": "225c13e9d01796b7bcf7f6a1bb40e48e3afc163670cf0a371084c4b1c268ae9c"
+              },
+              {
+                "index": 4,
+                "bytes": 5496,
+                "sha256": "ec53f78226b47262dd8ee1edf886224eacbe73d2712cc8c6fe7f1186e567765f"
+              },
+              {
+                "index": 5,
+                "bytes": 5496,
+                "sha256": "9cf6943870524b33269afa3ce6a3fc67ce72a4f88a46f9951938d341c9eefe99"
+              },
+              {
+                "index": 6,
+                "bytes": 3664,
+                "sha256": "e393fdb87aca062b64f9bd6540211a38d5dda388be369663ee5d795d73fc9b64"
+              },
+              {
+                "index": 7,
+                "bytes": 7536,
+                "sha256": "a1207f027aceecb4d48e26861c460c0c25cae6f822c5e12d59d14b7ff534a07a"
+              },
+              {
+                "index": 8,
+                "bytes": 5496,
+                "sha256": "e063ffeeba6659405bfe081b7f7feb38c028ca44aa18822a23216c9df51cc5ec"
+              },
+              {
+                "index": 9,
+                "bytes": 5496,
+                "sha256": "044c1907895b10ddf431e28b23ea8fcad21505ac0ad6bacd33b934b4802b6527"
+              },
+              {
+                "index": 10,
+                "bytes": 3664,
+                "sha256": "6990daf31ba4f67080fb0db388cd5b4cfd811f4a115cbb4ec85fabd61b9e0d7d"
+              },
+              {
+                "index": 11,
+                "bytes": 7536,
+                "sha256": "8f09ee7180ff58d9b35f257ada7ff94eb133652fb8901dd6790895577d0c86ba"
+              },
+              {
+                "index": 12,
+                "bytes": 9828,
+                "sha256": "8958d97927c13f841941482b1c27e702837c5b15862fb68991aa749b26ece8d2"
+              },
+              {
+                "index": 13,
+                "bytes": 9828,
+                "sha256": "e87484a522fb4541ea2ec710f7c6c663b67394e4bdec5fd37e907766041aa976"
+              },
+              {
+                "index": 14,
+                "bytes": 6552,
+                "sha256": "76fa40fbd7f8de970dc7cff250c90b771e0fd3e13b2ee56590e331cfb2255ee2"
+              },
+              {
+                "index": 15,
+                "bytes": 13476,
+                "sha256": "aa59979bc38a49785298c2e8bc48c4758a17d9d489ed162c96815f5225b99a2c"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "detail-c85",
+          "bytes": 1549376,
+          "sha256": "14905770ce0467edfe426e1fe315acb7232265ba6a1fdb2744fcf691945e0e2f",
+          "images": [
+            {
+              "index": 0,
+              "name": "GothicCommode_01 (Base Color) image",
+              "bufferView": 16,
+              "kind": "color",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 85,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6695125,
+              "inputSha256": "9e95ee5fde3842125826420fe675a226dd56e3dd2a78c3e608cb3929dcf91b0e",
+              "bytes": 645899,
+              "sha256": "04a7f322f35769799953cfe293eec13cf6a6e231c82be7f09779773b7572766f",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 44.68626598032146,
+              "channelMeanAbsoluteError": [
+                1.081491231918335,
+                1.0394432544708252,
+                1.0699279308319092
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "GothicCommode_01 (Metallic Roughness) image",
+              "bufferView": 17,
+              "kind": "data",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 90,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 10646785,
+              "inputSha256": "883c70b9604750475bc102a857f00de59c1040ae2a66e60a58d6738421df77c9",
+              "bytes": 334774,
+              "sha256": "5331d02dd0d02a4289f997febf2c4004945e565ae9b155336d5d604a180aac05",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 40.32525891902689,
+              "channelMeanAbsoluteError": [
+                2.1533775329589844,
+                1.4796342849731445,
+                1.4150924682617188
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "GothicCommode_01 (Normal) image",
+              "bufferView": 18,
+              "kind": "normal",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6981714,
+              "inputSha256": "b7730452d868307ae0b05c9a024ae3d58fe601c1b4cfaf6a91c844edb659e28c",
+              "bytes": 404049,
+              "sha256": "f4b0bc9e5291b95ab867f334ff5d01b5129452916818cad797b4b681c911211f",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 43.961749297403195,
+              "channelMeanAbsoluteError": [
+                1.1614799499511719,
+                0.820582389831543,
+                0.9655046463012695
+              ],
+              "normalMeanAngularErrorDegrees": 0.7438203439895943
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "202903615c6cf79e64aa22bae6246b94849b8530d57b0b33dac2eac62eb3ffcd",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 21120,
+                "sha256": "7bf3c71354d9a7b65714256ed33c549d9ee02cb1c9eafe574ab33813a449cc07"
+              },
+              {
+                "index": 1,
+                "bytes": 21120,
+                "sha256": "1578c57ff11908625d6571fd9344568d22575bd764fbe2a064b1cca8c6567fae"
+              },
+              {
+                "index": 2,
+                "bytes": 14080,
+                "sha256": "59b4d12af21e70cf7e96742c7ec051e4b51b77412320b93cbc07986641e24892"
+              },
+              {
+                "index": 3,
+                "bytes": 18216,
+                "sha256": "225c13e9d01796b7bcf7f6a1bb40e48e3afc163670cf0a371084c4b1c268ae9c"
+              },
+              {
+                "index": 4,
+                "bytes": 5496,
+                "sha256": "ec53f78226b47262dd8ee1edf886224eacbe73d2712cc8c6fe7f1186e567765f"
+              },
+              {
+                "index": 5,
+                "bytes": 5496,
+                "sha256": "9cf6943870524b33269afa3ce6a3fc67ce72a4f88a46f9951938d341c9eefe99"
+              },
+              {
+                "index": 6,
+                "bytes": 3664,
+                "sha256": "e393fdb87aca062b64f9bd6540211a38d5dda388be369663ee5d795d73fc9b64"
+              },
+              {
+                "index": 7,
+                "bytes": 7536,
+                "sha256": "a1207f027aceecb4d48e26861c460c0c25cae6f822c5e12d59d14b7ff534a07a"
+              },
+              {
+                "index": 8,
+                "bytes": 5496,
+                "sha256": "e063ffeeba6659405bfe081b7f7feb38c028ca44aa18822a23216c9df51cc5ec"
+              },
+              {
+                "index": 9,
+                "bytes": 5496,
+                "sha256": "044c1907895b10ddf431e28b23ea8fcad21505ac0ad6bacd33b934b4802b6527"
+              },
+              {
+                "index": 10,
+                "bytes": 3664,
+                "sha256": "6990daf31ba4f67080fb0db388cd5b4cfd811f4a115cbb4ec85fabd61b9e0d7d"
+              },
+              {
+                "index": 11,
+                "bytes": 7536,
+                "sha256": "8f09ee7180ff58d9b35f257ada7ff94eb133652fb8901dd6790895577d0c86ba"
+              },
+              {
+                "index": 12,
+                "bytes": 9828,
+                "sha256": "8958d97927c13f841941482b1c27e702837c5b15862fb68991aa749b26ece8d2"
+              },
+              {
+                "index": 13,
+                "bytes": 9828,
+                "sha256": "e87484a522fb4541ea2ec710f7c6c663b67394e4bdec5fd37e907766041aa976"
+              },
+              {
+                "index": 14,
+                "bytes": 6552,
+                "sha256": "76fa40fbd7f8de970dc7cff250c90b771e0fd3e13b2ee56590e331cfb2255ee2"
+              },
+              {
+                "index": 15,
+                "bytes": 13476,
+                "sha256": "aa59979bc38a49785298c2e8bc48c4758a17d9d489ed162c96815f5225b99a2c"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "detail-c90",
+          "bytes": 1708712,
+          "sha256": "6b08e4180b45e94ea7d1812464430d89abfeb1c9d3e82d532590d66a11918182",
+          "images": [
+            {
+              "index": 0,
+              "name": "GothicCommode_01 (Base Color) image",
+              "bufferView": 16,
+              "kind": "color",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 90,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6695125,
+              "inputSha256": "9e95ee5fde3842125826420fe675a226dd56e3dd2a78c3e608cb3929dcf91b0e",
+              "bytes": 805235,
+              "sha256": "9bc8c9e1d8c5671290191d803b8866e6b650d0a4eff4238c1911e3e1563effd1",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 45.4653213782624,
+              "channelMeanAbsoluteError": [
+                0.9837844371795654,
+                0.8943934440612793,
+                1.0027399063110352
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "GothicCommode_01 (Metallic Roughness) image",
+              "bufferView": 17,
+              "kind": "data",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 90,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 10646785,
+              "inputSha256": "883c70b9604750475bc102a857f00de59c1040ae2a66e60a58d6738421df77c9",
+              "bytes": 334774,
+              "sha256": "5331d02dd0d02a4289f997febf2c4004945e565ae9b155336d5d604a180aac05",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 40.32525891902689,
+              "channelMeanAbsoluteError": [
+                2.1533775329589844,
+                1.4796342849731445,
+                1.4150924682617188
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "GothicCommode_01 (Normal) image",
+              "bufferView": 18,
+              "kind": "normal",
+              "inputDimensions": [
+                4096,
+                4096
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6981714,
+              "inputSha256": "b7730452d868307ae0b05c9a024ae3d58fe601c1b4cfaf6a91c844edb659e28c",
+              "bytes": 404049,
+              "sha256": "f4b0bc9e5291b95ab867f334ff5d01b5129452916818cad797b4b681c911211f",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 43.961749297403195,
+              "channelMeanAbsoluteError": [
+                1.1614799499511719,
+                0.820582389831543,
+                0.9655046463012695
+              ],
+              "normalMeanAngularErrorDegrees": 0.7438203439895943
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "202903615c6cf79e64aa22bae6246b94849b8530d57b0b33dac2eac62eb3ffcd",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 21120,
+                "sha256": "7bf3c71354d9a7b65714256ed33c549d9ee02cb1c9eafe574ab33813a449cc07"
+              },
+              {
+                "index": 1,
+                "bytes": 21120,
+                "sha256": "1578c57ff11908625d6571fd9344568d22575bd764fbe2a064b1cca8c6567fae"
+              },
+              {
+                "index": 2,
+                "bytes": 14080,
+                "sha256": "59b4d12af21e70cf7e96742c7ec051e4b51b77412320b93cbc07986641e24892"
+              },
+              {
+                "index": 3,
+                "bytes": 18216,
+                "sha256": "225c13e9d01796b7bcf7f6a1bb40e48e3afc163670cf0a371084c4b1c268ae9c"
+              },
+              {
+                "index": 4,
+                "bytes": 5496,
+                "sha256": "ec53f78226b47262dd8ee1edf886224eacbe73d2712cc8c6fe7f1186e567765f"
+              },
+              {
+                "index": 5,
+                "bytes": 5496,
+                "sha256": "9cf6943870524b33269afa3ce6a3fc67ce72a4f88a46f9951938d341c9eefe99"
+              },
+              {
+                "index": 6,
+                "bytes": 3664,
+                "sha256": "e393fdb87aca062b64f9bd6540211a38d5dda388be369663ee5d795d73fc9b64"
+              },
+              {
+                "index": 7,
+                "bytes": 7536,
+                "sha256": "a1207f027aceecb4d48e26861c460c0c25cae6f822c5e12d59d14b7ff534a07a"
+              },
+              {
+                "index": 8,
+                "bytes": 5496,
+                "sha256": "e063ffeeba6659405bfe081b7f7feb38c028ca44aa18822a23216c9df51cc5ec"
+              },
+              {
+                "index": 9,
+                "bytes": 5496,
+                "sha256": "044c1907895b10ddf431e28b23ea8fcad21505ac0ad6bacd33b934b4802b6527"
+              },
+              {
+                "index": 10,
+                "bytes": 3664,
+                "sha256": "6990daf31ba4f67080fb0db388cd5b4cfd811f4a115cbb4ec85fabd61b9e0d7d"
+              },
+              {
+                "index": 11,
+                "bytes": 7536,
+                "sha256": "8f09ee7180ff58d9b35f257ada7ff94eb133652fb8901dd6790895577d0c86ba"
+              },
+              {
+                "index": 12,
+                "bytes": 9828,
+                "sha256": "8958d97927c13f841941482b1c27e702837c5b15862fb68991aa749b26ece8d2"
+              },
+              {
+                "index": 13,
+                "bytes": 9828,
+                "sha256": "e87484a522fb4541ea2ec710f7c6c663b67394e4bdec5fd37e907766041aa976"
+              },
+              {
+                "index": 14,
+                "bytes": 6552,
+                "sha256": "76fa40fbd7f8de970dc7cff250c90b771e0fd3e13b2ee56590e331cfb2255ee2"
+              },
+              {
+                "index": 15,
+                "bytes": 13476,
+                "sha256": "aa59979bc38a49785298c2e8bc48c4758a17d9d489ed162c96815f5225b99a2c"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "public/models/wooden_bookshelf.glb",
+      "sourceBytes": 15423708,
+      "sourceSha256": "a5da5338af3d629c13ae98b83d7c38c3347b23ebe7505eab0ffc22b2476200cb",
+      "introducedBy": "0e83f4c8e23912760fbc313e7d4d62169d16c30d",
+      "provenance": {
+        "upstreamUrl": null,
+        "license": "unverified",
+        "note": "Existing repository asset; introduction commits contain no upstream or license record. Not part of the Poly Haven CC0 manifest."
+      },
+      "sourceIntegrity": {
+        "semanticSha256": "f70bb03a6d83d8058e9c76999d2a491df6f2552c58ad3a329ed4c1f07ec30e77",
+        "geometryViews": [
+          {
+            "index": 0,
+            "bytes": 77748,
+            "sha256": "948d75ec60286e1ffd92a69730d928b1dbbed6455a11362cb6f8df3e2b67d94e"
+          },
+          {
+            "index": 1,
+            "bytes": 77748,
+            "sha256": "6552195eec1b1f54c0c0502041630238c7816a713b28ceebed4e5beb76cf0be5"
+          },
+          {
+            "index": 2,
+            "bytes": 51832,
+            "sha256": "e26cb0098f1bf46ca57f87dedb3948b91b5e8324ad9814990140d91f8962c5ac"
+          },
+          {
+            "index": 3,
+            "bytes": 121272,
+            "sha256": "df73abb66a5b6d49458988769b9af71bce6159f1cab73f171d7a8301fb448d70"
+          }
+        ]
+      },
+      "candidates": [
+        {
+          "profile": "1k-c85",
+          "bytes": 2022632,
+          "sha256": "e56b350271bc74dfb713f014791f6c5c5430f322aa8361f2c845b2e95cafce79",
+          "images": [
+            {
+              "index": 0,
+              "name": "wooden_bookshelf_worn (Base Color) image",
+              "bufferView": 4,
+              "kind": "color",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 85,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4006474,
+              "inputSha256": "0f0d065dde4446a6302041a84efb4c775da3200ce0c61fb80d51965ab4874203",
+              "bytes": 287144,
+              "sha256": "d1dc33300a00684acedb44825df7c72ab284865969c412e485e96e3ab511deb4",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 36.62602265868479,
+              "channelMeanAbsoluteError": [
+                2.8706531524658203,
+                2.719588279724121,
+                2.903010368347168
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "wooden_bookshelf_worn (Metallic Roughness) image",
+              "bufferView": 5,
+              "kind": "data",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4916793,
+              "inputSha256": "6ba3f579b660b16f62b761a582f60f643c354c5c397305accc760dd2263d2366",
+              "bytes": 528339,
+              "sha256": "560b7dae065e4dce5f001f9bb52cfc58b556faff8eee2a5cc8cfe008da08d308",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 42.11921375903441,
+              "channelMeanAbsoluteError": [
+                1.5554113388061523,
+                1.352705955505371,
+                1.5122489929199219
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "wooden_bookshelf_worn (Normal) image",
+              "bufferView": 6,
+              "kind": "normal",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6169519,
+              "inputSha256": "72b4c7d3469e5124fb87cadf26ad022ebb99fd72bbc9f6d52d8ea9ceacaff0d4",
+              "bytes": 876217,
+              "sha256": "809567c689326e43a19ffb701a26006d882bb3d0b9780f53ac0a288b27117717",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 38.35571671366975,
+              "channelMeanAbsoluteError": [
+                2.6106605529785156,
+                1.9114952087402344,
+                2.183953285217285
+              ],
+              "normalMeanAngularErrorDegrees": 1.6584943801516874
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "f70bb03a6d83d8058e9c76999d2a491df6f2552c58ad3a329ed4c1f07ec30e77",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 77748,
+                "sha256": "948d75ec60286e1ffd92a69730d928b1dbbed6455a11362cb6f8df3e2b67d94e"
+              },
+              {
+                "index": 1,
+                "bytes": 77748,
+                "sha256": "6552195eec1b1f54c0c0502041630238c7816a713b28ceebed4e5beb76cf0be5"
+              },
+              {
+                "index": 2,
+                "bytes": 51832,
+                "sha256": "e26cb0098f1bf46ca57f87dedb3948b91b5e8324ad9814990140d91f8962c5ac"
+              },
+              {
+                "index": 3,
+                "bytes": 121272,
+                "sha256": "df73abb66a5b6d49458988769b9af71bce6159f1cab73f171d7a8301fb448d70"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "1k-c90",
+          "bytes": 2558236,
+          "sha256": "276415edafcf952b38268e30f202084e9f9c22a84407255c2665e1288671c350",
+          "images": [
+            {
+              "index": 0,
+              "name": "wooden_bookshelf_worn (Base Color) image",
+              "bufferView": 4,
+              "kind": "color",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 90,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4006474,
+              "inputSha256": "0f0d065dde4446a6302041a84efb4c775da3200ce0c61fb80d51965ab4874203",
+              "bytes": 368562,
+              "sha256": "03dd8fad6b457b80c00aa11ff37e0d207659adb354c1c3e96d84e1df51818836",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 38.48272723200852,
+              "channelMeanAbsoluteError": [
+                2.3219499588012695,
+                2.1706857681274414,
+                2.363994598388672
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "wooden_bookshelf_worn (Metallic Roughness) image",
+              "bufferView": 5,
+              "kind": "data",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 97,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4916793,
+              "inputSha256": "6ba3f579b660b16f62b761a582f60f643c354c5c397305accc760dd2263d2366",
+              "bytes": 707054,
+              "sha256": "522c667ce90867ac1cdf1920f0b5b598cdea5dcdfe5a9089fbb6bf933def3290",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 44.07173241888393,
+              "channelMeanAbsoluteError": [
+                1.2423295974731445,
+                1.004572868347168,
+                1.2627315521240234
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "wooden_bookshelf_worn (Normal) image",
+              "bufferView": 6,
+              "kind": "normal",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 97,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6169519,
+              "inputSha256": "72b4c7d3469e5124fb87cadf26ad022ebb99fd72bbc9f6d52d8ea9ceacaff0d4",
+              "bytes": 1151681,
+              "sha256": "b5dc90fd8c795c1e4b45a17fb65c0a690c1151a9a328e226333e7c9911e350c9",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 41.603614258163546,
+              "channelMeanAbsoluteError": [
+                1.7760591506958008,
+                1.2398834228515625,
+                1.56427001953125
+              ],
+              "normalMeanAngularErrorDegrees": 1.1182447403926412
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "f70bb03a6d83d8058e9c76999d2a491df6f2552c58ad3a329ed4c1f07ec30e77",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 77748,
+                "sha256": "948d75ec60286e1ffd92a69730d928b1dbbed6455a11362cb6f8df3e2b67d94e"
+              },
+              {
+                "index": 1,
+                "bytes": 77748,
+                "sha256": "6552195eec1b1f54c0c0502041630238c7816a713b28ceebed4e5beb76cf0be5"
+              },
+              {
+                "index": 2,
+                "bytes": 51832,
+                "sha256": "e26cb0098f1bf46ca57f87dedb3948b91b5e8324ad9814990140d91f8962c5ac"
+              },
+              {
+                "index": 3,
+                "bytes": 121272,
+                "sha256": "df73abb66a5b6d49458988769b9af71bce6159f1cab73f171d7a8301fb448d70"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "1k-c95",
+          "bytes": 3050300,
+          "sha256": "fe039410a2d600c18fb3c0b72a539deaf7319137bdfdd0e100deba0fc1e854a4",
+          "images": [
+            {
+              "index": 0,
+              "name": "wooden_bookshelf_worn (Base Color) image",
+              "bufferView": 4,
+              "kind": "color",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4006474,
+              "inputSha256": "0f0d065dde4446a6302041a84efb4c775da3200ce0c61fb80d51965ab4874203",
+              "bytes": 535085,
+              "sha256": "0d2935a56e4338351d5b0651d546b0d41735dad86ef8bfa3be553d228809578c",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 42.15022953162463,
+              "channelMeanAbsoluteError": [
+                1.5265216827392578,
+                1.362539291381836,
+                1.5903310775756836
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "wooden_bookshelf_worn (Metallic Roughness) image",
+              "bufferView": 5,
+              "kind": "data",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 98,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4916793,
+              "inputSha256": "6ba3f579b660b16f62b761a582f60f643c354c5c397305accc760dd2263d2366",
+              "bytes": 848077,
+              "sha256": "5ffb374c1444b454bedca4be3de32b6466f48683b7ae8f8bc4c29052a1a999bc",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 45.61614069264802,
+              "channelMeanAbsoluteError": [
+                1.0315523147583008,
+                0.7823104858398438,
+                1.0807981491088867
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "wooden_bookshelf_worn (Normal) image",
+              "bufferView": 6,
+              "kind": "normal",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 98,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6169519,
+              "inputSha256": "72b4c7d3469e5124fb87cadf26ad022ebb99fd72bbc9f6d52d8ea9ceacaff0d4",
+              "bytes": 1336198,
+              "sha256": "f6c432eae32af84f5bce0e1beb0cefa18d38c55bdbff04446524640bead357bc",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 44.23778639715933,
+              "channelMeanAbsoluteError": [
+                1.2958669662475586,
+                0.8874006271362305,
+                1.1696653366088867
+              ],
+              "normalMeanAngularErrorDegrees": 0.8206530457600718
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "f70bb03a6d83d8058e9c76999d2a491df6f2552c58ad3a329ed4c1f07ec30e77",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 77748,
+                "sha256": "948d75ec60286e1ffd92a69730d928b1dbbed6455a11362cb6f8df3e2b67d94e"
+              },
+              {
+                "index": 1,
+                "bytes": 77748,
+                "sha256": "6552195eec1b1f54c0c0502041630238c7816a713b28ceebed4e5beb76cf0be5"
+              },
+              {
+                "index": 2,
+                "bytes": 51832,
+                "sha256": "e26cb0098f1bf46ca57f87dedb3948b91b5e8324ad9814990140d91f8962c5ac"
+              },
+              {
+                "index": 3,
+                "bytes": 121272,
+                "sha256": "df73abb66a5b6d49458988769b9af71bce6159f1cab73f171d7a8301fb448d70"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "mixed-c90",
+          "bytes": 7126412,
+          "sha256": "d5ec6a808b19b820678b120b74b5a81de3602c34ea0007c95ee6b4b0adb8bcd6",
+          "images": [
+            {
+              "index": 0,
+              "name": "wooden_bookshelf_worn (Base Color) image",
+              "bufferView": 4,
+              "kind": "color",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 90,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4006474,
+              "inputSha256": "0f0d065dde4446a6302041a84efb4c775da3200ce0c61fb80d51965ab4874203",
+              "bytes": 1547747,
+              "sha256": "1d85e8683095923f93eb4ac40b827d5eab35d5f7eb5d25b6d137eaec975a827b",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 37.91040577096108,
+              "channelMeanAbsoluteError": [
+                2.3479769229888916,
+                2.252812623977661,
+                2.4033267498016357
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "wooden_bookshelf_worn (Metallic Roughness) image",
+              "bufferView": 5,
+              "kind": "data",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 97,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4916793,
+              "inputSha256": "6ba3f579b660b16f62b761a582f60f643c354c5c397305accc760dd2263d2366",
+              "bytes": 707054,
+              "sha256": "522c667ce90867ac1cdf1920f0b5b598cdea5dcdfe5a9089fbb6bf933def3290",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 44.07173241888393,
+              "channelMeanAbsoluteError": [
+                1.2423295974731445,
+                1.004572868347168,
+                1.2627315521240234
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "wooden_bookshelf_worn (Normal) image",
+              "bufferView": 6,
+              "kind": "normal",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 97,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6169519,
+              "inputSha256": "72b4c7d3469e5124fb87cadf26ad022ebb99fd72bbc9f6d52d8ea9ceacaff0d4",
+              "bytes": 4540674,
+              "sha256": "3aa40fa7ae3c86b724846a9b9de99747e64d1de062e428817adb570147b44a58",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 42.114807451808645,
+              "channelMeanAbsoluteError": [
+                1.494201898574829,
+                1.1006207466125488,
+                1.6917369365692139
+              ],
+              "normalMeanAngularErrorDegrees": 0.9810922277523654
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "f70bb03a6d83d8058e9c76999d2a491df6f2552c58ad3a329ed4c1f07ec30e77",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 77748,
+                "sha256": "948d75ec60286e1ffd92a69730d928b1dbbed6455a11362cb6f8df3e2b67d94e"
+              },
+              {
+                "index": 1,
+                "bytes": 77748,
+                "sha256": "6552195eec1b1f54c0c0502041630238c7816a713b28ceebed4e5beb76cf0be5"
+              },
+              {
+                "index": 2,
+                "bytes": 51832,
+                "sha256": "e26cb0098f1bf46ca57f87dedb3948b91b5e8324ad9814990140d91f8962c5ac"
+              },
+              {
+                "index": 3,
+                "bytes": 121272,
+                "sha256": "df73abb66a5b6d49458988769b9af71bce6159f1cab73f171d7a8301fb448d70"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "mixed-c95",
+          "bytes": 8512988,
+          "sha256": "8db26738ebf6f21b06b297735bb99ed8470cb4cd6730e5f1dc0f74220fc21672",
+          "images": [
+            {
+              "index": 0,
+              "name": "wooden_bookshelf_worn (Base Color) image",
+              "bufferView": 4,
+              "kind": "color",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4006474,
+              "inputSha256": "0f0d065dde4446a6302041a84efb4c775da3200ce0c61fb80d51965ab4874203",
+              "bytes": 2156133,
+              "sha256": "f54af831280205db371bc6e9db6b37320e3d72590719d230a562db4319ea5717",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 42.7440584997916,
+              "channelMeanAbsoluteError": [
+                1.340667963027954,
+                1.2456107139587402,
+                1.3972795009613037
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "wooden_bookshelf_worn (Metallic Roughness) image",
+              "bufferView": 5,
+              "kind": "data",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 98,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4916793,
+              "inputSha256": "6ba3f579b660b16f62b761a582f60f643c354c5c397305accc760dd2263d2366",
+              "bytes": 848077,
+              "sha256": "5ffb374c1444b454bedca4be3de32b6466f48683b7ae8f8bc4c29052a1a999bc",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 45.61614069264802,
+              "channelMeanAbsoluteError": [
+                1.0315523147583008,
+                0.7823104858398438,
+                1.0807981491088867
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "wooden_bookshelf_worn (Normal) image",
+              "bufferView": 6,
+              "kind": "normal",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 98,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6169519,
+              "inputSha256": "72b4c7d3469e5124fb87cadf26ad022ebb99fd72bbc9f6d52d8ea9ceacaff0d4",
+              "bytes": 5177838,
+              "sha256": "afc9878e78fac64577610038ef9966d90fff31f9a81eb54ec97be2ed523f0797",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 44.564794822427096,
+              "channelMeanAbsoluteError": [
+                1.1509568691253662,
+                0.8138749599456787,
+                1.2478852272033691
+              ],
+              "normalMeanAngularErrorDegrees": 0.7526579285359574
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "f70bb03a6d83d8058e9c76999d2a491df6f2552c58ad3a329ed4c1f07ec30e77",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 77748,
+                "sha256": "948d75ec60286e1ffd92a69730d928b1dbbed6455a11362cb6f8df3e2b67d94e"
+              },
+              {
+                "index": 1,
+                "bytes": 77748,
+                "sha256": "6552195eec1b1f54c0c0502041630238c7816a713b28ceebed4e5beb76cf0be5"
+              },
+              {
+                "index": 2,
+                "bytes": 51832,
+                "sha256": "e26cb0098f1bf46ca57f87dedb3948b91b5e8324ad9814990140d91f8962c5ac"
+              },
+              {
+                "index": 3,
+                "bytes": 121272,
+                "sha256": "df73abb66a5b6d49458988769b9af71bce6159f1cab73f171d7a8301fb448d70"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "detail-c85",
+          "bytes": 2783464,
+          "sha256": "8d1bcf250559c6f6f1fd255d1be9027fe6b0cbfbd066e4358d0bf138699bb354",
+          "images": [
+            {
+              "index": 0,
+              "name": "wooden_bookshelf_worn (Base Color) image",
+              "bufferView": 4,
+              "kind": "color",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 85,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4006474,
+              "inputSha256": "0f0d065dde4446a6302041a84efb4c775da3200ce0c61fb80d51965ab4874203",
+              "bytes": 1222163,
+              "sha256": "1f7b64d259a558042197a1de39d608319482b781609358d269bc7ef2122aacfb",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 35.333115824837236,
+              "channelMeanAbsoluteError": [
+                3.1356008052825928,
+                3.0428247451782227,
+                3.1917479038238525
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "wooden_bookshelf_worn (Metallic Roughness) image",
+              "bufferView": 5,
+              "kind": "data",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 90,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4916793,
+              "inputSha256": "6ba3f579b660b16f62b761a582f60f643c354c5c397305accc760dd2263d2366",
+              "bytes": 354145,
+              "sha256": "f319805e70736cce3e6b93a1af6ea9c57732836a668e2c1f674a1112a48f751f",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 39.812588206831435,
+              "channelMeanAbsoluteError": [
+                1.9997434616088867,
+                1.8991508483886719,
+                1.8101634979248047
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "wooden_bookshelf_worn (Normal) image",
+              "bufferView": 6,
+              "kind": "normal",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6169519,
+              "inputSha256": "72b4c7d3469e5124fb87cadf26ad022ebb99fd72bbc9f6d52d8ea9ceacaff0d4",
+              "bytes": 876217,
+              "sha256": "809567c689326e43a19ffb701a26006d882bb3d0b9780f53ac0a288b27117717",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 38.35571671366975,
+              "channelMeanAbsoluteError": [
+                2.6106605529785156,
+                1.9114952087402344,
+                2.183953285217285
+              ],
+              "normalMeanAngularErrorDegrees": 1.6584943801516874
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "f70bb03a6d83d8058e9c76999d2a491df6f2552c58ad3a329ed4c1f07ec30e77",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 77748,
+                "sha256": "948d75ec60286e1ffd92a69730d928b1dbbed6455a11362cb6f8df3e2b67d94e"
+              },
+              {
+                "index": 1,
+                "bytes": 77748,
+                "sha256": "6552195eec1b1f54c0c0502041630238c7816a713b28ceebed4e5beb76cf0be5"
+              },
+              {
+                "index": 2,
+                "bytes": 51832,
+                "sha256": "e26cb0098f1bf46ca57f87dedb3948b91b5e8324ad9814990140d91f8962c5ac"
+              },
+              {
+                "index": 3,
+                "bytes": 121272,
+                "sha256": "df73abb66a5b6d49458988769b9af71bce6159f1cab73f171d7a8301fb448d70"
+              }
+            ]
+          }
+        },
+        {
+          "profile": "detail-c90",
+          "bytes": 3109048,
+          "sha256": "9b7b0600c84015b76b082973ead9bc9b63c752146d4dd313b91d1a4927c6f26d",
+          "images": [
+            {
+              "index": 0,
+              "name": "wooden_bookshelf_worn (Base Color) image",
+              "bufferView": 4,
+              "kind": "color",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                2048,
+                2048
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 90,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4006474,
+              "inputSha256": "0f0d065dde4446a6302041a84efb4c775da3200ce0c61fb80d51965ab4874203",
+              "bytes": 1547747,
+              "sha256": "1d85e8683095923f93eb4ac40b827d5eab35d5f7eb5d25b6d137eaec975a827b",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 37.91040577096108,
+              "channelMeanAbsoluteError": [
+                2.3479769229888916,
+                2.252812623977661,
+                2.4033267498016357
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 1,
+              "name": "wooden_bookshelf_worn (Metallic Roughness) image",
+              "bufferView": 5,
+              "kind": "data",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": false,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 90,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 4916793,
+              "inputSha256": "6ba3f579b660b16f62b761a582f60f643c354c5c397305accc760dd2263d2366",
+              "bytes": 354145,
+              "sha256": "f319805e70736cce3e6b93a1af6ea9c57732836a668e2c1f674a1112a48f751f",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 39.812588206831435,
+              "channelMeanAbsoluteError": [
+                1.9997434616088867,
+                1.8991508483886719,
+                1.8101634979248047
+              ],
+              "normalMeanAngularErrorDegrees": null
+            },
+            {
+              "index": 2,
+              "name": "wooden_bookshelf_worn (Normal) image",
+              "bufferView": 6,
+              "kind": "normal",
+              "inputDimensions": [
+                2048,
+                2048
+              ],
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "kernel": "lanczos3",
+              "normalRenormalized": true,
+              "gammaTransform": false,
+              "jpegOptions": {
+                "quality": 95,
+                "chromaSubsampling": "4:4:4",
+                "progressive": false,
+                "mozjpeg": false
+              },
+              "inputBytes": 6169519,
+              "inputSha256": "72b4c7d3469e5124fb87cadf26ad022ebb99fd72bbc9f6d52d8ea9ceacaff0d4",
+              "bytes": 876217,
+              "sha256": "809567c689326e43a19ffb701a26006d882bb3d0b9780f53ac0a288b27117717",
+              "codecMetricsReference": "resized raw pixels before JPEG encoding; excludes resolution loss",
+              "psnrDb": 38.35571671366975,
+              "channelMeanAbsoluteError": [
+                2.6106605529785156,
+                1.9114952087402344,
+                2.183953285217285
+              ],
+              "normalMeanAngularErrorDegrees": 1.6584943801516874
+            }
+          ],
+          "outputIntegrity": {
+            "semanticSha256": "f70bb03a6d83d8058e9c76999d2a491df6f2552c58ad3a329ed4c1f07ec30e77",
+            "geometryViews": [
+              {
+                "index": 0,
+                "bytes": 77748,
+                "sha256": "948d75ec60286e1ffd92a69730d928b1dbbed6455a11362cb6f8df3e2b67d94e"
+              },
+              {
+                "index": 1,
+                "bytes": 77748,
+                "sha256": "6552195eec1b1f54c0c0502041630238c7816a713b28ceebed4e5beb76cf0be5"
+              },
+              {
+                "index": 2,
+                "bytes": 51832,
+                "sha256": "e26cb0098f1bf46ca57f87dedb3948b91b5e8324ad9814990140d91f8962c5ac"
+              },
+              {
+                "index": 3,
+                "bytes": 121272,
+                "sha256": "df73abb66a5b6d49458988769b9af71bce6159f1cab73f171d7a8301fb448d70"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

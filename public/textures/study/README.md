@@ -4,6 +4,8 @@
 
 完整作者、下载 URL、源文件 MD5、模型打包后 SHA256 及文件大小见 [manifest.json](manifest.json)。
 
+该清单中的模型仅包括 `sofa_03` 和 `modern_arm_chair_01`。旧古董柜与书架的贴图优化及独立来源记录见 [模型说明](../../models/README.md) 和 [处理清单](../../models/study-model-optimization.json)，其来源与授权状态单独记录。
+
 | 资源 | 场景用途 | 本地文件 |
 | --- | --- | --- |
 | [Wood Floor](https://polyhaven.com/a/wood_floor) | 木地板 | `wood_floor/color.jpg`、`normal.jpg`、`arm.jpg` |
