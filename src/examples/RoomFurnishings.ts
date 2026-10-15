@@ -5,6 +5,7 @@ import { linenMaterial, mappedMaterial, surfaceMaterial } from "./RoomMaterials"
 import { beveledBox, creasedLetter, curtainPanel, ficusLeaf } from "./RoomDetailGeometry";
 import { applyWear, letterTexture, stableRandom, wearTexture } from "./RoomSurfaceDetails";
 import { partitionMergedCollisions } from "./RoomCollisions";
+import type { InteractiveDrawer, InteractiveLamp } from "./RoomInteractions";
 
 type Triple = [number, number, number];
 
@@ -12,6 +13,9 @@ type Triple = [number, number, number];
 export class RoomFurnishings {
   private materials = new Map<string, Material>();
   private parts: Mesh[] = [];
+  readonly drawers: InteractiveDrawer[] = [];
+  readonly lamps: InteractiveLamp[] = [];
+  private interactiveGroups: { meshes: Mesh[]; root: TransformNode; fixed: boolean }[] = [];
 
   constructor(private scene: Scene) {
     const colors: Record<string, string> = {
@@ -291,11 +295,20 @@ export class RoomFurnishings {
     const g = this.group("central-writing-table", [-3, -5, -1]);
     this.box("table-top", [8.3, 0.4, 6], [0, 4.4, 0], "desktop-wood", g);
     this.box("table-edge-step", [8.15, 0.1, 5.85], [0, 4.2, 0], "darkWood", g);
-    [-2.55, 2.55].forEach(z => this.box("table-apron", [7.7, 0.7, 0.2], [0, 3.85, z], "darkWood", g));
+    this.box("table-apron", [7.7, 0.7, 0.2], [0, 3.85, -2.55], "darkWood", g);
+    // Rails and stiles leave two real openings behind the moving drawer fronts.
+    [3.54, 4.16].forEach(y => this.box("table-front-rail", [7.7, 0.08, 0.2], [0, y, 2.55], "darkWood", g));
+    [-3.5, 0, 3.5].forEach(x => this.box("table-front-stile", [x === 0 ? 0.16 : 0.5, 0.7, 0.2], [x, 3.85, 2.55], "darkWood", g));
     [-3.75, 3.75].forEach(x => this.box("table-apron", [0.2, 0.7, 4.9], [x, 3.85, 0], "darkWood", g));
-    [-1.65, 1.65].forEach(x => {
-      this.box("table-drawer", [3.12, 0.48, 0.14], [x, 3.86, 2.69], "wood", g);
-      this.ring("table-drawer-pull", 0.22, 0.045, [x, 3.86, 2.83], "brass", g).rotation.x = Math.PI / 2;
+    [-1.65, 1.65].forEach((x, index) => {
+      const drawer = this.group(`writing-drawer-${index + 1}`, [x, 3.86, 2.69]); drawer.parent = g;
+      const start = this.parts.length;
+      this.box("table-drawer", [3.12, 0.48, 0.14], [0, 0, 0], "wood", drawer);
+      this.ring("table-drawer-pull", 0.22, 0.045, [0, 0, 0.14], "brass", drawer).rotation.x = Math.PI / 2;
+      this.drawerBox(drawer, 2.98, 0.42, 2.3);
+      const meshes = this.keepInteractive(start, drawer);
+      this.drawers.push({ id: drawer.name, label: `书桌${index ? "右" : "左"}侧抽屉`, root: drawer,
+        meshes, travel: new Vector3(0, 0, 1.8) });
     });
     [-3.45, 3.45].forEach(x => [-2.25, 2.25].forEach(z => {
       this.cylinder("turned-table-leg", 3.4, 0.4, [x, 1.8, z], "wood", g, 0.58);
@@ -359,27 +372,39 @@ export class RoomFurnishings {
   }
 
   private floorLamp() {
+    const start = this.parts.length;
     const g = this.group("brass-floor-lamp", [16, -5, 5]);
+    this.materials.set("floor-lamp-shade", this.materials.get("shade")!.clone("floor-lamp-shade")!);
     // A felt foot and a sloping metal shoulder make the base's contact and thickness readable.
     this.cylinder("lamp-base-foot", 0.045, 1.82, [0, 0.0225, 0], "black", g);
     this.cylinder("lamp-weighted-base", 0.12, 2, [0, 0.105, 0], "brass", g, 1.9);
     this.cylinder("lamp-base-shoulder", 0.06, 1.9, [0, 0.195, 0], "brass", g, 1.65);
     this.cylinder("lamp-stem", 7.5, 0.13, [0, 3.9, 0], "brass", g);
-    this.cylinder("linen-lampshade", 2.1, 3.4, [0, 7.6, 0], "shade", g, 2.1);
+    this.cylinder("linen-lampshade", 2.1, 3.4, [0, 7.6, 0], "floor-lamp-shade", g, 2.1);
     this.ring("shade-bottom-trim", 3.4, 0.07, [0, 6.55, 0], "brass", g);
     this.sphere("lamp-finial", [0.28, 0.42, 0.28], [0, 8.85, 0], "brass", g);
+    this.lamps.push({ id: "floor-lamp", label: "落地灯", meshes: this.keepInteractive(start, g, true) });
   }
 
   private windowDesk() {
     const g = this.group("window-console", [-17, -5, 9], Math.PI / 2);
     this.box("console-top", [8, 0.3, 2.9], [0, 4.1, 0], "wood", g);
     this.box("console-top-lip", [7.85, 0.08, 2.8], [0, 3.95, 0], "darkWood", g);
-    this.box("console-apron", [7.5, 0.85, 2.45], [0, 3.51, 0], "darkWood", g);
+    this.box("console-apron-back", [7.5, 0.85, 0.14], [0, 3.51, -1.15], "darkWood", g);
+    [-3.68, 3.68].forEach(x => this.box("console-apron-side", [0.14, 0.85, 2.45], [x, 3.51, 0], "darkWood", g));
+    [3.13, 3.89].forEach(y => this.box("console-front-rail", [7.5, 0.09, 0.14], [0, y, 1.15], "darkWood", g));
+    [-3.55, -1.15, 1.15, 3.55].forEach(x => this.box("console-front-stile", [0.15, 0.85, 0.14], [x, 3.51, 1.15], "darkWood", g));
     [-3.4, 3.4].forEach(x => [-1, 1].forEach(z => this.box("console-leg", [0.25, 3.4, 0.25], [x, 1.7, z], "wood", g)));
-    [-2.3, 0, 2.3].forEach(x => {
-      this.box("console-drawer", [2.15, 0.65, 0.12], [x, 3.51, 1.3], "wood", g);
-      this.box("console-drawer-inset", [1.9, 0.43, 0.045], [x, 3.51, 1.37], "darkWood", g);
-      this.sphere("drawer-pull", [0.18, 0.18, 0.18], [x, 3.55, 1.4], "brass", g);
+    [-2.3, 0, 2.3].forEach((x, index) => {
+      const drawer = this.group(`console-drawer-${index + 1}`, [x, 3.51, 1.3]); drawer.parent = g;
+      const start = this.parts.length;
+      this.box("console-drawer", [2.15, 0.65, 0.12], [0, 0, 0], "wood", drawer);
+      this.box("console-drawer-inset", [1.9, 0.43, 0.045], [0, 0, 0.07], "darkWood", drawer);
+      this.sphere("drawer-pull", [0.18, 0.18, 0.18], [0, 0.04, 0.1], "brass", drawer);
+      this.drawerBox(drawer, 2.02, 0.57, 2.15);
+      const meshes = this.keepInteractive(start, drawer);
+      this.drawers.push({ id: drawer.name, label: `窗边桌${["左侧", "中间", "右侧"][index]}抽屉`, root: drawer,
+        meshes, travel: new Vector3(0, 0, 1.55) });
     });
     this.bookStack([-2, 4.25, 0], g);
     this.vase([2.5, 4.25, 0], 0.65, g);
@@ -468,11 +493,14 @@ export class RoomFurnishings {
   }
 
   private bankerLamp(position: Triple, parent?: TransformNode) {
+    const start = this.parts.length;
     const g = this.group("banker-lamp", position); g.parent = parent || null;
+    this.materials.set("desk-lamp-glow", this.materials.get("shade")!.clone("desk-lamp-glow")!);
     this.cylinder("banker-base", 0.12, 1.1, [0, 0.06, 0], "brass", g);
     this.cylinder("banker-stem", 1.4, 0.1, [0, 0.8, 0], "brass", g);
     this.sphere("banker-green-shade", [2.1, 0.8, 0.95], [0, 1.65, 0], "lampGlass", g);
-    this.box("banker-lit-underside", [1.5, 0.06, 0.65], [0, 1.38, 0], "shade", g);
+    this.box("banker-lit-underside", [1.5, 0.06, 0.65], [0, 1.38, 0], "desk-lamp-glow", g);
+    this.lamps.push({ id: "desk-lamp", label: "台灯", meshes: this.keepInteractive(start, g, true) });
   }
 
   private vase(position: Triple, scale = 1, parent?: TransformNode) {
@@ -625,11 +653,36 @@ export class RoomFurnishings {
     this.sphere("clock-pivot", [0.12, 0.12, 0.08], [0, 0, 0.23], "brass", g);
   }
 
-  finish(): Mesh[] {
-    return this.merge(this.parts);
+  private drawerBox(parent: TransformNode, width: number, height: number, depth: number) {
+    this.box("drawer-bottom", [width, 0.06, depth], [0, -height / 2 + 0.03, -depth / 2], "darkWood", parent);
+    [-1, 1].forEach(side => this.box("drawer-side", [0.07, height, depth],
+      [side * (width / 2 - 0.035), 0, -depth / 2], "wood", parent));
+    this.box("drawer-back", [width, height, 0.07], [0, 0, -depth + 0.035], "wood", parent);
   }
 
-  private merge(parts: Mesh[]): Mesh[] {
+  private keepInteractive(start: number, root: TransformNode, fixed = false) {
+    const meshes = this.parts.splice(start);
+    this.interactiveGroups.push({ meshes, root, fixed });
+    return meshes;
+  }
+
+  finish(): Mesh[] {
+    const fixed = this.merge(this.parts);
+    const interactive: Mesh[] = [];
+    this.interactiveGroups.forEach(({ meshes, root, fixed }) => {
+      const merged = this.merge(meshes, false);
+      merged.forEach(mesh => {
+        mesh.setParent(root); // Preserve world-space geometry baked by MergeMeshes.
+        mesh.checkCollisions = true;
+        if (fixed) mesh.freezeWorldMatrix();
+      });
+      meshes.splice(0, meshes.length, ...merged); // Keep the interaction descriptors current.
+      interactive.push(...merged);
+    });
+    return [...fixed, ...interactive];
+  }
+
+  private merge(parts: Mesh[], fixed = true): Mesh[] {
     const groups = new Map<string, { material: Material; castsShadows: boolean; parts: Mesh[] }>();
     parts.forEach(mesh => {
       mesh.computeWorldMatrix(true);
@@ -647,8 +700,10 @@ export class RoomFurnishings {
       mesh.metadata = { castsShadows };
       mesh.receiveShadows = true;
       mesh.isPickable = false;
-      mesh.freezeWorldMatrix();
-      partitionMergedCollisions(mesh, collisionParts);
+      if (fixed) {
+        mesh.freezeWorldMatrix();
+        partitionMergedCollisions(mesh, collisionParts);
+      }
       merged.push(mesh);
     });
     return merged;

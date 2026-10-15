@@ -1,9 +1,11 @@
 import { Color3, HemisphericLight, RenderTargetTexture, ShadowGenerator, SpotLight, Vector3 } from "@babylonjs/core/pure";
-import type { AbstractMesh, Scene } from "@babylonjs/core/pure";
+import type { AbstractMesh, PBRMaterial, Scene } from "@babylonjs/core/pure";
 
 /** Three direct sources (window, reading lamp, desk lamp) plus restrained indirect bounce. */
 export class RoomLighting {
   private readonly shadows: ShadowGenerator[];
+  private readonly lamps = new Map<string, { light: SpotLight; intensity: number; on: boolean;
+    material?: PBRMaterial; glow?: Color3 }>();
 
   constructor(scene: Scene) {
     const fill = new HemisphericLight("room-bounce-light", new Vector3(-0.35, 1, 0.15), scene);
@@ -34,6 +36,8 @@ export class RoomLighting {
     desk.diffuse = new Color3(1, 0.88, 0.68);
     desk.intensity = 1.25;
     desk.range = 10;
+    this.lamps.set("floor-lamp", { light: reading, intensity: reading.intensity, on: true });
+    this.lamps.set("desk-lamp", { light: desk, intensity: desk.intensity, on: true });
 
     this.shadows = [daylight, reading, desk].map((light, index) => {
       light.falloffType = SpotLight.FALLOFF_STANDARD;
@@ -56,6 +60,22 @@ export class RoomLighting {
       shadow.setDarkness(0);
       return shadow;
     });
+  }
+
+  bindLamp(id: string, material: PBRMaterial) {
+    const lamp = this.lamps.get(id)!;
+    lamp.material = material;
+    lamp.glow = material.emissiveColor.clone();
+  }
+
+  isLampOn(id: string) { return this.lamps.get(id)!.on; }
+
+  toggleLamp(id: string) {
+    const lamp = this.lamps.get(id)!;
+    lamp.on = !lamp.on;
+    lamp.light.intensity = lamp.on ? lamp.intensity : 0;
+    if (lamp.material && lamp.glow) lamp.material.emissiveColor.copyFrom(lamp.on ? lamp.glow : Color3.Black());
+    this.refreshShadows();
   }
 
   addMeshes(meshes: AbstractMesh[]) {

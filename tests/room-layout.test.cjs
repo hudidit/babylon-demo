@@ -23,6 +23,7 @@ function loadSource(name) {
 const { measureBookshelf } = loadSource("BookshelfLayout");
 const { RoomFurnishings } = loadSource("RoomFurnishings");
 const { RoomScene } = loadSource("Room");
+const { RoomInteractions, cabinetDrawers } = loadSource("RoomInteractions");
 const { RoomLighting } = loadSource("RoomLighting");
 const { placeFurniture } = loadSource("RoomFurnitureAssets");
 const { mappedMaterial, tileMaterial } = loadSource("RoomMaterials");
@@ -490,4 +491,125 @@ test("detail view permits close inspection and restores overview zoom limits on 
     if (previousDocument === undefined) delete global.document;
     else global.document = previousDocument;
   }
+});
+
+
+test("all five procedural drawers retain boxes, independent motion and live collisions after merging", t => {
+  const scene = createScene(t), furnishings = new RoomFurnishings(scene);
+  furnishings.writingTable(); furnishings.windowDesk();
+  assert.equal(furnishings.drawers.length, 5);
+  for (const drawer of furnishings.drawers) {
+    assert.equal(drawer.meshes.filter(mesh => /drawer-(bottom|side|back)/.test(mesh.name)).length, 4);
+  }
+  furnishings.finish().forEach(mesh => mesh.checkCollisions = true);
+  let refreshed = 0;
+  const interactions = new RoomInteractions(scene, () => refreshed++);
+  furnishings.drawers.forEach(drawer => interactions.addDrawer(drawer));
+  const initial = furnishings.drawers.map(drawer => drawer.root.getAbsolutePosition().clone());
+  for (const [index, drawer] of furnishings.drawers.entries()) {
+    drawer.meshes.forEach(mesh => {
+      assert.ok(!mesh.isWorldMatrixFrozen && mesh.checkCollisions);
+      mesh.computeWorldMatrix(true);
+    });
+    const front = drawer.meshes.find(mesh => mesh.material.name === "wood");
+    const bounds = front.getBoundingInfo().boundingBox;
+    const centre = bounds.centerWorld.clone();
+    const outward = index < 2 ? new babylon.Vector3(0, 0, 1) : new babylon.Vector3(1, 0, 0);
+    const ray = new babylon.Ray(centre.add(outward.scale(5)), outward.negate(), 7.5);
+    const action = interactions.pick(ray);
+    assert.ok(action && action.label().startsWith("打开"), drawer.id + " must have a reachable front");
+    action.toggle();
+    interactions.update(0.05);
+    const partial = drawer.root.position.clone();
+    action.toggle(); // Reverse while moving; toggling must not snap to either endpoint.
+    assert.ok(drawer.root.position.equals(partial));
+    for (let step = 0; step < 12; step++) interactions.update(0.05);
+    assert.ok(drawer.root.getAbsolutePosition().equalsWithEpsilon(initial[index], 0.00001));
+    action.toggle();
+    for (let step = 0; step < 12; step++) interactions.update(0.05);
+    const delta = drawer.root.getAbsolutePosition().subtract(initial[index]);
+    assert.ok(delta.equalsWithEpsilon(outward.scale(drawer.travel.length()), 0.0001), "travel must respect the rotated console");
+    front.computeWorldMatrix(true);
+    const openBounds = front.getBoundingInfo().boundingBox;
+    const start = openBounds.centerWorld.add(outward.scale(2));
+    const contact = sweep(scene, start, outward.scale(-3), new babylon.Vector3(0.1, 0.1, 0.1)).position;
+    assert.ok(babylon.Vector3.Dot(contact.subtract(openBounds.centerWorld), outward) > 0.1,
+      "the moving drawer must still block movement at its new position");
+    action.toggle();
+    for (let step = 0; step < 12; step++) interactions.update(0.05);
+  }
+  assert.ok(refreshed > 0, "motion must invalidate cached shadows");
+  refreshed = 0; interactions.update(0.05);
+  assert.equal(refreshed, 0, "settled drawers must retain shadow caching");
+});
+
+test("actual cabinet drawers move outward through the glTF conversion, preserving their geometry", async t => {
+  const scene = createScene(t);
+  const source = new Uint8Array(fs.readFileSync(path.join(__dirname, "../public/models/gothic_commode.glb")));
+  const result = await babylon.ImportMeshAsync(source, scene, {
+    pluginExtension: ".glb", pluginOptions: { gltf: { skipMaterials: true } },
+  });
+  const placement = new babylon.TransformNode("antique-cabinet", scene);
+  placement.position.set(-13.5, -5, -17.6); placement.scaling.setAll(4.7);
+  result.meshes[0].parent = placement;
+  result.meshes.forEach(mesh => { mesh.freezeWorldMatrix(); mesh.checkCollisions = true; });
+  placement.freezeWorldMatrix();
+  const interactions = new RoomInteractions(scene, () => {});
+  const drawers = cabinetDrawers(result.meshes);
+  assert.equal(drawers.length, 3);
+  drawers.forEach(drawer => interactions.addDrawer(drawer));
+  for (const drawer of drawers) {
+    const mesh = drawer.meshes[0]; mesh.computeWorldMatrix(true);
+    const before = mesh.getBoundingInfo().boundingBox.centerWorld.clone();
+    const vertices = [...mesh.getVerticesData(babylon.VertexBuffer.PositionKind)];
+    const action = interactions.pick(new babylon.Ray(before.add(new babylon.Vector3(0, 0, 5)), new babylon.Vector3(0, 0, -1), 7.5));
+    assert.ok(action, drawer.id + " must be reachable on the visible cabinet front");
+    action.toggle();
+    for (let step = 0; step < 12; step++) interactions.update(0.05);
+    mesh.computeWorldMatrix(true);
+    const delta = mesh.getBoundingInfo().boundingBox.centerWorld.subtract(before);
+    assert.ok(delta.equalsWithEpsilon(new babylon.Vector3(0, 0, 1.786), 0.0001), JSON.stringify({delta:delta.asArray(),label:action.label(),drawer:drawer.id}));
+    assert.deepEqual([...mesh.getVerticesData(babylon.VertexBuffer.PositionKind)], vertices);
+    assert.ok(!mesh.isWorldMatrixFrozen && mesh.checkCollisions);
+    action.toggle();
+    for (let step = 0; step < 12; step++) interactions.update(0.05);
+  }
+  assert.throws(() => cabinetDrawers([]), /drawer missing/);
+});
+
+test("picking respects occlusion, hidden geometry and first-person reach", t => {
+  const scene = createScene(t), interactions = new RoomInteractions(scene, () => {});
+  const lamp = babylon.CreateBox("lamp", {}, scene); lamp.position.z = 4; lamp.isPickable = false; lamp.computeWorldMatrix(true);
+  let toggled = 0;
+  interactions.addLamp({ id: "lamp", label: "灯", meshes: [lamp] }, () => true, () => toggled++);
+  const ray = new babylon.Ray(babylon.Vector3.Zero(), new babylon.Vector3(0, 0, 1), 7.5);
+  assert.ok(interactions.pick(ray));
+  const blocker = babylon.CreateBox("blocker", {}, scene); blocker.position.z = 2; blocker.isPickable = false;
+  blocker.computeWorldMatrix(true);
+  assert.equal(interactions.pick(ray), undefined, "static non-pickable furniture must occlude interactions");
+  blocker.setEnabled(false); assert.ok(interactions.pick(ray));
+  blocker.setEnabled(true); blocker.isVisible = false; assert.ok(interactions.pick(ray));
+  lamp.position.z = 10; lamp.computeWorldMatrix(true); assert.equal(interactions.pick(ray), undefined, "out-of-reach lamps must not activate");
+  ray.length = 100; interactions.pick(ray).toggle(); assert.equal(toggled, 1);
+});
+
+test("lamp switches independently restore direct light and their own emission", t => {
+  const scene = createScene(t), lighting = new RoomLighting(scene), furnishings = new RoomFurnishings(scene);
+  furnishings.writingTable(); furnishings.floorLamp(); furnishings.finish();
+  const desk = scene.getMaterialByName("desk-lamp-glow"), floor = scene.getMaterialByName("floor-lamp-shade");
+  lighting.bindLamp("desk-lamp", desk); lighting.bindLamp("floor-lamp", floor);
+  const deskGlow = desk.emissiveColor.clone(), floorGlow = floor.emissiveColor.clone();
+  const candle = scene.getMaterialByName("shade").emissiveColor.clone();
+  lighting.toggleLamp("desk-lamp");
+  assert.equal(scene.getLightByName("banker-lamp-light").intensity, 0);
+  assert.ok(desk.emissiveColor.equals(babylon.Color3.Black()) && floor.emissiveColor.equals(floorGlow));
+  assert.ok(lighting.isLampOn("floor-lamp") && !lighting.isLampOn("desk-lamp"));
+  lighting.toggleLamp("floor-lamp");
+  assert.equal(scene.getLightByName("reading-lamp-light").intensity, 0);
+  assert.ok(scene.getMaterialByName("shade").emissiveColor.equals(candle));
+  assert.equal(scene.getLightByName("window-daylight").intensity, 3.5);
+  lighting.toggleLamp("desk-lamp"); lighting.toggleLamp("floor-lamp");
+  assert.equal(scene.getLightByName("banker-lamp-light").intensity, 1.25);
+  assert.equal(scene.getLightByName("reading-lamp-light").intensity, 3.3);
+  assert.ok(desk.emissiveColor.equals(deskGlow) && floor.emissiveColor.equals(floorGlow));
 });

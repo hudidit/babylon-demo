@@ -21,10 +21,12 @@ export class ExampleBasicScene {
           room.scene.render();
         }
         else {
+          room.setControlsEnabled(false);
           await import("@babylonjs/inspector");
           await room.scene.debugLayer.show({ overlay: true, embedMode: true, enablePopup: false });
         }
       } finally {
+        room.setControlsEnabled(document.querySelector<HTMLElement>("#settings-menu")!.hidden);
         inspect.disabled = false;
       }
     });

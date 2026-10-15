@@ -10,6 +10,9 @@
       html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #242c2e; }
       body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
       #gameCanvas { display: block; width: 100%; height: 100%; outline: none; touch-action: none; }
+      #interaction-reticle { position: fixed; left: 50%; top: 50%; width: 6px; height: 6px; transform: translate(-50%, -50%); border-radius: 50%; background: #fff7e8e6; box-shadow: 0 0 0 1px #30291a80, 0 1px 5px #0005; z-index: 20; pointer-events: none; transition: width 120ms, height 120ms, background 120ms; }
+      #interaction-reticle.has-target { width: 9px; height: 9px; background: #eacb90; }
+      #interaction-hint { position: fixed; left: 50%; top: calc(50% + 22px); transform: translateX(-50%); z-index: 20; padding: 6px 10px; border-radius: 5px; background: #242c2eb3; color: #fff2dd; font-size: 11px; letter-spacing: 1px; white-space: nowrap; pointer-events: none; }
       .identity { position: fixed; top: 30px; left: 32px; z-index: 10; color: #f2e8d4; pointer-events: none; }
       .eyebrow { color: #c5aa78; font-size: 10px; letter-spacing: 3px; margin: 0 0 10px; }
       h1 { font-weight: 400; font-size: 29px; letter-spacing: 5px; margin: 0 0 10px; }
@@ -64,6 +67,8 @@
       <button id="settings-reset">恢复默认</button>
     </section>
     <div class="help" id="view-help">拖动旋转 · 滚轮缩放 · 右键平移</div>
+    <div id="interaction-reticle" aria-hidden="true" hidden></div>
+    <div id="interaction-hint" role="status" hidden></div>
     <nav class="view-controls" aria-label="场景视角">
       <button data-view="overview" aria-pressed="true">房间全景</button>
       <button data-view="reading" aria-pressed="false">阅读区</button>

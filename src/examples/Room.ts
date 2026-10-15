@@ -8,6 +8,8 @@ import { RoomLighting } from "./RoomLighting";
 import { mappedMaterial, tileMaterial } from "./RoomMaterials";
 import { placeFurniture } from "./RoomFurnitureAssets";
 import { createRoomFinishing } from "./RoomFinishing";
+import { cabinetDrawers, RoomInteractions } from "./RoomInteractions";
+import { RoomPointerLock } from "./RoomPointerLock";
 
 export type RoomView = "overview" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.55 };
@@ -24,6 +26,13 @@ export class RoomScene {
   private readonly finishing: DefaultRenderingPipeline;
   private disposed = false;
   private controlsEnabled = true;
+  private readonly interactions: RoomInteractions;
+  private readonly pointerLock: RoomPointerLock;
+  private currentView: RoomView = "overview";
+  private previousView: Exclude<RoomView, "first-person"> = "overview";
+  private pointerLocked = false;
+  private pointerStart?: { x: number; y: number; id: number; dragged: boolean };
+  private focusElapsed = 0;
 
   constructor(private readonly canvas: HTMLCanvasElement) {
     registerRoomRuntime();
@@ -78,6 +87,15 @@ export class RoomScene {
     this.interiorShell.setEnabled(false);
 
     this.lighting = new RoomLighting(this.scene);
+    this.interactions = new RoomInteractions(this.scene, () => this.lighting.refreshShadows());
+    this.pointerLock = new RoomPointerLock(canvas, locked => {
+      this.pointerLocked = locked;
+      this.updateControls();
+      this.updateInteractionHint();
+    }, () => this.leaveFirstPerson(), () => {
+      const help = document.querySelector("#view-help");
+      if (help && this.currentView === "first-person") help.textContent = "点击画面启用鼠标环顾 · ESC 退出第一人称";
+    });
     if (SSAO2RenderingPipeline.IsSupported) {
       // Directional shadows describe the lights; short-range AO grounds feet under indirect light.
       this.contactShadows = new SSAO2RenderingPipeline("room-contact-shadows", this.scene,
@@ -99,13 +117,27 @@ export class RoomScene {
     furnishings.finish().forEach(mesh => {
       mesh.checkCollisions = true;
     });
+    furnishings.drawers.forEach(drawer => this.interactions.addDrawer(drawer));
+    furnishings.lamps.forEach(lamp => {
+      const material = this.scene.getMaterialByName(lamp.id === "desk-lamp" ? "desk-lamp-glow" : "floor-lamp-shade") as PBRMaterial;
+      this.lighting.bindLamp(lamp.id, material);
+      this.interactions.addLamp(lamp, () => this.lighting.isLampOn(lamp.id), () => this.lighting.toggleLamp(lamp.id));
+    });
     this.lighting.addMeshes(this.scene.meshes);
+    this.scene.onBeforeRenderObservable.add(() => {
+      const delta = this.engine.getDeltaTime() / 1000;
+      this.interactions.update(delta);
+      this.focusElapsed += delta;
+      if (this.focusElapsed >= 0.1) { this.focusElapsed = 0; this.updateInteractionHint(); }
+    });
 
     // A parent keeps the glTF loader's handedness conversion intact.
     const models = [
       this.importFurniture("sofa_03.glb", "reading-sofa", new Vector3(10, -5, 6), 10.8),
       this.importFurniture("modern_arm_chair_01.glb", "reading-armchair", new Vector3(-10, -5, 12), 3.8, Math.PI / 2),
-      this.importModel("gothic_commode.glb", "antique-cabinet", new Vector3(-13.5, -5, -17.6), 4.7),
+      this.importModel("gothic_commode.glb", "antique-cabinet", new Vector3(-13.5, -5, -17.6), 4.7).then(meshes => {
+        if (meshes && !this.disposed) cabinetDrawers(meshes).forEach(drawer => this.interactions.addDrawer(drawer));
+      }),
       this.importModel("wooden_bookshelf.glb", "antique-bookshelf", new Vector3(11.5, -5, -17.8), 5.2).then(meshes => {
         if (!meshes || this.disposed) return;
         const books = furnishings.furnishBookshelf(meshes);
@@ -129,6 +161,12 @@ export class RoomScene {
     });
 
     this.setView("overview");
+    canvas.addEventListener("pointerdown", this.pointerDown);
+    canvas.addEventListener("pointermove", this.pointerMove);
+    canvas.addEventListener("pointerup", this.pointerUp);
+    canvas.addEventListener("pointercancel", this.pointerCancel);
+    document.addEventListener("keydown", this.keyDown);
+    window.addEventListener("blur", this.leaveFirstPerson);
     window.addEventListener("resize", this.resize);
     document.addEventListener("visibilitychange", this.visibilityChanged);
     window.addEventListener("pagehide", this.dispose, { once: true });
@@ -137,6 +175,9 @@ export class RoomScene {
 
   setView(view: RoomView) {
     const firstPerson = view === "first-person";
+    if (firstPerson && this.currentView !== "first-person") this.previousView = this.currentView;
+    this.currentView = view;
+    if (!firstPerson) this.pointerLock?.release();
     this.scene.activeCamera?.detachControl();
     const shellChanged = this.interiorShell.isEnabled() !== firstPerson;
     this.interiorShell.setEnabled(firstPerson);
@@ -166,12 +207,16 @@ export class RoomScene {
     this.camera.inertialAlphaOffset = this.camera.inertialBetaOffset = this.camera.inertialRadiusOffset = 0;
     this.camera.inertialPanningX = this.camera.inertialPanningY = 0;
     this.camera.movement.resetPanVelocity();
-    if (this.controlsEnabled) this.scene.activeCamera.attachControl(this.canvas, true);
+    this.updateControls();
     const help = document.querySelector("#view-help");
-    const instructions = firstPerson ? "拖动环顾 · WASD / 方向键移动" : "拖动旋转 · 滚轮缩放 · 右键平移";
+    const instructions = firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击抽屉 / 灯具";
     if (help) help.textContent = instructions;
     this.canvas.setAttribute("aria-label", "复古书房三维场景，" + instructions);
-    if (firstPerson && this.controlsEnabled) this.canvas.focus({ preventScroll: true });
+    this.updateInteractionHint();
+    if (firstPerson && this.controlsEnabled) {
+      this.canvas.focus({ preventScroll: true });
+      this.pointerLock?.request();
+    }
     document.querySelectorAll<HTMLButtonElement>("[data-view]").forEach(button => {
       button.setAttribute("aria-pressed", String(button.dataset.view === view));
     });
@@ -188,11 +233,73 @@ export class RoomScene {
 
   setControlsEnabled(enabled: boolean) {
     this.controlsEnabled = enabled;
+    if (!enabled) this.pointerLock.release();
+    this.updateControls();
+    this.updateInteractionHint();
+  }
+
+  private updateControls() {
     const camera = this.scene.activeCamera === this.firstPersonCamera ? this.firstPersonCamera : this.camera;
     camera.detachControl();
+    this.firstPersonCamera.cameraDirection.setAll(0);
+    this.firstPersonCamera.cameraRotation.setAll(0);
     camera.movement.resetPanVelocity();
     camera.movement.resetRotationVelocity();
-    if (enabled) camera.attachControl(this.canvas, true);
+    if (this.controlsEnabled && (camera !== this.firstPersonCamera || this.pointerLocked)) camera.attachControl(this.canvas, true);
+  }
+
+  private leaveFirstPerson = () => {
+    if (this.currentView === "first-person") this.setView(this.previousView);
+  };
+
+  private keyDown = (event: KeyboardEvent) => {
+    if (event.key === "Escape") this.leaveFirstPerson();
+  };
+
+  private pointerDown = (event: PointerEvent) => {
+    if (event.button !== 0 || !this.controlsEnabled) return;
+    if (this.currentView === "first-person" && !this.pointerLocked) {
+      this.pointerLock.request();
+      this.pointerStart = undefined;
+      return;
+    }
+    this.pointerStart = { x: event.clientX, y: event.clientY, id: event.pointerId, dragged: false };
+  };
+
+  private pointerMove = (event: PointerEvent) => {
+    const start = this.pointerStart;
+    if (start && Math.hypot(event.clientX - start.x, event.clientY - start.y) > 5) start.dragged = true;
+  };
+
+  private pointerCancel = () => { this.pointerStart = undefined; };
+
+  private pointerUp = (event: PointerEvent) => {
+    const start = this.pointerStart;
+    this.pointerStart = undefined;
+    if (event.button !== 0 || !start || start.id !== event.pointerId || start.dragged || !this.controlsEnabled) return;
+    if (this.currentView === "first-person") {
+      if (!this.pointerLocked) return;
+      this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5))?.toggle();
+    } else {
+      const rect = this.canvas.getBoundingClientRect();
+      const ray = this.scene.createPickingRay(event.clientX - rect.left, event.clientY - rect.top, null, this.camera);
+      this.interactions.pick(ray)?.toggle();
+    }
+    this.updateInteractionHint();
+  };
+
+  private updateInteractionHint() {
+    const reticle = document.querySelector<HTMLElement>("#interaction-reticle");
+    const hint = document.querySelector<HTMLElement>("#interaction-hint");
+    const firstPerson = this.currentView === "first-person";
+    if (reticle) reticle.hidden = !firstPerson;
+    const action = firstPerson && this.pointerLocked && this.controlsEnabled
+      ? this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5)) : undefined;
+    reticle?.classList.toggle("has-target", !!action);
+    if (hint) {
+      hint.textContent = action ? `左键 · ${action.label()}` : firstPerson && !this.pointerLocked ? "点击画面开始环顾 · ESC 退出" : "";
+      hint.hidden = !hint.textContent;
+    }
   }
 
   private createArchitecture(room: RoomFurnishings) {
@@ -305,6 +412,13 @@ export class RoomScene {
   private dispose = () => {
     if (this.disposed) return;
     this.disposed = true;
+    this.pointerLock.dispose();
+    this.canvas.removeEventListener("pointerdown", this.pointerDown);
+    this.canvas.removeEventListener("pointermove", this.pointerMove);
+    this.canvas.removeEventListener("pointerup", this.pointerUp);
+    this.canvas.removeEventListener("pointercancel", this.pointerCancel);
+    document.removeEventListener("keydown", this.keyDown);
+    window.removeEventListener("blur", this.leaveFirstPerson);
     window.removeEventListener("resize", this.resize);
     document.removeEventListener("visibilitychange", this.visibilityChanged);
     this.engine.stopRenderLoop();

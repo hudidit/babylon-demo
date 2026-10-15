@@ -1,0 +1,73 @@
+
+> babylon-learning@0.0.1 test
+> node --test tests/*.test.cjs
+
+BJS - [00:46:44]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+BJS - [00:46:45]: Babylon.js v9.30.0 - Null engine
+✔ collision partitions preserve swept collisions and cull distant geometry without extra draw calls (102.061167ms)
+✔ actual room collision partitions cover every merged index and preserve first-person sweeps (308.077583ms)
+✔ books and vase fit the actual bookshelf model at scale 5.2 (51.948875ms)
+✔ books and vase fit the actual bookshelf model at scale 3.7 (39.300917ms)
+✔ all flower stems connect to both the vase neck and their flower heads (13.814667ms)
+✔ changing movement speed applies immediately and clears previous movement (1.043709ms)
+✔ lamp lights emit below their shades and the window is the main light source (21.7015ms)
+✔ floor lamp foot touches the floor and its stacked base joins the stem (12.951375ms)
+✔ sofa_03 fits its room footprint and sits on the floor after glTF conversion (1.040375ms)
+✔ modern_arm_chair_01 fits its room footprint and sits on the floor after glTF conversion (0.81ms)
+✔ wall colour, normal and ARM maps tile together without modifying other walls (0.631417ms)
+✔ rugs receive shadows without hiding chair legs; cached shadows refresh after enclosure changes (13.93525ms)
+✔ beveled boards keep their dimensions and have outward, finite surface normals (0.747875ms)
+✔ stacked book covers touch the support and the next book without floating gaps (12.488417ms)
+✔ cloth gathers around its tie and leaves have a thin, curved pointed silhouette (2.973458ms)
+✔ desk accessories, tea tray and small furniture rest on their actual supports (16.348625ms)
+✔ wear masks preserve tangent normals and keep surface variation subtle and reproducible (22.262375ms)
+✔ creased letter rests on the blotter and curls only a small distance above it (16.909709ms)
+✔ detail view permits close inspection and restores overview zoom limits on exit (1.441958ms)
+✔ all five procedural drawers retain boxes, independent motion and live collisions after merging (29.27425ms)
+✔ actual cabinet drawers move outward through the glTF conversion, preserving their geometry (1.577875ms)
+✔ picking respects occlusion, hidden geometry and first-person reach (0.414209ms)
+✔ lamp switches independently restore direct light and their own emission (17.268792ms)
+✔ pointer lock handles browser Escape, explicit release, rejection, late success and disposal (0.48075ms)
+✔ pure room registrations work in a fresh process without the core side-effect barrel (658.255125ms)
+✔ initial dependency guard rejects broad or unrelated systems while allowing room features (0.391542ms)
+✔ gothic_commode.glb retains original geometry, UVs and material graph after image optimization (6.625042ms)
+✔ wooden_bookshelf.glb retains original geometry, UVs and material graph after image optimization (3.193708ms)
+✔ optimized study models stay inside the documented image-quality-adjusted budget (0.20125ms)
+▶ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases
+  ✔ whitelist matches measured runtime assets, copied bytes and full compiled output (23.227208ms)
+  ✔ missing lazy chunk is rejected (1.250334ms)
+  ✔ extra example asset or stale build file is rejected (0.548959ms)
+  ✔ same-size resource corruption is rejected by SHA256 (5.160625ms)
+  ✔ GLB external dependencies require a whitelist review even when manifest hash is updated (4.398625ms)
+  ✔ production mode and fixed budgets cannot silently change (0.3215ms)
+  ✔ oversized initial JS is rejected even with consistent hashes and totals (10.453ms)
+  ✔ missing white-listed source fails compilation (14.228875ms)
+✔ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases (545.997083ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1688.664541
