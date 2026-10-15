@@ -2,11 +2,11 @@ import { CreateBox, CreateGround, CreatePlane, Vector3 } from "@babylonjs/core/p
 import type { PBRMaterial, Scene, TransformNode } from "@babylonjs/core/pure";
 import { tileMaterial } from "./RoomMaterials";
 import type { RoomFurnishings } from "./RoomFurnishings";
+import { CONNECTING_PASSAGE, LIVING_ROOM, SHARED_WALL_SPANS } from "./RoomLayout";
 
-export const LIVING_ROOM = { minX: 20, maxX: 54, minZ: -20, maxZ: 20,
-  passageMinZ: -9, passageMaxZ: -1, floorY: -5 };
+export { LIVING_ROOM } from "./RoomLayout";
 
-/** Two rooms share a level floor and an eight-unit passage in their partition. */
+/** Two rooms share a level floor and a single-door passage in their partition. */
 export function constrainWalkingPosition(position: Vector3) {
   position.set(Math.max(-18.8, Math.min(LIVING_ROOM.maxX - 1.2, position.x)), 1,
     Math.max(-18.8, Math.min(18.8, position.z)));
@@ -14,7 +14,8 @@ export function constrainWalkingPosition(position: Vector3) {
 
 /** Existing study wall, split all the way to the floor; shown only in enclosed mode. */
 export function createSharedWall(scene: Scene, shell: TransformNode, brick: PBRMaterial) {
-  const spans = [{ length: 11, z: -14.5 }, { length: 21, z: 9.5 }, { length: 8, z: -5, lintel: true }];
+  const spans = [...SHARED_WALL_SPANS.map(span => ({ ...span, lintel: false })),
+    { length: CONNECTING_PASSAGE.width, z: CONNECTING_PASSAGE.centerZ, lintel: true }];
   spans.forEach(({ length, z, lintel }, index) => {
     const height = lintel ? 3 : 14, y = lintel ? 7.5 : 2;
     const wall = CreateBox("shared-wall-" + index, { width: 0.5, height, depth: length }, scene);
@@ -61,12 +62,13 @@ export function createLivingRoom(scene: Scene, room: RoomFurnishings, shell: Tra
     room.box("foundation", [34.3, 0.6, 40.6], [37.15, -5.4, 0], "darkWood");
     panelWall(room, 34, [37, 0, -19.5]);
     // Cased opening with flush floor; there is no raised threshold to trip the walker.
-    [-9.2, -0.8].forEach(z => {
+    [CONNECTING_PASSAGE.minZ - 0.19, CONNECTING_PASSAGE.maxZ + 0.19].forEach(z => {
       room.box("passage-jamb", [1.1, 11.25, 0.38], [20, 0.625, z], "wood");
       room.box("passage-jamb-inlay", [1.14, 10.8, 0.055], [20, 0.4, z + (z < -5 ? 0.22 : -0.22)], "brass");
     });
-    room.box("passage-header", [1.1, 0.45, 8.8], [20, 6.25, -5], "wood");
-    room.box("passage-header-inlay", [1.14, 0.06, 8.7], [20, 6, -5], "brass");
+    room.box("passage-header", [1.1, 0.45, CONNECTING_PASSAGE.width + 0.8], [20, 6.25, -5], "wood");
+    room.box("passage-header-inlay", [1.14, 0.06, CONNECTING_PASSAGE.width + 0.7], [20, 6, -5], "brass");
+    room.connectingDoor();
 
     // A three-seat sofa faces the fireplace, with armchairs flanking a clear circulation aisle.
     seat(room, "living-sofa", [37, -5, 8.5], 12, 0, "moss");
@@ -107,8 +109,7 @@ export function createLivingRoom(scene: Scene, room: RoomFurnishings, shell: Tra
   room.section("living-interior", () => {
     panelWall(room, 34, [37, 0, 19.5], Math.PI);
     panelWall(room, 40, [53.5, 0, 0], Math.PI / 2);
-    panelWall(room, 11, [20.5, 0, -14.5], -Math.PI / 2);
-    panelWall(room, 21, [20.5, 0, 9.5], -Math.PI / 2);
+    SHARED_WALL_SPANS.forEach(({ length, z }) => panelWall(room, length, [20.5, 0, z], -Math.PI / 2));
     // Both sources are below the ceiling: receive their light without self-shadow bands.
     room.box("living-ceiling", [34, 0.5, 40], [37, 9.25, 0], "plaster").metadata = { castsShadows: false };
     for (const x of [28, 46]) room.box("living-ceiling-beam", [0.3, 0.22, 40], [x, 8.9, 0], "darkWood");

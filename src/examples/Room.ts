@@ -89,7 +89,8 @@ export class RoomScene {
     this.interiorShell.setEnabled(false);
 
     this.lighting = new RoomLighting(this.scene);
-    this.interactions = new RoomInteractions(this.scene, () => this.lighting.refreshShadows());
+    this.interactions = new RoomInteractions(this.scene, () => this.lighting.refreshShadows(),
+      () => this.currentView === "first-person" ? this.firstPersonCamera.position : undefined);
     this.inspection = new RoomItemInspection(this.scene);
     this.pointerLock = new RoomPointerLock(canvas, locked => {
       this.pointerLocked = locked;
@@ -123,6 +124,7 @@ export class RoomScene {
       mesh.checkCollisions = true;
     });
     furnishings.drawers.forEach(drawer => this.interactions.addDrawer(drawer));
+    furnishings.doors.forEach(door => this.interactions.addDoor(door));
     furnishings.inspectables.forEach(item => this.interactions.addInspectable(item, item => this.openInspection(item)));
     furnishings.lamps.forEach(lamp => {
       const material = this.scene.getMaterialByName(lamp.id === "desk-lamp" ? "desk-lamp-glow"

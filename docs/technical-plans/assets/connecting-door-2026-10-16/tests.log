@@ -1,0 +1,89 @@
+
+> babylon-learning@0.0.1 test
+> node --test tests/*.test.cjs
+
+BJS - [07:47:23]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:23]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:23]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:23]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:23]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:23]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:23]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+BJS - [07:47:24]: Babylon.js v9.30.0 - Null engine
+✔ adjacent rooms have a real bidirectional passage and closed walls outside it (223.384208ms)
+✔ living room lamps and shadows stay in their room without taking study light slots (101.505417ms)
+✔ single door picks from both rooms, reverse smoothly and move their physical collision (120.798042ms)
+✔ door sweep pauses for a walker, resumes after clearance and supports reversing while blocked (103.4785ms)
+✔ section batching preserves singleton artwork/window world transforms and cutaway parenting (102.714583ms)
+✔ collision partitions preserve swept collisions and cull distant geometry without extra draw calls (40.29275ms)
+✔ actual room collision partitions cover every merged index and preserve first-person sweeps (273.8695ms)
+✔ books and vase fit the actual bookshelf model at scale 5.2 (47.255583ms)
+✔ books and vase fit the actual bookshelf model at scale 3.7 (40.922625ms)
+✔ all flower stems connect to both the vase neck and their flower heads (13.584875ms)
+✔ changing movement speed applies immediately and clears previous movement (1.045875ms)
+✔ lamp lights emit below their shades and the window is the main light source (15.838708ms)
+✔ floor lamp foot touches the floor and its stacked base joins the stem (16.344375ms)
+✔ sofa_03 fits its room footprint and sits on the floor after glTF conversion (0.89075ms)
+✔ modern_arm_chair_01 fits its room footprint and sits on the floor after glTF conversion (0.59875ms)
+✔ wall colour, normal and ARM maps tile together without modifying other walls (0.426166ms)
+✔ rugs receive shadows without hiding chair legs; cached shadows refresh after enclosure changes (13.610125ms)
+✔ beveled boards keep their dimensions and have outward, finite surface normals (0.4785ms)
+✔ stacked book covers touch the support and the next book without floating gaps (13.831ms)
+✔ cloth gathers around its tie and leaves have a thin, curved pointed silhouette (0.395625ms)
+✔ desk accessories, tea tray and small furniture rest on their actual supports (20.440167ms)
+✔ wear masks preserve tangent normals and keep surface variation subtle and reproducible (23.051917ms)
+✔ creased letter rests on the blotter and curls only a small distance above it (15.658958ms)
+✔ detail view permits close inspection and restores overview zoom limits on exit (1.405292ms)
+✔ all five procedural drawers retain boxes, independent motion and live collisions after merging (30.624208ms)
+✔ actual cabinet drawers move outward through the glTF conversion, preserving their geometry (3.611792ms)
+✔ picking respects occlusion, hidden geometry and first-person reach (0.39025ms)
+✔ lamp switches independently restore direct light and their own emission (16.646709ms)
+✔ the inspectable letter remains a complete independent mesh on its original desk support (17.710209ms)
+✔ inspection centres and fits the actual shared geometry, restores the original camera and releases only preview resources (19.87275ms)
+✔ letter inspection uses the existing ray action and preview geometry cannot occlude scene actions (17.840542ms)
+✔ pointer lock handles browser Escape, explicit release, rejection, late success and disposal (0.391958ms)
+✔ pure room registrations work in a fresh process without the core side-effect barrel (467.008041ms)
+✔ initial dependency guard rejects broad or unrelated systems while allowing room features (0.317833ms)
+✔ gothic_commode.glb retains original geometry, UVs and material graph after image optimization (5.328416ms)
+✔ wooden_bookshelf.glb retains original geometry, UVs and material graph after image optimization (1.990416ms)
+✔ optimized study models stay inside the documented image-quality-adjusted budget (0.265208ms)
+▶ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases
+  ✔ whitelist matches measured runtime assets, copied bytes and full compiled output (21.951042ms)
+  ✔ missing lazy chunk is rejected (1.394833ms)
+  ✔ extra example asset or stale build file is rejected (0.492875ms)
+  ✔ same-size resource corruption is rejected by SHA256 (4.596833ms)
+  ✔ GLB external dependencies require a whitelist review even when manifest hash is updated (4.862792ms)
+  ✔ production mode and fixed budgets cannot silently change (0.615583ms)
+  ✔ oversized initial JS is rejected even with consistent hashes and totals (10.19875ms)
+  ✔ missing white-listed source fails compilation (11.080834ms)
+✔ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases (382.918917ms)
+ℹ tests 46
+ℹ suites 0
+ℹ pass 46
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1971.67525

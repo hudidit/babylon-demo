@@ -5,6 +5,8 @@ export type InteractiveDrawer = {
   id: string; label: string; root: TransformNode; meshes: AbstractMesh[]; travel: Vector3;
 };
 export type InteractiveLamp = { id: string; label: string; meshes: AbstractMesh[] };
+export type InteractiveDoor = { id: string; label: string; root: TransformNode;
+  meshes: AbstractMesh[]; width: number; openAngle: number };
 export type InspectableItem = { id: string; label: string; mesh: Mesh; displayRotation: Vector3 };
 type Action = { label: () => string; toggle: () => void };
 
@@ -17,8 +19,19 @@ export class RoomInteractions {
   private readonly drawers: {
     root: TransformNode; closed: Vector3; travel: Vector3; progress: number; open: boolean;
   }[] = [];
+  private readonly doors: { door: InteractiveDoor; progress: number; open: boolean; blocked: boolean }[] = [];
 
-  constructor(private readonly scene: Scene, private readonly refreshShadows: () => void) {}
+  constructor(private readonly scene: Scene, private readonly refreshShadows: () => void,
+    private readonly walkerPosition: () => Vector3 | undefined = () => undefined) {}
+
+  addDoor(door: InteractiveDoor) {
+    const state = { door, progress: 0, open: false, blocked: false };
+    this.doors.push(state);
+    this.add(door.id, door.meshes, {
+      label: () => state.blocked ? "让开门口 · 点击反向开合" : `${state.open ? "关闭" : "打开"}${door.label}`,
+      toggle: () => { state.open = !state.open; state.blocked = false; },
+    });
+  }
 
   addDrawer(drawer: InteractiveDrawer) {
     const state = { root: drawer.root, closed: drawer.root.position.clone(), travel: drawer.travel,
@@ -65,8 +78,47 @@ export class RoomInteractions {
       drawer.root.getChildMeshes().forEach(mesh => mesh.computeWorldMatrix(true));
       changed = true;
     }
+    for (const state of this.doors) {
+      const target = state.open ? 1 : 0;
+      if (state.progress === target) continue;
+      const step = Math.max(0, Math.min(deltaSeconds, 0.05)) / 0.7;
+      const next = state.open ? Math.min(1, state.progress + step) : Math.max(0, state.progress - step);
+      const walker = this.walkerPosition();
+      state.blocked = !!walker && !doorSweepIsClear(state.door, state.progress, next, walker);
+      if (state.blocked) continue;
+      state.progress = next;
+      const eased = next * next * (3 - 2 * next);
+      const { root, openAngle } = state.door;
+      root.rotation.y = openAngle * eased;
+      root.computeWorldMatrix(true);
+      root.getChildMeshes().forEach(mesh => mesh.computeWorldMatrix(true));
+      changed = true;
+    }
     if (changed) this.refreshShadows();
   }
+}
+
+/** Sample the entire angular step so a fast frame cannot skip across the walker. */
+export function doorSweepIsClear(door: InteractiveDoor, from: number, to: number, walker: Vector3) {
+  const ease = (value: number) => value * value * (3 - 2 * value);
+  const hinge = door.root.getAbsolutePosition();
+  const start = door.openAngle * ease(from), end = door.openAngle * ease(to);
+  const steps = Math.max(1, Math.ceil(Math.abs(end - start) / 0.04));
+  const squaredGap = (angle: number) => {
+    const dx = walker.x - hinge.x, dz = walker.z - hinge.z;
+    const x = dx * Math.cos(angle) - dz * Math.sin(angle);
+    const z = dx * Math.sin(angle) + dz * Math.cos(angle);
+    // Include handles and a small margin around the camera's 0.65 horizontal ellipsoid.
+    const gapX = Math.max(0, Math.abs(x) - 0.5);
+    const gapZ = Math.max(0, -z, z - door.width);
+    return gapX * gapX + gapZ * gapZ;
+  };
+  // A walker touching the closed door can open it away from themselves.
+  const clearance = Math.min(0.75 * 0.75, squaredGap(start)) - 1e-8;
+  for (let i = 1; i <= steps; i++) {
+    if (squaredGap(start + (end - start) * i / steps) < clearance) return false;
+  }
+  return true;
 }
 
 /** The shipped model's conversion root retains +Z as the visible drawer-front direction. */

@@ -111,7 +111,9 @@ export class RoomLighting {
       mesh.receiveShadows = true;
       this.shadows.forEach(shadow => {
         const light = shadow.getLight() as SpotLight;
-        const matchesRoom = (mesh.metadata?.room === "living") === this.livingShadows.has(shadow);
+        const matchesRoom = mesh.metadata?.room === "shared"
+          ? light.name !== "banker-lamp-light" && light.name !== "reading-lamp-light"
+          : (mesh.metadata?.room === "living") === this.livingShadows.has(shadow);
         if (!matchesRoom) {
           if (!light.excludedMeshes.includes(mesh)) light.excludedMeshes.push(mesh);
           return;

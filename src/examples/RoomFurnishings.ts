@@ -5,7 +5,8 @@ import { linenMaterial, mappedMaterial, surfaceMaterial } from "./RoomMaterials"
 import { beveledBox, creasedLetter, curtainPanel, ficusLeaf } from "./RoomDetailGeometry";
 import { applyWear, letterTexture, stableRandom, wearTexture } from "./RoomSurfaceDetails";
 import { partitionMergedCollisions } from "./RoomCollisions";
-import type { InspectableItem, InteractiveDrawer, InteractiveLamp } from "./RoomInteractions";
+import type { InspectableItem, InteractiveDoor, InteractiveDrawer, InteractiveLamp } from "./RoomInteractions";
+import { CONNECTING_PASSAGE, SHARED_WALL_SPANS } from "./RoomLayout";
 
 type Triple = [number, number, number];
 
@@ -16,6 +17,7 @@ export class RoomFurnishings {
   readonly drawers: InteractiveDrawer[] = [];
   readonly lamps: InteractiveLamp[] = [];
   readonly inspectables: InspectableItem[] = [];
+  readonly doors: InteractiveDoor[] = [];
   private interactiveGroups: { meshes: Mesh[]; root: TransformNode; fixed: boolean }[] = [];
 
   constructor(private scene: Scene) {
@@ -184,6 +186,26 @@ export class RoomFurnishings {
     this.lamps.push({ id: "living-lamp", label: "客厅台灯", meshes });
   }
 
+  connectingDoor() {
+    const width = CONNECTING_PASSAGE.width - 0.28;
+    const root = this.group("connecting-door", [CONNECTING_PASSAGE.x, -4.94, CONNECTING_PASSAGE.minZ + 0.14]);
+    root.metadata = { room: "shared" };
+    const start = this.parts.length, z = width / 2;
+    this.box("door-leaf", [0.32, 10.8, width], [0, 5.4, z], "paintGreen", root);
+    for (const side of [-1, 1]) {
+      for (const y of [2.65, 7.7]) {
+        this.box("door-raised-panel", [0.07, 4.2, width - 0.64], [side * 0.195, y, z], "darkWood", root);
+        this.box("door-panel-inset", [0.085, 3.92, width - 0.92], [side * 0.24, y, z], "paintGreen", root);
+      }
+      this.box("door-knob-plate", [0.06, 1.05, 0.3], [side * 0.205, 5.1, width - 0.47], "brass", root);
+      this.sphere("door-handle-boss", [0.35, 0.24, 0.24], [side * 0.35, 5.12, width - 0.47], "brass", root);
+      this.box("door-handle-lever", [0.12, 0.12, 0.62], [side * 0.5, 5.12, width - 0.7], "brass", root);
+    }
+    for (const y of [1.6, 5.4, 9.2]) this.cylinder("door-hinge", 0.55, 0.17, [0, y, 0.02], "brass", root);
+    this.doors.push({ id: "connecting-door", label: "客厅与书房的门", root,
+      meshes: this.keepInteractive(start, root), width, openAngle: Math.PI / 2 });
+  }
+
   architecturalDetails() {
     // Timber skirting, paneled lower walls, and a slim brass picture rail.
     this.box("left-wainscot", [0.18, 2.5, 40], [-19.65, -3.7, 0], "darkWood");
@@ -247,7 +269,7 @@ export class RoomFurnishings {
     // Close the small reveal behind the existing door as part of the interior shell.
     this.box("door-backing", [8, 10.8, 0.2], [-2, 0.4, -20.1], "darkWood");
     // Match the shared wall opening; no rail, panel or collision may bridge the passage.
-    const sharedSpans = [{ length: 11, z: -14.5 }, { length: 21, z: 9.5 }];
+    const sharedSpans = SHARED_WALL_SPANS;
     sharedSpans.forEach(({ length, z }) =>
       this.box("right-wainscot", [0.18, 2.5, length], [19.65, -3.7, z], "darkWood"));
     this.box("front-wainscot", [40, 2.5, 0.18], [0, -3.7, 19.65], "darkWood");
@@ -265,7 +287,8 @@ export class RoomFurnishings {
       this.box("front-" + name, [40, height, depth], [0, y, 19.5], material);
     });
     for (let offset = -18; offset < 20; offset += 3.2) {
-      if (offset < -9 || offset > -1) this.box("right-panel-stile", [0.24, 2.2, 0.1], [19.5, -3.6, offset], "wood");
+      if (offset < CONNECTING_PASSAGE.minZ || offset > CONNECTING_PASSAGE.maxZ)
+        this.box("right-panel-stile", [0.24, 2.2, 0.1], [19.5, -3.6, offset], "wood");
       this.box("front-panel-stile", [0.1, 2.2, 0.24], [offset, -3.6, 19.5], "wood");
     }
     [-7, 7].forEach(offset => {
@@ -717,6 +740,7 @@ export class RoomFurnishings {
       merged.forEach(mesh => {
         mesh.setParent(root); // Preserve world-space geometry baked by MergeMeshes.
         if (root.name.startsWith("living-")) mesh.metadata = { ...mesh.metadata, room: "living" };
+        if (root.metadata?.room) mesh.metadata = { ...mesh.metadata, room: root.metadata.room };
         mesh.checkCollisions = true;
         if (fixed) mesh.freezeWorldMatrix();
       });

@@ -45,13 +45,17 @@ function adjacentRooms(t) {
 }
 
 test("adjacent rooms have a real bidirectional passage and closed walls outside it", t => {
-  const { scene, shell } = adjacentRooms(t);
+  const { scene, shell, room } = adjacentRooms(t);
   scene.collisionsEnabled = true;
+  const interactions = new RoomInteractions(scene, () => {});
+  interactions.addDoor(room.doors[0]);
+  interactions.pick(new babylon.Ray(new babylon.Vector3(16, 1, -5), new babylon.Vector3(1, 0, 0), 7.5)).toggle();
+  for (let i = 0; i < 20; i++) interactions.update(0.05);
   for (const [x, dx, expected] of [[17, 7, 24], [24, -7, 17]]) {
     const result = sweep(scene, new babylon.Vector3(x, -1.8, -5), new babylon.Vector3(dx, 0, 0));
     assert.ok(Math.abs(result.position.x - expected) < 0.02, "walls, trims and casing must leave a walkable passage");
   }
-  for (const z of [-12, 0]) {
+  for (const z of [-12, -8, -2, 0]) {
     const result = sweep(scene, new babylon.Vector3(17, -1.8, z), new babylon.Vector3(7, 0, 0));
     assert.ok(result.position.x < 19.2, "shared wall outside the passage must block walking");
   }
@@ -79,10 +83,12 @@ test("living room lamps and shadows stay in their room without taking study ligh
   for (const light of scene.lights.filter(light => light instanceof babylon.SpotLight)) {
     const living = light.name.startsWith("living-");
     for (const mesh of scene.meshes.filter(mesh => mesh.getTotalVertices() > 0)) {
-      assert.equal(light.excludedMeshes.includes(mesh), (mesh.metadata?.room === "living") !== living);
+      const excluded = mesh.metadata?.room === "shared" ? /banker|reading-lamp/.test(light.name)
+        : (mesh.metadata?.room === "living") !== living;
+      assert.equal(light.excludedMeshes.includes(mesh), excluded);
     }
     assert.ok(light.getShadowGenerator().getShadowMap().renderList.every(mesh =>
-      (mesh.metadata?.room === "living") === living));
+      mesh.metadata?.room === "shared" || (mesh.metadata?.room === "living") === living));
   }
   const studyIntensity = scene.getLightByName("banker-lamp-light").intensity;
   lighting.toggleLamp("living-lamp");
@@ -93,6 +99,60 @@ test("living room lamps and shadows stay in their room without taking study ligh
   lighting.freezeShadows();
   assert.ok(scene.lights.filter(light => light instanceof babylon.SpotLight).every(light =>
     light.getShadowGenerator().getShadowMap().refreshRate === babylon.RenderTargetTexture.REFRESHRATE_RENDER_ONCE));
+});
+
+test("single door picks from both rooms, reverse smoothly and move their physical collision", t => {
+  const { scene, room } = adjacentRooms(t), door = room.doors[0];
+  scene.collisionsEnabled = true;
+  let refreshed = 0;
+  const interactions = new RoomInteractions(scene, () => refreshed++);
+  interactions.addDoor(door);
+  const action = interactions.pick(new babylon.Ray(new babylon.Vector3(16, 1, -5), new babylon.Vector3(1, 0, 0), 7.5));
+  const reverseAction = interactions.pick(new babylon.Ray(new babylon.Vector3(24, 1, -5), new babylon.Vector3(-1, 0, 0), 7.5));
+  assert.ok(action && action === reverseAction);
+  assert.match(action.label(), /^打开/);
+  for (const [x, dx] of [[16, 8], [24, -8]]) {
+    const blocked = sweep(scene, new babylon.Vector3(x, -1.8, -5), new babylon.Vector3(dx, 0, 0)).position;
+    assert.ok(x < 20 ? blocked.x < 19.2 : blocked.x > 20.8, "closed door must block both directions");
+  }
+  action.toggle(); interactions.update(0.05);
+  const partial = door.root.rotation.y;
+  action.toggle(); assert.deepEqual(door.root.rotation.y, partial);
+  for (let i = 0; i < 20; i++) interactions.update(0.05);
+  assert.ok(Math.abs(door.root.rotation.y) < 1e-6);
+  action.toggle(); for (let i = 0; i < 20; i++) interactions.update(0.05);
+  assert.equal(room.doors.length, 1);
+  assert.ok(Math.abs(door.root.rotation.y - door.openAngle) < 1e-6);
+  assert.ok(door.meshes.every(mesh => mesh.checkCollisions && !mesh.isWorldMatrixFrozen));
+  const contact = sweep(scene, new babylon.Vector3(22, -1.8, -5), new babylon.Vector3(0, 0, -5)).position;
+  assert.ok(Math.abs(contact.z + 5) < 3.3, "open door must still collide at its new position");
+  const passed = sweep(scene, new babylon.Vector3(16, -1.8, -5), new babylon.Vector3(8, 0, 0)).position;
+  assert.ok(Math.abs(passed.x - 24) < 0.01);
+  assert.ok(refreshed > 0);
+  refreshed = 0; interactions.update(0.05); assert.equal(refreshed, 0);
+});
+
+test("door sweep pauses for a walker, resumes after clearance and supports reversing while blocked", t => {
+  const { scene, room } = adjacentRooms(t), door = room.doors[0];
+  let walker = new babylon.Vector3(19, 1, -5);
+  const interactions = new RoomInteractions(scene, () => {}, () => walker);
+  interactions.addDoor(door);
+  const action = interactions.pick(new babylon.Ray(new babylon.Vector3(16, 1, -5), new babylon.Vector3(1, 0, 0), 7.5));
+  action.toggle(); for (let i = 0; i < 20; i++) interactions.update(0.05);
+  assert.ok(Math.abs(door.root.rotation.y - Math.PI / 2) < 1e-6, "standing at the study face must permit opening away from the walker");
+  walker = new babylon.Vector3(20, 1, -5);
+  action.toggle(); for (let i = 0; i < 20; i++) interactions.update(0.05);
+  assert.match(action.label(), /让开门口/);
+  assert.ok(door.root.rotation.y > 0.2);
+  const paused = door.root.rotation.y;
+  interactions.update(0.05); assert.equal(door.root.rotation.y, paused);
+  action.toggle(); for (let i = 0; i < 20; i++) interactions.update(0.05);
+  assert.ok(Math.abs(door.root.rotation.y - Math.PI / 2) < 1e-6);
+  action.toggle(); for (let i = 0; i < 20; i++) interactions.update(0.05);
+  walker = new babylon.Vector3(16, 1, -5);
+  for (let i = 0; i < 20; i++) interactions.update(0.05);
+  assert.ok(Math.abs(door.root.rotation.y) < 1e-6);
+  assert.match(action.label(), /^打开/);
 });
 
 test("section batching preserves singleton artwork/window world transforms and cutaway parenting", t => {
