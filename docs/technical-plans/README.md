@@ -4,6 +4,10 @@
 
 具体协作规则见根目录的 [AGENTS.md](../../AGENTS.md)，主要改动历史见 [CHANGELOG.md](../../CHANGELOG.md)。
 
+## 长期开发规范
+
+- [资源与首屏优化原则](../resource-optimization-principles.md)：2026-10-16 建立并生效。总结资源压缩、tree-shaking 与独立发布的经验，规定指标、预算、依赖/素材维护和验收要求；后续相关迭代必须遵循。
+
 ## 方案索引
 
 | 文档 | 状态 | 更新时间 | 范围 |
