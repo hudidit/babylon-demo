@@ -1,0 +1,61 @@
+
+> babylon-learning@0.0.1 test
+> node --test tests/*.test.cjs
+
+BJS - [21:11:17]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:17]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+BJS - [21:11:18]: Babylon.js v9.30.0 - Null engine
+✔ collision partitions preserve swept collisions and cull distant geometry without extra draw calls (84.579792ms)
+✔ actual room collision partitions cover every merged index and preserve first-person sweeps (284.855834ms)
+✔ books and vase fit the actual bookshelf model at scale 5.2 (44.837417ms)
+✔ books and vase fit the actual bookshelf model at scale 3.7 (37.119084ms)
+✔ all flower stems connect to both the vase neck and their flower heads (12.781584ms)
+✔ changing movement speed applies immediately and clears previous movement (1.032667ms)
+✔ lamp lights emit below their shades and the window is the main light source (20.177958ms)
+✔ floor lamp foot touches the floor and its stacked base joins the stem (13.088292ms)
+✔ sofa_03 fits its room footprint and sits on the floor after glTF conversion (0.94075ms)
+✔ modern_arm_chair_01 fits its room footprint and sits on the floor after glTF conversion (0.828583ms)
+✔ wall colour, normal and ARM maps tile together without modifying other walls (0.63175ms)
+✔ rugs receive shadows without hiding chair legs; cached shadows refresh after enclosure changes (13.878334ms)
+✔ beveled boards keep their dimensions and have outward, finite surface normals (0.72275ms)
+✔ stacked book covers touch the support and the next book without floating gaps (12.152666ms)
+✔ cloth gathers around its tie and leaves have a thin, curved pointed silhouette (1.245583ms)
+✔ desk accessories, tea tray and small furniture rest on their actual supports (17.812208ms)
+✔ wear masks preserve tangent normals and keep surface variation subtle and reproducible (22.129209ms)
+✔ creased letter rests on the blotter and curls only a small distance above it (16.295542ms)
+✔ detail view permits close inspection and restores overview zoom limits on exit (1.325625ms)
+✔ gothic_commode.glb retains original geometry, UVs and material graph after image optimization (6.31375ms)
+✔ wooden_bookshelf.glb retains original geometry, UVs and material graph after image optimization (2.548625ms)
+✔ optimized study models stay inside the documented image-quality-adjusted budget (0.094291ms)
+▶ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases
+  ✔ whitelist matches measured runtime assets, copied bytes and full compiled output (19.579625ms)
+  ✔ missing lazy chunk is rejected (0.9935ms)
+  ✔ extra example asset or stale build file is rejected (0.466334ms)
+  ✔ same-size resource corruption is rejected by SHA256 (4.6725ms)
+  ✔ GLB external dependencies require a whitelist review even when manifest hash is updated (3.22525ms)
+  ✔ production mode and fixed budgets cannot silently change (0.261917ms)
+  ✔ missing white-listed source fails compilation (10.408375ms)
+✔ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases (414.892833ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1443.152708

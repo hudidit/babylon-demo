@@ -1,0 +1,35 @@
+// Paths are relative to public and are deliberately limited to the active study.
+module.exports = {
+  runtime: [
+    'environment/study-interior.hdr',
+    'models/gothic_commode.glb',
+    'models/wooden_bookshelf.glb',
+    'models/study/modern_arm_chair_01.glb',
+    'models/study/sofa_03.glb',
+    'textures/pictures/pic1.jpg',
+    'textures/study/forest-window/view.jpg',
+    'textures/study/wood_floor/color.jpg',
+    'textures/study/wood_floor/normal.jpg',
+    'textures/study/wood_floor/arm.jpg',
+    'textures/study/wood_table_001/color.jpg',
+    'textures/study/wood_table_001/normal.jpg',
+    'textures/study/wood_table_001/arm.jpg',
+    'textures/study/brick_wall_001/color.jpg',
+    'textures/study/brick_wall_001/normal.jpg',
+    'textures/study/brick_wall_001/arm.jpg',
+    'textures/study/rough_linen/normal.jpg',
+    'textures/study/rough_linen/arm.jpg',
+  ],
+  documentation: [
+    'STUDY_ASSET_SOURCES.md',
+    'models/study-model-optimization.json',
+    'textures/study/manifest.json',
+    'textures/study/forest-window/source.json',
+  ],
+  libraryNotices: [
+    { source: 'node_modules/@babylonjs/core/license.md', file: 'licenses/babylonjs-Apache-2.0.md' },
+    { source: 'node_modules/@babylonjs/core/NOTICE.md', file: 'licenses/babylonjs-NOTICE.md' },
+  ],
+  optimizedModels: ['models/gothic_commode.glb', 'models/wooden_bookshelf.glb'],
+  budgets: { models: 4.25 * 1048576, runtime: 16 * 1048576, release: 41 * 1048576 },
+};

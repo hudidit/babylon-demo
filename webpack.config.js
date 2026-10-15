@@ -2,9 +2,10 @@ const path = require("path");
 const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { StudyReleasePlugin } = require("./tools/StudyReleasePlugin.cjs");
 const appDirectory = fs.realpathSync(process.cwd());
 
-module.exports = {
+module.exports = (_env, argv = {}) => ({
   entry: path.resolve(appDirectory, "src/app.ts"), //path to the main .ts file
   output: {
     path: path.resolve(appDirectory, "dist"),
@@ -36,6 +37,7 @@ module.exports = {
       template: path.resolve(appDirectory, "public/index.html"),
     }),
     new CleanWebpackPlugin(),
+    ...(argv.mode === "production" ? [new StudyReleasePlugin()] : []),
   ],
-  mode: "development",
-};
+  mode: argv.mode || "development",
+});

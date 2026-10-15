@@ -6,6 +6,8 @@
   "scripts": {
     "test": "node --test tests/*.test.cjs",
     "build": "webpack",
+    "build:production": "webpack --mode production && node tools/verify-study-release.cjs dist",
+    "verify:release": "node tools/verify-study-release.cjs",
     "typecheck": "tsc --noEmit",
     "start": "webpack serve --port 8080"
   },

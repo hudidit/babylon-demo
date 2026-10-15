@@ -1,0 +1,1194 @@
+{
+  "schemaVersion": 1,
+  "mode": "production",
+  "webpackVersion": "5.111.1",
+  "entryFiles": [
+    "js/bundleName.js"
+  ],
+  "chunkFiles": [
+    "js/1050.bundleName.js",
+    "js/1068.bundleName.js",
+    "js/1087.bundleName.js",
+    "js/1310.bundleName.js",
+    "js/1332.bundleName.js",
+    "js/1350.bundleName.js",
+    "js/1401.bundleName.js",
+    "js/1410.bundleName.js",
+    "js/147.bundleName.js",
+    "js/1540.bundleName.js",
+    "js/1565.bundleName.js",
+    "js/1657.bundleName.js",
+    "js/1805.bundleName.js",
+    "js/1827.bundleName.js",
+    "js/1830.bundleName.js",
+    "js/1860.bundleName.js",
+    "js/1875.bundleName.js",
+    "js/1910.bundleName.js",
+    "js/1966.bundleName.js",
+    "js/1968.bundleName.js",
+    "js/2083.bundleName.js",
+    "js/2320.bundleName.js",
+    "js/2418.bundleName.js",
+    "js/2426.bundleName.js",
+    "js/2438.bundleName.js",
+    "js/2490.bundleName.js",
+    "js/250.bundleName.js",
+    "js/2503.bundleName.js",
+    "js/2525.bundleName.js",
+    "js/2548.bundleName.js",
+    "js/2695.bundleName.js",
+    "js/274.bundleName.js",
+    "js/284.bundleName.js",
+    "js/2857.bundleName.js",
+    "js/290.bundleName.js",
+    "js/3136.bundleName.js",
+    "js/3178.bundleName.js",
+    "js/3232.bundleName.js",
+    "js/3248.bundleName.js",
+    "js/3258.bundleName.js",
+    "js/342.bundleName.js",
+    "js/3476.bundleName.js",
+    "js/3588.bundleName.js",
+    "js/3646.bundleName.js",
+    "js/3732.bundleName.js",
+    "js/3738.bundleName.js",
+    "js/3758.bundleName.js",
+    "js/3902.bundleName.js",
+    "js/3936.bundleName.js",
+    "js/4243.bundleName.js",
+    "js/4299.bundleName.js",
+    "js/4316.bundleName.js",
+    "js/437.bundleName.js",
+    "js/448.bundleName.js",
+    "js/454.bundleName.js",
+    "js/4598.bundleName.js",
+    "js/4639.bundleName.js",
+    "js/4659.bundleName.js",
+    "js/4719.bundleName.js",
+    "js/4736.bundleName.js",
+    "js/4770.bundleName.js",
+    "js/4914.bundleName.js",
+    "js/4929.bundleName.js",
+    "js/50.bundleName.js",
+    "js/5001.bundleName.js",
+    "js/5054.bundleName.js",
+    "js/5075.bundleName.js",
+    "js/5081.bundleName.js",
+    "js/510.bundleName.js",
+    "js/5287.bundleName.js",
+    "js/5290.bundleName.js",
+    "js/5320.bundleName.js",
+    "js/5376.bundleName.js",
+    "js/5388.bundleName.js",
+    "js/5406.bundleName.js",
+    "js/5590.bundleName.js",
+    "js/5594.bundleName.js",
+    "js/5598.bundleName.js",
+    "js/5600.bundleName.js",
+    "js/5606.bundleName.js",
+    "js/5616.bundleName.js",
+    "js/5633.bundleName.js",
+    "js/5646.bundleName.js",
+    "js/57.bundleName.js",
+    "js/5848.bundleName.js",
+    "js/5849.bundleName.js",
+    "js/5992.bundleName.js",
+    "js/6080.bundleName.js",
+    "js/6180.bundleName.js",
+    "js/6200.bundleName.js",
+    "js/626.bundleName.js",
+    "js/6338.bundleName.js",
+    "js/6387.bundleName.js",
+    "js/6410.bundleName.js",
+    "js/6427.bundleName.js",
+    "js/648.bundleName.js",
+    "js/6544.bundleName.js",
+    "js/6560.bundleName.js",
+    "js/6567.bundleName.js",
+    "js/6606.bundleName.js",
+    "js/6804.bundleName.js",
+    "js/686.bundleName.js",
+    "js/7011.bundleName.js",
+    "js/702.bundleName.js",
+    "js/7100.bundleName.js",
+    "js/7208.bundleName.js",
+    "js/7218.bundleName.js",
+    "js/7295.bundleName.js",
+    "js/744.bundleName.js",
+    "js/7532.bundleName.js",
+    "js/7580.bundleName.js",
+    "js/7582.bundleName.js",
+    "js/7596.bundleName.js",
+    "js/7597.bundleName.js",
+    "js/7620.bundleName.js",
+    "js/7628.bundleName.js",
+    "js/7665.bundleName.js",
+    "js/7704.bundleName.js",
+    "js/7766.bundleName.js",
+    "js/7827.bundleName.js",
+    "js/7922.bundleName.js",
+    "js/7958.bundleName.js",
+    "js/8083.bundleName.js",
+    "js/826.bundleName.js",
+    "js/8328.bundleName.js",
+    "js/8558.bundleName.js",
+    "js/8630.bundleName.js",
+    "js/8648.bundleName.js",
+    "js/8766.bundleName.js",
+    "js/8835.bundleName.js",
+    "js/8998.bundleName.js",
+    "js/900.bundleName.js",
+    "js/904.bundleName.js",
+    "js/9081.bundleName.js",
+    "js/9119.bundleName.js",
+    "js/9160.bundleName.js",
+    "js/9250.bundleName.js",
+    "js/9341.bundleName.js",
+    "js/9418.bundleName.js",
+    "js/9500.bundleName.js",
+    "js/9588.bundleName.js",
+    "js/9601.bundleName.js",
+    "js/9662.bundleName.js",
+    "js/9736.bundleName.js",
+    "js/bundleName.js"
+  ],
+  "budgets": {
+    "models": 4456448,
+    "runtime": 16777216,
+    "release": 42991616
+  },
+  "totals": {
+    "build": 25374134,
+    "runtime": 15871062,
+    "documentation": 39875
+  },
+  "manifestAccounting": "files and totals exclude release-manifest.json; verification adds its actual bytes to the full release budget",
+  "files": [
+    {
+      "path": "environment/study-interior.hdr",
+      "kind": "runtime",
+      "bytes": 1649529,
+      "sha256": "ca919c41d78c8fc0dd104f47fd9201530ddcbd3c3574c3d1fc5362846e4076e1"
+    },
+    {
+      "path": "index.html",
+      "kind": "build",
+      "bytes": 4682,
+      "sha256": "652844cf182b4950682cef2611eeb666bda9d2fc98873aad5ea6aed5027469de"
+    },
+    {
+      "path": "js/1050.bundleName.js",
+      "kind": "build",
+      "bytes": 9649,
+      "sha256": "03ebeb9f5423586de1c420d4603530dfbd46d08c0f9ad1ab224aa4f46650626d"
+    },
+    {
+      "path": "js/1068.bundleName.js",
+      "kind": "build",
+      "bytes": 2641,
+      "sha256": "696ebf39cc79a5cc8607982611572691cc22f21496cf0ccf96119f0239c81bb7"
+    },
+    {
+      "path": "js/1087.bundleName.js",
+      "kind": "build",
+      "bytes": 534,
+      "sha256": "18345594b079568630f3c7fb6173843892391b937385ea07a766f717b3f199e4"
+    },
+    {
+      "path": "js/1310.bundleName.js",
+      "kind": "build",
+      "bytes": 635,
+      "sha256": "1f2db7ec7ecf9ad15a178936ee8c1beb86f4fe441eb528b4dbca988f57ec4236"
+    },
+    {
+      "path": "js/1332.bundleName.js",
+      "kind": "build",
+      "bytes": 2023,
+      "sha256": "ab8bf4668bc055ef27c2159017f5373f495d558c896fb6746bfa491ddf1866f6"
+    },
+    {
+      "path": "js/1350.bundleName.js",
+      "kind": "build",
+      "bytes": 5623792,
+      "sha256": "f875ae3223a18ed640b78c775d326d47d9c2a8dd5ae996f7c4a9aad71e5e6cf2"
+    },
+    {
+      "path": "js/1401.bundleName.js",
+      "kind": "build",
+      "bytes": 1216,
+      "sha256": "8647e3f45c3e0372bfccdbacf127257a7976f98a163bce2f81c584bce233efb1"
+    },
+    {
+      "path": "js/1410.bundleName.js",
+      "kind": "build",
+      "bytes": 6431,
+      "sha256": "633e237b329da87746f3b62a067365f8d54ad43e92f90a8660cf5b8f27265c9c"
+    },
+    {
+      "path": "js/147.bundleName.js",
+      "kind": "build",
+      "bytes": 1128,
+      "sha256": "0590b877eacaf148e98fada1e147788fccee69ee78b7a5eab244266c09d3e593"
+    },
+    {
+      "path": "js/1540.bundleName.js",
+      "kind": "build",
+      "bytes": 2837,
+      "sha256": "8b8399d1f2f79c360d12ac4ced3cf7a8995c346e7c7308921c03e295ea70b38f"
+    },
+    {
+      "path": "js/1565.bundleName.js",
+      "kind": "build",
+      "bytes": 8610,
+      "sha256": "78a45c9f6d2f93aaac68f4b04559ac72841bc14a827f36b487f34f382204a600"
+    },
+    {
+      "path": "js/1657.bundleName.js",
+      "kind": "build",
+      "bytes": 30332,
+      "sha256": "a3bd2e2abc2bd6ad363dfcc3f67305f214728b84c0359d8657ed59b8dc2098ea"
+    },
+    {
+      "path": "js/1805.bundleName.js",
+      "kind": "build",
+      "bytes": 8819,
+      "sha256": "82057ac5d4ebe7fc6c7fc2da425521bb3d7a10115bf7a2d525f092f49a8d81bf"
+    },
+    {
+      "path": "js/1827.bundleName.js",
+      "kind": "build",
+      "bytes": 3260,
+      "sha256": "fefa81c09a1a76ddeaa132f73bccc8f3db7c29dffaa09974cd46261eb3069aec"
+    },
+    {
+      "path": "js/1830.bundleName.js",
+      "kind": "build",
+      "bytes": 7296,
+      "sha256": "2294c98f391186863bdfef1d229277170ee46b1e672ee6fba3bd9cb20a50da13"
+    },
+    {
+      "path": "js/1860.bundleName.js",
+      "kind": "build",
+      "bytes": 2070,
+      "sha256": "9a50aac369ef7d98dfaed6100d327237a2293ef3146ea82473904e7fa3080d22"
+    },
+    {
+      "path": "js/1875.bundleName.js",
+      "kind": "build",
+      "bytes": 1556,
+      "sha256": "25ea5c81f8eef71a1f8231a3eb63d9a90393a7d2d1f7e6e7a3116e1d97c58053"
+    },
+    {
+      "path": "js/1910.bundleName.js",
+      "kind": "build",
+      "bytes": 3379,
+      "sha256": "463490d24115f99ddc0b94480d49fa16e56696ee7067275e16fa893a0d4c11bd"
+    },
+    {
+      "path": "js/1966.bundleName.js",
+      "kind": "build",
+      "bytes": 1914,
+      "sha256": "9a79123038a1a75dc6bb2cb5c34b754a4b16e751805800cfa754302a956652c0"
+    },
+    {
+      "path": "js/1968.bundleName.js",
+      "kind": "build",
+      "bytes": 2582,
+      "sha256": "80e8ff1b5907ef31a30d6aabdb85b8c372c10bb6ab30ac91feb59bc97a1f5b70"
+    },
+    {
+      "path": "js/2083.bundleName.js",
+      "kind": "build",
+      "bytes": 1876081,
+      "sha256": "60a0f75e1b7364fcb3f45f82022291440859969c30452b6602b9a6be9c8c75c1"
+    },
+    {
+      "path": "js/2320.bundleName.js",
+      "kind": "build",
+      "bytes": 28377,
+      "sha256": "f12f069809b2371de7bc29cdc29cb01b0108771e132d5af30ac847d44e405ca5"
+    },
+    {
+      "path": "js/2418.bundleName.js",
+      "kind": "build",
+      "bytes": 6471,
+      "sha256": "b7c9e112ea3965ceb3df3a2c086025fa678f1812307420ea739e5051fbf6c026"
+    },
+    {
+      "path": "js/2426.bundleName.js",
+      "kind": "build",
+      "bytes": 1871,
+      "sha256": "faf59b077f69780436665039876815bea28bd159b9f94b5b799fe92a8e0cf822"
+    },
+    {
+      "path": "js/2438.bundleName.js",
+      "kind": "build",
+      "bytes": 62491,
+      "sha256": "cb6ccaa750e444738995cf88469e7d8c4a43eecda7e32e14e2b9e57df903e28b"
+    },
+    {
+      "path": "js/2490.bundleName.js",
+      "kind": "build",
+      "bytes": 1444,
+      "sha256": "2b95607f2c3db84cbdb6389b68c4af9a14860b2be8564ca95085290463def84c"
+    },
+    {
+      "path": "js/250.bundleName.js",
+      "kind": "build",
+      "bytes": 4135,
+      "sha256": "aec02ba19b9997e902e661422ed7a05ee7f45bbba9021a365be1d128f7d2ca04"
+    },
+    {
+      "path": "js/2503.bundleName.js",
+      "kind": "build",
+      "bytes": 712,
+      "sha256": "34ff1d25741b5f290be29f38f531360c90f3130e3f5d5cd7c60a56a39ff611be"
+    },
+    {
+      "path": "js/2525.bundleName.js",
+      "kind": "build",
+      "bytes": 2648,
+      "sha256": "767451f33e24945f9e2162b9eedec7fb4f711bb44a4afab5b55fab6c37bd3bc7"
+    },
+    {
+      "path": "js/2548.bundleName.js",
+      "kind": "build",
+      "bytes": 929,
+      "sha256": "446b6f25896b7fcdc9c64040a674cf4868d1b73686fd58e38b5b1faf9a799c34"
+    },
+    {
+      "path": "js/2695.bundleName.js",
+      "kind": "build",
+      "bytes": 731,
+      "sha256": "b7e4eccc4ed2745609e1969ad52765fca2ba0fefbb69e221eed20258bfee467d"
+    },
+    {
+      "path": "js/274.bundleName.js",
+      "kind": "build",
+      "bytes": 944,
+      "sha256": "af4b82f091a6f0c2ae66d6d0432812f93c88224e16c559d2a0154521c364fb98"
+    },
+    {
+      "path": "js/284.bundleName.js",
+      "kind": "build",
+      "bytes": 2914,
+      "sha256": "35b37dc7a3b633577eb000a9ab93a42d304d48a92ff7273888c1286fdde1cd2e"
+    },
+    {
+      "path": "js/2857.bundleName.js",
+      "kind": "build",
+      "bytes": 1326,
+      "sha256": "983939794c3aadcc2620e4cf1b58416c690c7d1353836e0b2995e559dc8941d0"
+    },
+    {
+      "path": "js/290.bundleName.js",
+      "kind": "build",
+      "bytes": 2437,
+      "sha256": "0abb3390088afddc8d6f7e1602cca7609b0d9cf475c5aaa431cc77d8e748a67f"
+    },
+    {
+      "path": "js/3136.bundleName.js",
+      "kind": "build",
+      "bytes": 4929,
+      "sha256": "e820e723e67ed25387b70648e704fb4b42187507f2c8c0058ea389fc0138dc41"
+    },
+    {
+      "path": "js/3178.bundleName.js",
+      "kind": "build",
+      "bytes": 1059,
+      "sha256": "9571a2c3e715b41000d1e0d35ddd2bba10e575b241459753db54e75a01ae966a"
+    },
+    {
+      "path": "js/3232.bundleName.js",
+      "kind": "build",
+      "bytes": 2602,
+      "sha256": "067b5088162c9d59e013a18513032395d84ad395759fb30be46c1593bcfa000a"
+    },
+    {
+      "path": "js/3248.bundleName.js",
+      "kind": "build",
+      "bytes": 4820,
+      "sha256": "b92b8b5795e742bdf3d2e52b38fd4c9da89f59aa240d6429b696bdf500293e77"
+    },
+    {
+      "path": "js/3258.bundleName.js",
+      "kind": "build",
+      "bytes": 4185,
+      "sha256": "8dcb47307c3af94786c6efae2f43774cb5ad36cb73b5a11978506b3d897586c6"
+    },
+    {
+      "path": "js/342.bundleName.js",
+      "kind": "build",
+      "bytes": 43254,
+      "sha256": "af8247efa4529bfbeec049588a84fd5e99c1d2036ed2ebd2e1ba98bdd62955a6"
+    },
+    {
+      "path": "js/3476.bundleName.js",
+      "kind": "build",
+      "bytes": 6239,
+      "sha256": "74c2fda140d1d4453bc8c657a35f4657fae17201f26d6f710bb7a713f67c59c9"
+    },
+    {
+      "path": "js/3588.bundleName.js",
+      "kind": "build",
+      "bytes": 2367,
+      "sha256": "f8090c4fa3735ac4850b6093989237f25cb85a933fb7b768e0c929af4a85430a"
+    },
+    {
+      "path": "js/3646.bundleName.js",
+      "kind": "build",
+      "bytes": 2580,
+      "sha256": "260026e33b99d0cc6622ea986336af71805176785912eeb7124517a0f8d65195"
+    },
+    {
+      "path": "js/3732.bundleName.js",
+      "kind": "build",
+      "bytes": 2773,
+      "sha256": "627b84f0c6467b5d5212f061be198318924f6400a03b99debaeeca4a3709f1d1"
+    },
+    {
+      "path": "js/3738.bundleName.js",
+      "kind": "build",
+      "bytes": 3668,
+      "sha256": "d37301c905678d66076e945719ab02b81a121cd9c9f66010647a2943d7b7d92a"
+    },
+    {
+      "path": "js/3758.bundleName.js",
+      "kind": "build",
+      "bytes": 1087,
+      "sha256": "50935c2f002019d004b44b9312796d205010030b64ae52f412aa3a493b474b83"
+    },
+    {
+      "path": "js/3902.bundleName.js",
+      "kind": "build",
+      "bytes": 2851,
+      "sha256": "dc9b0f6d12cd9556fbc25a8bb080912e79b504fe1bd965a1110316a14a3ff555"
+    },
+    {
+      "path": "js/3936.bundleName.js",
+      "kind": "build",
+      "bytes": 2898,
+      "sha256": "dfd5cb73c0d581444f7d88945fdde4fc7f72f519018e89d6fd0836c63dddba90"
+    },
+    {
+      "path": "js/4243.bundleName.js",
+      "kind": "build",
+      "bytes": 558,
+      "sha256": "6806325c4c35e079def36586d94a41eec2fedf22bdb7b718fbec99b32aa6a128"
+    },
+    {
+      "path": "js/4299.bundleName.js",
+      "kind": "build",
+      "bytes": 1658,
+      "sha256": "974df78c8c9266dcbba2f02394752f091760b03fe73745e3cd7abe5c4c13f27b"
+    },
+    {
+      "path": "js/4316.bundleName.js",
+      "kind": "build",
+      "bytes": 3420,
+      "sha256": "83f64c495a07188393c25f88c2161525f04c5aa0f1c69215397684c59ac33674"
+    },
+    {
+      "path": "js/437.bundleName.js",
+      "kind": "build",
+      "bytes": 4631,
+      "sha256": "20c631f6dfa1282a34b015801c6ba62ba6dcee60298ba4fb6f0d0c991d97c9e1"
+    },
+    {
+      "path": "js/448.bundleName.js",
+      "kind": "build",
+      "bytes": 4007,
+      "sha256": "7e0b178da1ade41b47069ec31453fb2157038c86540e0781e9164062b9560f5e"
+    },
+    {
+      "path": "js/454.bundleName.js",
+      "kind": "build",
+      "bytes": 6774,
+      "sha256": "cf54d6810ed720e2fc39da473e81f77901cb12056cea3a141486aebeb4d5f367"
+    },
+    {
+      "path": "js/4598.bundleName.js",
+      "kind": "build",
+      "bytes": 4496,
+      "sha256": "46a1d7d9d7ffa8d704689f902918bec9dcc79be83317a261bf2709abb0ded7d8"
+    },
+    {
+      "path": "js/4639.bundleName.js",
+      "kind": "build",
+      "bytes": 40072,
+      "sha256": "a665e857473f0c6646884f70fe6752c6550882daa79f067fbba3f28c78537fb5"
+    },
+    {
+      "path": "js/4659.bundleName.js",
+      "kind": "build",
+      "bytes": 1562,
+      "sha256": "b254b1be28ebf36a4eb3dc9212b136704562be5319c7925e2488c8e72bbec3df"
+    },
+    {
+      "path": "js/4719.bundleName.js",
+      "kind": "build",
+      "bytes": 5613,
+      "sha256": "f644e375aa76dda62106fab5f564bfb854cec9d11201eea7f431c436c54363d0"
+    },
+    {
+      "path": "js/4736.bundleName.js",
+      "kind": "build",
+      "bytes": 1252,
+      "sha256": "ebaadecee8beb477dda7423cb93de29deb9ab0bece2f955c88e13bc9f3ddec47"
+    },
+    {
+      "path": "js/4770.bundleName.js",
+      "kind": "build",
+      "bytes": 8029,
+      "sha256": "1f08570ac5c661b8b6b7a2f2da1af8e0c1b7976de9b4b2e7c18ea0d3e507d2df"
+    },
+    {
+      "path": "js/4914.bundleName.js",
+      "kind": "build",
+      "bytes": 6079,
+      "sha256": "3712e8f82fde7fcc70acd06974449e8abf83a031bc55f0670ee9191a8060fd09"
+    },
+    {
+      "path": "js/4929.bundleName.js",
+      "kind": "build",
+      "bytes": 3034,
+      "sha256": "fe56cc83cd5d4fe01dfa994f0aa3243192f31aabae203a9c297645c98aea6bf9"
+    },
+    {
+      "path": "js/50.bundleName.js",
+      "kind": "build",
+      "bytes": 16386,
+      "sha256": "1bb4798ff470d5ba64b5034a32dfdbdbc547e778a382e9453e8b59c43114f5dc"
+    },
+    {
+      "path": "js/5001.bundleName.js",
+      "kind": "build",
+      "bytes": 1832014,
+      "sha256": "71d1127d647175dfd0aa2bb5e5373a1d18d180b00ac7f63b7d0cb952a898ccfb"
+    },
+    {
+      "path": "js/5054.bundleName.js",
+      "kind": "build",
+      "bytes": 1876672,
+      "sha256": "60e71e4a81e39797353cb84099ebb4351ce89c122bdf354c91d4160caf00e1fd"
+    },
+    {
+      "path": "js/5075.bundleName.js",
+      "kind": "build",
+      "bytes": 3484,
+      "sha256": "e8a07d6a4798fa31f03ac50b62c33611841fa0e43df55becfba1aa3e19f6e86c"
+    },
+    {
+      "path": "js/5081.bundleName.js",
+      "kind": "build",
+      "bytes": 1710330,
+      "sha256": "58e7db602bd88e31582b88d8e3545114a6e59263aeb8ea4765b3f78c64f92ed7"
+    },
+    {
+      "path": "js/5081.bundleName.js.LICENSE.txt",
+      "kind": "build",
+      "bytes": 1676,
+      "sha256": "f8ecd994ff60ac7ccc31ffb89fcbc0b5283058ed2aa985d30e9c0022cf994d4b"
+    },
+    {
+      "path": "js/510.bundleName.js",
+      "kind": "build",
+      "bytes": 3209,
+      "sha256": "0f8bea8e160f7e53a57fdc3231d73dc99ad42f9933638aa98bb85f45a59d93fe"
+    },
+    {
+      "path": "js/5287.bundleName.js",
+      "kind": "build",
+      "bytes": 3116,
+      "sha256": "441e8f89fa67194de659bc92094d2746d791e46646fbb373a145f3ba573dad41"
+    },
+    {
+      "path": "js/5290.bundleName.js",
+      "kind": "build",
+      "bytes": 3178,
+      "sha256": "325169b472e94d4d37489f83c1249ad444314cb0eebc90464c3637be390c50c2"
+    },
+    {
+      "path": "js/5320.bundleName.js",
+      "kind": "build",
+      "bytes": 3985,
+      "sha256": "12bc6ea6d9a7ebced1111be6df8bdb9501b1975bf42b158b21e9f47d0086a3e2"
+    },
+    {
+      "path": "js/5376.bundleName.js",
+      "kind": "build",
+      "bytes": 6420,
+      "sha256": "b0891efcdc03cf698622ef61fcb9823cf343d05ba0a566015d282f9726ea0b5f"
+    },
+    {
+      "path": "js/5388.bundleName.js",
+      "kind": "build",
+      "bytes": 5287,
+      "sha256": "93c41e881c7926f967439836654ce9cce1dd1ba8f58501077a3781c46a0099e1"
+    },
+    {
+      "path": "js/5406.bundleName.js",
+      "kind": "build",
+      "bytes": 1518,
+      "sha256": "af60d184f4556a87373e7b3572209179245285ca7563c5f806552c1cc629f2ff"
+    },
+    {
+      "path": "js/5590.bundleName.js",
+      "kind": "build",
+      "bytes": 796,
+      "sha256": "cea8bda6beb65d73e6dd4fe9e80dda15250ae8e0ae9c056561b33996d2d0b858"
+    },
+    {
+      "path": "js/5594.bundleName.js",
+      "kind": "build",
+      "bytes": 115730,
+      "sha256": "1b42bd87d45efa1c890470ddd68c50e15f43c274ba22b43435a03ce0d7b947d3"
+    },
+    {
+      "path": "js/5598.bundleName.js",
+      "kind": "build",
+      "bytes": 2153,
+      "sha256": "8130a2cfa5ae729d34a545eb515090e643e7a1e5fbbb8a8e06e0e627382973ab"
+    },
+    {
+      "path": "js/5600.bundleName.js",
+      "kind": "build",
+      "bytes": 3781,
+      "sha256": "dcd3b2343f895d1ae114b2127b702374a765c08feb25398f65239880aac9f7b4"
+    },
+    {
+      "path": "js/5606.bundleName.js",
+      "kind": "build",
+      "bytes": 3816,
+      "sha256": "7adf17999cb4225a376f9fb5a65866f5eb261dc1a9b07018cb7705236d5c4ef5"
+    },
+    {
+      "path": "js/5616.bundleName.js",
+      "kind": "build",
+      "bytes": 202016,
+      "sha256": "af1466c94fc99a32618ac14f9924492725388821bc1da17d2158d2d04820dfcf"
+    },
+    {
+      "path": "js/5633.bundleName.js",
+      "kind": "build",
+      "bytes": 1068,
+      "sha256": "020ff4a429ecdeeab7a1119a732bacf5e5a4fd6e30e9f0b7b7bb7416351346ad"
+    },
+    {
+      "path": "js/5646.bundleName.js",
+      "kind": "build",
+      "bytes": 2142,
+      "sha256": "d2f5a1cfa0b2a1e516988f9a8002d7efb9ebdaf997d9df69b793ade1f556ee42"
+    },
+    {
+      "path": "js/57.bundleName.js",
+      "kind": "build",
+      "bytes": 2840,
+      "sha256": "745c7deea0c669eaf515d76b99fa6202b7ed1208f918996c8133113089981c7e"
+    },
+    {
+      "path": "js/5848.bundleName.js",
+      "kind": "build",
+      "bytes": 4859,
+      "sha256": "3e64eaa7cca65c48a76ca6a3e174aec45a82a25859ecf7f38203fb57d53d936d"
+    },
+    {
+      "path": "js/5849.bundleName.js",
+      "kind": "build",
+      "bytes": 5874,
+      "sha256": "bb5624464d9bcd00b46a04f43452f2d11403b3f29a7622f1c9f3f097a27fc047"
+    },
+    {
+      "path": "js/5992.bundleName.js",
+      "kind": "build",
+      "bytes": 2004,
+      "sha256": "6ebe4ee896a16a640cc87f5d636af203073ec5f805090c4e586fb450b7201bad"
+    },
+    {
+      "path": "js/6080.bundleName.js",
+      "kind": "build",
+      "bytes": 1963,
+      "sha256": "e96998762a45cbeafbd6b098faef3671f78b829d4a4680e548fca1a762b4e265"
+    },
+    {
+      "path": "js/6180.bundleName.js",
+      "kind": "build",
+      "bytes": 4758,
+      "sha256": "ef780a9cb651a8eb75d77543e22faf45f5a131043c0e31d9ac6c20b004652f2f"
+    },
+    {
+      "path": "js/6200.bundleName.js",
+      "kind": "build",
+      "bytes": 2899,
+      "sha256": "4bc49d2ab33058f38f5bdeb704a500257e5ad69b2d046405b547a410db9aeb98"
+    },
+    {
+      "path": "js/626.bundleName.js",
+      "kind": "build",
+      "bytes": 11183,
+      "sha256": "dba4087cedab599a461a70401746be4d2bc55851710c792813efa8e5533bb8b7"
+    },
+    {
+      "path": "js/6338.bundleName.js",
+      "kind": "build",
+      "bytes": 4041,
+      "sha256": "b2d1450631ec3feb2136ddf40d872b376ab8ba10f4aae3a4b527af45943df3fb"
+    },
+    {
+      "path": "js/6387.bundleName.js",
+      "kind": "build",
+      "bytes": 1139,
+      "sha256": "127a937ae88a5bde24960a4780bd81ec7d1296cec89ed53d9dfc053da7ba7fd4"
+    },
+    {
+      "path": "js/6410.bundleName.js",
+      "kind": "build",
+      "bytes": 1355,
+      "sha256": "540a4c3b4f76890b03933875832ea826cdaea239fa53d6ec679648f5b5e77128"
+    },
+    {
+      "path": "js/6427.bundleName.js",
+      "kind": "build",
+      "bytes": 10171,
+      "sha256": "857c5f15375271951a3cdd440baa376e8aeb2bd35f7bb383ea91e85dfa1d1a64"
+    },
+    {
+      "path": "js/648.bundleName.js",
+      "kind": "build",
+      "bytes": 3739,
+      "sha256": "86e40ed9b96dd8e0c02402424d53b30cca0cf3ceff2e04ebc467153f0cdecb51"
+    },
+    {
+      "path": "js/6544.bundleName.js",
+      "kind": "build",
+      "bytes": 2231,
+      "sha256": "e01d5633c1ca29f4e9b383058d0b445d5743b9d2c445d518c0d92f9b2c9d78d1"
+    },
+    {
+      "path": "js/6560.bundleName.js",
+      "kind": "build",
+      "bytes": 2586,
+      "sha256": "68dc21eb20561b10cc28bf82ecaf50145ca61302b83655ca27f0a4ba4a42deea"
+    },
+    {
+      "path": "js/6567.bundleName.js",
+      "kind": "build",
+      "bytes": 1622,
+      "sha256": "7de269ee5527c0459f7b3189342a31528ee6c282f8ccecbf2e7cee3a56095a16"
+    },
+    {
+      "path": "js/6606.bundleName.js",
+      "kind": "build",
+      "bytes": 8106,
+      "sha256": "3c239207bb2f0da58466508249ece95317a3a93b4a92542de5980262bf0a2863"
+    },
+    {
+      "path": "js/6804.bundleName.js",
+      "kind": "build",
+      "bytes": 147846,
+      "sha256": "cf58ffbf5a961b710c34ad18b0b161618e705a2864fd6987e957ec3f50ada3b5"
+    },
+    {
+      "path": "js/686.bundleName.js",
+      "kind": "build",
+      "bytes": 12814,
+      "sha256": "178e0866897be7af42467b397e8792725417d4bef69cd924066c1e30a0db0d14"
+    },
+    {
+      "path": "js/7011.bundleName.js",
+      "kind": "build",
+      "bytes": 641414,
+      "sha256": "b57345018231416c32e1b7d20694e6dfc73cb1553d3dca0d91cff58c14dbd67c"
+    },
+    {
+      "path": "js/702.bundleName.js",
+      "kind": "build",
+      "bytes": 2834,
+      "sha256": "5e565bd211d9e0bea6a00e08243a5e556d5f3660d0399600f428c84304ab0f2b"
+    },
+    {
+      "path": "js/7100.bundleName.js",
+      "kind": "build",
+      "bytes": 6273,
+      "sha256": "259f856240cf7e2e022c3669522df8dba544c08e285a042f8a2e228e3e7117af"
+    },
+    {
+      "path": "js/7208.bundleName.js",
+      "kind": "build",
+      "bytes": 2568,
+      "sha256": "a4e90abcb48dc54d6fdd70390e8c9125cc2f8a63d1937a826d0e68566602dac6"
+    },
+    {
+      "path": "js/7218.bundleName.js",
+      "kind": "build",
+      "bytes": 1648,
+      "sha256": "dcce9b92449d697f7eec92c3ccedaaa9fbe70aa95bf022714708263e6c025094"
+    },
+    {
+      "path": "js/7295.bundleName.js",
+      "kind": "build",
+      "bytes": 22050,
+      "sha256": "fd1845ebed7303b2735d37e7a7262ab3eb5a8767d2ae819b72d9f349b4b1919d"
+    },
+    {
+      "path": "js/744.bundleName.js",
+      "kind": "build",
+      "bytes": 418,
+      "sha256": "9332566b717433c7f9719dc330f5a874caafe0adeb07dd2a0400f494eeab17f3"
+    },
+    {
+      "path": "js/7532.bundleName.js",
+      "kind": "build",
+      "bytes": 2333,
+      "sha256": "48f8fe81aff6b1c863204f579c172fae69ef52d7a00ecc1592d21fc1420b725d"
+    },
+    {
+      "path": "js/7580.bundleName.js",
+      "kind": "build",
+      "bytes": 6120,
+      "sha256": "47a37faecacab2a3f4dd45ec19a47c639f7d682c62918f0a856d7cc3903e5a7f"
+    },
+    {
+      "path": "js/7582.bundleName.js",
+      "kind": "build",
+      "bytes": 4205,
+      "sha256": "b0c11fee3e7d0e85da216a47a62c14c6f618d518b1cc0fdf7fd6663f434e26c5"
+    },
+    {
+      "path": "js/7596.bundleName.js",
+      "kind": "build",
+      "bytes": 2247,
+      "sha256": "e699f3939a3589c11ed9de46249739c07a503f873915c3183fad354f57f1294d"
+    },
+    {
+      "path": "js/7597.bundleName.js",
+      "kind": "build",
+      "bytes": 2874,
+      "sha256": "0ee56e85c5ac87877dd6d4df53e4a3607587dedfe495f15ee321d3090cf0499f"
+    },
+    {
+      "path": "js/7620.bundleName.js",
+      "kind": "build",
+      "bytes": 3881,
+      "sha256": "8a020603fdc37545d85b0da53eabda8850321355de7e217e684c3b1d5fb0b0cd"
+    },
+    {
+      "path": "js/7628.bundleName.js",
+      "kind": "build",
+      "bytes": 1655,
+      "sha256": "4f719ae07bf707c47f5c63c276f5d5f4cd1e500abe3721e5ed66df41f06c5812"
+    },
+    {
+      "path": "js/7665.bundleName.js",
+      "kind": "build",
+      "bytes": 109982,
+      "sha256": "19e6c882528d805ef712186e3713aca6969bb625ad17a70b0a5863c193774696"
+    },
+    {
+      "path": "js/7704.bundleName.js",
+      "kind": "build",
+      "bytes": 1493,
+      "sha256": "9117a54db6bb1808dff388823781d1b5c7ece0bd3ddf3e2a33be5f0876ede2d7"
+    },
+    {
+      "path": "js/7766.bundleName.js",
+      "kind": "build",
+      "bytes": 2128,
+      "sha256": "eb056ede8c638f7d1150c69cb8ae028b1abb357456c123d572e3c2d7b3ae0258"
+    },
+    {
+      "path": "js/7827.bundleName.js",
+      "kind": "build",
+      "bytes": 2524,
+      "sha256": "37854d4082025e00c00959cb90f7a26071b9c8fcf782ed38514689c04d8ebf34"
+    },
+    {
+      "path": "js/7922.bundleName.js",
+      "kind": "build",
+      "bytes": 1445,
+      "sha256": "4bb49a2c6173179caa0b8da91f9b354e672f11b382a20be6a1eeff80668c1e4e"
+    },
+    {
+      "path": "js/7958.bundleName.js",
+      "kind": "build",
+      "bytes": 2686,
+      "sha256": "85b48b187c2f19c1d427d11bebdbdf3c6a262bd2ad44c51bc7a818bf1f15c8a7"
+    },
+    {
+      "path": "js/8083.bundleName.js",
+      "kind": "build",
+      "bytes": 1974438,
+      "sha256": "e4c5e2735143606c50be9648190789fc34d9ccac56eec2ada246782b3f58f241"
+    },
+    {
+      "path": "js/826.bundleName.js",
+      "kind": "build",
+      "bytes": 5036,
+      "sha256": "e82c0d47b0adc13467330ff53010279f3656c763747ae45133928806ad486841"
+    },
+    {
+      "path": "js/8328.bundleName.js",
+      "kind": "build",
+      "bytes": 1461,
+      "sha256": "105b575e1e9b7de8bc46eb88b88993b53dd98725847a35a7968f65118c7e199f"
+    },
+    {
+      "path": "js/8558.bundleName.js",
+      "kind": "build",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "js/8630.bundleName.js",
+      "kind": "build",
+      "bytes": 608,
+      "sha256": "a06365053ef815aeadc1f3345ada6baa3c6f8b5c029a94659886699dae4f1188"
+    },
+    {
+      "path": "js/8648.bundleName.js",
+      "kind": "build",
+      "bytes": 873,
+      "sha256": "7e8349c6beba1fc95f9d645e355439b4437c49bbd1014b9689c66f0bc54b9143"
+    },
+    {
+      "path": "js/8766.bundleName.js",
+      "kind": "build",
+      "bytes": 3146,
+      "sha256": "cf32086841989c478083e1d79a8255349a5e477b771fd2c72d4848b7af87d455"
+    },
+    {
+      "path": "js/8835.bundleName.js",
+      "kind": "build",
+      "bytes": 5157,
+      "sha256": "e665039145a442769fb8d24ff35bbd64542e2cb39fc5d1709e69eef9b7cf0bf3"
+    },
+    {
+      "path": "js/8998.bundleName.js",
+      "kind": "build",
+      "bytes": 15349,
+      "sha256": "9bfea6c0e43b7dad13ab5f721ec7cc2b419275d39f117c4e6842fda2a78ed33c"
+    },
+    {
+      "path": "js/900.bundleName.js",
+      "kind": "build",
+      "bytes": 2673,
+      "sha256": "8b2a4007d473e8815b0ecf788cf5445df3dcab06f1b067032df62ca8a6d68529"
+    },
+    {
+      "path": "js/904.bundleName.js",
+      "kind": "build",
+      "bytes": 484,
+      "sha256": "5b4e59060a40dc3e830a9f4951f4635a95a42d00b4673898dea448d9abc486e0"
+    },
+    {
+      "path": "js/9081.bundleName.js",
+      "kind": "build",
+      "bytes": 1365,
+      "sha256": "494c5938d02e9e0b89e2d73ceabe7bccd12a28456600f24b8edcaf5f2e86a3ec"
+    },
+    {
+      "path": "js/9119.bundleName.js",
+      "kind": "build",
+      "bytes": 1716,
+      "sha256": "7119bc14eeb1524ac78640cd186c612e4e2da59688098796fccd5fa3041c35ba"
+    },
+    {
+      "path": "js/9160.bundleName.js",
+      "kind": "build",
+      "bytes": 3318,
+      "sha256": "7f7e69fef22c4bbce2bb989418f02e0f81bc92816dcebb773a9c46904753d56e"
+    },
+    {
+      "path": "js/9250.bundleName.js",
+      "kind": "build",
+      "bytes": 3339,
+      "sha256": "a71bbac8f5532833b895eb6a2cd3d658d415ec05ac933d7571a1043195a80e72"
+    },
+    {
+      "path": "js/9341.bundleName.js",
+      "kind": "build",
+      "bytes": 1764,
+      "sha256": "eb357c5e3a6c9247a1340224bcb21ae931326c150373eac2849491a5292cf318"
+    },
+    {
+      "path": "js/9418.bundleName.js",
+      "kind": "build",
+      "bytes": 6142,
+      "sha256": "5d78f2aedc886424499bb1c2b120ad303b4c0e262c63c04bfde5b6f72ecbf835"
+    },
+    {
+      "path": "js/9500.bundleName.js",
+      "kind": "build",
+      "bytes": 6792,
+      "sha256": "45e074d211c361dbbd36a5025527f690f45a524e22a3b4a107d4d298c28b3ced"
+    },
+    {
+      "path": "js/9588.bundleName.js",
+      "kind": "build",
+      "bytes": 2841,
+      "sha256": "3de0335dfbe2db1d5c377f61917a15afd87e3eb42a72177aa0e783e584046d23"
+    },
+    {
+      "path": "js/9601.bundleName.js",
+      "kind": "build",
+      "bytes": 2276,
+      "sha256": "a472ea096e784a82afae674caa9940063e834df0c7a0cbf28528c77a1aba0b9e"
+    },
+    {
+      "path": "js/9662.bundleName.js",
+      "kind": "build",
+      "bytes": 2643,
+      "sha256": "fbc88ed84da0f7272774ff9442d04edb43906fab09c12b0520b1d8e6e84b4cba"
+    },
+    {
+      "path": "js/9736.bundleName.js",
+      "kind": "build",
+      "bytes": 1914,
+      "sha256": "e9f98f5462b1d171ab52cfe56a6a0fe8e049418ac1b4f839e7efced72c2b2e48"
+    },
+    {
+      "path": "js/bundleName.js",
+      "kind": "build",
+      "bytes": 8571260,
+      "sha256": "66a768c67be820f289391bec1ab1162c8734c005a8af55f2e3e7cec3dbd05f94"
+    },
+    {
+      "path": "licenses/babylonjs-Apache-2.0.md",
+      "kind": "documentation",
+      "bytes": 9226,
+      "sha256": "9362ea9ea17cb221a20cbbd63f404710834cc273d2a9a7b60314fd68ab702cd6"
+    },
+    {
+      "path": "licenses/babylonjs-NOTICE.md",
+      "kind": "documentation",
+      "bytes": 793,
+      "sha256": "7f85d099ce3c6e1900a45ee8d5b8fa405e760c746af687b3ee2081416e48f183"
+    },
+    {
+      "path": "models/gothic_commode.glb",
+      "kind": "runtime",
+      "bytes": 1549376,
+      "sha256": "14905770ce0467edfe426e1fe315acb7232265ba6a1fdb2744fcf691945e0e2f"
+    },
+    {
+      "path": "models/study-model-optimization.json",
+      "kind": "documentation",
+      "bytes": 18141,
+      "sha256": "a3a3f247b2544c4f2663a43ae354aa56c5ed5563d520256dc83b3f6c9e2a4c58"
+    },
+    {
+      "path": "models/study/modern_arm_chair_01.glb",
+      "kind": "runtime",
+      "bytes": 2696208,
+      "sha256": "e63d43aa97f499c95f7b02cff070c78fb68017a1f423b261bbd62d8eb4452049"
+    },
+    {
+      "path": "models/study/sofa_03.glb",
+      "kind": "runtime",
+      "bytes": 818172,
+      "sha256": "8bf6e226b6add7aaf31479dd824e50c8ce6024df48cb609b900976f6991b5a3b"
+    },
+    {
+      "path": "models/wooden_bookshelf.glb",
+      "kind": "runtime",
+      "bytes": 2783464,
+      "sha256": "8d1bcf250559c6f6f1fd255d1be9027fe6b0cbfbd066e4358d0bf138699bb354"
+    },
+    {
+      "path": "STUDY_ASSET_SOURCES.md",
+      "kind": "documentation",
+      "bytes": 1902,
+      "sha256": "18d4818a98d73507d7e92f95f479134a6dadc242e1914dbd02f1b1c4957b7963"
+    },
+    {
+      "path": "textures/pictures/pic1.jpg",
+      "kind": "runtime",
+      "bytes": 29797,
+      "sha256": "00cd6f16547108ab2f713513974cb523676e93eae9a38df9c7134790be113967"
+    },
+    {
+      "path": "textures/study/brick_wall_001/arm.jpg",
+      "kind": "runtime",
+      "bytes": 123384,
+      "sha256": "8e6ab4cecd82c4305c9511065b0795bd579df89df8364a76a7359c1278bed38d"
+    },
+    {
+      "path": "textures/study/brick_wall_001/color.jpg",
+      "kind": "runtime",
+      "bytes": 574381,
+      "sha256": "6a1233ec0186703de830354d89f122991e61e67fb67e0846c7eaf6c5aefea902"
+    },
+    {
+      "path": "textures/study/brick_wall_001/normal.jpg",
+      "kind": "runtime",
+      "bytes": 295279,
+      "sha256": "8afbe3919308b168a6b7235fe7b930f670cfffa1a34de39ee790d55c9d7bda09"
+    },
+    {
+      "path": "textures/study/forest-window/source.json",
+      "kind": "documentation",
+      "bytes": 663,
+      "sha256": "f0c409eae9f48e8097e11212062837ff670371d24a75504d2307529ae6b0173b"
+    },
+    {
+      "path": "textures/study/forest-window/view.jpg",
+      "kind": "runtime",
+      "bytes": 1155565,
+      "sha256": "cf9b1fd22b8afc19b8ff27363c7ed0d94319ab1fc04b65f4b95e7987fc43c14b"
+    },
+    {
+      "path": "textures/study/manifest.json",
+      "kind": "documentation",
+      "bytes": 9150,
+      "sha256": "5493d8e2fc1aa999edb867d184351e22b5867b9c0bd141bca982626392dddd8d"
+    },
+    {
+      "path": "textures/study/rough_linen/arm.jpg",
+      "kind": "runtime",
+      "bytes": 1191393,
+      "sha256": "e1ca6b51ed62834063253e08f8f2e23836aa00d72675b960ddd8e608d9f0c7e6"
+    },
+    {
+      "path": "textures/study/rough_linen/normal.jpg",
+      "kind": "runtime",
+      "bytes": 916843,
+      "sha256": "e2402166d1a489f7414814e69e1836ab672aa24e30bec2d41fea356f81687e53"
+    },
+    {
+      "path": "textures/study/wood_floor/arm.jpg",
+      "kind": "runtime",
+      "bytes": 447855,
+      "sha256": "a84d9457fa35a76cf8a41da8bcef55387230c6b236819de878799585eda76059"
+    },
+    {
+      "path": "textures/study/wood_floor/color.jpg",
+      "kind": "runtime",
+      "bytes": 734493,
+      "sha256": "2a1c07687b6dbb214c4b9213739c6d92d425f1f0fc8ab3ac157f105d78240789"
+    },
+    {
+      "path": "textures/study/wood_floor/normal.jpg",
+      "kind": "runtime",
+      "bytes": 423303,
+      "sha256": "452247f0d0d1b7fc7f8324ff3b6ed60bcc6de1405f4284eeb8d9bce90d4939c2"
+    },
+    {
+      "path": "textures/study/wood_table_001/arm.jpg",
+      "kind": "runtime",
+      "bytes": 214520,
+      "sha256": "29d3f34a7c2c213e21b320365495fad673d3c8a3ce885b879fc0a77a187dd828"
+    },
+    {
+      "path": "textures/study/wood_table_001/color.jpg",
+      "kind": "runtime",
+      "bytes": 215573,
+      "sha256": "460dd08d240f4a1f02982415048c3c5c200f385db212da18dc7e2df68bf4d0be"
+    },
+    {
+      "path": "textures/study/wood_table_001/normal.jpg",
+      "kind": "runtime",
+      "bytes": 51927,
+      "sha256": "9bf7ddf5721e225c20290f1772ae37f9bdfd49658f6d458259eb794e2149d3cf"
+    }
+  ]
+}
