@@ -13,6 +13,17 @@
       #interaction-reticle { position: fixed; left: 50%; top: 50%; width: 6px; height: 6px; transform: translate(-50%, -50%); border-radius: 50%; background: #fff7e8e6; box-shadow: 0 0 0 1px #30291a80, 0 1px 5px #0005; z-index: 20; pointer-events: none; transition: width 120ms, height 120ms, background 120ms; }
       #interaction-reticle.has-target { width: 9px; height: 9px; background: #eacb90; }
       #interaction-hint { position: fixed; left: 50%; top: calc(50% + 22px); transform: translateX(-50%); z-index: 20; padding: 6px 10px; border-radius: 5px; background: #242c2eb3; color: #fff2dd; font-size: 11px; letter-spacing: 1px; white-space: nowrap; pointer-events: none; }
+      body.viewing-item > .identity, body.viewing-item > .tools, body.viewing-item > .settings-panel, body.viewing-item > .help, body.viewing-item > .view-controls { visibility: hidden; }
+      #item-inspection { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; color: #eee5d5; background: radial-gradient(ellipse at center, transparent 30%, #10181666); text-align: center; }
+      #item-inspection::backdrop { background: transparent; }
+      .item-heading { position: absolute; left: 24px; right: 24px; top: max(12px, calc(50% - var(--item-half-height) - 70px)); }
+      .item-heading p { margin: 0 0 8px; color: #c5aa78; font-size: 10px; letter-spacing: 3px; }
+      #item-inspection-title { margin: 0; font-size: 18px; font-weight: 400; letter-spacing: 3px; }
+      .item-actions { position: absolute; top: calc(50% + var(--item-half-height) + 20px); left: 0; right: 0; }
+      #item-inspection-return { min-width: 112px; padding: 11px 30px; border: 1px solid #bda57d88; border-radius: 6px; color: #f6e9cf; background: #73503d; font-size: 13px; letter-spacing: 2px; }
+      #item-inspection-return:hover { background: #896149; }
+      .item-actions p { color: #b9bdb4; font-size: 10px; letter-spacing: 1px; margin: 10px 0 0; }
+      @media (max-height: 480px) { .item-actions p { display: none; } }
       .identity { position: fixed; top: 30px; left: 32px; z-index: 10; color: #f2e8d4; pointer-events: none; }
       .eyebrow { color: #c5aa78; font-size: 10px; letter-spacing: 3px; margin: 0 0 10px; }
       h1 { font-weight: 400; font-size: 29px; letter-spacing: 5px; margin: 0 0 10px; }
@@ -69,6 +80,10 @@
     <div class="help" id="view-help">拖动旋转 · 滚轮缩放 · 右键平移</div>
     <div id="interaction-reticle" aria-hidden="true" hidden></div>
     <div id="interaction-hint" role="status" hidden></div>
+    <dialog id="item-inspection" aria-labelledby="item-inspection-title">
+      <div class="item-heading"><p>物品详情</p><h2 id="item-inspection-title">桌上的信</h2></div>
+      <div class="item-actions"><button id="item-inspection-return" autofocus>返回</button><p>ESC 返回场景</p></div>
+    </dialog>
     <nav class="view-controls" aria-label="场景视角">
       <button data-view="overview" aria-pressed="true">房间全景</button>
       <button data-view="reading" aria-pressed="false">阅读区</button>

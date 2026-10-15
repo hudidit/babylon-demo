@@ -1,15 +1,16 @@
 import { Vector3 } from "@babylonjs/core/pure";
-import type { AbstractMesh, Ray, Scene, TransformNode } from "@babylonjs/core/pure";
+import type { AbstractMesh, Mesh, Ray, Scene, TransformNode } from "@babylonjs/core/pure";
 
 export type InteractiveDrawer = {
   id: string; label: string; root: TransformNode; meshes: AbstractMesh[]; travel: Vector3;
 };
 export type InteractiveLamp = { id: string; label: string; meshes: AbstractMesh[] };
+export type InspectableItem = { id: string; label: string; mesh: Mesh; displayRotation: Vector3 };
 type Action = { label: () => string; toggle: () => void };
 
 /** Explicit picking also includes non-pickable static furniture, so it can occlude an action. */
 export const interactionSurface = (mesh: AbstractMesh) =>
-  mesh.isEnabled() && mesh.isVisible && mesh.visibility > 0 && mesh.getTotalVertices() > 0;
+  mesh.isEnabled() && mesh.isVisible && mesh.visibility > 0 && mesh.getTotalVertices() > 0 && !mesh.metadata?.inspectionPreview;
 
 export class RoomInteractions {
   private readonly actions = new Map<AbstractMesh, Action>();
@@ -31,6 +32,10 @@ export class RoomInteractions {
 
   addLamp(lamp: InteractiveLamp, isOn: () => boolean, toggle: () => void) {
     this.add(lamp.id, lamp.meshes, { label: () => `${isOn() ? "关闭" : "打开"}${lamp.label}`, toggle });
+  }
+
+  addInspectable(item: InspectableItem, inspect: (item: InspectableItem) => void) {
+    this.add(item.id, [item.mesh], { label: () => `查看${item.label}`, toggle: () => inspect(item) });
   }
 
   private add(id: string, meshes: AbstractMesh[], action: Action) {

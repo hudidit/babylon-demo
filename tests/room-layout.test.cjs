@@ -23,6 +23,7 @@ function loadSource(name) {
 const { measureBookshelf } = loadSource("BookshelfLayout");
 const { RoomFurnishings } = loadSource("RoomFurnishings");
 const { RoomScene } = loadSource("Room");
+const { RoomItemInspection } = loadSource("RoomItemInspection");
 const { RoomInteractions, cabinetDrawers } = loadSource("RoomInteractions");
 const { RoomLighting } = loadSource("RoomLighting");
 const { placeFurniture } = loadSource("RoomFurnitureAssets");
@@ -612,4 +613,86 @@ test("lamp switches independently restore direct light and their own emission", 
   assert.equal(scene.getLightByName("banker-lamp-light").intensity, 1.25);
   assert.equal(scene.getLightByName("reading-lamp-light").intensity, 3.3);
   assert.ok(desk.emissiveColor.equals(deskGlow) && floor.emissiveColor.equals(floorGlow));
+});
+
+
+test("the inspectable letter remains a complete independent mesh on its original desk support", t => {
+  const scene = createScene(t), furnishings = new RoomFurnishings(scene);
+  furnishings.writingTable();
+  const letter = scene.getMeshByName("letter"), geometry = letter.geometry;
+  const world = letter.computeWorldMatrix(true).clone();
+  const material = letter.material;
+  furnishings.finish();
+  assert.equal(furnishings.inspectables.length, 1);
+  const item = furnishings.inspectables[0];
+  assert.equal(item.id, "desk-letter"); assert.equal(item.mesh, letter);
+  assert.equal(letter.geometry, geometry); assert.equal(letter.material, material);
+  assert.ok(letter.computeWorldMatrix(true).equalsWithEpsilon(world));
+  assert.ok(letter.isWorldMatrixFrozen && letter.receiveShadows);
+  assert.equal(letter.getTotalVertices(), 17 * 23 * 2, "the full creased sheet must be retained");
+});
+
+test("inspection centres and fits the actual shared geometry, restores the original camera and releases only preview resources", t => {
+  const scene = createScene(t), furnishings = new RoomFurnishings(scene);
+  const originalCamera = new babylon.UniversalCamera("walking", new babylon.Vector3(4, 1, 10), scene);
+  originalCamera.rotation.set(0.3, 1.2, 0);
+  furnishings.writingTable(); furnishings.finish();
+  const item = furnishings.inspectables[0], texture = item.mesh.material.albedoTexture;
+  const world = item.mesh.computeWorldMatrix(true).clone();
+  const inspection = new RoomItemInspection(scene);
+  scene.activeCamera = originalCamera;
+  const counts = { meshes: scene.meshes.length, materials: scene.materials.length, textures: scene.textures.length };
+  let width = 1280, height = 720;
+  scene.getEngine().getRenderWidth = () => width; scene.getEngine().getRenderHeight = () => height;
+  for (let iteration = 0; iteration < 5; iteration++) {
+    assert.ok(inspection.open(item)); assert.equal(inspection.open(item), false, "do not nest or leak duplicate previews");
+    const preview = scene.getMeshByName("inspection-desk-letter");
+    assert.equal(preview.geometry, item.mesh.geometry);
+    assert.equal(preview.material.emissiveTexture, texture);
+    assert.ok(!preview.checkCollisions && !preview.isPickable && !preview.receiveShadows);
+    assert.equal(preview.layerMask & originalCamera.layerMask, 0);
+    assert.ok(preview.layerMask & inspection.camera.layerMask);
+    assert.deepEqual(Object.keys(inspection.camera.inputs.attached), []);
+    for (const dimensions of [[1280, 720], [390, 844], [844, 390]]) {
+      [width, height] = dimensions; inspection.resize();
+      const transform = inspection.camera.getViewMatrix(true).multiply(inspection.camera.getProjectionMatrix(true));
+      const viewport = new babylon.Viewport(0, 0, width, height);
+      const bounds = preview.getBoundingInfo().boundingBox;
+      const centre = babylon.Vector3.Project(bounds.centerWorld, babylon.Matrix.Identity(), transform, viewport);
+      assert.ok(Math.abs(centre.x - width / 2) < 0.001 && Math.abs(centre.y - height / 2) < 0.001);
+      for (const corner of bounds.vectorsWorld) {
+        const point = babylon.Vector3.Project(corner, babylon.Matrix.Identity(), transform, viewport);
+        assert.ok(point.x >= width * 0.08 && point.x <= width * 0.92);
+        assert.ok(point.y >= height * 0.18 && point.y <= height * 0.82);
+      }
+    }
+    assert.ok(inspection.close()); assert.equal(inspection.close(), false);
+    assert.equal(scene.activeCamera, originalCamera);
+    assert.ok(originalCamera.position.equalsWithEpsilon(new babylon.Vector3(4, 1, 10)));
+    assert.ok(originalCamera.rotation.equalsWithEpsilon(new babylon.Vector3(0.3, 1.2, 0)));
+    assert.ok(item.mesh.computeWorldMatrix(true).equalsWithEpsilon(world));
+    assert.equal(scene.meshes.length, counts.meshes); assert.equal(scene.materials.length, counts.materials);
+    assert.equal(scene.textures.length, counts.textures); assert.ok(scene.textures.includes(texture));
+  }
+  inspection.open(item); inspection.dispose();
+  assert.equal(scene.activeCamera, originalCamera);
+  assert.ok(!scene.cameras.includes(inspection.camera));
+  assert.ok(scene.textures.includes(texture), "disposing inspection must preserve the desk letter texture");
+});
+
+test("letter inspection uses the existing ray action and preview geometry cannot occlude scene actions", t => {
+  const scene = createScene(t), furnishings = new RoomFurnishings(scene);
+  new babylon.UniversalCamera("camera", new babylon.Vector3(-3.5, 2, -0.65), scene);
+  furnishings.writingTable(); furnishings.finish();
+  const item = furnishings.inspectables[0], interactions = new RoomInteractions(scene, () => {});
+  let selected;
+  interactions.addInspectable(item, value => selected = value);
+  item.mesh.computeWorldMatrix(true);
+  const centre = item.mesh.getBoundingInfo().boundingBox.centerWorld;
+  const ray = new babylon.Ray(centre.add(new babylon.Vector3(0, 4, 0)), new babylon.Vector3(0, -1, 0), 7.5);
+  const action = interactions.pick(ray);
+  assert.equal(action.label(), "查看桌上的信"); action.toggle(); assert.equal(selected, item);
+  const preview = item.mesh.clone("ignored-preview"); preview.unfreezeWorldMatrix(); preview.position.y += 1;
+  preview.metadata = { inspectionPreview: true }; preview.computeWorldMatrix(true);
+  assert.equal(interactions.pick(ray), action, "preview layer meshes must never intercept room interactions");
 });

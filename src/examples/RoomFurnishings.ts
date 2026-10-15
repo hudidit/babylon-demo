@@ -5,7 +5,7 @@ import { linenMaterial, mappedMaterial, surfaceMaterial } from "./RoomMaterials"
 import { beveledBox, creasedLetter, curtainPanel, ficusLeaf } from "./RoomDetailGeometry";
 import { applyWear, letterTexture, stableRandom, wearTexture } from "./RoomSurfaceDetails";
 import { partitionMergedCollisions } from "./RoomCollisions";
-import type { InteractiveDrawer, InteractiveLamp } from "./RoomInteractions";
+import type { InspectableItem, InteractiveDrawer, InteractiveLamp } from "./RoomInteractions";
 
 type Triple = [number, number, number];
 
@@ -15,6 +15,7 @@ export class RoomFurnishings {
   private parts: Mesh[] = [];
   readonly drawers: InteractiveDrawer[] = [];
   readonly lamps: InteractiveLamp[] = [];
+  readonly inspectables: InspectableItem[] = [];
   private interactiveGroups: { meshes: Mesh[]; root: TransformNode; fixed: boolean }[] = [];
 
   constructor(private scene: Scene) {
@@ -316,8 +317,12 @@ export class RoomFurnishings {
       this.cylinder("brass-table-foot", 0.3, 0.4, [x, 0.15, z], "brass", g);
     }));
     this.box("desk-blotter", [4.1, 0.035, 2.8], [0, 4.62, 0.45], "deskLeather", g);
+    const letterStart = this.parts.length;
     const letter = this.place(creasedLetter("letter", this.scene), [-0.5, 4.639, 0.35], "letter-paper", g);
     letter.rotation.y = -0.2;
+    this.keepInteractive(letterStart, g, true);
+    this.inspectables.push({ id: "desk-letter", label: "桌上的信", mesh: letter,
+      displayRotation: new Vector3(-Math.PI / 2, Math.PI, 0) });
     this.box("pen", [0.07, 0.07, 1.5], [0.7, 4.7, 0.35], "brass", g).rotation.y = -0.25;
     this.bookStack([-2.5, 4.6, -1.5], g);
     this.mug([2.55, 4.5975, 1.5], "ceramic", g);

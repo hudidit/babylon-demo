@@ -10,6 +10,8 @@ import { placeFurniture } from "./RoomFurnitureAssets";
 import { createRoomFinishing } from "./RoomFinishing";
 import { cabinetDrawers, RoomInteractions } from "./RoomInteractions";
 import { RoomPointerLock } from "./RoomPointerLock";
+import { RoomItemInspection } from "./RoomItemInspection";
+import type { InspectableItem } from "./RoomInteractions";
 
 export type RoomView = "overview" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.55 };
@@ -28,6 +30,7 @@ export class RoomScene {
   private controlsEnabled = true;
   private readonly interactions: RoomInteractions;
   private readonly pointerLock: RoomPointerLock;
+  private readonly inspection: RoomItemInspection;
   private currentView: RoomView = "overview";
   private previousView: Exclude<RoomView, "first-person"> = "overview";
   private pointerLocked = false;
@@ -88,6 +91,7 @@ export class RoomScene {
 
     this.lighting = new RoomLighting(this.scene);
     this.interactions = new RoomInteractions(this.scene, () => this.lighting.refreshShadows());
+    this.inspection = new RoomItemInspection(this.scene);
     this.pointerLock = new RoomPointerLock(canvas, locked => {
       this.pointerLocked = locked;
       this.updateControls();
@@ -109,7 +113,7 @@ export class RoomScene {
       this.contactShadows.bilateralSoften = 0.5;
       this.contactShadows.textureSamples = 2;
     }
-    this.finishing = createRoomFinishing(this.scene, [this.camera, this.firstPersonCamera]);
+    this.finishing = createRoomFinishing(this.scene, [this.camera, this.firstPersonCamera, this.inspection.camera]);
 
     const furnishings = new RoomFurnishings(this.scene);
     this.createArchitecture(furnishings);
@@ -118,6 +122,7 @@ export class RoomScene {
       mesh.checkCollisions = true;
     });
     furnishings.drawers.forEach(drawer => this.interactions.addDrawer(drawer));
+    furnishings.inspectables.forEach(item => this.interactions.addInspectable(item, item => this.openInspection(item)));
     furnishings.lamps.forEach(lamp => {
       const material = this.scene.getMaterialByName(lamp.id === "desk-lamp" ? "desk-lamp-glow" : "floor-lamp-shade") as PBRMaterial;
       this.lighting.bindLamp(lamp.id, material);
@@ -125,6 +130,7 @@ export class RoomScene {
     });
     this.lighting.addMeshes(this.scene.meshes);
     this.scene.onBeforeRenderObservable.add(() => {
+      if (this.inspection.isOpen) return;
       const delta = this.engine.getDeltaTime() / 1000;
       this.interactions.update(delta);
       this.focusElapsed += delta;
@@ -165,6 +171,8 @@ export class RoomScene {
     canvas.addEventListener("pointermove", this.pointerMove);
     canvas.addEventListener("pointerup", this.pointerUp);
     canvas.addEventListener("pointercancel", this.pointerCancel);
+    document.querySelector("#item-inspection-return")!.addEventListener("click", this.returnFromInspection);
+    document.querySelector("#item-inspection")!.addEventListener("cancel", this.cancelInspection);
     document.addEventListener("keydown", this.keyDown);
     window.addEventListener("blur", this.leaveFirstPerson);
     window.addEventListener("resize", this.resize);
@@ -174,6 +182,7 @@ export class RoomScene {
   }
 
   setView(view: RoomView) {
+    if (this.inspection?.isOpen) return;
     const firstPerson = view === "first-person";
     if (firstPerson && this.currentView !== "first-person") this.previousView = this.currentView;
     this.currentView = view;
@@ -209,7 +218,7 @@ export class RoomScene {
     this.camera.movement.resetPanVelocity();
     this.updateControls();
     const help = document.querySelector("#view-help");
-    const instructions = firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击抽屉 / 灯具";
+    const instructions = firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互";
     if (help) help.textContent = instructions;
     this.canvas.setAttribute("aria-label", "复古书房三维场景，" + instructions);
     this.updateInteractionHint();
@@ -239,25 +248,69 @@ export class RoomScene {
   }
 
   private updateControls() {
+    this.pointerStart = undefined;
+    this.camera.detachControl();
+    this.firstPersonCamera.detachControl();
+    this.camera.inertialAlphaOffset = this.camera.inertialBetaOffset = this.camera.inertialRadiusOffset = 0;
+    this.camera.inertialPanningX = this.camera.inertialPanningY = 0;
+    this.camera.movement.resetPanVelocity();
+    this.camera.movement.resetRotationVelocity();
     const camera = this.scene.activeCamera === this.firstPersonCamera ? this.firstPersonCamera : this.camera;
-    camera.detachControl();
     this.firstPersonCamera.cameraDirection.setAll(0);
     this.firstPersonCamera.cameraRotation.setAll(0);
     camera.movement.resetPanVelocity();
     camera.movement.resetRotationVelocity();
-    if (this.controlsEnabled && (camera !== this.firstPersonCamera || this.pointerLocked)) camera.attachControl(this.canvas, true);
+    if (!this.inspection?.isOpen && this.controlsEnabled && (camera !== this.firstPersonCamera || this.pointerLocked)) camera.attachControl(this.canvas, true);
+  }
+
+  private openInspection(item: InspectableItem) {
+    if (!this.controlsEnabled || !this.inspection.open(item)) return;
+    this.pointerLock.release();
+    this.updateControls();
+    this.updateInteractionHint();
+    document.querySelector("#item-inspection-title")!.textContent = item.label;
+    document.body.classList.add("viewing-item");
+    this.resizeInspection();
+    document.querySelector<HTMLDialogElement>("#item-inspection")!.showModal();
+  }
+
+  private closeInspection(resumePointer: boolean) {
+    if (!this.inspection.close()) return;
+    document.querySelector<HTMLDialogElement>("#item-inspection")!.close();
+    document.body.classList.remove("viewing-item");
+    this.updateControls();
+    this.updateInteractionHint();
+    this.canvas.focus({ preventScroll: true });
+    if (resumePointer && this.currentView === "first-person" && this.controlsEnabled) this.pointerLock.request();
+  }
+
+  private returnFromInspection = () => this.closeInspection(true);
+  private cancelInspection = (event: Event) => {
+    event.preventDefault();
+    this.closeInspection(false);
+  };
+
+  private resizeInspection() {
+    if (!this.inspection.isOpen) return;
+    const pixels = this.inspection.resize() * this.canvas.clientHeight / this.engine.getRenderHeight();
+    document.querySelector<HTMLElement>("#item-inspection")!.style.setProperty("--item-half-height", pixels + "px");
   }
 
   private leaveFirstPerson = () => {
+    if (this.inspection?.isOpen) return;
     if (this.currentView === "first-person") this.setView(this.previousView);
   };
 
   private keyDown = (event: KeyboardEvent) => {
+    if (this.inspection.isOpen) {
+      if (event.key === "Escape") this.cancelInspection(event);
+      return;
+    }
     if (event.key === "Escape") this.leaveFirstPerson();
   };
 
   private pointerDown = (event: PointerEvent) => {
-    if (event.button !== 0 || !this.controlsEnabled) return;
+    if (event.button !== 0 || !this.controlsEnabled || this.inspection.isOpen) return;
     if (this.currentView === "first-person" && !this.pointerLocked) {
       this.pointerLock.request();
       this.pointerStart = undefined;
@@ -276,7 +329,7 @@ export class RoomScene {
   private pointerUp = (event: PointerEvent) => {
     const start = this.pointerStart;
     this.pointerStart = undefined;
-    if (event.button !== 0 || !start || start.id !== event.pointerId || start.dragged || !this.controlsEnabled) return;
+    if (event.button !== 0 || !start || start.id !== event.pointerId || start.dragged || !this.controlsEnabled || this.inspection.isOpen) return;
     if (this.currentView === "first-person") {
       if (!this.pointerLocked) return;
       this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5))?.toggle();
@@ -291,7 +344,7 @@ export class RoomScene {
   private updateInteractionHint() {
     const reticle = document.querySelector<HTMLElement>("#interaction-reticle");
     const hint = document.querySelector<HTMLElement>("#interaction-hint");
-    const firstPerson = this.currentView === "first-person";
+    const firstPerson = this.currentView === "first-person" && !this.inspection?.isOpen;
     if (reticle) reticle.hidden = !firstPerson;
     const action = firstPerson && this.pointerLocked && this.controlsEnabled
       ? this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5)) : undefined;
@@ -404,7 +457,10 @@ export class RoomScene {
   }
 
   private render = () => this.scene.render();
-  private resize = () => this.engine.resize();
+  private resize = () => {
+    this.engine.resize();
+    this.resizeInspection();
+  };
   private visibilityChanged = () => {
     this.engine.stopRenderLoop(this.render);
     if (!document.hidden && !this.disposed) this.engine.runRenderLoop(this.render);
@@ -412,6 +468,11 @@ export class RoomScene {
   private dispose = () => {
     if (this.disposed) return;
     this.disposed = true;
+    document.querySelector("#item-inspection-return")?.removeEventListener("click", this.returnFromInspection);
+    document.querySelector("#item-inspection")?.removeEventListener("cancel", this.cancelInspection);
+    document.querySelector<HTMLDialogElement>("#item-inspection")?.close();
+    document.body.classList.remove("viewing-item");
+    this.inspection.dispose();
     this.pointerLock.dispose();
     this.canvas.removeEventListener("pointerdown", this.pointerDown);
     this.canvas.removeEventListener("pointermove", this.pointerMove);

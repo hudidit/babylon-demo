@@ -78,7 +78,7 @@ const output = path.resolve(process.env.STUDY_CHECK_OUTPUT || __dirname);
     });
     record.initialJsBytes = requests.filter(row => /\.js$/.test(row.url)).reduce((sum, row) => sum + row.bytes, 0);
     assert.ok(record.initialJsBytes <= 3 * 1024 * 1024);
-    assert.equal(record.environment.interactionIds.length, 10);
+    assert.equal(record.environment.interactionIds.length, Number(process.env.STUDY_EXPECTED_INTERACTIONS || 10));
     phase = 'views';
     for (const view of ['overview', 'reading', 'desk', 'details', 'cabinet']) {
       await page.locator(`[data-view="${view}"]`).click(); await render(3);

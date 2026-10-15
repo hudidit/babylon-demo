@@ -41,6 +41,16 @@ try {
   assert.ok(finalPosition.z < -0.9, 'Walker must stop at the obstacle');
   scene.activeCamera = orbit;
   scene.render();
+  const { RoomItemInspection } = loadSource(path.join(__dirname, '../../src/examples/RoomItemInspection.ts'));
+  const inspection = new RoomItemInspection(scene);
+  inspection.open({ id: 'pure-item', label: 'item', mesh: box, displayRotation: b.Vector3.Zero() });
+  const preview = scene.getMeshByName('inspection-pure-item');
+  assert.equal(preview.geometry, box.geometry);
+  assert.equal(preview.material.emissiveTexture, box.material.albedoTexture);
+  scene.render();
+  inspection.dispose();
+  assert.equal(scene.activeCamera, orbit);
+  assert.ok(scene.textures.includes(box.material.albedoTexture), 'Preview cleanup must retain the original texture');
   const normalized = Object.keys(require.cache).map(file => file.split(path.sep).join('/'));
   assert.ok(!normalized.some(file => file.endsWith('/@babylonjs/core/index.js')), 'Core barrel must not pre-register features');
   console.log('Pure runtime probe passed');
