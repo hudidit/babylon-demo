@@ -1,9 +1,8 @@
-import {
-  AbstractMesh, ArcRotateCamera, Color3, Color4, DefaultRenderingPipeline, Engine, HDRCubeTexture,
-  ImageProcessingConfiguration, MeshBuilder, PBRMaterial, Scene,
-  SceneLoader, SSAO2RenderingPipeline, TransformNode, UniversalCamera, Vector3,
-} from "@babylonjs/core";
-import "@babylonjs/loaders/glTF";
+import { ArcRotateCamera, Color3, Color4, Engine, HDRCubeTexture, ImageProcessingConfiguration, CreateBox, CreateGround, CreatePlane, PBRMaterial, Scene, SceneLoader, SSAO2RenderingPipeline, TransformNode, UniversalCamera, Vector3 } from "@babylonjs/core/pure";
+import type { AbstractMesh, DefaultRenderingPipeline } from "@babylonjs/core/pure";
+// All four shipped GLBs use core glTF 2.0, with no extensions (verified at release time).
+import "@babylonjs/loaders/glTF/2.0/glTFLoader";
+import { registerRoomRuntime } from "./RoomRuntime";
 import { RoomFurnishings } from "./RoomFurnishings";
 import { RoomLighting } from "./RoomLighting";
 import { mappedMaterial, tileMaterial } from "./RoomMaterials";
@@ -27,6 +26,7 @@ export class RoomScene {
   private controlsEnabled = true;
 
   constructor(private readonly canvas: HTMLCanvasElement) {
+    registerRoomRuntime();
     this.engine = new Engine(canvas, true, { stencil: true });
     this.engine.setHardwareScalingLevel(1);
     // Render at the display refresh rate; leave Engine.maxFPS uncapped for high-refresh screens.
@@ -198,7 +198,7 @@ export class RoomScene {
   private createArchitecture(room: RoomFurnishings) {
     const scene = this.scene;
     const floor = mappedMaterial("oak-floor", scene, "wood_floor", "#e7ddd0", 5, 0.28);
-    const ground = MeshBuilder.CreateGround("oak-floor", { width: 40, height: 40 }, scene);
+    const ground = CreateGround("oak-floor", { width: 40, height: 40 }, scene);
     ground.position.y = -5;
     ground.material = floor;
     ground.receiveShadows = true;
@@ -207,18 +207,18 @@ export class RoomScene {
     room.box("foundation", [40.6, 0.6, 40.6], [0, -5.4, 0], "darkWood");
 
     const brick = mappedMaterial("warm-exposed-brick", scene, "brick_wall_001", "#e1d5c5", 1, 0.38);
-    const leftBack = MeshBuilder.CreateBox("back-wall-left", { width: 14, height: 14, depth: 0.5 }, scene);
+    const leftBack = CreateBox("back-wall-left", { width: 14, height: 14, depth: 0.5 }, scene);
     leftBack.position.set(-13, 2, -20);
-    const rightBack = MeshBuilder.CreateBox("back-wall-right", { width: 18, height: 14, depth: 0.5 }, scene);
+    const rightBack = CreateBox("back-wall-right", { width: 18, height: 14, depth: 0.5 }, scene);
     rightBack.position.set(11, 2, -20);
-    const lintel = MeshBuilder.CreateBox("door-lintel-wall", { width: 8, height: 3.2, depth: 0.5 }, scene);
+    const lintel = CreateBox("door-lintel-wall", { width: 8, height: 3.2, depth: 0.5 }, scene);
     lintel.position.set(-2, 7.4, -20);
-    const left = MeshBuilder.CreateBox("left-brick-wall", { width: 0.5, height: 14, depth: 40 }, scene);
+    const left = CreateBox("left-brick-wall", { width: 0.5, height: 14, depth: 40 }, scene);
     left.position.set(-20, 2, 0);
-    const right = MeshBuilder.CreateBox("right-brick-wall", { width: 0.5, height: 14, depth: 40.5 }, scene);
+    const right = CreateBox("right-brick-wall", { width: 0.5, height: 14, depth: 40.5 }, scene);
     right.position.set(20, 2, 0);
     right.parent = this.interiorShell;
-    const front = MeshBuilder.CreateBox("front-brick-wall", { width: 40.5, height: 14, depth: 0.5 }, scene);
+    const front = CreateBox("front-brick-wall", { width: 40.5, height: 14, depth: 0.5 }, scene);
     front.position.set(0, 2, 20);
     front.parent = this.interiorShell;
     const spans = [14, 18, 8, 40, 40.5, 40.5];
@@ -232,7 +232,7 @@ export class RoomScene {
       mesh.freezeWorldMatrix();
       if (mesh === left || mesh === right) {
         // The box's narrow side UVs rotate the brick map; use a wall-sized face.
-        const facing = MeshBuilder.CreatePlane(mesh === left ? "left-wall-brick-facing" : "right-wall-brick-facing",
+        const facing = CreatePlane(mesh === left ? "left-wall-brick-facing" : "right-wall-brick-facing",
           { width: 40, height: 14 }, scene);
         facing.position.set(mesh === left ? -19.74 : 19.74, 2, 0);
         facing.rotation.y = mesh === left ? -Math.PI / 2 : Math.PI / 2;

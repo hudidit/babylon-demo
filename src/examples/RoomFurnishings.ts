@@ -1,7 +1,5 @@
-import {
-  AbstractMesh, Color3, DynamicTexture, Material, Mesh, MeshBuilder, PBRMaterial, Scene, StandardMaterial, Texture,
-  TransformNode, Vector3, VertexBuffer, VertexData,
-} from "@babylonjs/core";
+import { Color3, DynamicTexture, Mesh, CreateBox, CreateCylinder, CreatePlane, CreateSphere, CreateTorus, CreateTube, StandardMaterial, Texture, TransformNode, Vector3, VertexBuffer, VertexData } from "@babylonjs/core/pure";
+import type { AbstractMesh, Material, PBRMaterial, Scene } from "@babylonjs/core/pure";
 import { measureBookshelf } from "./BookshelfLayout";
 import { linenMaterial, mappedMaterial, surfaceMaterial } from "./RoomMaterials";
 import { beveledBox, creasedLetter, curtainPanel, ficusLeaf } from "./RoomDetailGeometry";
@@ -84,24 +82,24 @@ export class RoomFurnishings {
   box(name: string, size: Triple, position: Triple, material: string, parent?: TransformNode) {
     const detail = /^(table-|console-(top|apron|leg|drawer)|chair-(leg|back-frame|stretcher)|seat-frame|back-post|window-(casing|mullion|crossbar|sill)|door-(frame|raised-panel|panel-inset)|floating-shelf|book-cover$|book-spine$|desk-blotter)/.test(name);
     const mesh = detail ? beveledBox(name, size, Math.min(0.065, Math.min(...size) * 0.18), this.scene)
-      : MeshBuilder.CreateBox(name, { width: size[0], height: size[1], depth: size[2] }, this.scene);
+      : CreateBox(name, { width: size[0], height: size[1], depth: size[2] }, this.scene);
     return this.place(mesh, position, material, parent);
   }
 
   private cylinder(name: string, height: number, diameter: number, position: Triple,
     material: string, parent?: TransformNode, top = diameter) {
-    const mesh = MeshBuilder.CreateCylinder(name, { height, diameterBottom: diameter, diameterTop: top, tessellation: 24 }, this.scene);
+    const mesh = CreateCylinder(name, { height, diameterBottom: diameter, diameterTop: top, tessellation: 24 }, this.scene);
     return this.place(mesh, position, material, parent);
   }
 
   private sphere(name: string, size: Triple, position: Triple, material: string, parent?: TransformNode) {
-    const mesh = MeshBuilder.CreateSphere(name, { diameter: 1, segments: 12 }, this.scene);
+    const mesh = CreateSphere(name, { diameter: 1, segments: 12 }, this.scene);
     mesh.scaling.set(...size);
     return this.place(mesh, position, material, parent);
   }
 
   private paddedBox(name: string, size: Triple, position: Triple, material: string, parent?: TransformNode) {
-    const mesh = MeshBuilder.CreateSphere(name, { diameter: 1, segments: 16, updatable: true }, this.scene);
+    const mesh = CreateSphere(name, { diameter: 1, segments: 16, updatable: true }, this.scene);
     const positions = mesh.getVerticesData(VertexBuffer.PositionKind)!;
     // A superellipsoid gives upholstery broad, flat faces with soft corners.
     for (let i = 0; i < positions.length; i++) {
@@ -127,7 +125,7 @@ export class RoomFurnishings {
   }
 
   private ring(name: string, diameter: number, thickness: number, position: Triple, material: string, parent?: TransformNode) {
-    return this.place(MeshBuilder.CreateTorus(name, { diameter, thickness, tessellation: 32 }, this.scene), position, material, parent);
+    return this.place(CreateTorus(name, { diameter, thickness, tessellation: 32 }, this.scene), position, material, parent);
   }
 
   private place(mesh: Mesh, position: Triple, material: string, parent?: TransformNode) {
@@ -485,7 +483,7 @@ export class RoomFurnishings {
       const angle = i * 1.4;
       const flower = new Vector3(Math.sin(angle) * 0.28, 3 + (i % 2) * 0.2, Math.cos(angle) * 0.28);
       const root = new Vector3(Math.sin(angle) * 0.1, 1.4, Math.cos(angle) * 0.1);
-      const stem = MeshBuilder.CreateTube("dried-flower-stem", {
+      const stem = CreateTube("dried-flower-stem", {
         path: [root, flower], radius: 0.0125, tessellation: 8, cap: Mesh.CAP_ALL,
       }, this.scene);
       this.place(stem, [0, 0, 0], "stem", g);
@@ -524,7 +522,7 @@ export class RoomFurnishings {
     this.cylinder("terracotta-pot", 1.9, 1.5, [0, 0.95, 0], "rust", g, 2.2);
     this.ring("pot-rim", 2.15, 0.18, [0, 1.85, 0], "rust", g);
     this.cylinder("pot-soil", 0.04, 1.95, [0, 1.8, 0], "soil", g);
-    const trunk = MeshBuilder.CreateTube("plant-trunk", {
+    const trunk = CreateTube("plant-trunk", {
       path: [new Vector3(0, 1.72, 0), new Vector3(0.06, 3.3, 0.04),
         new Vector3(-0.12, 5.1, 0.1), new Vector3(0.08, 7.05, 0)],
       radiusFunction: i => 0.095 - i * 0.022, tessellation: 8, cap: Mesh.CAP_ALL,
@@ -539,7 +537,7 @@ export class RoomFurnishings {
       const upper = y <= 3.3 ? new Vector3(0.06, 3.3, 0.04) : y <= 5.1
         ? new Vector3(-0.12, 5.1, 0.1) : new Vector3(0.08, 7.05, 0);
       const attach = Vector3.Lerp(lower, upper, (y - lower.y) / (upper.y - lower.y));
-      const branch = MeshBuilder.CreateTube("ficus-branch", {
+      const branch = CreateTube("ficus-branch", {
         path: [attach, Vector3.Lerp(attach, root, 0.55).add(new Vector3(0, 0.08, 0)), root],
         radius: 0.022, tessellation: 6, cap: Mesh.CAP_ALL,
       }, this.scene);
@@ -558,7 +556,7 @@ export class RoomFurnishings {
     const material = new StandardMaterial(name + "-artwork", this.scene);
     material.diffuseTexture = new Texture(file, this.scene); material.specularColor = Color3.Black();
     this.materials.set(name + "-artwork", material);
-    const image = MeshBuilder.CreatePlane(name, { width, height, sideOrientation: Mesh.DOUBLESIDE }, this.scene);
+    const image = CreatePlane(name, { width, height, sideOrientation: Mesh.DOUBLESIDE }, this.scene);
     this.place(image, [0, 0, -0.19], name + "-artwork", g);
   }
 
@@ -573,7 +571,7 @@ export class RoomFurnishings {
     this.materials.set("window-glass", mat);
     const g = this.group("garden-window", [-19.35, 2.5, 9], -Math.PI / 2);
     this.box("window-casing", [11, 8.2, 0.35], [0, 0, 0], "darkWood", g);
-    const plane = MeshBuilder.CreatePlane("garden-view", { width: 10.3, height: 7.5, sideOrientation: Mesh.DOUBLESIDE }, this.scene);
+    const plane = CreatePlane("garden-view", { width: 10.3, height: 7.5, sideOrientation: Mesh.DOUBLESIDE }, this.scene);
     this.place(plane, [0, 0, -0.21], "window-glass", g).receiveShadows = false;
     [-5.3, 0, 5.3].forEach(x => {
       this.box("window-mullion", [0.2, 7.8, 0.28], [x, 0, -0.36], "wood", g);
@@ -602,9 +600,9 @@ export class RoomFurnishings {
         tiePath.push(new Vector3(side * 5.81 + Math.cos(angle) * 0.4, -1.33,
           -0.79 + Math.sin(angle) * 0.14));
       }
-      const tie = MeshBuilder.CreateTube("curtain-tie", { path: tiePath, radius: 0.045, tessellation: 6 }, this.scene);
+      const tie = CreateTube("curtain-tie", { path: tiePath, radius: 0.045, tessellation: 6 }, this.scene);
       this.place(tie, [0, 0, 0], "cushion", g);
-      const cord = MeshBuilder.CreateTube("curtain-tassel-cord", { path: [
+      const cord = CreateTube("curtain-tassel-cord", { path: [
         new Vector3(side * 5.5, -1.33, -0.96), new Vector3(side * 5.43, -1.63, -1.02),
         new Vector3(side * 5.48, -1.82, -1.01)], radius: 0.022, tessellation: 6 }, this.scene);
       this.place(cord, [0, 0, 0], "cushion", g);

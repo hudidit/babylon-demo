@@ -1,4 +1,5 @@
-import { AbstractMesh, Scene, TransformNode, Vector3 } from "@babylonjs/core";
+import { TransformNode, Vector3 } from "@babylonjs/core/pure";
+import type { AbstractMesh, Scene } from "@babylonjs/core/pure";
 
 /** Fit the actual imported bounds while preserving the glTF handedness conversion. */
 export function placeFurniture(meshes: AbstractMesh[], scene: Scene, name: string,

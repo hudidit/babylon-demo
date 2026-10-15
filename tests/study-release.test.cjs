@@ -93,6 +93,24 @@ test('production packaging includes exact study assets, license sidecars and laz
     try { assert.throws(() => verifyRelease(output), /Budget changes/); }
     finally { fs.writeFileSync(manifestFile, originalManifest); }
   });
+  await t.test('oversized initial JS is rejected even with consistent hashes and totals', () => {
+    const bundlePath = path.join(output, 'bundle-analysis.json');
+    const originalBundle = fs.readFileSync(bundlePath), bundle = JSON.parse(originalBundle);
+    const main = manifest.entryFiles[0], target = path.join(output, main), originalJs = fs.readFileSync(target);
+    const padding = bundle.initialJsBudgetBytes + 1 - bundle.initialJsBytes;
+    const expanded = Buffer.concat([originalJs, Buffer.alloc(padding, 32)]);
+    const updated = JSON.parse(originalManifest), jsRecord = updated.files.find(file => file.path === main);
+    jsRecord.bytes = expanded.length; jsRecord.sha256 = hash(expanded);
+    updated.totals.build += padding;
+    bundle.initialJsBytes += padding;
+    const bundleData = Buffer.from(JSON.stringify(bundle, null, 2) + '\n');
+    const bundleRecord = updated.files.find(file => file.path === 'bundle-analysis.json');
+    updated.totals.build += bundleData.length - bundleRecord.bytes;
+    bundleRecord.bytes = bundleData.length; bundleRecord.sha256 = hash(bundleData);
+    fs.writeFileSync(target, expanded); fs.writeFileSync(bundlePath, bundleData); updateManifest(updated);
+    try { assert.throws(() => verifyRelease(output), /Initial JS budget exceeded/); }
+    finally { fs.writeFileSync(target, originalJs); fs.writeFileSync(bundlePath, originalBundle); fs.writeFileSync(manifestFile, originalManifest); }
+  });
   await t.test('missing white-listed source fails compilation', async () => {
     await assert.rejects(compile({ ...options, context: temporary, output: { ...options.output, path: path.join(temporary, 'missing-source') } }), /ENOENT/);
   });

@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { createHash } = require('node:crypto');
 const config = require('./study-release.config.cjs');
+const { analyzeBundle } = require('./study-bundle-analysis.cjs');
 
 const hash = data => createHash('sha256').update(data).digest('hex');
 
@@ -27,6 +28,7 @@ class StudyReleasePlugin {
       });
       // Record final bytes after HTML generation and JS minification, including license sidecars.
       compilation.hooks.processAssets.tap({ name, stage: Compilation.PROCESS_ASSETS_STAGE_REPORT }, () => {
+        compilation.emitAsset('bundle-analysis.json', new sources.RawSource(JSON.stringify(analyzeBundle(compilation, compiler.context), null, 2) + '\n'));
         const files = compilation.getAssets().map(({ name: file, source }) => {
           const data = source.buffer();
           return { path: file, kind: kinds.get(file) || 'build', bytes: data.length, sha256: hash(data) };

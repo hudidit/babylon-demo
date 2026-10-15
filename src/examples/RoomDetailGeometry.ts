@@ -1,4 +1,5 @@
-import { Mesh, Scene, Vector3, VertexData } from "@babylonjs/core";
+import { Mesh, Vector3, VertexData } from "@babylonjs/core/pure";
+import type { Scene } from "@babylonjs/core/pure";
 
 /** Flat board faces joined by small, smooth bevels, without changing the outer dimensions. */
 export function beveledBox(name: string, size: readonly number[], radius: number, scene: Scene) {

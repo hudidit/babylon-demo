@@ -6,6 +6,8 @@
 
 ### 文档与基线记录
 
+- 建立并完成 [书房 JavaScript Tree-Shaking 优化方案](docs/technical-plans/2026-10-15-study-tree-shaking.md)，以 `6dea648` 为基线保存 [前后十视角、渲染配置、实际请求和初始模块图](docs/technical-plans/assets/tree-shaking-2026-10-15/README.md)。首屏 JS 减少 69.87%、首次正文减少 24.52%；完整目录增加 0.67 MiB 至 40.08 MiB，仍在 41 MiB 预算内，未做 FPS 或加载时间测试。
+
 - 完成 [资源大小优化方案](docs/technical-plans/2026-10-14-study-resource-size-optimization.md) 阶段 D、E，将 A～E 标为已完成；保存 [独立发布目录、172 文件逐个托管校验、十视角截图及请求记录](docs/technical-plans/assets/resource-release-de-2026-10-15/README.md)。完整目录 39.41 MiB，含全部调试分包、来源/许可说明与清单，较阶段 A 减少 46.21%；首次实际请求正文 23.33 MiB，减少 59.26%。亮屏性能验收继续由帧率专项跟进。
 
 - 完成 [资源大小优化方案](docs/technical-plans/2026-10-14-study-resource-size-optimization.md) 阶段 B、C，保存 [七档候选、十组同镜头静态对比和接入校验](docs/technical-plans/assets/resource-optimization-bc-2026-10-15/README.md)。为保留近景木纹，模型预算由 4 调整为 4.25 MiB，素材与生产产物加总预算仍为 16 / 41 MiB；新增独立原件/交付摘要和来源状态，阶段 D、E 待实施，本轮不做 FPS 测试。
@@ -13,6 +15,8 @@
 - 完成 [资源大小优化方案](docs/technical-plans/2026-10-14-study-resource-size-optimization.md) 阶段 A，以 `5f5ca9a` 重建基线并保存 [文件摘要、构建日志、实际请求、八视角截图与性能及复现脚本](docs/technical-plans/assets/resource-baseline-2026-10-15/README.md)。18 个素材保持 49.07 MiB，生产构建为 24.20 MiB、加素材为 73.26 MiB；冷上下文首次实际请求正文为 57.26 MiB。17 项测试、类型检查和生产构建通过，浏览器无运行错误或 404。仅新增测量记录和文档，应用代码、构建配置及素材未改，阶段 B～E 待实施。
 
 ### 功能与修复
+
+- 书房运行路径改用 Babylon pure 模块与显式功能注册，使用独立 builder 和 glTF 2.0 核心加载器；保留原材质、HDR、阴影、SSAO、后期、碰撞、相机输入与按需 Inspector。将未运行的火箭示例移至独立文件，共享着色器 include 并显式纳入启动着色器，首屏 JS 由 8.19 降至 2.47 MiB、首次正文由 23.33 降至 17.61 MiB。新增初始依赖检查与 3 MiB JS 预算、独立注册回归；33 项测试、类型检查、开发/生产构建和 462 文件独立托管验收通过。
 
 - 新增 `build:production`、书房资源发布白名单和逐文件 SHA256 清单，自动复制当前 18 个素材并保留全部动态分包；新增 `verify:release` 检查丢失/夹带/篡改、GLB 依赖与三项体积预算。补充来源及库许可说明、空内联图标声明以消除普通静态托管时的 favicon 404。30 项测试、类型检查、开发/生产构建及独立托管验收通过，无新运行依赖。
 

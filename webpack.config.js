@@ -9,10 +9,28 @@ module.exports = (_env, argv = {}) => ({
   entry: path.resolve(appDirectory, "src/app.ts"), //path to the main .ts file
   output: {
     path: path.resolve(appDirectory, "dist"),
-    filename: "js/bundleName.js", //name for the js file that is created/compiled in memory
+    filename: "js/[name].js",
+    chunkFilename: "js/[id].js",
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+  },
+  optimization: {
+    // Share modules across the scene and lazy Inspector/editor chunks.
+    splitChunks: {
+      chunks: "all",
+      cacheGroups: {
+        // Small shader includes otherwise get inlined repeatedly into async shader chunks.
+        shaderIncludes: {
+          test: /[\\/]Shaders(?:WGSL)?[\\/]ShadersInclude[\\/]/,
+          name: module => module.resource.includes("ShadersWGSL") ? "shader-includes-wgsl" : "shader-includes-glsl",
+          minChunks: 2,
+          minSize: 0,
+          priority: 20,
+          enforce: true,
+        },
+      },
+    },
   },
   devServer: {
     host: "0.0.0.0",

@@ -1,4 +1,5 @@
-import { AbstractMesh, Mesh, Ray, Vector3, VertexBuffer } from "@babylonjs/core";
+import { Mesh, Ray, Vector3, VertexBuffer } from "@babylonjs/core/pure";
+import type { AbstractMesh } from "@babylonjs/core/pure";
 
 export interface ShelfCompartment {
   min: Vector3;

@@ -1,4 +1,5 @@
-import { BaseTexture, DynamicTexture, PBRMaterial, RawTexture, Scene, Texture } from "@babylonjs/core";
+import { DynamicTexture, RawTexture, Texture } from "@babylonjs/core/pure";
+import type { BaseTexture, PBRMaterial, Scene } from "@babylonjs/core/pure";
 
 /** Fixed seeds keep subtle wear and colour choices stable across reloads. */
 export function stableRandom(seed: number) {

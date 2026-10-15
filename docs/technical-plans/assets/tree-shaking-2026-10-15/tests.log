@@ -1,0 +1,64 @@
+
+> babylon-learning@0.0.1 test
+> node --test tests/*.test.cjs
+
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+BJS - [22:48:21]: Babylon.js v9.30.0 - Null engine
+✔ collision partitions preserve swept collisions and cull distant geometry without extra draw calls (67.901459ms)
+✔ actual room collision partitions cover every merged index and preserve first-person sweeps (272.518291ms)
+✔ books and vase fit the actual bookshelf model at scale 5.2 (44.753709ms)
+✔ books and vase fit the actual bookshelf model at scale 3.7 (35.736583ms)
+✔ all flower stems connect to both the vase neck and their flower heads (12.635416ms)
+✔ changing movement speed applies immediately and clears previous movement (1.018292ms)
+✔ lamp lights emit below their shades and the window is the main light source (18.824583ms)
+✔ floor lamp foot touches the floor and its stacked base joins the stem (12.60975ms)
+✔ sofa_03 fits its room footprint and sits on the floor after glTF conversion (0.941125ms)
+✔ modern_arm_chair_01 fits its room footprint and sits on the floor after glTF conversion (0.881209ms)
+✔ wall colour, normal and ARM maps tile together without modifying other walls (0.68575ms)
+✔ rugs receive shadows without hiding chair legs; cached shadows refresh after enclosure changes (13.6275ms)
+✔ beveled boards keep their dimensions and have outward, finite surface normals (0.707125ms)
+✔ stacked book covers touch the support and the next book without floating gaps (15.382542ms)
+✔ cloth gathers around its tie and leaves have a thin, curved pointed silhouette (1.266333ms)
+✔ desk accessories, tea tray and small furniture rest on their actual supports (18.011833ms)
+✔ wear masks preserve tangent normals and keep surface variation subtle and reproducible (24.505166ms)
+✔ creased letter rests on the blotter and curls only a small distance above it (16.842333ms)
+✔ detail view permits close inspection and restores overview zoom limits on exit (1.433791ms)
+✔ pure room registrations work in a fresh process without the core side-effect barrel (423.496083ms)
+✔ initial dependency guard rejects broad or unrelated systems while allowing room features (0.311292ms)
+✔ gothic_commode.glb retains original geometry, UVs and material graph after image optimization (5.663458ms)
+✔ wooden_bookshelf.glb retains original geometry, UVs and material graph after image optimization (3.056834ms)
+✔ optimized study models stay inside the documented image-quality-adjusted budget (0.130583ms)
+▶ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases
+  ✔ whitelist matches measured runtime assets, copied bytes and full compiled output (20.545958ms)
+  ✔ missing lazy chunk is rejected (1.025333ms)
+  ✔ extra example asset or stale build file is rejected (0.450958ms)
+  ✔ same-size resource corruption is rejected by SHA256 (4.533917ms)
+  ✔ GLB external dependencies require a whitelist review even when manifest hash is updated (4.377625ms)
+  ✔ production mode and fixed budgets cannot silently change (0.299583ms)
+  ✔ oversized initial JS is rejected even with consistent hashes and totals (10.47075ms)
+  ✔ missing white-listed source fails compilation (10.127292ms)
+✔ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases (386.803875ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1152.405542

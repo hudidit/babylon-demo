@@ -1,4 +1,5 @@
-import { AbstractMesh, Mesh, Scene, SubMesh } from "@babylonjs/core";
+import { SubMesh } from "@babylonjs/core/pure";
+import type { AbstractMesh, Mesh, Scene } from "@babylonjs/core/pure";
 
 type PartRange = { vertices: number; indices: number };
 const partitions = new WeakMap<AbstractMesh, { data: SubMesh[]; length: number }>();

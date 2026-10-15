@@ -1,6 +1,5 @@
-import {
-  AbstractMesh, Color3, HemisphericLight, RenderTargetTexture, Scene, ShadowGenerator, SpotLight, Vector3,
-} from "@babylonjs/core";
+import { Color3, HemisphericLight, RenderTargetTexture, ShadowGenerator, SpotLight, Vector3 } from "@babylonjs/core/pure";
+import type { AbstractMesh, Scene } from "@babylonjs/core/pure";
 
 /** Three direct sources (window, reading lamp, desk lamp) plus restrained indirect bounce. */
 export class RoomLighting {

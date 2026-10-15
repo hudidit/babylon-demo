@@ -1,4 +1,5 @@
-import { Color3, PBRMaterial, Scene, Texture } from "@babylonjs/core";
+import { Color3, PBRMaterial, Texture } from "@babylonjs/core/pure";
+import type { Scene } from "@babylonjs/core/pure";
 
 /** Local, 1K PBR maps. ARM is linear: occlusion in R, roughness in G, metalness in B. */
 export function surfaceMaterial(name: string, scene: Scene, color: string, roughness = 0.75) {

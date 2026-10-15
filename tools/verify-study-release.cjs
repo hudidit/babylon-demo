@@ -4,6 +4,7 @@ const path = require('node:path');
 const config = require('./study-release.config.cjs');
 const { hash } = require('./StudyReleasePlugin.cjs');
 const { readGlb } = require('./optimize-study-models.cjs');
+const { assertInitialModules, initialJsBudgetBytes } = require('./study-bundle-analysis.cjs');
 
 function listFiles(root, prefix = '') {
   return fs.readdirSync(path.join(root, prefix), { withFileTypes: true }).flatMap(entry => {
@@ -32,7 +33,7 @@ function verifyRelease(directory) {
     assert.ok(typeof file.path === 'string' && !file.path.includes('\\') && !file.path.startsWith('/') &&
       file.path.split('/').every(part => part && part !== '.' && part !== '..'), `Unsafe release path: ${file.path}`);
     assert.ok(Object.hasOwn(totals, file.kind), `Unknown file kind: ${file.kind}`);
-    if (file.kind === 'build') assert.ok(file.path === 'index.html' || /^js\/[\w.-]+\.js(?:\.LICENSE\.txt)?$/.test(file.path), `Unexpected build output: ${file.path}`);
+    if (file.kind === 'build') assert.ok(['index.html', 'bundle-analysis.json'].includes(file.path) || /^js\/[\w.-]+\.js(?:\.LICENSE\.txt)?$/.test(file.path), `Unexpected build output: ${file.path}`);
     const data = fs.readFileSync(path.join(root, file.path));
     assert.equal(data.length, file.bytes, `Size mismatch: ${file.path}`);
     assert.equal(hash(data), file.sha256, `SHA256 mismatch: ${file.path}`);
@@ -57,13 +58,20 @@ function verifyRelease(directory) {
     .map(match => (match[1] || match[2] || match[3]).replace(/^\.\//, ''));
   assert.ok(scripts.length, 'Missing HTML script entry');
   assert.deepEqual(scripts.sort(), [...manifest.entryFiles].sort(), 'HTML script entries must match the build');
+  const bundle = JSON.parse(fs.readFileSync(path.join(root, 'bundle-analysis.json')));
+  assert.deepEqual(bundle.initialJsFiles, [...manifest.entryFiles].filter(file => file.endsWith('.js')).sort());
+  assert.equal(bundle.initialJsBudgetBytes, initialJsBudgetBytes);
+  assert.equal(bundle.initialJsBytes, bundle.initialJsFiles.reduce((sum, file) => sum + records.get(file).bytes, 0));
+  assert.ok(bundle.initialJsBytes <= initialJsBudgetBytes, 'Initial JS budget exceeded');
+  assertInitialModules(bundle.initialModules.map(module => module.name));
   const modelBytes = config.optimizedModels.reduce((sum, file) => sum + records.get(file).bytes, 0);
   const releaseBytes = Object.values(totals).reduce((sum, bytes) => sum + bytes, 0) + manifestData.length;
   assert.ok(modelBytes <= config.budgets.models, 'Model budget exceeded');
   assert.ok(totals.runtime <= config.budgets.runtime, 'Runtime budget exceeded');
   assert.ok(releaseBytes <= config.budgets.release, 'Release budget exceeded');
   return { fileCount: manifest.files.length + 1, modelBytes, buildBytes: totals.build,
-    runtimeBytes: totals.runtime, documentationBytes: totals.documentation, manifestBytes: manifestData.length, releaseBytes };
+    runtimeBytes: totals.runtime, documentationBytes: totals.documentation, manifestBytes: manifestData.length,
+    initialJsBytes: bundle.initialJsBytes, releaseBytes };
 }
 
 if (require.main === module) {

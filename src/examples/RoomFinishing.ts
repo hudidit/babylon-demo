@@ -1,4 +1,5 @@
-import { Camera, DefaultRenderingPipeline, Scene } from "@babylonjs/core";
+import { DefaultRenderingPipeline } from "@babylonjs/core/pure";
+import type { Camera, Scene } from "@babylonjs/core/pure";
 
 /** One final tone-mapping/AA chain after contact AO, shared by the two room cameras. */
 export function createRoomFinishing(scene: Scene, cameras: Camera[]) {
