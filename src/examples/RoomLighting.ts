@@ -5,6 +5,7 @@ import type { HouseRoomId } from "./HouseLayout";
 import { HOUSE_CONTENT } from "./HouseContent";
 import { houseVector } from "./HouseWalking";
 import { HOUSE_SUITE } from "./HouseSuite";
+import { HOUSE_BEDROOM } from "./HouseBedroom";
 import { localPosition } from "./HouseRoomComponents";
 
 /** Room-specific window/lamp sources plus the original restrained indirect bounce. */
@@ -130,6 +131,25 @@ export class RoomLighting {
       shadow.usePercentageCloserFiltering = true; shadow.filteringQuality = ShadowGenerator.QUALITY_MEDIUM;
       shadow.bias = 0.00012; shadow.normalBias = 0.012;
       this.shadows.push(shadow);
+    });
+  }
+
+  addBedroom(scene: Scene) {
+    const a = HOUSE_BEDROOM.lamp;
+    const daylight = new SpotLight("bedroom-window-daylight", houseVector(0.18, 9, 2.1),
+      new Vector3(1, -0.45, 0.1).normalize(), Math.PI / 1.5, 1, scene);
+    daylight.diffuse = new Color3(1, 0.96, 0.88); daylight.intensity = 3.2; daylight.range = 30;
+    const lamp = new SpotLight("bedroom-lamp-light", Vector3.FromArray(localPosition("bedroom", { x: a.x + 0.04, y: a.y }, a.emitterHeight)),
+      new Vector3(0.5, -0.8, 0.2).normalize(), Math.PI / 1.5, 1, scene);
+    lamp.diffuse = new Color3(1, 0.85, 0.64); lamp.intensity = 2.3; lamp.range = 18;
+    this.lamps.set("bedroom-lamp", { light: lamp, intensity: lamp.intensity, on: true });
+    [daylight, lamp].forEach((light, index) => {
+      setRoomOwners(light, ["bedroom"]); light.metadata.affectsShared = true;
+      light.falloffType = SpotLight.FALLOFF_STANDARD; light.specular = light.diffuse.scale(0.65);
+      light.shadowMinZ = 0.1; light.shadowMaxZ = light.range;
+      const shadow = new ShadowGenerator(index ? 512 : 1024, light);
+      shadow.usePercentageCloserFiltering = true; shadow.filteringQuality = ShadowGenerator.QUALITY_MEDIUM;
+      shadow.bias = 0.00012; shadow.normalBias = 0.012; this.shadows.push(shadow);
     });
   }
 

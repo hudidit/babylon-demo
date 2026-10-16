@@ -1,0 +1,303 @@
+{
+  "baseline": "8f5332b",
+  "before": {
+    "runtimeBytes": 15702135,
+    "modelBytes": 4332840,
+    "initialStaticJsBytes": 2514107,
+    "actualInitialJsBytesIncludingAudioPreheat": 2732959,
+    "completeReleaseBytes": 41980517,
+    "filesVerified": 488,
+    "meshes": 518,
+    "vertices": 354245,
+    "materials": 68,
+    "textures": 132,
+    "lights": 9,
+    "cameras": 3
+  },
+  "after": {
+    "runtimeBytes": 15702135,
+    "modelBytes": 4332840,
+    "initialStaticJsBytes": 2516484,
+    "actualInitialJsBytesIncludingAudioPreheat": 2735336,
+    "completeReleaseBytes": 41983092,
+    "filesVerified": 488,
+    "meshes": 539,
+    "vertices": 367940,
+    "materials": 69,
+    "textures": 134,
+    "lights": 11,
+    "cameras": 3
+  },
+  "runtimeUnchanged": true,
+  "runtimeFiles": [
+    {
+      "path": "audio/study/door-latch-1.a220e2fe5d.wav",
+      "kind": "runtime",
+      "bytes": 15404,
+      "sha256": "a220e2fe5d9244a022c4125c2eac6af200238a2ce7a5451ac098b5bdb7d1178b"
+    },
+    {
+      "path": "audio/study/door-latch-2.fb255ede74.wav",
+      "kind": "runtime",
+      "bytes": 16364,
+      "sha256": "fb255ede7497c01e1d33d9e5ad961568dbf2711cb53187d6ee0f299c4a9c2f2c"
+    },
+    {
+      "path": "audio/study/door-move-1.f0162ae1b8.wav",
+      "kind": "runtime",
+      "bytes": 38444,
+      "sha256": "f0162ae1b8d7198f117e468e914e58a5ce01fc8070c7d0baab231f4b653fb66c"
+    },
+    {
+      "path": "audio/study/door-move-2.9dea4bdbfd.wav",
+      "kind": "runtime",
+      "bytes": 55724,
+      "sha256": "9dea4bdbfd75ae721d9b54d198f555a80ff47508d142f721cd726dd673a495ec"
+    },
+    {
+      "path": "audio/study/drawer-slide-1.8353e0a53c.wav",
+      "kind": "runtime",
+      "bytes": 30764,
+      "sha256": "8353e0a53c67b934acd5fabb307a71b5d67a04d0398e88e36e875c85b24c88a7"
+    },
+    {
+      "path": "audio/study/drawer-slide-2.71ff63e71c.wav",
+      "kind": "runtime",
+      "bytes": 28844,
+      "sha256": "71ff63e71c9b9d896d5cb3fa28d2c31be6546a7e5967b59ab90d42e43f074c47"
+    },
+    {
+      "path": "audio/study/drawer-stop-1.6840b8eb30.wav",
+      "kind": "runtime",
+      "bytes": 11564,
+      "sha256": "6840b8eb3065c6183495d8a216ab53a3d00b6c5d469ff5689d84d8d0ef0f2c2b"
+    },
+    {
+      "path": "audio/study/drawer-stop-2.b34d827382.wav",
+      "kind": "runtime",
+      "bytes": 15404,
+      "sha256": "b34d82738205a0bcbdfe644faaa558a7e892ee2f8d51237074c842b2229bcd83"
+    },
+    {
+      "path": "audio/study/paper-1.ce7576efe6.wav",
+      "kind": "runtime",
+      "bytes": 19244,
+      "sha256": "ce7576efe6003d2b9fb4fa190cc58318493c5754524bc71199cf56e62836e43e"
+    },
+    {
+      "path": "audio/study/paper-2.862694da2b.wav",
+      "kind": "runtime",
+      "bytes": 27884,
+      "sha256": "862694da2b6b945b2e8e08330cbbb0f9bb72cb5651542b2060fa53a4ccdf1b81"
+    },
+    {
+      "path": "audio/study/switch-1.702a81fab4.wav",
+      "kind": "runtime",
+      "bytes": 11564,
+      "sha256": "702a81fab47cd408b8632eb6a5750039da011d13eb63a1f21239f93db7778fad"
+    },
+    {
+      "path": "audio/study/switch-2.927c10f6e3.wav",
+      "kind": "runtime",
+      "bytes": 16364,
+      "sha256": "927c10f6e34488ac763cccb68ff826d07edf25545fd720000447b675c26d4328"
+    },
+    {
+      "path": "environment/study-interior.hdr",
+      "kind": "runtime",
+      "bytes": 1649529,
+      "sha256": "ca919c41d78c8fc0dd104f47fd9201530ddcbd3c3574c3d1fc5362846e4076e1"
+    },
+    {
+      "path": "models/gothic_commode.glb",
+      "kind": "runtime",
+      "bytes": 1549376,
+      "sha256": "14905770ce0467edfe426e1fe315acb7232265ba6a1fdb2744fcf691945e0e2f"
+    },
+    {
+      "path": "models/study/modern_arm_chair_01.glb",
+      "kind": "runtime",
+      "bytes": 2696208,
+      "sha256": "e63d43aa97f499c95f7b02cff070c78fb68017a1f423b261bbd62d8eb4452049"
+    },
+    {
+      "path": "models/study/sofa_03.glb",
+      "kind": "runtime",
+      "bytes": 818172,
+      "sha256": "8bf6e226b6add7aaf31479dd824e50c8ce6024df48cb609b900976f6991b5a3b"
+    },
+    {
+      "path": "models/wooden_bookshelf.glb",
+      "kind": "runtime",
+      "bytes": 2783464,
+      "sha256": "8d1bcf250559c6f6f1fd255d1be9027fe6b0cbfbd066e4358d0bf138699bb354"
+    },
+    {
+      "path": "textures/pictures/pic1.jpg",
+      "kind": "runtime",
+      "bytes": 29797,
+      "sha256": "00cd6f16547108ab2f713513974cb523676e93eae9a38df9c7134790be113967"
+    },
+    {
+      "path": "textures/study/forest-window/view.jpg",
+      "kind": "runtime",
+      "bytes": 1155565,
+      "sha256": "cf9b1fd22b8afc19b8ff27363c7ed0d94319ab1fc04b65f4b95e7987fc43c14b"
+    },
+    {
+      "path": "textures/study/painted_wall/arm.png",
+      "kind": "runtime",
+      "bytes": 75148,
+      "sha256": "145eae6481ac9895f033ea4cf61318b668dc04c7c879a1cfab719fa51f999c33"
+    },
+    {
+      "path": "textures/study/painted_wall/color.png",
+      "kind": "runtime",
+      "bytes": 58252,
+      "sha256": "a1c0489dd75eea2c094ca57b942ef77b0b5cb11f91dd13c713bd9f8fb21409a9"
+    },
+    {
+      "path": "textures/study/painted_wall/normal.png",
+      "kind": "runtime",
+      "bytes": 403149,
+      "sha256": "a3f21adb78e23cbe31af99034527ecaa6d506eea8df1b4e0dff365445a040913"
+    },
+    {
+      "path": "textures/study/rough_linen/arm.jpg",
+      "kind": "runtime",
+      "bytes": 1191393,
+      "sha256": "e1ca6b51ed62834063253e08f8f2e23836aa00d72675b960ddd8e608d9f0c7e6"
+    },
+    {
+      "path": "textures/study/rough_linen/normal.jpg",
+      "kind": "runtime",
+      "bytes": 916843,
+      "sha256": "e2402166d1a489f7414814e69e1836ab672aa24e30bec2d41fea356f81687e53"
+    },
+    {
+      "path": "textures/study/wood_floor/arm.jpg",
+      "kind": "runtime",
+      "bytes": 447855,
+      "sha256": "a84d9457fa35a76cf8a41da8bcef55387230c6b236819de878799585eda76059"
+    },
+    {
+      "path": "textures/study/wood_floor/color.jpg",
+      "kind": "runtime",
+      "bytes": 734493,
+      "sha256": "2a1c07687b6dbb214c4b9213739c6d92d425f1f0fc8ab3ac157f105d78240789"
+    },
+    {
+      "path": "textures/study/wood_floor/normal.jpg",
+      "kind": "runtime",
+      "bytes": 423303,
+      "sha256": "452247f0d0d1b7fc7f8324ff3b6ed60bcc6de1405f4284eeb8d9bce90d4939c2"
+    },
+    {
+      "path": "textures/study/wood_table_001/arm.jpg",
+      "kind": "runtime",
+      "bytes": 214520,
+      "sha256": "29d3f34a7c2c213e21b320365495fad673d3c8a3ce885b879fc0a77a187dd828"
+    },
+    {
+      "path": "textures/study/wood_table_001/color.jpg",
+      "kind": "runtime",
+      "bytes": 215573,
+      "sha256": "460dd08d240f4a1f02982415048c3c5c200f385db212da18dc7e2df68bf4d0be"
+    },
+    {
+      "path": "textures/study/wood_table_001/normal.jpg",
+      "kind": "runtime",
+      "bytes": 51927,
+      "sha256": "9bf7ddf5721e225c20290f1772ae37f9bdfd49658f6d458259eb794e2149d3cf"
+    }
+  ],
+  "budgetsUnchanged": true,
+  "newDependencies": false,
+  "shadowMaps": [
+    2048,
+    1024,
+    1024,
+    2048,
+    1024,
+    1024,
+    512,
+    1024,
+    1024,
+    512
+  ],
+  "planarMirrorTargets": [
+    [
+      512,
+      512
+    ]
+  ],
+  "mirrorPrepass": false,
+  "mainScenePrepass": true,
+  "generatedMapsPerScene": {
+    "handwritten-letter": [
+      512,
+      768
+    ],
+    "ficus-leaf-veins": [
+      256,
+      512
+    ],
+    "woven-persian-rug": [
+      1024,
+      1024
+    ],
+    "handled-wood": [
+      512,
+      512
+    ],
+    "handled-brass": [
+      256,
+      256
+    ],
+    "cloth-book-covers": [
+      256,
+      256
+    ],
+    "paper-edges": [
+      128,
+      256
+    ]
+  },
+  "generatedMapNameNote": "历史记录book-paper对应实际纹理名paper-edges；尺寸/数量不变。",
+  "duplicateTextureRequests": 0,
+  "textureInventoryDelta": [
+    {
+      "name": "bedroom-window-daylight_shadowMap",
+      "size": [
+        1024,
+        1024
+      ],
+      "renderTarget": true,
+      "count": 1
+    },
+    {
+      "name": "bedroom-lamp-light_shadowMap",
+      "size": [
+        512,
+        512
+      ],
+      "renderTarget": true,
+      "count": 1
+    }
+  ],
+  "fpsOrLoadTimeSampling": false,
+  "delta": {
+    "runtimeBytes": 0,
+    "modelBytes": 0,
+    "initialStaticJsBytes": 2377,
+    "actualInitialJsBytesIncludingAudioPreheat": 2377,
+    "completeReleaseBytes": 2575,
+    "filesVerified": 0,
+    "meshes": 21,
+    "vertices": 13695,
+    "materials": 1,
+    "textures": 2,
+    "lights": 2,
+    "cameras": 0
+  }
+}

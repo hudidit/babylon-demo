@@ -47,7 +47,8 @@ export function bedroomNightstand(room: RoomFurnishings, id: HouseRoomId, at: Pl
   });
 }
 
-export function bedroomWardrobe(room: RoomFurnishings, id: HouseRoomId, at: PlanPoint, width: number, yaw = 0) {
+export function bedroomWardrobe(room: RoomFurnishings, id: HouseRoomId, at: PlanPoint, width: number, yaw = 0,
+  finish: { door: string; inset: string } = { door: "paintGreen", inset: "moss" }) {
   return room.section(id, id + "-wardrobe", () => {
     const root = room.group(id + "-wardrobe-root", localPosition(id, at), yaw);
     room.box("wardrobe-plinth", metres(width - 0.08, 0.1, 0.52), metres(0, 0.05, 0), "darkWood", root);
@@ -55,8 +56,8 @@ export function bedroomWardrobe(room: RoomFurnishings, id: HouseRoomId, at: Plan
     const count = Math.max(2, Math.round(width / 0.6)), leaf = width / count;
     for (let n = 0; n < count; n++) {
       const x = -width / 2 + leaf * (n + 0.5);
-      room.box("wardrobe-door", metres(leaf - 0.014, 2.12, 0.045), metres(x, 1.2, 0.32), "paintGreen", root);
-      room.box("wardrobe-inset", metres(leaf - 0.1, 1.94, 0.012), metres(x, 1.2, 0.35), "moss", root);
+      room.box("wardrobe-door", metres(leaf - 0.014, 2.12, 0.045), metres(x, 1.2, 0.32), finish.door, root);
+      room.box("wardrobe-inset", metres(leaf - 0.1, 1.94, 0.012), metres(x, 1.2, 0.35), finish.inset, root);
       room.cylinder("wardrobe-pull", 0.24 * u, 0.014 * u, metres(x + leaf * 0.3, 1.15, 0.39), "brass", root);
     }
     room.box("wardrobe-crown", metres(width + 0.04, 0.065, 0.65), metres(0, 2.38, 0), "darkWood", root);

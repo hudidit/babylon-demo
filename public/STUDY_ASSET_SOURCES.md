@@ -19,4 +19,4 @@
 
 `textures/study/painted_wall` 为本项目原创的暖米白乳胶漆微表面纹理，不是外部扫描素材，不继承 Poly Haven 的 CC0 声明；按项目源代码条款使用。生成脚本、固定种子、颜色/法线/ARM语义及最终文件摘要见[漆面来源记录](textures/study/painted_wall/source.json)。三张512² PNG采用无缝周期细噪声，保留轻微滚涂颗粒，不包含砖缝或裂纹。
 
-书房、客厅和全屋结构的程序几何、程序纹理与交互由项目代码构建。主卧床/柜、主卫洁具/淋浴及瓷砖勾缝为本项目原创程序组件，按项目源代码条款使用，复用既有木纹、织物、窗景和HDR；未增加下载模型或图片。浴室镜面使用512²实时平面反射目标，绘制所在卫浴的实际几何，不使用HDR中的其他房间作倒影。Babylon.js 的许可证和声明随发布目录保留：[Apache-2.0](licenses/babylonjs-Apache-2.0.md)、[NOTICE](licenses/babylonjs-NOTICE.md)。Webpack 从分包提取的第三方声明保留在对应的 `js/*.LICENSE.txt` 中，全部纳入发布清单。
+书房、客厅和全屋结构的程序几何、程序纹理与交互由项目代码构建。主卧与次卧床/柜、次卧阅读凳/台灯、主卫洁具/淋浴及瓷砖勾缝为本项目原创程序组件，按项目源代码条款使用，复用既有木纹、织物、窗景和HDR；未增加下载模型或图片。浴室镜面使用512²实时平面反射目标，绘制所在卫浴的实际几何，不使用HDR中的其他房间作倒影。Babylon.js 的许可证和声明随发布目录保留：[Apache-2.0](licenses/babylonjs-Apache-2.0.md)、[NOTICE](licenses/babylonjs-NOTICE.md)。Webpack 从分包提取的第三方声明保留在对应的 `js/*.LICENSE.txt` 中，全部纳入发布清单。
