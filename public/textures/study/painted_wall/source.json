@@ -1,0 +1,44 @@
+{
+  "source": "Original procedural maps authored in this project",
+  "created": "2026-10-16",
+  "license": "Project source terms (package.json: ISC); not a Poly Haven asset",
+  "generator": "tools/generate-painted-wall.py",
+  "seed": 20261016,
+  "size": [
+    512,
+    512
+  ],
+  "generatorSha256": "9ba9386349ed5efcf3ef568d879cf5b8adb0bb98a6468a2720c3d76e48942906",
+  "generatedWith": {
+    "python": "3.9.6",
+    "zlib": "1.2.12"
+  },
+  "material": {
+    "baseColor": "#e4dfd4",
+    "normalStrength": 0.18,
+    "worldUnitsPerTile": 6
+  },
+  "algorithm": "Periodic hashed value noise; cells 2/8 for fine height, 64 for subtle colour; wrap derivatives for OpenGL tangent normals",
+  "channels": {
+    "color": "sRGB grayscale multiplied by warm off-white material colour",
+    "normal": "Linear RGB tangent normal, OpenGL +Y",
+    "arm": "Linear RGB: AO=255, roughness=232 plus subtle grain, metalness=0"
+  },
+  "files": {
+    "color.png": {
+      "file": "textures/study/painted_wall/color.png",
+      "bytes": 58252,
+      "sha256": "a1c0489dd75eea2c094ca57b942ef77b0b5cb11f91dd13c713bd9f8fb21409a9"
+    },
+    "normal.png": {
+      "file": "textures/study/painted_wall/normal.png",
+      "bytes": 403149,
+      "sha256": "a3f21adb78e23cbe31af99034527ecaa6d506eea8df1b4e0dff365445a040913"
+    },
+    "arm.png": {
+      "file": "textures/study/painted_wall/arm.png",
+      "bytes": 75148,
+      "sha256": "145eae6481ac9895f033ea4cf61318b668dc04c7c879a1cfab719fa51f999c33"
+    }
+  }
+}

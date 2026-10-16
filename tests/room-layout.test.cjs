@@ -27,7 +27,7 @@ const { RoomItemInspection } = loadSource("RoomItemInspection");
 const { RoomInteractions, cabinetDrawers } = loadSource("RoomInteractions");
 const { RoomLighting } = loadSource("RoomLighting");
 const { placeFurniture } = loadSource("RoomFurnitureAssets");
-const { mappedMaterial, tileMaterial } = loadSource("RoomMaterials");
+const { mappedMaterial, paintedWallMaterial, tileMaterial } = loadSource("RoomMaterials");
 const { beveledBox, creasedLetter, curtainPanel, ficusLeaf } = loadSource("RoomDetailGeometry");
 const { buildWearMask } = loadSource("RoomSurfaceDetails");
 const { partitionMergedCollisions } = loadSource("RoomCollisions");
@@ -442,7 +442,7 @@ for (const [file, width, rotation, x, z] of [
 
 test("wall colour, normal and ARM maps tile together without modifying other walls", t => {
   const scene = createScene(t);
-  const source = mappedMaterial("brick", scene, "brick_wall_001");
+  const source = paintedWallMaterial(scene);
   const wall = tileMaterial(source, "wall", 3.5, 1.2);
   const other = tileMaterial(source, "lintel", 0.7, 0.3);
   for (const key of ["albedoTexture", "bumpTexture", "metallicTexture"]) {
@@ -455,6 +455,25 @@ test("wall colour, normal and ARM maps tile together without modifying other wal
   assert.equal(wall.albedoTexture.gammaSpace, true);
   assert.equal(wall.bumpTexture.gammaSpace, false);
   assert.equal(wall.metallicTexture.gammaSpace, false);
+  assert.equal(wall.bumpTexture.level, 0.18);
+  assert.ok([wall.albedoTexture, wall.bumpTexture, wall.metallicTexture].every(texture =>
+    texture.url.includes('/painted_wall/') && texture.url.endsWith('.png')));
+});
+
+test("all exterior, shared and lintel walls use the same painted finish while wood remains separate", t => {
+  const { scene } = adjacentRooms(t);
+  const names = ['back-wall-left', 'back-wall-right', 'door-lintel-wall', 'left-painted-wall',
+    'front-painted-wall', 'shared-wall-0', 'shared-wall-1', 'shared-wall-2', 'living-back-wall',
+    'living-right-wall', 'living-front-wall', 'living-right-painted-facing'];
+  for (const name of names) {
+    const mesh = scene.getMeshByName(name);
+    assert.ok(mesh, name);
+    assert.ok(mesh.material.albedoTexture.url.includes('/painted_wall/'), name);
+    assert.equal(mesh.material.bumpTexture.level, 0.18);
+    assert.equal(mesh.material.metallicTexture.gammaSpace, false);
+  }
+  assert.ok(scene.getMaterialByName('wood').albedoTexture.url.includes('/wood_table_001/'));
+  assert.ok(!scene.textures.some(texture => texture.url?.includes('/brick_wall_001/')));
 });
 
 test("rugs receive shadows without hiding chair legs; cached shadows refresh after enclosure changes", t => {

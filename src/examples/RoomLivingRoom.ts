@@ -13,18 +13,18 @@ export function constrainWalkingPosition(position: Vector3) {
 }
 
 /** Existing study wall, split all the way to the floor; shown only in enclosed mode. */
-export function createSharedWall(scene: Scene, shell: TransformNode, brick: PBRMaterial) {
+export function createSharedWall(scene: Scene, shell: TransformNode, paint: PBRMaterial) {
   const spans = [...SHARED_WALL_SPANS.map(span => ({ ...span, lintel: false })),
     { length: CONNECTING_PASSAGE.width, z: CONNECTING_PASSAGE.centerZ, lintel: true }];
   spans.forEach(({ length, z, lintel }, index) => {
     const height = lintel ? 3 : 14, y = lintel ? 7.5 : 2;
     const wall = CreateBox("shared-wall-" + index, { width: 0.5, height, depth: length }, scene);
     wall.position.set(20, y, z); wall.parent = shell;
-    wall.material = tileMaterial(brick, wall.name + "-brick", length / 6, height / 6);
+    wall.material = tileMaterial(paint, wall.name + "-paint", length / 6, height / 6);
     wall.receiveShadows = wall.checkCollisions = true; wall.isPickable = false;
     wall.freezeWorldMatrix();
     for (const side of [-1, 1]) {
-      const face = CreatePlane(`shared-brick-facing-${index}-${side}`, { width: length, height }, scene);
+      const face = CreatePlane(`shared-painted-facing-${index}-${side}`, { width: length, height }, scene);
       face.position.set(20 + side * 0.26, y, z); face.rotation.y = side * -Math.PI / 2;
       face.parent = shell; face.material = wall.material; face.receiveShadows = true; face.isPickable = false;
       face.metadata = { room: side > 0 ? "living" : "study", castsShadows: false };
@@ -35,7 +35,7 @@ export function createSharedWall(scene: Scene, shell: TransformNode, brick: PBRM
 
 /** A walnut-and-moss sitting room; all maps are shared with the original study. */
 export function createLivingRoom(scene: Scene, room: RoomFurnishings, shell: TransformNode) {
-  const brick = scene.getMaterialByName("warm-exposed-brick") as PBRMaterial;
+  const paint = scene.getMaterialByName("warm-painted-wall") as PBRMaterial;
   const ground = CreateGround("living-oak-floor", { width: 34, height: 40 }, scene);
   ground.position.set(37, -5, 0);
   ground.material = tileMaterial(scene.getMaterialByName("oak-floor") as PBRMaterial, "living-oak-floor", 4.25, 5);
@@ -45,7 +45,7 @@ export function createLivingRoom(scene: Scene, room: RoomFurnishings, shell: Tra
   const wall = (name: string, size: [number, number, number], position: [number, number, number], enclosed = false) => {
     const mesh = CreateBox(name, { width: size[0], height: size[1], depth: size[2] }, scene);
     mesh.position.set(...position); mesh.parent = enclosed ? shell : null;
-    mesh.material = tileMaterial(brick, name + "-brick", Math.max(size[0], size[2]) / 6, size[1] / 6);
+    mesh.material = tileMaterial(paint, name + "-paint", Math.max(size[0], size[2]) / 6, size[1] / 6);
     mesh.metadata = { room: "living" };
     mesh.checkCollisions = mesh.receiveShadows = true; mesh.isPickable = false; mesh.freezeWorldMatrix();
     return mesh;
@@ -53,7 +53,7 @@ export function createLivingRoom(scene: Scene, room: RoomFurnishings, shell: Tra
   wall("living-back-wall", [34, 14, 0.5], [37, 2, -20]);
   const right = wall("living-right-wall", [0.5, 14, 40.5], [54, 2, 0], true);
   wall("living-front-wall", [34, 14, 0.5], [37, 2, 20], true);
-  const facing = CreatePlane("living-right-brick-facing", { width: 40, height: 14 }, scene);
+  const facing = CreatePlane("living-right-painted-facing", { width: 40, height: 14 }, scene);
   facing.position.set(53.74, 2, 0); facing.rotation.y = Math.PI / 2; facing.parent = shell;
   facing.material = right.material; facing.receiveShadows = true; facing.isPickable = false;
   facing.metadata = { room: "living", castsShadows: false }; facing.freezeWorldMatrix();

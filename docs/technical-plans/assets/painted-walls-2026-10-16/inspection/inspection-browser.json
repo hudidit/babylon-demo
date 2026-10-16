@@ -1,0 +1,613 @@
+{
+  "browser": "155.0.8059.79",
+  "baseline": "1ba3708",
+  "deviceScaleFactor": 1,
+  "cacheDisabled": true,
+  "fpsCpuGpuLoadTimeSampling": false,
+  "views": [
+    {
+      "name": "inspection-desktop",
+      "viewport": [
+        1280,
+        720
+      ],
+      "min": [
+        472.60000228881836,
+        136.8000030517578
+      ],
+      "max": [
+        807.3999977111816,
+        583.1999969482422
+      ],
+      "button": {
+        "top": 603.1875,
+        "bottom": 645.1875,
+        "left": 584,
+        "right": 696
+      }
+    },
+    {
+      "name": "inspection-portrait",
+      "viewport": [
+        390,
+        844
+      ],
+      "min": [
+        35.09999084472656,
+        208.8000030517578
+      ],
+      "max": [
+        354.90000915527344,
+        635.1999969482422
+      ],
+      "button": {
+        "top": 655.1875,
+        "bottom": 697.1875,
+        "left": 139,
+        "right": 251
+      }
+    },
+    {
+      "name": "inspection-landscape",
+      "viewport": [
+        844,
+        390
+      ],
+      "min": [
+        331.3250045776367,
+        74.0999984741211
+      ],
+      "max": [
+        512.6749954223633,
+        315.9000015258789
+      ],
+      "button": {
+        "top": 335.890625,
+        "bottom": 377.890625,
+        "left": 366,
+        "right": 478
+      }
+    }
+  ],
+  "environment": {
+    "glInfo": {
+      "vendor": "Google Inc. (Apple)",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M6, Unspecified Version)",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    },
+    "viewport": [
+      1280,
+      720
+    ],
+    "renderLoopStopped": true,
+    "deterministicAnimationDeltaMilliseconds": 50
+  },
+  "initialJsBytes": 2612523,
+  "inputIsolation": {
+    "mouseKeyboardWheelBlocked": true,
+    "tabDoesNotReachSceneControls": true
+  },
+  "orbit": {
+    "before": {
+      "camera": "study-camera",
+      "position": [
+        -1.9999999999999996,
+        4.6,
+        3.350000000000002
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        -3.5,
+        -0.36,
+        -0.65
+      ],
+      "meshes": 145,
+      "materials": 64,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": false,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": false,
+      "preview": null
+    },
+    "opened": {
+      "camera": "study-item-inspection",
+      "position": [
+        0,
+        0,
+        -8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "meshes": 146,
+      "materials": 65,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": false,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": true,
+      "preview": {
+        "sharedGeometry": true,
+        "sharedTexture": true,
+        "pickable": false,
+        "collisions": false,
+        "layerMask": 268435456
+      }
+    },
+    "returned": {
+      "camera": "study-camera",
+      "position": [
+        -1.9999999999999996,
+        4.6,
+        3.350000000000002
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        -3.5,
+        -0.36,
+        -0.65
+      ],
+      "meshes": 145,
+      "materials": 64,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": false,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": false,
+      "preview": null
+    },
+    "cameraRestored": true
+  },
+  "repeatedOpenCloseWithoutMeshOrMaterialLeak": true,
+  "firstPerson": {
+    "before": {
+      "camera": "study-first-person",
+      "position": [
+        -5,
+        1,
+        3.2
+      ],
+      "rotation": [
+        0.31797844737416014,
+        2.7700748030298863,
+        0
+      ],
+      "target": [
+        -3.5000000114785506,
+        -0.3600000103349783,
+        -0.6499999186828944
+      ],
+      "meshes": 145,
+      "materials": 64,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": true,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": false,
+      "preview": null
+    },
+    "returned": {
+      "camera": "study-first-person",
+      "position": [
+        -5,
+        1,
+        3.2
+      ],
+      "rotation": [
+        0.31797844737416014,
+        2.7700748030298863,
+        0
+      ],
+      "target": [
+        -3.5000000114785506,
+        -0.3600000103349783,
+        -0.6499999186828944
+      ],
+      "meshes": 145,
+      "materials": 64,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": true,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": false,
+      "preview": null
+    },
+    "escape": {
+      "camera": "study-first-person",
+      "position": [
+        -5,
+        1,
+        3.2
+      ],
+      "rotation": [
+        0.31797844737416014,
+        2.7700748030298863,
+        0
+      ],
+      "target": [
+        -3.5000000114785506,
+        -0.3600000103349783,
+        -0.6499999186828944
+      ],
+      "meshes": 145,
+      "materials": 64,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": false,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": false,
+      "preview": null
+    },
+    "buttonRestoresLock": true,
+    "escapeClosesOnlyInspection": true,
+    "deniedReturnKeepsPositionAndPausesInput": true,
+    "canvasClickRetryRestoresLock": true,
+    "simulatedBlurKeepsInspectionOpen": true
+  },
+  "nativeLockErrors": [],
+  "inspectionExtraRequests": 0,
+  "passed": true,
+  "phase": "first-person",
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8094/",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 6992
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/main.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 74390
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/4259.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2387002
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/painted_wall/color.png",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/study/forest-window/view.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1155565
+    },
+    {
+      "url": "http://127.0.0.1:8094/textures/pictures/pic1.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8094/environment/study-interior.hdr",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/1203.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8094/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8094/models/gothic_commode.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8094/models/wooden_bookshelf.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8094/models/study/sofa_03.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8094/js/8558.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/eeda2428-a365-4bb1-80e7-2121ceaa0e8f",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/b72f8cf5-44c6-4916-8529-f9562a7eab15",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/4795fe2b-b988-4246-99a0-897ed4773a64",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/1a8af973-458a-4ac6-a66a-235adf7ba589",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/28aed28d-704d-4433-8f49-aa18449349a7",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/9d048bb4-3cb9-400b-ad46-e573c50d1cbe",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/8a10894d-8786-43af-9df6-7625a408c529",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/ec86879a-5569-415b-a154-118275d8a631",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/70ac9535-56cc-4fe0-a3b2-5ee697e68550",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/e3eb5481-aec4-4a5f-92ec-8b73dcdb3c42",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 354145
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/59a5deb3-ef15-4827-816d-d2c64bbd7166",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/78a5a9c6-6d9b-46bb-9bdc-4d55d46dafe5",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/dc383f9e-a44a-4ee1-af3d-9674a1f720eb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/82b678fe-ce7b-4e30-a807-478364e08f5d",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/33bd56ba-805c-4166-917e-b62c7d637535",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8094/ccfafcf9-6232-4bf3-9871-7ace9171abd8",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 321223
+    }
+  ]
+}

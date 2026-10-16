@@ -1,7 +1,7 @@
 import { Color3, PBRMaterial, Texture } from "@babylonjs/core/pure";
 import type { Scene } from "@babylonjs/core/pure";
 
-/** Local, 1K PBR maps. ARM is linear: occlusion in R, roughness in G, metalness in B. */
+/** Local PBR maps. ARM is linear: occlusion in R, roughness in G, metalness in B. */
 export function surfaceMaterial(name: string, scene: Scene, color: string, roughness = 0.75) {
   const material = new PBRMaterial(name, scene);
   material.albedoColor = Color3.FromHexString(color).toLinearSpace();
@@ -13,10 +13,10 @@ export function surfaceMaterial(name: string, scene: Scene, color: string, rough
 }
 
 export function mappedMaterial(name: string, scene: Scene, asset: string,
-  color = "#ffffff", repeat = 1, normalStrength = 0.35, useColor = true) {
+  color = "#ffffff", repeat = 1, normalStrength = 0.35, useColor = true, extension: "jpg" | "png" = "jpg") {
   const material = surfaceMaterial(name, scene, color, 1);
   const load = (file: string, gamma: boolean) => {
-    const texture = new Texture(`./textures/study/${asset}/${file}.jpg`, scene);
+    const texture = new Texture(`./textures/study/${asset}/${file}.${extension}`, scene);
     texture.gammaSpace = gamma;
     texture.uScale = texture.vScale = repeat;
     texture.anisotropicFilteringLevel = 8;
@@ -35,6 +35,11 @@ export function mappedMaterial(name: string, scene: Scene, asset: string,
   material.useAmbientOcclusionFromMetallicTextureRed = true;
   material.ambientTextureStrength = 0.35;
   return material;
+}
+
+/** Fine roller stipple, without masonry joints or heavy plaster relief. */
+export function paintedWallMaterial(scene: Scene) {
+  return mappedMaterial("warm-painted-wall", scene, "painted_wall", "#e4dfd4", 1, 0.18, true, "png");
 }
 
 export function linenMaterial(name: string, scene: Scene, color: string, repeat = 7) {

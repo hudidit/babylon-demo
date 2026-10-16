@@ -1,0 +1,153 @@
+{
+  "baseline": "4457ced",
+  "retainedRuntimeFiles": [
+    {
+      "path": "environment/study-interior.hdr",
+      "kind": "runtime",
+      "bytes": 1649529,
+      "sha256": "ca919c41d78c8fc0dd104f47fd9201530ddcbd3c3574c3d1fc5362846e4076e1"
+    },
+    {
+      "path": "models/gothic_commode.glb",
+      "kind": "runtime",
+      "bytes": 1549376,
+      "sha256": "14905770ce0467edfe426e1fe315acb7232265ba6a1fdb2744fcf691945e0e2f"
+    },
+    {
+      "path": "models/study/modern_arm_chair_01.glb",
+      "kind": "runtime",
+      "bytes": 2696208,
+      "sha256": "e63d43aa97f499c95f7b02cff070c78fb68017a1f423b261bbd62d8eb4452049"
+    },
+    {
+      "path": "models/study/sofa_03.glb",
+      "kind": "runtime",
+      "bytes": 818172,
+      "sha256": "8bf6e226b6add7aaf31479dd824e50c8ce6024df48cb609b900976f6991b5a3b"
+    },
+    {
+      "path": "models/wooden_bookshelf.glb",
+      "kind": "runtime",
+      "bytes": 2783464,
+      "sha256": "8d1bcf250559c6f6f1fd255d1be9027fe6b0cbfbd066e4358d0bf138699bb354"
+    },
+    {
+      "path": "textures/pictures/pic1.jpg",
+      "kind": "runtime",
+      "bytes": 29797,
+      "sha256": "00cd6f16547108ab2f713513974cb523676e93eae9a38df9c7134790be113967"
+    },
+    {
+      "path": "textures/study/forest-window/view.jpg",
+      "kind": "runtime",
+      "bytes": 1155565,
+      "sha256": "cf9b1fd22b8afc19b8ff27363c7ed0d94319ab1fc04b65f4b95e7987fc43c14b"
+    },
+    {
+      "path": "textures/study/rough_linen/arm.jpg",
+      "kind": "runtime",
+      "bytes": 1191393,
+      "sha256": "e1ca6b51ed62834063253e08f8f2e23836aa00d72675b960ddd8e608d9f0c7e6"
+    },
+    {
+      "path": "textures/study/rough_linen/normal.jpg",
+      "kind": "runtime",
+      "bytes": 916843,
+      "sha256": "e2402166d1a489f7414814e69e1836ab672aa24e30bec2d41fea356f81687e53"
+    },
+    {
+      "path": "textures/study/wood_floor/arm.jpg",
+      "kind": "runtime",
+      "bytes": 447855,
+      "sha256": "a84d9457fa35a76cf8a41da8bcef55387230c6b236819de878799585eda76059"
+    },
+    {
+      "path": "textures/study/wood_floor/color.jpg",
+      "kind": "runtime",
+      "bytes": 734493,
+      "sha256": "2a1c07687b6dbb214c4b9213739c6d92d425f1f0fc8ab3ac157f105d78240789"
+    },
+    {
+      "path": "textures/study/wood_floor/normal.jpg",
+      "kind": "runtime",
+      "bytes": 423303,
+      "sha256": "452247f0d0d1b7fc7f8324ff3b6ed60bcc6de1405f4284eeb8d9bce90d4939c2"
+    },
+    {
+      "path": "textures/study/wood_table_001/arm.jpg",
+      "kind": "runtime",
+      "bytes": 214520,
+      "sha256": "29d3f34a7c2c213e21b320365495fad673d3c8a3ce885b879fc0a77a187dd828"
+    },
+    {
+      "path": "textures/study/wood_table_001/color.jpg",
+      "kind": "runtime",
+      "bytes": 215573,
+      "sha256": "460dd08d240f4a1f02982415048c3c5c200f385db212da18dc7e2df68bf4d0be"
+    },
+    {
+      "path": "textures/study/wood_table_001/normal.jpg",
+      "kind": "runtime",
+      "bytes": 51927,
+      "sha256": "9bf7ddf5721e225c20290f1772ae37f9bdfd49658f6d458259eb794e2149d3cf"
+    }
+  ],
+  "removedRuntimeFiles": [
+    {
+      "path": "textures/study/brick_wall_001/arm.jpg",
+      "kind": "runtime",
+      "bytes": 123384,
+      "sha256": "8e6ab4cecd82c4305c9511065b0795bd579df89df8364a76a7359c1278bed38d"
+    },
+    {
+      "path": "textures/study/brick_wall_001/color.jpg",
+      "kind": "runtime",
+      "bytes": 574381,
+      "sha256": "6a1233ec0186703de830354d89f122991e61e67fb67e0846c7eaf6c5aefea902"
+    },
+    {
+      "path": "textures/study/brick_wall_001/normal.jpg",
+      "kind": "runtime",
+      "bytes": 295279,
+      "sha256": "8afbe3919308b168a6b7235fe7b930f670cfffa1a34de39ee790d55c9d7bda09"
+    }
+  ],
+  "addedRuntimeFiles": [
+    {
+      "path": "textures/study/painted_wall/arm.png",
+      "kind": "runtime",
+      "bytes": 75148,
+      "sha256": "145eae6481ac9895f033ea4cf61318b668dc04c7c879a1cfab719fa51f999c33"
+    },
+    {
+      "path": "textures/study/painted_wall/color.png",
+      "kind": "runtime",
+      "bytes": 58252,
+      "sha256": "a1c0489dd75eea2c094ca57b942ef77b0b5cb11f91dd13c713bd9f8fb21409a9"
+    },
+    {
+      "path": "textures/study/painted_wall/normal.png",
+      "kind": "runtime",
+      "bytes": 403149,
+      "sha256": "a3f21adb78e23cbe31af99034527ecaa6d506eea8df1b4e0dff365445a040913"
+    }
+  ],
+  "before": {
+    "runtimeBytes": 15871062,
+    "initialJsBytes": 2612476,
+    "releaseBytes": 42052899
+  },
+  "after": {
+    "runtimeBytes": 15414567,
+    "initialJsBytes": 2612523,
+    "releaseBytes": 41598668
+  },
+  "geometryUnchanged": true,
+  "fpsCpuGpuOrLoadTimeSampling": false,
+  "budgetsChanged": false,
+  "delta": {
+    "runtimeBytes": -456495,
+    "initialJsBytes": 47,
+    "releaseBytes": -454231
+  }
+}

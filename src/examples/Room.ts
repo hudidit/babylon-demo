@@ -5,7 +5,7 @@ import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import { registerRoomRuntime } from "./RoomRuntime";
 import { RoomFurnishings } from "./RoomFurnishings";
 import { RoomLighting } from "./RoomLighting";
-import { mappedMaterial, tileMaterial } from "./RoomMaterials";
+import { mappedMaterial, paintedWallMaterial, tileMaterial } from "./RoomMaterials";
 import { placeFurniture } from "./RoomFurnitureAssets";
 import { createRoomFinishing } from "./RoomFinishing";
 import { cabinetDrawers, RoomInteractions } from "./RoomInteractions";
@@ -373,22 +373,22 @@ export class RoomScene {
     ground.checkCollisions = true;
     room.box("foundation", [40.6, 0.6, 40.6], [0, -5.4, 0], "darkWood");
 
-    const brick = mappedMaterial("warm-exposed-brick", scene, "brick_wall_001", "#e1d5c5", 1, 0.38);
+    const paint = paintedWallMaterial(scene);
     const leftBack = CreateBox("back-wall-left", { width: 14, height: 14, depth: 0.5 }, scene);
     leftBack.position.set(-13, 2, -20);
     const rightBack = CreateBox("back-wall-right", { width: 18, height: 14, depth: 0.5 }, scene);
     rightBack.position.set(11, 2, -20);
     const lintel = CreateBox("door-lintel-wall", { width: 8, height: 3.2, depth: 0.5 }, scene);
     lintel.position.set(-2, 7.4, -20);
-    const left = CreateBox("left-brick-wall", { width: 0.5, height: 14, depth: 40 }, scene);
+    const left = CreateBox("left-painted-wall", { width: 0.5, height: 14, depth: 40 }, scene);
     left.position.set(-20, 2, 0);
-    createSharedWall(scene, this.interiorShell, brick);
-    const front = CreateBox("front-brick-wall", { width: 40.5, height: 14, depth: 0.5 }, scene);
+    createSharedWall(scene, this.interiorShell, paint);
+    const front = CreateBox("front-painted-wall", { width: 40.5, height: 14, depth: 0.5 }, scene);
     front.position.set(0, 2, 20);
     front.parent = this.interiorShell;
     const spans = [14, 18, 8, 40, 40.5];
     [leftBack, rightBack, lintel, left, front].forEach((mesh, index) => {
-      const wallMaterial = tileMaterial(brick, mesh.name + "-brick", spans[index] / 6,
+      const wallMaterial = tileMaterial(paint, mesh.name + "-paint", spans[index] / 6,
         (index === 2 ? 3.2 : 14) / 6);
       mesh.material = wallMaterial;
       mesh.receiveShadows = true;
@@ -396,8 +396,8 @@ export class RoomScene {
       mesh.isPickable = false;
       mesh.freezeWorldMatrix();
       if (mesh === left) {
-        // The box's narrow side UVs rotate the brick map; use a wall-sized face.
-        const facing = CreatePlane("left-wall-brick-facing",
+        // The box's narrow side UVs rotate the surface map; use a wall-sized face.
+        const facing = CreatePlane("left-wall-painted-facing",
           { width: 40, height: 14 }, scene);
         facing.position.set(-19.74, 2, 0);
         facing.rotation.y = -Math.PI / 2;

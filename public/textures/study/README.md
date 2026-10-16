@@ -1,6 +1,6 @@
 # 书房材质与家具资源
 
-这些外部资源用于房间真实感优化，来自 [Poly Haven](https://polyhaven.com)，按 [CC0 素材许可](https://polyhaven.com/license) 使用和分发。
+下表列出的外部扫描资源来自 [Poly Haven](https://polyhaven.com)，按 [CC0 素材许可](https://polyhaven.com/license) 使用和分发。新增 `painted_wall` 为本项目原创程序纹理，单独记录来源和条款。
 
 完整作者、下载 URL、源文件 MD5、模型打包后 SHA256 及文件大小见 [manifest.json](manifest.json)。
 
@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | [Wood Floor](https://polyhaven.com/a/wood_floor) | 木地板 | `wood_floor/color.jpg`、`normal.jpg`、`arm.jpg` |
 | [Wood Table 001](https://polyhaven.com/a/wood_table_001) | 家具木材与木饰面 | `wood_table_001/color.jpg`、`normal.jpg`、`arm.jpg` |
-| [Brick Wall 001](https://polyhaven.com/a/brick_wall_001) | 墙砖 | `brick_wall_001/color.jpg`、`normal.jpg`、`arm.jpg` |
+| [Brick Wall 001](https://polyhaven.com/a/brick_wall_001) | 历史砖墙，已退出运行与发布 | `brick_wall_001/color.jpg`、`normal.jpg`、`arm.jpg` |
 | [Rough Linen](https://polyhaven.com/a/rough_linen) | 织物微表面 | `rough_linen/normal.jpg`、`arm.jpg` |
 | [Sofa 03](https://polyhaven.com/a/sofa_03) | 阅读区沙发 | [sofa_03.glb](../../models/study/sofa_03.glb) |
 | [Modern Arm Chair 01](https://polyhaven.com/a/modern_arm_chair_01) | 窗边扶手椅 | [modern_arm_chair_01.glb](../../models/study/modern_arm_chair_01.glb) |
@@ -19,7 +19,8 @@
 
 ## 材质约定
 
-- 贴图使用官方 1K JPEG。颜色贴图按 sRGB 读取，法线与 ARM 按线性数据读取。
+- 两房当前墙面使用原创暖米白乳胶漆纹理：`painted_wall/color.png`、`normal.png`、`arm.png`，512²、周期细颗粒；来源、生成脚本/参数与SHA256见[独立记录](painted_wall/source.json)。它不属于本目录Poly Haven扫描清单，不继承其CC0声明。
+- 外部扫描贴图使用官方 1K JPEG。颜色贴图按 sRGB 读取，法线与 ARM 按线性数据读取。
 - 法线选用 OpenGL 版本，由材质根据场景坐标系处理方向。
 - ARM 的 R、G、B 分别存储遮蔽、粗糙度、金属度。墙面各贴图的重复比例保持一致。
 - 亚麻只使用扫描法线与 ARM，颜色由材质指定，保留原有复古配色；布料的 sheen 表现柔和的边缘反光。
