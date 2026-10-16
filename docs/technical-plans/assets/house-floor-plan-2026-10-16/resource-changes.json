@@ -1,0 +1,25 @@
+{
+  "baseline": "c1e6961",
+  "runtimeFiles": 30,
+  "allRuntimeRecordsUnchanged": true,
+  "before": {
+    "runtimeBytes": 15702135,
+    "staticInitialJsBytes": 2475683,
+    "actualInitialJsBytesIncludingAudioPreheat": 2694535,
+    "completeReleaseBytes": 41934890
+  },
+  "after": {
+    "runtimeBytes": 15702135,
+    "staticInitialJsBytes": 2483243,
+    "actualInitialJsBytesIncludingAudioPreheat": 2702095,
+    "completeReleaseBytes": 41952114
+  },
+  "budgetsChanged": false,
+  "fpsOrLoadTimeSampling": false,
+  "delta": {
+    "runtimeBytes": 0,
+    "staticInitialJsBytes": 7560,
+    "actualInitialJsBytesIncludingAudioPreheat": 7560,
+    "completeReleaseBytes": 17224
+  }
+}

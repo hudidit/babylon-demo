@@ -1,0 +1,108 @@
+
+> babylon-learning@0.0.1 test
+> node --test tests/*.test.cjs
+
+✔ revised plan has a direct living-room entry, a compact study and a larger master bedroom (1.2155ms)
+✔ floor spans do not overlap and every doorway lies on both connected room boundaries (0.301125ms)
+✔ every room is reachable from the entry and the private bathroom only connects to the master bedroom (0.168958ms)
+✔ paint maps are reproducible, seamless-periodic and retain subtle opaque nonmetal paint channels (2235.137916ms)
+✔ audio preferences tolerate null, malformed values and clamp valid levels (0.685084ms)
+✔ saved mute does not initialize or request assets; preload shares fetch/decode and prepared objects (2.48025ms)
+✔ locked, muted and background actions never reach the backend or replay after recovery (109.035ms)
+✔ gesture candidate is short-lived and reversal invalidates it before unlock resolves (42.101959ms)
+✔ blur during a pending unlock remains suspended after the resume Promise resolves (3.12775ms)
+✔ per-item HTTP/decode failure degrades independently, retries at most once and never backfills events (5.323333ms)
+✔ bad decode and excessive decoded PCM do not allocate playable objects (1.996666ms)
+✔ bounded polyphony, high-priority replacement and ended cleanup respect the six-voice cap (39.274125ms)
+✔ moving entities update only in first-person; paper stays 2D; view change stops old voices (34.316292ms)
+✔ disposing in-flight download cancels it and ignores late results (8.263625ms)
+✔ reviewed audio is reproducible, catalog matches whitelist and corrupt/long/unlicensed files fail validation (15.014666ms)
+BJS - [23:00:06]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:06]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:06]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:07]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:07]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:07]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:07]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:07]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:07]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:07]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+BJS - [23:00:08]: Babylon.js v9.30.0 - Null engine
+✔ adjacent rooms have a real bidirectional passage and closed walls outside it (277.029ms)
+✔ living room lamps and shadows stay in their room without taking study light slots (126.125417ms)
+✔ single door picks from both rooms, reverse smoothly and move their physical collision (147.635708ms)
+✔ door sweep pauses for a walker, resumes after clearance and supports reversing while blocked (117.360375ms)
+✔ audio events follow actual movement, blocking and completion rather than click timers (131.07075ms)
+✔ section batching preserves singleton artwork/window world transforms and cutaway parenting (166.398333ms)
+✔ collision partitions preserve swept collisions and cull distant geometry without extra draw calls (71.2895ms)
+✔ actual room collision partitions cover every merged index and preserve first-person sweeps (316.231042ms)
+✔ books and vase fit the actual bookshelf model at scale 5.2 (57.0415ms)
+✔ books and vase fit the actual bookshelf model at scale 3.7 (42.76925ms)
+✔ all flower stems connect to both the vase neck and their flower heads (15.326083ms)
+✔ changing movement speed applies immediately and clears previous movement (1.0325ms)
+✔ lamp lights emit below their shades and the window is the main light source (20.416542ms)
+✔ floor lamp foot touches the floor and its stacked base joins the stem (14.019ms)
+✔ sofa_03 fits its room footprint and sits on the floor after glTF conversion (1.050417ms)
+✔ modern_arm_chair_01 fits its room footprint and sits on the floor after glTF conversion (0.80525ms)
+✔ wall colour, normal and ARM maps tile together without modifying other walls (0.57125ms)
+✔ all exterior, shared and lintel walls use the same painted finish while wood remains separate (103.982042ms)
+✔ rugs receive shadows without hiding chair legs; cached shadows refresh after enclosure changes (14.40325ms)
+✔ beveled boards keep their dimensions and have outward, finite surface normals (0.517333ms)
+✔ stacked book covers touch the support and the next book without floating gaps (17.9365ms)
+✔ cloth gathers around its tie and leaves have a thin, curved pointed silhouette (0.487917ms)
+✔ desk accessories, tea tray and small furniture rest on their actual supports (18.215917ms)
+✔ wear masks preserve tangent normals and keep surface variation subtle and reproducible (30.934916ms)
+✔ creased letter rests on the blotter and curls only a small distance above it (15.897291ms)
+✔ detail view permits close inspection and restores overview zoom limits on exit (2.184542ms)
+✔ all five procedural drawers retain boxes, independent motion and live collisions after merging (36.800167ms)
+✔ actual cabinet drawers move outward through the glTF conversion, preserving their geometry (1.852334ms)
+✔ picking respects occlusion, hidden geometry and first-person reach (0.392166ms)
+✔ lamp switches independently restore direct light and their own emission (22.185125ms)
+✔ the inspectable letter remains a complete independent mesh on its original desk support (19.222084ms)
+✔ inspection centres and fits the actual shared geometry, restores the original camera and releases only preview resources (27.669042ms)
+✔ letter inspection uses the existing ray action and preview geometry cannot occlude scene actions (20.16525ms)
+✔ pointer lock handles browser Escape, explicit release, rejection, late success and disposal (0.475208ms)
+✔ pure room registrations work in a fresh process without the core side-effect barrel (754.007666ms)
+✔ initial dependency guard rejects broad or unrelated systems while allowing room features (0.638917ms)
+✔ gothic_commode.glb retains original geometry, UVs and material graph after image optimization (5.945625ms)
+✔ wooden_bookshelf.glb retains original geometry, UVs and material graph after image optimization (2.681625ms)
+✔ optimized study models stay inside the documented image-quality-adjusted budget (0.117833ms)
+▶ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases
+  ✔ whitelist matches measured runtime assets, copied bytes and full compiled output (25.373541ms)
+  ✔ missing lazy chunk is rejected (1.6525ms)
+  ✔ extra example asset or stale build file is rejected (0.589458ms)
+  ✔ same-size resource corruption is rejected by SHA256 (5.995541ms)
+  ✔ GLB external dependencies require a whitelist review even when manifest hash is updated (2.800792ms)
+  ✔ production mode and fixed budgets cannot silently change (3.745834ms)
+  ✔ oversized initial JS is rejected even with consistent hashes and totals (11.752958ms)
+  ✔ missing white-listed source fails compilation (13.653334ms)
+✔ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases (529.196791ms)
+ℹ tests 63
+ℹ suites 0
+ℹ pass 63
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2963.178

@@ -1,0 +1,733 @@
+{
+  "browser": "155.0.8059.82",
+  "baseline": "1ba3708",
+  "deviceScaleFactor": 1,
+  "cacheDisabled": true,
+  "fpsCpuGpuLoadTimeSampling": false,
+  "views": [
+    {
+      "name": "inspection-desktop",
+      "viewport": [
+        1280,
+        720
+      ],
+      "min": [
+        472.60000228881836,
+        136.8000030517578
+      ],
+      "max": [
+        807.3999977111816,
+        583.1999969482422
+      ],
+      "button": {
+        "top": 603.1875,
+        "bottom": 645.1875,
+        "left": 584,
+        "right": 696
+      }
+    },
+    {
+      "name": "inspection-portrait",
+      "viewport": [
+        390,
+        844
+      ],
+      "min": [
+        35.09999084472656,
+        208.8000030517578
+      ],
+      "max": [
+        354.90000915527344,
+        635.1999969482422
+      ],
+      "button": {
+        "top": 655.1875,
+        "bottom": 697.1875,
+        "left": 139,
+        "right": 251
+      }
+    },
+    {
+      "name": "inspection-landscape",
+      "viewport": [
+        844,
+        390
+      ],
+      "min": [
+        331.3250045776367,
+        74.0999984741211
+      ],
+      "max": [
+        512.6749954223633,
+        315.9000015258789
+      ],
+      "button": {
+        "top": 335.890625,
+        "bottom": 377.890625,
+        "left": 366,
+        "right": 478
+      }
+    }
+  ],
+  "environment": {
+    "glInfo": {
+      "vendor": "Google Inc. (Apple)",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M6, Unspecified Version)",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    },
+    "viewport": [
+      1280,
+      720
+    ],
+    "renderLoopStopped": true,
+    "deterministicAnimationDeltaMilliseconds": 50
+  },
+  "initialJsBytes": 2660215,
+  "inputIsolation": {
+    "mouseKeyboardWheelBlocked": true,
+    "tabDoesNotReachSceneControls": true
+  },
+  "orbit": {
+    "before": {
+      "camera": "study-camera",
+      "position": [
+        -1.9999999999999996,
+        4.6,
+        3.350000000000002
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        -3.5,
+        -0.36,
+        -0.65
+      ],
+      "meshes": 145,
+      "materials": 64,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": false,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": false,
+      "preview": null
+    },
+    "opened": {
+      "camera": "study-item-inspection",
+      "position": [
+        0,
+        0,
+        -8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "meshes": 146,
+      "materials": 65,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": false,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": true,
+      "preview": {
+        "sharedGeometry": true,
+        "sharedTexture": true,
+        "pickable": false,
+        "collisions": false,
+        "layerMask": 268435456
+      }
+    },
+    "returned": {
+      "camera": "study-camera",
+      "position": [
+        -1.9999999999999996,
+        4.6,
+        3.350000000000002
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        -3.5,
+        -0.36,
+        -0.65
+      ],
+      "meshes": 145,
+      "materials": 64,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": false,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": false,
+      "preview": null
+    },
+    "cameraRestored": true
+  },
+  "repeatedOpenCloseWithoutMeshOrMaterialLeak": true,
+  "firstPerson": {
+    "before": {
+      "camera": "study-first-person",
+      "position": [
+        -5,
+        1,
+        3.2
+      ],
+      "rotation": [
+        0.31797844737416014,
+        2.7700748030298863,
+        0
+      ],
+      "target": [
+        -3.5000000114785506,
+        -0.3600000103349783,
+        -0.6499999186828944
+      ],
+      "meshes": 145,
+      "materials": 64,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": true,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": false,
+      "preview": null
+    },
+    "returned": {
+      "camera": "study-first-person",
+      "position": [
+        -5,
+        1,
+        3.2
+      ],
+      "rotation": [
+        0.31797844737416014,
+        2.7700748030298863,
+        0
+      ],
+      "target": [
+        -3.5000000114785506,
+        -0.3600000103349783,
+        -0.6499999186828944
+      ],
+      "meshes": 145,
+      "materials": 64,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": true,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": false,
+      "preview": null
+    },
+    "escape": {
+      "camera": "study-first-person",
+      "position": [
+        -5,
+        1,
+        3.2
+      ],
+      "rotation": [
+        0.31797844737416014,
+        2.7700748030298863,
+        0
+      ],
+      "target": [
+        -3.5000000114785506,
+        -0.3600000103349783,
+        -0.6499999186828944
+      ],
+      "meshes": 145,
+      "materials": 64,
+      "textures": 152,
+      "cameras": 3,
+      "engines": 1,
+      "pointerLocked": false,
+      "originalLetterWorld": [
+        0.9800665974617004,
+        0,
+        0.19866932928562164,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -0.19866932928562164,
+        0,
+        0.9800665974617004,
+        0,
+        -3.5,
+        -0.36100006103515625,
+        -0.6499999761581421,
+        1
+      ],
+      "dialog": false,
+      "preview": null
+    },
+    "buttonRestoresLock": true,
+    "escapeClosesOnlyInspection": true,
+    "deniedReturnKeepsPositionAndPausesInput": true,
+    "canvasClickRetryRestoresLock": true,
+    "simulatedBlurKeepsInspectionOpen": true
+  },
+  "nativeLockErrors": [],
+  "inspectionExtraRequests": 17,
+  "passed": true,
+  "phase": "first-person",
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8098/",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 18090
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/main.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 96241
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/4259.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2387002
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/painted_wall/color.png",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/pictures/pic1.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8098/textures/study/forest-window/view.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1155565
+    },
+    {
+      "url": "http://127.0.0.1:8098/environment/study-interior.hdr",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/1203.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8098/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8098/models/study/sofa_03.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8098/models/wooden_bookshelf.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8098/models/gothic_commode.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/8558.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/c1e06ca8-8741-4c93-9945-b79f5910a2f9",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/2d5929e0-cfe3-4d02-b89c-5ac8ca198619",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/b8890777-1ffa-47c3-86bd-ca17914bc6df",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/1990f445-84cb-4662-b42d-5b10de6ade43",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/fb3e2f29-d07b-4acc-be94-9c333fcf0828",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/e4ca7e05-d1e6-4f25-8935-5d02d1f1d532",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/64484769-e9eb-423c-873e-07e81fb54af8",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/72b023b6-fb6b-4b2e-b82b-48d76c378bfd",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/e5199ec1-9bed-4496-ae6f-bad663ce74b1",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/5db9c10e-de9d-4bd2-b936-07e37c7a2e1a",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 354145
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/c88b1025-5e79-4976-89fd-d2ad1b07c0f9",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/fb3bfcac-a92d-4bf3-a58a-79bc6ce5c45f",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/fa825ed2-f155-49a7-924b-74d586eacb5b",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/00b1588d-36a8-4f2d-9f68-75abc7f301e3",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/8aaa018c-a494-4358-92e4-14e892317f28",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8098/c07b2512-d387-4eca-beab-738ec74dc58c",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 321223
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/4742.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/6612.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/7449.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/9615.js",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/5587.js",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/4472.js",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/6560.js",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8098/js/9915.js",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8098/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "phase": "orbit",
+      "bytes": 27884
+    }
+  ]
+}

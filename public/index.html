@@ -60,6 +60,108 @@
       .audio-actions a { color: #73503d; }
       #item-audio-toggle { position: absolute; top: 20px; right: 20px; border: 1px solid #bda57d88; border-radius: 6px; color: #f6e9cf; background: #242c2eaa; padding: 7px 12px; font-size: 11px; }
       @media (max-width: 640px) { .identity { left: 18px; top: 20px; } .eyebrow { font-size: 9px; letter-spacing: 2px; } h1 { font-size: 23px; } .view-controls { right: 12px; bottom: 16px; left: 12px; max-width: none; justify-content: center; } .view-controls button { padding: 10px; } .help { display: none; } .tools { top: 20px; right: 18px; } .settings-panel { top: 64px; right: 18px; } }
+      .view-controls { left: 32px; right: auto; width: max-content; max-width: calc(100% - 290px); }
+      .help { bottom: 94px; }
+      #floor-plan-toggle { position: fixed; right: 26px; bottom: 26px; z-index: 12; width: 208px; padding: 14px 13px 10px; color: #3d493c; background: #f4f0e6f5; border: 1px solid #fff7e1aa; border-radius: 12px; box-shadow: 0 5px 28px #0004; text-align: left; }
+      #floor-plan-toggle:hover { background: #fffaf0; border-color: #b99b67; }
+      .map-mini-heading, .map-mini-footer { display: flex; align-items: center; justify-content: space-between; }
+      .map-mini-heading { font-size: 11px; letter-spacing: 2px; }
+      .map-mini-heading span:last-child { color: #82745d; font-size: 16px; }
+      #floor-plan-mini { display: block; margin: 7px 0 6px; }
+      #floor-plan-mini svg { display: block; width: 100%; height: auto; }
+      .map-mini-footer { padding-top: 8px; border-top: 1px solid #d8d1c1; font-size: 10px; color: #717564; }
+      .map-mini-footer kbd { font: inherit; padding: 1px 4px; border: 1px solid #c8c0ae; border-radius: 3px; }
+      body.viewing-item > #floor-plan-toggle, body.viewing-map > .identity, body.viewing-map > .tools, body.viewing-map > .settings-panel, body.viewing-map > .help, body.viewing-map > .view-controls, body.viewing-map > #floor-plan-toggle { visibility: hidden; }
+      #floor-plan-dialog { position: fixed; inset: 0; width: min(1040px, calc(100% - 56px)); height: min(820px, calc(100% - 48px)); max-width: none; max-height: none; margin: auto; padding: 0; border: 1px solid #e4dcc8; border-radius: 14px; color: #424a3e; background: #f5f1e8; box-shadow: 0 24px 100px #0006; }
+      #floor-plan-dialog::backdrop { background: #101b16b8; backdrop-filter: blur(7px); }
+      .map-sheet { height: 100%; display: flex; flex-direction: column; }
+      .map-heading { display: flex; justify-content: space-between; align-items: center; padding: 24px 30px 18px; border-bottom: 1px solid #dcd4c3; }
+      .map-heading p { margin: 0 0 7px; font-size: 9px; letter-spacing: 3px; color: #8d7957; }
+      .map-heading h2 { margin: 0; font-family: "Songti SC", "Noto Serif CJK SC", serif; font-size: 27px; font-weight: 400; letter-spacing: 4px; }
+      #floor-plan-return { flex-shrink: 0; padding: 10px 18px; border: 1px solid #b9ac93; border-radius: 6px; color: #fff6e6; background: #5b6852; font-size: 12px; }
+      #floor-plan-return:hover { background: #46553f; }
+      #floor-plan-return span { margin-left: 12px; color: #dddcc9; font-size: 10px; }
+      .map-body { min-height: 0; flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) 246px; }
+      #floor-plan-drawing { min-height: 0; margin: 0; display: flex; align-items: center; justify-content: center; padding: 14px 18px; user-select: none; }
+      #floor-plan-drawing svg { display: block; width: 100%; height: 100%; max-width: 620px; }
+      .map-notes { padding: 28px 24px; border-left: 1px solid #dcd4c3; overflow-y: auto; }
+      .map-notes h3 { margin: 0 0 12px; font-size: 15px; font-weight: 500; letter-spacing: 2px; }
+      .map-notes p { margin: 0; font-size: 12px; line-height: 1.9; color: #777b6d; }
+      .map-legend { display: grid; gap: 14px; margin: 24px 0; padding: 20px 0; border-top: 1px solid #dcd4c3; border-bottom: 1px solid #dcd4c3; font-size: 12px; }
+      .map-legend > div { display: flex; align-items: center; gap: 10px; }
+      .map-legend i { width: 16px; height: 16px; display: inline-block; border: 1px solid #718065; border-radius: 2px; background: #e0e6d9; }
+      .map-legend .legend-planned { border-color: #9b9585; background: repeating-linear-gradient(135deg, #eee8db 0 1px, #f5f1e8 1px 5px); }
+      .map-legend .legend-position { border: 2px solid #637153; background: #cbd9bb; }
+      .map-legend .legend-door { height: 0; border: 0; border-top: 1px dashed #8c866f; border-radius: 0; background: transparent; }
+      .map-area { margin: 0 0 20px; }
+      .map-area dt { color: #777b6d; font-size: 11px; margin-bottom: 6px; }
+      .map-area dd { margin: 0; font-family: Georgia, serif; font-size: 30px; color: #52604b; }
+      .map-area dd small { font: 12px -apple-system, sans-serif; }
+      .map-notes .map-disclaimer { margin-top: 22px; font-size: 10px; color: #8a8779; }
+      .map-room-schedule { display: none; }
+      #floor-plan-room-sizes { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+      #floor-plan-room-sizes > div { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; }
+      #floor-plan-room-sizes dt { color: #58634e; }
+      #floor-plan-room-sizes dd { margin: 0; color: #777b6d; white-space: nowrap; font-variant-numeric: tabular-nums; }
+      .map-caption { display: flex; justify-content: space-between; gap: 12px; padding: 13px 30px; border-top: 1px solid #dcd4c3; color: #8a8779; font-size: 10px; letter-spacing: 1px; }
+      .plan-room rect { stroke: #6e7865; stroke-width: 2.5; }
+      .plan-room.is-current rect { fill: #cbd9bb; }
+      .plan-room text { text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+      .plan-room-name { fill: #3e4b38; font-family: "Songti SC", "Noto Serif CJK SC", serif; font-size: 20px; letter-spacing: 4px; }
+      .plan-small-name { font-size: 15px; letter-spacing: 2px; }
+      .plan-room-size { font-size: 11px; fill: #626b58; letter-spacing: 0.2px; }
+      .plan-room-area { font-size: 10px; fill: #92917f; }
+      #floor-plan-mini .plan-room-name { font-family: inherit; font-size: 23px; letter-spacing: 2px; }
+      #floor-plan-mini .plan-small-name { font-size: 20px; }
+      .plan-door path { fill: none; stroke: #637153; stroke-width: 1.2; }
+      .plan-door.is-planned path { stroke: #948c74; stroke-dasharray: 3 2; }
+      .plan-door path.plan-door-gap { stroke: #f5f1e8; stroke-width: 5; stroke-dasharray: none; }
+      .plan-dimensions path, .plan-north path, .plan-scale path { fill: none; stroke: #989581; stroke-width: 1; }
+      .plan-dimensions text, .plan-north text, .plan-scale text { text-anchor: middle; font-size: 11px; fill: #848570; letter-spacing: 1px; }
+      .plan-entry { text-anchor: middle; font-size: 9px; fill: #9d9075; letter-spacing: 1px; }
+      .plan-open-area { text-anchor: middle; font-size: 9px; fill: #94917e; letter-spacing: 1px; }
+      @media (max-width: 960px) {
+        .view-controls { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; }
+        .view-controls button { white-space: nowrap; flex-shrink: 0; padding: 10px 12px; }
+        .map-body { grid-template-columns: minmax(0, 1fr) 205px; }
+        .map-notes { padding: 22px 18px; }
+      }
+      @media (max-width: 640px) {
+        .view-controls { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; }
+        #floor-plan-toggle { right: 12px; bottom: 82px; width: 146px; padding: 9px 8px 8px; border-radius: 9px; }
+        .map-mini-heading { font-size: 10px; letter-spacing: 1px; }
+        .map-mini-footer { font-size: 9px; padding-top: 6px; }
+        #floor-plan-dialog { width: calc(100% - 20px); height: calc(100% - 24px); border-radius: 10px; }
+        .map-heading { padding: 18px 16px 14px; }
+        .map-heading h2 { font-size: 22px; letter-spacing: 3px; }
+        #floor-plan-return { padding: 9px 12px; }
+        #floor-plan-return span { display: none; }
+        .map-body { display: flex; flex-direction: column; overflow-y: auto; }
+        #floor-plan-drawing { flex: 1 0 auto; height: min(108vw, 54vh); padding: 12px 4px; }
+        .map-notes { flex-shrink: 0; overflow: visible; border-left: 0; border-top: 1px solid #dcd4c3; padding: 16px; }
+        .map-notes h3 { font-size: 13px; margin-bottom: 8px; }
+        .map-legend { display: flex; flex-wrap: wrap; gap: 10px 16px; margin: 12px 0; padding: 0; border: 0; font-size: 10px; }
+        .map-notes p { font-size: 11px; }
+        .map-area { margin: 12px 0; display: flex; align-items: baseline; gap: 12px; }
+        .map-area dd { font-size: 23px; }
+        .map-notes .map-disclaimer { margin-top: 8px; }
+        .map-room-schedule { display: block; margin-top: 18px; }
+        .map-caption { padding: 10px 16px; line-height: 1.5; letter-spacing: 0; }
+      }
+      @media (max-height: 480px) and (min-width: 641px) {
+        #floor-plan-toggle { width: 132px; bottom: 84px; padding: 8px; }
+        .map-mini-heading { font-size: 10px; }
+        .map-mini-footer { font-size: 9px; }
+        .view-controls { max-width: calc(100% - 64px); }
+        #floor-plan-dialog { width: calc(100% - 32px); height: calc(100% - 20px); }
+        .map-heading { padding: 12px 20px; }
+        .map-heading h2 { font-size: 20px; }
+        .map-heading p { display: none; }
+        .map-notes { padding: 14px 16px; }
+        .map-room-schedule { display: block; margin-top: 18px; }
+        #floor-plan-room-sizes { grid-template-columns: 1fr; }
+        .map-caption { padding: 8px 20px; }
+      }
     </style>
   </head>
   <body>
@@ -101,6 +203,34 @@
       <button id="item-audio-toggle" data-audio-toggle aria-pressed="true" aria-label="关闭交互音效">音效：开</button>
       <div class="item-heading"><p>物品详情</p><h2 id="item-inspection-title">桌上的信</h2></div>
       <div class="item-actions"><button id="item-inspection-return" autofocus>返回</button><p>ESC 返回场景</p></div>
+    </dialog>
+    <button id="floor-plan-toggle" aria-label="查看全屋户型图，快捷键 M" aria-haspopup="dialog" aria-expanded="false" aria-controls="floor-plan-dialog" aria-keyshortcuts="M">
+      <span class="map-mini-heading"><span>全屋地图</span><span aria-hidden="true">↗</span></span>
+      <span id="floor-plan-mini" aria-hidden="true"></span>
+      <span class="map-mini-footer"><span id="floor-plan-location">全屋布局</span><span><kbd>M</kbd> 展开</span></span>
+    </button>
+    <dialog id="floor-plan-dialog" aria-labelledby="floor-plan-title" aria-describedby="floor-plan-description">
+      <div class="map-sheet">
+        <header class="map-heading"><div><p>THE AFTERNOON HOME / FLOOR PLAN</p><h2 id="floor-plan-title">余晖小居 · 户型图</h2></div><button id="floor-plan-return" autofocus>返回场景<span>ESC</span></button></header>
+        <div class="map-body" tabindex="0" role="region" aria-label="户型与布局说明，可滚动查看">
+          <figure id="floor-plan-drawing" aria-label="全屋按比例户型图"></figure>
+          <aside class="map-notes">
+            <h3>布局说明</h3>
+            <p id="floor-plan-description">入户直接进入客厅，通往北侧小书房与厨房、西侧两间卧室，南侧连接阳台。起居与通行动线开放相连。</p>
+            <div class="map-legend" aria-label="地图图例">
+              <div><i aria-hidden="true"></i><span>已有内容 · 书房 / 客厅</span></div>
+              <div><i class="legend-planned" aria-hidden="true"></i><span>规划区域 · 尚未开放</span></div>
+              <div><i class="legend-position" aria-hidden="true"></i><span>当前房间 · 漫游时高亮</span></div>
+              <div><i class="legend-door" aria-hidden="true"></i><span>虚线门 · 规划连接</span></div>
+            </div>
+            <dl class="map-area"><dt>规划地面面积（含阳台）</dt><dd><span id="floor-plan-area"></span> <small>m²</small></dd></dl>
+            <p>主卧扩大至25.9 m²，书房调整为10.2 m²。主卫由主卧独享；公卫位于主卧外，从客厅进入。</p>
+            <section class="map-room-schedule" aria-label="房间尺寸清单"><h3>房间尺寸</h3><dl id="floor-plan-room-sizes"></dl></section>
+            <p class="map-disclaimer">标注为调整后的规划尺寸，未扣墙厚，阳台按完整地面面积计入。已有三维房间尚未按新布局调整；当前用房间高亮定位，其余房间与开口待生成。</p>
+          </aside>
+        </div>
+        <footer class="map-caption"><span>尺寸单位：米 · 全屋户型规划</span><span>拖动与移动已暂停 · 返回继续探索</span></footer>
+      </div>
     </dialog>
     <nav class="view-controls" aria-label="场景视角">
       <button data-view="overview" aria-pressed="true">全屋全景</button>

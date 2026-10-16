@@ -661,6 +661,7 @@ test("detail view permits close inspection and restores overview zoom limits on 
   room.scene = scene; room.controlsEnabled = false;
   room.interactions = { silenceMotion() {} };
   room.audio = { setSpatialCamera() {} };
+  room.floorPlan = { isOpen: false, update() {} };
   room.canvas = { setAttribute() {} };
   let refreshed = 0;
   room.lighting = { refreshShadows() { refreshed++; } };

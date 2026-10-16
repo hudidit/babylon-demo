@@ -12,6 +12,7 @@ import { cabinetDrawers, RoomInteractions } from "./RoomInteractions";
 import { RoomPointerLock } from "./RoomPointerLock";
 import { RoomAudio } from "./RoomAudio";
 import { RoomItemInspection } from "./RoomItemInspection";
+import { RoomFloorPlan } from "./RoomFloorPlan";
 import type { InspectableItem } from "./RoomInteractions";
 import { constrainWalkingPosition, createLivingRoom, createSharedWall } from "./RoomLivingRoom";
 
@@ -34,6 +35,7 @@ export class RoomScene {
   private readonly interactions: RoomInteractions;
   private readonly pointerLock: RoomPointerLock;
   private readonly inspection: RoomItemInspection;
+  private readonly floorPlan: RoomFloorPlan;
   private currentView: RoomView = "overview";
   private previousView: Exclude<RoomView, "first-person"> = "overview";
   private pointerLocked = false;
@@ -95,6 +97,7 @@ export class RoomScene {
       () => this.currentView === "first-person" ? this.firstPersonCamera.position : undefined,
       event => this.audio.event(event));
     this.inspection = new RoomItemInspection(this.scene);
+    this.floorPlan = new RoomFloorPlan(() => this.openFloorPlan(), resume => this.closeFloorPlan(resume));
     this.pointerLock = new RoomPointerLock(canvas, locked => {
       this.pointerLocked = locked;
       this.updateControls();
@@ -138,11 +141,11 @@ export class RoomScene {
     this.lighting.addMeshes(this.scene.meshes);
     this.scene.onBeforeRenderObservable.add(() => {
       this.audio.update();
-      if (this.inspection.isOpen) return;
+      if (this.isViewing) return;
       const delta = this.engine.getDeltaTime() / 1000;
       this.interactions.update(delta);
       this.focusElapsed += delta;
-      if (this.focusElapsed >= 0.1) { this.focusElapsed = 0; this.updateInteractionHint(); }
+      if (this.focusElapsed >= 0.1) { this.focusElapsed = 0; this.updateInteractionHint(); this.updateFloorPlan(); }
     });
 
     // A parent keeps the glTF loader's handedness conversion intact.
@@ -193,7 +196,7 @@ export class RoomScene {
   }
 
   setView(view: RoomView) {
-    if (this.inspection?.isOpen) return;
+    if (this.isViewing) return;
     this.interactions.silenceMotion();
     this.audio.setSpatialCamera(view === "first-person" ? this.firstPersonCamera : undefined);
     const firstPerson = view === "first-person";
@@ -238,6 +241,7 @@ export class RoomScene {
     if (help) help.textContent = instructions;
     this.canvas.setAttribute("aria-label", "复古书房与客厅三维场景，" + instructions);
     this.updateInteractionHint();
+    this.updateFloorPlan();
     if (firstPerson && this.controlsEnabled) {
       this.canvas.focus({ preventScroll: true });
       this.pointerLock?.request();
@@ -263,6 +267,35 @@ export class RoomScene {
     this.updateInteractionHint();
   }
 
+  private get isViewing() { return !!(this.inspection?.isOpen || this.floorPlan?.isOpen); }
+
+  private updateFloorPlan() {
+    this.floorPlan.update(this.currentView, this.firstPersonCamera.position);
+  }
+
+  private openFloorPlan() {
+    if (!this.controlsEnabled || this.isViewing) return;
+    this.updateFloorPlan();
+    // Set modal state before releasing the lock so its change event cannot leave first-person.
+    this.floorPlan.open();
+    this.interactions.silenceMotion();
+    this.audio.stopAll();
+    this.pointerLock.release();
+    this.updateControls();
+    this.updateInteractionHint();
+  }
+
+  private closeFloorPlan(resumePointer: boolean) {
+    if (!this.floorPlan.isOpen) return;
+    this.floorPlan.close();
+    this.updateControls();
+    this.updateInteractionHint();
+    if (this.currentView === "first-person") {
+      this.canvas.focus({ preventScroll: true });
+      if (resumePointer && this.controlsEnabled) this.pointerLock.request();
+    }
+  }
+
   private updateControls() {
     this.pointerStart = undefined;
     this.camera.detachControl();
@@ -276,11 +309,11 @@ export class RoomScene {
     this.firstPersonCamera.cameraRotation.setAll(0);
     camera.movement.resetPanVelocity();
     camera.movement.resetRotationVelocity();
-    if (!this.inspection?.isOpen && this.controlsEnabled && (camera !== this.firstPersonCamera || this.pointerLocked)) camera.attachControl(this.canvas, true);
+    if (!this.isViewing && this.controlsEnabled && (camera !== this.firstPersonCamera || this.pointerLocked)) camera.attachControl(this.canvas, true);
   }
 
   private openInspection(item: InspectableItem) {
-    if (!this.controlsEnabled || !this.inspection.open(item)) return;
+    if (!this.controlsEnabled || this.isViewing || !this.inspection.open(item)) return;
     this.interactions.silenceMotion();
     this.audio.stopAll();
     this.audio.play("paper", "inspection");
@@ -318,14 +351,24 @@ export class RoomScene {
   }
 
   private leaveFirstPerson = () => {
-    if (this.inspection?.isOpen) return;
+    if (this.isViewing) return;
     if (this.currentView === "first-person") this.setView(this.previousView);
   };
 
   private keyDown = (event: KeyboardEvent) => {
     if (event.isTrusted && !event.repeat && event.key === "Escape") { this.resumeAudio(); this.audio.unlockFromGesture(); }
+    if (this.floorPlan.isOpen) {
+      if (event.key === "Escape") { event.preventDefault(); this.closeFloorPlan(false); }
+      return;
+    }
     if (this.inspection.isOpen) {
       if (event.key === "Escape") this.cancelInspection(event);
+      return;
+    }
+    if (!event.repeat && event.key.toLowerCase() === "m" && !event.ctrlKey && !event.metaKey && !event.altKey
+      && !(event.target instanceof HTMLElement && event.target.matches("input, textarea, select, [contenteditable]"))) {
+      event.preventDefault();
+      this.openFloorPlan();
       return;
     }
     if (event.key === "Escape") this.leaveFirstPerson();
@@ -333,7 +376,7 @@ export class RoomScene {
 
   private pointerDown = (event: PointerEvent) => {
     if (event.isTrusted && event.button === 0) { this.resumeAudio(); this.audio.unlockFromGesture(); }
-    if (event.button !== 0 || !this.controlsEnabled || this.inspection.isOpen) return;
+    if (event.button !== 0 || !this.controlsEnabled || this.isViewing) return;
     if (this.currentView === "first-person" && !this.pointerLocked) {
       this.pointerLock.request();
       this.pointerStart = undefined;
@@ -352,7 +395,7 @@ export class RoomScene {
   private pointerUp = (event: PointerEvent) => {
     const start = this.pointerStart;
     this.pointerStart = undefined;
-    if (event.button !== 0 || !start || start.id !== event.pointerId || start.dragged || !this.controlsEnabled || this.inspection.isOpen) return;
+    if (event.button !== 0 || !start || start.id !== event.pointerId || start.dragged || !this.controlsEnabled || this.isViewing) return;
     if (this.currentView === "first-person") {
       if (!this.pointerLocked) return;
       this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5))?.toggle();
@@ -367,7 +410,7 @@ export class RoomScene {
   private updateInteractionHint() {
     const reticle = document.querySelector<HTMLElement>("#interaction-reticle");
     const hint = document.querySelector<HTMLElement>("#interaction-hint");
-    const firstPerson = this.currentView === "first-person" && !this.inspection?.isOpen;
+    const firstPerson = this.currentView === "first-person" && !this.isViewing;
     if (reticle) reticle.hidden = !firstPerson;
     const action = firstPerson && this.pointerLocked && this.controlsEnabled
       ? this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5)) : undefined;
@@ -498,6 +541,7 @@ export class RoomScene {
     document.querySelector<HTMLDialogElement>("#item-inspection")?.close();
     document.body.classList.remove("viewing-item");
     this.inspection.dispose();
+    this.floorPlan.dispose();
     this.pointerLock.dispose();
     this.canvas.removeEventListener("pointerdown", this.pointerDown);
     this.canvas.removeEventListener("pointermove", this.pointerMove);

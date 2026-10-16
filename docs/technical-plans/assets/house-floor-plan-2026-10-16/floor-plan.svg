@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 521 561" role="img" aria-label="余晖小居规划户型：入户直接进入右侧客厅，西北主卧带独享主卫，主卧外公卫由客厅进入；北侧为小书房与厨房，西南次卧，南侧阳台"><style>.plan-room rect { stroke: rgb(110, 120, 101); stroke-width: 2.5; }
+.plan-room.is-current rect { fill: rgb(203, 217, 187); }
+.plan-room text { text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+.plan-room-name { fill: rgb(62, 75, 56); font-family: "Songti SC", "Noto Serif CJK SC", serif; font-size: 20px; letter-spacing: 4px; }
+.plan-small-name { font-size: 15px; letter-spacing: 2px; }
+.plan-room-size { font-size: 11px; fill: rgb(98, 107, 88); letter-spacing: 0.2px; }
+.plan-room-area { font-size: 10px; fill: rgb(146, 145, 127); }
+.plan-door path { fill: none; stroke: rgb(99, 113, 83); stroke-width: 1.2; }
+.plan-door.is-planned path { stroke: rgb(148, 140, 116); stroke-dasharray: 3, 2; }
+.plan-door path.plan-door-gap { stroke: rgb(245, 241, 232); stroke-width: 5; stroke-dasharray: none; }
+.plan-dimensions path, .plan-north path, .plan-scale path { fill: none; stroke: rgb(152, 149, 129); stroke-width: 1; }
+.plan-dimensions text, .plan-north text, .plan-scale text { text-anchor: middle; font-size: 11px; fill: rgb(132, 133, 112); letter-spacing: 1px; }
+.plan-entry { text-anchor: middle; font-size: 9px; fill: rgb(157, 144, 117); letter-spacing: 1px; }
+.plan-open-area { text-anchor: middle; font-size: 9px; fill: rgb(148, 145, 126); letter-spacing: 1px; }</style>
+    <defs><pattern id="full-hatch" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#f5f1e8"></rect><path d="M -2 2 L 2 -2 M 0 8 L 8 0 M 6 10 L 10 6" stroke="#e9e3d6" stroke-width="0.6"></path></pattern></defs>
+    <g data-room="master" class="plan-room is-planned">
+      <title>主卧，规划尺寸5.4 × 4.8 m，25.9 m²，规划区域</title>
+      <rect x="64" y="50" width="194.4" height="172.79999999999998" fill="url(#full-hatch)"></rect>
+      <text class="plan-room-name " x="161.2" y="121.39999999999998">主卧</text>
+      <text class="plan-room-size" x="161.2" y="141.39999999999998">5.4 × 4.8 m</text>
+      <text class="plan-room-area" x="161.2" y="160.39999999999998">25.9 m²</text>
+    </g><g data-room="study" class="plan-room has-content">
+      <title>书房，规划尺寸3.0 × 3.4 m，10.2 m²，已有内容，布局待调整</title>
+      <rect x="258.4" y="50" width="108" height="122.39999999999999" fill="#e0e6d9"></rect>
+      <text class="plan-room-name " x="312.4" y="96.19999999999999">书房</text>
+      <text class="plan-room-size" x="312.4" y="116.19999999999999">3.0 × 3.4 m</text>
+      <text class="plan-room-area" x="312.4" y="135.2">10.2 m²</text>
+    </g><g data-room="kitchen" class="plan-room is-planned">
+      <title>厨房，规划尺寸2.4 × 3.4 m，8.2 m²，规划区域</title>
+      <rect x="366.40000000000003" y="50" width="86.39999999999999" height="122.39999999999999" fill="url(#full-hatch)"></rect>
+      <text class="plan-room-name " x="409.6" y="96.19999999999999">厨房</text>
+      <text class="plan-room-size" x="409.6" y="116.19999999999999">2.4 × 3.4 m</text>
+      <text class="plan-room-area" x="409.6" y="135.2">8.2 m²</text>
+    </g><g data-room="ensuite" class="plan-room is-planned">
+      <title>主卫，规划尺寸2.4 × 2.4 m，5.8 m²，规划区域</title>
+      <rect x="64" y="222.79999999999998" width="86.39999999999999" height="86.39999999999999" fill="url(#full-hatch)"></rect>
+      <text class="plan-room-name plan-small-name" x="107.19999999999999" y="264">主卫</text>
+      <text class="plan-room-size" x="107.19999999999999" y="280">2.4 × 2.4 m</text>
+      <text class="plan-room-area" x="107.19999999999999" y="293">5.8 m²</text>
+    </g><g data-room="bathroom" class="plan-room is-planned">
+      <title>公卫，规划尺寸3.0 × 2.4 m，7.2 m²，规划区域</title>
+      <rect x="150.39999999999998" y="222.79999999999998" width="108" height="86.39999999999999" fill="url(#full-hatch)"></rect>
+      <text class="plan-room-name plan-small-name" x="192.39999999999998" y="256">公卫</text>
+      <text class="plan-room-size" x="192.39999999999998" y="272">3.0 × 2.4 m</text>
+      <text class="plan-room-area" x="192.39999999999998" y="285">7.2 m²</text>
+    </g><g data-room="bedroom" class="plan-room is-planned">
+      <title>次卧，规划尺寸5.4 × 3.6 m，19.4 m²，规划区域</title>
+      <rect x="64" y="309.2" width="194.4" height="129.6" fill="url(#full-hatch)"></rect>
+      <text class="plan-room-name " x="161.2" y="359">次卧</text>
+      <text class="plan-room-size" x="161.2" y="379">5.4 × 3.6 m</text>
+      <text class="plan-room-area" x="161.2" y="398">19.4 m²</text>
+    </g><g data-room="living" class="plan-room has-content">
+      <title>客厅，规划尺寸5.4 × 7.4 m，40.0 m²，已有内容，布局待调整</title>
+      <rect x="258.4" y="172.39999999999998" width="194.4" height="266.40000000000003" fill="#e0e6d9"></rect>
+      <text class="plan-room-name " x="355.59999999999997" y="290.6">客厅</text>
+      <text class="plan-room-size" x="355.59999999999997" y="310.6">5.4 × 7.4 m</text>
+      <text class="plan-room-area" x="355.59999999999997" y="329.6">40.0 m²</text>
+    </g><g data-room="balcony" class="plan-room is-planned">
+      <title>阳台，规划尺寸5.4 × 1.5 m，8.1 m²，规划区域</title>
+      <rect x="258.4" y="438.8" width="194.4" height="54" fill="url(#full-hatch)"></rect>
+      <text class="plan-room-name " x="355.59999999999997" y="460.8">阳台</text>
+      <text class="plan-room-size" x="355.59999999999997" y="480.8">5.4 × 1.5 m</text>
+
+    </g><g class="plan-door is-planned" transform="translate(452.8 197.6) rotate(90)">
+      <title>客厅至入户 · 规划开口</title>
+      <path class="plan-door-gap" d="M 2 0 H 37.6"></path>
+      <path d="M 0 0 V 39.6 M 0 39.6 A 39.6 39.6 0 0 0 39.6 0"></path>
+    </g><g class="plan-door is-planned" transform="translate(258.4 179.6) rotate(90)">
+      <title>主卧至客厅 · 规划开口</title>
+      <path class="plan-door-gap" d="M 2 0 H 30.4"></path>
+      <path d="M 0 0 V 32.4 M 0 32.4 A 32.4 32.4 0 0 0 32.4 0"></path>
+    </g><g class="plan-door is-planned" transform="translate(92.8 222.79999999999998) rotate(0)">
+      <title>主卧至主卫 · 规划开口</title>
+      <path class="plan-door-gap" d="M 2 0 H 26.8"></path>
+      <path d="M 0 0 V 28.8 M 0 28.8 A 28.8 28.8 0 0 0 28.8 0"></path>
+    </g><g class="plan-door is-planned" transform="translate(258.4 251.6) rotate(90)">
+      <title>公卫至客厅 · 规划开口</title>
+      <path class="plan-door-gap" d="M 2 0 H 26.8"></path>
+      <path d="M 0 0 V 28.8 M 0 28.8 A 28.8 28.8 0 0 0 28.8 0"></path>
+    </g><g class="plan-door is-planned" transform="translate(258.4 363.2) rotate(90)">
+      <title>次卧至客厅 · 规划开口</title>
+      <path class="plan-door-gap" d="M 2 0 H 30.4"></path>
+      <path d="M 0 0 V 32.4 M 0 32.4 A 32.4 32.4 0 0 0 32.4 0"></path>
+    </g><g class="plan-door is-planned" transform="translate(287.20000000000005 172.39999999999998) rotate(0)">
+      <title>书房至客厅 · 规划开口</title>
+      <path class="plan-door-gap" d="M 2 0 H 30.4"></path>
+      <path d="M 0 0 V -32.4 M 0 -32.4 A 32.4 32.4 0 0 1 32.4 0"></path>
+    </g><g class="plan-door is-planned" transform="translate(391.59999999999997 172.39999999999998) rotate(0)">
+      <title>厨房至客厅 · 规划开口</title>
+      <path class="plan-door-gap" d="M 2 0 H 30.4"></path>
+      <path d="M 0 0 V -32.4 M 0 -32.4 A 32.4 32.4 0 0 1 32.4 0"></path>
+    </g><g class="plan-door is-planned" transform="translate(312.4 438.8) rotate(0)">
+      <title>客厅至阳台 · 规划开口</title>
+      <path class="plan-door-gap" d="M 2 0 H 84.39999999999999"></path>
+      <path d="M 0 -3 H 51.839999999999996 M 34.559999999999995 3 H 86.39999999999999"></path>
+    </g>
+    <g class="plan-dimensions"><path d="M 64 34 V 19 M 452.8 34 V 19 M 64 25 H 452.8 M 59 20 L 69 30 M 447.8 20 L 457.8 30 M 47 50 H 32 M 47 492.8 H 32 M 38 50 V 492.8 M 33 45 L 43 55 M 33 487.8 L 43 497.8"></path>
+      <text x="258.4" y="18">10.8 m</text><text x="28" y="271.4" transform="rotate(-90 28 271.4)">12.3 m</text></g>
+    <g class="plan-north" transform="translate(488.8 72)"><path d="M 0 13 V -12 M -5 -4 L 0 -14 L 5 -4"></path><text x="0" y="-23">N</text><text x="0" y="32">北</text></g>
+    <g class="plan-scale" transform="translate(64 527.8)"><path d="M 0 -5 V 0 H 180 V -5 M 36 0 V -5"></path><text x="0" y="17">0</text><text x="36" y="17">1</text><text x="180" y="17">5 m</text></g>
+    <text class="plan-entry" x="470.8" y="215.6">入户</text>
+    <text class="plan-open-area" x="355.59999999999997" y="212">入户 / 餐区</text>
+  </svg>
