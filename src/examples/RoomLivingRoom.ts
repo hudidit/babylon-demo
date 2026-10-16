@@ -137,7 +137,7 @@ function panelWall(room: RoomFurnishings, width: number, position: [number, numb
     room.box("living-panel-stile", [0.1, 2.2, 0.24], [x, -3.6, 0.1], "wood", root);
 }
 
-function seat(room: RoomFurnishings, name: string, position: [number, number, number], width: number,
+export function seat(room: RoomFurnishings, name: string, position: [number, number, number], width: number,
   rotation: number, material: string) {
   const root = room.group(name, position, rotation);
   room.box(name + "-frame", [width, 0.45, 4.2], [0, 1.15, 0], "darkWood", root);
@@ -163,8 +163,8 @@ function seat(room: RoomFurnishings, name: string, position: [number, number, nu
   }
 }
 
-function fireplace(room: RoomFurnishings) {
-  const root = room.group("living-fireplace", [37, -5, -17.6]);
+export function fireplace(room: RoomFurnishings, position: [number, number, number] = [37, -5, -17.6], rotation = 0, widthScale = 1) {
+  const root = room.group("living-fireplace", position, rotation); root.scaling.x = widthScale;
   room.box("fireplace-hearth", [10.5, 0.22, 3.7], [0, 0.11, 0], "darkWood", root);
   room.box("fireplace-dark-recess", [6.5, 4.5, 0.3], [0, 2.47, -1.35], "black", root);
   for (const x of [-3.85, 3.85]) {
@@ -184,8 +184,8 @@ function fireplace(room: RoomFurnishings) {
   room.bookStack([1.2, 5.53, -0.4], root);
 }
 
-function displayCabinet(room: RoomFurnishings) {
-  const root = room.group("living-display-cabinet", [25.5, -5, -17.7]);
+export function displayCabinet(room: RoomFurnishings, position: [number, number, number] = [25.5, -5, -17.7], rotation = 0, widthScale = 1) {
+  const root = room.group("living-display-cabinet", position, rotation); root.scaling.x = widthScale;
   room.box("living-cabinet-body", [6.5, 7.3, 0.22], [0, 4.1, -1.1], "darkWood", root);
   for (const x of [-3.2, 3.2]) room.box("living-cabinet-side", [0.25, 7.3, 2.5], [x, 4.1, 0], "wood", root);
   for (const y of [0.45, 2.9, 5.3, 7.75]) room.box("floating-shelf", [6.6, 0.23, 2.55], [0, y, 0], "wood", root);

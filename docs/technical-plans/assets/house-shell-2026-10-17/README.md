@@ -9,4 +9,4 @@
 - [Chrome脚本](check-shell.cjs)及[结果](foundation-browser.json)：版本、八房shell状态、全部节点归属、地图及释放检查通过；251网格、184,268顶点、48材质、6灯、3相机。重复pagehide资源清零。独立托管488文件GET/SHA256通过，实际首屏JS含音频预热2,695,102字节，完整发布41,958,461字节，全部预算满足、素材未变。
 - [全屋结构](shell-overview.jpg)、[地图](shell-map.jpg)。本阶段为结构过渡，家具恢复由紧接的C完成。本轮未做FPS或加载耗时实验。
 
-复现：`npm test`、`npm run typecheck`、`npm run build -- --output-path /tmp/house-stage-b-dev`、`npm run build:production`；托管dist后指定 `PLAYWRIGHT_PACKAGE`、`STUDY_URL` 运行 `node docs/technical-plans/assets/house-shell-2026-10-17/check-shell.cjs`。
+阶段B复现需使用该阶段提交 `29548e4`；当前分支已由C推进。复现：`npm test`、`npm run typecheck`、`npm run build -- --output-path /tmp/house-stage-b-dev`、`npm run build:production`；托管dist后指定 `PLAYWRIGHT_PACKAGE`、`STUDY_URL` 运行 `node docs/technical-plans/assets/house-shell-2026-10-17/check-shell.cjs`。

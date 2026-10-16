@@ -40,6 +40,89 @@ const { houseWallSpans, HOUSE_WINDOWS } = loadSource("HouseStructure");
 const { HOUSE_DOORS, HOUSE_ROOMS } = loadSource("HouseLayout");
 const { houseVector, HOUSE_WALKER_RADIUS, constrainHouseWalking } = loadSource("HouseWalking");
 const { doorSweepIsClear } = loadSource("RoomInteractions");
+const { furnishHouseStudy, furnishHouseLiving, HOUSE_CONTENT } = loadSource("HouseContent");
+
+async function furnishedHouse(t) {
+  const scene = createScene(t), room = new RoomFurnishings(scene);
+  const architecture = createHouseArchitecture(scene, room);
+  furnishHouseStudy(room); furnishHouseLiving(room); room.finish().forEach(m => m.checkCollisions = true);
+  const imported = {};
+  for (const [file, id, owner, a] of [
+    ["study/sofa_03", "reading-sofa", "living", HOUSE_CONTENT.readingSofa],
+    ["study/modern_arm_chair_01", "reading-armchair", "living", HOUSE_CONTENT.readingChair],
+    ["gothic_commode", "antique-cabinet", "living", HOUSE_CONTENT.cabinet],
+    ["wooden_bookshelf", "antique-bookshelf", "study", HOUSE_CONTENT.bookshelf],
+  ]) {
+    const source = new Uint8Array(fs.readFileSync(path.join(__dirname, `../public/models/${file}.glb`)));
+    const result = await babylon.ImportMeshAsync(source, scene, { pluginExtension: ".glb", pluginOptions: { gltf: { skipMaterials: true } } });
+    result.meshes.forEach(m => setRoomOwners(m, [owner]));
+    const placement = placeFurniture(result.meshes, scene, id, houseVector(a.x, a.y), a.width, id === "antique-bookshelf" ? 0 : a.rotation, owner);
+    if (id === "antique-bookshelf") {
+      const books = room.furnishBookshelf(result.meshes);
+      books.forEach(m => { m.unfreezeWorldMatrix(); m.setParent(placement); m.checkCollisions = true; });
+      placement.unfreezeWorldMatrix(); const nodes = placement.getDescendants(false); nodes.forEach(n => n.unfreezeWorldMatrix());
+      placement.rotation.y = a.rotation; placement.computeWorldMatrix(true);
+      nodes.forEach(n => { n.computeWorldMatrix(true); n.freezeWorldMatrix(); }); placement.freezeWorldMatrix();
+      imported.books = books;
+    }
+    imported[id] = result.meshes;
+  }
+  room.drawers.push(...cabinetDrawers(imported["antique-cabinet"]));
+  scene.meshes.forEach(m => m.computeWorldMatrix(true)); scene.collisionsEnabled = true;
+  return { scene, room, architecture, imported };
+}
+
+test("migrated furniture, open drawers and bookshelf contents fit the real room bounds", async t => {
+  const { scene, room, imported } = await furnishedHouse(t);
+  assert.equal(room.drawers.length, 8); assert.equal(room.lamps.length, 3); assert.equal(room.inspectables[0].id, "desk-letter");
+  const interactions = new RoomInteractions(scene, () => {}); room.drawers.forEach(d => interactions.addDrawer(d));
+  interactions.drawers.forEach(d => d.open = true);
+  for (let i = 0; i < 12; i++) interactions.update(.05);
+  for (const mesh of scene.meshes.filter(m => m.getTotalVertices() && (m.name.startsWith("study-content") || m.name.startsWith("living-content") || m.metadata?.interactionId?.includes("drawer") || Object.values(imported).some(parts => parts.includes(m))))) {
+    const id = mesh.metadata.ownerRooms[0], r = HOUSE_ROOMS.find(r => r.id === id), box = mesh.getBoundingInfo().boundingBox;
+    const min = houseVector(r.x + .05, r.y + .05), max = houseVector(r.x + r.width - .05, r.y + r.depth - .05);
+    assert.ok(box.minimumWorld.x >= min.x - .01 && box.maximumWorld.x <= max.x + .01 && box.minimumWorld.z >= min.z - .01 && box.maximumWorld.z <= max.z + .01,
+      `${mesh.name} crosses ${id} boundary: ${box.minimumWorld.asArray()} / ${box.maximumWorld.asArray()}`);
+    assert.ok(box.minimumWorld.y >= -5.01 && box.maximumWorld.y < 9, `${mesh.name} must fit between floor and ceiling`);
+  }
+  const shelf = babylon.Mesh.MinMax(imported["antique-bookshelf"].filter(m => m.getTotalVertices()));
+  assert.ok(Math.abs(shelf.min.y + 5) < .001); assert.ok(shelf.max.x < 14.75);
+  assert.ok(imported.books.length && imported.books.every(m => m.getBoundingInfo().boundingBox.maximumWorld.x <= shelf.max.x + .01));
+});
+
+test("furnished house keeps the living spine and each doorway physically reachable", async t => {
+  const { scene, room } = await furnishedHouse(t), interactions = new RoomInteractions(scene, () => {});
+  room.doors.forEach(d => interactions.addDoor(d)); interactions.doors.forEach(s => s.open = s.door.id !== "entry-door");
+  for (let i = 0; i < 16; i++) interactions.update(.05);
+  const radius = new babylon.Vector3(HOUSE_WALKER_RADIUS, 3.9, HOUSE_WALKER_RADIUS);
+  const route = [[9.4,5.35],[9.25,4.6],[9.55,3.8],[9.55,2.6],[9.55,3.8],[9.25,4.6],[9.4,5.55],[7,5.55],[7,4.7],[7,6.6],[7,8.3],[7,10.3],[8,10.3],[8,11.6]];
+  for (let i = 1; i < route.length; i++) {
+    const start = houseVector(...route[i - 1], .82), end = houseVector(...route[i], .82);
+    const actual = sweep(scene, start, end.subtract(start), radius).position;
+    assert.ok(actual.equalsWithEpsilon(end, .03), `route ${route[i - 1]} → ${route[i]} blocked at ${actual.asArray()}`);
+  }
+  // Private rooms and compact study are reached from the clear western spine.
+  for (const [start, end] of [ [[6.6,4.05],[4.5,4.05]], [[6.6,6],[4.5,6]], [[7,9.15],[4.5,9.15]], [[6.65,4.2],[6.65,2.6]], [[1.2,4],[1.2,5.6]] ]) {
+    const p = houseVector(...start, .82), q = houseVector(...end, .82);
+    assert.ok(sweep(scene, p, q.subtract(p), radius).position.equalsWithEpsilon(q, .03), `door route ${start} → ${end}`);
+  }
+});
+
+test("migrated lights stay below their actual shades and refresh only affected room shadows", t => {
+  const scene = createScene(t), room = new RoomFurnishings(scene);
+  furnishHouseStudy(room); furnishHouseLiving(room);
+  const lights = new RoomLighting(scene, true); lights.addLivingRoom(scene, true);
+  scene.meshes.forEach(m => m.computeWorldMatrix(true));
+  for (const [lightName, shadeName] of [["banker-lamp-light", "banker-green-shade"], ["reading-lamp-light", "linen-lampshade"], ["living-table-lamp-light", "living-lamp-shade"]]) {
+    const light = scene.getLightByName(lightName), shade = scene.getMeshByName(shadeName).getBoundingInfo().boundingBox;
+    assert.ok(light.position.y < shade.minimumWorld.y && shade.minimumWorld.y - light.position.y < .1, lightName);
+    assert.ok(Math.abs(light.position.x - shade.centerWorld.x) < .01 && Math.abs(light.position.z - shade.centerWorld.z) < .01);
+  }
+  const touched = [];
+  scene.lights.filter(l => l.getShadowGenerator?.()).forEach(l => l.getShadowGenerator().getShadowMap().resetRefreshCounter = () => touched.push(l.metadata.ownerRooms[0]));
+  lights.refreshShadows(["study"]); assert.deepEqual([...new Set(touched)], ["study"]);
+  touched.length = 0; lights.refreshShadows(["living"]); assert.deepEqual([...new Set(touched)], ["living"]);
+});
 
 function houseShell(t) {
   const scene = createScene(t), room = new RoomFurnishings(scene);
@@ -106,6 +189,21 @@ test("mounted door sweep protection uses the fixed yaw and the house walker radi
     local.x *= -1;
     assert.equal(doorSweepIsClear(door, 0, 1, babylon.Vector3.TransformCoordinates(local, parent.getWorldMatrix())), true, door.id);
   }
+});
+
+test("cutaway follows camera direction and hides attached art while retaining wall collisions", t => {
+  const { scene, architecture } = houseShell(t);
+  architecture.setEnclosed(false, "study");
+  architecture.updateCutaway(houseVector(4.4, 4.2, 4.4), houseVector(6.9, 1.8, .5));
+  const westArt = scene.meshes.filter(m => m.name.startsWith("study-wall-art"));
+  assert.ok(westArt.length && westArt.every(m => !m.isVisible));
+  const north = architecture.upperWalls.filter(m => m.metadata.span?.owners.includes("study") && m.metadata.span?.axis === "x" && m.metadata.span.at === 0);
+  assert.ok(north.length && north.every(m => m.isVisible && m.checkCollisions));
+  architecture.updateCutaway(houseVector(9, -1, 4), houseVector(6.9, 1.8, .5));
+  assert.ok(north.every(m => !m.isVisible && m.checkCollisions));
+  assert.ok(westArt.every(m => m.isVisible));
+  architecture.setEnclosed(true);
+  assert.ok(architecture.upperWalls.every(m => m.isVisible) && architecture.ceilings.every(m => m.isVisible));
 });
 
 test("outer guard preserves eye height and rejects the balcony concave outside corner", () => {

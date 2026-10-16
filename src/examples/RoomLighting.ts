@@ -2,6 +2,7 @@ import { Color3, HemisphericLight, RenderTargetTexture, ShadowGenerator, SpotLig
 import type { AbstractMesh, PBRMaterial, Scene } from "@babylonjs/core/pure";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
 import type { HouseRoomId } from "./HouseLayout";
+import { HOUSE_CONTENT } from "./HouseContent";
 import { houseVector } from "./HouseWalking";
 
 /** Room-specific window/lamp sources plus the original restrained indirect bounce. */
@@ -44,8 +45,8 @@ export class RoomLighting {
 
     if (house) {
       daylight.position.copyFrom(houseVector(6.9, 0.16, 2.1)); daylight.direction.set(0.15, -0.55, 1).normalize(); daylight.range = 24;
-      reading.position.copyFrom(houseVector(9.9, 9.85, 1.296)); reading.direction.set(-0.6, -1, 0).normalize();
-      desk.position.copyFrom(houseVector(7.39, 0.39, 0.99));
+      reading.position.copyFrom(houseVector(HOUSE_CONTENT.floorLamp.x, HOUSE_CONTENT.floorLamp.y, 1.296)); reading.direction.set(0.7, -1, 0).normalize();
+      desk.position.copyFrom(houseVector(HOUSE_CONTENT.desk.x + 0.49, HOUSE_CONTENT.desk.y - 0.33, (4.6 + 1.2) * HOUSE_CONTENT.desk.heightScale / 5));
     }
 
     this.shadows = [daylight, reading, desk].map((light, index) => {
@@ -88,7 +89,7 @@ export class RoomLighting {
     this.lamps.set("living-lamp", { light: lamp, intensity: lamp.intensity, on: true });
     if (house) {
       daylight.position.copyFrom(houseVector(10.6, 8.4, 2.1)); daylight.direction.set(-1, -0.4, -0.1).normalize();
-      lamp.position.copyFrom(houseVector(10.4, 6.15, 1.2)); lamp.direction.set(-0.5, -1, 0).normalize();
+      lamp.position.copyFrom(houseVector(HOUSE_CONTENT.console.x, HOUSE_CONTENT.console.y, 1.2)); lamp.direction.set(0.5, -1, 0).normalize();
     }
     [daylight, lamp].forEach((light, index) => {
       setRoomOwners(light, ["living"]);

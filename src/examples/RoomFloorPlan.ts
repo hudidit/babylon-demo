@@ -11,6 +11,7 @@ export class RoomFloorPlan {
   private readonly location = document.querySelector<HTMLElement>("#floor-plan-location")!;
   private focusRoom?: HouseRoomId;
   private mode = "";
+  private lastUpdate?: { view: string; position: { x: number; z: number }; direction?: { x: number; z: number } };
 
   private readonly unsubscribe: () => void;
 
@@ -43,6 +44,8 @@ export class RoomFloorPlan {
       host.querySelector("svg")!.insertAdjacentHTML("beforeend", '<g class="plan-position" style="display:none"><path d="M 0 -14 L -7 -2 L 7 -2 Z"/><circle r="4.5"/></g>');
     }
     this.mode = "";
+    // Asset completion may refresh the SVG while the map modal pauses the scene's usual updates.
+    if (this.lastUpdate) this.update(this.lastUpdate.view, this.lastUpdate.position, this.lastUpdate.direction);
   }
   private returnHandler = () => this.onClose(true);
   private cancelHandler = (event: Event) => { event.preventDefault(); this.onClose(false); };
@@ -70,6 +73,8 @@ export class RoomFloorPlan {
   }
 
   update(view: string, position: { x: number; z: number }, direction?: { x: number; z: number }) {
+    this.lastUpdate = { view, position: { x: position.x, z: position.z },
+      direction: direction && { x: direction.x, z: direction.z } };
     const firstPerson = view === "first-person";
     const room = firstPerson ? this.rooms.roomAt(position)
       : view === "overview" ? undefined : ["living", "reading", "cabinet"].includes(view) ? "living" : "study";

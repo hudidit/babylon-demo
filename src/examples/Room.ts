@@ -14,7 +14,8 @@ import { RoomItemInspection } from "./RoomItemInspection";
 import { RoomFloorPlan } from "./RoomFloorPlan";
 import type { InspectableItem } from "./RoomInteractions";
 import { createHouseArchitecture } from "./HouseArchitecture";
-import { constrainHouseWalking, houseVector, HOUSE_EYE_Y, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
+import { constrainHouseWalking, houseVector, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
+import { HOUSE_CONTENT, furnishHouseLiving, furnishHouseStudy } from "./HouseContent";
 import { HouseRooms } from "./HouseRooms";
 import type { RoomBuild } from "./HouseRooms";
 import { HOUSE_LAYOUT_VERSION, HOUSE_ROOMS } from "./HouseLayout";
@@ -131,6 +132,8 @@ export class RoomScene {
 
     const furnishings = new RoomFurnishings(this.scene);
     this.architecture = createHouseArchitecture(this.scene, furnishings);
+    furnishHouseStudy(furnishings);
+    furnishHouseLiving(furnishings);
     this.architecture.setEnclosed(false);
     this.lighting.addLivingRoom(this.scene, true);
     furnishings.finish().forEach(mesh => {
@@ -153,9 +156,11 @@ export class RoomScene {
         this.interactions.removeRoom(id); this.lighting.removeRoom(id);
       });
     }
-    HOUSE_ROOMS.forEach(r => this.rooms.setState(this.builds[r.id], "shell"));
+    HOUSE_ROOMS.filter(r => r.id !== "study" && r.id !== "living").forEach(r => this.rooms.setState(this.builds[r.id], "shell"));
     this.scene.onBeforeRenderObservable.add(() => {
       this.audio.update();
+      if (!this.inspection.isOpen && this.scene.activeCamera === this.camera
+        && this.architecture.updateCutaway(this.camera.position, this.camera.target)) this.lighting.refreshShadows();
       if (this.isViewing) return;
       const delta = this.engine.getDeltaTime() / 1000;
       this.interactions.update(delta);
@@ -163,13 +168,42 @@ export class RoomScene {
       if (this.focusElapsed >= 0.1) { this.focusElapsed = 0; this.updateInteractionHint(); this.updateFloorPlan(); }
     });
 
-    this.scene.executeWhenReady(() => {
+    const a = HOUSE_CONTENT;
+    const livingModels = Promise.all([
+      this.importFurniture("sofa_03.glb", "reading-sofa", houseVector(a.readingSofa.x, a.readingSofa.y), a.readingSofa.width, a.readingSofa.rotation, "living"),
+      this.importFurniture("modern_arm_chair_01.glb", "reading-armchair", houseVector(a.readingChair.x, a.readingChair.y), a.readingChair.width, a.readingChair.rotation, "living"),
+      this.importModel("gothic_commode.glb", "antique-cabinet", houseVector(a.cabinet.x, a.cabinet.y), a.cabinet.width, "living", a.cabinet.rotation).then(meshes => {
+        if (meshes && this.rooms.isCurrent(this.builds.living)) cabinetDrawers(meshes).forEach(drawer => this.interactions.addDrawer(drawer));
+      }),
+    ]);
+    const studyModels = this.importModel("wooden_bookshelf.glb", "antique-bookshelf", houseVector(a.bookshelf.x, a.bookshelf.y), a.bookshelf.width, "study").then(meshes => {
+      if (!meshes || !this.rooms.isCurrent(this.builds.study)) return;
+      const placement = this.scene.getTransformNodeByName("antique-bookshelf")!;
+      const books = furnishings.furnishBookshelf(meshes);
+      books.forEach(mesh => { mesh.unfreezeWorldMatrix(); mesh.setParent(placement); mesh.checkCollisions = true; });
+      // Measure and fill in the unrotated model basis, then rotate the complete shelf once.
+      placement.unfreezeWorldMatrix();
+      const descendants = placement.getDescendants(false) as TransformNode[];
+      descendants.forEach(node => node.unfreezeWorldMatrix());
+      placement.rotation.y = a.bookshelf.rotation; placement.computeWorldMatrix(true);
+      descendants.forEach(node => { node.computeWorldMatrix(true); node.freezeWorldMatrix(); });
+      placement.freezeWorldMatrix();
+      this.lighting.addMeshes(books); this.trackRoomResources(books);
+    });
+    const loads = ([ ["living", livingModels], ["study", studyModels] ] as const).map(([id, promise]) =>
+      promise.then(() => { if (this.rooms.isCurrent(this.builds[id])) this.rooms.setState(this.builds[id], "ready"); })
+        .catch(error => {
+          if (this.disposed || !this.rooms.isCurrent(this.builds[id])) return;
+          console.error(`${id} model loading failed`, error); this.rooms.fail(this.builds[id], error);
+        }));
+    Promise.all(loads).then(() => this.scene.executeWhenReady(() => {
       if (this.disposed) return;
       this.lighting.freezeShadows();
+      const failed = ["study", "living"].filter((id: HouseRoomId) => this.rooms.snapshot(id).state === "error");
       const status = document.querySelector("#scene-status");
-      if (status) status.textContent = "八房基础结构 · 家具迁移中";
+      if (status) status.textContent = failed.length ? "部分家具加载失败 · 刷新重试 · 基础结构可用" : "客厅与书房已布置 · 其余六房待布置";
       this.audio.sceneReady();
-    });
+    }));
 
     this.setView("overview");
     canvas.addEventListener("pointerdown", this.pointerDown);
@@ -197,20 +231,21 @@ export class RoomScene {
     this.currentView = view;
     if (!firstPerson) this.pointerLock?.release();
     this.scene.activeCamera?.detachControl();
-    this.architecture.setEnclosed(firstPerson);
+    this.architecture.setEnclosed(firstPerson, view);
     this.lighting.refreshShadows();
     this.firstPersonCamera.cameraDirection.setAll(0);
     this.firstPersonCamera.cameraRotation.setAll(0);
     this.firstPersonCamera.movement.resetPanVelocity();
     this.firstPersonCamera.movement.resetRotationVelocity();
+    const a = HOUSE_CONTENT;
     const views: Record<Exclude<RoomView, "first-person">, { position: Vector3; target: Vector3 }> = {
-      overview: { position: new Vector3(74, 82, 84), target: new Vector3(0, -3, 2) },
-      study: { position: houseVector(10.5, 4, 4.7), target: houseVector(6.9, 1.7, 0.5) },
-      living: { position: houseVector(14, 14, 6.8), target: houseVector(8.1, 7.5, 0.4) },
-      reading: { position: houseVector(9, 7.8, 2.6), target: houseVector(8.3, 9.85, 0.6) },
-      desk: { position: houseVector(8.8, 3.6, 2.4), target: houseVector(6.9, 0.9, 0.65) },
-      details: { position: houseVector(6.8, 1.7, 1.45), target: houseVector(6.8, 0.8, 0.78) },
-      cabinet: { position: houseVector(8.5, 5.7, 2), target: houseVector(5.85, 4.95, 0.65) },
+      overview: { position: new Vector3(-74, 82, 84), target: new Vector3(0, -3, 2) },
+      study: { position: houseVector(4.4, 4.2, 4.4), target: houseVector(a.desk.x, a.chair.y, 0.5) },
+      living: { position: houseVector(3.2, 13.7, 6.8), target: houseVector(8.1, 7.5, 0.4) },
+      reading: { position: houseVector(6.3, 7.2, 3), target: houseVector(a.readingSofa.x, 4.7, 0.55) },
+      desk: { position: houseVector(5.4, 3.5, 2.4), target: houseVector(a.desk.x, a.desk.y + 0.18, 0.65) },
+      details: { position: houseVector(a.desk.x - 0.1, a.desk.y + 0.98, 1.45), target: houseVector(a.desk.x - 0.1, a.desk.y + 0.08, 0.78) },
+      cabinet: { position: houseVector(8.3, 9.3, 2.1), target: houseVector(a.cabinet.x, a.cabinet.y, 0.6) },
     };
     if (firstPerson) {
       this.firstPersonCamera.position.copyFrom(houseVector(HOUSE_SPAWN.x, HOUSE_SPAWN.y, 1.6));
@@ -412,9 +447,9 @@ export class RoomScene {
     }
   }
 
-  private async importFurniture(file: string, name: string, position: Vector3, width: number, rotation = 0) {
+  private async importFurniture(file: string, name: string, position: Vector3, width: number, rotation = 0, roomId: HouseRoomId = "study") {
     const result = await SceneLoader.ImportMeshAsync("", "./models/study/", file, this.scene);
-    if (!this.adoptImported(result.meshes, result.transformNodes)) return;
+    if (!this.adoptImported(result.meshes, result.transformNodes, roomId)) return;
     result.meshes.forEach(mesh => {
       if (mesh.material instanceof PBRMaterial) {
         mesh.material.usePhysicalLightFalloff = false;
@@ -428,38 +463,27 @@ export class RoomScene {
         }
       }
     });
-    placeFurniture(result.meshes, this.scene, name, position, width, rotation);
+    placeFurniture(result.meshes, this.scene, name, position, width, rotation, roomId);
     this.lighting.addMeshes(result.meshes);
     this.trackRoomResources(result.meshes);
     return result.meshes;
   }
 
-  private async importModel(file: string, name: string, position: Vector3, scale: number) {
+  private async importModel(file: string, name: string, position: Vector3, width: number, roomId: HouseRoomId, rotation = 0) {
     const result = await SceneLoader.ImportMeshAsync("", "./models/", file, this.scene);
-    if (!this.adoptImported(result.meshes, result.transformNodes)) return;
-    const placement = new TransformNode(name, this.scene);
-    setRoomOwners(placement, ["study"]);
-    placement.position.copyFrom(position);
-    placement.scaling.setAll(scale);
-    result.meshes[0].parent = placement;
-    result.meshes.forEach((mesh: AbstractMesh) => {
-      mesh.receiveShadows = true;
-      mesh.checkCollisions = true;
-      mesh.isPickable = false;
+    if (!this.adoptImported(result.meshes, result.transformNodes, roomId)) return;
+    result.meshes.forEach(mesh => {
       if (mesh.material instanceof PBRMaterial) {
-        mesh.material.usePhysicalLightFalloff = false;
-        mesh.material.maxSimultaneousLights = 4;
+        mesh.material.usePhysicalLightFalloff = false; mesh.material.maxSimultaneousLights = 4;
       }
-      mesh.freezeWorldMatrix();
     });
-    placement.freezeWorldMatrix();
-    this.lighting.addMeshes(result.meshes);
-    this.trackRoomResources(result.meshes);
+    placeFurniture(result.meshes, this.scene, name, position, width, rotation, roomId);
+    this.lighting.addMeshes(result.meshes); this.trackRoomResources(result.meshes);
     return result.meshes;
   }
 
-  private adoptImported(meshes: AbstractMesh[], nodes: TransformNode[]) {
-    const build = this.builds.study;
+  private adoptImported(meshes: AbstractMesh[], nodes: TransformNode[], roomId: HouseRoomId) {
+    const build = this.builds[roomId];
     const materials = Array.from(new Set(meshes.map(mesh => mesh.material).filter(Boolean)));
     const textures = Array.from(new Set(materials.reduce((all, material) => [...all, ...material!.getActiveTextures()], [])));
     textures.forEach(texture => {
@@ -467,10 +491,10 @@ export class RoomScene {
     });
     materials.forEach(material => this.rooms.own(build, material!, () => material!.dispose(false, false)));
     nodes.forEach(node => {
-      setRoomOwners(node, ["study"]);
+      setRoomOwners(node, [roomId]);
       this.rooms.own(build, node, () => node.dispose(true));
     });
-    meshes.forEach(mesh => setRoomOwners(mesh, ["study"]));
+    meshes.forEach(mesh => setRoomOwners(mesh, [roomId]));
     if (!this.rooms.isCurrent(build)) { meshes.forEach(mesh => mesh.dispose(false, false)); return false; }
     return true;
   }

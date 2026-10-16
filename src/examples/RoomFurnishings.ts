@@ -387,8 +387,10 @@ export class RoomFurnishings {
     this.materials.set("rug", mat);
   }
 
+  ensureRugMaterial() { if (!this.materials.has("rug")) this.createRugMaterial(); }
+
   private rug() {
-    if (!this.materials.has("rug")) this.createRugMaterial();
+    this.ensureRugMaterial();
     this.box("persian-rug", [14.5, 0.055, 13], [-3, -4.95, -0.3], "rug");
     const fringeVariation = stableRandom(357);
     for (let i = 0; i < 38; i++) {
@@ -404,8 +406,9 @@ export class RoomFurnishings {
     this.ring("reading-rug-border", 12.5, 0.09, [10, -4.9, 10], "cushion");
   }
 
-  private writingTable() {
-    const g = this.group("central-writing-table", [-3, -5, -1]);
+  writingTable(position: Triple = [-3, -5, -1], rotation = 0, heightScale = 1) {
+    const g = this.group("central-writing-table", position, rotation);
+    g.scaling.y = heightScale;
     this.box("table-top", [8.3, 0.4, 6], [0, 4.4, 0], "desktop-wood", g);
     this.box("table-edge-step", [8.15, 0.1, 5.85], [0, 4.2, 0], "darkWood", g);
     this.box("table-apron", [7.7, 0.7, 0.2], [0, 3.85, -2.55], "darkWood", g);
@@ -441,7 +444,7 @@ export class RoomFurnishings {
     this.bankerLamp([2.45, 4.6, -1.65], g);
   }
 
-  private chair(position: Triple, rotation: number) {
+  chair(position: Triple, rotation: number) {
     const g = this.group("upholstered-chair", position, rotation);
     [-0.95, 0.95].forEach(x => [-0.9, 0.9].forEach(z => {
       this.box("chair-leg", [0.2, 2.3, 0.2], [x, 1.15, z], "darkWood", g);
@@ -488,9 +491,9 @@ export class RoomFurnishings {
     this.mug([1.6, 2.3775, 0], "navy", g);
   }
 
-  private floorLamp() {
+  floorLamp(position: Triple = [16, -5, 5]) {
     const start = this.parts.length;
-    const g = this.group("brass-floor-lamp", [16, -5, 5]);
+    const g = this.group("brass-floor-lamp", position);
     if (!this.materials.has("floor-lamp-shade")) this.materials.set("floor-lamp-shade", this.materials.get("shade")!.clone("floor-lamp-shade")!);
     // A felt foot and a sloping metal shoulder make the base's contact and thickness readable.
     this.cylinder("lamp-base-foot", 0.045, 1.82, [0, 0.0225, 0], "black", g);
@@ -503,8 +506,8 @@ export class RoomFurnishings {
     this.lamps.push({ id: "floor-lamp", label: "落地灯", meshes: this.keepInteractive(start, g, true) });
   }
 
-  private windowDesk() {
-    const g = this.group("window-console", [-17, -5, 9], Math.PI / 2);
+  windowDesk(position: Triple = [-17, -5, 9], rotation = Math.PI / 2, stool = true) {
+    const g = this.group("window-console", position, rotation);
     this.box("console-top", [8, 0.3, 2.9], [0, 4.1, 0], "wood", g);
     this.box("console-top-lip", [7.85, 0.08, 2.8], [0, 3.95, 0], "darkWood", g);
     this.box("console-apron-back", [7.5, 0.85, 0.14], [0, 3.51, -1.15], "darkWood", g);
@@ -520,11 +523,12 @@ export class RoomFurnishings {
       this.sphere("drawer-pull", [0.18, 0.18, 0.18], [0, 0.04, 0.1], "brass", drawer);
       this.drawerBox(drawer, 2.02, 0.57, 2.15);
       const meshes = this.keepInteractive(start, drawer);
-      this.drawers.push({ id: drawer.name, label: `窗边桌${["左侧", "中间", "右侧"][index]}抽屉`, root: drawer,
+      this.drawers.push({ id: drawer.name, label: `${this.currentRoom === "living" ? "客厅边柜" : "窗边桌"}${["左侧", "中间", "右侧"][index]}抽屉`, root: drawer,
         meshes, travel: new Vector3(0, 0, 1.55) });
     });
     this.bookStack([-2, 4.25, 0], g);
     this.vase([2.5, 4.25, 0], 0.65, g);
+    if (!stool) return;
     this.cylinder("console-stool", 2.2, 2.1, [-12.9, -3.9, 9], "wood");
     this.sphere("console-stool-cushion", [2.2, 0.35, 2.2], [-12.9, -2.65, 9], "cream");
   }
