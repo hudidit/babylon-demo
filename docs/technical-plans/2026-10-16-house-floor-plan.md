@@ -69,3 +69,5 @@
 面积逐项显示时四舍五入，总面积按原始尺寸计算。[米制布局与门连接数据](../../src/examples/HouseFloorPlan.ts)作为后续建房的依据；[独立SVG](assets/house-floor-plan-2026-10-16/floor-plan.svg)、[截图/脚本/工程和发布证据](assets/house-floor-plan-2026-10-16/README.md)及[前后字节与资源对比](assets/house-floor-plan-2026-10-16/resource-changes.json)随任务交付。相关提交由本文件Git历史追溯。
 
 本轮未做FPS或加载耗时测量，不根据截图或字节推断性能收益；浏览器功能验收范围为本机Chrome。规划房间、开口和已有房间尺寸调整均留待后续任务。
+
+后续三维迁移与逐房实施按[新户型实施方案](2026-10-16-house-layout-implementation.md)推进；该方案当前待实施，本户型图交付的已完成状态不表示三维房间已经迁移。
