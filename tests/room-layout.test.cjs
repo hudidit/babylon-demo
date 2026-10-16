@@ -43,6 +43,34 @@ const { doorSweepIsClear } = loadSource("RoomInteractions");
 const { furnishHouseStudy, furnishHouseLiving, HOUSE_CONTENT } = loadSource("HouseContent");
 const { furnishHouseMaster, furnishHouseEnsuite } = loadSource("HouseSuite");
 const { bathroomVanity, bathroomToilet, bathroomShower, bedroomBed, bedroomWardrobe } = loadSource("HouseRoomComponents");
+const { RoomMirrors } = loadSource("RoomMirrors");
+
+test("bathroom planar mirrors clip behind the actual face, isolate rooms and restore cutaway visibility", t => {
+  const { scene,architecture }=furnishedSuite(t);
+  architecture.setEnclosed(false);
+  const room=new RoomFurnishings(scene,'bathroom');
+  bathroomVanity(room,'bathroom',{x:2.6,y:.6},.82,-Math.PI/2);
+  new RoomMirrors(scene);
+  const mirrors=scene.meshes.filter(m=>m.metadata?.mirrorPlane);
+  assert.equal(mirrors.length,2); assert.notEqual(mirrors[0].material,mirrors[1].material);
+  assert.notEqual(mirrors[0].material.reflectionTexture,mirrors[1].material.reflectionTexture);
+  for(const mesh of mirrors) {
+    const target=mesh.material.reflectionTexture,owner=mesh.metadata.reflectionRoom;
+    assert.ok(target instanceof babylon.MirrorTexture);assert.equal(target.getSize().width,512);assert.equal(target.getSize().height,512);
+    assert.equal(target.noPrePassRenderer,true);
+    const b=mesh.getBoundingInfo().boundingBox;
+    const point=b.centerWorld.clone(); point.x=b.minimumWorld.x;
+    assert.ok(Math.abs(target.mirrorPlane.signedDistanceTo(point))<.001,'plane lies on the front face');
+    assert.ok(target.mirrorPlane.signedDistanceTo(point.add(new babylon.Vector3(-1,0,0)))<0,'bathroom lies on the unclipped side');
+    const connected=HOUSE_DOORS.filter(d=>d.from===owner||d.to===owner).flatMap(d=>[d.from,d.to]);
+    assert.ok(target.renderList.length>0&&target.renderList.every(m=>m.metadata.ownerRooms.some(id=>connected.includes(id))&&!m.metadata.mirrorPlane&&!m.metadata.collisionOnly));
+    const hidden=target.renderList.filter(m=>!m.isVisible); assert.ok(hidden.length);
+    target.onBeforeBindObservable.notifyObservers(target);assert.ok(hidden.every(m=>m.isVisible));
+    target.onAfterUnbindObservable.notifyObservers(target);assert.ok(hidden.every(m=>!m.isVisible));
+    const material=mesh.material;mesh.dispose();
+    assert.ok(!scene.textures.includes(target)&&!scene.materials.includes(material));
+  }
+});
 
 function furnishedSuite(t) {
   const scene = createScene(t), room = new RoomFurnishings(scene);

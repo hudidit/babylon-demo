@@ -1,6 +1,7 @@
 import { HOUSE_COORDINATES, roomLocalToWorld } from "./HouseLayout";
 import type { HouseRoomId, PlanPoint } from "./HouseLayout";
 import type { RoomFurnishings } from "./RoomFurnishings";
+import { Plane, Vector3 } from "@babylonjs/core/pure";
 
 type Triple = [number, number, number];
 const u = HOUSE_COORDINATES.unitsPerMeter;
@@ -65,7 +66,8 @@ export function bedroomWardrobe(room: RoomFurnishings, id: HouseRoomId, at: Plan
 /** Cabinet, open basin, tap and supported mirror. Front faces local +Z. */
 export function bathroomVanity(room: RoomFurnishings, id: HouseRoomId, at: PlanPoint, width: number, yaw = 0) {
   room.ensureBathroomMaterials();
-  return room.section(id, id + "-vanity", () => {
+  let mirrorPlane: Plane;
+  const meshes = room.section(id, id + "-vanity", () => {
     const root = room.group(id + "-vanity-root", localPosition(id, at), yaw);
     room.box("vanity-base", metres(width - 0.06, 0.12, 0.4), metres(0, 0.06, 0), "darkWood", root);
     room.box("vanity-cabinet", metres(width, 0.64, 0.48), metres(0, 0.44, 0), "wood", root);
@@ -84,8 +86,15 @@ export function bathroomVanity(room: RoomFurnishings, id: HouseRoomId, at: PlanP
       room.box("mirror-upright", metres(0.025, 1.35, 0.025), metres(x, 1.47, -0.24), "brass", root);
     room.box("mirror-frame", metres(width - 0.02, 1.02, 0.035), metres(0, 1.61, -0.24), "brass", root);
     room.box("mirror-surface", metres(width - 0.07, 0.97, 0.012), metres(0, 1.61, -0.214), "bath-mirror", root);
+    root.computeWorldMatrix(true);
+    const face = Vector3.TransformCoordinates(Vector3.FromArray(metres(0, 1.61, -0.208)), root.getWorldMatrix());
+    const inward = Vector3.TransformNormal(new Vector3(0, 0, -1), root.getWorldMatrix()).normalize();
+    mirrorPlane = Plane.FromPositionAndNormal(face, inward);
     room.cylinder("soap-dispenser", 0.12 * u, 0.055 * u, metres(width / 2 - 0.07, 0.877, 0.1), "ceramic", root);
   });
+  const mirror = meshes.find(mesh => mesh.material?.name === "bath-mirror")!;
+  mirror.metadata.mirrorPlane = mirrorPlane!.asArray(); mirror.metadata.reflectionRoom = id;
+  return meshes;
 }
 
 export function bathroomToilet(room: RoomFurnishings, id: HouseRoomId, at: PlanPoint, yaw = 0) {

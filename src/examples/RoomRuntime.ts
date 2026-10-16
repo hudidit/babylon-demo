@@ -1,4 +1,5 @@
 import "./RoomShaders";
+import { RegisterMirrorTexture } from "@babylonjs/core/Materials/Textures/mirrorTexture.pure";
 import {
   GamepadManager, RegisterGamepadSceneComponent,
   RegisterStandardEngineExtensions, RegisterAbstractEngineCubeTexture,
@@ -26,6 +27,7 @@ export function registerRoomRuntime() {
   RegisterPBRMaterial();
   RegisterTexture();
   RegisterRenderTargetTexture();
+  RegisterMirrorTexture();
   // Keep picking, exact mesh collisions and UniversalCamera's existing gamepad input.
   RegisterCollisionCoordinator();
   RegisterRay();

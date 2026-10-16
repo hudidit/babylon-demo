@@ -199,7 +199,7 @@ export class RoomFurnishings {
       ["bath-glass", "#d6e6df", 0.08],
     ] as const) this.materials.set(name, surfaceMaterial(name, this.scene, color, roughness));
     const mirror = this.materials.get("bath-mirror") as PBRMaterial;
-    mirror.metallic = 1; // Reflect the shared HDR, without a second room render/camera.
+    mirror.metallic = 1; // RoomMirrors installs an individual planar target before the first render.
     const glass = this.materials.get("bath-glass") as PBRMaterial;
     glass.alpha = 0.2; glass.backFaceCulling = false;
     glass.transparencyMode = PBRMaterial.PBRMATERIAL_ALPHABLEND;

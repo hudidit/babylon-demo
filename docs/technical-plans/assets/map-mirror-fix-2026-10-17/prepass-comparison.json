@@ -1,0 +1,42 @@
+{
+  "difference": "未设置MirrorTexture.noPrePassRenderer（默认false）",
+  "staticInitialJsBytes": 2514084,
+  "textureObjects": 136,
+  "mirrorTargets": {
+    "colourDepth": [
+      512,
+      512
+    ],
+    "prepass": [
+      512,
+      512
+    ],
+    "prepassAttachments": [
+      "Color",
+      "Normal",
+      "Depth"
+    ]
+  },
+  "reflectionHash": "6c38faa08b17a58ecad9f6a839b4b52760dcc5e3afcc6bdbe870bfb94e77dd1e",
+  "initialFiles": [
+    {
+      "path": "js/5280.js",
+      "kind": "build",
+      "bytes": 2391459,
+      "sha256": "3871d7df19f02916a5ddc3b26d0dfdfbffc76a7270a5309c7ae78c8a9706decb"
+    },
+    {
+      "path": "js/main.js",
+      "kind": "build",
+      "bytes": 122625,
+      "sha256": "ed3501e54ccfb3fcc28c7aefb7c06e014e7d5ff9919c5eb86063e2190f19ec68"
+    }
+  ],
+  "accepted": {
+    "noPrePassRenderer": true,
+    "textureObjects": 132,
+    "mirrorPrepassExists": false,
+    "mainPrepassExists": true,
+    "reflectionHash": "6c38faa08b17a58ecad9f6a839b4b52760dcc5e3afcc6bdbe870bfb94e77dd1e"
+  }
+}

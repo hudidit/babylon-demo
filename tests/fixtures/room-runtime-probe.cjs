@@ -51,6 +51,17 @@ try {
   inspection.dispose();
   assert.equal(scene.activeCamera, orbit);
   assert.ok(scene.textures.includes(box.material.albedoTexture), 'Preview cleanup must retain the original texture');
+  const mirror = b.CreateBox('pure-mirror', { width: 2, height: 2, depth: .01 }, scene);
+  mirror.position.z = 4;
+  mirror.metadata = { ownerRooms: ['ensuite'], reflectionRoom: 'ensuite', mirrorPlane: [0,0,1,-3.995] };
+  box.metadata = { ownerRooms: ['ensuite'] };
+  const { RoomMirrors } = loadSource(path.join(__dirname, '../../src/examples/RoomMirrors.ts'));
+  new RoomMirrors(scene);
+  assert.ok(mirror.material.reflectionTexture instanceof b.MirrorTexture);
+  const mirrorCopy = mirror.material.clone('pure-mirror-clone');
+  assert.ok(mirrorCopy.reflectionTexture instanceof b.MirrorTexture, 'Mirror parser registration survives material cloning');
+  scene.render();
+  mirrorCopy.dispose(false, true);
   const normalized = Object.keys(require.cache).map(file => file.split(path.sep).join('/'));
   assert.ok(!normalized.some(file => file.endsWith('/@babylonjs/core/index.js')), 'Core barrel must not pre-register features');
   console.log('Pure runtime probe passed');

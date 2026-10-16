@@ -12,6 +12,7 @@ import { RoomPointerLock } from "./RoomPointerLock";
 import { RoomAudio } from "./RoomAudio";
 import { RoomItemInspection } from "./RoomItemInspection";
 import { RoomFloorPlan } from "./RoomFloorPlan";
+import { RoomMirrors } from "./RoomMirrors";
 import type { InspectableItem } from "./RoomInteractions";
 import { createHouseArchitecture } from "./HouseArchitecture";
 import { constrainHouseWalking, houseVector, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
@@ -144,6 +145,7 @@ export class RoomScene {
     furnishings.finish().forEach(mesh => {
       mesh.checkCollisions = true;
     });
+    new RoomMirrors(this.scene);
     furnishings.drawers.forEach(drawer => this.interactions.addDrawer(drawer));
     furnishings.doors.forEach(door => this.interactions.addDoor(door));
     furnishings.inspectables.forEach(item => this.interactions.addInspectable(item, item => this.openInspection(item)));

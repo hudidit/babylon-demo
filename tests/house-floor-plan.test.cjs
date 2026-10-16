@@ -16,6 +16,37 @@ function load(name) {
   return module.exports;
 }
 const { HOUSE_ROOMS, HOUSE_DOORS, houseRoomAt } = load('HouseLayout');
+const { houseDrawingPoint, houseDrawingHeading, housePlanSvg } = load('HouseFloorPlan');
+
+test('map left/right and north agree with an actual north-up left-handed camera projection', () => {
+  const { Matrix, Vector3, Viewport } = require('@babylonjs/core/pure');
+  const { planToWorld } = load('HouseLayout');
+  const view = Matrix.LookAtLH(new Vector3(0,100,0), Vector3.Zero(), new Vector3(0,0,-1));
+  const transform = view.multiply(Matrix.OrthoLH(70,70,.1,200));
+  const project = point => Vector3.Project(Vector3.FromArray(Object.values(planToWorld(point))),Matrix.Identity(),transform,new Viewport(0,0,600,600));
+  for(const a of HOUSE_ROOMS)for(const b of HOUSE_ROOMS) {
+    const pa={x:a.x+a.width/2,y:a.y+a.depth/2},pb={x:b.x+b.width/2,y:b.y+b.depth/2};
+    assert.equal(Math.sign(houseDrawingPoint(pa.x,pa.y).x-houseDrawingPoint(pb.x,pb.y).x),Math.sign(project(pa).x-project(pb).x));
+    assert.equal(Math.sign(houseDrawingPoint(pa.x,pa.y).y-houseDrawingPoint(pb.x,pb.y).y),Math.sign(project(pa).y-project(pb).y));
+  }
+  for(const compact of [true,false]) {
+    const svg=housePlanSvg(compact);
+    assert.ok(!svg.includes('<text transform="scale(-1'), 'room text must stay readable');
+    for(const d of HOUSE_DOORS) {
+      const p=houseDrawingPoint(d.x,d.y);
+      assert.ok(svg.includes(`translate(${p.x} ${p.y}) scale(-1 1) rotate(${d.axis==='y'?90:0})`),d.id);
+    }
+  }
+});
+
+test('map heading follows the same projected movement in all four cardinal directions', () => {
+  const origin=houseDrawingPoint(5.4,5.4);
+  for(const d of [{x:1,z:0},{x:-1,z:0},{x:0,z:1},{x:0,z:-1}]) {
+    const end=houseDrawingPoint(5.4+d.x,5.4+d.z);
+    const projected=Math.atan2(end.x-origin.x,-(end.y-origin.y))*180/Math.PI;
+    assert.ok(Math.cos((houseDrawingHeading(d)-projected)*Math.PI/180)>1-1e-9);
+  }
+});
 
 test('revised plan has a direct living-room entry, a compact study and a larger master bedroom', () => {
   assert.equal(HOUSE_ROOMS.length, 8);

@@ -1,4 +1,4 @@
-import { houseDrawingPoint, housePlanSvg } from "./HouseFloorPlan";
+import { houseDrawingHeading, houseDrawingPoint, housePlanSvg } from "./HouseFloorPlan";
 import { HOUSE_LAYOUT_VERSION, HOUSE_ROOMS, worldToPlan } from "./HouseLayout";
 import type { HouseRoomId } from "./HouseLayout";
 import type { HouseRooms } from "./HouseRooms";
@@ -82,7 +82,7 @@ export class RoomFloorPlan {
     const valid = firstPerson && this.rooms.layoutVersion === HOUSE_LAYOUT_VERSION && !!room
       && Number.isFinite(position.x) && Number.isFinite(position.z);
     const point = worldToPlan(position), drawing = houseDrawingPoint(point.x, point.y);
-    const angle = direction ? Math.atan2(direction.x, -direction.z) * 180 / Math.PI : 0;
+    const angle = direction ? houseDrawingHeading(direction) : 0;
     document.querySelectorAll<SVGGElement>(".plan-position").forEach(node => {
       node.style.display = valid ? "" : "none";
       if (valid) node.setAttribute("transform", `translate(${drawing.x} ${drawing.y}) rotate(${angle})`);
