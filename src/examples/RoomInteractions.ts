@@ -1,5 +1,6 @@
 import { Vector3 } from "@babylonjs/core/pure";
 import type { AbstractMesh, Mesh, Ray, Scene, TransformNode } from "@babylonjs/core/pure";
+import type { AudioCue, RoomAudioEvent } from "./RoomAudioCatalog";
 
 export type InteractiveDrawer = {
   id: string; label: string; root: TransformNode; meshes: AbstractMesh[]; travel: Vector3;
@@ -17,34 +18,50 @@ export const interactionSurface = (mesh: AbstractMesh) =>
 export class RoomInteractions {
   private readonly actions = new Map<AbstractMesh, Action>();
   private readonly drawers: {
-    root: TransformNode; closed: Vector3; travel: Vector3; progress: number; open: boolean;
+    drawer: InteractiveDrawer; root: TransformNode; closed: Vector3; travel: Vector3; progress: number; open: boolean; moving: boolean;
   }[] = [];
-  private readonly doors: { door: InteractiveDoor; progress: number; open: boolean; blocked: boolean }[] = [];
+  private readonly doors: { door: InteractiveDoor; progress: number; open: boolean; blocked: boolean; moving: boolean }[] = [];
 
   constructor(private readonly scene: Scene, private readonly refreshShadows: () => void,
-    private readonly walkerPosition: () => Vector3 | undefined = () => undefined) {}
+    private readonly walkerPosition: () => Vector3 | undefined = () => undefined,
+    private readonly audio: (event: RoomAudioEvent) => void = () => {}) {}
+
+  private sound(cue: AudioCue | "stop", entity: { id: string; meshes: AbstractMesh[] }) {
+    this.audio({ cue, entity: entity.id, position: () => {
+      const mesh = entity.meshes[0];
+      mesh.computeWorldMatrix(true);
+      return mesh.getBoundingInfo().boundingBox.centerWorld;
+    } });
+  }
+
+  /** Interrupt motion on view/modal/lifecycle changes; it can resume from its real position. */
+  silenceMotion() {
+    for (const state of this.drawers) { state.moving = false; this.sound("stop", state.drawer); }
+    for (const state of this.doors) { state.moving = false; this.sound("stop", state.door); }
+  }
 
   addDoor(door: InteractiveDoor) {
-    const state = { door, progress: 0, open: false, blocked: false };
+    const state = { door, progress: 0, open: false, blocked: false, moving: false };
     this.doors.push(state);
     this.add(door.id, door.meshes, {
       label: () => state.blocked ? "让开门口 · 点击反向开合" : `${state.open ? "关闭" : "打开"}${door.label}`,
-      toggle: () => { state.open = !state.open; state.blocked = false; },
+      toggle: () => { this.sound("stop", door); state.moving = false; state.open = !state.open; state.blocked = false; },
     });
   }
 
   addDrawer(drawer: InteractiveDrawer) {
-    const state = { root: drawer.root, closed: drawer.root.position.clone(), travel: drawer.travel,
-      progress: 0, open: false };
+    const state = { drawer, root: drawer.root, closed: drawer.root.position.clone(), travel: drawer.travel,
+      progress: 0, open: false, moving: false };
     this.drawers.push(state);
     this.add(drawer.id, drawer.meshes, {
       label: () => `${state.open ? "关上" : "打开"}${drawer.label}`,
-      toggle: () => { state.open = !state.open; },
+      toggle: () => { this.sound("stop", drawer); state.moving = false; state.open = !state.open; },
     });
   }
 
   addLamp(lamp: InteractiveLamp, isOn: () => boolean, toggle: () => void) {
-    this.add(lamp.id, lamp.meshes, { label: () => `${isOn() ? "关闭" : "打开"}${lamp.label}`, toggle });
+    this.add(lamp.id, lamp.meshes, { label: () => `${isOn() ? "关闭" : "打开"}${lamp.label}`,
+      toggle: () => { const before = isOn(); toggle(); if (before !== isOn()) this.sound("switch", lamp); } });
   }
 
   addInspectable(item: InspectableItem, inspect: (item: InspectableItem) => void) {
@@ -70,28 +87,42 @@ export class RoomInteractions {
     for (const drawer of this.drawers) {
       const target = drawer.open ? 1 : 0;
       if (drawer.progress === target) continue;
+      if (step <= 0) continue;
+      if (!drawer.moving) { drawer.moving = true; this.sound("drawer-slide", drawer.drawer); }
       drawer.progress = target > drawer.progress ? Math.min(target, drawer.progress + step)
         : Math.max(target, drawer.progress - step);
       const eased = drawer.progress * drawer.progress * (3 - 2 * drawer.progress);
       drawer.root.position.copyFrom(drawer.closed).addInPlace(drawer.travel.scale(eased));
       drawer.root.computeWorldMatrix(true);
       drawer.root.getChildMeshes().forEach(mesh => mesh.computeWorldMatrix(true));
+      if (drawer.progress === target) {
+        drawer.moving = false; this.sound("stop", drawer.drawer); this.sound("drawer-stop", drawer.drawer);
+      }
       changed = true;
     }
     for (const state of this.doors) {
       const target = state.open ? 1 : 0;
       if (state.progress === target) continue;
       const step = Math.max(0, Math.min(deltaSeconds, 0.05)) / 0.7;
+      if (step <= 0) continue;
       const next = state.open ? Math.min(1, state.progress + step) : Math.max(0, state.progress - step);
       const walker = this.walkerPosition();
       state.blocked = !!walker && !doorSweepIsClear(state.door, state.progress, next, walker);
-      if (state.blocked) continue;
+      if (state.blocked) {
+        if (state.moving) { state.moving = false; this.sound("stop", state.door); }
+        continue;
+      }
+      if (!state.moving) { state.moving = true; this.sound("door-move", state.door); }
       state.progress = next;
       const eased = next * next * (3 - 2 * next);
       const { root, openAngle } = state.door;
       root.rotation.y = openAngle * eased;
       root.computeWorldMatrix(true);
       root.getChildMeshes().forEach(mesh => mesh.computeWorldMatrix(true));
+      if (next === target) {
+        state.moving = false; this.sound("stop", state.door);
+        if (!state.open) this.sound("door-latch", state.door);
+      }
       changed = true;
     }
     if (changed) this.refreshShadows();

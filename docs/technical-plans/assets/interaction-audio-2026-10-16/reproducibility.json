@@ -1,0 +1,19 @@
+{
+  "identical": true,
+  "files": {
+    "public/audio/study/source.json": "ff66d9847a2efa52d61e1ba429f0f2d8e3b4af5f00b03d70e8df6207ae78da68",
+    "public/audio/study/drawer-stop-1.6840b8eb30.wav": "6840b8eb3065c6183495d8a216ab53a3d00b6c5d469ff5689d84d8d0ef0f2c2b",
+    "public/audio/study/drawer-slide-1.8353e0a53c.wav": "8353e0a53c67b934acd5fabb307a71b5d67a04d0398e88e36e875c85b24c88a7",
+    "public/audio/study/drawer-slide-2.71ff63e71c.wav": "71ff63e71c9b9d896d5cb3fa28d2c31be6546a7e5967b59ab90d42e43f074c47",
+    "public/audio/study/door-move-1.f0162ae1b8.wav": "f0162ae1b8d7198f117e468e914e58a5ce01fc8070c7d0baab231f4b653fb66c",
+    "public/audio/study/door-latch-2.fb255ede74.wav": "fb255ede7497c01e1d33d9e5ad961568dbf2711cb53187d6ee0f299c4a9c2f2c",
+    "public/audio/study/switch-2.927c10f6e3.wav": "927c10f6e34488ac763cccb68ff826d07edf25545fd720000447b675c26d4328",
+    "public/audio/study/paper-2.862694da2b.wav": "862694da2b6b945b2e8e08330cbbb0f9bb72cb5651542b2060fa53a4ccdf1b81",
+    "public/audio/study/paper-1.ce7576efe6.wav": "ce7576efe6003d2b9fb4fa190cc58318493c5754524bc71199cf56e62836e43e",
+    "public/audio/study/drawer-stop-2.b34d827382.wav": "b34d82738205a0bcbdfe644faaa558a7e892ee2f8d51237074c842b2229bcd83",
+    "public/audio/study/switch-1.702a81fab4.wav": "702a81fab47cd408b8632eb6a5750039da011d13eb63a1f21239f93db7778fad",
+    "public/audio/study/door-latch-1.a220e2fe5d.wav": "a220e2fe5d9244a022c4125c2eac6af200238a2ce7a5451ac098b5bdb7d1178b",
+    "public/audio/study/door-move-2.9dea4bdbfd.wav": "9dea4bdbfd75ae721d9b54d198f555a80ff47508d142f721cd726dd673a495ec"
+  },
+  "command": "python3 tools/prepare-study-audio.py"
+}

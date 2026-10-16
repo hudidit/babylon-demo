@@ -15,6 +15,8 @@
 
 ## 程序与第三方库
 
+交互音效来自 laleksic 的 [Various Sound Effects](https://opengameart.org/content/various-sound-effects)，按作者声明使用 CC0-1.0。选用八个无损实物录音原件，裁成十二个短单声道 PCM WAV；来源、原件/交付摘要、剪辑区间与处理参数见[音频来源记录](audio/study/source.json)，面向用户的[音效来源页](audio/study/credits.html)随发布交付。录音不是 AI 或程序合成；原件保留在开发仓库 `assets/audio-source/study/`，不进入运行白名单。
+
 `textures/study/painted_wall` 为本项目原创的暖米白乳胶漆微表面纹理，不是外部扫描素材，不继承 Poly Haven 的 CC0 声明；按项目源代码条款使用。生成脚本、固定种子、颜色/法线/ARM语义及最终文件摘要见[漆面来源记录](textures/study/painted_wall/source.json)。三张512² PNG采用无缝周期细噪声，保留轻微滚涂颗粒，不包含砖缝或裂纹。
 
 书房几何、程序纹理和交互由项目代码构建。Babylon.js 的许可证和声明随发布目录保留：[Apache-2.0](licenses/babylonjs-Apache-2.0.md)、[NOTICE](licenses/babylonjs-NOTICE.md)。Webpack 从分包提取的第三方声明保留在对应的 `js/*.LICENSE.txt` 中，全部纳入发布清单。

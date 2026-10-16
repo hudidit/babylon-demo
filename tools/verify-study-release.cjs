@@ -5,6 +5,7 @@ const config = require('./study-release.config.cjs');
 const { hash } = require('./StudyReleasePlugin.cjs');
 const { readGlb } = require('./optimize-study-models.cjs');
 const { assertInitialModules, initialJsBudgetBytes } = require('./study-bundle-analysis.cjs');
+const { validateAudioResources } = require('./study-audio-resources.cjs');
 
 function listFiles(root, prefix = '') {
   return fs.readdirSync(path.join(root, prefix), { withFileTypes: true }).flatMap(entry => {
@@ -65,13 +66,14 @@ function verifyRelease(directory) {
   assert.ok(bundle.initialJsBytes <= initialJsBudgetBytes, 'Initial JS budget exceeded');
   assertInitialModules(bundle.initialModules.map(module => module.name));
   const modelBytes = config.optimizedModels.reduce((sum, file) => sum + records.get(file).bytes, 0);
+  const audio = validateAudioResources(root);
   const releaseBytes = Object.values(totals).reduce((sum, bytes) => sum + bytes, 0) + manifestData.length;
   assert.ok(modelBytes <= config.budgets.models, 'Model budget exceeded');
   assert.ok(totals.runtime <= config.budgets.runtime, 'Runtime budget exceeded');
   assert.ok(releaseBytes <= config.budgets.release, 'Release budget exceeded');
   return { fileCount: manifest.files.length + 1, modelBytes, buildBytes: totals.build,
     runtimeBytes: totals.runtime, documentationBytes: totals.documentation, manifestBytes: manifestData.length,
-    initialJsBytes: bundle.initialJsBytes, releaseBytes };
+    initialJsBytes: bundle.initialJsBytes, audioBytes: audio.encodedBytes, audioDecodedBytes: audio.decodedBytes, releaseBytes };
 }
 
 if (require.main === module) {

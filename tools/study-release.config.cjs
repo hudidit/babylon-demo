@@ -1,4 +1,5 @@
 // Paths are relative to public and are deliberately limited to the active study.
+const audio = require('../public/audio/study/source.json');
 module.exports = {
   runtime: [
     'environment/study-interior.hdr',
@@ -19,6 +20,8 @@ module.exports = {
     'textures/study/painted_wall/arm.png',
     'textures/study/rough_linen/normal.jpg',
     'textures/study/rough_linen/arm.jpg',
+    // Only the twelve explicitly reviewed, content-addressed foley files in this manifest.
+    ...audio.files.map(file => file.file),
   ],
   documentation: [
     'STUDY_ASSET_SOURCES.md',
@@ -26,6 +29,8 @@ module.exports = {
     'textures/study/manifest.json',
     'textures/study/forest-window/source.json',
     'textures/study/painted_wall/source.json',
+    'audio/study/source.json',
+    'audio/study/credits.html',
   ],
   libraryNotices: [
     { source: 'node_modules/@babylonjs/core/license.md', file: 'licenses/babylonjs-Apache-2.0.md' },

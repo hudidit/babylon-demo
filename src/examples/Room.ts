@@ -10,6 +10,7 @@ import { placeFurniture } from "./RoomFurnitureAssets";
 import { createRoomFinishing } from "./RoomFinishing";
 import { cabinetDrawers, RoomInteractions } from "./RoomInteractions";
 import { RoomPointerLock } from "./RoomPointerLock";
+import { RoomAudio } from "./RoomAudio";
 import { RoomItemInspection } from "./RoomItemInspection";
 import type { InspectableItem } from "./RoomInteractions";
 import { constrainWalkingPosition, createLivingRoom, createSharedWall } from "./RoomLivingRoom";
@@ -21,6 +22,7 @@ export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.55 };
 export class RoomScene {
   readonly scene: Scene;
   readonly engine: Engine;
+  readonly audio = new RoomAudio();
   private readonly camera: ArcRotateCamera;
   private readonly firstPersonCamera: UniversalCamera;
   private readonly interiorShell: TransformNode;
@@ -90,7 +92,8 @@ export class RoomScene {
 
     this.lighting = new RoomLighting(this.scene);
     this.interactions = new RoomInteractions(this.scene, () => this.lighting.refreshShadows(),
-      () => this.currentView === "first-person" ? this.firstPersonCamera.position : undefined);
+      () => this.currentView === "first-person" ? this.firstPersonCamera.position : undefined,
+      event => this.audio.event(event));
     this.inspection = new RoomItemInspection(this.scene);
     this.pointerLock = new RoomPointerLock(canvas, locked => {
       this.pointerLocked = locked;
@@ -134,6 +137,7 @@ export class RoomScene {
     });
     this.lighting.addMeshes(this.scene.meshes);
     this.scene.onBeforeRenderObservable.add(() => {
+      this.audio.update();
       if (this.inspection.isOpen) return;
       const delta = this.engine.getDeltaTime() / 1000;
       this.interactions.update(delta);
@@ -162,6 +166,7 @@ export class RoomScene {
         this.lighting.freezeShadows();
         const status = document.querySelector("#scene-status");
         if (status) status.textContent = "胡桃木 · 黄铜 · 苔绿织物";
+        this.audio.sceneReady();
       });
     }).catch(error => {
       if (this.disposed) return;
@@ -179,6 +184,8 @@ export class RoomScene {
     document.querySelector("#item-inspection")!.addEventListener("cancel", this.cancelInspection);
     document.addEventListener("keydown", this.keyDown);
     window.addEventListener("blur", this.leaveFirstPerson);
+    window.addEventListener("blur", this.pauseAudio);
+    window.addEventListener("focus", this.resumeAudio);
     window.addEventListener("resize", this.resize);
     document.addEventListener("visibilitychange", this.visibilityChanged);
     window.addEventListener("pagehide", this.dispose, { once: true });
@@ -187,6 +194,8 @@ export class RoomScene {
 
   setView(view: RoomView) {
     if (this.inspection?.isOpen) return;
+    this.interactions.silenceMotion();
+    this.audio.setSpatialCamera(view === "first-person" ? this.firstPersonCamera : undefined);
     const firstPerson = view === "first-person";
     const enteringLiving = this.currentView === "living";
     if (firstPerson && this.currentView !== "first-person") this.previousView = this.currentView;
@@ -272,6 +281,9 @@ export class RoomScene {
 
   private openInspection(item: InspectableItem) {
     if (!this.controlsEnabled || !this.inspection.open(item)) return;
+    this.interactions.silenceMotion();
+    this.audio.stopAll();
+    this.audio.play("paper", "inspection");
     this.pointerLock.release();
     this.updateControls();
     this.updateInteractionHint();
@@ -283,6 +295,8 @@ export class RoomScene {
 
   private closeInspection(resumePointer: boolean) {
     if (!this.inspection.close()) return;
+    this.audio.stopEntity("inspection");
+    this.audio.play("paper", "inspection");
     document.querySelector<HTMLDialogElement>("#item-inspection")!.close();
     document.body.classList.remove("viewing-item");
     this.updateControls();
@@ -309,6 +323,7 @@ export class RoomScene {
   };
 
   private keyDown = (event: KeyboardEvent) => {
+    if (event.isTrusted && !event.repeat && event.key === "Escape") { this.resumeAudio(); this.audio.unlockFromGesture(); }
     if (this.inspection.isOpen) {
       if (event.key === "Escape") this.cancelInspection(event);
       return;
@@ -317,6 +332,7 @@ export class RoomScene {
   };
 
   private pointerDown = (event: PointerEvent) => {
+    if (event.isTrusted && event.button === 0) { this.resumeAudio(); this.audio.unlockFromGesture(); }
     if (event.button !== 0 || !this.controlsEnabled || this.inspection.isOpen) return;
     if (this.currentView === "first-person" && !this.pointerLocked) {
       this.pointerLock.request();
@@ -467,12 +483,16 @@ export class RoomScene {
     this.resizeInspection();
   };
   private visibilityChanged = () => {
+    if (document.hidden) this.pauseAudio(); else this.resumeAudio();
     this.engine.stopRenderLoop(this.render);
     if (!document.hidden && !this.disposed) this.engine.runRenderLoop(this.render);
   };
+  private pauseAudio = () => { this.interactions.silenceMotion(); this.audio.pause(); };
+  private resumeAudio = () => { if (!document.hidden && !this.disposed) this.audio.foreground(); };
   private dispose = () => {
     if (this.disposed) return;
     this.disposed = true;
+    this.audio.dispose();
     document.querySelector("#item-inspection-return")?.removeEventListener("click", this.returnFromInspection);
     document.querySelector("#item-inspection")?.removeEventListener("cancel", this.cancelInspection);
     document.querySelector<HTMLDialogElement>("#item-inspection")?.close();
@@ -485,6 +505,8 @@ export class RoomScene {
     this.canvas.removeEventListener("pointercancel", this.pointerCancel);
     document.removeEventListener("keydown", this.keyDown);
     window.removeEventListener("blur", this.leaveFirstPerson);
+    window.removeEventListener("blur", this.pauseAudio);
+    window.removeEventListener("focus", this.resumeAudio);
     window.removeEventListener("resize", this.resize);
     document.removeEventListener("visibilitychange", this.visibilityChanged);
     this.engine.stopRenderLoop();

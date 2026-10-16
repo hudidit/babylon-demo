@@ -3,6 +3,7 @@ const path = require('node:path');
 const { createHash } = require('node:crypto');
 const config = require('./study-release.config.cjs');
 const { analyzeBundle } = require('./study-bundle-analysis.cjs');
+const { validateAudioResources } = require('./study-audio-resources.cjs');
 
 const hash = data => createHash('sha256').update(data).digest('hex');
 
@@ -13,6 +14,7 @@ class StudyReleasePlugin {
     compiler.hooks.thisCompilation.tap(name, compilation => {
       const kinds = new Map();
       compilation.hooks.processAssets.tap({ name, stage: Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL }, () => {
+        validateAudioResources(path.join(compiler.context, 'public'));
         const copy = (source, file, kind) => {
           compilation.fileDependencies.add(source);
           if (compilation.getAsset(file)) throw new Error(`Release asset collision: ${file}`);

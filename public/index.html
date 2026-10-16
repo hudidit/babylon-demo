@@ -50,7 +50,16 @@
       .speed-scale { font-size: 10px; color: #776d5e; margin-top: 7px; }
       #movement-speed-description { font-size: 11px; color: #776d5e; line-height: 1.7; margin: 16px 0; }
       #settings-reset { border: 1px solid #cbbca6; border-radius: 6px; background: transparent; color: #56564b; padding: 7px 10px; font-size: 11px; }
-      @media (max-width: 640px) { .identity { left: 18px; top: 20px; } h1 { font-size: 23px; } .view-controls { right: 12px; bottom: 16px; left: 12px; max-width: none; justify-content: center; } .view-controls button { padding: 10px; } .help { display: none; } .tools { top: 20px; right: 18px; } .settings-panel { top: 64px; right: 18px; } }
+      .settings-panel { max-height: calc(100% - 90px); overflow-y: auto; }
+      .audio-settings { border-top: 1px solid #cbbca6; padding-top: 16px; margin: 18px 0; }
+      .audio-enabled-label { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-bottom: 16px; }
+      #audio-volume { width: 100%; accent-color: #73503d; }
+      #audio-status { color: #776d5e; font-size: 11px; line-height: 1.6; min-height: 18px; }
+      .audio-actions { display: flex; gap: 10px; align-items: center; font-size: 11px; }
+      .audio-actions button { border: 1px solid #cbbca6; border-radius: 5px; padding: 6px 10px; color: #56564b; background: transparent; }
+      .audio-actions a { color: #73503d; }
+      #item-audio-toggle { position: absolute; top: 20px; right: 20px; border: 1px solid #bda57d88; border-radius: 6px; color: #f6e9cf; background: #242c2eaa; padding: 7px 12px; font-size: 11px; }
+      @media (max-width: 640px) { .identity { left: 18px; top: 20px; } .eyebrow { font-size: 9px; letter-spacing: 2px; } h1 { font-size: 23px; } .view-controls { right: 12px; bottom: 16px; left: 12px; max-width: none; justify-content: center; } .view-controls button { padding: 10px; } .help { display: none; } .tools { top: 20px; right: 18px; } .settings-panel { top: 64px; right: 18px; } }
     </style>
   </head>
   <body>
@@ -60,6 +69,7 @@
       <p id="scene-status" role="status">正在布置书房与客厅…</p>
     </div>
     <nav class="tools" aria-label="场景工具">
+      <button id="audio-toggle" data-audio-toggle aria-pressed="true" aria-label="关闭交互音效">音效：开</button>
       <button id="settings-btn" aria-expanded="false" aria-controls="settings-menu">设置</button>
       <button id="inspect-btn">调试</button>
     </nav>
@@ -75,12 +85,20 @@
       <input id="movement-speed" type="range" min="0.25" max="3" step="0.25" value="1" aria-describedby="movement-speed-description" />
       <div class="speed-scale" aria-hidden="true"><span>慢 · 0.25×</span><span>快 · 3.00×</span></div>
       <p id="movement-speed-description">调节第一人称视角中方向键 / WASD 的移动速度，立即生效并自动保存。</p>
+      <div class="audio-settings">
+        <label class="audio-enabled-label"><input id="audio-enabled" type="checkbox" checked />交互音效</label>
+        <div class="setting-label"><label for="audio-volume">音效音量</label><output id="audio-volume-value" for="audio-volume">50%</output></div>
+        <input id="audio-volume" type="range" min="0" max="100" step="1" value="50" aria-describedby="audio-status" />
+        <p id="audio-status" role="status">等待场景就绪</p>
+        <div class="audio-actions"><button id="audio-preview">试听</button><button id="audio-retry" hidden>重试音效</button><a href="./audio/study/credits.html" target="_blank" rel="noopener">素材来源</a></div>
+      </div>
       <button id="settings-reset">恢复默认</button>
     </section>
     <div class="help" id="view-help">拖动旋转 · 滚轮缩放 · 右键平移</div>
     <div id="interaction-reticle" aria-hidden="true" hidden></div>
     <div id="interaction-hint" role="status" hidden></div>
     <dialog id="item-inspection" aria-labelledby="item-inspection-title">
+      <button id="item-audio-toggle" data-audio-toggle aria-pressed="true" aria-label="关闭交互音效">音效：开</button>
       <div class="item-heading"><p>物品详情</p><h2 id="item-inspection-title">桌上的信</h2></div>
       <div class="item-actions"><button id="item-inspection-return" autofocus>返回</button><p>ESC 返回场景</p></div>
     </dialog>

@@ -1,0 +1,27 @@
+{
+  "baseline": "9b97534",
+  "retainedRuntimeFiles": 18,
+  "retainedRuntimeHashesUnchanged": true,
+  "before": {
+    "runtimeBytes": 15414567,
+    "actualInitialJsBytes": 2612523,
+    "releaseBytes": 41598668
+  },
+  "after": {
+    "runtimeBytes": 15702135,
+    "staticInitialJsBytes": 2475683,
+    "sceneReadyJsBytes": 2626814,
+    "sceneAndAudioPreheatJsBytes": 2694535,
+    "releaseBytes": 41934890
+  },
+  "audio": {
+    "files": 12,
+    "encodedBytes": 287568,
+    "coreBytes": 126984,
+    "decodedBytes": 574080
+  },
+  "budgetsChanged": false,
+  "fpsOrLoadSpeedClaim": false,
+  "jsComparisonScope": "Current conservative JS includes optional audio preheat, baseline is mandatory initial JS.",
+  "finalMobileCSSChange": "Phone eyebrow size/spacing avoids overlap with audio toolbar; JS files unchanged."
+}

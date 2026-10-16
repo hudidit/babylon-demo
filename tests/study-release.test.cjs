@@ -44,7 +44,8 @@ test('production packaging includes exact study assets, license sidecars and laz
     const paint = require('../public/textures/study/painted_wall/source.json');
     const retained = baseline.assets.map(file => file.path.replace(/^public\//, '')).filter(file => !file.includes('/brick_wall_001/'));
     const paintPaths = Object.values(paint.files).map(file => file.file);
-    assert.deepEqual([...config.runtime].sort(), [...retained, ...paintPaths].sort());
+    const audio = require('../public/audio/study/source.json');
+    assert.deepEqual([...config.runtime].sort(), [...retained, ...paintPaths, ...audio.files.map(file => file.file)].sort());
     const summary = verifyRelease(output);
     assert.equal(summary.runtimeBytes, config.runtime.reduce((sum, file) => sum + fs.statSync(path.join(root, 'public', file)).size, 0));
     assert.ok(!manifest.files.some(file => file.path.includes('/brick_wall_001/')));

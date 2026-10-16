@@ -155,6 +155,35 @@ test("door sweep pauses for a walker, resumes after clearance and supports rever
   assert.match(action.label(), /^打开/);
 });
 
+test("audio events follow actual movement, blocking and completion rather than click timers", t => {
+  const { scene, room } = adjacentRooms(t), events = [];
+  let walker = new babylon.Vector3(19, 1, -5);
+  const interactions = new RoomInteractions(scene, () => {}, () => walker, event => events.push(event));
+  interactions.addDoor(room.doors[0]);
+  const action = interactions.pick(new babylon.Ray(new babylon.Vector3(16, 1, -5), new babylon.Vector3(1, 0, 0), 7.5));
+  action.toggle(); assert.deepEqual(events.map(event => event.cue), ['stop']);
+  interactions.update(0); assert.equal(events.length, 1, 'no sound before movement');
+  for (let i = 0; i < 20; i++) interactions.update(.05);
+  assert.equal(events.filter(event => event.cue === 'door-move').length, 1);
+  assert.equal(events.filter(event => event.cue === 'door-latch').length, 0, 'opening never emits closing latch');
+  walker = new babylon.Vector3(20, 1, -5); action.toggle();
+  for (let i = 0; i < 20; i++) interactions.update(.05);
+  const count = events.length;
+  for (let i = 0; i < 20; i++) interactions.update(.05);
+  assert.equal(events.length, count, 'blocked frames do not repeatedly sound');
+  assert.equal(events.filter(event => event.cue === 'door-latch').length, 0);
+  walker = new babylon.Vector3(16, 1, -5);
+  for (let i = 0; i < 20; i++) interactions.update(.05);
+  assert.equal(events.filter(event => event.cue === 'door-latch').length, 1);
+  const drawer = room.drawers[0]; interactions.addDrawer(drawer);
+  const state = interactions.drawers[0]; state.open = true;
+  interactions.update(.05); interactions.silenceMotion(); interactions.update(.05);
+  state.open = false;
+  for (let i = 0; i < 20; i++) interactions.update(.05);
+  assert.equal(events.filter(event => event.cue === 'drawer-stop').length, 1);
+  assert.ok(events.some(event => event.entity === drawer.id && event.position().x === event.position().x));
+});
+
 test("section batching preserves singleton artwork/window world transforms and cutaway parenting", t => {
   const { scene } = adjacentRooms(t);
   const artwork = scene.getMeshByName("living-study-living-landscape-artwork");
@@ -630,6 +659,8 @@ test("detail view permits close inspection and restores overview zoom limits on 
   room.interiorShell = new babylon.TransformNode("shell", scene);
   room.interiorShell.setEnabled(false);
   room.scene = scene; room.controlsEnabled = false;
+  room.interactions = { silenceMotion() {} };
+  room.audio = { setSpatialCamera() {} };
   room.canvas = { setAttribute() {} };
   let refreshed = 0;
   room.lighting = { refreshShadows() { refreshed++; } };
