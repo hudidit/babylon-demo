@@ -24,6 +24,8 @@
 
 ### 技术方案与验收记录
 
+- 建立[交互音效支持方案](docs/technical-plans/2026-10-16-interaction-audio.md)，建议实物声音优先使用逐项核实许可的录音，简单提示可离线合成；设计 Babylon Audio V2 统一管理、预加载/手势解锁/共享缓冲、反向和受阻同步、音量/静音/空间声及预算与分阶段验收。本次仅交付设计，未下载或生成音频，未修改运行代码，功能待实施。
+
 - 建立并完成[两房乳胶漆墙面替换方案](docs/technical-plans/2026-10-16-painted-walls.md)，记录统一漆面、固定种子生成/通道语义、来源/白名单替换，以及[前后画面、资源字节与交互验收](docs/technical-plans/assets/painted-walls-2026-10-16/README.md)。
 
 - 建立并完成[客厅与书房连通门方案](docs/technical-plans/2026-10-16-connecting-door.md)，记录门洞收窄、单扇门开合、双面拾取、动态碰撞/阴影及玩家扫掠保护，保存[画面、交互、请求及交付核验](docs/technical-plans/assets/connecting-door-2026-10-16/README.md)。
