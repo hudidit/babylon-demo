@@ -77,7 +77,8 @@ export class RoomFloorPlan {
       direction: direction && { x: direction.x, z: direction.z } };
     const firstPerson = view === "first-person";
     const room = firstPerson ? this.rooms.roomAt(position)
-      : view === "overview" ? undefined : ["living", "reading", "cabinet"].includes(view) ? "living" : "study";
+      : view === "overview" ? undefined : view === "master" || view === "ensuite" ? view
+      : ["living", "reading", "cabinet"].includes(view) ? "living" : "study";
     const valid = firstPerson && this.rooms.layoutVersion === HOUSE_LAYOUT_VERSION && !!room
       && Number.isFinite(position.x) && Number.isFinite(position.z);
     const point = worldToPlan(position), drawing = houseDrawingPoint(point.x, point.y);

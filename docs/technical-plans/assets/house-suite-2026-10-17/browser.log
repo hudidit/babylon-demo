@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "scene": {
+    "unownedNodes": [],
+    "metadata": {
+      "layoutVersion": "house-plan-v1"
+    },
+    "meshes": 518,
+    "vertices": 354245,
+    "materials": 67,
+    "textures": 131,
+    "lights": 9,
+    "cameras": 3,
+    "unowned": [],
+    "states": [
+      {
+        "id": "master",
+        "state": "ready"
+      },
+      {
+        "id": "study",
+        "state": "ready"
+      },
+      {
+        "id": "kitchen",
+        "state": "shell"
+      },
+      {
+        "id": "ensuite",
+        "state": "ready"
+      },
+      {
+        "id": "bathroom",
+        "state": "shell"
+      },
+      {
+        "id": "bedroom",
+        "state": "shell"
+      },
+      {
+        "id": "living",
+        "state": "ready"
+      },
+      {
+        "id": "balcony",
+        "state": "shell"
+      }
+    ],
+    "actions": [
+      "bathroom-door",
+      "bedroom-door",
+      "cabinet-drawer-1",
+      "cabinet-drawer-2",
+      "cabinet-drawer-3",
+      "connecting-door",
+      "console-drawer-1",
+      "console-drawer-2",
+      "console-drawer-3",
+      "desk-lamp",
+      "desk-letter",
+      "ensuite-door",
+      "ensuite-lamp",
+      "entry-door",
+      "floor-lamp",
+      "kitchen-door",
+      "living-lamp",
+      "master-door",
+      "master-lamp",
+      "writing-drawer-1",
+      "writing-drawer-2"
+    ]
+  },
+  "initialJsBytes": 2726102,
+  "release": {
+    "filesVerified": 488,
+    "bytes": 41977710,
+    "staticJsBytes": 2507250
+  }
+}

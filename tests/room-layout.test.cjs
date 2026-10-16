@@ -41,6 +41,115 @@ const { HOUSE_DOORS, HOUSE_ROOMS } = loadSource("HouseLayout");
 const { houseVector, HOUSE_WALKER_RADIUS, constrainHouseWalking } = loadSource("HouseWalking");
 const { doorSweepIsClear } = loadSource("RoomInteractions");
 const { furnishHouseStudy, furnishHouseLiving, HOUSE_CONTENT } = loadSource("HouseContent");
+const { furnishHouseMaster, furnishHouseEnsuite } = loadSource("HouseSuite");
+const { bathroomVanity, bathroomToilet, bathroomShower, bedroomBed, bedroomWardrobe } = loadSource("HouseRoomComponents");
+
+function furnishedSuite(t) {
+  const scene = createScene(t), room = new RoomFurnishings(scene);
+  const architecture = createHouseArchitecture(scene, room);
+  furnishHouseMaster(room); furnishHouseEnsuite(room);
+  room.finish().forEach(m => m.checkCollisions = true);
+  scene.meshes.forEach(m => m.computeWorldMatrix(true)); scene.collisionsEnabled = true;
+  return { scene, room, architecture };
+}
+
+test("suite components fit inside their rooms, meet the floor and share materials with the second bedroom/bathroom", t => {
+  const { scene } = furnishedSuite(t);
+  for (const mesh of scene.meshes.filter(m => /^(master-(bed|nightstand|wardrobe|accessories)|ensuite-(vanity|toilet|shower|tiles))/.test(m.name))) {
+    const owner = mesh.metadata.ownerRooms[0], r = HOUSE_ROOMS.find(r => r.id === owner), b = mesh.getBoundingInfo().boundingBox;
+    const min = houseVector(r.x + .05, r.y + .05), max = houseVector(r.x + r.width - .05, r.y + r.depth - .05);
+    assert.ok(b.minimumWorld.x >= min.x - .001 && b.maximumWorld.x <= max.x + .001 && b.minimumWorld.z >= min.z - .001 && b.maximumWorld.z <= max.z + .001, mesh.name);
+    assert.ok(b.minimumWorld.y >= -5.001 && b.maximumWorld.y <= 9, mesh.name);
+  }
+  for (const prefix of ['master-bed-', 'master-nightstand-', 'master-wardrobe-', 'ensuite-vanity-', 'ensuite-toilet-']) {
+    const meshes = scene.meshes.filter(m => m.name.startsWith(prefix));
+    assert.ok(meshes.length); assert.ok(Math.abs(babylon.Mesh.MinMax(meshes).min.y + 5) < .001, prefix + ' grounded');
+  }
+  const before = { materials: scene.materials.length, textures: scene.textures.length };
+  const other = new RoomFurnishings(scene, 'bedroom');
+  bedroomBed(other, 'bedroom', { x: 2.7, y: 1.5 }, 1.5);
+  bedroomWardrobe(other, 'bedroom', { x: 4.9, y: 1.5 }, 2.2, -Math.PI/2);
+  bathroomVanity(other, 'bathroom', { x: 2.6, y: .6 }, 1, -Math.PI/2);
+  bathroomToilet(other, 'bathroom', { x: .5, y: 1 });
+  bathroomShower(other, 'bathroom', { x: 1.5, y: 1.9 }, 2.6, .8);
+  assert.deepEqual({ materials: scene.materials.length, textures: scene.textures.length }, before);
+  const glass = scene.getMaterialByName('bath-glass');
+  assert.equal(glass.backFaceCulling, false); assert.equal(glass.alpha, .2);
+  assert.ok(scene.meshes.some(m => m.name.startsWith('ensuite-shower') && m.material === glass && m.checkCollisions));
+});
+
+test("suite has continuous bed-side, wardrobe and private bathroom/shower routes with solid glass and furniture", t => {
+  const { scene, room } = furnishedSuite(t), interactions = new RoomInteractions(scene, () => {});
+  room.doors.forEach(d => interactions.addDoor(d));
+  interactions.doors.forEach(s => s.open = ['master-door', 'ensuite-door'].includes(s.door.id));
+  for (let i = 0; i < 16; i++) interactions.update(.05);
+  const radius = new babylon.Vector3(HOUSE_WALKER_RADIUS, 3.9, HOUSE_WALKER_RADIUS);
+  const routes = [
+    [[6.6,4.05],[4.3,4.05],[3.4,4.05],[1.2,4.05],[1.2,5.6],[1.45,5.9],[1.8,6.25],[1.8,6.8]],
+    [[4.3,4.05],[4,3.3],[4,1.65],[3.3,1.65],[3.3,.7],[1.8,.7],[1.8,1.0]],
+    [[3.4,4.05],[3.2,3.5],[1.3,3.5]],
+  ];
+  for (const route of routes) for (let i = 1; i < route.length; i++) {
+    const p = houseVector(...route[i - 1], .82), q = houseVector(...route[i], .82);
+    const actual = sweep(scene, p, q.subtract(p), radius).position;
+    assert.ok(actual.equalsWithEpsilon(q, .03), `${route[i-1]} → ${route[i]} blocked at ${actual.asArray()}`);
+  }
+  for (const [from,to] of [ [[.7,6],[.7,6.6]], [[3.4,2.3],[1.5,2.3]], [[4,1.6],[5.25,1.6]], [[2.8,6],[1.8,6]] ]) {
+    const p = houseVector(...from, .82), q = houseVector(...to, .82);
+    assert.ok(!sweep(scene, p, q.subtract(p), radius).position.equalsWithEpsilon(q, .03), `solid obstacle ${from} → ${to}`);
+  }
+  assert.deepEqual(HOUSE_DOORS.filter(d => d.from === 'ensuite' || d.to === 'ensuite').map(d=>d.id), ['ensuite-door']);
+});
+
+test("suite furniture clears both door sweeps at every angle and cutaway retains glass collision", t => {
+  const { scene, room, architecture } = furnishedSuite(t);
+  const meshes = scene.meshes.filter(m => /^(master-(bed|nightstand|wardrobe)|ensuite-(vanity|toilet|shower))/.test(m.name));
+  for (const door of room.doors.filter(d => ['master-door','ensuite-door'].includes(d.id))) {
+    for (let step = 0; step <= 20; step++) {
+      door.root.rotation.y = door.openAngle * step / 20; door.root.computeWorldMatrix(true);
+      door.meshes.forEach(m=>m.computeWorldMatrix(true));
+      for (const leaf of door.meshes) for (const furniture of meshes)
+        assert.equal(leaf.intersectsMesh(furniture, true), false, `${door.id} hits ${furniture.name} at ${step}`);
+    }
+  }
+  architecture.setEnclosed(false, 'master');
+  architecture.updateCutaway(houseVector(6.4,6.3,4.7),houseVector(2.5,2.2,.7));
+  assert.ok(architecture.upperWalls.some(m=>m.isVisible&&m.metadata.ownerRooms.includes('master')));
+  assert.ok(architecture.upperWalls.every(m=>!m.isVisible||m.metadata.ownerRooms.includes('master')));
+  const glass = scene.meshes.find(m=>m.material?.name==='bath-glass');
+  assert.ok(glass.isVisible&&glass.checkCollisions);
+  architecture.setEnclosed(true); assert.ok(architecture.ceilings.every(m=>m.isVisible));
+});
+
+test("suite lamps have isolated emissive/light state, room masks and shadow invalidation", t => {
+  const { scene, room } = furnishedSuite(t), lights = new RoomLighting(scene,true);
+  lights.addLivingRoom(scene,true); lights.addMasterSuite(scene); lights.addMeshes(scene.meshes);
+  room.lamps.forEach(l=>lights.bindLamp(l.id,scene.getMaterialByName(l.id+'-glow')));
+  const touched=[];
+  scene.lights.filter(l=>l.getShadowGenerator?.()).forEach(l=>l.getShadowGenerator().getShadowMap().resetRefreshCounter=()=>touched.push(l.metadata.ownerRooms[0]));
+  for (const [id,owner] of [['master-lamp','master'],['ensuite-lamp','ensuite']]) {
+    const intensity = scene.lights.map(l=>l.intensity), material=scene.getMaterialByName(id+'-glow'), glow=material.emissiveColor.clone();
+    lights.toggleLamp(id); assert.equal(lights.isLampOn(id),false); assert.ok(material.emissiveColor.equals(babylon.Color3.Black()));
+    assert.deepEqual([...new Set(touched)], [owner]); touched.length=0;
+    assert.ok(scene.lights.every((l,i)=>l.name===id+'-light'?l.intensity===0:l.intensity===intensity[i]));
+    lights.toggleLamp(id); assert.ok(material.emissiveColor.equals(glow)); touched.length=0;
+  }
+  const main=scene.getLightByName('master-window-daylight'), bath=scene.getLightByName('ensuite-lamp-light');
+  for(const id of ['master-lamp','ensuite-lamp']) {
+    const light=scene.getLightByName(id+'-light');
+    const ray=new babylon.Ray(light.position,light.direction,1);
+    const fixture=room.lamps.find(l=>l.id===id);
+    const hit=scene.pickWithRay(ray,m=>fixture.meshes.includes(m));
+    assert.ok(!hit?.hit, id+' must emit outside its opaque fixture');
+  }
+  for(const mesh of scene.meshes.filter(m=>m.getTotalVertices()&&m.metadata.ownerRooms.length===1)) {
+    const id=mesh.metadata.ownerRooms[0];
+    if(id==='ensuite')assert.ok(main.excludedMeshes.includes(mesh));
+    if(id==='master')assert.ok(bath.excludedMeshes.includes(mesh));
+  }
+  lights.removeRoom('master');
+  assert.equal(scene.getLightByName('master-lamp-light'),null); assert.equal(lights.isLampOn('ensuite-lamp'),true);
+});
 
 async function furnishedHouse(t) {
   const scene = createScene(t), room = new RoomFurnishings(scene);
@@ -882,14 +991,14 @@ test("creased letter rests on the blotter and curls only a small distance above 
   assert.ok(normals[1] > 0.9, "the top side must face the room lights");
 });
 
-test("detail view permits close inspection and restores overview zoom limits on exit", t => {
+test("detail zoom limits and responsive suite framing preserve camera controls across views", t => {
   const scene = createScene(t), room = Object.create(RoomScene.prototype);
   room.camera = new babylon.ArcRotateCamera("orbit", 0.8, 1.08, 66, babylon.Vector3.Zero(), scene);
   room.firstPersonCamera = new babylon.UniversalCamera("walking", new babylon.Vector3(4, 1, 16), scene);
   room.interiorShell = new babylon.TransformNode("shell", scene);
   room.interiorShell.setEnabled(false);
   room.architecture = { setEnclosed(value) { room.interiorShell.setEnabled(value); } };
-  room.scene = scene; room.controlsEnabled = false;
+  room.scene = scene; room.engine = scene.getEngine(); room.controlsEnabled = false;
   room.interactions = { silenceMotion() {} };
   room.audio = { setSpatialCamera() {} };
   room.floorPlan = { isOpen: false, update() {} };
@@ -911,6 +1020,16 @@ test("detail view permits close inspection and restores overview zoom limits on 
     assert.ok(room.interiorShell.isEnabled() && refreshed === 3);
     room.setView("details");
     assert.ok(!room.interiorShell.isEnabled() && refreshed === 4);
+    let width = 1280, height = 800;
+    room.engine = { getRenderWidth: () => width, getRenderHeight: () => height };
+    for (const view of ['master', 'ensuite']) {
+      room.setView(view); const desktopRadius = room.camera.radius;
+      width = 390; height = 844; room.fitSuiteView();
+      assert.ok(room.camera.radius > desktopRadius * 3, 'portrait view must keep the room in frame');
+      room.camera.radius *= .8; // User zoom survives an orientation change.
+      width = 1280; height = 800; room.fitSuiteView();
+      assert.ok(Math.abs(room.camera.radius - desktopRadius * .8) < .001);
+    }
   } finally {
     if (previousDocument === undefined) delete global.document;
     else global.document = previousDocument;

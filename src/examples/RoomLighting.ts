@@ -4,6 +4,8 @@ import { roomOwners, setRoomOwners } from "./RoomOwnership";
 import type { HouseRoomId } from "./HouseLayout";
 import { HOUSE_CONTENT } from "./HouseContent";
 import { houseVector } from "./HouseWalking";
+import { HOUSE_SUITE } from "./HouseSuite";
+import { localPosition } from "./HouseRoomComponents";
 
 /** Room-specific window/lamp sources plus the original restrained indirect bounce. */
 export class RoomLighting {
@@ -101,6 +103,32 @@ export class RoomLighting {
       shadow.usePercentageCloserFiltering = true;
       shadow.filteringQuality = ShadowGenerator.QUALITY_MEDIUM;
       shadow.bias = index ? 0.00015 : 0.0001; shadow.normalBias = 0.012;
+      this.shadows.push(shadow);
+    });
+  }
+
+  addMasterSuite(scene: Scene) {
+    const a = HOUSE_SUITE;
+    const daylight = new SpotLight("master-window-daylight", houseVector(2.4, 0.18, 2.1),
+      new Vector3(0.1, -0.5, 1).normalize(), Math.PI / 1.5, 1, scene);
+    daylight.diffuse = new Color3(1, 0.96, 0.88);
+    daylight.intensity = 3.2; daylight.range = 32;
+    const master = new SpotLight("master-lamp-light", Vector3.FromArray(localPosition("master", { x: a.masterLamp.x + 0.04, y: a.masterLamp.y }, a.masterLamp.emitterHeight)),
+      new Vector3(0.5, -0.8, 0.2).normalize(), Math.PI / 1.5, 1, scene);
+    master.diffuse = new Color3(1, 0.85, 0.64); master.intensity = 2.3; master.range = 18;
+    const ensuite = new SpotLight("ensuite-lamp-light", Vector3.FromArray(localPosition("ensuite", { x: a.ensuiteLamp.x - 0.08, y: a.ensuiteLamp.y }, a.ensuiteLamp.height)),
+      new Vector3(-0.5, -0.8, 0.3).normalize(), Math.PI / 1.35, 1, scene);
+    ensuite.diffuse = new Color3(1, 0.94, 0.82); ensuite.intensity = 3.2; ensuite.range = 18;
+    this.lamps.set("master-lamp", { light: master, intensity: master.intensity, on: true });
+    this.lamps.set("ensuite-lamp", { light: ensuite, intensity: ensuite.intensity, on: true });
+    [daylight, master, ensuite].forEach((light, index) => {
+      setRoomOwners(light, [index === 2 ? "ensuite" : "master"]);
+      light.metadata.affectsShared = true;
+      light.falloffType = SpotLight.FALLOFF_STANDARD; light.specular = light.diffuse.scale(0.65);
+      light.shadowMinZ = 0.1; light.shadowMaxZ = light.range;
+      const shadow = new ShadowGenerator(index === 1 ? 512 : 1024, light);
+      shadow.usePercentageCloserFiltering = true; shadow.filteringQuality = ShadowGenerator.QUALITY_MEDIUM;
+      shadow.bias = 0.00012; shadow.normalBias = 0.012;
       this.shadows.push(shadow);
     });
   }

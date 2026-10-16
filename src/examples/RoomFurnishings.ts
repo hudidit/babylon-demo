@@ -1,5 +1,5 @@
-import { Color3, DynamicTexture, Mesh, CreateBox, CreateCylinder, CreatePlane, CreateSphere, CreateTorus, CreateTube, StandardMaterial, Texture, TransformNode, Vector3, VertexBuffer, VertexData } from "@babylonjs/core/pure";
-import type { AbstractMesh, Material, PBRMaterial, Scene } from "@babylonjs/core/pure";
+import { Color3, DynamicTexture, Mesh, CreateBox, CreateCylinder, CreatePlane, CreateSphere, CreateTorus, CreateTube, PBRMaterial, StandardMaterial, Texture, TransformNode, Vector3, VertexBuffer, VertexData } from "@babylonjs/core/pure";
+import type { AbstractMesh, Material, Scene } from "@babylonjs/core/pure";
 import { measureBookshelf } from "./BookshelfLayout";
 import { linenMaterial, mappedMaterial, surfaceMaterial } from "./RoomMaterials";
 import { beveledBox, creasedLetter, curtainPanel, ficusLeaf } from "./RoomDetailGeometry";
@@ -103,7 +103,7 @@ export class RoomFurnishings {
   }
 
   box(name: string, size: Triple, position: Triple, material: string, parent?: TransformNode) {
-    const detail = /^(table-|console-(top|apron|leg|drawer)|chair-(leg|back-frame|stretcher)|seat-frame|back-post|window-(casing|mullion|crossbar|sill)|door-(frame|raised-panel|panel-inset)|floating-shelf|book-cover$|book-spine$|desk-blotter)/.test(name);
+    const detail = /^(bed-frame|nightstand-|wardrobe-|vanity-|table-|console-(top|apron|leg|drawer)|chair-(leg|back-frame|stretcher)|seat-frame|back-post|window-(casing|mullion|crossbar|sill)|door-(frame|raised-panel|panel-inset)|floating-shelf|book-cover$|book-spine$|desk-blotter)/.test(name);
     const mesh = detail ? beveledBox(name, size, Math.min(0.065, Math.min(...size) * 0.18), this.scene)
       : CreateBox(name, { width: size[0], height: size[1], depth: size[2] }, this.scene);
     return this.place(mesh, position, material, parent);
@@ -188,6 +188,31 @@ export class RoomFurnishings {
       mesh.checkCollisions = true;
       return mesh;
     });
+  }
+
+  /** Shared wet-room finishes; no new images, render targets or per-room texture copies. */
+  ensureBathroomMaterials() {
+    if (this.materials.has("bath-porcelain")) return;
+    for (const [name, color, roughness] of [
+      ["bath-porcelain", "#e8e6de", 0.18], ["bath-tile", "#bdbbad", 0.67],
+      ["bath-grout", "#898b80", 0.92], ["bath-mirror", "#dce2df", 0.05],
+      ["bath-glass", "#d6e6df", 0.08],
+    ] as const) this.materials.set(name, surfaceMaterial(name, this.scene, color, roughness));
+    const mirror = this.materials.get("bath-mirror") as PBRMaterial;
+    mirror.metallic = 1; // Reflect the shared HDR, without a second room render/camera.
+    const glass = this.materials.get("bath-glass") as PBRMaterial;
+    glass.alpha = 0.2; glass.backFaceCulling = false;
+    glass.transparencyMode = PBRMaterial.PBRMATERIAL_ALPHABLEND;
+  }
+
+  /** A fixed, independently pickable lamp with its own emissive state. */
+  fixtureLamp(id: string, label: string, position: Triple, build: (root: TransformNode, glow: string) => void) {
+    const root = this.group(id, position), start = this.parts.length, glow = id + "-glow";
+    if (!this.materials.has(glow)) this.materials.set(glow, this.materials.get("shade")!.clone(glow)!);
+    build(root, glow);
+    const meshes = this.keepInteractive(start, root, true);
+    this.lamps.push({ id, label, meshes });
+    return root;
   }
 
   tableLamp(position: Triple) {
