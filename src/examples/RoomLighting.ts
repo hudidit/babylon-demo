@@ -2,6 +2,7 @@ import { Color3, HemisphericLight, RenderTargetTexture, ShadowGenerator, SpotLig
 import type { AbstractMesh, PBRMaterial, Scene } from "@babylonjs/core/pure";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
 import type { HouseRoomId } from "./HouseLayout";
+import { houseVector } from "./HouseWalking";
 
 /** Room-specific window/lamp sources plus the original restrained indirect bounce. */
 export class RoomLighting {
@@ -9,9 +10,9 @@ export class RoomLighting {
   private readonly lamps = new Map<string, { light: SpotLight; intensity: number; on: boolean;
     material?: PBRMaterial; glow?: Color3 }>();
 
-  constructor(scene: Scene) {
+  constructor(scene: Scene, house = false) {
     const fill = new HemisphericLight("room-bounce-light", new Vector3(-0.35, 1, 0.15), scene);
-    fill.intensity = 0.18;
+    fill.intensity = house ? 0.38 : 0.18;
     fill.diffuse = new Color3(0.95, 0.97, 1);
     fill.groundColor = new Color3(0.68, 0.62, 0.53);
     fill.specular = Color3.Black();
@@ -41,15 +42,21 @@ export class RoomLighting {
     this.lamps.set("floor-lamp", { light: reading, intensity: reading.intensity, on: true });
     this.lamps.set("desk-lamp", { light: desk, intensity: desk.intensity, on: true });
 
+    if (house) {
+      daylight.position.copyFrom(houseVector(6.9, 0.16, 2.1)); daylight.direction.set(0.15, -0.55, 1).normalize(); daylight.range = 24;
+      reading.position.copyFrom(houseVector(9.9, 9.85, 1.296)); reading.direction.set(-0.6, -1, 0).normalize();
+      desk.position.copyFrom(houseVector(7.39, 0.39, 0.99));
+    }
+
     this.shadows = [daylight, reading, desk].map((light, index) => {
-      setRoomOwners(light, ["study"]);
+      setRoomOwners(light, [house && index === 1 ? "living" : "study"]);
       light.metadata.affectsShared = index === 0;
       light.falloffType = SpotLight.FALLOFF_STANDARD;
       light.specular = light.diffuse.scale(0.65);
       // Explicit light depth bounds keep cached maps independent of the active camera.
       light.shadowMinZ = index === 0 ? 0.5 : 0.1;
       light.shadowMaxZ = index === 0 ? 48 : light.range;
-      const size = index === 0 ? Math.min(4096, scene.getEngine().getCaps().maxTextureSize) : 1024;
+      const size = index === 0 ? Math.min(house ? 2048 : 4096, scene.getEngine().getCaps().maxTextureSize) : 1024;
       const shadow = new ShadowGenerator(size, light);
       if (index === 0) {
         shadow.useContactHardeningShadow = true;
@@ -66,7 +73,7 @@ export class RoomLighting {
     });
   }
 
-  addLivingRoom(scene: Scene) {
+  addLivingRoom(scene: Scene, house = false) {
     const daylight = new SpotLight("living-window-daylight", new Vector3(48, 5.6, -18.85),
       new Vector3(-0.35, -0.38, 1).normalize(), Math.PI / 1.5, 1, scene);
     daylight.innerAngle = Math.PI / 2;
@@ -79,6 +86,10 @@ export class RoomLighting {
     lamp.diffuse = new Color3(1, 0.85, 0.64);
     lamp.intensity = 2.4; lamp.range = 15;
     this.lamps.set("living-lamp", { light: lamp, intensity: lamp.intensity, on: true });
+    if (house) {
+      daylight.position.copyFrom(houseVector(10.6, 8.4, 2.1)); daylight.direction.set(-1, -0.4, -0.1).normalize();
+      lamp.position.copyFrom(houseVector(10.4, 6.15, 1.2)); lamp.direction.set(-0.5, -1, 0).normalize();
+    }
     [daylight, lamp].forEach((light, index) => {
       setRoomOwners(light, ["living"]);
       light.metadata.affectsShared = true;
@@ -106,7 +117,7 @@ export class RoomLighting {
     lamp.on = !lamp.on;
     lamp.light.intensity = lamp.on ? lamp.intensity : 0;
     if (lamp.material && lamp.glow) lamp.material.emissiveColor.copyFrom(lamp.on ? lamp.glow : Color3.Black());
-    this.refreshShadows();
+    this.refreshShadows(roomOwners(lamp.light));
   }
 
   addMeshes(meshes: AbstractMesh[]) {
@@ -155,7 +166,8 @@ export class RoomLighting {
     }
   }
 
-  refreshShadows() {
-    this.shadows.forEach(shadow => shadow.getShadowMap()!.resetRefreshCounter());
+  refreshShadows(owners?: readonly HouseRoomId[]) {
+    this.shadows.filter(shadow => !owners || roomOwners(shadow.getLight()).some(id => owners.includes(id)))
+      .forEach(shadow => shadow.getShadowMap()!.resetRefreshCounter());
   }
 }

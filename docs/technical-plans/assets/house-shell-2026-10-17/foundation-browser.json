@@ -1,0 +1,71 @@
+{
+  "baseline": "121ce91",
+  "browser": "155.0.8059.82",
+  "fpsOrLoadTimeSampling": false,
+  "initialJsBytes": 2695102,
+  "release": {
+    "filesVerified": 488,
+    "bytes": 41958461
+  },
+  "before": {
+    "metadata": {
+      "layoutVersion": "house-plan-v1"
+    },
+    "meshes": 251,
+    "materials": 48,
+    "vertices": 184268,
+    "cameras": 3,
+    "lights": 6,
+    "unownedGeometry": [],
+    "unownedContentNodes": [],
+    "sharedDoorOwners": [
+      "living",
+      "study"
+    ],
+    "roomStates": [
+      {
+        "id": "master",
+        "state": "shell"
+      },
+      {
+        "id": "study",
+        "state": "shell"
+      },
+      {
+        "id": "kitchen",
+        "state": "shell"
+      },
+      {
+        "id": "ensuite",
+        "state": "shell"
+      },
+      {
+        "id": "bathroom",
+        "state": "shell"
+      },
+      {
+        "id": "bedroom",
+        "state": "shell"
+      },
+      {
+        "id": "living",
+        "state": "shell"
+      },
+      {
+        "id": "balcony",
+        "state": "shell"
+      }
+    ],
+    "mapLayoutVersion": "house-plan-v1",
+    "exactPositionPoints": 2
+  },
+  "afterDispose": {
+    "disposed": true,
+    "meshes": 0,
+    "materials": 0,
+    "lights": 0,
+    "engineScenes": 0
+  },
+  "passed": true,
+  "errors": []
+}

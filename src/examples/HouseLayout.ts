@@ -9,9 +9,7 @@ export interface HouseRoom {
   depth: number;
 }
 
-/** Final planning dimensions in metres, before wall thickness. North is up.
- * Existing 3D rooms have not been resized; content presence is a separate property.
- */
+/** Final wall-centreline dimensions in metres. North is up; content state is separate. */
 export const HOUSE_ROOMS: readonly HouseRoom[] = [
   { id: "master", name: "主卧", x: 0, y: 0, width: 5.4, depth: 4.8 },
   { id: "study", name: "书房", x: 5.4, y: 0, width: 3, depth: 3.4 },
@@ -35,7 +33,7 @@ export interface HouseDoor {
   swing?: 1 | -1;
 }
 
-/** All openings are planned; no corresponding 3D wall or door changes in this task. */
+/** Stable openings shared by the map and physical house. Balcony sliding leaves arrive in stage G. */
 export const HOUSE_DOORS: readonly HouseDoor[] = [
   { id: "entry-door", from: "living", to: "outside", axis: "y", x: 10.8, y: 4.1, width: 1.1, swing: 1 },
   { id: "master-door", from: "master", to: "living", axis: "y", x: 5.4, y: 3.6, width: 0.9, swing: 1 },

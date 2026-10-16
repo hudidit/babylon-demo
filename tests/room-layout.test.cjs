@@ -23,6 +23,7 @@ function loadSource(name) {
 const { measureBookshelf } = loadSource("BookshelfLayout");
 const { RoomFurnishings } = loadSource("RoomFurnishings");
 const { RoomScene } = loadSource("Room");
+const { createLegacyArchitecture } = loadSource("RoomLegacyArchitecture");
 const { RoomItemInspection } = loadSource("RoomItemInspection");
 const { RoomInteractions, cabinetDrawers } = loadSource("RoomInteractions");
 const { RoomLighting } = loadSource("RoomLighting");
@@ -34,6 +35,87 @@ const { partitionMergedCollisions } = loadSource("RoomCollisions");
 const { createLivingRoom, constrainWalkingPosition } = loadSource("RoomLivingRoom");
 const { setRoomOwners } = loadSource("RoomOwnership");
 const { sharedRoomMaterials } = loadSource("RoomMaterialLibrary");
+const { createHouseArchitecture } = loadSource("HouseArchitecture");
+const { houseWallSpans, HOUSE_WINDOWS } = loadSource("HouseStructure");
+const { HOUSE_DOORS, HOUSE_ROOMS } = loadSource("HouseLayout");
+const { houseVector, HOUSE_WALKER_RADIUS, constrainHouseWalking } = loadSource("HouseWalking");
+const { doorSweepIsClear } = loadSource("RoomInteractions");
+
+function houseShell(t) {
+  const scene = createScene(t), room = new RoomFurnishings(scene);
+  const architecture = createHouseArchitecture(scene, room);
+  room.finish().forEach(m => m.checkCollisions = true);
+  scene.meshes.forEach(m => m.computeWorldMatrix(true)); scene.collisionsEnabled = true;
+  return { scene, room, architecture };
+}
+
+test("house spans deduplicate shared edges, split T junctions and leave full-height doorway gaps", () => {
+  const spans = houseWallSpans();
+  for (const [i, a] of spans.entries()) for (const b of spans.slice(i + 1)) {
+    if (a.axis !== b.axis || Math.abs(a.at - b.at) > 1e-6) continue;
+    const overlap = Math.min(a.end, b.end) - Math.max(a.start, b.start);
+    assert.ok(overlap < 1e-6 || Math.min(a.top, b.top) - Math.max(a.bottom, b.bottom) < 1e-6, "no doubled wall volume");
+  }
+  for (const d of HOUSE_DOORS) {
+    const spansAtDoor = spans.filter(s => s.opening === d.id);
+    assert.ok(spansAtDoor.length); assert.ok(spansAtDoor.every(s => s.bottom >= 2.2));
+    assert.deepEqual(spansAtDoor[0].owners, [d.from, d.to].filter(id => id !== "outside").sort());
+  }
+  assert.ok(!HOUSE_WINDOWS.some(w => w.room === "bathroom"));
+  assert.ok(!spans.some(s => s.owners.length === 1 && s.owners[0] === "living" && s.at > 5.4 && s.at < 10.8 && s.axis === "y"), "no corridor partition");
+});
+
+test("all house doors block when closed and pass the actual walker in both directions when open", t => {
+  const { scene, room, architecture } = houseShell(t);
+  const interactions = new RoomInteractions(scene, () => {});
+  room.doors.forEach(d => interactions.addDoor(d));
+  const radius = new babylon.Vector3(HOUSE_WALKER_RADIUS, 3.9, HOUSE_WALKER_RADIUS);
+  const check = (d, open) => {
+    const axis = d.axis === "x" ? "z" : "x";
+    const centre = houseVector(d.x + (d.axis === "x" ? d.width / 2 : 0), d.y + (d.axis === "y" ? d.width / 2 : 0), 0.82);
+    for (const side of [-1, 1]) {
+      const start = centre.clone(); start[axis] += side * 4;
+      const travel = babylon.Vector3.Zero(); travel[axis] = -side * 8;
+      const result = sweep(scene, start, travel, radius).position;
+      assert.ok(open ? Math.abs(result[axis] - centre[axis] + side * 4) < 0.03 : side * (result[axis] - centre[axis]) > 1.2,
+        `${d.id} ${open ? "open" : "closed"}, direction ${side}: ${result[axis]}`);
+    }
+  };
+  const indoor = HOUSE_DOORS.filter(d => d.to !== "outside" && !d.sliding);
+  indoor.forEach(d => check(d, false));
+  interactions.doors.forEach(s => s.open = s.door.id !== "entry-door");
+  for (let i = 0; i < 16; i++) interactions.update(0.05);
+  indoor.forEach(d => check(d, true));
+  check(HOUSE_DOORS.find(d => d.sliding), true);
+  architecture.setEnclosed(false);
+  indoor.forEach(d => check(d, true));
+  assert.ok(architecture.upperWalls.every(m => !m.isVisible && m.checkCollisions && m.isEnabled()));
+  assert.equal(scene.meshes.filter(m => m.metadata?.structure === "floor").length, 8);
+  for (const [x, y, dx, dz] of [[2, 1, -20, 0], [8, 12, 0, 10], [10, 4.65, 10, 0]]) {
+    const start = houseVector(x, y, 0.82), result = sweep(scene, start, new babylon.Vector3(dx, 0, dz), radius).position;
+    assert.ok(result.subtract(start).length() < Math.hypot(dx, dz) - 1, "outer walls, balcony and entry boundary must stop the walker");
+  }
+});
+
+test("mounted door sweep protection uses the fixed yaw and the house walker radius", t => {
+  const { room } = houseShell(t);
+  for (const door of room.doors) {
+    const parent = door.root.parent, local = new babylon.Vector3(-door.openAngle > 0 ? -1.5 : 1.5, 0, door.width * .75);
+    const walker = babylon.Vector3.TransformCoordinates(local, parent.computeWorldMatrix(true));
+    assert.equal(doorSweepIsClear(door, 0, 1, walker), false, door.id);
+    local.x *= -1;
+    assert.equal(doorSweepIsClear(door, 0, 1, babylon.Vector3.TransformCoordinates(local, parent.getWorldMatrix())), true, door.id);
+  }
+});
+
+test("outer guard preserves eye height and rejects the balcony concave outside corner", () => {
+  const previous = houseVector(5, 10, 1.6), current = houseVector(4, 11.5, 9);
+  constrainHouseWalking(current, previous); assert.ok(current.equals(houseVector(5, 10, 1.6)));
+  for (const r of HOUSE_ROOMS) {
+    const p = houseVector(r.x + r.width / 2, r.y + r.depth / 2, 7);
+    constrainHouseWalking(p, previous); assert.equal(p.y, 3);
+  }
+});
 
 test("failed shared material initialization cleans only its new resources and can retry", t => {
   const scene = createScene(t), existing = new babylon.StandardMaterial("existing", scene);
@@ -85,7 +167,7 @@ test("room-level interaction cleanup respects shared ownership and rejects dupli
 function adjacentRooms(t) {
   const scene = createScene(t), room = new RoomFurnishings(scene);
   const shell = new babylon.TransformNode("shell", scene);
-  RoomScene.prototype.createArchitecture.call({ scene, interiorShell: shell }, room);
+  createLegacyArchitecture.call({ scene, interiorShell: shell }, room);
   room.furnish();
   createLivingRoom(scene, room, shell);
   room.finish().forEach(mesh => mesh.checkCollisions = true);
@@ -708,6 +790,7 @@ test("detail view permits close inspection and restores overview zoom limits on 
   room.firstPersonCamera = new babylon.UniversalCamera("walking", new babylon.Vector3(4, 1, 16), scene);
   room.interiorShell = new babylon.TransformNode("shell", scene);
   room.interiorShell.setEnabled(false);
+  room.architecture = { setEnclosed(value) { room.interiorShell.setEnabled(value); } };
   room.scene = scene; room.controlsEnabled = false;
   room.interactions = { silenceMotion() {} };
   room.audio = { setSpatialCamera() {} };
@@ -727,9 +810,9 @@ test("detail view permits close inspection and restores overview zoom limits on 
     assert.equal(room.camera.lowerRadiusLimit, 9);
     room.setView("first-person");
     assert.equal(scene.activeCamera, room.firstPersonCamera);
-    assert.ok(room.interiorShell.isEnabled() && refreshed === 1);
+    assert.ok(room.interiorShell.isEnabled() && refreshed === 3);
     room.setView("details");
-    assert.ok(!room.interiorShell.isEnabled() && refreshed === 2);
+    assert.ok(!room.interiorShell.isEnabled() && refreshed === 4);
   } finally {
     if (previousDocument === undefined) delete global.document;
     else global.document = previousDocument;

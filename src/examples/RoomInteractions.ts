@@ -1,4 +1,4 @@
-import { Vector3 } from "@babylonjs/core/pure";
+import { Matrix, Vector3 } from "@babylonjs/core/pure";
 import type { AbstractMesh, Mesh, Ray, Scene, TransformNode } from "@babylonjs/core/pure";
 import type { AudioCue, RoomAudioEvent } from "./RoomAudioCatalog";
 import { roomOwners } from "./RoomOwnership";
@@ -9,7 +9,7 @@ export type InteractiveDrawer = {
 };
 export type InteractiveLamp = { id: string; label: string; meshes: AbstractMesh[] };
 export type InteractiveDoor = { id: string; label: string; root: TransformNode;
-  meshes: AbstractMesh[]; width: number; openAngle: number };
+  meshes: AbstractMesh[]; width: number; openAngle: number; walkerRadius?: number };
 export type InspectableItem = { id: string; label: string; mesh: Mesh; displayRotation: Vector3 };
 type Action = { label: () => string; toggle: () => void };
 
@@ -25,7 +25,7 @@ export class RoomInteractions {
   }[] = [];
   private readonly doors: { door: InteractiveDoor; progress: number; open: boolean; blocked: boolean; moving: boolean }[] = [];
 
-  constructor(private readonly scene: Scene, private readonly refreshShadows: () => void,
+  constructor(private readonly scene: Scene, private readonly refreshShadows: (owners?: readonly HouseRoomId[]) => void,
     private readonly walkerPosition: () => Vector3 | undefined = () => undefined,
     private readonly audio: (event: RoomAudioEvent) => void = () => {}) {}
 
@@ -105,7 +105,7 @@ export class RoomInteractions {
 
   /** Fixed travel time; reversing an in-flight drawer preserves its current position. */
   update(deltaSeconds: number) {
-    let changed = false;
+    const changed = new Set<HouseRoomId>();
     const step = Math.max(0, Math.min(deltaSeconds, 0.05)) / 0.45;
     for (const drawer of this.drawers) {
       const target = drawer.open ? 1 : 0;
@@ -121,7 +121,7 @@ export class RoomInteractions {
       if (drawer.progress === target) {
         drawer.moving = false; this.sound("stop", drawer.drawer); this.sound("drawer-stop", drawer.drawer);
       }
-      changed = true;
+      roomOwners(drawer.root).forEach(id => changed.add(id));
     }
     for (const state of this.doors) {
       const target = state.open ? 1 : 0;
@@ -146,20 +146,23 @@ export class RoomInteractions {
         state.moving = false; this.sound("stop", state.door);
         if (!state.open) this.sound("door-latch", state.door);
       }
-      changed = true;
+      roomOwners(state.door.root).forEach(id => changed.add(id));
     }
-    if (changed) this.refreshShadows();
+    if (changed.size) this.refreshShadows([...changed]);
   }
 }
 
 /** Sample the entire angular step so a fast frame cannot skip across the walker. */
 export function doorSweepIsClear(door: InteractiveDoor, from: number, to: number, walker: Vector3) {
   const ease = (value: number) => value * value * (3 - 2 * value);
-  const hinge = door.root.getAbsolutePosition();
+  const hinge = door.root.position;
+  // The mounting parent owns the fixed world yaw; the leaf only owns its changing local yaw.
+  const localWalker = door.root.parent ? Vector3.TransformCoordinates(walker,
+    Matrix.Invert(door.root.parent.computeWorldMatrix(true))) : walker;
   const start = door.openAngle * ease(from), end = door.openAngle * ease(to);
   const steps = Math.max(1, Math.ceil(Math.abs(end - start) / 0.04));
   const squaredGap = (angle: number) => {
-    const dx = walker.x - hinge.x, dz = walker.z - hinge.z;
+    const dx = localWalker.x - hinge.x, dz = localWalker.z - hinge.z;
     const x = dx * Math.cos(angle) - dz * Math.sin(angle);
     const z = dx * Math.sin(angle) + dz * Math.cos(angle);
     // Include handles and a small margin around the camera's 0.65 horizontal ellipsoid.
@@ -168,7 +171,7 @@ export function doorSweepIsClear(door: InteractiveDoor, from: number, to: number
     return gapX * gapX + gapZ * gapZ;
   };
   // A walker touching the closed door can open it away from themselves.
-  const clearance = Math.min(0.75 * 0.75, squaredGap(start)) - 1e-8;
+  const clearance = Math.min((door.walkerRadius ?? 0.75) ** 2, squaredGap(start)) - 1e-8;
   for (let i = 1; i <= steps; i++) {
     if (squaredGap(start + (end - start) * i / steps) < clearance) return false;
   }

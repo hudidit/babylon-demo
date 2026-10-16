@@ -106,6 +106,9 @@
       .map-caption { display: flex; justify-content: space-between; gap: 12px; padding: 13px 30px; border-top: 1px solid #dcd4c3; color: #8a8779; font-size: 10px; letter-spacing: 1px; }
       .plan-room rect { stroke: #6e7865; stroke-width: 2.5; }
       .plan-room.is-current rect { fill: #cbd9bb; }
+      .plan-room[data-state="error"] rect { fill: #ead9d0; }
+      .plan-position path { fill: #657a4e; fill-opacity: .75; stroke: #f9f5e9; stroke-width: 1.3; }
+      .plan-position circle { fill: #4a6639; stroke: #fffaf0; stroke-width: 2; }
       .plan-room text { text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
       .plan-room-name { fill: #3e4b38; font-family: "Songti SC", "Noto Serif CJK SC", serif; font-size: 20px; letter-spacing: 4px; }
       .plan-small-name { font-size: 15px; letter-spacing: 2px; }
@@ -219,14 +222,14 @@
             <p id="floor-plan-description">入户直接进入客厅，通往北侧小书房与厨房、西侧两间卧室，南侧连接阳台。起居与通行动线开放相连。</p>
             <div class="map-legend" aria-label="地图图例">
               <div><i aria-hidden="true"></i><span>已有内容 · 书房 / 客厅</span></div>
-              <div><i class="legend-planned" aria-hidden="true"></i><span>规划区域 · 尚未开放</span></div>
-              <div><i class="legend-position" aria-hidden="true"></i><span>当前房间 · 漫游时高亮</span></div>
-              <div><i class="legend-door" aria-hidden="true"></i><span>虚线门 · 规划连接</span></div>
+              <div><i class="legend-planned" aria-hidden="true"></i><span>基础结构 · 可进入，待布置</span></div>
+              <div><i class="legend-position" aria-hidden="true"></i><span>位置与朝向 · 漫游时显示</span></div>
+              <div><i class="legend-door" aria-hidden="true"></i><span>门 / 通口 · 与实景对应</span></div>
             </div>
             <dl class="map-area"><dt>规划地面面积（含阳台）</dt><dd><span id="floor-plan-area"></span> <small>m²</small></dd></dl>
             <p>主卧扩大至25.9 m²，书房调整为10.2 m²。主卫由主卧独享；公卫位于主卧外，从客厅进入。</p>
             <section class="map-room-schedule" aria-label="房间尺寸清单"><h3>房间尺寸</h3><dl id="floor-plan-room-sizes"></dl></section>
-            <p class="map-disclaimer">标注为调整后的规划尺寸，未扣墙厚，阳台按完整地面面积计入。已有三维房间尚未按新布局调整；当前用房间高亮定位，其余房间与开口待生成。</p>
+            <p class="map-disclaimer">标注为墙中心线尺寸，未扣墙厚，阳台按完整地面面积计入。八房结构与地图一致；卧室、厨房、双卫及阳台待布置，阳台推拉门后续完成。入户门外暂不开放。地图仅用于查看位置。</p>
           </aside>
         </div>
         <footer class="map-caption"><span>尺寸单位：米 · 全屋户型规划</span><span>拖动与移动已暂停 · 返回继续探索</span></footer>

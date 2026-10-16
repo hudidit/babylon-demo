@@ -6,7 +6,10 @@ import { beveledBox, creasedLetter, curtainPanel, ficusLeaf } from "./RoomDetail
 import { applyWear, letterTexture, stableRandom, wearTexture } from "./RoomSurfaceDetails";
 import { sharedRoomMaterials } from "./RoomMaterialLibrary";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
-import type { HouseRoomId } from "./HouseLayout";
+import { HOUSE_COORDINATES, houseRoom, planToWorld } from "./HouseLayout";
+import type { HouseDoor, HouseRoomId } from "./HouseLayout";
+import { HOUSE_DOOR_HEIGHT, HOUSE_DOOR_JAMB } from "./HouseStructure";
+import { HOUSE_WALKER_RADIUS } from "./HouseWalking";
 import { partitionMergedCollisions } from "./RoomCollisions";
 import type { InspectableItem, InteractiveDoor, InteractiveDrawer, InteractiveLamp } from "./RoomInteractions";
 import { CONNECTING_PASSAGE, SHARED_WALL_SPANS } from "./RoomLayout";
@@ -219,6 +222,38 @@ export class RoomFurnishings {
     for (const y of [1.6, 5.4, 9.2]) this.cylinder("door-hinge", 0.55, 0.17, [0, y, 0.02], "brass", root);
     this.doors.push({ id: "connecting-door", label: "客厅与书房的门", root,
       meshes: this.keepInteractive(start, root), width, openAngle: Math.PI / 2 });
+  }
+
+  /** The fixed mounting yaw is independent of the moving leaf's local animation. */
+  houseDoor(door: HouseDoor) {
+    if (door.sliding) return;
+    const previous = this.currentRoom;
+    this.currentRoom = door.from;
+    const owners = door.to === "outside" ? [door.from] : [door.from, door.to];
+    const c = HOUSE_COORDINATES, jamb = HOUSE_DOOR_JAMB * c.unitsPerMeter;
+    const origin = planToWorld({ x: door.x + (door.axis === "x" ? HOUSE_DOOR_JAMB : 0),
+      y: door.y + (door.axis === "y" ? HOUSE_DOOR_JAMB : 0) });
+    const mount = this.group(door.id + "-mount", [origin.x, origin.y + 0.04, origin.z], door.axis === "x" ? Math.PI / 2 : 0);
+    setRoomOwners(mount, owners);
+    const root = this.group(door.id, [0, 0, 0]); root.parent = mount;
+    setRoomOwners(root, owners);
+    const width = door.width * c.unitsPerMeter - 2 * jamb, height = HOUSE_DOOR_HEIGHT * c.unitsPerMeter - 0.12;
+    const start = this.parts.length;
+    this.box("door-leaf", [0.18, height, width], [0, height / 2, width / 2], "paintGreen", root);
+    for (const side of [-1, 1]) {
+      for (const y of [height * 0.25, height * 0.73]) {
+        this.box("door-raised-panel", [0.045, height * 0.38, width - 0.55], [side * 0.115, y, width / 2], "darkWood", root);
+        this.box("door-panel-inset", [0.05, height * 0.35, width - 0.7], [side * 0.15, y, width / 2], "paintGreen", root);
+      }
+      this.box("door-knob-plate", [0.045, 0.8, 0.24], [side * 0.15, 5.1, width - 0.4], "brass", root);
+      this.sphere("door-handle-boss", [0.25, 0.18, 0.18], [side * 0.25, 5.12, width - 0.4], "brass", root);
+      this.box("door-handle-lever", [0.08, 0.1, 0.5], [side * 0.32, 5.12, width - 0.57], "brass", root);
+    }
+    for (const y of [1.5, 5.4, 9.5]) this.cylinder("door-hinge", 0.4, 0.13, [0, y, 0], "brass", root);
+    const label = door.to === "outside" ? "入户门" : `${houseRoom(door.from).name}与${houseRoom(door.to).name}的门`;
+    this.doors.push({ id: door.id, label, root, meshes: this.keepInteractive(start, root), width,
+      openAngle: -(door.swing ?? -1) * Math.PI / 2, walkerRadius: HOUSE_WALKER_RADIUS + 0.08 });
+    this.currentRoom = previous;
   }
 
   architecturalDetails() {

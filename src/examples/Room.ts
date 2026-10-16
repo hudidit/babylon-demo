@@ -1,11 +1,10 @@
-import { ArcRotateCamera, Color3, Color4, Engine, HDRCubeTexture, ImageProcessingConfiguration, CreateBox, CreateGround, CreatePlane, PBRMaterial, Scene, SceneLoader, SSAO2RenderingPipeline, TransformNode, UniversalCamera, Vector3 } from "@babylonjs/core/pure";
+import { ArcRotateCamera, Color3, Color4, Engine, HDRCubeTexture, ImageProcessingConfiguration, PBRMaterial, Scene, SceneLoader, SSAO2RenderingPipeline, TransformNode, UniversalCamera, Vector3 } from "@babylonjs/core/pure";
 import type { AbstractMesh, DefaultRenderingPipeline } from "@babylonjs/core/pure";
 // All four shipped GLBs use core glTF 2.0, with no extensions (verified at release time).
 import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import { registerRoomRuntime } from "./RoomRuntime";
 import { RoomFurnishings } from "./RoomFurnishings";
 import { RoomLighting } from "./RoomLighting";
-import { mappedMaterial, paintedWallMaterial, tileMaterial } from "./RoomMaterials";
 import { placeFurniture } from "./RoomFurnitureAssets";
 import { createRoomFinishing } from "./RoomFinishing";
 import { cabinetDrawers, RoomInteractions } from "./RoomInteractions";
@@ -14,11 +13,12 @@ import { RoomAudio } from "./RoomAudio";
 import { RoomItemInspection } from "./RoomItemInspection";
 import { RoomFloorPlan } from "./RoomFloorPlan";
 import type { InspectableItem } from "./RoomInteractions";
-import { constrainWalkingPosition, createLivingRoom, createSharedWall } from "./RoomLivingRoom";
+import { createHouseArchitecture } from "./HouseArchitecture";
+import { constrainHouseWalking, houseVector, HOUSE_EYE_Y, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
 import { HouseRooms } from "./HouseRooms";
 import type { RoomBuild } from "./HouseRooms";
-import { HOUSE_LAYOUT_VERSION } from "./HouseLayout";
-import { LEGACY_LAYOUT_VERSION, legacyRoomAt } from "./RoomLayout";
+import { HOUSE_LAYOUT_VERSION, HOUSE_ROOMS } from "./HouseLayout";
+import type { HouseRoomId } from "./HouseLayout";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
 
 export type RoomView = "overview" | "study" | "living" | "reading" | "desk" | "details" | "cabinet" | "first-person";
@@ -29,11 +29,11 @@ export class RoomScene {
   readonly scene: Scene;
   readonly engine: Engine;
   readonly audio = new RoomAudio();
-  readonly rooms = new HouseRooms(LEGACY_LAYOUT_VERSION, legacyRoomAt);
-  private readonly builds: { study: RoomBuild; living: RoomBuild };
+  readonly rooms = new HouseRooms();
+  private readonly builds: Record<HouseRoomId, RoomBuild>;
+  private readonly architecture: ReturnType<typeof createHouseArchitecture>;
   private readonly camera: ArcRotateCamera;
   private readonly firstPersonCamera: UniversalCamera;
-  private readonly interiorShell: TransformNode;
   private readonly lighting: RoomLighting;
   private readonly contactShadows?: SSAO2RenderingPipeline;
   private readonly finishing: DefaultRenderingPipeline;
@@ -55,8 +55,8 @@ export class RoomScene {
     this.engine.setHardwareScalingLevel(1);
     // Render at the display refresh rate; leave Engine.maxFPS uncapped for high-refresh screens.
     this.scene = new Scene(this.engine);
-    this.scene.metadata = { layoutVersion: LEGACY_LAYOUT_VERSION, targetLayoutVersion: HOUSE_LAYOUT_VERSION };
-    this.builds = { study: this.rooms.begin("study"), living: this.rooms.begin("living") };
+    this.scene.metadata = { layoutVersion: HOUSE_LAYOUT_VERSION };
+    this.builds = HOUSE_ROOMS.reduce((all, r) => { all[r.id] = this.rooms.begin(r.id); return all; }, {} as Record<HouseRoomId, RoomBuild>);
     // The final image-processing pass expects a linear clear colour.
     this.scene.clearColor = new Color4(0.14, 0.17, 0.18, 1).toLinearSpace();
     this.scene.ambientColor = new Color3(0.08, 0.075, 0.065);
@@ -79,7 +79,7 @@ export class RoomScene {
     this.camera.minZ = 0.2;
     this.camera.fov = 0.65;
 
-    this.firstPersonCamera = new UniversalCamera("study-first-person", new Vector3(4, 1, 16), this.scene);
+    this.firstPersonCamera = new UniversalCamera("study-first-person", houseVector(HOUSE_SPAWN.x, HOUSE_SPAWN.y, 1.6), this.scene);
     this.firstPersonCamera.minZ = 0.1;
     this.firstPersonCamera.fov = 0.95;
     this.firstPersonCamera.speed = MOVEMENT_SPEED.base;
@@ -92,17 +92,16 @@ export class RoomScene {
     this.firstPersonCamera.keysUpward = [];
     this.firstPersonCamera.keysDownward = [];
     this.firstPersonCamera.checkCollisions = true;
-    this.firstPersonCamera.ellipsoid.set(0.65, 2.8, 0.65);
+    this.firstPersonCamera.ellipsoid.set(HOUSE_WALKER_RADIUS, 3.9, HOUSE_WALKER_RADIUS);
     this.scene.collisionsEnabled = true;
     // Keep walking at eye level, including while looking up/down or using touch/gamepad inputs.
+    const previousPosition = this.firstPersonCamera.position.clone();
     this.firstPersonCamera.onAfterCheckInputsObservable.add(() => {
-      constrainWalkingPosition(this.firstPersonCamera.position);
+      constrainHouseWalking(this.firstPersonCamera.position, previousPosition);
     });
-    this.interiorShell = new TransformNode("first-person-room-shell", this.scene);
-    this.interiorShell.setEnabled(false);
 
-    this.lighting = new RoomLighting(this.scene);
-    this.interactions = new RoomInteractions(this.scene, () => this.lighting.refreshShadows(),
+    this.lighting = new RoomLighting(this.scene, true);
+    this.interactions = new RoomInteractions(this.scene, owners => this.lighting.refreshShadows(owners),
       () => this.currentView === "first-person" ? this.firstPersonCamera.position : undefined,
       event => this.audio.event(event));
     this.inspection = new RoomItemInspection(this.scene);
@@ -131,10 +130,9 @@ export class RoomScene {
     this.finishing = createRoomFinishing(this.scene, [this.camera, this.firstPersonCamera, this.inspection.camera]);
 
     const furnishings = new RoomFurnishings(this.scene);
-    this.createArchitecture(furnishings);
-    furnishings.furnish();
-    createLivingRoom(this.scene, furnishings, this.interiorShell);
-    this.lighting.addLivingRoom(this.scene);
+    this.architecture = createHouseArchitecture(this.scene, furnishings);
+    this.architecture.setEnclosed(false);
+    this.lighting.addLivingRoom(this.scene, true);
     furnishings.finish().forEach(mesh => {
       mesh.checkCollisions = true;
     });
@@ -149,13 +147,13 @@ export class RoomScene {
     });
     this.lighting.addMeshes(this.scene.meshes);
     this.trackRoomResources(this.scene.meshes);
-    for (const id of ["study", "living"] as const) {
+    for (const { id } of HOUSE_ROOMS) {
       const cleanup = {};
       this.rooms.own(this.builds[id], cleanup, () => {
         this.interactions.removeRoom(id); this.lighting.removeRoom(id);
       });
     }
-    this.rooms.setState(this.builds.living, "ready");
+    HOUSE_ROOMS.forEach(r => this.rooms.setState(this.builds[r.id], "shell"));
     this.scene.onBeforeRenderObservable.add(() => {
       this.audio.update();
       if (this.isViewing) return;
@@ -165,37 +163,12 @@ export class RoomScene {
       if (this.focusElapsed >= 0.1) { this.focusElapsed = 0; this.updateInteractionHint(); this.updateFloorPlan(); }
     });
 
-    // A parent keeps the glTF loader's handedness conversion intact.
-    const models = [
-      this.importFurniture("sofa_03.glb", "reading-sofa", new Vector3(10, -5, 6), 10.8),
-      this.importFurniture("modern_arm_chair_01.glb", "reading-armchair", new Vector3(-10, -5, 12), 3.8, Math.PI / 2),
-      this.importModel("gothic_commode.glb", "antique-cabinet", new Vector3(-13.5, -5, -17.6), 4.7).then(meshes => {
-        if (meshes && this.rooms.isCurrent(this.builds.study)) cabinetDrawers(meshes).forEach(drawer => this.interactions.addDrawer(drawer));
-      }),
-      this.importModel("wooden_bookshelf.glb", "antique-bookshelf", new Vector3(11.5, -5, -17.8), 5.2).then(meshes => {
-        if (!meshes || !this.rooms.isCurrent(this.builds.study)) return;
-        const books = furnishings.furnishBookshelf(meshes);
-        books.forEach(mesh => mesh.checkCollisions = true);
-        this.lighting.addMeshes(books);
-        this.trackRoomResources(books);
-      }),
-    ];
-    Promise.all(models).then(() => {
-      if (this.disposed || !this.rooms.isCurrent(this.builds.study)) return;
-      this.scene.executeWhenReady(() => {
-        if (this.disposed || !this.rooms.isCurrent(this.builds.study)) return;
-        this.lighting.freezeShadows();
-        this.rooms.setState(this.builds.study, "ready");
-        const status = document.querySelector("#scene-status");
-        if (status) status.textContent = "胡桃木 · 黄铜 · 苔绿织物";
-        this.audio.sceneReady();
-      });
-    }).catch(error => {
-      if (this.disposed || !this.rooms.isCurrent(this.builds.study)) return;
-      console.error("Study model loading failed", error);
-      this.rooms.fail(this.builds.study, error);
+    this.scene.executeWhenReady(() => {
+      if (this.disposed) return;
+      this.lighting.freezeShadows();
       const status = document.querySelector("#scene-status");
-      if (status) status.textContent = "部分模型加载失败，请刷新重试";
+      if (status) status.textContent = "八房基础结构 · 家具迁移中";
+      this.audio.sceneReady();
     });
 
     this.setView("overview");
@@ -220,30 +193,28 @@ export class RoomScene {
     this.interactions.silenceMotion();
     this.audio.setSpatialCamera(view === "first-person" ? this.firstPersonCamera : undefined);
     const firstPerson = view === "first-person";
-    const enteringLiving = this.currentView === "living";
     if (firstPerson && this.currentView !== "first-person") this.previousView = this.currentView;
     this.currentView = view;
     if (!firstPerson) this.pointerLock?.release();
     this.scene.activeCamera?.detachControl();
-    const shellChanged = this.interiorShell.isEnabled() !== firstPerson;
-    this.interiorShell.setEnabled(firstPerson);
-    if (shellChanged) this.lighting.refreshShadows();
+    this.architecture.setEnclosed(firstPerson);
+    this.lighting.refreshShadows();
     this.firstPersonCamera.cameraDirection.setAll(0);
     this.firstPersonCamera.cameraRotation.setAll(0);
     this.firstPersonCamera.movement.resetPanVelocity();
     this.firstPersonCamera.movement.resetRotationVelocity();
     const views: Record<Exclude<RoomView, "first-person">, { position: Vector3; target: Vector3 }> = {
-      overview: { position: new Vector3(73, 51, 69), target: new Vector3(17, -2, 0) },
-      study: { position: new Vector3(42, 31, 45), target: new Vector3(-1, -2, -1) },
-      living: { position: new Vector3(61, 21, 30), target: new Vector3(37, -1, -1) },
-      reading: { position: new Vector3(23, 10, 25), target: new Vector3(9, -1.5, 8) },
-      desk: { position: new Vector3(13, 12, 16), target: new Vector3(-7, -1, -3) },
-      details: { position: new Vector3(-0.8, 1.5, 2), target: new Vector3(-3.2, -0.35, -0.8) },
-      cabinet: { position: new Vector3(0, 7, -1), target: new Vector3(-11, 0, -16) },
+      overview: { position: new Vector3(74, 82, 84), target: new Vector3(0, -3, 2) },
+      study: { position: houseVector(10.5, 4, 4.7), target: houseVector(6.9, 1.7, 0.5) },
+      living: { position: houseVector(14, 14, 6.8), target: houseVector(8.1, 7.5, 0.4) },
+      reading: { position: houseVector(9, 7.8, 2.6), target: houseVector(8.3, 9.85, 0.6) },
+      desk: { position: houseVector(8.8, 3.6, 2.4), target: houseVector(6.9, 0.9, 0.65) },
+      details: { position: houseVector(6.8, 1.7, 1.45), target: houseVector(6.8, 0.8, 0.78) },
+      cabinet: { position: houseVector(8.5, 5.7, 2), target: houseVector(5.85, 4.95, 0.65) },
     };
     if (firstPerson) {
-      this.firstPersonCamera.position.set(enteringLiving ? 37 : 4, 1, 16);
-      this.firstPersonCamera.setTarget(new Vector3(enteringLiving ? 37 : -3, 0, enteringLiving ? -10 : -6));
+      this.firstPersonCamera.position.copyFrom(houseVector(HOUSE_SPAWN.x, HOUSE_SPAWN.y, 1.6));
+      this.firstPersonCamera.setTarget(houseVector(7.5, 7.8, 1.5));
       this.scene.activeCamera = this.firstPersonCamera;
     } else {
       const selected = views[view];
@@ -259,7 +230,7 @@ export class RoomScene {
     const help = document.querySelector("#view-help");
     const instructions = firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互";
     if (help) help.textContent = instructions;
-    this.canvas.setAttribute("aria-label", "复古书房与客厅三维场景，" + instructions);
+    this.canvas.setAttribute("aria-label", "余晖小居八房三维场景，" + instructions);
     this.updateInteractionHint();
     this.updateFloorPlan();
     if (firstPerson && this.controlsEnabled) {
@@ -290,7 +261,7 @@ export class RoomScene {
   private get isViewing() { return !!(this.inspection?.isOpen || this.floorPlan?.isOpen); }
 
   private updateFloorPlan() {
-    this.floorPlan.update(this.currentView, this.firstPersonCamera.position);
+    this.floorPlan.update(this.currentView, this.firstPersonCamera.position, this.firstPersonCamera.getForwardRay().direction);
   }
 
   private openFloorPlan() {
@@ -439,59 +410,6 @@ export class RoomScene {
       hint.textContent = action ? `左键 · ${action.label()}` : firstPerson && !this.pointerLocked ? "点击画面开始环顾 · ESC 退出" : "";
       hint.hidden = !hint.textContent;
     }
-  }
-
-  private createArchitecture(room: RoomFurnishings) {
-    const scene = this.scene;
-    const floor = mappedMaterial("oak-floor", scene, "wood_floor", "#e7ddd0", 5, 0.28);
-    const ground = CreateGround("oak-floor", { width: 40, height: 40 }, scene);
-    ground.position.y = -5;
-    ground.material = floor;
-    ground.receiveShadows = true;
-    ground.metadata = { castsShadows: false };
-    setRoomOwners(ground, ["study"]);
-    ground.checkCollisions = true;
-    room.box("foundation", [40.6, 0.6, 40.6], [0, -5.4, 0], "darkWood");
-
-    const paint = paintedWallMaterial(scene);
-    const leftBack = CreateBox("back-wall-left", { width: 14, height: 14, depth: 0.5 }, scene);
-    leftBack.position.set(-13, 2, -20);
-    const rightBack = CreateBox("back-wall-right", { width: 18, height: 14, depth: 0.5 }, scene);
-    rightBack.position.set(11, 2, -20);
-    const lintel = CreateBox("door-lintel-wall", { width: 8, height: 3.2, depth: 0.5 }, scene);
-    lintel.position.set(-2, 7.4, -20);
-    const left = CreateBox("left-painted-wall", { width: 0.5, height: 14, depth: 40 }, scene);
-    left.position.set(-20, 2, 0);
-    createSharedWall(scene, this.interiorShell, paint);
-    const front = CreateBox("front-painted-wall", { width: 40.5, height: 14, depth: 0.5 }, scene);
-    front.position.set(0, 2, 20);
-    front.parent = this.interiorShell;
-    const spans = [14, 18, 8, 40, 40.5];
-    [leftBack, rightBack, lintel, left, front].forEach((mesh, index) => {
-      const wallMaterial = tileMaterial(paint, mesh.name + "-paint", spans[index] / 6,
-        (index === 2 ? 3.2 : 14) / 6);
-      mesh.material = wallMaterial;
-      setRoomOwners(mesh, ["study"]);
-      mesh.receiveShadows = true;
-      mesh.checkCollisions = true;
-      mesh.isPickable = false;
-      mesh.freezeWorldMatrix();
-      if (mesh === left) {
-        // The box's narrow side UVs rotate the surface map; use a wall-sized face.
-        const facing = CreatePlane("left-wall-painted-facing",
-          { width: 40, height: 14 }, scene);
-        facing.position.set(-19.74, 2, 0);
-        facing.rotation.y = -Math.PI / 2;
-        facing.parent = mesh.parent;
-        facing.material = wallMaterial;
-        setRoomOwners(facing, ["study"]);
-        facing.receiveShadows = true;
-        facing.isPickable = false;
-        facing.freezeWorldMatrix();
-      }
-    });
-    room.architecturalDetails();
-    room.enclosingDetails(this.interiorShell);
   }
 
   private async importFurniture(file: string, name: string, position: Vector3, width: number, rotation = 0) {

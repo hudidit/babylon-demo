@@ -1,5 +1,5 @@
-import { housePlanSvg } from "./HouseFloorPlan";
-import { HOUSE_ROOMS } from "./HouseLayout";
+import { houseDrawingPoint, housePlanSvg } from "./HouseFloorPlan";
+import { HOUSE_LAYOUT_VERSION, HOUSE_ROOMS, worldToPlan } from "./HouseLayout";
 import type { HouseRoomId } from "./HouseLayout";
 import type { HouseRooms } from "./HouseRooms";
 
@@ -36,7 +36,11 @@ export class RoomFloorPlan {
       host.dataset.layoutVersion = this.rooms.layoutVersion;
       host.querySelectorAll<SVGGElement>("[data-room]").forEach(node => {
         node.dataset.state = this.rooms.snapshot(node.dataset.room as HouseRoomId).state;
+        const state = node.dataset.state;
+        node.querySelector("title")!.textContent = `${HOUSE_ROOMS.find(r => r.id === node.dataset.room)!.name} · ${{ planned: "规划", shell: "基础结构，可漫游", furnishing: "布置中", ready: "已布置", error: "加载失败，基础结构可用" }[state]}`;
       });
+      host.querySelectorAll(".plan-door").forEach(node => node.classList.toggle("is-planned", this.rooms.layoutVersion !== HOUSE_LAYOUT_VERSION));
+      host.querySelector("svg")!.insertAdjacentHTML("beforeend", '<g class="plan-position" style="display:none"><path d="M 0 -14 L -7 -2 L 7 -2 Z"/><circle r="4.5"/></g>');
     }
     this.mode = "";
   }
@@ -65,11 +69,18 @@ export class RoomFloorPlan {
     this.button.setAttribute("aria-expanded", "false");
   }
 
-  update(view: string, position: { x: number; z: number }) {
+  update(view: string, position: { x: number; z: number }, direction?: { x: number; z: number }) {
     const firstPerson = view === "first-person";
-    // The revised plan resizes/repositions rooms; identify the existing 3D room semantically.
     const room = firstPerson ? this.rooms.roomAt(position)
-      : view === "overview" ? undefined : view === "living" ? "living" : "study";
+      : view === "overview" ? undefined : ["living", "reading", "cabinet"].includes(view) ? "living" : "study";
+    const valid = firstPerson && this.rooms.layoutVersion === HOUSE_LAYOUT_VERSION && !!room
+      && Number.isFinite(position.x) && Number.isFinite(position.z);
+    const point = worldToPlan(position), drawing = houseDrawingPoint(point.x, point.y);
+    const angle = direction ? Math.atan2(direction.x, -direction.z) * 180 / Math.PI : 0;
+    document.querySelectorAll<SVGGElement>(".plan-position").forEach(node => {
+      node.style.display = valid ? "" : "none";
+      if (valid) node.setAttribute("transform", `translate(${drawing.x} ${drawing.y}) rotate(${angle})`);
+    });
     if (room !== this.focusRoom || view !== this.mode) {
       this.focusRoom = room;
       this.mode = view;
