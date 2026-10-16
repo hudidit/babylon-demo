@@ -4,6 +4,9 @@ import { measureBookshelf } from "./BookshelfLayout";
 import { linenMaterial, mappedMaterial, surfaceMaterial } from "./RoomMaterials";
 import { beveledBox, creasedLetter, curtainPanel, ficusLeaf } from "./RoomDetailGeometry";
 import { applyWear, letterTexture, stableRandom, wearTexture } from "./RoomSurfaceDetails";
+import { sharedRoomMaterials } from "./RoomMaterialLibrary";
+import { roomOwners, setRoomOwners } from "./RoomOwnership";
+import type { HouseRoomId } from "./HouseLayout";
 import { partitionMergedCollisions } from "./RoomCollisions";
 import type { InspectableItem, InteractiveDoor, InteractiveDrawer, InteractiveLamp } from "./RoomInteractions";
 import { CONNECTING_PASSAGE, SHARED_WALL_SPANS } from "./RoomLayout";
@@ -12,7 +15,8 @@ type Triple = [number, number, number];
 
 /** Reusable, static furniture parts, merged by material to keep draw calls low. */
 export class RoomFurnishings {
-  private materials = new Map<string, Material>();
+  private materials: Map<string, Material>;
+  private currentRoom: HouseRoomId;
   private parts: Mesh[] = [];
   readonly drawers: InteractiveDrawer[] = [];
   readonly lamps: InteractiveLamp[] = [];
@@ -20,7 +24,16 @@ export class RoomFurnishings {
   readonly doors: InteractiveDoor[] = [];
   private interactiveGroups: { meshes: Mesh[]; root: TransformNode; fixed: boolean }[] = [];
 
-  constructor(private scene: Scene) {
+  constructor(private scene: Scene, roomId: HouseRoomId = "study") {
+    this.currentRoom = roomId;
+    this.materials = sharedRoomMaterials(scene, materials => {
+      this.materials = materials;
+      this.initializeMaterials();
+    });
+  }
+
+  private initializeMaterials() {
+    const scene = this.scene;
     const colors: Record<string, string> = {
       wood: "#795032", darkWood: "#362a20", brass: "#b8a077", cream: "#d9cfbb",
       moss: "#77816a", cushion: "#b7a282", rust: "#91684f", burgundy: "#76544e",
@@ -145,6 +158,7 @@ export class RoomFurnishings {
       "book-spine-gilt", "banker-lit-underside", "candle-flame",
     ].includes(mesh.name) };
     mesh.isPickable = false;
+    setRoomOwners(mesh, [this.currentRoom]);
     this.parts.push(mesh);
     return mesh;
   }
@@ -153,16 +167,18 @@ export class RoomFurnishings {
     const group = new TransformNode(name, this.scene);
     group.position.set(...position);
     group.rotation.y = rotation;
+    setRoomOwners(group, [this.currentRoom]);
     return group;
   }
 
   /** Keep room and cutaway-shell batches separate while sharing the same materials. */
-  section(name: string, build: () => void, parent?: TransformNode) {
-    const start = this.parts.length;
-    build();
+  section(roomId: HouseRoomId, name: string, build: () => void, parent?: TransformNode) {
+    const start = this.parts.length, previousRoom = this.currentRoom;
+    this.currentRoom = roomId;
+    try { build(); } finally { this.currentRoom = previousRoom; }
     return this.merge(this.parts.splice(start)).map(mesh => {
       mesh.name = name + "-" + mesh.name;
-      mesh.metadata = { ...mesh.metadata, room: "living" };
+      setRoomOwners(mesh, [roomId]);
       // A one-part batch still has its modeling parent; preserve its world transform.
       mesh.setParent(parent || null);
       mesh.freezeWorldMatrix();
@@ -174,7 +190,7 @@ export class RoomFurnishings {
   tableLamp(position: Triple) {
     const start = this.parts.length;
     const root = this.group("living-table-lamp", position);
-    this.materials.set("living-lamp-shade", this.materials.get("shade")!.clone("living-lamp-shade")!);
+    if (!this.materials.has("living-lamp-shade")) this.materials.set("living-lamp-shade", this.materials.get("shade")!.clone("living-lamp-shade")!);
     this.cylinder("living-lamp-foot", 0.12, 1.15, [0, 0.06, 0], "brass", root);
     this.sphere("living-lamp-body", [0.8, 1.4, 0.8], [0, 0.8, 0], "ceramic", root);
     this.cylinder("living-lamp-neck", 0.45, 0.12, [0, 1.6, 0], "brass", root);
@@ -182,14 +198,13 @@ export class RoomFurnishings {
     this.ring("living-shade-trim", 2.5, 0.055, [0, 1.8, 0], "brass", root);
     this.sphere("living-lamp-finial", [0.17, 0.25, 0.17], [0, 3.4, 0], "brass", root);
     const meshes = this.keepInteractive(start, root, true);
-    meshes.forEach(mesh => mesh.metadata = { ...mesh.metadata, room: "living" });
     this.lamps.push({ id: "living-lamp", label: "客厅台灯", meshes });
   }
 
   connectingDoor() {
     const width = CONNECTING_PASSAGE.width - 0.28;
     const root = this.group("connecting-door", [CONNECTING_PASSAGE.x, -4.94, CONNECTING_PASSAGE.minZ + 0.14]);
-    root.metadata = { room: "shared" };
+    setRoomOwners(root, ["study", "living"]);
     const start = this.parts.length, z = width / 2;
     this.box("door-leaf", [0.32, 10.8, width], [0, 5.4, z], "paintGreen", root);
     for (const side of [-1, 1]) {
@@ -260,7 +275,7 @@ export class RoomFurnishings {
 
   enclosingDetails(shell: TransformNode) {
     const start = this.parts.length;
-    const plaster = new StandardMaterial("plaster-ceiling", this.scene);
+    const plaster = (this.materials.get("plaster") || new StandardMaterial("plaster-ceiling", this.scene)) as StandardMaterial;
     plaster.diffuseColor = Color3.FromHexString("#e2d2af");
     plaster.emissiveColor = new Color3(0.14, 0.12, 0.09);
     plaster.specularColor = Color3.Black();
@@ -303,7 +318,7 @@ export class RoomFurnishings {
     });
   }
 
-  private rug() {
+  private createRugMaterial() {
     const texture = new DynamicTexture("woven-persian-rug", { width: 1024, height: 1024 }, this.scene, false);
     const c = texture.getContext();
     c.fillStyle = "#6c3832"; c.fillRect(0, 0, 1024, 1024);
@@ -335,6 +350,10 @@ export class RoomFurnishings {
     const mat = linenMaterial("rug", this.scene, "#ffffff", 18);
     mat.albedoTexture = texture; mat.roughness = 0.95; mat.sheen.intensity = 0.12;
     this.materials.set("rug", mat);
+  }
+
+  private rug() {
+    if (!this.materials.has("rug")) this.createRugMaterial();
     this.box("persian-rug", [14.5, 0.055, 13], [-3, -4.95, -0.3], "rug");
     const fringeVariation = stableRandom(357);
     for (let i = 0; i < 38; i++) {
@@ -437,7 +456,7 @@ export class RoomFurnishings {
   private floorLamp() {
     const start = this.parts.length;
     const g = this.group("brass-floor-lamp", [16, -5, 5]);
-    this.materials.set("floor-lamp-shade", this.materials.get("shade")!.clone("floor-lamp-shade")!);
+    if (!this.materials.has("floor-lamp-shade")) this.materials.set("floor-lamp-shade", this.materials.get("shade")!.clone("floor-lamp-shade")!);
     // A felt foot and a sloping metal shoulder make the base's contact and thickness readable.
     this.cylinder("lamp-base-foot", 0.045, 1.82, [0, 0.0225, 0], "black", g);
     this.cylinder("lamp-weighted-base", 0.12, 2, [0, 0.105, 0], "brass", g, 1.9);
@@ -558,7 +577,7 @@ export class RoomFurnishings {
   private bankerLamp(position: Triple, parent?: TransformNode) {
     const start = this.parts.length;
     const g = this.group("banker-lamp", position); g.parent = parent || null;
-    this.materials.set("desk-lamp-glow", this.materials.get("shade")!.clone("desk-lamp-glow")!);
+    if (!this.materials.has("desk-lamp-glow")) this.materials.set("desk-lamp-glow", this.materials.get("shade")!.clone("desk-lamp-glow")!);
     this.cylinder("banker-base", 0.12, 1.1, [0, 0.06, 0], "brass", g);
     this.cylinder("banker-stem", 1.4, 0.1, [0, 0.8, 0], "brass", g);
     this.sphere("banker-green-shade", [2.1, 0.8, 0.95], [0, 1.65, 0], "lampGlass", g);
@@ -728,6 +747,7 @@ export class RoomFurnishings {
 
   private keepInteractive(start: number, root: TransformNode, fixed = false) {
     const meshes = this.parts.splice(start);
+    meshes.forEach(mesh => setRoomOwners(mesh, roomOwners(root)));
     this.interactiveGroups.push({ meshes, root, fixed });
     return meshes;
   }
@@ -739,8 +759,7 @@ export class RoomFurnishings {
       const merged = this.merge(meshes, false);
       merged.forEach(mesh => {
         mesh.setParent(root); // Preserve world-space geometry baked by MergeMeshes.
-        if (root.name.startsWith("living-")) mesh.metadata = { ...mesh.metadata, room: "living" };
-        if (root.metadata?.room) mesh.metadata = { ...mesh.metadata, room: root.metadata.room };
+        setRoomOwners(mesh, roomOwners(root));
         mesh.checkCollisions = true;
         if (fixed) mesh.freezeWorldMatrix();
       });
@@ -751,21 +770,23 @@ export class RoomFurnishings {
   }
 
   private merge(parts: Mesh[], fixed = true): Mesh[] {
-    const groups = new Map<string, { material: Material; castsShadows: boolean; parts: Mesh[] }>();
+    const groups = new Map<string, { material: Material; castsShadows: boolean; owners: readonly HouseRoomId[]; parts: Mesh[] }>();
     parts.forEach(mesh => {
       mesh.computeWorldMatrix(true);
       const material = mesh.material!;
       const castsShadows = mesh.metadata?.castsShadows !== false;
-      const key = material.uniqueId + ":" + castsShadows;
-      if (!groups.has(key)) groups.set(key, { material, castsShadows, parts: [] });
+      const owners = roomOwners(mesh);
+      const key = material.uniqueId + ":" + castsShadows + ":" + owners.join(",");
+      if (!groups.has(key)) groups.set(key, { material, castsShadows, owners, parts: [] });
       groups.get(key)!.parts.push(mesh);
     });
     const merged: Mesh[] = [];
-    groups.forEach(({ parts, material, castsShadows }) => {
+    groups.forEach(({ parts, material, castsShadows, owners }) => {
       const collisionParts = parts.map(part => ({ vertices: part.getTotalVertices(), indices: part.getTotalIndices() }));
       const mesh = parts.length === 1 ? parts[0] : Mesh.MergeMeshes(parts, true, true)!;
       mesh.name = "study-" + material.name + (castsShadows ? "" : "-surface");
       mesh.metadata = { castsShadows };
+      setRoomOwners(mesh, owners);
       mesh.receiveShadows = true;
       mesh.isPickable = false;
       if (fixed) {

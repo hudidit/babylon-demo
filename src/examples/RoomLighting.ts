@@ -1,10 +1,11 @@
 import { Color3, HemisphericLight, RenderTargetTexture, ShadowGenerator, SpotLight, Vector3 } from "@babylonjs/core/pure";
 import type { AbstractMesh, PBRMaterial, Scene } from "@babylonjs/core/pure";
+import { roomOwners, setRoomOwners } from "./RoomOwnership";
+import type { HouseRoomId } from "./HouseLayout";
 
 /** Room-specific window/lamp sources plus the original restrained indirect bounce. */
 export class RoomLighting {
   private readonly shadows: ShadowGenerator[];
-  private readonly livingShadows = new Set<ShadowGenerator>();
   private readonly lamps = new Map<string, { light: SpotLight; intensity: number; on: boolean;
     material?: PBRMaterial; glow?: Color3 }>();
 
@@ -41,6 +42,8 @@ export class RoomLighting {
     this.lamps.set("desk-lamp", { light: desk, intensity: desk.intensity, on: true });
 
     this.shadows = [daylight, reading, desk].map((light, index) => {
+      setRoomOwners(light, ["study"]);
+      light.metadata.affectsShared = index === 0;
       light.falloffType = SpotLight.FALLOFF_STANDARD;
       light.specular = light.diffuse.scale(0.65);
       // Explicit light depth bounds keep cached maps independent of the active camera.
@@ -77,7 +80,8 @@ export class RoomLighting {
     lamp.intensity = 2.4; lamp.range = 15;
     this.lamps.set("living-lamp", { light: lamp, intensity: lamp.intensity, on: true });
     [daylight, lamp].forEach((light, index) => {
-      light.metadata = { room: "living" };
+      setRoomOwners(light, ["living"]);
+      light.metadata.affectsShared = true;
       light.falloffType = SpotLight.FALLOFF_STANDARD;
       light.specular = light.diffuse.scale(0.65);
       light.shadowMinZ = index ? 0.1 : 0.5; light.shadowMaxZ = light.range;
@@ -85,7 +89,7 @@ export class RoomLighting {
       shadow.usePercentageCloserFiltering = true;
       shadow.filteringQuality = ShadowGenerator.QUALITY_MEDIUM;
       shadow.bias = index ? 0.00015 : 0.0001; shadow.normalBias = 0.012;
-      this.shadows.push(shadow); this.livingShadows.add(shadow);
+      this.shadows.push(shadow);
     });
   }
 
@@ -111,9 +115,9 @@ export class RoomLighting {
       mesh.receiveShadows = true;
       this.shadows.forEach(shadow => {
         const light = shadow.getLight() as SpotLight;
-        const matchesRoom = mesh.metadata?.room === "shared"
-          ? light.name !== "banker-lamp-light" && light.name !== "reading-lamp-light"
-          : (mesh.metadata?.room === "living") === this.livingShadows.has(shadow);
+        const owners: readonly HouseRoomId[] = mesh.metadata?.lightRooms || roomOwners(mesh);
+        const matchesRoom = owners.some(id => roomOwners(light).includes(id))
+          && (owners.length === 1 || light.metadata.affectsShared);
         if (!matchesRoom) {
           if (!light.excludedMeshes.includes(mesh)) light.excludedMeshes.push(mesh);
           return;
@@ -129,6 +133,26 @@ export class RoomLighting {
       shadow.getShadowMap()!.refreshRate = RenderTargetTexture.REFRESHRATE_RENDER_ONCE;
     });
     this.refreshShadows();
+  }
+
+  removeMeshes(meshes: AbstractMesh[]) {
+    this.shadows.forEach(shadow => {
+      const light = shadow.getLight() as SpotLight;
+      meshes.forEach(mesh => {
+        shadow.removeShadowCaster(mesh, false);
+        const index = light.excludedMeshes.indexOf(mesh);
+        if (index >= 0) light.excludedMeshes.splice(index, 1);
+      });
+    });
+  }
+
+  removeRoom(id: HouseRoomId) {
+    for (const [lampId, lamp] of this.lamps) if (roomOwners(lamp.light).includes(id)) this.lamps.delete(lampId);
+    for (let i = this.shadows.length - 1; i >= 0; i--) {
+      const shadow = this.shadows[i], light = shadow.getLight();
+      if (!roomOwners(light).includes(id)) continue;
+      this.shadows.splice(i, 1); shadow.dispose(); light.dispose();
+    }
   }
 
   refreshShadows() {

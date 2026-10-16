@@ -1,9 +1,11 @@
 import { TransformNode, Vector3 } from "@babylonjs/core/pure";
 import type { AbstractMesh, Scene } from "@babylonjs/core/pure";
+import { setRoomOwners } from "./RoomOwnership";
+import type { HouseRoomId } from "./HouseLayout";
 
 /** Fit the actual imported bounds while preserving the glTF handedness conversion. */
 export function placeFurniture(meshes: AbstractMesh[], scene: Scene, name: string,
-  position: Vector3, width: number, rotation = 0) {
+  position: Vector3, width: number, rotation = 0, roomId: HouseRoomId = "study") {
   const geometry = meshes.filter(mesh => mesh.getTotalVertices() > 0);
   if (!geometry.length) throw new Error(`Furniture has no geometry: ${name}`);
   let minimum = new Vector3(Infinity, Infinity, Infinity);
@@ -15,7 +17,9 @@ export function placeFurniture(meshes: AbstractMesh[], scene: Scene, name: strin
     maximum = Vector3.Maximize(maximum, bounds.maximumWorld);
   });
   const placement = new TransformNode(name, scene);
+  setRoomOwners(placement, [roomId]);
   const origin = new TransformNode(name + "-origin", scene);
+  setRoomOwners(origin, [roomId]);
   // Centre X/Z and put the lowest vertex on the floor before scaling/rotating.
   origin.position.set(-(minimum.x + maximum.x) / 2, -minimum.y, -(minimum.z + maximum.z) / 2);
   origin.parent = placement;
@@ -32,6 +36,7 @@ export function placeFurniture(meshes: AbstractMesh[], scene: Scene, name: strin
     mesh.receiveShadows = true;
     mesh.checkCollisions = mesh.getTotalVertices() > 0;
     mesh.metadata = { ...mesh.metadata, castsShadows: true };
+    setRoomOwners(mesh, [roomId]);
     mesh.isPickable = false;
     mesh.computeWorldMatrix(true);
     mesh.freezeWorldMatrix();

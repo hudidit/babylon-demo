@@ -1,6 +1,8 @@
 import { Vector3 } from "@babylonjs/core/pure";
 import type { AbstractMesh, Mesh, Ray, Scene, TransformNode } from "@babylonjs/core/pure";
 import type { AudioCue, RoomAudioEvent } from "./RoomAudioCatalog";
+import { roomOwners } from "./RoomOwnership";
+import type { HouseRoomId } from "./HouseLayout";
 
 export type InteractiveDrawer = {
   id: string; label: string; root: TransformNode; meshes: AbstractMesh[]; travel: Vector3;
@@ -17,6 +19,7 @@ export const interactionSurface = (mesh: AbstractMesh) =>
 
 export class RoomInteractions {
   private readonly actions = new Map<AbstractMesh, Action>();
+  private readonly entities = new Map<string, { meshes: AbstractMesh[]; owners: Set<HouseRoomId> }>();
   private readonly drawers: {
     drawer: InteractiveDrawer; root: TransformNode; closed: Vector3; travel: Vector3; progress: number; open: boolean; moving: boolean;
   }[] = [];
@@ -41,6 +44,7 @@ export class RoomInteractions {
   }
 
   addDoor(door: InteractiveDoor) {
+    if (this.entities.has(door.id)) throw new Error("Duplicate interaction: " + door.id);
     const state = { door, progress: 0, open: false, blocked: false, moving: false };
     this.doors.push(state);
     this.add(door.id, door.meshes, {
@@ -50,6 +54,7 @@ export class RoomInteractions {
   }
 
   addDrawer(drawer: InteractiveDrawer) {
+    if (this.entities.has(drawer.id)) throw new Error("Duplicate interaction: " + drawer.id);
     const state = { drawer, root: drawer.root, closed: drawer.root.position.clone(), travel: drawer.travel,
       progress: 0, open: false, moving: false };
     this.drawers.push(state);
@@ -69,10 +74,28 @@ export class RoomInteractions {
   }
 
   private add(id: string, meshes: AbstractMesh[], action: Action) {
+    if (this.entities.has(id)) throw new Error("Duplicate interaction: " + id);
+    this.entities.set(id, { meshes, owners: new Set(meshes.reduce<HouseRoomId[]>((ids, mesh) => [...ids, ...roomOwners(mesh)], [])) });
     meshes.forEach(mesh => {
       mesh.metadata = { ...mesh.metadata, interactionId: id };
       this.actions.set(mesh, action);
     });
+  }
+
+  removeRoom(id: HouseRoomId) {
+    for (const [entityId, entity] of this.entities) {
+      if (entity.owners.delete(id) && !entity.owners.size) this.remove(entityId);
+    }
+  }
+
+  remove(id: string) {
+    const entity = this.entities.get(id);
+    if (!entity) return;
+    this.audio({ cue: "stop", entity: id });
+    entity.meshes.forEach(mesh => this.actions.delete(mesh));
+    for (let i = this.drawers.length - 1; i >= 0; i--) if (this.drawers[i].drawer.id === id) this.drawers.splice(i, 1);
+    for (let i = this.doors.length - 1; i >= 0; i--) if (this.doors[i].door.id === id) this.doors.splice(i, 1);
+    this.entities.delete(id);
   }
 
   pick(ray: Ray) {

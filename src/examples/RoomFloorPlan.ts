@@ -1,6 +1,7 @@
-import { HOUSE_ROOMS, housePlanSvg } from "./HouseFloorPlan";
-import type { HouseRoomId } from "./HouseFloorPlan";
-import { LIVING_ROOM } from "./RoomLayout";
+import { housePlanSvg } from "./HouseFloorPlan";
+import { HOUSE_ROOMS } from "./HouseLayout";
+import type { HouseRoomId } from "./HouseLayout";
+import type { HouseRooms } from "./HouseRooms";
 
 /** DOM-only map: the 3D camera stays in place while the modal is open. */
 export class RoomFloorPlan {
@@ -11,9 +12,11 @@ export class RoomFloorPlan {
   private focusRoom?: HouseRoomId;
   private mode = "";
 
-  constructor(open: () => void, private readonly onClose: (resumePointer: boolean) => void) {
-    document.querySelector("#floor-plan-mini")!.innerHTML = housePlanSvg(true);
-    document.querySelector("#floor-plan-drawing")!.innerHTML = housePlanSvg();
+  private readonly unsubscribe: () => void;
+
+  constructor(open: () => void, private readonly onClose: (resumePointer: boolean) => void, private readonly rooms: HouseRooms) {
+    this.refresh();
+    this.unsubscribe = rooms.subscribe(() => this.refresh());
     document.querySelector("#floor-plan-area")!.textContent = HOUSE_ROOMS.reduce((sum, room) => sum + room.width * room.depth, 0).toFixed(1);
     document.querySelector("#floor-plan-room-sizes")!.innerHTML = HOUSE_ROOMS.map(room =>
       `<div><dt>${room.name}</dt><dd>${room.width.toFixed(1)} × ${room.depth.toFixed(1)} m</dd></div>`).join("");
@@ -25,6 +28,18 @@ export class RoomFloorPlan {
   }
 
   private readonly openHandler: () => void;
+  private refresh() {
+    const content = this.rooms.contentRoomIds();
+    for (const [selector, compact] of [["#floor-plan-mini", true], ["#floor-plan-drawing", false]] as const) {
+      const host = document.querySelector<HTMLElement>(selector)!;
+      host.innerHTML = housePlanSvg(compact, content);
+      host.dataset.layoutVersion = this.rooms.layoutVersion;
+      host.querySelectorAll<SVGGElement>("[data-room]").forEach(node => {
+        node.dataset.state = this.rooms.snapshot(node.dataset.room as HouseRoomId).state;
+      });
+    }
+    this.mode = "";
+  }
   private returnHandler = () => this.onClose(true);
   private cancelHandler = (event: Event) => { event.preventDefault(); this.onClose(false); };
   private trapFocus = (event: KeyboardEvent) => {
@@ -53,18 +68,20 @@ export class RoomFloorPlan {
   update(view: string, position: { x: number; z: number }) {
     const firstPerson = view === "first-person";
     // The revised plan resizes/repositions rooms; identify the existing 3D room semantically.
-    const room = firstPerson ? position.x >= LIVING_ROOM.minX ? "living" : "study"
+    const room = firstPerson ? this.rooms.roomAt(position)
       : view === "overview" ? undefined : view === "living" ? "living" : "study";
     if (room !== this.focusRoom || view !== this.mode) {
       this.focusRoom = room;
       this.mode = view;
       document.querySelectorAll<SVGGElement>(".plan-room").forEach(node => node.classList.toggle("is-current", node.dataset.room === room));
-      this.location.textContent = firstPerson ? `你在${room === "living" ? "客厅" : "书房"}`
-        : room ? `正在看${room === "living" ? "客厅" : "书房"}` : "全屋布局";
+      const name = HOUSE_ROOMS.find(candidate => candidate.id === room)?.name;
+      this.location.textContent = firstPerson ? name ? `你在${name}` : "位置未识别"
+        : name ? `正在看${name}` : "全屋布局";
     }
   }
 
   dispose() {
+    this.unsubscribe();
     this.close();
     this.button.removeEventListener("click", this.openHandler);
     this.returnButton.removeEventListener("click", this.returnHandler);

@@ -1,0 +1,67 @@
+{
+  "baseline": "05ca8b0",
+  "browser": "155.0.8059.82",
+  "fpsOrLoadTimeSampling": false,
+  "before": {
+    "metadata": {
+      "layoutVersion": "legacy-two-room",
+      "targetLayoutVersion": "house-plan-v1"
+    },
+    "meshes": 145,
+    "materials": 64,
+    "vertices": 269624,
+    "cameras": 3,
+    "lights": 6,
+    "unownedGeometry": [],
+    "unownedContentNodes": [],
+    "sharedDoorOwners": [
+      "living",
+      "study"
+    ],
+    "roomStates": [
+      {
+        "id": "master",
+        "state": "planned"
+      },
+      {
+        "id": "study",
+        "state": "ready"
+      },
+      {
+        "id": "kitchen",
+        "state": "planned"
+      },
+      {
+        "id": "ensuite",
+        "state": "planned"
+      },
+      {
+        "id": "bathroom",
+        "state": "planned"
+      },
+      {
+        "id": "bedroom",
+        "state": "planned"
+      },
+      {
+        "id": "living",
+        "state": "ready"
+      },
+      {
+        "id": "balcony",
+        "state": "planned"
+      }
+    ],
+    "mapLayoutVersion": "legacy-two-room",
+    "exactPositionPoints": 0
+  },
+  "afterDispose": {
+    "disposed": true,
+    "meshes": 0,
+    "materials": 0,
+    "lights": 0,
+    "engineScenes": 0
+  },
+  "passed": true,
+  "errors": []
+}

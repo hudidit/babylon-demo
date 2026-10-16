@@ -1,54 +1,7 @@
-export type HouseRoomId = "study" | "living" | "master" | "bedroom" | "kitchen" | "ensuite" | "bathroom" | "balcony";
-export interface HouseRoom {
-  id: HouseRoomId;
-  name: string;
-  x: number;
-  y: number;
-  width: number;
-  depth: number;
-  hasContent: boolean;
-}
-
-/** Final planning dimensions in metres, before wall thickness. North is up.
- * Existing 3D rooms have not been resized; content presence is a separate property.
- */
-export const HOUSE_ROOMS: readonly HouseRoom[] = [
-  { id: "master", name: "主卧", x: 0, y: 0, width: 5.4, depth: 4.8, hasContent: false },
-  { id: "study", name: "书房", x: 5.4, y: 0, width: 3, depth: 3.4, hasContent: true },
-  { id: "kitchen", name: "厨房", x: 8.4, y: 0, width: 2.4, depth: 3.4, hasContent: false },
-  { id: "ensuite", name: "主卫", x: 0, y: 4.8, width: 2.4, depth: 2.4, hasContent: false },
-  { id: "bathroom", name: "公卫", x: 2.4, y: 4.8, width: 3, depth: 2.4, hasContent: false },
-  { id: "bedroom", name: "次卧", x: 0, y: 7.2, width: 5.4, depth: 3.6, hasContent: false },
-  { id: "living", name: "客厅", x: 5.4, y: 3.4, width: 5.4, depth: 7.4, hasContent: true },
-  { id: "balcony", name: "阳台", x: 5.4, y: 10.8, width: 5.4, depth: 1.5, hasContent: false },
-];
-
-export interface HouseDoor {
-  from: HouseRoomId;
-  to: HouseRoomId | "outside";
-  axis: "x" | "y";
-  x: number;
-  y: number;
-  width: number;
-  sliding?: boolean;
-  swing?: 1 | -1;
-}
-
-/** All openings are planned; no corresponding 3D wall or door changes in this task. */
-export const HOUSE_DOORS: readonly HouseDoor[] = [
-  { from: "living", to: "outside", axis: "y", x: 10.8, y: 4.1, width: 1.1, swing: 1 },
-  { from: "master", to: "living", axis: "y", x: 5.4, y: 3.6, width: 0.9, swing: 1 },
-  { from: "master", to: "ensuite", axis: "x", x: 0.8, y: 4.8, width: 0.8, swing: 1 },
-  { from: "bathroom", to: "living", axis: "y", x: 5.4, y: 5.6, width: 0.8, swing: 1 },
-  { from: "bedroom", to: "living", axis: "y", x: 5.4, y: 8.7, width: 0.9, swing: 1 },
-  { from: "study", to: "living", axis: "x", x: 6.2, y: 3.4, width: 0.9 },
-  { from: "kitchen", to: "living", axis: "x", x: 9.1, y: 3.4, width: 0.9 },
-  { from: "living", to: "balcony", axis: "x", x: 6.9, y: 10.8, width: 2.4, sliding: true },
-];
-
-export function houseRoomAt(x: number, y: number) {
-  return HOUSE_ROOMS.find(room => x >= room.x && x <= room.x + room.width && y >= room.y && y <= room.y + room.depth);
-}
+import { HOUSE_ROOMS, HOUSE_DOORS } from "./HouseLayout";
+import type { HouseRoomId } from "./HouseLayout";
+export { HOUSE_ROOMS, HOUSE_DOORS, houseRoomAt } from "./HouseLayout";
+export type { HouseRoom, HouseDoor, HouseRoomId } from "./HouseLayout";
 
 export const PLAN_DRAWING = { left: 64, top: 50, scale: 36 };
 export function houseDrawingPoint(x: number, y: number) {
@@ -56,13 +9,14 @@ export function houseDrawingPoint(x: number, y: number) {
 }
 
 /** Both views use this same geometry; no raster asset or second rendering engine. */
-export function housePlanSvg(compact = false) {
+export function housePlanSvg(compact = false, contentRooms: readonly HouseRoomId[] = []) {
   const prefix = compact ? "mini" : "full";
   const p = houseDrawingPoint, scale = PLAN_DRAWING.scale;
   const width = Math.max(...HOUSE_ROOMS.map(room => room.x + room.width));
   const depth = Math.max(...HOUSE_ROOMS.map(room => room.y + room.depth));
   const left = PLAN_DRAWING.left, top = PLAN_DRAWING.top, right = p(width, 0).x, bottom = p(0, depth).y;
   const rooms = HOUSE_ROOMS.map(room => {
+    const hasContent = contentRooms.includes(room.id);
     const origin = p(room.x, room.y), w = room.width * scale, h = room.depth * scale;
     // Leave the public bath's label clear of its inward-swinging door.
     const cx = origin.x + w / 2 - (!compact && room.id === "bathroom" ? 12 : 0), cy = origin.y + h / 2;
@@ -70,9 +24,9 @@ export function housePlanSvg(compact = false) {
     const area = `${(room.width * room.depth).toFixed(1)} m²`;
     const small = room.id === "ensuite" || room.id === "bathroom";
     const nameY = cy - (compact ? 0 : room.id === "balcony" ? 5 : room.id === "ensuite" ? 2 : small ? 10 : 15);
-    return `<g data-room="${room.id}" class="plan-room ${room.hasContent ? "has-content" : "is-planned"}">
-      <title>${room.name}，规划尺寸${dimensions}，${area}，${room.hasContent ? "已有内容，布局待调整" : "规划区域"}</title>
-      <rect x="${origin.x}" y="${origin.y}" width="${w}" height="${h}" fill="${room.hasContent ? "#e0e6d9" : `url(#${prefix}-hatch)`}"/>
+    return `<g data-room="${room.id}" class="plan-room ${hasContent ? "has-content" : "is-planned"}">
+      <title>${room.name}，规划尺寸${dimensions}，${area}，${hasContent ? "已有内容，布局待调整" : "规划区域"}</title>
+      <rect x="${origin.x}" y="${origin.y}" width="${w}" height="${h}" fill="${hasContent ? "#e0e6d9" : `url(#${prefix}-hatch)`}"/>
       <text class="plan-room-name ${small ? "plan-small-name" : ""}" x="${cx}" y="${nameY}">${room.name}</text>
       ${compact ? "" : `<text class="plan-room-size" x="${cx}" y="${nameY + (small ? 16 : 20)}">${dimensions}</text>
       ${room.id === "balcony" ? "" : `<text class="plan-room-area" x="${cx}" y="${nameY + (small ? 29 : 39)}">${area}</text>`}`}

@@ -15,7 +15,7 @@ function load(name) {
   cache.set(name, module.exports);
   return module.exports;
 }
-const { HOUSE_ROOMS, HOUSE_DOORS, houseRoomAt } = load('HouseFloorPlan');
+const { HOUSE_ROOMS, HOUSE_DOORS, houseRoomAt } = load('HouseLayout');
 
 test('revised plan has a direct living-room entry, a compact study and a larger master bedroom', () => {
   assert.equal(HOUSE_ROOMS.length, 8);
@@ -26,7 +26,7 @@ test('revised plan has a direct living-room entry, a compact study and a larger 
   assert.ok(study.width * study.depth >= 8 && study.width * study.depth <= 12, 'study should have a normal compact floor area');
   assert.ok(master.width * master.depth > 4.6 * 4.4, 'master must be enlarged from the first draft');
   assert.ok(master.width * master.depth > study.width * study.depth * 2);
-  assert.deepEqual(HOUSE_ROOMS.filter(room => room.hasContent).map(room => room.id).sort(), ['living', 'study']);
+  assert.ok(HOUSE_ROOMS.every(room => !('hasContent' in room)), 'runtime status must not be stored in layout geometry');
   // The former corridor is part of the continuous living rectangle: entry has no intervening partition.
   const living = HOUSE_ROOMS.find(room => room.id === 'living');
   for (const y of [entry[0].y + entry[0].width / 2, living.y + living.depth / 2])

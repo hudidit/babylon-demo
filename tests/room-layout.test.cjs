@@ -32,6 +32,55 @@ const { beveledBox, creasedLetter, curtainPanel, ficusLeaf } = loadSource("RoomD
 const { buildWearMask } = loadSource("RoomSurfaceDetails");
 const { partitionMergedCollisions } = loadSource("RoomCollisions");
 const { createLivingRoom, constrainWalkingPosition } = loadSource("RoomLivingRoom");
+const { setRoomOwners } = loadSource("RoomOwnership");
+const { sharedRoomMaterials } = loadSource("RoomMaterialLibrary");
+
+test("failed shared material initialization cleans only its new resources and can retry", t => {
+  const scene = createScene(t), existing = new babylon.StandardMaterial("existing", scene);
+  assert.throws(() => sharedRoomMaterials(scene, map => {
+    map.set("partial", new babylon.StandardMaterial("partial", scene));
+    throw new Error("fixture");
+  }), /fixture/);
+  assert.deepEqual(scene.materials, [existing]);
+  const next = sharedRoomMaterials(scene, map => map.set("ready", new babylon.StandardMaterial("ready", scene)));
+  assert.ok(next.has("ready"));
+  scene.dispose(); assert.equal(next.size, 0);
+  assert.throws(() => sharedRoomMaterials(scene, () => {}), /disposed/);
+});
+
+test("multiple room builders share scene materials and retain explicit ownership after merging", t => {
+  const scene = createScene(t), study = new RoomFurnishings(scene);
+  const counts = [scene.materials.length, scene.textures.length];
+  const bedroom = new RoomFurnishings(scene, "bedroom");
+  assert.deepEqual([scene.materials.length, scene.textures.length], counts);
+  const a = study.box("desk", [1, 1, 1], [0, 0, 0], "wood");
+  const b = bedroom.box("bed", [1, 1, 1], [3, 0, 0], "wood");
+  assert.equal(a.material, b.material);
+  const meshes = bedroom.finish();
+  assert.deepEqual(meshes[0].metadata.ownerRooms, ["bedroom"]);
+  const lighting = new RoomLighting(scene); lighting.addLivingRoom(scene); lighting.addMeshes(meshes);
+  scene.lights.filter(light => light instanceof babylon.SpotLight).forEach(light => {
+    assert.ok(light.excludedMeshes.includes(meshes[0]), "a bedroom must not accidentally receive study/living light slots");
+  });
+  const material = a.material; meshes[0].dispose(false, false);
+  assert.ok(scene.materials.includes(material));
+  assert.equal(a.material, material, "releasing one room must retain the other room's shared material");
+  lighting.removeRoom("study");
+  assert.equal(scene.lights.filter(light => light instanceof babylon.SpotLight).length, 2);
+});
+
+test("room-level interaction cleanup respects shared ownership and rejects duplicate IDs", t => {
+  const scene = createScene(t), box = babylon.MeshBuilder.CreateBox("shared-lamp", {}, scene);
+  box.computeWorldMatrix(true); setRoomOwners(box, ["study", "living"]);
+  const interactions = new RoomInteractions(scene, () => {});
+  let on = false;
+  const lamp = { id: "shared-test-lamp", label: "lamp", meshes: [box] };
+  interactions.addLamp(lamp, () => on, () => on = !on);
+  assert.throws(() => interactions.addLamp(lamp, () => on, () => {}), /Duplicate/);
+  const ray = new babylon.Ray(new babylon.Vector3(0, 0, -3), new babylon.Vector3(0, 0, 1), 7.5);
+  interactions.removeRoom("study"); interactions.pick(ray).toggle(); assert.equal(on, true);
+  interactions.removeRoom("living"); assert.equal(interactions.pick(ray), undefined);
+});
 
 function adjacentRooms(t) {
   const scene = createScene(t), room = new RoomFurnishings(scene);
@@ -83,7 +132,8 @@ test("living room lamps and shadows stay in their room without taking study ligh
   for (const light of scene.lights.filter(light => light instanceof babylon.SpotLight)) {
     const living = light.name.startsWith("living-");
     for (const mesh of scene.meshes.filter(mesh => mesh.getTotalVertices() > 0)) {
-      const excluded = mesh.metadata?.room === "shared" ? /banker|reading-lamp/.test(light.name)
+      const excluded = mesh.metadata?.lightRooms ? !mesh.metadata.lightRooms.includes(living ? "living" : "study")
+        : mesh.metadata?.room === "shared" ? /banker|reading-lamp/.test(light.name)
         : (mesh.metadata?.room === "living") !== living;
       assert.equal(light.excludedMeshes.includes(mesh), excluded);
     }
@@ -191,7 +241,7 @@ test("section batching preserves singleton artwork/window world transforms and c
   assert.ok(artwork.getBoundingInfo().boundingBox.centerWorld.equalsWithEpsilon(new babylon.Vector3(37, 4, -18.66), 0.001));
   assert.ok(window.getBoundingInfo().boundingBox.centerWorld.equalsWithEpsilon(new babylon.Vector3(48, 2.5, -19.14), 0.001));
   const furnishings = new RoomFurnishings(scene), shell = new babylon.TransformNode("test-shell", scene);
-  const meshes = furnishings.section("singleton", () => {
+  const meshes = furnishings.section("living", "singleton", () => {
     const parent = furnishings.group("model-parent", [30, 2, -4], Math.PI / 2);
     furnishings.box("only-part", [2, 1, 1], [0, 1, 2], "wood", parent);
   }, shell);

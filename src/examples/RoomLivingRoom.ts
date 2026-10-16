@@ -1,5 +1,6 @@
 import { CreateBox, CreateGround, CreatePlane, Vector3 } from "@babylonjs/core/pure";
 import type { PBRMaterial, Scene, TransformNode } from "@babylonjs/core/pure";
+import { setRoomOwners } from "./RoomOwnership";
 import { tileMaterial } from "./RoomMaterials";
 import type { RoomFurnishings } from "./RoomFurnishings";
 import { CONNECTING_PASSAGE, LIVING_ROOM, SHARED_WALL_SPANS } from "./RoomLayout";
@@ -22,12 +23,16 @@ export function createSharedWall(scene: Scene, shell: TransformNode, paint: PBRM
     wall.position.set(20, y, z); wall.parent = shell;
     wall.material = tileMaterial(paint, wall.name + "-paint", length / 6, height / 6);
     wall.receiveShadows = wall.checkCollisions = true; wall.isPickable = false;
+    setRoomOwners(wall, ["study", "living"]);
+    // Legacy core boxes used study lights; the two facing planes have their own room lights.
+    wall.metadata.lightRooms = ["study"];
     wall.freezeWorldMatrix();
     for (const side of [-1, 1]) {
       const face = CreatePlane(`shared-painted-facing-${index}-${side}`, { width: length, height }, scene);
       face.position.set(20 + side * 0.26, y, z); face.rotation.y = side * -Math.PI / 2;
       face.parent = shell; face.material = wall.material; face.receiveShadows = true; face.isPickable = false;
       face.metadata = { room: side > 0 ? "living" : "study", castsShadows: false };
+      setRoomOwners(face, [side > 0 ? "living" : "study"]);
       face.freezeWorldMatrix();
     }
   });
@@ -41,12 +46,14 @@ export function createLivingRoom(scene: Scene, room: RoomFurnishings, shell: Tra
   ground.material = tileMaterial(scene.getMaterialByName("oak-floor") as PBRMaterial, "living-oak-floor", 4.25, 5);
   ground.checkCollisions = ground.receiveShadows = true;
   ground.metadata = { room: "living", castsShadows: false };
+  setRoomOwners(ground, ["living"]);
   ground.freezeWorldMatrix();
   const wall = (name: string, size: [number, number, number], position: [number, number, number], enclosed = false) => {
     const mesh = CreateBox(name, { width: size[0], height: size[1], depth: size[2] }, scene);
     mesh.position.set(...position); mesh.parent = enclosed ? shell : null;
     mesh.material = tileMaterial(paint, name + "-paint", Math.max(size[0], size[2]) / 6, size[1] / 6);
     mesh.metadata = { room: "living" };
+    setRoomOwners(mesh, ["living"]);
     mesh.checkCollisions = mesh.receiveShadows = true; mesh.isPickable = false; mesh.freezeWorldMatrix();
     return mesh;
   };
@@ -56,9 +63,9 @@ export function createLivingRoom(scene: Scene, room: RoomFurnishings, shell: Tra
   const facing = CreatePlane("living-right-painted-facing", { width: 40, height: 14 }, scene);
   facing.position.set(53.74, 2, 0); facing.rotation.y = Math.PI / 2; facing.parent = shell;
   facing.material = right.material; facing.receiveShadows = true; facing.isPickable = false;
-  facing.metadata = { room: "living", castsShadows: false }; facing.freezeWorldMatrix();
+  facing.metadata = { room: "living", castsShadows: false }; setRoomOwners(facing, ["living"]); facing.freezeWorldMatrix();
 
-  room.section("living", () => {
+  room.section("living", "living", () => {
     room.box("foundation", [34.3, 0.6, 40.6], [37.15, -5.4, 0], "darkWood");
     panelWall(room, 34, [37, 0, -19.5]);
     // Cased opening with flush floor; there is no raised threshold to trip the walker.
@@ -75,7 +82,7 @@ export function createLivingRoom(scene: Scene, room: RoomFurnishings, shell: Tra
     seat(room, "living-chair-west", [28.5, -5, 1], 4.4, -Math.PI / 2, "cushion");
     seat(room, "living-chair-east", [45.5, -5, 1], 4.4, Math.PI / 2, "cream");
     const rug = room.box("persian-rug", [23, 0.055, 19], [37, -4.95, 1.8], "rug");
-    rug.metadata = { castsShadows: false };
+    rug.metadata = { ...rug.metadata, castsShadows: false };
     for (const z of [-7.9, 11.5]) for (let x = 25.7; x < 48.5; x += 0.38)
       room.box("rug-fringe", [0.07, 0.025, 0.35], [x, -4.95, z], "cream");
     const table = room.group("living-coffee-table", [37, -5, 1]);
@@ -106,12 +113,13 @@ export function createLivingRoom(scene: Scene, room: RoomFurnishings, shell: Tra
     room.vase([29, -2.1, 10.5], 0.75);
   });
 
-  room.section("living-interior", () => {
+  room.section("living", "living-interior", () => {
     panelWall(room, 34, [37, 0, 19.5], Math.PI);
     panelWall(room, 40, [53.5, 0, 0], Math.PI / 2);
     SHARED_WALL_SPANS.forEach(({ length, z }) => panelWall(room, length, [20.5, 0, z], -Math.PI / 2));
     // Both sources are below the ceiling: receive their light without self-shadow bands.
-    room.box("living-ceiling", [34, 0.5, 40], [37, 9.25, 0], "plaster").metadata = { castsShadows: false };
+    const ceiling = room.box("living-ceiling", [34, 0.5, 40], [37, 9.25, 0], "plaster");
+    ceiling.metadata = { ...ceiling.metadata, castsShadows: false };
     for (const x of [28, 46]) room.box("living-ceiling-beam", [0.3, 0.22, 40], [x, 8.9, 0], "darkWood");
     for (const z of [-7, 7]) room.box("living-ceiling-beam", [34, 0.22, 0.3], [37, 8.9, z], "darkWood");
   }, shell);

@@ -1,0 +1,1334 @@
+{
+  "browser": "155.0.8059.82",
+  "viewport": [
+    1280,
+    720
+  ],
+  "deviceScaleFactor": 1,
+  "cacheDisabled": true,
+  "fpsCpuGpuLoadTimeSampling": false,
+  "drawers": [
+    {
+      "id": "writing-drawer-1",
+      "closed": {
+        "position": [
+          -1.65,
+          3.86,
+          2.69
+        ],
+        "absolute": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          1.690000057220459
+        ],
+        "target": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          1.8300000429153442
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          -1.65,
+          3.86,
+          4.49
+        ],
+        "absolute": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          3.489999771118164
+        ],
+        "target": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          3.6299996376037598
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          -1.65,
+          3.86,
+          2.69
+        ],
+        "absolute": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          1.690000057220459
+        ],
+        "target": [
+          -4.650000095367432,
+          -1.1400001049041748,
+          1.8300000429153442
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "writing-drawer-2",
+      "closed": {
+        "position": [
+          1.65,
+          3.86,
+          2.69
+        ],
+        "absolute": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          1.690000057220459
+        ],
+        "target": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          1.8300000429153442
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          1.65,
+          3.86,
+          4.49
+        ],
+        "absolute": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          3.489999771118164
+        ],
+        "target": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          3.6299996376037598
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          1.65,
+          3.86,
+          2.69
+        ],
+        "absolute": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          1.690000057220459
+        ],
+        "target": [
+          -1.350000023841858,
+          -1.1400001049041748,
+          1.8300000429153442
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "console-drawer-1",
+      "closed": {
+        "position": [
+          -2.3,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          11.300000190734863
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          11.300000190734863
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          -2.3,
+          3.51,
+          2.85
+        ],
+        "absolute": [
+          -14.149999618530273,
+          -1.4900000095367432,
+          11.300000190734863
+        ],
+        "target": [
+          -14.049999237060547,
+          -1.4500000476837158,
+          11.300000190734863
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          -2.3,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          11.300000190734863
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          11.300000190734863
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "console-drawer-2",
+      "closed": {
+        "position": [
+          0,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          9
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          9
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          0,
+          3.51,
+          2.85
+        ],
+        "absolute": [
+          -14.149999618530273,
+          -1.4900000095367432,
+          9
+        ],
+        "target": [
+          -14.049999237060547,
+          -1.4500000476837158,
+          9
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          0,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          9
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          9
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "console-drawer-3",
+      "closed": {
+        "position": [
+          2.3,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          6.699999809265137
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          6.699999809265137
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          2.3,
+          3.51,
+          2.85
+        ],
+        "absolute": [
+          -14.149999618530273,
+          -1.4900000095367432,
+          6.699999809265137
+        ],
+        "target": [
+          -14.049999237060547,
+          -1.4500000476837158,
+          6.699999809265137
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          2.3,
+          3.51,
+          1.3
+        ],
+        "absolute": [
+          -15.699999809265137,
+          -1.4900000095367432,
+          6.699999809265137
+        ],
+        "target": [
+          -15.59999942779541,
+          -1.4500000476837158,
+          6.699999809265137
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "cabinet-drawer-1",
+      "closed": {
+        "position": [
+          -0.0014149999478831887,
+          0.35649898648262024,
+          0.2807460129261017
+        ],
+        "absolute": [
+          -13.493349075317383,
+          -3.3244547843933105,
+          -16.280494689941406
+        ],
+        "target": [
+          -13.493879663922712,
+          -3.325420748403211,
+          -17.574040188307173
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          -0.0014149999478831887,
+          0.35649898648262024,
+          0.6607460129261017
+        ],
+        "absolute": [
+          -13.493349075317383,
+          -3.3244547843933105,
+          -14.494494438171387
+        ],
+        "target": [
+          -13.493879663922712,
+          -3.325420748403211,
+          -15.788039936537155
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          -0.0014149999478831887,
+          0.35649898648262024,
+          0.2807460129261017
+        ],
+        "absolute": [
+          -13.493349075317383,
+          -3.3244547843933105,
+          -16.280494689941406
+        ],
+        "target": [
+          -13.493879663922712,
+          -3.325420748403211,
+          -17.574040188307173
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "cabinet-drawer-2",
+      "closed": {
+        "position": [
+          -0.001487000030465424,
+          0.6670479774475098,
+          0.261231005191803
+        ],
+        "absolute": [
+          -13.493011474609375,
+          -1.8648746013641357,
+          -16.372215270996094
+        ],
+        "target": [
+          -13.493878233397595,
+          -1.8660573601242731,
+          -17.664557280107122
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          -0.001487000030465424,
+          0.6670479774475098,
+          0.641231005191803
+        ],
+        "absolute": [
+          -13.493011474609375,
+          -1.8648746013641357,
+          -14.586215019226074
+        ],
+        "target": [
+          -13.493878233397595,
+          -1.8660573601242731,
+          -15.878557028337102
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          -0.001487000030465424,
+          0.6670479774475098,
+          0.261231005191803
+        ],
+        "absolute": [
+          -13.493011474609375,
+          -1.8648746013641357,
+          -16.372215270996094
+        ],
+        "target": [
+          -13.493878233397595,
+          -1.8660573601242731,
+          -17.664557280107122
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    },
+    {
+      "id": "cabinet-drawer-3",
+      "closed": {
+        "position": [
+          -0.0009110000100918114,
+          0.9869080185890198,
+          0.27112799882888794
+        ],
+        "absolute": [
+          -13.495718002319336,
+          -0.3615325093269348,
+          -16.325698852539062
+        ],
+        "target": [
+          -13.493875929788004,
+          -0.3651184646820127,
+          -17.59550768945045
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "opened": {
+        "position": [
+          -0.0009110000100918114,
+          0.9869080185890198,
+          0.6511279988288879
+        ],
+        "absolute": [
+          -13.495718002319336,
+          -0.3615325093269348,
+          -14.539698600769043
+        ],
+        "target": [
+          -13.493875929788004,
+          -0.3651184646820127,
+          -15.80950743768043
+        ],
+        "collisions": true,
+        "frozen": false
+      },
+      "reclosed": {
+        "position": [
+          -0.0009110000100918114,
+          0.9869080185890198,
+          0.27112799882888794
+        ],
+        "absolute": [
+          -13.495718002319336,
+          -0.3615325093269348,
+          -16.325698852539062
+        ],
+        "target": [
+          -13.493875929788004,
+          -0.3651184646820127,
+          -17.59550768945045
+        ],
+        "collisions": true,
+        "frozen": false
+      }
+    }
+  ],
+  "lamps": [
+    {
+      "id": "desk-lamp",
+      "before": {
+        "intensity": 1.25,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      },
+      "off": {
+        "intensity": 0,
+        "emission": [
+          0,
+          0,
+          0
+        ]
+      },
+      "restored": {
+        "intensity": 1.25,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      }
+    },
+    {
+      "id": "floor-lamp",
+      "before": {
+        "intensity": 3.3,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      },
+      "off": {
+        "intensity": 0,
+        "emission": [
+          0,
+          0,
+          0
+        ]
+      },
+      "restored": {
+        "intensity": 3.3,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      }
+    },
+    {
+      "id": "living-lamp",
+      "before": {
+        "intensity": 2.4,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      },
+      "off": {
+        "intensity": 0,
+        "emission": [
+          0,
+          0,
+          0
+        ]
+      },
+      "restored": {
+        "intensity": 2.4,
+        "emission": [
+          0.2,
+          0.13,
+          0.065
+        ]
+      }
+    }
+  ],
+  "views": [
+    "overview",
+    "study",
+    "living",
+    "reading",
+    "desk",
+    "details",
+    "cabinet"
+  ],
+  "environment": {
+    "glInfo": {
+      "vendor": "Google Inc. (Apple)",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M6, Unspecified Version)",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    },
+    "staticCaptureRenderLoopStopped": true,
+    "deterministicAnimationDeltaMilliseconds": 50,
+    "geometry": {
+      "meshes": 145,
+      "vertices": 269624,
+      "materials": 64
+    },
+    "ceiling": {
+      "material": "plaster-ceiling",
+      "diffuseTexture": false
+    },
+    "interactionIds": [
+      "writing-drawer-1",
+      "writing-drawer-2",
+      "desk-letter",
+      "desk-lamp",
+      "floor-lamp",
+      "console-drawer-1",
+      "console-drawer-2",
+      "console-drawer-3",
+      "living-lamp",
+      "connecting-door",
+      "cabinet-drawer-1",
+      "cabinet-drawer-2",
+      "cabinet-drawer-3"
+    ]
+  },
+  "initialJsBytes": 2667379,
+  "paintedWalls": [
+    {
+      "name": "warm-painted-wall",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "shared-wall-0-paint",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "shared-wall-1-paint",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "shared-wall-2-paint",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "back-wall-left-paint",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "back-wall-right-paint",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "door-lintel-wall-paint",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "left-painted-wall-paint",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "front-painted-wall-paint",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "living-back-wall-paint",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "living-right-wall-paint",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "living-front-wall-paint",
+      "albedo": [
+        0.7817506777739623,
+        0.744530171266715,
+        0.6661169687758508
+      ],
+      "color": "./textures/study/painted_wall/color.png",
+      "normal": "./textures/study/painted_wall/normal.png",
+      "normalLevel": 0.18,
+      "arm": "./textures/study/painted_wall/arm.png",
+      "gamma": [
+        true,
+        false,
+        false
+      ]
+    }
+  ],
+  "geometryUnchanged": true,
+  "doorOrbit": {
+    "bothFacesClick": true,
+    "reversesDuringMotion": true,
+    "partialDoor": 0.18547303567111756
+  },
+  "clickGuards": {
+    "rightClickDoesNotToggle": true,
+    "dragOutAndBackDoesNotToggle": true
+  },
+  "centredLampClicks": [
+    "台灯",
+    "落地灯",
+    "客厅台灯"
+  ],
+  "doorFirstPerson": {
+    "closedStudy": [
+      19.061000581458213,
+      1,
+      -4.999766970974954
+    ],
+    "closedLiving": [
+      20.939000133797524,
+      1,
+      -4.999766970796117
+    ],
+    "blockedCloseAngle": 0.7853981633974488,
+    "bothFacesClick": true,
+    "openingAwayAtContact": true,
+    "pausesTowardWalker": true,
+    "resumesAfterWalkerLeaves": true
+  },
+  "passage": [
+    {
+      "direction": "study-to-living",
+      "start": [
+        16,
+        1,
+        -5
+      ],
+      "end": [
+        22.761474435325447,
+        1,
+        -4.999563479663499
+      ]
+    },
+    {
+      "direction": "living-to-study",
+      "start": [
+        24,
+        1,
+        -5
+      ],
+      "end": [
+        17.238525564674525,
+        1,
+        -4.999563479663499
+      ]
+    }
+  ],
+  "sharedWallBlocksOutsideOpening": [
+    18.683311360429563,
+    1,
+    -11.999266764418524
+  ],
+  "firstPerson": {
+    "pointerLockAcquired": true,
+    "freeMouseLook": true,
+    "rotation": [
+      0.04328774908931141,
+      -2.8335398733093324,
+      0
+    ],
+    "looked": [
+      -0.318003636372798,
+      -2.6676407677399965,
+      0
+    ],
+    "start": [
+      4,
+      1,
+      16
+    ],
+    "moved": [
+      3.5572022518082633,
+      1,
+      15.13796560518995
+    ],
+    "centredDrawerClick": true,
+    "escapeRestoredView": "desk",
+    "reticleHiddenOnExit": true,
+    "browserReleaseExits": true,
+    "simulatedWindowBlurExits": true,
+    "settingsPauseAndCanvasClickResume": true,
+    "deniedLockPausesMovement": true
+  },
+  "livingEntryAndEscape": true,
+  "regression": {
+    "orbitDrag": true,
+    "wheelZoom": true,
+    "settingsSpeedAndReset": true,
+    "inspectorOpenedAndClosed": true,
+    "orbitControlsWorkAfterInspector": true
+  },
+  "release": {
+    "filesVerified": 488,
+    "build": 26113175,
+    "runtime": 15702135,
+    "documentation": 52952,
+    "manifestBytes": 91362,
+    "initialStaticJsBytes": 2490407,
+    "completeBytes": 41959624
+  },
+  "interactionExtraRequests": 13,
+  "passed": true,
+  "phase": "release",
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8099/",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 18090
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/main.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 103405
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/4259.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2387002
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/forest-window/view.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1155565
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/painted_wall/color.png",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8099/textures/pictures/pic1.jpg",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8099/environment/study-interior.hdr",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/1203.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8099/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8099/models/study/sofa_03.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8099/models/gothic_commode.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8099/models/wooden_bookshelf.glb",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/8558.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/c9a0e82c-3abe-4d12-9e2a-8219a15acf91",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/7ef11f49-1c9d-4bba-93a8-cc0f90fbd84a",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/5ec34eac-c17d-4a9a-8512-26ff4c4236b5",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/5c553f87-a4d1-4d8d-b649-f53ee58e96a8",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/85e365a1-c2f5-4503-a8c1-43fb5c17cfae",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/4b890382-22e5-4043-91a1-8fa70ce1ee5e",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/8643aac2-23c0-43dd-a72a-b833f6ae2289",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/3161af94-80b5-4bef-82df-3a1976674982",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/ba2cedf5-6855-428b-bd98-9d9db2b6f293",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/f5e7e7e2-78fa-4d22-bfd8-8d80c2f29680",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/1cac6722-c2c6-40cc-9b53-2f389cb323dc",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/271e4024-1878-4f3a-959f-6bfd5d1d9809",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/390bc27f-a579-48fe-a0a9-28d089011be6",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/2a59ce4e-71d2-40e4-88c7-18c32760c66c",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/19da05a9-cab8-427e-a1fe-5cf57e19fe8e",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8099/40946f2b-6e74-468c-ab7e-27cbea573e8e",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/6612.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/4742.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/7449.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/9615.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/5587.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/4472.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/6560.js",
+      "status": 200,
+      "phase": "initial",
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/9915.js",
+      "status": 200,
+      "phase": "views",
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8099/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "phase": "views",
+      "bytes": 27884
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/2033.js",
+      "status": 200,
+      "phase": "regression",
+      "bytes": 43100
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/4593.js",
+      "status": 200,
+      "phase": "regression",
+      "bytes": 14090
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/9318.js",
+      "status": 200,
+      "phase": "regression",
+      "bytes": 8482
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/1326.js",
+      "status": 200,
+      "phase": "regression",
+      "bytes": 93582
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/5081.js",
+      "status": 200,
+      "phase": "regression",
+      "bytes": 3349447
+    },
+    {
+      "url": "http://127.0.0.1:8099/js/7665.js",
+      "status": 200,
+      "phase": "regression",
+      "bytes": 109982
+    }
+  ]
+}
