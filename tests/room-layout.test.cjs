@@ -22,7 +22,7 @@ function loadSource(name) {
 
 const { measureBookshelf } = loadSource("BookshelfLayout");
 const { RoomFurnishings } = loadSource("RoomFurnishings");
-const { RoomScene } = loadSource("Room");
+const { RoomScene, MOVEMENT_SPEED } = loadSource("Room");
 const { createLegacyArchitecture } = loadSource("RoomLegacyArchitecture");
 const { RoomItemInspection } = loadSource("RoomItemInspection");
 const { RoomInteractions, cabinetDrawers } = loadSource("RoomInteractions");
@@ -38,13 +38,14 @@ const { setRoomOwners } = loadSource("RoomOwnership");
 const { sharedRoomMaterials } = loadSource("RoomMaterialLibrary");
 const { createHouseArchitecture } = loadSource("HouseArchitecture");
 const { houseWallSpans, houseWindowSide, HOUSE_WINDOWS } = loadSource("HouseStructure");
-const { HOUSE_DOORS, HOUSE_ROOMS } = loadSource("HouseLayout");
+const { HOUSE_COORDINATES, HOUSE_DOORS, HOUSE_ROOMS } = loadSource("HouseLayout");
 const { houseVector, HOUSE_WALKER_RADIUS, constrainHouseWalking } = loadSource("HouseWalking");
 const { doorSweepIsClear } = loadSource("RoomInteractions");
 const { furnishHouseStudy, furnishHouseLiving, HOUSE_CONTENT } = loadSource("HouseContent");
 const { furnishHouseMaster, furnishHouseEnsuite } = loadSource("HouseSuite");
 const { bathroomVanity, bathroomToilet, bathroomShower, bedroomBed, bedroomWardrobe } = loadSource("HouseRoomComponents");
 const { HOUSE_BEDROOM, furnishHouseBedroom } = loadSource("HouseBedroom");
+const { HOUSE_JUMP, HOUSE_JUMP_BLOCKERS, HOUSE_JUMP_PLATFORMS, advanceJump, createJumpState, jumpBlockedAt, jumpPlatformAt, requestJump } = loadSource("HouseJump");
 const { furnishHouseKitchen, furnishHouseBathroom } = loadSource("HouseServiceRooms");
 const { furnishHouseBalcony } = loadSource("HouseBalcony");
 const { slidingDoorSweepIsClear } = loadSource("RoomInteractions");
@@ -1302,6 +1303,61 @@ test("all flower stems connect to both the vase neck and their flower heads", t 
     assert.ok(stem.intersectsMesh(neck, true), `stem ${index} must enter the vase neck`);
     assert.ok(stem.intersectsMesh(flowers[index], true), `stem ${index} must reach its flower`);
   });
+});
+
+test("first-person base speed is 50% higher without changing the settings range", () => {
+  assert.equal(MOVEMENT_SPEED.base, .825);
+  assert.deepEqual({ min: MOVEMENT_SPEED.min, max: MOVEMENT_SPEED.max, default: MOVEMENT_SPEED.default },
+    { min: .25, max: 3, default: 1 });
+});
+
+test("first-person jump whitelists seats, the coffee table and beds but not desks, cabinets or outside", () => {
+  const ids = HOUSE_JUMP_PLATFORMS.map(platform => platform.id);
+  for (const id of ["living-sofa", "reading-sofa", "reading-armchair", "study-chair",
+    "coffee-table", "guest-bed", "master-bed", "bedroom-bench"]) assert.ok(ids.includes(id), id);
+  assert.equal(jumpPlatformAt(6.9, .72), undefined, "writing desk is not landable");
+  assert.equal(jumpPlatformAt(5.82, 7.6), undefined, "window console is not landable");
+  assert.equal(jumpPlatformAt(10.2, 12.2), undefined, "balcony rail and outside are not landable");
+  for (const id of ["writing-desk", "window-console", "antique-cabinet", "guest-nightstand"])
+    assert.ok(HOUSE_JUMP_BLOCKERS.some(blocker => blocker.id === id), id);
+  assert.ok(jumpBlockedAt(6.9, .72) && jumpBlockedAt(5.82, 7.6), "desks/consoles reject airborne entry");
+  assert.ok(!jumpBlockedAt(2.1, 8.45), "the guest bed itself is landable");
+  assert.ok(HOUSE_JUMP.apex < .78 && HOUSE_JUMP.apex < 1.1, "floor jump stays below desks and the balcony rail");
+  for (const platform of HOUSE_JUMP_PLATFORMS) assert.ok(platform.top < HOUSE_JUMP.apex, platform.id + " top");
+});
+
+test("first-person jump rises, mantles onto the bed and lands back on the floor or from a fall", () => {
+  const bed = HOUSE_JUMP_PLATFORMS.find(platform => platform.id === "guest-bed");
+  const centre = { x: (bed.minX + bed.maxX) / 2, y: (bed.minY + bed.maxY) / 2 };
+  const state = createJumpState();
+  requestJump(state);
+  let apex = 0, frames = 0;
+  do {
+    advanceJump(state, 1 / 60, centre);
+    apex = Math.max(apex, state.feet); frames++;
+  } while (!state.grounded && frames < 600);
+  assert.ok(apex > bed.top, "jump clears the bed top");
+  assert.ok(state.grounded && Math.abs(state.feet - bed.top) < 1e-6, "land on the bed");
+  requestJump(state); assert.equal(state.queued, true, "grounded request queues the next jump");
+  state.queued = false; state.grounded = false; requestJump(state); assert.equal(state.queued, false, "no double jump while airborne");
+  // Descending beside the bed uses the small mantle assist and snaps inside the platform.
+  const mantle = createJumpState();
+  mantle.grounded = false; mantle.feet = bed.top - .1; mantle.velocity = -.5;
+  const frame = advanceJump(mantle, 1 / 60, { x: bed.maxX + .15, y: centre.y });
+  assert.ok(mantle.grounded && Math.abs(mantle.feet - bed.top) < 1e-6, "mantle onto the bed edge");
+  assert.ok(frame.snapped && frame.snapped.x <= bed.maxX && frame.snapped.y >= bed.minY);
+  // A fall beside any platform returns to the floor; walking off the bed also starts a fall.
+  const fall = createJumpState(); fall.grounded = false; fall.feet = .2; fall.velocity = -1;
+  for (let i = 0; i < 120 && !fall.grounded; i++) advanceJump(fall, 1 / 60, { x: bed.maxX + 2, y: centre.y });
+  assert.ok(fall.grounded && fall.feet === 0, "fall back to the floor");
+  const step = createJumpState(); step.feet = bed.top; step.grounded = true;
+  const off = advanceJump(step, 1 / 60, { x: bed.maxX + 1, y: centre.y });
+  assert.equal(off.grounded, false, "walking off a platform falls");
+  // Jumping while already on the bed is capped below the 2.8m ceiling.
+  const onBed = createJumpState(); onBed.feet = bed.top; onBed.grounded = true; requestJump(onBed);
+  let highest = onBed.feet;
+  for (let i = 0; i < 600 && !onBed.grounded; i++) { advanceJump(onBed, 1 / 60, centre); highest = Math.max(highest, onBed.feet); }
+  assert.ok(highest + HOUSE_JUMP.eyeHeight < HOUSE_COORDINATES.clearHeight - .05, "ceiling headroom is respected");
 });
 
 test("changing movement speed applies immediately and clears previous movement", t => {

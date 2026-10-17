@@ -16,7 +16,7 @@ import { RoomMirrors } from "./RoomMirrors";
 import { RoomExterior } from "./RoomExterior";
 import type { InspectableItem } from "./RoomInteractions";
 import { createHouseArchitecture } from "./HouseArchitecture";
-import { constrainHouseWalking, houseVector, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
+import { constrainHouseXZ, houseVector, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
 import { HOUSE_CONTENT, furnishHouseLiving, furnishHouseStudy } from "./HouseContent";
 import { furnishHouseMaster, furnishHouseEnsuite } from "./HouseSuite";
 import { furnishHouseBedroom } from "./HouseBedroom";
@@ -24,12 +24,14 @@ import { furnishHouseKitchen, furnishHouseBathroom } from "./HouseServiceRooms";
 import { furnishHouseBalcony } from "./HouseBalcony";
 import { HouseRooms } from "./HouseRooms";
 import type { RoomBuild } from "./HouseRooms";
-import { HOUSE_LAYOUT_VERSION, HOUSE_ROOMS } from "./HouseLayout";
+import { HOUSE_LAYOUT_VERSION, HOUSE_ROOMS, planToWorld, worldToPlan } from "./HouseLayout";
+import { advanceJump, createJumpState, HOUSE_JUMP, jumpBlockedAt, requestJump, resetJumpState } from "./HouseJump";
 import type { HouseRoomId } from "./HouseLayout";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
 
 export type RoomView = "overview" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
-export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.55 };
+// The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
+export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.825 };
 
 /** A shared eight-room scene with cutaway presets and enclosed first-person roaming. */
 export class RoomScene {
@@ -41,6 +43,8 @@ export class RoomScene {
   private readonly architecture: ReturnType<typeof createHouseArchitecture>;
   private readonly camera: ArcRotateCamera;
   private readonly firstPersonCamera: UniversalCamera;
+  private readonly jump = createJumpState();
+  private readonly previousWalk = new Vector3();
   private readonly lighting: RoomLighting;
   private readonly contactShadows?: SSAO2RenderingPipeline;
   private readonly finishing: DefaultRenderingPipeline;
@@ -103,10 +107,9 @@ export class RoomScene {
     this.firstPersonCamera.checkCollisions = true;
     this.firstPersonCamera.ellipsoid.set(HOUSE_WALKER_RADIUS, 3.9, HOUSE_WALKER_RADIUS);
     this.scene.collisionsEnabled = true;
-    // Keep walking at eye level, including while looking up/down or using touch/gamepad inputs.
-    const previousPosition = this.firstPersonCamera.position.clone();
+    // Horizontal collision stays with Babylon; this controller owns feet height, gravity and landing.
     this.firstPersonCamera.onAfterCheckInputsObservable.add(() => {
-      constrainHouseWalking(this.firstPersonCamera.position, previousPosition);
+      if (this.currentView === "first-person" && this.controlsEnabled && !this.isViewing) this.updateFirstPersonHeight();
     });
 
     this.lighting = new RoomLighting(this.scene, true);
@@ -121,7 +124,7 @@ export class RoomScene {
       this.updateInteractionHint();
     }, () => this.leaveFirstPerson(), () => {
       const help = document.querySelector("#view-help");
-      if (help && this.currentView === "first-person") help.textContent = "点击画面启用鼠标环顾 · ESC 退出第一人称";
+      if (help && this.currentView === "first-person") help.textContent = "点击画面启用鼠标环顾 · 空格跳跃 · ESC 退出第一人称";
     });
     if (SSAO2RenderingPipeline.IsSupported) {
       // Directional shadows describe the lights; short-range AO grounds feet under indirect light.
@@ -285,6 +288,8 @@ export class RoomScene {
     if (firstPerson) {
       this.firstPersonCamera.position.copyFrom(houseVector(HOUSE_SPAWN.x, HOUSE_SPAWN.y, 1.6));
       this.firstPersonCamera.setTarget(houseVector(7.5, 7.8, 1.5));
+      if (this.jump) resetJumpState(this.jump);
+      if (this.previousWalk) this.previousWalk.copyFrom(this.firstPersonCamera.position);
       this.scene.activeCamera = this.firstPersonCamera;
     } else {
       const selected = views[view];
@@ -301,7 +306,7 @@ export class RoomScene {
     this.camera.movement.resetPanVelocity();
     this.updateControls();
     const help = document.querySelector("#view-help");
-    const instructions = firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互";
+    const instructions = firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互";
     if (help) help.textContent = instructions;
     this.canvas.setAttribute("aria-label", "余晖小居八房三维场景，" + instructions);
     this.updateInteractionHint();
@@ -313,6 +318,25 @@ export class RoomScene {
     document.querySelectorAll<HTMLButtonElement>("[data-view]").forEach(button => {
       button.setAttribute("aria-pressed", String(button.dataset.view === view));
     });
+  }
+
+  private updateFirstPersonHeight() {
+    const camera = this.firstPersonCamera, previous = this.previousWalk;
+    if (!camera || !previous) return;
+    constrainHouseXZ(camera.position, previous);
+    let point = worldToPlan(camera.position);
+    // Desks, consoles, cabinets and nightstands stay solid even during a jump from a seat.
+    if (jumpBlockedAt(point.x, point.y)) {
+      camera.position.x = previous.x; camera.position.z = previous.z;
+      point = worldToPlan(camera.position);
+    }
+    const frame = advanceJump(this.jump, Math.min(0.05, Math.max(1 / 240, this.engine.getDeltaTime() / 1000)), point);
+    if (frame.snapped) {
+      const snapped = planToWorld(frame.snapped);
+      camera.position.x = snapped.x; camera.position.z = snapped.z;
+    }
+    camera.position.y = planToWorld(point, frame.feet + HOUSE_JUMP.eyeHeight).y;
+    previous.copyFrom(camera.position);
   }
 
   setMovementSpeed(multiplier: number) {
@@ -433,6 +457,12 @@ export class RoomScene {
       && !(event.target instanceof HTMLElement && event.target.matches("input, textarea, select, [contenteditable]"))) {
       event.preventDefault();
       this.openFloorPlan();
+      return;
+    }
+    if (!event.repeat && event.code === "Space" && this.currentView === "first-person" && this.controlsEnabled
+      && !(event.target instanceof HTMLElement && event.target.matches("input, textarea, select, [contenteditable]"))) {
+      event.preventDefault();
+      if (this.jump) requestJump(this.jump);
       return;
     }
     if (event.key === "Escape") this.leaveFirstPerson();
