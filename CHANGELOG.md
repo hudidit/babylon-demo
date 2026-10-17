@@ -32,6 +32,9 @@
 
 ### 技术方案
 
+- 建立并完成[场景代码与素材复用准备方案](docs/technical-plans/2026-10-17-scene-reuse-foundation.md)阶段0：新增[复用入口与资产清单](docs/reuse/README.md)，记录31运行素材、8原始录音、10组代码迁移边界、来源/许可/摘要及恢复步骤，保留三项`unverified`状态；公共库提炼及新项目阶段1～4待实施。
+- 以`f86c659`固定八房源码标签`scene-baseline/2026-10-17-eight-room-v1`及122输入/489发布文件基线，新增只读校验器与篡改/缺失/额外文件/路径及归档失败检查。本机完整发布归档解包通过，远端保存源码标签与清单，二进制尚未异地备份。104项测试、类型检查、开发/生产构建、完整浏览器回归/27取景/子路径通过；生产包与原整屋逐字节一致，场景功能/素材/预算不变，详见[验收记录](docs/technical-plans/assets/scene-reuse-2026-10-17/README.md)。
+
 - 将[新户型实施方案](docs/technical-plans/2026-10-16-house-layout-implementation.md)更新为A～G全部完成，记录推拉门保护、全屋连续通行、响应式取景和室外剖面取舍/资源成本；同步[窗外景观方案](docs/technical-plans/2026-10-17-window-landscape-depth.md)后续变更，保留暂停的性能和实机听感验收边界。
 
 - 更新[新户型实施方案](docs/technical-plans/2026-10-16-house-layout-implementation.md)F/G实施决策和F结果，记录湿区门底间隙、共享组件、独立镜面/阴影成本与三维森林保留，G待实施。

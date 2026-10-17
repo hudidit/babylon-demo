@@ -1,0 +1,21 @@
+{
+  "baselineId": "2026-10-17-eight-room-v1",
+  "sourceCommit": "f86c659396d3ae81a56743bdc3f74985fa590bdd",
+  "source": {
+    "files": 122,
+    "bytes": 18032920
+  },
+  "runtime": {
+    "files": 31,
+    "bytes": 16457409
+  },
+  "release": {
+    "files": 489,
+    "bytes": 42756315
+  },
+  "archive": {
+    "bytes": 22029367,
+    "sha256": "abede1ecd6da5d617208bd44820e09d57a8b5978b5b7b9b449db0593e612a2cc"
+  },
+  "tag": "scene-baseline/2026-10-17-eight-room-v1"
+}

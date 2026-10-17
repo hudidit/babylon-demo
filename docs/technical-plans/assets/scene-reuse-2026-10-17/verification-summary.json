@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "f86c659396d3ae81a56743bdc3f74985fa590bdd",
+  "sourceTag": "scene-baseline/2026-10-17-eight-room-v1",
+  "preparedOn": "2026-10-17",
+  "checks": {
+    "tests": {
+      "passed": true,
+      "count": 104,
+      "log": "tests.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "typecheck.log"
+    },
+    "developmentBuild": {
+      "passed": true,
+      "output": "/tmp/scene-reuse-development-2026-10-17",
+      "log": "development-build.log"
+    },
+    "productionBuild": {
+      "passed": true,
+      "log": "production-build.log"
+    },
+    "historicalReleaseComparison": {
+      "identical": true,
+      "record": "release-comparison.json"
+    },
+    "browserRegression": {
+      "passed": true,
+      "browser": "155.0.8059.82",
+      "errors": [],
+      "warnings": [],
+      "firstScreenJsBytes": 2751444,
+      "release": {
+        "filesVerified": 489,
+        "bytes": 42756315,
+        "staticJsBytes": 2532592
+      },
+      "record": "browser.json",
+      "script": "../house-final-2026-10-17/check-regression.cjs",
+      "scriptHistoricalBaselineField": "afd1fc7"
+    },
+    "responsiveViews": {
+      "passed": true,
+      "viewCount": 27,
+      "record": "views.json"
+    },
+    "subpath": {
+      "passed": true,
+      "record": "subpath.json"
+    },
+    "archiveExtraction": {
+      "passed": true,
+      "record": "archive-verification.json"
+    },
+    "frozenInputsAndArchive": {
+      "passed": true,
+      "record": "baseline-verification.json"
+    },
+    "sourceTagRestore": {
+      "passed": true,
+      "record": "source-restore-verification.json",
+      "scope": "separate local shared Git clone and frozen input hashes; no fresh npm ci or rebuild in clone"
+    },
+    "documentation": {
+      "passed": true,
+      "record": "document-check.json"
+    }
+  },
+  "measurementBoundary": "functional/rendered view/request bytes only; no FPS/load-time/VRAM/GPU/physical listening claims",
+  "binaryStorage": "local archive only; no remote binary backup",
+  "historicalEvidenceNotRerun": [
+    "../house-final-2026-10-17/mirror-map.json",
+    "../house-final-2026-10-17/public-mirror.json",
+    "../house-final-2026-10-17/window.json"
+  ]
+}
