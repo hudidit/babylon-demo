@@ -14,6 +14,7 @@ export const HOUSE_WINDOWS: readonly HouseWindow[] = [
 ];
 export const HOUSE_DOOR_HEIGHT = 2.2;
 export const HOUSE_DOOR_JAMB = 0.04;
+export const HOUSE_DOOR_FLOOR_GAP = 0.03; // Clears the shared flush wet-room finish (at most 24mm).
 export const HOUSE_CUT_HEIGHT = 0.72;
 export type WallSpan = { axis: "x" | "y"; at: number; start: number; end: number;
   owners: HouseRoomId[]; opening?: string; bottom: number; top: number; rail: boolean };

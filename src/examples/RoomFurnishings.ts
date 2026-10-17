@@ -8,7 +8,7 @@ import { sharedRoomMaterials } from "./RoomMaterialLibrary";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
 import { HOUSE_COORDINATES, houseRoom, planToWorld } from "./HouseLayout";
 import type { HouseDoor, HouseRoomId } from "./HouseLayout";
-import { HOUSE_DOOR_HEIGHT, HOUSE_DOOR_JAMB } from "./HouseStructure";
+import { HOUSE_DOOR_HEIGHT, HOUSE_DOOR_JAMB, HOUSE_DOOR_FLOOR_GAP } from "./HouseStructure";
 import { HOUSE_WALKER_RADIUS } from "./HouseWalking";
 import { partitionMergedCollisions } from "./RoomCollisions";
 import type { InspectableItem, InteractiveDoor, InteractiveDrawer, InteractiveLamp } from "./RoomInteractions";
@@ -205,6 +205,14 @@ export class RoomFurnishings {
     glass.transparencyMode = PBRMaterial.PBRMATERIAL_ALPHABLEND;
   }
 
+  /** Shared metal finish; reuse wet-room porcelain/tile for counters and backsplash. */
+  ensureKitchenMaterials() {
+    this.ensureBathroomMaterials();
+    if (this.materials.has("kitchen-steel")) return;
+    const steel = surfaceMaterial("kitchen-steel", this.scene, "#acb2ae", 0.32);
+    steel.metallic = 0.75; this.materials.set(steel.name, steel);
+  }
+
   /** A fixed, independently pickable lamp with its own emissive state. */
   fixtureLamp(id: string, label: string, position: Triple, build: (root: TransformNode, glow: string) => void) {
     const root = this.group(id, position), start = this.parts.length, glow = id + "-glow";
@@ -258,11 +266,12 @@ export class RoomFurnishings {
     const c = HOUSE_COORDINATES, jamb = HOUSE_DOOR_JAMB * c.unitsPerMeter;
     const origin = planToWorld({ x: door.x + (door.axis === "x" ? HOUSE_DOOR_JAMB : 0),
       y: door.y + (door.axis === "y" ? HOUSE_DOOR_JAMB : 0) });
-    const mount = this.group(door.id + "-mount", [origin.x, origin.y + 0.04, origin.z], door.axis === "x" ? Math.PI / 2 : 0);
+    const floorGap = HOUSE_DOOR_FLOOR_GAP * c.unitsPerMeter;
+    const mount = this.group(door.id + "-mount", [origin.x, origin.y + floorGap, origin.z], door.axis === "x" ? Math.PI / 2 : 0);
     setRoomOwners(mount, owners);
     const root = this.group(door.id, [0, 0, 0]); root.parent = mount;
     setRoomOwners(root, owners);
-    const width = door.width * c.unitsPerMeter - 2 * jamb, height = HOUSE_DOOR_HEIGHT * c.unitsPerMeter - 0.12;
+    const width = door.width * c.unitsPerMeter - 2 * jamb, height = HOUSE_DOOR_HEIGHT * c.unitsPerMeter - floorGap - 0.08;
     const start = this.parts.length;
     this.box("door-leaf", [0.18, height, width], [0, height / 2, width / 2], "paintGreen", root);
     for (const side of [-1, 1]) {

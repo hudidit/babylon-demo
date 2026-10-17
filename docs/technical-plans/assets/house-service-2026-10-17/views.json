@@ -1,0 +1,299 @@
+{
+  "passed": true,
+  "views": [
+    {
+      "id": "kitchen",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "id": "bathroom",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "id": "bedroom",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "id": "master",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "id": "ensuite",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "id": "kitchen",
+      "width": 844,
+      "height": 390
+    },
+    {
+      "id": "bathroom",
+      "width": 844,
+      "height": 390
+    },
+    {
+      "id": "bedroom",
+      "width": 844,
+      "height": 390
+    },
+    {
+      "id": "master",
+      "width": 844,
+      "height": 390
+    },
+    {
+      "id": "ensuite",
+      "width": 844,
+      "height": 390
+    }
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8113/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/main.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/5280.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/wood_table_001/normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/wood_table_001/color.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/rough_linen/normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/wood_table_001/arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/rough_linen/arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/forest-window/panorama.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/forest-window/bark.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/wood_floor/normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/wood_floor/color.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/wood_floor/arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/painted_wall/normal.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/painted_wall/arm.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/painted_wall/color.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/pictures/pic1.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/environment/study-interior.hdr",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/1203.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/models/study/sofa_03.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/models/study/modern_arm_chair_01.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/models/gothic_commode.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/models/wooden_bookshelf.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/8558.js",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/36916072-c147-45b4-947f-5571e074446f",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/35e967a7-c9ac-4afc-90b2-6c6c9ecb08d7",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/37908cf9-4f16-404a-bdd1-28062bc64ed9",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/acfb4f94-0284-4202-a261-f3bfb9535e7b",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/f42ef1a0-d9a1-40cc-96d4-138b631b31fb",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/3693985d-80c8-41d9-9370-e766ea10e5f6",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/385d6707-3d70-47d6-ba75-8ab7952f46ac",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/3e25d61b-3562-4c69-8855-cff5f5921ee0",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/ead1aa7c-c310-4134-bcc7-17dcee8235d7",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/d1be6db6-3d8a-46e1-b6ee-b73b686aa61b",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/5ad150bb-66e8-46ea-ae05-c096d0e8eb19",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/f32b72df-ba8b-44ae-84db-2c69632dfe76",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/f1bc59b3-1436-44ab-ae4f-020caca1011f",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/e22dfb18-a9b7-4a9b-be6b-e8b8579c833e",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/cda36b81-d9c7-4a06-9d2e-15c43ff412f4",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8113/91af2dff-0d21-4aaa-af7a-550984043120",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/4742.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/6612.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/7449.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/9615.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/5587.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/4472.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/6560.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/9915.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/switch-1.702a81fab4.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/paper-2.862694da2b.wav",
+      "status": 200
+    }
+  ],
+  "fpsOrLoadTimeSampling": false
+}

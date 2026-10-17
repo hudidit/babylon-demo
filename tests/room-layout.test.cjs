@@ -44,6 +44,7 @@ const { furnishHouseStudy, furnishHouseLiving, HOUSE_CONTENT } = loadSource("Hou
 const { furnishHouseMaster, furnishHouseEnsuite } = loadSource("HouseSuite");
 const { bathroomVanity, bathroomToilet, bathroomShower, bedroomBed, bedroomWardrobe } = loadSource("HouseRoomComponents");
 const { furnishHouseBedroom } = loadSource("HouseBedroom");
+const { furnishHouseKitchen, furnishHouseBathroom } = loadSource("HouseServiceRooms");
 const { RoomMirrors } = loadSource("RoomMirrors");
 const { RoomExterior } = loadSource("RoomExterior");
 
@@ -136,6 +137,88 @@ function furnishedBedroom(t) {
   result.scene.meshes.forEach(m => m.computeWorldMatrix(true));
   return result;
 }
+
+function furnishedServiceRooms(t) {
+  const result=furnishedSuite(t);
+  furnishHouseKitchen(result.room);furnishHouseBathroom(result.room);
+  result.room.finish().forEach(m=>m.checkCollisions=true);
+  result.scene.meshes.forEach(m=>m.computeWorldMatrix(true));return result;
+}
+
+// Material batches can span empty space (e.g. glass trim and a distant shower head).
+// Only accept a broad-phase overlap as a collision when the actual triangle edges cross.
+function surfacesIntersect(scene,a,b) {
+  if(!a.intersectsMesh(b,true))return false;
+  for(const [source,target]of [[a,b],[b,a]]) {
+    const data=source.getVerticesData(babylon.VertexBuffer.PositionKind),indices=source.getIndices(),edges=new Set();
+    const points=[];for(let i=0;i<data.length;i+=3)points.push(babylon.Vector3.TransformCoordinates(babylon.Vector3.FromArray(data,i),source.getWorldMatrix()));
+    for(let i=0;i<indices.length;i+=3)for(const [from,to]of [[indices[i],indices[i+1]],[indices[i+1],indices[i+2]],[indices[i+2],indices[i]]]) {
+      const key=[from,to].sort((x,y)=>x-y).join(':');if(edges.has(key))continue;edges.add(key);
+      const d=points[to].subtract(points[from]),length=d.length();if(length<.00001)continue;
+      const hit=scene.pickWithRay(new babylon.Ray(points[from],d.scale(1/length),length),m=>m===target,true);
+      if(hit?.hit&&hit.distance<length-.00001)return true;
+    }
+  }
+  return false;
+}
+
+test("kitchen and public bathroom fit the unchanged shell, ground their fixtures and share downloaded textures",t=>{
+  const {scene,room}=furnishedSuite(t),textures=scene.textures.slice();
+  furnishHouseKitchen(room);furnishHouseBathroom(room);room.finish();assert.deepEqual(scene.textures,textures);
+  for(const m of scene.meshes.filter(m=>/^(kitchen-(sink-run|cooker-run|fridge)-|bathroom-(vanity|toilet|shower|tiles)-)/.test(m.name))) {
+    const r=HOUSE_ROOMS.find(r=>r.id===m.metadata.ownerRooms[0]),b=m.getBoundingInfo().boundingBox;
+    const min=houseVector(r.x+.05,r.y+.05),max=houseVector(r.x+r.width-.05,r.y+r.depth-.05);
+    assert.ok(b.minimumWorld.x>=min.x-.001&&b.maximumWorld.x<=max.x+.001&&b.minimumWorld.z>=min.z-.001&&b.maximumWorld.z<=max.z+.001,m.name);
+    assert.ok(b.minimumWorld.y>=-5.001&&b.maximumWorld.y<9,m.name);
+  }
+  for(const prefix of ['kitchen-sink-run-','kitchen-cooker-run-','kitchen-fridge-','bathroom-vanity-','bathroom-toilet-'])
+    assert.ok(Math.abs(babylon.Mesh.MinMax(scene.meshes.filter(m=>m.name.startsWith(prefix))).min.y+5)<.001,prefix+' grounded');
+});
+
+test("service entrances and usable counter, toilet, vanity and shower paths pass in both directions",t=>{
+  const {scene,room}=furnishedServiceRooms(t),interactions=new RoomInteractions(scene,()=>{});
+  room.doors.forEach(d=>interactions.addDoor(d));
+  interactions.doors.forEach(s=>s.open=['kitchen-door','bathroom-door'].includes(s.door.id));
+  for(let i=0;i<16;i++)interactions.update(.05);
+  const radius=new babylon.Vector3(HOUSE_WALKER_RADIUS,3.9,HOUSE_WALKER_RADIUS);
+  const routes=[[[9.55,4.1],[9.55,2.9],[9.6,2.2],[9.6,1.05]],
+    [[6.2,6],[4.8,6],[4.5,6.45],[4.5,6.85]],
+    [[4.8,6],[3.9,5.9],[3.35,5.9],[3.35,5.4]]];
+  for(const route of routes)for(const points of [route,[...route].reverse()])for(let i=1;i<points.length;i++) {
+    const p=houseVector(...points[i-1],.82),q=houseVector(...points[i],.82),actual=sweep(scene,p,q.subtract(p),radius).position;
+    assert.ok(actual.equalsWithEpsilon(q,.03),`${points[i-1]} → ${points[i]} at ${actual.asArray()}`);
+  }
+  for(const [from,to]of [[[9.6,1.1],[9.6,.3]],[[9.6,1.8],[10.6,1.8]],[[9.6,1.5],[8.7,1.5]],[[3.4,5.9],[3.4,6.6]]]) {
+    const p=houseVector(...from,.82),q=houseVector(...to,.82);
+    assert.ok(!sweep(scene,p,q.subtract(p),radius).position.equalsWithEpsilon(q,.03),'solid counter/fridge/glass');
+  }
+  const furniture=scene.meshes.filter(m=>/^(kitchen-(sink-run|cooker-run|fridge)-|bathroom-(vanity|toilet|shower)-)/.test(m.name));
+  for(const door of room.doors.filter(d=>['kitchen-door','bathroom-door'].includes(d.id)))for(let step=0;step<=20;step++) {
+    door.root.rotation.y=door.openAngle*step/20;door.root.computeWorldMatrix(true);door.meshes.forEach(m=>m.computeWorldMatrix(true));
+    for(const leaf of door.meshes)for(const m of furniture)assert.equal(surfacesIntersect(scene,leaf,m),false,door.id+' hits '+m.name);
+  }
+});
+
+test("service lamps isolate their rooms, avoid self-occlusion and keep two independent real bathroom mirrors",t=>{
+  const {scene,room}=furnishedServiceRooms(t),lighting=new RoomLighting(scene,true);
+  lighting.addMasterSuite(scene);lighting.addServiceRooms(scene);lighting.addMeshes(scene.meshes);
+  const touched=[];scene.lights.filter(l=>l.getShadowGenerator?.()).forEach(l=>l.getShadowGenerator().getShadowMap().resetRefreshCounter=()=>touched.push(l.metadata.ownerRooms[0]));
+  for(const owner of ['kitchen','bathroom']) {
+    const id=owner+'-lamp',material=scene.getMaterialByName(id+'-glow'),glow=material.emissiveColor.clone(),light=scene.getLightByName(id+'-light');
+    lighting.bindLamp(id,material);touched.length=0;const intensities=scene.lights.map(l=>l.intensity);
+    lighting.toggleLamp(id);assert.ok(material.emissiveColor.equals(babylon.Color3.Black()));assert.deepEqual([...new Set(touched)],[owner]);
+    assert.ok(scene.lights.every((l,i)=>l===light?l.intensity===0:l.intensity===intensities[i]));lighting.toggleLamp(id);assert.ok(material.emissiveColor.equals(glow));
+    assert.ok(!scene.pickWithRay(new babylon.Ray(light.position,light.direction,1),m=>room.lamps.find(l=>l.id===id).meshes.includes(m))?.hit,id);
+    for(const m of scene.meshes.filter(m=>m.getTotalVertices()&&m.metadata.ownerRooms.length===1&&!m.metadata.ownerRooms.includes(owner)))assert.ok(light.excludedMeshes.includes(m));
+  }
+  new RoomMirrors(scene);const mirrors=scene.meshes.filter(m=>m.metadata?.mirrorPlane);
+  assert.equal(mirrors.length,2);assert.notEqual(mirrors[0].material.reflectionTexture,mirrors[1].material.reflectionTexture);
+  const bath=mirrors.find(m=>m.metadata.reflectionRoom==='bathroom'),target=bath.material.reflectionTexture;
+  assert.equal(target.noPrePassRenderer,true);assert.equal(target.getSize().width,512);
+  assert.ok(target.mirrorPlane.signedDistanceTo(houseVector(3.4,5.4,1.6))<0);
+  assert.ok(target.renderList.every(m=>!m.metadata?.mirrorPlane&&!m.metadata?.collisionOnly&&m.metadata.ownerRooms.some(id=>['bathroom','living'].includes(id))));
+  lighting.removeRoom('bathroom');assert.equal(scene.getLightByName('bathroom-lamp-light'),null);assert.equal(lighting.isLampOn('kitchen-lamp'),true);
+});
 
 test("guest bedroom reuses textures, fits its shell and grounds the bed, storage and window seat", t => {
   const { scene, room } = furnishedSuite(t), textures = scene.textures.slice();
@@ -1172,7 +1255,7 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
     assert.ok(!room.interiorShell.isEnabled() && refreshed === 4);
     let width = 1280, height = 800;
     room.engine = { getRenderWidth: () => width, getRenderHeight: () => height };
-    for (const view of ['master', 'ensuite', 'bedroom']) {
+    for (const view of ['master', 'ensuite', 'bedroom', 'kitchen', 'bathroom']) {
       room.setView(view); const desktopRadius = room.camera.radius;
       width = 390; height = 844; room.fitSuiteView();
       assert.ok(room.camera.radius > desktopRadius * 3, 'portrait view must keep the room in frame');

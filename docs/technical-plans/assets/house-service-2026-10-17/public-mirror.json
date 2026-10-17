@@ -1,0 +1,39 @@
+{
+  "fpsOrLoadTimeSampling": false,
+  "visible": {
+    "changedPixels": 0,
+    "sha256": "6f5cfde1ca35d6cd8f41ddd61b945d915a1f9c5bbd340601b6f0cfc732c36efc"
+  },
+  "hiddenToilet": {
+    "changedPixels": 2088,
+    "sha256": "01c7c70d0e4bb77b95290f6312f8a2381a88097d904c43e2256516b4b3ba9cc4"
+  },
+  "restored": {
+    "changedPixels": 2088,
+    "sha256": "6f5cfde1ca35d6cd8f41ddd61b945d915a1f9c5bbd340601b6f0cfc732c36efc"
+  },
+  "lightOff": {
+    "changedPixels": 172982,
+    "sha256": "02359cd0e2b8e26fa47f5818662f39a915bf49db7720775cea0565f238c88ad0"
+  },
+  "targets": [
+    {
+      "room": "ensuite",
+      "size": {
+        "width": 512,
+        "height": 512
+      },
+      "noPrePass": true
+    },
+    {
+      "room": "bathroom",
+      "size": {
+        "width": 512,
+        "height": 512
+      },
+      "noPrePass": true
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

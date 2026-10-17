@@ -6,6 +6,7 @@ import { HOUSE_CONTENT } from "./HouseContent";
 import { houseVector } from "./HouseWalking";
 import { HOUSE_SUITE } from "./HouseSuite";
 import { HOUSE_BEDROOM } from "./HouseBedroom";
+import { HOUSE_SERVICE } from "./HouseServiceRooms";
 import { localPosition } from "./HouseRoomComponents";
 
 /** Room-specific window/lamp sources plus the original restrained indirect bounce. */
@@ -150,6 +151,28 @@ export class RoomLighting {
       const shadow = new ShadowGenerator(index ? 512 : 1024, light);
       shadow.usePercentageCloserFiltering = true; shadow.filteringQuality = ShadowGenerator.QUALITY_MEDIUM;
       shadow.bias = 0.00012; shadow.normalBias = 0.012; this.shadows.push(shadow);
+    });
+  }
+
+  addServiceRooms(scene: Scene) {
+    const a=HOUSE_SERVICE;
+    const day=new SpotLight("kitchen-window-daylight",houseVector(9.6,.18,2.1),new Vector3(.1,-.55,1).normalize(),Math.PI/1.5,1,scene);
+    day.diffuse=new Color3(1,.96,.88);day.intensity=2.8;day.range=23;
+    const kitchen=new SpotLight("kitchen-lamp-light",Vector3.FromArray(localPosition("kitchen",a.kitchenLamp,a.kitchenLamp.height-.06)),
+      new Vector3(.2,-1,-.15).normalize(),Math.PI/1.3,1,scene);
+    kitchen.diffuse=new Color3(1,.94,.82);kitchen.intensity=3; kitchen.range=24;
+    const bath=new SpotLight("bathroom-lamp-light",Vector3.FromArray(localPosition("bathroom",{x:a.bathroomLamp.x+.08,y:a.bathroomLamp.y},a.bathroomLamp.height)),
+      new Vector3(.5,-.8,.4).normalize(),Math.PI/1.2,1,scene);
+    bath.diffuse=new Color3(1,.94,.82);bath.intensity=3.8;bath.range=22;
+    this.lamps.set("kitchen-lamp",{light:kitchen,intensity:kitchen.intensity,on:true});
+    this.lamps.set("bathroom-lamp",{light:bath,intensity:bath.intensity,on:true});
+    [day,kitchen,bath].forEach((light,index)=>{
+      setRoomOwners(light,[index===2?"bathroom":"kitchen"]);light.metadata.affectsShared=true;
+      light.falloffType=SpotLight.FALLOFF_STANDARD;light.specular=light.diffuse.scale(.65);
+      light.shadowMinZ=.1;light.shadowMaxZ=light.range;
+      const shadow=new ShadowGenerator(index===1?512:1024,light);
+      shadow.usePercentageCloserFiltering=true;shadow.filteringQuality=ShadowGenerator.QUALITY_MEDIUM;
+      shadow.bias=.00012;shadow.normalBias=.012;this.shadows.push(shadow);
     });
   }
 
