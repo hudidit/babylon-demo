@@ -1,4 +1,4 @@
-import { Color3, CreateBox, CreateGround, StandardMaterial, VertexBuffer } from "@babylonjs/core/pure";
+import { Color3, CreateBox, CreateGround, PBRMaterial, StandardMaterial, VertexBuffer } from "@babylonjs/core/pure";
 import type { Mesh, Scene } from "@babylonjs/core/pure";
 import { HOUSE_COORDINATES, HOUSE_DOORS, HOUSE_ROOMS, worldToPlan } from "./HouseLayout";
 import type { HouseRoomId } from "./HouseLayout";
@@ -13,6 +13,7 @@ export function createHouseArchitecture(scene: Scene, furniture: RoomFurnishings
   const c = HOUSE_COORDINATES, u = c.unitsPerMeter;
   const oak = mappedMaterial("oak-floor", scene, "wood_floor", "#e7ddd0", 1, 0.28);
   const paint = paintedWallMaterial(scene);
+  const overviewWallAlpha = 0.32;
   const plaster = new StandardMaterial("house-ceiling", scene);
   plaster.diffuseColor = Color3.FromHexString("#e2d2af"); plaster.specularColor = Color3.Black();
   plaster.emissiveColor = new Color3(0.38, 0.36, 0.32);
@@ -145,8 +146,11 @@ export function createHouseArchitecture(scene: Scene, furniture: RoomFurnishings
   let enclosed = false, view = "overview";
   return { setEnclosed(value: boolean, nextView = "overview") {
     enclosed = value; view = nextView;
-    // The panorama is a roofless full shell so the facade windows stay visible; room views use the selective cutaway.
+    // The panorama is a roofless, see-through shell so windows and room layout stay readable; room views use the selective cutaway.
     const shell = enclosed || view === "overview";
+    const transparentWalls = !enclosed && view === "overview";
+    paint.alpha = transparentWalls ? overviewWallAlpha : 1;
+    paint.transparencyMode = transparentWalls ? PBRMaterial.PBRMATERIAL_ALPHABLEND : PBRMaterial.PBRMATERIAL_OPAQUE;
     hidden.forEach(m => m.isVisible = shell);
     ceilings.forEach(m => m.isVisible = enclosed);
   }, updateCutaway(position: { x: number; z: number }, target: { x: number; z: number }) {

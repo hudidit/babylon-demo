@@ -16,9 +16,9 @@
   "after": {
     "runtimeBytes": 15867631,
     "modelBytes": 4332840,
-    "initialStaticJsBytes": 2582813,
-    "actualInitialJsBytesIncludingAudioPreheat": 2801665,
-    "completeReleaseBytes": 42199468,
+    "initialStaticJsBytes": 2582941,
+    "actualInitialJsBytesIncludingAudioPreheat": 2801793,
+    "completeReleaseBytes": 42199596,
     "filesVerified": 495,
     "meshes": 612,
     "vertices": 509239,
@@ -257,8 +257,8 @@
     {
       "path": "js/main.js",
       "bytesBefore": 162056,
-      "bytesAfter": 162635,
-      "delta": 579
+      "bytesAfter": 162763,
+      "delta": 707
     }
   ],
   "staticInitialJsFiles": [
@@ -272,12 +272,15 @@
     "materials": 80,
     "textures": 147
   },
-  "overviewWindows": {
-    "visible": 6,
-    "ceilingsVisible": 0
+  "overview": {
+    "wallAlpha": 0.32,
+    "wallTransparencyMode": 2,
+    "visibleWindows": 6,
+    "visibleCeilings": 0,
+    "restoredRoomAlpha": 1
   },
   "notes": [
-    "Only js/main.js changed (579 bytes total for the window move plus overview shell); bundle-analysis.json content changed at identical length.",
+    "Only js/main.js changed (707 bytes total across the window move, roofless shell and translucent overview).",
     "All 36 runtime assets and both target GLBs are byte/hash identical to the stage C baseline.",
     "No new lights, cameras, render targets, meshes, materials, textures or downloads were added."
   ]

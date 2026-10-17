@@ -1,9 +1,16 @@
 {
   "passed": true,
-  "facts": {
+  "overview": {
+    "wallAlpha": 0.32,
+    "wallTransparencyMode": 2,
+    "wallNeedsAlpha": true,
     "windowCount": 6,
-    "visible": 6,
-    "ceilings": 0
+    "visibleWindows": 6,
+    "visibleCeilings": 0
+  },
+  "restoredInRoomView": {
+    "alpha": 1,
+    "mode": 0
   },
   "errors": []
 }

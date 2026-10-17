@@ -12,7 +12,7 @@
   "warnings": [],
   "failedRequests": [],
   "initialJsFiles": 12,
-  "initialJsBytes": 2801665,
+  "initialJsBytes": 2801793,
   "facts": {
     "windowMeshes": [
       "bedroom-window-study-window-glass-surface",
@@ -96,7 +96,7 @@
     {
       "url": "http://127.0.0.1:8113/js/main.js",
       "status": 200,
-      "bytes": 162635
+      "bytes": 162763
     },
     {
       "url": "http://127.0.0.1:8113/js/9691.js",
@@ -119,14 +119,14 @@
       "bytes": 214520
     },
     {
-      "url": "http://127.0.0.1:8113/textures/study/rough_linen/normal.jpg",
-      "status": 200,
-      "bytes": 916843
-    },
-    {
       "url": "http://127.0.0.1:8113/textures/study/rough_linen/arm.jpg",
       "status": 200,
       "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
     },
     {
       "url": "http://127.0.0.1:8113/textures/coastal/rock-color.jpg",
@@ -144,9 +144,9 @@
       "bytes": 166163
     },
     {
-      "url": "http://127.0.0.1:8113/textures/coastal/ground-arm.jpg",
+      "url": "http://127.0.0.1:8113/textures/coastal/rock-arm.jpg",
       "status": 200,
-      "bytes": 14130
+      "bytes": 111357
     },
     {
       "url": "http://127.0.0.1:8113/textures/coastal/ground-normal.jpg",
@@ -154,19 +154,9 @@
       "bytes": 54823
     },
     {
-      "url": "http://127.0.0.1:8113/textures/coastal/rock-arm.jpg",
+      "url": "http://127.0.0.1:8113/textures/coastal/ground-arm.jpg",
       "status": 200,
-      "bytes": 111357
-    },
-    {
-      "url": "http://127.0.0.1:8113/textures/study/painted_wall/color.png",
-      "status": 200,
-      "bytes": 58252
-    },
-    {
-      "url": "http://127.0.0.1:8113/textures/study/wood_floor/arm.jpg",
-      "status": 200,
-      "bytes": 447855
+      "bytes": 14130
     },
     {
       "url": "http://127.0.0.1:8113/textures/study/wood_floor/color.jpg",
@@ -174,9 +164,19 @@
       "bytes": 734493
     },
     {
+      "url": "http://127.0.0.1:8113/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
       "url": "http://127.0.0.1:8113/textures/study/wood_floor/normal.jpg",
       "status": 200,
       "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8113/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
     },
     {
       "url": "http://127.0.0.1:8113/textures/study/painted_wall/normal.png",
@@ -209,6 +209,11 @@
       "bytes": 4444
     },
     {
+      "url": "http://127.0.0.1:8113/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
       "url": "http://127.0.0.1:8113/models/study/modern_arm_chair_01.glb",
       "status": 200,
       "bytes": 2696208
@@ -217,11 +222,6 @@
       "url": "http://127.0.0.1:8113/models/gothic_commode.glb",
       "status": 200,
       "bytes": 1549376
-    },
-    {
-      "url": "http://127.0.0.1:8113/models/study/sofa_03.glb",
-      "status": 200,
-      "bytes": 818172
     },
     {
       "url": "http://127.0.0.1:8113/models/wooden_bookshelf.glb",
@@ -234,89 +234,84 @@
       "bytes": 12560
     },
     {
-      "url": "blob:http://127.0.0.1:8113/5cb0bbb7-fdfc-4016-b9be-de0bfe8e931f",
+      "url": "blob:http://127.0.0.1:8113/e4b79554-e27c-4699-819c-b419e3263978",
       "status": 200,
       "bytes": 112563
     },
     {
-      "url": "blob:http://127.0.0.1:8113/a82cb155-0aa1-4693-9732-87022e2b2814",
+      "url": "blob:http://127.0.0.1:8113/9e5ed8e5-2db3-4450-80e9-c00e4379d050",
       "status": 200,
       "bytes": 151815
     },
     {
-      "url": "blob:http://127.0.0.1:8113/4bdb02e2-36fb-448a-af88-89d00e56cf36",
+      "url": "blob:http://127.0.0.1:8113/08b858e6-4ca2-4057-b410-5611a9c00ed5",
       "status": 200,
       "bytes": 170206
     },
     {
-      "url": "blob:http://127.0.0.1:8113/e595d42e-d509-4758-acd7-ce3fba9440cf",
+      "url": "blob:http://127.0.0.1:8113/0faf7846-c8b4-4bde-845b-cb70cac40852",
       "status": 200,
       "bytes": 151815
     },
     {
-      "url": "blob:http://127.0.0.1:8113/aaa9cc2b-62aa-4e6a-8101-1d411587f6a6",
+      "url": "blob:http://127.0.0.1:8113/71c3f056-d4b8-4a28-ab68-2de90f42f49a",
       "status": 200,
       "bytes": 404049
     },
     {
-      "url": "blob:http://127.0.0.1:8113/774eb301-471c-44a8-9968-b60e373c0a5f",
+      "url": "blob:http://127.0.0.1:8113/b06af902-40c7-4357-869e-77b666864a04",
       "status": 200,
       "bytes": 645899
     },
     {
-      "url": "blob:http://127.0.0.1:8113/a3fbebef-8478-43f6-9cf6-c07d55332842",
+      "url": "blob:http://127.0.0.1:8113/8d82ef9c-1296-405d-bb65-e1a7c40a591e",
       "status": 200,
       "bytes": 334774
     },
     {
-      "url": "blob:http://127.0.0.1:8113/c2f5a232-3e3b-4400-ab20-ea8b4408e929",
+      "url": "blob:http://127.0.0.1:8113/c555c019-29c4-4348-88aa-5c369b30dd87",
       "status": 200,
       "bytes": 560864
     },
     {
-      "url": "blob:http://127.0.0.1:8113/96980e5c-b04d-4a08-82a4-0d4923e6f923",
+      "url": "blob:http://127.0.0.1:8113/400faeec-5087-4096-b834-fb7a58be0590",
       "status": 200,
       "bytes": 460937
     },
     {
-      "url": "blob:http://127.0.0.1:8113/fc029e8d-726c-4129-ab24-7b70e0323a2b",
+      "url": "blob:http://127.0.0.1:8113/96012e9a-2515-4002-a0b0-0bace320f593",
       "status": 200,
       "bytes": 577931
     },
     {
-      "url": "blob:http://127.0.0.1:8113/be0b1af1-c053-4e95-bd07-f0bb3c3a2af1",
+      "url": "blob:http://127.0.0.1:8113/81c00cd9-d5e9-4c6f-b1c1-4e6ec336da84",
       "status": 200,
       "bytes": 302377
     },
     {
-      "url": "blob:http://127.0.0.1:8113/3c4ca239-7ca7-4da9-813c-de94e4a48bf5",
+      "url": "blob:http://127.0.0.1:8113/50ceb94a-ad61-4ff2-ad30-41e54e21d1b6",
       "status": 200,
       "bytes": 228851
     },
     {
-      "url": "blob:http://127.0.0.1:8113/8c9d2a9c-955a-461f-9f90-d6c641767f03",
+      "url": "blob:http://127.0.0.1:8113/aec7c707-4e8f-4cff-bbfb-19f1df87aa56",
       "status": 200,
       "bytes": 321223
     },
     {
-      "url": "blob:http://127.0.0.1:8113/a73f240d-4df5-4eb1-b7e4-8dc942214b90",
+      "url": "blob:http://127.0.0.1:8113/4ba778a4-4d0b-423f-9465-e2c79d1c88a7",
       "status": 200,
       "bytes": 876217
     },
     {
-      "url": "blob:http://127.0.0.1:8113/de509fbf-0e1c-48d6-9e5d-b50e8b9f19e7",
+      "url": "blob:http://127.0.0.1:8113/b36cb6f5-418b-40ab-90df-e8b9313fcc0c",
       "status": 200,
       "bytes": 1222163
     },
     {
-      "url": "blob:http://127.0.0.1:8113/45a6b488-71a2-493a-9143-265ad9faa1c4",
+      "url": "blob:http://127.0.0.1:8113/199daaf6-bbc9-4326-a003-423bb44021c8",
       "status": 200,
       "bytes": 354145
-    },
-    {
-      "url": "http://127.0.0.1:8113/js/4742.js",
-      "status": 200,
-      "bytes": 8962
     },
     {
       "url": "http://127.0.0.1:8113/js/6612.js",
@@ -324,14 +319,14 @@
       "bytes": 14807
     },
     {
+      "url": "http://127.0.0.1:8113/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
       "url": "http://127.0.0.1:8113/js/7449.js",
       "status": 200,
       "bytes": 2072
-    },
-    {
-      "url": "http://127.0.0.1:8113/js/5587.js",
-      "status": 200,
-      "bytes": 1107
     },
     {
       "url": "http://127.0.0.1:8113/js/9615.js",
@@ -339,14 +334,19 @@
       "bytes": 9069
     },
     {
-      "url": "http://127.0.0.1:8113/js/6560.js",
+      "url": "http://127.0.0.1:8113/js/5587.js",
       "status": 200,
-      "bytes": 2517
+      "bytes": 1107
     },
     {
       "url": "http://127.0.0.1:8113/js/4472.js",
       "status": 200,
       "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8113/js/6560.js",
+      "status": 200,
+      "bytes": 2517
     },
     {
       "url": "http://127.0.0.1:8113/audio/study/drawer-slide-1.8353e0a53c.wav",
@@ -364,14 +364,14 @@
       "bytes": 14196
     },
     {
-      "url": "http://127.0.0.1:8113/audio/study/door-move-1.f0162ae1b8.wav",
-      "status": 200,
-      "bytes": 38444
-    },
-    {
       "url": "http://127.0.0.1:8113/audio/study/door-latch-1.a220e2fe5d.wav",
       "status": 200,
       "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8113/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
     },
     {
       "url": "http://127.0.0.1:8113/audio/study/switch-1.702a81fab4.wav",

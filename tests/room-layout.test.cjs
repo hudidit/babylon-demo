@@ -864,15 +864,20 @@ test("all house doors block when closed and pass the actual walker in both direc
   }
 });
 
-test("overview shows every facade window in a roofless shell while room views keep selective cutaways", t => {
+test("overview shows every facade window through a semi-transparent roofless shell while room views stay opaque and selective", t => {
   const { scene, architecture } = houseShell(t);
   architecture.setEnclosed(false, "overview");
+  const walls = scene.getMaterialByName("warm-painted-wall");
+  assert.ok(walls.alpha > .2 && walls.alpha < .5, "overview walls are translucent");
+  assert.equal(walls.transparencyMode, babylon.PBRMaterial.PBRMATERIAL_ALPHABLEND);
   const windows = scene.meshes.filter(m => m.metadata?.cut && m.material?.name === "window-glass");
   assert.equal(windows.length, HOUSE_WINDOWS.length);
   assert.ok(windows.every(m => m.isVisible), "overview shows every window");
   assert.ok(architecture.upperWalls.every(m => m.isVisible), "overview shows the full roofless shell");
   assert.ok(architecture.ceilings.every(m => !m.isVisible), "overview stays roofless");
   architecture.setEnclosed(false, "study");
+  assert.equal(walls.alpha, 1, "room views restore opaque walls");
+  assert.equal(walls.transparencyMode, babylon.PBRMaterial.PBRMATERIAL_OPAQUE);
   architecture.updateCutaway(houseVector(4.4, 4.2, 4.4), houseVector(6.9, 1.8, .5));
   assert.ok(windows.some(m => !m.isVisible), "room cutaway still hides near-side windows");
   assert.ok(architecture.ceilings.every(m => !m.isVisible), "room cutaway stays roofless");
