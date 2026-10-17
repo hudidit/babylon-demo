@@ -1,0 +1,539 @@
+{
+  "state": {
+    "audio": "ready",
+    "status": "全屋八个房间已布置 · 可自由漫游"
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "6c8f479448a95bea",
+        "kind": "script",
+        "name": "main.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 30940,
+            "property": "src"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/main.js"
+      },
+      {
+        "id": "3a5bf50fd70e481b",
+        "kind": "script",
+        "name": "5280.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 30939,
+            "property": "src"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/5280.js"
+      },
+      {
+        "id": "9c2c0681baa67199",
+        "kind": "other",
+        "name": "study-interior.hdr",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "xmlhttprequest"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/environment/study-interior.hdr"
+      },
+      {
+        "id": "030efa62b1154e6c",
+        "kind": "script",
+        "name": "1203.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/1203.js"
+      },
+      {
+        "id": "fd0ca1f9af7fa7a1",
+        "kind": "other",
+        "name": "sofa_03.glb",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "xmlhttprequest"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/models/study/sofa_03.glb"
+      },
+      {
+        "id": "3f74e0916569e234",
+        "kind": "other",
+        "name": "gothic_commode.glb",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "xmlhttprequest"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/models/gothic_commode.glb"
+      },
+      {
+        "id": "39d4357e94670db7",
+        "kind": "other",
+        "name": "modern_arm_chair_01.glb",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "xmlhttprequest"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/models/study/modern_arm_chair_01.glb"
+      },
+      {
+        "id": "921fcf11b25fb9e1",
+        "kind": "other",
+        "name": "wooden_bookshelf.glb",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "xmlhttprequest"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/models/wooden_bookshelf.glb"
+      },
+      {
+        "id": "b66f02a882adc5e3",
+        "kind": "image",
+        "name": "normal.jpg",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/study/wood_table_001/normal.jpg"
+      },
+      {
+        "id": "80dcd2470cfb7531",
+        "kind": "image",
+        "name": "color.jpg",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/study/wood_table_001/color.jpg"
+      },
+      {
+        "id": "0225670d698fd0e9",
+        "kind": "image",
+        "name": "arm.jpg",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/study/wood_table_001/arm.jpg"
+      },
+      {
+        "id": "7ad2564c1a0b537b",
+        "kind": "image",
+        "name": "normal.jpg",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/study/rough_linen/normal.jpg"
+      },
+      {
+        "id": "0cc9a8e37170322a",
+        "kind": "image",
+        "name": "color.jpg",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/study/wood_floor/color.jpg"
+      },
+      {
+        "id": "71d73e17bd8f6646",
+        "kind": "image",
+        "name": "normal.jpg",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/study/wood_floor/normal.jpg"
+      },
+      {
+        "id": "f90c0ad6bbdea569",
+        "kind": "image",
+        "name": "arm.jpg",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/study/wood_floor/arm.jpg"
+      },
+      {
+        "id": "9bb2d548728e19ec",
+        "kind": "image",
+        "name": "arm.png",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/study/painted_wall/arm.png"
+      },
+      {
+        "id": "1d0bbf25d7b99fb2",
+        "kind": "image",
+        "name": "color.png",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/study/painted_wall/color.png"
+      },
+      {
+        "id": "58700e1c14446642",
+        "kind": "image",
+        "name": "normal.png",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/study/painted_wall/normal.png"
+      },
+      {
+        "id": "8495a732f35d0db7",
+        "kind": "image",
+        "name": "pic1.jpg",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/pictures/pic1.jpg"
+      },
+      {
+        "id": "c8e9dbffff42ee89",
+        "kind": "image",
+        "name": "arm.jpg",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "img"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/textures/study/rough_linen/arm.jpg"
+      },
+      {
+        "id": "bb706b3d71a22a40",
+        "kind": "script",
+        "name": "8558.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/8558.js"
+      },
+      {
+        "id": "c5910a760573b2f2",
+        "kind": "script",
+        "name": "6612.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/6612.js"
+      },
+      {
+        "id": "0868438f4908324d",
+        "kind": "script",
+        "name": "4742.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/4742.js"
+      },
+      {
+        "id": "be4181f1e8165c7b",
+        "kind": "script",
+        "name": "7449.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/7449.js"
+      },
+      {
+        "id": "ba84685d01deb629",
+        "kind": "script",
+        "name": "9615.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/9615.js"
+      },
+      {
+        "id": "632435fe7d86e623",
+        "kind": "script",
+        "name": "5587.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/5587.js"
+      },
+      {
+        "id": "26f0e88b6cdff0ef",
+        "kind": "script",
+        "name": "6560.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/6560.js"
+      },
+      {
+        "id": "6b298e136e95eeb5",
+        "kind": "script",
+        "name": "4472.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/4472.js"
+      },
+      {
+        "id": "16326d5b976c9a6b",
+        "kind": "other",
+        "name": "drawer-slide-1.8353e0a53c.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/drawer-slide-1.8353e0a53c.wav"
+      },
+      {
+        "id": "7a640c8393ec19f6",
+        "kind": "other",
+        "name": "drawer-stop-1.6840b8eb30.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/drawer-stop-1.6840b8eb30.wav"
+      },
+      {
+        "id": "53d4b48592273001",
+        "kind": "script",
+        "name": "9915.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/js/9915.js"
+      },
+      {
+        "id": "649a575c487adfb5",
+        "kind": "other",
+        "name": "door-move-1.f0162ae1b8.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/door-move-1.f0162ae1b8.wav"
+      },
+      {
+        "id": "1e6efd205294ddde",
+        "kind": "other",
+        "name": "door-latch-1.a220e2fe5d.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/door-latch-1.a220e2fe5d.wav"
+      },
+      {
+        "id": "916ca19a810768b4",
+        "kind": "other",
+        "name": "switch-1.702a81fab4.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/switch-1.702a81fab4.wav"
+      },
+      {
+        "id": "5fab628afe45d615",
+        "kind": "other",
+        "name": "paper-1.ce7576efe6.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/paper-1.ce7576efe6.wav"
+      },
+      {
+        "id": "2d6e3760baee1905",
+        "kind": "other",
+        "name": "drawer-slide-2.71ff63e71c.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/drawer-slide-2.71ff63e71c.wav"
+      },
+      {
+        "id": "416de6d28e7cbaf1",
+        "kind": "other",
+        "name": "drawer-stop-2.b34d827382.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/drawer-stop-2.b34d827382.wav"
+      },
+      {
+        "id": "dbcb39f064a189a1",
+        "kind": "other",
+        "name": "door-move-2.9dea4bdbfd.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/door-move-2.9dea4bdbfd.wav"
+      },
+      {
+        "id": "b83b0d44b139fef4",
+        "kind": "other",
+        "name": "door-latch-2.fb255ede74.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/door-latch-2.fb255ede74.wav"
+      },
+      {
+        "id": "3c683614b34df0b4",
+        "kind": "other",
+        "name": "paper-2.862694da2b.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/paper-2.862694da2b.wav"
+      },
+      {
+        "id": "9fc565368f11ac70",
+        "kind": "other",
+        "name": "switch-2.927c10f6e3.wav",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "fetch"
+          }
+        ],
+        "url": "http://127.0.0.1:8148/home/audio/study/switch-2.927c10f6e3.wav"
+      }
+    ],
+    "id": "8d2ff458-8bdb-4e59-ae8c-db9274431d42",
+    "inlineSvgs": [
+      {
+        "id": "1e64a86a595740b3",
+        "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"52 38 412.8 466.8\" role=\"img\" aria-label=\"余晖小居北向户型：入户直接进入左侧客厅，右侧主卧带独享主卫，主卧外公卫由客厅进入；上方为小书房与厨房，下方阳台\">\n    <defs><pattern id=\"mini-hatch\" width=\"8\" height=\"8\" patternUnits=\"userSpaceOnUse\"><rect width=\"8\" height=\"8\" fill=\"#f5f1e8\"></rect><path d=\"M -2 2 L 2 -2 M 0 8 L 8 0 M 6 10 L 10 6\" stroke=\"#e9e3d6\" stroke-width=\"0.6\"></path></pattern></defs>\n    <g data-room=\"master\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>主卧 · 已布置</title>\n      <rect x=\"258.4\" y=\"50\" width=\"194.4\" height=\"172.79999999999998\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"355.59999999999997\" y=\"136.39999999999998\">主卧</text>\n      \n    </g><g data-room=\"study\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>书房 · 已布置</title>\n      <rect x=\"150.4\" y=\"50\" width=\"108\" height=\"122.39999999999999\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"204.4\" y=\"111.19999999999999\">书房</text>\n      \n    </g><g data-room=\"kitchen\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>厨房 · 已布置</title>\n      <rect x=\"64\" y=\"50\" width=\"86.39999999999999\" height=\"122.39999999999999\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"107.19999999999999\" y=\"111.19999999999999\">厨房</text>\n      \n    </g><g data-room=\"ensuite\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>主卫 · 已布置</title>\n      <rect x=\"366.40000000000003\" y=\"222.79999999999998\" width=\"86.39999999999999\" height=\"86.39999999999999\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name plan-small-name\" x=\"409.6\" y=\"266\">主卫</text>\n      \n    </g><g data-room=\"bathroom\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>公卫 · 已布置</title>\n      <rect x=\"258.4\" y=\"222.79999999999998\" width=\"108\" height=\"86.39999999999999\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name plan-small-name\" x=\"312.4\" y=\"266\">公卫</text>\n      \n    </g><g data-room=\"bedroom\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>次卧 · 已布置</title>\n      <rect x=\"258.4\" y=\"309.2\" width=\"194.4\" height=\"129.6\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"355.59999999999997\" y=\"374\">次卧</text>\n      \n    </g><g data-room=\"living\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>客厅 · 已布置</title>\n      <rect x=\"64\" y=\"172.39999999999998\" width=\"194.4\" height=\"266.40000000000003\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"161.2\" y=\"305.6\">客厅</text>\n      \n    </g><g data-room=\"balcony\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>阳台 · 已布置</title>\n      <rect x=\"64\" y=\"438.8\" width=\"194.4\" height=\"54\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"161.2\" y=\"465.8\">阳台</text>\n      \n    </g><g data-door=\"entry-door\" class=\"plan-door\" transform=\"translate(64 197.6) scale(-1 1) rotate(90)\">\n      <title>客厅至入户 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 37.6\"></path>\n      <path d=\"M 0 0 V 39.6 M 0 39.6 A 39.6 39.6 0 0 0 39.6 0\"></path>\n    </g><g data-door=\"master-door\" class=\"plan-door\" transform=\"translate(258.4 179.6) scale(-1 1) rotate(90)\">\n      <title>主卧至客厅 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 30.4\"></path>\n      <path d=\"M 0 0 V 32.4 M 0 32.4 A 32.4 32.4 0 0 0 32.4 0\"></path>\n    </g><g data-door=\"ensuite-door\" class=\"plan-door\" transform=\"translate(424 222.79999999999998) scale(-1 1) rotate(0)\">\n      <title>主卧至主卫 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 26.8\"></path>\n      <path d=\"M 0 0 V 28.8 M 0 28.8 A 28.8 28.8 0 0 0 28.8 0\"></path>\n    </g><g data-door=\"bathroom-door\" class=\"plan-door\" transform=\"translate(258.4 251.6) scale(-1 1) rotate(90)\">\n      <title>公卫至客厅 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 26.8\"></path>\n      <path d=\"M 0 0 V 28.8 M 0 28.8 A 28.8 28.8 0 0 0 28.8 0\"></path>\n    </g><g data-door=\"bedroom-door\" class=\"plan-door\" transform=\"translate(258.4 363.2) scale(-1 1) rotate(90)\">\n      <title>次卧至客厅 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 30.4\"></path>\n      <path d=\"M 0 0 V 32.4 M 0 32.4 A 32.4 32.4 0 0 0 32.4 0\"></path>\n    </g><g data-door=\"connecting-door\" class=\"plan-door\" transform=\"translate(229.60000000000002 172.39999999999998) scale(-1 1) rotate(0)\">\n      <title>书房至客厅 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 30.4\"></path>\n      <path d=\"M 0 0 V -32.4 M 0 -32.4 A 32.4 32.4 0 0 1 32.4 0\"></path>\n    </g><g data-door=\"kitchen-door\" class=\"plan-door\" transform=\"translate(125.20000000000005 172.39999999999998) scale(-1 1) rotate(0)\">\n      <title>厨房至客厅 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 30.4\"></path>\n      <path d=\"M 0 0 V -32.4 M 0 -32.4 A 32.4 32.4 0 0 1 32.4 0\"></path>\n    </g><g data-door=\"balcony-door\" class=\"plan-door\" transform=\"translate(204.4 438.8) scale(-1 1) rotate(0)\">\n      <title>客厅至阳台 · 双轨推拉门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 84.39999999999999\"></path>\n      <path d=\"M 0 -3 H 44.06399999999999 M 42.336 3 H 86.39999999999999\"></path>\n    </g>\n    \n  <g class=\"plan-position\" style=\"display:none\"><path d=\"M 0 -14 L -7 -2 L 7 -2 Z\"></path><circle r=\"4.5\"></circle></g></svg>",
+        "name": "余晖小居北向户型：入户直接进入左侧客厅，右侧主卧带独享主卫，主卧外公卫由客厅进入；上方为小书房与厨房，下方阳台"
+      },
+      {
+        "id": "040806ad6ec2222a",
+        "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 521 561\" role=\"img\" aria-label=\"余晖小居北向户型：入户直接进入左侧客厅，右侧主卧带独享主卫，主卧外公卫由客厅进入；上方为小书房与厨房，下方阳台\">\n    <defs><pattern id=\"full-hatch\" width=\"8\" height=\"8\" patternUnits=\"userSpaceOnUse\"><rect width=\"8\" height=\"8\" fill=\"#f5f1e8\"></rect><path d=\"M -2 2 L 2 -2 M 0 8 L 8 0 M 6 10 L 10 6\" stroke=\"#e9e3d6\" stroke-width=\"0.6\"></path></pattern></defs>\n    <g data-room=\"master\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>主卧 · 已布置</title>\n      <rect x=\"258.4\" y=\"50\" width=\"194.4\" height=\"172.79999999999998\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"355.59999999999997\" y=\"121.39999999999998\">主卧</text>\n      <text class=\"plan-room-size\" x=\"355.59999999999997\" y=\"141.39999999999998\">5.4 × 4.8 m</text>\n      <text class=\"plan-room-area\" x=\"355.59999999999997\" y=\"160.39999999999998\">25.9 m²</text>\n    </g><g data-room=\"study\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>书房 · 已布置</title>\n      <rect x=\"150.4\" y=\"50\" width=\"108\" height=\"122.39999999999999\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"204.4\" y=\"96.19999999999999\">书房</text>\n      <text class=\"plan-room-size\" x=\"204.4\" y=\"116.19999999999999\">3.0 × 3.4 m</text>\n      <text class=\"plan-room-area\" x=\"204.4\" y=\"135.2\">10.2 m²</text>\n    </g><g data-room=\"kitchen\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>厨房 · 已布置</title>\n      <rect x=\"64\" y=\"50\" width=\"86.39999999999999\" height=\"122.39999999999999\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"107.19999999999999\" y=\"96.19999999999999\">厨房</text>\n      <text class=\"plan-room-size\" x=\"107.19999999999999\" y=\"116.19999999999999\">2.4 × 3.4 m</text>\n      <text class=\"plan-room-area\" x=\"107.19999999999999\" y=\"135.2\">8.2 m²</text>\n    </g><g data-room=\"ensuite\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>主卫 · 已布置</title>\n      <rect x=\"366.40000000000003\" y=\"222.79999999999998\" width=\"86.39999999999999\" height=\"86.39999999999999\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name plan-small-name\" x=\"409.6\" y=\"264\">主卫</text>\n      <text class=\"plan-room-size\" x=\"409.6\" y=\"280\">2.4 × 2.4 m</text>\n      <text class=\"plan-room-area\" x=\"409.6\" y=\"293\">5.8 m²</text>\n    </g><g data-room=\"bathroom\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>公卫 · 已布置</title>\n      <rect x=\"258.4\" y=\"222.79999999999998\" width=\"108\" height=\"86.39999999999999\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name plan-small-name\" x=\"324.4\" y=\"256\">公卫</text>\n      <text class=\"plan-room-size\" x=\"324.4\" y=\"272\">3.0 × 2.4 m</text>\n      <text class=\"plan-room-area\" x=\"324.4\" y=\"285\">7.2 m²</text>\n    </g><g data-room=\"bedroom\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>次卧 · 已布置</title>\n      <rect x=\"258.4\" y=\"309.2\" width=\"194.4\" height=\"129.6\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"355.59999999999997\" y=\"359\">次卧</text>\n      <text class=\"plan-room-size\" x=\"355.59999999999997\" y=\"379\">5.4 × 3.6 m</text>\n      <text class=\"plan-room-area\" x=\"355.59999999999997\" y=\"398\">19.4 m²</text>\n    </g><g data-room=\"living\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>客厅 · 已布置</title>\n      <rect x=\"64\" y=\"172.39999999999998\" width=\"194.4\" height=\"266.40000000000003\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"161.2\" y=\"290.6\">客厅</text>\n      <text class=\"plan-room-size\" x=\"161.2\" y=\"310.6\">5.4 × 7.4 m</text>\n      <text class=\"plan-room-area\" x=\"161.2\" y=\"329.6\">40.0 m²</text>\n    </g><g data-room=\"balcony\" class=\"plan-room has-content\" data-state=\"ready\">\n      <title>阳台 · 已布置</title>\n      <rect x=\"64\" y=\"438.8\" width=\"194.4\" height=\"54\" fill=\"#e0e6d9\"></rect>\n      <text class=\"plan-room-name \" x=\"161.2\" y=\"460.8\">阳台</text>\n      <text class=\"plan-room-size\" x=\"161.2\" y=\"480.8\">5.4 × 1.5 m</text>\n      \n    </g><g data-door=\"entry-door\" class=\"plan-door\" transform=\"translate(64 197.6) scale(-1 1) rotate(90)\">\n      <title>客厅至入户 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 37.6\"></path>\n      <path d=\"M 0 0 V 39.6 M 0 39.6 A 39.6 39.6 0 0 0 39.6 0\"></path>\n    </g><g data-door=\"master-door\" class=\"plan-door\" transform=\"translate(258.4 179.6) scale(-1 1) rotate(90)\">\n      <title>主卧至客厅 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 30.4\"></path>\n      <path d=\"M 0 0 V 32.4 M 0 32.4 A 32.4 32.4 0 0 0 32.4 0\"></path>\n    </g><g data-door=\"ensuite-door\" class=\"plan-door\" transform=\"translate(424 222.79999999999998) scale(-1 1) rotate(0)\">\n      <title>主卧至主卫 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 26.8\"></path>\n      <path d=\"M 0 0 V 28.8 M 0 28.8 A 28.8 28.8 0 0 0 28.8 0\"></path>\n    </g><g data-door=\"bathroom-door\" class=\"plan-door\" transform=\"translate(258.4 251.6) scale(-1 1) rotate(90)\">\n      <title>公卫至客厅 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 26.8\"></path>\n      <path d=\"M 0 0 V 28.8 M 0 28.8 A 28.8 28.8 0 0 0 28.8 0\"></path>\n    </g><g data-door=\"bedroom-door\" class=\"plan-door\" transform=\"translate(258.4 363.2) scale(-1 1) rotate(90)\">\n      <title>次卧至客厅 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 30.4\"></path>\n      <path d=\"M 0 0 V 32.4 M 0 32.4 A 32.4 32.4 0 0 0 32.4 0\"></path>\n    </g><g data-door=\"connecting-door\" class=\"plan-door\" transform=\"translate(229.60000000000002 172.39999999999998) scale(-1 1) rotate(0)\">\n      <title>书房至客厅 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 30.4\"></path>\n      <path d=\"M 0 0 V -32.4 M 0 -32.4 A 32.4 32.4 0 0 1 32.4 0\"></path>\n    </g><g data-door=\"kitchen-door\" class=\"plan-door\" transform=\"translate(125.20000000000005 172.39999999999998) scale(-1 1) rotate(0)\">\n      <title>厨房至客厅 · 单开门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 30.4\"></path>\n      <path d=\"M 0 0 V -32.4 M 0 -32.4 A 32.4 32.4 0 0 1 32.4 0\"></path>\n    </g><g data-door=\"balcony-door\" class=\"plan-door\" transform=\"translate(204.4 438.8) scale(-1 1) rotate(0)\">\n      <title>客厅至阳台 · 双轨推拉门</title>\n      <path class=\"plan-door-gap\" d=\"M 2 0 H 84.39999999999999\"></path>\n      <path d=\"M 0 -3 H 44.06399999999999 M 42.336 3 H 86.39999999999999\"></path>\n    </g>\n    <g class=\"plan-dimensions\"><path d=\"M 64 34 V 19 M 452.8 34 V 19 M 64 25 H 452.8 M 59 20 L 69 30 M 447.8 20 L 457.8 30 M 47 50 H 32 M 47 492.8 H 32 M 38 50 V 492.8 M 33 45 L 43 55 M 33 487.8 L 43 497.8\"></path>\n      <text x=\"258.4\" y=\"18\">10.8 m</text><text x=\"28\" y=\"271.4\" transform=\"rotate(-90 28 271.4)\">12.3 m</text></g>\n    <g class=\"plan-north\" transform=\"translate(488.8 72)\"><path d=\"M 0 13 V -12 M -5 -4 L 0 -14 L 5 -4\"></path><text x=\"0\" y=\"-23\">N</text><text x=\"0\" y=\"32\">北</text></g>\n    <g class=\"plan-scale\" transform=\"translate(64 527.8)\"><path d=\"M 0 -5 V 0 H 180 V -5 M 36 0 V -5\"></path><text x=\"0\" y=\"17\">0</text><text x=\"36\" y=\"17\">1</text><text x=\"180\" y=\"17\">5 m</text></g>\n    <text class=\"plan-entry\" x=\"46\" y=\"215.6\">入户</text>\n    <text class=\"plan-open-area\" x=\"161.20000000000005\" y=\"212\">入户 / 餐区</text>\n  <g class=\"plan-position\" style=\"display:none\"><path d=\"M 0 -14 L -7 -2 L 7 -2 Z\"></path><circle r=\"4.5\"></circle></g></svg>",
+        "name": "余晖小居北向户型：入户直接进入左侧客厅，右侧主卧带独享主卫，主卧外公卫由客厅进入；上方为小书房与厨房，下方阳台"
+      }
+    ],
+    "pageUrl": "http://127.0.0.1:8148/home/",
+    "summary": {
+      "byKind": {
+        "font": 0,
+        "image": 12,
+        "other": 17,
+        "script": 12,
+        "stylesheet": 0,
+        "video": 0
+      },
+      "inlineSvgCount": 2,
+      "totalCount": 41
+    }
+  },
+  "logs": []
+}

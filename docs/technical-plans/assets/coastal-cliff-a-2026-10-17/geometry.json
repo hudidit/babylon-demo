@@ -1,0 +1,57 @@
+{
+  "baseline": "0f834e5",
+  "before": {
+    "meshes": 9,
+    "vertices": 139655,
+    "triangles": 140176,
+    "materials": 3,
+    "textures": 2,
+    "lights": 0,
+    "cameras": 0,
+    "renderTargets": 0,
+    "layers": {
+      "forest": 9
+    }
+  },
+  "after": {
+    "meshes": 14,
+    "vertices": 26739,
+    "triangles": 36572,
+    "materials": 4,
+    "textures": 0,
+    "lights": 0,
+    "cameras": 0,
+    "renderTargets": 0,
+    "layers": {
+      "terrain": 2,
+      "distant": 4,
+      "cliff": 5,
+      "foundation": 1,
+      "sea": 1,
+      "sky": 1
+    }
+  },
+  "fpsOrLoadTimeSampling": false,
+  "inputs": [
+    {
+      "path": "src/examples/CoastalCliff.ts",
+      "sha256": "0f51ca40e65e391c42111291e2e7a724afaf175f2165899c721ea298f0f7f3b9"
+    },
+    {
+      "path": "src/examples/RoomExterior.ts",
+      "sha256": "7331298468eaeded5f97c3ed9e534cd97337bd85300d490155ee678b5f4d56b1"
+    },
+    {
+      "path": "src/examples/Room.ts",
+      "sha256": "5dc22fc6c5d830c55725218a974303278b2f99aeb8794ee1c399d6df45ea2578"
+    },
+    {
+      "path": "tools/study-release.config.cjs",
+      "sha256": "ed3727c1417d97a671696cc836fc4409ce131af3703969df1f88f968138780e3"
+    },
+    {
+      "path": "public/environment/coastal-cliff-source.json",
+      "sha256": "11789d19860d502bcb186848cbf89d587738833dd0e7ea9cb9944da5a3247611"
+    }
+  ]
+}

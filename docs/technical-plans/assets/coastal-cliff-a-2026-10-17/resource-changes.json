@@ -1,0 +1,249 @@
+{
+  "baseline": "0f834e5 / eight-room-v1",
+  "before": {
+    "modelBytes": 4332840,
+    "runtimeBytes": 16457409,
+    "staticInitialJsBytes": 2532592,
+    "actualInitialJsBytes": 2751444,
+    "releaseBytes": 42756315,
+    "fileCount": 489
+  },
+  "after": {
+    "fileCount": 487,
+    "modelBytes": 4332840,
+    "buildBytes": 26154271,
+    "runtimeBytes": 14546570,
+    "documentationBytes": 54328,
+    "manifestBytes": 91158,
+    "initialJsBytes": 2534008,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 40846327,
+    "actualInitialJsBytes": 2752860,
+    "observedInitialScripts": 12,
+    "observedRuntimeAssets": 29
+  },
+  "method": "Browser observed initial resource URL inventory before Inspector, matched to final production manifest bytes and SHA256. Browser cache managed normally; not a cold-cache transfer or load-time experiment.",
+  "initialScripts": [
+    {
+      "path": "js/main.js",
+      "bytes": 142549,
+      "sha256": "32d1383b86b84ee8d159d398b6f90cacd5cdca7816ce51009711f78b54036f05"
+    },
+    {
+      "path": "js/5280.js",
+      "bytes": 2391459,
+      "sha256": "3871d7df19f02916a5ddc3b26d0dfdfbffc76a7270a5309c7ae78c8a9706decb"
+    },
+    {
+      "path": "js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "js/7449.js",
+      "bytes": 2072,
+      "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+    },
+    {
+      "path": "js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "unchangedRuntime": [
+    {
+      "path": "environment/study-interior.hdr",
+      "bytes": 1649529,
+      "sha256": "ca919c41d78c8fc0dd104f47fd9201530ddcbd3c3574c3d1fc5362846e4076e1"
+    },
+    {
+      "path": "models/gothic_commode.glb",
+      "bytes": 1549376,
+      "sha256": "14905770ce0467edfe426e1fe315acb7232265ba6a1fdb2744fcf691945e0e2f"
+    },
+    {
+      "path": "models/wooden_bookshelf.glb",
+      "bytes": 2783464,
+      "sha256": "8d1bcf250559c6f6f1fd255d1be9027fe6b0cbfbd066e4358d0bf138699bb354"
+    },
+    {
+      "path": "models/study/modern_arm_chair_01.glb",
+      "bytes": 2696208,
+      "sha256": "e63d43aa97f499c95f7b02cff070c78fb68017a1f423b261bbd62d8eb4452049"
+    },
+    {
+      "path": "models/study/sofa_03.glb",
+      "bytes": 818172,
+      "sha256": "8bf6e226b6add7aaf31479dd824e50c8ce6024df48cb609b900976f6991b5a3b"
+    },
+    {
+      "path": "textures/pictures/pic1.jpg",
+      "bytes": 29797,
+      "sha256": "00cd6f16547108ab2f713513974cb523676e93eae9a38df9c7134790be113967"
+    },
+    {
+      "path": "textures/study/wood_floor/color.jpg",
+      "bytes": 734493,
+      "sha256": "2a1c07687b6dbb214c4b9213739c6d92d425f1f0fc8ab3ac157f105d78240789"
+    },
+    {
+      "path": "textures/study/wood_floor/normal.jpg",
+      "bytes": 423303,
+      "sha256": "452247f0d0d1b7fc7f8324ff3b6ed60bcc6de1405f4284eeb8d9bce90d4939c2"
+    },
+    {
+      "path": "textures/study/wood_floor/arm.jpg",
+      "bytes": 447855,
+      "sha256": "a84d9457fa35a76cf8a41da8bcef55387230c6b236819de878799585eda76059"
+    },
+    {
+      "path": "textures/study/wood_table_001/color.jpg",
+      "bytes": 215573,
+      "sha256": "460dd08d240f4a1f02982415048c3c5c200f385db212da18dc7e2df68bf4d0be"
+    },
+    {
+      "path": "textures/study/wood_table_001/normal.jpg",
+      "bytes": 51927,
+      "sha256": "9bf7ddf5721e225c20290f1772ae37f9bdfd49658f6d458259eb794e2149d3cf"
+    },
+    {
+      "path": "textures/study/wood_table_001/arm.jpg",
+      "bytes": 214520,
+      "sha256": "29d3f34a7c2c213e21b320365495fad673d3c8a3ce885b879fc0a77a187dd828"
+    },
+    {
+      "path": "textures/study/painted_wall/color.png",
+      "bytes": 58252,
+      "sha256": "a1c0489dd75eea2c094ca57b942ef77b0b5cb11f91dd13c713bd9f8fb21409a9"
+    },
+    {
+      "path": "textures/study/painted_wall/normal.png",
+      "bytes": 403149,
+      "sha256": "a3f21adb78e23cbe31af99034527ecaa6d506eea8df1b4e0dff365445a040913"
+    },
+    {
+      "path": "textures/study/painted_wall/arm.png",
+      "bytes": 75148,
+      "sha256": "145eae6481ac9895f033ea4cf61318b668dc04c7c879a1cfab719fa51f999c33"
+    },
+    {
+      "path": "textures/study/rough_linen/normal.jpg",
+      "bytes": 916843,
+      "sha256": "e2402166d1a489f7414814e69e1836ab672aa24e30bec2d41fea356f81687e53"
+    },
+    {
+      "path": "textures/study/rough_linen/arm.jpg",
+      "bytes": 1191393,
+      "sha256": "e1ca6b51ed62834063253e08f8f2e23836aa00d72675b960ddd8e608d9f0c7e6"
+    },
+    {
+      "path": "audio/study/drawer-slide-1.8353e0a53c.wav",
+      "bytes": 30764,
+      "sha256": "8353e0a53c67b934acd5fabb307a71b5d67a04d0398e88e36e875c85b24c88a7"
+    },
+    {
+      "path": "audio/study/drawer-slide-2.71ff63e71c.wav",
+      "bytes": 28844,
+      "sha256": "71ff63e71c9b9d896d5cb3fa28d2c31be6546a7e5967b59ab90d42e43f074c47"
+    },
+    {
+      "path": "audio/study/drawer-stop-1.6840b8eb30.wav",
+      "bytes": 11564,
+      "sha256": "6840b8eb3065c6183495d8a216ab53a3d00b6c5d469ff5689d84d8d0ef0f2c2b"
+    },
+    {
+      "path": "audio/study/drawer-stop-2.b34d827382.wav",
+      "bytes": 15404,
+      "sha256": "b34d82738205a0bcbdfe644faaa558a7e892ee2f8d51237074c842b2229bcd83"
+    },
+    {
+      "path": "audio/study/door-move-1.f0162ae1b8.wav",
+      "bytes": 38444,
+      "sha256": "f0162ae1b8d7198f117e468e914e58a5ce01fc8070c7d0baab231f4b653fb66c"
+    },
+    {
+      "path": "audio/study/door-move-2.9dea4bdbfd.wav",
+      "bytes": 55724,
+      "sha256": "9dea4bdbfd75ae721d9b54d198f555a80ff47508d142f721cd726dd673a495ec"
+    },
+    {
+      "path": "audio/study/door-latch-1.a220e2fe5d.wav",
+      "bytes": 15404,
+      "sha256": "a220e2fe5d9244a022c4125c2eac6af200238a2ce7a5451ac098b5bdb7d1178b"
+    },
+    {
+      "path": "audio/study/door-latch-2.fb255ede74.wav",
+      "bytes": 16364,
+      "sha256": "fb255ede7497c01e1d33d9e5ad961568dbf2711cb53187d6ee0f299c4a9c2f2c"
+    },
+    {
+      "path": "audio/study/switch-1.702a81fab4.wav",
+      "bytes": 11564,
+      "sha256": "702a81fab47cd408b8632eb6a5750039da011d13eb63a1f21239f93db7778fad"
+    },
+    {
+      "path": "audio/study/switch-2.927c10f6e3.wav",
+      "bytes": 16364,
+      "sha256": "927c10f6e34488ac763cccb68ff826d07edf25545fd720000447b675c26d4328"
+    },
+    {
+      "path": "audio/study/paper-1.ce7576efe6.wav",
+      "bytes": 19244,
+      "sha256": "ce7576efe6003d2b9fb4fa190cc58318493c5754524bc71199cf56e62836e43e"
+    },
+    {
+      "path": "audio/study/paper-2.862694da2b.wav",
+      "bytes": 27884,
+      "sha256": "862694da2b6b945b2e8e08330cbbb0f9bb72cb5651542b2060fa53a4ccdf1b81"
+    }
+  ],
+  "removedRuntime": [
+    {
+      "path": "textures/study/forest-window/panorama.jpg",
+      "bytes": 1858746,
+      "sha256": "fbdbb2de34d435f18649b0268386f290393bc071aa77521144922532c3ed89db"
+    },
+    {
+      "path": "textures/study/forest-window/bark.jpg",
+      "bytes": 52093,
+      "sha256": "04fbb148193d77bdd6facb352595327987c5d7456054589468fa83e9fbcbe997"
+    }
+  ],
+  "fpsOrLoadTimeSampling": false
+}

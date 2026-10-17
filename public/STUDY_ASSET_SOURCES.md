@@ -6,7 +6,7 @@
 
 地板 `wood_floor`、木材 `wood_table_001`、亚麻 `rough_linen`、沙发 `sofa_03`、扶手椅 `modern_arm_chair_01` 和环境 `brown_photostudio_01` 的来源、作者、下载 URL、原件摘要及处理方式见 [来源清单](textures/study/manifest.json)。这些素材按来源记录使用 [CC0-1.0](https://polyhaven.com/license)。清单中 `public/` 前缀对应开发仓库，发布路径去掉该前缀；模型的 `sourceFiles` 为上游文件记录，不是额外运行依赖。该历史清单中的 `brick_wall_001` 已被漆面替换，不再作为运行素材发布。
 
-森林远景来自 Andreas Mischok 的 [Forest Slope](https://polyhaven.com/a/forest_slope)，按来源记录为 CC0-1.0；保留完整360°等距柱状全景，缩小至4096×2048后JPEG编码，不再使用贴在窗框上的透视裁片。全景上方用于天空与远处森林，下部地面区域投射到真实地形，保持连续UV。树皮图从同一实拍原件中的树干裁出，沿用该素材的作者及CC0条款；原件、裁切坐标、交付摘要及参数见 [窗景处理记录](textures/study/forest-window/source.json)。近中景树干、分枝、叶片和地形为原创三维几何，所有窗口共享同一室外世界，不新增下载模型或室外HDR。
+历史森林远景与树皮来自 Andreas Mischok 的 [Forest Slope](https://polyhaven.com/a/forest_slope)，按来源记录为 CC0-1.0。当前场景已切换为海岸空间灰盒，森林图片及其处理记录退出当前发布白名单；历史原件、来源记录和八房v1稳定基线仍保留在开发仓库，不能把历史森林清单当作当前海岸素材。
 
 ## 仓库已有素材
 
@@ -19,4 +19,6 @@
 
 `textures/study/painted_wall` 为本项目原创的暖米白乳胶漆微表面纹理，不是外部扫描素材，不继承 Poly Haven 的 CC0 声明；按项目源代码条款使用。生成脚本、固定种子、颜色/法线/ARM语义及最终文件摘要见[漆面来源记录](textures/study/painted_wall/source.json)。三张512² PNG采用无缝周期细噪声，保留轻微滚涂颗粒，不包含砖缝或裂纹。
 
-书房、客厅和全屋结构的程序几何、程序纹理与交互由项目代码构建。主卧与次卧床/柜、次卧阅读凳/台灯、双卫洁具/淋浴/瓷砖勾缝、厨房橱柜/水槽/灶台/冰箱和阳台推拉门/长凳/边桌为本项目原创程序组件，按项目源代码条款使用，复用既有木纹、织物、窗景和HDR；未增加下载模型或图片。浴室镜面使用512²实时平面反射目标，绘制所在卫浴的实际几何，不使用HDR中的其他房间作倒影。Babylon.js 的许可证和声明随发布目录保留：[Apache-2.0](licenses/babylonjs-Apache-2.0.md)、[NOTICE](licenses/babylonjs-NOTICE.md)。Webpack 从分包提取的第三方声明保留在对应的 `js/*.LICENSE.txt` 中，全部纳入发布清单。
+书房、客厅和全屋结构的程序几何、程序纹理与交互由项目代码构建。主卧与次卧床/柜、次卧阅读凳/台灯、双卫洁具/淋浴/瓷砖勾缝、厨房橱柜/水槽/灶台/冰箱和阳台推拉门/长凳/边桌为本项目原创程序组件，按项目源代码条款使用，复用既有木纹、织物、透明门窗和室内HDR；未增加下载模型或图片。浴室镜面使用512²实时平面反射目标，绘制所在卫浴的实际几何，不使用HDR中的其他房间作倒影。Babylon.js 的许可证和声明随发布目录保留：[Apache-2.0](licenses/babylonjs-Apache-2.0.md)、[NOTICE](licenses/babylonjs-NOTICE.md)。Webpack 从分包提取的第三方声明保留在对应的 `js/*.LICENSE.txt` 中，全部纳入发布清单。
+
+海岸阶段A的连续崖顶地形、分层崖壁/岩岬、房屋基座、静态海平面和顶点色天空为本项目原创程序几何，按项目源代码条款（ISC）使用；无新增下载图片、模型或室外HDR。米制尺寸、生成方式、来源代码和当前限制见[海岸灰盒来源记录](environment/coastal-cliff-source.json)。当前仅验证空间，岩石精细PBR、室外日光和动态海浪尚未实施。

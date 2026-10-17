@@ -272,7 +272,7 @@ export class RoomScene {
       ensuite: { position: houseVector(-1.6, 8.3, 3.8), target: houseVector(1.2, 6, 0.9) },
       kitchen: { position: houseVector(10.5, 5.4, 4.5), target: houseVector(9.6, 1.7, .9) },
       bathroom: { position: houseVector(6.9, 3.8, 4.5), target: houseVector(3.9, 6, .8) },
-      balcony: { position: houseVector(8.1, 16.1, 5.1), target: houseVector(8.1, 11.55, .55) },
+      balcony: { position: houseVector(8.1, 11.45, 1.6), target: houseVector(3.2, 37, .5) },
       reading: { position: houseVector(6.3, 7.2, 3), target: houseVector(a.readingSofa.x, 4.7, 0.55) },
       desk: { position: houseVector(5.4, 3.5, 2.4), target: houseVector(a.desk.x, a.desk.y + 0.18, 0.65) },
       details: { position: houseVector(a.desk.x - 0.1, a.desk.y + 0.98, 1.45), target: houseVector(a.desk.x - 0.1, a.desk.y + 0.08, 0.78) },
@@ -284,6 +284,7 @@ export class RoomScene {
       this.scene.activeCamera = this.firstPersonCamera;
     } else {
       const selected = views[view];
+      this.camera.fov = view === "balcony" ? .95 : .65;
       this.camera.lowerRadiusLimit = view === "details" ? 3 : 9;
       this.camera.setTarget(selected.target);
       this.camera.setPosition(selected.position);
@@ -548,7 +549,8 @@ export class RoomScene {
   private render = () => this.scene.render();
   private fitSuiteView() {
     const aspect = this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight());
-    const scale = ["overview", "study", "living", "master", "ensuite", "bedroom", "kitchen", "bathroom", "balcony"].includes(this.currentView) ? Math.max(1, 1.4 / aspect) : 1;
+    // The sea-facing eye stays on the balcony in portrait; pulling back would enter the house.
+    const scale = ["overview", "study", "living", "master", "ensuite", "bedroom", "kitchen", "bathroom"].includes(this.currentView) ? Math.max(1, 1.4 / aspect) : 1;
     // The whole-house portrait radius exceeds the old fixed orbit limit.
     this.camera.upperRadiusLimit = 145 * scale;
     // Keep the suite readable on portrait screens; resizing preserves the user's relative zoom.

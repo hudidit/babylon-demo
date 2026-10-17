@@ -1,0 +1,47 @@
+		53 search text field (settable) study-camera
+		55 checkbox Description: Sort Entities Alphabetically, Value: 0
+		79 search text field (settable)
+				256 text field (settable) Value: study-camera, ID: input-button_r_di_
+					291 text field (settable) Value: 0.2, ID: spin-button2_r_eb_
+					297 text field (settable) Value: 10000, ID: spin-button2_r_ef_
+						305 text field (settable) Value: 0.9, ID: spin-button2_r_ei_
+				309 text field (settable) Value: 0x0fffffff, ID: input-button_r_ek_
+						323 text field (settable) Value: 54.431, ID: spin-button2_r_es_
+			335 text Target
+			336 button (collapsed) Target information, ID: infolabel-_r_ev___infoButton, Secondary Actions: Expand
+			473 text X
+				475 text field (settable) Value: 0, ID: spin-button2_r_h9_
+			476 text Y
+				478 text field (settable) Value: -30, ID: spin-button2_r_ha_
+			479 text Z
+				481 text field (settable) Value: 35, ID: spin-button2_r_hb_
+			341 text Alpha
+			342 button (collapsed) Alpha information, ID: infolabel-_r_f3___infoButton, Secondary Actions: Expand
+					345 text field (settable) Value: 45, ID: spin-button2_r_f5_
+			348 text Beta
+			349 button (collapsed) Beta information, ID: infolabel-_r_f7___infoButton, Secondary Actions: Expand
+					352 text field (settable) Value: 60, ID: spin-button2_r_f9_
+			355 text Radius
+			356 button (collapsed) Radius information, ID: infolabel-_r_fb___infoButton, Secondary Actions: Expand
+					359 text field (settable) Value: 400, ID: spin-button2_r_fd_
+					365 text field (settable) Value: 2, ID: spin-button2_r_fg_
+					370 text field (settable) Value: 1000, ID: spin-button2_r_fi_
+					375 text field (settable) Value: 1000, ID: spin-button2_r_fk_
+					380 text field (settable) Value: 85, ID: spin-button2_r_fm_
+					385 text field (settable) Value: 0, ID: spin-button2_r_fo_
+					390 text field (settable) Value: 0.015, ID: spin-button2_r_fq_
+			401 text Collision Radius
+			407 text Lower Alpha Limit
+					411 text field (disabled) Value: 0, ID: spin-button2_r_g6_
+			414 text Upper Alpha Limit
+					418 text field (disabled) Value: 360, ID: spin-button2_r_ga_
+			421 text Lower Beta Limit
+					425 text field (settable) Value: 11.4592, ID: spin-button2_r_ge_
+			428 text Upper Beta Limit
+					432 text field (settable) Value: 88.2811, ID: spin-button2_r_gi_
+			435 text Lower Radius Limit
+					439 text field (settable) Value: 9, ID: spin-button2_r_gm_
+			441 text Upper Radius Limit
+					445 text field (settable) Value: 600, ID: spin-button2_r_gq_
+			447 text Lower Target Y Limit
+					450 text field (settable) Value: -Infinity, ID: spin-button2_r_gs_

@@ -1,0 +1,225 @@
+{
+  "baseline": "0f834e5 + stage A",
+  "browser": "Codex in-app browser",
+  "viewportTests": [
+    [
+      1280,
+      800
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      844,
+      390
+    ]
+  ],
+  "dpr": 1,
+  "views": [
+    {
+      "name": "overview-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "overview",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "study-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "study",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "living-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "living",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "master-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "master",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "bedroom-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "bedroom",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "balcony-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "balcony-portrait",
+      "canvasPixels": [
+        390,
+        844
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "name": "balcony-landscape",
+      "canvasPixels": [
+        844,
+        390
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        844,
+        390
+      ]
+    },
+    {
+      "name": "living-toward-sea",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "living-shift-right-1m",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "balcony-door-interaction",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "exterior-side",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        1280,
+        800
+      ]
+    }
+  ],
+  "manualChecks": [
+    "balcony faces sea",
+    "living through balcony door faces sea",
+    "rear/side windows share inland terrain",
+    "outside view shows supported house and full cliff",
+    "one metre target/camera translation changes door frame and cape by different amounts",
+    "balcony sliding door moves",
+    "settings open/close",
+    "map open/return",
+    "Inspector open/edit/close",
+    "first-person entry and Escape restore"
+  ],
+  "pointerLock": {
+    "before": {
+      "hint": "点击画面开始环顾 · ESC 退出",
+      "marker": "translate(114.4 242.6) rotate(142.2060550727556)",
+      "pointerLocked": false
+    },
+    "after": {
+      "hint": "点击画面开始环顾 · ESC 退出",
+      "marker": "translate(114.4 242.6) rotate(142.2060550727556)",
+      "pointerLocked": false
+    },
+    "granted": false,
+    "actualLockedWalkingRepeated": false,
+    "note": "In-app browser did not grant pointer lock, including a visible native click; denied-lock fallback and Escape verified. Collision/walking tests pass in npm test; historical Chrome full-route run was not repeated."
+  },
+  "logs": [],
+  "measurement": "initial observed resource URLs saved before Inspector and matched to dist bytes; no cold-cache transfer or timing measurement",
+  "fpsOrLoadTimeSampling": false,
+  "finalGeometryViewsVerified": true,
+  "translation": {
+    "worldUnits": 5,
+    "metres": 1,
+    "fromTarget": [
+      -11,
+      -2.5,
+      158
+    ],
+    "toTarget": [
+      -6,
+      -2.5,
+      158
+    ],
+    "before": "living-toward-sea.jpg",
+    "after": "living-shift-right-1m.jpg",
+    "method": "Inspector numeric Target X edit; unchanged orbit angles and radius; visual parallax confirmed"
+  }
+}

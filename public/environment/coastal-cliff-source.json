@@ -1,0 +1,12 @@
+{
+  "version": "coastal-cliff-graybox-v1",
+  "stage": "A: spatial graybox",
+  "author": "babylon-demo project contributors",
+  "license": "project source code terms (ISC)",
+  "source": ["src/examples/CoastalCliff.ts", "src/examples/RoomExterior.ts"],
+  "generation": "Deterministic metre-based terrain, a shared crest and closed layered cliff wall, house plinth, static sea mesh and vertex-colour sky. Seed: 41723. No downloaded or AI-generated exterior images/models.",
+  "dimensionsMetres": { "balconySetbackAtCentre": 5, "seaBelowHouseFloor": 28, "cliffBottomBelowHouseFloor": 32 },
+  "runtimeFiles": [],
+  "supersedes": "Forest Slope panorama and bark no longer ship or load in the current scene; historical originals and provenance remain in the repository and frozen eight-room-v1 baseline.",
+  "limitations": "Shape validation only: vertex-colour graybox, static sea and sky; photographic PBR, outdoor daylight, waves, reflections and foam await stages B/C. Existing indoor materials/HDR are retained."
+}

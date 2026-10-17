@@ -49,6 +49,7 @@ const { furnishHouseBalcony } = loadSource("HouseBalcony");
 const { slidingDoorSweepIsClear } = loadSource("RoomInteractions");
 const { RoomMirrors } = loadSource("RoomMirrors");
 const { RoomExterior } = loadSource("RoomExterior");
+const { COASTAL_CLIFF, coastalSeaY, coastalCrestY, coastalBoundary, coastalWallPoint, coastalLandPatch } = loadSource("CoastalCliff");
 
 test("all window centres see the outside through transparent glass while retaining walker collisions", t => {
   const { scene } = houseShell(t);
@@ -67,45 +68,82 @@ test("all window centres see the outside through transparent glass while retaini
   }
 });
 
-test("one shared exterior has real near/far geometry, bounded cost and no indoor picking or shadows", t => {
+test("shared coastal graybox keeps house support, sea height, bounded geometry and ownership", t => {
   const scene = createScene(t), exterior = new RoomExterior(scene);
-  assert.equal(scene.meshes.filter(m => m.name === 'exterior-forest-horizon').length, 1);
-  assert.equal(scene.textures.filter(t => t.name.endsWith('/panorama.jpg')).length, 1);
-  assert.equal(scene.getMeshByName('exterior-forest-horizon').material.diffuseTexture.invertY, false, 'spherical UVs preserve the sky above the horizon');
-  const groundPositions = scene.getMeshByName('exterior-forest-horizon').getVerticesData(babylon.VertexBuffer.PositionKind);
-  assert.ok(Math.min(...groundPositions.filter((_, i) => i % 3 === 1)) > -9, 'lower hemisphere projects onto the real floor, rather than under the house');
+  assert.equal(scene.metadata.exteriorVersion, COASTAL_CLIFF.version);
+  assert.equal(scene.meshes.filter(m => m.name === 'coastal-sea').length, 1);
+  assert.equal(scene.meshes.filter(m => m.name === 'coastal-sky').length, 1);
+  assert.equal(scene.textures.length, 0, 'stage A downloads no exterior images');
   assert.ok(exterior.meshes.reduce((n, m) => n + m.getTotalVertices(), 0) < 160000);
-  const near = scene.getMeshByName('exterior-trees-0').getBoundingInfo().boundingBox;
-  const treePositions = scene.getMeshByName('exterior-trees-0').getVerticesData(babylon.VertexBuffer.PositionKind);
-  const treeNormals = scene.getMeshByName('exterior-trees-0').getVerticesData(babylon.VertexBuffer.NormalKind);
-  const ringCentre = [0, 0, 0];
-  for (let i = 0; i < 10; i++) for (let axis = 0; axis < 3; axis++) ringCentre[axis] += treePositions[i * 3 + axis] / 10;
-  assert.ok(treeNormals.slice(0, 3).reduce((dot, n, axis) => dot + n * (treePositions[axis] - ringCentre[axis]), 0) > 0,
-    'closed bark surfaces face outwards, so nearby views cannot see through to their inside');
-  const far = scene.getMeshByName('exterior-forest-horizon').getBoundingInfo().boundingBox;
-  assert.ok(near.maximumWorld.z < -30 && near.minimumWorld.z > -100);
-  assert.ok(far.minimumWorld.z < -200 && far.maximumWorld.z > 200);
-  assert.ok(near.maximumWorld.y > 40 && near.minimumWorld.y < -4, 'trees grow from the terrain and have height');
+  assert.equal(coastalCrestY(8.1), COASTAL_CLIFF.balconyEdgeY + COASTAL_CLIFF.setback);
+  const sea = scene.getMeshByName('coastal-sea');
+  assert.equal(coastalSeaY, -145);
+  assert.ok(sea.getVerticesData(babylon.VertexBuffer.PositionKind).filter((_, i) => i % 3 === 1).every(y => y === coastalSeaY));
+  assert.ok(sea.getVerticesData(babylon.VertexBuffer.NormalKind).filter((_, i) => i % 3 === 1).some(y => y > .99), 'water faces upward');
+  for (const room of HOUSE_ROOMS) for (const dx of [.1, .5, .9]) for (const dy of [.1, .5, .9]) {
+    const start = houseVector(room.x + room.width * dx, room.y + room.depth * dy, 1);
+    const hit = scene.pickWithRay(new babylon.Ray(start, new babylon.Vector3(0, -1, 0), 200), m => m.metadata?.exteriorLayer === 'terrain');
+    assert.ok(hit.hit, room.id + ': continuous platform under the footprint');
+    assert.ok(Math.abs(hit.pickedPoint.y - (-5.7)) < .001, room.id + ': ground lies below the existing floor');
+  }
+  const plinth = scene.getMeshByName('coastal-house-plinth').getBoundingInfo().boundingBox;
+  assert.ok(plinth.minimumWorld.y < -5.7 && plinth.maximumWorld.y > -5.42, 'plinth overlaps ground and existing foundation');
+  const cliff = scene.getMeshByName('coastal-cliff-front-0');
+  assert.ok(cliff.getBoundingInfo().boundingBox.minimumWorld.y < coastalSeaY, 'cliff continues beneath water');
+  assert.ok(cliff.getVerticesData(babylon.VertexBuffer.NormalKind)[2] > 0, 'south-facing rock is visible from the sea');
   for (const m of exterior.meshes) {
     assert.deepEqual([...m.metadata.ownerRooms].sort(), HOUSE_ROOMS.map(r => r.id).sort());
     assert.deepEqual(m.metadata.lightRooms, []);
     assert.ok(!m.isPickable && !m.checkCollisions && !m.metadata.castsShadows);
-    assert.ok(m.material.disableLighting, 'room lamps cannot relight outside');
+    assert.ok(m.material.disableLighting, 'stage A stays independent of room switches');
+    assert.ok(m.getVerticesData(babylon.VertexBuffer.PositionKind).every(Number.isFinite));
+    assert.ok(m.getVerticesData(babylon.VertexBuffer.NormalKind).every(Number.isFinite));
   }
   exterior.setVisible(false); assert.ok(exterior.meshes.every(m => !m.isVisible));
   exterior.setVisible(true); assert.ok(exterior.meshes.every(m => m.isVisible));
   scene.dispose(); assert.equal(scene.meshes.length, 0); assert.equal(scene.materials.length, 0); assert.equal(scene.textures.length, 0);
 });
 
-test("orbit foreground clipping affects only exterior materials and clears on entering the house",t=>{
-  const scene=createScene(t),exterior=new RoomExterior(scene),camera=houseVector(8.1,25,5),target=houseVector(8.1,11.55,.55);
-  exterior.updateCutaway(camera,target);assert.ok(scene.clipPlane==null);
-  const planes=exterior.meshes.map(m=>m.material.clipPlane2);assert.ok(planes.every(p=>p===planes[0]));
-  assert.ok(exterior.meshes.every(m=>m.material.clipPlane==null),'mirror clipping plane is not overridden');
-  const plane=planes[0];assert.ok(plane.signedDistanceTo(houseVector(8.1,15))>0);
-  for(const r of HOUSE_ROOMS)for(const x of [r.x,r.x+r.width])for(const y of [r.y,r.y+r.depth])assert.ok(plane.signedDistanceTo(houseVector(x,y))<0,'entire house stays on the retained side');
-  assert.ok(plane.signedDistanceTo(houseVector(8.1,-8))<0,'far scenery remains visible');
-  exterior.updateCutaway();assert.ok(exterior.meshes.every(m=>m.material.clipPlane2===null));assert.ok(scene.clipPlane==null);
+test("coastal terrain is deterministic and cliff rings share the exact closed crest and seabed", t => {
+  const scene = createScene(t), exterior = new RoomExterior(scene);
+  assert.deepEqual(coastalLandPatch(0, 48, 0, 20), coastalLandPatch(0, 48, 0, 20));
+  const whole = coastalLandPatch(0, COASTAL_CLIFF.columns, 0, COASTAL_CLIFF.rows);
+  for (let i = 0; i < whole.indices.length; i += 3) {
+    const [a, b, c] = whole.indices.slice(i, i + 3).map(n => n * 3), p = whole.positions;
+    const areaY = (p[b + 2] - p[a + 2]) * (p[c] - p[a]) - (p[b] - p[a]) * (p[c + 2] - p[a + 2]);
+    assert.ok(areaY < -1e-6, 'every land triangle faces up; the cape-to-inland grid must never fold');
+  }
+  const boundary = coastalBoundary(), crest = new Set();
+  for (const m of exterior.meshes.filter(m => ['terrain', 'distant'].includes(m.metadata.exteriorLayer) && /platform|inland/.test(m.name))) {
+    const p = m.getVerticesData(babylon.VertexBuffer.PositionKind);
+    for (let i = 0; i < p.length; i += 3) crest.add(p.slice(i, i + 3).join(','));
+  }
+  for (let index = 0; index < boundary.length; index++) {
+    const top = coastalWallPoint(boundary, index, 0), point = houseVector(top.x, top.y, top.height);
+    assert.ok(crest.has(point.asArray().join(',')), 'every wall top is a terrain boundary vertex');
+    assert.equal(coastalWallPoint(boundary, index, 8).height, -32, 'bottom closes below the water');
+  }
+  assert.deepEqual(coastalWallPoint(boundary, 0, 4), coastalWallPoint(boundary, boundary.length, 4), 'wrap seam is identical');
+  assert.ok(coastalCrestY(-8) > coastalCrestY(8.1) + 35, 'asymmetric cape extends into the balcony side view');
+});
+
+test("foreground clipping leaves sea, sky and distant coast whole and clears stale planes", t => {
+  const scene = createScene(t), exterior = new RoomExterior(scene), camera = houseVector(8.1, 25, 5), target = houseVector(8.1, 11.55, .55);
+  exterior.updateCutaway(camera, target); assert.ok(scene.clipPlane == null);
+  const close = exterior.meshes.filter(m => ['terrain', 'cliff', 'foundation'].includes(m.metadata.exteriorLayer));
+  const distant = exterior.meshes.filter(m => ['sea', 'sky', 'distant'].includes(m.metadata.exteriorLayer));
+  const plane = close[0].material.clipPlane2;
+  assert.ok(close.every(m => m.material.clipPlane2 === plane));
+  assert.ok(distant.every(m => m.material.clipPlane2 == null), 'no missing half-ocean or sky');
+  assert.ok(exterior.meshes.every(m => m.material.clipPlane == null), 'mirror plane remains independent');
+  assert.ok(plane.signedDistanceTo(houseVector(8.1, 25)) > 0);
+  for (const r of HOUSE_ROOMS) for (const x of [r.x, r.x + r.width]) for (const y of [r.y, r.y + r.depth])
+    assert.ok(plane.signedDistanceTo(houseVector(x, y)) < 0, 'whole house remains on retained side');
+  exterior.updateCutaway(); assert.ok(exterior.meshes.every(m => m.material.clipPlane2 == null));
+  exterior.updateCutaway(camera, target); exterior.updateCutaway(target, target);
+  assert.ok(exterior.meshes.every(m => m.material.clipPlane2 == null), 'degenerate pose cannot leave a stale cut');
+  exterior.updateCutaway(houseVector(60, 60, 30), target);
+  assert.ok(exterior.meshes.every(m => m.material.clipPlane2 == null), 'distant site inspection retains the complete cliff and platform');
 });
 
 test("bathroom planar mirrors clip behind the actual face, isolate rooms and restore cutaway visibility", t => {
@@ -1360,7 +1398,12 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
     for (const view of ['overview', 'study', 'living', 'master', 'ensuite', 'bedroom', 'kitchen', 'bathroom', 'balcony']) {
       room.setView(view); const desktopRadius = room.camera.radius;
       width = 390; height = 844; room.fitSuiteView();
-      assert.ok(room.camera.radius > desktopRadius * 3, 'portrait view must keep the room in frame');
+      if (view === 'balcony') {
+        assert.ok(Math.abs(room.camera.radius - desktopRadius) < .001, 'portrait sea view must keep the eye on the balcony');
+        assert.ok(room.camera.position.z > houseVector(8.1, 10.8).z && room.camera.position.z < houseVector(8.1, 12.3).z);
+        assert.ok(room.camera.target.z > room.camera.position.z, 'balcony looks south over the sea');
+        assert.equal(room.camera.fov, .95);
+      } else assert.ok(room.camera.radius > desktopRadius * 3, 'portrait view must keep the room in frame');
       const portraitRadius=room.camera.radius;room.camera._checkInputs();
       assert.ok(Math.abs(room.camera.radius-portraitRadius)<.001,'orbit limits must not undo portrait framing');
       room.camera.radius *= .8; // User zoom survives an orientation change.
