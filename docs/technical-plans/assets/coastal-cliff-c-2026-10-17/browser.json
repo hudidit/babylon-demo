@@ -1,0 +1,1041 @@
+{
+  "browser": "155.0.8059.82",
+  "url": "http://127.0.0.1:8154/",
+  "deterministicDeltaMilliseconds": 50,
+  "fpsOrLoadTimeSampling": false,
+  "fault": false,
+  "views": [
+    {
+      "id": "overview",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1
+    },
+    {
+      "id": "study",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1
+    },
+    {
+      "id": "living",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1
+    },
+    {
+      "id": "master",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1
+    },
+    {
+      "id": "ensuite",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1
+    },
+    {
+      "id": "bedroom",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1
+    },
+    {
+      "id": "kitchen",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1
+    },
+    {
+      "id": "bathroom",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1
+    },
+    {
+      "id": "balcony",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1
+    },
+    {
+      "id": "balcony",
+      "width": 390,
+      "height": 844,
+      "dpr": 1,
+      "render": [
+        390,
+        844
+      ],
+      "camera": [
+        13.499999999999929,
+        3.0000000000000124,
+        30.24999999999997
+      ],
+      "waterReady": true
+    },
+    {
+      "id": "balcony",
+      "width": 844,
+      "height": 390,
+      "dpr": 1,
+      "render": [
+        844,
+        390
+      ],
+      "camera": [
+        13.499999999999929,
+        3.0000000000000124,
+        30.24999999999997
+      ],
+      "waterReady": true
+    },
+    {
+      "id": "balcony",
+      "width": 390,
+      "height": 844,
+      "dpr": 2,
+      "render": [
+        390,
+        844
+      ],
+      "camera": [
+        13.499999999999929,
+        3.0000000000000124,
+        30.24999999999997
+      ],
+      "waterReady": true
+    },
+    {
+      "id": "balcony",
+      "width": 844,
+      "height": 390,
+      "dpr": 2,
+      "render": [
+        844,
+        390
+      ],
+      "camera": [
+        13.499999999999929,
+        3.0000000000000124,
+        30.24999999999997
+      ],
+      "waterReady": true
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "initialAssets": [
+    {
+      "url": "http://127.0.0.1:8154/js/9691.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/main.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/environment/study-interior.hdr",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/1203.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/environment/coastal-daylight.hdr",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/models/study/sofa_03.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/models/gothic_commode.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/models/study/modern_arm_chair_01.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/models/wooden_bookshelf.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_table_001/color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_table_001/arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_table_001/normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/rough_linen/normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/rock-color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/rock-normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/ground-color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/ground-arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/rock-arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/ground-normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_floor/color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_floor/normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_floor/arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/painted_wall/color.png",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/painted_wall/normal.png",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/rough_linen/arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/painted_wall/arm.png",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/pictures/pic1.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/8558.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/6612.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/4742.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/7449.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/9615.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/5587.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/6560.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/4472.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/9915.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/door-move-1.f0162ae1b8.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/door-latch-1.a220e2fe5d.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/switch-1.702a81fab4.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/paper-1.ce7576efe6.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/drawer-stop-2.b34d827382.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/door-move-2.9dea4bdbfd.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/door-latch-2.fb255ede74.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/switch-2.927c10f6e3.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/paper-2.862694da2b.wav",
+      "initiatorType": "fetch"
+    }
+  ],
+  "scene": {
+    "version": "coastal-cliff-ocean-v1",
+    "meshes": 612,
+    "vertices": 509239,
+    "materials": 80,
+    "textures": 147,
+    "outdoorVertices": 98699,
+    "renderTargetTextures": [
+      {
+        "name": "window-daylight_shadowMap",
+        "size": {
+          "width": 2048,
+          "height": 2048
+        }
+      },
+      {
+        "name": "reading-lamp-light_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "banker-lamp-light_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "sceneprePassRT",
+        "size": {
+          "width": 1280,
+          "height": 800
+        }
+      },
+      {
+        "name": "coastal-afternoon-sun_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "living-window-daylight_shadowMap",
+        "size": {
+          "width": 2048,
+          "height": 2048
+        }
+      },
+      {
+        "name": "living-table-lamp-light_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "master-window-daylight_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "master-lamp-light_shadowMap",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      },
+      {
+        "name": "ensuite-lamp-light_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "bedroom-window-daylight_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "bedroom-lamp-light_shadowMap",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      },
+      {
+        "name": "kitchen-window-daylight_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "kitchen-lamp-light_shadowMap",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      },
+      {
+        "name": "bathroom-lamp-light_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "balcony-daylight_shadowMap",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      },
+      {
+        "name": "ensuite-mirror-target-3638",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      },
+      {
+        "name": "bathroom-mirror-target-4127",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      }
+    ],
+    "indoorEnvironment": "./environment/study-interior.hdr",
+    "imageProcessing": {
+      "postprocess": true,
+      "aces": 1
+    },
+    "generatedShore": [
+      {
+        "name": "coastal-shore-distance-depth",
+        "size": {
+          "width": 256,
+          "height": 256
+        },
+        "gamma": false
+      }
+    ]
+  },
+  "balconyCamera": {
+    "position": [
+      13.499999999999929,
+      3.0000000000000124,
+      30.24999999999997
+    ],
+    "target": [
+      -11,
+      -2.5,
+      158
+    ]
+  },
+  "animationTimes": [
+    0.5499999999999999,
+    0.7500000000000001,
+    0.9500000000000003,
+    1.1500000000000004,
+    1.3500000000000005,
+    1.5500000000000007,
+    1.7500000000000009,
+    1.950000000000001,
+    2.1500000000000004,
+    2.3499999999999996,
+    2.549999999999999,
+    2.7499999999999982,
+    2.9499999999999975,
+    3.149999999999997,
+    3.349999999999996,
+    3.5499999999999954,
+    3.7499999999999947,
+    3.949999999999994,
+    4.149999999999993,
+    4.3499999999999925
+  ],
+  "externalCutaway": {
+    "position": [
+      -351.99999999999955,
+      220,
+      398.00000000000045
+    ],
+    "target": [
+      -2.0000000000000018,
+      -40,
+      18
+    ],
+    "materials": [
+      {
+        "name": "coastal-rock",
+        "clip2": null
+      },
+      {
+        "name": "coastal-rock-distant",
+        "clip2": null
+      },
+      {
+        "name": "coastal-ground",
+        "clip2": null
+      },
+      {
+        "name": "coastal-ground-distant",
+        "clip2": null
+      },
+      {
+        "name": "coastal-foliage",
+        "clip2": null
+      },
+      {
+        "name": "coastal-sky",
+        "clip2": null
+      },
+      {
+        "name": "coastal-ocean",
+        "clip2": null
+      }
+    ]
+  },
+  "hiddenAndRestored": true,
+  "simulatedBackgroundAndStaleResume": true,
+  "settingsAndInspector": true,
+  "dragZoom": true,
+  "responses": [
+    {
+      "url": "http://127.0.0.1:8154/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/main.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/9691.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_table_001/color.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/rough_linen/normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_table_001/arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_table_001/normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/rock-color.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/rough_linen/arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/rock-normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/ground-color.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/ground-arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/rock-arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/coastal/ground-normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_floor/color.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_floor/normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/wood_floor/arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/painted_wall/color.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/painted_wall/arm.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/study/painted_wall/normal.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/textures/pictures/pic1.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/environment/study-interior.hdr",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/1203.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/environment/coastal-daylight.hdr",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/models/study/modern_arm_chair_01.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/models/gothic_commode.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/models/study/sofa_03.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/models/wooden_bookshelf.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/8558.js",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/3718d73f-0e3e-4799-8d13-1e1b867c1b4b",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/15028478-b7ea-4443-b793-ff4fe6242d1c",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/b4126d52-4d51-47d3-970c-58bcaaafa34b",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/79a0b194-a895-4059-8dd7-3cebaa040383",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/d4cf15aa-e3eb-437d-a4fd-00c1d0e6bd95",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/e9053536-6583-4636-8fd7-f7715d5d325e",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/8dff872c-7976-4a31-85a3-26e1c2623076",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/46503e59-8cc5-40a1-9d61-62e2f96030f8",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/a0d453e7-c720-49ac-9a26-32a38a9b54be",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/3b008640-72ce-43f2-981f-ca7292692dc1",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/d46157b2-4e91-4ed4-8738-7bb033341d25",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/33c6e07a-288f-4eb8-9061-dfc2ccf5c07c",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/40384d72-0770-4f76-b79b-e5c46440be04",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/99444241-1a4b-431e-afd6-b198cc19df98",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/39c2a7be-8c8b-4a8b-93ef-f51857fc72ed",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8154/00e4ad38-9460-44c4-b314-ddb544698095",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/6612.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/4742.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/7449.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/5587.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/9615.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/6560.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/4472.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/9915.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/switch-1.702a81fab4.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/audio/study/paper-2.862694da2b.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/4593.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/2033.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/9318.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/1326.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/5081.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8154/js/7665.js",
+      "status": 200
+    }
+  ],
+  "subpathAssets": [
+    {
+      "url": "http://127.0.0.1:8154/home/js/main.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/js/9691.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/environment/study-interior.hdr",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/js/1203.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/environment/coastal-daylight.hdr",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/models/study/sofa_03.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/models/study/modern_arm_chair_01.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/models/gothic_commode.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/models/wooden_bookshelf.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/study/wood_table_001/color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/study/wood_table_001/arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/study/wood_table_001/normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/study/rough_linen/normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/coastal/rock-normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/coastal/rock-color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/coastal/ground-normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/coastal/ground-arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/coastal/rock-arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/coastal/ground-color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/study/wood_floor/color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/study/wood_floor/normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/study/wood_floor/arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/study/painted_wall/color.png",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/study/painted_wall/arm.png",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/study/painted_wall/normal.png",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/study/rough_linen/arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/textures/pictures/pic1.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/js/8558.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/js/6612.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/js/4742.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/js/7449.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/js/5587.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/js/9615.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/js/6560.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/js/4472.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/js/9915.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/door-move-1.f0162ae1b8.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/door-latch-1.a220e2fe5d.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/switch-1.702a81fab4.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/paper-1.ce7576efe6.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/drawer-stop-2.b34d827382.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/door-move-2.9dea4bdbfd.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/door-latch-2.fb255ede74.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/switch-2.927c10f6e3.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8154/home/audio/study/paper-2.862694da2b.wav",
+      "initiatorType": "fetch"
+    }
+  ],
+  "disposal": {
+    "meshes": 0,
+    "materials": 0,
+    "textures": 0,
+    "fieldRetained": false,
+    "observers": 0
+  }
+}

@@ -29,4 +29,4 @@
 
 [海岸材质来源与加工清单](textures/coastal/source.json)保存固定无损PNG下载URL、原件SHA256、交付SHA256/字节、Pillow/NumPy版本、Lanczos/法线归一化/JPEG参数；脚本为仓库`tools/prepare-coastal-materials.py`，输入锁为`tools/coastal-material-inputs.json`，从校验原件重建，不对交付图重复压缩。颜色为sRGB；OpenGL切线法线与ARM为线性，ARM的R=AO/G=粗糙度/B=金属度，材质强制非金属。
 
-海岸几何、静态实体草叶/低灌木/岩块、天空与小HDR为项目程序生成（ISC），无AI图片；[程序来源](environment/coastal-cliff-source.json)记录当前版本和限制。室外材质级环境覆盖保留室内HDR，局部方向光/1024缓存阴影不受室内灯开关影响。海面仍为阶段A静态占位；波浪、海面倒影、泡沫和海雾待阶段C。
+海岸几何、静态实体草叶/低灌木/岩块、天空与小HDR为项目程序生成（ISC），无AI图片；[程序来源](environment/coastal-cliff-source.json)记录当前版本和限制。室外材质级环境覆盖保留室内HDR，局部方向光/1024缓存阴影不受室内灯开关影响。阶段C海面使用固定世界坐标解析波/过滤细浪法线、同源天空反射/太阳高光及海雾；256²程序距离/深度场来自实际崖壁海平面截面，控制水色及动态破碎泡沫，无新增下载素材。静态岸线不跟随每个浪峰，反射不含本地房屋/崖壁；无海面反射/折射RTT。

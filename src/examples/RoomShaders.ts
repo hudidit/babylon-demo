@@ -26,3 +26,8 @@ import "@babylonjs/core/Shaders/shadowMap.vertex.js";
 import "@babylonjs/core/Shaders/sharpen.fragment.js";
 import "@babylonjs/core/Shaders/ssao2.fragment.js";
 import "@babylonjs/core/Shaders/ssaoCombine.fragment.js";
+// CoastalOcean uses the current mirror clip plane, independently of the near-land cutaway.
+import "@babylonjs/core/Shaders/ShadersInclude/clipPlaneVertexDeclaration.js";
+import "@babylonjs/core/Shaders/ShadersInclude/clipPlaneVertex.js";
+import "@babylonjs/core/Shaders/ShadersInclude/clipPlaneFragmentDeclaration.js";
+import "@babylonjs/core/Shaders/ShadersInclude/clipPlaneFragment.js";

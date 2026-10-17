@@ -1,0 +1,18 @@
+{
+  "checkedLocalLinks": 226,
+  "missing": [],
+  "publicLinksResolvedInProductionDist": [
+    "release-manifest.json",
+    "licenses/babylonjs-Apache-2.0.md",
+    "licenses/babylonjs-NOTICE.md"
+  ],
+  "planStatus": "A/B/C complete; D pending",
+  "sourceVersion": "coastal-cliff-ocean-v1",
+  "budgetBytes": {
+    "models": 4456448,
+    "runtime": 16777216,
+    "initialJs": 3145728,
+    "release": 42991616
+  },
+  "unchangedFrozenBaseline": true
+}

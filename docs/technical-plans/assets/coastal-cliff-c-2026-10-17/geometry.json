@@ -1,0 +1,169 @@
+{
+  "baseline": "98e760a",
+  "before": {
+    "meshes": 16,
+    "vertices": 69661,
+    "triangles": 80016,
+    "materials": 7,
+    "textures": 9,
+    "lights": 1,
+    "cameras": 0,
+    "renderTargets": 1,
+    "layers": {
+      "terrain": 2,
+      "distant": 4,
+      "cliff": 5,
+      "foundation": 1,
+      "rocks": 1,
+      "vegetation": 1,
+      "sea": 1,
+      "sky": 1
+    }
+  },
+  "after": {
+    "meshes": 16,
+    "vertices": 98699,
+    "triangles": 137744,
+    "materials": 7,
+    "textures": 10,
+    "lights": 1,
+    "cameras": 0,
+    "renderTargets": 1,
+    "layers": {
+      "terrain": 2,
+      "distant": 4,
+      "cliff": 5,
+      "foundation": 1,
+      "rocks": 1,
+      "vegetation": 1,
+      "sea": 1,
+      "sky": 1
+    },
+    "localShadow": {
+      "size": [
+        1024,
+        1024
+      ],
+      "refreshRate": 0,
+      "fixedOrthoWorldUnits": 250,
+      "casterCount": 57,
+      "casterVertices": 35810,
+      "casters": [
+        "coastal-house-plinth",
+        "coastal-anchored-rocks",
+        "coastal-grass-and-shrubs",
+        "house-wall-0-low",
+        "house-wall-0-upper",
+        "house-wall-1-low",
+        "house-wall-1-upper",
+        "house-wall-2-upper",
+        "house-wall-3-low",
+        "house-wall-3-upper",
+        "house-wall-4-low",
+        "house-wall-4-upper",
+        "house-wall-5-low",
+        "house-wall-5-upper",
+        "house-wall-6-upper",
+        "house-wall-7-low",
+        "house-wall-7-upper",
+        "house-wall-8-low",
+        "house-wall-8-upper",
+        "house-wall-9-low",
+        "house-wall-9-upper",
+        "house-wall-10-upper",
+        "house-wall-11-low",
+        "house-wall-11-upper",
+        "house-wall-16-low",
+        "house-wall-16-upper",
+        "house-wall-17-low",
+        "house-wall-17-upper",
+        "house-wall-18-low",
+        "house-wall-18-upper",
+        "house-wall-19-upper",
+        "house-wall-20-low",
+        "house-wall-20-upper",
+        "house-wall-21-low",
+        "house-wall-21-upper",
+        "house-wall-22-low",
+        "house-wall-22-upper",
+        "house-wall-23-upper",
+        "house-wall-24-low",
+        "house-wall-24-upper",
+        "balcony-rail-35-study-darkWood",
+        "house-wall-43-low",
+        "house-wall-43-upper",
+        "house-wall-44-low",
+        "house-wall-44-upper",
+        "house-wall-45-upper",
+        "house-wall-46-low",
+        "house-wall-46-upper",
+        "house-wall-47-low",
+        "house-wall-47-upper",
+        "house-wall-48-upper",
+        "house-wall-49-low",
+        "house-wall-49-upper",
+        "balcony-rail-50-study-darkWood",
+        "house-wall-54-low",
+        "house-wall-54-upper",
+        "balcony-rail-58-study-darkWood"
+      ],
+      "receivers": [
+        "coastal-platform-0",
+        "coastal-platform-1",
+        "coastal-house-plinth",
+        "coastal-anchored-rocks",
+        "coastal-grass-and-shrubs"
+      ],
+      "indoorEnvironmentReplaced": false,
+      "cameraTargetsAdded": 0
+    },
+    "deliveryTexturePixels": 7667712,
+    "rgba8MapsWithFullMipChainEstimateBytes": 40894464,
+    "environmentFaceSize": 128,
+    "generatedShoreField": {
+      "pixels": 65536,
+      "rgba8Bytes": 262144,
+      "mipmaps": false
+    },
+    "gpuMemoryMeasured": false
+  },
+  "fpsOrLoadTimeSampling": false,
+  "inputs": [
+    {
+      "path": "src/examples/CoastalOcean.ts",
+      "sha256": "ba60331615eccd74b37a3ee7e67c422d2e88d312c959a5425048f195c53b6a31"
+    },
+    {
+      "path": "src/examples/CoastalCliff.ts",
+      "sha256": "0631f8a94addce0b0d6124e2bda1b46841e8222f9e8156d3df6387558e765189"
+    },
+    {
+      "path": "src/examples/CoastalMaterials.ts",
+      "sha256": "235eca7386d695961e78ad017cfd9ede1fb0c2da4f9d50f5b211fb7519a5a979"
+    },
+    {
+      "path": "src/examples/CoastalScatter.ts",
+      "sha256": "e816b004edb29c77a0748c121c9f34e2c1e95a322cffee3ee43ff5c36c20fe5d"
+    },
+    {
+      "path": "src/examples/CoastalSky.ts",
+      "sha256": "67758a5b0ac80f8049ee8c72d08ed4cb8abe67b22df3d07e42a8382075f8a209"
+    },
+    {
+      "path": "src/examples/RoomExterior.ts",
+      "sha256": "87d0865f9e62aced2b8389d867ef0fa3a494e38ca3d6ff22d7ee11a2256bde3a"
+    },
+    {
+      "path": "src/examples/Room.ts",
+      "sha256": "b054bbc5a02c7c89291b30a21d65221ebd5eec22773792c6a769d36964914fa8"
+    },
+    {
+      "path": "tools/study-release.config.cjs",
+      "sha256": "fd2db6a7d83fc7964a33f9d4d8cdc5a106972b66502ffd2dfbfae3d1d3892a4f"
+    },
+    {
+      "path": "public/environment/coastal-cliff-source.json",
+      "sha256": "7fa58c9c0fb259afbb258a82866530e4da6134da3c046b7cce485d513dc4e34e"
+    }
+  ]
+}

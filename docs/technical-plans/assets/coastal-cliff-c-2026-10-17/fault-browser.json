@@ -1,0 +1,624 @@
+{
+  "browser": "155.0.8059.82",
+  "url": "http://127.0.0.1:8156/",
+  "deterministicDeltaMilliseconds": 50,
+  "fpsOrLoadTimeSampling": false,
+  "fault": true,
+  "views": [],
+  "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Deliberate coastal fault)",
+    "Failed to load resource: the server responded with a status of 404 (Deliberate coastal fault)"
+  ],
+  "warnings": [],
+  "initialAssets": [
+    {
+      "url": "http://127.0.0.1:8156/js/9691.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/main.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/environment/study-interior.hdr",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/1203.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/environment/coastal-daylight.hdr",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8156/models/study/sofa_03.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8156/models/gothic_commode.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8156/models/study/modern_arm_chair_01.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8156/models/wooden_bookshelf.glb",
+      "initiatorType": "xmlhttprequest"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_table_001/color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/rough_linen/normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_table_001/arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_table_001/normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/rock-color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/ground-color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/rock-normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/rock-arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/ground-arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/ground-normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/rough_linen/arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_floor/color.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_floor/normal.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_floor/arm.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/painted_wall/normal.png",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/painted_wall/color.png",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/painted_wall/arm.png",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/pictures/pic1.jpg",
+      "initiatorType": "img"
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/8558.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/6612.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/4742.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/7449.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/9615.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/5587.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/4472.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/6560.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/9915.js",
+      "initiatorType": "script"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/door-move-1.f0162ae1b8.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/door-latch-1.a220e2fe5d.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/switch-1.702a81fab4.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/paper-1.ce7576efe6.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/drawer-stop-2.b34d827382.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/door-move-2.9dea4bdbfd.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/door-latch-2.fb255ede74.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/switch-2.927c10f6e3.wav",
+      "initiatorType": "fetch"
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/paper-2.862694da2b.wav",
+      "initiatorType": "fetch"
+    }
+  ],
+  "scene": {
+    "version": "coastal-cliff-ocean-v1",
+    "meshes": 612,
+    "vertices": 509239,
+    "materials": 80,
+    "textures": 147,
+    "outdoorVertices": 98699,
+    "renderTargetTextures": [
+      {
+        "name": "window-daylight_shadowMap",
+        "size": {
+          "width": 2048,
+          "height": 2048
+        }
+      },
+      {
+        "name": "reading-lamp-light_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "banker-lamp-light_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "sceneprePassRT",
+        "size": {
+          "width": 1280,
+          "height": 800
+        }
+      },
+      {
+        "name": "coastal-afternoon-sun_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "living-window-daylight_shadowMap",
+        "size": {
+          "width": 2048,
+          "height": 2048
+        }
+      },
+      {
+        "name": "living-table-lamp-light_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "master-window-daylight_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "master-lamp-light_shadowMap",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      },
+      {
+        "name": "ensuite-lamp-light_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "bedroom-window-daylight_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "bedroom-lamp-light_shadowMap",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      },
+      {
+        "name": "kitchen-window-daylight_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "kitchen-lamp-light_shadowMap",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      },
+      {
+        "name": "bathroom-lamp-light_shadowMap",
+        "size": {
+          "width": 1024,
+          "height": 1024
+        }
+      },
+      {
+        "name": "balcony-daylight_shadowMap",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      },
+      {
+        "name": "ensuite-mirror-target-3638",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      },
+      {
+        "name": "bathroom-mirror-target-4127",
+        "size": {
+          "width": 512,
+          "height": 512
+        }
+      }
+    ],
+    "indoorEnvironment": "./environment/study-interior.hdr",
+    "imageProcessing": {
+      "postprocess": true,
+      "aces": 1
+    },
+    "generatedShore": [
+      {
+        "name": "coastal-shore-distance-depth",
+        "size": {
+          "width": 256,
+          "height": 256
+        },
+        "gamma": false
+      }
+    ]
+  },
+  "fallbacks": [
+    "./environment/coastal-daylight.hdr",
+    "./textures/coastal/rock-color.jpg"
+  ],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:8156/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/main.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/9691.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/rough_linen/normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_table_001/color.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_table_001/arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_table_001/normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/rock-color.jpg",
+      "status": 404
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/ground-color.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/rock-normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/rock-arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/rough_linen/arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/ground-arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/coastal/ground-normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_floor/color.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_floor/normal.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/wood_floor/arm.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/painted_wall/normal.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/painted_wall/color.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/study/painted_wall/arm.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/textures/pictures/pic1.jpg",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/environment/study-interior.hdr",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/1203.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/environment/coastal-daylight.hdr",
+      "status": 404
+    },
+    {
+      "url": "http://127.0.0.1:8156/models/study/modern_arm_chair_01.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/models/gothic_commode.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/models/study/sofa_03.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/models/wooden_bookshelf.glb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/8558.js",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/4ed8f988-ac13-4437-8d7b-6aa1023f62b3",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/fc420bc2-d8f5-4587-893e-c6a6e9e645e1",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/cfc143be-c61e-4597-956a-08a5b80ba9e1",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/8ae90ed2-b1e8-4e91-be41-20d9262f4ad3",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/1b5d77ae-5d52-4c0e-ba37-042a691892b0",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/fef759b9-ea32-43ae-b8d4-319a4ee3a0fa",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/727138de-f8c9-4fbc-985a-d6f87f5471a2",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/a95c8a22-f44b-42aa-9345-2d0a356384e6",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/0131c2ad-928d-4b00-b531-3c5b6a83b638",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/c7cabe4b-24ea-419a-84f7-714026a470ec",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/bc2ea62c-dcc4-407d-a9a6-6b1a50237e03",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/d6e0a0c3-69a1-4c61-8046-98ad1cc91709",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/5b4192bd-08ea-4b04-8659-75215aaebdc8",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/e46cfcb8-23a7-4d40-825d-934373be4bbb",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/9293a3f3-b5c6-4afc-862a-a5a05e350e40",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8156/508a0ce9-c684-43d9-8710-933e084bd452",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/7449.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/4742.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/6612.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/5587.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/9615.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/6560.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/4472.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/js/9915.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/switch-1.702a81fab4.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8156/audio/study/paper-2.862694da2b.wav",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "fixedAnimationFrameStepSeconds": 0.2,
+  "fpsOrLoadTimeSampling": false,
+  "sequences": [
+    {
+      "name": "ocean-animation",
+      "frames": 20,
+      "firstLastChangedChannels": 203010,
+      "differenceBounds": [
+        538,
+        405,
+        1280,
+        657
+      ],
+      "size": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "shore-animation",
+      "frames": 12,
+      "firstLastChangedChannels": 1078875,
+      "differenceBounds": [
+        0,
+        368,
+        1280,
+        800
+      ],
+      "size": [
+        1280,
+        800
+      ]
+    }
+  ]
+}

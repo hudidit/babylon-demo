@@ -2,7 +2,7 @@ import { HOUSE_COORDINATES, planToWorld } from "./HouseLayout";
 
 /** House-plan distances are metres; backdrop radii are world units. South opens onto the sea. */
 export const COASTAL_CLIFF = Object.freeze({
-  version: "coastal-cliff-static-v1", seed: 41723,
+  version: "coastal-cliff-ocean-v1", seed: 41723,
   balconyEdgeY: 12.3, setback: 5, seaDepth: 28,
   westX: -34, eastX: 44, inlandStartY: -50, inlandY: -600,
   capeX: -8, capeReach: 40, columns: 96, rows: 64, nearRows: 20,
@@ -147,8 +147,11 @@ export function coastalFoundation() {
 }
 
 export function coastalSea() {
-  const g = empty(), u = HOUSE_COORDINATES.unitsPerMeter, segments = 128;
-  const radii = [20, 50, 100, 250, 600, COASTAL_CLIFF.seaRadius / u];
+  const g = empty(), u = HOUSE_COORDINATES.unitsPerMeter, segments = 256;
+  // Fixed world grid: resolve the displaced near waves, then coarsen beyond their fade distance.
+  const radii = [1];
+  for (let r = 3; r <= 221; r += 2) radii.push(r);
+  radii.push(250, 300, 400, 600, COASTAL_CLIFF.seaRadius / u);
   vertex(g, { x: 5.4, y: 5.4, height: -COASTAL_CLIFF.seaDepth });
   for (const radius of radii) for (let i = 0; i <= segments; i++) {
     const angle = i / segments * Math.PI * 2;

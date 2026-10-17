@@ -46,7 +46,10 @@ try {
   const exterior = new RoomExterior(scene);
   exterior.setVisible(false);
   scene.useDelayedTextureLoading = false;
-  assert.ok(exterior.meshes.length > 0 && exterior.meshes.every(m => m.material instanceof b.StandardMaterial || m.material instanceof b.PBRMaterial));
+  assert.ok(exterior.meshes.length > 0 && exterior.meshes.every(m => m.material instanceof b.StandardMaterial || m.material instanceof b.PBRMaterial || m.material instanceof b.ShaderMaterial));
+  assert.ok(exterior.ocean.material instanceof b.ShaderMaterial);
+  assert.ok(exterior.ocean.shoreTexture instanceof b.RawTexture);
+  assert.ok(b.Effect.IncludesShadersStore.clipPlaneVertex && b.Effect.IncludesShadersStore.clipPlaneFragment);
   exterior.dispose(); // GPU upload itself is covered by the production WebGL browser run.
   scene.render();
   const { RoomItemInspection } = loadSource(path.join(__dirname, '../../src/examples/RoomItemInspection.ts'));

@@ -8,15 +8,17 @@ import type { CoastalGeometry } from "./CoastalCliff";
 import { CoastalMaterials } from "./CoastalMaterials";
 import { coastalScatter } from "./CoastalScatter";
 import { COASTAL_SKY, coastalSkyColor, coastalSunDirection } from "./CoastalSky";
+import { CoastalOcean } from "./CoastalOcean";
 
 type ExteriorLayer = "terrain" | "cliff" | "foundation" | "vegetation" | "rocks" | "distant" | "sea" | "sky";
 
-/** Shared static coast: photographic PBR on real geometry with its own daylight and cached shadows. */
+/** Shared coast: photographic land, scoped daylight and a world-anchored animated ocean. */
 export class RoomExterior {
   readonly meshes: Mesh[] = [];
   readonly surfaces: CoastalMaterials;
   readonly sun: DirectionalLight;
   readonly shadow: ShadowGenerator;
+  readonly ocean: CoastalOcean;
   private readonly cutaway = new Plane(0, 0, 1, 0);
   private readonly clippedMaterials: (PBRMaterial | StandardMaterial)[] = [];
   private readonly corners: { x: number; z: number }[] = [];
@@ -36,9 +38,9 @@ export class RoomExterior {
       m.disableLighting = true; m.emissiveColor = Color3.White(); m.specularColor = Color3.Black();
       this.unlit.push(m); return m;
     };
-    const water = unlit("coastal-sea-placeholder"), sky = unlit("coastal-sky");
+    const sky = unlit("coastal-sky");
     const retain = (mesh: Mesh, layer: ExteriorLayer) => {
-      mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "B", castsShadows: false, lightRooms: [] };
+      mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "C", castsShadows: false, lightRooms: [] };
       setRoomOwners(mesh, owners);
       mesh.isPickable = false; mesh.checkCollisions = false;
       mesh.receiveShadows = ["terrain", "foundation", "vegetation", "rocks"].includes(layer);
@@ -74,7 +76,7 @@ export class RoomExterior {
     const scatter = coastalScatter();
     make("coastal-anchored-rocks", scatter.rocks, "rocks", s.rock);
     make("coastal-grass-and-shrubs", scatter.plants, "vegetation", s.foliage);
-    make("coastal-sea", coastalSea(), "sea", water, "#648b9b");
+    this.ocean = new CoastalOcean(scene, make("coastal-sea", coastalSea(), "sea", sky));
 
     const dome = CreateSphere("coastal-sky", { diameter: a.skyRadius * 2, segments: 96, sideOrientation: Mesh.BACKSIDE }, scene);
     const positions = dome.getVerticesData(VertexBuffer.PositionKind)!, colors: number[] = [];
@@ -113,6 +115,7 @@ export class RoomExterior {
   refreshShadows() { if (!this.disposed) this.shadow.getShadowMap()?.resetRefreshCounter(); }
   setVisible(visible: boolean) {
     this.meshes.forEach(mesh => mesh.isVisible = visible); this.sun.setEnabled(visible);
+    this.ocean.setVisible(visible);
     if (visible) this.refreshShadows();
   }
 
@@ -135,7 +138,7 @@ export class RoomExterior {
   dispose() {
     if (this.disposed) return; this.disposed = true;
     this.scene.onDisposeObservable.remove(this.sceneCleanup);
-    this.shadow.dispose(); this.sun.dispose();
+    this.ocean.dispose(); this.shadow.dispose(); this.sun.dispose();
     this.meshes.forEach(m => m.dispose(false, false));
     this.unlit.forEach(m => m.dispose(false, false)); this.surfaces.dispose();
   }

@@ -51,6 +51,72 @@ const { slidingDoorSweepIsClear } = loadSource("RoomInteractions");
 const { RoomMirrors } = loadSource("RoomMirrors");
 const { RoomExterior } = loadSource("RoomExterior");
 const { COASTAL_CLIFF, coastalSeaY, coastalCrestY, coastalBoundary, coastalWallPoint, coastalLandPatch } = loadSource("CoastalCliff");
+const { OceanClock, coastalShoreline, coastalShoreDistance, coastalShoreField, OCEAN_FIELD } = loadSource("CoastalOcean");
+
+test("ocean time pauses offscreen/background and ignores a stale resume delta", () => {
+  const clock = new OceanClock();
+  assert.equal(clock.advance(60, true), 0);
+  assert.equal(clock.advance(.04, true), .04);
+  assert.equal(clock.advance(90, false), .04);
+  assert.equal(clock.advance(90, true), .04);
+  assert.equal(clock.advance(.05, true), .09);
+  clock.pause();
+  assert.equal(clock.advance(120, true), .09);
+  assert.equal(clock.advance(10, true), .19, 'foreground stalls are capped');
+  assert.equal(clock.advance(NaN, true), .19);
+  assert.equal(clock.advance(-3, true), .19);
+});
+
+test("ocean shoreline intersects the real cliff and one deterministic field controls depth and foam", () => {
+  const shore = coastalShoreline();
+  assert.equal(shore.length, coastalBoundary().length);
+  for (const i of [0, 32, 64, 96, 140, 250, 319]) {
+    assert.ok(Math.abs(coastalShoreDistance(shore[i].x, shore[i].y, shore)) < 1e-9);
+    const a = coastalWallPoint(coastalBoundary(), i, 7), b = coastalWallPoint(coastalBoundary(), i, 8);
+    assert.ok(a.height > -28 && b.height < -28);
+  }
+  assert.ok(coastalShoreDistance(8.1, 5, shore) < 0, 'house footprint is dry');
+  assert.ok(coastalShoreDistance(8.1, 40, shore) > 0, 'open water south of the balcony');
+  const field = coastalShoreField(), f = OCEAN_FIELD;
+  assert.deepEqual(field, coastalShoreField());
+  assert.equal(field.length, f.size * f.size * 4);
+  for (const [col, row] of [[150, 145], [145, 170], [100, 200], [200, 200]]) {
+    const i = (row * f.size + col) * 4;
+    const actual = ((field[i] * 256 + field[i + 1]) / 65535 * 2 - 1) * f.range;
+    const exact = coastalShoreDistance(f.minX + (col + .5) / f.size * f.width, f.minY + (row + .5) / f.size * f.depth, shore);
+    assert.ok(Math.abs(actual - Math.max(-f.range, Math.min(f.range, exact))) < .001);
+  }
+});
+
+test("ocean visibility, camera layers, page transitions and disposal stop the shared observer", t => {
+  const scene = createScene(t), doc = new EventTarget();
+  doc.hidden = false;
+  scene.getEngine().getRenderingCanvas = () => ({ ownerDocument: doc });
+  const exterior = new RoomExterior(scene), ocean = exterior.ocean;
+  const sea = ocean.mesh, camera = new babylon.FreeCamera('ocean-test-camera', babylon.Vector3.Zero(), scene);
+  camera.position.set(0, 0, 0); camera.setTarget(new babylon.Vector3(0, -145, 500));
+  camera.getTransformationMatrix();
+  const advance = () => scene.onBeforeRenderObservable.notifyObservers(scene);
+  scene.getEngine().getDeltaTime = () => 50;
+  advance(); advance(); assert.equal(ocean.clock.seconds, .05);
+  exterior.setVisible(false); advance(); assert.equal(ocean.clock.seconds, .05);
+  exterior.setVisible(true); advance(); advance(); assert.equal(ocean.clock.seconds, .1);
+  doc.hidden = true; doc.dispatchEvent(new Event('visibilitychange')); advance();
+  doc.hidden = false; doc.dispatchEvent(new Event('visibilitychange')); advance();
+  assert.equal(ocean.clock.seconds, .1);
+  camera.layerMask = 0x10000000; advance(); assert.equal(ocean.clock.seconds, .1);
+  camera.layerMask = sea.layerMask; advance(); advance(); assert.ok(Math.abs(ocean.clock.seconds - .15) < 1e-9);
+  assert.ok(ocean.material.clipPlane2 == null);
+  assert.equal(ocean.material.options.useClipPlane, true, 'mirror clip plane must be honoured');
+  assert.ok(sea.getBoundingInfo().boundingBox.maximum.y > coastalSeaY + 1);
+  assert.equal(ocean.shoreTexture.gammaSpace, false);
+  const count = scene.onBeforeRenderObservable.observers.length;
+  exterior.dispose(); exterior.dispose(); advance();
+  assert.ok(Math.abs(ocean.clock.seconds - .15) < 1e-9);
+  assert.equal(scene.onBeforeRenderObservable.observers.filter(o => !o._willBeUnregistered).length, count - 1);
+  assert.ok(!scene.textures.includes(ocean.shoreTexture));
+  assert.ok(!scene.materials.includes(ocean.material));
+});
 
 test("all window centres see the outside through transparent glass while retaining walker collisions", t => {
   const { scene } = houseShell(t);
