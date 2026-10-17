@@ -37,14 +37,14 @@ const { HouseRooms } = loadSource("HouseRooms");
 const { setRoomOwners } = loadSource("RoomOwnership");
 const { sharedRoomMaterials } = loadSource("RoomMaterialLibrary");
 const { createHouseArchitecture } = loadSource("HouseArchitecture");
-const { houseWallSpans, HOUSE_WINDOWS } = loadSource("HouseStructure");
+const { houseWallSpans, houseWindowSide, HOUSE_WINDOWS } = loadSource("HouseStructure");
 const { HOUSE_DOORS, HOUSE_ROOMS } = loadSource("HouseLayout");
 const { houseVector, HOUSE_WALKER_RADIUS, constrainHouseWalking } = loadSource("HouseWalking");
 const { doorSweepIsClear } = loadSource("RoomInteractions");
 const { furnishHouseStudy, furnishHouseLiving, HOUSE_CONTENT } = loadSource("HouseContent");
 const { furnishHouseMaster, furnishHouseEnsuite } = loadSource("HouseSuite");
 const { bathroomVanity, bathroomToilet, bathroomShower, bedroomBed, bedroomWardrobe } = loadSource("HouseRoomComponents");
-const { furnishHouseBedroom } = loadSource("HouseBedroom");
+const { HOUSE_BEDROOM, furnishHouseBedroom } = loadSource("HouseBedroom");
 const { furnishHouseKitchen, furnishHouseBathroom } = loadSource("HouseServiceRooms");
 const { furnishHouseBalcony } = loadSource("HouseBalcony");
 const { slidingDoorSweepIsClear } = loadSource("RoomInteractions");
@@ -118,11 +118,35 @@ test("ocean visibility, camera layers, page transitions and disposal stop the sh
   assert.ok(!scene.materials.includes(ocean.material));
 });
 
+test("exterior window sides match their rooms and the guest room shares the balcony's sea direction", () => {
+  assert.deepEqual(Object.fromEntries(HOUSE_WINDOWS.map(w => [w.id, houseWindowSide(w)])), {
+    "master-window": "north", "study-window": "north", "kitchen-window": "north",
+    "ensuite-window": "west", "bedroom-window": "south", "living-window": "east",
+  });
+  const bedroom = HOUSE_ROOMS.find(room => room.id === "bedroom"),
+    balcony = HOUSE_ROOMS.find(room => room.id === "balcony"),
+    window = HOUSE_WINDOWS.find(w => w.room === "bedroom");
+  assert.equal(window.axis, "x");
+  assert.equal(window.y, bedroom.y + bedroom.depth, "window sits in the south facade");
+  assert.equal(window.y, balcony.y, "the guest room and balcony share the sea-facing facade line");
+  assert.deepEqual([window.x, window.x + window.width], [2.9, 4.9]);
+  assert.ok(!HOUSE_WINDOWS.some(w => w.room === "bedroom" && w.axis === "y"), "no west window remains");
+  assert.ok(!houseWallSpans().some(span => span.axis === "y" && span.at === 0
+    && span.start < bedroom.y + bedroom.depth && span.end > bedroom.y && span.opening),
+  "the guest room's west wall is solid again");
+  const seat = HOUSE_BEDROOM.seat;
+  assert.equal(bedroom.x + seat.x, window.x + window.width / 2, "the seat is centred below the window");
+  assert.ok(window.sill > 0.56, "the seat and its tray fit below the sill");
+});
+
 test("all window centres see the outside through transparent glass while retaining walker collisions", t => {
   const { scene } = houseShell(t);
   for (const w of HOUSE_WINDOWS) {
     const centre = houseVector(w.x + (w.axis === 'x' ? w.width * .3 : 0), w.y + (w.axis === 'y' ? w.width * .3 : 0), w.sill + w.height * .7);
-    const inward = w.axis === 'x' ? new babylon.Vector3(0, 0, 1) : new babylon.Vector3(w.x === 0 ? 1 : -1, 0, 0);
+    const side = houseWindowSide(w);
+    const inward = side === 'north' ? new babylon.Vector3(0, 0, 1)
+      : side === 'south' ? new babylon.Vector3(0, 0, -1)
+        : side === 'west' ? new babylon.Vector3(1, 0, 0) : new babylon.Vector3(-1, 0, 0);
     const ray = new babylon.Ray(centre.add(inward.scale(2)), inward.negate(), 5);
     const hit = scene.pickWithRay(ray, m => m.getTotalVertices() > 0 && m.material?.alpha === 1 && !m.metadata?.collisionOnly);
     assert.ok(!hit?.hit, w.id + ': no solid wood panel or wall behind the window opening');
@@ -555,12 +579,12 @@ test("guest bedroom allows both bedside paths, wardrobe access and the full entr
   for(let i=0;i<16;i++)interactions.update(.05);
   const radius=new babylon.Vector3(HOUSE_WALKER_RADIUS,3.9,HOUSE_WALKER_RADIUS);
   const routes=[[[6.6,9.15],[4.5,9.15],[3.4,9.15],[3.4,8.35],[4.15,8.35]],
-    [[4.5,9.15],[4.5,10.25],[2.1,10.25],[.95,10.25],[.95,9],[.95,8.35]]];
+    [[4.5,9.15],[4.5,9.9],[2.1,9.9],[.95,9.9],[.95,9],[.95,8.35]]];
   for(const route of routes)for(const points of [route,[...route].reverse()])for(let i=1;i<points.length;i++) {
     const p=houseVector(...points[i-1],.82),q=houseVector(...points[i],.82);
     assert.ok(sweep(scene,p,q.subtract(p),radius).position.equalsWithEpsilon(q,.03),`${points[i-1]} → ${points[i]}`);
   }
-  for(const [from,to]of [[[3.4,9],[2.1,9]],[[4.15,8.35],[4.15,7.6]],[[.95,9],[.35,9]]]) {
+  for(const [from,to]of [[[3.4,9],[2.1,9]],[[4.15,8.35],[4.15,7.6]],[[3.9,9.9],[3.9,10.5]]]) {
     const p=houseVector(...from,.82),q=houseVector(...to,.82);
     assert.ok(!sweep(scene,p,q.subtract(p),radius).position.equalsWithEpsilon(q,.03),'solid guest furniture');
   }
@@ -572,7 +596,7 @@ test("guest bedroom allows both bedside paths, wardrobe access and the full entr
     for(const leaf of door.meshes)for(const m of furniture)assert.equal(leaf.intersectsMesh(m,true),false,m.name+' door sweep');
   }
   architecture.setEnclosed(false,'bedroom');
-  architecture.updateCutaway(houseVector(5.1,13.1,4.7),houseVector(2.7,9,.7));
+  architecture.updateCutaway(houseVector(0.6,6.8,2.6),houseVector(3.6,10.8,.9));
   assert.ok(architecture.upperWalls.some(m=>m.isVisible&&m.metadata.ownerRooms.includes('bedroom')));
   assert.ok(architecture.upperWalls.every(m=>!m.isVisible||m.metadata.ownerRooms.includes('bedroom')));
 });
@@ -588,6 +612,10 @@ test("guest lamp controls only its room, emits outside its fixture and releases 
   assert.ok(scene.lights.every((l,i)=>l.intensity===(l.name==='bedroom-lamp-light'?0:before[i])));
   lighting.toggleLamp('bedroom-lamp');assert.ok(!material.emissiveColor.equals(babylon.Color3.Black()));
   const lamp=scene.getLightByName('bedroom-lamp-light'),day=scene.getLightByName('bedroom-window-daylight');
+  const window=HOUSE_WINDOWS.find(w=>w.id==='bedroom-window');
+  assert.ok(day.position.z < houseVector(0,window.y).z && day.position.z > houseVector(0,window.y-1).z,
+    'daylight sits just inside the south window');
+  assert.ok(day.direction.z < -.5, 'daylight faces north into the room');
   assert.equal(lamp.getShadowGenerator().getShadowMap().getSize().width,512);
   assert.equal(day.getShadowGenerator().getShadowMap().getSize().width,1024);
   assert.ok(!scene.pickWithRay(new babylon.Ray(lamp.position,lamp.direction,1),m=>room.lamps.find(l=>l.id==='bedroom-lamp').meshes.includes(m))?.hit);
@@ -1575,12 +1603,20 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
     room.engine = { getRenderWidth: () => width, getRenderHeight: () => height };
     for (const view of ['overview', 'study', 'living', 'master', 'ensuite', 'bedroom', 'kitchen', 'bathroom', 'balcony']) {
       room.setView(view); const desktopRadius = room.camera.radius;
+      if (view === 'bedroom') {
+        assert.equal(room.camera.fov, .8);
+        assert.equal(room.camera.lowerRadiusLimit, 4);
+        assert.ok(room.camera.target.z > room.camera.position.z, 'bedroom preset looks south at the sea window');
+      }
       width = 390; height = 844; room.fitSuiteView();
       if (view === 'balcony') {
         assert.ok(Math.abs(room.camera.radius - desktopRadius) < .001, 'portrait sea view must keep the eye on the balcony');
         assert.ok(room.camera.position.z > houseVector(8.1, 10.8).z && room.camera.position.z < houseVector(8.1, 12.3).z);
         assert.ok(room.camera.target.z > room.camera.position.z, 'balcony looks south over the sea');
         assert.equal(room.camera.fov, .95);
+      } else if (view === 'bedroom') {
+        assert.ok(room.camera.radius > desktopRadius * 1.7 && room.camera.radius < desktopRadius * 2.1,
+          'the close sea-window preset keeps a focused portrait view instead of becoming an all-house overview');
       } else assert.ok(room.camera.radius > desktopRadius * 3, 'portrait view must keep the room in frame');
       const portraitRadius=room.camera.radius;room.camera._checkInputs();
       assert.ok(Math.abs(room.camera.radius-portraitRadius)<.001,'orbit limits must not undo portrait framing');

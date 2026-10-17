@@ -9,9 +9,25 @@ export const HOUSE_WINDOWS: readonly HouseWindow[] = [
   { id: "study-window", room: "study", axis: "x", x: 6.1, y: 0, width: 1.6, sill: 0.95, height: 1.5 },
   { id: "kitchen-window", room: "kitchen", axis: "x", x: 8.9, y: 0, width: 1.4, sill: 1.2, height: 1.1 },
   { id: "ensuite-window", room: "ensuite", axis: "y", x: 0, y: 5.5, width: 1, sill: 1.5, height: 0.75 },
-  { id: "bedroom-window", room: "bedroom", axis: "y", x: 0, y: 8, width: 2, sill: 0.9, height: 1.5 },
+  // The guest room shares the balcony's sea-facing south wall; its seat sits below this opening.
+  { id: "bedroom-window", room: "bedroom", axis: "x", x: 2.9, y: 10.8, width: 2, sill: 0.9, height: 1.5 },
   { id: "living-window", room: "living", axis: "y", x: 10.8, y: 7.2, width: 2.4, sill: 0.9, height: 1.5 },
 ];
+export type HouseWindowSide = "north" | "south" | "east" | "west";
+
+/** The exterior wall carrying an opening; the room on its other side is the interior. */
+export function houseWindowSide(window: HouseWindow): HouseWindowSide {
+  const room = HOUSE_ROOMS.find(room => room.id === window.room);
+  if (!room) throw new Error("Unknown window room: " + window.id);
+  if (window.axis === "x") {
+    if (Math.abs(window.y - room.y) < 1e-6) return "north";
+    if (Math.abs(window.y - (room.y + room.depth)) < 1e-6) return "south";
+  } else {
+    if (Math.abs(window.x - room.x) < 1e-6) return "west";
+    if (Math.abs(window.x - (room.x + room.width)) < 1e-6) return "east";
+  }
+  throw new Error("Window is not on an exterior wall: " + window.id);
+}
 export const HOUSE_DOOR_HEIGHT = 2.2;
 export const HOUSE_DOOR_JAMB = 0.04;
 export const HOUSE_DOOR_FLOOR_GAP = 0.03; // Clears the shared flush wet-room finish (at most 24mm).

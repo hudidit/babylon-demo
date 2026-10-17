@@ -2,7 +2,7 @@ import { Color3, CreateBox, CreateGround, StandardMaterial, VertexBuffer } from 
 import type { Mesh, Scene } from "@babylonjs/core/pure";
 import { HOUSE_COORDINATES, HOUSE_DOORS, HOUSE_ROOMS, worldToPlan } from "./HouseLayout";
 import type { HouseRoomId } from "./HouseLayout";
-import { houseWallSpans, HOUSE_CUT_HEIGHT, HOUSE_DOOR_HEIGHT, HOUSE_WINDOWS } from "./HouseStructure";
+import { houseWallSpans, houseWindowSide, HOUSE_CUT_HEIGHT, HOUSE_DOOR_HEIGHT, HOUSE_WINDOWS } from "./HouseStructure";
 import { houseVector } from "./HouseWalking";
 import { mappedMaterial, paintedWallMaterial, tileMaterial } from "./RoomMaterials";
 import { setRoomOwners } from "./RoomOwnership";
@@ -121,7 +121,9 @@ export function createHouseArchitecture(scene: Scene, furniture: RoomFurnishings
   HOUSE_WINDOWS.forEach(w => {
     const p = houseVector(w.x + (w.axis === "x" ? w.width / 2 : 0), w.y + (w.axis === "y" ? w.width / 2 : 0), w.sill + w.height / 2);
     furniture.section(w.room, w.id, () => {
-      const root = furniture.window([p.x, p.y, p.z], w.axis === "x" ? Math.PI : w.x === 0 ? -Math.PI / 2 : Math.PI / 2, w.id);
+      // The sill and curtains face the room; derive that side from the room instead of the axis alone.
+      const yaw = { north: Math.PI, south: 0, west: -Math.PI / 2, east: Math.PI / 2 }[houseWindowSide(w)];
+      const root = furniture.window([p.x, p.y, p.z], yaw, w.id);
       // Resize this architectural component to the actual opening, before merging/freezing.
       root.scaling.set(w.width * u / 10.3, w.height * u / 7.5, 1);
     }).forEach(m => { m.metadata.cut = { axis: w.axis, at: w.axis === "x" ? w.y : w.x }; hidden.push(m); });

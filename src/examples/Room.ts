@@ -272,7 +272,7 @@ export class RoomScene {
       study: { position: houseVector(4.4, 4.2, 4.4), target: houseVector(a.desk.x, a.chair.y, 0.5) },
       living: { position: houseVector(3.2, 13.7, 6.8), target: houseVector(8.1, 7.5, 0.4) },
       master: { position: houseVector(3.8, 6.6, 4.7), target: houseVector(2.5, 2.2, 0.7) },
-      bedroom: { position: houseVector(5.1, 13.1, 4.7), target: houseVector(2.7, 9, 0.7) },
+      bedroom: { position: houseVector(0.6, 6.8, 2.6), target: houseVector(3.6, 10.8, 0.9) },
       ensuite: { position: houseVector(-1.6, 8.3, 3.8), target: houseVector(1.2, 6, 0.9) },
       kitchen: { position: houseVector(10.5, 5.4, 4.5), target: houseVector(9.6, 1.7, .9) },
       bathroom: { position: houseVector(6.9, 3.8, 4.5), target: houseVector(3.9, 6, .8) },
@@ -288,8 +288,8 @@ export class RoomScene {
       this.scene.activeCamera = this.firstPersonCamera;
     } else {
       const selected = views[view];
-      this.camera.fov = view === "balcony" ? .95 : .65;
-      this.camera.lowerRadiusLimit = view === "details" ? 3 : 9;
+      this.camera.fov = view === "balcony" ? .95 : view === "bedroom" ? .8 : .65;
+      this.camera.lowerRadiusLimit = view === "details" ? 3 : view === "bedroom" ? 4 : 9;
       this.camera.setTarget(selected.target);
       this.camera.setPosition(selected.position);
       this.viewFramingScale = 1;
@@ -554,7 +554,9 @@ export class RoomScene {
   private fitSuiteView() {
     const aspect = this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight());
     // The sea-facing eye stays on the balcony in portrait; pulling back would enter the house.
-    const scale = ["overview", "study", "living", "master", "ensuite", "bedroom", "kitchen", "bathroom"].includes(this.currentView) ? Math.max(1, 1.4 / aspect) : 1;
+    let scale = ["overview", "study", "living", "master", "ensuite", "bedroom", "kitchen", "bathroom"].includes(this.currentView) ? Math.max(1, 1.4 / aspect) : 1;
+    // The guest room already frames the sea window closely; a full portrait pullback would become an all-house overview.
+    if (this.currentView === "bedroom") scale = Math.min(scale, 1.9);
     // The whole-house portrait radius exceeds the old fixed orbit limit.
     this.camera.upperRadiusLimit = 145 * scale;
     // Keep the suite readable on portrait screens; resizing preserves the user's relative zoom.

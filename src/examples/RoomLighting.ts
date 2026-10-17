@@ -6,6 +6,7 @@ import { HOUSE_CONTENT } from "./HouseContent";
 import { houseVector } from "./HouseWalking";
 import { HOUSE_SUITE } from "./HouseSuite";
 import { HOUSE_BEDROOM } from "./HouseBedroom";
+import { HOUSE_WINDOWS } from "./HouseStructure";
 import { HOUSE_SERVICE } from "./HouseServiceRooms";
 import { localPosition } from "./HouseRoomComponents";
 
@@ -137,9 +138,11 @@ export class RoomLighting {
   }
 
   addBedroom(scene: Scene) {
-    const a = HOUSE_BEDROOM.lamp;
-    const daylight = new SpotLight("bedroom-window-daylight", houseVector(0.18, 9, 2.1),
-      new Vector3(1, -0.45, 0.1).normalize(), Math.PI / 1.5, 1, scene);
+    const a = HOUSE_BEDROOM.lamp, window = HOUSE_WINDOWS.find(w => w.id === "bedroom-window")!;
+    // Emit just inside the south opening so the window frame and curtains cannot block their own daylight.
+    const daylight = new SpotLight("bedroom-window-daylight",
+      houseVector(window.x + window.width / 2, window.y - 0.16, 1.8),
+      new Vector3(-0.08, -0.45, -1).normalize(), Math.PI / 1.5, 1, scene);
     daylight.diffuse = new Color3(1, 0.96, 0.88); daylight.intensity = 3.2; daylight.range = 30;
     const lamp = new SpotLight("bedroom-lamp-light", Vector3.FromArray(localPosition("bedroom", { x: a.x + 0.04, y: a.y }, a.emitterHeight)),
       new Vector3(0.5, -0.8, 0.2).normalize(), Math.PI / 1.5, 1, scene);

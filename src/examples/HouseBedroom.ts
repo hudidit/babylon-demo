@@ -2,12 +2,12 @@ import { HOUSE_COORDINATES } from "./HouseLayout";
 import type { RoomFurnishings } from "./RoomFurnishings";
 import { bedroomBed, bedroomNightstand, bedroomWardrobe, localPosition, metres } from "./HouseRoomComponents";
 
-/** Guest room: north-facing bed, compact storage and a seat below the west window. */
+/** Guest room: north-facing bed, compact storage and a seat below the south sea-facing window. */
 export const HOUSE_BEDROOM = {
   bed: { x: 2.1, y: 1.25, width: 1.5 },
   nightstand: { x: 0.9, y: 0.45 },
   wardrobe: { x: 4.15, y: 0.42, width: 1.8 },
-  seat: { x: 0.35, y: 1.8 },
+  seat: { x: 3.9, y: 3.3, yaw: Math.PI / 2 },
   lamp: { x: 0.9, y: 0.45, height: 0.555, emitterHeight: 0.91 },
 };
 
@@ -17,7 +17,7 @@ export function furnishHouseBedroom(room: RoomFurnishings) {
   bedroomNightstand(room, "bedroom", a.nightstand);
   bedroomWardrobe(room, "bedroom", a.wardrobe, a.wardrobe.width, 0, { door: "navy", inset: "cushion" });
   room.section("bedroom", "bedroom-reading-seat", () => {
-    const root = room.group("bedroom-seat-root", localPosition("bedroom", a.seat));
+    const root = room.group("bedroom-seat-root", localPosition("bedroom", a.seat), a.seat.yaw);
     for (const x of [-0.15, 0.15]) for (const z of [-0.53, 0.53])
       room.box("seat-leg", metres(0.055, 0.37, 0.055), metres(x, 0.185, z), "wood", root);
     room.box("seat-frame", metres(0.45, 0.08, 1.3), metres(0, 0.37, 0), "darkWood", root);
