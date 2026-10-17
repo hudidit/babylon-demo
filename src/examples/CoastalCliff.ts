@@ -2,13 +2,13 @@ import { HOUSE_COORDINATES, planToWorld } from "./HouseLayout";
 
 /** House-plan distances are metres; backdrop radii are world units. South opens onto the sea. */
 export const COASTAL_CLIFF = Object.freeze({
-  version: "coastal-cliff-graybox-v1", seed: 41723,
+  version: "coastal-cliff-static-v1", seed: 41723,
   balconyEdgeY: 12.3, setback: 5, seaDepth: 28,
   westX: -34, eastX: 44, inlandStartY: -50, inlandY: -600,
   capeX: -8, capeReach: 40, columns: 96, rows: 64, nearRows: 20,
   skyRadius: 4800, seaRadius: 4900, cutawayDistance: 50,
 });
-export type CoastalGeometry = { positions: number[]; indices: number[]; uvs: number[] };
+export type CoastalGeometry = { positions: number[]; indices: number[]; uvs: number[]; normals?: number[] };
 export type CoastalPoint = { x: number; y: number; height: number };
 export const coastalSeaY = HOUSE_COORDINATES.floorY - COASTAL_CLIFF.seaDepth * HOUSE_COORDINATES.unitsPerMeter;
 const empty = (): CoastalGeometry => ({ positions: [], indices: [], uvs: [] });
@@ -52,7 +52,10 @@ function vertex(g: CoastalGeometry, p: CoastalPoint) {
 export function coastalLandPatch(firstColumn: number, lastColumn: number, firstRow: number, lastRow: number) {
   const g = empty(), stride = lastColumn - firstColumn + 1;
   for (let row = firstRow; row <= lastRow; row++) for (let col = firstColumn; col <= lastColumn; col++)
-    vertex(g, coastalGridPoint(col, row));
+    {
+      const p = coastalGridPoint(col, row); vertex(g, p);
+      g.uvs.splice(g.uvs.length - 2, 2, p.x / 15, p.y / 15);
+    }
   for (let row = 0; row < lastRow - firstRow; row++) for (let col = 0; col < stride - 1; col++) {
     const a = row * stride + col, b = a + 1, d = a + stride, c = d + 1;
     g.indices.push(a, d, b, b, d, c); // Babylon's left-handed winding, upward normal.
@@ -77,20 +80,42 @@ export function coastalWallPoint(boundary: readonly CoastalPoint[], index: numbe
   const p = boundary[index];
   const before = boundary[(index - 1 + n) % n], after = boundary[(index + 1) % n];
   const dx = after.x - before.x, dy = after.y - before.y, length = Math.hypot(dx, dy);
-  const offset = ledges[ring] * (1 + .12 * Math.sin(index * .47 + ring * .8));
+  const chipped = ring > 0 && ring < depths.length - 1;
+  const offset = ledges[ring] * (1 + .12 * Math.sin(index * .47 + ring * .8))
+    + (chipped ? .25 * Math.sin(index * 1.8 + ring * .7) + .12 * Math.sin(index * .79 + ring * 2.3) : 0);
   return { x: p.x - dy / length * offset, y: p.y + dx / length * offset,
-    height: depths[ring] + p.height * (1 - ring / (depths.length - 1)) };
+    height: depths[ring] + p.height * (1 - ring / (depths.length - 1))
+      + (chipped ? .28 * Math.sin(index * .71 + ring * .8) + .13 * Math.sin(index * 1.9 + ring) : 0) };
 }
 
 /** Closed perimeter, real ledges and four metres of rock below the sea. */
 export function coastalWallPatch(boundary: readonly CoastalPoint[], first: number, last: number) {
-  const g = empty();
-  // Per-face vertices preserve large rock planes without a normal-map illusion.
+  const g = empty(), arc = [0]; g.normals = [];
+  for (let i = 0; i < boundary.length; i++) {
+    const p = boundary[i], q = boundary[(i + 1) % boundary.length];
+    arc.push(arc[i] + Math.hypot(q.x - p.x, q.y - p.y));
+  }
+  // Keep hard vertical ledges; average tangents along the coast to avoid a checkerboard of lit faces.
   for (let i = first; i < last; i++) for (let ring = 0; ring < depths.length - 1; ring++) {
     const a = vertex(g, coastalWallPoint(boundary, i, ring));
     vertex(g, coastalWallPoint(boundary, i + 1, ring));
     vertex(g, coastalWallPoint(boundary, i + 1, ring + 1));
     vertex(g, coastalWallPoint(boundary, i, ring + 1));
+    // Same metre density across patches and corners; vertical height must not collapse into XZ.
+    const points = [coastalWallPoint(boundary, i, ring), coastalWallPoint(boundary, i + 1, ring),
+      coastalWallPoint(boundary, i + 1, ring + 1), coastalWallPoint(boundary, i, ring + 1)];
+    for (let j = 0; j < 4; j++) {
+      g.uvs[(a + j) * 2] = arc[i + (j === 1 || j === 2 ? 1 : 0)] / 2;
+      g.uvs[(a + j) * 2 + 1] = points[j].height / 2;
+      const col = i + (j === 1 || j === 2 ? 1 : 0), row = ring + (j >= 2 ? 1 : 0), n = boundary.length;
+      const before = coastalWallPoint(boundary, (col - 1 + n) % n, row), after = coastalWallPoint(boundary, col + 1, row);
+      const top = coastalWallPoint(boundary, col, ring), bottom = coastalWallPoint(boundary, col, ring + 1);
+      const tx = after.x - before.x, ty = after.height - before.height, tz = after.y - before.y;
+      const vx = bottom.x - top.x, vy = bottom.height - top.height, vz = bottom.y - top.y;
+      const normal = [vy * tz - vz * ty, vz * tx - vx * tz, vx * ty - vy * tx];
+      const length = Math.hypot(...normal);
+      g.normals.push(...normal.map(v => v / length));
+    }
     g.indices.push(a, a + 1, a + 2, a, a + 2, a + 3);
   }
   return g;
@@ -105,7 +130,7 @@ export function coastalUnderside(boundary: readonly CoastalPoint[]) {
 }
 
 export function coastalFoundation() {
-  const g = empty();
+  const g = empty(); let distance = 0;
   const outline = [[-.07, -.07], [10.87, -.07], [10.87, 12.37], [5.33, 12.37], [5.33, 10.87], [-.07, 10.87]];
   for (let i = 0; i < outline.length; i++) {
     const p = outline[i], q = outline[(i + 1) % outline.length];
@@ -113,6 +138,9 @@ export function coastalFoundation() {
     vertex(g, { x: p[0], y: p[1], height: -.35 });
     vertex(g, { x: q[0], y: q[1], height: -.35 });
     vertex(g, { x: q[0], y: q[1], height: -.07 });
+    const end = distance + Math.hypot(q[0] - p[0], q[1] - p[1]);
+    g.uvs.splice(a * 2, 8, distance / 2, -.07 / 2, distance / 2, -.35 / 2, end / 2, -.35 / 2, end / 2, -.07 / 2);
+    distance = end;
     g.indices.push(a, a + 1, a + 2, a, a + 2, a + 3);
   }
   return g;

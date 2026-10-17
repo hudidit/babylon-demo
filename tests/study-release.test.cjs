@@ -45,7 +45,8 @@ test('production packaging includes exact study assets, license sidecars and laz
     const retained = baseline.assets.map(file => file.path.replace(/^public\//, '')).filter(file => !file.includes('/brick_wall_001/') && !file.endsWith('/forest-window/view.jpg'));
     const paintPaths = Object.values(paint.files).map(file => file.file);
     const audio = require('../public/audio/study/source.json');
-    assert.deepEqual([...config.runtime].sort(), [...retained, ...paintPaths, ...audio.files.map(file => file.file)].sort());
+    const coastal = require('../public/textures/coastal/source.json');
+    assert.deepEqual([...config.runtime].sort(), [...retained, ...paintPaths, ...audio.files.map(file => file.file), ...coastal.files.map(file => file.file)].sort());
     const summary = verifyRelease(output);
     assert.equal(summary.runtimeBytes, config.runtime.reduce((sum, file) => sum + fs.statSync(path.join(root, 'public', file)).size, 0));
     assert.ok(!manifest.files.some(file => file.path.includes('/brick_wall_001/')));

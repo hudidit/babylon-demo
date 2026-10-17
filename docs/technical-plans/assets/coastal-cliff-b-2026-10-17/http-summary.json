@@ -1,0 +1,276 @@
+{
+  "normal": {
+    "requests": 3551,
+    "non200": [
+      {
+        "path": "/textures/study/forest-window/panorama.jpg",
+        "status": 404
+      },
+      {
+        "path": "/models/barrel.glb",
+        "status": 404
+      },
+      {
+        "path": "/home/textures/study/forest-window/panorama.jpg",
+        "status": 404
+      },
+      {
+        "path": "/home/models/barrel.glb",
+        "status": 404
+      },
+      {
+        "path": "/textures/study/forest-window/panorama.jpg",
+        "status": 404
+      },
+      {
+        "path": "/models/barrel.glb",
+        "status": 404
+      },
+      {
+        "path": "/home/textures/study/forest-window/panorama.jpg",
+        "status": 404
+      },
+      {
+        "path": "/home/models/barrel.glb",
+        "status": 404
+      },
+      {
+        "path": "/textures/study/forest-window/panorama.jpg",
+        "status": 404
+      },
+      {
+        "path": "/models/barrel.glb",
+        "status": 404
+      },
+      {
+        "path": "/home/textures/study/forest-window/panorama.jpg",
+        "status": 404
+      },
+      {
+        "path": "/home/models/barrel.glb",
+        "status": 404
+      }
+    ]
+  },
+  "negative": {
+    "requests": 101,
+    "non200": [
+      {
+        "path": "/environment/coastal-daylight.hdr",
+        "status": 404
+      },
+      {
+        "path": "/textures/coastal/rock-color.jpg",
+        "status": 404
+      },
+      {
+        "path": "/",
+        "status": 304
+      },
+      {
+        "path": "/js/main.js",
+        "status": 304
+      },
+      {
+        "path": "/js/6633.js",
+        "status": 304
+      },
+      {
+        "path": "/environment/study-interior.hdr",
+        "status": 304
+      },
+      {
+        "path": "/js/1203.js",
+        "status": 304
+      },
+      {
+        "path": "/environment/coastal-daylight.hdr",
+        "status": 404
+      },
+      {
+        "path": "/models/study/sofa_03.glb",
+        "status": 304
+      },
+      {
+        "path": "/models/study/modern_arm_chair_01.glb",
+        "status": 304
+      },
+      {
+        "path": "/models/wooden_bookshelf.glb",
+        "status": 304
+      },
+      {
+        "path": "/models/gothic_commode.glb",
+        "status": 304
+      },
+      {
+        "path": "/textures/study/wood_table_001/color.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/study/wood_table_001/normal.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/study/rough_linen/normal.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/study/wood_table_001/arm.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/coastal/rock-color.jpg",
+        "status": 404
+      },
+      {
+        "path": "/textures/study/rough_linen/arm.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/coastal/rock-normal.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/coastal/rock-arm.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/coastal/ground-color.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/coastal/ground-normal.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/study/wood_floor/color.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/coastal/ground-arm.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/study/wood_floor/normal.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/study/wood_floor/arm.jpg",
+        "status": 304
+      },
+      {
+        "path": "/textures/study/painted_wall/color.png",
+        "status": 304
+      },
+      {
+        "path": "/textures/study/painted_wall/normal.png",
+        "status": 304
+      },
+      {
+        "path": "/textures/study/painted_wall/arm.png",
+        "status": 304
+      },
+      {
+        "path": "/textures/pictures/pic1.jpg",
+        "status": 304
+      },
+      {
+        "path": "/js/8558.js",
+        "status": 304
+      },
+      {
+        "path": "/js/4742.js",
+        "status": 304
+      },
+      {
+        "path": "/js/7449.js",
+        "status": 304
+      },
+      {
+        "path": "/js/6612.js",
+        "status": 304
+      },
+      {
+        "path": "/js/9615.js",
+        "status": 304
+      },
+      {
+        "path": "/js/5587.js",
+        "status": 304
+      },
+      {
+        "path": "/js/4472.js",
+        "status": 304
+      },
+      {
+        "path": "/js/6560.js",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/drawer-slide-1.8353e0a53c.wav",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/drawer-stop-1.6840b8eb30.wav",
+        "status": 304
+      },
+      {
+        "path": "/js/9915.js",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/door-move-1.f0162ae1b8.wav",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/door-latch-1.a220e2fe5d.wav",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/switch-1.702a81fab4.wav",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/paper-1.ce7576efe6.wav",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/drawer-slide-2.71ff63e71c.wav",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/drawer-stop-2.b34d827382.wav",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/door-move-2.9dea4bdbfd.wav",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/door-latch-2.fb255ede74.wav",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/switch-2.927c10f6e3.wav",
+        "status": 304
+      },
+      {
+        "path": "/audio/study/paper-2.862694da2b.wav",
+        "status": 304
+      },
+      {
+        "path": "/",
+        "status": 304
+      },
+      {
+        "path": "/environment/coastal-daylight.hdr",
+        "status": 404
+      },
+      {
+        "path": "/textures/coastal/rock-color.jpg",
+        "status": 404
+      }
+    ]
+  }
+}

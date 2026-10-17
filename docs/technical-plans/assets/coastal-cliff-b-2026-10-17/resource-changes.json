@@ -1,0 +1,166 @@
+{
+  "baseline": "0a9ef96 / stage A",
+  "before": {
+    "fileCount": 487,
+    "modelBytes": 4332840,
+    "buildBytes": 26154271,
+    "runtimeBytes": 14546570,
+    "documentationBytes": 54328,
+    "manifestBytes": 91158,
+    "initialJsBytes": 2534008,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 40846327,
+    "actualInitialJsBytes": 2752860,
+    "observedInitialScripts": 12,
+    "observedRuntimeAssets": 29
+  },
+  "after": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26165488,
+    "runtimeBytes": 15867631,
+    "documentationBytes": 63089,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2551224,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42188912,
+    "actualInitialJsBytes": 2770076,
+    "observedInitialScripts": 12,
+    "observedRuntimeAssets": 36
+  },
+  "method": "Ready scene and audio, before Inspector; browser observed resource URLs matched to final dist file bytes/SHA256. Normal browser cache, no timing, cold-transfer or FPS experiment.",
+  "initialScripts": [
+    {
+      "path": "js/main.js",
+      "kind": "build",
+      "bytes": 153390,
+      "sha256": "e1cfdb45aa7e47e5420458a5e58e7c35505bc1ebd8e81c701a6a394698d61af5"
+    },
+    {
+      "path": "js/6633.js",
+      "kind": "build",
+      "bytes": 2397834,
+      "sha256": "4753e6168cf478c6eb889a34e81892151716a2a2d58cef9a95783422380f0f02"
+    },
+    {
+      "path": "js/1203.js",
+      "kind": "build",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "js/8558.js",
+      "kind": "build",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "js/6612.js",
+      "kind": "build",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "js/7449.js",
+      "kind": "build",
+      "bytes": 2072,
+      "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+    },
+    {
+      "path": "js/4742.js",
+      "kind": "build",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "js/9615.js",
+      "kind": "build",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "js/5587.js",
+      "kind": "build",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "js/6560.js",
+      "kind": "build",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "js/4472.js",
+      "kind": "build",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "js/9915.js",
+      "kind": "build",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "subpath": {
+    "actualInitialJsBytes": 2770076,
+    "sameRuntimePaths": true
+  },
+  "retainedRuntimeAssets": {
+    "count": 29,
+    "bytesAndSha256": "all unchanged"
+  },
+  "addedRuntimeAssets": [
+    {
+      "path": "environment/coastal-daylight.hdr",
+      "kind": "runtime",
+      "bytes": 4444,
+      "sha256": "09c35ed0bf66e0f16ab58d1659fa7b13576aa76c3327672253fb07433de22502"
+    },
+    {
+      "path": "textures/coastal/ground-arm.jpg",
+      "kind": "runtime",
+      "bytes": 14130,
+      "sha256": "9a879b1f72be2cc75820c100f3f8b2ccf3bbc0c1b935445f1b584814b704deb5"
+    },
+    {
+      "path": "textures/coastal/ground-color.jpg",
+      "kind": "runtime",
+      "bytes": 166163,
+      "sha256": "897117d784101b4254b4579f468d63b0d46ae9db126a6633ce70272cf87e2c2e"
+    },
+    {
+      "path": "textures/coastal/ground-normal.jpg",
+      "kind": "runtime",
+      "bytes": 54823,
+      "sha256": "17088099b35ec001ce361e044b8aa52650fa939cb936de48e390f3d00678c8ff"
+    },
+    {
+      "path": "textures/coastal/rock-arm.jpg",
+      "kind": "runtime",
+      "bytes": 111357,
+      "sha256": "3f32a5c9139044af6cc4ddf152437b95a6f7ba6dd84ba6a25c0805c1567444a3"
+    },
+    {
+      "path": "textures/coastal/rock-color.jpg",
+      "kind": "runtime",
+      "bytes": 678872,
+      "sha256": "028dc33f502d0b6882595daf4a4e9fb41c2dc479e487de2a979e8266d470316b"
+    },
+    {
+      "path": "textures/coastal/rock-normal.jpg",
+      "kind": "runtime",
+      "bytes": 291272,
+      "sha256": "0adfb641e1a678672be1cc6a53ffbb1e5e3433985bee0ec5a0820e9cb13e44df"
+    }
+  ],
+  "remainingBytes": {
+    "runtime": 909585,
+    "actualInitialJs": 375652,
+    "release": 802704
+  },
+  "fpsOrLoadTimeSampling": false
+}

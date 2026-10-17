@@ -3,6 +3,8 @@ const audio = require('../public/audio/study/source.json');
 module.exports = {
   runtime: [
     'environment/study-interior.hdr',
+    'environment/coastal-daylight.hdr',
+    ...['rock', 'ground'].flatMap(asset => ['color', 'normal', 'arm'].map(part => `textures/coastal/${asset}-${part}.jpg`)),
     'models/gothic_commode.glb',
     'models/wooden_bookshelf.glb',
     'models/study/modern_arm_chair_01.glb',
@@ -27,6 +29,7 @@ module.exports = {
     'models/study-model-optimization.json',
     'textures/study/manifest.json',
     'environment/coastal-cliff-source.json',
+    'textures/coastal/source.json',
     'textures/study/painted_wall/source.json',
     'audio/study/source.json',
     'audio/study/credits.html',

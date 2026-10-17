@@ -1,0 +1,39 @@
+{
+  "oldPort": 8149,
+  "old": [
+    {
+      "pending": [],
+      "unreadyMeshes": 221,
+      "failedTextureNames": [
+        "./textures/study/wood_table_001/normal.jpg"
+      ],
+      "effects": [],
+      "metadata": {
+        "layoutVersion": "house-plan-v1",
+        "exteriorVersion": "coastal-cliff-static-v1",
+        "exteriorFallbacks": [
+          "./environment/coastal-daylight.hdr",
+          "./textures/coastal/rock-color.jpg"
+        ]
+      }
+    }
+  ],
+  "freshPort": 8151,
+  "fresh": [
+    {
+      "pending": [],
+      "unreadyMeshes": 1,
+      "failedTextureNames": [],
+      "effects": [],
+      "metadata": {
+        "layoutVersion": "house-plan-v1",
+        "exteriorVersion": "coastal-cliff-static-v1",
+        "exteriorFallbacks": [
+          "./environment/coastal-daylight.hdr",
+          "./textures/coastal/rock-color.jpg"
+        ]
+      }
+    }
+  ],
+  "inference": "The stale test origin had an unrelated pre-existing indoor wood normal in loadingError state. A fresh origin serving the same immutable diagnostic build became ready under the same two coastal 404s. Builds had been replaced while earlier fixture tabs existed; old-origin image cache/decoding contamination is suspected. No indoor fallback or budget change was introduced."
+}

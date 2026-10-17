@@ -41,8 +41,13 @@ try {
   assert.ok(finalPosition.z < -0.9, 'Walker must stop at the obstacle');
   scene.activeCamera = orbit;
   const { RoomExterior } = loadSource(path.join(__dirname, '../../src/examples/RoomExterior.ts'));
+  // NullEngine has no cubemap upload implementation. Verify resource wiring here, pixels in WebGL.
+  scene.useDelayedTextureLoading = true;
   const exterior = new RoomExterior(scene);
-  assert.ok(exterior.meshes.length > 0 && exterior.meshes.every(m => m.material instanceof b.StandardMaterial));
+  exterior.setVisible(false);
+  scene.useDelayedTextureLoading = false;
+  assert.ok(exterior.meshes.length > 0 && exterior.meshes.every(m => m.material instanceof b.StandardMaterial || m.material instanceof b.PBRMaterial));
+  exterior.dispose(); // GPU upload itself is covered by the production WebGL browser run.
   scene.render();
   const { RoomItemInspection } = loadSource(path.join(__dirname, '../../src/examples/RoomItemInspection.ts'));
   const inspection = new RoomItemInspection(scene);

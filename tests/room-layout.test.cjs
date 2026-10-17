@@ -33,6 +33,7 @@ const { beveledBox, creasedLetter, curtainPanel, ficusLeaf } = loadSource("RoomD
 const { buildWearMask } = loadSource("RoomSurfaceDetails");
 const { partitionMergedCollisions } = loadSource("RoomCollisions");
 const { createLivingRoom, constrainWalkingPosition } = loadSource("RoomLivingRoom");
+const { HouseRooms } = loadSource("HouseRooms");
 const { setRoomOwners } = loadSource("RoomOwnership");
 const { sharedRoomMaterials } = loadSource("RoomMaterialLibrary");
 const { createHouseArchitecture } = loadSource("HouseArchitecture");
@@ -68,12 +69,13 @@ test("all window centres see the outside through transparent glass while retaini
   }
 });
 
-test("shared coastal graybox keeps house support, sea height, bounded geometry and ownership", t => {
+test("shared PBR coast keeps house support, sea height, bounded geometry and ownership", t => {
   const scene = createScene(t), exterior = new RoomExterior(scene);
   assert.equal(scene.metadata.exteriorVersion, COASTAL_CLIFF.version);
   assert.equal(scene.meshes.filter(m => m.name === 'coastal-sea').length, 1);
   assert.equal(scene.meshes.filter(m => m.name === 'coastal-sky').length, 1);
-  assert.equal(scene.textures.length, 0, 'stage A downloads no exterior images');
+  assert.equal(exterior.surfaces.textures.length, 7, 'six shared PBR maps plus one outdoor HDR');
+  assert.equal(scene.lights.filter(l => l.name === 'coastal-afternoon-sun').length, 1);
   assert.ok(exterior.meshes.reduce((n, m) => n + m.getTotalVertices(), 0) < 160000);
   assert.equal(coastalCrestY(8.1), COASTAL_CLIFF.balconyEdgeY + COASTAL_CLIFF.setback);
   const sea = scene.getMeshByName('coastal-sea');
@@ -95,7 +97,7 @@ test("shared coastal graybox keeps house support, sea height, bounded geometry a
     assert.deepEqual([...m.metadata.ownerRooms].sort(), HOUSE_ROOMS.map(r => r.id).sort());
     assert.deepEqual(m.metadata.lightRooms, []);
     assert.ok(!m.isPickable && !m.checkCollisions && !m.metadata.castsShadows);
-    assert.ok(m.material.disableLighting, 'stage A stays independent of room switches');
+    assert.ok(!exterior.sun.canAffectMesh(m) || m.material instanceof babylon.PBRMaterial, 'sun is limited to outdoor PBR');
     assert.ok(m.getVerticesData(babylon.VertexBuffer.PositionKind).every(Number.isFinite));
     assert.ok(m.getVerticesData(babylon.VertexBuffer.NormalKind).every(Number.isFinite));
   }
@@ -127,10 +129,117 @@ test("coastal terrain is deterministic and cliff rings share the exact closed cr
   assert.ok(coastalCrestY(-8) > coastalCrestY(8.1) + 35, 'asymmetric cape extends into the balcony side view');
 });
 
+test("coastal PBR isolates daylight, reuses maps, caches a local caster list and releases shared resources", t => {
+  const scene = createScene(t), baseline = new babylon.Texture(null, scene);
+  scene.environmentTexture = baseline;
+  const exterior = new RoomExterior(scene), s = exterior.surfaces;
+  const interior = babylon.CreateBox('indoor-furniture', {}, scene);
+  setRoomOwners(interior, ['study']);
+  const lighting = new RoomLighting(scene, true);
+  lighting.addMeshes([...exterior.meshes, interior]);
+  assert.equal(scene.environmentTexture, baseline, 'indoor environment is untouched');
+  assert.ok(!exterior.sun.canAffectMesh(interior));
+  assert.ok(scene.getLightByName('room-bounce-light').excludedMeshes.includes(exterior.meshes[0]));
+  for (const m of s.materials) {
+    assert.equal(m.reflectionTexture, s.environment);
+    assert.equal(m.metallic, 0);
+    if (!m.bumpTexture) continue;
+    assert.equal(m.albedoTexture.gammaSpace, true);
+    assert.equal(m.bumpTexture.gammaSpace, false);
+    assert.equal(m.metallicTexture.gammaSpace, false);
+    assert.equal(m.invertNormalMapX, true, 'OpenGL normals in left-handed scene');
+    assert.equal(m.useRoughnessFromMetallicTextureAlpha, false);
+    assert.ok(m.useRoughnessFromMetallicTextureGreen && m.useAmbientOcclusionFromMetallicTextureRed);
+  }
+  assert.equal(s.rock.albedoTexture, s.farRock.albedoTexture);
+  assert.equal(s.ground.bumpTexture, s.farGround.bumpTexture);
+  assert.equal(s.ground.textureRepetitionMode, babylon.Constants.TEXTURE_REPETITION_HEX_TILING);
+  assert.deepEqual(s.ground.textureRepetitionHexTilingParams, [0, 0, 7, .5], 'all maps share translation and weights; no normal rotation');
+  const sunIntensity = exterior.sun.intensity;
+  lighting.toggleLamp('floor-lamp'); assert.equal(exterior.sun.intensity, sunIntensity);
+  const shadow = exterior.shadow.getShadowMap();
+  assert.equal(shadow.getSize().width, 1024);
+  assert.equal(shadow.refreshRate, babylon.RenderTargetTexture.REFRESHRATE_RENDER_ONCE);
+  exterior.bindShadowCasters([interior]);
+  assert.ok(shadow.renderList.length > 0);
+  assert.ok(shadow.renderList.every(m => ['rocks', 'vegetation', 'foundation'].includes(m.metadata.exteriorLayer)));
+  assert.ok(!shadow.renderList.includes(interior) && !shadow.renderList.includes(scene.getMeshByName('coastal-sea')));
+  const rooms = new HouseRooms(), builds = HOUSE_ROOMS.map(r => rooms.begin(r.id));
+  rooms.own(builds, exterior, () => exterior.dispose());
+  HOUSE_ROOMS.slice(0, -1).forEach(r => rooms.release(r.id));
+  assert.ok(scene.lights.includes(exterior.sun) && scene.textures.includes(s.environment));
+  rooms.release(HOUSE_ROOMS.at(-1).id);
+  assert.ok(!scene.lights.includes(exterior.sun) && !scene.textures.includes(s.environment));
+  assert.ok(scene.textures.includes(baseline));
+  assert.equal(scene.meshes.filter(m => m.metadata?.exterior).length, 0);
+  exterior.dispose(); rooms.dispose(); assert.deepEqual(rooms.cleanupErrors, []);
+});
+
+test("outdoor cached shadows select only the static exterior shell and balcony rails", t => {
+  const { scene } = houseShell(t), exterior = new RoomExterior(scene);
+  exterior.bindShadowCasters(scene.meshes);
+  const casters = exterior.shadow.getShadowMap().renderList;
+  const walls = scene.meshes.filter(m => m.metadata?.structure === 'wall');
+  assert.ok(walls.some(m => m.metadata.span.owners.length === 1));
+  for (const wall of walls) assert.equal(casters.includes(wall), wall.metadata.span.owners.length === 1);
+  const rails = scene.meshes.filter(m => /^balcony-rail-/.test(m.name));
+  assert.ok(rails.length > 0 && rails.every(m => casters.includes(m)));
+  assert.ok(casters.every(m => m.metadata?.exterior || m.metadata?.structure === 'wall' || /^balcony-rail-/.test(m.name)));
+  assert.ok(scene.meshes.filter(m => m.metadata?.structure === 'floor').every(m => !casters.includes(m)));
+});
+
+test("failed coastal downloads retain sunlit fallback surfaces without reflecting the indoor HDR", t => {
+  const scene = createScene(t), baseline = new babylon.Texture(null, scene);
+  scene.environmentTexture = baseline;
+  const exterior = new RoomExterior(scene), s = exterior.surfaces, color = s.rock.albedoTexture;
+  s.fallbackFor(color); s.fallbackFor(color);
+  assert.equal(s.rock.albedoTexture, null); assert.equal(s.farRock.albedoTexture, null);
+  assert.ok(s.ground.albedoTexture, 'unaffected scan survives');
+  s.fallbackFor(s.environment);
+  assert.ok(s.materials.every(m => m.environmentIntensity === 0));
+  assert.equal(scene.environmentTexture, baseline);
+  assert.ok(exterior.sun.isEnabled());
+  assert.equal(scene.metadata.exteriorFallbacks.length, 2);
+  exterior.dispose(); assert.ok(scene.textures.includes(baseline));
+  const failures = [...scene.metadata.exteriorFallbacks];
+  s.fallbackFor(s.ground.bumpTexture); s.dispose();
+  assert.deepEqual(scene.metadata.exteriorFallbacks, failures, 'late download callbacks must ignore a disposed component');
+});
+
+test("buried coastal rock clusters have outward normals and repeatable opaque geometry", () => {
+  const { coastalScatter } = loadSource('CoastalScatter'), g = coastalScatter().rocks;
+  assert.deepEqual(g, coastalScatter().rocks);
+  const normals = []; babylon.VertexData.ComputeNormals(g.positions, g.indices, normals);
+  for (let first = 0; first < g.positions.length / 3; first += 45) {
+    const centre = [0, 0, 0];
+    for (let j = 0; j < 45; j++) for (let k = 0; k < 3; k++) centre[k] += g.positions[(first + j) * 3 + k] / 45;
+    for (let j = 0; j < 45; j++) {
+      let outward = 0;
+      for (let k = 0; k < 3; k++) outward += (g.positions[(first + j) * 3 + k] - centre[k]) * normals[(first + j) * 3 + k];
+      assert.ok(outward >= -1e-6, 'surface normals must not turn buried boulders black from above');
+    }
+  }
+});
+
+test("cliff UVs retain vertical density and exact phase across mesh boundaries", () => {
+  const { coastalWallPatch } = loadSource('CoastalCliff'), boundary = coastalBoundary();
+  const left = coastalWallPatch(boundary, 0, 32), right = coastalWallPatch(boundary, 32, 64);
+  // Four vertices per face, eight vertical bands per column.
+  for (let ring = 0; ring < 8; ring++) {
+    const a = (31 * 8 + ring) * 4, b = ring * 4;
+    assert.equal(left.uvs[(a + 1) * 2], right.uvs[b * 2]);
+    assert.deepEqual(left.normals.slice((a + 1) * 3, (a + 2) * 3), right.normals.slice(b * 3, (b + 1) * 3), 'shared column normals do not form patch seams');
+    assert.equal(left.uvs[(a + 1) * 2 + 1], right.uvs[b * 2 + 1]);
+    assert.ok(left.uvs[(a + 1) * 2 + 1] > left.uvs[(a + 2) * 2 + 1], 'vertical faces have a noncollapsed V');
+    const height = (left.positions[(a + 1) * 3 + 1] - left.positions[(a + 2) * 3 + 1]) / 5;
+    assert.ok(Math.abs(height / 2 - (left.uvs[(a + 1) * 2 + 1] - left.uvs[(a + 2) * 2 + 1])) < 1e-6);
+  }
+});
+
 test("foreground clipping leaves sea, sky and distant coast whole and clears stale planes", t => {
   const scene = createScene(t), exterior = new RoomExterior(scene), camera = houseVector(8.1, 25, 5), target = houseVector(8.1, 11.55, .55);
   exterior.updateCutaway(camera, target); assert.ok(scene.clipPlane == null);
-  const close = exterior.meshes.filter(m => ['terrain', 'cliff', 'foundation'].includes(m.metadata.exteriorLayer));
+  const close = exterior.meshes.filter(m => ['terrain', 'cliff', 'foundation', 'rocks', 'vegetation'].includes(m.metadata.exteriorLayer));
   const distant = exterior.meshes.filter(m => ['sea', 'sky', 'distant'].includes(m.metadata.exteriorLayer));
   const plane = close[0].material.clipPlane2;
   assert.ok(close.every(m => m.material.clipPlane2 === plane));
@@ -1006,7 +1115,10 @@ function createScene(t) {
   engine.getDeltaTime = () => 1000 / 30;
   engine.getFps = () => 30;
   t.after(() => engine.dispose());
-  return new babylon.Scene(engine);
+  const scene = new babylon.Scene(engine);
+  // NullEngine cannot upload HDR cubes; WebGL browser checks cover actual pixels.
+  scene.useDelayedTextureLoading = true;
+  return scene;
 }
 
 for (const scale of [5.2, 3.7]) {
@@ -1374,7 +1486,7 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
   room.interactions = { silenceMotion() {} };
   room.audio = { setSpatialCamera() {} };
   room.floorPlan = { isOpen: false, update() {} };
-  room.exterior = { setVisible() {}, updateCutaway() {} };
+  room.exterior = { setVisible() {}, updateCutaway() {}, refreshShadows() {} };
   room.canvas = { setAttribute() {} };
   let refreshed = 0;
   room.lighting = { refreshShadows() { refreshed++; } };

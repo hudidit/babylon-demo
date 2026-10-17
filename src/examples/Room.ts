@@ -170,6 +170,8 @@ export class RoomScene {
     });
     this.lighting.addMeshes(this.scene.meshes);
     this.trackRoomResources(this.scene.meshes);
+    this.exterior.bindShadowCasters(this.scene.meshes);
+    this.rooms.own(HOUSE_ROOMS.map(r => this.builds[r.id]), this.exterior, () => this.exterior.dispose());
     for (const { id } of HOUSE_ROOMS) {
       const cleanup = {};
       this.rooms.own(this.builds[id], cleanup, () => {
@@ -181,7 +183,9 @@ export class RoomScene {
     this.scene.onBeforeRenderObservable.add(() => {
       this.audio.update();
       if (!this.inspection.isOpen && this.scene.activeCamera === this.camera
-        && this.architecture.updateCutaway(this.camera.position, this.camera.target)) this.lighting.refreshShadows();
+        && this.architecture.updateCutaway(this.camera.position, this.camera.target)) {
+        this.lighting.refreshShadows(); this.exterior.refreshShadows();
+      }
       if (!this.inspection.isOpen && this.scene.activeCamera === this.camera)
         this.exterior.updateCutaway(this.currentView === "overview" ? undefined : this.camera.position, this.camera.target);
       if (this.isViewing) return;
@@ -257,7 +261,7 @@ export class RoomScene {
     if (!firstPerson) this.pointerLock?.release();
     this.scene.activeCamera?.detachControl();
     this.architecture.setEnclosed(firstPerson, view);
-    this.lighting.refreshShadows();
+    this.lighting.refreshShadows(); this.exterior.refreshShadows();
     this.firstPersonCamera.cameraDirection.setAll(0);
     this.firstPersonCamera.cameraRotation.setAll(0);
     this.firstPersonCamera.movement.resetPanVelocity();

@@ -11,12 +11,13 @@ import { localPosition } from "./HouseRoomComponents";
 
 /** Room-specific window/lamp sources plus the original restrained indirect bounce. */
 export class RoomLighting {
+  private readonly fill: HemisphericLight;
   private readonly shadows: ShadowGenerator[];
   private readonly lamps = new Map<string, { light: SpotLight; intensity: number; on: boolean;
     material?: PBRMaterial; glow?: Color3 }>();
 
   constructor(scene: Scene, house = false) {
-    const fill = new HemisphericLight("room-bounce-light", new Vector3(-0.35, 1, 0.15), scene);
+    const fill = this.fill = new HemisphericLight("room-bounce-light", new Vector3(-0.35, 1, 0.15), scene);
     fill.intensity = house ? 0.38 : 0.18;
     fill.diffuse = new Color3(0.95, 0.97, 1);
     fill.groundColor = new Color3(0.68, 0.62, 0.53);
@@ -205,7 +206,8 @@ export class RoomLighting {
   addMeshes(meshes: AbstractMesh[]) {
     meshes.forEach(mesh => {
       if (mesh.getTotalVertices() === 0) return;
-      mesh.receiveShadows = true;
+      if (!mesh.metadata?.exterior) mesh.receiveShadows = true;
+      else if (!this.fill.excludedMeshes.includes(mesh)) this.fill.excludedMeshes.push(mesh);
       this.shadows.forEach(shadow => {
         const light = shadow.getLight() as SpotLight;
         const owners: readonly HouseRoomId[] = mesh.metadata?.lightRooms || roomOwners(mesh);
@@ -229,6 +231,7 @@ export class RoomLighting {
   }
 
   removeMeshes(meshes: AbstractMesh[]) {
+    this.fill.excludedMeshes = this.fill.excludedMeshes.filter(mesh => !meshes.includes(mesh));
     this.shadows.forEach(shadow => {
       const light = shadow.getLight() as SpotLight;
       meshes.forEach(mesh => {

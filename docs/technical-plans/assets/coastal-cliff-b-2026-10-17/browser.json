@@ -1,0 +1,281 @@
+{
+  "baseline": "0a9ef96",
+  "browser": "Codex in-app browser",
+  "views": [
+    {
+      "name": "overview-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "overview",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "study-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "study",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "living-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "living",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "master-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "master",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "ensuite-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "ensuite",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "bedroom-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "bedroom",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "kitchen-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "kitchen",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "bathroom-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "bathroom",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "balcony-desktop",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "balcony-portrait",
+      "canvasPixels": [
+        390,
+        844
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "name": "balcony-landscape",
+      "canvasPixels": [
+        844,
+        390
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        844,
+        390
+      ]
+    },
+    {
+      "name": "living-toward-sea",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "living-shift-right-1m",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "balcony-door-interaction",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "exterior-side",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "floor-plan",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "balcony",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "first-person-entry",
+      "canvasPixels": [
+        1280,
+        800
+      ],
+      "status": "全屋八个房间已布置 · 可自由漫游",
+      "view": "first-person",
+      "viewport": [
+        1280,
+        800
+      ]
+    }
+  ],
+  "fpsOrLoadTimeSampling": false,
+  "firstPerson": {
+    "marker": "translate(114.4 242.6) rotate(142.2060550727556)",
+    "pointerLocked": false,
+    "status": "全屋八个房间已布置 · 可自由漫游"
+  },
+  "normalLogs": [],
+  "checks": {
+    "eightRoomViews": true,
+    "balconyPortraitAndLandscape": true,
+    "livingSeaView": true,
+    "oneMetreCameraTranslationViaInspector": true,
+    "slidingDoorOpened": true,
+    "mapOpenAndEscape": true,
+    "settingsAudioReady": true,
+    "inspectorCameraEditing": true,
+    "exteriorSupportAndWetBand": true
+  },
+  "limits": {
+    "actualPointerLockedWalking": "Not repeated: in-app browser did not grant pointer lock; entry/click/ESC recovery verified; collision/walking routes are covered by automated tests.",
+    "pixelDensity": "Existing renderer forces hardware scaling 1. Captured DPR 1; DPR 2 device check remains in D.",
+    "dynamicSea": "C pending; static sea placeholder.",
+    "performance": "No FPS, loading-time or measured GPU-memory claim."
+  },
+  "postFinalBuildSmoke": {
+    "views": [
+      {
+        "name": "balcony-desktop",
+        "canvasPixels": [
+          1280,
+          800
+        ],
+        "status": "全屋八个房间已布置 · 可自由漫游",
+        "view": "balcony",
+        "viewport": [
+          1280,
+          800
+        ]
+      },
+      {
+        "name": "living-toward-sea",
+        "canvasPixels": [
+          1280,
+          800
+        ],
+        "status": "全屋八个房间已布置 · 可自由漫游",
+        "view": "balcony",
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    ]
+  }
+}

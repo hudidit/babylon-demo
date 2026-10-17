@@ -1,12 +1,32 @@
 {
-  "version": "coastal-cliff-graybox-v1",
-  "stage": "A: spatial graybox",
+  "version": "coastal-cliff-static-v1",
+  "stage": "B: static realism; A complete, C/D pending",
   "author": "babylon-demo project contributors",
-  "license": "project source code terms (ISC)",
-  "source": ["src/examples/CoastalCliff.ts", "src/examples/RoomExterior.ts"],
-  "generation": "Deterministic metre-based terrain, a shared crest and closed layered cliff wall, house plinth, static sea mesh and vertex-colour sky. Seed: 41723. No downloaded or AI-generated exterior images/models.",
-  "dimensionsMetres": { "balconySetbackAtCentre": 5, "seaBelowHouseFloor": 28, "cliffBottomBelowHouseFloor": 32 },
-  "runtimeFiles": [],
+  "license": "Original geometry/sky: project ISC; photographic maps: CC0-1.0, see textures/coastal/source.json",
+  "source": [
+    "src/examples/CoastalCliff.ts",
+    "src/examples/RoomExterior.ts",
+    "src/examples/CoastalMaterials.ts",
+    "src/examples/CoastalScatter.ts",
+    "src/examples/CoastalSky.ts",
+    "tools/prepare-coastal-materials.py"
+  ],
+  "generation": "Deterministic metre-based terrain, closed chipped/layered cliff, plinth, opaque folded grass and shrub leaves, buried rock clusters. Seed 41723. Photographic Seaside Rock (Dimitrios Savva, 2m) and Aerial Grass Rock (Rob Tuytel, 15m), Poly Haven CC0. Coast-arc/height UV, macro/strata colour, damp lower wall, shore rock blend. Analytic linear RGBE sky shares the sunlight direction with the rendered sky and scoped outdoor sun; 128-face HDR prefilter and one cached 1024 local shadow. No AI-generated assets or photographic scenery walls. Ground PBR uses translation-only hex blending, identical geometry weights for albedo/normal/ARM; no tangent rotation. Coast columns share shading normals across patch boundaries, with hard vertical ledges.",
+  "dimensionsMetres": {
+    "balconySetbackAtCentre": 5,
+    "seaBelowHouseFloor": 28,
+    "cliffBottomBelowHouseFloor": 32
+  },
+  "runtimeFiles": [
+    "textures/coastal/rock-color.jpg",
+    "textures/coastal/rock-normal.jpg",
+    "textures/coastal/rock-arm.jpg",
+    "textures/coastal/ground-color.jpg",
+    "textures/coastal/ground-normal.jpg",
+    "textures/coastal/ground-arm.jpg",
+    "environment/coastal-daylight.hdr"
+  ],
   "supersedes": "Forest Slope panorama and bark no longer ship or load in the current scene; historical originals and provenance remain in the repository and frozen eight-room-v1 baseline.",
-  "limitations": "Shape validation only: vertex-colour graybox, static sea and sky; photographic PBR, outdoor daylight, waves, reflections and foam await stages B/C. Existing indoor materials/HDR are retained."
+  "limitations": "Static sea placeholder remains from A; moving waves, sea reflections, foam and marine haze await C. Sky reflection is analytic and excludes local house/cliff reflections. Grass/low shrubs are static simplified geometry. Indoor HDR, existing room lights, mirrors and interactions are retained.",
+  "materialProvenance": "textures/coastal/source.json: fixed upstream URLs/authors/license, original PNG SHA256, processing parameters, delivered bytes/SHA256; upstream CC0 https://polyhaven.com/license"
 }

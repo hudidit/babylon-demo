@@ -1,0 +1,12 @@
+{
+  "lockedOriginals": 6,
+  "deliveryFiles": 7,
+  "deliverySha256": "all identical on repeat rebuild",
+  "sourceManifest": "byte identical",
+  "toolVersions": {
+    "python": "3.12.14",
+    "Pillow": "12.3.0",
+    "numpy": "2.3.5",
+    "jpeg": "6.2"
+  }
+}

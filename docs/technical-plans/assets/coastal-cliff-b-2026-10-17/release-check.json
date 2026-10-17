@@ -1,0 +1,33 @@
+{
+  "baseline": "0a9ef96 + stage B",
+  "url": "http://127.0.0.1:8148/",
+  "metrics": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26165488,
+    "runtimeBytes": 15867631,
+    "documentationBytes": 63089,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2551224,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42188912
+  },
+  "deployments": [
+    {
+      "prefix": "/",
+      "files": 495,
+      "sha256": "all matched",
+      "htmlDirectoryIndex": true,
+      "unlistedPublicFallback": false
+    },
+    {
+      "prefix": "/home/",
+      "files": 495,
+      "sha256": "all matched",
+      "htmlDirectoryIndex": true,
+      "unlistedPublicFallback": false
+    }
+  ],
+  "fpsOrLoadTimeSampling": false
+}

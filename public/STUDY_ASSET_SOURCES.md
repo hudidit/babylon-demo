@@ -6,7 +6,7 @@
 
 地板 `wood_floor`、木材 `wood_table_001`、亚麻 `rough_linen`、沙发 `sofa_03`、扶手椅 `modern_arm_chair_01` 和环境 `brown_photostudio_01` 的来源、作者、下载 URL、原件摘要及处理方式见 [来源清单](textures/study/manifest.json)。这些素材按来源记录使用 [CC0-1.0](https://polyhaven.com/license)。清单中 `public/` 前缀对应开发仓库，发布路径去掉该前缀；模型的 `sourceFiles` 为上游文件记录，不是额外运行依赖。该历史清单中的 `brick_wall_001` 已被漆面替换，不再作为运行素材发布。
 
-历史森林远景与树皮来自 Andreas Mischok 的 [Forest Slope](https://polyhaven.com/a/forest_slope)，按来源记录为 CC0-1.0。当前场景已切换为海岸空间灰盒，森林图片及其处理记录退出当前发布白名单；历史原件、来源记录和八房v1稳定基线仍保留在开发仓库，不能把历史森林清单当作当前海岸素材。
+历史森林远景与树皮来自 Andreas Mischok 的 [Forest Slope](https://polyhaven.com/a/forest_slope)，按来源记录为 CC0-1.0。当前场景已切换为三维海岸，阶段A/B已完成，森林图片及其处理记录退出当前发布白名单；历史原件、来源记录和八房v1稳定基线仍保留在开发仓库，不能把历史森林清单当作当前海岸素材。
 
 ## 仓库已有素材
 
@@ -21,4 +21,12 @@
 
 书房、客厅和全屋结构的程序几何、程序纹理与交互由项目代码构建。主卧与次卧床/柜、次卧阅读凳/台灯、双卫洁具/淋浴/瓷砖勾缝、厨房橱柜/水槽/灶台/冰箱和阳台推拉门/长凳/边桌为本项目原创程序组件，按项目源代码条款使用，复用既有木纹、织物、透明门窗和室内HDR；未增加下载模型或图片。浴室镜面使用512²实时平面反射目标，绘制所在卫浴的实际几何，不使用HDR中的其他房间作倒影。Babylon.js 的许可证和声明随发布目录保留：[Apache-2.0](licenses/babylonjs-Apache-2.0.md)、[NOTICE](licenses/babylonjs-NOTICE.md)。Webpack 从分包提取的第三方声明保留在对应的 `js/*.LICENSE.txt` 中，全部纳入发布清单。
 
-海岸阶段A的连续崖顶地形、分层崖壁/岩岬、房屋基座、静态海平面和顶点色天空为本项目原创程序几何，按项目源代码条款（ISC）使用；无新增下载图片、模型或室外HDR。米制尺寸、生成方式、来源代码和当前限制见[海岸灰盒来源记录](environment/coastal-cliff-source.json)。当前仅验证空间，岩石精细PBR、室外日光和动态海浪尚未实施。
+海岸阶段A的连续崖顶地形、分层崖壁/岩岬、房屋基座、静态海平面和顶点色天空为本项目原创程序几何，按项目源代码条款（ISC）使用；阶段A当时未下载图片、模型或室外HDR。米制尺寸、生成方式、来源代码和当前限制见[海岸程序来源记录](environment/coastal-cliff-source.json)。阶段B已接入下述PBR与室外日光，动态海浪留待阶段C。
+
+## 海边悬崖：阶段B静态材质（2026-10-17）
+
+当前外景为连续三维崖顶/岩岬，替代森林摄影远景；阶段A灰盒为历史记录。岩石使用 [Seaside Rock](https://polyhaven.com/a/seaside_rock)，作者 Dimitrios Savva，扫描覆盖2×2m；地表使用 [Aerial Grass Rock](https://polyhaven.com/a/aerial_grass_rock)，作者 Rob Tuytel，覆盖15×15m，均按 [Poly Haven CC0](https://polyhaven.com/license) 使用。来源许可仅适用于这两套贴图，不改变既有 unverified 柜体、书架或装饰画的状态。
+
+[海岸材质来源与加工清单](textures/coastal/source.json)保存固定无损PNG下载URL、原件SHA256、交付SHA256/字节、Pillow/NumPy版本、Lanczos/法线归一化/JPEG参数；脚本为仓库`tools/prepare-coastal-materials.py`，输入锁为`tools/coastal-material-inputs.json`，从校验原件重建，不对交付图重复压缩。颜色为sRGB；OpenGL切线法线与ARM为线性，ARM的R=AO/G=粗糙度/B=金属度，材质强制非金属。
+
+海岸几何、静态实体草叶/低灌木/岩块、天空与小HDR为项目程序生成（ISC），无AI图片；[程序来源](environment/coastal-cliff-source.json)记录当前版本和限制。室外材质级环境覆盖保留室内HDR，局部方向光/1024缓存阴影不受室内灯开关影响。海面仍为阶段A静态占位；波浪、海面倒影、泡沫和海雾待阶段C。
