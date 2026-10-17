@@ -16,9 +16,9 @@
   "after": {
     "runtimeBytes": 15867631,
     "modelBytes": 4332840,
-    "initialStaticJsBytes": 2582787,
-    "actualInitialJsBytesIncludingAudioPreheat": 2801639,
-    "completeReleaseBytes": 42199442,
+    "initialStaticJsBytes": 2582813,
+    "actualInitialJsBytesIncludingAudioPreheat": 2801665,
+    "completeReleaseBytes": 42199468,
     "filesVerified": 495,
     "meshes": 612,
     "vertices": 509239,
@@ -257,8 +257,8 @@
     {
       "path": "js/main.js",
       "bytesBefore": 162056,
-      "bytesAfter": 162609,
-      "delta": 553
+      "bytesAfter": 162635,
+      "delta": 579
     }
   ],
   "staticInitialJsFiles": [
@@ -272,9 +272,13 @@
     "materials": 80,
     "textures": 147
   },
+  "overviewWindows": {
+    "visible": 6,
+    "ceilingsVisible": 0
+  },
   "notes": [
-    "Only js/main.js grew (553 bytes); bundle-analysis.json changed in content at identical byte length.",
+    "Only js/main.js changed (579 bytes total for the window move plus overview shell); bundle-analysis.json content changed at identical length.",
     "All 36 runtime assets and both target GLBs are byte/hash identical to the stage C baseline.",
-    "No new lights, cameras, render targets, meshes, materials, textures or downloads were added by this layout change."
+    "No new lights, cameras, render targets, meshes, materials, textures or downloads were added."
   ]
 }

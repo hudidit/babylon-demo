@@ -145,7 +145,9 @@ export function createHouseArchitecture(scene: Scene, furniture: RoomFurnishings
   let enclosed = false, view = "overview";
   return { setEnclosed(value: boolean, nextView = "overview") {
     enclosed = value; view = nextView;
-    hidden.forEach(m => m.isVisible = enclosed);
+    // The panorama is a roofless full shell so the facade windows stay visible; room views use the selective cutaway.
+    const shell = enclosed || view === "overview";
+    hidden.forEach(m => m.isVisible = shell);
     ceilings.forEach(m => m.isVisible = enclosed);
   }, updateCutaway(position: { x: number; z: number }, target: { x: number; z: number }) {
     if (enclosed || view === "overview") return false;

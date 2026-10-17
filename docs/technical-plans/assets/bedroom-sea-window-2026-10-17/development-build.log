@@ -1,6 +1,6 @@
 
 > babylon-learning@0.0.1 build
-> webpack --output-path /tmp/bedroom-sea-development
+> webpack --output-path /tmp/bedroom-sea-development-overview
 
 assets by chunk 61.2 MiB (id hint: vendors)
   asset js/vendors-node_modules_babylonjs_inspector_lib_index_js.js 20.7 MiB [emitted] (id hint: vendors)
@@ -17,6 +17,6 @@ assets by chunk 839 KiB (id hint: shaderIncludes)
   asset js/shader-includes-wgsl.js 635 KiB [emitted] (name: shader-includes-wgsl) (id hint: shaderIncludes)
   asset js/shader-includes-glsl.js 204 KiB [emitted] (name: shader-includes-glsl) (id hint: shaderIncludes)
 + 364 assets
-Entrypoint main 8.16 MiB = js/vendors-node_modules_babylonjs_core_Cameras_arcRotateCamera_pure_js-node_modules_babylonjs_co-10036b.js 7.74 MiB js/main.js 424 KiB
+Entrypoint main 8.16 MiB = js/vendors-node_modules_babylonjs_core_Cameras_arcRotateCamera_pure_js-node_modules_babylonjs_co-10036b.js 7.74 MiB js/main.js 425 KiB
 5343 modules
-webpack 5.111.1 compiled successfully in 4956 ms
+webpack 5.111.1 compiled successfully in 5714 ms

@@ -854,7 +854,7 @@ test("all house doors block when closed and pass the actual walker in both direc
   for (let i = 0; i < 16; i++) interactions.update(0.05);
   indoor.forEach(d => check(d, true));
   check(HOUSE_DOORS.find(d => d.sliding), true);
-  architecture.setEnclosed(false);
+  architecture.setEnclosed(false, "living");
   indoor.forEach(d => check(d, true));
   assert.ok(architecture.upperWalls.every(m => !m.isVisible && m.checkCollisions && m.isEnabled()));
   assert.equal(scene.meshes.filter(m => m.metadata?.structure === "floor").length, 8);
@@ -862,6 +862,20 @@ test("all house doors block when closed and pass the actual walker in both direc
     const start = houseVector(x, y, 0.82), result = sweep(scene, start, new babylon.Vector3(dx, 0, dz), radius).position;
     assert.ok(result.subtract(start).length() < Math.hypot(dx, dz) - 1, "outer walls, balcony and entry boundary must stop the walker");
   }
+});
+
+test("overview shows every facade window in a roofless shell while room views keep selective cutaways", t => {
+  const { scene, architecture } = houseShell(t);
+  architecture.setEnclosed(false, "overview");
+  const windows = scene.meshes.filter(m => m.metadata?.cut && m.material?.name === "window-glass");
+  assert.equal(windows.length, HOUSE_WINDOWS.length);
+  assert.ok(windows.every(m => m.isVisible), "overview shows every window");
+  assert.ok(architecture.upperWalls.every(m => m.isVisible), "overview shows the full roofless shell");
+  assert.ok(architecture.ceilings.every(m => !m.isVisible), "overview stays roofless");
+  architecture.setEnclosed(false, "study");
+  architecture.updateCutaway(houseVector(4.4, 4.2, 4.4), houseVector(6.9, 1.8, .5));
+  assert.ok(windows.some(m => !m.isVisible), "room cutaway still hides near-side windows");
+  assert.ok(architecture.ceilings.every(m => !m.isVisible), "room cutaway stays roofless");
 });
 
 test("mounted door sweep protection uses the fixed yaw and the house walker radius", t => {
