@@ -140,6 +140,32 @@ test("exterior window sides match their rooms and the guest room shares the balc
   assert.ok(window.sill > 0.56, "the seat and its tray fit below the sill");
 });
 
+test("window casings stay clear of the wall's cut faces so the reveal cannot z-fight", t => {
+  const { scene } = houseShell(t), c = HOUSE_COORDINATES, u = c.unitsPerMeter;
+  const halfWall = c.wallThickness * u / 2, clearance = 0.005;
+  for (const w of HOUSE_WINDOWS) {
+    const mesh = scene.meshes.find(m => m.name.startsWith(w.id + "-") && m.material?.name === "darkWood");
+    assert.ok(mesh, w.id + ": dark window casing must exist");
+    const wall = (w.axis === "x" ? w.y : w.x), wallWorld = (wall - (w.axis === "x" ? c.centerY : c.centerX)) * u;
+    const edgeA = (w.axis === "x" ? w.x : w.y), edgeAWorld = (edgeA - (w.axis === "x" ? c.centerX : c.centerY)) * u;
+    const edgeBWorld = edgeAWorld + w.width * u;
+    const sillWorld = c.floorY + w.sill * u, headWorld = c.floorY + (w.sill + w.height) * u;
+    const positions = mesh.getVerticesData(babylon.VertexBuffer.PositionKind), world = mesh.computeWorldMatrix(true);
+    let tested = 0, closest = Infinity;
+    for (let i = 0; i < positions.length; i += 3) {
+      const p = babylon.Vector3.TransformCoordinates(new babylon.Vector3(positions[i], positions[i + 1], positions[i + 2]), world);
+      const depth = (w.axis === "x" ? p.z : p.x) - wallWorld;
+      if (Math.abs(depth) > halfWall + 1e-6) continue;
+      tested++;
+      const across = w.axis === "x" ? p.x : p.z;
+      closest = Math.min(closest, Math.abs(across - edgeAWorld), Math.abs(across - edgeBWorld),
+        Math.abs(p.y - sillWorld), Math.abs(p.y - headWorld));
+    }
+    assert.ok(tested > 0, w.id + ": casing vertices inside the wall slab");
+    assert.ok(closest > clearance, w.id + ": casing must not meet the reveal planes (closest " + closest + ")");
+  }
+});
+
 test("all window centres see the outside through transparent glass while retaining walker collisions", t => {
   const { scene } = houseShell(t);
   for (const w of HOUSE_WINDOWS) {

@@ -792,9 +792,19 @@ export class RoomFurnishings {
     }
     const g = this.group(name, position, rotation);
     // Four rails leave a real opening. A full backing box would occlude the world outside.
+    // The casing is buried inside the wall; keep it clear of the wall's cut faces so the
+    // reveal does not z-fight when the camera looks across the opening at an angle.
+    const casingClearance = 0.04;
+    // The buried casing needs no bevel: plain boxes keep every face off the reveal planes,
+    // including the corners, where rounding would otherwise creep back toward the cut.
+    const casing = (size: Triple, position: Triple) => this.place(
+      CreateBox("window-casing", { width: size[0], height: size[1], depth: size[2] }, this.scene),
+      position, "darkWood", g);
     [-1, 1].forEach(side => {
-      this.box("window-casing", [0.35, 8.2, 0.35], [side * 5.325, 0, 0], "darkWood", g);
-      this.box("window-casing", [10.3, 0.35, 0.35], [0, side * 3.925, 0], "darkWood", g);
+      casing([0.35, 8.2, 0.35], [side * (5.325 + casingClearance), 0, 0]);
+      // Span the rails between the two inset jambs; leaving them at the old 10.3 width would
+      // put their end faces back on the side reveal planes.
+      casing([10.3 + casingClearance * 2, 0.35, 0.35], [0, side * (3.925 + casingClearance), 0]);
     });
     const plane = CreatePlane("garden-view", { width: 10.3, height: 7.5, sideOrientation: Mesh.DOUBLESIDE }, this.scene);
     this.place(plane, [0, 0, -0.21], "window-glass", g).receiveShadows = false;

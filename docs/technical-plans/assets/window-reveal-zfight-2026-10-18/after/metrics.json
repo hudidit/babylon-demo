@@ -1,0 +1,2576 @@
+{
+  "passed": true,
+  "url": "http://127.0.0.1:8123/",
+  "browser": "155.0.8059.82",
+  "expectFixed": true,
+  "redCount": 0,
+  "firstScreenJsBytes": 2805907,
+  "jsRequests": 12,
+  "scene": {
+    "meshes": 612,
+    "vertices": 504631,
+    "materials": 80,
+    "textures": 147,
+    "lights": 16,
+    "cameras": 3,
+    "windows": 8
+  },
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8123/",
+      "status": 200,
+      "bytes": 18776
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/main.js",
+      "status": 200,
+      "bytes": 166877
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8123/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8123/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8123/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4444
+    },
+    {
+      "url": "http://127.0.0.1:8123/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8123/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8123/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8123/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/cd58892d-3c41-4fdf-8d72-5abc19d56c2a",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/416e0a70-4bcc-4072-a8a1-2ec494e8bab6",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/60f24ac1-f5ce-445e-9109-a0c79239319f",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/4c5b4760-87b9-4620-b583-6d4e0b805c76",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/6827f996-7b0f-49cd-ab0a-b042cb03ed67",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/ec7e15b4-15d9-4fd6-98e8-bbc8ca08465c",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/222229ec-e70f-4ed9-a622-c2698a632f1d",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/8c380554-c396-4429-89f0-a7fd29a0e1e2",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/42e7a7d8-3b24-4c80-af5a-2d09da355ca9",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/d4fa816f-3b20-463a-b954-a06dbff6514d",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/5f303718-bea0-439d-b449-79232c9695fa",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/5860f71e-a5a4-4d53-b8c1-0b955c030125",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/3e1bf4f9-cf1c-482a-a7e1-268f6924e7e2",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/1cb98ed2-9d59-4d63-8d5d-f4a7c12d92e8",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/c4db69c0-1bb9-4e4d-83f9-bfbf42ff9442",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8123/745ab830-b0f7-4790-ae01-6222fe0b1163",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8123/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8123/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ],
+  "sweep": [
+    {
+      "frame": 0,
+      "cameraX": 4.55,
+      "yawOffset": -0.025,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            146,
+            205,
+            171
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            141,
+            203,
+            174
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            145,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            148,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            151,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            128,
+            211,
+            149
+          ],
+          "kind": "wall"
+        }
+      ]
+    },
+    {
+      "frame": 1,
+      "cameraX": 4.515,
+      "yawOffset": -0.0225,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "cameraX": 4.4799999999999995,
+      "yawOffset": -0.02,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            145,
+            204,
+            171
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            140,
+            203,
+            173
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            151,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            151,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            129,
+            211,
+            150
+          ],
+          "kind": "wall"
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "cameraX": 4.444999999999999,
+      "yawOffset": -0.0175,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            143,
+            203,
+            169
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            139,
+            202,
+            172
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            146,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            152,
+            210,
+            181
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "cameraX": 4.41,
+      "yawOffset": -0.015,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            142,
+            202,
+            168
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            139,
+            202,
+            172
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            146,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            147,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            148,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            152,
+            210,
+            181
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "cameraX": 4.375,
+      "yawOffset": -0.0125,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            143,
+            203,
+            169
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            139,
+            202,
+            172
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            146,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            148,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            148,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            150,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            153,
+            210,
+            181
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "cameraX": 4.34,
+      "yawOffset": -0.01,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            143,
+            203,
+            169
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            141,
+            203,
+            174
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            149,
+            208,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            151,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            153,
+            210,
+            181
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "cameraX": 4.305,
+      "yawOffset": -0.0075,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            141,
+            202,
+            168
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            139,
+            202,
+            172
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            145,
+            205,
+            176
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            151,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            153,
+            210,
+            181
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "cameraX": 4.27,
+      "yawOffset": -0.005,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            144,
+            203,
+            169
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            141,
+            203,
+            173
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            144,
+            205,
+            176
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            148,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            149,
+            208,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            151,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            13,
+            18,
+            52
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 9,
+      "cameraX": 4.234999999999999,
+      "yawOffset": -0.0025,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            144,
+            204,
+            170
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            140,
+            202,
+            173
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            145,
+            205,
+            176
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            146,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            149,
+            208,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            13,
+            18,
+            52
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 10,
+      "cameraX": 4.2,
+      "yawOffset": 0,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            140,
+            201,
+            166
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            139,
+            202,
+            172
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            144,
+            205,
+            175
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            144,
+            205,
+            176
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            148,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            149,
+            208,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            149,
+            208,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            149,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            13,
+            18,
+            52
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 11,
+      "cameraX": 4.165,
+      "yawOffset": 0.0025,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            139,
+            200,
+            165
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            138,
+            201,
+            171
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            145,
+            205,
+            176
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            147,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            149,
+            208,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            13,
+            18,
+            52
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 12,
+      "cameraX": 4.13,
+      "yawOffset": 0.005,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            140,
+            201,
+            167
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            139,
+            202,
+            173
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            144,
+            205,
+            176
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            146,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            149,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            13,
+            18,
+            52
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 13,
+      "cameraX": 4.095,
+      "yawOffset": 0.0075,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            141,
+            202,
+            168
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            139,
+            202,
+            173
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            145,
+            205,
+            176
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            13,
+            18,
+            52
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 14,
+      "cameraX": 4.06,
+      "yawOffset": 0.01,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            140,
+            201,
+            167
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            144,
+            205,
+            176
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            145,
+            205,
+            176
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            148,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            13,
+            18,
+            52
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 15,
+      "cameraX": 4.0249999999999995,
+      "yawOffset": 0.0125,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            139,
+            200,
+            166
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            142,
+            204,
+            174
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            151,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            13,
+            18,
+            52
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 16,
+      "cameraX": 3.9899999999999998,
+      "yawOffset": 0.015,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            133,
+            196,
+            161
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            141,
+            203,
+            173
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            146,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            13,
+            18,
+            52
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 17,
+      "cameraX": 3.9549999999999996,
+      "yawOffset": 0.0175,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            135,
+            198,
+            162
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            142,
+            204,
+            174
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            145,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            147,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            13,
+            18,
+            52
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 18,
+      "cameraX": 3.92,
+      "yawOffset": 0.02,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            131,
+            195,
+            159
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            142,
+            204,
+            175
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            145,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            151,
+            209,
+            181
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            153,
+            211,
+            182
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 19,
+      "cameraX": 3.885,
+      "yawOffset": 0.0225,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            125,
+            191,
+            154
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            141,
+            203,
+            174
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            146,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            146,
+            206,
+            177
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            147,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            149,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            152,
+            210,
+            180
+          ],
+          "kind": "other"
+        }
+      ]
+    },
+    {
+      "frame": 20,
+      "cameraX": 3.8499999999999996,
+      "yawOffset": 0.025,
+      "samples": [
+        {
+          "z": 26.76,
+          "rgb": [
+            127,
+            193,
+            156
+          ],
+          "kind": "wall"
+        },
+        {
+          "z": 26.8,
+          "rgb": [
+            140,
+            202,
+            172
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.85,
+          "rgb": [
+            147,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.9,
+          "rgb": [
+            148,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 26.95,
+          "rgb": [
+            147,
+            206,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.05,
+          "rgb": [
+            147,
+            207,
+            178
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.1,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.15,
+          "rgb": [
+            148,
+            207,
+            179
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.2,
+          "rgb": [
+            150,
+            208,
+            180
+          ],
+          "kind": "other"
+        },
+        {
+          "z": 27.24,
+          "rgb": [
+            128,
+            215,
+            148
+          ],
+          "kind": "wall"
+        }
+      ]
+    }
+  ],
+  "fpsOrLoadTimeSampling": false
+}
