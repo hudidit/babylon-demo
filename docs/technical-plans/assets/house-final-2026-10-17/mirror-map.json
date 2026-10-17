@@ -1,0 +1,996 @@
+{
+  "baseline": "afd1fc7",
+  "browser": "155.0.8059.82",
+  "fpsOrLoadTimeSampling": false,
+  "mirror": {
+    "plane": [
+      1,
+      0,
+      -2.220446049250313e-16,
+      15.560000381469727
+    ],
+    "size": [
+      512,
+      512
+    ],
+    "texture": "ensuite-mirror-target-3612",
+    "cameras": 3,
+    "hasMirrorPrePass": false,
+    "mainPrePass": true,
+    "list": [
+      {
+        "name": "exterior-forest-horizon",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "exterior-trees-0",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "exterior-leaves-0",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "exterior-trees-1",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "exterior-leaves-1",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "exterior-trees-2",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "exterior-leaves-2",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "exterior-trees-3",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "exterior-leaves-3",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "master-oak-floor",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-foundation-study-darkWood-surface",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-ceiling",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-oak-floor",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-foundation-study-darkWood-surface",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-ceiling",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-0-low",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-0-upper",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-0-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-1-low",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-1-upper",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-1-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-2-upper",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-3-low",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-3-upper",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-3-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-12-low",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-12-upper",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-12-study-darkWood",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-13-upper",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-14-low",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-14-upper",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-14-study-darkWood",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-15-low",
+        "owners": [
+          "bathroom",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-15-upper",
+        "owners": [
+          "bathroom",
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-15-study-darkWood",
+        "owners": [
+          "bathroom",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-16-low",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-16-upper",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-16-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-17-low",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-17-upper",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-skirting-17-study-darkWood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-18-low",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-18-upper",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-skirting-18-study-darkWood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-19-upper",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-20-low",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-20-upper",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-skirting-20-study-darkWood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-25-low",
+        "owners": [
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "house-wall-25-upper",
+        "owners": [
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "house-skirting-25-study-darkWood",
+        "owners": [
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "house-wall-26-low",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-26-upper",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-26-study-darkWood",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-27-upper",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-28-low",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-28-upper",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-28-study-darkWood",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-51-low",
+        "owners": [
+          "bedroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-51-upper",
+        "owners": [
+          "bedroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-skirting-51-study-darkWood",
+        "owners": [
+          "bedroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-53-low",
+        "owners": [
+          "bathroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-53-upper",
+        "owners": [
+          "bathroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-skirting-53-study-darkWood",
+        "owners": [
+          "bathroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "master-door-jamb",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "master-door-jamb",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "master-door-header",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-door-jamb",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-door-jamb",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-door-header",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-study-window-glass-surface",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-study-wood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-study-brass",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-study-curtain-linen",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-study-cushion",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-window-study-window-glass-surface",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-window-study-darkWood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-window-study-wood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-window-study-brass",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-window-study-curtain-linen",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-window-study-cushion",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "master-bed-study-wood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-bed-study-cushion",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-bed-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-bed-study-cream",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-bed-study-moss",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-wood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-brass",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-wood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-brass",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-wardrobe-study-wood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-wardrobe-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-wardrobe-study-paintGreen",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-wardrobe-study-moss",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-wardrobe-study-brass",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-accessories-study-rug-surface",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-accessories-study-navy",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-accessories-study-ceramic",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "study-ceramic",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "study-master-lamp-glow",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-tiles-study-bath-grout",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-tiles-study-bath-tile",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-darkWood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-wood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-ceramic",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-paintGreen",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-brass",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-bath-porcelain",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-toilet-study-brass",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-toilet-study-paper",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-toilet-study-bath-porcelain",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-shower-study-bath-tile",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-shower-study-black",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-shower-study-bath-glass-surface",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-shower-study-brass",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "study-brass",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "study-ensuite-lamp-glow",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "study-paintGreen",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "study-darkWood",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "study-brass",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "study-paintGreen",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "study-darkWood",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "study-brass",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "study-brass",
+        "owners": [
+          "master"
+        ]
+      }
+    ],
+    "selfExcluded": true,
+    "usesSceneHDR": false
+  },
+  "mapProjection": [
+    {
+      "id": "master",
+      "screenX": 0.38571428786963224,
+      "screenY": -0.42860000239670626,
+      "mapX": 355.59999999999997,
+      "mapY": 136.39999999999998
+    },
+    {
+      "id": "study",
+      "screenX": -0.21428571548312902,
+      "screenY": -0.5286000029554998,
+      "mapX": 204.4,
+      "mapY": 111.19999999999999
+    },
+    {
+      "id": "kitchen",
+      "screenX": -0.6000000033527612,
+      "screenY": -0.5286000029554998,
+      "mapX": 107.19999999999999,
+      "mapY": 111.19999999999999
+    },
+    {
+      "id": "ensuite",
+      "screenX": 0.6000000033527613,
+      "screenY": 0.08568571476280337,
+      "mapX": 409.6,
+      "mapY": 266
+    },
+    {
+      "id": "bathroom",
+      "screenX": 0.21428571548312908,
+      "screenY": 0.08568571476280337,
+      "mapX": 312.4,
+      "mapY": 266
+    },
+    {
+      "id": "bedroom",
+      "screenX": 0.38571428786963224,
+      "screenY": 0.5142571457290614,
+      "mapX": 355.59999999999997,
+      "mapY": 374
+    },
+    {
+      "id": "living",
+      "screenX": -0.3857142878696324,
+      "screenY": 0.2428285727837646,
+      "mapX": 161.2,
+      "mapY": 305.6
+    },
+    {
+      "id": "balcony",
+      "screenX": -0.3857142878696324,
+      "screenY": 0.8785428620503808,
+      "mapX": 161.2,
+      "mapY": 465.8
+    }
+  ],
+  "front": {
+    "hash": "5197534c48811e83587103f4d111344b2a3082b5eb99783053d4ce25af1b1536",
+    "changedPixels": 0
+  },
+  "hiddenToilet": {
+    "hash": "8922f0d1418d4a4b682d360c4189b2d8e78a6ab1de50e739a767fb95221bebf5",
+    "changedPixels": 5123
+  },
+  "restoredToilet": {
+    "hash": "5197534c48811e83587103f4d111344b2a3082b5eb99783053d4ce25af1b1536",
+    "changedPixels": 5123
+  },
+  "doorOpen": {
+    "hash": "6325e524de9d99a9432d2259f5df8186a567b3a5a0d19e7d97b286ca718d05f7",
+    "changedPixels": 45634
+  },
+  "otherView": {
+    "hash": "3c4ea851920fe10245803dc15068349a8753a964b4812da48e583abe6c72168c",
+    "changedPixels": 250146
+  },
+  "lightOff": {
+    "hash": "76baf3e5bafd62ee8da86e55dab6a5f9de298017fa7cfad54b5b9b98ec4af2b6",
+    "changedPixels": 249397
+  },
+  "visibilityGating": true,
+  "headings": [
+    {
+      "dx": 0,
+      "dz": -1,
+      "actual": -1.0177775132343919e-14
+    },
+    {
+      "dx": 1,
+      "dz": 0,
+      "actual": -89.98854311502798
+    },
+    {
+      "dx": 0,
+      "dz": 1,
+      "actual": -180
+    },
+    {
+      "dx": -1,
+      "dz": 0,
+      "actual": 89.98854311502798
+    }
+  ],
+  "passed": true,
+  "errors": [],
+  "warnings": []
+}

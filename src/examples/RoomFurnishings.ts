@@ -11,7 +11,7 @@ import type { HouseDoor, HouseRoomId } from "./HouseLayout";
 import { HOUSE_DOOR_HEIGHT, HOUSE_DOOR_JAMB, HOUSE_DOOR_FLOOR_GAP } from "./HouseStructure";
 import { HOUSE_WALKER_RADIUS } from "./HouseWalking";
 import { partitionMergedCollisions } from "./RoomCollisions";
-import type { InspectableItem, InteractiveDoor, InteractiveDrawer, InteractiveLamp } from "./RoomInteractions";
+import type { InspectableItem, InteractiveDoor, InteractiveDrawer, InteractiveLamp, InteractiveSlidingDoor } from "./RoomInteractions";
 import { CONNECTING_PASSAGE, SHARED_WALL_SPANS } from "./RoomLayout";
 
 type Triple = [number, number, number];
@@ -25,6 +25,7 @@ export class RoomFurnishings {
   readonly lamps: InteractiveLamp[] = [];
   readonly inspectables: InspectableItem[] = [];
   readonly doors: InteractiveDoor[] = [];
+  readonly slidingDoors: InteractiveSlidingDoor[] = [];
   private interactiveGroups: { meshes: Mesh[]; root: TransformNode; fixed: boolean }[] = [];
 
   constructor(private scene: Scene, roomId: HouseRoomId = "study") {
@@ -259,7 +260,7 @@ export class RoomFurnishings {
 
   /** The fixed mounting yaw is independent of the moving leaf's local animation. */
   houseDoor(door: HouseDoor) {
-    if (door.sliding) return;
+    if (door.sliding) { this.houseSlidingDoor(door); return; }
     const previous = this.currentRoom;
     this.currentRoom = door.from;
     const owners = door.to === "outside" ? [door.from] : [door.from, door.to];
@@ -288,6 +289,42 @@ export class RoomFurnishings {
     this.doors.push({ id: door.id, label, root, meshes: this.keepInteractive(start, root), width,
       openAngle: -(door.swing ?? -1) * Math.PI / 2, walkerRadius: HOUSE_WALKER_RADIUS + 0.08 });
     this.currentRoom = previous;
+  }
+
+  private houseSlidingDoor(door: HouseDoor) {
+    if (door.to === "outside") throw new Error("Sliding door must connect two rooms");
+    const previous = this.currentRoom; this.currentRoom = door.from;
+    const owners = [door.from, door.to], u = HOUSE_COORDINATES.unitsPerMeter;
+    // Shared clear glass has no HDR reflection of unrelated rooms.
+    if (!this.materials.has("window-glass")) {
+      const glass = new StandardMaterial("window-glass", this.scene);
+      glass.diffuseColor = new Color3(.64,.78,.82); glass.specularColor = new Color3(.18,.2,.2);
+      glass.specularPower = 96; glass.alpha = .045; glass.backFaceCulling = false;
+      this.materials.set(glass.name, glass);
+    }
+    const p = planToWorld({x:door.x+(door.axis==="x"?HOUSE_DOOR_JAMB:0), y:door.y+(door.axis==="y"?HOUSE_DOOR_JAMB:0)});
+    const mount = this.group(door.id+"-mount",[p.x,p.y,p.z],door.axis==="x"?Math.PI/2:0);setRoomOwners(mount,owners);
+    const span=(door.width-2*HOUSE_DOOR_JAMB)*u, travel=span/2-.02*u, width=span-travel;
+    const gap=HOUSE_DOOR_FLOOR_GAP*u,height=HOUSE_DOOR_HEIGHT*u-gap-.08;
+    const panel=(root:TransformNode,handles:boolean)=>{
+      for(const z of [.025*u,width-.025*u])this.box("slider-stile",[.05*u,height,.05*u],[0,height/2,z],"darkWood",root);
+      for(const h of [.035*u,height-.035*u])this.box("slider-rail",[.05*u,.07*u,width],[0,h,width/2],"darkWood",root);
+      const glass=this.box("slider-glass",[.012*u,height-.14*u,width-.1*u],[0,height/2,width/2],"window-glass",root);
+      glass.metadata.castsShadows=false;
+      if(handles)for(const side of [-1,1]) {
+        this.cylinder("slider-handle",.26*u,.018*u,[side*.05*u,1.05*u,width-.12*u],"brass",root);
+        for(const h of [.945,1.155])this.box("slider-handle-mount",[.05*u,.018*u,.1*u],[side*.025*u,h*u,width-.07*u],"brass",root);
+      }
+    };
+    const fixed=this.section(door.from,door.id+"-fixed",()=>{
+      const root=this.group(door.id+"-fixed-root",[-.045*u,gap,travel]);root.parent=mount;setRoomOwners(root,owners);panel(root,false);
+      for(const x of [-.045*u,.045*u])this.box("slider-track",[.025*u,.012*u,span],[x,.008*u,span/2],"brass",mount);
+    });fixed.forEach(m=>setRoomOwners(m,owners));
+    const root=this.group(door.id,[.045*u,gap,0]);root.parent=mount;setRoomOwners(root,owners);
+    const start=this.parts.length;panel(root,true);
+    this.slidingDoors.push({id:door.id,label:"阳台推拉门",root,meshes:this.keepInteractive(start,root),fixedMeshes:fixed,
+      closed:root.position.clone(),travel:new Vector3(0,0,travel),width,halfThickness:.1*u,walkerRadius:HOUSE_WALKER_RADIUS+.08});
+    this.currentRoom=previous;
   }
 
   architecturalDetails() {

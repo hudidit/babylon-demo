@@ -33,7 +33,7 @@ export interface HouseDoor {
   swing?: 1 | -1;
 }
 
-/** Stable openings shared by the map and physical house. Balcony sliding leaves arrive in stage G. */
+/** Stable openings shared by the map and physical house. Balcony uses a two-track sliding door. */
 export const HOUSE_DOORS: readonly HouseDoor[] = [
   { id: "entry-door", from: "living", to: "outside", axis: "y", x: 10.8, y: 4.1, width: 1.1, swing: 1 },
   { id: "master-door", from: "master", to: "living", axis: "y", x: 5.4, y: 3.6, width: 0.9, swing: 1 },

@@ -148,7 +148,7 @@ export function createHouseArchitecture(scene: Scene, furniture: RoomFurnishings
   }, updateCutaway(position: { x: number; z: number }, target: { x: number; z: number }) {
     if (enclosed || view === "overview") return false;
     const room = ["study", "desk", "details"].includes(view) ? "study"
-      : ["master", "ensuite", "bedroom", "kitchen", "bathroom"].includes(view) ? view : "living";
+      : ["master", "ensuite", "bedroom", "kitchen", "bathroom", "balcony"].includes(view) ? view : "living";
     const camera = worldToPlan(position), focus = worldToPlan(target);
     let changed = false;
     hidden.forEach(m => {

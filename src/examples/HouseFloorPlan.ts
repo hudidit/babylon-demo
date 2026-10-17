@@ -41,10 +41,10 @@ export function housePlanSvg(compact = false, contentRooms: readonly HouseRoomId
     const start = p(door.x, door.y), size = door.width * scale;
     const rotation = door.axis === "y" ? 90 : 0;
     const swing = door.swing ?? -1;
-    return `<g class="plan-door is-planned" transform="translate(${start.x} ${start.y}) scale(-1 1) rotate(${rotation})">
-      <title>${HOUSE_ROOMS.find(room => room.id === door.from)!.name}至${door.to === "outside" ? "入户" : HOUSE_ROOMS.find(room => room.id === door.to)!.name} · 规划开口</title>
+    return `<g data-door="${door.id}" class="plan-door is-planned" transform="translate(${start.x} ${start.y}) scale(-1 1) rotate(${rotation})">
+      <title>${HOUSE_ROOMS.find(room => room.id === door.from)!.name}至${door.to === "outside" ? "入户" : HOUSE_ROOMS.find(room => room.id === door.to)!.name} · ${door.sliding ? "双轨推拉门" : "单开门"}</title>
       <path class="plan-door-gap" d="M 2 0 H ${size - 2}"/>
-      ${door.sliding ? `<path d="M 0 -3 H ${size * 0.6} M ${size * 0.4} 3 H ${size}"/>`
+      ${door.sliding ? `<path d="M 0 -3 H ${size * 0.51} M ${size * 0.49} 3 H ${size}"/>`
         : `<path d="M 0 0 V ${swing * size} M 0 ${swing * size} A ${size} ${size} 0 0 ${swing === -1 ? 1 : 0} ${size} 0"/>`}
     </g>`;
   }).join("");

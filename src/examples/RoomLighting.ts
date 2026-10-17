@@ -176,6 +176,16 @@ export class RoomLighting {
     });
   }
 
+  addBalcony(scene: Scene) {
+    const light=new SpotLight("balcony-daylight",houseVector(8.1,12.1,3),new Vector3(0,-1,-.15).normalize(),Math.PI/1.3,1,scene);
+    light.diffuse=new Color3(1,.96,.88);light.intensity=2.2;light.range=24;
+    setRoomOwners(light,["balcony"]);light.metadata.affectsShared=true;
+    light.falloffType=SpotLight.FALLOFF_STANDARD;light.specular=light.diffuse.scale(.65);
+    light.shadowMinZ=.1;light.shadowMaxZ=light.range;
+    const shadow=new ShadowGenerator(512,light);shadow.usePercentageCloserFiltering=true;
+    shadow.filteringQuality=ShadowGenerator.QUALITY_MEDIUM;shadow.bias=.00012;shadow.normalBias=.012;this.shadows.push(shadow);
+  }
+
   bindLamp(id: string, material: PBRMaterial) {
     const lamp = this.lamps.get(id)!;
     lamp.material = material;

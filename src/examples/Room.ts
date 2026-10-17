@@ -21,13 +21,14 @@ import { HOUSE_CONTENT, furnishHouseLiving, furnishHouseStudy } from "./HouseCon
 import { furnishHouseMaster, furnishHouseEnsuite } from "./HouseSuite";
 import { furnishHouseBedroom } from "./HouseBedroom";
 import { furnishHouseKitchen, furnishHouseBathroom } from "./HouseServiceRooms";
+import { furnishHouseBalcony } from "./HouseBalcony";
 import { HouseRooms } from "./HouseRooms";
 import type { RoomBuild } from "./HouseRooms";
 import { HOUSE_LAYOUT_VERSION, HOUSE_ROOMS } from "./HouseLayout";
 import type { HouseRoomId } from "./HouseLayout";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
 
-export type RoomView = "overview" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "reading" | "desk" | "details" | "cabinet" | "first-person";
+export type RoomView = "overview" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.55 };
 
 /** A shared eight-room scene with cutaway presets and enclosed first-person roaming. */
@@ -146,17 +147,20 @@ export class RoomScene {
     furnishHouseEnsuite(furnishings);
     furnishHouseBedroom(furnishings);
     furnishHouseKitchen(furnishings); furnishHouseBathroom(furnishings);
+    furnishHouseBalcony(furnishings);
     this.architecture.setEnclosed(false);
     this.lighting.addLivingRoom(this.scene, true);
     this.lighting.addMasterSuite(this.scene);
     this.lighting.addBedroom(this.scene);
     this.lighting.addServiceRooms(this.scene);
+    this.lighting.addBalcony(this.scene);
     furnishings.finish().forEach(mesh => {
       mesh.checkCollisions = true;
     });
     new RoomMirrors(this.scene);
     furnishings.drawers.forEach(drawer => this.interactions.addDrawer(drawer));
     furnishings.doors.forEach(door => this.interactions.addDoor(door));
+    furnishings.slidingDoors.forEach(door => this.interactions.addSlidingDoor(door));
     furnishings.inspectables.forEach(item => this.interactions.addInspectable(item, item => this.openInspection(item)));
     furnishings.lamps.forEach(lamp => {
       const material = this.scene.getMaterialByName(lamp.id === "desk-lamp" ? "desk-lamp-glow"
@@ -173,11 +177,13 @@ export class RoomScene {
       });
     }
     HOUSE_ROOMS.filter(r => !["study", "living"].includes(r.id)).forEach(r =>
-      this.rooms.setState(this.builds[r.id], r.id !== "balcony" ? "ready" : "shell"));
+      this.rooms.setState(this.builds[r.id], "ready"));
     this.scene.onBeforeRenderObservable.add(() => {
       this.audio.update();
       if (!this.inspection.isOpen && this.scene.activeCamera === this.camera
         && this.architecture.updateCutaway(this.camera.position, this.camera.target)) this.lighting.refreshShadows();
+      if (!this.inspection.isOpen && this.scene.activeCamera === this.camera)
+        this.exterior.updateCutaway(this.currentView === "overview" ? undefined : this.camera.position, this.camera.target);
       if (this.isViewing) return;
       const delta = this.engine.getDeltaTime() / 1000;
       this.interactions.update(delta);
@@ -218,7 +224,7 @@ export class RoomScene {
       this.lighting.freezeShadows();
       const failed = ["study", "living"].filter((id: HouseRoomId) => this.rooms.snapshot(id).state === "error");
       const status = document.querySelector("#scene-status");
-      if (status) status.textContent = failed.length ? "部分家具加载失败 · 刷新重试 · 基础结构可用" : "七间室内房间已布置 · 阳台待布置";
+      if (status) status.textContent = failed.length ? "部分家具加载失败 · 刷新重试 · 基础结构可用" : "全屋八个房间已布置 · 可自由漫游";
       this.audio.sceneReady();
     }));
 
@@ -247,6 +253,7 @@ export class RoomScene {
     if (firstPerson && this.currentView !== "first-person") this.previousView = this.currentView;
     this.currentView = view;
     this.exterior.setVisible(view !== "overview");
+    if (firstPerson) this.exterior.updateCutaway();
     if (!firstPerson) this.pointerLock?.release();
     this.scene.activeCamera?.detachControl();
     this.architecture.setEnclosed(firstPerson, view);
@@ -265,6 +272,7 @@ export class RoomScene {
       ensuite: { position: houseVector(-1.6, 8.3, 3.8), target: houseVector(1.2, 6, 0.9) },
       kitchen: { position: houseVector(10.5, 5.4, 4.5), target: houseVector(9.6, 1.7, .9) },
       bathroom: { position: houseVector(6.9, 3.8, 4.5), target: houseVector(3.9, 6, .8) },
+      balcony: { position: houseVector(8.1, 16.1, 5.1), target: houseVector(8.1, 11.55, .55) },
       reading: { position: houseVector(6.3, 7.2, 3), target: houseVector(a.readingSofa.x, 4.7, 0.55) },
       desk: { position: houseVector(5.4, 3.5, 2.4), target: houseVector(a.desk.x, a.desk.y + 0.18, 0.65) },
       details: { position: houseVector(a.desk.x - 0.1, a.desk.y + 0.98, 1.45), target: houseVector(a.desk.x - 0.1, a.desk.y + 0.08, 0.78) },
@@ -540,7 +548,9 @@ export class RoomScene {
   private render = () => this.scene.render();
   private fitSuiteView() {
     const aspect = this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight());
-    const scale = ["master", "ensuite", "bedroom", "kitchen", "bathroom"].includes(this.currentView) ? Math.max(1, 1.4 / aspect) : 1;
+    const scale = ["overview", "study", "living", "master", "ensuite", "bedroom", "kitchen", "bathroom", "balcony"].includes(this.currentView) ? Math.max(1, 1.4 / aspect) : 1;
+    // The whole-house portrait radius exceeds the old fixed orbit limit.
+    this.camera.upperRadiusLimit = 145 * scale;
     // Keep the suite readable on portrait screens; resizing preserves the user's relative zoom.
     this.camera.radius *= scale / this.viewFramingScale;
     this.viewFramingScale = scale;

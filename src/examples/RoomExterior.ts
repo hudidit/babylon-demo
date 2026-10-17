@@ -1,6 +1,6 @@
-import { Color3, Mesh, StandardMaterial, Texture, Vector3, VertexBuffer, VertexData, CreateSphere } from "@babylonjs/core/pure";
+import { Color3, Mesh, Plane, StandardMaterial, Texture, Vector3, VertexBuffer, VertexData, CreateSphere } from "@babylonjs/core/pure";
 import type { Scene } from "@babylonjs/core/pure";
-import { HOUSE_ROOMS } from "./HouseLayout";
+import { HOUSE_ROOMS, planToWorld } from "./HouseLayout";
 import { setRoomOwners } from "./RoomOwnership";
 import { stableRandom } from "./RoomSurfaceDetails";
 
@@ -13,7 +13,12 @@ const elevation = (x: number, z: number) => -5.35 + Math.min(1, Math.max(0, (Mat
 /** One fixed outdoor world, seen through every real window opening. No camera-facing cards. */
 export class RoomExterior {
   readonly meshes: Mesh[] = [];
+  private readonly cutaway = new Plane(0,0,1,0);
+  private readonly materials: StandardMaterial[] = [];
+  private readonly corners: {x:number;z:number}[] = [];
+  private clipped = false;
   constructor(scene: Scene) {
+    HOUSE_ROOMS.forEach(r=>{for(const x of [r.x,r.x+r.width])for(const y of [r.y,r.y+r.depth])this.corners.push(planToWorld({x,y}));});
     const owners = HOUSE_ROOMS.map(r => r.id);
     const retain = (mesh: Mesh) => {
       mesh.metadata = { exterior: true, castsShadows: false, lightRooms: [] };
@@ -24,6 +29,7 @@ export class RoomExterior {
     };
     const material = (name: string) => {
       const m = new StandardMaterial(name, scene);
+      this.materials.push(m);
       // Static local daylight baked into vertices: room switches cannot relight the forest.
       m.disableLighting = true; m.emissiveColor = Color3.White(); m.specularColor = Color3.Black();
       return m;
@@ -136,4 +142,20 @@ export class RoomExterior {
   }
 
   setVisible(visible: boolean) { this.meshes.forEach(mesh => mesh.isVisible = visible); }
+
+  /** Clear foreground trees in orbit cutaways; indoor views keep the complete outdoor world. */
+  updateCutaway(position?: {x:number;z:number}, target?: {x:number;z:number}) {
+    if(position&&target) {
+      const dx=position.x-target.x,dz=position.z-target.z,length=Math.hypot(dx,dz);
+      if(length<.001)return;
+      const nx=dx/length,nz=dz/length;
+      if(Math.abs(nx-this.cutaway.normal.x)>1e-6||Math.abs(nz-this.cutaway.normal.z)>1e-6||!this.clipped) {
+        let boundary=-Infinity;for(const p of this.corners)boundary=Math.max(boundary,p.x*nx+p.z*nz);
+        this.cutaway.normal.set(nx,0,nz);this.cutaway.d=-boundary-.25;
+      }
+    }
+    const active=!!(position&&target);if(active===this.clipped)return;this.clipped=active;
+    // Plane 1 remains available to MirrorTexture's reflected-view clipping.
+    for(const material of this.materials)material.clipPlane2=active?this.cutaway:null;
+  }
 }

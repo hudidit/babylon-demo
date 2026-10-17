@@ -45,6 +45,8 @@ const { furnishHouseMaster, furnishHouseEnsuite } = loadSource("HouseSuite");
 const { bathroomVanity, bathroomToilet, bathroomShower, bedroomBed, bedroomWardrobe } = loadSource("HouseRoomComponents");
 const { furnishHouseBedroom } = loadSource("HouseBedroom");
 const { furnishHouseKitchen, furnishHouseBathroom } = loadSource("HouseServiceRooms");
+const { furnishHouseBalcony } = loadSource("HouseBalcony");
+const { slidingDoorSweepIsClear } = loadSource("RoomInteractions");
 const { RoomMirrors } = loadSource("RoomMirrors");
 const { RoomExterior } = loadSource("RoomExterior");
 
@@ -93,6 +95,17 @@ test("one shared exterior has real near/far geometry, bounded cost and no indoor
   exterior.setVisible(false); assert.ok(exterior.meshes.every(m => !m.isVisible));
   exterior.setVisible(true); assert.ok(exterior.meshes.every(m => m.isVisible));
   scene.dispose(); assert.equal(scene.meshes.length, 0); assert.equal(scene.materials.length, 0); assert.equal(scene.textures.length, 0);
+});
+
+test("orbit foreground clipping affects only exterior materials and clears on entering the house",t=>{
+  const scene=createScene(t),exterior=new RoomExterior(scene),camera=houseVector(8.1,25,5),target=houseVector(8.1,11.55,.55);
+  exterior.updateCutaway(camera,target);assert.ok(scene.clipPlane==null);
+  const planes=exterior.meshes.map(m=>m.material.clipPlane2);assert.ok(planes.every(p=>p===planes[0]));
+  assert.ok(exterior.meshes.every(m=>m.material.clipPlane==null),'mirror clipping plane is not overridden');
+  const plane=planes[0];assert.ok(plane.signedDistanceTo(houseVector(8.1,15))>0);
+  for(const r of HOUSE_ROOMS)for(const x of [r.x,r.x+r.width])for(const y of [r.y,r.y+r.depth])assert.ok(plane.signedDistanceTo(houseVector(x,y))<0,'entire house stays on the retained side');
+  assert.ok(plane.signedDistanceTo(houseVector(8.1,-8))<0,'far scenery remains visible');
+  exterior.updateCutaway();assert.ok(exterior.meshes.every(m=>m.material.clipPlane2===null));assert.ok(scene.clipPlane==null);
 });
 
 test("bathroom planar mirrors clip behind the actual face, isolate rooms and restore cutaway visibility", t => {
@@ -161,6 +174,92 @@ function surfacesIntersect(scene,a,b) {
   }
   return false;
 }
+
+function furnishedBalcony(t) {
+  const result=furnishedServiceRooms(t);furnishHouseBalcony(result.room);
+  result.room.finish().forEach(m=>m.checkCollisions=true);result.scene.meshes.forEach(m=>m.computeWorldMatrix(true));return result;
+}
+
+test("balcony furniture and transparent sliding panels fit, stay grounded and clear both tracks",t=>{
+  const {scene,room}=furnishedBalcony(t),door=room.slidingDoors[0];assert.equal(door.id,'balcony-door');
+  for(const m of scene.meshes.filter(m=>/^balcony-(seat|table|plants)-/.test(m.name))) {
+    const b=m.getBoundingInfo().boundingBox,min=houseVector(5.45,10.85),max=houseVector(10.75,12.25);
+    assert.ok(b.minimumWorld.x>=min.x-.001&&b.maximumWorld.x<=max.x+.001&&b.minimumWorld.z>=min.z-.001&&b.maximumWorld.z<=max.z+.001,`${m.name}: ${b.minimumWorld.asArray()} / ${b.maximumWorld.asArray()}`);
+    assert.ok(b.minimumWorld.y>=-5.001,m.name);
+  }
+  for(const prefix of ['balcony-seat-','balcony-table-','balcony-plants-'])assert.ok(Math.abs(babylon.Mesh.MinMax(scene.meshes.filter(m=>m.name.startsWith(prefix))).min.y+5)<.001,prefix+' grounded');
+  const glass=scene.meshes.filter(m=>m.name.includes('window-glass')&&m.metadata.ownerRooms.includes('balcony'));
+  assert.equal(glass.length,2);assert.ok(glass.every(m=>m.checkCollisions&&m.material.alpha===.045&&!m.material.reflectionTexture));
+  for(let step=0;step<=20;step++) {
+    door.root.position.copyFrom(door.closed).addInPlace(door.travel.scale(step/20));door.root.computeWorldMatrix(true);door.root.getChildMeshes().forEach(m=>m.computeWorldMatrix(true));
+    for(const leaf of door.meshes)for(const m of [...door.fixedMeshes,...scene.meshes.filter(m=>/^balcony-(seat|table|plants)-/.test(m.name))])
+      assert.equal(surfacesIntersect(scene,leaf,m),false,`track collision ${m.name} at ${step}`);
+  }
+});
+
+test("sliding door blocks when shut, opens for a continuous two-way balcony route and remains pickable from both faces",t=>{
+  const {scene,room}=furnishedBalcony(t),door=room.slidingDoors[0],interactions=new RoomInteractions(scene,()=>{});
+  interactions.addSlidingDoor(door);assert.throws(()=>interactions.addSlidingDoor(door),/Duplicate/);
+  const target=babylon.Vector3.TransformCoordinates(door.closed.add(new babylon.Vector3(0,5,door.width/2)),door.root.parent.getWorldMatrix());
+  const normal=babylon.Vector3.TransformNormal(babylon.Vector3.Right(),door.root.parent.getWorldMatrix()).normalize();
+  const action=interactions.pick(new babylon.Ray(target.add(normal.scale(3)),normal.negate(),6));assert.ok(action);
+  assert.equal(interactions.pick(new babylon.Ray(target.subtract(normal.scale(3)),normal,6)),action);
+  const radius=new babylon.Vector3(HOUSE_WALKER_RADIUS,3.9,HOUSE_WALKER_RADIUS),a=houseVector(7.7,10.3,.82),b=houseVector(7.7,11.45,.82);
+  assert.ok(!sweep(scene,a,b.subtract(a),radius).position.equalsWithEpsilon(b,.03));
+  action.toggle();for(let i=0;i<16;i++)interactions.update(.05);assert.ok(door.root.position.equalsWithEpsilon(door.closed.add(door.travel),.001));
+  const route=[[7.7,10.3],[7.7,11.45],[6.5,11.4],[7.7,11.45],[9.6,11.45]];
+  for(const points of [route,[...route].reverse()])for(let i=1;i<points.length;i++) {
+    const p=houseVector(...points[i-1],.82),q=houseVector(...points[i],.82);
+    assert.ok(sweep(scene,p,q.subtract(p),radius).position.equalsWithEpsilon(q,.03),`${points[i-1]} → ${points[i]}`);
+  }
+  const fixedA=houseVector(8.8,10.3,.82),fixedB=houseVector(8.8,11.3,.82);
+  assert.ok(!sweep(scene,fixedA,fixedB.subtract(fixedA),radius).position.equalsWithEpsilon(fixedB,.03),'fixed panel stays solid');
+  for(const [from,to]of [[[9.6,11.45],[9.6,12.8]],[[6.5,11.4],[5,11.4]]]) {
+    const p=houseVector(...from,.82),q=houseVector(...to,.82);
+    assert.ok(!sweep(scene,p,q.subtract(p),radius).position.equalsWithEpsilon(q,.03),'outer safety rail');
+  }
+});
+
+test("sliding sweep pauses before the walker, reverses smoothly, refreshes only its rooms and releases sound/actions",t=>{
+  const {scene,room}=furnishedBalcony(t),door=room.slidingDoors[0],events=[],refresh=[];let walker;
+  const interactions=new RoomInteractions(scene,ids=>refresh.push(...ids),()=>walker,e=>events.push(e));interactions.addSlidingDoor(door);
+  const state=interactions.slidingDoors[0];state.open=true;
+  for(let i=0;i<16;i++)interactions.update(.05);
+  walker=houseVector(7.7,10.8,1.6);assert.equal(slidingDoorSweepIsClear(door,1,0,walker),false);
+  state.open=false;for(let i=0;i<16;i++)interactions.update(.05);
+  assert.ok(state.blocked&&state.progress>0&&state.progress<1);const paused=door.root.position.clone();
+  interactions.update(.05);assert.ok(door.root.position.equals(paused));assert.equal(state.moving,false);
+  state.open=true;for(let i=0;i<16;i++)interactions.update(.05);assert.equal(state.progress,1);
+  walker=undefined;state.open=false;interactions.update(.05);const middle=door.root.position.clone();interactions.silenceMotion();
+  assert.ok(door.root.position.equals(middle)&&!state.moving);for(let i=0;i<16;i++)interactions.update(.05);assert.equal(state.progress,0);
+  assert.ok(door.root.position.equalsWithEpsilon(door.closed,.001));assert.deepEqual([...new Set(refresh)].sort(),['balcony','living']);
+  assert.ok(events.some(e=>e.cue==='door-move')&&events.some(e=>e.cue==='door-latch'));assert.equal(events.filter(e=>e.cue==='door-latch').length,1);
+  interactions.removeRoom('living');assert.equal(interactions.slidingDoors.length,1);
+  interactions.removeRoom('balcony');assert.equal(interactions.slidingDoors.length,0);assert.equal(interactions.entities.size,0);assert.equal(events.at(-1).cue,'stop');
+});
+
+test("the fully furnished house has a continuous entrance-to-every-room-and-balcony walking tour",async t=>{
+  const {scene,room}=await furnishedHouse(t);
+  furnishHouseMaster(room);furnishHouseEnsuite(room);furnishHouseBedroom(room);
+  furnishHouseKitchen(room);furnishHouseBathroom(room);furnishHouseBalcony(room);
+  room.finish().forEach(m=>m.checkCollisions=true);scene.meshes.forEach(m=>m.computeWorldMatrix(true));
+  const interactions=new RoomInteractions(scene,()=>{});room.doors.forEach(d=>interactions.addDoor(d));room.slidingDoors.forEach(d=>interactions.addSlidingDoor(d));
+  interactions.doors.forEach(s=>s.open=s.door.id!=='entry-door');interactions.slidingDoors.forEach(s=>s.open=true);
+  for(let i=0;i<16;i++)interactions.update(.05);
+  const suite=[[6.6,4.05],[4.3,4.05],[3.4,4.05],[1.2,4.05],[1.2,5.6],[1.45,5.9],[1.55,6.25],[1.55,6.8]];
+  const wet=[[6.6,6],[4.8,6],[4.5,6.45],[4.5,6.85]];
+  const route=[[9.4,5.35],[9.25,4.6],[9.55,3.8],[9.6,2.2],[9.6,1.05],[9.6,2.2],[9.55,3.8],[9.25,4.6],[9.4,5.55],[7,5.55],
+    [7,4.7],[6.65,4.2],[6.65,2.7],[6.65,4.2],[7,4.7],...suite,...[...suite].reverse().slice(1),[7,4.7],[7,5.55],...wet,
+    ...[...wet].reverse().slice(1),[7,6.6],[7,8.3],[7,9.15],[4.5,9.15],[3.4,9.15],[3.4,8.35],[4.15,8.35],[3.4,8.35],[3.4,9.15],[4.5,9.15],[7,9.15],
+    [7,10.3],[7.7,10.3],[7.7,11.45],[6.5,11.4],[7.7,11.45],[9.6,11.45]];
+  const radius=new babylon.Vector3(HOUSE_WALKER_RADIUS,3.9,HOUSE_WALKER_RADIUS),visited=new Set();let position=houseVector(...route[0],.82);
+  for(let i=0;i<route.length;i++) {
+    const r=HOUSE_ROOMS.find(r=>route[i][0]>r.x&&route[i][0]<r.x+r.width&&route[i][1]>r.y&&route[i][1]<r.y+r.depth);if(r)visited.add(r.id);
+    if(!i)continue;const q=houseVector(...route[i],.82),actual=sweep(scene,position,q.subtract(position),radius).position;position=actual;
+    assert.ok(actual.equalsWithEpsilon(q,.03),`tour ${route[i-1]} → ${route[i]} at ${actual.asArray()}`);
+  }
+  assert.deepEqual([...visited].sort(),HOUSE_ROOMS.map(r=>r.id).sort());
+});
 
 test("kitchen and public bathroom fit the unchanged shell, ground their fixtures and share downloaded textures",t=>{
   const {scene,room}=furnishedSuite(t),textures=scene.textures.slice();
@@ -434,9 +533,10 @@ test("migrated furniture, open drawers and bookshelf contents fit the real room 
 test("furnished house keeps the living spine and each doorway physically reachable", async t => {
   const { scene, room } = await furnishedHouse(t), interactions = new RoomInteractions(scene, () => {});
   room.doors.forEach(d => interactions.addDoor(d)); interactions.doors.forEach(s => s.open = s.door.id !== "entry-door");
+  room.slidingDoors.forEach(d=>interactions.addSlidingDoor(d));interactions.slidingDoors.forEach(s=>s.open=true);
   for (let i = 0; i < 16; i++) interactions.update(.05);
   const radius = new babylon.Vector3(HOUSE_WALKER_RADIUS, 3.9, HOUSE_WALKER_RADIUS);
-  const route = [[9.4,5.35],[9.25,4.6],[9.55,3.8],[9.55,2.6],[9.55,3.8],[9.25,4.6],[9.4,5.55],[7,5.55],[7,4.7],[7,6.6],[7,8.3],[7,10.3],[8,10.3],[8,11.6]];
+  const route = [[9.4,5.35],[9.25,4.6],[9.55,3.8],[9.55,2.6],[9.55,3.8],[9.25,4.6],[9.4,5.55],[7,5.55],[7,4.7],[7,6.6],[7,8.3],[7,10.3],[7.7,10.3],[7.7,11.6]];
   for (let i = 1; i < route.length; i++) {
     const start = houseVector(...route[i - 1], .82), end = houseVector(...route[i], .82);
     const actual = sweep(scene, start, end.subtract(start), radius).position;
@@ -494,20 +594,22 @@ test("all house doors block when closed and pass the actual walker in both direc
   const interactions = new RoomInteractions(scene, () => {});
   room.doors.forEach(d => interactions.addDoor(d));
   const radius = new babylon.Vector3(HOUSE_WALKER_RADIUS, 3.9, HOUSE_WALKER_RADIUS);
+  room.slidingDoors.forEach(d=>interactions.addSlidingDoor(d));
   const check = (d, open) => {
     const axis = d.axis === "x" ? "z" : "x";
-    const centre = houseVector(d.x + (d.axis === "x" ? d.width / 2 : 0), d.y + (d.axis === "y" ? d.width / 2 : 0), 0.82);
+    const centre = houseVector(d.x + (d.axis === "x" ? d.width * (d.sliding ? .25 : .5) : 0), d.y + (d.axis === "y" ? d.width / 2 : 0), 0.82);
     for (const side of [-1, 1]) {
       const start = centre.clone(); start[axis] += side * 4;
       const travel = babylon.Vector3.Zero(); travel[axis] = -side * 8;
       const result = sweep(scene, start, travel, radius).position;
-      assert.ok(open ? Math.abs(result[axis] - centre[axis] + side * 4) < 0.03 : side * (result[axis] - centre[axis]) > 1.2,
+      assert.ok(open ? Math.abs(result[axis] - centre[axis] + side * 4) < 0.03 : side * (result[axis] - centre[axis]) > (d.sliding ? 1 : 1.2),
         `${d.id} ${open ? "open" : "closed"}, direction ${side}: ${result[axis]}`);
     }
   };
   const indoor = HOUSE_DOORS.filter(d => d.to !== "outside" && !d.sliding);
-  indoor.forEach(d => check(d, false));
+  indoor.forEach(d => check(d, false)); check(HOUSE_DOORS.find(d=>d.sliding),false);
   interactions.doors.forEach(s => s.open = s.door.id !== "entry-door");
+  interactions.slidingDoors.forEach(s=>s.open=true);
   for (let i = 0; i < 16; i++) interactions.update(0.05);
   indoor.forEach(d => check(d, true));
   check(HOUSE_DOORS.find(d => d.sliding), true);
@@ -1234,7 +1336,7 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
   room.interactions = { silenceMotion() {} };
   room.audio = { setSpatialCamera() {} };
   room.floorPlan = { isOpen: false, update() {} };
-  room.exterior = { setVisible() {} };
+  room.exterior = { setVisible() {}, updateCutaway() {} };
   room.canvas = { setAttribute() {} };
   let refreshed = 0;
   room.lighting = { refreshShadows() { refreshed++; } };
@@ -1255,10 +1357,12 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
     assert.ok(!room.interiorShell.isEnabled() && refreshed === 4);
     let width = 1280, height = 800;
     room.engine = { getRenderWidth: () => width, getRenderHeight: () => height };
-    for (const view of ['master', 'ensuite', 'bedroom', 'kitchen', 'bathroom']) {
+    for (const view of ['overview', 'study', 'living', 'master', 'ensuite', 'bedroom', 'kitchen', 'bathroom', 'balcony']) {
       room.setView(view); const desktopRadius = room.camera.radius;
       width = 390; height = 844; room.fitSuiteView();
       assert.ok(room.camera.radius > desktopRadius * 3, 'portrait view must keep the room in frame');
+      const portraitRadius=room.camera.radius;room.camera._checkInputs();
+      assert.ok(Math.abs(room.camera.radius-portraitRadius)<.001,'orbit limits must not undo portrait framing');
       room.camera.radius *= .8; // User zoom survives an orientation change.
       width = 1280; height = 800; room.fitSuiteView();
       assert.ok(Math.abs(room.camera.radius - desktopRadius * .8) < .001);
@@ -1362,7 +1466,8 @@ test("picking respects occlusion, hidden geometry and first-person reach", t => 
   assert.ok(interactions.pick(ray));
   const blocker = babylon.CreateBox("blocker", {}, scene); blocker.position.z = 2; blocker.isPickable = false;
   blocker.computeWorldMatrix(true);
-  assert.equal(interactions.pick(ray), undefined, "static non-pickable furniture must occlude interactions");
+    assert.equal(interactions.pick(ray), undefined, "static non-pickable furniture must occlude interactions");
+    blocker.metadata={exterior:true};assert.ok(interactions.pick(ray),"outdoor geometry must not intercept indoor actions");blocker.metadata=null;
   blocker.setEnabled(false); assert.ok(interactions.pick(ray));
   blocker.setEnabled(true); blocker.isVisible = false; assert.ok(interactions.pick(ray));
   lamp.position.z = 10; lamp.computeWorldMatrix(true); assert.equal(interactions.pick(ray), undefined, "out-of-reach lamps must not activate");

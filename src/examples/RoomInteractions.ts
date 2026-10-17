@@ -10,12 +10,16 @@ export type InteractiveDrawer = {
 export type InteractiveLamp = { id: string; label: string; meshes: AbstractMesh[] };
 export type InteractiveDoor = { id: string; label: string; root: TransformNode;
   meshes: AbstractMesh[]; width: number; openAngle: number; walkerRadius?: number };
+export type InteractiveSlidingDoor = { id: string; label: string; root: TransformNode;
+  meshes: AbstractMesh[]; fixedMeshes: AbstractMesh[]; closed: Vector3; travel: Vector3;
+  width: number; halfThickness: number; walkerRadius: number };
 export type InspectableItem = { id: string; label: string; mesh: Mesh; displayRotation: Vector3 };
 type Action = { label: () => string; toggle: () => void };
 
 /** Explicit picking also includes non-pickable static furniture, so it can occlude an action. */
 export const interactionSurface = (mesh: AbstractMesh) =>
-  mesh.isEnabled() && mesh.isVisible && mesh.visibility > 0 && mesh.getTotalVertices() > 0 && !mesh.metadata?.inspectionPreview;
+  mesh.isEnabled() && mesh.isVisible && mesh.visibility > 0 && mesh.getTotalVertices() > 0
+  && !mesh.metadata?.inspectionPreview && !mesh.metadata?.exterior;
 
 export class RoomInteractions {
   private readonly actions = new Map<AbstractMesh, Action>();
@@ -24,6 +28,7 @@ export class RoomInteractions {
     drawer: InteractiveDrawer; root: TransformNode; closed: Vector3; travel: Vector3; progress: number; open: boolean; moving: boolean;
   }[] = [];
   private readonly doors: { door: InteractiveDoor; progress: number; open: boolean; blocked: boolean; moving: boolean }[] = [];
+  private readonly slidingDoors: { door: InteractiveSlidingDoor; progress: number; open: boolean; blocked: boolean; moving: boolean }[] = [];
 
   constructor(private readonly scene: Scene, private readonly refreshShadows: (owners?: readonly HouseRoomId[]) => void,
     private readonly walkerPosition: () => Vector3 | undefined = () => undefined,
@@ -41,6 +46,7 @@ export class RoomInteractions {
   silenceMotion() {
     for (const state of this.drawers) { state.moving = false; this.sound("stop", state.drawer); }
     for (const state of this.doors) { state.moving = false; this.sound("stop", state.door); }
+    for (const state of this.slidingDoors) { state.moving = false; this.sound("stop", state.door); }
   }
 
   addDoor(door: InteractiveDoor) {
@@ -61,6 +67,17 @@ export class RoomInteractions {
     this.add(drawer.id, drawer.meshes, {
       label: () => `${state.open ? "关上" : "打开"}${drawer.label}`,
       toggle: () => { this.sound("stop", drawer); state.moving = false; state.open = !state.open; },
+    });
+  }
+
+  addSlidingDoor(door: InteractiveSlidingDoor) {
+    if (this.entities.has(door.id)) throw new Error("Duplicate interaction: " + door.id);
+    const state = { door, progress: 0, open: false, blocked: false, moving: false };
+    this.slidingDoors.push(state);
+    // Either panel controls the same moving leaf, including when the leaves overlap.
+    this.add(door.id, [...door.meshes, ...door.fixedMeshes], {
+      label: () => state.blocked ? "让开推拉门 · 点击反向开合" : `${state.open ? "关闭" : "打开"}${door.label}`,
+      toggle: () => { this.sound("stop", door); state.moving = false; state.open = !state.open; state.blocked = false; },
     });
   }
 
@@ -95,6 +112,7 @@ export class RoomInteractions {
     entity.meshes.forEach(mesh => this.actions.delete(mesh));
     for (let i = this.drawers.length - 1; i >= 0; i--) if (this.drawers[i].drawer.id === id) this.drawers.splice(i, 1);
     for (let i = this.doors.length - 1; i >= 0; i--) if (this.doors[i].door.id === id) this.doors.splice(i, 1);
+    for (let i = this.slidingDoors.length - 1; i >= 0; i--) if (this.slidingDoors[i].door.id === id) this.slidingDoors.splice(i, 1);
     this.entities.delete(id);
   }
 
@@ -148,8 +166,48 @@ export class RoomInteractions {
       }
       roomOwners(state.door.root).forEach(id => changed.add(id));
     }
+    for (const state of this.slidingDoors) {
+      const target = state.open ? 1 : 0;
+      if (state.progress === target || step <= 0) continue;
+      const travelStep = Math.max(0, Math.min(deltaSeconds, 0.05)) / 0.7;
+      const next = state.open ? Math.min(1, state.progress + travelStep) : Math.max(0, state.progress - travelStep);
+      const walker = this.walkerPosition();
+      state.blocked = !!walker && !slidingDoorSweepIsClear(state.door, state.progress, next, walker);
+      if (state.blocked) {
+        if (state.moving) { state.moving = false; this.sound("stop", state.door); }
+        continue;
+      }
+      if (!state.moving) { state.moving = true; this.sound("door-move", state.door); }
+      state.progress = next;
+      const eased = next * next * (3 - 2 * next);
+      state.door.root.position.copyFrom(state.door.closed).addInPlace(state.door.travel.scale(eased));
+      state.door.root.computeWorldMatrix(true);
+      state.door.root.getChildMeshes().forEach(mesh => mesh.computeWorldMatrix(true));
+      if (next === target) {
+        state.moving = false; this.sound("stop", state.door);
+        if (!state.open) this.sound("door-latch", state.door);
+      }
+      roomOwners(state.door.root).forEach(id => changed.add(id));
+    }
     if (changed.size) this.refreshShadows([...changed]);
   }
+}
+
+/** Sliding panels translate in the fixed mount's local Z; sweep the whole frame step. */
+export function slidingDoorSweepIsClear(door: InteractiveSlidingDoor, from: number, to: number, walker: Vector3) {
+  const local = door.root.parent ? Vector3.TransformCoordinates(walker,
+    Matrix.Invert(door.root.parent.computeWorldMatrix(true))) : walker;
+  const ease = (v: number) => v * v * (3 - 2 * v);
+  const start = door.closed.z + door.travel.z * ease(from), end = door.closed.z + door.travel.z * ease(to);
+  const distance = (z: number) => {
+    const dx = Math.max(0, Math.abs(local.x - door.closed.x) - door.halfThickness);
+    const dz = Math.max(0, z - local.z, local.z - z - door.width);
+    return dx * dx + dz * dz;
+  };
+  const clearance = Math.min(door.walkerRadius ** 2, distance(start)) - 1e-8;
+  const steps = Math.max(1, Math.ceil(Math.abs(end - start) / 0.08));
+  for (let i = 1; i <= steps; i++) if (distance(start + (end - start) * i / steps) < clearance) return false;
+  return true;
 }
 
 /** Sample the entire angular step so a fast frame cannot skip across the walker. */
