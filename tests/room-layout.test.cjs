@@ -45,6 +45,54 @@ const { furnishHouseMaster, furnishHouseEnsuite } = loadSource("HouseSuite");
 const { bathroomVanity, bathroomToilet, bathroomShower, bedroomBed, bedroomWardrobe } = loadSource("HouseRoomComponents");
 const { furnishHouseBedroom } = loadSource("HouseBedroom");
 const { RoomMirrors } = loadSource("RoomMirrors");
+const { RoomExterior } = loadSource("RoomExterior");
+
+test("all window centres see the outside through transparent glass while retaining walker collisions", t => {
+  const { scene } = houseShell(t);
+  for (const w of HOUSE_WINDOWS) {
+    const centre = houseVector(w.x + (w.axis === 'x' ? w.width * .3 : 0), w.y + (w.axis === 'y' ? w.width * .3 : 0), w.sill + w.height * .7);
+    const inward = w.axis === 'x' ? new babylon.Vector3(0, 0, 1) : new babylon.Vector3(w.x === 0 ? 1 : -1, 0, 0);
+    const ray = new babylon.Ray(centre.add(inward.scale(2)), inward.negate(), 5);
+    const hit = scene.pickWithRay(ray, m => m.getTotalVertices() > 0 && m.material?.alpha === 1 && !m.metadata?.collisionOnly);
+    assert.ok(!hit?.hit, w.id + ': no solid wood panel or wall behind the window opening');
+    const glass = scene.meshes.find(m => m.name.startsWith(w.id + '-') && m.material?.name === 'window-glass');
+    assert.ok(glass && glass.material.alpha > 0 && glass.material.alpha < .08);
+    assert.equal(glass.material.emissiveTexture, null, 'no scenery attached to the glass');
+    const travel = inward.scale(-6), start = centre.add(inward.scale(3));
+    const result = sweep(scene, start, travel, new babylon.Vector3(.8, .8, .8)).position;
+    assert.ok(result.subtract(start).length() < 4, w.id + ': glass still blocks crossing the facade');
+  }
+});
+
+test("one shared exterior has real near/far geometry, bounded cost and no indoor picking or shadows", t => {
+  const scene = createScene(t), exterior = new RoomExterior(scene);
+  assert.equal(scene.meshes.filter(m => m.name === 'exterior-forest-horizon').length, 1);
+  assert.equal(scene.textures.filter(t => t.name.endsWith('/panorama.jpg')).length, 1);
+  assert.equal(scene.getMeshByName('exterior-forest-horizon').material.diffuseTexture.invertY, false, 'spherical UVs preserve the sky above the horizon');
+  const groundPositions = scene.getMeshByName('exterior-forest-horizon').getVerticesData(babylon.VertexBuffer.PositionKind);
+  assert.ok(Math.min(...groundPositions.filter((_, i) => i % 3 === 1)) > -9, 'lower hemisphere projects onto the real floor, rather than under the house');
+  assert.ok(exterior.meshes.reduce((n, m) => n + m.getTotalVertices(), 0) < 160000);
+  const near = scene.getMeshByName('exterior-trees-0').getBoundingInfo().boundingBox;
+  const treePositions = scene.getMeshByName('exterior-trees-0').getVerticesData(babylon.VertexBuffer.PositionKind);
+  const treeNormals = scene.getMeshByName('exterior-trees-0').getVerticesData(babylon.VertexBuffer.NormalKind);
+  const ringCentre = [0, 0, 0];
+  for (let i = 0; i < 10; i++) for (let axis = 0; axis < 3; axis++) ringCentre[axis] += treePositions[i * 3 + axis] / 10;
+  assert.ok(treeNormals.slice(0, 3).reduce((dot, n, axis) => dot + n * (treePositions[axis] - ringCentre[axis]), 0) > 0,
+    'closed bark surfaces face outwards, so nearby views cannot see through to their inside');
+  const far = scene.getMeshByName('exterior-forest-horizon').getBoundingInfo().boundingBox;
+  assert.ok(near.maximumWorld.z < -30 && near.minimumWorld.z > -100);
+  assert.ok(far.minimumWorld.z < -200 && far.maximumWorld.z > 200);
+  assert.ok(near.maximumWorld.y > 40 && near.minimumWorld.y < -4, 'trees grow from the terrain and have height');
+  for (const m of exterior.meshes) {
+    assert.deepEqual([...m.metadata.ownerRooms].sort(), HOUSE_ROOMS.map(r => r.id).sort());
+    assert.deepEqual(m.metadata.lightRooms, []);
+    assert.ok(!m.isPickable && !m.checkCollisions && !m.metadata.castsShadows);
+    assert.ok(m.material.disableLighting, 'room lamps cannot relight outside');
+  }
+  exterior.setVisible(false); assert.ok(exterior.meshes.every(m => !m.isVisible));
+  exterior.setVisible(true); assert.ok(exterior.meshes.every(m => m.isVisible));
+  scene.dispose(); assert.equal(scene.meshes.length, 0); assert.equal(scene.materials.length, 0); assert.equal(scene.textures.length, 0);
+});
 
 test("bathroom planar mirrors clip behind the actual face, isolate rooms and restore cutaway visibility", t => {
   const { scene,architecture }=furnishedSuite(t);
@@ -1103,6 +1151,7 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
   room.interactions = { silenceMotion() {} };
   room.audio = { setSpatialCamera() {} };
   room.floorPlan = { isOpen: false, update() {} };
+  room.exterior = { setVisible() {} };
   room.canvas = { setAttribute() {} };
   let refreshed = 0;
   room.lighting = { refreshShadows() { refreshed++; } };

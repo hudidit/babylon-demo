@@ -736,17 +736,20 @@ export class RoomFurnishings {
 
   window(position: Triple = [-19.35, 2.5, 9], rotation = -Math.PI / 2, name = "garden-window") {
     if (!this.materials.has("window-glass")) {
-      const texture = new Texture("./textures/study/forest-window/view.jpg", this.scene);
-      texture.anisotropicFilteringLevel = 8;
-      texture.level = 0.85;
       const mat = new StandardMaterial("window-glass", this.scene);
-      mat.disableLighting = true; mat.diffuseColor = Color3.Black();
-      mat.emissiveTexture = texture; mat.emissiveColor = Color3.Black();
-      mat.specularColor = Color3.Black();
+      mat.diffuseColor = new Color3(0.64, 0.78, 0.82);
+      mat.specularColor = new Color3(0.18, 0.2, 0.2);
+      mat.specularPower = 96;
+      mat.alpha = 0.045;
+      mat.backFaceCulling = false;
       this.materials.set("window-glass", mat);
     }
     const g = this.group(name, position, rotation);
-    this.box("window-casing", [11, 8.2, 0.35], [0, 0, 0], "darkWood", g);
+    // Four rails leave a real opening. A full backing box would occlude the world outside.
+    [-1, 1].forEach(side => {
+      this.box("window-casing", [0.35, 8.2, 0.35], [side * 5.325, 0, 0], "darkWood", g);
+      this.box("window-casing", [10.3, 0.35, 0.35], [0, side * 3.925, 0], "darkWood", g);
+    });
     const plane = CreatePlane("garden-view", { width: 10.3, height: 7.5, sideOrientation: Mesh.DOUBLESIDE }, this.scene);
     this.place(plane, [0, 0, -0.21], "window-glass", g).receiveShadows = false;
     [-5.3, 0, 5.3].forEach(x => {

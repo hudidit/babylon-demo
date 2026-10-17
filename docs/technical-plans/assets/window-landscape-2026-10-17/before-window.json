@@ -1,0 +1,1388 @@
+{
+  "passed": true,
+  "browser": "155.0.8059.82",
+  "firstScreenJsBytes": 2735336,
+  "scene": {
+    "meshes": 539,
+    "vertices": 367940,
+    "materials": 69,
+    "textures": 134,
+    "lights": 11,
+    "cameras": 3,
+    "textureInventory": [
+      {
+        "name": "./environment/study-interior.hdr",
+        "size": [
+          128,
+          128
+        ],
+        "target": false
+      },
+      {
+        "name": "window-daylight_shadowMap",
+        "size": [
+          2048,
+          2048
+        ],
+        "target": true
+      },
+      {
+        "name": "reading-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": true
+      },
+      {
+        "name": "banker-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": true
+      },
+      {
+        "name": "SSAORandomTexture",
+        "size": [
+          128,
+          128
+        ],
+        "target": false
+      },
+      {
+        "name": "sceneprePassRT",
+        "size": [
+          1280,
+          800
+        ],
+        "target": true
+      },
+      {
+        "name": "data:EnvironmentBRDFTexture0",
+        "size": [
+          256,
+          256
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "ficus-leaf-veins",
+        "size": [
+          256,
+          512
+        ],
+        "target": false
+      },
+      {
+        "name": "paper-edges",
+        "size": [
+          128,
+          256
+        ],
+        "target": false
+      },
+      {
+        "name": "handled-wood",
+        "size": [
+          512,
+          512
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "handled-brass",
+        "size": [
+          256,
+          256
+        ],
+        "target": false
+      },
+      {
+        "name": "cloth-book-covers",
+        "size": [
+          256,
+          256
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "handwritten-letter",
+        "size": [
+          512,
+          768
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/painted_wall/color.png",
+        "size": [
+          512,
+          512
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/painted_wall/normal.png",
+        "size": [
+          512,
+          512
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/painted_wall/arm.png",
+        "size": [
+          512,
+          512
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/forest-window/view.jpg",
+        "size": [
+          1600,
+          1165
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/pictures/pic1.jpg",
+        "size": [
+          550,
+          330
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/pictures/pic1.jpg",
+        "size": [
+          550,
+          330
+        ],
+        "target": false
+      },
+      {
+        "name": "woven-persian-rug",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "target": false
+      },
+      {
+        "name": "living-window-daylight_shadowMap",
+        "size": [
+          2048,
+          2048
+        ],
+        "target": true
+      },
+      {
+        "name": "living-table-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": true
+      },
+      {
+        "name": "master-window-daylight_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": true
+      },
+      {
+        "name": "master-lamp-light_shadowMap",
+        "size": [
+          512,
+          512
+        ],
+        "target": true
+      },
+      {
+        "name": "ensuite-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": true
+      },
+      {
+        "name": "bedroom-window-daylight_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": true
+      },
+      {
+        "name": "bedroom-lamp-light_shadowMap",
+        "size": [
+          512,
+          512
+        ],
+        "target": true
+      },
+      {
+        "name": "ensuite-mirror-target-3511",
+        "size": [
+          512,
+          512
+        ],
+        "target": true
+      },
+      {
+        "name": "prePass_Color",
+        "size": [
+          1280,
+          800
+        ],
+        "target": false
+      },
+      {
+        "name": "prePass_Normal",
+        "size": [
+          1280,
+          800
+        ],
+        "target": false
+      },
+      {
+        "name": "prePass_Depth",
+        "size": [
+          1280,
+          800
+        ],
+        "target": false
+      },
+      {
+        "name": "sofa_03 (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "sofa_03 (Base Color)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "sofa_03 (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "sofa_03_fringe (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "sofa_03_fringe (Base Color)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "sofa_03_fringe (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "GothicCommode_01 (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "GothicCommode_01 (Base Color)",
+        "size": [
+          2048,
+          2048
+        ],
+        "target": false
+      },
+      {
+        "name": "GothicCommode_01 (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "modern_arm_chair_01_legs (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "modern_arm_chair_01_legs (Base Color)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "modern_arm_chair_01_legs (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "modern_arm_chair_01_pillow (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "modern_arm_chair_01_pillow (Base Color)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "modern_arm_chair_01_pillow (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "wooden_bookshelf_worn (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      },
+      {
+        "name": "wooden_bookshelf_worn (Base Color)",
+        "size": [
+          2048,
+          2048
+        ],
+        "target": false
+      },
+      {
+        "name": "wooden_bookshelf_worn (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "target": false
+      }
+    ],
+    "exterior": []
+  },
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8120/",
+      "status": 200,
+      "bytes": 18631
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/main.js",
+      "status": 200,
+      "bytes": 125025
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/5280.js",
+      "status": 200,
+      "bytes": 2391459
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/study/forest-window/view.jpg",
+      "status": 200,
+      "bytes": 1155565
+    },
+    {
+      "url": "http://127.0.0.1:8120/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8120/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8120/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8120/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8120/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8120/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/9656d3e3-371b-4103-b84e-2648b95a44a2",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/f1f414ce-2849-44ba-9a1e-3bd50b5890cc",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/71ce458f-ef7c-419e-bd34-ebf52eda797b",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/a4d43528-b0b2-412a-aba9-7fcf1a4a2007",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/0644a37c-80be-4c5b-b0d3-25a5ab3e6bd1",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/38864bc3-8e7b-46fa-b5b1-664c4d31425a",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/0a9465fc-9030-4733-b73b-778cd7c0cd63",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/90ee091b-dfab-4c5b-95e6-7f2c6d05aebc",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/f6ffccb0-eabe-4c4a-acd6-73d0ade73d88",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/beda4897-952b-4ee2-9266-3d6214746b63",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/3eee8ff1-94ca-4511-9849-6aa23cdcd81a",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/70204747-15b9-4a72-89b7-83d92ec09f9b",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/8d797b6f-4370-4524-9c60-4d37a3dd572c",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/dd0df424-1b88-4e9e-9445-c9559f8ee5a2",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/2f414a86-8bef-49b9-9ada-6a8755ecb056",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8120/0a413655-3067-443a-b6f1-275bf28f1113",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8120/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8120/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ],
+  "fpsOrLoadTimeSampling": false
+}

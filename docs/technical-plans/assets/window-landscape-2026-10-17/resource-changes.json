@@ -1,0 +1,120 @@
+{
+  "baseline": "aafd302",
+  "before": {
+    "totals": {
+      "build": 26136256,
+      "runtime": 15702135,
+      "documentation": 53341,
+      "manifest": 91360,
+      "release": 41983092
+    },
+    "scene": {
+      "meshes": 539,
+      "vertices": 367940,
+      "materials": 69,
+      "textures": 134,
+      "lights": 11,
+      "cameras": 3,
+      "firstScreenJsBytes": 2735336
+    }
+  },
+  "after": {
+    "totals": {
+      "build": 26140297,
+      "runtime": 16457409,
+      "documentation": 54506,
+      "manifest": 91563,
+      "release": 42743775
+    },
+    "scene": {
+      "meshes": 548,
+      "vertices": 511483,
+      "materials": 72,
+      "textures": 135,
+      "lights": 11,
+      "cameras": 3,
+      "firstScreenJsBytes": 2739292
+    }
+  },
+  "changes": [
+    {
+      "path": "bundle-analysis.json",
+      "beforeBytes": 118878,
+      "afterBytes": 118963
+    },
+    {
+      "path": "js/main.js",
+      "beforeBytes": 125025,
+      "afterBytes": 128981
+    },
+    {
+      "path": "STUDY_ASSET_SOURCES.md",
+      "beforeBytes": 3314,
+      "afterBytes": 3746
+    },
+    {
+      "path": "textures/study/forest-window/bark.jpg",
+      "afterBytes": 52093
+    },
+    {
+      "path": "textures/study/forest-window/panorama.jpg",
+      "afterBytes": 1858746
+    },
+    {
+      "path": "textures/study/forest-window/source.json",
+      "beforeBytes": 663,
+      "afterBytes": 1396
+    }
+  ],
+  "removed": [
+    {
+      "path": "textures/study/forest-window/view.jpg",
+      "kind": "runtime",
+      "bytes": 1155565,
+      "sha256": "cf9b1fd22b8afc19b8ff27363c7ed0d94319ab1fc04b65f4b95e7987fc43c14b"
+    }
+  ],
+  "parallax": {
+    "movementMetres": 1,
+    "anchors": {
+      "near": [
+        6.717670532872568,
+        3,
+        -59.484774115728214
+      ],
+      "far": [
+        6.717670532872568,
+        3,
+        -219.89741449733276
+      ]
+    },
+    "left": {
+      "near": [
+        603.1293076001341,
+        400,
+        0.9972501738393684
+      ],
+      "far": [
+        633.2061084351669,
+        399.99999999999994,
+        0.9995014781903976
+      ]
+    },
+    "right": {
+      "near": [
+        710.4569174480089,
+        400,
+        0.9972501738393684
+      ],
+      "far": [
+        652.9825784648377,
+        399.99999999999994,
+        0.9995014781903976
+      ]
+    },
+    "nearPixels": 107.32760984787478,
+    "farPixels": 19.776470029670804
+  },
+  "budgetsChanged": false,
+  "fpsOrLoadTimeSampling": false
+}

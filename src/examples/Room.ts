@@ -13,6 +13,7 @@ import { RoomAudio } from "./RoomAudio";
 import { RoomItemInspection } from "./RoomItemInspection";
 import { RoomFloorPlan } from "./RoomFloorPlan";
 import { RoomMirrors } from "./RoomMirrors";
+import { RoomExterior } from "./RoomExterior";
 import type { InspectableItem } from "./RoomInteractions";
 import { createHouseArchitecture } from "./HouseArchitecture";
 import { constrainHouseWalking, houseVector, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
@@ -47,6 +48,7 @@ export class RoomScene {
   private readonly pointerLock: RoomPointerLock;
   private readonly inspection: RoomItemInspection;
   private readonly floorPlan: RoomFloorPlan;
+  private readonly exterior: RoomExterior;
   private currentView: RoomView = "overview";
   private previousView: Exclude<RoomView, "first-person"> = "overview";
   private pointerLocked = false;
@@ -135,6 +137,7 @@ export class RoomScene {
     this.finishing = createRoomFinishing(this.scene, [this.camera, this.firstPersonCamera, this.inspection.camera]);
 
     const furnishings = new RoomFurnishings(this.scene);
+    this.exterior = new RoomExterior(this.scene);
     this.architecture = createHouseArchitecture(this.scene, furnishings);
     furnishHouseStudy(furnishings);
     furnishHouseLiving(furnishings);
@@ -240,6 +243,7 @@ export class RoomScene {
     const firstPerson = view === "first-person";
     if (firstPerson && this.currentView !== "first-person") this.previousView = this.currentView;
     this.currentView = view;
+    this.exterior.setVisible(view !== "overview");
     if (!firstPerson) this.pointerLock?.release();
     this.scene.activeCamera?.detachControl();
     this.architecture.setEnclosed(firstPerson, view);

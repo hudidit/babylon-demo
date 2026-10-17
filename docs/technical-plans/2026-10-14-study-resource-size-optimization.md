@@ -55,7 +55,7 @@ npm run build -- --mode production --output-path /private/tmp/babylon-study-stor
 | 家具木材颜色、法线、ARM | `public/textures/study/wood_table_001/` | 3 | 0.46 MiB |
 | 墙砖颜色、法线、ARM | `public/textures/study/brick_wall_001/` | 3 | 0.95 MiB |
 | 亚麻法线、ARM | `public/textures/study/rough_linen/` | 2 | 2.01 MiB |
-| 窗外森林照片 | [view.jpg](../../public/textures/study/forest-window/view.jpg) | 1 | 1.10 MiB |
+| 窗外森林照片 | `view.jpg`（历史基线，后由[窗景空间化](2026-10-17-window-landscape-depth.md)替换；原件保留在Git历史） | 1 | 1.10 MiB |
 | 墙上装饰画 | [pic1.jpg](../../public/textures/pictures/pic1.jpg) | 1 | 0.03 MiB |
 | 环境照明与反射 | [study-interior.hdr](../../public/environment/study-interior.hdr) | 1 | 1.57 MiB |
 | 合计 | 单项显示值四舍五入，总计按原始字节计算 | 18 | 49.07 MiB |

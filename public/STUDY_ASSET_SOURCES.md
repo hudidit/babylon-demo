@@ -6,7 +6,7 @@
 
 地板 `wood_floor`、木材 `wood_table_001`、亚麻 `rough_linen`、沙发 `sofa_03`、扶手椅 `modern_arm_chair_01` 和环境 `brown_photostudio_01` 的来源、作者、下载 URL、原件摘要及处理方式见 [来源清单](textures/study/manifest.json)。这些素材按来源记录使用 [CC0-1.0](https://polyhaven.com/license)。清单中 `public/` 前缀对应开发仓库，发布路径去掉该前缀；模型的 `sourceFiles` 为上游文件记录，不是额外运行依赖。该历史清单中的 `brick_wall_001` 已被漆面替换，不再作为运行素材发布。
 
-窗景来自 Andreas Mischok 的 [Forest Slope](https://polyhaven.com/a/forest_slope)，按来源记录为 CC0-1.0；经过透视重投影及 JPEG 编码。原件、交付摘要及参数见 [窗景处理记录](textures/study/forest-window/source.json)。
+森林远景来自 Andreas Mischok 的 [Forest Slope](https://polyhaven.com/a/forest_slope)，按来源记录为 CC0-1.0；保留完整360°等距柱状全景，缩小至4096×2048后JPEG编码，不再使用贴在窗框上的透视裁片。全景上方用于天空与远处森林，下部地面区域投射到真实地形，保持连续UV。树皮图从同一实拍原件中的树干裁出，沿用该素材的作者及CC0条款；原件、裁切坐标、交付摘要及参数见 [窗景处理记录](textures/study/forest-window/source.json)。近中景树干、分枝、叶片和地形为原创三维几何，所有窗口共享同一室外世界，不新增下载模型或室外HDR。
 
 ## 仓库已有素材
 
