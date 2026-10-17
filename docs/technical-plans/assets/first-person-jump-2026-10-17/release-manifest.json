@@ -459,7 +459,7 @@
     "release": 42991616
   },
   "totals": {
-    "build": 26178910,
+    "build": 26179224,
     "runtime": 15867631,
     "documentation": 64195
   },
@@ -553,7 +553,7 @@
       "path": "bundle-analysis.json",
       "kind": "build",
       "bytes": 119887,
-      "sha256": "642ea22597c608ff15633022f471f7a58974c2b20b41c16742e40692243e6c14"
+      "sha256": "a86f6f943f299773baa8518e48925e6dc377f550f9351ca3c4049b27177b4b85"
     },
     {
       "path": "environment/coastal-cliff-source.json",
@@ -3252,8 +3252,8 @@
     {
       "path": "js/main.js",
       "kind": "build",
-      "bytes": 166525,
-      "sha256": "893fe184bd68b2a976608f2f9917762a771d6c6647a2b5d2fbea1f2f23f9e420"
+      "bytes": 166839,
+      "sha256": "997b6ebebc28746743e9f1e6e89112f870588d8e134214d56892b7e0779811ba"
     },
     {
       "path": "licenses/babylonjs-Apache-2.0.md",

@@ -1323,7 +1323,8 @@ test("first-person jump whitelists seats, the coffee table and beds but not desk
   assert.ok(jumpBlockedAt(6.9, .72) && jumpBlockedAt(5.82, 7.6), "desks/consoles reject airborne entry");
   assert.ok(!jumpBlockedAt(2.1, 8.45), "the guest bed itself is landable");
   assert.ok(HOUSE_JUMP.apex < .78 && HOUSE_JUMP.apex < 1.1, "floor jump stays below desks and the balcony rail");
-  for (const platform of HOUSE_JUMP_PLATFORMS) assert.ok(platform.top < HOUSE_JUMP.apex, platform.id + " top");
+  for (const platform of HOUSE_JUMP_PLATFORMS) assert.ok(platform.top < .78, platform.id + " stays below desk height");
+  assert.ok(HOUSE_JUMP_PLATFORMS.find(platform => platform.id === "guest-bed").top === .73);
 });
 
 test("first-person jump rises, mantles onto the bed and lands back on the floor or from a fall", () => {
@@ -1336,7 +1337,7 @@ test("first-person jump rises, mantles onto the bed and lands back on the floor 
     advanceJump(state, 1 / 60, centre);
     apex = Math.max(apex, state.feet); frames++;
   } while (!state.grounded && frames < 600);
-  assert.ok(apex > bed.top, "jump clears the bed top");
+  assert.ok(apex > bed.top - HOUSE_JUMP.mantle, "jump reaches the bed mantle range");
   assert.ok(state.grounded && Math.abs(state.feet - bed.top) < 1e-6, "land on the bed");
   requestJump(state); assert.equal(state.queued, true, "grounded request queues the next jump");
   state.queued = false; state.grounded = false; requestJump(state); assert.equal(state.queued, false, "no double jump while airborne");
@@ -1351,13 +1352,19 @@ test("first-person jump rises, mantles onto the bed and lands back on the floor 
   for (let i = 0; i < 120 && !fall.grounded; i++) advanceJump(fall, 1 / 60, { x: bed.maxX + 2, y: centre.y });
   assert.ok(fall.grounded && fall.feet === 0, "fall back to the floor");
   const step = createJumpState(); step.feet = bed.top; step.grounded = true;
-  const off = advanceJump(step, 1 / 60, { x: bed.maxX + 1, y: centre.y });
-  assert.equal(off.grounded, false, "walking off a platform falls");
+  const edge = advanceJump(step, 1 / 60, { x: bed.maxX + HOUSE_JUMP.playerRadius * .8, y: centre.y });
+  assert.equal(edge.grounded, true, "body radius keeps the walker supported at the edge");
+  assert.equal(step.feet, bed.top);
+  const off = advanceJump(step, 1 / 60, { x: bed.maxX + HOUSE_JUMP.playerRadius + .05, y: centre.y });
+  assert.equal(off.grounded, false, "walking clear of the platform edge falls");
+  for (let i = 0; i < 120 && !step.grounded; i++) advanceJump(step, 1 / 60, { x: bed.maxX + HOUSE_JUMP.playerRadius + .05, y: centre.y });
+  assert.ok(step.grounded && step.feet === 0, "the mantle must not pull the walker back onto the platform");
   // Jumping while already on the bed is capped below the 2.8m ceiling.
   const onBed = createJumpState(); onBed.feet = bed.top; onBed.grounded = true; requestJump(onBed);
   let highest = onBed.feet;
   for (let i = 0; i < 600 && !onBed.grounded; i++) { advanceJump(onBed, 1 / 60, centre); highest = Math.max(highest, onBed.feet); }
   assert.ok(highest + HOUSE_JUMP.eyeHeight < HOUSE_COORDINATES.clearHeight - .05, "ceiling headroom is respected");
+  assert.ok(onBed.grounded && Math.abs(onBed.feet - bed.top) < 1e-6, "jumping in place lands back on the bed");
 });
 
 test("changing movement speed applies immediately and clears previous movement", t => {

@@ -17,9 +17,9 @@
   "after": {
     "runtimeBytes": 15867631,
     "modelBytes": 4332840,
-    "initialStaticJsBytes": 2586703,
-    "actualInitialJsBytesIncludingAudioPreheat": 2805555,
-    "completeReleaseBytes": 42203440,
+    "initialStaticJsBytes": 2587017,
+    "actualInitialJsBytesIncludingAudioPreheat": 2805869,
+    "completeReleaseBytes": 42203754,
     "filesVerified": 495,
     "meshes": 612,
     "vertices": 509239,
@@ -258,8 +258,8 @@
     {
       "path": "js/main.js",
       "bytesBefore": 162763,
-      "bytesAfter": 166525,
-      "delta": 3762
+      "bytesAfter": 166839,
+      "delta": 4076
     }
   ],
   "staticInitialJsFiles": [
@@ -277,10 +277,10 @@
   },
   "jump": {
     "baseSpeed": 0.825,
-    "apexWorldY": 6.443051462457028,
+    "apexWorldY": 6.443392039449229,
     "landings": {
       "bed": {
-        "y": 6.375000000000002,
+        "y": 6.65,
         "x": -16.5,
         "z": 15.249999999999995
       },
@@ -311,7 +311,7 @@
       }
     },
     "expected": {
-      "bed": 6.375000000000002,
+      "bed": 6.65,
       "sofa": 5.205,
       "coffee-table": 5.34,
       "chair": 5.805,
@@ -319,9 +319,26 @@
       "floor": 3
     }
   },
+  "walkOff": {
+    "bed": {
+      "landedY": 6.65,
+      "finalY": 3,
+      "minY": 3
+    },
+    "sofa": {
+      "landedY": 5.205,
+      "finalY": 3,
+      "minY": 3
+    },
+    "coffee-table": {
+      "landedY": 5.34,
+      "finalY": 3,
+      "minY": 3
+    }
+  },
   "notes": [
     "Only js/main.js grew; all 36 runtime assets and both target GLBs are byte/hash identical to the previous release.",
     "No new meshes, materials, textures, lights, cameras, render targets or downloads were added.",
-    "Landing heights use the platform top plus 1.6m eye height; fixed samples are not FPS or load-time measurements."
+    "Landing heights use the platform top plus 1.6m eye height; walk-off samples use a test-only 3x speed and are not FPS/load-time measurements."
   ]
 }

@@ -70,16 +70,16 @@ The runtime is part of the initial chunk of main. It describes every other chunk
 Set 'optimization.runtimeChunk' to emit the runtime as its own chunk.
 For more info visit https://webpack.js.org/configuration/optimization/#optimizationruntimechunk
 
-webpack 5.111.1 compiled with 3 warnings in 29385 ms
+webpack 5.111.1 compiled with 3 warnings in 24757 ms
 {
   "fileCount": 495,
   "modelBytes": 4332840,
-  "buildBytes": 26178910,
+  "buildBytes": 26179224,
   "runtimeBytes": 15867631,
   "documentationBytes": 64195,
   "manifestBytes": 92704,
-  "initialJsBytes": 2586703,
+  "initialJsBytes": 2587017,
   "audioBytes": 287568,
   "audioDecodedBytes": 574080,
-  "releaseBytes": 42203440
+  "releaseBytes": 42203754
 }

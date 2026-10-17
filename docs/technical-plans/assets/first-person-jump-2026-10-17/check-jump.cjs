@@ -40,7 +40,7 @@ const output = path.resolve(process.env.STUDY_CHECK_OUTPUT || __dirname);
 
     const eyeY = feet => -5 + (feet + 1.6) * 5;
     const targets = [
-      ["bed", 2.1, 8.45, .675], ["sofa", 10.24, 8.4, .441], ["coffee-table", 8.7, 8.4, .468],
+      ["bed", 2.1, 8.45, .73], ["sofa", 10.24, 8.4, .441], ["coffee-table", 8.7, 8.4, .468],
       ["chair", 6.9, 1.8, .561], ["balcony-floor", 8.1, 11.8, 0], ["floor", 9.4, 5.35, 0],
     ];
     const landings = {};

@@ -50,9 +50,9 @@ export const HOUSE_JUMP_PLATFORMS: readonly JumpPlatform[] = Object.freeze([
   platform("study-chair", "study", HOUSE_CONTENT.chair, 2.35 / 5, 2.35 / 5, 0, 2.805 / 5),
   // Coffee table top: 2.2 + 0.14 world / 5 -> 0.468m; 7.5 x 4.4 world, rotated.
   platform("coffee-table", "living", HOUSE_CONTENT.coffeeTable, 7.5 / 5, 4.4 / 5, Math.PI / 2, 2.34 / 5),
-  // bedroomBed(): duvet top at 0.675m; mattress footprint 1.5/1.8 x 2.03m.
-  platform("guest-bed", "bedroom", bedroomBed, HOUSE_BEDROOM.bed.width, 2.03, 0, 0.675),
-  platform("master-bed", "master", masterBed, HOUSE_SUITE.bed.width, 2.03, Math.PI / 2, 0.675),
+  // bedroomBed(): the folded throw reaches 0.7275m; stand on that surface, not inside its side.
+  platform("guest-bed", "bedroom", bedroomBed, HOUSE_BEDROOM.bed.width, 2.03, 0, 0.73),
+  platform("master-bed", "master", masterBed, HOUSE_SUITE.bed.width, 2.03, Math.PI / 2, 0.73),
   // The window bench is a seat too; cushion top 0.5m.
   platform("bedroom-bench", "bedroom", bedroomSeat, 0.45, 1.3, Math.PI / 2, 0.5),
 ]);
@@ -79,11 +79,11 @@ export function jumpBlockedAt(x: number, y: number, margin = 0.08) {
     && y >= b.minY - margin && y <= b.maxY + margin);
 }
 
-export interface JumpState { feet: number; velocity: number; grounded: boolean; queued: boolean; }
+export interface JumpState { feet: number; velocity: number; grounded: boolean; queued: boolean; originTop: number; }
 export interface JumpFrame { feet: number; grounded: boolean; snapped?: PlanPoint; landed?: string; }
 
-export function createJumpState(): JumpState { return { feet: 0, velocity: 0, grounded: true, queued: false }; }
-export function resetJumpState(state: JumpState) { state.feet = 0; state.velocity = 0; state.grounded = true; state.queued = false; }
+export function createJumpState(): JumpState { return { feet: 0, velocity: 0, grounded: true, queued: false, originTop: 0 }; }
+export function resetJumpState(state: JumpState) { state.feet = 0; state.velocity = 0; state.grounded = true; state.queued = false; state.originTop = 0; }
 export function requestJump(state: JumpState) { if (state.grounded) state.queued = true; }
 
 /** Highest landable surface under a plan point; the floor is the implicit fallback. */
@@ -107,14 +107,21 @@ export function advanceJump(state: JumpState, dt: number, point: PlanPoint): Jum
   if (state.grounded) {
     if (state.queued) {
       state.queued = false;
+      state.originTop = state.feet;
       const headroom = Math.max(0.15, HOUSE_COORDINATES.clearHeight - 0.08 - HOUSE_JUMP.eyeHeight - state.feet);
       const height = Math.min(HOUSE_JUMP.apex, headroom);
       state.velocity = Math.sqrt(2 * HOUSE_JUMP.gravity * height);
       state.grounded = false;
     } else {
       const support = jumpSupportAt(point.x, point.y);
-      if (support < state.feet - 1e-6) { state.grounded = false; state.velocity = 0; }
-      else {
+      if (support < state.feet - 1e-6) {
+        // Keep the feet at the current top while the body still overlaps the platform edge;
+        // otherwise the collider drops below the top and the platform side traps the walker.
+        const edge = jumpPlatformAt(point.x, point.y, HOUSE_JUMP.playerRadius);
+        if (!edge || Math.abs(edge.top - state.feet) > 1e-6) {
+          state.grounded = false; state.velocity = 0; state.originTop = state.feet;
+        } else return { feet: state.feet, grounded: true };
+      } else {
         if (support <= state.feet + 1e-6) state.feet = support;
         return { feet: state.feet, grounded: true };
       }
@@ -123,23 +130,23 @@ export function advanceJump(state: JumpState, dt: number, point: PlanPoint): Jum
   state.velocity -= HOUSE_JUMP.gravity * dt;
   const next = state.feet + state.velocity * dt;
   if (state.velocity <= 0) {
-    const inside = jumpPlatformAt(point.x, point.y);
-    if (inside && state.feet >= inside.top - 1e-6 && next <= inside.top) {
-      state.feet = inside.top; state.velocity = 0; state.grounded = true;
-      return { feet: state.feet, grounded: true, landed: inside.id };
+    const platform = jumpPlatformAt(point.x, point.y);
+    if (platform && state.feet >= platform.top - 1e-6 && next <= platform.top) {
+      state.feet = platform.top; state.velocity = 0; state.grounded = true; state.originTop = platform.top;
+      return { feet: state.feet, grounded: true, landed: platform.id };
     }
-    if (!inside) {
-      const near = jumpPlatformAt(point.x, point.y, HOUSE_JUMP.playerRadius + 0.12);
-      if (near && state.feet >= near.top - HOUSE_JUMP.mantle && next <= near.top) {
-        state.feet = near.top; state.velocity = 0; state.grounded = true;
-        return { feet: state.feet, grounded: true, landed: near.id, snapped: {
+    const near = platform ?? jumpPlatformAt(point.x, point.y, HOUSE_JUMP.playerRadius + 0.12);
+    if (near && near.top > state.originTop + 1e-6 && state.feet >= near.top - HOUSE_JUMP.mantle && next <= near.top) {
+      state.feet = near.top; state.velocity = 0; state.grounded = true; state.originTop = near.top;
+      const inside = point.x >= near.minX && point.x <= near.maxX && point.y >= near.minY && point.y <= near.maxY;
+      return { feet: state.feet, grounded: true, landed: near.id,
+        snapped: inside ? undefined : {
           x: clamp(point.x, near.minX + 0.06, near.maxX - 0.06),
           y: clamp(point.y, near.minY + 0.06, near.maxY - 0.06),
         } };
-      }
     }
   }
-  if (next <= 0) { state.feet = 0; state.velocity = 0; state.grounded = true; return { feet: 0, grounded: true, landed: "floor" }; }
+  if (next <= 0) { state.feet = 0; state.velocity = 0; state.grounded = true; state.originTop = 0; return { feet: 0, grounded: true, landed: "floor" }; }
   state.feet = next;
   return { feet: next, grounded: false };
 }
