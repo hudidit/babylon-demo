@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1040" viewBox="0 0 1280 1040" role="img" aria-labelledby="title desc">
+  <title id="title">中唐长安文士宅院：建筑平面方案</title>
+  <desc id="desc">约公元780至820年假想住宅。20米乘26米宅地，北侧三间正屋，东西廊屋与檐廊围成主院，南侧设门屋、厨房、储藏和厕屋。尺寸和布置均为设计推演，不是考古实测。</desc>
+  <defs>
+    <pattern id="earth" patternUnits="userSpaceOnUse" width="18" height="18">
+      <rect width="18" height="18" fill="#eee5d4"/>
+      <circle cx="4" cy="6" r="0.7" fill="#b3a68d" opacity="0.45"/>
+      <circle cx="13" cy="14" r="0.6" fill="#b3a68d" opacity="0.4"/>
+    </pattern>
+    <pattern id="porch" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(45)">
+      <rect width="12" height="12" fill="#e4cda6"/>
+      <path d="M0 0V12" stroke="#c3a776" stroke-width="1" opacity="0.45"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0L7 4L0 8Z" fill="#466f78"/>
+    </marker>
+    <style>
+      text { font-family: 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif; fill: #302e29; }
+      .muted { fill: #6f6a5e; }
+      .room { fill: #d7b08a; stroke: #71533e; stroke-width: 4; }
+      .service { fill: #cdd4c7; stroke: #5c6b57; stroke-width: 4; }
+      .label { font-size: 17px; text-anchor: middle; font-weight: 600; }
+      .sub { font-size: 13px; text-anchor: middle; fill: #655a4c; }
+      .dim { stroke: #8a8273; stroke-width: 1.3; fill: none; }
+      .gap { stroke: #eee5d4; stroke-width: 8; }
+      .divider { stroke: #917354; stroke-width: 1.5; stroke-dasharray: 5 4; }
+    </style>
+  </defs>
+  <rect width="1280" height="1040" fill="#f8f5ee"/>
+  <text x="64" y="60" font-size="14" letter-spacing="3" class="muted">场景设计 / 2026.10.18</text>
+  <text x="64" y="105" font-size="33" font-weight="650">中唐长安 · 文士宅院</text>
+  <text x="65" y="135" font-size="16" class="muted">约公元 780—820 年 · 单主院与生活附属区 · 平面示意</text>
+  <path d="M614 152V111" stroke="#302e29" stroke-width="2"/>
+  <path d="M614 99L607 115H621Z" fill="#302e29"/>
+  <text x="614" y="87" text-anchor="middle" font-size="16" font-weight="600">北</text>
+
+  <!-- 1 m = 24 px. Plot coordinates start at (100,170), north at y = 0. -->
+  <rect x="100" y="170" width="480" height="624" fill="url(#earth)" stroke="#6f6959" stroke-width="8"/>
+  <path d="M100 157V146H580V157M100 142V150M580 142V150" class="dim"/>
+  <rect x="291" y="136" width="98" height="20" fill="#f8f5ee"/>
+  <text x="340" y="151" font-size="15" text-anchor="middle">20.0 m</text>
+  <path d="M87 170H74V794H87M70 170H78M70 794H78" class="dim"/>
+  <text x="56" y="482" font-size="15" text-anchor="middle" transform="rotate(-90 56 482)">26.0 m</text>
+
+  <!-- Covered porches, shown separately from enclosed rooms. -->
+  <path d="M200.8 352.4H479.2V592.4H445.6V386H234.4V592.4H200.8Z" fill="url(#porch)" stroke="#af946d" stroke-width="1.5"/>
+  <rect x="210.4" y="208.4" width="259.2" height="144" class="room"/>
+  <path d="M296.8 210V350M383.2 210V350" class="divider"/>
+  <text x="253.6" y="259" class="label">寝室</text>
+  <text x="253.6" y="283" class="sub">床 · 帘帐</text>
+  <text x="340" y="259" class="label">正堂</text>
+  <text x="340" y="283" class="sub">榻 · 几 · 屏</text>
+  <text x="426.4" y="259" class="label">内室</text>
+  <text x="426.4" y="283" class="sub">起居 · 衣箱</text>
+  <text x="340" y="320" class="sub">三间正屋 10.8 × 6.0 m</text>
+  <path d="M321 352.4H359M241 352.4H265M414 352.4H438" class="gap"/>
+  <text x="340" y="376" font-size="13" text-anchor="middle" fill="#735c3d">正屋前廊 · 深 1.4 m</text>
+
+  <rect x="128.8" y="400.4" width="72" height="192" class="room"/>
+  <path d="M130.8 496.4H198.8" class="divider"/>
+  <text x="164.8" y="445" class="label">储物</text>
+  <text x="164.8" y="468" class="sub">箱 · 笼</text>
+  <text x="164.8" y="539" class="label">日常</text>
+  <text x="164.8" y="562" class="sub">作业</text>
+  <path d="M200.8 438V464M200.8 532V558" class="gap"/>
+  <rect x="479.2" y="400.4" width="72" height="192" class="room"/>
+  <path d="M481.2 496.4H549.2" class="divider"/>
+  <text x="515.2" y="445" class="label">书斋</text>
+  <text x="515.2" y="468" class="sub">案 · 卷</text>
+  <text x="515.2" y="539" class="label">客用</text>
+  <text x="515.2" y="562" class="sub">休憩</text>
+  <path d="M479.2 438V464M479.2 532V558" class="gap"/>
+  <text x="164.8" y="615" class="sub">3 × 8 m</text>
+  <text x="515.2" y="615" class="sub">3 × 8 m</text>
+
+  <rect x="238" y="390" width="204" height="198" rx="3" fill="none" stroke="#c4b796" stroke-dasharray="5 5"/>
+  <text x="340" y="465" font-size="24" font-weight="600" text-anchor="middle">主院</text>
+  <text x="340" y="493" font-size="14" text-anchor="middle" class="muted">核心约 8.8 × 8.6 m</text>
+  <text x="340" y="517" font-size="14" text-anchor="middle" class="muted">整实土面 · 局部砖铺</text>
+  <circle cx="275" cy="553" r="24" fill="#9eae8a" opacity="0.7"/>
+  <circle cx="269" cy="549" r="17" fill="#899e77" opacity="0.7"/>
+  <circle cx="279" cy="558" r="3" fill="#71533e"/>
+  <text x="308" y="565" font-size="12" class="muted">树位暂定</text>
+
+  <rect x="128.8" y="654.8" width="96" height="96" class="service"/>
+  <text x="176.8" y="688" class="label">厨房</text>
+  <text x="176.8" y="713" class="sub">灶 · 釜 · 水缸</text>
+  <text x="176.8" y="736" class="sub">4 × 4 m</text>
+  <path d="M160.8 654.8H190.8" class="gap"/>
+  <rect x="479.2" y="654.8" width="72" height="96" class="service"/>
+  <path d="M481.2 702.8H549.2" stroke="#5c6b57" stroke-width="3"/>
+  <text x="515.2" y="685" class="label">储藏</text>
+  <text x="515.2" y="734" class="label">厕屋</text>
+  <path d="M479.2 671V692M479.2 719V740" class="gap"/>
+  <text x="515.2" y="774" class="sub">合计 3 × 4 m</text>
+  <rect x="301.6" y="702.8" width="76.8" height="81.6" class="room"/>
+  <path d="M323 702.8H357M323 784.4H357M323 794H357" class="gap"/>
+  <text x="340" y="736" class="label">门屋</text>
+  <text x="340" y="760" class="sub">3.2 × 3.4 m</text>
+  <path d="M340 826V786M340 699V626L437 580V410L340 398V391M437 560L458 458" stroke="#466f78" stroke-width="2.5" stroke-dasharray="7 7" fill="none" marker-end="url(#arrow)"/>
+  <text x="340" y="852" font-size="16" text-anchor="middle" class="muted">南侧巷道 / 入宅</text>
+
+  <rect x="680" y="172" width="536" height="158" rx="10" fill="#eee8da"/>
+  <text x="704" y="207" font-size="19" font-weight="600">历史定位</text>
+  <text x="704" y="239" font-size="16">长安地区 · 有一定家资的文士之家</text>
+  <text x="704" y="269" font-size="15" class="muted">院落、廊屋、木构与屏具参考唐代材料。</text>
+  <text x="704" y="296" font-size="15" class="muted">不绑定真实宅主，不复制寺庙或宫殿平面。</text>
+
+  <text x="680" y="379" font-size="20" font-weight="600">空间与建筑</text>
+  <text x="680" y="414" font-size="16">01　北侧正屋，三间组织起居与寝卧</text>
+  <text x="680" y="445" font-size="16">02　东西廊屋，檐廊连接院内路线</text>
+  <text x="680" y="476" font-size="16">03　南侧生活附属区，灶与厕分置</text>
+  <text x="680" y="507" font-size="16">04　单层木构、朴素瓦屋、浅色抹面</text>
+  <text x="680" y="538" font-size="16">05　门槛、梁檩与瓦层按真实空间建模</text>
+
+  <text x="680" y="594" font-size="20" font-weight="600">图例</text>
+  <rect x="681" y="615" width="24" height="18" fill="#d7b08a" stroke="#71533e"/>
+  <text x="720" y="630" font-size="15">正屋 / 廊屋 / 门屋</text>
+  <rect x="681" y="648" width="24" height="18" fill="url(#porch)" stroke="#af946d"/>
+  <text x="720" y="663" font-size="15">有顶檐廊 / 暂定净宽 1.4 m</text>
+  <rect x="681" y="681" width="24" height="18" fill="#cdd4c7" stroke="#5c6b57"/>
+  <text x="720" y="696" font-size="15">生活附属屋</text>
+  <path d="M681 725H707" stroke="#466f78" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="720" y="730" font-size="15">主要通行方向示意</text>
+  <path d="M681 756H707" class="divider"/>
+  <text x="720" y="761" font-size="15">房间分隔示意，细部待考据定稿</text>
+
+  <path d="M100 892H220M100 885V899M148 885V899M220 885V899" stroke="#6f6959" stroke-width="2"/>
+  <text x="100" y="920" font-size="13" text-anchor="middle">0</text>
+  <text x="148" y="920" font-size="13" text-anchor="middle">2</text>
+  <text x="220" y="920" font-size="13" text-anchor="middle">5 m</text>
+  <text x="266" y="901" font-size="14" class="muted">尺寸为设计外轮廓，非净使用面积</text>
+  <path d="M64 948H1216" stroke="#d5ccbc"/>
+  <text x="64" y="979" font-size="16" font-weight="600" fill="#8a573d">设计推演 · 非考古实测图</text>
+  <text x="64" y="1007" font-size="14" class="muted">地块、尺寸、房间用途与树位为创作设定；柱网、完整门扇、屋面投影、排水及灯灶细部待阶段 A/B 核对。</text>
+</svg>
