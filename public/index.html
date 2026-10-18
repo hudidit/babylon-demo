@@ -12,7 +12,7 @@
       #gameCanvas { display: block; width: 100%; height: 100%; outline: none; touch-action: none; }
       #interaction-reticle { position: fixed; left: 50%; top: 50%; width: 6px; height: 6px; transform: translate(-50%, -50%); border-radius: 50%; background: #fff7e8e6; box-shadow: 0 0 0 1px #30291a80, 0 1px 5px #0005; z-index: 20; pointer-events: none; transition: width 120ms, height 120ms, background 120ms; }
       #interaction-reticle.has-target { width: 9px; height: 9px; background: #eacb90; }
-      #interaction-hint { position: fixed; left: 50%; top: calc(50% + 22px); transform: translateX(-50%); z-index: 20; padding: 6px 10px; border-radius: 5px; background: #242c2eb3; color: #fff2dd; font-size: 11px; letter-spacing: 1px; white-space: nowrap; pointer-events: none; }
+      #interaction-hint { position: fixed; left: 50%; top: calc(50% + 22px); transform: translateX(-50%); z-index: 20; padding: 6px 10px; border-radius: 5px; background: #242c2eb3; color: #fff2dd; font-size: 11px; letter-spacing: 1px; max-width: calc(100vw - 44px); width: max-content; text-align: center; pointer-events: none; }
       body.viewing-item > .identity, body.viewing-item > .tools, body.viewing-item > .settings-panel, body.viewing-item > .help, body.viewing-item > .view-controls { visibility: hidden; }
       #item-inspection { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; color: #eee5d5; background: radial-gradient(ellipse at center, transparent 30%, #10181666); text-align: center; }
       #item-inspection::backdrop { background: transparent; }
@@ -238,7 +238,7 @@
           </aside>
           <aside class="map-notes" id="coast-map-notes" hidden>
             <h3>走向海角的灯塔</h3>
-            <p id="coast-plan-description">从东侧家门绕过屋后，沿崖顶步道经过观景点，抵达西南岬角的灯塔。地图与三维北向俯视的左右一致。</p>
+            <p id="coast-plan-description">从东侧家门绕过屋后，沿崖顶步道经过观景点，抵达西南岬角的灯塔。可在家门停车位骑上小电驴，地图车标用于寻车。地图与三维北向俯视的左右一致。</p>
             <dl class="map-area" style="margin-top:24px"><dt>家门至灯塔路线</dt><dd><span id="coast-route-length"></span> <small>m</small></dd></dl>
             <p>灯塔高20米，距阳台约155米。途中可看海、回望房屋，塔前留有绕行与观景空间。</p>
             <button id="coast-preview">查看海岸全景</button>

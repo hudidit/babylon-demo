@@ -18,6 +18,8 @@ import type { InspectableItem } from "./RoomInteractions";
 import { createHouseArchitecture } from "./HouseArchitecture";
 import { houseVector, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
 import { walkingPointAllowed, walkingSurfaceAt, sweepWalking } from "./WalkingSurface";
+import { advanceScooter, createScooterState, emptyScooterInput, resetScooter, scooterDismount, scooterEyeBack, scooterOffset, scooterSupport, stopScooter, SCOOTER } from "./CoastalScooter";
+import { CoastalScooterModel } from "./CoastalScooterModel";
 import { COASTAL_HOME } from "./CoastalSite";
 import { HOUSE_CONTENT, furnishHouseLiving, furnishHouseStudy } from "./HouseContent";
 import { furnishHouseMaster, furnishHouseEnsuite } from "./HouseSuite";
@@ -46,6 +48,12 @@ export class RoomScene {
   private readonly camera: ArcRotateCamera;
   private readonly firstPersonCamera: UniversalCamera;
   private readonly jump = createJumpState();
+  private readonly scooter = createScooterState();
+  private scooterInput = emptyScooterInput();
+  private readonly scooterModel: CoastalScooterModel;
+  private scooterTransition?: { from: Vector3; to: Vector3; elapsed: number; yaw: number; targetYaw: number; pitch: number; targetPitch: number };
+  private scooterNotice = "";
+  private scooterNoticeUntil = 0;
   private readonly previousWalk = new Vector3();
   private walkPose?: { position: Vector3; rotation: Vector3; feet: number };
   private stableWalk?: { position: Vector3; feet: number };
@@ -113,7 +121,8 @@ export class RoomScene {
     this.scene.collisionsEnabled = true;
     // Horizontal collision stays with Babylon; this controller owns feet height, gravity and landing.
     this.firstPersonCamera.onAfterCheckInputsObservable.add(() => {
-      if (this.currentView === "first-person" && this.controlsEnabled && !this.isViewing) this.updateFirstPersonHeight();
+      if (this.currentView !== "first-person" || !this.controlsEnabled || this.isViewing) return;
+      if (this.scooter.riding || this.scooterTransition) this.updateScooter(); else this.updateFirstPersonHeight();
     });
 
     this.lighting = new RoomLighting(this.scene, true);
@@ -125,6 +134,7 @@ export class RoomScene {
       () => this.setView("coast"), () => this.returnHome());
     this.pointerLock = new RoomPointerLock(canvas, locked => {
       this.pointerLocked = locked;
+      if (!locked) this.pauseScooter();
       this.updateControls();
       this.updateInteractionHint();
     }, () => this.leaveFirstPerson(), () => {
@@ -148,6 +158,8 @@ export class RoomScene {
 
     const furnishings = new RoomFurnishings(this.scene);
     this.exterior = new RoomExterior(this.scene);
+    this.scooterModel = new CoastalScooterModel(this.scene, this.exterior.sun, this.exterior.surfaces);
+    this.scooterModel.update(this.scooter, false);
     this.architecture = createHouseArchitecture(this.scene, furnishings);
     furnishHouseStudy(furnishings);
     furnishHouseLiving(furnishings);
@@ -248,6 +260,7 @@ export class RoomScene {
     document.querySelector("#item-inspection-return")!.addEventListener("click", this.returnFromInspection);
     document.querySelector("#item-inspection")!.addEventListener("cancel", this.cancelInspection);
     document.addEventListener("keydown", this.keyDown);
+    document.addEventListener("keyup", this.keyUp);
     window.addEventListener("blur", this.leaveFirstPerson);
     window.addEventListener("blur", this.pauseAudio);
     window.addEventListener("focus", this.resumeAudio);
@@ -259,13 +272,15 @@ export class RoomScene {
 
   setView(view: RoomView) {
     if (this.isViewing) return;
-    if (this.currentView === "first-person") this.saveWalkingPose();
+    this.pauseScooter();
+    if (this.currentView === "first-person" && !this.scooter.riding) this.saveWalkingPose();
     this.interactions.silenceMotion();
     this.audio.setSpatialCamera(view === "first-person" ? this.firstPersonCamera : undefined);
     const firstPerson = view === "first-person";
     if (firstPerson && this.currentView !== "first-person") this.previousView = this.currentView;
     this.currentView = view;
     this.exterior.setVisible(view !== "overview");
+    this.scooterModel.update(this.scooter, view !== "overview");
     this.exterior.setHouseEnclosed(firstPerson || view === "coast");
     if (firstPerson) this.exterior.updateCutaway();
     if (!firstPerson) this.pointerLock?.release();
@@ -294,7 +309,9 @@ export class RoomScene {
       cabinet: { position: houseVector(8.3, 9.3, 2.1), target: houseVector(a.cabinet.x, a.cabinet.y, 0.6) },
     };
     if (firstPerson) {
-      if (this.walkPose && this.walkPoseIsValid(this.walkPose)) {
+      if (this.scooter.riding && scooterSupport(this.scooter)) {
+        this.placeRiderCamera();
+      } else if (this.walkPose && this.walkPoseIsValid(this.walkPose)) {
         this.firstPersonCamera.position.copyFrom(this.walkPose.position);
         this.firstPersonCamera.rotation.copyFrom(this.walkPose.rotation);
         if (this.jump) resetJumpState(this.jump, this.walkPose.feet);
@@ -337,6 +354,77 @@ export class RoomScene {
     document.querySelectorAll<HTMLButtonElement>("[data-view]").forEach(button => {
       button.setAttribute("aria-pressed", String(button.dataset.view === view));
     });
+  }
+
+  private scooterKey(code: string): keyof typeof this.scooterInput | undefined {
+    return ({ KeyW: "forward", ArrowUp: "forward", KeyS: "back", ArrowDown: "back", KeyA: "left", ArrowLeft: "left",
+      KeyD: "right", ArrowRight: "right", Space: "brake" } as const)[code];
+  }
+  private keyUp = (event: KeyboardEvent) => {
+    const key = this.scooterKey(event.code); if (key) this.scooterInput[key] = false;
+  };
+  private pauseScooter() {
+    stopScooter(this.scooter); this.scooterInput = emptyScooterInput();
+    this.scooter.exitRequested = false;
+    if (this.scooterTransition) {
+      this.firstPersonCamera.position.copyFrom(this.scooterTransition.to);
+      this.firstPersonCamera.rotation.y = this.scooterTransition.targetYaw;
+      this.firstPersonCamera.rotation.x = this.scooterTransition.targetPitch;
+      this.scooterTransition = undefined;
+    }
+  }
+  private scooterTarget() {
+    if (this.scooter.riding || this.scooterTransition || !this.jump.grounded) return false;
+    const hit = this.scene.pickWithRay(this.firstPersonCamera.getForwardRay(7.5), m => m.isPickable && m.isVisible && !m.metadata?.collisionOnly);
+    return !!hit?.hit && !!hit.pickedMesh?.metadata?.scooter;
+  }
+  private boardScooter() {
+    if (!this.scooterTarget() || !scooterSupport(this.scooter)) return false;
+    this.pauseScooter(); this.saveWalkingPose(); this.scooter.riding = true;
+    const camera = this.firstPersonCamera, from = camera.position.clone(), yaw = camera.rotation.y;
+    this.placeRiderCamera();
+    this.scooterTransition = { from, to: camera.position.clone(), elapsed: 0, yaw, targetYaw: this.scooter.heading, pitch: camera.rotation.x, targetPitch: .08 };
+    camera.position.copyFrom(from); this.updateControls(); this.updateInteractionHint(); return true;
+  }
+  private placeRiderCamera() {
+    const support = scooterSupport(this.scooter); if (!support) return;
+    const back = scooterEyeBack(this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight()));
+    const point = scooterOffset(this.scooter, 0, -back), p = planToWorld(point, support.height + SCOOTER.eyeHeight);
+    this.firstPersonCamera.position.set(p.x, p.y, p.z);
+    this.firstPersonCamera.cameraDirection.setAll(0); this.firstPersonCamera.movement.resetPanVelocity();
+  }
+  private updateScooter() {
+    const camera = this.firstPersonCamera, dt = Math.min(.2, Math.max(0, this.engine.getDeltaTime() / 1000));
+    if (this.scooterTransition) {
+      const t = this.scooterTransition; t.elapsed += dt;
+      const a = Math.min(1, t.elapsed / .32), ease = a * a * (3 - 2 * a);
+      Vector3.LerpToRef(t.from, t.to, ease, camera.position);
+      camera.rotation.y = t.yaw + Math.atan2(Math.sin(t.targetYaw - t.yaw), Math.cos(t.targetYaw - t.yaw)) * ease;
+      camera.rotation.x = t.pitch + (t.targetPitch - t.pitch) * ease;
+      if (a === 1) { this.scooterTransition = undefined; this.updateControls(); }
+      return;
+    }
+    if (!scooterSupport(this.scooter)) { this.returnHome(); return; }
+    const heading = this.scooter.heading;
+    if (this.pointerLocked && !document.hidden) advanceScooter(this.scooter, this.scooterInput, dt); else this.pauseScooter();
+    const change = this.scooter.heading - heading;
+    camera.rotation.y += Math.atan2(Math.sin(change), Math.cos(change));
+    this.scooterModel.update(this.scooter, true); this.placeRiderCamera();
+    if (this.scooter.exitRequested && Math.abs(this.scooter.speed) < .01) {
+      this.scooter.exitRequested = false;
+      const point = scooterDismount(this.scooter, (p, h) => this.interactions.walkerIsClear(houseVector(p.x, p.y, h + HOUSE_JUMP.eyeHeight)));
+      if (!point) {
+        this.scooterNotice = "这里没有安全落脚点，请稍微挪车再按 E"; this.scooterNoticeUntil = performance.now() + 3500;
+        this.scooterInput = emptyScooterInput(); return;
+      }
+      const from = camera.position.clone(), to = houseVector(point.x, point.y, point.height + HOUSE_JUMP.eyeHeight);
+      this.scooter.riding = false; this.pauseScooter(); resetJumpState(this.jump, point.height);
+      this.previousWalk.copyFrom(to); this.stableWalk = { position: to.clone(), feet: point.height };
+      this.walkPose = { position: to.clone(), rotation: camera.rotation.clone(), feet: point.height };
+      this.scooterTransition = { from, to, elapsed: 0, yaw: camera.rotation.y, targetYaw: camera.rotation.y, pitch: camera.rotation.x, targetPitch: camera.rotation.x };
+      this.scooterNotice = "已停车 · 空格跳跃 · M 地图寻车"; this.scooterNoticeUntil = performance.now() + 2200;
+      this.updateControls(); this.updateInteractionHint();
+    }
   }
 
   private updateFirstPersonHeight() {
@@ -397,6 +485,9 @@ export class RoomScene {
 
   private returnHome() {
     this.closeFloorPlan(false);
+    this.pauseScooter(); resetScooter(this.scooter); this.scooterTransition = undefined;
+    this.scooterModel.update(this.scooter, this.currentView !== "overview");
+    this.updateControls();
     this.restoreStableWalk(true);
     this.firstPersonCamera.setTarget(houseVector(13, -3, 1.6));
     this.walkPose = { position: this.firstPersonCamera.position.clone(), feet: this.jump.feet, rotation: this.firstPersonCamera.rotation.clone() };
@@ -417,7 +508,7 @@ export class RoomScene {
 
   setControlsEnabled(enabled: boolean) {
     this.controlsEnabled = enabled;
-    if (!enabled) this.pointerLock.release();
+    if (!enabled) { this.pauseScooter(); this.pointerLock.release(); }
     this.updateControls();
     this.updateInteractionHint();
   }
@@ -425,11 +516,12 @@ export class RoomScene {
   private get isViewing() { return !!(this.inspection?.isOpen || this.floorPlan?.isOpen); }
 
   private updateFloorPlan() {
-    this.floorPlan.update(this.currentView, this.firstPersonCamera.position, this.firstPersonCamera.getForwardRay().direction);
+    this.floorPlan.update(this.currentView, this.firstPersonCamera.position, this.firstPersonCamera.getForwardRay().direction, this.scooter);
   }
 
   private openFloorPlan() {
     if (!this.controlsEnabled || this.isViewing) return;
+    this.pauseScooter();
     this.updateFloorPlan();
     // Set modal state before releasing the lock so its change event cannot leave first-person.
     this.floorPlan.open();
@@ -464,7 +556,12 @@ export class RoomScene {
     this.firstPersonCamera.cameraRotation.setAll(0);
     camera.movement.resetPanVelocity();
     camera.movement.resetRotationVelocity();
-    if (!this.isViewing && this.controlsEnabled && (camera !== this.firstPersonCamera || this.pointerLocked)) camera.attachControl(this.canvas, true);
+    if (!this.isViewing && this.controlsEnabled && (camera !== this.firstPersonCamera || this.pointerLocked)) {
+      camera.attachControl(this.canvas, true);
+      if (camera === this.firstPersonCamera && (this.scooter.riding || this.scooterTransition)) {
+        for (const name of ["keyboard", "touch", "gamepad"]) this.firstPersonCamera.inputs.attached[name]?.detachControl();
+      }
+    }
   }
 
   private openInspection(item: InspectableItem) {
@@ -526,10 +623,26 @@ export class RoomScene {
       this.openFloorPlan();
       return;
     }
+    const editable = event.target instanceof HTMLElement && event.target.matches("input, textarea, select, [contenteditable]");
+    if (editable || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (this.currentView === "first-person" && this.controlsEnabled && this.pointerLocked) {
+      if (this.scooterKey(event.code)) {
+        if (this.scooter.riding) {
+          event.preventDefault();
+          if (!event.repeat && !this.scooterTransition) this.scooterInput[this.scooterKey(event.code)!] = true;
+          return;
+        }
+      }
+      if (event.code === "KeyE" && !event.repeat) {
+        event.preventDefault();
+        if (this.scooter.riding) this.scooter.exitRequested = true; else this.boardScooter();
+        return;
+      }
+    }
     if (!event.repeat && event.code === "Space" && this.currentView === "first-person" && this.controlsEnabled
       && !(event.target instanceof HTMLElement && event.target.matches("input, textarea, select, [contenteditable]"))) {
       event.preventDefault();
-      if (this.jump) requestJump(this.jump);
+      if (!this.scooter.riding && !this.scooterTransition && this.jump) requestJump(this.jump);
       return;
     }
     if (event.key === "Escape") this.leaveFirstPerson();
@@ -559,7 +672,8 @@ export class RoomScene {
     if (event.button !== 0 || !start || start.id !== event.pointerId || start.dragged || !this.controlsEnabled || this.isViewing) return;
     if (this.currentView === "first-person") {
       if (!this.pointerLocked) return;
-      this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5))?.toggle();
+      if (this.scooter.riding || this.scooterTransition) return;
+      if (!this.boardScooter()) this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5))?.toggle();
     } else {
       const rect = this.canvas.getBoundingClientRect();
       const ray = this.scene.createPickingRay(event.clientX - rect.left, event.clientY - rect.top, null, this.camera);
@@ -573,11 +687,21 @@ export class RoomScene {
     const hint = document.querySelector<HTMLElement>("#interaction-hint");
     const firstPerson = this.currentView === "first-person" && !this.isViewing;
     if (reticle) reticle.hidden = !firstPerson;
-    const action = firstPerson && this.pointerLocked && this.controlsEnabled
+    if (firstPerson) {
+      const help = document.querySelector("#view-help");
+      if (help) help.textContent = this.scooter.riding ? "鼠标环顾 · WASD 驾驶 · 空格刹车 · E 下车 · M 地图 · ESC 退出"
+        : "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出";
+    }
+    const vehicle = firstPerson && this.pointerLocked && this.controlsEnabled && this.scooterTarget();
+    const action = firstPerson && !this.scooter.riding && !this.scooterTransition && !vehicle && this.pointerLocked && this.controlsEnabled
       ? this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5)) : undefined;
-    reticle?.classList.toggle("has-target", !!action);
+    reticle?.classList.toggle("has-target", !!action || !!vehicle);
     if (hint) {
-      hint.textContent = action ? `左键 · ${action.label()}` : firstPerson && !this.pointerLocked ? "点击画面开始环顾 · ESC 退出" : "";
+      hint.textContent = firstPerson && this.scooter.riding ? this.scooterNoticeUntil > performance.now() ? this.scooterNotice
+        : this.scooter.exitRequested ? "正在停车，寻找安全下车位置…"
+        : `骑行 ${Math.abs(this.scooter.speed * 3.6).toFixed(0)} km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车`
+        : firstPerson && this.scooterNoticeUntil > performance.now() ? this.scooterNotice
+        : vehicle ? "左键 / E · 骑上小电驴" : action ? `左键 · ${action.label()}` : firstPerson && !this.pointerLocked ? "点击画面开始环顾 · ESC 退出" : "";
       hint.hidden = !hint.textContent;
     }
   }
@@ -666,7 +790,7 @@ export class RoomScene {
     this.resizeInspection();
   };
   private visibilityChanged = () => {
-    if (document.hidden) this.pauseAudio(); else this.resumeAudio();
+    if (document.hidden) { this.pauseScooter(); this.pauseAudio(); } else this.resumeAudio();
     this.engine.stopRenderLoop(this.render);
     if (!document.hidden && !this.disposed) this.engine.runRenderLoop(this.render);
   };
@@ -675,6 +799,7 @@ export class RoomScene {
   private dispose = () => {
     if (this.disposed) return;
     this.disposed = true;
+    this.pauseScooter(); this.scooterModel.dispose();
     this.audio.dispose();
     document.querySelector("#item-inspection-return")?.removeEventListener("click", this.returnFromInspection);
     document.querySelector("#item-inspection")?.removeEventListener("cancel", this.cancelInspection);
@@ -689,6 +814,7 @@ export class RoomScene {
     this.canvas.removeEventListener("pointerup", this.pointerUp);
     this.canvas.removeEventListener("pointercancel", this.pointerCancel);
     document.removeEventListener("keydown", this.keyDown);
+    document.removeEventListener("keyup", this.keyUp);
     window.removeEventListener("blur", this.leaveFirstPerson);
     window.removeEventListener("blur", this.pauseAudio);
     window.removeEventListener("focus", this.resumeAudio);

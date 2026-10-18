@@ -1,0 +1,321 @@
+{
+  "baseline": "f2acb80 + scooter V1–V3",
+  "method": "Fixed production camera fixtures for geometry/material/map verification; real riding keyboard tested separately in browser.json",
+  "physicalDevicesTested": false,
+  "fpsOrLoadingBenchmark": false,
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "desktop",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          1280,
+          800
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "portrait",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          390,
+          844
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "landscape",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          844,
+          390
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "desktop",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          1280,
+          800
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "portrait",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          390,
+          844
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "landscape",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          844,
+          390
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "desktop",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          1280,
+          800
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "portrait",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          390,
+          844
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "landscape",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          844,
+          390
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "desktop",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          1280,
+          800
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "portrait",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          390,
+          844
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "landscape",
+      "resources": {
+        "meshes": 7,
+        "vertices": 3798,
+        "paintReady": true,
+        "rubberReady": true,
+        "sunIncluded": 7,
+        "scaling": 1,
+        "renderSize": [
+          844,
+          390
+        ],
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3
+      },
+      "marker": "translate(64 102.6)",
+      "keyboardRidingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    }
+  ],
+  "passed": true
+}

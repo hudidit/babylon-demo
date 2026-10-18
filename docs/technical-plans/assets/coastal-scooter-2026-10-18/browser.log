@@ -1,0 +1,34 @@
+ride-home-to-lighthouse progress 1 14 2.2 0
+ride-home-to-lighthouse progress 96 -7.234696625568802 -1.5480941714646832 4.097708076281157
+ride-home-to-lighthouse progress 270 -50.12928010103119 9.489672726896472 5
+ride-home-to-lighthouse progress 394 -74.0721441931737 28.306935783863715 3.6234999999404063
+ride-home-to-lighthouse progress 561 -111.16102664826731 58.92286556375069 5
+ride-home-to-lighthouse 45.635 {
+  id: 'home',
+  label: '家门停车位',
+  x: -124.52450883389406,
+  y: 83.31168028533413,
+  heading: -0.7773982875715787,
+  speed: 0,
+  distance: 183.8618039126597,
+  steer: 0,
+  riding: true,
+  exitRequested: false
+}
+ride-lighthouse-to-home progress 0 -124.52450883389406 83.31168028533413 0
+ride-lighthouse-to-home progress 140 -100.55306983952768 49.686486051555505 5
+ride-lighthouse-to-home progress 295 -67.79756844349441 22.38899338261902 2
+ride-lighthouse-to-home progress 442 -34.911105630177076 11.608053728170075 5
+ride-lighthouse-to-home progress 593 -0.061860721754240455 -4.561057794514972 3.5999352444326047
+ride-lighthouse-to-home 48.046 {
+  id: 'home',
+  label: '家门停车位',
+  x: 13.808725198659701,
+  y: 1.8982221463134508,
+  heading: 0.5783149046840681,
+  speed: 0,
+  distance: 367.4163388574287,
+  steer: 0,
+  riding: true,
+  exitRequested: false
+}

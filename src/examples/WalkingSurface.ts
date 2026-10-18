@@ -83,7 +83,7 @@ const outerWalls = houseWallSpans().filter(span => (span.owners.length === 1 || 
     b: { x: s.axis === "x" ? s.end : s.at, y: s.axis === "x" ? s.at : s.end } }));
 
 /** Height-independent protection also covers jumping through windows or over the balcony rail. */
-export function walkingPointAllowed(p: PlanPoint, radius = HOUSE_JUMP.playerRadius) {
+export function walkingPointAllowed(p: PlanPoint, radius: number = HOUSE_JUMP.playerRadius) {
   if (!withinWalkingBoundary(p, radius) || jumpBlockedAt(p.x, p.y)) return false;
   if (outerWalls.some(w => distance(p, w.a, w.b) < radius + HOUSE_COORDINATES.wallThickness / 2 - .002)) return false;
   const t = COASTAL_SITE.tower, l = COASTAL_SITE.lookoutSeat;

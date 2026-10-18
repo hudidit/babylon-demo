@@ -15,6 +15,7 @@ export class RoomFloorPlan {
   private readonly location = document.querySelector<HTMLElement>("#floor-plan-location")!;
   private focusRoom?: HouseRoomId;
   private mode = "";
+  private scooterPosition?: { x: number; y: number };
   private miniCoast = false;
   private region = "";
   private scope: "house" | "coast" = "house";
@@ -55,13 +56,16 @@ export class RoomFloorPlan {
         node.querySelector("title")!.textContent = `${HOUSE_ROOMS.find(r => r.id === node.dataset.room)!.name} · ${{ planned: "规划", shell: "基础结构，可漫游", furnishing: "布置中", ready: "已布置", error: "加载失败，基础结构可用" }[state]}`;
       });
       host.querySelectorAll(".plan-door").forEach(node => node.classList.toggle("is-planned", this.rooms.layoutVersion !== HOUSE_LAYOUT_VERSION));
+      if (coast) host.querySelector("svg")!.insertAdjacentHTML("beforeend",
+        '<g class="plan-scooter" style="display:none" role="img" aria-label="小电驴停车位置"><title>小电驴停车位置</title><circle r="3" fill="#3f624d"/><path d="M0 0L24 24" fill="none" stroke="#3f624d" stroke-width="1.5"/><g transform="translate(24 24)"><circle r="9" fill="#f6f0dc" stroke="#3f624d" stroke-width="2"/><path d="M-5 3H4L2-3H-1M2-3V-5" fill="none" stroke="#3f624d" stroke-width="1.8"/><circle cx="-4" cy="4" r="1.5" fill="#3f624d"/><circle cx="4" cy="4" r="1.5" fill="#3f624d"/><text x="0" y="-14" text-anchor="middle" font-size="12" fill="#334d3a" stroke="#fff8e9" stroke-width="3" paint-order="stroke">小电驴</text></g></g>');
       host.querySelector("svg")!.insertAdjacentHTML("beforeend", coast && compact
         ? '<g class="plan-position" style="display:none"><path d="M 0 -23 L -11 -3 L 11 -3 Z"/><circle r="8"/></g>'
         : '<g class="plan-position" style="display:none"><path d="M 0 -14 L -7 -2 L 7 -2 Z"/><circle r="4.5"/></g>');
     }
+    document.querySelectorAll(".plan-scooter").forEach(node => node.parentNode?.appendChild(node));
     this.mode = "";
     // Asset completion may refresh the SVG while the map modal pauses the scene's usual updates.
-    if (this.lastUpdate) this.update(this.lastUpdate.view, this.lastUpdate.position, this.lastUpdate.direction);
+    if (this.lastUpdate) this.update(this.lastUpdate.view, this.lastUpdate.position, this.lastUpdate.direction, this.scooterPosition);
   }
   private readonly selectHouse = () => this.selectScope("house");
   private readonly selectCoast = () => this.selectScope("coast");
@@ -104,7 +108,8 @@ export class RoomFloorPlan {
     this.button.setAttribute("aria-expanded", "false");
   }
 
-  update(view: string, position: { x: number; z: number }, direction?: { x: number; z: number }) {
+  update(view: string, position: { x: number; z: number }, direction?: { x: number; z: number }, scooter?: { x: number; y: number }) {
+    this.scooterPosition = scooter && { x: scooter.x, y: scooter.y };
     this.lastUpdate = { view, position: { x: position.x, z: position.z },
       direction: direction && { x: direction.x, z: direction.z } };
     const firstPerson = view === "first-person";
@@ -122,6 +127,11 @@ export class RoomFloorPlan {
     }
     const valid = firstPerson && this.rooms.layoutVersion === HOUSE_LAYOUT_VERSION && (!!room || !!outdoor)
       && Number.isFinite(position.x) && Number.isFinite(position.z);
+    document.querySelectorAll<SVGGElement>(".plan-scooter").forEach(node => {
+      const visible = !!scooter && Number.isFinite(scooter.x) && Number.isFinite(scooter.y);
+      node.style.display = visible ? "" : "none";
+      if (visible) { const p = coastalDrawingPoint(scooter.x, scooter.y); node.setAttribute("transform", `translate(${p.x} ${p.y})`); }
+    });
     const angle = direction ? houseDrawingHeading(direction) : 0;
     document.querySelectorAll<SVGGElement>(".plan-position").forEach(node => {
       const coast = node.closest("#floor-plan-mini") ? this.miniCoast : this.scope === "coast";

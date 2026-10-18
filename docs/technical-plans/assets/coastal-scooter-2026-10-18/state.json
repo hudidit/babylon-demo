@@ -1,0 +1,179 @@
+{
+  "baseline": "f2acb80 + scooter V1–V3",
+  "method": "Controlled production state fixtures with real keyboard events; synthetic blur/visibility are not physical OS background tests",
+  "fpsOrLoadingBenchmark": false,
+  "checks": {
+    "leftClickBoards": true,
+    "drivingHintLayouts": [
+      {
+        "width": 1280,
+        "height": 800,
+        "rect": {
+          "x": 444.4453125,
+          "y": 422,
+          "width": 391.109375,
+          "height": 28
+        }
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "rect": {
+          "x": 22,
+          "y": 444,
+          "width": 346,
+          "height": 44
+        }
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "rect": {
+          "x": 226.4453125,
+          "y": 217,
+          "width": 391.109375,
+          "height": 28
+        }
+      }
+    ],
+    "walkingMultipliers": [
+      {
+        "multiplier": 0.25,
+        "id": "home",
+        "label": "家门停车位",
+        "x": -85.92390975405728,
+        "y": 37.70092538504648,
+        "heading": -0.9,
+        "speed": 5,
+        "distance": 7.562499999999967,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      {
+        "multiplier": 3,
+        "id": "home",
+        "label": "家门停车位",
+        "x": -85.92390975405728,
+        "y": 37.70092538504648,
+        "heading": -0.9,
+        "speed": 5,
+        "distance": 7.562499999999967,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      }
+    ],
+    "mouseLookIndependent": {
+      "before": [
+        0.07999999999999996,
+        3.141592653589793,
+        0
+      ],
+      "after": [
+        0.11700865859757736,
+        3.2156099707849477,
+        0
+      ]
+    },
+    "settingsStopFreshInput": true,
+    "syntheticVisibilityStops": true,
+    "syntheticBlurStopsAndRestores": true,
+    "noSafeDismount": {
+      "method": "Forced dynamic-obstacle query rejects every candidate",
+      "state": {
+        "vehicle": {
+          "id": "home",
+          "label": "家门停车位",
+          "x": -80,
+          "y": 33,
+          "heading": -0.9,
+          "speed": 0,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "input": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        },
+        "camera": [
+          -426.09917405392844,
+          8.480069370330842,
+          137.28514853648875
+        ],
+        "rotation": [
+          0.11700865859757736,
+          3.2156099707849477,
+          0
+        ],
+        "view": "first-person",
+        "fov": 0.95,
+        "hint": "这里没有安全落脚点，请稍微挪车再按 E"
+      }
+    },
+    "reverseAndSpaceBrake": true,
+    "longFrameFence": {
+      "seconds": 0.2,
+      "steps": 80,
+      "id": "home",
+      "label": "家门停车位",
+      "x": 15.079861111111125,
+      "y": 6.612242266229635e-17,
+      "heading": 1.5707963267948966,
+      "speed": 0,
+      "distance": 1.0798611111111114,
+      "steer": 0,
+      "riding": true,
+      "exitRequested": false
+    },
+    "invalidRecovery": {
+      "vehicle": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": 14,
+        "y": 2.2,
+        "heading": 3.141592653589793,
+        "speed": 0,
+        "distance": 0,
+        "steer": 0,
+        "riding": false,
+        "exitRequested": false
+      },
+      "input": {
+        "forward": false,
+        "back": false,
+        "left": false,
+        "right": false,
+        "brake": false
+      },
+      "camera": [
+        33.99999999999999,
+        2.60388888888889,
+        -3.75
+      ],
+      "rotation": [
+        -0.010299316528501393,
+        3.037396211816486,
+        0
+      ],
+      "view": "first-person",
+      "fov": 0.95,
+      "hint": "这里没有安全落脚点，请稍微挪车再按 E"
+    },
+    "fovPreserved": 0.95,
+    "disposal": {
+      "meshes": 0,
+      "materials": 0,
+      "textures": 0,
+      "lights": 0,
+      "scenes": 0
+    }
+  },
+  "errors": [],
+  "passed": true
+}
