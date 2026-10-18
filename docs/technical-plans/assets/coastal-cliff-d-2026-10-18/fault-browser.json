@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "state": {
+    "ready": true,
+    "before": 0.25,
+    "after": 0.65,
+    "fallbacks": [
+      "./environment/coastal-daylight.hdr",
+      "./textures/coastal/rock-color.jpg"
+    ],
+    "indoorEnvironment": "./environment/study-interior.hdr"
+  },
+  "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Deliberate coastal fault)",
+    "Failed to load resource: the server responded with a status of 404 (Deliberate coastal fault)"
+  ],
+  "warnings": [],
+  "expected404": [
+    {
+      "url": "http://127.0.0.1:8161/textures/coastal/rock-color.jpg",
+      "status": 404
+    },
+    {
+      "url": "http://127.0.0.1:8161/environment/coastal-daylight.hdr",
+      "status": 404
+    }
+  ],
+  "fpsOrLoadTimeSampling": false
+}

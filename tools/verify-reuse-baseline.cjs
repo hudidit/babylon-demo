@@ -8,6 +8,12 @@ const { execFileSync } = require('node:child_process');
 const baselinePath = 'docs/reuse/baselines/2026-10-17-eight-room-v1.json';
 const hash = data => createHash('sha256').update(data).digest('hex');
 
+function readBaseline(snapshotRoot, relative = baselinePath) {
+  assert.ok(typeof relative === 'string' && relative.startsWith('docs/reuse/baselines/') && relative.endsWith('.json'),
+    'Baseline must be a repository-relative JSON under docs/reuse/baselines/');
+  return JSON.parse(fs.readFileSync(safeFile(snapshotRoot, relative), 'utf8'));
+}
+
 function safeFile(root, relative) {
   assert.ok(typeof relative === 'string' && relative && !relative.includes('\\')
     && !path.isAbsolute(relative) && relative.split('/').every(p => p && p !== '.' && p !== '..'),
@@ -96,7 +102,7 @@ function verifyBaseline(options = {}) {
   // Metadata belongs to the preparation checkout; --root can be a clean checkout of the older scene tag.
   const snapshotRoot = path.resolve(path.join(__dirname, '..'));
   const root = path.resolve(options.root || snapshotRoot);
-  const baseline = JSON.parse(fs.readFileSync(safeFile(snapshotRoot, baselinePath), 'utf8'));
+  const baseline = readBaseline(snapshotRoot, options.baselinePath);
   assert.match(baseline.source.commit, /^[a-f0-9]{40}$/);
   assert.match(baseline.source.tree, /^[a-f0-9]{40}$/);
   const inventory = JSON.parse(fs.readFileSync(safeFile(snapshotRoot, baseline.assetInventory.path), 'utf8'));
@@ -111,13 +117,13 @@ function verifyBaseline(options = {}) {
 
 if (require.main === module) {
   try {
-    const options = {}, names = { '--root': 'root', '--release': 'releaseDirectory', '--archive': 'archiveFile' };
+    const options = {}, names = { '--root': 'root', '--release': 'releaseDirectory', '--archive': 'archiveFile', '--baseline': 'baselinePath' };
     for (let i = 2; i < process.argv.length; i += 2) {
       const name = names[process.argv[i]], value = process.argv[i + 1];
-      assert.ok(name && value && !value.startsWith('--'), 'Usage: node tools/verify-reuse-baseline.cjs [--root DIR] [--release DIR] [--archive FILE]');
+      assert.ok(name && value && !value.startsWith('--'), 'Usage: node tools/verify-reuse-baseline.cjs [--baseline docs/reuse/baselines/NAME.json] [--root DIR] [--release DIR] [--archive FILE]');
       options[name] = value;
     }
     console.log(JSON.stringify(verifyBaseline(options), null, 2));
   } catch (error) { console.error(`Reuse baseline verification failed: ${error.message}`); process.exitCode = 1; }
 }
-module.exports = { hash, verifyFiles, verifySnapshot, verifyBaseline };
+module.exports = { hash, readBaseline, verifyFiles, verifySnapshot, verifyBaseline };

@@ -1,0 +1,132 @@
+{
+  "sourceCommit": "d1ae3a1",
+  "beforeStageC": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26174359,
+    "runtimeBytes": 15867631,
+    "documentationBytes": 64195,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2582234,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42198889,
+    "actualInitialJsBytes": 2801086,
+    "observedInitialScripts": 12,
+    "observedRuntimeAssets": 36
+  },
+  "after": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26179262,
+    "runtimeBytes": 15867631,
+    "documentationBytes": 64195,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2587055,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42203792,
+    "actualInitialJsBytes": 2805907
+  },
+  "currentRuntimeChangesDuringD": false,
+  "all36AssetsUnchangedSinceStageC": true,
+  "records": [
+    {
+      "engine": "chromium",
+      "dpr": 1,
+      "prefix": "/",
+      "initialJsBytes": 2805907,
+      "scripts": [
+        "js/1203.js",
+        "js/4472.js",
+        "js/4742.js",
+        "js/5587.js",
+        "js/6560.js",
+        "js/6612.js",
+        "js/7449.js",
+        "js/8558.js",
+        "js/9615.js",
+        "js/9691.js",
+        "js/9915.js",
+        "js/main.js"
+      ],
+      "runtimeAssets": 36
+    },
+    {
+      "engine": "chromium",
+      "dpr": 2,
+      "prefix": "/home/",
+      "initialJsBytes": 2805907,
+      "scripts": [
+        "js/1203.js",
+        "js/4472.js",
+        "js/4742.js",
+        "js/5587.js",
+        "js/6560.js",
+        "js/6612.js",
+        "js/7449.js",
+        "js/8558.js",
+        "js/9615.js",
+        "js/9691.js",
+        "js/9915.js",
+        "js/main.js"
+      ],
+      "runtimeAssets": 36
+    },
+    {
+      "engine": "webkit",
+      "dpr": 1,
+      "prefix": "/",
+      "initialJsBytes": 2805907,
+      "scripts": [
+        "js/1203.js",
+        "js/4472.js",
+        "js/4742.js",
+        "js/5587.js",
+        "js/6560.js",
+        "js/6612.js",
+        "js/7449.js",
+        "js/8558.js",
+        "js/9615.js",
+        "js/9691.js",
+        "js/9915.js",
+        "js/main.js"
+      ],
+      "runtimeAssets": 36
+    },
+    {
+      "engine": "webkit",
+      "dpr": 2,
+      "prefix": "/home/",
+      "initialJsBytes": 2805907,
+      "scripts": [
+        "js/1203.js",
+        "js/4472.js",
+        "js/4742.js",
+        "js/5587.js",
+        "js/6560.js",
+        "js/6612.js",
+        "js/7449.js",
+        "js/8558.js",
+        "js/9615.js",
+        "js/9691.js",
+        "js/9915.js",
+        "js/main.js"
+      ],
+      "runtimeAssets": 36
+    }
+  ],
+  "deltaSinceStageCIncludesAlreadyCommittedWindowOverviewJumpFixes": true,
+  "remainingBytes": {
+    "runtime": 909585,
+    "initialJs": 339821,
+    "release": 787824
+  },
+  "method": "Scene/audio ready and before Inspector. Observed resource URL set matched to final file bytes/SHA256. No timing/FPS experiment.",
+  "incompleteEngineCoverage": [
+    {
+      "kind": "firefox",
+      "reason": "browserType.launch: Timeout 20000ms exceeded."
+    }
+  ]
+}

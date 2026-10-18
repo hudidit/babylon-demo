@@ -1,0 +1,27 @@
+{
+  "fpsOrLoadTimeSampling": false,
+  "sequences": [
+    {
+      "engine": "chromium",
+      "frames": 12,
+      "fixedFrameStepSeconds": 0.2,
+      "firstLastDifferenceBounds": [
+        538,
+        405,
+        1280,
+        657
+      ]
+    },
+    {
+      "engine": "webkit",
+      "frames": 12,
+      "fixedFrameStepSeconds": 0.2,
+      "firstLastDifferenceBounds": [
+        539,
+        405,
+        1280,
+        657
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+browserType.launch: Timeout 20000ms exceeded.
+Call log:
+  - <launching> /tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/6n/l6184h5j0797kpzl5fcps6sm0000gn/T/playwright_firefoxdev_profile-XAMrnk -juggler-pipe -silent
+  - <launched> pid=74253
+  - [pid=74253][err] *** You are running in headless mode.
+  - [pid=74253][err] sandbox_extension_issue_file_to_process failed for /tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app: 1 (Operation not permitted)
+  - [pid=74253][err] sandbox_extension_issue_file_to_process failed for /tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)
+  - [pid=74253][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.23806) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+
+    at /private/tmp/coastal-d-firefox-process-probe.cjs:2:41
+    at Object.<anonymous> (/private/tmp/coastal-d-firefox-process-probe.cjs:2:545)

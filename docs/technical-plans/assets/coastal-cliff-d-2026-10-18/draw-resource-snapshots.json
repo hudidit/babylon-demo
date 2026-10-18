@@ -1,0 +1,1248 @@
+{
+  "sourceCommit": "d1ae3a1",
+  "browser": "155.0.8059.82",
+  "fpsOrLoadTimeSampling": false,
+  "gpuMemoryMeasured": false,
+  "views": [
+    {
+      "id": "overview",
+      "drawCallsIncludingMirrorShadowAndPostprocessPasses": 711,
+      "activeMeshCount": 585,
+      "meshes": 612,
+      "vertices": 504631,
+      "materials": 80,
+      "textures": 147,
+      "lights": 16,
+      "cameras": 3,
+      "exterior": [
+        {
+          "name": "coastal-platform-0",
+          "vertices": 1029,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-inland-0",
+          "vertices": 2205,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-platform-1",
+          "vertices": 1029,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-inland-1",
+          "vertices": 2205,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-front-0",
+          "vertices": 1024,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-front-1",
+          "vertices": 1024,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-front-2",
+          "vertices": 1024,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-east",
+          "vertices": 640,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-west",
+          "vertices": 640,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-distant",
+          "vertices": 5888,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-solid-underside",
+          "vertices": 321,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-house-plinth",
+          "vertices": 24,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-anchored-rocks",
+          "vertices": 2790,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-grass-and-shrubs",
+          "vertices": 29540,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-sea",
+          "vertices": 29813,
+          "visible": false,
+          "active": false
+        },
+        {
+          "name": "coastal-sky",
+          "vertices": 19503,
+          "visible": false,
+          "active": false
+        }
+      ],
+      "renderTargets": [
+        {
+          "name": "window-daylight_shadowMap",
+          "size": {
+            "width": 2048,
+            "height": 2048
+          }
+        },
+        {
+          "name": "reading-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "banker-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "sceneprePassRT",
+          "size": {
+            "width": 1280,
+            "height": 800
+          }
+        },
+        {
+          "name": "coastal-afternoon-sun_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "living-window-daylight_shadowMap",
+          "size": {
+            "width": 2048,
+            "height": 2048
+          }
+        },
+        {
+          "name": "living-table-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "master-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "master-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "ensuite-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "bedroom-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "bedroom-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "kitchen-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "kitchen-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "bathroom-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "balcony-daylight_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "ensuite-mirror-target-3638",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "bathroom-mirror-target-4127",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        }
+      ],
+      "shoreField": [
+        {
+          "name": "coastal-shore-distance-depth",
+          "size": {
+            "width": 256,
+            "height": 256
+          },
+          "gamma": false
+        }
+      ],
+      "pointerLocked": false
+    },
+    {
+      "id": "living",
+      "drawCallsIncludingMirrorShadowAndPostprocessPasses": 384,
+      "activeMeshCount": 376,
+      "meshes": 612,
+      "vertices": 504631,
+      "materials": 80,
+      "textures": 147,
+      "lights": 16,
+      "cameras": 3,
+      "exterior": [
+        {
+          "name": "coastal-platform-0",
+          "vertices": 1029,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-inland-0",
+          "vertices": 2205,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-platform-1",
+          "vertices": 1029,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-inland-1",
+          "vertices": 2205,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-front-0",
+          "vertices": 1024,
+          "visible": true,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-front-1",
+          "vertices": 1024,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-front-2",
+          "vertices": 1024,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-east",
+          "vertices": 640,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-west",
+          "vertices": 640,
+          "visible": true,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-distant",
+          "vertices": 5888,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-solid-underside",
+          "vertices": 321,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-house-plinth",
+          "vertices": 24,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-anchored-rocks",
+          "vertices": 2790,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-grass-and-shrubs",
+          "vertices": 29540,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-sea",
+          "vertices": 29813,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-sky",
+          "vertices": 19503,
+          "visible": true,
+          "active": true
+        }
+      ],
+      "renderTargets": [
+        {
+          "name": "window-daylight_shadowMap",
+          "size": {
+            "width": 2048,
+            "height": 2048
+          }
+        },
+        {
+          "name": "reading-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "banker-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "sceneprePassRT",
+          "size": {
+            "width": 1280,
+            "height": 800
+          }
+        },
+        {
+          "name": "coastal-afternoon-sun_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "living-window-daylight_shadowMap",
+          "size": {
+            "width": 2048,
+            "height": 2048
+          }
+        },
+        {
+          "name": "living-table-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "master-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "master-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "ensuite-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "bedroom-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "bedroom-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "kitchen-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "kitchen-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "bathroom-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "balcony-daylight_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "ensuite-mirror-target-3638",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "bathroom-mirror-target-4127",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        }
+      ],
+      "shoreField": [
+        {
+          "name": "coastal-shore-distance-depth",
+          "size": {
+            "width": 256,
+            "height": 256
+          },
+          "gamma": false
+        }
+      ],
+      "pointerLocked": false
+    },
+    {
+      "id": "bedroom",
+      "drawCallsIncludingMirrorShadowAndPostprocessPasses": 152,
+      "activeMeshCount": 141,
+      "meshes": 612,
+      "vertices": 504631,
+      "materials": 80,
+      "textures": 147,
+      "lights": 16,
+      "cameras": 3,
+      "exterior": [
+        {
+          "name": "coastal-platform-0",
+          "vertices": 1029,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-inland-0",
+          "vertices": 2205,
+          "visible": true,
+          "active": false
+        },
+        {
+          "name": "coastal-platform-1",
+          "vertices": 1029,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-inland-1",
+          "vertices": 2205,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-front-0",
+          "vertices": 1024,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-front-1",
+          "vertices": 1024,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-front-2",
+          "vertices": 1024,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-east",
+          "vertices": 640,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-west",
+          "vertices": 640,
+          "visible": true,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-distant",
+          "vertices": 5888,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-solid-underside",
+          "vertices": 321,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-house-plinth",
+          "vertices": 24,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-anchored-rocks",
+          "vertices": 2790,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-grass-and-shrubs",
+          "vertices": 29540,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-sea",
+          "vertices": 29813,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-sky",
+          "vertices": 19503,
+          "visible": true,
+          "active": true
+        }
+      ],
+      "renderTargets": [
+        {
+          "name": "window-daylight_shadowMap",
+          "size": {
+            "width": 2048,
+            "height": 2048
+          }
+        },
+        {
+          "name": "reading-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "banker-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "sceneprePassRT",
+          "size": {
+            "width": 1280,
+            "height": 800
+          }
+        },
+        {
+          "name": "coastal-afternoon-sun_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "living-window-daylight_shadowMap",
+          "size": {
+            "width": 2048,
+            "height": 2048
+          }
+        },
+        {
+          "name": "living-table-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "master-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "master-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "ensuite-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "bedroom-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "bedroom-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "kitchen-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "kitchen-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "bathroom-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "balcony-daylight_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "ensuite-mirror-target-3638",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "bathroom-mirror-target-4127",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        }
+      ],
+      "shoreField": [
+        {
+          "name": "coastal-shore-distance-depth",
+          "size": {
+            "width": 256,
+            "height": 256
+          },
+          "gamma": false
+        }
+      ],
+      "pointerLocked": false
+    },
+    {
+      "id": "balcony",
+      "drawCallsIncludingMirrorShadowAndPostprocessPasses": 40,
+      "activeMeshCount": 28,
+      "meshes": 612,
+      "vertices": 504631,
+      "materials": 80,
+      "textures": 147,
+      "lights": 16,
+      "cameras": 3,
+      "exterior": [
+        {
+          "name": "coastal-platform-0",
+          "vertices": 1029,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-inland-0",
+          "vertices": 2205,
+          "visible": true,
+          "active": false
+        },
+        {
+          "name": "coastal-platform-1",
+          "vertices": 1029,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-inland-1",
+          "vertices": 2205,
+          "visible": true,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-front-0",
+          "vertices": 1024,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-front-1",
+          "vertices": 1024,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-front-2",
+          "vertices": 1024,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-east",
+          "vertices": 640,
+          "visible": true,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-west",
+          "vertices": 640,
+          "visible": true,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-distant",
+          "vertices": 5888,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-solid-underside",
+          "vertices": 321,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-house-plinth",
+          "vertices": 24,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-anchored-rocks",
+          "vertices": 2790,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-grass-and-shrubs",
+          "vertices": 29540,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-sea",
+          "vertices": 29813,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-sky",
+          "vertices": 19503,
+          "visible": true,
+          "active": true
+        }
+      ],
+      "renderTargets": [
+        {
+          "name": "window-daylight_shadowMap",
+          "size": {
+            "width": 2048,
+            "height": 2048
+          }
+        },
+        {
+          "name": "reading-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "banker-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "sceneprePassRT",
+          "size": {
+            "width": 1280,
+            "height": 800
+          }
+        },
+        {
+          "name": "coastal-afternoon-sun_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "living-window-daylight_shadowMap",
+          "size": {
+            "width": 2048,
+            "height": 2048
+          }
+        },
+        {
+          "name": "living-table-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "master-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "master-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "ensuite-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "bedroom-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "bedroom-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "kitchen-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "kitchen-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "bathroom-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "balcony-daylight_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "ensuite-mirror-target-3638",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "bathroom-mirror-target-4127",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        }
+      ],
+      "shoreField": [
+        {
+          "name": "coastal-shore-distance-depth",
+          "size": {
+            "width": 256,
+            "height": 256
+          },
+          "gamma": false
+        }
+      ],
+      "pointerLocked": false
+    },
+    {
+      "id": "first-person",
+      "drawCallsIncludingMirrorShadowAndPostprocessPasses": 237,
+      "activeMeshCount": 226,
+      "meshes": 612,
+      "vertices": 504631,
+      "materials": 80,
+      "textures": 147,
+      "lights": 16,
+      "cameras": 3,
+      "exterior": [
+        {
+          "name": "coastal-platform-0",
+          "vertices": 1029,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-inland-0",
+          "vertices": 2205,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-platform-1",
+          "vertices": 1029,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-inland-1",
+          "vertices": 2205,
+          "visible": true,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-front-0",
+          "vertices": 1024,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-front-1",
+          "vertices": 1024,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-front-2",
+          "vertices": 1024,
+          "visible": true,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-east",
+          "vertices": 640,
+          "visible": true,
+          "active": false
+        },
+        {
+          "name": "coastal-cliff-west",
+          "vertices": 640,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-cliff-distant",
+          "vertices": 5888,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-solid-underside",
+          "vertices": 321,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-house-plinth",
+          "vertices": 24,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-anchored-rocks",
+          "vertices": 2790,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-grass-and-shrubs",
+          "vertices": 29540,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-sea",
+          "vertices": 29813,
+          "visible": true,
+          "active": true
+        },
+        {
+          "name": "coastal-sky",
+          "vertices": 19503,
+          "visible": true,
+          "active": true
+        }
+      ],
+      "renderTargets": [
+        {
+          "name": "window-daylight_shadowMap",
+          "size": {
+            "width": 2048,
+            "height": 2048
+          }
+        },
+        {
+          "name": "reading-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "banker-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "sceneprePassRT",
+          "size": {
+            "width": 1280,
+            "height": 800
+          }
+        },
+        {
+          "name": "coastal-afternoon-sun_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "living-window-daylight_shadowMap",
+          "size": {
+            "width": 2048,
+            "height": 2048
+          }
+        },
+        {
+          "name": "living-table-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "master-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "master-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "ensuite-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "bedroom-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "bedroom-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "kitchen-window-daylight_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "kitchen-lamp-light_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "bathroom-lamp-light_shadowMap",
+          "size": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        {
+          "name": "balcony-daylight_shadowMap",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "ensuite-mirror-target-3638",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        },
+        {
+          "name": "bathroom-mirror-target-4127",
+          "size": {
+            "width": 512,
+            "height": 512
+          }
+        }
+      ],
+      "shoreField": [
+        {
+          "name": "coastal-shore-distance-depth",
+          "size": {
+            "width": 256,
+            "height": 256
+          },
+          "gamma": false
+        }
+      ],
+      "pointerLocked": true
+    }
+  ]
+}

@@ -1,0 +1,937 @@
+{
+  "sourceCommit": "d1ae3a1",
+  "physicalMobileDevices": false,
+  "fpsOrLoadTimeSampling": false,
+  "engines": [
+    {
+      "kind": "chromium",
+      "passed": true,
+      "cases": [
+        {
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "renderSize": [
+            1280,
+            800
+          ],
+          "scaling": 1,
+          "eye": [
+            13.499999999999961,
+            3.0000000000000124,
+            30.249999999999986
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 1.3000000000000005,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "dpr": 1,
+          "renderSize": [
+            390,
+            844
+          ],
+          "scaling": 1,
+          "eye": [
+            13.499999999999929,
+            3.0000000000000124,
+            30.24999999999997
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 3.949999999999994,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "dpr": 1,
+          "renderSize": [
+            844,
+            390
+          ],
+          "scaling": 1,
+          "eye": [
+            13.499999999999929,
+            3.0000000000000124,
+            30.24999999999997
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 4.199999999999993,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        },
+        {
+          "width": 1280,
+          "height": 800,
+          "dpr": 2,
+          "renderSize": [
+            1280,
+            800
+          ],
+          "scaling": 1,
+          "eye": [
+            13.499999999999929,
+            3.0000000000000124,
+            30.24999999999997
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 0.25,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "dpr": 2,
+          "renderSize": [
+            390,
+            844
+          ],
+          "scaling": 1,
+          "eye": [
+            13.499999999999929,
+            3.0000000000000124,
+            30.24999999999997
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 0.49999999999999994,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "dpr": 2,
+          "renderSize": [
+            844,
+            390
+          ],
+          "scaling": 1,
+          "eye": [
+            13.499999999999929,
+            3.0000000000000124,
+            30.24999999999997
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 0.7500000000000001,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "failedResponses": [],
+      "version": "155.0.8059.82",
+      "initialAssetsDpr1": [
+        "http://127.0.0.1:8160/js/main.js",
+        "http://127.0.0.1:8160/js/9691.js",
+        "http://127.0.0.1:8160/environment/study-interior.hdr",
+        "http://127.0.0.1:8160/js/1203.js",
+        "http://127.0.0.1:8160/environment/coastal-daylight.hdr",
+        "http://127.0.0.1:8160/models/study/sofa_03.glb",
+        "http://127.0.0.1:8160/models/gothic_commode.glb",
+        "http://127.0.0.1:8160/models/study/modern_arm_chair_01.glb",
+        "http://127.0.0.1:8160/models/wooden_bookshelf.glb",
+        "http://127.0.0.1:8160/textures/study/wood_table_001/color.jpg",
+        "http://127.0.0.1:8160/textures/study/wood_table_001/normal.jpg",
+        "http://127.0.0.1:8160/textures/study/wood_table_001/arm.jpg",
+        "http://127.0.0.1:8160/textures/study/rough_linen/normal.jpg",
+        "http://127.0.0.1:8160/textures/coastal/rock-normal.jpg",
+        "http://127.0.0.1:8160/textures/coastal/rock-color.jpg",
+        "http://127.0.0.1:8160/textures/study/rough_linen/arm.jpg",
+        "http://127.0.0.1:8160/textures/coastal/ground-color.jpg",
+        "http://127.0.0.1:8160/textures/coastal/ground-normal.jpg",
+        "http://127.0.0.1:8160/textures/coastal/rock-arm.jpg",
+        "http://127.0.0.1:8160/textures/coastal/ground-arm.jpg",
+        "http://127.0.0.1:8160/textures/study/painted_wall/color.png",
+        "http://127.0.0.1:8160/textures/study/wood_floor/normal.jpg",
+        "http://127.0.0.1:8160/textures/study/wood_floor/color.jpg",
+        "http://127.0.0.1:8160/textures/study/wood_floor/arm.jpg",
+        "http://127.0.0.1:8160/textures/pictures/pic1.jpg",
+        "http://127.0.0.1:8160/textures/study/painted_wall/normal.png",
+        "http://127.0.0.1:8160/textures/study/painted_wall/arm.png",
+        "http://127.0.0.1:8160/js/8558.js",
+        "http://127.0.0.1:8160/js/6612.js",
+        "http://127.0.0.1:8160/js/4742.js",
+        "http://127.0.0.1:8160/js/7449.js",
+        "http://127.0.0.1:8160/js/9615.js",
+        "http://127.0.0.1:8160/js/5587.js",
+        "http://127.0.0.1:8160/js/6560.js",
+        "http://127.0.0.1:8160/js/4472.js",
+        "http://127.0.0.1:8160/audio/study/drawer-slide-1.8353e0a53c.wav",
+        "http://127.0.0.1:8160/audio/study/drawer-stop-1.6840b8eb30.wav",
+        "http://127.0.0.1:8160/js/9915.js",
+        "http://127.0.0.1:8160/audio/study/door-move-1.f0162ae1b8.wav",
+        "http://127.0.0.1:8160/audio/study/door-latch-1.a220e2fe5d.wav",
+        "http://127.0.0.1:8160/audio/study/switch-1.702a81fab4.wav",
+        "http://127.0.0.1:8160/audio/study/paper-1.ce7576efe6.wav",
+        "http://127.0.0.1:8160/audio/study/drawer-stop-2.b34d827382.wav",
+        "http://127.0.0.1:8160/audio/study/drawer-slide-2.71ff63e71c.wav",
+        "http://127.0.0.1:8160/audio/study/door-move-2.9dea4bdbfd.wav",
+        "http://127.0.0.1:8160/audio/study/door-latch-2.fb255ede74.wav",
+        "http://127.0.0.1:8160/audio/study/switch-2.927c10f6e3.wav",
+        "http://127.0.0.1:8160/audio/study/paper-2.862694da2b.wav"
+      ],
+      "capabilities": {
+        "webglVersion": 2,
+        "gl": {
+          "vendor": "Google Inc. (Apple)",
+          "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M6, Unspecified Version)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "indoorEnvironment": "./environment/study-interior.hdr",
+        "metadata": {
+          "layoutVersion": "house-plan-v1",
+          "exteriorVersion": "coastal-cliff-ocean-v1"
+        },
+        "geometry": {
+          "meshes": 612,
+          "vertices": 504631,
+          "materials": 80,
+          "textures": 147,
+          "lights": 16,
+          "cameras": 3
+        },
+        "renderTargets": [
+          {
+            "name": "window-daylight_shadowMap",
+            "size": {
+              "width": 2048,
+              "height": 2048
+            }
+          },
+          {
+            "name": "reading-lamp-light_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "banker-lamp-light_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "sceneprePassRT",
+            "size": {
+              "width": 1280,
+              "height": 800
+            }
+          },
+          {
+            "name": "coastal-afternoon-sun_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "living-window-daylight_shadowMap",
+            "size": {
+              "width": 2048,
+              "height": 2048
+            }
+          },
+          {
+            "name": "living-table-lamp-light_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "master-window-daylight_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "master-lamp-light_shadowMap",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "name": "ensuite-lamp-light_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "bedroom-window-daylight_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "bedroom-lamp-light_shadowMap",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "name": "kitchen-window-daylight_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "kitchen-lamp-light_shadowMap",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "name": "bathroom-lamp-light_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "balcony-daylight_shadowMap",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "name": "ensuite-mirror-target-3638",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "name": "bathroom-mirror-target-4127",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          }
+        ]
+      },
+      "animationTimes": [
+        1.5000000000000007,
+        1.7000000000000008,
+        1.900000000000001,
+        2.1000000000000005,
+        2.3,
+        2.499999999999999,
+        2.6999999999999984,
+        2.8999999999999977,
+        3.099999999999997,
+        3.2999999999999963,
+        3.4999999999999956,
+        3.699999999999995
+      ],
+      "hiddenResume": true,
+      "disposalDpr1": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "observers": 0
+      },
+      "initialAssetsDpr2": [
+        "http://127.0.0.1:8160/home/js/main.js",
+        "http://127.0.0.1:8160/home/js/9691.js",
+        "http://127.0.0.1:8160/home/environment/study-interior.hdr",
+        "http://127.0.0.1:8160/home/js/1203.js",
+        "http://127.0.0.1:8160/home/environment/coastal-daylight.hdr",
+        "http://127.0.0.1:8160/home/models/study/sofa_03.glb",
+        "http://127.0.0.1:8160/home/models/gothic_commode.glb",
+        "http://127.0.0.1:8160/home/models/study/modern_arm_chair_01.glb",
+        "http://127.0.0.1:8160/home/models/wooden_bookshelf.glb",
+        "http://127.0.0.1:8160/home/textures/study/wood_table_001/normal.jpg",
+        "http://127.0.0.1:8160/home/textures/study/wood_table_001/arm.jpg",
+        "http://127.0.0.1:8160/home/textures/study/wood_table_001/color.jpg",
+        "http://127.0.0.1:8160/home/textures/study/rough_linen/normal.jpg",
+        "http://127.0.0.1:8160/home/textures/coastal/rock-arm.jpg",
+        "http://127.0.0.1:8160/home/textures/coastal/ground-color.jpg",
+        "http://127.0.0.1:8160/home/textures/coastal/rock-normal.jpg",
+        "http://127.0.0.1:8160/home/textures/coastal/rock-color.jpg",
+        "http://127.0.0.1:8160/home/textures/coastal/ground-arm.jpg",
+        "http://127.0.0.1:8160/home/textures/coastal/ground-normal.jpg",
+        "http://127.0.0.1:8160/home/textures/study/rough_linen/arm.jpg",
+        "http://127.0.0.1:8160/home/textures/study/wood_floor/color.jpg",
+        "http://127.0.0.1:8160/home/textures/study/painted_wall/color.png",
+        "http://127.0.0.1:8160/home/textures/study/wood_floor/normal.jpg",
+        "http://127.0.0.1:8160/home/textures/study/painted_wall/normal.png",
+        "http://127.0.0.1:8160/home/textures/study/wood_floor/arm.jpg",
+        "http://127.0.0.1:8160/home/textures/study/painted_wall/arm.png",
+        "http://127.0.0.1:8160/home/textures/pictures/pic1.jpg",
+        "http://127.0.0.1:8160/home/js/8558.js",
+        "http://127.0.0.1:8160/home/js/6612.js",
+        "http://127.0.0.1:8160/home/js/4742.js",
+        "http://127.0.0.1:8160/home/js/7449.js",
+        "http://127.0.0.1:8160/home/js/9615.js",
+        "http://127.0.0.1:8160/home/js/5587.js",
+        "http://127.0.0.1:8160/home/js/4472.js",
+        "http://127.0.0.1:8160/home/js/6560.js",
+        "http://127.0.0.1:8160/home/audio/study/drawer-slide-1.8353e0a53c.wav",
+        "http://127.0.0.1:8160/home/audio/study/drawer-stop-1.6840b8eb30.wav",
+        "http://127.0.0.1:8160/home/js/9915.js",
+        "http://127.0.0.1:8160/home/audio/study/door-move-1.f0162ae1b8.wav",
+        "http://127.0.0.1:8160/home/audio/study/door-latch-1.a220e2fe5d.wav",
+        "http://127.0.0.1:8160/home/audio/study/switch-1.702a81fab4.wav",
+        "http://127.0.0.1:8160/home/audio/study/paper-1.ce7576efe6.wav",
+        "http://127.0.0.1:8160/home/audio/study/drawer-slide-2.71ff63e71c.wav",
+        "http://127.0.0.1:8160/home/audio/study/drawer-stop-2.b34d827382.wav",
+        "http://127.0.0.1:8160/home/audio/study/door-move-2.9dea4bdbfd.wav",
+        "http://127.0.0.1:8160/home/audio/study/door-latch-2.fb255ede74.wav",
+        "http://127.0.0.1:8160/home/audio/study/switch-2.927c10f6e3.wav",
+        "http://127.0.0.1:8160/home/audio/study/paper-2.862694da2b.wav"
+      ],
+      "disposalDpr2": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "observers": 0
+      }
+    },
+    {
+      "kind": "firefox",
+      "passed": false,
+      "cases": [],
+      "errors": [],
+      "warnings": [],
+      "failedResponses": [],
+      "failure": "browserType.launch: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - <launching> /tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/6n/l6184h5j0797kpzl5fcps6sm0000gn/T/playwright_firefoxdev_profile-TxOAf1 -juggler-pipe -silent\u001b[22m\n\u001b[2m  - <launched> pid=73236\u001b[22m\n\u001b[2m  - [pid=73236][err] *** You are running in headless mode.\u001b[22m\n\u001b[2m  - [pid=73236][err] sandbox_extension_issue_file_to_process failed for /tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app: 1 (Operation not permitted)\u001b[22m\n\u001b[2m  - [pid=73236][err] sandbox_extension_issue_file_to_process failed for /tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)\u001b[22m\n\u001b[2m  - [pid=73236][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.592714) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt\u001b[22m\n\n    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/coastal-cliff-d-2026-10-18/check-engines.cjs:29:32",
+      "launchUnavailable": true
+    },
+    {
+      "kind": "webkit",
+      "passed": true,
+      "cases": [
+        {
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "renderSize": [
+            1280,
+            800
+          ],
+          "scaling": 1,
+          "eye": [
+            13.500000000000071,
+            3.0000000000000124,
+            30.25
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 1.3000000000000005,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "dpr": 1,
+          "renderSize": [
+            390,
+            844
+          ],
+          "scaling": 1,
+          "eye": [
+            13.500000000000039,
+            3.0000000000000124,
+            30.25
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 3.949999999999994,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "dpr": 1,
+          "renderSize": [
+            844,
+            390
+          ],
+          "scaling": 1,
+          "eye": [
+            13.500000000000039,
+            3.0000000000000124,
+            30.25
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 4.199999999999993,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        },
+        {
+          "width": 1280,
+          "height": 800,
+          "dpr": 2,
+          "renderSize": [
+            1280,
+            800
+          ],
+          "scaling": 1,
+          "eye": [
+            13.500000000000039,
+            3.0000000000000124,
+            30.25
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 0.25,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "dpr": 2,
+          "renderSize": [
+            390,
+            844
+          ],
+          "scaling": 1,
+          "eye": [
+            13.500000000000039,
+            3.0000000000000124,
+            30.25
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 0.49999999999999994,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "dpr": 2,
+          "renderSize": [
+            844,
+            390
+          ],
+          "scaling": 1,
+          "eye": [
+            13.500000000000039,
+            3.0000000000000124,
+            30.25
+          ],
+          "seaVertices": 29813,
+          "waterReady": true,
+          "oceanTime": 0.7500000000000001,
+          "clipping": null,
+          "texture": [
+            {
+              "name": "coastal-shore-distance-depth",
+              "size": {
+                "width": 256,
+                "height": 256
+              },
+              "gamma": false
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "failedResponses": [],
+      "version": "26.5",
+      "initialAssetsDpr1": [
+        "http://127.0.0.1:8160/js/main.js",
+        "http://127.0.0.1:8160/js/9691.js",
+        "http://127.0.0.1:8160/environment/study-interior.hdr",
+        "http://127.0.0.1:8160/js/1203.js",
+        "http://127.0.0.1:8160/textures/study/wood_table_001/color.jpg",
+        "http://127.0.0.1:8160/textures/study/wood_table_001/normal.jpg",
+        "http://127.0.0.1:8160/textures/study/wood_table_001/arm.jpg",
+        "http://127.0.0.1:8160/textures/study/rough_linen/normal.jpg",
+        "http://127.0.0.1:8160/textures/study/rough_linen/arm.jpg",
+        "http://127.0.0.1:8160/environment/coastal-daylight.hdr",
+        "http://127.0.0.1:8160/textures/coastal/rock-color.jpg",
+        "http://127.0.0.1:8160/textures/coastal/rock-normal.jpg",
+        "http://127.0.0.1:8160/textures/coastal/rock-arm.jpg",
+        "http://127.0.0.1:8160/textures/coastal/ground-color.jpg",
+        "http://127.0.0.1:8160/textures/coastal/ground-normal.jpg",
+        "http://127.0.0.1:8160/textures/coastal/ground-arm.jpg",
+        "http://127.0.0.1:8160/textures/study/wood_floor/normal.jpg",
+        "http://127.0.0.1:8160/textures/study/wood_floor/color.jpg",
+        "http://127.0.0.1:8160/textures/study/painted_wall/color.png",
+        "http://127.0.0.1:8160/textures/study/wood_floor/arm.jpg",
+        "http://127.0.0.1:8160/textures/study/painted_wall/arm.png",
+        "http://127.0.0.1:8160/textures/study/painted_wall/normal.png",
+        "http://127.0.0.1:8160/textures/pictures/pic1.jpg",
+        "http://127.0.0.1:8160/models/study/sofa_03.glb",
+        "http://127.0.0.1:8160/models/gothic_commode.glb",
+        "http://127.0.0.1:8160/models/study/modern_arm_chair_01.glb",
+        "http://127.0.0.1:8160/models/wooden_bookshelf.glb",
+        "http://127.0.0.1:8160/js/8558.js",
+        "http://127.0.0.1:8160/js/4742.js",
+        "http://127.0.0.1:8160/js/7449.js",
+        "http://127.0.0.1:8160/js/6612.js",
+        "http://127.0.0.1:8160/js/5587.js",
+        "http://127.0.0.1:8160/js/9615.js",
+        "http://127.0.0.1:8160/js/4472.js",
+        "http://127.0.0.1:8160/js/6560.js",
+        "http://127.0.0.1:8160/audio/study/drawer-slide-1.8353e0a53c.wav",
+        "http://127.0.0.1:8160/audio/study/drawer-stop-1.6840b8eb30.wav",
+        "http://127.0.0.1:8160/js/9915.js",
+        "http://127.0.0.1:8160/audio/study/door-latch-1.a220e2fe5d.wav",
+        "http://127.0.0.1:8160/audio/study/door-move-1.f0162ae1b8.wav",
+        "http://127.0.0.1:8160/audio/study/switch-1.702a81fab4.wav",
+        "http://127.0.0.1:8160/audio/study/paper-1.ce7576efe6.wav",
+        "http://127.0.0.1:8160/audio/study/drawer-slide-2.71ff63e71c.wav",
+        "http://127.0.0.1:8160/audio/study/drawer-stop-2.b34d827382.wav",
+        "http://127.0.0.1:8160/audio/study/door-move-2.9dea4bdbfd.wav",
+        "http://127.0.0.1:8160/audio/study/door-latch-2.fb255ede74.wav",
+        "http://127.0.0.1:8160/audio/study/switch-2.927c10f6e3.wav",
+        "http://127.0.0.1:8160/audio/study/paper-2.862694da2b.wav"
+      ],
+      "capabilities": {
+        "webglVersion": 2,
+        "gl": {
+          "vendor": "Apple Inc.",
+          "renderer": "Apple GPU",
+          "version": "WebGL 2.0"
+        },
+        "indoorEnvironment": "./environment/study-interior.hdr",
+        "metadata": {
+          "layoutVersion": "house-plan-v1",
+          "exteriorVersion": "coastal-cliff-ocean-v1"
+        },
+        "geometry": {
+          "meshes": 612,
+          "vertices": 504631,
+          "materials": 80,
+          "textures": 147,
+          "lights": 16,
+          "cameras": 3
+        },
+        "renderTargets": [
+          {
+            "name": "window-daylight_shadowMap",
+            "size": {
+              "width": 2048,
+              "height": 2048
+            }
+          },
+          {
+            "name": "reading-lamp-light_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "banker-lamp-light_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "sceneprePassRT",
+            "size": {
+              "width": 1280,
+              "height": 800
+            }
+          },
+          {
+            "name": "coastal-afternoon-sun_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "living-window-daylight_shadowMap",
+            "size": {
+              "width": 2048,
+              "height": 2048
+            }
+          },
+          {
+            "name": "living-table-lamp-light_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "master-window-daylight_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "master-lamp-light_shadowMap",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "name": "ensuite-lamp-light_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "bedroom-window-daylight_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "bedroom-lamp-light_shadowMap",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "name": "kitchen-window-daylight_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "kitchen-lamp-light_shadowMap",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "name": "bathroom-lamp-light_shadowMap",
+            "size": {
+              "width": 1024,
+              "height": 1024
+            }
+          },
+          {
+            "name": "balcony-daylight_shadowMap",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "name": "ensuite-mirror-target-3638",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "name": "bathroom-mirror-target-4127",
+            "size": {
+              "width": 512,
+              "height": 512
+            }
+          }
+        ]
+      },
+      "animationTimes": [
+        1.5000000000000007,
+        1.7000000000000008,
+        1.900000000000001,
+        2.1000000000000005,
+        2.3,
+        2.499999999999999,
+        2.6999999999999984,
+        2.8999999999999977,
+        3.099999999999997,
+        3.2999999999999963,
+        3.4999999999999956,
+        3.699999999999995
+      ],
+      "hiddenResume": true,
+      "disposalDpr1": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "observers": 0
+      },
+      "initialAssetsDpr2": [
+        "http://127.0.0.1:8160/home/js/main.js",
+        "http://127.0.0.1:8160/home/js/9691.js",
+        "http://127.0.0.1:8160/home/environment/study-interior.hdr",
+        "http://127.0.0.1:8160/home/js/1203.js",
+        "http://127.0.0.1:8160/home/textures/study/wood_table_001/normal.jpg",
+        "http://127.0.0.1:8160/home/textures/study/wood_table_001/color.jpg",
+        "http://127.0.0.1:8160/home/textures/study/wood_table_001/arm.jpg",
+        "http://127.0.0.1:8160/home/textures/study/rough_linen/normal.jpg",
+        "http://127.0.0.1:8160/home/textures/study/rough_linen/arm.jpg",
+        "http://127.0.0.1:8160/home/environment/coastal-daylight.hdr",
+        "http://127.0.0.1:8160/home/textures/coastal/rock-color.jpg",
+        "http://127.0.0.1:8160/home/textures/coastal/rock-arm.jpg",
+        "http://127.0.0.1:8160/home/textures/coastal/rock-normal.jpg",
+        "http://127.0.0.1:8160/home/textures/coastal/ground-color.jpg",
+        "http://127.0.0.1:8160/home/textures/coastal/ground-normal.jpg",
+        "http://127.0.0.1:8160/home/textures/coastal/ground-arm.jpg",
+        "http://127.0.0.1:8160/home/textures/study/wood_floor/normal.jpg",
+        "http://127.0.0.1:8160/home/textures/study/wood_floor/color.jpg",
+        "http://127.0.0.1:8160/home/textures/study/wood_floor/arm.jpg",
+        "http://127.0.0.1:8160/home/textures/study/painted_wall/color.png",
+        "http://127.0.0.1:8160/home/textures/study/painted_wall/normal.png",
+        "http://127.0.0.1:8160/home/textures/study/painted_wall/arm.png",
+        "http://127.0.0.1:8160/home/textures/pictures/pic1.jpg",
+        "http://127.0.0.1:8160/home/models/study/sofa_03.glb",
+        "http://127.0.0.1:8160/home/models/study/modern_arm_chair_01.glb",
+        "http://127.0.0.1:8160/home/models/gothic_commode.glb",
+        "http://127.0.0.1:8160/home/models/wooden_bookshelf.glb",
+        "http://127.0.0.1:8160/home/js/8558.js",
+        "http://127.0.0.1:8160/home/js/6612.js",
+        "http://127.0.0.1:8160/home/js/4742.js",
+        "http://127.0.0.1:8160/home/js/7449.js",
+        "http://127.0.0.1:8160/home/js/9615.js",
+        "http://127.0.0.1:8160/home/js/5587.js",
+        "http://127.0.0.1:8160/home/js/4472.js",
+        "http://127.0.0.1:8160/home/js/6560.js",
+        "http://127.0.0.1:8160/home/audio/study/drawer-slide-1.8353e0a53c.wav",
+        "http://127.0.0.1:8160/home/audio/study/drawer-stop-1.6840b8eb30.wav",
+        "http://127.0.0.1:8160/home/js/9915.js",
+        "http://127.0.0.1:8160/home/audio/study/door-move-1.f0162ae1b8.wav",
+        "http://127.0.0.1:8160/home/audio/study/door-latch-1.a220e2fe5d.wav",
+        "http://127.0.0.1:8160/home/audio/study/switch-1.702a81fab4.wav",
+        "http://127.0.0.1:8160/home/audio/study/paper-1.ce7576efe6.wav",
+        "http://127.0.0.1:8160/home/audio/study/drawer-slide-2.71ff63e71c.wav",
+        "http://127.0.0.1:8160/home/audio/study/drawer-stop-2.b34d827382.wav",
+        "http://127.0.0.1:8160/home/audio/study/door-move-2.9dea4bdbfd.wav",
+        "http://127.0.0.1:8160/home/audio/study/door-latch-2.fb255ede74.wav",
+        "http://127.0.0.1:8160/home/audio/study/switch-2.927c10f6e3.wav",
+        "http://127.0.0.1:8160/home/audio/study/paper-2.862694da2b.wav"
+      ],
+      "disposalDpr2": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "observers": 0
+      }
+    }
+  ]
+}

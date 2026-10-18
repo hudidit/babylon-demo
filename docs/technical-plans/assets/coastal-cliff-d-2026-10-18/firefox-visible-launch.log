@@ -1,0 +1,13 @@
+browserType.launch: Timeout 20000ms exceeded.
+Call log:
+  - <launching> /tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -wait-for-browser -foreground -profile /var/folders/6n/l6184h5j0797kpzl5fcps6sm0000gn/T/playwright_firefoxdev_profile-oOUrnL -juggler-pipe -silent
+  - <launched> pid=73306
+  - [pid=73306][err] sandbox_extension_issue_file_to_process failed for /tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app: 1 (Operation not permitted)
+  - [pid=73306][err] sandbox_extension_issue_file_to_process failed for /tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)
+  - [pid=73306][err] 2026-10-18 04:16:15.800 Nightly GPU Helper[73307:12897803] Failure on line 688 in function id scheduleApplicationNotification(LSNotificationCode, NSWorkspaceNotificationCenter *): noErr == _LSModifyNotification(notificationID, 1, &code, 0, NULL, NULL, NULL)
+  - [pid=73306][err] 2026-10-18 04:16:15.871 Nightly GPU Helper[73307:12897803] Error received in message reply handler: Connection invalid
+  - [pid=73306][err] 2026-10-18 04:16:15.871 Nightly GPU Helper[73307:12897829] Connection Invalid error for service com.apple.hiservices-xpcservice.
+  - [pid=73306][err] UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+
+    at /private/tmp/coastal-d-firefox-probe.cjs:2:41
+    at Object.<anonymous> (/private/tmp/coastal-d-firefox-probe.cjs:2:429)

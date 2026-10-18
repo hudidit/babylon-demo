@@ -1,0 +1,21 @@
+{
+  "baselineId": "2026-10-18-coastal-cliff-v1",
+  "sourceCommit": "d1ae3a1b9db2bf448284c90cad4dfabd41d25afa",
+  "source": {
+    "files": 137,
+    "bytes": 17536510
+  },
+  "runtime": {
+    "files": 36,
+    "bytes": 15867631
+  },
+  "release": {
+    "files": 495,
+    "bytes": 42203792
+  },
+  "archive": {
+    "bytes": 21445986,
+    "sha256": "b1c9995733a857c78321d00d40c8b30704aa15ba47db69a07c67de5a96e660c7"
+  },
+  "tag": "scene-baseline/2026-10-18-coastal-cliff-v1"
+}

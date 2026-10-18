@@ -1,7 +1,7 @@
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
 const fs = require('node:fs'), path = require('node:path'), os = require('node:os');
-const { hash, verifyFiles, verifySnapshot } = require('../tools/verify-reuse-baseline.cjs');
+const { hash, readBaseline, verifyFiles, verifySnapshot } = require('../tools/verify-reuse-baseline.cjs');
 
 function fixture(t) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'reuse-baseline-'));
@@ -13,6 +13,24 @@ function fixture(t) {
   };
   return { root, write };
 }
+
+test('baseline selection keeps the forest default and reads a separate coastal snapshot', t => {
+  const { root, write } = fixture(t);
+  write('docs/reuse/baselines/2026-10-17-eight-room-v1.json', JSON.stringify({ id: 'forest-v1' }));
+  write('docs/reuse/baselines/coastal-v1.json', JSON.stringify({ id: 'coastal-v1' }));
+  assert.equal(readBaseline(root).id, 'forest-v1');
+  assert.equal(readBaseline(root, 'docs/reuse/baselines/coastal-v1.json').id, 'coastal-v1');
+  assert.equal(readBaseline(root).id, 'forest-v1', 'selecting another snapshot must never overwrite the default');
+});
+
+test('baseline selection rejects absolute, escaping, non-JSON and symlink paths', t => {
+  const { root, write } = fixture(t);
+  const record = write('docs/reuse/baselines/coastal-v1.json', '{}');
+  for (const name of ['/tmp/coastal.json', 'package.json', 'docs/reuse/baselines/../other.json', 'docs/reuse/baselines/source.txt'])
+    assert.throws(() => readBaseline(root, name), /repository-relative|Unsafe snapshot path/);
+  fs.symlinkSync(path.join(root, record.path), path.join(root, 'docs/reuse/baselines/alias.json'));
+  assert.throws(() => readBaseline(root, 'docs/reuse/baselines/alias.json'), /Snapshot symlink/);
+});
 
 test('frozen files reject missing and same-length modified inputs', t => {
   const { root, write } = fixture(t), record = write('source/file.ts', 'original');
