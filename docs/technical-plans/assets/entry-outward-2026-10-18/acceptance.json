@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "sourceBaseline": "d3d64dd",
+  "tests": 141,
+  "typecheck": true,
+  "developmentBuild": true,
+  "productionBuildAndRelease": true,
+  "initialJsBytes": 2836207,
+  "metrics": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26211324,
+    "runtimeBytes": 15867631,
+    "documentationBytes": 67591,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2617355,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42239250
+  },
+  "inputs": [
+    {
+      "path": "src/examples/HouseLayout.ts",
+      "sha256": "9aa175d66ded9c0fd2193475a16216ea65bd4166aedc42684d685781e92b0f86"
+    },
+    {
+      "path": "src/examples/HouseFloorPlan.ts",
+      "sha256": "7608046ff4b81d3b26e41c447ad409854928eae7c612f364a2e3eedd535047af"
+    },
+    {
+      "path": "tests/room-layout.test.cjs",
+      "sha256": "fb6e53cef4aaceb104c5b52271eb34201e61e9c81e4ec1e88f48a4c63a02aab5"
+    },
+    {
+      "path": "tests/house-floor-plan.test.cjs",
+      "sha256": "b0f0446fd1f216fe025b8b71034c6ff54d2d1670de934b3f792f092a45d40363"
+    }
+  ]
+}

@@ -922,6 +922,18 @@ test("mounted door sweep protection uses the fixed yaw and the house walker radi
   }
 });
 
+test("the entrance swings outside over the ramp and protects walkers on that side", t => {
+  const { room } = houseShell(t), door = room.doors.find(d => d.id === "entry-door");
+  for (let step = 1; step <= 20; step++) {
+    door.root.rotation.y = door.openAngle * step / 20;
+    const centre = babylon.Vector3.TransformCoordinates(new babylon.Vector3(0, 5, door.width / 2), door.root.computeWorldMatrix(true));
+    assert.ok(centre.x / 5 + 5.4 > 10.8, "the opening leaf must stay east of the exterior wall");
+  }
+  door.root.rotation.y = 0; door.root.computeWorldMatrix(true);
+  assert.equal(doorSweepIsClear(door, 0, 1, houseVector(11.35, 4.6, 1.6)), false, "outdoor walker blocks outward swing");
+  assert.equal(doorSweepIsClear(door, 0, 1, houseVector(9.9, 4.6, 1.6)), true, "indoor walker can open the door away from themselves");
+});
+
 test("cutaway follows camera direction and hides attached art while retaining wall collisions", t => {
   const { scene, architecture } = houseShell(t);
   architecture.setEnclosed(false, "study");

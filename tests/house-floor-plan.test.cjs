@@ -18,6 +18,16 @@ function load(name) {
 const { HOUSE_ROOMS, HOUSE_DOORS, houseRoomAt } = load('HouseLayout');
 const { houseDrawingPoint, houseDrawingHeading, housePlanSvg } = load('HouseFloorPlan');
 
+test('both map viewports include the outward entry leaf with padding beyond the house footprint', () => {
+  const entry = HOUSE_DOORS.find(d => d.to === 'outside'), end = houseDrawingPoint(entry.x + entry.width, entry.y);
+  for (const compact of [true, false]) {
+    const svg = housePlanSvg(compact), [x,y,width,height] = svg.match(/viewBox="([^"]+)"/)[1].split(' ').map(Number);
+    assert.ok(end.x >= x + 12 && end.x <= x + width - 12 && end.y >= y + 12 && end.y <= y + height - 12);
+    const symbol = svg.split('data-door="entry-door"')[1].split('</g>')[0];
+    assert.ok(symbol.includes(`V ${-entry.width * 36}`), 'entry arc matches the outward physical swing');
+  }
+});
+
 test('map left/right and north agree with an actual north-up left-handed camera projection', () => {
   const { Matrix, Vector3, Viewport } = require('@babylonjs/core/pure');
   const { planToWorld } = load('HouseLayout');

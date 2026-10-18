@@ -20,6 +20,12 @@ export function housePlanSvg(compact = false, contentRooms: readonly HouseRoomId
   const width = Math.max(...HOUSE_ROOMS.map(room => room.x + room.width));
   const depth = Math.max(...HOUSE_ROOMS.map(room => room.y + room.depth));
   const left = PLAN_DRAWING.left, top = PLAN_DRAWING.top, right = left + width * scale, bottom = p(0, depth).y;
+  // Outward leaves may extend beyond the house footprint. Keep the same projection/marker coordinates.
+  const openEnds = HOUSE_DOORS.filter(d => !d.sliding).map(d => p(
+    d.x - (d.axis === "y" ? (d.swing ?? -1) * d.width : 0),
+    d.y + (d.axis === "x" ? (d.swing ?? -1) * d.width : 0)));
+  const minX = Math.min(left, ...openEnds.map(q => q.x)) - 12, minY = Math.min(top, ...openEnds.map(q => q.y)) - 12;
+  const maxX = Math.max(right, ...openEnds.map(q => q.x)) + 12, maxY = Math.max(bottom, ...openEnds.map(q => q.y)) + 12;
   const rooms = HOUSE_ROOMS.map(room => {
     const hasContent = contentRooms.includes(room.id);
     const origin = p(room.x + room.width, room.y), w = room.width * scale, h = room.depth * scale;
@@ -48,7 +54,7 @@ export function housePlanSvg(compact = false, contentRooms: readonly HouseRoomId
         : `<path d="M 0 0 V ${swing * size} M 0 ${swing * size} A ${size} ${size} 0 0 ${swing === -1 ? 1 : 0} ${size} 0"/>`}
     </g>`;
   }).join("");
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${compact ? `${left - 12} ${top - 12} ${right - left + 24} ${bottom - top + 24}` : `0 0 ${Math.ceil(right + 68)} ${Math.ceil(bottom + 68)}`}" role="img" aria-label="余晖小居北向户型：入户直接进入左侧客厅，右侧主卧带独享主卫，主卧外公卫由客厅进入；上方为小书房与厨房，下方阳台">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${compact ? `${minX} ${minY} ${maxX - minX} ${maxY - minY}` : `0 0 ${Math.ceil(right + 68)} ${Math.ceil(bottom + 68)}`}" role="img" aria-label="余晖小居北向户型：入户直接进入左侧客厅，右侧主卧带独享主卫，主卧外公卫由客厅进入；上方为小书房与厨房，下方阳台">
     <defs><pattern id="${prefix}-hatch" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#f5f1e8"/><path d="M -2 2 L 2 -2 M 0 8 L 8 0 M 6 10 L 10 6" stroke="#e9e3d6" stroke-width="0.6"/></pattern></defs>
     ${rooms}${doors}
     ${compact ? "" : `<g class="plan-dimensions"><path d="M ${left} 34 V 19 M ${right} 34 V 19 M ${left} 25 H ${right} M ${left - 5} 20 L ${left + 5} 30 M ${right - 5} 20 L ${right + 5} 30 M 47 ${top} H 32 M 47 ${bottom} H 32 M 38 ${top} V ${bottom} M 33 ${top - 5} L 43 ${top + 5} M 33 ${bottom - 5} L 43 ${bottom + 5}"/>
