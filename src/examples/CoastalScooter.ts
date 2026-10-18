@@ -4,7 +4,11 @@ import { walkingPointAllowed, walkingSurfaceAt } from "./WalkingSurface";
 import { COASTAL_ROUTE_ANCHORS, COASTAL_SITE } from "./CoastalSite";
 
 export const SCOOTER = Object.freeze({ length: 1.65, width: .65, wheelbase: 1.12, wheelRadius: .23,
-  cruise: 5, slow: 2, reverse: 1, acceleration: 2.5, coastBrake: 3, brake: 7, eyeHeight: 1.42 });
+  // User-facing top speed is 40 km/h; the controller remains metre/second based.
+  cruise: 40 / 3.6,
+  // A/D yaw response is halved from the original handling after user feedback.
+  steerSensitivity: .5,
+  slow: 2, reverse: 1, acceleration: 2.5, coastBrake: 3, brake: 7, eyeHeight: 1.42 });
 /** Keep the grips readable in portrait without changing the user's field of view. */
 export function scooterEyeBack(aspect: number) { return .23 + Math.min(.42, Math.max(0, .9 / Math.max(.2, aspect) - 1) * .45); }
 export const SCOOTER_PARKING = Object.freeze([
@@ -79,7 +83,7 @@ export function advanceScooter(state: ScooterState, input: ScooterInput, seconds
     if (Math.abs(state.speed) < .001) state.speed = 0;
     const steer = Number(input.right) - Number(input.left);
     state.steer = approach(state.steer, steer, dt * 7);
-    const angle = state.steer * (Math.abs(state.speed) > .1 ? Math.sign(state.speed) : 1) *
+    const angle = state.steer * SCOOTER.steerSensitivity * (Math.abs(state.speed) > .1 ? Math.sign(state.speed) : 1) *
       (1.65 + Math.min(1, Math.abs(state.speed) / 2) * .55) * dt;
     const travel = state.speed * dt, count = Math.max(1, Math.ceil(Math.abs(travel) / .04), Math.ceil(Math.abs(angle) / .025));
     for (let i = 0; i < count; i++) {

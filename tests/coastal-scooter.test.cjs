@@ -26,6 +26,17 @@ test('acceleration uses metres per second and coasting, braking and reversing ar
  s.riding=false;v.advanceScooter(s,input({forward:true}),.2);assert.equal(s.speed,0);
 });
 
+test('top speed is 40 km/h and full-lock steering is half the earlier response',()=>{
+ assert.equal(v.SCOOTER.cruise,40/3.6);assert.equal(v.SCOOTER.steerSensitivity,.5);
+ const s=stateAt(-80,33,Math.atan2(-24,19));
+ for(let i=0;i<600;i++)v.advanceScooter(s,input({forward:true}),1/120);
+ assert.equal(s.speed,40/3.6);assert.equal(Math.round(s.speed*3.6),40);assert.ok(v.scooterSupport(s));
+ const start=Math.atan2(-24,19),turn=stateAt(-80,33,start);
+ for(let i=0;i<120;i++)v.advanceScooter(turn,input({right:true}),1/120);
+ const angle=turn.heading-start;
+ assert.ok(v.scooterSupport(turn));assert.ok(angle>.74&&angle<.80,'one second at full standstill lock should turn about 44°, half the previous response');
+});
+
 test('long frames sweep the entire vehicle against fence, tower, house and rocks, including in-place turning',()=>{
  const cases=[stateAt(14,0,Math.PI/2),stateAt(-125,84,0),stateAt(13.3,4.65,-Math.PI/2)];
  for(const s of cases){assert.ok(v.scooterSupport(s));for(let i=0;i<60;i++)v.advanceScooter(s,input({forward:true}),2);assert.ok(v.scooterSupport(s));assert.equal(s.speed,0);}
@@ -41,7 +52,7 @@ test('both directions of the route support wheelbase and full body through all c
   assert.ok(v.scooterSupport(p),JSON.stringify(p));
  }
  assert.equal(v.scooterSpeedLimit(v.SCOOTER_PARKING[0]),2);
- assert.equal(v.scooterSpeedLimit({x:-80,y:33}),5);
+ assert.equal(v.scooterSpeedLimit({x:-80,y:33}),v.SCOOTER.cruise);
 });
 
 test('model stays in geometry/material budgets and disposal restores scene-owned resources',t=>{

@@ -1,0 +1,231 @@
+{
+  "baseline": "66221d4 + 40 km/h / half steering",
+  "fpsOrLoadingBenchmark": false,
+  "url": "http://127.0.0.1:8180/",
+  "errors": [],
+  "warnings": [],
+  "badResponses": [],
+  "parameters": {
+    "cruiseMps": 11.11111111111111,
+    "cruiseKmh": 40,
+    "steerSensitivity": 0.5
+  },
+  "method": "Production dist, Chrome headless, normal render loop. Real W/A/D/Space key events. The rider is fixture-placed only for the isolated top-speed/steering probes; route travel never sets vehicle position or heading.",
+  "checks": {
+    "topSpeed": {
+      "samples": [
+        {
+          "elapsed": 0.503,
+          "speedMps": 1.2497499999403952,
+          "speedKmh": 4.499099999785423,
+          "hint": "骑行 4 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+          "supported": true
+        },
+        {
+          "elapsed": 1.037,
+          "speedMps": 2.582999999821187,
+          "speedKmh": 9.298799999356275,
+          "hint": "骑行 9 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+          "supported": true
+        },
+        {
+          "elapsed": 1.54,
+          "speedMps": 3.8329999998211943,
+          "speedKmh": 13.7987999993563,
+          "hint": "骑行 13 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+          "supported": true
+        },
+        {
+          "elapsed": 2.042,
+          "speedMps": 5.082999999821182,
+          "speedKmh": 18.298799999356255,
+          "hint": "骑行 18 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+          "supported": true
+        },
+        {
+          "elapsed": 2.551,
+          "speedMps": 6.3747499999403745,
+          "speedKmh": 22.94909999978535,
+          "hint": "骑行 23 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+          "supported": true
+        },
+        {
+          "elapsed": 3.054,
+          "speedMps": 7.624499999880753,
+          "speedKmh": 27.44819999957071,
+          "hint": "骑行 27 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+          "supported": true
+        },
+        {
+          "elapsed": 3.557,
+          "speedMps": 8.874499999880763,
+          "speedKmh": 31.948199999570747,
+          "hint": "骑行 31 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+          "supported": true
+        },
+        {
+          "elapsed": 4.06,
+          "speedMps": 10.124499999880785,
+          "speedKmh": 36.448199999570825,
+          "hint": "骑行 36 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+          "supported": true
+        },
+        {
+          "elapsed": 4.566,
+          "speedMps": 11.11111111111111,
+          "speedKmh": 40,
+          "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+          "supported": true
+        },
+        {
+          "elapsed": 5.068,
+          "speedMps": 11.11111111111111,
+          "speedKmh": 40,
+          "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+          "supported": true
+        }
+      ],
+      "maxSpeedMps": 11.11111111111111,
+      "hudHint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+      "passed": true
+    },
+    "steering": {
+      "durationSeconds": 1,
+      "headingDeltaRadians": 0.7693909904817905,
+      "headingDeltaDegrees": 44.08285654999669,
+      "estimatedPreviousDeltaRadians": 1.538781980963581,
+      "ratio": 0.5,
+      "supported": true,
+      "passed": true
+    },
+    "turnaround": {
+      "seconds": 3.942,
+      "from": -0.9573367959412462,
+      "to": 2.204849357971701
+    },
+    "routes": true
+  },
+  "travel": [
+    {
+      "name": "ride-home-to-lighthouse",
+      "elapsed": 32.961,
+      "maxSpeed": 11.11111111111111,
+      "index": 655,
+      "samples": 60,
+      "end": {
+        "x": -123.16983709006786,
+        "y": 82.11172754243202,
+        "speed": 0,
+        "heading": -0.9573367959412462
+      },
+      "samplesTail": [
+        {
+          "elapsed": 29.663,
+          "index": 647,
+          "id": "home",
+          "label": "家门停车位",
+          "x": -121.59309684172575,
+          "y": 80.03251041615098,
+          "heading": -0.3454492731477014,
+          "speed": 1.7766111111110945,
+          "distance": 181.49488521699934,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false,
+          "supported": true
+        },
+        {
+          "elapsed": 30.176,
+          "index": 651,
+          "id": "home",
+          "label": "家门停车位",
+          "x": -121.93348521404766,
+          "y": 80.93379349335603,
+          "heading": -0.4690845362469568,
+          "speed": 1.792161110765387,
+          "distance": 182.4587808428442,
+          "steer": -1,
+          "riding": true,
+          "exitRequested": false,
+          "supported": true
+        },
+        {
+          "elapsed": 30.691,
+          "index": 654,
+          "id": "home",
+          "label": "家门停车位",
+          "x": -122.57340442463735,
+          "y": 81.66142779994567,
+          "heading": -0.8883381106456052,
+          "speed": 1.8171611109442005,
+          "distance": 183.4355193005813,
+          "steer": -0.18099999916553464,
+          "riding": true,
+          "exitRequested": false,
+          "supported": true
+        }
+      ]
+    },
+    {
+      "name": "ride-lighthouse-to-home",
+      "elapsed": 28.953,
+      "maxSpeed": 11.11111111111111,
+      "index": 655,
+      "samples": 54,
+      "end": {
+        "x": 13.829728399167172,
+        "y": 2.0002911466906106,
+        "speed": 0,
+        "heading": 0.8507928201408537
+      },
+      "samplesTail": [
+        {
+          "elapsed": 25.822,
+          "index": 649,
+          "id": "home",
+          "label": "家门停车位",
+          "x": 12.803248368726464,
+          "y": -0.1536837696531214,
+          "heading": -0.2233665665166126,
+          "speed": 2,
+          "distance": 366.38793357700166,
+          "steer": 0.816900000333786,
+          "riding": true,
+          "exitRequested": false,
+          "supported": true
+        },
+        {
+          "elapsed": 26.321,
+          "index": 653,
+          "id": "home",
+          "label": "家门停车位",
+          "x": 12.856554090878557,
+          "y": 0.8313623409824502,
+          "heading": 0.324256228382068,
+          "speed": 2,
+          "distance": 367.38693357700095,
+          "steer": 1,
+          "riding": true,
+          "exitRequested": false,
+          "supported": true
+        },
+        {
+          "elapsed": 26.823,
+          "index": 655,
+          "id": "home",
+          "label": "家门停车位",
+          "x": 13.417253257818908,
+          "y": 1.6456659234268964,
+          "heading": 0.8555989462557005,
+          "speed": 2,
+          "distance": 368.3879335770002,
+          "steer": 0.5337999998331069,
+          "riding": true,
+          "exitRequested": false,
+          "supported": true
+        }
+      ]
+    }
+  ],
+  "passed": true
+}
