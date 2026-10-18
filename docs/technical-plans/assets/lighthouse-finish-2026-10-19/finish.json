@@ -1,0 +1,598 @@
+{
+  "baseline": "c77c7d2 + lighthouse finish",
+  "method": "Unmodified production, camera fixtures for close interactions and five-storey map/light checks; real click, modal return, keyboard and sound. Continuous journey is separately recorded.",
+  "fpsOrLoadTimeSampling": false,
+  "cases": [
+    {
+      "floor": "首层维护室",
+      "height": 3.54,
+      "light": {
+        "enabled": true,
+        "position": [
+          -647.9000000000001,
+          21.150000000000002,
+          427.24999999999994
+        ],
+        "targets": [
+          "coastal-lighthouse-inner-wall",
+          "coastal-lighthouse-ground-floor",
+          "coastal-lighthouse-level-floors",
+          "coastal-lighthouse-level-deck",
+          "coastal-lighthouse-level-cornice",
+          "coastal-lighthouse-ladder-rails",
+          "coastal-lighthouse-ladder-rungs",
+          "coastal-lighthouse-level-guards",
+          "coastal-lighthouse-maintenance-cabinet",
+          "coastal-lighthouse-service-hardware",
+          "coastal-lighthouse-workbench",
+          "coastal-lighthouse-workbench-frame",
+          "coastal-lighthouse-entry-door",
+          "coastal-lighthouse-door-ribs",
+          "coastal-lighthouse-door-handle",
+          "coastal-lighthouse-detail-work-switch",
+          "coastal-lighthouse-detail-maintenance-record",
+          "coastal-lighthouse-detail-painted-metal",
+          "coastal-lighthouse-detail-lighthouse-door",
+          "coastal-lighthouse-detail-lantern-brass",
+          "coastal-lighthouse-detail-weathered-timber",
+          "coastal-lighthouse-detail-floor-signs",
+          "coastal-lighthouse-detail-lighthouse-work-glow",
+          "coastal-lighthouse-detail-lighthouse-optical-glass"
+        ]
+      },
+      "poseRestored": true
+    },
+    {
+      "floor": "二层观景室",
+      "height": 6.39,
+      "light": {
+        "enabled": true,
+        "position": [
+          -647.9000000000001,
+          35.4,
+          427.24999999999994
+        ],
+        "targets": [
+          "coastal-lighthouse-inner-wall",
+          "coastal-lighthouse-ground-floor",
+          "coastal-lighthouse-level-floors",
+          "coastal-lighthouse-level-deck",
+          "coastal-lighthouse-level-cornice",
+          "coastal-lighthouse-ladder-rails",
+          "coastal-lighthouse-ladder-rungs",
+          "coastal-lighthouse-level-guards",
+          "coastal-lighthouse-maintenance-cabinet",
+          "coastal-lighthouse-service-hardware",
+          "coastal-lighthouse-workbench",
+          "coastal-lighthouse-workbench-frame",
+          "coastal-lighthouse-entry-door",
+          "coastal-lighthouse-door-ribs",
+          "coastal-lighthouse-door-handle",
+          "coastal-lighthouse-detail-work-switch",
+          "coastal-lighthouse-detail-maintenance-record",
+          "coastal-lighthouse-detail-painted-metal",
+          "coastal-lighthouse-detail-lighthouse-door",
+          "coastal-lighthouse-detail-lantern-brass",
+          "coastal-lighthouse-detail-weathered-timber",
+          "coastal-lighthouse-detail-floor-signs",
+          "coastal-lighthouse-detail-lighthouse-work-glow",
+          "coastal-lighthouse-detail-lighthouse-optical-glass"
+        ]
+      },
+      "poseRestored": true
+    },
+    {
+      "floor": "三层观景室",
+      "height": 10.99,
+      "light": {
+        "enabled": true,
+        "position": [
+          -647.9000000000001,
+          58.4,
+          427.24999999999994
+        ],
+        "targets": [
+          "coastal-lighthouse-inner-wall",
+          "coastal-lighthouse-ground-floor",
+          "coastal-lighthouse-level-floors",
+          "coastal-lighthouse-level-deck",
+          "coastal-lighthouse-level-cornice",
+          "coastal-lighthouse-ladder-rails",
+          "coastal-lighthouse-ladder-rungs",
+          "coastal-lighthouse-level-guards",
+          "coastal-lighthouse-maintenance-cabinet",
+          "coastal-lighthouse-service-hardware",
+          "coastal-lighthouse-workbench",
+          "coastal-lighthouse-workbench-frame",
+          "coastal-lighthouse-entry-door",
+          "coastal-lighthouse-door-ribs",
+          "coastal-lighthouse-door-handle",
+          "coastal-lighthouse-detail-work-switch",
+          "coastal-lighthouse-detail-maintenance-record",
+          "coastal-lighthouse-detail-painted-metal",
+          "coastal-lighthouse-detail-lighthouse-door",
+          "coastal-lighthouse-detail-lantern-brass",
+          "coastal-lighthouse-detail-weathered-timber",
+          "coastal-lighthouse-detail-floor-signs",
+          "coastal-lighthouse-detail-lighthouse-work-glow",
+          "coastal-lighthouse-detail-lighthouse-optical-glass"
+        ]
+      },
+      "poseRestored": true
+    },
+    {
+      "floor": "四层观景室",
+      "height": 15.09,
+      "light": {
+        "enabled": true,
+        "position": [
+          -647.9000000000001,
+          78.9,
+          427.24999999999994
+        ],
+        "targets": [
+          "coastal-lighthouse-inner-wall",
+          "coastal-lighthouse-ground-floor",
+          "coastal-lighthouse-level-floors",
+          "coastal-lighthouse-level-deck",
+          "coastal-lighthouse-level-cornice",
+          "coastal-lighthouse-ladder-rails",
+          "coastal-lighthouse-ladder-rungs",
+          "coastal-lighthouse-level-guards",
+          "coastal-lighthouse-maintenance-cabinet",
+          "coastal-lighthouse-service-hardware",
+          "coastal-lighthouse-workbench",
+          "coastal-lighthouse-workbench-frame",
+          "coastal-lighthouse-entry-door",
+          "coastal-lighthouse-door-ribs",
+          "coastal-lighthouse-door-handle",
+          "coastal-lighthouse-detail-work-switch",
+          "coastal-lighthouse-detail-maintenance-record",
+          "coastal-lighthouse-detail-painted-metal",
+          "coastal-lighthouse-detail-lighthouse-door",
+          "coastal-lighthouse-detail-lantern-brass",
+          "coastal-lighthouse-detail-weathered-timber",
+          "coastal-lighthouse-detail-floor-signs",
+          "coastal-lighthouse-detail-lighthouse-work-glow",
+          "coastal-lighthouse-detail-lighthouse-optical-glass"
+        ]
+      },
+      "poseRestored": true
+    },
+    {
+      "floor": "顶层灯室",
+      "height": 19.64,
+      "light": {
+        "enabled": true,
+        "position": [
+          -647.9000000000001,
+          101.65,
+          427.24999999999994
+        ],
+        "targets": [
+          "coastal-lighthouse-inner-wall",
+          "coastal-lighthouse-ground-floor",
+          "coastal-lighthouse-level-floors",
+          "coastal-lighthouse-level-deck",
+          "coastal-lighthouse-level-cornice",
+          "coastal-lighthouse-ladder-rails",
+          "coastal-lighthouse-ladder-rungs",
+          "coastal-lighthouse-level-guards",
+          "coastal-lighthouse-maintenance-cabinet",
+          "coastal-lighthouse-service-hardware",
+          "coastal-lighthouse-workbench",
+          "coastal-lighthouse-workbench-frame",
+          "coastal-lighthouse-entry-door",
+          "coastal-lighthouse-door-ribs",
+          "coastal-lighthouse-door-handle",
+          "coastal-lighthouse-detail-work-switch",
+          "coastal-lighthouse-detail-maintenance-record",
+          "coastal-lighthouse-detail-painted-metal",
+          "coastal-lighthouse-detail-lighthouse-door",
+          "coastal-lighthouse-detail-lantern-brass",
+          "coastal-lighthouse-detail-weathered-timber",
+          "coastal-lighthouse-detail-floor-signs",
+          "coastal-lighthouse-detail-lighthouse-work-glow",
+          "coastal-lighthouse-detail-lighthouse-optical-glass"
+        ]
+      },
+      "poseRestored": true
+    }
+  ],
+  "initialJsBytes": 2878607,
+  "cues": [
+    {
+      "cue": "switch",
+      "entity": "lighthouse-work-light"
+    },
+    {
+      "cue": "switch",
+      "entity": "lighthouse-work-light"
+    },
+    {
+      "cue": "paper",
+      "entity": "inspection"
+    },
+    {
+      "cue": "paper",
+      "entity": "inspection"
+    }
+  ],
+  "outsideLightDisabled": true,
+  "scene": {
+    "meshes": 670,
+    "vertices": 570475,
+    "materials": 95,
+    "textures": 148,
+    "lights": 17,
+    "cameras": 3,
+    "details": [
+      {
+        "name": "coastal-lighthouse-detail-painted-metal",
+        "vertices": 702
+      },
+      {
+        "name": "coastal-lighthouse-detail-lighthouse-door",
+        "vertices": 126
+      },
+      {
+        "name": "coastal-lighthouse-detail-lantern-brass",
+        "vertices": 264
+      },
+      {
+        "name": "coastal-lighthouse-detail-work-switch",
+        "vertices": 24
+      },
+      {
+        "name": "coastal-lighthouse-detail-weathered-timber",
+        "vertices": 252
+      },
+      {
+        "name": "coastal-lighthouse-detail-maintenance-record",
+        "vertices": 4
+      },
+      {
+        "name": "coastal-lighthouse-detail-floor-signs",
+        "vertices": 20
+      },
+      {
+        "name": "coastal-lighthouse-detail-lighthouse-work-glow",
+        "vertices": 120
+      },
+      {
+        "name": "coastal-lighthouse-detail-lighthouse-optical-glass",
+        "vertices": 1206
+      }
+    ]
+  },
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8186/",
+      "status": 200,
+      "bytes": 20556
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/main.js",
+      "status": 200,
+      "bytes": 239577
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8186/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8186/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8186/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4444
+    },
+    {
+      "url": "http://127.0.0.1:8186/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8186/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8186/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8186/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/d26ad81d-f518-49e4-b808-6ee3057e3b13",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/4f5542f9-bbc9-4f0a-8cbb-047fe73e8809",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/cbe7b870-3169-4679-a8cb-15bc973cbe7f",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/9f58c7ef-5190-4b3d-bc80-885679045a28",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/a6dcd20f-d0c4-4b17-bce7-60467e59d156",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/f4508a06-e0fc-4cda-b914-f01ff2577315",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/b0f85bb7-2f5a-41f6-8962-7169bf62ea16",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/961a0b6a-5956-42db-96e5-a6cf51703de1",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/2399fe4d-3005-4e00-a96a-f4c58a4acd7e",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/d5a5ee77-0d57-45ea-88d6-3c2e1f972c54",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/3bf8d19f-cd37-45ed-bea1-258d5efa222a",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/54d4af4f-776b-4786-a68f-b1d9ae693a46",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/5f760e5a-bf7d-4143-bd7f-de22d7e88554",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/60e7ae2e-11e1-45f1-8fc3-6420d2245e54",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/7366e5ed-cd54-44ac-8ebb-cc417b761805",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8186/f26d28f4-94eb-4f86-8ce9-1a63e29026af",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8186/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    },
+    {
+      "url": "http://127.0.0.1:8186/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import { coastalRouteLength } from "./CoastalSite";
 import { coastalSurfaceHeight } from "./CoastalCliff";
 import { walkingSurfaceAt } from "./WalkingSurface";
 import { lighthouseClimbLabel } from "./LighthouseLadder";
+import { lighthouseLevelsSvg, lighthouseMapState } from "./LighthouseMap";
 
 /** DOM-only map: the 3D camera stays in place while the modal is open. */
 export class RoomFloorPlan {
@@ -27,6 +28,7 @@ export class RoomFloorPlan {
   constructor(open: () => void, private readonly onClose: (resumePointer: boolean) => void, private readonly rooms: HouseRooms,
     private readonly previewCoast: () => void, private readonly returnHome: () => void) {
     this.refresh();
+    document.querySelector("#lighthouse-levels")!.innerHTML = lighthouseLevelsSvg();
     this.unsubscribe = rooms.subscribe(() => this.refresh());
     document.querySelector("#floor-plan-area")!.textContent = HOUSE_ROOMS.reduce((sum, room) => sum + room.width * room.depth, 0).toFixed(1);
     document.querySelector("#floor-plan-room-sizes")!.innerHTML = HOUSE_ROOMS.map(room =>
@@ -121,6 +123,17 @@ export class RoomFloorPlan {
     const outdoor = firstPerson && !room ? climbFeet !== undefined ? { region: lighthouseClimbLabel(climbFeet) } : walkingSurfaceAt(point.x, point.y, position.y === undefined ? undefined
       : (position.y - HOUSE_COORDINATES.floorY) / HOUSE_COORDINATES.unitsPerMeter - HOUSE_COORDINATES.eyeHeight) : undefined;
     const miniCoast = !!outdoor || view === "coast";
+    const towerFeet = firstPerson && outdoor?.region.startsWith("灯塔") && !["灯塔前场","灯塔入口"].includes(outdoor.region)
+      ? climbFeet ?? (position.y! - HOUSE_COORDINATES.floorY) / HOUSE_COORDINATES.unitsPerMeter - HOUSE_COORDINATES.eyeHeight : undefined;
+    const tower = lighthouseMapState(towerFeet);
+    document.querySelectorAll<SVGGElement>("[data-lighthouse-floor]").forEach(node => {
+      const active = tower.floor === Number(node.dataset.lighthouseFloor);
+      node.classList.toggle("is-current", active);
+      node.querySelector(".lighthouse-floor-highlight")!.setAttribute("visibility", active ? "visible" : "hidden");
+    });
+    const marker = document.querySelector("#lighthouse-height-marker")!;
+    marker.setAttribute("visibility", tower.visible ? "visible" : "hidden");
+    marker.setAttribute("transform", `translate(0 ${tower.y})`);
     if (miniCoast !== this.miniCoast) {
       this.miniCoast = miniCoast;
       document.querySelector("#map-mini-title")!.textContent = miniCoast ? "海岸地图" : "全屋地图";

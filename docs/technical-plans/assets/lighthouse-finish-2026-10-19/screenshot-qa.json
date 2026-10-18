@@ -1,0 +1,473 @@
+{
+  "method": "Pillow scene-region RGB standard deviation above 5 only detects blank captures; representative maintenance/window/optic views also visually inspected. Not a visual quality or performance metric.",
+  "files": [
+    {
+      "file": "engines/chromium-maintenance-desktop-dpr1.jpg",
+      "size": [
+        1280,
+        800
+      ],
+      "sceneCropStddev": [
+        41.842737353458105,
+        45.907757511188976,
+        47.319570866777994
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-maintenance-desktop-dpr2.jpg",
+      "size": [
+        2560,
+        1600
+      ],
+      "sceneCropStddev": [
+        41.74969946585734,
+        45.85105555524915,
+        47.1987535471255
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-maintenance-landscape-dpr1.jpg",
+      "size": [
+        844,
+        390
+      ],
+      "sceneCropStddev": [
+        42.07225267337838,
+        45.9405312675237,
+        47.38878027972731
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-maintenance-landscape-dpr2.jpg",
+      "size": [
+        1688,
+        780
+      ],
+      "sceneCropStddev": [
+        42.12983301694429,
+        46.04070052802046,
+        47.3100030972527
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-maintenance-portrait-dpr1.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "sceneCropStddev": [
+        23.628289971402097,
+        21.527621238570593,
+        19.582592577728416
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-maintenance-portrait-dpr2.jpg",
+      "size": [
+        780,
+        1688
+      ],
+      "sceneCropStddev": [
+        23.226363605348016,
+        21.081574419444653,
+        18.73890142412326
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-optic-desktop-dpr1.jpg",
+      "size": [
+        1280,
+        800
+      ],
+      "sceneCropStddev": [
+        43.36743526018301,
+        46.26827835099905,
+        51.2737423789666
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-optic-desktop-dpr2.jpg",
+      "size": [
+        2560,
+        1600
+      ],
+      "sceneCropStddev": [
+        42.95418504219462,
+        45.97400650413048,
+        51.15708309783742
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-optic-landscape-dpr1.jpg",
+      "size": [
+        844,
+        390
+      ],
+      "sceneCropStddev": [
+        46.32874000485801,
+        47.71985304776134,
+        51.38614406193299
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-optic-landscape-dpr2.jpg",
+      "size": [
+        1688,
+        780
+      ],
+      "sceneCropStddev": [
+        45.51222029265452,
+        47.07905541264435,
+        51.047758819016444
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-optic-portrait-dpr1.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "sceneCropStddev": [
+        38.96831838423094,
+        44.59614182394877,
+        48.863938169418084
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-optic-portrait-dpr2.jpg",
+      "size": [
+        780,
+        1688
+      ],
+      "sceneCropStddev": [
+        38.488825695365705,
+        44.336511326653536,
+        48.77134781546328
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-window-desktop-dpr1.jpg",
+      "size": [
+        1280,
+        800
+      ],
+      "sceneCropStddev": [
+        38.821778379927814,
+        37.47033384849832,
+        37.5356825949758
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-window-desktop-dpr2.jpg",
+      "size": [
+        2560,
+        1600
+      ],
+      "sceneCropStddev": [
+        38.65426485266089,
+        37.31575783001912,
+        37.375305190250344
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-window-landscape-dpr1.jpg",
+      "size": [
+        844,
+        390
+      ],
+      "sceneCropStddev": [
+        34.73231005994968,
+        33.36194307565047,
+        33.16272574439718
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-window-landscape-dpr2.jpg",
+      "size": [
+        1688,
+        780
+      ],
+      "sceneCropStddev": [
+        34.54665871762666,
+        33.122366914923305,
+        32.92254732995187
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-window-portrait-dpr1.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "sceneCropStddev": [
+        43.965019132375055,
+        44.41057362816122,
+        49.07749422857364
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-window-portrait-dpr2.jpg",
+      "size": [
+        780,
+        1688
+      ],
+      "sceneCropStddev": [
+        43.65169924451487,
+        44.11557459878549,
+        48.771367052555085
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-maintenance-desktop-dpr1.jpg",
+      "size": [
+        1280,
+        800
+      ],
+      "sceneCropStddev": [
+        41.704720796498464,
+        45.646266072444135,
+        47.09190999191021
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-maintenance-desktop-dpr2.jpg",
+      "size": [
+        2560,
+        1600
+      ],
+      "sceneCropStddev": [
+        41.75110363572091,
+        45.73115110812846,
+        47.12190901967009
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-maintenance-landscape-dpr1.jpg",
+      "size": [
+        844,
+        390
+      ],
+      "sceneCropStddev": [
+        41.35131477307681,
+        45.24719085823335,
+        46.81883988630514
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-maintenance-landscape-dpr2.jpg",
+      "size": [
+        1688,
+        780
+      ],
+      "sceneCropStddev": [
+        41.835708091077365,
+        45.604601940339464,
+        47.0446891525926
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-maintenance-portrait-dpr1.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "sceneCropStddev": [
+        21.650110346076065,
+        19.70958134963672,
+        17.654190931575283
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-maintenance-portrait-dpr2.jpg",
+      "size": [
+        780,
+        1688
+      ],
+      "sceneCropStddev": [
+        22.13306355463402,
+        20.24436749230541,
+        17.824504048318605
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-optic-desktop-dpr1.jpg",
+      "size": [
+        1280,
+        800
+      ],
+      "sceneCropStddev": [
+        43.261117856830964,
+        46.13474910195514,
+        51.29584059717657
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-optic-desktop-dpr2.jpg",
+      "size": [
+        2560,
+        1600
+      ],
+      "sceneCropStddev": [
+        43.16374054793115,
+        46.08319459274626,
+        51.395816308343285
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-optic-landscape-dpr1.jpg",
+      "size": [
+        844,
+        390
+      ],
+      "sceneCropStddev": [
+        47.65121069340299,
+        48.93020885337947,
+        52.5744287566816
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-optic-landscape-dpr2.jpg",
+      "size": [
+        1688,
+        780
+      ],
+      "sceneCropStddev": [
+        47.54279352129503,
+        48.873751966591286,
+        52.69441770012932
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-optic-portrait-dpr1.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "sceneCropStddev": [
+        38.609937161393226,
+        43.97866934512231,
+        48.6340799845589
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-optic-portrait-dpr2.jpg",
+      "size": [
+        780,
+        1688
+      ],
+      "sceneCropStddev": [
+        38.87963623710297,
+        44.26827723704397,
+        48.96859285611614
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-window-desktop-dpr1.jpg",
+      "size": [
+        1280,
+        800
+      ],
+      "sceneCropStddev": [
+        39.44536373518201,
+        38.440789161006904,
+        38.30925903298048
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-window-desktop-dpr2.jpg",
+      "size": [
+        2560,
+        1600
+      ],
+      "sceneCropStddev": [
+        39.60000972773201,
+        38.549811771213164,
+        38.434685268821916
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-window-landscape-dpr1.jpg",
+      "size": [
+        844,
+        390
+      ],
+      "sceneCropStddev": [
+        37.09117527210849,
+        36.38501882442442,
+        35.760728422445766
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-window-landscape-dpr2.jpg",
+      "size": [
+        1688,
+        780
+      ],
+      "sceneCropStddev": [
+        37.62993118042027,
+        36.83019642844012,
+        36.104072453742
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-window-portrait-dpr1.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "sceneCropStddev": [
+        45.6973226582307,
+        46.4028138241514,
+        50.72267404978484
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-window-portrait-dpr2.jpg",
+      "size": [
+        780,
+        1688
+      ],
+      "sceneCropStddev": [
+        45.939065410565576,
+        46.58873183488806,
+        50.949698816963654
+      ],
+      "nonblank": true
+    }
+  ]
+}

@@ -168,6 +168,9 @@ export class RoomScene {
     const furnishings = new RoomFurnishings(this.scene);
     this.exterior = new RoomExterior(this.scene);
     this.interactions.addDoor(this.exterior.lighthouseDoor);
+    const lighthouse = this.exterior.lighthouseDetails;
+    this.interactions.addLamp(lighthouse.switch, () => lighthouse.on, () => lighthouse.toggle());
+    this.interactions.addInspectable(lighthouse.record, item => this.openInspection(item));
     this.scooterModel = new CoastalScooterModel(this.scene, this.exterior.sun, this.exterior.surfaces);
     this.scooterModel.update(this.scooter, false);
     this.architecture = createHouseArchitecture(this.scene, furnishings);
