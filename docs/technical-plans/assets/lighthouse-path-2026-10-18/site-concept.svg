@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-labelledby="title description">
+  <title id="title">悬崖灯塔与沿海步道俯视概念图</title>
+  <desc id="description">北向朝上。房屋位于右上，灯塔在西南侧约154米远的岬角。玩家从房屋东侧入户门出门，绕屋后沿崖顶步道，经过一处观景点，抵达灯塔前场。路线控制折线约190米，规划平滑路线190至230米。图为待实施设计，不是现状或运行截图。</desc>
+  <defs>
+    <linearGradient id="ocean" x1="0" y1="0" x2="0.7" y2="1">
+      <stop stop-color="#b0d0d3"/><stop offset="1" stop-color="#729eac"/>
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0.8" y2="1">
+      <stop stop-color="#d8dcc3"/><stop offset="1" stop-color="#b8c6a4"/>
+    </linearGradient>
+    <clipPath id="mapClip"><rect x="32" y="126" width="900" height="610" rx="18"/></clipPath>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #263c39; }
+      .muted { fill: #66736a; }
+      .label { font-size: 14px; font-weight: 600; }
+      .small { font-size: 12px; }
+      .body { font-size: 14px; }
+      .cardTitle { font-size: 15px; font-weight: 700; }
+      .node { fill: #fffaf0; stroke: #a86e43; stroke-width: .55; }
+      .coast { fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    </style>
+  </defs>
+  <rect width="1280" height="800" fill="#f6f3ec"/>
+  <text x="32" y="48" font-size="28" font-weight="700">走向海角的灯塔</text>
+  <text x="32" y="79" font-size="15" class="muted">房屋 · 崖顶步道 · 观景点 · 灯塔前场</text>
+  <rect x="1092" y="28" width="156" height="34" rx="17" fill="#e8deca"/>
+  <text x="1170" y="50" text-anchor="middle" font-size="13" font-weight="600">设计方案 / 待实施</text>
+  <text x="32" y="110" font-size="12" class="muted">俯视概念图：坐标沿用户型米制约定；新岸线、路线与视线均待灰盒校准。</text>
+
+  <g clip-path="url(#mapClip)">
+    <rect x="32" y="126" width="900" height="610" fill="url(#ocean)"/>
+    <g transform="translate(810 210) scale(4.3)">
+      <path d="M-184-24H34V13L25 13 11 17 3 24-4 44-8 57-15 45-23 24-34 17-48 35-72 36-91 48-105 65-113 82-113 96-124 106-137 104-145 94-148 77-158 63-184 58Z" fill="url(#land)"/>
+      <path d="M34 13 25 13 11 17 3 24-4 44-8 57-15 45-23 24-34 17-48 35-72 36-91 48-105 65-113 82-113 96-124 106-137 104-145 94-148 77-158 63-184 58" class="coast" stroke="#fff9e9" stroke-opacity=".35" stroke-width="5"/>
+      <path d="M34 13 25 13 11 17 3 24-4 44-8 57-15 45-23 24-34 17-48 35-72 36-91 48-105 65-113 82-113 96-124 106-137 104-145 94-148 77-158 63-184 58" class="coast" stroke="#78816c" stroke-width="1.55"/>
+      <path d="M-170 1Q-137-10-111 5T-57 1M-163 14Q-134 2-108 15T-61 13M-157 29Q-139 15-118 26" fill="none" stroke="#8f9b7d" stroke-opacity=".3" stroke-width=".5"/>
+      <path d="M-146 43Q-137 30-121 36M-144 54Q-134 44-125 48" fill="none" stroke="#8f9b7d" stroke-opacity=".3" stroke-width=".5"/>
+      <path d="M-34-20V17" stroke="#6e7a6e" stroke-width=".5" stroke-dasharray="1.8 1.5" opacity=".7"/>
+      <path d="M10.8 4.65 13-3-4-5-18 13-40 20-70 25-94 44-116 63-125 90" fill="none" stroke="#f3ebd8" stroke-width="5.2" stroke-linejoin="round" stroke-linecap="round" opacity=".65"/>
+      <path d="M10.8 4.65 13-3-4-5-18 13-40 20-70 25-94 44-116 63-125 90" fill="none" stroke="#ae794b" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M10.8 4.65 13-3-4-5-18 13-40 20-70 25-94 44-116 63-125 90" fill="none" stroke="#ead2a3" stroke-width=".55" stroke-dasharray="1 1.25" stroke-linejoin="round"/>
+      <path d="M8.1 11.45-125 90" stroke="#56818b" stroke-opacity=".65" stroke-width=".42" stroke-dasharray="2 2"/>
+      <path d="M0 0H10.8V12.3H5.4V10.8H0Z" fill="#fffaf0" stroke="#6d7868" stroke-width=".6"/>
+      <path d="M.3.3H10.5V10.5H.3Z" fill="#7d8980"/>
+      <path d="M.3.3 10.5 10.5M10.5.3.3 10.5" stroke="#a7b0a4" stroke-width=".35"/>
+      <path d="M5.6 10.8H10.6V12H5.6Z" fill="#d9b77e"/>
+      <path d="M10.8 4.1V5.2" stroke="#bb633c" stroke-width="1.1"/>
+      <circle cx="-70" cy="25" r="3.1" fill="#f7eedb" stroke="#a79773" stroke-width=".4"/>
+      <path d="M-72 26.1H-68M-72 25.3H-68" stroke="#776f55" stroke-width=".4"/>
+      <path d="M-129 84Q-125 81-121 85L-119 93Q-124 97-130 94Z" fill="#e5dcca" stroke="#a09a81" stroke-width=".45"/>
+      <circle cx="-125" cy="90" r="2.8" fill="#fffaf1" stroke="#4d6360" stroke-width=".65"/>
+      <circle cx="-125" cy="90" r="1.65" fill="#a75e45" stroke="#425755" stroke-width=".55"/>
+      <path d="M-131 98Q-124 101-117 96M-99 57-108 73" class="coast" stroke="#615f50" stroke-width=".65"/>
+      <g fill="#89927e" opacity=".8">
+        <ellipse cx="-25" cy="4" rx="1.9" ry="1.2" transform="rotate(-18 -25 4)"/><ellipse cx="-51" cy="13" rx="1.8" ry="1"/>
+        <ellipse cx="-83" cy="28" rx="2.1" ry="1.3"/><ellipse cx="-100" cy="37" rx="2.2" ry="1.4"/>
+        <ellipse cx="-134" cy="70" rx="2.5" ry="1.4"/><ellipse cx="-143" cy="62" rx="1.5" ry="1.1"/>
+      </g>
+      <circle class="node" cx="13" cy="-3" r=".9"/><circle class="node" cx="-4" cy="-5" r=".9"/>
+      <circle class="node" cx="-18" cy="13" r="1.1"/><circle class="node" cx="-40" cy="20" r="1.1"/>
+      <circle class="node" cx="-94" cy="44" r="1.1"/><circle class="node" cx="-116" cy="63" r="1.1"/>
+    </g>
+
+    <text x="832" y="193" class="label">房屋</text>
+    <text x="867" y="237" class="small">A 家门</text>
+    <text x="823" y="176" class="small">B</text><text x="779" y="176" class="small">C</text>
+    <text x="689" y="247" class="label">D 海岸入口</text>
+    <text x="608" y="277" class="small">E 沿崖转弯</text>
+    <text x="469" y="293" class="label">F 观景点</text>
+    <text x="469" y="351" class="small">朝海长椅 · 可回望房屋</text>
+    <text x="320" y="382" class="label">G 岬角缓坡</text>
+    <text x="231" y="458" class="label">H 灯塔引道</text>
+    <path d="M274 597 300 623H393" fill="none" stroke="#425755" stroke-width="1"/>
+    <text x="303" y="646" class="label">I 灯塔前场</text>
+    <text x="303" y="667" class="small">绕塔 · 看海 · 回望来路</text>
+    <text x="718" y="455" class="small">保留近宅岩岬</text>
+    <text x="552" y="153" class="small muted">虚线：现有近岸西边界</text>
+    <path d="M652 156 664 165" stroke="#6e7a6e" fill="none"/>
+    <text x="112" y="194" font-size="17" fill="#657860" letter-spacing="4">内陆草坡</text>
+    <text x="657" y="573" font-size="28" fill="#f3f5ee" letter-spacing="12" opacity=".8">大海</text>
+    <text x="506" y="490" class="small" transform="rotate(-30 506 490)" fill="#3f6870">阳台 → 灯塔约154米</text>
+
+    <g transform="translate(883 655)">
+      <path d="M0 26V-8" stroke="#304d4b" stroke-width="1.5"/>
+      <path d="M0-13-4-3H4Z" fill="#304d4b"/>
+      <text x="0" y="-25" text-anchor="middle" font-size="15" font-weight="700">N</text>
+    </g>
+    <g transform="translate(57 702)">
+      <path d="M0 0H172M0-5V5M172-5V5" stroke="#425755" stroke-width="1.5"/>
+      <text x="0" y="20" class="small">0</text><text x="172" y="20" text-anchor="end" class="small">40米</text>
+    </g>
+  </g>
+  <rect x="32" y="126" width="900" height="610" rx="18" fill="none" stroke="#c5cec2"/>
+
+  <g transform="translate(954 126)">
+    <rect width="294" height="610" rx="18" fill="#eeece2"/>
+    <text x="22" y="35" font-size="18" font-weight="700">一段有目的地的散步</text>
+    <text x="22" y="65" class="body">从家里发现远处的白塔，</text>
+    <text x="22" y="88" class="body">沿着海岸，亲自走到那里。</text>
+    <path d="M22 111H272" stroke="#d1d3c4"/>
+    <text x="22" y="141" class="cardTitle">01 远方地标</text>
+    <text x="22" y="167" class="body">西南岬角 · 暖白塔身</text>
+    <text x="22" y="190" class="body">塔高18～22米</text>
+    <text x="22" y="213" class="body">基座位于真实崖顶陆地</text>
+    <path d="M22 235H272" stroke="#d1d3c4"/>
+    <text x="22" y="265" class="cardTitle">02 连续步道</text>
+    <text x="22" y="291" class="body">路线约190～230米</text>
+    <text x="22" y="314" class="body">路宽1.6～2.0米</text>
+    <text x="22" y="337" class="body">草地缓冲 · 临崖护栏</text>
+    <path d="M22 359H272" stroke="#d1d3c4"/>
+    <text x="22" y="389" class="cardTitle">03 首期抵达体验</text>
+    <text x="22" y="415" class="body">塔前观景与绕塔</text>
+    <text x="22" y="438" class="body">全程步行往返</text>
+    <text x="22" y="461" class="body">塔内与登塔留待后续</text>
+    <path d="M22 483H272" stroke="#d1d3c4"/>
+    <text x="22" y="514" class="small muted">图上西为左；阳台朝南看海时，</text>
+    <text x="22" y="535" class="small muted">灯塔在右前方，需稍向右转头。</text>
+    <text x="22" y="568" class="small muted">原创SVG概念示意 · 2026-10-18</text>
+    <text x="22" y="589" class="small muted">未开发 · 非运行截图 · 非建筑规范</text>
+  </g>
+  <text x="32" y="773" class="small muted">浅色带表示步道附近的探索余地，非精确可行走边界。海岸形状与全部尺寸均以灰盒验证后的方案更新为准。</text>
+</svg>
