@@ -1,6 +1,6 @@
 {
-  "version": "lighthouse-walking-b-v1",
-  "stage": "Lighthouse B: indoor/outdoor walking, shared support triangles, entry ramp, finite guardrail boundary; visual refinement pending C",
+  "version": "lighthouse-visual-c-v1",
+  "stage": "Lighthouse C: finished lighthouse, road/wayfinding, exterior house roof and cached local shadow zones; final D delivery pending",
   "author": "babylon-demo project contributors",
   "license": "Original geometry/sky: project ISC; photographic maps: CC0-1.0, see textures/coastal/source.json",
   "source": [
@@ -15,29 +15,14 @@
     "src/examples/CoastalMap.ts",
     "tools/prepare-coastal-materials.py",
     "src/examples/CoastalPath.ts",
-    "src/examples/WalkingSurface.ts"
+    "src/examples/WalkingSurface.ts",
+    "src/examples/CoastalFinish.ts"
   ],
   "generation": "Deterministic metre-based terrain, closed chipped/layered cliff, plinth, opaque folded grass and shrub leaves, buried rock clusters. Seed 41723. Photographic Seaside Rock (Dimitrios Savva, 2m) and Aerial Grass Rock (Rob Tuytel, 15m), Poly Haven CC0. Coast-arc/height UV, macro/strata colour, damp lower wall, shore rock blend. Analytic linear RGBE sky shares the sunlight direction with the rendered sky and scoped outdoor sun; 128-face HDR prefilter and one cached 1024 local shadow. No AI-generated assets or photographic scenery walls. Ground PBR uses translation-only hex blending, identical geometry weights for albedo/normal/ARM; no tangent rotation. Coast columns share shading normals across patch boundaries, with hard vertical ledges. World-anchored near-dense/far-coarse ocean, three analytic displacement waves, filtered crossing ripple normals, linear Fresnel sky reflection and rough GGX sunlight from the same sky parameters, exterior-only marine haze. A generated 512x512 RGBA8 signed-distance/seabed field intersects the closed rock wall at mean sea level and controls water colour and animated broken foam. No additional image download or ocean reflection/refraction target.",
   "dimensionsMetres": {
     "balconySetbackAtCentre": 5,
     "seaBelowHouseFloor": 28,
     "cliffBottomBelowHouseFloor": 32
-  },
-  "lighthouseGraybox": {
-    "towerCentreMetres": [
-      -125,
-      90
-    ],
-    "towerHeightMetres": 20,
-    "plazaMetres": [
-      14,
-      18
-    ],
-    "roadWidthMetres": 1.8,
-    "earthworks": "Shared CoastalSite road grade, 3.5m inner corridor blended to the terrain over 8m; the last 14m meets the level tower plaza. Rendered terrain triangles drive road placement.",
-    "outdoorWalking": true,
-    "materials": "Four solid graybox PBR materials reuse the existing outdoor HDR; no new downloadable image/model assets.",
-    "walking": "Shared rendered terrain/road/ramp triangles and platform tops; 0.26m player radius, 0.1m swept horizontal steps, maximum 30-degree walkable ground, 0.18m step, solid tower/bench/large rocks and height-independent exterior walls/guardrails. One batched original timber guardrail encloses the finite exploration area. The entry path first clears the door jamb; the bench is offset from the walking centreline."
   },
   "runtimeFiles": [
     "textures/coastal/rock-color.jpg",
@@ -49,7 +34,7 @@
     "environment/coastal-daylight.hdr"
   ],
   "supersedes": "Forest Slope panorama and bark no longer ship or load in the current scene; historical originals and provenance remain in the repository and frozen eight-room-v1 baseline.",
-  "limitations": "Ocean sky reflection excludes local house/cliff reflections. Mean-sea-level shoreline and sloping seabed approximation do not track individual wave crests; no fluid physics. Grass/low shrubs remain static simplified geometry. Indoor HDR, existing room lights, mirrors and interactions are retained. Lighthouse, path, plaza, bench and house roof are original programmatic graybox masses under the project ISC license, without new image downloads. Outdoor walking is enabled only inside the visible guardrail boundary; tower interior, detailed exterior finishes and remote shadow coverage remain pending C or separate scope. No vehicle is implemented by B. The previous coastal v1 remains frozen separately; its Firefox/Safari/physical-device limitations do not constitute acceptance for this extension.",
+  "limitations": "Ocean reflection excludes local house/cliff reflections; mean-sea-level shoreline/seabed do not track individual wave crests, no fluid physics. Sparse static grass and shrubs; one local shadow zone follows the current view rather than casting over the full 194m route at once. Lighthouse interior/climbing, night beam and vehicles are not implemented. Walking remains inside the explicit visible boundary. Desktop browser simulation does not constitute physical mobile/Safari acceptance; final stage D platform/archive acceptance remains separate.",
   "materialProvenance": "textures/coastal/source.json: fixed upstream URLs/authors/license, original PNG SHA256, processing parameters, delivered bytes/SHA256; upstream CC0 https://polyhaven.com/license",
   "generatedOceanTexture": {
     "size": [
@@ -66,5 +51,23 @@
     },
     "source": "CoastalOcean.coastalShoreField / actual CoastalCliff wall rings 7-8 at -28 metres",
     "downloadBytes": 0
+  },
+  "lighthouse": {
+    "towerCentreMetres": [
+      -125,
+      90
+    ],
+    "towerHeightMetres": 20,
+    "plazaMetres": [
+      14,
+      18
+    ],
+    "roadWidthMetres": 1.8,
+    "earthworks": "Shared CoastalSite road grade, 3.5m inner corridor blended to the terrain over 8m; the last 14m meets the level tower plaza. Rendered terrain triangles drive road placement.",
+    "outdoorWalking": true,
+    "materials": "Original filtered world-scale plaster/timber/seamed-roof finishes and gravel/paving reusing the existing coastal rock color/normal/ARM maps; shared outdoor HDR. No new image/model downloads.",
+    "walking": "Shared rendered terrain/road/ramp triangles and platform tops; 0.26m player radius, 0.1m swept horizontal steps, maximum 30-degree walkable ground, 0.18m step, solid tower/bench/large rocks and height-independent exterior walls/guardrails. One batched original timber guardrail encloses the finite exploration area. The entry path first clears the door jamb; the bench is offset from the walking centreline.",
+    "geometry": "Tapered permanent 64-sector shaft with real closed door/window recesses, stone base, octagonal glass lantern/internal brass lens, batched gallery rail, low-pitch house roof/eaves/gables/window sills, slatted bench and arrow-shaped route signs. Fine door/mullion detail hides at 85m and returns within 65m; permanent shell, lantern, gallery silhouette and walking support remain.",
+    "shadows": "One existing 1024 PCF render-once target, overlapping local house/path/tower anchors with 6m selection hysteresis; no additional light or render target. Static opaque outdoor architecture, rails, vegetation and rocks cast; interiors, water and transparent glass excluded. No reposition in background/hidden exterior. Near-house depth/normal bias stays 0.00015/0.045 world units; outdoor zones use 0.001/0.25 to suppress curved-tower shadow acne with the wider 280-unit frustum."
   }
 }

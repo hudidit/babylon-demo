@@ -1,6 +1,7 @@
 import { Color3, Constants, HDRCubeTexture, MaterialPluginBase, PBRMaterial, Texture } from "@babylonjs/core/pure";
 import type { BaseTexture, Scene, UniformBuffer } from "@babylonjs/core/pure";
 import { coastalCrestShader } from "./CoastalCliff";
+import { CoastalFinish } from "./CoastalFinish";
 
 /** Small PBR extension: shared world-scale variation, a shore transition and a damp lower cliff.
  * Uses the normal/ARM workflow already registered by RoomRuntime; no triplanar shader system.
@@ -74,6 +75,18 @@ export class CoastalMaterials {
     material.reflectionTexture = this.environment; material.environmentIntensity = 3.8;
     material.maxSimultaneousLights = 1; material.usePhysicalLightFalloff = false;
     this.materials.push(material); return material;
+  }
+  finish(name: string, color: string, kind: "plaster" | "wood" | "path" | "paving" | "roof") {
+    const m = this.solid(name, color);
+    new CoastalFinish(m, kind);
+    if (kind === "path" || kind === "paving") {
+      m.albedoTexture = this.rock.albedoTexture; m.bumpTexture = this.rock.bumpTexture;
+      m.metallicTexture = this.rock.metallicTexture;
+      m.useRoughnessFromMetallicTextureAlpha = false; m.useRoughnessFromMetallicTextureGreen = true;
+      m.useMetallnessFromMetallicTextureBlue = true; m.useAmbientOcclusionFromMetallicTextureRed = true;
+      m.invertNormalMapX = !this.scene.useRightHandedSystem; m.invertNormalMapY = this.scene.useRightHandedSystem;
+    }
+    return m;
   }
   constructor(private readonly scene: Scene) {
     this.environment = new HDRCubeTexture("./environment/coastal-daylight.hdr", scene, 128, false, true, false, true, undefined, () => this.fallbackFor(this.environment));

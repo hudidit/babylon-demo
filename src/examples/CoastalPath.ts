@@ -12,7 +12,9 @@ export function coastalPathGeometry(): CoastalGeometry {
     const dx = b.x - a.x, dy = b.y - a.y, length = Math.hypot(dx, dy);
     if (i) distance += Math.hypot(p.x - route[i - 1].x, p.y - route[i - 1].y);
     for (let col = 0; col <= 4; col++) {
-      const offset = (col / 4 - .5) * COASTAL_SITE.pathWidth, x = p.x - dy / length * offset, y = p.y + dx / length * offset;
+      // Only the outer shoulder meanders; the full 1.8m core remains clear and shares support triangles.
+      const shoulder = col === 0 || col === 4 ? Math.sign(col - 2) * (.035 + .025 * Math.sin(distance * 3.1)) : 0;
+      const offset = (col / 4 - .5) * COASTAL_SITE.pathWidth + shoulder, x = p.x - dy / length * offset, y = p.y + dx / length * offset;
       const height = coastalSurfaceHeight(x, y);
       if (height === undefined) throw new Error("Graybox path has no land beneath it");
       const v = planToWorld({ x, y }, height + .025); positions.push(v.x, v.y, v.z); uvs.push(col / 4, distance / 2);

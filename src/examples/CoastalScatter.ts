@@ -1,5 +1,5 @@
 import { Color3 } from "@babylonjs/core/pure";
-import { COASTAL_CLIFF, coastalCrestY, coastalGroundHeight } from "./CoastalCliff";
+import { COASTAL_CLIFF, coastalCrestY, coastalGroundHeight, coastalSurfaceHeight } from "./CoastalCliff";
 import { planToWorld } from "./HouseLayout";
 import type { CoastalGeometry } from "./CoastalCliff";
 import { coastalRoute, coastalRouteDistance, COASTAL_SITE } from "./CoastalSite";
@@ -11,8 +11,11 @@ export function coastalRockObstacles() { if (!obstacleCache) coastalScatter(); r
 /** Fixed clusters, buried rocks, folded opaque blades and low woody cushions; never photo cards. */
 export function coastalScatter() {
   const empty = (): CoastalScatterGeometry => ({ positions: [], indices: [], uvs: [], colors: [] });
-  const rocks = empty(), plants = empty(); let seed: number = COASTAL_CLIFF.seed;
+  let rocks = empty(), plants = empty(); let seed: number = COASTAL_CLIFF.seed;
+  const near = { rocks, plants }, zones: { rocks: CoastalScatterGeometry; plants: CoastalScatterGeometry }[] = [];
   const obstacles: RockObstacle[] = [];
+  let useTriangles = false;
+  const groundAt = (x: number, y: number) => useTriangles ? coastalSurfaceHeight(x, y)! : coastalGroundHeight(x, y);
   const route = coastalRoute();
   const random = () => { seed = Math.imul(seed, 1664525) + 1013904223 | 0; return (seed >>> 0) / 4294967296; };
   const vertex = (g: CoastalScatterGeometry, x: number, y: number, height: number, color: Color3) => {
@@ -21,7 +24,7 @@ export function coastalScatter() {
     g.colors.push(color.r, color.g, color.b, 1); return i;
   };
   const stone = (x: number, y: number, size: number) => {
-    const base = coastalGroundHeight(x, y) - size * .28, first = rocks.positions.length / 3;
+    const base = groundAt(x, y) - size * .28, first = rocks.positions.length / 3;
     const angle = random() * Math.PI * 2, stretch = .65 + random() * .6;
     if (size * .22 > .18) obstacles.push({ x, y, radius: size * 1.16 * Math.max(1, stretch) });
     for (let row = 0; row <= 4; row++) for (let col = 0; col <= 8; col++) {
@@ -39,7 +42,7 @@ export function coastalScatter() {
     }
   };
   const blade = (x: number, y: number, h: number, width: number, angle: number, color: Color3) => {
-    const ground = coastalGroundHeight(x, y) - .025, dx = Math.cos(angle) * width, dy = Math.sin(angle) * width;
+    const ground = groundAt(x, y) - .025, dx = Math.cos(angle) * width, dy = Math.sin(angle) * width;
     const lean = .18 * h, i = plants.positions.length / 3;
     vertex(plants, x - dx, y - dy, ground, color.scale(.48));
     vertex(plants, x + dx, y + dy, ground, color.scale(.48));
@@ -49,7 +52,7 @@ export function coastalScatter() {
     plants.indices.push(i, i + 2, i + 1, i + 1, i + 2, i + 3, i + 2, i + 4, i + 3);
   };
   const leaf = (x: number, y: number, phi: number, reach: number, height: number, color: Color3) => {
-    const ground = coastalGroundHeight(x, y), i = plants.positions.length / 3;
+    const ground = groundAt(x, y), i = plants.positions.length / 3;
     const dx = Math.cos(phi), dy = Math.sin(phi), width = reach * .18;
     vertex(plants, x, y, ground + height * .65, color.scale(.55));
     vertex(plants, x + dx * reach * .5 - dy * width, y + dy * reach * .5 + dx * width, ground + height, color);
@@ -78,6 +81,27 @@ export function coastalScatter() {
   // A few anchored rock groups define the crest beside the main sea-facing composition.
   [[-8, 38, 1.1], [-7, 39, .65], [-3, 22, .8], [2, 16.4, .55], [14, 16.6, .75], [16, 15.9, .4]]
     .forEach(([x, y, s]) => { if (y < coastalCrestY(x)) stone(x, y, s); });
+  // Sparse, seeded roadside clusters. Zone-local bounds permit useful culling and local shadows.
+  useTriangles = true;
+  for (let zone = 0; zone < 3; zone++) {
+    rocks = empty(); plants = empty(); zones.push({ rocks, plants });
+    for (let n = 0; n < 42; n++) {
+      const i = Math.min(route.length - 2, Math.floor(route.length * (.22 + (zone + random()) * .25)));
+      const p = route[i], next = route[i + 1], dx = next.x - p.x, dy = next.y - p.y, length = Math.hypot(dx, dy);
+      const side = random() < .5 ? -1 : 1, offset = side * (1.65 + random() * 2.2);
+      const x = p.x - dy / length * offset, y = p.y + dx / length * offset;
+      if (!Number.isFinite(coastalSurfaceHeight(x, y)) || y > coastalCrestY(x) - 1.5
+        || coastalRouteDistance(x, y, route) < 1.5
+        || Math.hypot(x - COASTAL_SITE.lookout.x, y - COASTAL_SITE.lookout.y) < 4
+        || Math.abs(x - COASTAL_SITE.tower.x) < 8 && Math.abs(y - COASTAL_SITE.tower.y) < 10) continue;
+      if (n % 7 === 0) stone(x, y, .2 + random() * .28);
+      const color = Color3.FromHexString(n % 3 ? "#8e985b" : "#aaa376").toLinearSpace();
+      for (let j = 0; j < 8; j++) {
+        const angle = random() * Math.PI * 2;
+        blade(x + Math.cos(angle) * .16, y + Math.sin(angle) * .16, .14 + random() * .29, .009, angle, color);
+      }
+    }
+  }
   obstacleCache = obstacles;
-  return { rocks, plants, obstacles };
+  return { ...near, zones, obstacles };
 }

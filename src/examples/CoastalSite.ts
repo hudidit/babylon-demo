@@ -1,8 +1,8 @@
 import type { PlanPoint } from "./HouseLayout";
 
-/** Shared metre-based layout for the graybox, map and later walking surfaces. */
+/** Shared metre-based layout shared by the exterior, map and walking surfaces. */
 export const COASTAL_SITE = Object.freeze({
-  version: "lighthouse-walking-b-v1",
+  version: "lighthouse-visual-c-v1",
   pathWidth: 1.8,
   tower: Object.freeze({ x: -125, y: 90, ground: 3, height: 20, radius: 2.8 }),
   plaza: Object.freeze({ width: 14, depth: 18 }),

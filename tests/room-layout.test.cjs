@@ -114,7 +114,7 @@ test("ocean visibility, camera layers, page transitions and disposal stop the sh
   const count = scene.onBeforeRenderObservable.observers.length;
   exterior.dispose(); exterior.dispose(); advance();
   assert.ok(Math.abs(ocean.clock.seconds - .15) < 1e-9);
-  assert.equal(scene.onBeforeRenderObservable.observers.filter(o => !o._willBeUnregistered).length, count - 1);
+  assert.equal(scene.onBeforeRenderObservable.observers.filter(o => !o._willBeUnregistered).length, count - 2);
   assert.ok(!scene.textures.includes(ocean.shoreTexture));
   assert.ok(!scene.materials.includes(ocean.material));
 });
@@ -259,7 +259,8 @@ test("coastal PBR isolates daylight, reuses maps, caches a local caster list and
   assert.ok(scene.getLightByName('room-bounce-light').excludedMeshes.includes(exterior.meshes[0]));
   for (const m of s.materials) {
     assert.equal(m.reflectionTexture, s.environment);
-    assert.equal(m.metallic, 0);
+    if (/^coastal-(rock|ground|foliage)/.test(m.name)) assert.equal(m.metallic, 0);
+    else assert.ok(m.metallic >= 0 && m.metallic <= .7, 'exterior architectural metals remain within their physical range');
     if (!m.bumpTexture) continue;
     assert.equal(m.albedoTexture.gammaSpace, true);
     assert.equal(m.bumpTexture.gammaSpace, false);
@@ -279,7 +280,7 @@ test("coastal PBR isolates daylight, reuses maps, caches a local caster list and
   assert.equal(shadow.refreshRate, babylon.RenderTargetTexture.REFRESHRATE_RENDER_ONCE);
   exterior.bindShadowCasters([interior]);
   assert.ok(shadow.renderList.length > 0);
-  assert.ok(shadow.renderList.every(m => ['rocks', 'vegetation', 'foundation'].includes(m.metadata.exteriorLayer)));
+  assert.ok(shadow.renderList.every(m => ['rocks', 'vegetation', 'foundation', 'landmark', 'house-roof'].includes(m.metadata.exteriorLayer)));
   assert.ok(!shadow.renderList.includes(interior) && !shadow.renderList.includes(scene.getMeshByName('coastal-sea')));
   const rooms = new HouseRooms(), builds = HOUSE_ROOMS.map(r => rooms.begin(r.id));
   rooms.own(builds, exterior, () => exterior.dispose());

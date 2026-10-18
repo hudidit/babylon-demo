@@ -1,6 +1,6 @@
 import { Color3, DirectionalLight, Mesh, Plane, RenderTargetTexture, ShadowGenerator, PBRMaterial, StandardMaterial, Vector3, VertexBuffer, VertexData, CreateSphere } from "@babylonjs/core/pure";
 import type { AbstractMesh, Material, Scene } from "@babylonjs/core/pure";
-import { HOUSE_COORDINATES, HOUSE_ROOMS, planToWorld } from "./HouseLayout";
+import { HOUSE_COORDINATES, HOUSE_ROOMS, planToWorld, worldToPlan } from "./HouseLayout";
 import { setRoomOwners } from "./RoomOwnership";
 import { COASTAL_CLIFF, coastalBoundary, coastalFoundation, coastalLandPatch, coastalSea, coastalSeaY,
   coastalUnderside, coastalWallPatch } from "./CoastalCliff";
@@ -10,7 +10,7 @@ import { coastalScatter } from "./CoastalScatter";
 import { COASTAL_SKY, coastalSkyColor, coastalSunDirection } from "./CoastalSky";
 import { CoastalOcean } from "./CoastalOcean";
 import { createCoastalLandmark } from "./CoastalLandmark";
-import { COASTAL_SITE, coastalRouteLength } from "./CoastalSite";
+import { COASTAL_SITE, coastalRouteLength, coastalRoute } from "./CoastalSite";
 import { coastalSurfaceHeight } from "./CoastalCliff";
 
 type ExteriorLayer = "terrain" | "cliff" | "foundation" | "vegetation" | "rocks" | "distant" | "sea" | "sky" | "landmark" | "path" | "house-roof";
@@ -22,7 +22,13 @@ export class RoomExterior {
   readonly sun: DirectionalLight;
   readonly shadow: ShadowGenerator;
   readonly ocean: CoastalOcean;
-  private readonly houseRoof: Mesh;
+  private readonly houseRoof: Mesh[];
+  private readonly detailMeshes: Mesh[];
+  private readonly shadowAnchors: Vector3[] = [];
+  private shadowAnchor = 0;
+  private visible = true;
+  private enclosed = true;
+  private readonly visualUpdate;
   private readonly cutaway = new Plane(0, 0, 1, 0);
   private readonly clippedMaterials: (PBRMaterial | StandardMaterial)[] = [];
   private readonly corners: { x: number; z: number }[] = [];
@@ -44,10 +50,10 @@ export class RoomExterior {
     };
     const sky = unlit("coastal-sky");
     const retain = (mesh: Mesh, layer: ExteriorLayer) => {
-      mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "lighthouse-B", castsShadows: false, lightRooms: [] };
+      mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "lighthouse-C", castsShadows: false, lightRooms: [] };
       setRoomOwners(mesh, owners);
       mesh.isPickable = false; mesh.checkCollisions = false;
-      mesh.receiveShadows = ["terrain", "foundation", "vegetation", "rocks"].includes(layer);
+      mesh.receiveShadows = ["terrain", "foundation", "vegetation", "rocks", "landmark", "path", "house-roof"].includes(layer);
       mesh.freezeWorldMatrix(); this.meshes.push(mesh);
       return mesh;
     };
@@ -80,7 +86,12 @@ export class RoomExterior {
     const scatter = coastalScatter();
     make("coastal-anchored-rocks", scatter.rocks, "rocks", s.rock);
     make("coastal-grass-and-shrubs", scatter.plants, "vegetation", s.foliage);
+    scatter.zones.forEach((g, i) => {
+      make(`coastal-path-rocks-${i}`, g.rocks, "rocks", s.rock);
+      make(`coastal-path-plants-${i}`, g.plants, "vegetation", s.foliage);
+    });
     this.houseRoof = createCoastalLandmark(scene, s, retain);
+    this.detailMeshes = this.meshes.filter(m => m.metadata.detailDistance);
     this.ocean = new CoastalOcean(scene, make("coastal-sea", coastalSea(), "sea", sky));
 
     const dome = CreateSphere("coastal-sky", { diameter: a.skyRadius * 2, segments: 96, sideOrientation: Mesh.BACKSIDE }, scene);
@@ -104,10 +115,19 @@ export class RoomExterior {
     this.shadow.usePercentageCloserFiltering = true; this.shadow.filteringQuality = ShadowGenerator.QUALITY_MEDIUM;
     this.shadow.bias = .00015; this.shadow.normalBias = .045;
     this.shadow.getShadowMap()!.refreshRate = RenderTargetTexture.REFRESHRATE_RENDER_ONCE;
+    this.shadowAnchors.push(new Vector3(0, -5, 30));
+    const route = coastalRoute();
+    for (let i = 120; i < route.length - 65; i += 72) {
+      const p = planToWorld(route[i], coastalSurfaceHeight(route[i].x, route[i].y)! + 3);
+      this.shadowAnchors.push(new Vector3(p.x, p.y, p.z));
+    }
+    const tower = planToWorld(COASTAL_SITE.tower, COASTAL_SITE.tower.ground + 7);
+    this.shadowAnchors.push(new Vector3(tower.x, tower.y, tower.z));
     this.bindShadowCasters([]);
+    this.visualUpdate = scene.onBeforeRenderObservable.add(() => this.updateVisuals());
     this.sceneCleanup = scene.onDisposeObservable.addOnce(() => this.dispose());
     scene.metadata = { ...scene.metadata, exteriorVersion: a.version,
-      coastalSite: { version: COASTAL_SITE.version, stage: "B", outdoorWalking: true,
+      coastalSite: { version: COASTAL_SITE.version, stage: "C", outdoorWalking: true,
         tower: COASTAL_SITE.tower, routeLength: coastalRouteLength((x, y) => coastalSurfaceHeight(x, y)!) } };
   }
 
@@ -115,16 +135,51 @@ export class RoomExterior {
   bindShadowCasters(house: AbstractMesh[]) {
     const shell = house.filter(m => !m.metadata?.exterior && !m.metadata?.collisionOnly &&
       (m.metadata?.structure === "wall" && m.metadata?.span?.owners.length === 1 || /^balcony-rail-/.test(m.name)));
-    const local = this.meshes.filter(m => ["rocks", "vegetation", "foundation"].includes(m.metadata.exteriorLayer));
+    const local = this.meshes.filter(m => ["rocks", "vegetation", "foundation", "landmark", "house-roof"].includes(m.metadata.exteriorLayer)
+      && m.material instanceof PBRMaterial && m.material.alpha === 1
+      && !/plaza|lookout$/.test(m.name));
     this.shadow.getShadowMap()!.renderList = [...local, ...shell];
     this.refreshShadows();
   }
   refreshShadows() { if (!this.disposed) this.shadow.getShadowMap()?.resetRefreshCounter(); }
-  setHouseEnclosed(enclosed: boolean) { this.houseRoof.isVisible = enclosed; }
+  setHouseEnclosed(enclosed: boolean) { this.enclosed = enclosed; this.houseRoof.forEach(m => m.isVisible = enclosed && this.visible); }
   setVisible(visible: boolean) {
+    this.visible = visible;
     this.meshes.forEach(mesh => mesh.isVisible = visible); this.sun.setEnabled(visible);
+    this.setHouseEnclosed(this.enclosed);
     this.ocean.setVisible(visible);
     if (visible) this.refreshShadows();
+  }
+
+  /** One cached local map with overlapping zones and 6m selection hysteresis. No background refresh. */
+  updateVisuals() {
+    const camera = this.scene.activeCamera;
+    if (this.disposed || !this.visible || !camera || this.scene.getEngine().getRenderingCanvas()?.ownerDocument.hidden) return;
+    const eye = camera.globalPosition, p = worldToPlan(eye);
+    let best = 0, distance = Infinity;
+    this.shadowAnchors.forEach((a, i) => {
+      const d = Math.hypot(a.x - eye.x, a.z - eye.z);
+      if (d < distance) { best = i; distance = d; }
+    });
+    const current = this.shadowAnchors[this.shadowAnchor];
+    if (best !== this.shadowAnchor && Math.hypot(current.x - eye.x, current.z - eye.z) > distance + 30) {
+      this.shadowAnchor = best;
+      this.sun.position.copyFrom(this.shadowAnchors[best]).addInPlace(coastalSunDirection.scale(240));
+      this.sun.shadowFrustumSize = best === 0 ? 250 : 280;
+      // Wider outdoor coverage and the curved tower need more depth/normal separation.
+      // Keep the previously validated near-house bias when returning to zone zero.
+      this.shadow.bias = best === 0 ? .00015 : .001;
+      this.shadow.normalBias = best === 0 ? .045 : .25;
+      this.refreshShadows();
+    }
+    let detailChanged = false;
+    for (const mesh of this.detailMeshes) {
+      const range = mesh.metadata.detailDistance + (mesh.isVisible ? 10 : -10);
+      const visible = Math.hypot(p.x - COASTAL_SITE.tower.x, p.y - COASTAL_SITE.tower.y) < range;
+      detailChanged ||= mesh.isVisible !== visible; mesh.isVisible = visible;
+    }
+    if (detailChanged) this.refreshShadows();
+    this.scene.metadata.coastalSite.shadowZone = this.shadowAnchor;
   }
 
   /** Only close land may obstruct cutaways. Sea, sky and distant coast always remain complete. */
@@ -146,6 +201,7 @@ export class RoomExterior {
   dispose() {
     if (this.disposed) return; this.disposed = true;
     this.scene.onDisposeObservable.remove(this.sceneCleanup);
+    this.scene.onBeforeRenderObservable.remove(this.visualUpdate);
     this.ocean.dispose(); this.shadow.dispose(); this.sun.dispose();
     this.meshes.forEach(m => m.dispose(false, false));
     this.unlit.forEach(m => m.dispose(false, false)); this.surfaces.dispose();

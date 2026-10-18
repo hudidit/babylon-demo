@@ -1,0 +1,30 @@
+{
+  "fpsOrLoadTimeSampling": false,
+  "sourceBaseline": "6d7e644",
+  "state": {
+    "fallbacks": [
+      "./textures/coastal/rock-color.jpg",
+      "./environment/coastal-daylight.hdr"
+    ],
+    "indoor": "./environment/study-interior.hdr",
+    "shaftReady": true,
+    "feet": 3.04,
+    "mini": "海岸地图"
+  },
+  "passed": true,
+  "errors": [
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_FAILED"
+  ],
+  "warnings": [],
+  "expectedAborted": [
+    "http://127.0.0.1:8173/environment/coastal-daylight.hdr",
+    "http://127.0.0.1:8173/textures/coastal/rock-color.jpg",
+    "http://127.0.0.1:8173/environment/coastal-daylight.hdr",
+    "http://127.0.0.1:8173/environment/coastal-daylight.hdr",
+    "http://127.0.0.1:8173/environment/coastal-daylight.hdr"
+  ]
+}

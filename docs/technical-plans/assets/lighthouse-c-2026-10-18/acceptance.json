@@ -1,0 +1,751 @@
+{
+  "date": "2026-10-18",
+  "sourceBaseline": "6d7e644",
+  "stage": "lighthouse-C",
+  "passed": true,
+  "engineering": {
+    "tests": 139,
+    "typecheck": true,
+    "developmentBuild": true,
+    "productionBuildAndRelease": true
+  },
+  "release": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26211000,
+    "runtimeBytes": 15867631,
+    "documentationBytes": 67591,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2617031,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42238926
+  },
+  "initialJsBytes": 2835883,
+  "initialJsRequests": [
+    {
+      "url": "http://127.0.0.1:8173/js/main.js",
+      "status": 200,
+      "bytes": 196853,
+      "phase": "initial"
+    },
+    {
+      "url": "http://127.0.0.1:8173/js/9691.js",
+      "status": 200,
+      "bytes": 2420178,
+      "phase": "initial"
+    },
+    {
+      "url": "http://127.0.0.1:8173/js/1203.js",
+      "status": 200,
+      "bytes": 138571,
+      "phase": "initial"
+    },
+    {
+      "url": "http://127.0.0.1:8173/js/8558.js",
+      "status": 200,
+      "bytes": 12560,
+      "phase": "initial"
+    },
+    {
+      "url": "http://127.0.0.1:8173/js/7449.js",
+      "status": 200,
+      "bytes": 2072,
+      "phase": "initial"
+    },
+    {
+      "url": "http://127.0.0.1:8173/js/6612.js",
+      "status": 200,
+      "bytes": 14807,
+      "phase": "initial"
+    },
+    {
+      "url": "http://127.0.0.1:8173/js/4742.js",
+      "status": 200,
+      "bytes": 8962,
+      "phase": "initial"
+    },
+    {
+      "url": "http://127.0.0.1:8173/js/5587.js",
+      "status": 200,
+      "bytes": 1107,
+      "phase": "initial"
+    },
+    {
+      "url": "http://127.0.0.1:8173/js/9615.js",
+      "status": 200,
+      "bytes": 9069,
+      "phase": "initial"
+    },
+    {
+      "url": "http://127.0.0.1:8173/js/4472.js",
+      "status": 200,
+      "bytes": 14991,
+      "phase": "initial"
+    },
+    {
+      "url": "http://127.0.0.1:8173/js/6560.js",
+      "status": 200,
+      "bytes": 2517,
+      "phase": "initial"
+    },
+    {
+      "url": "http://127.0.0.1:8173/js/9915.js",
+      "status": 200,
+      "bytes": 14196,
+      "phase": "initial"
+    }
+  ],
+  "scene": {
+    "meshes": 640,
+    "vertices": 559760,
+    "materials": 90,
+    "textures": 147,
+    "lights": 16,
+    "cameras": 3,
+    "exteriorMeshes": 45,
+    "exteriorVertices": 153852,
+    "shadowSize": {
+      "width": 1024,
+      "height": 1024
+    },
+    "casters": [
+      "coastal-house-plinth",
+      "coastal-anchored-rocks",
+      "coastal-grass-and-shrubs",
+      "coastal-path-rocks-0",
+      "coastal-path-plants-0",
+      "coastal-path-rocks-1",
+      "coastal-path-plants-1",
+      "coastal-path-rocks-2",
+      "coastal-path-plants-2",
+      "coastal-lighthouse-plinth",
+      "coastal-lighthouse-shaft",
+      "coastal-lighthouse-metalwork",
+      "coastal-lighthouse-cap",
+      "coastal-lighthouse-recesses",
+      "coastal-lighthouse-fine-metal",
+      "coastal-lighthouse-door-handle",
+      "coastal-lighthouse-lens",
+      "coastal-walk-guardrail",
+      "coastal-lookout-timber",
+      "coastal-lookout-frame",
+      "coastal-route-signs",
+      "coastal-route-sign-marks",
+      "coastal-house-roof",
+      "coastal-house-eaves",
+      "coastal-house-sills",
+      "house-wall-0-low",
+      "house-wall-0-upper",
+      "house-wall-1-low",
+      "house-wall-1-upper",
+      "house-wall-2-upper",
+      "house-wall-3-low",
+      "house-wall-3-upper",
+      "house-wall-4-low",
+      "house-wall-4-upper",
+      "house-wall-5-low",
+      "house-wall-5-upper",
+      "house-wall-6-upper",
+      "house-wall-7-low",
+      "house-wall-7-upper",
+      "house-wall-8-low",
+      "house-wall-8-upper",
+      "house-wall-9-low",
+      "house-wall-9-upper",
+      "house-wall-10-upper",
+      "house-wall-11-low",
+      "house-wall-11-upper",
+      "house-wall-16-low",
+      "house-wall-16-upper",
+      "house-wall-17-low",
+      "house-wall-17-upper",
+      "house-wall-18-low",
+      "house-wall-18-upper",
+      "house-wall-19-upper",
+      "house-wall-20-low",
+      "house-wall-20-upper",
+      "house-wall-21-low",
+      "house-wall-21-upper",
+      "balcony-rail-32-study-darkWood",
+      "house-wall-40-low",
+      "house-wall-40-upper",
+      "house-wall-41-low",
+      "house-wall-41-upper",
+      "house-wall-42-upper",
+      "house-wall-43-low",
+      "house-wall-43-upper",
+      "house-wall-44-low",
+      "house-wall-44-upper",
+      "house-wall-45-upper",
+      "house-wall-46-low",
+      "house-wall-46-upper",
+      "balcony-rail-47-study-darkWood",
+      "house-wall-51-low",
+      "house-wall-51-upper",
+      "house-wall-52-low",
+      "house-wall-52-upper",
+      "house-wall-53-upper",
+      "house-wall-54-low",
+      "house-wall-54-upper",
+      "balcony-rail-58-study-darkWood"
+    ]
+  },
+  "drawComparison": [
+    {
+      "name": "entry-outside",
+      "before": 22,
+      "after": 30,
+      "delta": 8,
+      "allPassesDelta": 17
+    },
+    {
+      "name": "house-north",
+      "before": 17,
+      "after": 21,
+      "delta": 4,
+      "allPassesDelta": 13
+    },
+    {
+      "name": "coast-path-toward-tower",
+      "before": 28,
+      "after": 35,
+      "delta": 7,
+      "allPassesDelta": 7
+    },
+    {
+      "name": "lookout-back-to-house",
+      "before": 21,
+      "after": 29,
+      "delta": 8,
+      "allPassesDelta": 17
+    },
+    {
+      "name": "tower-plaza-back-to-house",
+      "before": 28,
+      "after": 40,
+      "delta": 12,
+      "allPassesDelta": 23
+    },
+    {
+      "name": "cape-toward-tower",
+      "before": 17,
+      "after": 24,
+      "delta": 7,
+      "allPassesDelta": 7
+    }
+  ],
+  "shadowCache": {
+    "sameTexture": true,
+    "samePosition": true,
+    "stationaryRefreshes": 0
+  },
+  "walking": {
+    "passed": true,
+    "travel": [
+      {
+        "name": "walk-home-to-lighthouse",
+        "elapsed": 163.43160000002385
+      },
+      {
+        "name": "walk-around-lighthouse",
+        "elapsed": 28.48609999990463
+      },
+      {
+        "name": "walk-lighthouse-to-home",
+        "elapsed": 163.01060000002383
+      }
+    ],
+    "renderingCandidate": "Final geometry/batching/support/input; before the final outdoor-only shadow bias calibration. Raw request lengths remain in browser.json; final release requests are measured independently in regression/browser.json and subpath.json."
+  },
+  "browserMatrix": {
+    "cases": 12,
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "chromeKeyboard": true,
+    "webkitKeyboard": false,
+    "physicalDevices": false
+  },
+  "materialFaults": {
+    "passed": true,
+    "uniqueAbortedResources": [
+      "http://127.0.0.1:8173/environment/coastal-daylight.hdr",
+      "http://127.0.0.1:8173/textures/coastal/rock-color.jpg"
+    ],
+    "expectedNetworkFailures": 5
+  },
+  "performanceSampling": false,
+  "untested": [
+    "Firefox",
+    "Safari",
+    "physical mobile devices",
+    "bright-screen FPS",
+    "GPU time",
+    "peak VRAM",
+    "loading duration"
+  ],
+  "inputs": [
+    {
+      "path": "package-lock.json",
+      "bytes": 293843,
+      "sha256": "e94ba83cc02d96a6954d091bf84233bceee7275e85107453a75f772a8a629dcf"
+    },
+    {
+      "path": "package.json",
+      "bytes": 967,
+      "sha256": "d0b503f1aafb821f442916332ca0267497ca6fd05c7dd1c3919552acbcd5b6a9"
+    },
+    {
+      "path": "public/STUDY_ASSET_SOURCES.md",
+      "bytes": 6476,
+      "sha256": "10a77822aa6c86b9166555734704d33f11941f9fe499bfa36104c1b68e1309b5"
+    },
+    {
+      "path": "public/environment/coastal-cliff-source.json",
+      "bytes": 5814,
+      "sha256": "a9380751b113ff9042963cef0f96807d2ec8d293245abffe70acbfa097210c25"
+    },
+    {
+      "path": "src/app.ts",
+      "bytes": 133,
+      "sha256": "b89f0ceccfc146b7e2bb7372884beae4f1286a20a6bd10b10cd8db60c4799119"
+    },
+    {
+      "path": "src/components/BasicExamples.ts",
+      "bytes": 7731,
+      "sha256": "edf5a7b1e06e620259f9ce875ad7d35b4280d7307ae3e2143cba1090ec9d5be5"
+    },
+    {
+      "path": "src/examples/BasicScene.ts",
+      "bytes": 6880,
+      "sha256": "e23b01945715d5f005041187928b9176b1dc6f0852dfcb05bc0c3c864d11925d"
+    },
+    {
+      "path": "src/examples/BigRoom.ts",
+      "bytes": 2321,
+      "sha256": "4859a3ac6c1495d5aa79b21943bf1e5e9b57b40923adaf54f8d50b47495f1e6c"
+    },
+    {
+      "path": "src/examples/BookshelfLayout.ts",
+      "bytes": 2584,
+      "sha256": "158bd501e25945ce23bbe50e1e0134337e31bf8ef38eab2313c5341f56698456"
+    },
+    {
+      "path": "src/examples/CoastalCliff.ts",
+      "bytes": 12919,
+      "sha256": "313ecfc00850d766782bccbb0e7aa80c5bbf74da1219ea1831a9ebcde6ea9ba0"
+    },
+    {
+      "path": "src/examples/CoastalLandmark.ts",
+      "bytes": 13226,
+      "sha256": "75bb7e255d5f688b029f88609588b76b997ff131cd454a394bbca5df11c08845"
+    },
+    {
+      "path": "src/examples/CoastalMap.ts",
+      "bytes": 3016,
+      "sha256": "01e5aa8860dce98143e0a204fe046f43e1f7a9099c2a893582c0a7a746e35241"
+    },
+    {
+      "path": "src/examples/CoastalMaterials.ts",
+      "bytes": 8247,
+      "sha256": "f2a37afef744dfb0154972bd9df2e28952196827a280a09779aa9c0c57595687"
+    },
+    {
+      "path": "src/examples/CoastalOcean.ts",
+      "bytes": 12865,
+      "sha256": "aa50e7a889972924ea4fecf5a67330e1445023c41e010487b62f8af6cd1a69be"
+    },
+    {
+      "path": "src/examples/CoastalPath.ts",
+      "bytes": 4535,
+      "sha256": "e4c155df42afb723fdd8fa6a6377e0b2ead5552b7a53326aee4047740b357388"
+    },
+    {
+      "path": "src/examples/CoastalScatter.ts",
+      "bytes": 7391,
+      "sha256": "245d4ecb26a8f9243c306b8afc26d1ca54ff2244d612be61d051d454ea7e5235"
+    },
+    {
+      "path": "src/examples/CoastalSite.ts",
+      "bytes": 4765,
+      "sha256": "aacc8190a60fe5407592b906e0608edeae35fed2f47eff8136e7f94d21bd6284"
+    },
+    {
+      "path": "src/examples/CoastalSky.ts",
+      "bytes": 866,
+      "sha256": "67758a5b0ac80f8049ee8c72d08ed4cb8abe67b22df3d07e42a8382075f8a209"
+    },
+    {
+      "path": "src/examples/CustomModels.ts",
+      "bytes": 3396,
+      "sha256": "efc2150cac93193a00b0ff097c498785d086c08425a2d6f06c351a3bac2faa2f"
+    },
+    {
+      "path": "src/examples/Grass.ts",
+      "bytes": 5400,
+      "sha256": "a51ecbd10b6f47932a5eff4c70227fa7025b6173a03ea6d92348e0f0bccc38bf"
+    },
+    {
+      "path": "src/examples/HouseArchitecture.ts",
+      "bytes": 11100,
+      "sha256": "318633a8c00c8af4e8048fde9a1852cc62fc32d248edda0052468476b96bc02e"
+    },
+    {
+      "path": "src/examples/HouseBalcony.ts",
+      "bytes": 1587,
+      "sha256": "50478c5410fa8d018c867cab9cf0d385edf8258297cc2b72a45e09418667edd4"
+    },
+    {
+      "path": "src/examples/HouseBedroom.ts",
+      "bytes": 2512,
+      "sha256": "2e0830835431736375feded5913680220218324ece061eb3a1a5b822e5aab975"
+    },
+    {
+      "path": "src/examples/HouseContent.ts",
+      "bytes": 3577,
+      "sha256": "397423ec8b5a25ba5883748f240c55ba85314b542aaabf6d56c2f961d64bab8d"
+    },
+    {
+      "path": "src/examples/HouseFloorPlan.ts",
+      "bytes": 5425,
+      "sha256": "3bf6ab1482f58c5187605769ead13c1635a2c7235226fac66cd54a543d6812b9"
+    },
+    {
+      "path": "src/examples/HouseJump.ts",
+      "bytes": 9282,
+      "sha256": "8f0c44a155b8cf493acce463dff4dcdbe7ea7522209c40174b1653031f582ba9"
+    },
+    {
+      "path": "src/examples/HouseLayout.ts",
+      "bytes": 4250,
+      "sha256": "96896fc76834c5cd795d1385aa23d97d3ca976d4e43a393542438d2d72a538df"
+    },
+    {
+      "path": "src/examples/HouseRoomComponents.ts",
+      "bytes": 9453,
+      "sha256": "b493418ce0b3f73c040623d76a92ba7e530f5891ef8b9943002f4f1146932380"
+    },
+    {
+      "path": "src/examples/HouseRooms.ts",
+      "bytes": 4348,
+      "sha256": "33c7d58a3cde859ec4c158e0ecac64f6612fcb6e73b7c78d00bdb7531c2c2d39"
+    },
+    {
+      "path": "src/examples/HouseServiceRooms.ts",
+      "bytes": 5955,
+      "sha256": "6f6d1eb89c605f3bdb1b5d620ba7262197aa41397aa3dec78fe939bc3384b399"
+    },
+    {
+      "path": "src/examples/HouseStructure.ts",
+      "bytes": 4560,
+      "sha256": "e5b896662e0c7fc5074779dce611db2e6d4483bd2ebea940d6beef3a182c6693"
+    },
+    {
+      "path": "src/examples/HouseSuite.ts",
+      "bytes": 3726,
+      "sha256": "8fdb1e1ccc77bace6eddb7189258d84df88b131fe001dbfe66978947ba880df9"
+    },
+    {
+      "path": "src/examples/HouseWalking.ts",
+      "bytes": 1582,
+      "sha256": "33664169709893cc18e66934fb09407e0f0faa4d6e4864de1aadf00f57475912"
+    },
+    {
+      "path": "src/examples/PBR.ts",
+      "bytes": 3649,
+      "sha256": "ce9a4c1691f5e34bb869bff005a76bd3d581f5bd19fe0ca40de7728b341bb6a4"
+    },
+    {
+      "path": "src/examples/Rocket.ts",
+      "bytes": 4522,
+      "sha256": "eca5066f40907ee2588a03a456a88d6f903abe20efc45177d8f66a26b089912a"
+    },
+    {
+      "path": "src/examples/Room.ts",
+      "bytes": 38103,
+      "sha256": "be36c79977841ad38effb6a83015e012698209d784ec5d96b2f45b32afdecb66"
+    },
+    {
+      "path": "src/examples/RoomAudio.ts",
+      "bytes": 12784,
+      "sha256": "2ccf413bf37f2c509112b809226de54d6bbd58ee257b6717634c4b123b1fa3b8"
+    },
+    {
+      "path": "src/examples/RoomAudioBackend.ts",
+      "bytes": 3983,
+      "sha256": "3e6cf66bab8c2f1b38fe5fee05fb06dda2eb3b17a2b00d3b28c9efed62f92bf9"
+    },
+    {
+      "path": "src/examples/RoomAudioCatalog.ts",
+      "bytes": 2963,
+      "sha256": "306f258c47ab0b5704924275486f5dcec5ffc18bfc050f4e964ca4e913e2b52a"
+    },
+    {
+      "path": "src/examples/RoomCollisions.ts",
+      "bytes": 1343,
+      "sha256": "7e0eb56b7b95d2f402d712cc106cbf9e3842a54dd864b7947751dfbec50ea4c3"
+    },
+    {
+      "path": "src/examples/RoomDetailGeometry.ts",
+      "bytes": 5663,
+      "sha256": "bf582a11443ed1fd0c986642cd60a65e711179c18713b38b9c4342d1351d1276"
+    },
+    {
+      "path": "src/examples/RoomExterior.ts",
+      "bytes": 12683,
+      "sha256": "e87068c0dffc27c4cd9bd05cb3e29b0a13d8d2281251183473fa5f302d7a7a41"
+    },
+    {
+      "path": "src/examples/RoomFinishing.ts",
+      "bytes": 973,
+      "sha256": "7b7f2357fac5389ac452b7ee94cf21bcb80f2871e9ae76d61169ded1bc5e308b"
+    },
+    {
+      "path": "src/examples/RoomFloorPlan.ts",
+      "bytes": 9984,
+      "sha256": "bb97b077058ce191d0be7fab4f16cb3dedc959092fe4c346f774c9b3d5b4f805"
+    },
+    {
+      "path": "src/examples/RoomFurnishings.ts",
+      "bytes": 51733,
+      "sha256": "d0b35b440eccb038240627ca1d14924f9456ce45702a7e47c575f50b35f2644c"
+    },
+    {
+      "path": "src/examples/RoomFurnitureAssets.ts",
+      "bytes": 2152,
+      "sha256": "99800111e655970da0fe97c41ce4464449ea0bda8b1fd757c00423bc663bcae7"
+    },
+    {
+      "path": "src/examples/RoomInteractions.ts",
+      "bytes": 14272,
+      "sha256": "0b35772b72f5f6046fc653c0c358b240316eeee09b618ab4d915740d190d80b8"
+    },
+    {
+      "path": "src/examples/RoomItemInspection.ts",
+      "bytes": 3595,
+      "sha256": "c7c42fe3723b93ea27586db57b3753f7df7c54484e78157b418ef7066d3634d0"
+    },
+    {
+      "path": "src/examples/RoomLayout.ts",
+      "bytes": 1177,
+      "sha256": "1dc8003bfe25f746bbd5aa835dd3388fb310a76fb4148f5508d6ddfc0ba132c8"
+    },
+    {
+      "path": "src/examples/RoomLegacyArchitecture.ts",
+      "bytes": 2959,
+      "sha256": "596858ece3cd35a633ceb4b5bd0a16c497d7c0c8928301db522906fbceb8c4a3"
+    },
+    {
+      "path": "src/examples/RoomLighting.ts",
+      "bytes": 14170,
+      "sha256": "e9848554f698a4e6ec0e9f053c4587bd3a838b98bf923aef2cc8d42a2d33c1b6"
+    },
+    {
+      "path": "src/examples/RoomLivingRoom.ts",
+      "bytes": 12444,
+      "sha256": "85efcce388d59748fb0034498d2331509e255904f684d7ca4565fe1a4b36141b"
+    },
+    {
+      "path": "src/examples/RoomMaterialLibrary.ts",
+      "bytes": 1130,
+      "sha256": "d4864800cfb3088900095d2d0d99c6d698aa8ed3fa416d96cfddba4b58dcdc45"
+    },
+    {
+      "path": "src/examples/RoomMaterials.ts",
+      "bytes": 2861,
+      "sha256": "872f5c29b4b26a3d9f3166d49ea656e7c5b92187547d321de6c79ac53d0f012c"
+    },
+    {
+      "path": "src/examples/RoomMirrors.ts",
+      "bytes": 3295,
+      "sha256": "90783ebb510c1d0d83bd7fe434df4c2e4163a3cf01626233fe06ea6d973d8b75"
+    },
+    {
+      "path": "src/examples/RoomOwnership.ts",
+      "bytes": 710,
+      "sha256": "671fbf44c73a62a83b63cf0728080246fe02bb37721403c433aa4780fdecfb34"
+    },
+    {
+      "path": "src/examples/RoomPointerLock.ts",
+      "bytes": 1927,
+      "sha256": "a70de7ba6a84b7700be44a53a54ede8c33d2357aae0a496d845df0952ce60bff"
+    },
+    {
+      "path": "src/examples/RoomRuntime.ts",
+      "bytes": 1845,
+      "sha256": "c261b5f6542b8b1405b26f05c9c1b583f27437a70861c1c083b4c0dcf18a2762"
+    },
+    {
+      "path": "src/examples/RoomShaders.ts",
+      "bytes": 2010,
+      "sha256": "141420f50a89d81b4f25e43d24dc282b7405b86b337b0877849f54001df2ff96"
+    },
+    {
+      "path": "src/examples/RoomSurfaceDetails.ts",
+      "bytes": 4409,
+      "sha256": "1f0049cbdd9fd280ff5ef04a3f7a36dcb1926573e55f456c846f722d7cd97809"
+    },
+    {
+      "path": "src/examples/Shadows.ts",
+      "bytes": 2300,
+      "sha256": "d2fb9633c9fef9125c42dae7205215fa040213e0b20e056d88fdf298ee3857b2"
+    },
+    {
+      "path": "src/examples/StandardMaterials.ts",
+      "bytes": 3091,
+      "sha256": "7f48c0435afca396036f93cbe368b8dd976dd8f126d3dae969a71e58af453e9f"
+    },
+    {
+      "path": "src/examples/Textures.ts",
+      "bytes": 6971,
+      "sha256": "472264476c342d030edfc8231aade681d08babae04c53febb5e807f03b5378dd"
+    },
+    {
+      "path": "src/examples/WalkingSurface.ts",
+      "bytes": 6913,
+      "sha256": "b8bc4ca2206eee957437e1acc7fef9736c104fa2117bc3227abc06c1aa68d877"
+    },
+    {
+      "path": "tests/coastal-assets.test.cjs",
+      "bytes": 3212,
+      "sha256": "ffd03cc56da74c2c57186ed1283819807ef8cc2a8490f396624e40372dbbceb4"
+    },
+    {
+      "path": "tests/fixtures/room-runtime-probe.cjs",
+      "bytes": 4924,
+      "sha256": "a68c60078c446e1566d469e2833faca91daeae4c995a4987894a6258f880d5c2"
+    },
+    {
+      "path": "tests/house-floor-plan.test.cjs",
+      "bytes": 6365,
+      "sha256": "406e53066cacbb71f955847cdfea6418cbbda856932f0b74c10d4dcac7272464"
+    },
+    {
+      "path": "tests/house-layout-foundation.test.cjs",
+      "bytes": 6594,
+      "sha256": "e2f10568de765fd0398f12d8ddeec0d7bd2c896ab9cab06dbd6649a1817f7d80"
+    },
+    {
+      "path": "tests/lighthouse-site.test.cjs",
+      "bytes": 19173,
+      "sha256": "fbf99b5030fc5fd23b387b95c9cc50176104f56e440407989aacddc10450f397"
+    },
+    {
+      "path": "tests/painted-wall.test.cjs",
+      "bytes": 2845,
+      "sha256": "a6ea8cd7d01a561037baf9d56c201056dabf4d86169eda7a24c7693f0ac447a4"
+    },
+    {
+      "path": "tests/reuse-baseline.test.cjs",
+      "bytes": 5080,
+      "sha256": "aef70844be98dce2978b9f80e20ac83df9ede3bd5d04c686c95e14c5304c2b6d"
+    },
+    {
+      "path": "tests/room-audio.test.cjs",
+      "bytes": 11024,
+      "sha256": "f614c3e952fd1026f2fc21d8590605dfc3ff5dce1f836622152b612ff8809271"
+    },
+    {
+      "path": "tests/room-layout.test.cjs",
+      "bytes": 127238,
+      "sha256": "cdb456ba1c3d3efec15e1a7796028955fb6568d7d6c3416c6d6c63103ae23561"
+    },
+    {
+      "path": "tests/room-pointer-lock.test.cjs",
+      "bytes": 2845,
+      "sha256": "bfac53dbebb7663a96565f5ca8445ecfb61b01fcb6c8559a1b5c1ce609b75502"
+    },
+    {
+      "path": "tests/room-runtime.test.cjs",
+      "bytes": 1541,
+      "sha256": "685438176b5097c8bea0a99b2d09e2fdb31b05f0d2682ab57d0cdbf45caaeb36"
+    },
+    {
+      "path": "tests/study-model-resources.test.cjs",
+      "bytes": 2649,
+      "sha256": "aaf06f240199485b9a07dd8c00823d868c22efaf67162b3e74699a22a512f246"
+    },
+    {
+      "path": "tests/study-release.test.cjs",
+      "bytes": 8601,
+      "sha256": "02f515556e5b051f7c646f52a2100257f449045da793b99330772063c9a48c34"
+    },
+    {
+      "path": "tools/StudyReleasePlugin.cjs",
+      "bytes": 3718,
+      "sha256": "f1bb0d23ab058fb6e2fcea2dee3ee4252be8868290c078b6c7da17e86a46f07e"
+    },
+    {
+      "path": "tools/coastal-material-inputs.json",
+      "bytes": 3468,
+      "sha256": "f6a1d007ebe9a27c9ff61e5b5585f96ea91f2656a1258269a57b6f3073c4589c"
+    },
+    {
+      "path": "tools/generate-painted-wall.py",
+      "bytes": 4051,
+      "sha256": "9ba9386349ed5efcf3ef568d879cf5b8adb0bb98a6468a2720c3d76e48942906"
+    },
+    {
+      "path": "tools/optimize-study-models.cjs",
+      "bytes": 11402,
+      "sha256": "115dcb83b4f387f6a1a84df470b191b4cc038647de966418f2b3433dd0bffd92"
+    },
+    {
+      "path": "tools/prepare-coastal-materials.py",
+      "bytes": 4654,
+      "sha256": "0590c0468b3a37c05f695597f8b3bcdc0017ae8c967c5bdf3ceddf6a99a9accc"
+    },
+    {
+      "path": "tools/prepare-forest-panorama.py",
+      "bytes": 2070,
+      "sha256": "5d048ff2b5fda1d75380603d6e8dde9383b2750c1334d7205d5de98631590e34"
+    },
+    {
+      "path": "tools/prepare-study-audio.py",
+      "bytes": 4600,
+      "sha256": "f9281a394abe097779b27c62fbe5a1fe3ba8d1940381766f04000fce655ccc61"
+    },
+    {
+      "path": "tools/study-audio-resources.cjs",
+      "bytes": 3386,
+      "sha256": "96188b1f572fcb894b67e3bf70e61e8f3e9e5b9bae7ca8096b096894a3f91fe2"
+    },
+    {
+      "path": "tools/study-bundle-analysis.cjs",
+      "bytes": 2749,
+      "sha256": "861e40a75404c396470cfbfca88acd971116170a6cb474f2ce6df61ffd521ceb"
+    },
+    {
+      "path": "tools/study-release.config.cjs",
+      "bytes": 1900,
+      "sha256": "fd2db6a7d83fc7964a33f9d4d8cdc5a106972b66502ffd2dfbfae3d1d3892a4f"
+    },
+    {
+      "path": "tools/verify-reuse-baseline.cjs",
+      "bytes": 7159,
+      "sha256": "29ad40bf9b6719056cde8ec76edb3e75ca2db892e27496ba8b29ee239a0b112e"
+    },
+    {
+      "path": "tools/verify-study-release.cjs",
+      "bytes": 5768,
+      "sha256": "a3f888b41d8e07c8200e54513eef53e943045bbad84d45f46bd9689c8f27f3d1"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 396,
+      "sha256": "ed9642d8c1f59cea1d99f21c6074bbae1f3b4a0d81a371252ef88d59cebe6045"
+    },
+    {
+      "path": "webpack.config.js",
+      "bytes": 1886,
+      "sha256": "16762abfd7f6dcd688f4f29b527e122aa8a22168ff08acd4c3292307dbf7136b"
+    },
+    {
+      "path": "src/examples/CoastalFinish.ts",
+      "bytes": 2168,
+      "sha256": "51c34e79460a92052390028f16883db051b85f40f1ae1fe277a766a25798d892"
+    }
+  ]
+}

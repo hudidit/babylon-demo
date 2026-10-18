@@ -85,10 +85,10 @@ test('road faces remain above actual land while outdoor movement uses the explic
     assert.ok(clearance>=0 && clearance<.08,'a road face must not cut through or float above the terrain');
   }
   assert.equal(scene.metadata.coastalSite.outdoorWalking,true);
-  assert.equal(scene.metadata.coastalSite.stage,'B');
+  assert.equal(scene.metadata.coastalSite.stage,'C');
   assert.ok(exterior.meshes.every(m=>!m.checkCollisions));
-  exterior.setHouseEnclosed(false);assert.equal(scene.getMeshByName('coastal-house-roof-graybox').isVisible,false);
-  exterior.setHouseEnclosed(true);assert.equal(scene.getMeshByName('coastal-house-roof-graybox').isVisible,true);
+  exterior.setHouseEnclosed(false);assert.equal(scene.getMeshByName('coastal-house-roof').isVisible,false);
+  exterior.setHouseEnclosed(true);assert.equal(scene.getMeshByName('coastal-house-roof').isVisible,true);
 });
 
 const walking=load('WalkingSurface'),access=load('CoastalPath'),jump=load('HouseJump');
@@ -213,4 +213,52 @@ test('restoration checks actual door-leaf transforms after an orbit-view door mo
   door.root.rotation.y=door.openAngle;assert.equal(interactions.walkerIsClear(centre()),false);
   assert.equal(interactions.walkerIsClear(closedCentre),true,'the previous closed-leaf area is free after opening');
   const q=planToWorld(COASTAL_HOME,1.6);assert.equal(interactions.walkerIsClear(new b.Vector3(q.x,q.y,q.z)),true);
+});
+
+test('lighthouse door and windows are real recessed openings while the permanent shaft stays solid between them',t=>{
+  const engine=new b.NullEngine(),scene=new b.Scene(engine);scene.useDelayedTextureLoading=true;
+  t.after(()=>{scene.dispose();engine.dispose();});new(load('RoomExterior').RoomExterior)(scene);
+  const tower=COASTAL_SITE.tower,shaft=scene.getMeshByName('coastal-lighthouse-shaft');shaft.computeWorldMatrix(true);
+  const hit=(h,x=0)=>{const p=planToWorld({x:tower.x+x,y:tower.y-4},tower.ground+.49+h);
+    return scene.pickWithRay(new b.Ray(new b.Vector3(p.x,p.y,p.z),new b.Vector3(0,0,1),12),m=>m===shaft).hit;};
+  for(const h of [1,4.4,9,13.1]) assert.equal(hit(h),false,'ray crosses an actual opening, not a dark decal');
+  for(const h of [2.6,6,11,15]) assert.equal(hit(h),true,'opaque masonry between openings remains present');
+  const g=load('CoastalLandmark').coastalTowerShaft();
+  for(let i=0;i<g.indices.length;i+=3){const a=g.indices[i]*3,c=g.indices[i+1]*3,d=g.indices[i+2]*3;
+    const A=b.Vector3.FromArray(g.positions,a),C=b.Vector3.FromArray(g.positions,c),D=b.Vector3.FromArray(g.positions,d),centre=A.add(C).add(D).scale(1/3);
+    const world=planToWorld(tower),radial=new b.Vector3(centre.x-world.x,0,centre.z-world.z);
+    assert.ok(b.Vector3.Dot(b.Vector3.Cross(A.subtract(C),D.subtract(C)),radial)>0,'wall winding faces outside');
+  }
+});
+
+test('all exterior roof pieces hide together and landmark materials cannot inherit the house cutaway',t=>{
+  const engine=new b.NullEngine(),scene=new b.Scene(engine);scene.useDelayedTextureLoading=true;
+  t.after(()=>{scene.dispose();engine.dispose();});const exterior=new(load('RoomExterior').RoomExterior)(scene);
+  const roofs=exterior.meshes.filter(m=>m.metadata.exteriorLayer==='house-roof');assert.ok(roofs.length>=3);
+  exterior.updateCutaway({x:60,z:30},{x:0,z:0});
+  for(const m of exterior.meshes.filter(m=>m.metadata.exteriorLayer==='landmark'||m.metadata.exteriorLayer==='path'))assert.ok(m.material.clipPlane2==null,m.name);
+  exterior.setHouseEnclosed(false);assert.ok(roofs.every(m=>!m.isVisible));
+  exterior.setVisible(false);exterior.setHouseEnclosed(true);assert.ok(roofs.every(m=>!m.isVisible));
+  exterior.setVisible(true);assert.ok(roofs.every(m=>m.isVisible));
+  assert.equal(scene.getMaterialByName('coastal-gravel-path').albedoTexture,exterior.surfaces.rock.albedoTexture);
+  assert.equal(exterior.surfaces.textures.length,7,'finishes reuse the existing seven outdoor downloads');
+});
+
+test('local shadow coverage has hysteresis, caches at rest, stops in background and removes its observer',t=>{
+  const engine=new b.NullEngine(),scene=new b.Scene(engine),doc={hidden:false,addEventListener(){},removeEventListener(){}};
+  scene.useDelayedTextureLoading=true;engine.getRenderingCanvas=()=>({ownerDocument:doc});
+  t.after(()=>{scene.dispose();engine.dispose();});const camera=new b.FreeCamera('walk-visuals',b.Vector3.Zero(),scene),exterior=new(load('RoomExterior').RoomExterior)(scene);
+  const map=exterior.shadow.getShadowMap(),initial=exterior.sun.position.clone(),textureCount=scene.textures.length;
+  let resets=0;map.resetRefreshCounter=()=>resets++;
+  const place=(x,y)=>{const p=planToWorld({x,y},5);camera.position.set(p.x,p.y,p.z);camera.getViewMatrix(true);exterior.updateVisuals();};
+  place(-125,83);assert.ok(!exterior.sun.position.equals(initial));assert.equal(exterior.shadow.bias,.001);assert.equal(exterior.shadow.normalBias,.25);const zone=scene.metadata.coastalSite.shadowZone;
+  assert.ok(scene.getMeshByName('coastal-lighthouse-fine-metal').isVisible);
+  const afterMove=resets;for(let i=0;i<20;i++)place(-125+i*.01,83);
+  assert.equal(resets,afterMove,'no stationary or tiny-movement refresh');assert.equal(scene.metadata.coastalSite.shadowZone,zone);
+  doc.hidden=true;place(12,4);assert.equal(scene.metadata.coastalSite.shadowZone,zone);assert.equal(resets,afterMove);
+  doc.hidden=false;place(12,4);assert.equal(scene.metadata.coastalSite.shadowZone,0);assert.equal(exterior.shadow.bias,.00015);assert.equal(exterior.shadow.normalBias,.045);
+  assert.equal(scene.getMeshByName('coastal-lighthouse-fine-metal').isVisible,false);
+  assert.equal(exterior.shadow.getShadowMap(),map);assert.equal(scene.textures.length,textureCount);
+  const observers=scene.onBeforeRenderObservable.observers.filter(o=>!o._willBeUnregistered).length;
+  exterior.dispose();assert.equal(scene.onBeforeRenderObservable.observers.filter(o=>!o._willBeUnregistered).length,observers-2);
 });

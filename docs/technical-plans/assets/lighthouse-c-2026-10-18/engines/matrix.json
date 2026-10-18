@@ -1,0 +1,1051 @@
+{
+  "baseline": "6d7e644 + lighthouse C",
+  "fpsOrLoadTimeSampling": false,
+  "physicalDevicesTested": false,
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "desktop",
+      "size": [
+        1280,
+        800
+      ],
+      "renderSize": [
+        1280,
+        800
+      ],
+      "scaling": 1,
+      "towerTop": [
+        906.2395127346367,
+        463.11012025458473,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        890.1045443196111,
+        519.8068003582977,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 1046,
+        "top": 575.078125,
+        "right": 1254,
+        "bottom": 774
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.3,
+      "nextTime": 0.65,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": true,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            34.4460807511604,
+            2.4250000000000007,
+            -8.01564700521314
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.13235154930376 107.39061179687212) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.11500000000000002,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": true
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "portrait",
+      "size": [
+        390,
+        844
+      ],
+      "renderSize": [
+        390,
+        844
+      ],
+      "scaling": 1,
+      "towerTop": [
+        275.44561199845526,
+        441.0690564565786,
+        0.9991562176127102
+      ],
+      "towerBase": [
+        273.98620928773965,
+        459.83653240762237,
+        0.9991806001892637
+      ],
+      "mapRect": {
+        "left": 232,
+        "top": 607.4375,
+        "right": 378,
+        "bottom": 762
+      },
+      "eye": [
+        -351.99999999999983,
+        2721.7692307692305,
+        3076.25641025641
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 3.349999999999996,
+      "nextTime": 3.699999999999995,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": true,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            34.4460807511604,
+            2.4250000000000007,
+            -8.01564700521314
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.13235154930376 107.39061179687212) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.11500000000000002,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": true
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "landscape",
+      "size": [
+        844,
+        390
+      ],
+      "renderSize": [
+        844,
+        390
+      ],
+      "scaling": 1,
+      "towerTop": [
+        551.791765199908,
+        225.76618310146043,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        543.925967135176,
+        253.4058142803191,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 686,
+        "top": 159.6875,
+        "right": 818,
+        "bottom": 306
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 6.399999999999985,
+      "nextTime": 6.749999999999984,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": true,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            34.4460807511604,
+            2.4250000000000007,
+            -8.01564700521314
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.13235154930376 107.39061179687212) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.11500000000000002,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": true
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "desktop",
+      "size": [
+        1280,
+        800
+      ],
+      "renderSize": [
+        1280,
+        800
+      ],
+      "scaling": 1,
+      "towerTop": [
+        906.2395127346367,
+        463.11012025458473,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        890.1045443196111,
+        519.8068003582977,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 1046,
+        "top": 575.078125,
+        "right": 1254,
+        "bottom": 774
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.3,
+      "nextTime": 0.65,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": true,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            34.42049838245362,
+            2.4250000000000007,
+            -7.771015614648804
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.14770097052782 107.53739063121071) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.11500000000000002,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": true
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "portrait",
+      "size": [
+        390,
+        844
+      ],
+      "renderSize": [
+        390,
+        844
+      ],
+      "scaling": 1,
+      "towerTop": [
+        275.44561199845526,
+        441.0690564565786,
+        0.9991562176127102
+      ],
+      "towerBase": [
+        273.98620928773965,
+        459.83653240762237,
+        0.9991806001892637
+      ],
+      "mapRect": {
+        "left": 232,
+        "top": 607.4375,
+        "right": 378,
+        "bottom": 762
+      },
+      "eye": [
+        -351.99999999999983,
+        2721.7692307692305,
+        3076.25641025641
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 3.349999999999996,
+      "nextTime": 3.699999999999995,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": true,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            34.42049838245362,
+            2.4250000000000007,
+            -7.771015614648804
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.14770097052782 107.53739063121071) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.11500000000000002,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": true
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "landscape",
+      "size": [
+        844,
+        390
+      ],
+      "renderSize": [
+        844,
+        390
+      ],
+      "scaling": 1,
+      "towerTop": [
+        551.791765199908,
+        225.76618310146043,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        543.925967135176,
+        253.4058142803191,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 686,
+        "top": 159.6875,
+        "right": 818,
+        "bottom": 306
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 6.399999999999985,
+      "nextTime": 6.749999999999984,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": true,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            34.42049838245362,
+            2.4250000000000007,
+            -7.771015614648804
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.14770097052782 107.53739063121071) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.11500000000000002,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": true
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "desktop",
+      "size": [
+        1280,
+        800
+      ],
+      "renderSize": [
+        1280,
+        800
+      ],
+      "scaling": 1,
+      "towerTop": [
+        906.2395127346367,
+        463.11012025458473,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        890.1045443196111,
+        519.8068003582977,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 1046,
+        "top": 577.078125,
+        "right": 1254,
+        "bottom": 774
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.3,
+      "nextTime": 0.65,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": false,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.4 109.94999999999999) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.0792222222222222,
+          "normal": {
+            "x": 0.05104448168192503,
+            "y": 0.9986963807333156,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": false
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "portrait",
+      "size": [
+        390,
+        844
+      ],
+      "renderSize": [
+        390,
+        844
+      ],
+      "scaling": 1,
+      "towerTop": [
+        275.44561199845526,
+        441.0690564565786,
+        0.9991562176127102
+      ],
+      "towerBase": [
+        273.98620928773965,
+        459.83653240762237,
+        0.9991806001892637
+      ],
+      "mapRect": {
+        "left": 232,
+        "top": 609.4375,
+        "right": 378,
+        "bottom": 762
+      },
+      "eye": [
+        -351.99999999999983,
+        2721.7692307692305,
+        3076.25641025641
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 2.6499999999999986,
+      "nextTime": 2.9999999999999973,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": false,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.4 109.94999999999999) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.0792222222222222,
+          "normal": {
+            "x": 0.05104448168192503,
+            "y": 0.9986963807333156,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": false
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "landscape",
+      "size": [
+        844,
+        390
+      ],
+      "renderSize": [
+        844,
+        390
+      ],
+      "scaling": 1,
+      "towerTop": [
+        551.791765199908,
+        225.76618310146043,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        543.925967135176,
+        253.4058142803191,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 686,
+        "top": 161.6875,
+        "right": 818,
+        "bottom": 306
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 4.99999999999999,
+      "nextTime": 5.349999999999989,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": false,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.4 109.94999999999999) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.0792222222222222,
+          "normal": {
+            "x": 0.05104448168192503,
+            "y": 0.9986963807333156,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": false
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "desktop",
+      "size": [
+        1280,
+        800
+      ],
+      "renderSize": [
+        1280,
+        800
+      ],
+      "scaling": 1,
+      "towerTop": [
+        906.2395127346367,
+        463.11012025458473,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        890.1045443196111,
+        519.8068003582977,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 1046,
+        "top": 577.078125,
+        "right": 1254,
+        "bottom": 774
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.3,
+      "nextTime": 0.65,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": false,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.4 109.94999999999999) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.0792222222222222,
+          "normal": {
+            "x": 0.05104448168192503,
+            "y": 0.9986963807333156,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": false
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "portrait",
+      "size": [
+        390,
+        844
+      ],
+      "renderSize": [
+        390,
+        844
+      ],
+      "scaling": 1,
+      "towerTop": [
+        275.44561199845526,
+        441.0690564565786,
+        0.9991562176127102
+      ],
+      "towerBase": [
+        273.98620928773965,
+        459.83653240762237,
+        0.9991806001892637
+      ],
+      "mapRect": {
+        "left": 232,
+        "top": 609.4375,
+        "right": 378,
+        "bottom": 762
+      },
+      "eye": [
+        -351.99999999999983,
+        2721.7692307692305,
+        3076.25641025641
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 2.6499999999999986,
+      "nextTime": 2.9999999999999973,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": false,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.4 109.94999999999999) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.0792222222222222,
+          "normal": {
+            "x": 0.05104448168192503,
+            "y": 0.9986963807333156,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": false
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "landscape",
+      "size": [
+        844,
+        390
+      ],
+      "renderSize": [
+        844,
+        390
+      ],
+      "scaling": 1,
+      "towerTop": [
+        551.791765199908,
+        225.76618310146043,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        543.925967135176,
+        253.4058142803191,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 686,
+        "top": 161.6875,
+        "right": 818,
+        "bottom": 306
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 4.99999999999999,
+      "nextTime": 5.349999999999989,
+      "closeLighthouse": {
+        "zone": 8,
+        "shaftReady": true,
+        "glassReady": true,
+        "pathReady": true,
+        "shadowWidth": 1024
+      },
+      "walking": {
+        "before": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "locked": false,
+          "map": "你在屋外",
+          "mini": "海岸地图"
+        },
+        "after": {
+          "position": [
+            33.99999999999999,
+            2.60388888888889,
+            -3.75
+          ],
+          "map": "你在屋外",
+          "marker": "translate(69.4 109.94999999999999) rotate(-5.9700162278431375)"
+        },
+        "ground": {
+          "height": -0.0792222222222222,
+          "normal": {
+            "x": 0.05104448168192503,
+            "y": 0.9986963807333156,
+            "z": 0
+          },
+          "kind": "path",
+          "region": "屋外"
+        },
+        "modalPaused": true,
+        "keyboardVerified": false
+      },
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    }
+  ]
+}

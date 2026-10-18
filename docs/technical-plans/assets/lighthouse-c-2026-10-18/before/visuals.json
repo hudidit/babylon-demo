@@ -1,0 +1,348 @@
+{
+  "baseline": true,
+  "sourceBaseline": "6d7e644",
+  "fpsOrLoadTimeSampling": false,
+  "views": [
+    {
+      "name": "entry-outside",
+      "p": {
+        "x": 13.5,
+        "y": 6
+      },
+      "feet": -0.14,
+      "draws": 823,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在屋外",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "house-north",
+      "p": {
+        "x": 4,
+        "y": -5
+      },
+      "feet": -0.14,
+      "draws": 924,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在屋外",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "house-west",
+      "p": {
+        "x": -3,
+        "y": 4
+      },
+      "feet": -0.12255501968697027,
+      "draws": 745,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在屋外",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "house-south",
+      "p": {
+        "x": 3,
+        "y": 13.8
+      },
+      "feet": -0.14,
+      "draws": 863,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在屋外",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "coast-path-toward-tower",
+      "p": {
+        "x": -40,
+        "y": 12
+      },
+      "feet": 0.6239361680990176,
+      "draws": 40,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "lookout-back-to-house",
+      "p": {
+        "x": -70,
+        "y": 25
+      },
+      "feet": 1.0410445648890654,
+      "draws": 773,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在观景点",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "tower-front",
+      "p": {
+        "x": -125,
+        "y": 83
+      },
+      "feet": 3.04,
+      "draws": 27,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "tower-door",
+      "p": {
+        "x": -125,
+        "y": 85.8
+      },
+      "feet": 3.04,
+      "draws": 25,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "tower-base",
+      "p": {
+        "x": -129,
+        "y": 86
+      },
+      "feet": 3.04,
+      "draws": 26,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "tower-plaza-back-to-house",
+      "p": {
+        "x": -125,
+        "y": 83
+      },
+      "feet": 3.04,
+      "draws": 780,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "cape-toward-tower",
+      "p": {
+        "x": -94,
+        "y": 44
+      },
+      "feet": 1.6262802952864626,
+      "draws": 29,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "tower-seaward",
+      "p": {
+        "x": -130,
+        "y": 92
+      },
+      "feet": 3.04,
+      "draws": 23,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof-graybox",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "route": [],
+  "scene": {
+    "meshes": 629,
+    "vertices": 547566,
+    "materials": 84,
+    "textures": 147,
+    "lights": 16,
+    "cameras": 3,
+    "exteriorMeshes": 34,
+    "exteriorVertices": 141658,
+    "shadowSize": {
+      "width": 1024,
+      "height": 1024
+    },
+    "casters": [
+      "coastal-house-plinth",
+      "coastal-anchored-rocks",
+      "coastal-grass-and-shrubs",
+      "house-wall-0-low",
+      "house-wall-0-upper",
+      "house-wall-1-low",
+      "house-wall-1-upper",
+      "house-wall-2-upper",
+      "house-wall-3-low",
+      "house-wall-3-upper",
+      "house-wall-4-low",
+      "house-wall-4-upper",
+      "house-wall-5-low",
+      "house-wall-5-upper",
+      "house-wall-6-upper",
+      "house-wall-7-low",
+      "house-wall-7-upper",
+      "house-wall-8-low",
+      "house-wall-8-upper",
+      "house-wall-9-low",
+      "house-wall-9-upper",
+      "house-wall-10-upper",
+      "house-wall-11-low",
+      "house-wall-11-upper",
+      "house-wall-16-low",
+      "house-wall-16-upper",
+      "house-wall-17-low",
+      "house-wall-17-upper",
+      "house-wall-18-low",
+      "house-wall-18-upper",
+      "house-wall-19-upper",
+      "house-wall-20-low",
+      "house-wall-20-upper",
+      "house-wall-21-low",
+      "house-wall-21-upper",
+      "balcony-rail-32-study-darkWood",
+      "house-wall-40-low",
+      "house-wall-40-upper",
+      "house-wall-41-low",
+      "house-wall-41-upper",
+      "house-wall-42-upper",
+      "house-wall-43-low",
+      "house-wall-43-upper",
+      "house-wall-44-low",
+      "house-wall-44-upper",
+      "house-wall-45-upper",
+      "house-wall-46-low",
+      "house-wall-46-upper",
+      "balcony-rail-47-study-darkWood",
+      "house-wall-51-low",
+      "house-wall-51-upper",
+      "house-wall-52-low",
+      "house-wall-52-upper",
+      "house-wall-53-upper",
+      "house-wall-54-low",
+      "house-wall-54-upper",
+      "balcony-rail-58-study-darkWood"
+    ]
+  },
+  "passed": true,
+  "errors": [],
+  "warnings": []
+}

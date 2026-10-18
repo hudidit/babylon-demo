@@ -1,0 +1,242 @@
+{
+  "url": "http://127.0.0.1:8174/",
+  "fpsOrLoadTimeSampling": false,
+  "views": [
+    {
+      "name": "entry-outside",
+      "p": {
+        "x": 13.5,
+        "y": 6
+      },
+      "target": {
+        "x": 10.8,
+        "y": 4.65,
+        "h": 1.5
+      },
+      "mainExterior": 22,
+      "draws": [
+        "coastal-cliff-front-0",
+        "coastal-cliff-front-1",
+        "coastal-cliff-front-2",
+        "coastal-cliff-front-3",
+        "coastal-cliff-front-4",
+        "coastal-cliff-west",
+        "coastal-house-plinth",
+        "coastal-anchored-rocks",
+        "coastal-cliff-distant",
+        "coastal-solid-underside",
+        "coastal-platform-0",
+        "coastal-platform-1",
+        "coastal-inland-0",
+        "coastal-inland-1",
+        "coastal-grass-and-shrubs",
+        "coastal-sky",
+        "coastal-walk-guardrail",
+        "coastal-house-roof-graybox",
+        "coastal-lighthouse-path",
+        "coastal-entry-ramp",
+        "coastal-lighthouse-lookout",
+        "coastal-sea"
+      ],
+      "total": 823,
+      "stage": "B"
+    },
+    {
+      "name": "house-north",
+      "p": {
+        "x": 4,
+        "y": -5
+      },
+      "target": {
+        "x": 5.4,
+        "y": 0,
+        "h": 1.8
+      },
+      "mainExterior": 17,
+      "draws": [
+        "coastal-cliff-front-3",
+        "coastal-cliff-front-4",
+        "coastal-cliff-east",
+        "coastal-house-plinth",
+        "coastal-anchored-rocks",
+        "coastal-cliff-distant",
+        "coastal-solid-underside",
+        "coastal-platform-0",
+        "coastal-platform-1",
+        "coastal-inland-1",
+        "coastal-grass-and-shrubs",
+        "coastal-sky",
+        "coastal-walk-guardrail",
+        "coastal-house-roof-graybox",
+        "coastal-lighthouse-path",
+        "coastal-entry-ramp",
+        "coastal-sea"
+      ],
+      "total": 924,
+      "stage": "B"
+    },
+    {
+      "name": "coast-path-toward-tower",
+      "p": {
+        "x": -40,
+        "y": 12
+      },
+      "target": {
+        "x": -94,
+        "y": 44,
+        "h": 5
+      },
+      "mainExterior": 28,
+      "draws": [
+        "coastal-cliff-front-0",
+        "coastal-cliff-front-1",
+        "coastal-cliff-front-2",
+        "coastal-cliff-front-3",
+        "coastal-cliff-west",
+        "coastal-anchored-rocks",
+        "coastal-cliff-distant",
+        "coastal-solid-underside",
+        "coastal-platform-0",
+        "coastal-platform-1",
+        "coastal-inland-0",
+        "coastal-grass-and-shrubs",
+        "coastal-sky",
+        "coastal-lighthouse-shaft",
+        "coastal-lighthouse-plinth",
+        "coastal-lighthouse-gallery",
+        "coastal-lighthouse-lantern",
+        "coastal-lighthouse-door",
+        "coastal-walk-guardrail",
+        "coastal-lookout-seat",
+        "coastal-lookout-back",
+        "coastal-lookout-leg",
+        "coastal-lookout-leg",
+        "coastal-lighthouse-cap",
+        "coastal-lighthouse-plaza",
+        "coastal-lighthouse-path",
+        "coastal-lighthouse-lookout",
+        "coastal-sea"
+      ],
+      "total": 40,
+      "stage": "B"
+    },
+    {
+      "name": "lookout-back-to-house",
+      "p": {
+        "x": -70,
+        "y": 25
+      },
+      "target": {
+        "x": 5.4,
+        "y": 5.4,
+        "h": 3
+      },
+      "mainExterior": 21,
+      "draws": [
+        "coastal-cliff-front-2",
+        "coastal-cliff-front-3",
+        "coastal-cliff-front-4",
+        "coastal-cliff-east",
+        "coastal-house-plinth",
+        "coastal-anchored-rocks",
+        "coastal-cliff-distant",
+        "coastal-solid-underside",
+        "coastal-platform-0",
+        "coastal-platform-1",
+        "coastal-inland-1",
+        "coastal-grass-and-shrubs",
+        "coastal-sky",
+        "coastal-walk-guardrail",
+        "coastal-lookout-seat",
+        "coastal-lookout-back",
+        "coastal-house-roof-graybox",
+        "coastal-lighthouse-path",
+        "coastal-entry-ramp",
+        "coastal-lighthouse-lookout",
+        "coastal-sea"
+      ],
+      "total": 773,
+      "stage": "B"
+    },
+    {
+      "name": "tower-plaza-back-to-house",
+      "p": {
+        "x": -125,
+        "y": 83
+      },
+      "target": {
+        "x": 5.4,
+        "y": 5.4,
+        "h": 3
+      },
+      "mainExterior": 28,
+      "draws": [
+        "coastal-cliff-front-0",
+        "coastal-cliff-front-1",
+        "coastal-cliff-front-2",
+        "coastal-cliff-front-3",
+        "coastal-cliff-front-4",
+        "coastal-cliff-east",
+        "coastal-house-plinth",
+        "coastal-anchored-rocks",
+        "coastal-cliff-distant",
+        "coastal-solid-underside",
+        "coastal-platform-0",
+        "coastal-platform-1",
+        "coastal-inland-0",
+        "coastal-inland-1",
+        "coastal-grass-and-shrubs",
+        "coastal-sky",
+        "coastal-lighthouse-shaft",
+        "coastal-walk-guardrail",
+        "coastal-lookout-seat",
+        "coastal-lookout-back",
+        "coastal-lookout-leg",
+        "coastal-lookout-leg",
+        "coastal-house-roof-graybox",
+        "coastal-lighthouse-plaza",
+        "coastal-lighthouse-path",
+        "coastal-entry-ramp",
+        "coastal-lighthouse-lookout",
+        "coastal-sea"
+      ],
+      "total": 780,
+      "stage": "B"
+    },
+    {
+      "name": "cape-toward-tower",
+      "p": {
+        "x": -94,
+        "y": 44
+      },
+      "target": {
+        "x": -125,
+        "y": 90,
+        "h": 13
+      },
+      "mainExterior": 17,
+      "draws": [
+        "coastal-cliff-front-0",
+        "coastal-cliff-front-1",
+        "coastal-cliff-distant",
+        "coastal-solid-underside",
+        "coastal-platform-0",
+        "coastal-inland-0",
+        "coastal-sky",
+        "coastal-lighthouse-shaft",
+        "coastal-lighthouse-plinth",
+        "coastal-lighthouse-gallery",
+        "coastal-lighthouse-lantern",
+        "coastal-lighthouse-door",
+        "coastal-walk-guardrail",
+        "coastal-lighthouse-cap",
+        "coastal-lighthouse-plaza",
+        "coastal-lighthouse-path",
+        "coastal-sea"
+      ],
+      "total": 29,
+      "stage": "B"
+    }
+  ],
+  "passed": true
+}
