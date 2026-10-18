@@ -5,6 +5,7 @@
 | 状态 | 已完成 |
 | 创建 / 更新 | 2026-10-19 / 2026-10-19 |
 | 基线 | `c77c7d2`，五层垂直梯已交付，小电驴取消区域限速 |
+| 实现提交 | `ea4f5d2`：设备照明、维护记录与楼层地图收尾 |
 | 关联 | [内部总方案](2026-10-18-lighthouse-interior.md)、[垂直梯](2026-10-19-lighthouse-vertical-ladder.md)、[资源原则](../resource-optimization-principles.md) |
 
 ## 背景与目标

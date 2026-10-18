@@ -4,7 +4,7 @@
 | --- | --- |
 | 状态 | 第一～三阶段已完成；第二阶段按窗位分层与垂直梯交付，原旋梯已替代 |
 | 创建 / 更新日期 | 2026-10-18 / 2026-10-19 |
-| 实现提交 | `b6116c0`：首层结构与验收；第二阶段实现见[修订方案](2026-10-19-lighthouse-vertical-ladder.md)，第三阶段见[收尾方案](2026-10-19-lighthouse-interior-finish.md) |
+| 实现提交 | `b6116c0`：首层结构与验收；第二阶段实现见[修订方案](2026-10-19-lighthouse-vertical-ladder.md)，第三阶段`ea4f5d2`见[收尾方案](2026-10-19-lighthouse-interior-finish.md) |
 | 代码基线 | `a4c1f14`，沿用灯塔A～D外观及40 km/h小电驴 |
 | 相关方案 | [灯塔与步道](2026-10-18-lighthouse-coastal-path.md)、[室外通行](2026-10-18-coastal-electric-scooter.md)、[资源原则](../resource-optimization-principles.md) |
 
