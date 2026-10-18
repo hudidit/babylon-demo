@@ -1,0 +1,2208 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "2026-10-18-lighthouse-coast-v1",
+  "sourceCommit": "2581be579f8042c0b7d74b214011f38d4b6c10e8",
+  "capturedOn": "2026-10-18",
+  "scope": "Eight-room home and walkable lighthouse coast, 194.07m route, finite boundary, final visual finishes/local shadows, outward entry door and matched indoor/coast maps; independent of pre-lighthouse coastal v1",
+  "provenancePolicy": "Existing source records preserved and local bytes checked; upstream permissions not newly audited. Three unverified assets remain unverified.",
+  "totals": {
+    "runtimeFiles": 36,
+    "runtimeBytes": 15867631,
+    "unverifiedAssets": [
+      "model.antique-cabinet",
+      "model.antique-bookshelf",
+      "image.decorative-landscape"
+    ],
+    "developmentSourceFiles": 8
+  },
+  "runtimeAssets": [
+    {
+      "path": "public/audio/study/door-latch-1.a220e2fe5d.wav",
+      "bytes": 15404,
+      "sha256": "a220e2fe5d9244a022c4125c2eac6af200238a2ce7a5451ac098b5bdb7d1178b",
+      "releasePath": "audio/study/door-latch-1.a220e2fe5d.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.door-latch-1",
+      "kind": "audio",
+      "role": "door-latch-1",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/door_close.wav",
+        "originalSha256": "a87ec43cf61afb7a4a1d42e50d8b7331951f4d0417daf607cb110e80c9dd614a"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.275,
+        "trimDurationSeconds": 0.16,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.62,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.16,
+        "decodedBytes": 30720
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/audio/study/door-latch-2.fb255ede74.wav",
+      "bytes": 16364,
+      "sha256": "fb255ede7497c01e1d33d9e5ad961568dbf2711cb53187d6ee0f299c4a9c2f2c",
+      "releasePath": "audio/study/door-latch-2.fb255ede74.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.door-latch-2",
+      "kind": "audio",
+      "role": "door-latch-2",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/door_close.wav",
+        "originalSha256": "a87ec43cf61afb7a4a1d42e50d8b7331951f4d0417daf607cb110e80c9dd614a"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.29,
+        "trimDurationSeconds": 0.17,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.58,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.17,
+        "decodedBytes": 32640
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/audio/study/door-move-1.f0162ae1b8.wav",
+      "bytes": 38444,
+      "sha256": "f0162ae1b8d7198f117e468e914e58a5ce01fc8070c7d0baab231f4b653fb66c",
+      "releasePath": "audio/study/door-move-1.f0162ae1b8.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.door-move-1",
+      "kind": "audio",
+      "role": "door-move-1",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/door_creak_open.wav",
+        "originalSha256": "67ec6952f3de32852ea5a188e6118546107e4d2ca15b3fd4cab64d8993877227"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.11,
+        "trimDurationSeconds": 0.4,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.48,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.4,
+        "decodedBytes": 76800
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/audio/study/door-move-2.9dea4bdbfd.wav",
+      "bytes": 55724,
+      "sha256": "9dea4bdbfd75ae721d9b54d198f555a80ff47508d142f721cd726dd673a495ec",
+      "releasePath": "audio/study/door-move-2.9dea4bdbfd.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.door-move-2",
+      "kind": "audio",
+      "role": "door-move-2",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/door_creak_close.wav",
+        "originalSha256": "36126c2da6294c0d18e0a3b20893e0803cbaa182b33eff9224ee6a60faaaf867"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.24,
+        "trimDurationSeconds": 0.58,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.48,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.58,
+        "decodedBytes": 111360
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "bytes": 30764,
+      "sha256": "8353e0a53c67b934acd5fabb307a71b5d67a04d0398e88e36e875c85b24c88a7",
+      "releasePath": "audio/study/drawer-slide-1.8353e0a53c.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.drawer-slide-1",
+      "kind": "audio",
+      "role": "drawer-slide-1",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/drawer_open.wav",
+        "originalSha256": "0f1a31835c07e0722e9b506f1f38b726d4ed9579a947721b8e633125c46f3586"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.08,
+        "trimDurationSeconds": 0.32,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.52,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.32,
+        "decodedBytes": 61440
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "bytes": 28844,
+      "sha256": "71ff63e71c9b9d896d5cb3fa28d2c31be6546a7e5967b59ab90d42e43f074c47",
+      "releasePath": "audio/study/drawer-slide-2.71ff63e71c.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.drawer-slide-2",
+      "kind": "audio",
+      "role": "drawer-slide-2",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/drawer_close.wav",
+        "originalSha256": "a97d950015ea8300d41ea1002de0eecb17bbabdb455d454a6cc786f095b3da22"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.02,
+        "trimDurationSeconds": 0.3,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.5,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.3,
+        "decodedBytes": 57600
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "bytes": 11564,
+      "sha256": "6840b8eb3065c6183495d8a216ab53a3d00b6c5d469ff5689d84d8d0ef0f2c2b",
+      "releasePath": "audio/study/drawer-stop-1.6840b8eb30.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.drawer-stop-1",
+      "kind": "audio",
+      "role": "drawer-stop-1",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/drawer_close.wav",
+        "originalSha256": "a97d950015ea8300d41ea1002de0eecb17bbabdb455d454a6cc786f095b3da22"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.345,
+        "trimDurationSeconds": 0.12,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.6,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.12,
+        "decodedBytes": 23040
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/audio/study/drawer-stop-2.b34d827382.wav",
+      "bytes": 15404,
+      "sha256": "b34d82738205a0bcbdfe644faaa558a7e892ee2f8d51237074c842b2229bcd83",
+      "releasePath": "audio/study/drawer-stop-2.b34d827382.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.drawer-stop-2",
+      "kind": "audio",
+      "role": "drawer-stop-2",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/drawer_open.wav",
+        "originalSha256": "0f1a31835c07e0722e9b506f1f38b726d4ed9579a947721b8e633125c46f3586"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.5,
+        "trimDurationSeconds": 0.16,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.55,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.16,
+        "decodedBytes": 30720
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/audio/study/paper-1.ce7576efe6.wav",
+      "bytes": 19244,
+      "sha256": "ce7576efe6003d2b9fb4fa190cc58318493c5754524bc71199cf56e62836e43e",
+      "releasePath": "audio/study/paper-1.ce7576efe6.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.paper-1",
+      "kind": "audio",
+      "role": "paper-1",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/turn_page.wav",
+        "originalSha256": "d638558f6ef6a5890e77da27902402de4b2a264d4ca874805133676a9a6b287c"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.22,
+        "trimDurationSeconds": 0.2,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.42,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.2,
+        "decodedBytes": 38400
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/audio/study/paper-2.862694da2b.wav",
+      "bytes": 27884,
+      "sha256": "862694da2b6b945b2e8e08330cbbb0f9bb72cb5651542b2060fa53a4ccdf1b81",
+      "releasePath": "audio/study/paper-2.862694da2b.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.paper-2",
+      "kind": "audio",
+      "role": "paper-2",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/turn_page.wav",
+        "originalSha256": "d638558f6ef6a5890e77da27902402de4b2a264d4ca874805133676a9a6b287c"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.52,
+        "trimDurationSeconds": 0.29,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.42,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.29,
+        "decodedBytes": 55680
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/audio/study/switch-1.702a81fab4.wav",
+      "bytes": 11564,
+      "sha256": "702a81fab47cd408b8632eb6a5750039da011d13eb63a1f21239f93db7778fad",
+      "releasePath": "audio/study/switch-1.702a81fab4.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.switch-1",
+      "kind": "audio",
+      "role": "switch-1",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/switch_on.wav",
+        "originalSha256": "7fef89ebd553d8bdd51d62f3b794e1ca75d0bab39c008cb35ef5c9bdc3850891"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.045,
+        "trimDurationSeconds": 0.12,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.52,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.12,
+        "decodedBytes": 23040
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/audio/study/switch-2.927c10f6e3.wav",
+      "bytes": 16364,
+      "sha256": "927c10f6e34488ac763cccb68ff826d07edf25545fd720000447b675c26d4328",
+      "releasePath": "audio/study/switch-2.927c10f6e3.wav",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/audio/study/source.json",
+        "assets/audio-source/study/source.json"
+      ],
+      "id": "audio.switch-2",
+      "kind": "audio",
+      "role": "switch-2",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://opengameart.org/content/various-sound-effects",
+        "author": "laleksic",
+        "originalFile": "assets/audio-source/study/switch_off.wav",
+        "originalSha256": "c4fc5ff1157a1fc0e74900107f559f1c80118ad86dca398cdb88c1dd6124bdb7"
+      },
+      "processing": {
+        "record": "public/audio/study/source.json",
+        "generator": "tools/prepare-study-audio.py",
+        "trimStartSeconds": 0.045,
+        "trimDurationSeconds": 0.17,
+        "parameters": {
+          "removeDC": true,
+          "peakTarget": 0.52,
+          "fadeInMs": 2,
+          "fadeOutMs": 12
+        }
+      },
+      "format": {
+        "sampleRate": 48000,
+        "channels": 1,
+        "bitDepth": 16,
+        "durationSeconds": 0.17,
+        "decodedBytes": 32640
+      },
+      "consumers": [
+        "src/examples/RoomAudioCatalog.ts",
+        "src/examples/RoomAudio.ts"
+      ],
+      "sharing": "share sound buffers; independent playback/state and actual world-position per entity"
+    },
+    {
+      "path": "public/environment/coastal-daylight.hdr",
+      "bytes": 4444,
+      "sha256": "09c35ed0bf66e0f16ab58d1659fa7b13576aa76c3327672253fb07433de22502",
+      "releasePath": "environment/coastal-daylight.hdr",
+      "version": "coastal-cliff-v1",
+      "id": "environment.coastal-daylight",
+      "kind": "environment",
+      "role": "linear RGBE analytic sky, 256x128; runtime cubemap 128 with harmonics and specular prefilter",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "retained locked provenance; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/coastal/source.json",
+        "public/environment/coastal-cliff-source.json"
+      ],
+      "source": {
+        "file": "environment/coastal-daylight.hdr",
+        "bytes": 4444,
+        "deliverySha256": "09c35ed0bf66e0f16ab58d1659fa7b13576aa76c3327672253fb07433de22502",
+        "semantic": "linear RGBE analytic sky, 256x128; runtime cubemap 128 with harmonics and specular prefilter",
+        "parameters": {
+          "sun": [
+            0.55,
+            0.78,
+            0.3
+          ],
+          "horizon": [
+            0.66,
+            0.77,
+            0.83
+          ],
+          "zenith": [
+            0.23,
+            0.46,
+            0.68
+          ],
+          "ground": [
+            0.18,
+            0.22,
+            0.15
+          ],
+          "sunColor": [
+            1,
+            0.93,
+            0.8
+          ],
+          "sunPower": 10,
+          "sunSharpness": 1800
+        }
+      },
+      "consumers": [
+        "src/examples/CoastalMaterials.ts"
+      ],
+      "sharing": "one shared coast per scene; keep linear data/sRGB albedo and original channel semantics; dispose at last owner"
+    },
+    {
+      "path": "public/environment/study-interior.hdr",
+      "bytes": 1649529,
+      "sha256": "ca919c41d78c8fc0dd104f47fd9201530ddcbd3c3574c3d1fc5362846e4076e1",
+      "releasePath": "environment/study-interior.hdr",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/manifest.json"
+      ],
+      "id": "environment.study-interior",
+      "kind": "environment",
+      "role": "shared indoor IBL",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://polyhaven.com/a/brown_photostudio_01",
+        "authors": {
+          "Sergej Majboroda": "All"
+        },
+        "file": "public/environment/study-interior.hdr",
+        "resolution": "1k",
+        "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/brown_photostudio_01_1k.hdr",
+        "size": 1649529,
+        "md5": "d0ba0ffbc6f86bba94236d3d2d83fc9d"
+      },
+      "format": {
+        "encoding": "Radiance HDR",
+        "colorSpace": "linear HDR",
+        "width": 1024,
+        "height": 512
+      },
+      "consumers": [
+        "src/examples/Room.ts"
+      ],
+      "sharing": "one environment per scene; retain current HDR loading/prefilter options"
+    },
+    {
+      "path": "public/textures/pictures/pic1.jpg",
+      "bytes": 29797,
+      "sha256": "00cd6f16547108ab2f713513974cb523676e93eae9a38df9c7134790be113967",
+      "releasePath": "textures/pictures/pic1.jpg",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md"
+      ],
+      "id": "image.decorative-landscape",
+      "role": "framed decoration",
+      "license": {
+        "status": "unverified",
+        "identifier": null,
+        "review": "upstream/author/permission missing; preserve status and resolve or replace before cross-project distribution"
+      },
+      "source": {
+        "page": null,
+        "author": null
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "jpeg",
+        "width": 550,
+        "height": 330,
+        "channels": 3,
+        "colorSpace": "sRGB colour",
+        "semantic": "display/albedo colour"
+      },
+      "consumers": [
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    },
+    {
+      "path": "public/models/wooden_bookshelf.glb",
+      "bytes": 2783464,
+      "sha256": "8d1bcf250559c6f6f1fd255d1be9027fe6b0cbfbd066e4358d0bf138699bb354",
+      "releasePath": "models/wooden_bookshelf.glb",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/models/study-model-optimization.json"
+      ],
+      "id": "model.antique-bookshelf",
+      "kind": "model",
+      "role": "antique-bookshelf",
+      "license": {
+        "status": "unverified",
+        "identifier": null,
+        "review": "upstream/author/permission missing; preserve status and resolve or replace before cross-project distribution"
+      },
+      "source": {
+        "page": null,
+        "author": null,
+        "originalCommit": "fd32f40f25f25cea679df2d30d85aaeb5a4c8a70",
+        "originalBytes": 15423708,
+        "originalSha256": "a5da5338af3d629c13ae98b83d7c38c3347b23ebe7505eab0ffc22b2476200cb",
+        "introducedBy": "0e83f4c8e23912760fbc313e7d4d62169d16c30d"
+      },
+      "processing": {
+        "record": "public/models/study-model-optimization.json",
+        "generator": "tools/optimize-study-models.cjs",
+        "profile": "detail-c85",
+        "parameters": {
+          "color": [
+            2048,
+            85
+          ],
+          "data": [
+            1024,
+            90
+          ],
+          "normal": [
+            1024,
+            95
+          ]
+        }
+      },
+      "gltf": {
+        "version": "2.0",
+        "extensionsUsed": [],
+        "extensionsRequired": [],
+        "externalUris": [],
+        "images": [
+          {
+            "name": "wooden_bookshelf_worn (Base Color) image",
+            "mimeType": "image/jpeg",
+            "width": 2048,
+            "height": 2048
+          },
+          {
+            "name": "wooden_bookshelf_worn (Metallic Roughness) image",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          },
+          {
+            "name": "wooden_bookshelf_worn (Normal) image",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "animations": 0
+      },
+      "consumers": [
+        "src/examples/Room.ts",
+        "src/examples/RoomFurnitureAssets.ts",
+        "src/examples/HouseContent.ts"
+      ],
+      "placement": {
+        "adapter": "src/examples/RoomFurnitureAssets.ts:placeFurniture",
+        "sourceUnits": "not normalized by this inventory",
+        "targetWidth": "engine units; current project uses 5 units/metre",
+        "axisPolicy": "preserve glTF loader handedness conversion; fit actual bounds, centre X/Z, place minimum Y at floor"
+      },
+      "sharing": "evaluate cached container instances/clones later; moving drawer nodes, interaction IDs and state must remain independent"
+    },
+    {
+      "path": "public/models/gothic_commode.glb",
+      "bytes": 1549376,
+      "sha256": "14905770ce0467edfe426e1fe315acb7232265ba6a1fdb2744fcf691945e0e2f",
+      "releasePath": "models/gothic_commode.glb",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/models/study-model-optimization.json"
+      ],
+      "id": "model.antique-cabinet",
+      "kind": "model",
+      "role": "antique-cabinet",
+      "license": {
+        "status": "unverified",
+        "identifier": null,
+        "review": "upstream/author/permission missing; preserve status and resolve or replace before cross-project distribution"
+      },
+      "source": {
+        "page": null,
+        "author": null,
+        "originalCommit": "fd32f40f25f25cea679df2d30d85aaeb5a4c8a70",
+        "originalBytes": 24488264,
+        "originalSha256": "02c6498b5d17c79ed915a986564ce5ccd2255ae6daf920d24a3a7d8c140ae1fc",
+        "introducedBy": "9a2d8c1dbcf55b37b91abf24320660e50db8afb5"
+      },
+      "processing": {
+        "record": "public/models/study-model-optimization.json",
+        "generator": "tools/optimize-study-models.cjs",
+        "profile": "detail-c85",
+        "parameters": {
+          "color": [
+            2048,
+            85
+          ],
+          "data": [
+            1024,
+            90
+          ],
+          "normal": [
+            1024,
+            95
+          ]
+        }
+      },
+      "gltf": {
+        "version": "2.0",
+        "extensionsUsed": [],
+        "extensionsRequired": [],
+        "externalUris": [],
+        "images": [
+          {
+            "name": "GothicCommode_01 (Base Color) image",
+            "mimeType": "image/jpeg",
+            "width": 2048,
+            "height": 2048
+          },
+          {
+            "name": "GothicCommode_01 (Metallic Roughness) image",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          },
+          {
+            "name": "GothicCommode_01 (Normal) image",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "animations": 0
+      },
+      "consumers": [
+        "src/examples/Room.ts",
+        "src/examples/RoomFurnitureAssets.ts",
+        "src/examples/HouseContent.ts"
+      ],
+      "placement": {
+        "adapter": "src/examples/RoomFurnitureAssets.ts:placeFurniture",
+        "sourceUnits": "not normalized by this inventory",
+        "targetWidth": "engine units; current project uses 5 units/metre",
+        "axisPolicy": "preserve glTF loader handedness conversion; fit actual bounds, centre X/Z, place minimum Y at floor"
+      },
+      "sharing": "evaluate cached container instances/clones later; moving drawer nodes, interaction IDs and state must remain independent"
+    },
+    {
+      "path": "public/models/study/modern_arm_chair_01.glb",
+      "bytes": 2696208,
+      "sha256": "e63d43aa97f499c95f7b02cff070c78fb68017a1f423b261bbd62d8eb4452049",
+      "releasePath": "models/study/modern_arm_chair_01.glb",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/manifest.json"
+      ],
+      "id": "model.reading-armchair",
+      "kind": "model",
+      "role": "reading-armchair",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://polyhaven.com/a/modern_arm_chair_01",
+        "authors": {
+          "Vibrant Nordic": "All"
+        }
+      },
+      "processing": {
+        "record": "public/textures/study/manifest.json",
+        "method": "Original glTF buffers and JPEGs embedded in GLB; geometry and images unchanged."
+      },
+      "gltf": {
+        "version": "2.0",
+        "extensionsUsed": [],
+        "extensionsRequired": [],
+        "externalUris": [],
+        "images": [
+          {
+            "name": "modern_arm_chair_01_legs_nor_gl",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          },
+          {
+            "name": "modern_arm_chair_01_legs_diff",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          },
+          {
+            "name": "modern_arm_chair_01_legs_metal-modern_arm_chair_01_legs_rough",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          },
+          {
+            "name": "modern_arm_chair_01_pillow_nor_gl",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          },
+          {
+            "name": "modern_arm_chair_01_pillow_diff",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          },
+          {
+            "name": "modern_arm_chair_01_pillow_metal-modern_arm_chair_01_pillow_rough",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "animations": 0
+      },
+      "consumers": [
+        "src/examples/Room.ts",
+        "src/examples/RoomFurnitureAssets.ts",
+        "src/examples/HouseContent.ts"
+      ],
+      "placement": {
+        "adapter": "src/examples/RoomFurnitureAssets.ts:placeFurniture",
+        "sourceUnits": "not normalized by this inventory",
+        "targetWidth": "engine units; current project uses 5 units/metre",
+        "axisPolicy": "preserve glTF loader handedness conversion; fit actual bounds, centre X/Z, place minimum Y at floor"
+      },
+      "sharing": "evaluate cached container instances/clones later; moving drawer nodes, interaction IDs and state must remain independent"
+    },
+    {
+      "path": "public/models/study/sofa_03.glb",
+      "bytes": 818172,
+      "sha256": "8bf6e226b6add7aaf31479dd824e50c8ce6024df48cb609b900976f6991b5a3b",
+      "releasePath": "models/study/sofa_03.glb",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/manifest.json"
+      ],
+      "id": "model.reading-sofa",
+      "kind": "model",
+      "role": "reading-sofa",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://polyhaven.com/a/sofa_03",
+        "authors": {
+          "Fran Calvente": "All"
+        }
+      },
+      "processing": {
+        "record": "public/textures/study/manifest.json",
+        "method": "Original glTF buffers and JPEGs embedded in GLB; geometry and images unchanged."
+      },
+      "gltf": {
+        "version": "2.0",
+        "extensionsUsed": [],
+        "extensionsRequired": [],
+        "externalUris": [],
+        "images": [
+          {
+            "name": "sofa_03_nor_gl",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          },
+          {
+            "name": "sofa_03_diff.png",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          },
+          {
+            "name": "sofa_03_rough.png",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          },
+          {
+            "name": "sofa_03_diff.png-sofa_03_opacity",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "animations": 0
+      },
+      "consumers": [
+        "src/examples/Room.ts",
+        "src/examples/RoomFurnitureAssets.ts",
+        "src/examples/HouseContent.ts"
+      ],
+      "placement": {
+        "adapter": "src/examples/RoomFurnitureAssets.ts:placeFurniture",
+        "sourceUnits": "not normalized by this inventory",
+        "targetWidth": "engine units; current project uses 5 units/metre",
+        "axisPolicy": "preserve glTF loader handedness conversion; fit actual bounds, centre X/Z, place minimum Y at floor"
+      },
+      "sharing": "evaluate cached container instances/clones later; moving drawer nodes, interaction IDs and state must remain independent"
+    },
+    {
+      "path": "public/textures/coastal/ground-arm.jpg",
+      "bytes": 14130,
+      "sha256": "9a879b1f72be2cc75820c100f3f8b2ccf3bbc0c1b935445f1b584814b704deb5",
+      "releasePath": "textures/coastal/ground-arm.jpg",
+      "version": "coastal-cliff-v1",
+      "id": "texture.coastal.ground.arm",
+      "kind": "texture",
+      "role": "linear ARM: R=AO G=roughness B=metalness",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "retained locked provenance; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/coastal/source.json",
+        "public/environment/coastal-cliff-source.json"
+      ],
+      "source": {
+        "input": "ground-arm.png",
+        "output": "ground-arm.jpg",
+        "asset": "aerial_grass_rock",
+        "author": "Rob Tuytel",
+        "license": "CC0-1.0",
+        "source": "https://polyhaven.com/a/aerial_grass_rock",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_arm_1k.png",
+        "sha256": "9738a3fe3b93e6d5d8bee60800519df49f13ced7a5ec39f956ff31a94b335d18",
+        "size": [
+          256,
+          256
+        ],
+        "semantic": "linear ARM: R=AO G=roughness B=metalness",
+        "quality": 76,
+        "subsampling": 0,
+        "originalSize": [
+          1024,
+          1024
+        ],
+        "file": "textures/coastal/ground-arm.jpg",
+        "bytes": 14130,
+        "deliverySha256": "9a879b1f72be2cc75820c100f3f8b2ccf3bbc0c1b935445f1b584814b704deb5"
+      },
+      "consumers": [
+        "src/examples/CoastalMaterials.ts",
+        "src/examples/CoastalLandmark.ts"
+      ],
+      "sharing": "one shared coast per scene; keep linear data/sRGB albedo and original channel semantics; dispose at last owner"
+    },
+    {
+      "path": "public/textures/coastal/ground-color.jpg",
+      "bytes": 166163,
+      "sha256": "897117d784101b4254b4579f468d63b0d46ae9db126a6633ce70272cf87e2c2e",
+      "releasePath": "textures/coastal/ground-color.jpg",
+      "version": "coastal-cliff-v1",
+      "id": "texture.coastal.ground.color",
+      "kind": "texture",
+      "role": "sRGB albedo",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "retained locked provenance; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/coastal/source.json",
+        "public/environment/coastal-cliff-source.json"
+      ],
+      "source": {
+        "input": "ground-color.png",
+        "output": "ground-color.jpg",
+        "asset": "aerial_grass_rock",
+        "author": "Rob Tuytel",
+        "license": "CC0-1.0",
+        "source": "https://polyhaven.com/a/aerial_grass_rock",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_diff_1k.png",
+        "sha256": "375dcb05aaced6f690ae53016a45f9a6b780a5b66f77f0a53a90ce840b4d71bc",
+        "size": [
+          1024,
+          1024
+        ],
+        "semantic": "sRGB albedo",
+        "quality": 73,
+        "subsampling": 2,
+        "originalSize": [
+          1024,
+          1024
+        ],
+        "file": "textures/coastal/ground-color.jpg",
+        "bytes": 166163,
+        "deliverySha256": "897117d784101b4254b4579f468d63b0d46ae9db126a6633ce70272cf87e2c2e"
+      },
+      "consumers": [
+        "src/examples/CoastalMaterials.ts",
+        "src/examples/CoastalLandmark.ts"
+      ],
+      "sharing": "one shared coast per scene; keep linear data/sRGB albedo and original channel semantics; dispose at last owner"
+    },
+    {
+      "path": "public/textures/coastal/ground-normal.jpg",
+      "bytes": 54823,
+      "sha256": "17088099b35ec001ce361e044b8aa52650fa939cb936de48e390f3d00678c8ff",
+      "releasePath": "textures/coastal/ground-normal.jpg",
+      "version": "coastal-cliff-v1",
+      "id": "texture.coastal.ground.normal",
+      "kind": "texture",
+      "role": "OpenGL tangent normal",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "retained locked provenance; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/coastal/source.json",
+        "public/environment/coastal-cliff-source.json"
+      ],
+      "source": {
+        "input": "ground-normal.png",
+        "output": "ground-normal.jpg",
+        "asset": "aerial_grass_rock",
+        "author": "Rob Tuytel",
+        "license": "CC0-1.0",
+        "source": "https://polyhaven.com/a/aerial_grass_rock",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_grass_rock/aerial_grass_rock_nor_gl_1k.png",
+        "sha256": "23bf3adc3f0d2a59eac317718377ca681dab9398fe824eb89925f89a2469f62e",
+        "size": [
+          512,
+          512
+        ],
+        "semantic": "OpenGL tangent normal",
+        "quality": 65,
+        "subsampling": 0,
+        "originalSize": [
+          1024,
+          1024
+        ],
+        "file": "textures/coastal/ground-normal.jpg",
+        "bytes": 54823,
+        "deliverySha256": "17088099b35ec001ce361e044b8aa52650fa939cb936de48e390f3d00678c8ff"
+      },
+      "consumers": [
+        "src/examples/CoastalMaterials.ts",
+        "src/examples/CoastalLandmark.ts"
+      ],
+      "sharing": "one shared coast per scene; keep linear data/sRGB albedo and original channel semantics; dispose at last owner"
+    },
+    {
+      "path": "public/textures/coastal/rock-arm.jpg",
+      "bytes": 111357,
+      "sha256": "3f32a5c9139044af6cc4ddf152437b95a6f7ba6dd84ba6a25c0805c1567444a3",
+      "releasePath": "textures/coastal/rock-arm.jpg",
+      "version": "coastal-cliff-v1",
+      "id": "texture.coastal.rock.arm",
+      "kind": "texture",
+      "role": "linear ARM: R=AO G=roughness B=metalness",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "retained locked provenance; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/coastal/source.json",
+        "public/environment/coastal-cliff-source.json"
+      ],
+      "source": {
+        "input": "rock-arm.png",
+        "output": "rock-arm.jpg",
+        "asset": "seaside_rock",
+        "author": "Dimitrios Savva",
+        "license": "CC0-1.0",
+        "source": "https://polyhaven.com/a/seaside_rock",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/seaside_rock/seaside_rock_arm_1k.png",
+        "sha256": "fcde935ef8f21f01e1e9ce4ef17a5e363ec0c569676068ffc0526fc9fba904ca",
+        "size": [
+          1024,
+          1024
+        ],
+        "semantic": "linear ARM: R=AO G=roughness B=metalness",
+        "quality": 76,
+        "subsampling": 0,
+        "originalSize": [
+          1024,
+          1024
+        ],
+        "file": "textures/coastal/rock-arm.jpg",
+        "bytes": 111357,
+        "deliverySha256": "3f32a5c9139044af6cc4ddf152437b95a6f7ba6dd84ba6a25c0805c1567444a3"
+      },
+      "consumers": [
+        "src/examples/CoastalMaterials.ts",
+        "src/examples/CoastalLandmark.ts"
+      ],
+      "sharing": "one shared coast per scene; keep linear data/sRGB albedo and original channel semantics; dispose at last owner"
+    },
+    {
+      "path": "public/textures/coastal/rock-color.jpg",
+      "bytes": 678872,
+      "sha256": "028dc33f502d0b6882595daf4a4e9fb41c2dc479e487de2a979e8266d470316b",
+      "releasePath": "textures/coastal/rock-color.jpg",
+      "version": "coastal-cliff-v1",
+      "id": "texture.coastal.rock.color",
+      "kind": "texture",
+      "role": "sRGB albedo",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "retained locked provenance; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/coastal/source.json",
+        "public/environment/coastal-cliff-source.json"
+      ],
+      "source": {
+        "input": "rock-color.png",
+        "output": "rock-color.jpg",
+        "asset": "seaside_rock",
+        "author": "Dimitrios Savva",
+        "license": "CC0-1.0",
+        "source": "https://polyhaven.com/a/seaside_rock",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/seaside_rock/seaside_rock_diff_2k.png",
+        "sha256": "2263535252e356c57f47861e16c45c0875eb83c6d5ba95180f551b681a561f0d",
+        "size": [
+          2048,
+          2048
+        ],
+        "semantic": "sRGB albedo",
+        "quality": 68,
+        "subsampling": 2,
+        "originalSize": [
+          2048,
+          2048
+        ],
+        "file": "textures/coastal/rock-color.jpg",
+        "bytes": 678872,
+        "deliverySha256": "028dc33f502d0b6882595daf4a4e9fb41c2dc479e487de2a979e8266d470316b"
+      },
+      "consumers": [
+        "src/examples/CoastalMaterials.ts",
+        "src/examples/CoastalLandmark.ts"
+      ],
+      "sharing": "one shared coast per scene; keep linear data/sRGB albedo and original channel semantics; dispose at last owner"
+    },
+    {
+      "path": "public/textures/coastal/rock-normal.jpg",
+      "bytes": 291272,
+      "sha256": "0adfb641e1a678672be1cc6a53ffbb1e5e3433985bee0ec5a0820e9cb13e44df",
+      "releasePath": "textures/coastal/rock-normal.jpg",
+      "version": "coastal-cliff-v1",
+      "id": "texture.coastal.rock.normal",
+      "kind": "texture",
+      "role": "OpenGL tangent normal",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "retained locked provenance; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/coastal/source.json",
+        "public/environment/coastal-cliff-source.json"
+      ],
+      "source": {
+        "input": "rock-normal.png",
+        "output": "rock-normal.jpg",
+        "asset": "seaside_rock",
+        "author": "Dimitrios Savva",
+        "license": "CC0-1.0",
+        "source": "https://polyhaven.com/a/seaside_rock",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/seaside_rock/seaside_rock_nor_gl_1k.png",
+        "sha256": "571cc58dcf6504e897e835a918919c7e9c4af1075383b8c8be62af120df326f5",
+        "size": [
+          1024,
+          1024
+        ],
+        "semantic": "OpenGL tangent normal",
+        "quality": 66,
+        "subsampling": 0,
+        "originalSize": [
+          1024,
+          1024
+        ],
+        "file": "textures/coastal/rock-normal.jpg",
+        "bytes": 291272,
+        "deliverySha256": "0adfb641e1a678672be1cc6a53ffbb1e5e3433985bee0ec5a0820e9cb13e44df"
+      },
+      "consumers": [
+        "src/examples/CoastalMaterials.ts",
+        "src/examples/CoastalLandmark.ts"
+      ],
+      "sharing": "one shared coast per scene; keep linear data/sRGB albedo and original channel semantics; dispose at last owner"
+    },
+    {
+      "path": "public/textures/study/painted_wall/arm.png",
+      "bytes": 75148,
+      "sha256": "145eae6481ac9895f033ea4cf61318b668dc04c7c879a1cfab719fa51f999c33",
+      "releasePath": "textures/study/painted_wall/arm.png",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/painted_wall/source.json"
+      ],
+      "id": "texture.painted-wall.arm",
+      "role": "painted-wall arm",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "source": {
+        "author": "project",
+        "record": "package.json"
+      },
+      "processing": {
+        "record": "public/textures/study/painted_wall/source.json",
+        "generator": "tools/generate-painted-wall.py",
+        "seed": 20261016,
+        "parameters": "Periodic hashed value noise; cells 2/8 for fine height, 64 for subtle colour; wrap derivatives for OpenGL tangent normals"
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "png",
+        "width": 512,
+        "height": 512,
+        "channels": 3,
+        "colorSpace": "linear data",
+        "semantic": "R=ambient occlusion, G=roughness, B=metalness"
+      },
+      "consumers": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    },
+    {
+      "path": "public/textures/study/painted_wall/color.png",
+      "bytes": 58252,
+      "sha256": "a1c0489dd75eea2c094ca57b942ef77b0b5cb11f91dd13c713bd9f8fb21409a9",
+      "releasePath": "textures/study/painted_wall/color.png",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/painted_wall/source.json"
+      ],
+      "id": "texture.painted-wall.color",
+      "role": "painted-wall color",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "source": {
+        "author": "project",
+        "record": "package.json"
+      },
+      "processing": {
+        "record": "public/textures/study/painted_wall/source.json",
+        "generator": "tools/generate-painted-wall.py",
+        "seed": 20261016,
+        "parameters": "Periodic hashed value noise; cells 2/8 for fine height, 64 for subtle colour; wrap derivatives for OpenGL tangent normals"
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "png",
+        "width": 512,
+        "height": 512,
+        "channels": 1,
+        "colorSpace": "sRGB colour",
+        "semantic": "display/albedo colour"
+      },
+      "consumers": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    },
+    {
+      "path": "public/textures/study/painted_wall/normal.png",
+      "bytes": 403149,
+      "sha256": "a3f21adb78e23cbe31af99034527ecaa6d506eea8df1b4e0dff365445a040913",
+      "releasePath": "textures/study/painted_wall/normal.png",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/painted_wall/source.json"
+      ],
+      "id": "texture.painted-wall.normal",
+      "role": "painted-wall normal",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "source": {
+        "author": "project",
+        "record": "package.json"
+      },
+      "processing": {
+        "record": "public/textures/study/painted_wall/source.json",
+        "generator": "tools/generate-painted-wall.py",
+        "seed": 20261016,
+        "parameters": "Periodic hashed value noise; cells 2/8 for fine height, 64 for subtle colour; wrap derivatives for OpenGL tangent normals"
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "png",
+        "width": 512,
+        "height": 512,
+        "channels": 3,
+        "colorSpace": "linear data",
+        "semantic": "tangent-space normal, OpenGL +Y; retain runtime handedness adjustment"
+      },
+      "consumers": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    },
+    {
+      "path": "public/textures/study/rough_linen/arm.jpg",
+      "bytes": 1191393,
+      "sha256": "e1ca6b51ed62834063253e08f8f2e23836aa00d72675b960ddd8e608d9f0c7e6",
+      "releasePath": "textures/study/rough_linen/arm.jpg",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/manifest.json"
+      ],
+      "id": "texture.rough-linen.arm",
+      "role": "rough_linen arm",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://polyhaven.com/a/rough_linen",
+        "authors": {
+          "colormass": "Photography",
+          "Rico Cilliers": "Processing"
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rough_linen/rough_linen_arm_1k.jpg",
+        "sourceMD5": "ffe777973056d79d6b2a1324e8451295"
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "jpeg",
+        "width": 1024,
+        "height": 1026,
+        "channels": 3,
+        "colorSpace": "linear data",
+        "semantic": "R=ambient occlusion, G=roughness, B=metalness"
+      },
+      "consumers": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    },
+    {
+      "path": "public/textures/study/rough_linen/normal.jpg",
+      "bytes": 916843,
+      "sha256": "e2402166d1a489f7414814e69e1836ab672aa24e30bec2d41fea356f81687e53",
+      "releasePath": "textures/study/rough_linen/normal.jpg",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/manifest.json"
+      ],
+      "id": "texture.rough-linen.normal",
+      "role": "rough_linen normal",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://polyhaven.com/a/rough_linen",
+        "authors": {
+          "colormass": "Photography",
+          "Rico Cilliers": "Processing"
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rough_linen/rough_linen_nor_gl_1k.jpg",
+        "sourceMD5": "3350269a2e9c472aa406bd3cc1eaf2c8"
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "jpeg",
+        "width": 1024,
+        "height": 1026,
+        "channels": 3,
+        "colorSpace": "linear data",
+        "semantic": "tangent-space normal, OpenGL +Y; retain runtime handedness adjustment"
+      },
+      "consumers": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    },
+    {
+      "path": "public/textures/study/wood_floor/arm.jpg",
+      "bytes": 447855,
+      "sha256": "a84d9457fa35a76cf8a41da8bcef55387230c6b236819de878799585eda76059",
+      "releasePath": "textures/study/wood_floor/arm.jpg",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/manifest.json"
+      ],
+      "id": "texture.wood-floor.arm",
+      "role": "wood_floor arm",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://polyhaven.com/a/wood_floor",
+        "authors": {
+          "Dimitrios Savva": "All"
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor/wood_floor_arm_1k.jpg",
+        "sourceMD5": "02090ec0443778b85ba3df555236b755"
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "jpeg",
+        "width": 1024,
+        "height": 1024,
+        "channels": 3,
+        "colorSpace": "linear data",
+        "semantic": "R=ambient occlusion, G=roughness, B=metalness"
+      },
+      "consumers": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    },
+    {
+      "path": "public/textures/study/wood_floor/color.jpg",
+      "bytes": 734493,
+      "sha256": "2a1c07687b6dbb214c4b9213739c6d92d425f1f0fc8ab3ac157f105d78240789",
+      "releasePath": "textures/study/wood_floor/color.jpg",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/manifest.json"
+      ],
+      "id": "texture.wood-floor.color",
+      "role": "wood_floor color",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://polyhaven.com/a/wood_floor",
+        "authors": {
+          "Dimitrios Savva": "All"
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor/wood_floor_diff_1k.jpg",
+        "sourceMD5": "b7e927d2bf2f8f103820ff3890c8407c"
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "jpeg",
+        "width": 1024,
+        "height": 1024,
+        "channels": 3,
+        "colorSpace": "sRGB colour",
+        "semantic": "display/albedo colour"
+      },
+      "consumers": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    },
+    {
+      "path": "public/textures/study/wood_floor/normal.jpg",
+      "bytes": 423303,
+      "sha256": "452247f0d0d1b7fc7f8324ff3b6ed60bcc6de1405f4284eeb8d9bce90d4939c2",
+      "releasePath": "textures/study/wood_floor/normal.jpg",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/manifest.json"
+      ],
+      "id": "texture.wood-floor.normal",
+      "role": "wood_floor normal",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://polyhaven.com/a/wood_floor",
+        "authors": {
+          "Dimitrios Savva": "All"
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor/wood_floor_nor_gl_1k.jpg",
+        "sourceMD5": "620f174d2c09b579c5d02d37b2106668"
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "jpeg",
+        "width": 1024,
+        "height": 1024,
+        "channels": 3,
+        "colorSpace": "linear data",
+        "semantic": "tangent-space normal, OpenGL +Y; retain runtime handedness adjustment"
+      },
+      "consumers": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    },
+    {
+      "path": "public/textures/study/wood_table_001/arm.jpg",
+      "bytes": 214520,
+      "sha256": "29d3f34a7c2c213e21b320365495fad673d3c8a3ce885b879fc0a77a187dd828",
+      "releasePath": "textures/study/wood_table_001/arm.jpg",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/manifest.json"
+      ],
+      "id": "texture.wood-table-001.arm",
+      "role": "wood_table_001 arm",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://polyhaven.com/a/wood_table_001",
+        "authors": {
+          "Dimitrios Savva": "Photography",
+          "Rico Cilliers": "Processing"
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table_001/wood_table_001_arm_1k.jpg",
+        "sourceMD5": "b39a1587c9b99e3104baedae8d5dfa48"
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "jpeg",
+        "width": 1024,
+        "height": 1024,
+        "channels": 3,
+        "colorSpace": "linear data",
+        "semantic": "R=ambient occlusion, G=roughness, B=metalness"
+      },
+      "consumers": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    },
+    {
+      "path": "public/textures/study/wood_table_001/color.jpg",
+      "bytes": 215573,
+      "sha256": "460dd08d240f4a1f02982415048c3c5c200f385db212da18dc7e2df68bf4d0be",
+      "releasePath": "textures/study/wood_table_001/color.jpg",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/manifest.json"
+      ],
+      "id": "texture.wood-table-001.color",
+      "role": "wood_table_001 color",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://polyhaven.com/a/wood_table_001",
+        "authors": {
+          "Dimitrios Savva": "Photography",
+          "Rico Cilliers": "Processing"
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table_001/wood_table_001_diff_1k.jpg",
+        "sourceMD5": "56652a7339b16a76afad20d3585f66ea"
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "jpeg",
+        "width": 1024,
+        "height": 1024,
+        "channels": 3,
+        "colorSpace": "sRGB colour",
+        "semantic": "display/albedo colour"
+      },
+      "consumers": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    },
+    {
+      "path": "public/textures/study/wood_table_001/normal.jpg",
+      "bytes": 51927,
+      "sha256": "9bf7ddf5721e225c20290f1772ae37f9bdfd49658f6d458259eb794e2149d3cf",
+      "releasePath": "textures/study/wood_table_001/normal.jpg",
+      "version": "eight-room-v1",
+      "provenanceRecords": [
+        "public/STUDY_ASSET_SOURCES.md",
+        "public/textures/study/manifest.json"
+      ],
+      "id": "texture.wood-table-001.normal",
+      "role": "wood_table_001 normal",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "source": {
+        "page": "https://polyhaven.com/a/wood_table_001",
+        "authors": {
+          "Dimitrios Savva": "Photography",
+          "Rico Cilliers": "Processing"
+        },
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table_001/wood_table_001_nor_gl_1k.jpg",
+        "sourceMD5": "6360e09967add8baecaa5ecc55fb5e03"
+      },
+      "kind": "texture",
+      "format": {
+        "encoding": "jpeg",
+        "width": 1024,
+        "height": 1024,
+        "channels": 3,
+        "colorSpace": "linear data",
+        "semantic": "tangent-space normal, OpenGL +Y; retain runtime handedness adjustment"
+      },
+      "consumers": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomFurnishings.ts"
+      ],
+      "sharing": "share immutable texture data; preserve UV repeat and sampler settings; clone stateful material/UV configuration when needed"
+    }
+  ],
+  "developmentSources": [
+    {
+      "path": "assets/audio-source/study/drawer_open.wav",
+      "bytes": 84932,
+      "sha256": "0f1a31835c07e0722e9b506f1f38b726d4ed9579a947721b8e633125c46f3586",
+      "id": "source.audio.drawer_open",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "assets/audio-source/study/source.json"
+      ],
+      "deliveryPolicy": "development only; excluded from runtime whitelist"
+    },
+    {
+      "path": "assets/audio-source/study/drawer_close.wav",
+      "bytes": 66506,
+      "sha256": "a97d950015ea8300d41ea1002de0eecb17bbabdb455d454a6cc786f095b3da22",
+      "id": "source.audio.drawer_close",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "assets/audio-source/study/source.json"
+      ],
+      "deliveryPolicy": "development only; excluded from runtime whitelist"
+    },
+    {
+      "path": "assets/audio-source/study/door_creak_open.wav",
+      "bytes": 148382,
+      "sha256": "67ec6952f3de32852ea5a188e6118546107e4d2ca15b3fd4cab64d8993877227",
+      "id": "source.audio.door_creak_open",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "assets/audio-source/study/source.json"
+      ],
+      "deliveryPolicy": "development only; excluded from runtime whitelist"
+    },
+    {
+      "path": "assets/audio-source/study/door_creak_close.wav",
+      "bytes": 150386,
+      "sha256": "36126c2da6294c0d18e0a3b20893e0803cbaa182b33eff9224ee6a60faaaf867",
+      "id": "source.audio.door_creak_close",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "assets/audio-source/study/source.json"
+      ],
+      "deliveryPolicy": "development only; excluded from runtime whitelist"
+    },
+    {
+      "path": "assets/audio-source/study/door_close.wav",
+      "bytes": 63350,
+      "sha256": "a87ec43cf61afb7a4a1d42e50d8b7331951f4d0417daf607cb110e80c9dd614a",
+      "id": "source.audio.door_close",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "assets/audio-source/study/source.json"
+      ],
+      "deliveryPolicy": "development only; excluded from runtime whitelist"
+    },
+    {
+      "path": "assets/audio-source/study/switch_on.wav",
+      "bytes": 55468,
+      "sha256": "7fef89ebd553d8bdd51d62f3b794e1ca75d0bab39c008cb35ef5c9bdc3850891",
+      "id": "source.audio.switch_on",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "assets/audio-source/study/source.json"
+      ],
+      "deliveryPolicy": "development only; excluded from runtime whitelist"
+    },
+    {
+      "path": "assets/audio-source/study/switch_off.wav",
+      "bytes": 54964,
+      "sha256": "c4fc5ff1157a1fc0e74900107f559f1c80118ad86dca398cdb88c1dd6124bdb7",
+      "id": "source.audio.switch_off",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "assets/audio-source/study/source.json"
+      ],
+      "deliveryPolicy": "development only; excluded from runtime whitelist"
+    },
+    {
+      "path": "assets/audio-source/study/turn_page.wav",
+      "bytes": 97546,
+      "sha256": "d638558f6ef6a5890e77da27902402de4b2a264d4ca874805133676a9a6b287c",
+      "id": "source.audio.turn_page",
+      "license": {
+        "status": "recorded",
+        "identifier": "CC0-1.0",
+        "review": "inherited-from-existing-source-record; no new upstream audit"
+      },
+      "provenanceRecords": [
+        "assets/audio-source/study/source.json"
+      ],
+      "deliveryPolicy": "development only; excluded from runtime whitelist"
+    }
+  ],
+  "codeComponents": [
+    {
+      "id": "code.runtime",
+      "files": [
+        "src/examples/RoomRuntime.ts",
+        "src/examples/RoomShaders.ts"
+      ],
+      "scope": "explicit Babylon registration/startup shaders",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "reuseState": "requires-extraction-and-regression",
+      "limitations": "keep precise/pure imports; test in isolated process; not a ready public package"
+    },
+    {
+      "id": "code.lifecycle",
+      "files": [
+        "src/examples/HouseRooms.ts",
+        "src/examples/RoomOwnership.ts",
+        "src/examples/RoomMaterialLibrary.ts"
+      ],
+      "scope": "room generations, ownership, cleanup, shared scene materials",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "reuseState": "requires-extraction-and-regression",
+      "limitations": "inject room instance list; no current fixed IDs; release last owner only"
+    },
+    {
+      "id": "code.architecture",
+      "files": [
+        "src/examples/HouseLayout.ts",
+        "src/examples/HouseStructure.ts",
+        "src/examples/HouseArchitecture.ts",
+        "src/examples/HouseWalking.ts",
+        "src/examples/HouseJump.ts",
+        "src/examples/CoastalSite.ts",
+        "src/examples/CoastalPath.ts",
+        "src/examples/WalkingSurface.ts"
+      ],
+      "scope": "Metric indoor layout plus shared outdoor road/terrain support, swept finite exploration boundary and jumping",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "reuseState": "requires-extraction-and-regression",
+      "limitations": "inject layout/windows/spawn; current orthogonal rectangular single floor; 5 engine units/metre; coast is layout-specific, no sea/cliff falling or general navigation/vehicle system"
+    },
+    {
+      "id": "code.furnishings",
+      "files": [
+        "src/examples/RoomFurnishings.ts",
+        "src/examples/HouseRoomComponents.ts",
+        "src/examples/RoomDetailGeometry.ts",
+        "src/examples/RoomFurnitureAssets.ts",
+        "src/examples/BookshelfLayout.ts"
+      ],
+      "scope": "procedural furniture and imported-model placement",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "reuseState": "requires-extraction-and-regression",
+      "limitations": "some legacy dimensions use engine units; instance-qualified names/IDs; moving parts remain separate"
+    },
+    {
+      "id": "code.materials",
+      "files": [
+        "src/examples/RoomMaterials.ts",
+        "src/examples/RoomSurfaceDetails.ts",
+        "src/examples/RoomFinishing.ts"
+      ],
+      "scope": "PBR maps, generated textures, postprocess",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "reuseState": "requires-extraction-and-regression",
+      "limitations": "retain colour/channel conventions and source files; light emission states independent"
+    },
+    {
+      "id": "code.interactions",
+      "files": [
+        "src/examples/RoomInteractions.ts",
+        "src/examples/RoomItemInspection.ts",
+        "src/examples/RoomPointerLock.ts",
+        "src/examples/RoomCollisions.ts"
+      ],
+      "scope": "doors/drawers/lamps/inspection/input/collisions",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "reuseState": "requires-extraction-and-regression",
+      "limitations": "namespace IDs per room/component; decouple DOM and fixed cabinet node names"
+    },
+    {
+      "id": "code.visual",
+      "files": [
+        "src/examples/RoomLighting.ts",
+        "src/examples/RoomMirrors.ts",
+        "src/examples/RoomExterior.ts",
+        "src/examples/CoastalCliff.ts",
+        "src/examples/CoastalMaterials.ts",
+        "src/examples/CoastalScatter.ts",
+        "src/examples/CoastalSky.ts",
+        "src/examples/CoastalOcean.ts",
+        "src/examples/CoastalLandmark.ts",
+        "src/examples/CoastalFinish.ts"
+      ],
+      "scope": "lighting, real mirror, shared exterior",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "reuseState": "requires-extraction-and-regression",
+      "limitations": "layout-specific positions/framing must be injected; include shadow/reflection/GPU costs; keep one cached 1024 local shadow with zone/LOD hysteresis, separate exterior cutaway/material ownership"
+    },
+    {
+      "id": "code.audio",
+      "files": [
+        "src/examples/RoomAudio.ts",
+        "src/examples/RoomAudioBackend.ts",
+        "src/examples/RoomAudioCatalog.ts"
+      ],
+      "scope": "shared audio buffers, gesture unlock, spatial cues",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "reuseState": "requires-extraction-and-regression",
+      "limitations": "source credits travel with files; physical listening/other platforms remain pending"
+    },
+    {
+      "id": "code.content",
+      "files": [
+        "src/examples/HouseContent.ts",
+        "src/examples/HouseSuite.ts",
+        "src/examples/HouseBedroom.ts",
+        "src/examples/HouseServiceRooms.ts",
+        "src/examples/HouseBalcony.ts",
+        "src/examples/RoomLivingRoom.ts"
+      ],
+      "scope": "current eight-room compositions",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "reuseState": "requires-extraction-and-regression",
+      "limitations": "project configuration/reference; separate layout/content/visual; not generic room factories yet"
+    },
+    {
+      "id": "code.ui",
+      "files": [
+        "src/app.ts",
+        "public/index.html",
+        "src/examples/Room.ts",
+        "src/examples/RoomFloorPlan.ts",
+        "src/examples/HouseFloorPlan.ts",
+        "src/examples/CoastalMap.ts"
+      ],
+      "scope": "orchestration/UI/map",
+      "license": {
+        "status": "project-authored",
+        "identifier": "ISC",
+        "review": "package.json source terms; retain third-party notices separately"
+      },
+      "reuseState": "requires-extraction-and-regression",
+      "limitations": "project entry/DOM adapter; do not bind common library to current page selectors; indoor room IDs/area and outdoor regions are separate; preserve shared plan/heading projection"
+    }
+  ],
+  "generatedResources": {
+    "files": [],
+    "policy": "runtime-generated geometry/textures/shadows/mirrors are code assets, not omitted download files; GPU costs tracked separately",
+    "sources": [
+      "src/examples/RoomSurfaceDetails.ts",
+      "src/examples/RoomFurnishings.ts",
+      "src/examples/RoomMirrors.ts",
+      "src/examples/RoomLighting.ts",
+      "src/examples/CoastalCliff.ts",
+      "src/examples/CoastalMaterials.ts",
+      "src/examples/CoastalScatter.ts",
+      "src/examples/CoastalSky.ts",
+      "src/examples/CoastalOcean.ts",
+      "src/examples/CoastalSite.ts",
+      "src/examples/CoastalPath.ts",
+      "src/examples/CoastalLandmark.ts",
+      "src/examples/CoastalFinish.ts"
+    ],
+    "oceanField": {
+      "size": [
+        512,
+        512
+      ],
+      "format": "linear RGBA8; 16-bit signed distance and approximate seabed",
+      "bytesWithoutMipmaps": 1048576,
+      "downloadBytes": 0
+    },
+    "lighthouse": {
+      "originalGeometryLicense": "ISC",
+      "exteriorVertices": 153852,
+      "shadowSize": 1024,
+      "additionalDownloadBytes": 0,
+      "limitations": "Closed interior; daytime static lamp; one cached local shadow rather than full-route simultaneous shadow coverage; no vehicle."
+    }
+  },
+  "processingTools": [
+    "tools/optimize-study-models.cjs",
+    "tools/generate-painted-wall.py",
+    "tools/prepare-study-audio.py",
+    "tools/prepare-coastal-materials.py",
+    "tools/coastal-material-inputs.json"
+  ],
+  "deliverySupport": {
+    "documentation": [
+      "public/STUDY_ASSET_SOURCES.md",
+      "public/models/study-model-optimization.json",
+      "public/textures/study/manifest.json",
+      "public/environment/coastal-cliff-source.json",
+      "public/textures/coastal/source.json",
+      "public/textures/study/painted_wall/source.json",
+      "public/audio/study/source.json",
+      "public/audio/study/credits.html"
+    ],
+    "thirdPartyNotices": [
+      {
+        "source": "node_modules/@babylonjs/core/license.md",
+        "file": "licenses/babylonjs-Apache-2.0.md"
+      },
+      {
+        "source": "node_modules/@babylonjs/core/NOTICE.md",
+        "file": "licenses/babylonjs-NOTICE.md"
+      }
+    ],
+    "policy": "include all build/dynamic chunks, js/*.LICENSE.txt, notices, credits, bundle analysis and release manifest; exact list frozen in baseline JSON"
+  },
+  "excluded": {
+    "paths": [
+      "draft_c894021b_folder/",
+      "node_modules/",
+      "dist/",
+      "artifacts/reuse-baselines/*.tar.gz"
+    ],
+    "policy": "unrelated examples/legacy public assets are not runtime assets; source snapshot may retain their code as compatibility reference; never copy entire public"
+  },
+  "historicalAcceptance": "docs/technical-plans/assets/lighthouse-c-2026-10-18/README.md",
+  "currentAcceptance": "docs/technical-plans/assets/lighthouse-d-2026-10-18/README.md"
+}

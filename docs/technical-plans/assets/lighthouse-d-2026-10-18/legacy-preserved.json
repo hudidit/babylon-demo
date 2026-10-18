@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "path": "docs/reuse/asset-inventory.json",
+      "sha256": "8c33af13e51619635b1e4bbf184c9979dfca1a96dd6b8fce6da0e5a1f93a896c"
+    },
+    {
+      "path": "docs/reuse/coastal-asset-inventory.json",
+      "sha256": "beb0b077d5b9f3c7196f12b457fd7e6fd37637d7a793592c53323a066933e453"
+    },
+    {
+      "path": "docs/reuse/baselines/2026-10-17-eight-room-v1.json",
+      "sha256": "fb22d90a16fe20fcc40513dce6fcb29b4b95d33c6c98af68573b6da1bcd55538"
+    },
+    {
+      "path": "docs/reuse/baselines/2026-10-18-coastal-cliff-v1.json",
+      "sha256": "3c11c9f5237e74b984ad032343311470aa418859501e9cd84130abe68096202f"
+    }
+  ],
+  "tags": [
+    {
+      "tag": "scene-baseline/2026-10-17-eight-room-v1",
+      "commit": "f86c659396d3ae81a56743bdc3f74985fa590bdd"
+    },
+    {
+      "tag": "scene-baseline/2026-10-18-coastal-cliff-v1",
+      "commit": "d1ae3a1b9db2bf448284c90cad4dfabd41d25afa"
+    }
+  ]
+}

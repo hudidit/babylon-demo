@@ -1,0 +1,64 @@
+{
+  "sourceBaseline": "2581be579f8042c0b7d74b214011f38d4b6c10e8",
+  "stage": "D engineering/available-platform delivery complete; explicit untested platforms retained",
+  "runtimeInputsChanged": false,
+  "releaseMatchesOutwardEntry": true,
+  "tests": 141,
+  "typecheck": true,
+  "developmentBuild": true,
+  "productionBuild": true,
+  "metrics": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26211324,
+    "runtimeBytes": 15867631,
+    "documentationBytes": 67591,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2617355,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42239250
+  },
+  "actualInitialJsBytes": 2836207,
+  "initialJsFiles": 12,
+  "matrixCases": 12,
+  "functionalSuites": {
+    "edge-cases.json": "passed",
+    "visuals.json": "passed",
+    "main-draws.json": "passed",
+    "subpath.json": "passed",
+    "lifecycle.json": "passed",
+    "faults.json": "passed",
+    "browser.json": "passed",
+    "legacy-preserved.json": "passed",
+    "entry/browser.json": "passed",
+    "mirrors/public/public-mirror.json": "passed",
+    "mirrors/master/mirror-map.json": "passed",
+    "regression/browser.json": "passed"
+  },
+  "travel": [
+    {
+      "name": "walk-home-to-lighthouse",
+      "elapsedSeconds": 163.53,
+      "samples": 321
+    },
+    {
+      "name": "walk-around-lighthouse",
+      "elapsedSeconds": 28.48,
+      "samples": 56
+    },
+    {
+      "name": "walk-lighthouse-to-home",
+      "elapsedSeconds": 163.04,
+      "samples": 320
+    }
+  ],
+  "continuousTransitionScreenshots": 23,
+  "independentRebuildExact": true,
+  "sourceInputsVerified": 146,
+  "archiveRestoredFiles": 495,
+  "unavailablePlatformEvidence": "platform-availability.json",
+  "physicalDevicesTested": false,
+  "fpsOrLoadTimeSampling": false,
+  "archiveStorage": "local only; source/metadata Git push is not a remote binary backup"
+}

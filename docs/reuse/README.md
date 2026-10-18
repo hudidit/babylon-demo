@@ -1,10 +1,12 @@
 # 场景复用入口与稳定基线
 
-更新时间：2026-10-18。对应[复用技术方案](../technical-plans/2026-10-17-scene-reuse-foundation.md)。原森林复用准备及海岸独立快照已建立；公共库、通用房型工厂和新项目尚未实施。
+更新时间：2026-10-18。对应[复用技术方案](../technical-plans/2026-10-17-scene-reuse-foundation.md)。森林、原海岸和灯塔海岸分别建立独立快照；公共库、通用房型工厂和新项目尚未实施。
 
 本文件以下第1～6节及默认机器清单仍固定含森林的八房v1历史成品。当前主分支已有[海边悬崖A/B/C及D工程交付](../technical-plans/2026-10-17-coastal-cliff-exterior.md)，运行白名单与源码已变化；校验森林v1须恢复其标签并用`--root`指定该目录。旧清单、标签和摘要保持不变。
 
-当前海岸请使用独立的[海岸v1复用入口](coastal-cliff-v1.md)、[36素材清单](coastal-asset-inventory.json)和[137输入/495文件快照](baselines/2026-10-18-coastal-cliff-v1.json)，在校验器中显式传`--baseline`。新标签指向`d1ae3a1`，包含南向次卧窗、半透明全景、跳跃及窗框修复；Chrome/WebKit已通过，Firefox/Safari/物理移动端未完成的环境限制见验收记录。新快照不覆盖森林v1，也不表示通用SDK已实施。
+当前灯塔海岸请使用[灯塔v1复用入口](lighthouse-coast-v1.md)、[36素材及程序资源](lighthouse-asset-inventory.json)和[146输入/495文件快照](baselines/2026-10-18-lighthouse-coast-v1.json)，显式传`--baseline`。新标签指向`2581be5`，包含194.07米可通行步道、最终灯塔/屋顶/局部阴影和入户门外开；D工程/可用环境交付完成，受限平台和本机归档边界见入口。
+
+灯塔加入前的历史版本仍使用[海岸v1复用入口](coastal-cliff-v1.md)、[36素材清单](coastal-asset-inventory.json)和[137输入/495文件快照](baselines/2026-10-18-coastal-cliff-v1.json)，源码标签固定`d1ae3a1`。两个海岸快照与森林v1均保持独立，不覆盖旧标签/清单，也不表示通用SDK已实施。
 
 ## 1. 已固定的内容
 

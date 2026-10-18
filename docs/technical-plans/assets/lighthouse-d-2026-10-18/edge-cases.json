@@ -1,0 +1,225 @@
+{
+  "baseline": "2581be5 + lighthouse D",
+  "fpsOrLoadTimeSampling": false,
+  "method": "Real production camera input/collision controller with fixed reference timesteps; fixtures reset starting poses only",
+  "cases": [
+    {
+      "name": "cliff-fence",
+      "multiplier": 0.25,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": 15.681233167043471,
+        "y": 0.00013274932943474482,
+        "feet": -0.13994868961494394,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "balcony-rail",
+      "multiplier": 0.25,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": 8,
+        "y": 11.987400037252904,
+        "feet": 0,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "window-wall",
+      "multiplier": 0.25,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": -0.3126002679228783,
+        "y": 8.000130996579513,
+        "feet": -0.14,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "solid-tower",
+      "multiplier": 0.25,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": -125,
+        "y": 86.23920825748,
+        "feet": 3.04,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "closed-entry",
+      "multiplier": 0.25,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": 10.502400172227624,
+        "y": 4.650136710584465,
+        "feet": 0,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "cliff-fence",
+      "multiplier": 1,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": 15.623124709768863,
+        "y": 0.0001350737141745384,
+        "feet": -0.13996135269230647,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "balcony-rail",
+      "multiplier": 1,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": 8,
+        "y": 11.987400037252904,
+        "feet": 0,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "window-wall",
+      "multiplier": 1,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": -0.3126002679228783,
+        "y": 8.000130996579514,
+        "feet": -0.14,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "solid-tower",
+      "multiplier": 1,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": -125,
+        "y": 86.20042483035078,
+        "feet": 3.04,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "closed-entry",
+      "multiplier": 1,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": 10.502400172227624,
+        "y": 4.650136710584465,
+        "feet": 0,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "cliff-fence",
+      "multiplier": 3,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": 15.689026311259179,
+        "y": 0.00013243759743541972,
+        "feet": -0.13994699132191177,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "balcony-rail",
+      "multiplier": 3,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": 8,
+        "y": 11.987400037252904,
+        "feet": 0,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "window-wall",
+      "multiplier": 3,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": -0.3126002679228783,
+        "y": 8.000130996579514,
+        "feet": -0.14,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "solid-tower",
+      "multiplier": 3,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": -125,
+        "y": 86.18902631125918,
+        "feet": 3.04,
+        "grounded": true,
+        "airborne": true
+      }
+    },
+    {
+      "name": "closed-entry",
+      "multiplier": 3,
+      "referenceDelta": 0.2,
+      "result": {
+        "x": 10.502400172227624,
+        "y": 4.650136710584465,
+        "feet": 0,
+        "grounded": true,
+        "airborne": true
+      }
+    }
+  ],
+  "walkOff": [
+    {
+      "name": "bed",
+      "result": {
+        "point": {
+          "x": 2.1000000000000005,
+          "y": 10.487400266134738
+        },
+        "feet": 0,
+        "grounded": true
+      }
+    },
+    {
+      "name": "sofa",
+      "result": {
+        "point": {
+          "x": 6.372381361157113,
+          "y": 8.399913501568404
+        },
+        "feet": 0,
+        "grounded": true
+      }
+    },
+    {
+      "name": "coffee-table",
+      "result": {
+        "point": {
+          "x": 6.372376450540028,
+          "y": 8.400033098050844
+        },
+        "feet": 0,
+        "grounded": true
+      }
+    }
+  ],
+  "mapPausesAirborneState": true,
+  "passed": true,
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "sourceCommit": "2581be579f8042c0b7d74b214011f38d4b6c10e8",
+  "frozenInputs": 146,
+  "freshNpmCi": false,
+  "dependencies": "Existing lockfile installation copied with macOS cp -cR into restored checkout; no external node_modules symlink",
+  "productionBuildPassed": true,
+  "releaseManifestDeepEqual": true,
+  "releaseFiles": 495,
+  "releaseBytes": 42239250,
+  "initialJsBytes": 2617355,
+  "earlierSymlinkAttempt": {
+    "productionBuildPassed": true,
+    "byteIdentical": false,
+    "initialJsBytes": 2617398,
+    "releaseBytes": 42257766,
+    "analysisBytes": 139030,
+    "observedInitialModuleName": "../../../Users/huzi/work/babylon-demo/node_modules/@babylonjs/core/Actions/abstractActionManager.js",
+    "cause": "Webpack resolves real external dependency paths; relative module names/IDs and chunks differ. Repeating with local dependency copy removed this difference.",
+    "log": "source-rebuild.log"
+  },
+  "localDependencyLog": "source-rebuild-local-dependencies.log",
+  "verification": "source-rebuild-verification.json"
+}

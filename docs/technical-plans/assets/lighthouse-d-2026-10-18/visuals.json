@@ -1,0 +1,1925 @@
+{
+  "baseline": false,
+  "sourceBaseline": "2581be5",
+  "fpsOrLoadTimeSampling": false,
+  "views": [
+    {
+      "name": "entry-outside",
+      "p": {
+        "x": 13.5,
+        "y": 6
+      },
+      "feet": -0.14,
+      "draws": 840,
+      "zone": 0,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在屋外",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "house-north",
+      "p": {
+        "x": 4,
+        "y": -5
+      },
+      "feet": -0.14,
+      "draws": 937,
+      "zone": 0,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在屋外",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "house-west",
+      "p": {
+        "x": -3,
+        "y": 4
+      },
+      "feet": -0.12255501968697027,
+      "draws": 758,
+      "zone": 0,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在屋外",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "house-south",
+      "p": {
+        "x": 3,
+        "y": 13.8
+      },
+      "feet": -0.14,
+      "draws": 876,
+      "zone": 0,
+      "shadowPosition": [
+        131.94064006495242,
+        182.11581681938705,
+        101.9676218536104
+      ],
+      "map": "你在屋外",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "coast-path-toward-tower",
+      "p": {
+        "x": -40,
+        "y": 12
+      },
+      "feet": 0.6239361680990176,
+      "draws": 47,
+      "zone": 3,
+      "shadowPosition": [
+        -103.78982563053356,
+        200.22494764058064,
+        102.7850054297389
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "lookout-back-to-house",
+      "p": {
+        "x": -70,
+        "y": 25
+      },
+      "feet": 1.0410445648890654,
+      "draws": 790,
+      "zone": 5,
+      "shadowPosition": [
+        -255.59515792530973,
+        202.3792117691436,
+        178.30846192923454
+      ],
+      "map": "你在观景点",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "tower-front",
+      "p": {
+        "x": -125,
+        "y": 78
+      },
+      "feet": 3,
+      "draws": 32,
+      "zone": 9,
+      "shadowPosition": [
+        -520.0593599350476,
+        232.11581681938705,
+        494.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "tower-lantern",
+      "p": {
+        "x": -125,
+        "y": 78
+      },
+      "feet": 3,
+      "draws": 32,
+      "zone": 9,
+      "shadowPosition": [
+        -520.0593599350476,
+        232.11581681938705,
+        494.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "tower-door",
+      "p": {
+        "x": -125,
+        "y": 85.8
+      },
+      "feet": 3.04,
+      "draws": 28,
+      "zone": 9,
+      "shadowPosition": [
+        -520.0593599350476,
+        232.11581681938705,
+        494.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "tower-base",
+      "p": {
+        "x": -129,
+        "y": 86
+      },
+      "feet": 3.04,
+      "draws": 29,
+      "zone": 9,
+      "shadowPosition": [
+        -520.0593599350476,
+        232.11581681938705,
+        494.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "tower-plaza-back-to-house",
+      "p": {
+        "x": -125,
+        "y": 83
+      },
+      "feet": 3.04,
+      "draws": 803,
+      "zone": 9,
+      "shadowPosition": [
+        -520.0593599350476,
+        232.11581681938705,
+        494.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "cape-toward-tower",
+      "p": {
+        "x": -94,
+        "y": 44
+      },
+      "feet": 1.6262802952864626,
+      "draws": 36,
+      "zone": 6,
+      "shadowPosition": [
+        -339.3933354476893,
+        204.4741662072031,
+        244.64868580111835
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "tower-seaward",
+      "p": {
+        "x": -130,
+        "y": 92
+      },
+      "feet": 3.04,
+      "draws": 25,
+      "zone": 9,
+      "shadowPosition": [
+        -520.0593599350476,
+        232.11581681938705,
+        494.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "route": [
+    {
+      "p": {
+        "x": -9.075357120936616,
+        "y": 0.4378826295749447
+      },
+      "feet": 0.008258672937031974,
+      "draws": 48,
+      "zone": 1,
+      "shadowPosition": [
+        67.66761395106253,
+        196.83530459643868,
+        38.474435547063834
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -11.506484968174574,
+        "y": 3.0426624659013295
+      },
+      "feet": 0.06730034922709685,
+      "draws": 47,
+      "zone": 1,
+      "shadowPosition": [
+        67.66761395106253,
+        196.83530459643868,
+        38.474435547063834
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -13.937612815412534,
+        "y": 5.647442302227715
+      },
+      "feet": 0.12634202551716153,
+      "draws": 47,
+      "zone": 1,
+      "shadowPosition": [
+        67.66761395106253,
+        196.83530459643868,
+        38.474435547063834
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -16.36874066265049,
+        "y": 8.2522221385541
+      },
+      "feet": 0.18538370180722624,
+      "draws": 47,
+      "zone": 2,
+      "shadowPosition": [
+        -5.896596751162548,
+        198.49467567058915,
+        96.86191610962084
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -18.27859763913487,
+        "y": 9.829323248613338
+      },
+      "feet": 0.22267416898224218,
+      "draws": 48,
+      "zone": 2,
+      "shadowPosition": [
+        -5.896596751162548,
+        198.49467567058915,
+        96.86191610962084
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -20.979177339435687,
+        "y": 10.270834303585062
+      },
+      "feet": 0.27916686071701247,
+      "draws": 47,
+      "zone": 2,
+      "shadowPosition": [
+        -5.896596751162548,
+        198.49467567058915,
+        96.86191610962084
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -24.543987410797605,
+        "y": 10.594907946436146
+      },
+      "feet": 0.3439815892872292,
+      "draws": 47,
+      "zone": 2,
+      "shadowPosition": [
+        -5.896596751162548,
+        198.49467567058915,
+        96.86191610962084
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -28.10879748215952,
+        "y": 10.91898158928723
+      },
+      "feet": 0.40879631785744575,
+      "draws": 47,
+      "zone": 2,
+      "shadowPosition": [
+        -5.896596751162548,
+        198.49467567058915,
+        96.86191610962084
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -31.673607553521435,
+        "y": 11.243055232138312
+      },
+      "feet": 0.47361104642766244,
+      "draws": 47,
+      "zone": 2,
+      "shadowPosition": [
+        -5.896596751162548,
+        198.49467567058915,
+        96.86191610962084
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -35.238417624883354,
+        "y": 11.567128874989397
+      },
+      "feet": 0.5384257749978791,
+      "draws": 46,
+      "zone": 3,
+      "shadowPosition": [
+        -103.78982563053356,
+        200.22494764058064,
+        102.7850054297389
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -38.69258840042143,
+        "y": 11.877268653189365
+      },
+      "feet": 0.6012225263243034,
+      "draws": 38,
+      "zone": 3,
+      "shadowPosition": [
+        -103.78982563053356,
+        200.22494764058064,
+        102.7850054297389
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -40.90799976343767,
+        "y": 11.753106950879285
+      },
+      "feet": 0.6364085061849158,
+      "draws": 37,
+      "zone": 3,
+      "shadowPosition": [
+        -103.78982563053356,
+        200.22494764058064,
+        102.7850054297389
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -44.0731282501308,
+        "y": 10.9817179374673
+      },
+      "feet": 0.675914103126635,
+      "draws": 35,
+      "zone": 3,
+      "shadowPosition": [
+        -103.78982563053356,
+        200.22494764058064,
+        102.7850054297389
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -47.5636809166812,
+        "y": 10.1090797708297
+      },
+      "feet": 0.719546011458515,
+      "draws": 33,
+      "zone": 3,
+      "shadowPosition": [
+        -103.78982563053356,
+        200.22494764058064,
+        102.7850054297389
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -51.0542335832316,
+        "y": 9.2364416041921
+      },
+      "feet": 0.7631779197903952,
+      "draws": 31,
+      "zone": 3,
+      "shadowPosition": [
+        -103.78982563053356,
+        200.22494764058064,
+        102.7850054297389
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -54.544786249782,
+        "y": 8.3638034375545
+      },
+      "feet": 0.8068098281222749,
+      "draws": 40,
+      "zone": 4,
+      "shadowPosition": [
+        -191.164237682834,
+        201.34588650149828,
+        104.52354483306532
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -56.44542713521293,
+        "y": 8.674053851149043
+      },
+      "feet": 0.8322968640670165,
+      "draws": 43,
+      "zone": 4,
+      "shadowPosition": [
+        -191.164237682834,
+        201.34588650149828,
+        104.52354483306532
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -58.46517065946874,
+        "y": 10.993421515069182
+      },
+      "feet": 0.8602167237066963,
+      "draws": 43,
+      "zone": 4,
+      "shadowPosition": [
+        -191.164237682834,
+        201.34588650149828,
+        104.52354483306532
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -60.73258532973437,
+        "y": 13.74671075753459
+      },
+      "feet": 0.892608361853348,
+      "draws": 42,
+      "zone": 4,
+      "shadowPosition": [
+        -191.164237682834,
+        201.34588650149828,
+        104.52354483306532
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -63,
+        "y": 16.5
+      },
+      "feet": 0.925,
+      "draws": 42,
+      "zone": 4,
+      "shadowPosition": [
+        -191.164237682834,
+        201.34588650149828,
+        104.52354483306532
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -65.26741467026564,
+        "y": 19.25328924246541
+      },
+      "feet": 0.957391638146652,
+      "draws": 42,
+      "zone": 4,
+      "shadowPosition": [
+        -191.164237682834,
+        201.34588650149828,
+        104.52354483306532
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -67.53482934053127,
+        "y": 22.00657848493082
+      },
+      "feet": 0.9897832762933036,
+      "draws": 42,
+      "zone": 5,
+      "shadowPosition": [
+        -255.59515792530973,
+        202.3792117691436,
+        178.30846192923454
+      ],
+      "map": "你在观景点",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -69.53712630144175,
+        "y": 24.406874764732386
+      },
+      "feet": 1.0410445648890654,
+      "draws": 41,
+      "zone": 5,
+      "shadowPosition": [
+        -255.59515792530973,
+        202.3792117691436,
+        178.30846192923454
+      ],
+      "map": "你在观景点",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -71.17606873669264,
+        "y": 25.931054416548342
+      },
+      "feet": 1.054401718417316,
+      "draws": 38,
+      "zone": 5,
+      "shadowPosition": [
+        -255.59515792530973,
+        202.3792117691436,
+        178.30846192923454
+      ],
+      "map": "你在观景点",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -73.96934132077196,
+        "y": 28.1423952122778
+      },
+      "feet": 1.124233533019299,
+      "draws": 37,
+      "zone": 5,
+      "shadowPosition": [
+        -255.59515792530973,
+        202.3792117691436,
+        178.30846192923454
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -76.76261390485128,
+        "y": 30.35373600800726
+      },
+      "feet": 1.194065347621282,
+      "draws": 36,
+      "zone": 5,
+      "shadowPosition": [
+        -255.59515792530973,
+        202.3792117691436,
+        178.30846192923454
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -79.5558864889306,
+        "y": 32.56507680373672
+      },
+      "feet": 1.263897162223265,
+      "draws": 36,
+      "zone": 5,
+      "shadowPosition": [
+        -255.59515792530973,
+        202.3792117691436,
+        178.30846192923454
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -82.34915907300991,
+        "y": 34.776417599466185
+      },
+      "feet": 1.3337289768252478,
+      "draws": 36,
+      "zone": 5,
+      "shadowPosition": [
+        -255.59515792530973,
+        202.3792117691436,
+        178.30846192923454
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -85.14243165708923,
+        "y": 36.98775839519564
+      },
+      "feet": 1.4035607914272308,
+      "draws": 35,
+      "zone": 6,
+      "shadowPosition": [
+        -339.3933354476893,
+        204.4741662072031,
+        244.64868580111835
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": false,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -87.93570424116855,
+        "y": 39.199099190925104
+      },
+      "feet": 1.473392606029214,
+      "draws": 37,
+      "zone": 6,
+      "shadowPosition": [
+        -339.3933354476893,
+        204.4741662072031,
+        244.64868580111835
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -90.72897682524787,
+        "y": 41.410439986654566
+      },
+      "feet": 1.543224420631197,
+      "draws": 37,
+      "zone": 6,
+      "shadowPosition": [
+        -339.3933354476893,
+        204.4741662072031,
+        244.64868580111835
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -93.26336195265151,
+        "y": 43.42001971578895
+      },
+      "feet": 1.606622878205097,
+      "draws": 37,
+      "zone": 6,
+      "shadowPosition": [
+        -339.3933354476893,
+        204.4741662072031,
+        244.64868580111835
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -94.9930111803139,
+        "y": 44.85826182505558
+      },
+      "feet": 1.6566062182841104,
+      "draws": 36,
+      "zone": 6,
+      "shadowPosition": [
+        -339.3933354476893,
+        204.4741662072031,
+        244.64868580111835
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -97.62977291100566,
+        "y": 47.134803877686714
+      },
+      "feet": 1.7404927744410892,
+      "draws": 35,
+      "zone": 6,
+      "shadowPosition": [
+        -339.3933354476893,
+        204.4741662072031,
+        244.64868580111835
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -100.35108752848049,
+        "y": 49.48503013823316
+      },
+      "feet": 1.827080057724379,
+      "draws": 35,
+      "zone": 7,
+      "shadowPosition": [
+        -414.95689502728237,
+        206.70346566323087,
+        308.0609476150858
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -103.07240214595532,
+        "y": 51.8352563987796
+      },
+      "feet": 1.9136673410076692,
+      "draws": 35,
+      "zone": 7,
+      "shadowPosition": [
+        -414.95689502728237,
+        206.70346566323087,
+        308.0609476150858
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -105.79371676343015,
+        "y": 54.18548265932605
+      },
+      "feet": 2.0002546242909593,
+      "draws": 34,
+      "zone": 7,
+      "shadowPosition": [
+        -414.95689502728237,
+        206.70346566323087,
+        308.0609476150858
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -108.51503138090499,
+        "y": 56.53570891987249
+      },
+      "feet": 2.0868419075742493,
+      "draws": 34,
+      "zone": 7,
+      "shadowPosition": [
+        -414.95689502728237,
+        206.70346566323087,
+        308.0609476150858
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -111.23634599837982,
+        "y": 58.88593518041894
+      },
+      "feet": 2.1734291908575396,
+      "draws": 34,
+      "zone": 7,
+      "shadowPosition": [
+        -414.95689502728237,
+        206.70346566323087,
+        308.0609476150858
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -113.95766061585465,
+        "y": 61.236161440965375
+      },
+      "feet": 2.2600164741408295,
+      "draws": 33,
+      "zone": 8,
+      "shadowPosition": [
+        -481.22024966949607,
+        209.5589178034514,
+        378.45029105695556
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -115.83477678434289,
+        "y": 63.11064878538916
+      },
+      "feet": 2.3409941011928446,
+      "draws": 32,
+      "zone": 8,
+      "shadowPosition": [
+        -481.22024966949607,
+        209.5589178034514,
+        378.45029105695556
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -116.85325979795748,
+        "y": 65.5597793938724
+      },
+      "feet": 2.4559398262949568,
+      "draws": 31,
+      "zone": 8,
+      "shadowPosition": [
+        -481.22024966949607,
+        209.5589178034514,
+        378.45029105695556
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -117.99001424475411,
+        "y": 68.97004273426231
+      },
+      "feet": 2.629628791201328,
+      "draws": 30,
+      "zone": 8,
+      "shadowPosition": [
+        -481.22024966949607,
+        209.5589178034514,
+        378.45029105695556
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -119.12676869155074,
+        "y": 72.3803060746522
+      },
+      "feet": 2.803641682784012,
+      "draws": 30,
+      "zone": 8,
+      "shadowPosition": [
+        -481.22024966949607,
+        209.5589178034514,
+        378.45029105695556
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -120.26352313834737,
+        "y": 75.7905694150421
+      },
+      "feet": 2.977654574366696,
+      "draws": 30,
+      "zone": 8,
+      "shadowPosition": [
+        -481.22024966949607,
+        209.5589178034514,
+        378.45029105695556
+      ],
+      "map": "你在崖顶步道",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -121.400277585144,
+        "y": 79.20083275543199
+      },
+      "feet": 3.0246935753867636,
+      "draws": 30,
+      "zone": 8,
+      "shadowPosition": [
+        -481.22024966949607,
+        209.5589178034514,
+        378.45029105695556
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "p": {
+        "x": -122.53703203194063,
+        "y": 82.61109609582189
+      },
+      "feet": 3.04,
+      "draws": 29,
+      "zone": 9,
+      "shadowPosition": [
+        -520.0593599350476,
+        232.11581681938705,
+        494.9676218536104
+      ],
+      "map": "你在灯塔前场",
+      "detailVisible": true,
+      "roof": [
+        {
+          "name": "coastal-house-roof",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-eaves",
+          "visible": true
+        },
+        {
+          "name": "coastal-house-sills",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "scene": {
+    "meshes": 640,
+    "vertices": 559760,
+    "materials": 90,
+    "textures": 147,
+    "lights": 16,
+    "cameras": 3,
+    "exteriorMeshes": 45,
+    "exteriorVertices": 153852,
+    "shadowSize": {
+      "width": 1024,
+      "height": 1024
+    },
+    "casters": [
+      "coastal-house-plinth",
+      "coastal-anchored-rocks",
+      "coastal-grass-and-shrubs",
+      "coastal-path-rocks-0",
+      "coastal-path-plants-0",
+      "coastal-path-rocks-1",
+      "coastal-path-plants-1",
+      "coastal-path-rocks-2",
+      "coastal-path-plants-2",
+      "coastal-lighthouse-plinth",
+      "coastal-lighthouse-shaft",
+      "coastal-lighthouse-metalwork",
+      "coastal-lighthouse-cap",
+      "coastal-lighthouse-recesses",
+      "coastal-lighthouse-fine-metal",
+      "coastal-lighthouse-door-handle",
+      "coastal-lighthouse-lens",
+      "coastal-walk-guardrail",
+      "coastal-lookout-timber",
+      "coastal-lookout-frame",
+      "coastal-route-signs",
+      "coastal-route-sign-marks",
+      "coastal-house-roof",
+      "coastal-house-eaves",
+      "coastal-house-sills",
+      "house-wall-0-low",
+      "house-wall-0-upper",
+      "house-wall-1-low",
+      "house-wall-1-upper",
+      "house-wall-2-upper",
+      "house-wall-3-low",
+      "house-wall-3-upper",
+      "house-wall-4-low",
+      "house-wall-4-upper",
+      "house-wall-5-low",
+      "house-wall-5-upper",
+      "house-wall-6-upper",
+      "house-wall-7-low",
+      "house-wall-7-upper",
+      "house-wall-8-low",
+      "house-wall-8-upper",
+      "house-wall-9-low",
+      "house-wall-9-upper",
+      "house-wall-10-upper",
+      "house-wall-11-low",
+      "house-wall-11-upper",
+      "house-wall-16-low",
+      "house-wall-16-upper",
+      "house-wall-17-low",
+      "house-wall-17-upper",
+      "house-wall-18-low",
+      "house-wall-18-upper",
+      "house-wall-19-upper",
+      "house-wall-20-low",
+      "house-wall-20-upper",
+      "house-wall-21-low",
+      "house-wall-21-upper",
+      "balcony-rail-32-study-darkWood",
+      "house-wall-40-low",
+      "house-wall-40-upper",
+      "house-wall-41-low",
+      "house-wall-41-upper",
+      "house-wall-42-upper",
+      "house-wall-43-low",
+      "house-wall-43-upper",
+      "house-wall-44-low",
+      "house-wall-44-upper",
+      "house-wall-45-upper",
+      "house-wall-46-low",
+      "house-wall-46-upper",
+      "balcony-rail-47-study-darkWood",
+      "house-wall-51-low",
+      "house-wall-51-upper",
+      "house-wall-52-low",
+      "house-wall-52-upper",
+      "house-wall-53-upper",
+      "house-wall-54-low",
+      "house-wall-54-upper",
+      "balcony-rail-58-study-darkWood"
+    ]
+  },
+  "cache": {
+    "sameTexture": true,
+    "samePosition": true,
+    "stationaryRefreshes": 0
+  },
+  "passed": true,
+  "errors": [],
+  "warnings": []
+}

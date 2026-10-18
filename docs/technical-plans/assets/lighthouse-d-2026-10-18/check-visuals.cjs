@@ -1,0 +1,29 @@
+// Production-only, fixed poses and continuous route samples. No FPS/load-time measurements.
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const {chromium}=require(process.env.PLAYWRIGHT_PACKAGE||'playwright');
+const load=require('./source-loader.cjs'),{walkingSurfaceAt,walkingPointAllowed}=load('WalkingSurface'),{coastalRoute}=load('CoastalSite');
+const output=process.env.STUDY_CHECK_OUTPUT||__dirname,baseline=process.env.VISUAL_BASELINE==='1';
+fs.mkdirSync(output,{recursive:true});
+(async()=>{const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}),page=await browser.newPage({viewport:{width:1280,height:800}}),errors=[],warnings=[],record={baseline,sourceBaseline:'2581be5',fpsOrLoadTimeSampling:false,views:[],route:[]};
+page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());if(m.type()==='warning')warnings.push(m.text());});page.on('response',r=>{if(r.status()>=400)errors.push(`${r.status()} ${r.url()}`);});
+try{await page.goto(process.env.STUDY_URL||'http://127.0.0.1:8176/');await page.waitForFunction(()=>document.querySelector('#scene-status').textContent.includes('全屋八个房间已布置'),null,{timeout:120000});await require('./browser-harness.cjs').captureRoom(page,await page.context().newCDPSession(page));await page.locator('[data-view="first-person"]').click();await page.waitForFunction(()=>!!document.pointerLockElement);await page.evaluate(()=>{e.stopRenderLoop();e.getDeltaTime=()=>1000/60;e.getFps=()=>60;});
+const pose=async(p,target)=>{assert.ok(walkingPointAllowed(p),JSON.stringify(p));const support=walkingSurfaceAt(p.x,p.y);return page.evaluate(async({p,support,target})=>{const c=room.firstPersonCamera,V=c.position.constructor,feet=support.height;c.position.set((p.x-5.4)*5,-5+(feet+1.6)*5,(p.y-5.4)*5);c.cameraDirection.setAll(0);c.cameraRotation.setAll(0);c.movement.resetPanVelocity();c.movement.resetRotationVelocity();Object.assign(room.jump,{feet,grounded:true,velocity:0,queued:false,originTop:feet});room.previousWalk.copyFrom(c.position);room.stableWalk={position:c.position.clone(),feet};c.setTarget(new V((target.x-5.4)*5,-5+target.h*5,(target.y-5.4)*5));s.render();await new Promise(resolve=>s.executeWhenReady(resolve));for(let i=0;i<8;i++)s.render();e._drawCalls.fetchNewFrame();s.render();return{p,feet:room.jump.feet,draws:e._drawCalls.current,zone:s.metadata.coastalSite.shadowZone,shadowPosition:room.exterior.sun.position.asArray(),map:document.querySelector('#floor-plan-location').textContent,detailVisible:!!s.getMeshByName('coastal-lighthouse-fine-metal')?.isVisible,roof:s.meshes.filter(m=>m.metadata?.exteriorLayer==='house-roof').map(m=>({name:m.name,visible:m.isVisible}))};},{p,support,target});};
+for(const [name,p,target]of [
+ ['entry-outside',{x:13.5,y:6},{x:10.8,y:4.65,h:1.5}],
+ ['house-north',{x:4,y:-5},{x:5.4,y:0,h:1.8}],['house-west',{x:-3,y:4},{x:0,y:5,h:1.6}],['house-south',{x:3,y:13.8},{x:3,y:10.8,h:1.6}],
+ ['coast-path-toward-tower',{x:-40,y:12},{x:-94,y:44,h:5}],['lookout-back-to-house',{x:-70,y:25},{x:5.4,y:5.4,h:3}],
+ ['tower-front',{x:-125,y:78},{x:-125,y:90,h:12}],['tower-lantern',{x:-125,y:78},{x:-125,y:90,h:21}],['tower-door',{x:-125,y:85.8},{x:-125,y:87.3,h:4.4}],
+ ['tower-base',{x:-129,y:86},{x:-125,y:90,h:3.2}],['tower-plaza-back-to-house',{x:-125,y:83},{x:5.4,y:5.4,h:3}],
+ ['cape-toward-tower',{x:-94,y:44},{x:-125,y:90,h:13}],['tower-seaward',{x:-130,y:92},{x:-145,y:100,h:-3}]
+]){const state=await pose(p,target);await page.screenshot({path:path.join(output,name+'.jpg'),type:'jpeg',quality:88});record.views.push({name,...state});}
+record.scene=await page.evaluate(()=>({meshes:s.meshes.length,vertices:s.getTotalVertices(),materials:s.materials.length,textures:s.textures.length,lights:s.lights.length,cameras:s.cameras.length,exteriorMeshes:s.meshes.filter(m=>m.metadata?.exterior).length,exteriorVertices:s.meshes.filter(m=>m.metadata?.exterior).reduce((n,m)=>n+m.getTotalVertices(),0),shadowSize:room.exterior.shadow.getShadowMap().getSize(),casters:room.exterior.shadow.getShadowMap().renderList.map(m=>m.name)}));
+if(!baseline){assert.ok(record.scene.exteriorVertices<=160000,JSON.stringify(record.scene));
+ const route=coastalRoute().filter(p=>p.x<-9&&Math.hypot(p.x+125,p.y-90)>4.5);
+ for(let i=0;i<route.length;i+=12){const p=route[i],next=route[Math.min(route.length-1,i+12)];record.route.push(await pose(p,{...next,h:walkingSurfaceAt(next.x,next.y).height+1.6}));}
+ assert.ok(new Set(record.route.map(s=>s.zone)).size>=5);assert.ok(record.route.some(s=>s.detailVisible)&&record.route.some(s=>!s.detailVisible));
+ // Shadow target must stay cached at rest; exact texture identities are retained when changing zones.
+ record.cache=await page.evaluate(()=>{const m=room.exterior.shadow.getShadowMap(),texture=m.getInternalTexture(),position=room.exterior.sun.position.asArray(),refreshes={count:0},observer=m.onBeforeRenderObservable.add(()=>refreshes.count++);for(let i=0;i<20;i++)s.render();m.onBeforeRenderObservable.remove(observer);return{sameTexture:texture===m.getInternalTexture(),samePosition:JSON.stringify(position)===JSON.stringify(room.exterior.sun.position.asArray()),stationaryRefreshes:refreshes.count};});assert.ok(record.cache.sameTexture&&record.cache.samePosition);assert.equal(record.cache.stationaryRefreshes,0);
+}
+assert.deepEqual(errors,[]);record.passed=true;
+}finally{Object.assign(record,{errors,warnings});fs.writeFileSync(path.join(output,'visuals.json'),JSON.stringify(record,null,2)+'\n');await browser.close();}console.log(JSON.stringify({passed:record.passed,scene:record.scene,views:record.views.length,routeSamples:record.route.length,errors}));
+})().catch(e=>{console.error(e);process.exitCode=1;});

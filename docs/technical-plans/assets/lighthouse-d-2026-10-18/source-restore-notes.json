@@ -1,0 +1,11 @@
+{
+  "sourceCommit": "2581be579f8042c0b7d74b214011f38d4b6c10e8",
+  "method": "git clone --no-hardlinks --single-branch --branch scene-baseline/2026-10-18-lighthouse-coast-v1 from local repository",
+  "frozenInputsVerified": 146,
+  "notes": [
+    "Annotated tag resolves to the recorded commit; checkout is detached.",
+    "macOS checkout warned that legacy public/models/Barrel.glb and public/models/barrel.glb collide on case-insensitive filesystems. Neither belongs to the active release whitelist/frozen runtime inputs; no claim that all unrelated legacy example assets restore byte-for-byte.",
+    "Production rebuilt successfully with an in-checkout copy of the existing locked dependency installation (macOS cp -cR), not a fresh npm ci. All 495 release files match exactly; earlier external symlink mismatch is recorded separately."
+  ],
+  "archiveRestoredTo": "/tmp/babylon-lighthouse-v1-release-20261018/dist"
+}
