@@ -1,0 +1,415 @@
+{
+  "date": "2026-10-18",
+  "stage": "B completed; C/D pending",
+  "sourceCommitBase": "8110fe7",
+  "sourceSnapshot": "Final production candidate, identified by sourceSha256 and its subsequent Git commit; A/coastal-v1 history preserved",
+  "outdoorWalkingDelivered": true,
+  "routeLengthMetres": 194.070067021444,
+  "roadLengthNote": "Design centreline to tower centre; actual walking stops before the solid tower base. Entrance now clears the jamb before turning.",
+  "travel": [
+    {
+      "name": "walk-home-to-lighthouse",
+      "elapsed": 163.532,
+      "method": "Actual Playwright W key held with normal render loop and engine timing; scripted camera steering only, no in-trip teleports or position assignment",
+      "end": {
+        "point": {
+          "x": -123.37370061273177,
+          "y": 85.12110181769536
+        },
+        "feet": 3.04,
+        "grounded": true,
+        "position": [
+          -643.8685030636589,
+          18.200000000000003,
+          398.60550908847677
+        ],
+        "rotation": [
+          0,
+          -0.321750518667272,
+          0
+        ],
+        "view": "first-person",
+        "locked": true,
+        "map": "你在灯塔前场",
+        "mini": "海岸地图"
+      }
+    },
+    {
+      "name": "walk-around-lighthouse",
+      "elapsed": 28.526700000047683,
+      "method": "Actual Playwright W key held with normal render loop and engine timing; scripted camera steering only, no in-trip teleports or position assignment",
+      "end": {
+        "point": {
+          "x": -123.59536334717643,
+          "y": 84.76414089848396
+        },
+        "feet": 3.04,
+        "grounded": true,
+        "position": [
+          -644.9768167358822,
+          18.200000000000003,
+          396.8207044924198
+        ],
+        "rotation": [
+          0,
+          1.516754247700025,
+          0
+        ],
+        "view": "first-person",
+        "locked": true,
+        "map": "你在灯塔前场",
+        "mini": "海岸地图"
+      }
+    },
+    {
+      "name": "walk-lighthouse-to-home",
+      "elapsed": 163.04510000002384,
+      "method": "Actual Playwright W key held with normal render loop and engine timing; scripted camera steering only, no in-trip teleports or position assignment",
+      "end": {
+        "point": {
+          "x": 9.685258978036508,
+          "y": 4.615513603541718
+        },
+        "feet": 0,
+        "grounded": true,
+        "position": [
+          21.426294890182543,
+          3,
+          -3.92243198229141
+        ],
+        "rotation": [
+          0,
+          -1.4682918647925738,
+          0
+        ],
+        "view": "first-person",
+        "locked": true,
+        "map": "你在客厅",
+        "mini": "全屋地图"
+      }
+    }
+  ],
+  "tests": 136,
+  "typescript": "passed",
+  "developmentBuild": "passed",
+  "productionBuild": "passed",
+  "browserMatrix": {
+    "cases": 12,
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "chromeKeyboardCases": 6,
+    "webkitKeyboardCases": 0,
+    "physicalDevices": false
+  },
+  "regression": {
+    "fullHouseSegments": 55,
+    "doorCollisionChecks": 12,
+    "drawers": 8,
+    "lamps": 8,
+    "swingDoors": 7,
+    "slidingDoor": true,
+    "normalErrors": [],
+    "normalWarnings": [],
+    "masterMirror": true,
+    "publicMirror": true,
+    "disposal": {
+      "disposed": true,
+      "meshes": 0,
+      "materials": 0,
+      "lights": 0,
+      "engineScenes": 0
+    }
+  },
+  "edgeCases": {
+    "longFrameCases": 15,
+    "multipliers": [
+      0.25,
+      1,
+      3
+    ],
+    "referenceDeltaSeconds": 0.2,
+    "airborneInEveryCase": true,
+    "walkOff": 3,
+    "mapPausesAirborneState": true
+  },
+  "before": {
+    "runtimeBytes": 15867631,
+    "initialJsBytes": 2597655,
+    "actualInitialJsBytes": 2816507,
+    "releaseBytes": 42216937
+  },
+  "after": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26200482,
+    "runtimeBytes": 15867631,
+    "documentationBytes": 65987,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2606600,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42226804,
+    "actualInitialJsBytes": 2825452
+  },
+  "delta": {
+    "runtimeBytes": 0,
+    "initialJsBytes": 8945,
+    "actualInitialJsBytes": 8945,
+    "releaseBytes": 9867
+  },
+  "resourcesBefore": {
+    "meshes": 628,
+    "vertices": 536160,
+    "materials": 84,
+    "textures": 147,
+    "lights": 16,
+    "cameras": 3,
+    "exteriorMeshes": 32,
+    "exteriorVertices": 130228
+  },
+  "resources": {
+    "metadata": {
+      "layoutVersion": "house-plan-v1",
+      "exteriorVersion": "lighthouse-walking-b-v1",
+      "coastalSite": {
+        "version": "lighthouse-walking-b-v1",
+        "stage": "B",
+        "outdoorWalking": true,
+        "tower": {
+          "x": -125,
+          "y": 90,
+          "ground": 3,
+          "height": 20,
+          "radius": 2.8
+        },
+        "routeLength": 194.070067021444
+      }
+    },
+    "meshes": 629,
+    "vertices": 547566,
+    "materials": 84,
+    "textures": 147,
+    "lights": 16,
+    "cameras": 3,
+    "exteriorMeshes": 34,
+    "exteriorVertices": 141658
+  },
+  "drawCounts": [
+    {
+      "name": "entry-outside",
+      "p": {
+        "x": 13.5,
+        "y": 6
+      },
+      "support": {
+        "height": -0.14,
+        "normal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "kind": "terrain",
+        "region": "屋外"
+      },
+      "position": [
+        40.5,
+        2.3,
+        2.9999999999999982
+      ],
+      "feet": -0.14,
+      "draws": 823,
+      "map": "你在屋外"
+    },
+    {
+      "name": "coast-path-toward-tower",
+      "p": {
+        "x": -40,
+        "y": 12
+      },
+      "support": {
+        "height": 0.6239361680990176,
+        "normal": {
+          "x": 0.014626940196550796,
+          "y": 0.9998916770095997,
+          "z": -0.0016391666836222877
+        },
+        "kind": "path",
+        "region": "崖顶步道"
+      },
+      "position": [
+        -227,
+        6.1196808404950875,
+        33
+      ],
+      "feet": 0.6239361680990176,
+      "draws": 40,
+      "map": "你在崖顶步道"
+    },
+    {
+      "name": "lookout-back-to-house",
+      "p": {
+        "x": -70,
+        "y": 25
+      },
+      "support": {
+        "height": 1.0410445648890654,
+        "normal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "kind": "platform",
+        "region": "观景点"
+      },
+      "position": [
+        -377,
+        8.205222824445325,
+        98
+      ],
+      "feet": 1.0410445648890654,
+      "draws": 773,
+      "map": "你在观景点"
+    },
+    {
+      "name": "tower-plaza-back-to-house",
+      "p": {
+        "x": -125,
+        "y": 83
+      },
+      "support": {
+        "height": 3.04,
+        "normal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "kind": "platform",
+        "region": "灯塔前场"
+      },
+      "position": [
+        -652,
+        18.200000000000003,
+        388
+      ],
+      "feet": 3.04,
+      "draws": 780,
+      "map": "你在灯塔前场"
+    },
+    {
+      "name": "cape-toward-tower",
+      "p": {
+        "x": -94,
+        "y": 44
+      },
+      "support": {
+        "height": 1.6262802952864626,
+        "normal": {
+          "x": 0.016823752462827298,
+          "y": 0.9997636898645113,
+          "z": -0.013766836294769966
+        },
+        "kind": "path",
+        "region": "崖顶步道"
+      },
+      "position": [
+        -497,
+        11.131401476432316,
+        193
+      ],
+      "feet": 1.6262802952864626,
+      "draws": 29,
+      "map": "你在崖顶步道"
+    }
+  ],
+  "shoreTextureBytesWithoutMipmaps": 1048576,
+  "shoreTextureDeltaBytes": 0,
+  "sourceSha256": {
+    "src/app.ts": "b89f0ceccfc146b7e2bb7372884beae4f1286a20a6bd10b10cd8db60c4799119",
+    "src/components/BasicExamples.ts": "edf5a7b1e06e620259f9ce875ad7d35b4280d7307ae3e2143cba1090ec9d5be5",
+    "src/examples/BasicScene.ts": "e23b01945715d5f005041187928b9176b1dc6f0852dfcb05bc0c3c864d11925d",
+    "src/examples/BigRoom.ts": "4859a3ac6c1495d5aa79b21943bf1e5e9b57b40923adaf54f8d50b47495f1e6c",
+    "src/examples/BookshelfLayout.ts": "158bd501e25945ce23bbe50e1e0134337e31bf8ef38eab2313c5341f56698456",
+    "src/examples/CoastalCliff.ts": "313ecfc00850d766782bccbb0e7aa80c5bbf74da1219ea1831a9ebcde6ea9ba0",
+    "src/examples/CoastalLandmark.ts": "e45b5fd49f9a70eb8bbd3632ab29023059b345f4954fe76ea95701d9766e6488",
+    "src/examples/CoastalMap.ts": "01e5aa8860dce98143e0a204fe046f43e1f7a9099c2a893582c0a7a746e35241",
+    "src/examples/CoastalMaterials.ts": "3025597009b8db49e410495192214a1954c7127f4e91b3f59176bdeaec96d1cc",
+    "src/examples/CoastalOcean.ts": "aa50e7a889972924ea4fecf5a67330e1445023c41e010487b62f8af6cd1a69be",
+    "src/examples/CoastalScatter.ts": "71bbd690c2f10b0c3da2556f171455bcdc25aff45a712e95741f0232e536c047",
+    "src/examples/CoastalSite.ts": "b8487bb089b16844f1d9af54378f140f60a1eeaf72b7dcfe5e934a6f32889d17",
+    "src/examples/CoastalSky.ts": "67758a5b0ac80f8049ee8c72d08ed4cb8abe67b22df3d07e42a8382075f8a209",
+    "src/examples/CustomModels.ts": "efc2150cac93193a00b0ff097c498785d086c08425a2d6f06c351a3bac2faa2f",
+    "src/examples/Grass.ts": "a51ecbd10b6f47932a5eff4c70227fa7025b6173a03ea6d92348e0f0bccc38bf",
+    "src/examples/HouseArchitecture.ts": "318633a8c00c8af4e8048fde9a1852cc62fc32d248edda0052468476b96bc02e",
+    "src/examples/HouseBalcony.ts": "50478c5410fa8d018c867cab9cf0d385edf8258297cc2b72a45e09418667edd4",
+    "src/examples/HouseBedroom.ts": "2e0830835431736375feded5913680220218324ece061eb3a1a5b822e5aab975",
+    "src/examples/HouseContent.ts": "397423ec8b5a25ba5883748f240c55ba85314b542aaabf6d56c2f961d64bab8d",
+    "src/examples/HouseFloorPlan.ts": "3bf6ab1482f58c5187605769ead13c1635a2c7235226fac66cd54a543d6812b9",
+    "src/examples/HouseJump.ts": "8f0c44a155b8cf493acce463dff4dcdbe7ea7522209c40174b1653031f582ba9",
+    "src/examples/HouseLayout.ts": "96896fc76834c5cd795d1385aa23d97d3ca976d4e43a393542438d2d72a538df",
+    "src/examples/HouseRoomComponents.ts": "b493418ce0b3f73c040623d76a92ba7e530f5891ef8b9943002f4f1146932380",
+    "src/examples/HouseRooms.ts": "33c7d58a3cde859ec4c158e0ecac64f6612fcb6e73b7c78d00bdb7531c2c2d39",
+    "src/examples/HouseServiceRooms.ts": "6f6d1eb89c605f3bdb1b5d620ba7262197aa41397aa3dec78fe939bc3384b399",
+    "src/examples/HouseStructure.ts": "e5b896662e0c7fc5074779dce611db2e6d4483bd2ebea940d6beef3a182c6693",
+    "src/examples/HouseSuite.ts": "8fdb1e1ccc77bace6eddb7189258d84df88b131fe001dbfe66978947ba880df9",
+    "src/examples/HouseWalking.ts": "33664169709893cc18e66934fb09407e0f0faa4d6e4864de1aadf00f57475912",
+    "src/examples/PBR.ts": "ce9a4c1691f5e34bb869bff005a76bd3d581f5bd19fe0ca40de7728b341bb6a4",
+    "src/examples/Rocket.ts": "eca5066f40907ee2588a03a456a88d6f903abe20efc45177d8f66a26b089912a",
+    "src/examples/Room.ts": "be36c79977841ad38effb6a83015e012698209d784ec5d96b2f45b32afdecb66",
+    "src/examples/RoomAudio.ts": "2ccf413bf37f2c509112b809226de54d6bbd58ee257b6717634c4b123b1fa3b8",
+    "src/examples/RoomAudioBackend.ts": "3e6cf66bab8c2f1b38fe5fee05fb06dda2eb3b17a2b00d3b28c9efed62f92bf9",
+    "src/examples/RoomAudioCatalog.ts": "306f258c47ab0b5704924275486f5dcec5ffc18bfc050f4e964ca4e913e2b52a",
+    "src/examples/RoomCollisions.ts": "7e0eb56b7b95d2f402d712cc106cbf9e3842a54dd864b7947751dfbec50ea4c3",
+    "src/examples/RoomDetailGeometry.ts": "bf582a11443ed1fd0c986642cd60a65e711179c18713b38b9c4342d1351d1276",
+    "src/examples/RoomExterior.ts": "143fc2f850b2149134a33f479a09e08d31decc342dab00bb3ed87a00cff7b4cb",
+    "src/examples/RoomFinishing.ts": "7b7f2357fac5389ac452b7ee94cf21bcb80f2871e9ae76d61169ded1bc5e308b",
+    "src/examples/RoomFloorPlan.ts": "bb97b077058ce191d0be7fab4f16cb3dedc959092fe4c346f774c9b3d5b4f805",
+    "src/examples/RoomFurnishings.ts": "d0b35b440eccb038240627ca1d14924f9456ce45702a7e47c575f50b35f2644c",
+    "src/examples/RoomFurnitureAssets.ts": "99800111e655970da0fe97c41ce4464449ea0bda8b1fd757c00423bc663bcae7",
+    "src/examples/RoomInteractions.ts": "0b35772b72f5f6046fc653c0c358b240316eeee09b618ab4d915740d190d80b8",
+    "src/examples/RoomItemInspection.ts": "c7c42fe3723b93ea27586db57b3753f7df7c54484e78157b418ef7066d3634d0",
+    "src/examples/RoomLayout.ts": "1dc8003bfe25f746bbd5aa835dd3388fb310a76fb4148f5508d6ddfc0ba132c8",
+    "src/examples/RoomLegacyArchitecture.ts": "596858ece3cd35a633ceb4b5bd0a16c497d7c0c8928301db522906fbceb8c4a3",
+    "src/examples/RoomLighting.ts": "e9848554f698a4e6ec0e9f053c4587bd3a838b98bf923aef2cc8d42a2d33c1b6",
+    "src/examples/RoomLivingRoom.ts": "85efcce388d59748fb0034498d2331509e255904f684d7ca4565fe1a4b36141b",
+    "src/examples/RoomMaterialLibrary.ts": "d4864800cfb3088900095d2d0d99c6d698aa8ed3fa416d96cfddba4b58dcdc45",
+    "src/examples/RoomMaterials.ts": "872f5c29b4b26a3d9f3166d49ea656e7c5b92187547d321de6c79ac53d0f012c",
+    "src/examples/RoomMirrors.ts": "90783ebb510c1d0d83bd7fe434df4c2e4163a3cf01626233fe06ea6d973d8b75",
+    "src/examples/RoomOwnership.ts": "671fbf44c73a62a83b63cf0728080246fe02bb37721403c433aa4780fdecfb34",
+    "src/examples/RoomPointerLock.ts": "a70de7ba6a84b7700be44a53a54ede8c33d2357aae0a496d845df0952ce60bff",
+    "src/examples/RoomRuntime.ts": "c261b5f6542b8b1405b26f05c9c1b583f27437a70861c1c083b4c0dcf18a2762",
+    "src/examples/RoomShaders.ts": "141420f50a89d81b4f25e43d24dc282b7405b86b337b0877849f54001df2ff96",
+    "src/examples/RoomSurfaceDetails.ts": "1f0049cbdd9fd280ff5ef04a3f7a36dcb1926573e55f456c846f722d7cd97809",
+    "src/examples/Shadows.ts": "d2fb9633c9fef9125c42dae7205215fa040213e0b20e056d88fdf298ee3857b2",
+    "src/examples/StandardMaterials.ts": "7f48c0435afca396036f93cbe368b8dd976dd8f126d3dae969a71e58af453e9f",
+    "src/examples/Textures.ts": "472264476c342d030edfc8231aade681d08babae04c53febb5e807f03b5378dd",
+    "public/index.html": "14819ddd6bbdc5106908761daf197b545a7116b204ffde29bdd0f87a56809fc5",
+    "public/environment/coastal-cliff-source.json": "7b74f54bf502db626a0b6da63630e4a7ab60ae9f80f6173a3831870f8ed52d0e",
+    "package.json": "d0b503f1aafb821f442916332ca0267497ca6fd05c7dd1c3919552acbcd5b6a9",
+    "package-lock.json": "e94ba83cc02d96a6954d091bf84233bceee7275e85107453a75f772a8a629dcf",
+    "tsconfig.json": "ed9642d8c1f59cea1d99f21c6074bbae1f3b4a0d81a371252ef88d59cebe6045",
+    "webpack.config.js": "16762abfd7f6dcd688f4f29b527e122aa8a22168ff08acd4c3292307dbf7136b",
+    "tools/study-release.config.cjs": "fd2db6a7d83fc7964a33f9d4d8cdc5a106972b66502ffd2dfbfae3d1d3892a4f",
+    "tools/StudyReleasePlugin.cjs": "f1bb0d23ab058fb6e2fcea2dee3ee4252be8868290c078b6c7da17e86a46f07e",
+    "src/examples/CoastalPath.ts": "fe0117e0ca5d9684c094dc032b0bf211b0e3aa6b8a0072a743a05ddbfc4b703d",
+    "src/examples/WalkingSurface.ts": "b8bc4ca2206eee957437e1acc7fef9736c104fa2117bc3227abc06c1aa68d877"
+  },
+  "releaseManifestSha256": "108a3637252c48c726bf739e24f00215198b0ba1bd03316776aad54c81b7ebf4",
+  "performanceExperimentsResumed": false,
+  "limitations": [
+    "Tower/path/roof and rails remain graybox; C visual refinement pending",
+    "Vehicle and tower interior not implemented",
+    "WebKit supports/map/render cases pass but pointer lock was unavailable, so keyboard travel is verified in Chrome only",
+    "Firefox, Safari and physical mobile devices not tested",
+    "No FPS, load-time, GPU-time or peak-memory measurement"
+  ],
+  "subpathBrowser": {
+    "passed": true,
+    "prefix": "/home/",
+    "initialJsBytes": 2825452,
+    "inspectorDynamicChunks": true,
+    "errors": [],
+    "warnings": []
+  }
+}

@@ -58,25 +58,47 @@ export function coastalGroundHeight(x: number, y: number) {
   return landscape + (grade.height - landscape) * blend * blend * (3 - 2 * blend);
 }
 
-/** Height on the rendered near-land triangles, used for graybox placement (not a walking controller). */
-export function coastalSurfaceHeight(x: number, y: number): number | undefined {
+export type CoastalSurface = { height: number; normal: { x: number; y: number; z: number } };
+const supportGrid = new Map<number, CoastalPoint>();
+const supportPoint = (column: number, row: number) => {
+  const key = row * (COASTAL_CLIFF.columns + 1) + column;
+  let point = supportGrid.get(key);
+  if (!point) { point = coastalGridPoint(column, row); supportGrid.set(key, point); }
+  return point;
+};
+
+/** Barycentric height and normal of an actual rendered triangle. */
+export function coastalTriangleAt(x: number, y: number, u: CoastalPoint, v: CoastalPoint, w: CoastalPoint): CoastalSurface | undefined {
+  const den = (v.y - w.y) * (u.x - w.x) + (w.x - v.x) * (u.y - w.y);
+  if (Math.abs(den) < 1e-12) return undefined;
+  const s = ((v.y - w.y) * (x - w.x) + (w.x - v.x) * (y - w.y)) / den;
+  const t = ((w.y - u.y) * (x - w.x) + (u.x - w.x) * (y - w.y)) / den;
+  if (s < -1e-7 || t < -1e-7 || s + t > 1 + 1e-7) return undefined;
+  const dx = ((u.height - w.height) * (v.y - w.y) - (v.height - w.height) * (u.y - w.y)) / den;
+  const dy = ((v.height - w.height) * (u.x - w.x) - (u.height - w.height) * (v.x - w.x)) / den;
+  const length = Math.hypot(dx, 1, dy);
+  return { height: s * u.height + t * v.height + (1 - s - t) * w.height,
+    normal: { x: -dx / length, y: 1 / length, z: -dy / length } };
+}
+
+export function coastalSurfaceAt(x: number, y: number): CoastalSurface | undefined {
   const a = COASTAL_CLIFF, col = Math.floor((x - a.westX) / (a.eastX - a.westX) * a.columns);
-  if (col < 0 || col >= a.columns || y < a.inlandStartY) return undefined;
-  const left = coastalGridPoint(col, 0), right = coastalGridPoint(col + 1, 0);
+  if (!Number.isFinite(x) || !Number.isFinite(y) || col < 0 || col >= a.columns || y < a.inlandStartY) return undefined;
+  const left = supportPoint(col, 0), right = supportPoint(col + 1, 0);
   const crest = left.y + (right.y - left.y) * (x - left.x) / (right.x - left.x);
   if (y > crest) return undefined;
   const row = Math.floor((crest - y) / (crest - a.inlandStartY) * a.nearRows);
   for (let r = Math.max(0, row - 1); r <= Math.min(a.nearRows - 1, row + 1); r++) {
-    const p = [coastalGridPoint(col, r), coastalGridPoint(col + 1, r), coastalGridPoint(col + 1, r + 1), coastalGridPoint(col, r + 1)];
+    const p = [supportPoint(col, r), supportPoint(col + 1, r), supportPoint(col + 1, r + 1), supportPoint(col, r + 1)];
     for (const [i, j, k] of [[0, 3, 1], [1, 3, 2]]) {
-      const [u, v, w] = [p[i], p[j], p[k]], den = (v.y - w.y) * (u.x - w.x) + (w.x - v.x) * (u.y - w.y);
-      const s = ((v.y - w.y) * (x - w.x) + (w.x - v.x) * (y - w.y)) / den;
-      const t = ((w.y - u.y) * (x - w.x) + (u.x - w.x) * (y - w.y)) / den;
-      if (s >= -1e-7 && t >= -1e-7 && s + t <= 1 + 1e-7) return s * u.height + t * v.height + (1 - s - t) * w.height;
+      const surface = coastalTriangleAt(x, y, p[i], p[j], p[k]);
+      if (surface) return surface;
     }
   }
   return undefined;
 }
+
+export function coastalSurfaceHeight(x: number, y: number) { return coastalSurfaceAt(x, y)?.height; }
 
 /** Near coast uses parallel columns; only the straight inland section fans out to the horizon. */
 export function coastalGridPoint(column: number, row: number): CoastalPoint {

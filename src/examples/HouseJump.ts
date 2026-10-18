@@ -83,7 +83,7 @@ export interface JumpState { feet: number; velocity: number; grounded: boolean; 
 export interface JumpFrame { feet: number; grounded: boolean; snapped?: PlanPoint; landed?: string; }
 
 export function createJumpState(): JumpState { return { feet: 0, velocity: 0, grounded: true, queued: false, originTop: 0 }; }
-export function resetJumpState(state: JumpState) { state.feet = 0; state.velocity = 0; state.grounded = true; state.queued = false; state.originTop = 0; }
+export function resetJumpState(state: JumpState, feet = 0) { state.feet = feet; state.velocity = 0; state.grounded = true; state.queued = false; state.originTop = feet; }
 export function requestJump(state: JumpState) { if (state.grounded) state.queued = true; }
 
 /** Highest landable surface under a plan point; the floor is the implicit fallback. */
@@ -94,7 +94,10 @@ export function jumpPlatformAt(x: number, y: number, margin = 0): JumpPlatform |
       && (!best || p.top > best.top)) best = p;
   return best;
 }
-export function jumpSupportAt(x: number, y: number) { return jumpPlatformAt(x, y)?.top ?? 0; }
+export function jumpSupportAt(x: number, y: number, floor: number | undefined = 0) {
+  const platform = jumpPlatformAt(x, y);
+  return platform ? Math.max(platform.top, floor ?? -Infinity) : floor;
+}
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
@@ -102,19 +105,23 @@ const clamp = (value: number, min: number, max: number) => Math.max(min, Math.mi
  * Advance the vertical state after horizontal collision. Landing is checked only while falling,
  * with a small mantle assist from the edge so a 0.72m jump can reach a 0.675m bed.
  */
-export function advanceJump(state: JumpState, dt: number, point: PlanPoint): JumpFrame {
+export function advanceJump(state: JumpState, dt: number, point: PlanPoint,
+  environment?: { floor: number | undefined; ceiling?: number }): JumpFrame {
+  const floor = environment ? environment.floor : 0;
+  const ceiling = environment ? environment.ceiling ?? Infinity : HOUSE_COORDINATES.clearHeight;
   if (!(dt > 0)) return { feet: state.feet, grounded: state.grounded };
   if (state.grounded) {
     if (state.queued) {
       state.queued = false;
       state.originTop = state.feet;
-      const headroom = Math.max(0.15, HOUSE_COORDINATES.clearHeight - 0.08 - HOUSE_JUMP.eyeHeight - state.feet);
+      const headroom = Math.max(0.15, ceiling - 0.08 - HOUSE_JUMP.eyeHeight - state.feet);
       const height = Math.min(HOUSE_JUMP.apex, headroom);
       state.velocity = Math.sqrt(2 * HOUSE_JUMP.gravity * height);
       state.grounded = false;
     } else {
-      const support = jumpSupportAt(point.x, point.y);
-      if (support < state.feet - 1e-6) {
+      const platform = jumpPlatformAt(point.x, point.y);
+      const support = platform ? Math.max(platform.top, floor ?? -Infinity) : floor;
+      if (support === undefined || support < state.feet - .18 || platform && support < state.feet - 1e-6) {
         // Keep the feet at the current top while the body still overlaps the platform edge;
         // otherwise the collider drops below the top and the platform side traps the walker.
         const edge = jumpPlatformAt(point.x, point.y, HOUSE_JUMP.playerRadius);
@@ -122,13 +129,15 @@ export function advanceJump(state: JumpState, dt: number, point: PlanPoint): Jum
           state.grounded = false; state.velocity = 0; state.originTop = state.feet;
         } else return { feet: state.feet, grounded: true };
       } else {
-        if (support <= state.feet + 1e-6) state.feet = support;
+        if (support <= state.feet + .18) state.feet = support;
         return { feet: state.feet, grounded: true };
       }
     }
   }
   state.velocity -= HOUSE_JUMP.gravity * dt;
-  const next = state.feet + state.velocity * dt;
+  let next = state.feet + state.velocity * dt;
+  const maxFeet = ceiling - HOUSE_JUMP.eyeHeight - .08;
+  if (next > maxFeet && state.velocity > 0) { next = maxFeet; state.velocity = 0; }
   if (state.velocity <= 0) {
     const platform = jumpPlatformAt(point.x, point.y);
     if (platform && state.feet >= platform.top - 1e-6 && next <= platform.top) {
@@ -146,7 +155,10 @@ export function advanceJump(state: JumpState, dt: number, point: PlanPoint): Jum
         } };
     }
   }
-  if (next <= 0) { state.feet = 0; state.velocity = 0; state.grounded = true; state.originTop = 0; return { feet: 0, grounded: true, landed: "floor" }; }
+  if (floor !== undefined && next <= floor) {
+    state.feet = floor; state.velocity = 0; state.grounded = true; state.originTop = floor;
+    return { feet: floor, grounded: true, landed: "floor" };
+  }
   state.feet = next;
   return { feet: next, grounded: false };
 }

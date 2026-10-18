@@ -212,7 +212,7 @@
       <div class="item-actions"><button id="item-inspection-return" autofocus>返回</button><p>ESC 返回场景</p></div>
     </dialog>
     <button id="floor-plan-toggle" aria-label="查看全屋户型图，快捷键 M" aria-haspopup="dialog" aria-expanded="false" aria-controls="floor-plan-dialog" aria-keyshortcuts="M">
-      <span class="map-mini-heading"><span>全屋地图</span><span aria-hidden="true">↗</span></span>
+      <span class="map-mini-heading"><span id="map-mini-title">全屋地图</span><span aria-hidden="true">↗</span></span>
       <span id="floor-plan-mini" aria-hidden="true"></span>
       <span class="map-mini-footer"><span id="floor-plan-location">全屋布局</span><span><kbd>M</kbd> 展开</span></span>
     </button>
@@ -234,7 +234,7 @@
             <dl class="map-area"><dt>规划地面面积（含阳台）</dt><dd><span id="floor-plan-area"></span> <small>m²</small></dd></dl>
             <p>主卧扩大至25.9 m²，书房调整为10.2 m²。主卫由主卧独享；公卫位于主卧外，从客厅进入。</p>
             <section class="map-room-schedule" aria-label="房间尺寸清单"><h3>房间尺寸</h3><dl id="floor-plan-room-sizes"></dl></section>
-            <p class="map-disclaimer">标注为墙中心线尺寸，未扣墙厚，阳台按完整地面面积计入。全屋八房已布置；入户门外步行暂不开放。可切换海岸图查看灯塔与步道。</p>
+            <p class="map-disclaimer">标注为墙中心线尺寸，未扣墙厚，阳台按完整地面面积计入。全屋八房已布置；打开东侧入户门，可沿海岸步道走到灯塔。</p>
           </aside>
           <aside class="map-notes" id="coast-map-notes" hidden>
             <h3>走向海角的灯塔</h3>
@@ -242,7 +242,8 @@
             <dl class="map-area" style="margin-top:24px"><dt>家门至灯塔路线</dt><dd><span id="coast-route-length"></span> <small>m</small></dd></dl>
             <p>灯塔高20米，距阳台约155米。途中可看海、回望房屋，塔前留有绕行与观景空间。</p>
             <button id="coast-preview">查看海岸全景</button>
-            <p class="map-disclaimer">目前开放海岸取景与路线查看；户外步行将在下一阶段开放。</p>
+            <button id="coast-return-home">回到家门</button>
+            <p class="map-disclaimer">可沿步道往返、绕塔与途中停留，虚线对应护栏内的探索范围。灯塔内部尚未开放。</p>
           </aside>
         </div>
         <footer class="map-caption"><span id="map-caption-scope">尺寸单位：米 · 全屋户型规划</span><span>拖动与移动已暂停 · 返回继续探索</span></footer>

@@ -129,11 +129,7 @@ export function createHouseArchitecture(scene: Scene, furniture: RoomFurnishings
       root.scaling.set(w.width * u / 10.3, w.height * u / 7.5, 1);
     }).forEach(m => { m.metadata.cut = { axis: w.axis, at: w.axis === "x" ? w.y : w.x }; hidden.push(m); });
   });
-  // Exterior is intentionally not playable, including when the entrance leaf is open.
-  const entry = HOUSE_DOORS.find(d => d.id === "entry-door")!;
-  const boundary = box("entry-outside-boundary", "y", entry.x + 0.08, entry.y, entry.y + entry.width,
-    0, HOUSE_DOOR_HEIGHT, ["living"], 0.02);
-  boundary.isVisible = false; boundary.metadata.collisionOnly = true;
+  // The real entrance leaf controls passage; stage B's shared surface/guardrail controller protects outdoors.
   for (const [id, x, y, h, width, height, yaw, axis, edge] of [
     ["study", 5.53, 1.4, 1.65, 4.5, 2.7, -Math.PI / 2, "y", 5.4],
     ["living", 10.67, 6.15, 1.7, 5.3, 2.6, Math.PI / 2, "y", 10.8],

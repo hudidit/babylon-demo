@@ -2,18 +2,29 @@ import type { PlanPoint } from "./HouseLayout";
 
 /** Shared metre-based layout for the graybox, map and later walking surfaces. */
 export const COASTAL_SITE = Object.freeze({
-  version: "lighthouse-graybox-a-v1",
+  version: "lighthouse-walking-b-v1",
   pathWidth: 1.8,
   tower: Object.freeze({ x: -125, y: 90, ground: 3, height: 20, radius: 2.8 }),
   plaza: Object.freeze({ width: 14, depth: 18 }),
   lookout: Object.freeze({ x: -70, y: 25, radius: 3 }),
+  lookoutSeat: Object.freeze({ x: -68.8, y: 26.4 }),
 });
 
 export const COASTAL_ROUTE_ANCHORS: readonly PlanPoint[] = Object.freeze([
-  { x: 10.8, y: 4.65 }, { x: 13, y: -3 }, { x: -4, y: -5 }, { x: -18, y: 10 },
+  { x: 10.8, y: 4.65 }, { x: 12.2, y: 4.65 }, { x: 13, y: -3 }, { x: -4, y: -5 }, { x: -18, y: 10 },
   { x: -40, y: 12 }, { x: -56, y: 8 }, // An inland bend clears the original v1 cliff at x=-30m.
   COASTAL_SITE.lookout, { x: -94, y: 44 }, { x: -116, y: 63 }, COASTAL_SITE.tower,
 ].map(p => Object.freeze({ x: p.x, y: p.y })));
+
+/** A finite exploration area, visibly enclosed by the stage B timber guardrail. */
+export const COASTAL_WALK_BOUNDARY: readonly PlanPoint[] = Object.freeze([
+  [16, -7], [-6, -10], [-21, 4], [-40, 6], [-55, 2], [-61, 8],
+  [-72, 19], [-99, 39], [-122, 60], [-134, 83], [-134, 99],
+  [-118, 99], [-109, 84], [-110, 69], [-103, 56], [-96, 49], [-90, 46], [-66, 31],
+  [-53, 15], [-40, 18], [-34, 14], [-23, 14], [-16, 16], [-7, 14], [-4, 14.4], [16, 14.4],
+].map(([x, y]) => Object.freeze({ x, y })));
+
+export const COASTAL_HOME = Object.freeze({ x: 12.2, y: 4.65 });
 
 /** West-to-east crest controls; the last height joins the unchanged v1 coast exactly. */
 export const COASTAL_EXTENSION: readonly (readonly [number, number])[] = [
@@ -69,7 +80,7 @@ export function coastalRouteDistance(x: number, y: number, route = coastalRoute(
 
 /** Grade the road's earthwork corridor; the final 14m meets the level tower plaza. */
 export function coastalPathGrade(x: number, y: number) {
-  const heights = [-.14, -.14, -.14, .2, .6, .8, 1, 1.6, 2.3, 3], a = COASTAL_ROUTE_ANCHORS;
+  const heights = [-.14, -.14, -.14, -.14, .2, .6, .8, 1, 1.6, 2.3, 3], a = COASTAL_ROUTE_ANCHORS;
   let squared = Infinity, height = 0;
   for (let i = 1; i < a.length; i++) {
     const dx = a[i].x - a[i - 1].x, dy = a[i].y - a[i - 1].y, length = Math.hypot(dx, dy);

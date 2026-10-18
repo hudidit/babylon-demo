@@ -49,6 +49,21 @@ export class RoomInteractions {
     for (const state of this.slidingDoors) { state.moving = false; this.sound("stop", state.door); }
   }
 
+  /** Preset restoration must not place the walker inside a leaf moved while the orbit view was active. */
+  walkerIsClear(position: Vector3) {
+    for (const { door } of this.doors) {
+      const p = Vector3.TransformCoordinates(position, Matrix.Invert(door.root.computeWorldMatrix(true)));
+      const radius = door.walkerRadius ?? 1.3;
+      if (Math.abs(p.x) < .5 + radius && p.z > -radius && p.z < door.width + radius) return false;
+    }
+    for (const { door } of this.slidingDoors) {
+      const p = Vector3.TransformCoordinates(position, Matrix.Invert(door.root.computeWorldMatrix(true)));
+      if (Math.abs(p.x) < door.halfThickness + door.walkerRadius && p.z > -door.walkerRadius
+        && p.z < door.width + door.walkerRadius) return false;
+    }
+    return true;
+  }
+
   addDoor(door: InteractiveDoor) {
     if (this.entities.has(door.id)) throw new Error("Duplicate interaction: " + door.id);
     const state = { door, progress: 0, open: false, blocked: false, moving: false };

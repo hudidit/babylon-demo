@@ -1,10 +1,10 @@
 import { coastalCrestY, COASTAL_CLIFF, coastalSurfaceHeight } from "./CoastalCliff";
-import { coastalRoute, coastalRouteLength, COASTAL_SITE } from "./CoastalSite";
+import { coastalRoute, coastalRouteLength, COASTAL_SITE, COASTAL_WALK_BOUNDARY } from "./CoastalSite";
 
 /** Same north-up left-handed projection as the house map and the actual overhead camera. */
 export function coastalDrawingPoint(x: number, y: number) { return { x: 40 + (22 - x) * 3, y: 48 + (y + 16) * 3 }; }
 
-export function coastalPlanSvg() {
+export function coastalPlanSvg(compact = false) {
   const p = coastalDrawingPoint, point = (x: number, y: number) => { const v = p(x, y); return `${v.x.toFixed(2)},${v.y.toFixed(2)}`; };
   const a = COASTAL_CLIFF, site = COASTAL_SITE;
   const crest = Array.from({ length: a.columns + 1 }, (_, i) => {
@@ -14,9 +14,10 @@ export function coastalPlanSvg() {
   const landmark = (x: number, y: number, label: string, dx: number, dy: number) => {
     const v = p(x, y); return `<g><circle cx="${v.x}" cy="${v.y}" r="6" fill="#fff7e6" stroke="#6b765f" stroke-width="2"/><text x="${v.x + dx}" y="${v.y + dy}" font-size="15" fill="#44523e">${label}</text></g>`;
   };
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 490" role="img" aria-label="海岸路线图：房屋经崖顶步道和观景点到灯塔，室外步行尚未开放">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${compact ? "20 30 560 370" : "0 0 620 490"}" role="img" aria-label="海岸路线图：可从房屋经崖顶步道和观景点步行到灯塔，虚线为护栏边界">
     <rect width="620" height="490" rx="12" fill="#c6d9da"/>
     <polygon points="${point(a.eastX, -40)} ${crest} ${point(a.westX, -40)}" fill="#dce1c9" stroke="#8b947b" stroke-width="3"/>
+    <polygon points="${COASTAL_WALK_BOUNDARY.map(v => point(v.x, v.y)).join(" ")}" fill="none" stroke="#6d7864" stroke-width="1.3" stroke-dasharray="4 3"/>
     <polyline points="${route.map(v => point(v.x, v.y)).join(" ")}" fill="none" stroke="#a07849" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"/>
     <polygon points="${[[0,0],[10.8,0],[10.8,12.3],[5.4,12.3],[5.4,10.8],[0,10.8]].map(v => point(v[0],v[1])).join(" ")}" fill="#faf4e7" stroke="#6d7864" stroke-width="2"/>
     ${landmark(5.4, 5.4, "房屋", -17, -30)}

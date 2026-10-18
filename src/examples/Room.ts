@@ -16,7 +16,9 @@ import { RoomMirrors } from "./RoomMirrors";
 import { RoomExterior } from "./RoomExterior";
 import type { InspectableItem } from "./RoomInteractions";
 import { createHouseArchitecture } from "./HouseArchitecture";
-import { constrainHouseXZ, houseVector, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
+import { houseVector, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
+import { walkingPointAllowed, walkingSurfaceAt, sweepWalking } from "./WalkingSurface";
+import { COASTAL_HOME } from "./CoastalSite";
 import { HOUSE_CONTENT, furnishHouseLiving, furnishHouseStudy } from "./HouseContent";
 import { furnishHouseMaster, furnishHouseEnsuite } from "./HouseSuite";
 import { furnishHouseBedroom } from "./HouseBedroom";
@@ -25,7 +27,7 @@ import { furnishHouseBalcony } from "./HouseBalcony";
 import { HouseRooms } from "./HouseRooms";
 import type { RoomBuild } from "./HouseRooms";
 import { HOUSE_LAYOUT_VERSION, HOUSE_ROOMS, planToWorld, worldToPlan } from "./HouseLayout";
-import { advanceJump, createJumpState, HOUSE_JUMP, jumpBlockedAt, requestJump, resetJumpState } from "./HouseJump";
+import { advanceJump, createJumpState, HOUSE_JUMP, jumpPlatformAt, requestJump, resetJumpState } from "./HouseJump";
 import type { HouseRoomId } from "./HouseLayout";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
 
@@ -45,6 +47,8 @@ export class RoomScene {
   private readonly firstPersonCamera: UniversalCamera;
   private readonly jump = createJumpState();
   private readonly previousWalk = new Vector3();
+  private walkPose?: { position: Vector3; rotation: Vector3; feet: number };
+  private stableWalk?: { position: Vector3; feet: number };
   private readonly lighting: RoomLighting;
   private readonly contactShadows?: SSAO2RenderingPipeline;
   private readonly finishing: DefaultRenderingPipeline;
@@ -117,7 +121,8 @@ export class RoomScene {
       () => this.currentView === "first-person" ? this.firstPersonCamera.position : undefined,
       event => this.audio.event(event));
     this.inspection = new RoomItemInspection(this.scene);
-    this.floorPlan = new RoomFloorPlan(() => this.openFloorPlan(), resume => this.closeFloorPlan(resume), this.rooms, () => this.setView("coast"));
+    this.floorPlan = new RoomFloorPlan(() => this.openFloorPlan(), resume => this.closeFloorPlan(resume), this.rooms,
+      () => this.setView("coast"), () => this.returnHome());
     this.pointerLock = new RoomPointerLock(canvas, locked => {
       this.pointerLocked = locked;
       this.updateControls();
@@ -254,6 +259,7 @@ export class RoomScene {
 
   setView(view: RoomView) {
     if (this.isViewing) return;
+    if (this.currentView === "first-person") this.saveWalkingPose();
     this.interactions.silenceMotion();
     this.audio.setSpatialCamera(view === "first-person" ? this.firstPersonCamera : undefined);
     const firstPerson = view === "first-person";
@@ -288,9 +294,16 @@ export class RoomScene {
       cabinet: { position: houseVector(8.3, 9.3, 2.1), target: houseVector(a.cabinet.x, a.cabinet.y, 0.6) },
     };
     if (firstPerson) {
-      this.firstPersonCamera.position.copyFrom(houseVector(HOUSE_SPAWN.x, HOUSE_SPAWN.y, 1.6));
-      this.firstPersonCamera.setTarget(houseVector(7.5, 7.8, 1.5));
-      if (this.jump) resetJumpState(this.jump);
+      if (this.walkPose && this.walkPoseIsValid(this.walkPose)) {
+        this.firstPersonCamera.position.copyFrom(this.walkPose.position);
+        this.firstPersonCamera.rotation.copyFrom(this.walkPose.rotation);
+        if (this.jump) resetJumpState(this.jump, this.walkPose.feet);
+      } else if (this.walkPose) this.restoreStableWalk(true);
+      else {
+        this.firstPersonCamera.position.copyFrom(houseVector(HOUSE_SPAWN.x, HOUSE_SPAWN.y, 1.6));
+        this.firstPersonCamera.setTarget(houseVector(7.5, 7.8, 1.5));
+        if (this.jump) resetJumpState(this.jump);
+      }
       if (this.previousWalk) this.previousWalk.copyFrom(this.firstPersonCamera.position);
       this.scene.activeCamera = this.firstPersonCamera;
     } else {
@@ -329,20 +342,68 @@ export class RoomScene {
   private updateFirstPersonHeight() {
     const camera = this.firstPersonCamera, previous = this.previousWalk;
     if (!camera || !previous) return;
-    constrainHouseXZ(camera.position, previous);
-    let point = worldToPlan(camera.position);
-    // Desks, consoles, cabinets and nightstands stay solid even during a jump from a seat.
-    if (jumpBlockedAt(point.x, point.y)) {
-      camera.position.x = previous.x; camera.position.z = previous.z;
-      point = worldToPlan(camera.position);
+    const wanted = worldToPlan(camera.position), point = sweepWalking(worldToPlan(previous), wanted);
+    if (!point) { this.restoreStableWalk(); return; }
+    if (Math.hypot(point.x - wanted.x, point.y - wanted.y) > .001) {
+      const p = planToWorld(point); camera.position.x = p.x; camera.position.z = p.z;
+      camera.cameraDirection.setAll(0); camera.movement.resetPanVelocity();
     }
-    const frame = advanceJump(this.jump, Math.min(0.05, Math.max(1 / 240, this.engine.getDeltaTime() / 1000)), point);
+    const support = walkingSurfaceAt(point.x, point.y);
+    if (!support) { this.restoreStableWalk(); return; }
+    let remaining = Math.min(.2, Math.max(1 / 240, this.engine.getDeltaTime() / 1000));
+    let frame = { feet: this.jump.feet, grounded: this.jump.grounded } as ReturnType<typeof advanceJump>;
+    while (remaining > 1e-8) {
+      const dt = Math.min(1 / 60, remaining); remaining -= dt;
+      frame = advanceJump(this.jump, dt, point, { floor: support.height, ceiling: support.ceiling });
+      if (frame.snapped) break;
+    }
     if (frame.snapped) {
-      const snapped = planToWorld(frame.snapped);
-      camera.position.x = snapped.x; camera.position.z = snapped.z;
+      if (walkingPointAllowed(frame.snapped)) {
+        const snapped = planToWorld(frame.snapped); camera.position.x = snapped.x; camera.position.z = snapped.z;
+      }
     }
     camera.position.y = planToWorld(point, frame.feet + HOUSE_JUMP.eyeHeight).y;
+    if (!Number.isFinite(frame.feet) || frame.feet < support.height - .3) { this.restoreStableWalk(); return; }
     previous.copyFrom(camera.position);
+    if (frame.grounded && Math.abs(frame.feet - support.height) < .06)
+      this.stableWalk = { position: camera.position.clone(), feet: frame.feet };
+  }
+
+  private walkPoseIsValid(pose: { position: Vector3; feet: number }) {
+    const p = worldToPlan(pose.position), support = walkingSurfaceAt(p.x, p.y);
+    const platform = jumpPlatformAt(p.x, p.y);
+    return walkingPointAllowed(p) && !!support && (Math.abs(pose.feet - support.height) < .08
+      || !!platform && Math.abs(pose.feet - platform.top) < .08) && this.interactions.walkerIsClear(pose.position);
+  }
+
+  private saveWalkingPose() {
+    if (!this.jump) return;
+    const position = this.jump.grounded ? this.firstPersonCamera.position.clone() : this.stableWalk?.position.clone();
+    const feet = this.jump.grounded ? this.jump.feet : this.stableWalk?.feet;
+    if (position && feet !== undefined) this.walkPose = { position, feet, rotation: this.firstPersonCamera.rotation.clone() };
+  }
+
+  private restoreStableWalk(home = false) {
+    const camera = this.firstPersonCamera;
+    const stable = !home && this.stableWalk && this.walkPoseIsValid(this.stableWalk) ? this.stableWalk : undefined;
+    const support = walkingSurfaceAt(COASTAL_HOME.x, COASTAL_HOME.y)!;
+    camera.position.copyFrom(stable?.position || houseVector(COASTAL_HOME.x, COASTAL_HOME.y, support.height + HOUSE_JUMP.eyeHeight));
+    resetJumpState(this.jump, stable?.feet ?? support.height);
+    camera.cameraDirection.setAll(0); camera.cameraRotation.setAll(0);
+    camera.movement.resetPanVelocity(); camera.movement.resetRotationVelocity();
+    this.previousWalk.copyFrom(camera.position);
+    this.stableWalk = { position: camera.position.clone(), feet: this.jump.feet };
+  }
+
+  private returnHome() {
+    this.closeFloorPlan(false);
+    this.restoreStableWalk(true);
+    this.firstPersonCamera.setTarget(houseVector(13, -3, 1.6));
+    this.walkPose = { position: this.firstPersonCamera.position.clone(), feet: this.jump.feet, rotation: this.firstPersonCamera.rotation.clone() };
+    if (this.currentView === "first-person") {
+      this.updateFloorPlan();
+      if (this.controlsEnabled) this.pointerLock.request();
+    } else this.setView("first-person");
   }
 
   setMovementSpeed(multiplier: number) {

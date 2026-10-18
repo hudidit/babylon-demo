@@ -4,11 +4,15 @@ import { planToWorld } from "./HouseLayout";
 import type { CoastalGeometry } from "./CoastalCliff";
 import { coastalRoute, coastalRouteDistance, COASTAL_SITE } from "./CoastalSite";
 export type CoastalScatterGeometry = CoastalGeometry & { colors: number[] };
+type RockObstacle = { x: number; y: number; radius: number };
+let obstacleCache: RockObstacle[] | undefined;
+export function coastalRockObstacles() { if (!obstacleCache) coastalScatter(); return obstacleCache!; }
 
 /** Fixed clusters, buried rocks, folded opaque blades and low woody cushions; never photo cards. */
 export function coastalScatter() {
   const empty = (): CoastalScatterGeometry => ({ positions: [], indices: [], uvs: [], colors: [] });
   const rocks = empty(), plants = empty(); let seed: number = COASTAL_CLIFF.seed;
+  const obstacles: RockObstacle[] = [];
   const route = coastalRoute();
   const random = () => { seed = Math.imul(seed, 1664525) + 1013904223 | 0; return (seed >>> 0) / 4294967296; };
   const vertex = (g: CoastalScatterGeometry, x: number, y: number, height: number, color: Color3) => {
@@ -19,6 +23,7 @@ export function coastalScatter() {
   const stone = (x: number, y: number, size: number) => {
     const base = coastalGroundHeight(x, y) - size * .28, first = rocks.positions.length / 3;
     const angle = random() * Math.PI * 2, stretch = .65 + random() * .6;
+    if (size * .22 > .18) obstacles.push({ x, y, radius: size * 1.16 * Math.max(1, stretch) });
     for (let row = 0; row <= 4; row++) for (let col = 0; col <= 8; col++) {
       const theta = row / 4 * Math.PI, phi = col / 8 * Math.PI * 2, rough = 1 + .16 * Math.sin(col * 5.3 + row * 9.7 + angle);
       const dx = Math.cos(phi) * Math.sin(theta) * size * rough, dy = Math.sin(phi) * Math.sin(theta) * size * stretch * rough;
@@ -73,5 +78,6 @@ export function coastalScatter() {
   // A few anchored rock groups define the crest beside the main sea-facing composition.
   [[-8, 38, 1.1], [-7, 39, .65], [-3, 22, .8], [2, 16.4, .55], [14, 16.6, .75], [16, 15.9, .4]]
     .forEach(([x, y, s]) => { if (y < coastalCrestY(x)) stone(x, y, s); });
-  return { rocks, plants };
+  obstacleCache = obstacles;
+  return { rocks, plants, obstacles };
 }

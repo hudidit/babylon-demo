@@ -44,7 +44,7 @@ export class RoomExterior {
     };
     const sky = unlit("coastal-sky");
     const retain = (mesh: Mesh, layer: ExteriorLayer) => {
-      mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "lighthouse-A", castsShadows: false, lightRooms: [] };
+      mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "lighthouse-B", castsShadows: false, lightRooms: [] };
       setRoomOwners(mesh, owners);
       mesh.isPickable = false; mesh.checkCollisions = false;
       mesh.receiveShadows = ["terrain", "foundation", "vegetation", "rocks"].includes(layer);
@@ -107,7 +107,7 @@ export class RoomExterior {
     this.bindShadowCasters([]);
     this.sceneCleanup = scene.onDisposeObservable.addOnce(() => this.dispose());
     scene.metadata = { ...scene.metadata, exteriorVersion: a.version,
-      coastalSite: { version: COASTAL_SITE.version, stage: "A", outdoorWalking: false,
+      coastalSite: { version: COASTAL_SITE.version, stage: "B", outdoorWalking: true,
         tower: COASTAL_SITE.tower, routeLength: coastalRouteLength((x, y) => coastalSurfaceHeight(x, y)!) } };
   }
 

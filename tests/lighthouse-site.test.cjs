@@ -70,10 +70,10 @@ test('coast map landmarks follow the existing house map and a real north-up left
     assert.equal(Math.sign(p(a.x,a.y).x-p(z.x,z.y).x),Math.sign(project(a).x-project(z).x));
     assert.equal(Math.sign(p(a.x,a.y).y-p(z.x,z.y).y),Math.sign(project(a).y-project(z).y));
   }
-  const svg=coastalPlanSvg();assert.ok(!/NaN|undefined/.test(svg));assert.match(svg,/室外步行尚未开放/);
+  const svg=coastalPlanSvg();assert.ok(!/NaN|undefined/.test(svg));assert.match(svg,/步行到灯塔/);
 });
 
-test('graybox road faces remain above the actual land and do not unlock outdoor collisions', t => {
+test('road faces remain above actual land while outdoor movement uses the explicit surface controller', t => {
   const engine=new b.NullEngine(),scene=new b.Scene(engine);scene.useDelayedTextureLoading=true;
   t.after(()=>{scene.dispose();engine.dispose();});
   const exterior=new(load('RoomExterior').RoomExterior)(scene),mesh=scene.getMeshByName('coastal-lighthouse-path');
@@ -84,8 +84,133 @@ test('graybox road faces remain above the actual land and do not unlock outdoor 
     const clearance=(centre[1]+5)/5-coastalSurfaceHeight(centre[0]/5+5.4,centre[2]/5+5.4);
     assert.ok(clearance>=0 && clearance<.08,'a road face must not cut through or float above the terrain');
   }
-  assert.equal(scene.metadata.coastalSite.outdoorWalking,false);
+  assert.equal(scene.metadata.coastalSite.outdoorWalking,true);
+  assert.equal(scene.metadata.coastalSite.stage,'B');
   assert.ok(exterior.meshes.every(m=>!m.checkCollisions));
   exterior.setHouseEnclosed(false);assert.equal(scene.getMeshByName('coastal-house-roof-graybox').isVisible,false);
   exterior.setHouseEnclosed(true);assert.equal(scene.getMeshByName('coastal-house-roof-graybox').isVisible,true);
+});
+
+const walking=load('WalkingSurface'),access=load('CoastalPath'),jump=load('HouseJump');
+const {HOUSE_COORDINATES,houseRoomAt}=load('HouseLayout');
+const {COASTAL_WALK_BOUNDARY,COASTAL_HOME}=load('CoastalSite');
+
+test('walking support matches rendered road, ramp, lookout and plaza top faces including negative heights', t=>{
+  const engine=new b.NullEngine(),scene=new b.Scene(engine);scene.useDelayedTextureLoading=true;
+  t.after(()=>{scene.dispose();engine.dispose();});new(load('RoomExterior').RoomExterior)(scene);
+  const points=coastalRoute().filter((_,i)=>i%11===0&&!houseRoomAt(coastalRoute()[i].x,coastalRoute()[i].y));
+  points.push({x:11.3,y:4.65},{x:12.5,y:4.65},{x:-125,y:83},{x:-70,y:26},{x:-70.8,y:24});
+  for(const point of points){
+    const v=planToWorld(point,30),hit=scene.pickWithRay(new b.Ray(new b.Vector3(v.x,v.y,v.z),new b.Vector3(0,-1,0),250),
+      m=>m.name.startsWith('coastal-platform-')||['coastal-lighthouse-path','coastal-entry-ramp','coastal-lighthouse-plaza','coastal-lighthouse-lookout'].includes(m.name));
+    assert.ok(hit.hit);const support=walking.walkingSurfaceAt(point.x,point.y);
+    assert.ok(Math.abs((hit.pickedPoint.y-HOUSE_COORDINATES.floorY)/5-support.height)<2e-5,JSON.stringify({point,support,hit:hit.pickedPoint.y}));
+    assert.ok(support.normal.y>Math.cos(Math.PI/6));
+  }
+  assert.ok(walking.walkingSurfaceAt(COASTAL_HOME.x,COASTAL_HOME.y).height<0);
+  assert.equal(walking.walkingSurfaceAt(-125,120),undefined);assert.equal(walking.walkingSurfaceAt(0,-500),undefined);
+  assert.equal(walking.walkingSurfaceAt(NaN,0),undefined);
+});
+
+test('the entrance, rounded route and complete ring around the solid tower are continuously walkable both ways',()=>{
+  const route=[{x:10.25,y:4.65},...coastalRoute().filter(p=>Math.hypot(p.x+125,p.y-90)>4.5)];
+  for(let i=1;i<route.length;i++){
+    assert.ok(walking.walkingPointAllowed(route[i]),JSON.stringify(route[i]));
+    const a=walking.sweepWalking(route[i-1],route[i]),z=walking.sweepWalking(route[i],route[i-1]);
+    assert.ok(a&&Math.hypot(a.x-route[i].x,a.y-route[i].y)<1e-7,JSON.stringify({a,to:route[i]}));
+    assert.ok(z&&Math.hypot(z.x-route[i-1].x,z.y-route[i-1].y)<1e-7);
+  }
+  for(let i=0;i<120;i++){
+    const point={x:-125+5.5*Math.cos(i/120*Math.PI*2),y:90+5.5*Math.sin(i/120*Math.PI*2)};
+    assert.ok(walking.walkingPointAllowed(point),JSON.stringify(point));
+  }
+});
+
+test('long and airborne moves cannot cross windows, balcony rails, tower or the finite guardrail',()=>{
+  const cases=[
+    [{x:-1,y:8},{x:1,y:8}],
+    [{x:8,y:11.8},{x:8,y:16}],
+    [{x:-125,y:84.5},{x:-125,y:95.5}],
+    [{x:14,y:0},{x:19,y:0}],
+  ];
+  for(const [a,z] of cases){
+    const end=walking.sweepWalking(a,z);assert.ok(end,JSON.stringify(a));
+    assert.ok(Math.hypot(end.x-z.x,end.y-z.y)>.5,JSON.stringify({a,z,end}));
+    assert.ok(walking.walkingPointAllowed(end));
+  }
+  assert.equal(walking.sweepWalking(COASTAL_HOME,{x:NaN,y:4}),undefined);
+  assert.equal(walking.sweepWalking(COASTAL_HOME,{x:-125,y:90}),undefined);
+  // Sampling the interior of the segment is essential: the destination beyond the tower is valid.
+  assert.ok(walking.walkingPointAllowed({x:-125,y:95.5}));
+});
+
+test('visible guardrail follows real terrain and leaves its full support on land',()=>{
+  const g=access.coastalGuardrailGeometry();assert.ok(g.positions.length/3<20000);
+  const normals=[];b.VertexData.ComputeNormals(g.positions,g.indices,normals);
+  for(let box=0;box<g.positions.length;box+=72){
+    const centre=[0,1,2].map(axis=>Array.from({length:24},(_,i)=>g.positions[box+i*3+axis]).reduce((a,z)=>a+z)/24);
+    for(let face=0;face<6;face++){
+      const at=box+face*12,mid=[0,1,2].map(axis=>[0,1,2,3].reduce((sum,i)=>sum+g.positions[at+i*3+axis]/4,0));
+      assert.ok(mid.reduce((sum,v,axis)=>sum+(v-centre[axis])*normals[at+axis],0)>0,'guardrail box normals face outward');
+    }
+  }
+  for(let i=0;i<COASTAL_WALK_BOUNDARY.length;i++){
+    const a=COASTAL_WALK_BOUNDARY[i],z=COASTAL_WALK_BOUNDARY[(i+1)%COASTAL_WALK_BOUNDARY.length];
+    const count=Math.ceil(Math.hypot(a.x-z.x,a.y-z.y)/.2);
+    for(let j=0;j<=count;j++)assert.ok(Number.isFinite(coastalSurfaceHeight(a.x+(z.x-a.x)*j/count,a.y+(z.y-a.y)*j/count)));
+  }
+});
+
+test('outdoor jumps land on their actual negative or elevated ground without a global indoor ceiling',()=>{
+  for(const floor of [-.14,1,3.04]){
+    const state=jump.createJumpState();jump.resetJumpState(state,floor);jump.requestJump(state);
+    let highest=floor;
+    for(let i=0;i<180;i++){
+      jump.advanceJump(state,1/120,{x:-120,y:85},{floor});highest=Math.max(highest,state.feet);
+      if(i&&state.grounded)break;
+    }
+    assert.ok(highest-floor>.68&&highest-floor<=.72);assert.equal(state.feet,floor);assert.ok(state.grounded);
+  }
+  const state=jump.createJumpState();jump.resetJumpState(state,3);
+  for(let i=0;i<120;i++)jump.advanceJump(state,1/60,{x:-125,y:120},{floor:undefined});
+  assert.ok(!state.grounded&&state.feet<0,'missing support must never land on an invented zero floor');
+});
+
+test('ramp and main-road slopes can be followed while grounded without tiny repeated falls',()=>{
+  const state=jump.createJumpState();
+  for(let x=10.5;x<13;x+=.02){const p={x,y:4.65},support=walking.walkingSurfaceAt(p.x,p.y);jump.advanceJump(state,1/60,p,{floor:support.height,ceiling:support.ceiling});assert.ok(state.grounded);assert.ok(Math.abs(state.feet-support.height)<1e-7);}
+  const route=coastalRoute().filter(p=>p.x<-15&&Math.hypot(p.x+125,p.y-90)>4.5);
+  jump.resetJumpState(state,walking.walkingSurfaceAt(route[0].x,route[0].y).height);
+  for(const p of route){const support=walking.walkingSurfaceAt(p.x,p.y);jump.advanceJump(state,1/60,p,{floor:support.height});assert.ok(state.grounded);assert.ok(Math.abs(state.feet-support.height)<1e-7);}
+});
+
+test('walking recovery keeps a valid elevated checkpoint and rejects void or newly obstructed saved poses', t=>{
+  const engine=new b.NullEngine(),scene=new b.Scene(engine);t.after(()=>{scene.dispose();engine.dispose();});
+  const Room=load('Room').RoomScene,room=Object.create(Room.prototype);
+  room.firstPersonCamera=new b.UniversalCamera('recovery',b.Vector3.Zero(),scene);
+  room.previousWalk=b.Vector3.Zero();room.jump=jump.createJumpState();
+  let clear=true;room.interactions={walkerIsClear:()=>clear};
+  const point={x:-120,y:85},support=walking.walkingSurfaceAt(point.x,point.y),v=planToWorld(point,support.height+1.6);
+  room.firstPersonCamera.position.set(v.x,v.y,v.z);room.firstPersonCamera.rotation.set(.1,1.3,0);jump.resetJumpState(room.jump,support.height);
+  room.stableWalk={position:room.firstPersonCamera.position.clone(),feet:support.height};room.saveWalkingPose();
+  assert.ok(room.walkPoseIsValid(room.walkPose));assert.deepEqual(room.walkPose.rotation.asArray(),[.1,1.3,0]);
+  room.firstPersonCamera.position.x=NaN;room.restoreStableWalk();assert.deepEqual(room.firstPersonCamera.position.asArray(),[v.x,v.y,v.z]);
+  assert.equal(room.jump.feet,support.height);assert.ok(room.jump.grounded);
+  clear=false;assert.equal(room.walkPoseIsValid(room.walkPose),false);
+  room.restoreStableWalk();assert.ok(Math.abs(room.firstPersonCamera.position.x/5+5.4-COASTAL_HOME.x)<1e-8);
+  assert.equal(room.jump.velocity,0);assert.ok(Number.isFinite(room.firstPersonCamera.position.y));
+});
+
+test('restoration checks actual door-leaf transforms after an orbit-view door movement',t=>{
+  const engine=new b.NullEngine(),scene=new b.Scene(engine);scene.useDelayedTextureLoading=true;
+  t.after(()=>{scene.dispose();engine.dispose();});
+  const mount=new b.TransformNode('fixed-door-mount',scene),root=new b.TransformNode('entry-leaf',scene),p=planToWorld({x:10.8,y:4.1});
+  mount.position.set(p.x,p.y,p.z);mount.rotation.y=Math.PI/2;root.parent=mount;
+  const door={id:'entry-door',label:'入户门',root,meshes:[],width:5.5,openAngle:Math.PI/2,walkerRadius:1.3};
+  const interactions=new(load('RoomInteractions').RoomInteractions)(scene,()=>{});interactions.addDoor(door);
+  const centre=()=>b.Vector3.TransformCoordinates(new b.Vector3(0,8,door.width/2),door.root.computeWorldMatrix(true));
+  const closedCentre=centre();assert.equal(interactions.walkerIsClear(closedCentre),false);
+  door.root.rotation.y=door.openAngle;assert.equal(interactions.walkerIsClear(centre()),false);
+  assert.equal(interactions.walkerIsClear(closedCentre),true,'the previous closed-leaf area is free after opening');
+  const q=planToWorld(COASTAL_HOME,1.6);assert.equal(interactions.walkerIsClear(new b.Vector3(q.x,q.y,q.z)),true);
 });
