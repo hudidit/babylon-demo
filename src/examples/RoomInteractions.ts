@@ -19,7 +19,7 @@ type Action = { label: () => string; toggle: () => void };
 /** Explicit picking also includes non-pickable static furniture, so it can occlude an action. */
 export const interactionSurface = (mesh: AbstractMesh) =>
   mesh.isEnabled() && mesh.isVisible && mesh.visibility > 0 && mesh.getTotalVertices() > 0
-  && !mesh.metadata?.inspectionPreview && !mesh.metadata?.exterior;
+  && !mesh.metadata?.inspectionPreview && (!mesh.metadata?.exterior || mesh.metadata?.lighthouse);
 
 export class RoomInteractions {
   private readonly actions = new Map<AbstractMesh, Action>();

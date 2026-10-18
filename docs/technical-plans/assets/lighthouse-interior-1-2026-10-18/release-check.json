@@ -1,0 +1,212 @@
+{
+  "baseline": "a4c1f14 + lighthouse interior phase 1",
+  "metrics": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26232083,
+    "runtimeBytes": 15867631,
+    "documentationBytes": 67591,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2637534,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42260009
+  },
+  "deployments": [
+    {
+      "prefix": "/",
+      "checked": 495,
+      "allSha256Matched": true,
+      "noPublicFallback": true
+    },
+    {
+      "prefix": "/home/",
+      "checked": 495,
+      "allSha256Matched": true,
+      "noPublicFallback": true
+    }
+  ],
+  "fpsOrLoadTimeSampling": false,
+  "runtime": [
+    {
+      "path": "environment/study-interior.hdr",
+      "bytes": 1649529,
+      "sha256": "ca919c41d78c8fc0dd104f47fd9201530ddcbd3c3574c3d1fc5362846e4076e1"
+    },
+    {
+      "path": "environment/coastal-daylight.hdr",
+      "bytes": 4444,
+      "sha256": "09c35ed0bf66e0f16ab58d1659fa7b13576aa76c3327672253fb07433de22502"
+    },
+    {
+      "path": "textures/coastal/rock-color.jpg",
+      "bytes": 678872,
+      "sha256": "028dc33f502d0b6882595daf4a4e9fb41c2dc479e487de2a979e8266d470316b"
+    },
+    {
+      "path": "textures/coastal/rock-normal.jpg",
+      "bytes": 291272,
+      "sha256": "0adfb641e1a678672be1cc6a53ffbb1e5e3433985bee0ec5a0820e9cb13e44df"
+    },
+    {
+      "path": "textures/coastal/rock-arm.jpg",
+      "bytes": 111357,
+      "sha256": "3f32a5c9139044af6cc4ddf152437b95a6f7ba6dd84ba6a25c0805c1567444a3"
+    },
+    {
+      "path": "textures/coastal/ground-color.jpg",
+      "bytes": 166163,
+      "sha256": "897117d784101b4254b4579f468d63b0d46ae9db126a6633ce70272cf87e2c2e"
+    },
+    {
+      "path": "textures/coastal/ground-normal.jpg",
+      "bytes": 54823,
+      "sha256": "17088099b35ec001ce361e044b8aa52650fa939cb936de48e390f3d00678c8ff"
+    },
+    {
+      "path": "textures/coastal/ground-arm.jpg",
+      "bytes": 14130,
+      "sha256": "9a879b1f72be2cc75820c100f3f8b2ccf3bbc0c1b935445f1b584814b704deb5"
+    },
+    {
+      "path": "models/gothic_commode.glb",
+      "bytes": 1549376,
+      "sha256": "14905770ce0467edfe426e1fe315acb7232265ba6a1fdb2744fcf691945e0e2f"
+    },
+    {
+      "path": "models/wooden_bookshelf.glb",
+      "bytes": 2783464,
+      "sha256": "8d1bcf250559c6f6f1fd255d1be9027fe6b0cbfbd066e4358d0bf138699bb354"
+    },
+    {
+      "path": "models/study/modern_arm_chair_01.glb",
+      "bytes": 2696208,
+      "sha256": "e63d43aa97f499c95f7b02cff070c78fb68017a1f423b261bbd62d8eb4452049"
+    },
+    {
+      "path": "models/study/sofa_03.glb",
+      "bytes": 818172,
+      "sha256": "8bf6e226b6add7aaf31479dd824e50c8ce6024df48cb609b900976f6991b5a3b"
+    },
+    {
+      "path": "textures/pictures/pic1.jpg",
+      "bytes": 29797,
+      "sha256": "00cd6f16547108ab2f713513974cb523676e93eae9a38df9c7134790be113967"
+    },
+    {
+      "path": "textures/study/wood_floor/color.jpg",
+      "bytes": 734493,
+      "sha256": "2a1c07687b6dbb214c4b9213739c6d92d425f1f0fc8ab3ac157f105d78240789"
+    },
+    {
+      "path": "textures/study/wood_floor/normal.jpg",
+      "bytes": 423303,
+      "sha256": "452247f0d0d1b7fc7f8324ff3b6ed60bcc6de1405f4284eeb8d9bce90d4939c2"
+    },
+    {
+      "path": "textures/study/wood_floor/arm.jpg",
+      "bytes": 447855,
+      "sha256": "a84d9457fa35a76cf8a41da8bcef55387230c6b236819de878799585eda76059"
+    },
+    {
+      "path": "textures/study/wood_table_001/color.jpg",
+      "bytes": 215573,
+      "sha256": "460dd08d240f4a1f02982415048c3c5c200f385db212da18dc7e2df68bf4d0be"
+    },
+    {
+      "path": "textures/study/wood_table_001/normal.jpg",
+      "bytes": 51927,
+      "sha256": "9bf7ddf5721e225c20290f1772ae37f9bdfd49658f6d458259eb794e2149d3cf"
+    },
+    {
+      "path": "textures/study/wood_table_001/arm.jpg",
+      "bytes": 214520,
+      "sha256": "29d3f34a7c2c213e21b320365495fad673d3c8a3ce885b879fc0a77a187dd828"
+    },
+    {
+      "path": "textures/study/painted_wall/color.png",
+      "bytes": 58252,
+      "sha256": "a1c0489dd75eea2c094ca57b942ef77b0b5cb11f91dd13c713bd9f8fb21409a9"
+    },
+    {
+      "path": "textures/study/painted_wall/normal.png",
+      "bytes": 403149,
+      "sha256": "a3f21adb78e23cbe31af99034527ecaa6d506eea8df1b4e0dff365445a040913"
+    },
+    {
+      "path": "textures/study/painted_wall/arm.png",
+      "bytes": 75148,
+      "sha256": "145eae6481ac9895f033ea4cf61318b668dc04c7c879a1cfab719fa51f999c33"
+    },
+    {
+      "path": "textures/study/rough_linen/normal.jpg",
+      "bytes": 916843,
+      "sha256": "e2402166d1a489f7414814e69e1836ab672aa24e30bec2d41fea356f81687e53"
+    },
+    {
+      "path": "textures/study/rough_linen/arm.jpg",
+      "bytes": 1191393,
+      "sha256": "e1ca6b51ed62834063253e08f8f2e23836aa00d72675b960ddd8e608d9f0c7e6"
+    },
+    {
+      "path": "audio/study/drawer-slide-1.8353e0a53c.wav",
+      "bytes": 30764,
+      "sha256": "8353e0a53c67b934acd5fabb307a71b5d67a04d0398e88e36e875c85b24c88a7"
+    },
+    {
+      "path": "audio/study/drawer-slide-2.71ff63e71c.wav",
+      "bytes": 28844,
+      "sha256": "71ff63e71c9b9d896d5cb3fa28d2c31be6546a7e5967b59ab90d42e43f074c47"
+    },
+    {
+      "path": "audio/study/drawer-stop-1.6840b8eb30.wav",
+      "bytes": 11564,
+      "sha256": "6840b8eb3065c6183495d8a216ab53a3d00b6c5d469ff5689d84d8d0ef0f2c2b"
+    },
+    {
+      "path": "audio/study/drawer-stop-2.b34d827382.wav",
+      "bytes": 15404,
+      "sha256": "b34d82738205a0bcbdfe644faaa558a7e892ee2f8d51237074c842b2229bcd83"
+    },
+    {
+      "path": "audio/study/door-move-1.f0162ae1b8.wav",
+      "bytes": 38444,
+      "sha256": "f0162ae1b8d7198f117e468e914e58a5ce01fc8070c7d0baab231f4b653fb66c"
+    },
+    {
+      "path": "audio/study/door-move-2.9dea4bdbfd.wav",
+      "bytes": 55724,
+      "sha256": "9dea4bdbfd75ae721d9b54d198f555a80ff47508d142f721cd726dd673a495ec"
+    },
+    {
+      "path": "audio/study/door-latch-1.a220e2fe5d.wav",
+      "bytes": 15404,
+      "sha256": "a220e2fe5d9244a022c4125c2eac6af200238a2ce7a5451ac098b5bdb7d1178b"
+    },
+    {
+      "path": "audio/study/door-latch-2.fb255ede74.wav",
+      "bytes": 16364,
+      "sha256": "fb255ede7497c01e1d33d9e5ad961568dbf2711cb53187d6ee0f299c4a9c2f2c"
+    },
+    {
+      "path": "audio/study/switch-1.702a81fab4.wav",
+      "bytes": 11564,
+      "sha256": "702a81fab47cd408b8632eb6a5750039da011d13eb63a1f21239f93db7778fad"
+    },
+    {
+      "path": "audio/study/switch-2.927c10f6e3.wav",
+      "bytes": 16364,
+      "sha256": "927c10f6e34488ac763cccb68ff826d07edf25545fd720000447b675c26d4328"
+    },
+    {
+      "path": "audio/study/paper-1.ce7576efe6.wav",
+      "bytes": 19244,
+      "sha256": "ce7576efe6003d2b9fb4fa190cc58318493c5754524bc71199cf56e62836e43e"
+    },
+    {
+      "path": "audio/study/paper-2.862694da2b.wav",
+      "bytes": 27884,
+      "sha256": "862694da2b6b945b2e8e08330cbbb0f9bb72cb5651542b2060fa53a4ccdf1b81"
+    }
+  ]
+}

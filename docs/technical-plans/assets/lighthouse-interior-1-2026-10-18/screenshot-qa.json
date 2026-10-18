@@ -1,0 +1,317 @@
+{
+  "method": "Pillow scene-region RGB standard deviation above 5 only detects blank captures; representative interior/exit/exterior views also visually inspected. Not a visual quality or performance metric.",
+  "files": [
+    {
+      "file": "engines/chromium-inside-desktop-dpr1.jpg",
+      "size": [
+        1280,
+        800
+      ],
+      "sceneCropStddev": [
+        50.71221526977779,
+        48.71194365977878,
+        45.45734920126663
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-inside-desktop-dpr2.jpg",
+      "size": [
+        2560,
+        1600
+      ],
+      "sceneCropStddev": [
+        50.6658812264593,
+        48.65969649557657,
+        45.37024215773598
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-inside-landscape-dpr1.jpg",
+      "size": [
+        844,
+        390
+      ],
+      "sceneCropStddev": [
+        46.515922113579826,
+        44.93561583609925,
+        42.07283154675049
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-inside-landscape-dpr2.jpg",
+      "size": [
+        1688,
+        780
+      ],
+      "sceneCropStddev": [
+        46.600565008133046,
+        44.92973434112266,
+        42.06841656190317
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-inside-portrait-dpr1.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "sceneCropStddev": [
+        49.91788399400116,
+        48.77078475263304,
+        46.4110457226543
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-inside-portrait-dpr2.jpg",
+      "size": [
+        780,
+        1688
+      ],
+      "sceneCropStddev": [
+        49.83755095509186,
+        48.68684412714166,
+        46.310991359790194
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-outside-desktop-dpr1.jpg",
+      "size": [
+        1280,
+        800
+      ],
+      "sceneCropStddev": [
+        27.01708675453251,
+        25.16123605915065,
+        27.063398202397398
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-outside-desktop-dpr2.jpg",
+      "size": [
+        2560,
+        1600
+      ],
+      "sceneCropStddev": [
+        26.92919623174453,
+        25.092764762732912,
+        26.96796040155008
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-outside-landscape-dpr1.jpg",
+      "size": [
+        844,
+        390
+      ],
+      "sceneCropStddev": [
+        24.127588868992376,
+        22.32419319390505,
+        24.348022808671104
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-outside-landscape-dpr2.jpg",
+      "size": [
+        1688,
+        780
+      ],
+      "sceneCropStddev": [
+        24.070913557084843,
+        22.212014577988036,
+        24.194449269138058
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-outside-portrait-dpr1.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "sceneCropStddev": [
+        29.82247914732115,
+        29.584206810792068,
+        28.733332918481786
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/chromium-outside-portrait-dpr2.jpg",
+      "size": [
+        780,
+        1688
+      ],
+      "sceneCropStddev": [
+        29.421985605347217,
+        29.219538469071498,
+        28.38265560820318
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-inside-desktop-dpr1.jpg",
+      "size": [
+        1280,
+        800
+      ],
+      "sceneCropStddev": [
+        50.98635362952356,
+        48.77396432550687,
+        45.58058029019328
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-inside-desktop-dpr2.jpg",
+      "size": [
+        2560,
+        1600
+      ],
+      "sceneCropStddev": [
+        51.000761376334154,
+        48.7509101235991,
+        45.52282934164004
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-inside-landscape-dpr1.jpg",
+      "size": [
+        844,
+        390
+      ],
+      "sceneCropStddev": [
+        46.88761185620786,
+        45.363799605208555,
+        42.56031462209706
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-inside-landscape-dpr2.jpg",
+      "size": [
+        1688,
+        780
+      ],
+      "sceneCropStddev": [
+        47.36921530267456,
+        45.717171219267705,
+        42.83068292653085
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-inside-portrait-dpr1.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "sceneCropStddev": [
+        50.449753621989316,
+        49.147529354351846,
+        46.8423725022454
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-inside-portrait-dpr2.jpg",
+      "size": [
+        780,
+        1688
+      ],
+      "sceneCropStddev": [
+        50.67609388014167,
+        49.309440376455036,
+        46.93115685655232
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-outside-desktop-dpr1.jpg",
+      "size": [
+        1280,
+        800
+      ],
+      "sceneCropStddev": [
+        28.95113600229546,
+        27.526976376495796,
+        29.470271903477585
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-outside-desktop-dpr2.jpg",
+      "size": [
+        2560,
+        1600
+      ],
+      "sceneCropStddev": [
+        29.096391453914823,
+        27.678095134065813,
+        29.628485556180447
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-outside-landscape-dpr1.jpg",
+      "size": [
+        844,
+        390
+      ],
+      "sceneCropStddev": [
+        29.741357271261684,
+        29.400101187805724,
+        31.84710399145962
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-outside-landscape-dpr2.jpg",
+      "size": [
+        1688,
+        780
+      ],
+      "sceneCropStddev": [
+        30.278901323158035,
+        29.863892825683337,
+        32.20428404416203
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-outside-portrait-dpr1.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "sceneCropStddev": [
+        33.95047149315826,
+        34.19950090452379,
+        33.093424200431336
+      ],
+      "nonblank": true
+    },
+    {
+      "file": "engines/webkit-outside-portrait-dpr2.jpg",
+      "size": [
+        780,
+        1688
+      ],
+      "sceneCropStddev": [
+        34.18062316963636,
+        34.31536144660573,
+        33.14878427395735
+      ],
+      "nonblank": true
+    }
+  ]
+}

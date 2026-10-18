@@ -12,7 +12,7 @@ type Layer = "landmark" | "path" | "house-roof";
 type Retain = (mesh: Mesh, layer: Layer) => Mesh;
 
 /** Small static batches keep repeated rails, joinery and frames out of the draw-call count. */
-class CoastalBatch {
+export class CoastalBatch {
   private groups = new Map<string, { meshes: Mesh[]; material: PBRMaterial; layer: Layer; detail: boolean }>();
   constructor(private scene: Scene, private retain: Retain) {}
   add(mesh: Mesh, name: string, material: PBRMaterial, layer: Layer = "landmark", detail = false) {
@@ -72,6 +72,36 @@ export function coastalTowerShaft(): CoastalGeometry {
   return { positions, normals, indices, uvs };
 }
 
+/** Inner masonry and boundary reveals are derived from the exact exterior opening edges. */
+export function coastalTowerLining(thickness: number): CoastalGeometry {
+  const g = coastalTowerShaft(), t = planToWorld(COASTAL_SITE.tower), u = HOUSE_COORDINATES.unitsPerMeter;
+  const positions: number[] = [], normals: number[] = [], indices: number[] = [], uvs = g.uvs.slice();
+  for (let i = 0; i < g.positions.length; i += 3) {
+    const dx = g.positions[i] - t.x, dz = g.positions[i + 2] - t.z, r = Math.hypot(dx, dz);
+    positions.push(g.positions[i] - dx / r * thickness * u, g.positions[i + 1], g.positions[i + 2] - dz / r * thickness * u);
+    normals.push(-g.normals![i], -g.normals![i + 1], -g.normals![i + 2]);
+  }
+  const edges = new Map<string, { a: number; b: number; count: number }>();
+  const key = (i: number) => g.positions.slice(i * 3, i * 3 + 3).map(v => v.toFixed(4)).join(",");
+  for (let i = 0; i < g.indices.length; i += 3) {
+    const [a, b, c] = g.indices.slice(i, i + 3); indices.push(c, b, a);
+    for (const [from, to] of [[a, b], [b, c], [c, a]]) {
+      const k = [key(from), key(to)].sort().join("/");
+      const edge = edges.get(k); if (edge) edge.count++; else edges.set(k, { a: from, b: to, count: 1 });
+    }
+  }
+  for (const { a, b, count } of edges.values()) if (count === 1) {
+    const start = positions.length / 3;
+    positions.push(...g.positions.slice(b * 3, b * 3 + 3), ...g.positions.slice(a * 3, a * 3 + 3),
+      ...positions.slice(a * 3, a * 3 + 3), ...positions.slice(b * 3, b * 3 + 3));
+    const face: number[] = [];
+    VertexData.ComputeNormals(positions.slice(start * 3), [0, 1, 2, 0, 2, 3], face);
+    normals.push(...face); uvs.push(0, 0, 1, 0, 1, thickness, 0, thickness);
+    indices.push(start, start + 1, start + 2, start, start + 2, start + 3);
+  }
+  return { positions, normals, indices, uvs };
+}
+
 /** Original lighthouse, outdoor joinery and a low-pitch roof. Indoor materials stay untouched. */
 export function createCoastalLandmark(scene: Scene, surfaces: CoastalMaterials, retain: Retain) {
   const site = COASTAL_SITE, t = site.tower, b = new CoastalBatch(scene, retain);
@@ -92,16 +122,14 @@ export function createCoastalLandmark(scene: Scene, surfaces: CoastalMaterials, 
   // Cornice and rain-shedding gallery; the closed door and its steps stay inside the solid 3.5m footprint.
   b.cylinder("coastal-lighthouse-shaft", plaster, t.x, t.y, t.ground + 16.12, .2, 4.22, 4.5);
   b.cylinder("coastal-lighthouse-metalwork", metal, t.x, t.y, t.ground + 16.34, .3, 6);
-  for (const [z, h, diameter] of [[.42, .12, 5.76], [16.64, .12, 3.9], [18.55, .13, 3.9]])
+  for (const [z, h, diameter] of [[16.64, .12, 3.9], [18.55, .13, 3.9]])
     b.cylinder("coastal-lighthouse-metalwork", metal, t.x, t.y, t.ground + z, h, diameter);
   b.cylinder("coastal-lighthouse-cap", red, t.x, t.y, t.ground + 18.68, 1.36, 5.2, 0);
-  for (const [width, h, y, z] of [[1.5, .16, -3.15, .12], [1.3, .16, -2.98, .28]])
-    b.box("coastal-lighthouse-plinth", paving, width, h, .45, t.x, t.y + y, t.ground + z);
+  // Entrance steps and threshold are authored by the shared interior layout.
   const shaftRadius = (h: number) => 2.8 - h / 15.85 * .8;
   for (const [bottom, height, width] of [[0, 2.15, 1.07], [3.8, 1.3, .48], [8.4, 1.3, .44], [12.5, 1.3, .4]]) {
     const z = t.ground + .49 + bottom, radius = shaftRadius(bottom + height / 2);
     // Deep dark backing, four solid reveal faces, and exterior stone borders around a real hole.
-    b.box("coastal-lighthouse-recesses", door, width + .12, height + .12, .05, t.x, t.y - radius + .27, z + height / 2);
     for (const sign of [-1, 1]) {
       b.box("coastal-lighthouse-plinth", paving, .09, height + .18, .37, t.x + sign * (width / 2 + .04), t.y - radius + .06, z + height / 2);
       b.box("coastal-lighthouse-plinth", paving, width + .17, .09, .39, t.x, t.y - radius + .06, z + (sign < 0 ? -.035 : height + .035));
@@ -110,9 +138,6 @@ export function createCoastalLandmark(scene: Scene, surfaces: CoastalMaterials, 
       b.box("coastal-lighthouse-glazing", glass, width - .08, height - .08, .025, t.x, t.y - radius + .19, z + height / 2);
       b.box("coastal-lighthouse-fine-metal", metal, .035, height, .03, t.x, t.y - radius + .17, z + height / 2, 0, "landmark", true);
       b.box("coastal-lighthouse-fine-metal", metal, width, .035, .03, t.x, t.y - radius + .17, z + height / 2, 0, "landmark", true);
-    } else {
-      for (let i = -3; i <= 3; i++) b.box("coastal-lighthouse-fine-metal", metal, .012, 2.02, .015, t.x + i * .14, t.y - radius + .235, z + 1.05, 0, "landmark", true);
-      b.box("coastal-lighthouse-door-handle", brass, .04, .22, .06, t.x - .3, t.y - radius + .19, z + 1.02, 0, "landmark", true);
     }
   }
   // Octagonal glazing and opaque internal lamp read as a lantern without a daylight beam.

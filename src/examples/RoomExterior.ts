@@ -12,6 +12,8 @@ import { CoastalOcean } from "./CoastalOcean";
 import { createCoastalLandmark } from "./CoastalLandmark";
 import { COASTAL_SITE, coastalRouteLength, coastalRoute } from "./CoastalSite";
 import { coastalSurfaceHeight } from "./CoastalCliff";
+import { createLighthouseInterior } from "./LighthouseInterior";
+import type { InteractiveDoor } from "./RoomInteractions";
 
 type ExteriorLayer = "terrain" | "cliff" | "foundation" | "vegetation" | "rocks" | "distant" | "sea" | "sky" | "landmark" | "path" | "house-roof";
 
@@ -22,6 +24,7 @@ export class RoomExterior {
   readonly sun: DirectionalLight;
   readonly shadow: ShadowGenerator;
   readonly ocean: CoastalOcean;
+  readonly lighthouseDoor: InteractiveDoor;
   private readonly houseRoof: Mesh[];
   private readonly detailMeshes: Mesh[];
   private readonly shadowAnchors: Vector3[] = [];
@@ -51,6 +54,7 @@ export class RoomExterior {
     const sky = unlit("coastal-sky");
     const retain = (mesh: Mesh, layer: ExteriorLayer) => {
       mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "lighthouse-C", castsShadows: false, lightRooms: [] };
+      mesh.metadata.lighthouse = nameIsLighthouse(mesh.name);
       setRoomOwners(mesh, owners);
       mesh.isPickable = false; mesh.checkCollisions = false;
       mesh.receiveShadows = ["terrain", "foundation", "vegetation", "rocks", "landmark", "path", "house-roof"].includes(layer);
@@ -91,6 +95,9 @@ export class RoomExterior {
       make(`coastal-path-plants-${i}`, g.plants, "vegetation", s.foliage);
     });
     this.houseRoof = createCoastalLandmark(scene, s, retain);
+    this.lighthouseDoor = createLighthouseInterior(scene, retain);
+    setRoomOwners(this.lighthouseDoor.root, owners);
+    setRoomOwners(this.lighthouseDoor.root.parent!, owners);
     this.detailMeshes = this.meshes.filter(m => m.metadata.detailDistance);
     this.ocean = new CoastalOcean(scene, make("coastal-sea", coastalSea(), "sea", sky));
 
@@ -128,7 +135,7 @@ export class RoomExterior {
     this.sceneCleanup = scene.onDisposeObservable.addOnce(() => this.dispose());
     scene.metadata = { ...scene.metadata, exteriorVersion: a.version,
       coastalSite: { version: COASTAL_SITE.version, stage: "C", outdoorWalking: true,
-        tower: COASTAL_SITE.tower, routeLength: coastalRouteLength((x, y) => coastalSurfaceHeight(x, y)!) } };
+        tower: COASTAL_SITE.tower, interiorStage: 1, routeLength: coastalRouteLength((x, y) => coastalSurfaceHeight(x, y)!) } };
   }
 
   /** Explicit static shell/rail list. Furniture, moving door leaves, sea and distant cliffs never enter this map. */
@@ -137,7 +144,7 @@ export class RoomExterior {
       (m.metadata?.structure === "wall" && m.metadata?.span?.owners.length === 1 || /^balcony-rail-/.test(m.name)));
     const local = this.meshes.filter(m => ["rocks", "vegetation", "foundation", "landmark", "house-roof"].includes(m.metadata.exteriorLayer)
       && m.material instanceof PBRMaterial && m.material.alpha === 1
-      && !/plaza|lookout$/.test(m.name));
+      && !m.metadata.movingLighthouseDoor && !/plaza|lookout$/.test(m.name));
     this.shadow.getShadowMap()!.renderList = [...local, ...shell];
     this.refreshShadows();
   }
@@ -204,6 +211,10 @@ export class RoomExterior {
     this.scene.onBeforeRenderObservable.remove(this.visualUpdate);
     this.ocean.dispose(); this.shadow.dispose(); this.sun.dispose();
     this.meshes.forEach(m => m.dispose(false, false));
+    const mount = this.lighthouseDoor.root.parent;
+    this.lighthouseDoor.root.dispose(); mount?.dispose();
     this.unlit.forEach(m => m.dispose(false, false)); this.surfaces.dispose();
   }
 }
+
+const nameIsLighthouse = (name: string) => name.startsWith("coastal-lighthouse-") && name !== "coastal-lighthouse-path";

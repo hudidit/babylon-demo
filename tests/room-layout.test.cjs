@@ -213,7 +213,7 @@ test("shared PBR coast keeps house support, sea height, bounded geometry and own
   for (const m of exterior.meshes) {
     assert.deepEqual([...m.metadata.ownerRooms].sort(), HOUSE_ROOMS.map(r => r.id).sort());
     assert.deepEqual(m.metadata.lightRooms, []);
-    assert.ok(!m.isPickable && !m.checkCollisions && !m.metadata.castsShadows);
+    assert.ok(!m.isPickable && m.checkCollisions === !!m.metadata.movingLighthouseDoor && !m.metadata.castsShadows);
     assert.ok(!exterior.sun.canAffectMesh(m) || m.material instanceof babylon.PBRMaterial, 'sun is limited to outdoor PBR');
     assert.ok(m.getVerticesData(babylon.VertexBuffer.PositionKind).every(Number.isFinite));
     assert.ok(m.getVerticesData(babylon.VertexBuffer.NormalKind).every(Number.isFinite));

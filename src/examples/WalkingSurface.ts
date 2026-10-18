@@ -7,6 +7,7 @@ import { coastalPathGeometry, coastalEntryGeometry } from "./CoastalPath";
 import { COASTAL_SITE, COASTAL_WALK_BOUNDARY } from "./CoastalSite";
 import { coastalRockObstacles } from "./CoastalScatter";
 import { HOUSE_JUMP, jumpBlockedAt } from "./HouseJump";
+import { LIGHTHOUSE, lighthousePointAllowed, lighthouseSurfaceAt } from "./LighthouseLayout";
 
 export type WalkingSurface = CoastalSurface & { kind: "floor" | "terrain" | "path" | "platform"; region: string; ceiling?: number };
 const flat = { x: 0, y: 1, z: 0 };
@@ -56,6 +57,10 @@ export function walkingSurfaceAt(x: number, y: number): WalkingSurface | undefin
   const room = houseRoomAt(x, y);
   if (room) return { height: 0, normal: flat, kind: "floor", region: room.id,
     ceiling: room.id === "balcony" ? undefined : HOUSE_COORDINATES.clearHeight };
+  const lighthouse = lighthouseSurfaceAt(x, y);
+  if (lighthouse) return { height: lighthouse.height, normal: flat, kind: lighthouse.inside ? "floor" : "platform",
+    region: lighthouse.inside ? "灯塔首层" : "灯塔入口",
+    ceiling: lighthouse.inside ? LIGHTHOUSE.floor + LIGHTHOUSE.clearHeight : undefined };
   const terrain = coastalSurfaceAt(x, y);
   if (!terrain) return undefined;
   const t = COASTAL_SITE.tower, l = COASTAL_SITE.lookout;
@@ -87,7 +92,7 @@ export function walkingPointAllowed(p: PlanPoint, radius: number = HOUSE_JUMP.pl
   if (!withinWalkingBoundary(p, radius) || jumpBlockedAt(p.x, p.y)) return false;
   if (outerWalls.some(w => distance(p, w.a, w.b) < radius + HOUSE_COORDINATES.wallThickness / 2 - .002)) return false;
   const t = COASTAL_SITE.tower, l = COASTAL_SITE.lookoutSeat;
-  if (Math.hypot(p.x - t.x, p.y - t.y) < 3.5 + radius) return false;
+  if (!lighthousePointAllowed(p.x, p.y, radius)) return false;
   if (Math.abs(p.x - l.x) < 1 + radius && Math.abs(p.y - l.y) < .31 + radius) return false;
   if (coastalRockObstacles().some(r => Math.hypot(p.x - r.x, p.y - r.y) < r.radius + radius)) return false;
   const support = walkingSurfaceAt(p.x, p.y);
@@ -108,7 +113,7 @@ export function sweepWalking(from: PlanPoint, to: PlanPoint) {
   for (let i = 1; i <= steps; i++) {
     const next = { x: from.x + (to.x - from.x) * i / steps, y: from.y + (to.y - from.y) * i / steps };
     const support = walkingSurfaceAt(next.x, next.y);
-    if (!walkingPointAllowed(next) || !support || support.height > height + .18) break;
+    if (!walkingPointAllowed(next) || !support || support.height > height + .18 + 1e-6) break;
     point = next; height = support.height;
   }
   return point;

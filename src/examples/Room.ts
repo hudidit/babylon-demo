@@ -158,6 +158,7 @@ export class RoomScene {
 
     const furnishings = new RoomFurnishings(this.scene);
     this.exterior = new RoomExterior(this.scene);
+    this.interactions.addDoor(this.exterior.lighthouseDoor);
     this.scooterModel = new CoastalScooterModel(this.scene, this.exterior.sun, this.exterior.surfaces);
     this.scooterModel.update(this.scooter, false);
     this.architecture = createHouseArchitecture(this.scene, furnishings);
@@ -689,8 +690,12 @@ export class RoomScene {
     if (reticle) reticle.hidden = !firstPerson;
     if (firstPerson) {
       const help = document.querySelector("#view-help");
+      const point = worldToPlan(this.firstPersonCamera.position);
+      const inLighthouse = walkingSurfaceAt(point.x, point.y)?.region.startsWith("灯塔首层");
       if (help) help.textContent = this.scooter.riding ? "鼠标环顾 · WASD 驾驶 · 空格刹车 · E 下车 · M 地图 · ESC 退出"
-        : "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出";
+        : inLighthouse
+          ? "灯塔首层维护室 · 上层暂未开放 · 左键开合入口门 · M 地图"
+          : "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出";
     }
     const vehicle = firstPerson && this.pointerLocked && this.controlsEnabled && this.scooterTarget();
     const action = firstPerson && !this.scooter.riding && !this.scooterTransition && !vehicle && this.pointerLocked && this.controlsEnabled

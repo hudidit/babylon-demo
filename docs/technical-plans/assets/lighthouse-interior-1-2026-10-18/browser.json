@@ -1,0 +1,1110 @@
+{
+  "baseline": "a4c1f14 + lighthouse interior phase 1",
+  "method": "Unmodified production build; independent initial pose fixtures followed by real keyboard/pointer input with 50ms reference timesteps. No FPS or loading-time benchmark.",
+  "cases": {
+    "closedOutside": {
+      "end": {
+        "x": -125.00081405925363,
+        "y": 86.97522394955844,
+        "feet": 3.36,
+        "grounded": true,
+        "door": {
+          "progress": 0,
+          "blocked": false,
+          "angle": 0
+        },
+        "region": "你在灯塔入口"
+      },
+      "samples": [
+        {
+          "x": -125,
+          "y": 86.04832948476508,
+          "feet": 3.04,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔前场"
+        },
+        {
+          "x": -125,
+          "y": 86.3942549968159,
+          "feet": 3.04,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔前场"
+        },
+        {
+          "x": -125,
+          "y": 86.74210549860567,
+          "feet": 3.2,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -125.00056385203484,
+          "y": 86.9752855458831,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -124.99990419588192,
+          "y": 86.97540113545841,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -124.99918033177761,
+          "y": 86.9752222674674,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -125.0000985031592,
+          "y": 86.97544951076793,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -125.00080493364516,
+          "y": 86.97522619154523,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -124.99987291674697,
+          "y": 86.97545694807735,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -124.9991463637003,
+          "y": 86.97521392606626,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -125.00003508368346,
+          "y": 86.97543370482408,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -125.0006987016927,
+          "y": 86.97525231549747,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -125.00018455069142,
+          "y": 86.97547098237777,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -124.99907680371118,
+          "y": 86.97519685908622,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -124.9999051794043,
+          "y": 86.97540137993323,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -124.99918216658338,
+          "y": 86.97522271816604,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔入口"
+        }
+      ]
+    },
+    "inward": {
+      "end": {
+        "x": -125,
+        "y": 89.8727603821717,
+        "feet": 3.54,
+        "grounded": true,
+        "door": {
+          "progress": 1,
+          "blocked": false,
+          "angle": -1.5707963267948966
+        },
+        "region": "你在灯塔首层"
+      },
+      "samples": [
+        {
+          "x": -125,
+          "y": 86.04832948476508,
+          "feet": 3.04,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔前场"
+        },
+        {
+          "x": -125,
+          "y": 86.3942549968159,
+          "feet": 3.04,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔前场"
+        },
+        {
+          "x": -125,
+          "y": 86.74210549860567,
+          "feet": 3.2,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -125,
+          "y": 87.08995604122333,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -125,
+          "y": 87.43780658384189,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -125,
+          "y": 87.78565712646042,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -125,
+          "y": 88.13350766907898,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -125,
+          "y": 88.48135821169753,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -125,
+          "y": 88.82920875431607,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -125,
+          "y": 89.17705929693462,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -125,
+          "y": 89.52490983955316,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -125,
+          "y": 89.8727603821717,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔首层"
+        }
+      ]
+    },
+    "closedInside": {
+      "end": {
+        "x": -124.7304499142829,
+        "y": 87.93177561923102,
+        "feet": 3.54,
+        "grounded": true,
+        "door": {
+          "progress": 0,
+          "blocked": false,
+          "angle": 0
+        },
+        "region": "你在灯塔首层"
+      },
+      "samples": [
+        {
+          "x": -124.70667894322708,
+          "y": 88.10213424128628,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -124.7304499142829,
+          "y": 87.93177561923102,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 0,
+            "blocked": false,
+            "angle": 0
+          },
+          "region": "你在灯塔首层"
+        }
+      ]
+    },
+    "outward": {
+      "end": {
+        "x": -125,
+        "y": 85.93459196917533,
+        "feet": 3.04,
+        "grounded": true,
+        "door": {
+          "progress": 1,
+          "blocked": false,
+          "angle": -1.5707963267948966
+        },
+        "region": "你在灯塔前场"
+      },
+      "samples": [
+        {
+          "x": -125,
+          "y": 88.25167051523493,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -125,
+          "y": 87.90574500318411,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -125,
+          "y": 87.55789450139434,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔首层"
+        },
+        {
+          "x": -125,
+          "y": 87.21004395877667,
+          "feet": 3.54,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -125,
+          "y": 86.86219341615812,
+          "feet": 3.36,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔入口"
+        },
+        {
+          "x": -125,
+          "y": 86.51434287353958,
+          "feet": 3.04,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔前场"
+        },
+        {
+          "x": -125,
+          "y": 86.16649233092103,
+          "feet": 3.04,
+          "grounded": true,
+          "door": {
+            "progress": 1,
+            "blocked": false,
+            "angle": -1.5707963267948966
+          },
+          "region": "你在灯塔前场"
+        }
+      ]
+    },
+    "sweepPaused": {
+      "x": -124.9,
+      "y": 86.9,
+      "feet": 3.36,
+      "grounded": true,
+      "door": {
+        "progress": 0,
+        "blocked": true,
+        "angle": 0
+      },
+      "region": "你在灯塔入口"
+    },
+    "sweepResumed": {
+      "x": -125,
+      "y": 86,
+      "feet": 3.04,
+      "grounded": true,
+      "door": {
+        "progress": 1,
+        "blocked": false,
+        "angle": -1.5707963267948966
+      },
+      "region": "你在灯塔前场"
+    },
+    "jump": {
+      "highest": 4.226003620122729,
+      "end": {
+        "x": -125,
+        "y": 90,
+        "feet": 3.54,
+        "grounded": true,
+        "door": {
+          "progress": 1,
+          "blocked": false,
+          "angle": -1.5707963267948966
+        },
+        "region": "你在灯塔首层"
+      }
+    },
+    "mapRestored": {
+      "x": -125,
+      "y": 90,
+      "feet": 3.54,
+      "grounded": true,
+      "door": {
+        "progress": 1,
+        "blocked": false,
+        "angle": -1.5707963267948966
+      },
+      "region": "你在灯塔首层"
+    },
+    "presetRestored": {
+      "x": -125,
+      "y": 90,
+      "feet": 3.54,
+      "grounded": true,
+      "door": {
+        "progress": 1,
+        "blocked": false,
+        "angle": -1.5707963267948966
+      },
+      "region": "你在灯塔首层"
+    }
+  },
+  "initialJsBytes": 2856386,
+  "views": [
+    {
+      "name": "desktop",
+      "state": {
+        "x": -124.9,
+        "y": 90.2,
+        "feet": 3.54,
+        "grounded": true,
+        "door": {
+          "progress": 1,
+          "blocked": false,
+          "angle": -1.5707963267948966
+        },
+        "region": "你在灯塔首层"
+      }
+    },
+    {
+      "name": "portrait",
+      "state": {
+        "x": -124.9,
+        "y": 90.2,
+        "feet": 3.54,
+        "grounded": true,
+        "door": {
+          "progress": 1,
+          "blocked": false,
+          "angle": -1.5707963267948966
+        },
+        "region": "你在灯塔首层"
+      }
+    },
+    {
+      "name": "landscape",
+      "state": {
+        "x": -124.9,
+        "y": 90.2,
+        "feet": 3.54,
+        "grounded": true,
+        "door": {
+          "progress": 1,
+          "blocked": false,
+          "angle": -1.5707963267948966
+        },
+        "region": "你在灯塔首层"
+      }
+    }
+  ],
+  "scene": {
+    "meshes": 657,
+    "vertices": 565555,
+    "materials": 92,
+    "textures": 147,
+    "lights": 16,
+    "cameras": 3,
+    "exteriorMeshes": 55,
+    "exteriorVertices": 155849,
+    "doorMeshes": 3
+  },
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8182/",
+      "status": 200,
+      "bytes": 20243
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/main.js",
+      "status": 200,
+      "bytes": 217356
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8182/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8182/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8182/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4444
+    },
+    {
+      "url": "http://127.0.0.1:8182/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8182/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8182/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8182/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/37ad37a7-d2c7-46c5-97fa-df2f2510478c",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/e91e4f98-547d-41d0-ae1e-5f21f7081de5",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/f7d6e87e-2dee-46cb-89f5-5c260312ba61",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/12486cca-343b-45bb-bec2-f7bd7e8b3fe1",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/fd377909-b660-415e-9388-27aeed2dcac6",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/a59d69da-30f7-41a1-aec1-4bed575e6a02",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/178e4bc0-42ad-466c-b11e-e3c95fac83cc",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/5f6332a6-b772-47b7-8ab2-243492a9ed36",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/f83cf36d-9566-413b-8012-77511f31ed71",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/df4df576-713e-4ed5-8b1d-58e0b62f9ae3",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/7c6aff40-35a5-4b82-878f-ad29cf8a8277",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/8a2b2665-8eec-48d8-92f3-69bf4615583f",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/77e7ce2d-b04e-4cb0-acd0-9e4ab7602f2e",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/dbadd08d-c97e-4dfe-b024-87bc3c574344",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/b945ea22-8539-47a2-b68c-41fe195e7f30",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8182/3a1fa2c6-9497-4b43-88ce-6474619940bd",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8182/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8182/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ]
+}

@@ -86,7 +86,8 @@ test('road faces remain above actual land while outdoor movement uses the explic
   }
   assert.equal(scene.metadata.coastalSite.outdoorWalking,true);
   assert.equal(scene.metadata.coastalSite.stage,'C');
-  assert.ok(exterior.meshes.every(m=>!m.checkCollisions));
+  assert.ok(exterior.meshes.filter(m=>!m.metadata.movingLighthouseDoor).every(m=>!m.checkCollisions));
+  assert.ok(exterior.lighthouseDoor.meshes.every(m=>m.checkCollisions));
   exterior.setHouseEnclosed(false);assert.equal(scene.getMeshByName('coastal-house-roof').isVisible,false);
   exterior.setHouseEnclosed(true);assert.equal(scene.getMeshByName('coastal-house-roof').isVisible,true);
 });
@@ -102,7 +103,7 @@ test('walking support matches rendered road, ramp, lookout and plaza top faces i
   points.push({x:11.3,y:4.65},{x:12.5,y:4.65},{x:-125,y:83},{x:-70,y:26},{x:-70.8,y:24});
   for(const point of points){
     const v=planToWorld(point,30),hit=scene.pickWithRay(new b.Ray(new b.Vector3(v.x,v.y,v.z),new b.Vector3(0,-1,0),250),
-      m=>m.name.startsWith('coastal-platform-')||['coastal-lighthouse-path','coastal-entry-ramp','coastal-lighthouse-plaza','coastal-lighthouse-lookout'].includes(m.name));
+      m=>m.name.startsWith('coastal-platform-')||['coastal-lighthouse-path','coastal-entry-ramp','coastal-lighthouse-plaza','coastal-lighthouse-lookout','coastal-lighthouse-ground-floor','coastal-lighthouse-entry-steps'].includes(m.name));
     assert.ok(hit.hit);const support=walking.walkingSurfaceAt(point.x,point.y);
     assert.ok(Math.abs((hit.pickedPoint.y-HOUSE_COORDINATES.floorY)/5-support.height)<2e-5,JSON.stringify({point,support,hit:hit.pickedPoint.y}));
     assert.ok(support.normal.y>Math.cos(Math.PI/6));

@@ -1,0 +1,281 @@
+{
+  "baseline": "a4c1f14 + lighthouse interior phase 1",
+  "method": "Unmodified production; fixed camera fixtures check materials, geometry, map, viewport and disposal. Actual first-floor keyboard walking is in browser.json.",
+  "fpsOrLoadTimeSampling": false,
+  "physicalDevicesTested": false,
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "desktop",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "portrait",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "glassReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "landscape",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "glassReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "desktop",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "portrait",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "glassReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "landscape",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "glassReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "name": "desktop",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "name": "portrait",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "glassReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "name": "landscape",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "glassReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "name": "desktop",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "name": "portrait",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "glassReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "name": "landscape",
+      "resources": {
+        "innerReady": true,
+        "doorReady": true,
+        "glassReady": true,
+        "textures": 147,
+        "lights": 16,
+        "cameras": 3,
+        "scaling": 1,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "keyboardWalkingVerified": false,
+      "errors": [],
+      "warnings": [],
+      "disposed": true
+    }
+  ],
+  "passed": true
+}

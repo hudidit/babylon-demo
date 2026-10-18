@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="760" viewBox="0 0 1120 760">
+<defs><style>text{font-family:system-ui,'PingFang SC',sans-serif;fill:#263e3c}.small{font-size:15px}.label{font-size:18px}.future{stroke:#ad7651;stroke-dasharray:9 7;fill:none}.wall{fill:#ddd6c5;stroke:#5b6960;stroke-width:2}</style><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="#42786d"/></marker></defs>
+<rect width="1120" height="760" rx="16" fill="#f7f3e9"/>
+<text x="40" y="48" font-size="26" font-weight="700">灯塔内部 · 空间结构与分期</text>
+<text x="40" y="77" class="small">原创游览场景设计；米制尺寸。实线为第一阶段，虚线为后续预留；非施工图。</text>
+<text x="70" y="130" font-size="21">首层平面</text>
+<circle cx="250" cy="330" r="157" class="wall"/><circle cx="250" cy="330" r="141" fill="#ece8dc" stroke="#657b70" stroke-width="2"/>
+<rect x="223" y="166" width="54" height="31" fill="#ece8dc"/>
+<path d="M223 193V140M277 193H326" stroke="#42786d" stroke-width="4" fill="none"/><path d="M277 193A53 53 0 0 0 223 140" stroke="#42786d" stroke-dasharray="4 4" fill="none"/>
+<path d="M250 232V125" stroke="#42786d" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="330" y="172" class="small">约1米外开门 / 北侧入口</text>
+<circle cx="250" cy="330" r="87" class="future"/><circle cx="250" cy="330" r="25" fill="#586e6d"/>
+<text x="250" y="337" text-anchor="middle" font-size="12" fill="white" style="fill:white">检修盖</text>
+<path d="M280 290L383 250" stroke="#ad7651"/><text x="386" y="245" class="small">预留螺旋梯</text><text x="386" y="268" class="small">外半径1.55 / 净宽1.10</text>
+<rect x="139" y="310" width="30" height="50" fill="#365452" stroke="#233e3d"/><text x="125" y="391" text-anchor="middle" class="small">维护柜</text>
+<rect x="226" y="419" width="76" height="25" fill="#9b8c6e" stroke="#75694e"/><text x="264" y="480" text-anchor="middle" class="small">工作台（首层净高3.8）</text>
+<path d="M93 520H407M93 514V526M407 514V526" stroke="#657b70"/><text x="250" y="545" text-anchor="middle" class="small">外径5.60 / 内净径约5.04 / 壁厚0.28</text>
+<text x="674" y="130" font-size="21">纵向分层</text>
+<path d="M700 625L723 177L867 177L890 625Z" class="wall"/><path d="M716 625L738 177L852 177L874 625Z" fill="#f7f3e9"/>
+<path d="M714 625H876" stroke="#42786d" stroke-width="7"/>
+<path d="M722 519H868" stroke="#42786d" stroke-width="5"/>
+<rect x="725" y="584" width="20" height="41" fill="#365452"/>
+<path d="M750 625L836 520M750 520L836 408M750 408L836 296M750 296L836 181" class="future" stroke-width="4"/>
+<path d="M726 513H864M731 401H859M736 289H854M740 174H850" class="future" stroke-width="3"/>
+<path d="M746 177V126H844V177M732 126H858L795 92Z" class="wall"/>
+<path d="M686 177H904M686 166V186M904 166V186" class="future" stroke-width="3"/>
+<text x="917" y="181" class="label">灯室 / 外廊</text><text x="917" y="204" class="small">约+16.10</text>
+<text x="917" y="292" class="label">检查平台 +12.00</text><text x="917" y="404" class="label">休息平台 +8.00</text>
+<text x="917" y="516" class="label">过渡平台 +4.00</text><text x="917" y="606" class="label">首层维护室 ±0</text><text x="917" y="630" class="small">相对住宅 +3.54</text>
+<text x="658" y="660" class="small">每圈约3.2米 / 步高约0.16 / 步行线半径1.10</text>
+<path d="M40 688H1080" stroke="#d6cdb9"/>
+<text x="40" y="721" class="label">① 结构与首层开放 ✓</text><text x="380" y="721" class="label">② 螺旋梯与连续登塔 · 待实施</text><text x="765" y="721" class="label">③ 陈设、灯室与体验完成 · 待实施</text>
+</svg>
