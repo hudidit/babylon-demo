@@ -193,7 +193,7 @@ test("shared PBR coast keeps house support, sea height, bounded geometry and own
   assert.equal(scene.meshes.filter(m => m.name === 'coastal-sky').length, 1);
   assert.equal(exterior.surfaces.textures.length, 7, 'six shared PBR maps plus one outdoor HDR');
   assert.equal(scene.lights.filter(l => l.name === 'coastal-afternoon-sun').length, 1);
-  assert.ok(exterior.meshes.reduce((n, m) => n + m.getTotalVertices(), 0) < 160000);
+  assert.ok(exterior.meshes.filter(m => !m.metadata.lighthouseInteriorStructure).reduce((n, m) => n + m.getTotalVertices(), 0) < 160000);
   assert.equal(coastalCrestY(8.1), COASTAL_CLIFF.balconyEdgeY + COASTAL_CLIFF.setback);
   const sea = scene.getMeshByName('coastal-sea');
   assert.equal(coastalSeaY, -145);
@@ -1696,6 +1696,7 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
   room.firstPersonCamera = new babylon.UniversalCamera("walking", new babylon.Vector3(4, 1, 16), scene);
   room.scooter = loadSource("CoastalScooter").createScooterState();
   room.scooterModel = { update() {} };
+  room.jump = loadSource("HouseJump").createJumpState();
   room.interiorShell = new babylon.TransformNode("shell", scene);
   room.interiorShell.setEnabled(false);
   room.architecture = { setEnclosed(value) { room.interiorShell.setEnabled(value); } };

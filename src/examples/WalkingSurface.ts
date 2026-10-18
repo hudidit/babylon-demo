@@ -7,9 +7,10 @@ import { coastalPathGeometry, coastalEntryGeometry } from "./CoastalPath";
 import { COASTAL_SITE, COASTAL_WALK_BOUNDARY } from "./CoastalSite";
 import { coastalRockObstacles } from "./CoastalScatter";
 import { HOUSE_JUMP, jumpBlockedAt } from "./HouseJump";
-import { LIGHTHOUSE, lighthousePointAllowed, lighthouseSurfaceAt } from "./LighthouseLayout";
+import { lighthousePointAllowed, lighthouseSurfaceAt } from "./LighthouseWalking";
+import type { LighthouseSupport } from "./LighthouseWalking";
 
-export type WalkingSurface = CoastalSurface & { kind: "floor" | "terrain" | "path" | "platform"; region: string; ceiling?: number };
+export type WalkingSurface = CoastalSurface & { kind: "floor" | "terrain" | "path" | "platform"; region: string; ceiling?: number; lighthouse?: boolean };
 const flat = { x: 0, y: 1, z: 0 };
 const distance = (p: PlanPoint, a: PlanPoint, b: PlanPoint) => {
   const dx = b.x - a.x, dy = b.y - a.y;
@@ -51,16 +52,14 @@ function indexSurfaces() {
   return index;
 }
 
-/** Highest actual rendered top surface; water, roofs and void never supply a fallback floor. */
-export function walkingSurfaceAt(x: number, y: number): WalkingSurface | undefined {
+/** Reachable actual surface, with an optional feet height for overlapping lighthouse storeys. */
+export function walkingSurfaceAt(x: number, y: number, feet?: number, maxStep = .18): WalkingSurface | undefined {
   if (!withinWalkingBoundary({ x, y })) return undefined;
   const room = houseRoomAt(x, y);
   if (room) return { height: 0, normal: flat, kind: "floor", region: room.id,
     ceiling: room.id === "balcony" ? undefined : HOUSE_COORDINATES.clearHeight };
-  const lighthouse = lighthouseSurfaceAt(x, y);
-  if (lighthouse) return { height: lighthouse.height, normal: flat, kind: lighthouse.inside ? "floor" : "platform",
-    region: lighthouse.inside ? "灯塔首层" : "灯塔入口",
-    ceiling: lighthouse.inside ? LIGHTHOUSE.floor + LIGHTHOUSE.clearHeight : undefined };
+  const lighthouse = lighthouseSurfaceAt(x, y, feet, maxStep);
+  if (lighthouse) return { ...lighthouse, normal: flat };
   const terrain = coastalSurfaceAt(x, y);
   if (!terrain) return undefined;
   const t = COASTAL_SITE.tower, l = COASTAL_SITE.lookout;
@@ -88,33 +87,37 @@ const outerWalls = houseWallSpans().filter(span => (span.owners.length === 1 || 
     b: { x: s.axis === "x" ? s.end : s.at, y: s.axis === "x" ? s.at : s.end } }));
 
 /** Height-independent protection also covers jumping through windows or over the balcony rail. */
-export function walkingPointAllowed(p: PlanPoint, radius: number = HOUSE_JUMP.playerRadius) {
+export function walkingPointAllowed(p: PlanPoint, radius: number = HOUSE_JUMP.playerRadius, feet?: number, surface?: WalkingSurface) {
   if (!withinWalkingBoundary(p, radius) || jumpBlockedAt(p.x, p.y)) return false;
   if (outerWalls.some(w => distance(p, w.a, w.b) < radius + HOUSE_COORDINATES.wallThickness / 2 - .002)) return false;
-  const t = COASTAL_SITE.tower, l = COASTAL_SITE.lookoutSeat;
-  if (!lighthousePointAllowed(p.x, p.y, radius)) return false;
+  const support = surface ?? walkingSurfaceAt(p.x, p.y, feet), l = COASTAL_SITE.lookoutSeat;
+  if (!lighthousePointAllowed(p.x, p.y, radius, feet, support?.lighthouse ? support as LighthouseSupport : undefined)) return false;
   if (Math.abs(p.x - l.x) < 1 + radius && Math.abs(p.y - l.y) < .31 + radius) return false;
   if (coastalRockObstacles().some(r => Math.hypot(p.x - r.x, p.y - r.y) < r.radius + radius)) return false;
-  const support = walkingSurfaceAt(p.x, p.y);
   if (!support || support.normal.y < Math.cos(Math.PI / 6)) return false;
   // All of the player's footprint must have real land support, also at the cliff and map edges.
   for (const [dx, dy] of [[radius, 0], [-radius, 0], [0, radius], [0, -radius]])
-    if (!walkingSurfaceAt(p.x + dx, p.y + dy)) return false;
+    if (!walkingSurfaceAt(p.x + dx, p.y + dy, feet)) return false;
   return true;
 }
 
-/** Sweep every 10cm, retaining the last valid point rather than accepting only the destination. */
-export function sweepWalking(from: PlanPoint, to: PlanPoint) {
-  if (!walkingPointAllowed(from) || !Number.isFinite(to.x) || !Number.isFinite(to.y)) return undefined;
+/** Sweep the full path and carry small entrance-step changes; storeys require the ladder. */
+export function sweepWalking(from: PlanPoint, to: PlanPoint, feet?: number, grounded = true) {
+  const initial = walkingSurfaceAt(from.x, from.y, feet, grounded ? .18 : 0);
+  if (!initial || !walkingPointAllowed(from, HOUSE_JUMP.playerRadius, feet, initial) || !Number.isFinite(to.x) || !Number.isFinite(to.y)) return undefined;
   const length = Math.hypot(to.x - from.x, to.y - from.y);
-  if (length > 20) return undefined; // Abnormal coordinates recover from a stable checkpoint.
-  const steps = Math.max(1, Math.ceil(length / .1));
-  let point = from, height = walkingSurfaceAt(from.x, from.y)!.height;
+  if (length > 20) return undefined;
+  const steps = Math.max(1, Math.ceil(length / .05));
+  let point = from, height = feet ?? initial.height, surface = initial, stepped = false;
   for (let i = 1; i <= steps; i++) {
     const next = { x: from.x + (to.x - from.x) * i / steps, y: from.y + (to.y - from.y) * i / steps };
-    const support = walkingSurfaceAt(next.x, next.y);
-    if (!walkingPointAllowed(next) || !support || support.height > height + .18 + 1e-6) break;
-    point = next; height = support.height;
+    const support = walkingSurfaceAt(next.x, next.y, height, grounded ? .18 : 0);
+    if (!support || !walkingPointAllowed(next, HOUSE_JUMP.playerRadius, grounded ? support.height : height, support)
+      || grounded && (support.height > height + .18 + 1e-6 || support.lighthouse && height - support.height > .18 + 1e-6)) break;
+    stepped ||= grounded && !!support.lighthouse && !!surface.lighthouse
+      && Math.abs(support.height - height) > 1e-6;
+    point = next; surface = support;
+    if (grounded) height = support.height;
   }
-  return point;
+  return { ...point, height: surface.height, stepped };
 }

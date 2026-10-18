@@ -3,6 +3,7 @@ import type { AbstractMesh, Mesh, Ray, Scene, TransformNode } from "@babylonjs/c
 import type { AudioCue, RoomAudioEvent } from "./RoomAudioCatalog";
 import { roomOwners } from "./RoomOwnership";
 import type { HouseRoomId } from "./HouseLayout";
+import { HOUSE_COORDINATES } from "./HouseLayout";
 
 export type InteractiveDrawer = {
   id: string; label: string; root: TransformNode; meshes: AbstractMesh[]; travel: Vector3;
@@ -15,6 +16,16 @@ export type InteractiveSlidingDoor = { id: string; label: string; root: Transfor
   width: number; halfThickness: number; walkerRadius: number };
 export type InspectableItem = { id: string; label: string; mesh: Mesh; displayRotation: Vector3 };
 type Action = { label: () => string; toggle: () => void };
+
+/** An entry door below the gallery cannot obstruct a saved pose or pause from a walker upstairs. */
+function doorOverlapsWalkerHeight(door: { meshes: AbstractMesh[] }, eye: Vector3) {
+  const feet = eye.y - HOUSE_COORDINATES.eyeHeight * HOUSE_COORDINATES.unitsPerMeter;
+  return door.meshes.some(mesh => {
+    mesh.computeWorldMatrix(true);
+    const box = mesh.getBoundingInfo().boundingBox;
+    return box.maximumWorld.y > feet + .02 && box.minimumWorld.y < eye.y + .4;
+  });
+}
 
 /** Explicit picking also includes non-pickable static furniture, so it can occlude an action. */
 export const interactionSurface = (mesh: AbstractMesh) =>
@@ -54,12 +65,12 @@ export class RoomInteractions {
     for (const { door } of this.doors) {
       const p = Vector3.TransformCoordinates(position, Matrix.Invert(door.root.computeWorldMatrix(true)));
       const radius = door.walkerRadius ?? 1.3;
-      if (Math.abs(p.x) < .5 + radius && p.z > -radius && p.z < door.width + radius) return false;
+      if (Math.abs(p.x) < .5 + radius && p.z > -radius && p.z < door.width + radius && doorOverlapsWalkerHeight(door, position)) return false;
     }
     for (const { door } of this.slidingDoors) {
       const p = Vector3.TransformCoordinates(position, Matrix.Invert(door.root.computeWorldMatrix(true)));
       if (Math.abs(p.x) < door.halfThickness + door.walkerRadius && p.z > -door.walkerRadius
-        && p.z < door.width + door.walkerRadius) return false;
+        && p.z < door.width + door.walkerRadius && doorOverlapsWalkerHeight(door, position)) return false;
     }
     return true;
   }
@@ -227,6 +238,7 @@ export function slidingDoorSweepIsClear(door: InteractiveSlidingDoor, from: numb
 
 /** Sample the entire angular step so a fast frame cannot skip across the walker. */
 export function doorSweepIsClear(door: InteractiveDoor, from: number, to: number, walker: Vector3) {
+  if (!doorOverlapsWalkerHeight(door, walker)) return true;
   const ease = (value: number) => value * value * (3 - 2 * value);
   const hinge = door.root.position;
   // The mounting parent owns the fixed world yaw; the leaf only owns its changing local yaw.

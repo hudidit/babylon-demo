@@ -55,6 +55,8 @@ export class RoomExterior {
     const retain = (mesh: Mesh, layer: ExteriorLayer) => {
       mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "lighthouse-C", castsShadows: false, lightRooms: [] };
       mesh.metadata.lighthouse = nameIsLighthouse(mesh.name);
+      mesh.metadata.lighthouseInteriorStructure = /^coastal-lighthouse-(level|ladder)-/.test(mesh.name);
+      mesh.metadata.lighthouseLadder = mesh.name.startsWith("coastal-lighthouse-ladder-");
       setRoomOwners(mesh, owners);
       mesh.isPickable = false; mesh.checkCollisions = false;
       mesh.receiveShadows = ["terrain", "foundation", "vegetation", "rocks", "landmark", "path", "house-roof"].includes(layer);
@@ -135,7 +137,7 @@ export class RoomExterior {
     this.sceneCleanup = scene.onDisposeObservable.addOnce(() => this.dispose());
     scene.metadata = { ...scene.metadata, exteriorVersion: a.version,
       coastalSite: { version: COASTAL_SITE.version, stage: "C", outdoorWalking: true,
-        tower: COASTAL_SITE.tower, interiorStage: 1, routeLength: coastalRouteLength((x, y) => coastalSurfaceHeight(x, y)!) } };
+        tower: COASTAL_SITE.tower, interiorStage: 2, routeLength: coastalRouteLength((x, y) => coastalSurfaceHeight(x, y)!) } };
   }
 
   /** Explicit static shell/rail list. Furniture, moving door leaves, sea and distant cliffs never enter this map. */

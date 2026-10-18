@@ -20,6 +20,9 @@ import { houseVector, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
 import { walkingPointAllowed, walkingSurfaceAt, sweepWalking } from "./WalkingSurface";
 import { advanceScooter, createScooterState, emptyScooterInput, resetScooter, scooterDismount, scooterEyeBack, scooterOffset, scooterSupport, stopScooter, SCOOTER } from "./CoastalScooter";
 import { CoastalScooterModel } from "./CoastalScooterModel";
+import { LIGHTHOUSE } from "./LighthouseLayout";
+import { advanceLighthouseLadder, createLighthouseLadderState, emptyLighthouseLadderInput, canBoardLighthouseLadder,
+  lighthouseLadderFloor, lighthouseLadderPoint, lighthouseLadderLanding } from "./LighthouseLadder";
 import { COASTAL_HOME } from "./CoastalSite";
 import { HOUSE_CONTENT, furnishHouseLiving, furnishHouseStudy } from "./HouseContent";
 import { furnishHouseMaster, furnishHouseEnsuite } from "./HouseSuite";
@@ -49,6 +52,11 @@ export class RoomScene {
   private readonly firstPersonCamera: UniversalCamera;
   private readonly jump = createJumpState();
   private readonly scooter = createScooterState();
+  private readonly ladder = createLighthouseLadderState();
+  private ladderInput = emptyLighthouseLadderInput();
+  private ladderTransition?: { from: Vector3; to: Vector3; elapsed: number; leaving: boolean };
+  private ladderNotice = "";
+  private ladderNoticeUntil = 0;
   private scooterInput = emptyScooterInput();
   private readonly scooterModel: CoastalScooterModel;
   private scooterTransition?: { from: Vector3; to: Vector3; elapsed: number; yaw: number; targetYaw: number; pitch: number; targetPitch: number };
@@ -122,7 +130,8 @@ export class RoomScene {
     // Horizontal collision stays with Babylon; this controller owns feet height, gravity and landing.
     this.firstPersonCamera.onAfterCheckInputsObservable.add(() => {
       if (this.currentView !== "first-person" || !this.controlsEnabled || this.isViewing) return;
-      if (this.scooter.riding || this.scooterTransition) this.updateScooter(); else this.updateFirstPersonHeight();
+      if (this.ladder.attached) this.updateLadder();
+      else if (this.scooter.riding || this.scooterTransition) this.updateScooter(); else this.updateFirstPersonHeight();
     });
 
     this.lighting = new RoomLighting(this.scene, true);
@@ -134,7 +143,7 @@ export class RoomScene {
       () => this.setView("coast"), () => this.returnHome());
     this.pointerLock = new RoomPointerLock(canvas, locked => {
       this.pointerLocked = locked;
-      if (!locked) this.pauseScooter();
+      if (!locked) { this.pauseScooter(); this.pauseLadder(); }
       this.updateControls();
       this.updateInteractionHint();
     }, () => this.leaveFirstPerson(), () => {
@@ -273,7 +282,7 @@ export class RoomScene {
 
   setView(view: RoomView) {
     if (this.isViewing) return;
-    this.pauseScooter();
+    this.pauseScooter(); this.pauseLadder();
     if (this.currentView === "first-person" && !this.scooter.riding) this.saveWalkingPose();
     this.interactions.silenceMotion();
     this.audio.setSpatialCamera(view === "first-person" ? this.firstPersonCamera : undefined);
@@ -310,7 +319,8 @@ export class RoomScene {
       cabinet: { position: houseVector(8.3, 9.3, 2.1), target: houseVector(a.cabinet.x, a.cabinet.y, 0.6) },
     };
     if (firstPerson) {
-      if (this.scooter.riding && scooterSupport(this.scooter)) {
+      if (this.ladder?.attached) this.placeLadderCamera();
+      else if (this.scooter.riding && scooterSupport(this.scooter)) {
         this.placeRiderCamera();
       } else if (this.walkPose && this.walkPoseIsValid(this.walkPose)) {
         this.firstPersonCamera.position.copyFrom(this.walkPose.position);
@@ -363,6 +373,8 @@ export class RoomScene {
   }
   private keyUp = (event: KeyboardEvent) => {
     const key = this.scooterKey(event.code); if (key) this.scooterInput[key] = false;
+    if (["KeyW", "ArrowUp"].includes(event.code)) this.ladderInput.up = false;
+    if (["KeyS", "ArrowDown"].includes(event.code)) this.ladderInput.down = false;
   };
   private pauseScooter() {
     stopScooter(this.scooter); this.scooterInput = emptyScooterInput();
@@ -375,7 +387,7 @@ export class RoomScene {
     }
   }
   private scooterTarget() {
-    if (this.scooter.riding || this.scooterTransition || !this.jump.grounded) return false;
+    if (this.ladder?.attached || this.scooter.riding || this.scooterTransition || !this.jump.grounded) return false;
     const hit = this.scene.pickWithRay(this.firstPersonCamera.getForwardRay(7.5), m => m.isPickable && m.isVisible && !m.metadata?.collisionOnly);
     return !!hit?.hit && !!hit.pickedMesh?.metadata?.scooter;
   }
@@ -428,16 +440,92 @@ export class RoomScene {
     }
   }
 
+  private ladderTarget() {
+    return !this.ladder?.attached && !this.scooter.riding && !this.scooterTransition
+      && canBoardLighthouseLadder(worldToPlan(this.firstPersonCamera.position), this.jump.feet, this.jump.grounded);
+  }
+  private boardLadder() {
+    if (!this.ladderTarget()) return false;
+    const floor = lighthouseLadderFloor(this.jump.feet, .08)!;
+    this.ladder.attached = true; this.ladder.feet = floor.height; this.ladderInput = emptyLighthouseLadderInput();
+    const p = lighthouseLadderPoint();
+    this.ladderTransition = { from: this.firstPersonCamera.position.clone(),
+      to: houseVector(p.x, p.y, floor.height + HOUSE_JUMP.eyeHeight), elapsed: 0, leaving: false };
+    this.jump.queued = false; this.jump.grounded = false;
+    this.updateControls(); this.updateInteractionHint(); return true;
+  }
+  private leaveLadder() {
+    if (!this.ladder.attached || this.ladderTransition) return;
+    const floor = lighthouseLadderFloor(this.ladder.feet), p = lighthouseLadderLanding();
+    if (!floor || !walkingPointAllowed(p, HOUSE_JUMP.playerRadius, floor.height)
+      || !this.interactions.walkerIsClear(houseVector(p.x, p.y, floor.height + HOUSE_JUMP.eyeHeight))) {
+      this.ladderNotice = floor ? "落脚处暂时被挡住，请稍后再试" : "先爬到楼层停靠点，再按 E 离梯";
+      this.ladderNoticeUntil = performance.now() + 2500; this.ladderInput = emptyLighthouseLadderInput();
+      this.updateInteractionHint(); return;
+    }
+    this.ladder.feet = floor.height; this.ladderInput = emptyLighthouseLadderInput();
+    this.ladderTransition = { from: this.firstPersonCamera.position.clone(),
+      to: houseVector(p.x, p.y, floor.height + HOUSE_JUMP.eyeHeight), elapsed: 0, leaving: true };
+  }
+  private finishLeavingLadder() {
+    this.ladder.attached = false; this.ladderTransition = undefined;
+    resetJumpState(this.jump, this.ladder.feet);
+    this.previousWalk.copyFrom(this.firstPersonCamera.position);
+    this.stableWalk = { position: this.firstPersonCamera.position.clone(), feet: this.ladder.feet };
+    this.walkPose = { ...this.stableWalk, rotation: this.firstPersonCamera.rotation.clone() };
+    this.updateControls(); this.updateInteractionHint();
+  }
+  private pauseLadder() {
+    if (!this.ladder) return;
+    this.ladderInput = emptyLighthouseLadderInput();
+    if (this.ladderTransition) {
+      const leaving = this.ladderTransition.leaving;
+      this.firstPersonCamera.position.copyFrom(this.ladderTransition.to); this.ladderTransition = undefined;
+      if (leaving) this.finishLeavingLadder();
+    }
+  }
+  private placeLadderCamera() {
+    const p = lighthouseLadderPoint(), camera = this.firstPersonCamera;
+    camera.position.copyFrom(houseVector(p.x, p.y, this.ladder.feet + HOUSE_JUMP.eyeHeight));
+    camera.cameraDirection.setAll(0); camera.movement.resetPanVelocity();
+    this.jump.feet = this.ladder.feet; this.jump.velocity = 0; this.jump.grounded = false; this.jump.queued = false;
+    this.previousWalk.copyFrom(camera.position);
+  }
+  private updateLadder() {
+    if (!Number.isFinite(this.ladder.feet) || this.ladder.feet < LIGHTHOUSE.floor - .01 || this.ladder.feet > LIGHTHOUSE.gallery + .01) {
+      this.ladder.attached = false; this.ladderTransition = undefined; this.pauseLadder(); this.restoreStableWalk(); this.updateControls(); return;
+    }
+    const dt = Math.min(.2, Math.max(0, this.engine.getDeltaTime() / 1000));
+    if (this.ladderTransition) {
+      const transition = this.ladderTransition; transition.elapsed += dt;
+      const t = Math.min(1, transition.elapsed / .32), eased = t * t * (3 - 2 * t);
+      Vector3.LerpToRef(transition.from, transition.to, eased, this.firstPersonCamera.position);
+      this.firstPersonCamera.cameraDirection.setAll(0); this.firstPersonCamera.movement.resetPanVelocity();
+      if (t === 1) { this.ladderTransition = undefined; if (transition.leaving) this.finishLeavingLadder(); else this.placeLadderCamera(); }
+      return;
+    }
+    if (this.pointerLocked && !document.hidden) {
+      const arrived = advanceLighthouseLadder(this.ladder, this.ladderInput, dt);
+      if (arrived) {
+        const p = lighthouseLadderLanding(); this.stableWalk = { position: houseVector(p.x, p.y, arrived.height + HOUSE_JUMP.eyeHeight), feet: arrived.height };
+      }
+    } else this.pauseLadder();
+    this.placeLadderCamera();
+  }
+
   private updateFirstPersonHeight() {
     const camera = this.firstPersonCamera, previous = this.previousWalk;
     if (!camera || !previous) return;
-    const wanted = worldToPlan(camera.position), point = sweepWalking(worldToPlan(previous), wanted);
+    const wanted = worldToPlan(camera.position), point = sweepWalking(worldToPlan(previous), wanted, this.jump.feet, this.jump.grounded && !this.jump.queued);
     if (!point) { this.restoreStableWalk(); return; }
     if (Math.hypot(point.x - wanted.x, point.y - wanted.y) > .001) {
       const p = planToWorld(point); camera.position.x = p.x; camera.position.z = p.z;
       camera.cameraDirection.setAll(0); camera.movement.resetPanVelocity();
     }
-    const support = walkingSurfaceAt(point.x, point.y);
+    if (point.stepped && this.jump.grounded && !this.jump.queued) {
+      this.jump.feet = point.height; this.jump.originTop = point.height;
+    }
+    const support = walkingSurfaceAt(point.x, point.y, this.jump.feet, this.jump.grounded && !this.jump.queued ? .18 : 0);
     if (!support) { this.restoreStableWalk(); return; }
     let remaining = Math.min(.2, Math.max(1 / 240, this.engine.getDeltaTime() / 1000));
     let frame = { feet: this.jump.feet, grounded: this.jump.grounded } as ReturnType<typeof advanceJump>;
@@ -447,7 +535,7 @@ export class RoomScene {
       if (frame.snapped) break;
     }
     if (frame.snapped) {
-      if (walkingPointAllowed(frame.snapped)) {
+      if (walkingPointAllowed(frame.snapped, HOUSE_JUMP.playerRadius, frame.feet)) {
         const snapped = planToWorld(frame.snapped); camera.position.x = snapped.x; camera.position.z = snapped.z;
       }
     }
@@ -459,13 +547,14 @@ export class RoomScene {
   }
 
   private walkPoseIsValid(pose: { position: Vector3; feet: number }) {
-    const p = worldToPlan(pose.position), support = walkingSurfaceAt(p.x, p.y);
+    const p = worldToPlan(pose.position), support = walkingSurfaceAt(p.x, p.y, pose.feet);
     const platform = jumpPlatformAt(p.x, p.y);
-    return walkingPointAllowed(p) && !!support && (Math.abs(pose.feet - support.height) < .08
+    return walkingPointAllowed(p, HOUSE_JUMP.playerRadius, pose.feet) && !!support && (Math.abs(pose.feet - support.height) < .08
       || !!platform && Math.abs(pose.feet - platform.top) < .08) && this.interactions.walkerIsClear(pose.position);
   }
 
   private saveWalkingPose() {
+    if (this.ladder?.attached) return;
     if (!this.jump) return;
     const position = this.jump.grounded ? this.firstPersonCamera.position.clone() : this.stableWalk?.position.clone();
     const feet = this.jump.grounded ? this.jump.feet : this.stableWalk?.feet;
@@ -487,6 +576,7 @@ export class RoomScene {
   private returnHome() {
     this.closeFloorPlan(false);
     this.pauseScooter(); resetScooter(this.scooter); this.scooterTransition = undefined;
+    if (this.ladder) { this.ladder.attached = false; this.ladderTransition = undefined; this.pauseLadder(); }
     this.scooterModel.update(this.scooter, this.currentView !== "overview");
     this.updateControls();
     this.restoreStableWalk(true);
@@ -509,7 +599,7 @@ export class RoomScene {
 
   setControlsEnabled(enabled: boolean) {
     this.controlsEnabled = enabled;
-    if (!enabled) { this.pauseScooter(); this.pointerLock.release(); }
+    if (!enabled) { this.pauseScooter(); this.pauseLadder(); this.pointerLock.release(); }
     this.updateControls();
     this.updateInteractionHint();
   }
@@ -517,12 +607,12 @@ export class RoomScene {
   private get isViewing() { return !!(this.inspection?.isOpen || this.floorPlan?.isOpen); }
 
   private updateFloorPlan() {
-    this.floorPlan.update(this.currentView, this.firstPersonCamera.position, this.firstPersonCamera.getForwardRay().direction, this.scooter);
+    this.floorPlan.update(this.currentView, this.firstPersonCamera.position, this.firstPersonCamera.getForwardRay().direction, this.scooter, this.ladder?.attached ? this.ladder.feet : undefined);
   }
 
   private openFloorPlan() {
     if (!this.controlsEnabled || this.isViewing) return;
-    this.pauseScooter();
+    this.pauseScooter(); this.pauseLadder();
     this.updateFloorPlan();
     // Set modal state before releasing the lock so its change event cannot leave first-person.
     this.floorPlan.open();
@@ -559,7 +649,7 @@ export class RoomScene {
     camera.movement.resetRotationVelocity();
     if (!this.isViewing && this.controlsEnabled && (camera !== this.firstPersonCamera || this.pointerLocked)) {
       camera.attachControl(this.canvas, true);
-      if (camera === this.firstPersonCamera && (this.scooter.riding || this.scooterTransition)) {
+      if (camera === this.firstPersonCamera && (this.scooter.riding || this.scooterTransition || this.ladder?.attached)) {
         for (const name of ["keyboard", "touch", "gamepad"]) this.firstPersonCamera.inputs.attached[name]?.detachControl();
       }
     }
@@ -627,6 +717,15 @@ export class RoomScene {
     const editable = event.target instanceof HTMLElement && event.target.matches("input, textarea, select, [contenteditable]");
     if (editable || event.ctrlKey || event.metaKey || event.altKey) return;
     if (this.currentView === "first-person" && this.controlsEnabled && this.pointerLocked) {
+      if (this.ladder?.attached) {
+        if (["KeyW", "ArrowUp", "KeyS", "ArrowDown"].includes(event.code)) {
+          event.preventDefault();
+          if (!event.repeat && !this.ladderTransition) this.ladderInput[["KeyW", "ArrowUp"].includes(event.code) ? "up" : "down"] = true;
+          return;
+        }
+        if (event.code === "KeyE") { event.preventDefault(); if (!event.repeat) this.leaveLadder(); return; }
+        if (["Space", "KeyA", "KeyD", "ArrowLeft", "ArrowRight"].includes(event.code)) { event.preventDefault(); return; }
+      }
       if (this.scooterKey(event.code)) {
         if (this.scooter.riding) {
           event.preventDefault();
@@ -636,14 +735,14 @@ export class RoomScene {
       }
       if (event.code === "KeyE" && !event.repeat) {
         event.preventDefault();
-        if (this.scooter.riding) this.scooter.exitRequested = true; else this.boardScooter();
+        if (this.scooter.riding) this.scooter.exitRequested = true; else if (!this.boardLadder()) this.boardScooter();
         return;
       }
     }
     if (!event.repeat && event.code === "Space" && this.currentView === "first-person" && this.controlsEnabled
       && !(event.target instanceof HTMLElement && event.target.matches("input, textarea, select, [contenteditable]"))) {
       event.preventDefault();
-      if (!this.scooter.riding && !this.scooterTransition && this.jump) requestJump(this.jump);
+      if (!this.ladder?.attached && !this.scooter.riding && !this.scooterTransition && this.jump) requestJump(this.jump);
       return;
     }
     if (event.key === "Escape") this.leaveFirstPerson();
@@ -673,8 +772,9 @@ export class RoomScene {
     if (event.button !== 0 || !start || start.id !== event.pointerId || start.dragged || !this.controlsEnabled || this.isViewing) return;
     if (this.currentView === "first-person") {
       if (!this.pointerLocked) return;
+      if (this.ladder?.attached) { this.leaveLadder(); return; }
       if (this.scooter.riding || this.scooterTransition) return;
-      if (!this.boardScooter()) this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5))?.toggle();
+      if (!this.boardLadder() && !this.boardScooter()) this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5))?.toggle();
     } else {
       const rect = this.canvas.getBoundingClientRect();
       const ray = this.scene.createPickingRay(event.clientX - rect.left, event.clientY - rect.top, null, this.camera);
@@ -691,18 +791,24 @@ export class RoomScene {
     if (firstPerson) {
       const help = document.querySelector("#view-help");
       const point = worldToPlan(this.firstPersonCamera.position);
-      const inLighthouse = walkingSurfaceAt(point.x, point.y)?.region.startsWith("灯塔首层");
-      if (help) help.textContent = this.scooter.riding ? "鼠标环顾 · WASD 驾驶 · 空格刹车 · E 下车 · M 地图 · ESC 退出"
+      const lighthouseRegion = walkingSurfaceAt(point.x, point.y, this.jump.feet)?.region;
+      const inLighthouse = lighthouseRegion?.startsWith("灯塔") && !["灯塔前场", "灯塔入口"].includes(lighthouseRegion);
+      if (help) help.textContent = this.ladder?.attached ? "垂直梯 · W/↑ 上爬 · S/↓ 下爬 · E 到层离梯 · 松键停留 · M 地图" : this.scooter.riding ? "鼠标环顾 · WASD 驾驶 · 空格刹车 · E 下车 · M 地图 · ESC 退出"
         : inLighthouse
-          ? "灯塔首层维护室 · 上层暂未开放 · 左键开合入口门 · M 地图"
+          ? `${lighthouseRegion} · 靠近垂直梯按 E 上下楼 · M 地图`
           : "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出";
     }
+    const ladderTarget = firstPerson && this.pointerLocked && this.controlsEnabled && this.ladderTarget();
     const vehicle = firstPerson && this.pointerLocked && this.controlsEnabled && this.scooterTarget();
-    const action = firstPerson && !this.scooter.riding && !this.scooterTransition && !vehicle && this.pointerLocked && this.controlsEnabled
+    const action = firstPerson && !this.ladder?.attached && !ladderTarget && !this.scooter.riding && !this.scooterTransition && !vehicle && this.pointerLocked && this.controlsEnabled
       ? this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5)) : undefined;
-    reticle?.classList.toggle("has-target", !!action || !!vehicle);
+    reticle?.classList.toggle("has-target", !!action || !!vehicle || !!ladderTarget);
     if (hint) {
-      hint.textContent = firstPerson && this.scooter.riding ? this.scooterNoticeUntil > performance.now() ? this.scooterNotice
+      const ladderFloor = this.ladder?.attached ? lighthouseLadderFloor(this.ladder.feet) : undefined;
+      hint.textContent = firstPerson && this.ladder?.attached ? this.ladderNoticeUntil > performance.now() ? this.ladderNotice
+        : ladderFloor ? `已到${ladderFloor.label} · E / 左键离梯 · 松开后按 W/S 继续`
+        : "W/↑ 上爬 · S/↓ 下爬 · 松开停留 · 到楼层后按 E 离梯"
+        : ladderTarget ? "E / 左键 · 抓住垂直梯" : firstPerson && this.scooter.riding ? this.scooterNoticeUntil > performance.now() ? this.scooterNotice
         : this.scooter.exitRequested ? "正在停车，寻找安全下车位置…"
         : `骑行 ${Math.abs(this.scooter.speed * 3.6).toFixed(0)} km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车`
         : firstPerson && this.scooterNoticeUntil > performance.now() ? this.scooterNotice
@@ -795,7 +901,7 @@ export class RoomScene {
     this.resizeInspection();
   };
   private visibilityChanged = () => {
-    if (document.hidden) { this.pauseScooter(); this.pauseAudio(); } else this.resumeAudio();
+    if (document.hidden) { this.pauseScooter(); this.pauseLadder(); this.pauseAudio(); } else this.resumeAudio();
     this.engine.stopRenderLoop(this.render);
     if (!document.hidden && !this.disposed) this.engine.runRenderLoop(this.render);
   };
@@ -804,7 +910,7 @@ export class RoomScene {
   private dispose = () => {
     if (this.disposed) return;
     this.disposed = true;
-    this.pauseScooter(); this.scooterModel.dispose();
+    this.pauseScooter(); this.pauseLadder(); this.scooterModel.dispose();
     this.audio.dispose();
     document.querySelector("#item-inspection-return")?.removeEventListener("click", this.returnFromInspection);
     document.querySelector("#item-inspection")?.removeEventListener("cancel", this.cancelInspection);

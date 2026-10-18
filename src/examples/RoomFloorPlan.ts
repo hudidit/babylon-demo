@@ -1,11 +1,12 @@
 import { houseDrawingHeading, houseDrawingPoint, housePlanSvg } from "./HouseFloorPlan";
-import { HOUSE_LAYOUT_VERSION, HOUSE_ROOMS, worldToPlan } from "./HouseLayout";
+import { HOUSE_LAYOUT_VERSION, HOUSE_ROOMS, HOUSE_COORDINATES, worldToPlan } from "./HouseLayout";
 import type { HouseRoomId } from "./HouseLayout";
 import type { HouseRooms } from "./HouseRooms";
 import { coastalDrawingPoint, coastalPlanSvg } from "./CoastalMap";
 import { coastalRouteLength } from "./CoastalSite";
 import { coastalSurfaceHeight } from "./CoastalCliff";
 import { walkingSurfaceAt } from "./WalkingSurface";
+import { lighthouseClimbLabel } from "./LighthouseLadder";
 
 /** DOM-only map: the 3D camera stays in place while the modal is open. */
 export class RoomFloorPlan {
@@ -19,7 +20,7 @@ export class RoomFloorPlan {
   private miniCoast = false;
   private region = "";
   private scope: "house" | "coast" = "house";
-  private lastUpdate?: { view: string; position: { x: number; z: number }; direction?: { x: number; z: number } };
+  private lastUpdate?: { view: string; position: { x: number; y?: number; z: number }; direction?: { x: number; z: number }; climbFeet?: number };
 
   private readonly unsubscribe: () => void;
 
@@ -65,7 +66,7 @@ export class RoomFloorPlan {
     document.querySelectorAll(".plan-scooter").forEach(node => node.parentNode?.appendChild(node));
     this.mode = "";
     // Asset completion may refresh the SVG while the map modal pauses the scene's usual updates.
-    if (this.lastUpdate) this.update(this.lastUpdate.view, this.lastUpdate.position, this.lastUpdate.direction, this.scooterPosition);
+    if (this.lastUpdate) this.update(this.lastUpdate.view, this.lastUpdate.position, this.lastUpdate.direction, this.scooterPosition, this.lastUpdate.climbFeet);
   }
   private readonly selectHouse = () => this.selectScope("house");
   private readonly selectCoast = () => this.selectScope("coast");
@@ -108,16 +109,17 @@ export class RoomFloorPlan {
     this.button.setAttribute("aria-expanded", "false");
   }
 
-  update(view: string, position: { x: number; z: number }, direction?: { x: number; z: number }, scooter?: { x: number; y: number }) {
+  update(view: string, position: { x: number; y?: number; z: number }, direction?: { x: number; z: number }, scooter?: { x: number; y: number }, climbFeet?: number) {
     this.scooterPosition = scooter && { x: scooter.x, y: scooter.y };
-    this.lastUpdate = { view, position: { x: position.x, z: position.z },
-      direction: direction && { x: direction.x, z: direction.z } };
+    this.lastUpdate = { view, position: { x: position.x, y: position.y, z: position.z },
+      direction: direction && { x: direction.x, z: direction.z }, climbFeet };
     const firstPerson = view === "first-person";
     const room = firstPerson ? this.rooms.roomAt(position)
       : view === "overview" || view === "coast" ? undefined : ["master", "ensuite", "bedroom", "kitchen", "bathroom", "balcony"].includes(view) ? view as HouseRoomId
       : ["living", "reading", "cabinet"].includes(view) ? "living" : "study";
     const point = worldToPlan(position);
-    const outdoor = firstPerson && !room ? walkingSurfaceAt(point.x, point.y) : undefined;
+    const outdoor = firstPerson && !room ? climbFeet !== undefined ? { region: lighthouseClimbLabel(climbFeet) } : walkingSurfaceAt(point.x, point.y, position.y === undefined ? undefined
+      : (position.y - HOUSE_COORDINATES.floorY) / HOUSE_COORDINATES.unitsPerMeter - HOUSE_COORDINATES.eyeHeight) : undefined;
     const miniCoast = !!outdoor || view === "coast";
     if (miniCoast !== this.miniCoast) {
       this.miniCoast = miniCoast;

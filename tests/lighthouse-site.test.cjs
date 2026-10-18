@@ -207,7 +207,8 @@ test('restoration checks actual door-leaf transforms after an orbit-view door mo
   t.after(()=>{scene.dispose();engine.dispose();});
   const mount=new b.TransformNode('fixed-door-mount',scene),root=new b.TransformNode('entry-leaf',scene),p=planToWorld({x:10.8,y:4.1});
   mount.position.set(p.x,p.y,p.z);mount.rotation.y=Math.PI/2;root.parent=mount;
-  const door={id:'entry-door',label:'入户门',root,meshes:[],width:5.5,openAngle:Math.PI/2,walkerRadius:1.3};
+  const leaf=b.CreateBox('restoration-door-leaf',{width:.18,height:10.6,depth:5.5},scene);leaf.parent=root;leaf.position.set(0,5.3,2.75);
+  const door={id:'entry-door',label:'入户门',root,meshes:[leaf],width:5.5,openAngle:Math.PI/2,walkerRadius:1.3};
   const interactions=new(load('RoomInteractions').RoomInteractions)(scene,()=>{});interactions.addDoor(door);
   const centre=()=>b.Vector3.TransformCoordinates(new b.Vector3(0,8,door.width/2),door.root.computeWorldMatrix(true));
   const closedCentre=centre();assert.equal(interactions.walkerIsClear(closedCentre),false);

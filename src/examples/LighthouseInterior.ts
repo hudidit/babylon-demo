@@ -3,10 +3,11 @@ import type { PBRMaterial, Scene } from "@babylonjs/core/pure";
 import { CoastalBatch, coastalTowerLining } from "./CoastalLandmark";
 import { COASTAL_SITE } from "./CoastalSite";
 import { HOUSE_COORDINATES, planToWorld } from "./HouseLayout";
-import { LIGHTHOUSE } from "./LighthouseLayout";
+import { LIGHTHOUSE, LIGHTHOUSE_FLOORS } from "./LighthouseLayout";
+import { lighthouseFloorGeometry, lighthouseLadderGeometry, lighthouseHoleGuards } from "./LighthouseGeometry";
 import type { InteractiveDoor } from "./RoomInteractions";
 
-/** Phase one: a usable maintenance room, with a closed upper floor reserved for the staircase. */
+/** Window-aligned storeys, one straight ladder and a usable lantern/gallery connection. */
 export function createLighthouseInterior(scene: Scene, retain: (mesh: Mesh, layer: "landmark") => Mesh): InteractiveDoor {
   const t = COASTAL_SITE.tower, a = LIGHTHOUSE, u = HOUSE_COORDINATES.unitsPerMeter;
   const material = (name: string) => scene.getMaterialByName(name) as PBRMaterial;
@@ -15,11 +16,13 @@ export function createLighthouseInterior(scene: Scene, retain: (mesh: Mesh, laye
   const brass = material("coastal-lantern-brass"), b = new CoastalBatch(scene, retain);
   b.geometry("coastal-lighthouse-inner-wall", plaster, coastalTowerLining(a.wallThickness));
   b.cylinder("coastal-lighthouse-ground-floor", stone, t.x, t.y, t.ground + .49, .05, 5.76, 5.76, 64);
-  // A genuine closed diaphragm gives the first room a ceiling and keeps phase two visibly separate.
-  const ceilingRadius = 2.8 - (a.floor - t.ground - .49 + a.clearHeight) / 15.85 * .8 - a.wallThickness;
-  b.cylinder("coastal-lighthouse-ground-ceiling", plaster, t.x, t.y, a.floor + a.clearHeight, .14, ceilingRadius * 2 + .04, ceilingRadius * 2 + .04, 64);
-  b.cylinder("coastal-lighthouse-service-cover", metal, t.x, t.y, a.floor + .002, .008, .88, .88, 32);
-  for (const x of [-.3, .3]) b.box("coastal-lighthouse-service-hardware", brass, .12, .015, .035, t.x + x, t.y, a.floor + .018);
+  b.geometry("coastal-lighthouse-level-floors", wood, lighthouseFloorGeometry(LIGHTHOUSE_FLOORS.slice(1, 4)));
+  b.geometry("coastal-lighthouse-level-deck", metal, lighthouseFloorGeometry([LIGHTHOUSE_FLOORS[4]]));
+  b.geometry("coastal-lighthouse-level-cornice", plaster, lighthouseFloorGeometry([
+    { ...LIGHTHOUSE_FLOORS[4], height: a.gallery - .32, radius: 2.25, thickness: .2 }]));
+  b.geometry("coastal-lighthouse-ladder-rails", metal, lighthouseLadderGeometry(false));
+  b.geometry("coastal-lighthouse-ladder-rungs", brass, lighthouseLadderGeometry(true));
+  b.geometry("coastal-lighthouse-level-guards", metal, lighthouseHoleGuards());
   for (const step of a.steps)
     b.box("coastal-lighthouse-entry-steps", stone, step.width, .16, step.depth, t.x, t.y + step.y, step.top - .08);
   b.box("coastal-lighthouse-entry-steps", stone, a.entranceHalfWidth * 2, .18, .58, t.x, t.y - 2.56, a.floor - .09);

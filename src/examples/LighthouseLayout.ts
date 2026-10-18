@@ -1,51 +1,57 @@
 import { COASTAL_SITE } from "./CoastalSite";
 
-/** Metres above the house floor; geometry and movement share these dimensions. */
+/** Existing exterior openings are the reference for each interior viewing level. */
+export const LIGHTHOUSE_WINDOWS = Object.freeze([
+  Object.freeze({ bottom: 3.8, height: 1.3, width: .48 }),
+  Object.freeze({ bottom: 8.4, height: 1.3, width: .44 }),
+  Object.freeze({ bottom: 12.5, height: 1.3, width: .4 }),
+]);
+const tower = COASTAL_SITE.tower;
 export const LIGHTHOUSE = Object.freeze({
-  wallThickness: .28,
-  floor: COASTAL_SITE.tower.ground + .54,
-  clearHeight: 3.8,
-  entranceHalfWidth: .48,
-  doorY: -2.73,
-  // The stair system is reserved for phase two; these are design parameters, not walkable surfaces.
-  stair: Object.freeze({ innerRadius: .45, outerRadius: 1.55, walkingRadius: 1.1, stepAngle: Math.PI / 10 }),
+  wallThickness: .28, floor: tower.ground + .54, entranceHalfWidth: .48, doorY: -2.73,
+  gallery: tower.ground + 16.64, exitPanel: 1,
+  ladder: Object.freeze({ x: -.8, y: .42, width: .66, climbY: .05, landingY: -.95,
+    minX: -1.35, maxX: -.25, minY: -.6, maxY: .6, speed: 1.6 }),
   furniture: Object.freeze([
     Object.freeze({ id: "cabinet", x: -1.72, y: .1, width: .54, depth: .9, height: 1.15 }),
     Object.freeze({ id: "workbench", x: .25, y: 1.82, width: 1.35, depth: .45, height: .87 }),
   ]),
   steps: Object.freeze([
-    Object.freeze({ y: -3.15, width: 1.5, depth: .45, top: COASTAL_SITE.tower.ground + .20 }),
-    Object.freeze({ y: -2.98, width: 1.3, depth: .45, top: COASTAL_SITE.tower.ground + .36 }),
+    Object.freeze({ y: -3.15, width: 1.5, depth: .45, top: tower.ground + .20 }),
+    Object.freeze({ y: -2.98, width: 1.3, depth: .45, top: tower.ground + .36 }),
   ]),
 });
+export interface LighthouseFloor { index: number; label: string; height: number; radius: number; thickness: number; hole: boolean; }
+const floorRadius = (height: number) => tower.radius - (height - tower.ground - .49) / 15.85 * .8 - LIGHTHOUSE.wallThickness + .015;
+export const LIGHTHOUSE_FLOORS: readonly LighthouseFloor[] = Object.freeze([
+  { index: 0, label: "首层维护室", height: LIGHTHOUSE.floor, radius: 2.88, thickness: .05, hole: false },
+  ...LIGHTHOUSE_WINDOWS.map((w, i) => {
+    const height = tower.ground + .49 + w.bottom - .9;
+    return { index: i + 1, label: ["二层观景室", "三层观景室", "四层观景室"][i], height, radius: floorRadius(height), thickness: .16, hole: true };
+  }),
+  { index: 4, label: "顶层灯室", height: LIGHTHOUSE.gallery, radius: 3, thickness: .30, hole: true },
+].map(f => Object.freeze(f)));
 
-/** Exact radial extent of the existing 64-sided shaft rather than a circumscribed circle. */
 export function lighthouseInnerRadius(angle: number, height = 0) {
   const sector = Math.PI / 32, local = ((angle + Math.PI / 2) % sector + sector) % sector;
-  const radius = COASTAL_SITE.tower.radius - height / 15.85 * .8 - LIGHTHOUSE.wallThickness;
+  const radius = tower.radius - height / 15.85 * .8 - LIGHTHOUSE.wallThickness;
   return radius * Math.cos(sector / 2) / Math.cos(local - sector / 2);
 }
-
-export function lighthouseSurfaceAt(x: number, y: number) {
-  const t = COASTAL_SITE.tower, dx = x - t.x, dy = y - t.y;
-  if (Math.hypot(dx, dy) <= lighthouseInnerRadius(Math.atan2(dy, dx)))
-    return { height: LIGHTHOUSE.floor, inside: true };
-  if (Math.abs(dx) <= LIGHTHOUSE.entranceHalfWidth && dy >= -2.84 && dy <= -2.3)
-    return { height: LIGHTHOUSE.floor, inside: false };
+export function lighthouseHoleAt(x: number, y: number, margin = 0) {
+  const l = LIGHTHOUSE.ladder;
+  return x > l.minX - margin && x < l.maxX + margin && y > l.minY - margin && y < l.maxY + margin;
+}
+export function lighthouseFloorAt(x: number, y: number, floor: LighthouseFloor) {
+  const angle = Math.atan2(y, x), sector = Math.PI / 32;
+  const radius = floor.radius * Math.cos(sector / 2) / Math.cos(((angle % sector + sector) % sector) - sector / 2);
+  return Math.hypot(x, y) <= radius + 1e-7 && (!floor.hole || !lighthouseHoleAt(x, y));
+}
+export function lighthouseGroundAt(x: number, y: number) {
+  const dx = x - tower.x, dy = y - tower.y;
+  if (Math.hypot(dx, dy) <= lighthouseInnerRadius(Math.atan2(dy, dx))) return { height: LIGHTHOUSE.floor, inside: true };
+  if (Math.abs(dx) <= LIGHTHOUSE.entranceHalfWidth && dy >= -2.84 && dy <= -2.3) return { height: LIGHTHOUSE.floor, inside: false };
   let top: number | undefined;
   for (const step of LIGHTHOUSE.steps)
     if (Math.abs(dx) <= step.width / 2 && Math.abs(dy - step.y) <= step.depth / 2) top = Math.max(top ?? -Infinity, step.top);
   return top === undefined ? undefined : { height: top, inside: false };
-}
-
-/** Solid tower base and masonry stay blocked except for the narrow north entrance. */
-export function lighthousePointAllowed(x: number, y: number, radius: number) {
-  const t = COASTAL_SITE.tower, dx = x - t.x, dy = y - t.y, r = Math.hypot(dx, dy);
-  if (r >= 3.5 + radius) return true;
-  const inner = lighthouseInnerRadius(Math.atan2(dy, dx), 2.05);
-  const inRoom = r + radius + .025 <= inner;
-  const inEntry = Math.abs(dx) + radius <= LIGHTHOUSE.entranceHalfWidth && dy <= -2.05;
-  if (!inRoom && !inEntry) return false;
-  return !LIGHTHOUSE.furniture.some(f => Math.abs(dx - f.x) < f.width / 2 + radius + .025
-    && Math.abs(dy - f.y) < f.depth / 2 + radius + .025);
 }

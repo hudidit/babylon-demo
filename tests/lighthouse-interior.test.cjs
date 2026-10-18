@@ -17,9 +17,9 @@ function setup(t) {
 
 test('entrance connects the plaza and first room in both directions with no side access',()=>{
   for(const direction of [1,-1]) {
-    let current=point(0,direction===1?-4.2:0);
-    for(let i=1;i<=84;i++) {
-      const target=point(0,direction===1?-4.2+i*.05:-i*.05),next=sweep(current,target);
+    let current=point(0,direction===1?-4.2:-1.9);
+    for(let i=1;i<=46;i++) {
+      const target=point(0,direction===1?-4.2+i*.05:-1.9-i*.05),next=sweep(current,target);
       assert.ok(next&&Math.hypot(next.x-target.x,next.y-target.y)<1e-6,JSON.stringify({current,target,next}));current=next;
     }
   }
@@ -42,7 +42,7 @@ test('first-floor and every stair support equal actual rendered top faces',t=>{
       m=>['coastal-lighthouse-ground-floor','coastal-lighthouse-entry-steps','coastal-lighthouse-plaza'].includes(m.name));
     assert.ok(hit.hit);assert.ok(Math.abs((hit.pickedPoint.y+5)/5-support.height)<2e-5,JSON.stringify({p,support,hit:hit.pickedPoint}));
   }
-  const inside=surface(tower.x,tower.y);assert.equal(inside.height,a.floor);assert.equal(inside.ceiling,a.floor+a.clearHeight);
+  const inside=surface(tower.x,tower.y);assert.equal(inside.height,a.floor);assert.equal(scene.getMeshByName('coastal-lighthouse-ground-ceiling'),null);
   assert.match(inside.region,/灯塔首层/);assert.equal(surface(tower.x,tower.y-4).ceiling,undefined);
 });
 
@@ -60,7 +60,7 @@ test('inner masonry faces the room, window holes stay open and reveals close the
     assert.ok(Math.abs(ro-r-a.wallThickness*5)<1e-5);
     assert.ok(g.normals[i]*(g.positions[i]-centre.x)+g.normals[i+2]*(g.positions[i+2]-centre.z)<0);
   }
-  assert.ok(lighthouseInnerRadius(0,15.85)>a.stair.outerRadius,'future stair clears the narrowest shaft');
+  assert.ok(lighthouseInnerRadius(0,15.85)>1.7,'upper storey retains the original interior radius');
 });
 
 test('the door is picked from both sides, masonry occludes it, and a walker pauses its sweep',t=>{
@@ -68,7 +68,7 @@ test('the door is picked from both sides, masonry occludes it, and a walker paus
   let walker;const interactions=new(load('RoomInteractions').RoomInteractions)(scene,()=>{},()=>walker);
   interactions.addDoor(door);
   const ray=(y,dir,x=0)=>{const p=planToWorld(point(x,y),a.floor+1);return new b.Ray(new b.Vector3(p.x,p.y,p.z),new b.Vector3(0,0,dir),25);};
-  assert.ok(interactions.pick(ray(-4,1)));assert.ok(interactions.pick(ray(-1,-1)));
+  assert.ok(interactions.pick(ray(-4,1)));assert.ok(interactions.pick(ray(-1.9,-1)));
   assert.equal(interactions.pick(ray(4,-1)),undefined,'wall blocks picking the door from behind the tower');
   interactions.pick(ray(-4,1)).toggle();
   const w=planToWorld(point(.1,-3.1),a.floor+1.6);walker=new b.Vector3(w.x,w.y,w.z);
@@ -88,7 +88,7 @@ test('scooter cannot use the newly walkable entrance or the first room',()=>{
 test('interior reuses shared materials, remains enclosed under cutaway and releases its nodes',t=>{
   const {scene,exterior}=setup(t),door=exterior.lighthouseDoor;
   const meshes=exterior.meshes.filter(m=>m.name.includes('lighthouse')&&m!==scene.getMeshByName('coastal-lighthouse-path'));
-  assert.equal(exterior.surfaces.textures.length,7);assert.equal(scene.metadata.coastalSite.interiorStage,1);
+  assert.equal(exterior.surfaces.textures.length,7);assert.equal(scene.metadata.coastalSite.interiorStage,2);
   exterior.updateCutaway({x:60,z:30},{x:0,z:0});assert.ok(meshes.every(m=>!m.material.clipPlane2));
   exterior.setVisible(false);assert.ok(meshes.every(m=>!m.isVisible));exterior.setVisible(true);assert.ok(meshes.every(m=>m.isVisible));
   const mount=door.root.parent;exterior.dispose();exterior.dispose();assert.ok(door.root.isDisposed()&&mount.isDisposed());
