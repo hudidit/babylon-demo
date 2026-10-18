@@ -29,7 +29,7 @@ import { advanceJump, createJumpState, HOUSE_JUMP, jumpBlockedAt, requestJump, r
 import type { HouseRoomId } from "./HouseLayout";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
 
-export type RoomView = "overview" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
+export type RoomView = "overview" | "coast" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 // The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
 export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.825 };
 
@@ -117,7 +117,7 @@ export class RoomScene {
       () => this.currentView === "first-person" ? this.firstPersonCamera.position : undefined,
       event => this.audio.event(event));
     this.inspection = new RoomItemInspection(this.scene);
-    this.floorPlan = new RoomFloorPlan(() => this.openFloorPlan(), resume => this.closeFloorPlan(resume), this.rooms);
+    this.floorPlan = new RoomFloorPlan(() => this.openFloorPlan(), resume => this.closeFloorPlan(resume), this.rooms, () => this.setView("coast"));
     this.pointerLock = new RoomPointerLock(canvas, locked => {
       this.pointerLocked = locked;
       this.updateControls();
@@ -260,6 +260,7 @@ export class RoomScene {
     if (firstPerson && this.currentView !== "first-person") this.previousView = this.currentView;
     this.currentView = view;
     this.exterior.setVisible(view !== "overview");
+    this.exterior.setHouseEnclosed(firstPerson || view === "coast");
     if (firstPerson) this.exterior.updateCutaway();
     if (!firstPerson) this.pointerLock?.release();
     this.scene.activeCamera?.detachControl();
@@ -272,6 +273,7 @@ export class RoomScene {
     const a = HOUSE_CONTENT;
     const views: Record<Exclude<RoomView, "first-person">, { position: Vector3; target: Vector3 }> = {
       overview: { position: new Vector3(-74, 82, 84), target: new Vector3(0, -3, 2) },
+      coast: { position: houseVector(-65, 235, 180), target: houseVector(-65, 45, 0) },
       study: { position: houseVector(4.4, 4.2, 4.4), target: houseVector(a.desk.x, a.chair.y, 0.5) },
       living: { position: houseVector(3.2, 13.7, 6.8), target: houseVector(8.1, 7.5, 0.4) },
       master: { position: houseVector(3.8, 6.6, 4.7), target: houseVector(2.5, 2.2, 0.7) },
@@ -293,8 +295,12 @@ export class RoomScene {
       this.scene.activeCamera = this.firstPersonCamera;
     } else {
       const selected = views[view];
-      this.camera.fov = view === "balcony" ? .95 : view === "bedroom" ? .8 : .65;
-      this.camera.lowerRadiusLimit = view === "details" ? 3 : view === "bedroom" ? 4 : 9;
+      this.camera.fov = view === "balcony" ? .95 : view === "bedroom" || view === "coast" ? .8 : .65;
+      // The distant graybox needs depth precision for its 25mm road overlay; room close-ups keep 0.2.
+      this.camera.minZ = view === "coast" ? 5 : .2;
+      this.camera.lowerRadiusLimit = view === "coast" ? 150 : view === "details" ? 3 : view === "bedroom" ? 4 : 9;
+      // setPosition rebuilds/clamps the radius immediately; expand before applying a coastal pose.
+      this.camera.upperRadiusLimit = view === "coast" ? 1800 : 145;
       this.camera.setTarget(selected.target);
       this.camera.setPosition(selected.position);
       this.viewFramingScale = 1;
@@ -584,11 +590,11 @@ export class RoomScene {
   private fitSuiteView() {
     const aspect = this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight());
     // The sea-facing eye stays on the balcony in portrait; pulling back would enter the house.
-    let scale = ["overview", "study", "living", "master", "ensuite", "bedroom", "kitchen", "bathroom"].includes(this.currentView) ? Math.max(1, 1.4 / aspect) : 1;
+    let scale = ["overview", "coast", "study", "living", "master", "ensuite", "bedroom", "kitchen", "bathroom"].includes(this.currentView) ? Math.max(1, 1.4 / aspect) : 1;
     // The guest room already frames the sea window closely; a full portrait pullback would become an all-house overview.
     if (this.currentView === "bedroom") scale = Math.min(scale, 1.9);
     // The whole-house portrait radius exceeds the old fixed orbit limit.
-    this.camera.upperRadiusLimit = 145 * scale;
+    this.camera.upperRadiusLimit = this.currentView === "coast" ? Math.min(4200, 1800 * scale) : 145 * scale;
     // Keep the suite readable on portrait screens; resizing preserves the user's relative zoom.
     this.camera.radius *= scale / this.viewFramingScale;
     this.viewFramingScale = scale;

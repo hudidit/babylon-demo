@@ -1,11 +1,12 @@
 import { HOUSE_COORDINATES, planToWorld } from "./HouseLayout";
+import { COASTAL_EXTENSION, COASTAL_SITE, coastalPathGrade } from "./CoastalSite";
 
 /** House-plan distances are metres; backdrop radii are world units. South opens onto the sea. */
 export const COASTAL_CLIFF = Object.freeze({
-  version: "coastal-cliff-ocean-v1", seed: 41723,
+  version: COASTAL_SITE.version, seed: 41723,
   balconyEdgeY: 12.3, setback: 5, seaDepth: 28,
-  westX: -34, eastX: 44, inlandStartY: -50, inlandY: -600,
-  capeX: -8, capeReach: 40, columns: 96, rows: 64, nearRows: 20,
+  westX: -151, eastX: 44, inlandStartY: -50, inlandY: -600,
+  capeX: -8, capeReach: 40, columns: 240, rows: 92, nearRows: 48,
   skyRadius: 4800, seaRadius: 4900, cutawayDistance: 50,
 });
 export type CoastalGeometry = { positions: number[]; indices: number[]; uvs: number[]; normals?: number[] };
@@ -15,7 +16,7 @@ const empty = (): CoastalGeometry => ({ positions: [], indices: [], uvs: [] });
 const gaussian = (x: number, centre: number, width: number) => Math.exp(-(((x - centre) / width) ** 2));
 
 /** Shared crest curve, also used by the first wall ring: never independently sampled edges. */
-export function coastalCrestY(x: number) {
+function originalCrestY(x: number) {
   const a = COASTAL_CLIFF, centre = 8.1;
   return a.balconyEdgeY + a.setback
     + a.capeReach * (gaussian(x, a.capeX, 6) - gaussian(centre, a.capeX, 6))
@@ -23,12 +24,58 @@ export function coastalCrestY(x: number) {
     + .55 * (Math.sin(x * .37) - Math.sin(centre * .37));
 }
 
+export function coastalCrestY(x: number) {
+  if (x >= -34) return originalCrestY(x);
+  const knots = [...COASTAL_EXTENSION, [-34, originalCrestY(-34)]];
+  for (let i = 1; i < knots.length; i++) if (x <= knots[i][0]) {
+    const [a, b] = [knots[i - 1], knots[i]], t = Math.max(0, (x - a[0]) / (b[0] - a[0]));
+    return a[1] + (b[1] - a[1]) * t;
+  }
+  return originalCrestY(x);
+}
+
+/** The material's bare-rock edge uses the exact same extension, not a second hand-written coast. */
+export const coastalCrestShader = `float coastalCrest(float x) {
+  ${[...COASTAL_EXTENSION, [-34, originalCrestY(-34)]].slice(1).map((p, i) => {
+    const a = COASTAL_EXTENSION[i];
+    return `if(x<${p[0].toFixed(8)}) return mix(${a[1].toFixed(8)},${p[1].toFixed(8)},clamp((x-(${a[0].toFixed(8)}))/${(p[0] - a[0]).toFixed(8)},0.,1.));`;
+  }).join("\n")}
+  return 17.3 +40.*(exp(-pow((x+8.)/6.,2.))-exp(-pow(16.1/6.,2.)))
+    -4.*(exp(-pow((x-28.)/8.,2.))-exp(-pow(-19.9/8.,2.)))+.55*(sin(x*.37)-sin(8.1*.37));
+}`;
+
 /** The footprint and the strip in front of the balcony stay on one level. */
 export function coastalGroundHeight(x: number, y: number) {
   const distance = Math.hypot(Math.max(-2 - x, 0, x - 13), Math.max(-2 - y, 0, y - 18));
   const fade = Math.min(1, distance / 18), phase = COASTAL_CLIFF.seed * .001;
-  return -.14 + fade * fade * (1.1 + .6 * Math.sin(x * .13 + phase) * Math.cos(y * .09)
+  const original = -.14 + fade * fade * (1.1 + .6 * Math.sin(x * .13 + phase) * Math.cos(y * .09)
     + .7 * Math.sin(y * .037 + x * .031));
+  if (distance === 0) return original; // Keep all eight rooms and the balcony's existing support.
+  const t = COASTAL_SITE.tower, radius = Math.hypot(x - t.x, y - t.y);
+  const plateau = Math.max(0, Math.min(1, (36 - radius) / 18));
+  const landscape = x >= -34 ? original : original + (t.ground - original) * plateau * plateau * (3 - 2 * plateau);
+  const grade = coastalPathGrade(x, y), blend = Math.max(0, Math.min(1, (8 - grade.distance) / 4.5));
+  return landscape + (grade.height - landscape) * blend * blend * (3 - 2 * blend);
+}
+
+/** Height on the rendered near-land triangles, used for graybox placement (not a walking controller). */
+export function coastalSurfaceHeight(x: number, y: number): number | undefined {
+  const a = COASTAL_CLIFF, col = Math.floor((x - a.westX) / (a.eastX - a.westX) * a.columns);
+  if (col < 0 || col >= a.columns || y < a.inlandStartY) return undefined;
+  const left = coastalGridPoint(col, 0), right = coastalGridPoint(col + 1, 0);
+  const crest = left.y + (right.y - left.y) * (x - left.x) / (right.x - left.x);
+  if (y > crest) return undefined;
+  const row = Math.floor((crest - y) / (crest - a.inlandStartY) * a.nearRows);
+  for (let r = Math.max(0, row - 1); r <= Math.min(a.nearRows - 1, row + 1); r++) {
+    const p = [coastalGridPoint(col, r), coastalGridPoint(col + 1, r), coastalGridPoint(col + 1, r + 1), coastalGridPoint(col, r + 1)];
+    for (const [i, j, k] of [[0, 3, 1], [1, 3, 2]]) {
+      const [u, v, w] = [p[i], p[j], p[k]], den = (v.y - w.y) * (u.x - w.x) + (w.x - v.x) * (u.y - w.y);
+      const s = ((v.y - w.y) * (x - w.x) + (w.x - v.x) * (y - w.y)) / den;
+      const t = ((w.y - u.y) * (x - w.x) + (u.x - w.x) * (y - w.y)) / den;
+      if (s >= -1e-7 && t >= -1e-7 && s + t <= 1 + 1e-7) return s * u.height + t * v.height + (1 - s - t) * w.height;
+    }
+  }
+  return undefined;
 }
 
 /** Near coast uses parallel columns; only the straight inland section fans out to the horizon. */

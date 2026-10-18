@@ -147,14 +147,14 @@ export function createHouseArchitecture(scene: Scene, furniture: RoomFurnishings
   return { setEnclosed(value: boolean, nextView = "overview") {
     enclosed = value; view = nextView;
     // The panorama is a roofless, see-through shell so windows and room layout stay readable; room views use the selective cutaway.
-    const shell = enclosed || view === "overview";
+    const shell = enclosed || view === "overview" || view === "coast";
     const transparentWalls = !enclosed && view === "overview";
     paint.alpha = transparentWalls ? overviewWallAlpha : 1;
     paint.transparencyMode = transparentWalls ? PBRMaterial.PBRMATERIAL_ALPHABLEND : PBRMaterial.PBRMATERIAL_OPAQUE;
     hidden.forEach(m => m.isVisible = shell);
-    ceilings.forEach(m => m.isVisible = enclosed);
+    ceilings.forEach(m => m.isVisible = enclosed || view === "coast");
   }, updateCutaway(position: { x: number; z: number }, target: { x: number; z: number }) {
-    if (enclosed || view === "overview") return false;
+    if (enclosed || view === "overview" || view === "coast") return false;
     const room = ["study", "desk", "details"].includes(view) ? "study"
       : ["master", "ensuite", "bedroom", "kitchen", "bathroom", "balcony"].includes(view) ? view : "living";
     const camera = worldToPlan(position), focus = worldToPlan(target);

@@ -1,6 +1,6 @@
 {
-  "version": "coastal-cliff-ocean-v1",
-  "stage": "C: dynamic ocean; A/B/C implemented, D pending",
+  "version": "lighthouse-graybox-a-v1",
+  "stage": "Lighthouse A: spatial graybox; outdoor walking pending B, visual refinement pending C",
   "author": "babylon-demo project contributors",
   "license": "Original geometry/sky: project ISC; photographic maps: CC0-1.0, see textures/coastal/source.json",
   "source": [
@@ -10,13 +10,25 @@
     "src/examples/CoastalScatter.ts",
     "src/examples/CoastalSky.ts",
     "src/examples/CoastalOcean.ts",
+    "src/examples/CoastalSite.ts",
+    "src/examples/CoastalLandmark.ts",
+    "src/examples/CoastalMap.ts",
     "tools/prepare-coastal-materials.py"
   ],
-  "generation": "Deterministic metre-based terrain, closed chipped/layered cliff, plinth, opaque folded grass and shrub leaves, buried rock clusters. Seed 41723. Photographic Seaside Rock (Dimitrios Savva, 2m) and Aerial Grass Rock (Rob Tuytel, 15m), Poly Haven CC0. Coast-arc/height UV, macro/strata colour, damp lower wall, shore rock blend. Analytic linear RGBE sky shares the sunlight direction with the rendered sky and scoped outdoor sun; 128-face HDR prefilter and one cached 1024 local shadow. No AI-generated assets or photographic scenery walls. Ground PBR uses translation-only hex blending, identical geometry weights for albedo/normal/ARM; no tangent rotation. Coast columns share shading normals across patch boundaries, with hard vertical ledges. World-anchored near-dense/far-coarse ocean, three analytic displacement waves, filtered crossing ripple normals, linear Fresnel sky reflection and rough GGX sunlight from the same sky parameters, exterior-only marine haze. A generated 256x256 RGBA8 signed-distance/seabed field intersects the closed rock wall at mean sea level and controls water colour and animated broken foam. No additional image download or ocean reflection/refraction target.",
+  "generation": "Deterministic metre-based terrain, closed chipped/layered cliff, plinth, opaque folded grass and shrub leaves, buried rock clusters. Seed 41723. Photographic Seaside Rock (Dimitrios Savva, 2m) and Aerial Grass Rock (Rob Tuytel, 15m), Poly Haven CC0. Coast-arc/height UV, macro/strata colour, damp lower wall, shore rock blend. Analytic linear RGBE sky shares the sunlight direction with the rendered sky and scoped outdoor sun; 128-face HDR prefilter and one cached 1024 local shadow. No AI-generated assets or photographic scenery walls. Ground PBR uses translation-only hex blending, identical geometry weights for albedo/normal/ARM; no tangent rotation. Coast columns share shading normals across patch boundaries, with hard vertical ledges. World-anchored near-dense/far-coarse ocean, three analytic displacement waves, filtered crossing ripple normals, linear Fresnel sky reflection and rough GGX sunlight from the same sky parameters, exterior-only marine haze. A generated 512x512 RGBA8 signed-distance/seabed field intersects the closed rock wall at mean sea level and controls water colour and animated broken foam. No additional image download or ocean reflection/refraction target.",
   "dimensionsMetres": {
     "balconySetbackAtCentre": 5,
     "seaBelowHouseFloor": 28,
     "cliffBottomBelowHouseFloor": 32
+  },
+  "lighthouseGraybox": {
+    "towerCentreMetres": [-125, 90],
+    "towerHeightMetres": 20,
+    "plazaMetres": [14, 18],
+    "roadWidthMetres": 1.8,
+    "earthworks": "Shared CoastalSite road grade, 3.5m inner corridor blended to the terrain over 8m; the last 14m meets the level tower plaza. Rendered terrain triangles drive road placement.",
+    "outdoorWalking": false,
+    "materials": "Four solid graybox PBR materials reuse the existing outdoor HDR; no new downloadable image/model assets."
   },
   "runtimeFiles": [
     "textures/coastal/rock-color.jpg",
@@ -28,15 +40,16 @@
     "environment/coastal-daylight.hdr"
   ],
   "supersedes": "Forest Slope panorama and bark no longer ship or load in the current scene; historical originals and provenance remain in the repository and frozen eight-room-v1 baseline.",
-  "limitations": "Ocean sky reflection excludes local house/cliff reflections. Mean-sea-level shoreline and sloping seabed approximation do not track individual wave crests; no fluid physics. Grass/low shrubs remain static simplified geometry. Indoor HDR, existing room lights, mirrors and interactions are retained. Final multi-platform acceptance remains stage D.",
+  "limitations": "Ocean sky reflection excludes local house/cliff reflections. Mean-sea-level shoreline and sloping seabed approximation do not track individual wave crests; no fluid physics. Grass/low shrubs remain static simplified geometry. Indoor HDR, existing room lights, mirrors and interactions are retained. Lighthouse, path, plaza, bench and house roof are original programmatic graybox masses under the project ISC license, without new image downloads. Outdoor walking remains blocked until lighthouse B; tower interior, detailed exterior finishes and remote shadow coverage are not delivered by A. The previous coastal v1 remains frozen separately; its Firefox/Safari/physical-device limitations do not constitute acceptance for this extension.",
   "materialProvenance": "textures/coastal/source.json: fixed upstream URLs/authors/license, original PNG SHA256, processing parameters, delivered bytes/SHA256; upstream CC0 https://polyhaven.com/license",
   "generatedOceanTexture": {
     "size": [
-      256,
-      256
+      512,
+      512
     ],
     "format": "RGBA8 linear; RG=16-bit signed distance, B=approximate seabed depth",
-    "bytesWithoutMipmaps": 262144,
+    "bytesWithoutMipmaps": 1048576,
+    "coverageMetres": { "minX": -180, "minY": -65, "width": 260, "depth": 220 },
     "source": "CoastalOcean.coastalShoreField / actual CoastalCliff wall rings 7-8 at -28 metres",
     "downloadBytes": 0
   }

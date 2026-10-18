@@ -1,0 +1,186 @@
+{
+  "date": "2026-10-18",
+  "stage": "A completed; B/C/D pending",
+  "sourceCommitBase": "2169624",
+  "sourceSnapshot": "Final task candidate, identified by sourceSha256 and its subsequent Git commit; not the frozen coastal-v1 snapshot",
+  "outdoorWalkingDelivered": false,
+  "routeLengthMetres": 192.9373020123318,
+  "maximumRoadGrade": 0.051184368221502505,
+  "controllerCalibration": {
+    "method": "camera keyboard/controller calibration with fixed 60Hz reference steps on an unconstrained probe; NOT an outdoor walking test or FPS measurement",
+    "base": 0.825,
+    "metresPerSecond": 1.159501808728436,
+    "routeSeconds": 166.39672362729291
+  },
+  "tests": 128,
+  "typescript": "passed",
+  "developmentBuild": "passed",
+  "productionBuild": "passed",
+  "browserMatrix": {
+    "cases": 12,
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "physicalDevices": false
+  },
+  "regression": {
+    "fullHouseSegments": 55,
+    "doorCollisionChecks": 12,
+    "normalErrors": [],
+    "normalWarnings": [],
+    "masterMirror": true,
+    "publicMirror": true,
+    "jump": true,
+    "disposal": {
+      "disposed": true,
+      "meshes": 0,
+      "materials": 0,
+      "lights": 0,
+      "engineScenes": 0
+    }
+  },
+  "before": {
+    "runtimeBytes": 15867631,
+    "initialJsBytes": 2587055,
+    "actualInitialJsBytes": 2805907,
+    "releaseBytes": 42203792
+  },
+  "after": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26191285,
+    "runtimeBytes": 15867631,
+    "documentationBytes": 65317,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2597655,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42216937,
+    "actualInitialJsBytes": 2816507
+  },
+  "delta": {
+    "runtimeBytes": 0,
+    "initialJsBytes": 10600,
+    "actualInitialJsBytes": 10600,
+    "releaseBytes": 13145
+  },
+  "resources": {
+    "metadata": {
+      "layoutVersion": "house-plan-v1",
+      "exteriorVersion": "lighthouse-graybox-a-v1",
+      "coastalSite": {
+        "version": "lighthouse-graybox-a-v1",
+        "stage": "A",
+        "outdoorWalking": false,
+        "tower": {
+          "x": -125,
+          "y": 90,
+          "ground": 3,
+          "height": 20,
+          "radius": 2.8
+        },
+        "routeLength": 192.9373020123318
+      }
+    },
+    "meshes": 628,
+    "vertices": 536160,
+    "materials": 84,
+    "textures": 147,
+    "lights": 16,
+    "cameras": 3,
+    "exteriorMeshes": 32,
+    "exteriorVertices": 130228,
+    "shoreField": [
+      {
+        "name": "coastal-shore-distance-depth",
+        "size": {
+          "width": 512,
+          "height": 512
+        },
+        "gamma": false
+      }
+    ],
+    "outdoorCollisionMeshes": []
+  },
+  "coastOverviewDraws": 782,
+  "shoreTextureBytesWithoutMipmaps": 1048576,
+  "shoreTextureDeltaBytes": 786432,
+  "legacyVerifierMetadata": "Some reused D verifier JSON files retain historical baseline labels. All current records were run against the final release-manifest.json in this directory, served only from dist on port 8170.",
+  "sourceSha256": {
+    "src/app.ts": "b89f0ceccfc146b7e2bb7372884beae4f1286a20a6bd10b10cd8db60c4799119",
+    "src/components/BasicExamples.ts": "edf5a7b1e06e620259f9ce875ad7d35b4280d7307ae3e2143cba1090ec9d5be5",
+    "src/examples/BasicScene.ts": "e23b01945715d5f005041187928b9176b1dc6f0852dfcb05bc0c3c864d11925d",
+    "src/examples/BigRoom.ts": "4859a3ac6c1495d5aa79b21943bf1e5e9b57b40923adaf54f8d50b47495f1e6c",
+    "src/examples/BookshelfLayout.ts": "158bd501e25945ce23bbe50e1e0134337e31bf8ef38eab2313c5341f56698456",
+    "src/examples/CoastalCliff.ts": "07e2d5eb1b5fcfd7fa14a2dc5052262653702de9f240267a7bf3f212c3734aa5",
+    "src/examples/CoastalLandmark.ts": "3b92b84ea164ec8d4f2d572d6f97d99693f7bbb22e392a776b6b7d3050e1a3ac",
+    "src/examples/CoastalMap.ts": "93522c71be4c2d2e35ed11d69d72f84fe02c01cbba3bd6fb32ed9cba8ee3cfec",
+    "src/examples/CoastalMaterials.ts": "3025597009b8db49e410495192214a1954c7127f4e91b3f59176bdeaec96d1cc",
+    "src/examples/CoastalOcean.ts": "aa50e7a889972924ea4fecf5a67330e1445023c41e010487b62f8af6cd1a69be",
+    "src/examples/CoastalScatter.ts": "924e84585b32e6b680ea5a222f2dd9779fc9f1456be4122313a163ac61f9f681",
+    "src/examples/CoastalSite.ts": "3bae874ec2d8aefd85a6a99f1ddf8c12d086396035a31fc970169d43c6e48caf",
+    "src/examples/CoastalSky.ts": "67758a5b0ac80f8049ee8c72d08ed4cb8abe67b22df3d07e42a8382075f8a209",
+    "src/examples/CustomModels.ts": "efc2150cac93193a00b0ff097c498785d086c08425a2d6f06c351a3bac2faa2f",
+    "src/examples/Grass.ts": "a51ecbd10b6f47932a5eff4c70227fa7025b6173a03ea6d92348e0f0bccc38bf",
+    "src/examples/HouseArchitecture.ts": "e41f752eacf94acaecb7eb9fefaf6158fc080bf307c9eb1212400873faae71c1",
+    "src/examples/HouseBalcony.ts": "50478c5410fa8d018c867cab9cf0d385edf8258297cc2b72a45e09418667edd4",
+    "src/examples/HouseBedroom.ts": "2e0830835431736375feded5913680220218324ece061eb3a1a5b822e5aab975",
+    "src/examples/HouseContent.ts": "397423ec8b5a25ba5883748f240c55ba85314b542aaabf6d56c2f961d64bab8d",
+    "src/examples/HouseFloorPlan.ts": "3bf6ab1482f58c5187605769ead13c1635a2c7235226fac66cd54a543d6812b9",
+    "src/examples/HouseJump.ts": "92d22dcff7de7cbb43344e180499eccdd6371a5f2f631a0fe7859b25e0ff02cb",
+    "src/examples/HouseLayout.ts": "96896fc76834c5cd795d1385aa23d97d3ca976d4e43a393542438d2d72a538df",
+    "src/examples/HouseRoomComponents.ts": "b493418ce0b3f73c040623d76a92ba7e530f5891ef8b9943002f4f1146932380",
+    "src/examples/HouseRooms.ts": "33c7d58a3cde859ec4c158e0ecac64f6612fcb6e73b7c78d00bdb7531c2c2d39",
+    "src/examples/HouseServiceRooms.ts": "6f6d1eb89c605f3bdb1b5d620ba7262197aa41397aa3dec78fe939bc3384b399",
+    "src/examples/HouseStructure.ts": "e5b896662e0c7fc5074779dce611db2e6d4483bd2ebea940d6beef3a182c6693",
+    "src/examples/HouseSuite.ts": "8fdb1e1ccc77bace6eddb7189258d84df88b131fe001dbfe66978947ba880df9",
+    "src/examples/HouseWalking.ts": "33664169709893cc18e66934fb09407e0f0faa4d6e4864de1aadf00f57475912",
+    "src/examples/PBR.ts": "ce9a4c1691f5e34bb869bff005a76bd3d581f5bd19fe0ca40de7728b341bb6a4",
+    "src/examples/Rocket.ts": "eca5066f40907ee2588a03a456a88d6f903abe20efc45177d8f66a26b089912a",
+    "src/examples/Room.ts": "4823eddbb9f280566d86a7d41a10381752bd9e815c5ad718fb66deaff36ad3f7",
+    "src/examples/RoomAudio.ts": "2ccf413bf37f2c509112b809226de54d6bbd58ee257b6717634c4b123b1fa3b8",
+    "src/examples/RoomAudioBackend.ts": "3e6cf66bab8c2f1b38fe5fee05fb06dda2eb3b17a2b00d3b28c9efed62f92bf9",
+    "src/examples/RoomAudioCatalog.ts": "306f258c47ab0b5704924275486f5dcec5ffc18bfc050f4e964ca4e913e2b52a",
+    "src/examples/RoomCollisions.ts": "7e0eb56b7b95d2f402d712cc106cbf9e3842a54dd864b7947751dfbec50ea4c3",
+    "src/examples/RoomDetailGeometry.ts": "bf582a11443ed1fd0c986642cd60a65e711179c18713b38b9c4342d1351d1276",
+    "src/examples/RoomExterior.ts": "5be27cce7498b311d5f2f8b5cf27b30477b82c9e16e2975dd86ee7ea8bf836ec",
+    "src/examples/RoomFinishing.ts": "7b7f2357fac5389ac452b7ee94cf21bcb80f2871e9ae76d61169ded1bc5e308b",
+    "src/examples/RoomFloorPlan.ts": "b5dbed56e45ee6595ac326399f327122117823baca3e10f78430eea2882a83f3",
+    "src/examples/RoomFurnishings.ts": "d0b35b440eccb038240627ca1d14924f9456ce45702a7e47c575f50b35f2644c",
+    "src/examples/RoomFurnitureAssets.ts": "99800111e655970da0fe97c41ce4464449ea0bda8b1fd757c00423bc663bcae7",
+    "src/examples/RoomInteractions.ts": "b145a5f49e3fb57d9f982584b7bbf491e13f7ac857630c4dd87de62980572d88",
+    "src/examples/RoomItemInspection.ts": "c7c42fe3723b93ea27586db57b3753f7df7c54484e78157b418ef7066d3634d0",
+    "src/examples/RoomLayout.ts": "1dc8003bfe25f746bbd5aa835dd3388fb310a76fb4148f5508d6ddfc0ba132c8",
+    "src/examples/RoomLegacyArchitecture.ts": "596858ece3cd35a633ceb4b5bd0a16c497d7c0c8928301db522906fbceb8c4a3",
+    "src/examples/RoomLighting.ts": "e9848554f698a4e6ec0e9f053c4587bd3a838b98bf923aef2cc8d42a2d33c1b6",
+    "src/examples/RoomLivingRoom.ts": "85efcce388d59748fb0034498d2331509e255904f684d7ca4565fe1a4b36141b",
+    "src/examples/RoomMaterialLibrary.ts": "d4864800cfb3088900095d2d0d99c6d698aa8ed3fa416d96cfddba4b58dcdc45",
+    "src/examples/RoomMaterials.ts": "872f5c29b4b26a3d9f3166d49ea656e7c5b92187547d321de6c79ac53d0f012c",
+    "src/examples/RoomMirrors.ts": "90783ebb510c1d0d83bd7fe434df4c2e4163a3cf01626233fe06ea6d973d8b75",
+    "src/examples/RoomOwnership.ts": "671fbf44c73a62a83b63cf0728080246fe02bb37721403c433aa4780fdecfb34",
+    "src/examples/RoomPointerLock.ts": "a70de7ba6a84b7700be44a53a54ede8c33d2357aae0a496d845df0952ce60bff",
+    "src/examples/RoomRuntime.ts": "c261b5f6542b8b1405b26f05c9c1b583f27437a70861c1c083b4c0dcf18a2762",
+    "src/examples/RoomShaders.ts": "141420f50a89d81b4f25e43d24dc282b7405b86b337b0877849f54001df2ff96",
+    "src/examples/RoomSurfaceDetails.ts": "1f0049cbdd9fd280ff5ef04a3f7a36dcb1926573e55f456c846f722d7cd97809",
+    "src/examples/Shadows.ts": "d2fb9633c9fef9125c42dae7205215fa040213e0b20e056d88fdf298ee3857b2",
+    "src/examples/StandardMaterials.ts": "7f48c0435afca396036f93cbe368b8dd976dd8f126d3dae969a71e58af453e9f",
+    "src/examples/Textures.ts": "472264476c342d030edfc8231aade681d08babae04c53febb5e807f03b5378dd",
+    "public/index.html": "522a24f8351b47a6bcd305f8345793d3f79ce370f49acbb8f0c99886df87431a",
+    "public/environment/coastal-cliff-source.json": "f603ed4803f06d19bf729e0cb0f9f14e3e5f7e9ecb944fac85bddecb94d01f62",
+    "package.json": "d0b503f1aafb821f442916332ca0267497ca6fd05c7dd1c3919552acbcd5b6a9",
+    "package-lock.json": "e94ba83cc02d96a6954d091bf84233bceee7275e85107453a75f772a8a629dcf",
+    "tsconfig.json": "ed9642d8c1f59cea1d99f21c6074bbae1f3b4a0d81a371252ef88d59cebe6045",
+    "webpack.config.js": "16762abfd7f6dcd688f4f29b527e122aa8a22168ff08acd4c3292307dbf7136b",
+    "tools/study-release.config.cjs": "fd2db6a7d83fc7964a33f9d4d8cdc5a106972b66502ffd2dfbfae3d1d3892a4f",
+    "tools/StudyReleasePlugin.cjs": "f1bb0d23ab058fb6e2fcea2dee3ee4252be8868290c078b6c7da17e86a46f07e"
+  },
+  "releaseManifestSha256": "176142a1df40301836cb29878f09e70e03f935ed60ac44714afafdd78a971321",
+  "performanceExperimentsResumed": false,
+  "limitations": [
+    "Outdoor movement and true route walking time await B",
+    "Graybox finishes, rails/signs, exterior detailing and remote shadows await C",
+    "Firefox, Safari and physical mobile devices not tested",
+    "No FPS, load-time, GPU-time or peak-memory measurement"
+  ]
+}

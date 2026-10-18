@@ -1,0 +1,978 @@
+{
+  "baseline": "2169624 + lighthouse A",
+  "browser": "155.0.8059.82",
+  "fpsOrLoadTimeSampling": false,
+  "outdoorWalking": false,
+  "routeLengthMetres": 192.9373020123318,
+  "maximumGrade": 0.051184368221502505,
+  "views": [
+    {
+      "name": "coast-map-desktop",
+      "camera": "study-camera",
+      "position": [
+        -74,
+        82,
+        83.99999999999999
+      ],
+      "target": [
+        0,
+        -3,
+        2
+      ],
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "coast-overview",
+      "camera": "study-camera",
+      "position": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "target": [
+        -352,
+        -5,
+        198
+      ],
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "lookout-toward-lighthouse",
+      "camera": "study-camera",
+      "position": [
+        -377,
+        8.005222824445333,
+        98
+      ],
+      "target": [
+        -652,
+        65,
+        423
+      ],
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "lookout-back-to-house",
+      "camera": "study-camera",
+      "position": [
+        -377,
+        8.005222824445285,
+        97.9999999999999
+      ],
+      "target": [
+        0,
+        6.5,
+        0
+      ],
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "lighthouse-back-to-house",
+      "camera": "study-camera",
+      "position": [
+        -652,
+        18.000000000000064,
+        388
+      ],
+      "target": [
+        0,
+        6.5,
+        0
+      ],
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "lighthouse-massing-close",
+      "camera": "study-camera",
+      "position": [
+        -522,
+        17.99999999999997,
+        263
+      ],
+      "target": [
+        -652,
+        60,
+        423
+      ],
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "path-original-coast-pinch",
+      "camera": "study-camera",
+      "position": [
+        -197,
+        5.403448062648888,
+        13.00000000000001
+      ],
+      "target": [
+        -302,
+        7.006302872437132,
+        33
+      ],
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "balcony-right-lighthouse",
+      "camera": "study-first-person",
+      "position": [
+        13.499999999999996,
+        3,
+        30.249999999999993
+      ],
+      "target": [
+        -652.0000262748825,
+        65.00000216143762,
+        422.9999809461631
+      ],
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "coast-map-portrait",
+      "camera": "study-camera",
+      "position": [
+        -224.20102564102567,
+        254.52820512820506,
+        250.43897435897426
+      ],
+      "target": [
+        0,
+        -3,
+        2
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "name": "coast-overview-portrait",
+      "camera": "study-camera",
+      "position": [
+        -352.0000000000005,
+        2721.7692307692305,
+        3076.25641025641
+      ],
+      "target": [
+        -352,
+        -5,
+        198
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "name": "coast-map-landscape",
+      "camera": "study-camera",
+      "position": [
+        -352.00000000000017,
+        894.9999999999999,
+        1148
+      ],
+      "target": [
+        -352,
+        -5,
+        198
+      ],
+      "viewport": [
+        844,
+        390
+      ]
+    },
+    {
+      "name": "coast-overview-landscape",
+      "camera": "study-camera",
+      "position": [
+        -352.00000000000017,
+        894.9999999999999,
+        1148
+      ],
+      "target": [
+        -352,
+        -5,
+        198
+      ],
+      "viewport": [
+        844,
+        390
+      ]
+    },
+    {
+      "name": "balcony-preserved",
+      "camera": "study-camera",
+      "position": [
+        13.499999999999961,
+        3.0000000000000124,
+        30.249999999999986
+      ],
+      "target": [
+        -11,
+        -2.5,
+        158
+      ],
+      "viewport": [
+        1280,
+        800
+      ]
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "initialRequests": [
+    {
+      "url": "http://127.0.0.1:8170/",
+      "status": 200,
+      "bytes": 19942
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/main.js",
+      "status": 200,
+      "bytes": 177477
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8170/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8170/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4444
+    },
+    {
+      "url": "http://127.0.0.1:8170/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8170/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8170/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8170/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/1848457f-50b9-414e-8e36-3f497da90845",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/0738f46c-2bc3-4b53-8051-e0a89a154703",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/9a0c4cbf-70a4-41d0-998f-e9b041bbeb7b",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/ae981f7c-7129-4f1a-b5c8-324c91a61c21",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/adcfbe19-e592-49ef-99c4-e2b8348cf14d",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/bb5262f1-38b0-4d06-babf-7e777d007c5c",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/911b9d63-e9ce-4de9-8f3f-42b1c46d2aef",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/b97d78d0-6773-4c3c-baf1-768ca8bc17d2",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/017f829a-8255-4cc6-b21e-55e0bc3ad08a",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/660810a6-6bf7-45b9-ab95-2426c825a188",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/bac6a9fb-9f04-401c-a216-0df98d7c7922",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/19ff5028-6eab-4cbd-b796-fceaaa6d86f8",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/60173450-2e58-4867-b2af-3a4a5c656db9",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/af18f085-d33d-4169-a787-e797a2d97012",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/9d250fc4-2293-407b-b534-44b0457f2d54",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/37335a4b-9ec3-406b-87c8-b1b2c12a902d",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ],
+  "actualInitialJsBytes": 2816507,
+  "resources": {
+    "metadata": {
+      "layoutVersion": "house-plan-v1",
+      "exteriorVersion": "lighthouse-graybox-a-v1",
+      "coastalSite": {
+        "version": "lighthouse-graybox-a-v1",
+        "stage": "A",
+        "outdoorWalking": false,
+        "tower": {
+          "x": -125,
+          "y": 90,
+          "ground": 3,
+          "height": 20,
+          "radius": 2.8
+        },
+        "routeLength": 192.9373020123318
+      }
+    },
+    "meshes": 628,
+    "vertices": 536160,
+    "materials": 84,
+    "textures": 147,
+    "lights": 16,
+    "cameras": 3,
+    "exteriorMeshes": 32,
+    "exteriorVertices": 130228,
+    "shoreField": [
+      {
+        "name": "coastal-shore-distance-depth",
+        "size": {
+          "width": 512,
+          "height": 512
+        },
+        "gamma": false
+      }
+    ],
+    "outdoorCollisionMeshes": []
+  },
+  "overview": {
+    "draws": 782,
+    "roof": true,
+    "landmarkVisible": true
+  },
+  "sightlines": [
+    {
+      "name": "balcony-to-tower-top",
+      "distance": 778.8143633113092,
+      "firstHit": null,
+      "clear": true
+    },
+    {
+      "name": "lookout-to-house-roof",
+      "distance": 389.53719195110966,
+      "firstHit": null,
+      "clear": true
+    },
+    {
+      "name": "tower-plaza-to-house-roof",
+      "distance": 758.7517710028754,
+      "firstHit": null,
+      "clear": true
+    }
+  ],
+  "controllerCalibration": {
+    "method": "camera keyboard/controller calibration with fixed 60Hz reference steps on an unconstrained probe; NOT an outdoor walking test or FPS measurement",
+    "base": 0.825,
+    "metresPerSecond": 1.159501808728436,
+    "routeSeconds": 166.39672362729291
+  },
+  "animationTimes": [
+    1.2000000000000006,
+    1.4,
+    1.5999999999999992,
+    1.7999999999999985
+  ],
+  "finalCameras": 3,
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8170/",
+      "status": 200,
+      "bytes": 19942
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/main.js",
+      "status": 200,
+      "bytes": 177477
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8170/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8170/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8170/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4444
+    },
+    {
+      "url": "http://127.0.0.1:8170/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8170/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8170/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8170/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/1848457f-50b9-414e-8e36-3f497da90845",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/0738f46c-2bc3-4b53-8051-e0a89a154703",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/9a0c4cbf-70a4-41d0-998f-e9b041bbeb7b",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/ae981f7c-7129-4f1a-b5c8-324c91a61c21",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/adcfbe19-e592-49ef-99c4-e2b8348cf14d",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/bb5262f1-38b0-4d06-babf-7e777d007c5c",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/911b9d63-e9ce-4de9-8f3f-42b1c46d2aef",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/b97d78d0-6773-4c3c-baf1-768ca8bc17d2",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/017f829a-8255-4cc6-b21e-55e0bc3ad08a",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/660810a6-6bf7-45b9-ab95-2426c825a188",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/bac6a9fb-9f04-401c-a216-0df98d7c7922",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/19ff5028-6eab-4cbd-b796-fceaaa6d86f8",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/60173450-2e58-4867-b2af-3a4a5c656db9",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/af18f085-d33d-4169-a787-e797a2d97012",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/9d250fc4-2293-407b-b534-44b0457f2d54",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8170/37335a4b-9ec3-406b-87c8-b1b2c12a902d",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8170/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8170/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ],
+  "passed": true
+}

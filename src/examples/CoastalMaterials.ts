@@ -1,6 +1,6 @@
 import { Color3, Constants, HDRCubeTexture, MaterialPluginBase, PBRMaterial, Texture } from "@babylonjs/core/pure";
 import type { BaseTexture, Scene, UniformBuffer } from "@babylonjs/core/pure";
-import { COASTAL_CLIFF } from "./CoastalCliff";
+import { coastalCrestShader } from "./CoastalCliff";
 
 /** Small PBR extension: shared world-scale variation, a shore transition and a damp lower cliff.
  * Uses the normal/ARM workflow already registered by RoomRuntime; no triplanar shader system.
@@ -27,6 +27,7 @@ export class CoastalSurface extends MaterialPluginBase {
     return {
       CUSTOM_FRAGMENT_DEFINITIONS: `
         ${rock ? "" : "uniform sampler2D coastalRockSampler;"}
+        ${coastalCrestShader}
         float coastalMacro(vec3 p) {
           return .88 + .08*sin(p.x*.061 + sin(p.z*.043)*2.) + .04*sin(p.z*.147+p.y*.11);
         }
@@ -35,10 +36,7 @@ export class CoastalSurface extends MaterialPluginBase {
         }
         float coastalBare(vec3 p) {
           vec2 q=p.xz/5.+vec2(5.4);
-          float crest=${COASTAL_CLIFF.balconyEdgeY + COASTAL_CLIFF.setback}
-            +40.*(exp(-pow((q.x+8.)/6.,2.))-exp(-pow(16.1/6.,2.)))
-            -4.*(exp(-pow((q.x-28.)/8.,2.))-exp(-pow(-19.9/8.,2.)))
-            +.55*(sin(q.x*.37)-sin(8.1*.37));
+          float crest=coastalCrest(q.x);
           return 1.-smoothstep(.15,2.5,crest-q.y+.35*sin(q.x*3.7)+.2*sin(q.y*5.1));
         }`,
       CUSTOM_FRAGMENT_BEFORE_LIGHTS: rock ? `
@@ -70,6 +68,13 @@ export class CoastalMaterials {
   private readonly failed = new Set<BaseTexture>();
   private disposed = false;
   readonly textures: BaseTexture[] = [];
+  solid(name: string, color: string) {
+    const material = new PBRMaterial(name, this.scene);
+    material.albedoColor = Color3.FromHexString(color).toLinearSpace(); material.metallic = 0; material.roughness = .9;
+    material.reflectionTexture = this.environment; material.environmentIntensity = 3.8;
+    material.maxSimultaneousLights = 1; material.usePhysicalLightFalloff = false;
+    this.materials.push(material); return material;
+  }
   constructor(private readonly scene: Scene) {
     this.environment = new HDRCubeTexture("./environment/coastal-daylight.hdr", scene, 128, false, true, false, true, undefined, () => this.fallbackFor(this.environment));
     this.textures.push(this.environment);

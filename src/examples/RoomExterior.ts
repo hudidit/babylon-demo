@@ -9,8 +9,11 @@ import { CoastalMaterials } from "./CoastalMaterials";
 import { coastalScatter } from "./CoastalScatter";
 import { COASTAL_SKY, coastalSkyColor, coastalSunDirection } from "./CoastalSky";
 import { CoastalOcean } from "./CoastalOcean";
+import { createCoastalLandmark } from "./CoastalLandmark";
+import { COASTAL_SITE, coastalRouteLength } from "./CoastalSite";
+import { coastalSurfaceHeight } from "./CoastalCliff";
 
-type ExteriorLayer = "terrain" | "cliff" | "foundation" | "vegetation" | "rocks" | "distant" | "sea" | "sky";
+type ExteriorLayer = "terrain" | "cliff" | "foundation" | "vegetation" | "rocks" | "distant" | "sea" | "sky" | "landmark" | "path" | "house-roof";
 
 /** Shared coast: photographic land, scoped daylight and a world-anchored animated ocean. */
 export class RoomExterior {
@@ -19,6 +22,7 @@ export class RoomExterior {
   readonly sun: DirectionalLight;
   readonly shadow: ShadowGenerator;
   readonly ocean: CoastalOcean;
+  private readonly houseRoof: Mesh;
   private readonly cutaway = new Plane(0, 0, 1, 0);
   private readonly clippedMaterials: (PBRMaterial | StandardMaterial)[] = [];
   private readonly corners: { x: number; z: number }[] = [];
@@ -40,7 +44,7 @@ export class RoomExterior {
     };
     const sky = unlit("coastal-sky");
     const retain = (mesh: Mesh, layer: ExteriorLayer) => {
-      mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "C", castsShadows: false, lightRooms: [] };
+      mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "lighthouse-A", castsShadows: false, lightRooms: [] };
       setRoomOwners(mesh, owners);
       mesh.isPickable = false; mesh.checkCollisions = false;
       mesh.receiveShadows = ["terrain", "foundation", "vegetation", "rocks"].includes(layer);
@@ -65,8 +69,8 @@ export class RoomExterior {
       make(`coastal-inland-${side}`, coastalLandPatch(first, last, a.nearRows, a.rows), "distant", s.farGround);
     }
     const boundary = coastalBoundary();
-    for (let side = 0; side < 3; side++)
-      make(`coastal-cliff-front-${side}`, coastalWallPatch(boundary, side * 32, (side + 1) * 32), "cliff", s.rock);
+    for (let side = 0; side < 5; side++)
+      make(`coastal-cliff-front-${side}`, coastalWallPatch(boundary, side * a.columns / 5, (side + 1) * a.columns / 5), "cliff", s.rock);
     const splitEast = a.columns + a.nearRows, splitWest = boundary.length - a.nearRows;
     make("coastal-cliff-east", coastalWallPatch(boundary, a.columns, splitEast), "cliff", s.rock);
     make("coastal-cliff-west", coastalWallPatch(boundary, splitWest, boundary.length), "cliff", s.rock);
@@ -76,6 +80,7 @@ export class RoomExterior {
     const scatter = coastalScatter();
     make("coastal-anchored-rocks", scatter.rocks, "rocks", s.rock);
     make("coastal-grass-and-shrubs", scatter.plants, "vegetation", s.foliage);
+    this.houseRoof = createCoastalLandmark(scene, s, retain);
     this.ocean = new CoastalOcean(scene, make("coastal-sea", coastalSea(), "sea", sky));
 
     const dome = CreateSphere("coastal-sky", { diameter: a.skyRadius * 2, segments: 96, sideOrientation: Mesh.BACKSIDE }, scene);
@@ -101,7 +106,9 @@ export class RoomExterior {
     this.shadow.getShadowMap()!.refreshRate = RenderTargetTexture.REFRESHRATE_RENDER_ONCE;
     this.bindShadowCasters([]);
     this.sceneCleanup = scene.onDisposeObservable.addOnce(() => this.dispose());
-    scene.metadata = { ...scene.metadata, exteriorVersion: a.version };
+    scene.metadata = { ...scene.metadata, exteriorVersion: a.version,
+      coastalSite: { version: COASTAL_SITE.version, stage: "A", outdoorWalking: false,
+        tower: COASTAL_SITE.tower, routeLength: coastalRouteLength((x, y) => coastalSurfaceHeight(x, y)!) } };
   }
 
   /** Explicit static shell/rail list. Furniture, moving door leaves, sea and distant cliffs never enter this map. */
@@ -113,6 +120,7 @@ export class RoomExterior {
     this.refreshShadows();
   }
   refreshShadows() { if (!this.disposed) this.shadow.getShadowMap()?.resetRefreshCounter(); }
+  setHouseEnclosed(enclosed: boolean) { this.houseRoof.isVisible = enclosed; }
   setVisible(visible: boolean) {
     this.meshes.forEach(mesh => mesh.isVisible = visible); this.sun.setEnabled(visible);
     this.ocean.setVisible(visible);

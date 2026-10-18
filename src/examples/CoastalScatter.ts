@@ -2,12 +2,14 @@ import { Color3 } from "@babylonjs/core/pure";
 import { COASTAL_CLIFF, coastalCrestY, coastalGroundHeight } from "./CoastalCliff";
 import { planToWorld } from "./HouseLayout";
 import type { CoastalGeometry } from "./CoastalCliff";
+import { coastalRoute, coastalRouteDistance, COASTAL_SITE } from "./CoastalSite";
 export type CoastalScatterGeometry = CoastalGeometry & { colors: number[] };
 
 /** Fixed clusters, buried rocks, folded opaque blades and low woody cushions; never photo cards. */
 export function coastalScatter() {
   const empty = (): CoastalScatterGeometry => ({ positions: [], indices: [], uvs: [], colors: [] });
   const rocks = empty(), plants = empty(); let seed: number = COASTAL_CLIFF.seed;
+  const route = coastalRoute();
   const random = () => { seed = Math.imul(seed, 1664525) + 1013904223 | 0; return (seed >>> 0) / 4294967296; };
   const vertex = (g: CoastalScatterGeometry, x: number, y: number, height: number, color: Color3) => {
     const p = planToWorld({ x, y }, height), i = g.positions.length / 3;
@@ -54,6 +56,7 @@ export function coastalScatter() {
   for (let n = 0; n < 1500; n++) {
     const x = -27 + random() * 61, y = -28 + random() * 84;
     if (x > -1 && x < 11.8 && y > -1 && y < 13.1 || y > coastalCrestY(x) - .45) continue;
+    if (coastalRouteDistance(x, y, route) < COASTAL_SITE.pathWidth / 2 + 1) continue;
     // Wind-worn bare streaks between clumps, with denser grasses beside the house.
     if (Math.sin(x * .46 + Math.sin(y * .27)) + Math.cos(y * .65) < -.5) continue;
     if (n % 11 === 0) stone(x, y, .25 + random() * .75);

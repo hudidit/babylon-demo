@@ -1,0 +1,571 @@
+{
+  "baseline": "2169624 + lighthouse A",
+  "fpsOrLoadTimeSampling": false,
+  "physicalDevicesTested": false,
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "desktop",
+      "size": [
+        1280,
+        800
+      ],
+      "renderSize": [
+        1280,
+        800
+      ],
+      "scaling": 1,
+      "towerTop": [
+        906.2395127346367,
+        463.11012025458473,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        890.1045443196111,
+        519.8068003582977,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 1046,
+        "top": 490.46875,
+        "right": 1254,
+        "bottom": 774
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.3,
+      "nextTime": 0.65,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "portrait",
+      "size": [
+        390,
+        844
+      ],
+      "renderSize": [
+        390,
+        844
+      ],
+      "scaling": 1,
+      "towerTop": [
+        275.44561199845526,
+        441.0690564565786,
+        0.9991562176127102
+      ],
+      "towerBase": [
+        273.98620928773965,
+        459.83653240762237,
+        0.9991806001892637
+      ],
+      "mapRect": {
+        "left": 232,
+        "top": 547.265625,
+        "right": 378,
+        "bottom": 762
+      },
+      "eye": [
+        -351.99999999999983,
+        2721.7692307692305,
+        3076.25641025641
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.9500000000000003,
+      "nextTime": 1.3000000000000005,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "landscape",
+      "size": [
+        844,
+        390
+      ],
+      "renderSize": [
+        844,
+        390
+      ],
+      "scaling": 1,
+      "towerTop": [
+        551.791765199908,
+        225.76618310146043,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        543.925967135176,
+        253.4058142803191,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 686,
+        "top": 106.09375,
+        "right": 818,
+        "bottom": 306
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 1.6000000000000008,
+      "nextTime": 1.950000000000001,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "desktop",
+      "size": [
+        1280,
+        800
+      ],
+      "renderSize": [
+        1280,
+        800
+      ],
+      "scaling": 1,
+      "towerTop": [
+        906.2395127346367,
+        463.11012025458473,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        890.1045443196111,
+        519.8068003582977,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 1046,
+        "top": 490.46875,
+        "right": 1254,
+        "bottom": 774
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.3,
+      "nextTime": 0.65,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "portrait",
+      "size": [
+        390,
+        844
+      ],
+      "renderSize": [
+        390,
+        844
+      ],
+      "scaling": 1,
+      "towerTop": [
+        275.44561199845526,
+        441.0690564565786,
+        0.9991562176127102
+      ],
+      "towerBase": [
+        273.98620928773965,
+        459.83653240762237,
+        0.9991806001892637
+      ],
+      "mapRect": {
+        "left": 232,
+        "top": 547.265625,
+        "right": 378,
+        "bottom": 762
+      },
+      "eye": [
+        -351.99999999999983,
+        2721.7692307692305,
+        3076.25641025641
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.9500000000000003,
+      "nextTime": 1.3000000000000005,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "landscape",
+      "size": [
+        844,
+        390
+      ],
+      "renderSize": [
+        844,
+        390
+      ],
+      "scaling": 1,
+      "towerTop": [
+        551.791765199908,
+        225.76618310146043,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        543.925967135176,
+        253.4058142803191,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 686,
+        "top": 106.09375,
+        "right": 818,
+        "bottom": 306
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 1.6000000000000008,
+      "nextTime": 1.950000000000001,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "desktop",
+      "size": [
+        1280,
+        800
+      ],
+      "renderSize": [
+        1280,
+        800
+      ],
+      "scaling": 1,
+      "towerTop": [
+        906.2395127346367,
+        463.11012025458473,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        890.1045443196111,
+        519.8068003582977,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 1046,
+        "top": 492.46875,
+        "right": 1254,
+        "bottom": 774
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.3,
+      "nextTime": 0.65,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "portrait",
+      "size": [
+        390,
+        844
+      ],
+      "renderSize": [
+        390,
+        844
+      ],
+      "scaling": 1,
+      "towerTop": [
+        275.44561199845526,
+        441.0690564565786,
+        0.9991562176127102
+      ],
+      "towerBase": [
+        273.98620928773965,
+        459.83653240762237,
+        0.9991806001892637
+      ],
+      "mapRect": {
+        "left": 232,
+        "top": 549.265625,
+        "right": 378,
+        "bottom": 762
+      },
+      "eye": [
+        -351.99999999999983,
+        2721.7692307692305,
+        3076.25641025641
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.9500000000000003,
+      "nextTime": 1.3000000000000005,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "landscape",
+      "size": [
+        844,
+        390
+      ],
+      "renderSize": [
+        844,
+        390
+      ],
+      "scaling": 1,
+      "towerTop": [
+        551.791765199908,
+        225.76618310146043,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        543.925967135176,
+        253.4058142803191,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 686,
+        "top": 108.09375,
+        "right": 818,
+        "bottom": 306
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 1.6000000000000008,
+      "nextTime": 1.950000000000001,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "desktop",
+      "size": [
+        1280,
+        800
+      ],
+      "renderSize": [
+        1280,
+        800
+      ],
+      "scaling": 1,
+      "towerTop": [
+        906.2395127346367,
+        463.11012025458473,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        890.1045443196111,
+        519.8068003582977,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 1046,
+        "top": 492.46875,
+        "right": 1254,
+        "bottom": 774
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.3,
+      "nextTime": 0.65,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "portrait",
+      "size": [
+        390,
+        844
+      ],
+      "renderSize": [
+        390,
+        844
+      ],
+      "scaling": 1,
+      "towerTop": [
+        275.44561199845526,
+        441.0690564565786,
+        0.9991562176127102
+      ],
+      "towerBase": [
+        273.98620928773965,
+        459.83653240762237,
+        0.9991806001892637
+      ],
+      "mapRect": {
+        "left": 232,
+        "top": 549.265625,
+        "right": 378,
+        "bottom": 762
+      },
+      "eye": [
+        -351.99999999999983,
+        2721.7692307692305,
+        3076.25641025641
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 0.9500000000000003,
+      "nextTime": 1.3000000000000005,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "landscape",
+      "size": [
+        844,
+        390
+      ],
+      "renderSize": [
+        844,
+        390
+      ],
+      "scaling": 1,
+      "towerTop": [
+        551.791765199908,
+        225.76618310146043,
+        0.9958076901148547
+      ],
+      "towerBase": [
+        543.925967135176,
+        253.4058142803191,
+        0.9960920737310106
+      ],
+      "mapRect": {
+        "left": 686,
+        "top": 108.09375,
+        "right": 818,
+        "bottom": 306
+      },
+      "eye": [
+        -351.99999999999994,
+        894.9999999999999,
+        1148
+      ],
+      "roof": true,
+      "waterReady": true,
+      "shoreSize": {
+        "width": 512,
+        "height": 512
+      },
+      "time": 1.6000000000000008,
+      "nextTime": 1.950000000000001,
+      "errors": [],
+      "warnings": [],
+      "disposalPassed": true
+    }
+  ]
+}

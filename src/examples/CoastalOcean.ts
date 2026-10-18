@@ -10,7 +10,8 @@ export const OCEAN_WAVES = [
   { direction: [-.55, .835], amplitude: .095, length: 9.5, speed: 1.18 },
   { direction: [.24, -.971], amplitude: .045, length: 4.8, speed: 1.67 },
 ] as const;
-export const OCEAN_FIELD = { size: 256, minX: -65, minY: -65, width: 135, depth: 155, range: 32 } as const;
+// Preserve at least the old near-house texel density while covering the lighthouse's new cliff.
+export const OCEAN_FIELD = { size: 512, minX: -180, minY: -65, width: 260, depth: 220, range: 32 } as const;
 
 /** Intersect the same two wall rings used by the rock mesh with mean sea level. */
 export function coastalShoreline() {
@@ -37,11 +38,31 @@ export function coastalShoreDistance(x: number, y: number, shore = coastalShorel
 /** R/G store a 16-bit signed distance, B a static sloping seabed approximation, A unused. */
 export function coastalShoreField() {
   const f = OCEAN_FIELD, shore = coastalShoreline(), data = new Uint8Array(f.size * f.size * 4);
-  for (let row = 0; row < f.size; row++) for (let col = 0; col < f.size; col++) {
-    const d = coastalShoreDistance(f.minX + (col + .5) / f.size * f.width, f.minY + (row + .5) / f.size * f.depth, shore);
-    const encoded = Math.round(Math.max(0, Math.min(1, (d / f.range + 1) / 2)) * 65535), i = (row * f.size + col) * 4;
-    data[i] = encoded >> 8; data[i + 1] = encoded & 255;
-    data[i + 2] = Math.round(Math.max(0, Math.min(1, d * 1.6 / 32)) * 255); data[i + 3] = 255;
+  const edges = shore.map((b, i) => {
+    const a = shore[(i + shore.length - 1) % shore.length], dx = b.x - a.x, dy = b.y - a.y;
+    return { a, b, dx, dy, squared: dx * dx + dy * dy, minX: Math.min(a.x, b.x), maxX: Math.max(a.x, b.x), minY: Math.min(a.y, b.y), maxY: Math.max(a.y, b.y) };
+  });
+  for (let row = 0; row < f.size; row++) {
+    const y = f.minY + (row + .5) / f.size * f.depth;
+    // Membership changes only at sorted crossings; distant segments cannot affect a clamped field.
+    const crossings = edges.filter(e => (e.a.y > y) !== (e.b.y > y))
+      .map(e => e.a.x + e.dx * (y - e.a.y) / e.dy).sort((a, b) => a - b);
+    const nearby = edges.filter(e => e.minY - f.range <= y && e.maxY + f.range >= y);
+    let crossing = 0, inside = false;
+    for (let col = 0; col < f.size; col++) {
+      const x = f.minX + (col + .5) / f.size * f.width;
+      while (crossing < crossings.length && crossings[crossing] < x) { inside = !inside; crossing++; }
+      let squared = f.range * f.range;
+      for (const e of nearby) {
+        const bx = Math.max(e.minX - x, 0, x - e.maxX), by = Math.max(e.minY - y, 0, y - e.maxY);
+        if (bx * bx + by * by >= squared) continue;
+        const t = Math.max(0, Math.min(1, ((x - e.a.x) * e.dx + (y - e.a.y) * e.dy) / e.squared));
+        squared = Math.min(squared, (x - e.a.x - t * e.dx) ** 2 + (y - e.a.y - t * e.dy) ** 2);
+      }
+      const d = Math.sqrt(squared) * (inside ? -1 : 1), encoded = Math.round((d / f.range + 1) / 2 * 65535), i = (row * f.size + col) * 4;
+      data[i] = encoded >> 8; data[i + 1] = encoded & 255;
+      data[i + 2] = Math.round(Math.max(0, Math.min(1, d * 1.6 / 32)) * 255); data[i + 3] = 255;
+    }
   }
   return data;
 }

@@ -82,6 +82,10 @@
       #floor-plan-return:hover { background: #46553f; }
       #floor-plan-return span { margin-left: 12px; color: #dddcc9; font-size: 10px; }
       .map-body { min-height: 0; flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) 246px; }
+      .map-scopes { display: flex; gap: 8px; padding: 10px 20px; border-bottom: 1px solid #dcd4c3; }
+      .map-scopes button, #coast-preview { padding: 8px 14px; border: 1px solid #b9ac93; border-radius: 5px; color: #52604b; background: #f9f5eb; font: inherit; font-size: 12px; }
+      .map-scopes button[aria-pressed="true"], #coast-preview { color: #fff6e6; background: #5b6852; }
+      #coast-preview { margin-top: 20px; }
       #floor-plan-drawing { min-height: 0; margin: 0; display: flex; align-items: center; justify-content: center; padding: 14px 18px; user-select: none; }
       #floor-plan-drawing svg { display: block; width: 100%; height: 100%; max-width: 620px; }
       .map-notes { padding: 28px 24px; border-left: 1px solid #dcd4c3; overflow-y: auto; }
@@ -215,9 +219,10 @@
     <dialog id="floor-plan-dialog" aria-labelledby="floor-plan-title" aria-describedby="floor-plan-description">
       <div class="map-sheet">
         <header class="map-heading"><div><p>THE AFTERNOON HOME / FLOOR PLAN</p><h2 id="floor-plan-title">余晖小居 · 户型图</h2></div><button id="floor-plan-return" autofocus>返回场景<span>ESC</span></button></header>
+        <div class="map-scopes" role="group" aria-label="地图范围"><button id="map-scope-house" aria-pressed="true">房屋</button><button id="map-scope-coast" aria-pressed="false">海岸</button></div>
         <div class="map-body" tabindex="0" role="region" aria-label="户型与布局说明，可滚动查看">
           <figure id="floor-plan-drawing" aria-label="全屋按比例户型图"></figure>
-          <aside class="map-notes">
+          <aside class="map-notes" id="house-map-notes">
             <h3>布局说明</h3>
             <p id="floor-plan-description">入户直接进入客厅，通往小书房、厨房和两间卧室，连接南侧阳台。地图按实景北向俯视显示，左右与房屋一致；起居与通行动线开放相连。</p>
             <div class="map-legend" aria-label="地图图例">
@@ -229,10 +234,18 @@
             <dl class="map-area"><dt>规划地面面积（含阳台）</dt><dd><span id="floor-plan-area"></span> <small>m²</small></dd></dl>
             <p>主卧扩大至25.9 m²，书房调整为10.2 m²。主卫由主卧独享；公卫位于主卧外，从客厅进入。</p>
             <section class="map-room-schedule" aria-label="房间尺寸清单"><h3>房间尺寸</h3><dl id="floor-plan-room-sizes"></dl></section>
-            <p class="map-disclaimer">标注为墙中心线尺寸，未扣墙厚，阳台按完整地面面积计入。八房结构与地图一致；次卧、厨房、公卫及阳台待布置，阳台推拉门后续完成。入户门外暂不开放。地图仅用于查看位置。</p>
+            <p class="map-disclaimer">标注为墙中心线尺寸，未扣墙厚，阳台按完整地面面积计入。全屋八房已布置；入户门外步行暂不开放。可切换海岸图查看灯塔与步道。</p>
+          </aside>
+          <aside class="map-notes" id="coast-map-notes" hidden>
+            <h3>走向海角的灯塔</h3>
+            <p id="coast-plan-description">从东侧家门绕过屋后，沿崖顶步道经过观景点，抵达西南岬角的灯塔。地图与三维北向俯视的左右一致。</p>
+            <dl class="map-area" style="margin-top:24px"><dt>家门至灯塔路线</dt><dd><span id="coast-route-length"></span> <small>m</small></dd></dl>
+            <p>灯塔高20米，距阳台约155米。途中可看海、回望房屋，塔前留有绕行与观景空间。</p>
+            <button id="coast-preview">查看海岸全景</button>
+            <p class="map-disclaimer">目前开放海岸取景与路线查看；户外步行将在下一阶段开放。</p>
           </aside>
         </div>
-        <footer class="map-caption"><span>尺寸单位：米 · 全屋户型规划</span><span>拖动与移动已暂停 · 返回继续探索</span></footer>
+        <footer class="map-caption"><span id="map-caption-scope">尺寸单位：米 · 全屋户型规划</span><span>拖动与移动已暂停 · 返回继续探索</span></footer>
       </div>
     </dialog>
     <nav class="view-controls" aria-label="场景视角">

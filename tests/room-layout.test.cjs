@@ -1688,7 +1688,7 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
   room.interactions = { silenceMotion() {} };
   room.audio = { setSpatialCamera() {} };
   room.floorPlan = { isOpen: false, update() {} };
-  room.exterior = { setVisible() {}, updateCutaway() {}, refreshShadows() {} };
+  room.exterior = { setVisible() {}, setHouseEnclosed() {}, updateCutaway() {}, refreshShadows() {} };
   room.canvas = { setAttribute() {} };
   let refreshed = 0;
   room.lighting = { refreshShadows() { refreshed++; } };
@@ -1707,6 +1707,10 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
     assert.ok(room.interiorShell.isEnabled() && refreshed === 3);
     room.setView("details");
     assert.ok(!room.interiorShell.isEnabled() && refreshed === 4);
+    room.setView("coast"); room.camera._checkInputs();
+    assert.ok(room.camera.radius > 1000, 'coast preset must expand the old 145-unit orbit limit before applying its position');
+    assert.equal(room.camera.fov, .8);
+    assert.equal(room.camera.minZ, 5);
     let width = 1280, height = 800;
     room.engine = { getRenderWidth: () => width, getRenderHeight: () => height };
     for (const view of ['overview', 'study', 'living', 'master', 'ensuite', 'bedroom', 'kitchen', 'bathroom', 'balcony']) {
