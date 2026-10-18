@@ -51,8 +51,6 @@ test('both directions of the route support wheelbase and full body through all c
   const a=route[i-1],b=route[i+1],p={...route[i],heading:Math.atan2(b.x-a.x,b.y-a.y)+reverse};
   assert.ok(v.scooterSupport(p),JSON.stringify(p));
  }
- assert.equal(v.scooterSpeedLimit(v.SCOOTER_PARKING[0]),2);
- assert.equal(v.scooterSpeedLimit({x:-80,y:33}),v.SCOOTER.cruise);
 });
 
 test('model stays in geometry/material budgets and disposal restores scene-owned resources',t=>{
@@ -64,4 +62,21 @@ test('model stays in geometry/material budgets and disposal restores scene-owned
   assert.ok(m.update(v.createScooterState(),true));assert.ok(m.meshes.every(x=>!x.checkCollisions),'parked vehicle cannot block door or walking');
   assert.ok(m.meshes.every(x=>!exterior.shadow.getShadowMap().renderList.includes(x)),'dynamic vehicle does not invalidate static cache');
   m.dispose();m.dispose();assert.ok(s.lights.every(light=>light.includedOnlyMeshes.every(x=>!m.meshes.includes(x))&&light.excludedMeshes.every(x=>!m.meshes.includes(x))));assert.deepEqual(count(),before);}
+});
+
+
+test('former slow zones and edge approaches share the cruise target without automatic braking',()=>{
+ const poses=[...v.SCOOTER_PARKING,{x:-4,y:-5,heading:-.75},{x:-56,y:8,heading:-1},{x:14,y:0,heading:Math.PI/2}];
+ for(const p of poses){
+  const s=stateAt(p.x,p.y,p.heading);s.speed=v.SCOOTER.cruise;
+  assert.ok(v.scooterSupport(s),JSON.stringify(p));v.advanceScooter(s,input({forward:true}),1/60);
+  assert.equal(s.speed,v.SCOOTER.cruise,JSON.stringify(p));assert.ok(v.scooterSupport(s));
+  const accelerating=stateAt(p.x,p.y,p.heading);accelerating.speed=3;v.advanceScooter(accelerating,input({forward:true}),1/60);
+  assert.ok(accelerating.speed>3,'no position-based cap during acceleration');
+ }
+ for(const s of [stateAt(14,0,Math.PI/2),stateAt(-125,84,0),stateAt(13.3,4.65,-Math.PI/2)]){
+  s.speed=v.SCOOTER.cruise;v.advanceScooter(s,input({forward:true}),.2);
+  for(let i=0;i<10;i++)v.advanceScooter(s,input({forward:true}),.2);
+  assert.ok(v.scooterSupport(s));assert.equal(s.speed,0,'cruise-speed sweep must still stop at obstacles');
+ }
 });

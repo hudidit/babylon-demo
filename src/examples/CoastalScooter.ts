@@ -1,14 +1,14 @@
 import { houseRoomAt } from "./HouseLayout";
 import type { PlanPoint } from "./HouseLayout";
 import { walkingPointAllowed, walkingSurfaceAt } from "./WalkingSurface";
-import { COASTAL_ROUTE_ANCHORS, COASTAL_SITE } from "./CoastalSite";
+import { COASTAL_SITE } from "./CoastalSite";
 
 export const SCOOTER = Object.freeze({ length: 1.65, width: .65, wheelbase: 1.12, wheelRadius: .23,
   // User-facing top speed is 40 km/h; the controller remains metre/second based.
   cruise: 40 / 3.6,
   // A/D yaw response is halved from the original handling after user feedback.
   steerSensitivity: .5,
-  slow: 2, reverse: 1, acceleration: 2.5, coastBrake: 3, brake: 7, eyeHeight: 1.42 });
+  reverse: 1, acceleration: 2.5, coastBrake: 3, brake: 7, eyeHeight: 1.42 });
 /** Keep the grips readable in portrait without changing the user's field of view. */
 export function scooterEyeBack(aspect: number) { return .23 + Math.min(.42, Math.max(0, .9 / Math.max(.2, aspect) - 1) * .45); }
 export const SCOOTER_PARKING = Object.freeze([
@@ -51,33 +51,17 @@ export function scooterSupport(p: ScooterPose) {
   return { height, pitch, roll };
 }
 
-const sharpBends = COASTAL_ROUTE_ANCHORS.filter((p, i, all) => {
-  if (!i || i === all.length - 1) return false;
-  const a = all[i - 1], b = all[i + 1];
-  return ((p.x - a.x) * (b.x - p.x) + (p.y - a.y) * (b.y - p.y)) /
-    (Math.hypot(p.x - a.x, p.y - a.y) * Math.hypot(b.x - p.x, b.y - p.y)) < .72;
-});
-export function scooterSpeedLimit(p: PlanPoint) {
-  const distance = (q: PlanPoint) => Math.hypot(q.x - p.x, q.y - p.y);
-  if (distance(SCOOTER_PARKING[0]) < 7 || distance(COASTAL_SITE.lookout) < 3.4 || distance(COASTAL_SITE.tower) < 8)
-    return SCOOTER.slow;
-  const nearest = Math.min(...sharpBends.map(distance));
-  // A continuous approach ramp prevents entering a tight corner at cruise speed.
-  return Math.min(SCOOTER.cruise, SCOOTER.slow + Math.max(0, nearest - 2) * .9);
-}
 const approach = (value: number, target: number, step: number) => value + Math.max(-step, Math.min(step, target - value));
 
 /** Independent metre/second state; no camera, walking multiplier, browser or physics dependency. */
 export function advanceScooter(state: ScooterState, input: ScooterInput, seconds: number) {
   if (!state.riding) { stopScooter(state); return; }
   if (!Number.isFinite(seconds) || seconds < 0 || !scooterSupport(state)) { stopScooter(state); return; }
-  const ahead = { ...scooterOffset(state, 0, (state.speed < 0 ? -1 : 1) * 1.3), heading: state.heading };
-  const limit = scooterSupport(ahead) ? scooterSpeedLimit(state) : SCOOTER.slow;
   let remaining = Math.min(.2, seconds);
   while (remaining > 1e-8) {
     const dt = Math.min(1 / 120, remaining); remaining -= dt;
     const braking = input.brake || state.exitRequested || input.forward && input.back;
-    const target = braking ? 0 : input.forward ? Math.min(limit, scooterSpeedLimit(state)) : input.back ? -SCOOTER.reverse : 0;
+    const target = braking ? 0 : input.forward ? SCOOTER.cruise : input.back ? -SCOOTER.reverse : 0;
     const reversing = target * state.speed < 0;
     state.speed = approach(state.speed, reversing ? 0 : target,
       (braking || reversing ? SCOOTER.brake : target === 0 ? SCOOTER.coastBrake : SCOOTER.acceleration) * dt);
