@@ -2,7 +2,7 @@ import { Constants, Frustum, RawTexture, ShaderMaterial, Texture, Vector3 } from
 import type { Mesh, Scene } from "@babylonjs/core/pure";
 import { COASTAL_CLIFF, coastalBoundary, coastalSeaY, coastalWallPoint } from "./CoastalCliff";
 import { HOUSE_COORDINATES } from "./HouseLayout";
-import { applySkyTime, coastalSkyGLSL, skyTimeUniforms } from "./CoastalSky";
+import { applySkyTime, coastalSkyGLSL, coastalSkyCloudsGLSL, coastalSkyReflectionGLSL, skyTimeUniforms } from "./CoastalSky";
 import { evaluateTimeOfDay, DEFAULT_TIME_OF_DAY } from "./RoomTimeOfDay";
 import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
 
@@ -120,6 +120,8 @@ export const oceanFragment = `
   #include<clipPlaneFragmentDeclaration>
   ${waveCode}
   ${coastalSkyGLSL}
+  ${coastalSkyCloudsGLSL}
+  ${coastalSkyReflectionGLSL}
   float hash(vec2 p) { return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
   float noise(vec2 p) {
     vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f);
@@ -160,11 +162,13 @@ export const oceanFragment = `
     vec3 body=mix(vec3(.045,.19,.18),vec3(.019,.077,.115),smoothstep(0.,.6,depth));
     body*=.94+.06*sin(p.x*.048+p.y*.031+oceanTime*.12);
     body*=skyIllumination;
-    vec3 color=mix(body,coastalSkyGradient(r),fresnel);
+    float rough=mix(.20,.34,1.-a*detail);
+    float reflectedFootprint=max(length(dFdx(r)),length(dFdy(r)));
+    vec3 color=mix(body,coastalSkyReflection(r,reflectedFootprint,rough),fresnel);
     // GGX with finite roughness, broadened as subpixel ripples disappear to avoid sparkling aliases.
     vec3 h=normalize(v+sunDirection);
     float nh=max(0.,dot(n,h)), nl=max(.001,dot(n,sunDirection)), vh=max(0.,dot(v,h));
-    float rough=mix(.20,.34,1.-a*detail), alpha=rough*rough, a2=alpha*alpha;
+    float alpha=rough*rough, a2=alpha*alpha;
     float denom=nh*nh*(a2-1.)+1.;
     float distribution=a2/(3.14159265*denom*denom);
     float k=pow(rough+1.,2.)/8.;

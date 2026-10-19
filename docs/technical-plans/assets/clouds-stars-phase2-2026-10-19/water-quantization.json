@@ -1,0 +1,93 @@
+{
+  "baseline": "fefe1b3",
+  "candidate": "reflection mean retained at 0.1, before roughness extinction",
+  "acceptance": false,
+  "peak": 11,
+  "example": {
+    "x": 519,
+    "y": 330,
+    "channel": 0,
+    "on": [
+      13,
+      17,
+      25
+    ],
+    "off": [
+      2,
+      17,
+      25
+    ]
+  },
+  "repeatDifferences": 0,
+  "postProcesses": [
+    {
+      "name": "SSAOOriginalSceneColor",
+      "outputType": 0
+    },
+    {
+      "name": "ssao",
+      "inputType": 0,
+      "outputType": 0
+    },
+    {
+      "name": "BlurH",
+      "inputType": 0,
+      "outputType": 0
+    },
+    {
+      "name": "BlurV",
+      "inputType": 0,
+      "outputType": 0
+    },
+    {
+      "name": "ssaoCombine",
+      "inputType": 0,
+      "outputType": 2
+    },
+    {
+      "name": "highlights",
+      "inputType": 2,
+      "outputType": 2
+    },
+    {
+      "name": "horizontal blur",
+      "inputType": 2,
+      "outputType": 2
+    },
+    {
+      "name": "vertical blur",
+      "inputType": 2,
+      "outputType": 2
+    },
+    {
+      "name": "bloomMerge",
+      "inputType": 2,
+      "outputType": 2
+    },
+    {
+      "name": "imageProcessing",
+      "inputType": 2,
+      "outputType": 2
+    },
+    {
+      "name": "sharpen",
+      "inputType": 2,
+      "outputType": 2
+    },
+    {
+      "name": "fxaa",
+      "inputType": 2
+    }
+  ],
+  "candidateManifestSha256": "77330d91c4f079482c23d4f76e8a9c568e2b698d4e0e670f7e8866193edc24bc",
+  "candidateParameters": {
+    "version": "coastal-clouds-stars-v2",
+    "seed": 17.17,
+    "cloudScale": 6.4,
+    "cloudThreshold": 0.6,
+    "starGrid": 24,
+    "starProbability": 0.18,
+    "starRadius": 0.00095,
+    "reflectionStarRetention": 0.1
+  }
+}

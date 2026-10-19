@@ -5,6 +5,7 @@ load('RoomRuntime').registerRoomRuntime();
 const {evaluateTimeOfDay: at, blendTimeOfDay: blend} = load('RoomTimeOfDay');
 const {RoomExterior} = load('RoomExterior'), {RoomLighting} = load('RoomLighting');
 const {skyTimeUniforms} = load('CoastalSky');
+const {RoomMirrors} = load('RoomMirrors');
 const near = (a, z, epsilon = 1e-8) => assert.ok(Math.abs(a - z) < epsilon, `${a} != ${z}`);
 function setup(t) {
   const engine = new b.NullEngine(), scene = new b.Scene(engine); scene.useDelayedTextureLoading = true;
@@ -150,4 +151,28 @@ test('manual fades update natural shadow maps together, leave artificial caches 
     if (t === .5) { assert.equal(exterior.sun.isEnabled(), false); assert.equal(exterior.ocean.material._floats.sunStrength, 0); }
   }
   assert.equal(artificialRefreshes, 0); assert.equal(naturalRefreshes, lights.natural.size * 12); assert.equal(exteriorRefreshes, 12);
+});
+
+test('both real mirror targets retain the shared sky and sea while excluding unrelated rooms and previews', t => {
+  const {scene} = setup(t), exterior = new RoomExterior(scene);
+  const unrelated = b.CreateBox('unrelated-study', {}, scene); unrelated.metadata = {ownerRooms:['study']};
+  const preview = b.CreateBox('exterior-preview', {}, scene); preview.metadata = {ownerRooms:['ensuite','bathroom'],inspectionPreview:true};
+  for (const owner of ['ensuite','bathroom']) {
+    const mirror = b.CreateBox(owner+'-mirror-fixture', {}, scene);
+    mirror.metadata = {ownerRooms:[owner],reflectionRoom:owner,mirrorPlane:[0,0,1,-4]};
+  }
+  new RoomMirrors(scene);
+  const mirrors=scene.meshes.filter(m=>m.metadata?.mirrorPlane), targets=mirrors.map(m=>m.material.reflectionTexture);
+  assert.equal(targets.length,2); assert.notEqual(targets[0],targets[1]);
+  for (const target of targets) {
+    assert.ok(target.renderList.includes(scene.getMeshByName('coastal-sky')));
+    assert.ok(target.renderList.includes(exterior.ocean.mesh));
+    assert.ok(!target.renderList.includes(unrelated) && !target.renderList.includes(preview));
+    assert.ok(mirrors.every(m=>!target.renderList.includes(m)));
+    assert.equal(target.getSize().width,512); assert.equal(target.noPrePassRenderer,true);
+    assert.equal(target.refreshRate,0);
+  }
+  const resources=[scene.meshes.length,scene.materials.length,scene.textures.length,scene.lights.length];
+  for (const hour of [0,3,6,9,12,15,18,21,0]) exterior.applyTimeOfDay(at(hour));
+  assert.deepEqual([scene.meshes.length,scene.materials.length,scene.textures.length,scene.lights.length],resources);
 });

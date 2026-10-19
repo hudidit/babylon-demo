@@ -1,0 +1,2958 @@
+{
+  "baseline": "69606ac + day-night phase4",
+  "url": "http://127.0.0.1:8200/",
+  "browser": "155.0.8059.82",
+  "quick": false,
+  "fpsOrLoadTimeSampling": false,
+  "method": "Independent unmodified dist; all eight nodes chosen with the real menu and completed with fixed 50ms render steps. Same camera fixtures as phase2; twilight probes still use the pure evaluator.",
+  "nodes": [
+    {
+      "time": 0,
+      "metadata": {
+        "version": "coastal-day-night-v1",
+        "stage": 3,
+        "visualApplied": true,
+        "state": {
+          "hour": 0,
+          "periodHour": 0,
+          "periodName": "午夜",
+          "sun": {
+            "kind": "sun",
+            "azimuth": 0,
+            "elevation": -60,
+            "strength": 0,
+            "color": [
+              1,
+              0.6307571363461468,
+              0.35153259950043936
+            ],
+            "sourceDirection": [
+              0,
+              -0.8660254037844386,
+              -0.5000000000000001
+            ],
+            "lightDirection": [
+              0,
+              0.8660254037844386,
+              0.5000000000000001
+            ],
+            "intensity": 0,
+            "enabled": false
+          },
+          "moon": {
+            "kind": "moon",
+            "azimuth": 180,
+            "elevation": 50,
+            "strength": 0.04,
+            "color": [
+              0.5711248294648731,
+              0.6866853124353135,
+              0.8549926081242338
+            ],
+            "sourceDirection": [
+              7.871877887341986e-17,
+              0.766044443118978,
+              0.6427876096865394
+            ],
+            "lightDirection": [
+              -7.871877887341986e-17,
+              -0.766044443118978,
+              -0.6427876096865394
+            ],
+            "intensity": 0.152,
+            "enabled": true
+          },
+          "primary": {
+            "kind": "moon",
+            "azimuth": 180,
+            "elevation": 50,
+            "strength": 0.04,
+            "color": [
+              0.5711248294648731,
+              0.6866853124353135,
+              0.8549926081242338
+            ],
+            "sourceDirection": [
+              7.871877887341986e-17,
+              0.766044443118978,
+              0.6427876096865394
+            ],
+            "lightDirection": [
+              -7.871877887341986e-17,
+              -0.766044443118978,
+              -0.6427876096865394
+            ],
+            "intensity": 0.152,
+            "enabled": true
+          },
+          "sky": {
+            "zenith": [
+              0.005181516702338386,
+              0.010960094006488246,
+              0.0295568344378088
+            ],
+            "horizon": [
+              0.02217388479338738,
+              0.04091519690685319,
+              0.07036009569659588
+            ],
+            "cloudLight": [
+              0.019382360956935723,
+              0.03688945040110004,
+              0.07618538148130785
+            ],
+            "cloudShade": [
+              0.008568125618069307,
+              0.018500220128379697,
+              0.042311410620809675
+            ],
+            "starVisibility": 1
+          },
+          "environment": {
+            "exterior": 0.18,
+            "interior": 0.1
+          }
+        },
+        "visualHour": 0,
+        "playback": {
+          "automatic": false,
+          "transitioning": false,
+          "targetHour": null
+        },
+        "pauseReasons": []
+      },
+      "sun": {
+        "enabled": true,
+        "intensity": 0.152,
+        "direction": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "position": [
+          -652,
+          351.41777724759123,
+          680.1150438746158
+        ],
+        "body": "moon"
+      },
+      "sky": {
+        "sunStrength": 0.04,
+        "sunWarmth": 0,
+        "skyStarVisibility": 1,
+        "skyMoonVisibility": 1
+      },
+      "ocean": {
+        "oceanTime": 0,
+        "sunStrength": 0.04,
+        "sunWarmth": 0,
+        "skyStarVisibility": 1,
+        "skyMoonVisibility": 1,
+        "skyIllumination": 0.18
+      },
+      "lamps": [
+        {
+          "id": "floor-lamp",
+          "on": true,
+          "intensity": 3.3
+        },
+        {
+          "id": "desk-lamp",
+          "on": true,
+          "intensity": 1.25
+        },
+        {
+          "id": "living-lamp",
+          "on": true,
+          "intensity": 2.4
+        },
+        {
+          "id": "master-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "ensuite-lamp",
+          "on": true,
+          "intensity": 3.2
+        },
+        {
+          "id": "bedroom-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "kitchen-lamp",
+          "on": true,
+          "intensity": 3
+        },
+        {
+          "id": "bathroom-lamp",
+          "on": true,
+          "intensity": 3.8
+        }
+      ],
+      "windows": [
+        {
+          "name": "window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.13031167282892078,
+            -0.47780946703937627,
+            0.8687444855261386
+          ]
+        },
+        {
+          "name": "living-window-daylight",
+          "intensity": 1.1020629042278782e-17,
+          "direction": [
+            -0.9245003270420484,
+            -0.3698001308168194,
+            -0.09245003270420485
+          ]
+        },
+        {
+          "name": "master-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.0890870806374748,
+            -0.44543540318737396,
+            0.8908708063747479
+          ]
+        },
+        {
+          "name": "bedroom-window-daylight",
+          "intensity": 0.08227681403987704,
+          "direction": [
+            -7.871877887341986e-17,
+            -0.766044443118978,
+            -0.6427876096865394
+          ]
+        },
+        {
+          "name": "kitchen-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.08728715609439697,
+            -0.4800793585191833,
+            0.8728715609439696
+          ]
+        },
+        {
+          "name": "balcony-daylight",
+          "intensity": 0.06741191099447007,
+          "direction": [
+            -7.871877887341986e-17,
+            -0.766044443118978,
+            -0.6427876096865394
+          ]
+        }
+      ],
+      "exteriorEnvironment": 0.6839999999999999,
+      "fill": 0.038000000000000006,
+      "ibl": 0.35,
+      "exposure": 1.12,
+      "resources": {
+        "meshes": 670,
+        "vertices": 570475,
+        "materials": 95,
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3
+      }
+    },
+    {
+      "time": 3,
+      "metadata": {
+        "version": "coastal-day-night-v1",
+        "stage": 3,
+        "visualApplied": true,
+        "state": {
+          "hour": 3,
+          "periodHour": 3,
+          "periodName": "后夜",
+          "sun": {
+            "kind": "sun",
+            "azimuth": 45,
+            "elevation": -35,
+            "strength": 0,
+            "color": [
+              1,
+              0.6307571363461468,
+              0.35153259950043936
+            ],
+            "sourceDirection": [
+              0.5792279653395691,
+              -0.573576436351046,
+              -0.5792279653395692
+            ],
+            "lightDirection": [
+              -0.5792279653395691,
+              0.573576436351046,
+              0.5792279653395692
+            ],
+            "intensity": 0,
+            "enabled": false
+          },
+          "moon": {
+            "kind": "moon",
+            "azimuth": 225,
+            "elevation": 25,
+            "strength": 0.025,
+            "color": [
+              0.5520114015120001,
+              0.6444796819705821,
+              0.8069522576692516
+            ],
+            "sourceDirection": [
+              -0.6408563820557884,
+              0.42261826174069944,
+              0.6408563820557887
+            ],
+            "lightDirection": [
+              0.6408563820557884,
+              -0.42261826174069944,
+              -0.6408563820557887
+            ],
+            "intensity": 0.095,
+            "enabled": true
+          },
+          "primary": {
+            "kind": "moon",
+            "azimuth": 225,
+            "elevation": 25,
+            "strength": 0.025,
+            "color": [
+              0.5520114015120001,
+              0.6444796819705821,
+              0.8069522576692516
+            ],
+            "sourceDirection": [
+              -0.6408563820557884,
+              0.42261826174069944,
+              0.6408563820557887
+            ],
+            "lightDirection": [
+              0.6408563820557884,
+              -0.42261826174069944,
+              -0.6408563820557887
+            ],
+            "intensity": 0.095,
+            "enabled": true
+          },
+          "sky": {
+            "zenith": [
+              0.005181516702338386,
+              0.009134058702220787,
+              0.02315336617811041
+            ],
+            "horizon": [
+              0.0295568344378088,
+              0.04518620438567554,
+              0.07036009569659588
+            ],
+            "cloudLight": [
+              0.017641954488384078,
+              0.033104766570885055,
+              0.06847816984440017
+            ],
+            "cloudShade": [
+              0.008023192985384994,
+              0.01599629336550963,
+              0.03688945040110004
+            ],
+            "starVisibility": 0.9
+          },
+          "environment": {
+            "exterior": 0.14,
+            "interior": 0.08
+          }
+        },
+        "visualHour": 3,
+        "playback": {
+          "automatic": false,
+          "transitioning": false,
+          "targetHour": null
+        },
+        "pauseReasons": []
+      },
+      "sun": {
+        "enabled": true,
+        "intensity": 0.095,
+        "direction": [
+          0.6408563820557884,
+          -0.42261826174069944,
+          -0.6408563820557887
+        ],
+        "position": [
+          -256.3425528223154,
+          164.04730469627978,
+          286.34255282231544
+        ],
+        "body": "moon"
+      },
+      "sky": {
+        "sunStrength": 0.025,
+        "sunWarmth": 0,
+        "skyStarVisibility": 0.9,
+        "skyMoonVisibility": 0.625
+      },
+      "ocean": {
+        "oceanTime": 0,
+        "sunStrength": 0.025,
+        "sunWarmth": 0,
+        "skyStarVisibility": 0.9,
+        "skyMoonVisibility": 0.625,
+        "skyIllumination": 0.14
+      },
+      "lamps": [
+        {
+          "id": "floor-lamp",
+          "on": true,
+          "intensity": 3.3
+        },
+        {
+          "id": "desk-lamp",
+          "on": true,
+          "intensity": 1.25
+        },
+        {
+          "id": "living-lamp",
+          "on": true,
+          "intensity": 2.4
+        },
+        {
+          "id": "master-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "ensuite-lamp",
+          "on": true,
+          "intensity": 3.2
+        },
+        {
+          "id": "bedroom-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "kitchen-lamp",
+          "on": true,
+          "intensity": 3
+        },
+        {
+          "id": "bathroom-lamp",
+          "on": true,
+          "intensity": 3.8
+        }
+      ],
+      "windows": [
+        {
+          "name": "window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.13031167282892078,
+            -0.47780946703937627,
+            0.8687444855261386
+          ]
+        },
+        {
+          "name": "living-window-daylight",
+          "intensity": 0,
+          "direction": [
+            -0.9245003270420484,
+            -0.3698001308168194,
+            -0.09245003270420485
+          ]
+        },
+        {
+          "name": "master-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.0890870806374748,
+            -0.44543540318737396,
+            0.8908708063747479
+          ]
+        },
+        {
+          "name": "bedroom-window-daylight",
+          "intensity": 0.051268510564463105,
+          "direction": [
+            0.6408563820557884,
+            -0.42261826174069944,
+            -0.6408563820557887
+          ]
+        },
+        {
+          "name": "kitchen-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.08728715609439697,
+            -0.4800793585191833,
+            0.8728715609439696
+          ]
+        },
+        {
+          "name": "balcony-daylight",
+          "intensity": 0.023244004395738472,
+          "direction": [
+            0.6408563820557884,
+            -0.42261826174069944,
+            -0.6408563820557887
+          ]
+        }
+      ],
+      "exteriorEnvironment": 0.532,
+      "fill": 0.0304,
+      "ibl": 0.35,
+      "exposure": 1.12,
+      "resources": {
+        "meshes": 670,
+        "vertices": 570475,
+        "materials": 95,
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3
+      }
+    },
+    {
+      "time": 6,
+      "metadata": {
+        "version": "coastal-day-night-v1",
+        "stage": 3,
+        "visualApplied": true,
+        "state": {
+          "hour": 6,
+          "periodHour": 6,
+          "periodName": "清晨",
+          "sun": {
+            "kind": "sun",
+            "azimuth": 90,
+            "elevation": 5,
+            "strength": 0.28,
+            "color": [
+              1,
+              0.6307571363461468,
+              0.35153259950043936
+            ],
+            "sourceDirection": [
+              0.9961946980917455,
+              0.08715574274765817,
+              -6.099933241728101e-17
+            ],
+            "lightDirection": [
+              -0.9961946980917455,
+              -0.08715574274765817,
+              6.099933241728101e-17
+            ],
+            "intensity": 1.064,
+            "enabled": true
+          },
+          "moon": {
+            "kind": "moon",
+            "azimuth": 270,
+            "elevation": -5,
+            "strength": 0,
+            "color": [
+              0.5520114015120001,
+              0.6444796819705821,
+              0.8069522576692516
+            ],
+            "sourceDirection": [
+              -0.9961946980917455,
+              -0.08715574274765817,
+              1.82997997251843e-16
+            ],
+            "lightDirection": [
+              0.9961946980917455,
+              0.08715574274765817,
+              -1.82997997251843e-16
+            ],
+            "intensity": 0,
+            "enabled": false
+          },
+          "primary": {
+            "kind": "sun",
+            "azimuth": 90,
+            "elevation": 5,
+            "strength": 0.28,
+            "color": [
+              1,
+              0.6307571363461468,
+              0.35153259950043936
+            ],
+            "sourceDirection": [
+              0.9961946980917455,
+              0.08715574274765817,
+              -6.099933241728101e-17
+            ],
+            "lightDirection": [
+              -0.9961946980917455,
+              -0.08715574274765817,
+              6.099933241728101e-17
+            ],
+            "intensity": 1.064,
+            "enabled": true
+          },
+          "sky": {
+            "zenith": [
+              0.184474994500441,
+              0.31398871337571754,
+              0.5088813208549338
+            ],
+            "horizon": [
+              0.8148465722161012,
+              0.4851499400560704,
+              0.32314320911295075
+            ],
+            "cloudLight": [
+              0.768151147247507,
+              0.7304607400903537,
+              0.7011018919329731
+            ],
+            "cloudShade": [
+              0.2581828529215958,
+              0.32314320911295075,
+              0.4232676699860717
+            ],
+            "starVisibility": 0
+          },
+          "environment": {
+            "exterior": 0.35,
+            "interior": 0.4
+          }
+        },
+        "visualHour": 6,
+        "playback": {
+          "automatic": false,
+          "transitioning": false,
+          "targetHour": null
+        },
+        "pauseReasons": []
+      },
+      "sun": {
+        "enabled": true,
+        "intensity": 1.064,
+        "direction": [
+          -0.9961946980917455,
+          -0.08715574274765817,
+          6.099933241728101e-17
+        ],
+        "position": [
+          398.47787923669824,
+          29.86229709906327,
+          29.999999999999975
+        ],
+        "body": "sun"
+      },
+      "sky": {
+        "sunStrength": 0.28,
+        "sunWarmth": 1,
+        "skyStarVisibility": 0,
+        "skyMoonVisibility": 0
+      },
+      "ocean": {
+        "oceanTime": 0,
+        "sunStrength": 0.28,
+        "sunWarmth": 1,
+        "skyStarVisibility": 0,
+        "skyMoonVisibility": 0,
+        "skyIllumination": 0.35
+      },
+      "lamps": [
+        {
+          "id": "floor-lamp",
+          "on": true,
+          "intensity": 3.3
+        },
+        {
+          "id": "desk-lamp",
+          "on": true,
+          "intensity": 1.25
+        },
+        {
+          "id": "living-lamp",
+          "on": true,
+          "intensity": 2.4
+        },
+        {
+          "id": "master-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "ensuite-lamp",
+          "on": true,
+          "intensity": 3.2
+        },
+        {
+          "id": "bedroom-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "kitchen-lamp",
+          "on": true,
+          "intensity": 3
+        },
+        {
+          "id": "bathroom-lamp",
+          "on": true,
+          "intensity": 3.8
+        }
+      ],
+      "windows": [
+        {
+          "name": "window-daylight",
+          "intensity": 5.977934576893539e-17,
+          "direction": [
+            0.13031167282892078,
+            -0.47780946703937627,
+            0.8687444855261386
+          ]
+        },
+        {
+          "name": "living-window-daylight",
+          "intensity": 0.9762708041299107,
+          "direction": [
+            -0.9961946980917455,
+            -0.08715574274765817,
+            6.099933241728101e-17
+          ]
+        },
+        {
+          "name": "master-window-daylight",
+          "intensity": 5.465540184588379e-17,
+          "direction": [
+            0.0890870806374748,
+            -0.44543540318737396,
+            0.8908708063747479
+          ]
+        },
+        {
+          "name": "bedroom-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.6408563820557884,
+            -0.42261826174069944,
+            -0.6408563820557887
+          ]
+        },
+        {
+          "name": "kitchen-window-daylight",
+          "intensity": 4.7823476615148314e-17,
+          "direction": [
+            0.08728715609439697,
+            -0.4800793585191833,
+            0.8728715609439696
+          ]
+        },
+        {
+          "name": "balcony-daylight",
+          "intensity": 0.05368793753255744,
+          "direction": [
+            -0.9961946980917455,
+            -0.08715574274765817,
+            6.099933241728101e-17
+          ]
+        }
+      ],
+      "exteriorEnvironment": 1.3299999999999998,
+      "fill": 0.15200000000000002,
+      "ibl": 0.35,
+      "exposure": 1.12,
+      "resources": {
+        "meshes": 670,
+        "vertices": 570475,
+        "materials": 95,
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3
+      }
+    },
+    {
+      "time": 9,
+      "metadata": {
+        "version": "coastal-day-night-v1",
+        "stage": 3,
+        "visualApplied": true,
+        "state": {
+          "hour": 9,
+          "periodHour": 9,
+          "periodName": "上午",
+          "sun": {
+            "kind": "sun",
+            "azimuth": 135,
+            "elevation": 35,
+            "strength": 0.8,
+            "color": [
+              1,
+              0.8713671191987972,
+              0.6938717612919899
+            ],
+            "sourceDirection": [
+              0.5792279653395692,
+              0.573576436351046,
+              0.5792279653395691
+            ],
+            "lightDirection": [
+              -0.5792279653395692,
+              -0.573576436351046,
+              -0.5792279653395691
+            ],
+            "intensity": 3.04,
+            "enabled": true
+          },
+          "moon": {
+            "kind": "moon",
+            "azimuth": 315,
+            "elevation": -35,
+            "strength": 0,
+            "color": [
+              0.5711248294648731,
+              0.6866853124353135,
+              0.8549926081242338
+            ],
+            "sourceDirection": [
+              -0.5792279653395693,
+              -0.573576436351046,
+              -0.5792279653395691
+            ],
+            "lightDirection": [
+              0.5792279653395693,
+              0.573576436351046,
+              0.5792279653395691
+            ],
+            "intensity": 0,
+            "enabled": false
+          },
+          "primary": {
+            "kind": "sun",
+            "azimuth": 135,
+            "elevation": 35,
+            "strength": 0.8,
+            "color": [
+              1,
+              0.8713671191987972,
+              0.6938717612919899
+            ],
+            "sourceDirection": [
+              0.5792279653395692,
+              0.573576436351046,
+              0.5792279653395691
+            ],
+            "lightDirection": [
+              -0.5792279653395692,
+              -0.573576436351046,
+              -0.5792279653395691
+            ],
+            "intensity": 3.04,
+            "enabled": true
+          },
+          "sky": {
+            "zenith": [
+              0.12477181756095049,
+              0.3049873140698863,
+              0.5457244613701866
+            ],
+            "horizon": [
+              0.5583403896342679,
+              0.665387298282272,
+              0.7083757798916868
+            ],
+            "cloudLight": [
+              0.8962693533742664,
+              0.8796223968878317,
+              0.83879901174074
+            ],
+            "cloudShade": [
+              0.35153259950043936,
+              0.45641102318040466,
+              0.5775804404296506
+            ],
+            "starVisibility": 0
+          },
+          "environment": {
+            "exterior": 0.85,
+            "interior": 0.9
+          }
+        },
+        "visualHour": 9,
+        "playback": {
+          "automatic": false,
+          "transitioning": false,
+          "targetHour": null
+        },
+        "pauseReasons": []
+      },
+      "sun": {
+        "enabled": true,
+        "intensity": 3.04,
+        "direction": [
+          -0.5792279653395692,
+          -0.573576436351046,
+          -0.5792279653395691
+        ],
+        "position": [
+          231.69118613582768,
+          224.43057454041843,
+          261.69118613582765
+        ],
+        "body": "sun"
+      },
+      "sky": {
+        "sunStrength": 0.8,
+        "sunWarmth": 0,
+        "skyStarVisibility": 0,
+        "skyMoonVisibility": 0
+      },
+      "ocean": {
+        "oceanTime": 0,
+        "sunStrength": 0.8,
+        "sunWarmth": 0,
+        "skyStarVisibility": 0,
+        "skyMoonVisibility": 0,
+        "skyIllumination": 0.85
+      },
+      "lamps": [
+        {
+          "id": "floor-lamp",
+          "on": true,
+          "intensity": 3.3
+        },
+        {
+          "id": "desk-lamp",
+          "on": true,
+          "intensity": 1.25
+        },
+        {
+          "id": "living-lamp",
+          "on": true,
+          "intensity": 2.4
+        },
+        {
+          "id": "master-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "ensuite-lamp",
+          "on": true,
+          "intensity": 3.2
+        },
+        {
+          "id": "bedroom-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "kitchen-lamp",
+          "on": true,
+          "intensity": 3
+        },
+        {
+          "id": "bathroom-lamp",
+          "on": true,
+          "intensity": 3.8
+        }
+      ],
+      "windows": [
+        {
+          "name": "window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.13031167282892078,
+            -0.47780946703937627,
+            0.8687444855261386
+          ]
+        },
+        {
+          "name": "living-window-daylight",
+          "intensity": 1.621838302950794,
+          "direction": [
+            -0.5792279653395692,
+            -0.573576436351046,
+            -0.5792279653395691
+          ]
+        },
+        {
+          "name": "master-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.0890870806374748,
+            -0.44543540318737396,
+            0.8908708063747479
+          ]
+        },
+        {
+          "name": "bedroom-window-daylight",
+          "intensity": 1.4828235912692973,
+          "direction": [
+            -0.5792279653395692,
+            -0.573576436351046,
+            -0.5792279653395691
+          ]
+        },
+        {
+          "name": "kitchen-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.08728715609439697,
+            -0.4800793585191833,
+            0.8728715609439696
+          ]
+        },
+        {
+          "name": "balcony-daylight",
+          "intensity": 1.0094945279778411,
+          "direction": [
+            -0.5792279653395692,
+            -0.573576436351046,
+            -0.5792279653395691
+          ]
+        }
+      ],
+      "exteriorEnvironment": 3.23,
+      "fill": 0.342,
+      "ibl": 0.35,
+      "exposure": 1.12,
+      "resources": {
+        "meshes": 670,
+        "vertices": 570475,
+        "materials": 95,
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3
+      }
+    },
+    {
+      "time": 12,
+      "metadata": {
+        "version": "coastal-day-night-v1",
+        "stage": 3,
+        "visualApplied": true,
+        "state": {
+          "hour": 12,
+          "periodHour": 12,
+          "periodName": "正午",
+          "sun": {
+            "kind": "sun",
+            "azimuth": 180,
+            "elevation": 65,
+            "strength": 1,
+            "color": [
+              1,
+              0.9301108583754237,
+              0.8069522576692516
+            ],
+            "sourceDirection": [
+              5.175581015019659e-17,
+              0.9063077870366499,
+              0.42261826174069944
+            ],
+            "lightDirection": [
+              -5.175581015019659e-17,
+              -0.9063077870366499,
+              -0.42261826174069944
+            ],
+            "intensity": 3.8,
+            "enabled": true
+          },
+          "moon": {
+            "kind": "moon",
+            "azimuth": 0,
+            "elevation": -60,
+            "strength": 0,
+            "color": [
+              0.5711248294648731,
+              0.6866853124353135,
+              0.8549926081242338
+            ],
+            "sourceDirection": [
+              0,
+              -0.8660254037844386,
+              -0.5000000000000001
+            ],
+            "lightDirection": [
+              0,
+              0.8660254037844386,
+              0.5000000000000001
+            ],
+            "intensity": 0,
+            "enabled": false
+          },
+          "primary": {
+            "kind": "sun",
+            "azimuth": 180,
+            "elevation": 65,
+            "strength": 1,
+            "color": [
+              1,
+              0.9301108583754237,
+              0.8069522576692516
+            ],
+            "sourceDirection": [
+              5.175581015019659e-17,
+              0.9063077870366499,
+              0.42261826174069944
+            ],
+            "lightDirection": [
+              -5.175581015019659e-17,
+              -0.9063077870366499,
+              -0.42261826174069944
+            ],
+            "intensity": 3.8,
+            "enabled": true
+          },
+          "sky": {
+            "zenith": [
+              0.08437621154414882,
+              0.27467731206038465,
+              0.5332764040105052
+            ],
+            "horizon": [
+              0.5840784178911641,
+              0.7304607400903537,
+              0.8069522576692516
+            ],
+            "cloudLight": [
+              0.9215818562772946,
+              0.9046611743911496,
+              0.8631572134541023
+            ],
+            "cloudShade": [
+              0.3762621229909065,
+              0.467783796112159,
+              0.5775804404296506
+            ],
+            "starVisibility": 0
+          },
+          "environment": {
+            "exterior": 1,
+            "interior": 1
+          }
+        },
+        "visualHour": 12,
+        "playback": {
+          "automatic": false,
+          "transitioning": false,
+          "targetHour": null
+        },
+        "pauseReasons": []
+      },
+      "sun": {
+        "enabled": true,
+        "intensity": 3.8,
+        "direction": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "position": [
+          2.0702324060078634e-14,
+          357.52311481465995,
+          199.04730469627978
+        ],
+        "body": "sun"
+      },
+      "sky": {
+        "sunStrength": 1,
+        "sunWarmth": 0,
+        "skyStarVisibility": 0,
+        "skyMoonVisibility": 0
+      },
+      "ocean": {
+        "oceanTime": 0,
+        "sunStrength": 1,
+        "sunWarmth": 0,
+        "skyStarVisibility": 0,
+        "skyMoonVisibility": 0,
+        "skyIllumination": 1
+      },
+      "lamps": [
+        {
+          "id": "floor-lamp",
+          "on": true,
+          "intensity": 3.3
+        },
+        {
+          "id": "desk-lamp",
+          "on": true,
+          "intensity": 1.25
+        },
+        {
+          "id": "living-lamp",
+          "on": true,
+          "intensity": 2.4
+        },
+        {
+          "id": "master-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "ensuite-lamp",
+          "on": true,
+          "intensity": 3.2
+        },
+        {
+          "id": "bedroom-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "kitchen-lamp",
+          "on": true,
+          "intensity": 3
+        },
+        {
+          "id": "bathroom-lamp",
+          "on": true,
+          "intensity": 3.8
+        }
+      ],
+      "windows": [
+        {
+          "name": "window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.13031167282892078,
+            -0.47780946703937627,
+            0.8687444855261386
+          ]
+        },
+        {
+          "name": "living-window-daylight",
+          "intensity": 1.8114533552568805e-16,
+          "direction": [
+            -0.0016902934223884955,
+            -0.9051841046092938,
+            -0.42501632871081246
+          ]
+        },
+        {
+          "name": "master-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.0890870806374748,
+            -0.44543540318737396,
+            0.8908708063747479
+          ]
+        },
+        {
+          "name": "bedroom-window-daylight",
+          "intensity": 1.3523784375702383,
+          "direction": [
+            -5.175581015019659e-17,
+            -0.9063077870366499,
+            -0.42261826174069944
+          ]
+        },
+        {
+          "name": "kitchen-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.08728715609439697,
+            -0.4800793585191833,
+            0.8728715609439696
+          ]
+        },
+        {
+          "name": "balcony-daylight",
+          "intensity": 1.99387713148063,
+          "direction": [
+            -5.175581015019659e-17,
+            -0.9063077870366499,
+            -0.42261826174069944
+          ]
+        }
+      ],
+      "exteriorEnvironment": 3.8,
+      "fill": 0.38,
+      "ibl": 0.35,
+      "exposure": 1.12,
+      "resources": {
+        "meshes": 670,
+        "vertices": 570475,
+        "materials": 95,
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3
+      }
+    },
+    {
+      "time": 15,
+      "metadata": {
+        "version": "coastal-day-night-v1",
+        "stage": 3,
+        "visualApplied": true,
+        "state": {
+          "hour": 15,
+          "periodHour": 15,
+          "periodName": "午后",
+          "sun": {
+            "kind": "sun",
+            "azimuth": 225,
+            "elevation": 35,
+            "strength": 0.8,
+            "color": [
+              1,
+              0.7454042095403874,
+              0.45078578283822346
+            ],
+            "sourceDirection": [
+              -0.5792279653395691,
+              0.573576436351046,
+              0.5792279653395693
+            ],
+            "lightDirection": [
+              0.5792279653395691,
+              -0.573576436351046,
+              -0.5792279653395693
+            ],
+            "intensity": 3.04,
+            "enabled": true
+          },
+          "moon": {
+            "kind": "moon",
+            "azimuth": 45,
+            "elevation": -35,
+            "strength": 0,
+            "color": [
+              0.6104955708078648,
+              0.7230551289219693,
+              0.8879231178819663
+            ],
+            "sourceDirection": [
+              0.5792279653395691,
+              -0.573576436351046,
+              -0.5792279653395692
+            ],
+            "lightDirection": [
+              -0.5792279653395691,
+              0.573576436351046,
+              0.5792279653395692
+            ],
+            "intensity": 0,
+            "enabled": false
+          },
+          "primary": {
+            "kind": "sun",
+            "azimuth": 225,
+            "elevation": 35,
+            "strength": 0.8,
+            "color": [
+              1,
+              0.7454042095403874,
+              0.45078578283822346
+            ],
+            "sourceDirection": [
+              -0.5792279653395691,
+              0.573576436351046,
+              0.5792279653395693
+            ],
+            "lightDirection": [
+              0.5792279653395691,
+              -0.573576436351046,
+              -0.5792279653395693
+            ],
+            "intensity": 3.04,
+            "enabled": true
+          },
+          "sky": {
+            "zenith": [
+              0.15292615199615017,
+              0.30946892281750854,
+              0.5088813208549338
+            ],
+            "horizon": [
+              0.768151147247507,
+              0.6239603916750761,
+              0.45078578283822346
+            ],
+            "cloudLight": [
+              0.9130986517934192,
+              0.8549926081242338,
+              0.768151147247507
+            ],
+            "cloudShade": [
+              0.3662525955988395,
+              0.4232676699860717,
+              0.5271151257058131
+            ],
+            "starVisibility": 0
+          },
+          "environment": {
+            "exterior": 0.8,
+            "interior": 0.85
+          }
+        },
+        "visualHour": 15,
+        "playback": {
+          "automatic": false,
+          "transitioning": false,
+          "targetHour": null
+        },
+        "pauseReasons": []
+      },
+      "sun": {
+        "enabled": true,
+        "intensity": 3.04,
+        "direction": [
+          0.5792279653395691,
+          -0.573576436351046,
+          -0.5792279653395693
+        ],
+        "position": [
+          -231.69118613582765,
+          224.43057454041843,
+          261.6911861358277
+        ],
+        "body": "sun"
+      },
+      "sky": {
+        "sunStrength": 0.8,
+        "sunWarmth": 0,
+        "skyStarVisibility": 0,
+        "skyMoonVisibility": 0
+      },
+      "ocean": {
+        "oceanTime": 0,
+        "sunStrength": 0.8,
+        "sunWarmth": 0,
+        "skyStarVisibility": 0,
+        "skyMoonVisibility": 0,
+        "skyIllumination": 0.8
+      },
+      "lamps": [
+        {
+          "id": "floor-lamp",
+          "on": true,
+          "intensity": 3.3
+        },
+        {
+          "id": "desk-lamp",
+          "on": true,
+          "intensity": 1.25
+        },
+        {
+          "id": "living-lamp",
+          "on": true,
+          "intensity": 2.4
+        },
+        {
+          "id": "master-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "ensuite-lamp",
+          "on": true,
+          "intensity": 3.2
+        },
+        {
+          "id": "bedroom-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "kitchen-lamp",
+          "on": true,
+          "intensity": 3
+        },
+        {
+          "id": "bathroom-lamp",
+          "on": true,
+          "intensity": 3.8
+        }
+      ],
+      "windows": [
+        {
+          "name": "window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.13031167282892078,
+            -0.47780946703937627,
+            0.8687444855261386
+          ]
+        },
+        {
+          "name": "living-window-daylight",
+          "intensity": 0,
+          "direction": [
+            -0.0016902934223884955,
+            -0.9051841046092938,
+            -0.42501632871081246
+          ]
+        },
+        {
+          "name": "master-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.0890870806374748,
+            -0.44543540318737396,
+            0.8908708063747479
+          ]
+        },
+        {
+          "name": "bedroom-window-daylight",
+          "intensity": 1.4828235912692977,
+          "direction": [
+            0.5792279653395691,
+            -0.573576436351046,
+            -0.5792279653395693
+          ]
+        },
+        {
+          "name": "kitchen-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.08728715609439697,
+            -0.4800793585191833,
+            0.8728715609439696
+          ]
+        },
+        {
+          "name": "balcony-daylight",
+          "intensity": 1.0094945279778411,
+          "direction": [
+            0.5792279653395691,
+            -0.573576436351046,
+            -0.5792279653395693
+          ]
+        }
+      ],
+      "exteriorEnvironment": 3.04,
+      "fill": 0.323,
+      "ibl": 0.35,
+      "exposure": 1.12,
+      "resources": {
+        "meshes": 670,
+        "vertices": 570475,
+        "materials": 95,
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3
+      }
+    },
+    {
+      "time": 18,
+      "metadata": {
+        "version": "coastal-day-night-v1",
+        "stage": 3,
+        "visualApplied": true,
+        "state": {
+          "hour": 18,
+          "periodHour": 18,
+          "periodName": "黄昏",
+          "sun": {
+            "kind": "sun",
+            "azimuth": 270,
+            "elevation": 5,
+            "strength": 0.25,
+            "color": [
+              1,
+              0.4178850708481375,
+              0.162029375639111
+            ],
+            "sourceDirection": [
+              -0.9961946980917455,
+              0.08715574274765817,
+              1.82997997251843e-16
+            ],
+            "lightDirection": [
+              0.9961946980917455,
+              -0.08715574274765817,
+              -1.82997997251843e-16
+            ],
+            "intensity": 0.95,
+            "enabled": true
+          },
+          "moon": {
+            "kind": "moon",
+            "azimuth": 90,
+            "elevation": -5,
+            "strength": 0,
+            "color": [
+              0.6104955708078648,
+              0.7230551289219693,
+              0.8879231178819663
+            ],
+            "sourceDirection": [
+              0.9961946980917455,
+              -0.08715574274765817,
+              -6.099933241728101e-17
+            ],
+            "lightDirection": [
+              -0.9961946980917455,
+              0.08715574274765817,
+              6.099933241728101e-17
+            ],
+            "intensity": 0,
+            "enabled": false
+          },
+          "primary": {
+            "kind": "sun",
+            "azimuth": 270,
+            "elevation": 5,
+            "strength": 0.25,
+            "color": [
+              1,
+              0.4178850708481375,
+              0.162029375639111
+            ],
+            "sourceDirection": [
+              -0.9961946980917455,
+              0.08715574274765817,
+              1.82997997251843e-16
+            ],
+            "lightDirection": [
+              0.9961946980917455,
+              -0.08715574274765817,
+              -1.82997997251843e-16
+            ],
+            "intensity": 0.95,
+            "enabled": true
+          },
+          "sky": {
+            "zenith": [
+              0.12743768043564743,
+              0.15292615199615017,
+              0.31398871337571754
+            ],
+            "horizon": [
+              0.7156935005064807,
+              0.35153259950043936,
+              0.22696587351009836
+            ],
+            "cloudLight": [
+              0.6724431569576875,
+              0.6172065624196511,
+              0.6307571363461468
+            ],
+            "cloudShade": [
+              0.19120168274079138,
+              0.23074004852434915,
+              0.3467040563550296
+            ],
+            "starVisibility": 0
+          },
+          "environment": {
+            "exterior": 0.25,
+            "interior": 0.3
+          }
+        },
+        "visualHour": 18,
+        "playback": {
+          "automatic": false,
+          "transitioning": false,
+          "targetHour": null
+        },
+        "pauseReasons": []
+      },
+      "sun": {
+        "enabled": true,
+        "intensity": 0.95,
+        "direction": [
+          0.9961946980917455,
+          -0.08715574274765817,
+          -1.82997997251843e-16
+        ],
+        "position": [
+          -398.47787923669824,
+          29.86229709906327,
+          30.000000000000075
+        ],
+        "body": "sun"
+      },
+      "sky": {
+        "sunStrength": 0.25,
+        "sunWarmth": 1,
+        "skyStarVisibility": 0,
+        "skyMoonVisibility": 0
+      },
+      "ocean": {
+        "oceanTime": 0,
+        "sunStrength": 0.25,
+        "sunWarmth": 1,
+        "skyStarVisibility": 0,
+        "skyMoonVisibility": 0,
+        "skyIllumination": 0.25
+      },
+      "lamps": [
+        {
+          "id": "floor-lamp",
+          "on": true,
+          "intensity": 3.3
+        },
+        {
+          "id": "desk-lamp",
+          "on": true,
+          "intensity": 1.25
+        },
+        {
+          "id": "living-lamp",
+          "on": true,
+          "intensity": 2.4
+        },
+        {
+          "id": "master-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "ensuite-lamp",
+          "on": true,
+          "intensity": 3.2
+        },
+        {
+          "id": "bedroom-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "kitchen-lamp",
+          "on": true,
+          "intensity": 3
+        },
+        {
+          "id": "bathroom-lamp",
+          "on": true,
+          "intensity": 3.8
+        }
+      ],
+      "windows": [
+        {
+          "name": "window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.13031167282892078,
+            -0.47780946703937627,
+            0.8687444855261386
+          ]
+        },
+        {
+          "name": "living-window-daylight",
+          "intensity": 0,
+          "direction": [
+            -0.0016902934223884955,
+            -0.9051841046092938,
+            -0.42501632871081246
+          ]
+        },
+        {
+          "name": "master-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.0890870806374748,
+            -0.44543540318737396,
+            0.8908708063747479
+          ]
+        },
+        {
+          "name": "bedroom-window-daylight",
+          "intensity": 1.463983978014744e-16,
+          "direction": [
+            0.9959522425386996,
+            -0.08979666904891505,
+            -0.003960910230631443
+          ]
+        },
+        {
+          "name": "kitchen-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.08728715609439697,
+            -0.4800793585191833,
+            0.8728715609439696
+          ]
+        },
+        {
+          "name": "balcony-daylight",
+          "intensity": 0.047935658511211995,
+          "direction": [
+            0.9961946980917455,
+            -0.08715574274765817,
+            -1.82997997251843e-16
+          ]
+        }
+      ],
+      "exteriorEnvironment": 0.95,
+      "fill": 0.11399999999999999,
+      "ibl": 0.35,
+      "exposure": 1.12,
+      "resources": {
+        "meshes": 670,
+        "vertices": 570475,
+        "materials": 95,
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3
+      }
+    },
+    {
+      "time": 21,
+      "metadata": {
+        "version": "coastal-day-night-v1",
+        "stage": 3,
+        "visualApplied": true,
+        "state": {
+          "hour": 21,
+          "periodHour": 21,
+          "periodName": "入夜",
+          "sun": {
+            "kind": "sun",
+            "azimuth": 315,
+            "elevation": -35,
+            "strength": 0,
+            "color": [
+              1,
+              0.4178850708481375,
+              0.162029375639111
+            ],
+            "sourceDirection": [
+              -0.5792279653395693,
+              -0.573576436351046,
+              -0.5792279653395691
+            ],
+            "lightDirection": [
+              0.5792279653395693,
+              0.573576436351046,
+              0.5792279653395691
+            ],
+            "intensity": 0,
+            "enabled": false
+          },
+          "moon": {
+            "kind": "moon",
+            "azimuth": 135,
+            "elevation": 25,
+            "strength": 0.035,
+            "color": [
+              0.6104955708078648,
+              0.7230551289219693,
+              0.8879231178819663
+            ],
+            "sourceDirection": [
+              0.6408563820557885,
+              0.42261826174069944,
+              0.6408563820557884
+            ],
+            "lightDirection": [
+              -0.6408563820557885,
+              -0.42261826174069944,
+              -0.6408563820557884
+            ],
+            "intensity": 0.133,
+            "enabled": true
+          },
+          "primary": {
+            "kind": "moon",
+            "azimuth": 135,
+            "elevation": 25,
+            "strength": 0.035,
+            "color": [
+              0.6104955708078648,
+              0.7230551289219693,
+              0.8879231178819663
+            ],
+            "sourceDirection": [
+              0.6408563820557885,
+              0.42261826174069944,
+              0.6408563820557884
+            ],
+            "lightDirection": [
+              -0.6408563820557885,
+              -0.42261826174069944,
+              -0.6408563820557884
+            ],
+            "intensity": 0.133,
+            "enabled": true
+          },
+          "sky": {
+            "zenith": [
+              0.007499032043226175,
+              0.017641954488384078,
+              0.046665086336880095
+            ],
+            "horizon": [
+              0.03560131487502034,
+              0.06301001765316767,
+              0.10946171077829933
+            ],
+            "cloudLight": [
+              0.027320891639074894,
+              0.05126945837404324,
+              0.09989872824711389
+            ],
+            "cloudShade": [
+              0.012286488356915872,
+              0.027320891639074894,
+              0.06124605423161761
+            ],
+            "starVisibility": 0.7
+          },
+          "environment": {
+            "exterior": 0.2,
+            "interior": 0.12
+          }
+        },
+        "visualHour": 21,
+        "playback": {
+          "automatic": false,
+          "transitioning": false,
+          "targetHour": null
+        },
+        "pauseReasons": []
+      },
+      "sun": {
+        "enabled": true,
+        "intensity": 0.133,
+        "direction": [
+          -0.6408563820557885,
+          -0.42261826174069944,
+          -0.6408563820557884
+        ],
+        "position": [
+          256.34255282231544,
+          164.04730469627978,
+          286.3425528223154
+        ],
+        "body": "moon"
+      },
+      "sky": {
+        "sunStrength": 0.035,
+        "sunWarmth": 0,
+        "skyStarVisibility": 0.7,
+        "skyMoonVisibility": 0.8750000000000001
+      },
+      "ocean": {
+        "oceanTime": 0,
+        "sunStrength": 0.035,
+        "sunWarmth": 0,
+        "skyStarVisibility": 0.7,
+        "skyMoonVisibility": 0.8750000000000001,
+        "skyIllumination": 0.2
+      },
+      "lamps": [
+        {
+          "id": "floor-lamp",
+          "on": true,
+          "intensity": 3.3
+        },
+        {
+          "id": "desk-lamp",
+          "on": true,
+          "intensity": 1.25
+        },
+        {
+          "id": "living-lamp",
+          "on": true,
+          "intensity": 2.4
+        },
+        {
+          "id": "master-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "ensuite-lamp",
+          "on": true,
+          "intensity": 3.2
+        },
+        {
+          "id": "bedroom-lamp",
+          "on": true,
+          "intensity": 2.3
+        },
+        {
+          "id": "kitchen-lamp",
+          "on": true,
+          "intensity": 3
+        },
+        {
+          "id": "bathroom-lamp",
+          "on": true,
+          "intensity": 3.8
+        }
+      ],
+      "windows": [
+        {
+          "name": "window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.13031167282892078,
+            -0.47780946703937627,
+            0.8687444855261386
+          ]
+        },
+        {
+          "name": "living-window-daylight",
+          "intensity": 0.0785049068018341,
+          "direction": [
+            -0.6408563820557885,
+            -0.42261826174069944,
+            -0.6408563820557884
+          ]
+        },
+        {
+          "name": "master-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.0890870806374748,
+            -0.44543540318737396,
+            0.8908708063747479
+          ]
+        },
+        {
+          "name": "bedroom-window-daylight",
+          "intensity": 0.07177591479024832,
+          "direction": [
+            -0.6408563820557885,
+            -0.42261826174069944,
+            -0.6408563820557884
+          ]
+        },
+        {
+          "name": "kitchen-window-daylight",
+          "intensity": 0,
+          "direction": [
+            0.08728715609439697,
+            -0.4800793585191833,
+            0.8728715609439696
+          ]
+        },
+        {
+          "name": "balcony-daylight",
+          "intensity": 0.03254160615403386,
+          "direction": [
+            -0.6408563820557885,
+            -0.42261826174069944,
+            -0.6408563820557884
+          ]
+        }
+      ],
+      "exteriorEnvironment": 0.76,
+      "fill": 0.0456,
+      "ibl": 0.35,
+      "exposure": 1.12,
+      "resources": {
+        "meshes": 670,
+        "vertices": 570475,
+        "materials": 95,
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3
+      }
+    }
+  ],
+  "shadowAnchors": [
+    {
+      "hour": 0,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        -7.871877887341986e-17,
+        -0.766044443118978,
+        -0.6427876096865394
+      ],
+      "source": [
+        7.871877887341985e-17,
+        0.766044443118978,
+        0.6427876096865394
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 0,
+      "anchor": "path",
+      "zone": 4,
+      "direction": [
+        -7.871877887341986e-17,
+        -0.766044443118978,
+        -0.6427876096865394
+      ],
+      "source": [
+        1.4210854715202002e-16,
+        0.7660444431189781,
+        0.6427876096865394
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 0,
+      "anchor": "tower",
+      "zone": 9,
+      "direction": [
+        -7.871877887341986e-17,
+        -0.766044443118978,
+        -0.6427876096865394
+      ],
+      "source": [
+        0,
+        0.766044443118978,
+        0.6427876096865395
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 0,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        -7.871877887341986e-17,
+        -0.766044443118978,
+        -0.6427876096865394
+      ],
+      "source": [
+        7.871877887341985e-17,
+        0.766044443118978,
+        0.6427876096865394
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 3,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        0.6408563820557884,
+        -0.42261826174069944,
+        -0.6408563820557887
+      ],
+      "source": [
+        -0.6408563820557884,
+        0.42261826174069944,
+        0.6408563820557887
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 3,
+      "anchor": "path",
+      "zone": 4,
+      "direction": [
+        0.6408563820557884,
+        -0.42261826174069944,
+        -0.6408563820557887
+      ],
+      "source": [
+        -0.6408563820557884,
+        0.42261826174069944,
+        0.6408563820557887
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 3,
+      "anchor": "tower",
+      "zone": 9,
+      "direction": [
+        0.6408563820557884,
+        -0.42261826174069944,
+        -0.6408563820557887
+      ],
+      "source": [
+        -0.6408563820557885,
+        0.42261826174069955,
+        0.6408563820557885
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 3,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        0.6408563820557884,
+        -0.42261826174069944,
+        -0.6408563820557887
+      ],
+      "source": [
+        -0.6408563820557884,
+        0.42261826174069944,
+        0.6408563820557887
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 6,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        -0.9961946980917455,
+        -0.08715574274765817,
+        6.099933241728101e-17
+      ],
+      "source": [
+        0.9961946980917457,
+        0.08715574274765818,
+        -6.217248937900877e-17
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 6,
+      "anchor": "path",
+      "zone": 4,
+      "direction": [
+        -0.9961946980917455,
+        -0.08715574274765817,
+        6.099933241728101e-17
+      ],
+      "source": [
+        0.9961946980917457,
+        0.08715574274765818,
+        -5.329070518200751e-17
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 6,
+      "anchor": "tower",
+      "zone": 9,
+      "direction": [
+        -0.9961946980917455,
+        -0.08715574274765817,
+        6.099933241728101e-17
+      ],
+      "source": [
+        0.9961946980917457,
+        0.08715574274765818,
+        0
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 6,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        -0.9961946980917455,
+        -0.08715574274765817,
+        6.099933241728101e-17
+      ],
+      "source": [
+        0.9961946980917457,
+        0.08715574274765818,
+        -6.217248937900877e-17
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 9,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        -0.5792279653395692,
+        -0.573576436351046,
+        -0.5792279653395691
+      ],
+      "source": [
+        0.5792279653395693,
+        0.5735764363510462,
+        0.5792279653395692
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 9,
+      "anchor": "path",
+      "zone": 4,
+      "direction": [
+        -0.5792279653395692,
+        -0.573576436351046,
+        -0.5792279653395691
+      ],
+      "source": [
+        0.5792279653395693,
+        0.5735764363510462,
+        0.5792279653395692
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 9,
+      "anchor": "tower",
+      "zone": 9,
+      "direction": [
+        -0.5792279653395692,
+        -0.573576436351046,
+        -0.5792279653395691
+      ],
+      "source": [
+        0.5792279653395693,
+        0.5735764363510462,
+        0.5792279653395691
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 9,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        -0.5792279653395692,
+        -0.573576436351046,
+        -0.5792279653395691
+      ],
+      "source": [
+        0.5792279653395693,
+        0.5735764363510462,
+        0.5792279653395692
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 12,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        -5.175581015019659e-17,
+        -0.9063077870366499,
+        -0.42261826174069944
+      ],
+      "source": [
+        5.175581015019659e-17,
+        0.9063077870366499,
+        0.42261826174069944
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 12,
+      "anchor": "path",
+      "zone": 4,
+      "direction": [
+        -5.175581015019659e-17,
+        -0.9063077870366499,
+        -0.42261826174069944
+      ],
+      "source": [
+        0,
+        0.9063077870366499,
+        0.42261826174069944
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 12,
+      "anchor": "tower",
+      "zone": 9,
+      "direction": [
+        -5.175581015019659e-17,
+        -0.9063077870366499,
+        -0.42261826174069944
+      ],
+      "source": [
+        0,
+        0.90630778703665,
+        0.42261826174069944
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 12,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        -5.175581015019659e-17,
+        -0.9063077870366499,
+        -0.42261826174069944
+      ],
+      "source": [
+        5.175581015019659e-17,
+        0.9063077870366499,
+        0.42261826174069944
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 15,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        0.5792279653395691,
+        -0.573576436351046,
+        -0.5792279653395693
+      ],
+      "source": [
+        -0.5792279653395691,
+        0.573576436351046,
+        0.5792279653395693
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 15,
+      "anchor": "path",
+      "zone": 4,
+      "direction": [
+        0.5792279653395691,
+        -0.573576436351046,
+        -0.5792279653395693
+      ],
+      "source": [
+        -0.5792279653395692,
+        0.573576436351046,
+        0.5792279653395693
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 15,
+      "anchor": "tower",
+      "zone": 9,
+      "direction": [
+        0.5792279653395691,
+        -0.573576436351046,
+        -0.5792279653395693
+      ],
+      "source": [
+        -0.5792279653395691,
+        0.5735764363510462,
+        0.5792279653395693
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 15,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        0.5792279653395691,
+        -0.573576436351046,
+        -0.5792279653395693
+      ],
+      "source": [
+        -0.5792279653395691,
+        0.573576436351046,
+        0.5792279653395693
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 18,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        0.9961946980917455,
+        -0.08715574274765817,
+        -1.82997997251843e-16
+      ],
+      "source": [
+        -0.9961946980917457,
+        0.08715574274765818,
+        1.865174681370263e-16
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 18,
+      "anchor": "path",
+      "zone": 4,
+      "direction": [
+        0.9961946980917455,
+        -0.08715574274765817,
+        -1.82997997251843e-16
+      ],
+      "source": [
+        -0.9961946980917457,
+        0.0871557427476582,
+        1.7763568394002508e-16
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 18,
+      "anchor": "tower",
+      "zone": 9,
+      "direction": [
+        0.9961946980917455,
+        -0.08715574274765817,
+        -1.82997997251843e-16
+      ],
+      "source": [
+        -0.9961946980917455,
+        0.08715574274765817,
+        1.4210854715202002e-16
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 18,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        0.9961946980917455,
+        -0.08715574274765817,
+        -1.82997997251843e-16
+      ],
+      "source": [
+        -0.9961946980917457,
+        0.08715574274765818,
+        1.865174681370263e-16
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 21,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        -0.6408563820557885,
+        -0.42261826174069944,
+        -0.6408563820557884
+      ],
+      "source": [
+        0.6408563820557887,
+        0.42261826174069944,
+        0.6408563820557884
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 21,
+      "anchor": "path",
+      "zone": 4,
+      "direction": [
+        -0.6408563820557885,
+        -0.42261826174069944,
+        -0.6408563820557884
+      ],
+      "source": [
+        0.6408563820557887,
+        0.42261826174069944,
+        0.6408563820557884
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 21,
+      "anchor": "tower",
+      "zone": 9,
+      "direction": [
+        -0.6408563820557885,
+        -0.42261826174069944,
+        -0.6408563820557884
+      ],
+      "source": [
+        0.6408563820557887,
+        0.42261826174069944,
+        0.6408563820557884
+      ],
+      "refreshRate": 0
+    },
+    {
+      "hour": 21,
+      "anchor": "home",
+      "zone": 0,
+      "direction": [
+        -0.6408563820557885,
+        -0.42261826174069944,
+        -0.6408563820557884
+      ],
+      "source": [
+        0.6408563820557887,
+        0.42261826174069944,
+        0.6408563820557884
+      ],
+      "refreshRate": 0
+    }
+  ],
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:8200/js/main.js",
+      "status": 200,
+      "bytes": 264499
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    }
+  ],
+  "initialJsBytes": 2903529,
+  "twilightInputsVerified": true,
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8200/",
+      "status": 200,
+      "bytes": 25663
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/main.js",
+      "status": 200,
+      "bytes": 264499
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8200/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8200/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8200/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4190
+    },
+    {
+      "url": "http://127.0.0.1:8200/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8200/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8200/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8200/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/0a2b7e4a-fcbb-4c8e-a9aa-b543afb03b5a",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/9a2296ec-fc4f-4549-ac20-62cabecf2072",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/deb81849-9c10-4614-a4b4-e8490dfd4cfe",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/bc2f36bf-6602-49e0-a6a2-195d640436dd",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/b032e432-0d51-49d0-9d3f-e77d0c46b853",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/bf87959c-7086-4372-8b43-97ec586b1fda",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/f4a3c58e-29ed-4c1c-a19d-98a13d51208e",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/10703896-297a-4a93-bf26-0d392b1779c5",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/bd28a01c-cfd0-4767-ae30-984afc88c963",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/5ff2d219-c12c-4604-9900-e6fe28f05eb1",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/da9123aa-a03e-485a-bc4e-8df6685755cb",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/e4734126-684f-4647-802a-7478c3987f52",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/bca81af4-e4cc-4d59-88c2-d2500cbc6abb",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/f22f56b6-26c1-4223-afa5-1e859fdd434e",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/7f435250-b491-4386-9c40-3a49918bc709",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8200/b6ed6373-95a8-445f-8791-be3235457408",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8200/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8200/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ]
+}

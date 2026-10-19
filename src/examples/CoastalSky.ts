@@ -5,9 +5,10 @@ import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
 // Read by tools/generate-coastal-environment.py. Neutral, azimuth-independent, sun-free IBL.
 export const COASTAL_ENVIRONMENT = {"horizon":[0.75,0.75,0.75],"zenith":[0.55,0.55,0.55],"ground":[0.20,0.20,0.20],"width":256,"height":128} as const;
 
-/** Project procedural sky, v1. Fixed world directions; no textures, wall clock or moving seeds. */
-export const COASTAL_SKY_DETAILS = Object.freeze({ version: "coastal-clouds-stars-v1", seed: 17.17,
-  cloudScale: 6.4, cloudThreshold: .60, starGrid: 24, starProbability: .18, starRadius: .00095 });
+/** Fixed world directions; v2 adds filtered water reflection without changing seeds or positions. */
+export const COASTAL_SKY_DETAILS = Object.freeze({ version: "coastal-clouds-stars-v2", seed: 17.17,
+  cloudScale: 6.4, cloudThreshold: .60, starGrid: 24, starProbability: .18, starRadius: .00095,
+  reflectionStarRetention: .1, reflectionStarFadeStart: .08, reflectionStarFadeEnd: .18 });
 
 /** A modest tint, separate from brightness, avoids applying the night reduction twice. */
 export function timeEnvironmentColor(state: TimeOfDaySnapshot): Color3 {
@@ -30,10 +31,14 @@ export const coastalSkyGLSL = `
     float warm=pow(max(0.,dot(horizontal,towardSun)),6.)*exp(-abs(d.y)*7.);
     vec3 horizon=mix(skyHorizon,mix(neutral,skyHorizon,warm),sunWarmth);
     return mix(horizon,skyZenith,t);
+  }
+  float coastalStarVisibility(vec3 d) {
+    float moon=1.-smoothstep(.97,.9995,dot(d,skyMoonDirection))*skyMoonVisibility;
+    return skyStarVisibility*smoothstep(.035,.20,d.y)*moon;
   }`;
 
-// Keep high-frequency background details out of the ocean's pure gradient / sea haze path.
-export const coastalSkyDetailsGLSL = `
+/** The same cloud field in sky and water. Angular filtering never changes its seed or direction. */
+export const coastalSkyCloudsGLSL = `
   float coastalHash(vec3 p) {
     p=fract(p*vec3(.1031,.1137,.1379)+${COASTAL_SKY_DETAILS.seed});
     p+=dot(p,p.yzx+19.19);
@@ -51,13 +56,18 @@ export const coastalSkyDetailsGLSL = `
       mix(rows.y-rows.x,rows.w-rows.z,u.z),high-low)*du;
     return vec4(mix(low,high,u.z),gradient);
   }
-  float coastalCloudDensity(vec3 d, out vec3 normal) {
+  float coastalCloudDensity(vec3 d, float filterAngle, out vec3 normal) {
     vec3 p=d*${COASTAL_SKY_DETAILS.cloudScale}+vec3(3.7,1.9,8.3);
     vec4 base=coastalNoise(p);
-    float n=.64*base.x+.26*coastalNoise(p*2.13+5.1).x+.10*coastalNoise(p*4.27+9.2).x;
+    vec3 attenuation=exp(-pow(filterAngle*${COASTAL_SKY_DETAILS.cloudScale}*vec3(1.,2.13,4.27),vec3(2.)));
+    float n=.5+.64*(base.x-.5)*attenuation.x
+      +.26*(coastalNoise(p*2.13+5.1).x-.5)*attenuation.y+.10*(coastalNoise(p*4.27+9.2).x-.5)*attenuation.z;
     // An analytic density gradient paints a soft lit top; this is not volume scattering.
     normal=normalize(vec3(0.,.8,0.)-base.yzw);
-    return smoothstep(${COASTAL_SKY_DETAILS.cloudThreshold}-.020,${COASTAL_SKY_DETAILS.cloudThreshold}+.055,n)
+    float edge=sqrt(.0375*.0375+pow(filterAngle*${COASTAL_SKY_DETAILS.cloudScale}*.20,2.));
+    float density=smoothstep(${COASTAL_SKY_DETAILS.cloudThreshold}+.0175-edge,${COASTAL_SKY_DETAILS.cloudThreshold}+.0175+edge,n);
+    // Very large footprints converge to a diffuse coverage rather than aliasing tiny islands.
+    return mix(density,.18,smoothstep(.16,.65,filterAngle))
       *smoothstep(.025,.18,d.y);
   }
   vec3 coastalCloudColor(vec3 d, float density, vec3 normal) {
@@ -66,7 +76,26 @@ export const coastalSkyDetailsGLSL = `
     float toward=pow(max(0.,dot(d,skySunDirection)),5.);
     float edge=4.*density*(1.-density);
     return mix(color,color*vec3(1.12,.77,.57),sunWarmth*toward*(.3+.7*edge)*.65);
-  }
+  }`;
+
+// Integrated Gaussian star flux per grid cell. Rough water keeps only this faint mean, not points.
+const reflectedStarMean = 2 * Math.PI * (COASTAL_SKY_DETAILS.starRadius * COASTAL_SKY_DETAILS.starGrid) ** 2
+  * COASTAL_SKY_DETAILS.starProbability * (.12 + (.65 - .12) / 4) * (.7 ** 2 + .7 * 1.25 + 1.25 ** 2) / 3
+  * COASTAL_SKY_DETAILS.reflectionStarRetention; // Artistic residual after the rough-water low-pass.
+export const coastalSkyReflectionGLSL = `
+  vec3 coastalSkyReflection(vec3 d, float angularFootprint, float roughness) {
+    float blur=clamp(max(angularFootprint,roughness*roughness),0.,1.);
+    vec3 normal;
+    float cloud=coastalCloudDensity(d,blur,normal);
+    // Extinguish the star band on rough water before the existing 8-bit scene-colour quantisation.
+    float starBand=1.-smoothstep(${COASTAL_SKY_DETAILS.reflectionStarFadeStart},${COASTAL_SKY_DETAILS.reflectionStarFadeEnd},roughness);
+    vec3 meanStars=vec3(.89,.885,.885)*${reflectedStarMean.toFixed(9)}*coastalStarVisibility(d)*starBand;
+    // The ocean's existing GGX lobe supplies the sun/moon highlight exactly once.
+    return mix(coastalSkyGradient(d)+meanStars*(1.-cloud),coastalCloudColor(d,cloud,normal),cloud*.88);
+  }`;
+
+/** Fine stars and the celestial disk belong to the background, never the sea-haze gradient. */
+export const coastalSkyDetailsGLSL = `
   vec3 coastalStars(vec3 d, vec2 q, vec2 dx, vec2 dy) {
     if(d.y<=0. || skyStarVisibility<=0.) return vec3(0.);
     vec2 cell=floor(q);
@@ -86,15 +115,14 @@ export const coastalSkyDetailsGLSL = `
       vec3 tint=mix(vec3(1.,.89,.77),vec3(.78,.88,1.),coastalHash(vec3(c,23.4)));
       stars+=tint*brightness*kernel*(1.-step(${COASTAL_SKY_DETAILS.starProbability},choice));
     }
-    float moon=1.-smoothstep(.97,.9995,dot(d,skyMoonDirection))*skyMoonVisibility;
-    return stars*skyStarVisibility*smoothstep(.035,.20,d.y)*moon;
+    return stars*coastalStarVisibility(d);
   }
   vec3 coastalSkyRadiance(vec3 d) {
     // Differentiate the continuous equal-area map before any branch, floor or cell randomisation.
     vec2 q=d.xz/sqrt(max(1.+d.y,.001))*${COASTAL_SKY_DETAILS.starGrid.toFixed(1)};
     vec2 dx=dFdx(q), dy=dFdy(q);
     vec3 cloudNormal;
-    float cloud=coastalCloudDensity(d,cloudNormal);
+    float cloud=coastalCloudDensity(d,0.,cloudNormal);
     float alignment=clamp(dot(d,sunDirection),0.,1.);
     float disk=smoothstep(.99994,.99999,alignment);
     float glow=pow(alignment,350.)*.12;
@@ -135,6 +163,7 @@ export function createCoastalSky(scene: Scene): ShaderMaterial {
       precision highp float; varying vec3 vSkyPositionW; uniform vec3 cameraPosition;
       #include<clipPlaneFragmentDeclaration>
       ${coastalSkyGLSL}
+      ${coastalSkyCloudsGLSL}
       ${coastalSkyDetailsGLSL}
       void main() {
         #include<clipPlaneFragment>

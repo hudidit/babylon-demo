@@ -1,0 +1,18 @@
+{
+  "baseline": "fefe1b3",
+  "checkedOn": "2026-10-19",
+  "settingsChanged": false,
+  "physicalDevicesTested": false,
+  "firefox": {
+    "available": false,
+    "cloudsStarsTested": false,
+    "error": "TimeoutError: browserType.launch: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - <launching> /private/tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/6n/l6184h5j0797kpzl5fcps6sm0000gn/T/playwright_firefoxdev_profile-wrhPSz -juggler-pipe -silent\u001b[22m\n\u001b[2m  - <launched> pid=77464\u001b[22m\n\u001b[2m  - [pid=77464][err] *** You are running in headless mode.\u001b[22m\n\u001b[2m  - [pid=77464][err] sandbox_extension_issue_file_to_process failed for /private/tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)\u001b[22m\n\u001b[2m  - [pid=77464][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.361696) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt\u001b[22m\n"
+  },
+  "safariVersion": "Included with Safari 27.0 (22625.1.29.11.26)",
+  "safari": {
+    "available": false,
+    "cloudsStarsTested": false,
+    "error": "TimeoutError: The operation was aborted due to timeout",
+    "driverLogs": ""
+  }
+}

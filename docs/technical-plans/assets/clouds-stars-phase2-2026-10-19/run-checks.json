@@ -1,0 +1,87 @@
+{
+  "baseline": "fefe1b3",
+  "fpsOrLoadTimeSampling": false,
+  "suites": {
+    "visuals": {
+      "script": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-visuals.cjs",
+      "sha256": "268b4a4aad98c44e229e33156998062d17d974a97ad8e3e23d628690a65b9fd0",
+      "exitCode": 0,
+      "result": "visuals.json",
+      "manifestSha256": "98ebc67673638081c00339224314efc7bf1dcfc0a8e2387ba0272577829ed481",
+      "passed": true
+    },
+    "reflection": {
+      "script": "docs/technical-plans/assets/clouds-stars-phase2-2026-10-19/check-reflection.cjs",
+      "sha256": "671761e052cca4c519dffd7ad5f9560940e2c220b5da55472edd4d5c52500960",
+      "exitCode": 0,
+      "result": "reflection.json",
+      "manifestSha256": "98ebc67673638081c00339224314efc7bf1dcfc0a8e2387ba0272577829ed481",
+      "passed": true
+    },
+    "stability": {
+      "script": "docs/technical-plans/assets/clouds-stars-phase2-2026-10-19/check-stability.cjs",
+      "sha256": "3ef064fc4294c26cae9af8bba98b6e43f578c7acee3a298cadd834d89330366c",
+      "exitCode": 0,
+      "result": "stability.json",
+      "manifestSha256": "98ebc67673638081c00339224314efc7bf1dcfc0a8e2387ba0272577829ed481",
+      "passed": true
+    },
+    "mirror-clouds": {
+      "script": "docs/technical-plans/assets/clouds-stars-phase2-2026-10-19/check-mirrors.cjs",
+      "sha256": "78ae4abf522d491c5d511c4c2a5cd2cefb1193be1219823501b1f1a4e0038e8a",
+      "exitCode": 0,
+      "result": "mirror-clouds.json",
+      "manifestSha256": "98ebc67673638081c00339224314efc7bf1dcfc0a8e2387ba0272577829ed481",
+      "passed": true
+    },
+    "master-mirror": {
+      "script": "docs/technical-plans/assets/day-night-phase2-2026-10-19/check-night-master-mirror.cjs",
+      "sha256": "aa6677d8b509a3b98109c0be9307df69a23e8cfdf7ded19bb3a4a89b32c9f3e4",
+      "exitCode": 0,
+      "result": "mirrors/master/mirror-map.json",
+      "manifestSha256": "98ebc67673638081c00339224314efc7bf1dcfc0a8e2387ba0272577829ed481",
+      "passed": true
+    },
+    "public-mirror": {
+      "script": "docs/technical-plans/assets/day-night-phase2-2026-10-19/check-night-public-mirror.cjs",
+      "sha256": "40c7327e0c94abd4571ec8b1fa1a089e71e2ce5959265c01348d188e16e97de0",
+      "exitCode": 0,
+      "result": "mirrors/public/public-mirror.json",
+      "manifestSha256": "98ebc67673638081c00339224314efc7bf1dcfc0a8e2387ba0272577829ed481",
+      "passed": true
+    },
+    "transitions": {
+      "script": "docs/technical-plans/assets/clouds-stars-phase2-2026-10-19/check-transitions.cjs",
+      "sha256": "5eae884b431ce55cbaab968af25f1d0267c7a45bc009e34095ff398ac317e6bd",
+      "exitCode": 0,
+      "result": "transitions.json",
+      "manifestSha256": "98ebc67673638081c00339224314efc7bf1dcfc0a8e2387ba0272577829ed481",
+      "passed": true
+    },
+    "regression": {
+      "script": "docs/technical-plans/assets/lighthouse-finish-2026-10-19/check-regression.cjs",
+      "sha256": "929ec470a9db520a4c766a2f61668de92c99f556bbb5725ebb20177ff0026d12",
+      "exitCode": 0,
+      "result": "regression.json",
+      "manifestSha256": "98ebc67673638081c00339224314efc7bf1dcfc0a8e2387ba0272577829ed481",
+      "passed": true
+    },
+    "release": {
+      "script": "docs/technical-plans/assets/clouds-stars-phase2-2026-10-19/check-release.cjs",
+      "sha256": "9ec16a59e99e9626acaa775f6bf401d98eb24a5893aa70745adf7608b0da169b",
+      "exitCode": 0,
+      "result": "release-check.json",
+      "manifestSha256": "98ebc67673638081c00339224314efc7bf1dcfc0a8e2387ba0272577829ed481",
+      "passed": true
+    },
+    "platforms": {
+      "script": "docs/technical-plans/assets/clouds-stars-phase2-2026-10-19/check-platforms.cjs",
+      "sha256": "8d485827b4d99a01ab64292907dc456fde681fafea8e85a207fef3935893ea57",
+      "exitCode": 0,
+      "result": "platform-availability.json",
+      "manifestSha256": "98ebc67673638081c00339224314efc7bf1dcfc0a8e2387ba0272577829ed481",
+      "passed": true
+    }
+  },
+  "passed": true
+}
