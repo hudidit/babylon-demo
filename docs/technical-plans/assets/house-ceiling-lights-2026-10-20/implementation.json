@@ -1,0 +1,91 @@
+{
+  "baseline": "08fb5ae",
+  "date": "2026-10-20",
+  "releaseManifestSha256": "933e7b5dde1ab4f5f6740c2047775d01bf9ef0e42992e89de08fcaa03595c3d3",
+  "files": [
+    {
+      "path": "src/examples/HouseCeilingLights.ts",
+      "sha256": "050016bf643af1e72b2a1f3f3466a6c620bd7ff531b0fb3c8246aaa547699be2"
+    },
+    {
+      "path": "src/examples/Room.ts",
+      "sha256": "850de047445042a3855865bf78547809e9811d8f28ffe41998e0196c8cd7eba6"
+    },
+    {
+      "path": "src/examples/RoomLighting.ts",
+      "sha256": "397ad41488af998bfb30e60c4e1db2e727ab28e03700c4b58ee5998466f7c76f"
+    },
+    {
+      "path": "src/examples/HouseArchitecture.ts",
+      "sha256": "261c60f5b76b14097ecced8aa4642882caf321f57341c14b62b4b6fc9d8089b9"
+    },
+    {
+      "path": "src/examples/RoomFurnishings.ts",
+      "sha256": "d0b35b440eccb038240627ca1d14924f9456ce45702a7e47c575f50b35f2644c"
+    },
+    {
+      "path": "src/examples/RoomInteractions.ts",
+      "sha256": "8f75bce163172e340940a54330aaa022c5a2e2ad186e4e2232b77503efd48582"
+    },
+    {
+      "path": "src/examples/HouseLayout.ts",
+      "sha256": "9aa175d66ded9c0fd2193475a16216ea65bd4166aedc42684d685781e92b0f86"
+    },
+    {
+      "path": "src/examples/RoomRuntime.ts",
+      "sha256": "c261b5f6542b8b1405b26f05c9c1b583f27437a70861c1c083b4c0dcf18a2762"
+    },
+    {
+      "path": "src/examples/RoomShaders.ts",
+      "sha256": "141420f50a89d81b4f25e43d24dc282b7405b86b337b0877849f54001df2ff96"
+    },
+    {
+      "path": "tests/house-ceiling-lights.test.cjs",
+      "sha256": "132341ee86897fb9f7fea297de6c818f703ba9598cf7ead1118b743d32a6eda8"
+    },
+    {
+      "path": "package.json",
+      "sha256": "d0b503f1aafb821f442916332ca0267497ca6fd05c7dd1c3919552acbcd5b6a9"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e94ba83cc02d96a6954d091bf84233bceee7275e85107453a75f772a8a629dcf"
+    },
+    {
+      "path": "webpack.config.js",
+      "sha256": "16762abfd7f6dcd688f4f29b527e122aa8a22168ff08acd4c3292307dbf7136b"
+    },
+    {
+      "path": "tools/study-release.config.cjs",
+      "sha256": "fd2db6a7d83fc7964a33f9d4d8cdc5a106972b66502ffd2dfbfae3d1d3892a4f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs",
+      "sha256": "5b10dece56d4bd2092a49195bf179f56fe54541691f1118663131163036a69f6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/browser-harness.cjs",
+      "sha256": "518b9a3c58b355f453062977ebaca0633cf927cd410a90ed074490b0ec334f07"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-finish-2026-10-19/check-regression.cjs",
+      "sha256": "929ec470a9db520a4c766a2f61668de92c99f556bbb5725ebb20177ff0026d12"
+    },
+    {
+      "path": "docs/technical-plans/assets/house-ceiling-lights-2026-10-20/check-browser.cjs",
+      "sha256": "fe95b9be23484717bbce7eb199a03d8e2ffff70b1c7e4180e5bd4bd16aa04fbf"
+    },
+    {
+      "path": "docs/technical-plans/assets/house-ceiling-lights-2026-10-20/check-release.cjs",
+      "sha256": "7792b1bd15901349171be7363295593a9e1a168966e8f80bc135cddf6cdf3c22"
+    },
+    {
+      "path": "docs/technical-plans/assets/house-ceiling-lights-2026-10-20/check-regression.cjs",
+      "sha256": "9e7dd20f86ed38775576932798bcbcbf1f863837c8c708aaeb3dfa8e8fb2d71a"
+    },
+    {
+      "path": "docs/technical-plans/assets/house-ceiling-lights-2026-10-20/check-shadow-candidate.cjs",
+      "sha256": "3139f8b20b8977fc6b38998a585b96cc4a6fb02f0458d9086febf47dd95420e1"
+    }
+  ]
+}

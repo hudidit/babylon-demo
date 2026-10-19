@@ -149,6 +149,8 @@ export function createHouseArchitecture(scene: Scene, furniture: RoomFurnishings
     paint.transparencyMode = transparentWalls ? PBRMaterial.PBRMATERIAL_ALPHABLEND : PBRMaterial.PBRMATERIAL_OPAQUE;
     hidden.forEach(m => m.isVisible = shell);
     ceilings.forEach(m => m.isVisible = enclosed || view === "coast");
+    scene.transformNodes.filter(node => node.metadata?.ceilingFixture).forEach(node =>
+      node.getChildMeshes().forEach(mesh => mesh.isVisible = enclosed || view === "coast"));
   }, updateCutaway(position: { x: number; z: number }, target: { x: number; z: number }) {
     if (enclosed || view === "overview" || view === "coast") return false;
     const room = ["study", "desk", "details"].includes(view) ? "study"

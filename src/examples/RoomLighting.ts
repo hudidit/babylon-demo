@@ -11,6 +11,8 @@ import { HOUSE_SERVICE } from "./HouseServiceRooms";
 import { localPosition } from "./HouseRoomComponents";
 import { timeEnvironmentColor } from "./CoastalSky";
 import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
+import { HOUSE_CEILING_LIGHTS, ceilingLampPosition } from "./HouseCeilingLights";
+import { HOUSE_COORDINATES } from "./HouseLayout";
 
 /** Room-specific window/lamp sources plus the original restrained indirect bounce. */
 export class RoomLighting {
@@ -21,6 +23,7 @@ export class RoomLighting {
   private readonly fillIntensity: number;
   private readonly ambient: Color3;
   private time?: TimeOfDaySnapshot;
+  private hasCeilingLights = false;
   private readonly lamps = new Map<string, { light: SpotLight; intensity: number; on: boolean;
     material?: PBRMaterial; glow?: Color3 }>();
 
@@ -206,6 +209,29 @@ export class RoomLighting {
     this.natural.set(light, { normal: new Vector3(0, 1, 0), intensity: light.intensity });
   }
 
+  addCeilingLights() {
+    this.hasCeilingLights = true;
+    for (const lamp of HOUSE_CEILING_LIGHTS) {
+      const light = new SpotLight(lamp.id + "-light",
+        Vector3.FromArray(ceilingLampPosition(lamp.room, HOUSE_COORDINATES.clearHeight - .15)),
+        new Vector3(0, -1, 0), 2.9, 1, this.scene);
+      light.innerAngle = 2.35;
+      light.diffuse = new Color3(1, .94, .82);
+      light.specular = light.diffuse.scale(.45);
+      light.intensity = lamp.intensity; light.range = 45;
+      light.falloffType = SpotLight.FALLOFF_STANDARD;
+      setRoomOwners(light, [lamp.room]); light.metadata.affectsShared = true;
+      light.shadowMinZ = .1; light.shadowMaxZ = light.range;
+      const shadow = new ShadowGenerator(1024, light);
+      shadow.usePercentageCloserFiltering = true;
+      shadow.filteringQuality = ShadowGenerator.QUALITY_MEDIUM;
+      // The near-hemispherical cone needs more depth offset than the narrow table lamps.
+      shadow.bias = .001; shadow.normalBias = .03;
+      this.shadows.push(shadow);
+      this.lamps.set(lamp.id, { light, intensity: light.intensity, on: true });
+    }
+  }
+
   private registerWindow(light: SpotLight, id: string) {
     const side = houseWindowSide(HOUSE_WINDOWS.find(w => w.id === id)!);
     const normals = { north: [0, 0, -1], south: [0, 0, 1], east: [1, 0, 0], west: [-1, 0, 0] };
@@ -279,6 +305,12 @@ export class RoomLighting {
         }
         if (mesh.metadata?.castsShadows !== false) shadow.addShadowCaster(mesh, false);
       });
+      // Count sources, including switched-off lamps, after masks have been assigned. A shared
+      // material retains the largest requirement of its users, including late GLB furniture.
+      if (this.hasCeilingLights && !mesh.metadata?.exterior && mesh.material instanceof PBRMaterial) {
+        const slots = 1 + this.shadows.filter(shadow => shadow.getLight().canAffectMesh(mesh)).length;
+        mesh.material.maxSimultaneousLights = Math.max(mesh.material.maxSimultaneousLights, slots);
+      }
     });
     this.refreshShadows();
   }

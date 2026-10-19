@@ -5,6 +5,7 @@ import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import { registerRoomRuntime } from "./RoomRuntime";
 import { RoomFurnishings } from "./RoomFurnishings";
 import { RoomLighting } from "./RoomLighting";
+import { furnishHouseCeilingLights } from "./HouseCeilingLights";
 import { placeFurniture } from "./RoomFurnitureAssets";
 import { createRoomFinishing } from "./RoomFinishing";
 import { cabinetDrawers, RoomInteractions } from "./RoomInteractions";
@@ -191,15 +192,17 @@ export class RoomScene {
     furnishHouseBedroom(furnishings);
     furnishHouseKitchen(furnishings); furnishHouseBathroom(furnishings);
     furnishHouseBalcony(furnishings);
-    this.architecture.setEnclosed(false);
+    furnishHouseCeilingLights(furnishings);
     this.lighting.addLivingRoom(this.scene, true);
     this.lighting.addMasterSuite(this.scene);
     this.lighting.addBedroom(this.scene);
     this.lighting.addServiceRooms(this.scene);
     this.lighting.addBalcony(this.scene);
+    this.lighting.addCeilingLights();
     furnishings.finish().forEach(mesh => {
       mesh.checkCollisions = true;
     });
+    this.architecture.setEnclosed(false);
     new RoomMirrors(this.scene);
     furnishings.drawers.forEach(drawer => this.interactions.addDrawer(drawer));
     furnishings.doors.forEach(door => this.interactions.addDoor(door));
