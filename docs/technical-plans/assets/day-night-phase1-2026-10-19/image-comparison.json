@@ -1,0 +1,83 @@
+[
+  {
+    "view": "balcony",
+    "size": [
+      1280,
+      800
+    ],
+    "meanAbsoluteChannelDifference": [
+      0.0420947265625,
+      0.03971484375,
+      0.031216796875
+    ],
+    "extrema": [
+      [
+        0,
+        39
+      ],
+      [
+        0,
+        24
+      ],
+      [
+        0,
+        23
+      ]
+    ],
+    "identicalPixels": false
+  },
+  {
+    "view": "reading",
+    "size": [
+      1280,
+      800
+    ],
+    "meanAbsoluteChannelDifference": [
+      0.2089453125,
+      0.1832705078125,
+      0.1525166015625
+    ],
+    "extrema": [
+      [
+        0,
+        41
+      ],
+      [
+        0,
+        35
+      ],
+      [
+        0,
+        34
+      ]
+    ],
+    "identicalPixels": false
+  },
+  {
+    "view": "coast",
+    "size": [
+      1280,
+      800
+    ],
+    "meanAbsoluteChannelDifference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "extrema": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "identicalPixels": true
+  }
+]

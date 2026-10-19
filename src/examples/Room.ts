@@ -35,6 +35,8 @@ import { HOUSE_LAYOUT_VERSION, HOUSE_ROOMS, planToWorld, worldToPlan } from "./H
 import { advanceJump, createJumpState, HOUSE_JUMP, jumpPlatformAt, requestJump, resetJumpState } from "./HouseJump";
 import type { HouseRoomId } from "./HouseLayout";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
+import { RoomTimeOfDay, TIME_OF_DAY_VERSION } from "./RoomTimeOfDay";
+import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
 
 export type RoomView = "overview" | "coast" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 // The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
@@ -46,6 +48,7 @@ export class RoomScene {
   readonly engine: Engine;
   readonly audio = new RoomAudio();
   readonly rooms = new HouseRooms();
+  private readonly timeState = new RoomTimeOfDay();
   private readonly builds: Record<HouseRoomId, RoomBuild>;
   private readonly architecture: ReturnType<typeof createHouseArchitecture>;
   private readonly camera: ArcRotateCamera;
@@ -88,7 +91,8 @@ export class RoomScene {
     this.engine.setHardwareScalingLevel(1);
     // Render at the display refresh rate; leave Engine.maxFPS uncapped for high-refresh screens.
     this.scene = new Scene(this.engine);
-    this.scene.metadata = { layoutVersion: HOUSE_LAYOUT_VERSION };
+    this.scene.metadata = { layoutVersion: HOUSE_LAYOUT_VERSION,
+      timeOfDay: { version: TIME_OF_DAY_VERSION, stage: 1, visualApplied: false, state: this.timeOfDay } };
     this.builds = HOUSE_ROOMS.reduce((all, r) => { all[r.id] = this.rooms.begin(r.id); return all; }, {} as Record<HouseRoomId, RoomBuild>);
     // The final image-processing pass expects a linear clear colour.
     this.scene.clearColor = new Color4(0.14, 0.17, 0.18, 1).toLinearSpace();
@@ -281,6 +285,15 @@ export class RoomScene {
     document.addEventListener("visibilitychange", this.visibilityChanged);
     window.addEventListener("pagehide", this.dispose, { once: true });
     this.visibilityChanged();
+  }
+
+  /** Phase one stores time only; the next stage applies one shared state to all lighting. */
+  get timeOfDay(): TimeOfDaySnapshot { return this.timeState.snapshot; }
+  setTimeOfDay(hour: number): TimeOfDaySnapshot {
+    if (this.disposed) return this.timeOfDay;
+    const state = this.timeState.select(hour);
+    this.scene.metadata.timeOfDay.state = state;
+    return state;
   }
 
   setView(view: RoomView) {

@@ -1,0 +1,1242 @@
+{
+  "baseline": "af11fae",
+  "mode": "before",
+  "browser": "155.0.8059.82",
+  "fpsOrLoadTimeSampling": false,
+  "method": "Unmodified independent dist; scene API assertions and deterministic ocean/camera screenshot fixtures.",
+  "cases": [
+    {
+      "view": "balcony",
+      "visual": {
+        "lights": [
+          {
+            "name": "room-bounce-light",
+            "enabled": true,
+            "intensity": 0.38,
+            "direction": [
+              -0.35,
+              1,
+              0.15
+            ],
+            "diffuse": [
+              0.95,
+              0.97,
+              1
+            ]
+          },
+          {
+            "name": "window-daylight",
+            "enabled": true,
+            "intensity": 3.5,
+            "direction": [
+              0.13031167282892078,
+              -0.47780946703937627,
+              0.8687444855261386
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "reading-lamp-light",
+            "enabled": true,
+            "intensity": 3.3,
+            "direction": [
+              0.5734623443633283,
+              -0.8192319205190405,
+              0
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "banker-lamp-light",
+            "enabled": true,
+            "intensity": 1.25,
+            "direction": [
+              -0.5167036117861568,
+              -0.7949286335171643,
+              0.3179714534068657
+            ],
+            "diffuse": [
+              1,
+              0.88,
+              0.68
+            ]
+          },
+          {
+            "name": "lighthouse-local-work-light",
+            "enabled": false,
+            "intensity": 2.1,
+            "direction": [
+              0,
+              -1,
+              0
+            ],
+            "diffuse": [
+              1,
+              0.7592995506950911,
+              0.42590528570714575
+            ]
+          },
+          {
+            "name": "coastal-afternoon-sun",
+            "enabled": true,
+            "intensity": 3.8,
+            "direction": [
+              -0.5497526669373017,
+              -0.779649236747446,
+              -0.29986509105671
+            ],
+            "diffuse": [
+              1,
+              0.93,
+              0.8
+            ]
+          },
+          {
+            "name": "living-window-daylight",
+            "enabled": true,
+            "intensity": 3.5,
+            "direction": [
+              -0.9245003270420484,
+              -0.3698001308168194,
+              -0.09245003270420485
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "living-table-lamp-light",
+            "enabled": true,
+            "intensity": 2.4,
+            "direction": [
+              0.4472135954999579,
+              -0.8944271909999159,
+              0
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "master-window-daylight",
+            "enabled": true,
+            "intensity": 3.2,
+            "direction": [
+              0.0890870806374748,
+              -0.44543540318737396,
+              0.8908708063747479
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "master-lamp-light",
+            "enabled": true,
+            "intensity": 2.3,
+            "direction": [
+              0.5184758473652126,
+              -0.8295613557843402,
+              0.20739033894608505
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "ensuite-lamp-light",
+            "enabled": true,
+            "intensity": 3.2,
+            "direction": [
+              -0.5050762722761053,
+              -0.8081220356417685,
+              0.3030457633656632
+            ],
+            "diffuse": [
+              1,
+              0.94,
+              0.82
+            ]
+          },
+          {
+            "name": "bedroom-window-daylight",
+            "enabled": true,
+            "intensity": 3.2,
+            "direction": [
+              -0.07276035313504535,
+              -0.4092769863846301,
+              -0.9095044141880669
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "bedroom-lamp-light",
+            "enabled": true,
+            "intensity": 2.3,
+            "direction": [
+              0.5184758473652126,
+              -0.8295613557843402,
+              0.20739033894608505
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "kitchen-window-daylight",
+            "enabled": true,
+            "intensity": 2.8,
+            "direction": [
+              0.08728715609439697,
+              -0.4800793585191833,
+              0.8728715609439696
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "kitchen-lamp-light",
+            "enabled": true,
+            "intensity": 3,
+            "direction": [
+              0.19402850002906638,
+              -0.9701425001453319,
+              -0.14552137502179976
+            ],
+            "diffuse": [
+              1,
+              0.94,
+              0.82
+            ]
+          },
+          {
+            "name": "bathroom-lamp-light",
+            "enabled": true,
+            "intensity": 3.8,
+            "direction": [
+              0.48795003647426655,
+              -0.7807200583588265,
+              0.39036002917941326
+            ],
+            "diffuse": [
+              1,
+              0.94,
+              0.82
+            ]
+          },
+          {
+            "name": "balcony-daylight",
+            "enabled": true,
+            "intensity": 2.2,
+            "direction": [
+              0,
+              -0.9889363528682975,
+              -0.14834045293024462
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          }
+        ],
+        "resources": {
+          "meshes": 670,
+          "vertices": 570475,
+          "materials": 95,
+          "textures": 148,
+          "lights": 17,
+          "cameras": 3
+        },
+        "exposure": 1.12,
+        "ibl": 0.35,
+        "camera": {
+          "name": "study-camera",
+          "position": [
+            13.499999999999929,
+            3.0000000000000124,
+            30.24999999999997
+          ]
+        }
+      }
+    },
+    {
+      "view": "reading",
+      "visual": {
+        "lights": [
+          {
+            "name": "room-bounce-light",
+            "enabled": true,
+            "intensity": 0.38,
+            "direction": [
+              -0.35,
+              1,
+              0.15
+            ],
+            "diffuse": [
+              0.95,
+              0.97,
+              1
+            ]
+          },
+          {
+            "name": "window-daylight",
+            "enabled": true,
+            "intensity": 3.5,
+            "direction": [
+              0.13031167282892078,
+              -0.47780946703937627,
+              0.8687444855261386
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "reading-lamp-light",
+            "enabled": true,
+            "intensity": 3.3,
+            "direction": [
+              0.5734623443633283,
+              -0.8192319205190405,
+              0
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "banker-lamp-light",
+            "enabled": true,
+            "intensity": 1.25,
+            "direction": [
+              -0.5167036117861568,
+              -0.7949286335171643,
+              0.3179714534068657
+            ],
+            "diffuse": [
+              1,
+              0.88,
+              0.68
+            ]
+          },
+          {
+            "name": "lighthouse-local-work-light",
+            "enabled": false,
+            "intensity": 2.1,
+            "direction": [
+              0,
+              -1,
+              0
+            ],
+            "diffuse": [
+              1,
+              0.7592995506950911,
+              0.42590528570714575
+            ]
+          },
+          {
+            "name": "coastal-afternoon-sun",
+            "enabled": true,
+            "intensity": 3.8,
+            "direction": [
+              -0.5497526669373017,
+              -0.779649236747446,
+              -0.29986509105671
+            ],
+            "diffuse": [
+              1,
+              0.93,
+              0.8
+            ]
+          },
+          {
+            "name": "living-window-daylight",
+            "enabled": true,
+            "intensity": 3.5,
+            "direction": [
+              -0.9245003270420484,
+              -0.3698001308168194,
+              -0.09245003270420485
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "living-table-lamp-light",
+            "enabled": true,
+            "intensity": 2.4,
+            "direction": [
+              0.4472135954999579,
+              -0.8944271909999159,
+              0
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "master-window-daylight",
+            "enabled": true,
+            "intensity": 3.2,
+            "direction": [
+              0.0890870806374748,
+              -0.44543540318737396,
+              0.8908708063747479
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "master-lamp-light",
+            "enabled": true,
+            "intensity": 2.3,
+            "direction": [
+              0.5184758473652126,
+              -0.8295613557843402,
+              0.20739033894608505
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "ensuite-lamp-light",
+            "enabled": true,
+            "intensity": 3.2,
+            "direction": [
+              -0.5050762722761053,
+              -0.8081220356417685,
+              0.3030457633656632
+            ],
+            "diffuse": [
+              1,
+              0.94,
+              0.82
+            ]
+          },
+          {
+            "name": "bedroom-window-daylight",
+            "enabled": true,
+            "intensity": 3.2,
+            "direction": [
+              -0.07276035313504535,
+              -0.4092769863846301,
+              -0.9095044141880669
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "bedroom-lamp-light",
+            "enabled": true,
+            "intensity": 2.3,
+            "direction": [
+              0.5184758473652126,
+              -0.8295613557843402,
+              0.20739033894608505
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "kitchen-window-daylight",
+            "enabled": true,
+            "intensity": 2.8,
+            "direction": [
+              0.08728715609439697,
+              -0.4800793585191833,
+              0.8728715609439696
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "kitchen-lamp-light",
+            "enabled": true,
+            "intensity": 3,
+            "direction": [
+              0.19402850002906638,
+              -0.9701425001453319,
+              -0.14552137502179976
+            ],
+            "diffuse": [
+              1,
+              0.94,
+              0.82
+            ]
+          },
+          {
+            "name": "bathroom-lamp-light",
+            "enabled": true,
+            "intensity": 3.8,
+            "direction": [
+              0.48795003647426655,
+              -0.7807200583588265,
+              0.39036002917941326
+            ],
+            "diffuse": [
+              1,
+              0.94,
+              0.82
+            ]
+          },
+          {
+            "name": "balcony-daylight",
+            "enabled": true,
+            "intensity": 2.2,
+            "direction": [
+              0,
+              -0.9889363528682975,
+              -0.14834045293024462
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          }
+        ],
+        "resources": {
+          "meshes": 670,
+          "vertices": 570475,
+          "materials": 95,
+          "textures": 148,
+          "lights": 17,
+          "cameras": 3
+        },
+        "exposure": 1.12,
+        "ibl": 0.35,
+        "camera": {
+          "name": "study-camera",
+          "position": [
+            4.5000000000000036,
+            9.999999999999998,
+            9.000000000000007
+          ]
+        }
+      }
+    },
+    {
+      "view": "coast",
+      "visual": {
+        "lights": [
+          {
+            "name": "room-bounce-light",
+            "enabled": true,
+            "intensity": 0.38,
+            "direction": [
+              -0.35,
+              1,
+              0.15
+            ],
+            "diffuse": [
+              0.95,
+              0.97,
+              1
+            ]
+          },
+          {
+            "name": "window-daylight",
+            "enabled": true,
+            "intensity": 3.5,
+            "direction": [
+              0.13031167282892078,
+              -0.47780946703937627,
+              0.8687444855261386
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "reading-lamp-light",
+            "enabled": true,
+            "intensity": 3.3,
+            "direction": [
+              0.5734623443633283,
+              -0.8192319205190405,
+              0
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "banker-lamp-light",
+            "enabled": true,
+            "intensity": 1.25,
+            "direction": [
+              -0.5167036117861568,
+              -0.7949286335171643,
+              0.3179714534068657
+            ],
+            "diffuse": [
+              1,
+              0.88,
+              0.68
+            ]
+          },
+          {
+            "name": "lighthouse-local-work-light",
+            "enabled": false,
+            "intensity": 2.1,
+            "direction": [
+              0,
+              -1,
+              0
+            ],
+            "diffuse": [
+              1,
+              0.7592995506950911,
+              0.42590528570714575
+            ]
+          },
+          {
+            "name": "coastal-afternoon-sun",
+            "enabled": true,
+            "intensity": 3.8,
+            "direction": [
+              -0.5497526669373017,
+              -0.779649236747446,
+              -0.29986509105671
+            ],
+            "diffuse": [
+              1,
+              0.93,
+              0.8
+            ]
+          },
+          {
+            "name": "living-window-daylight",
+            "enabled": true,
+            "intensity": 3.5,
+            "direction": [
+              -0.9245003270420484,
+              -0.3698001308168194,
+              -0.09245003270420485
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "living-table-lamp-light",
+            "enabled": true,
+            "intensity": 2.4,
+            "direction": [
+              0.4472135954999579,
+              -0.8944271909999159,
+              0
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "master-window-daylight",
+            "enabled": true,
+            "intensity": 3.2,
+            "direction": [
+              0.0890870806374748,
+              -0.44543540318737396,
+              0.8908708063747479
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "master-lamp-light",
+            "enabled": true,
+            "intensity": 2.3,
+            "direction": [
+              0.5184758473652126,
+              -0.8295613557843402,
+              0.20739033894608505
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "ensuite-lamp-light",
+            "enabled": true,
+            "intensity": 3.2,
+            "direction": [
+              -0.5050762722761053,
+              -0.8081220356417685,
+              0.3030457633656632
+            ],
+            "diffuse": [
+              1,
+              0.94,
+              0.82
+            ]
+          },
+          {
+            "name": "bedroom-window-daylight",
+            "enabled": true,
+            "intensity": 3.2,
+            "direction": [
+              -0.07276035313504535,
+              -0.4092769863846301,
+              -0.9095044141880669
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "bedroom-lamp-light",
+            "enabled": true,
+            "intensity": 2.3,
+            "direction": [
+              0.5184758473652126,
+              -0.8295613557843402,
+              0.20739033894608505
+            ],
+            "diffuse": [
+              1,
+              0.85,
+              0.64
+            ]
+          },
+          {
+            "name": "kitchen-window-daylight",
+            "enabled": true,
+            "intensity": 2.8,
+            "direction": [
+              0.08728715609439697,
+              -0.4800793585191833,
+              0.8728715609439696
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          },
+          {
+            "name": "kitchen-lamp-light",
+            "enabled": true,
+            "intensity": 3,
+            "direction": [
+              0.19402850002906638,
+              -0.9701425001453319,
+              -0.14552137502179976
+            ],
+            "diffuse": [
+              1,
+              0.94,
+              0.82
+            ]
+          },
+          {
+            "name": "bathroom-lamp-light",
+            "enabled": true,
+            "intensity": 3.8,
+            "direction": [
+              0.48795003647426655,
+              -0.7807200583588265,
+              0.39036002917941326
+            ],
+            "diffuse": [
+              1,
+              0.94,
+              0.82
+            ]
+          },
+          {
+            "name": "balcony-daylight",
+            "enabled": true,
+            "intensity": 2.2,
+            "direction": [
+              0,
+              -0.9889363528682975,
+              -0.14834045293024462
+            ],
+            "diffuse": [
+              1,
+              0.96,
+              0.88
+            ]
+          }
+        ],
+        "resources": {
+          "meshes": 670,
+          "vertices": 570475,
+          "materials": 95,
+          "textures": 148,
+          "lights": 17,
+          "cameras": 3
+        },
+        "exposure": 1.12,
+        "ibl": 0.35,
+        "camera": {
+          "name": "study-camera",
+          "position": [
+            -351.9999999999997,
+            894.9999999999999,
+            1148
+          ]
+        }
+      }
+    }
+  ],
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:8192/js/main.js",
+      "status": 200,
+      "bytes": 239577
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    }
+  ],
+  "initialJsBytes": 2878607,
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8192/",
+      "status": 200,
+      "bytes": 20556
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/main.js",
+      "status": 200,
+      "bytes": 239577
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8192/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8192/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8192/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4444
+    },
+    {
+      "url": "http://127.0.0.1:8192/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8192/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8192/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8192/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/9238f5e4-e0f0-49e1-9e81-523b9d89e9ed",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/e853c681-733e-4571-8f80-ea0aaec295aa",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/60f011ba-a67f-4ed7-8071-360c6711d42c",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/f678b992-77a2-4a5b-bd9f-8db3813f40db",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/6afd75c6-53c9-4061-bf12-561104ee38ed",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/1737baab-2c7f-48cf-9fc5-9814ea99de0d",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/7c21f976-cd49-4668-8d22-e56aa6295da7",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/5c66b90c-0e07-4c4b-8e99-4bd60e0bc2e5",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/c721d7e6-2e68-499d-bf2c-67a264dbeb45",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/b84f32c0-fbaf-472e-abbe-88d06f948df8",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/af924014-57cd-473a-be97-7cde12ee0421",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/cf43de13-bdc4-4e9f-b1d6-da30c951f907",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/e7f394b1-9e07-4d60-b793-a1204c7ddccf",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/7d84d8c4-29e5-4e7f-8da7-955879ce6988",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/660701d9-1128-4bb4-afb3-dd5c1ba2ce97",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8192/f4b2b270-2b47-43ca-89ff-f996c8b1fe7e",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8192/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8192/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ]
+}
