@@ -1,0 +1,18 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  [
+    -74,
+    82,
++   83.99999999999999
+-   84
+  ]
+
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/day-night-phase4-2026-10-19/check-jump.cjs:50:12 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [Array],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}

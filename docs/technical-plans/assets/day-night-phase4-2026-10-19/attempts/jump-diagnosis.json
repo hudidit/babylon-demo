@@ -1,0 +1,101 @@
+{
+  "baseline": "69606ac",
+  "method": "Legacy jump fixture diagnosis; camera/previous-walk/jump snapshots before and after the original waits",
+  "targets": [
+    {
+      "id": "bed",
+      "x": 2.1,
+      "y": 8.45,
+      "top": 0.73,
+      "before": {
+        "camera": [
+          20,
+          3,
+          -0.25000000000000355
+        ],
+        "previous": [
+          20,
+          3,
+          -0.25000000000000355
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "view": "first-person",
+        "controls": true,
+        "locked": true
+      },
+      "afterPose": {
+        "camera": [
+          -16.5,
+          3,
+          15.249999999999995
+        ],
+        "previous": [
+          20,
+          3,
+          -0.25000000000000355
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "view": "first-person",
+        "controls": true,
+        "locked": true
+      },
+      "beforeJump": {
+        "camera": [
+          3.9308176100628955,
+          3,
+          6.573899371069176
+        ],
+        "previous": [
+          3.9308176100628955,
+          3,
+          6.573899371069176
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "view": "first-person",
+        "controls": true,
+        "locked": true
+      },
+      "afterJump": {
+        "camera": [
+          3.9308176100628955,
+          3,
+          6.573899371069176
+        ],
+        "previous": [
+          3.9308176100628955,
+          3,
+          6.573899371069176
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "view": "first-person",
+        "controls": true,
+        "locked": true
+      },
+      "expectedEyeY": 6.65
+    }
+  ]
+}

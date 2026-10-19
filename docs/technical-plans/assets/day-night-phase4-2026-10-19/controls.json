@@ -1,0 +1,3803 @@
+{
+  "baseline": "69606ac + day-night phase4",
+  "browser": "155.0.8059.82",
+  "cacheDisabled": true,
+  "fpsOrLoadTimeSampling": false,
+  "nodes": [
+    {
+      "hour": 0,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.04,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.152,
+        "enabled": true
+      },
+      "visualHour": 0,
+      "light": 0.152,
+      "sky": {
+        "sunStrength": 0.04,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.04,
+        "sunWarmth": 0,
+        "skyIllumination": 0.18
+      }
+    },
+    {
+      "hour": 3,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 225,
+        "elevation": 25,
+        "strength": 0.025,
+        "color": [
+          0.5520114015120001,
+          0.6444796819705821,
+          0.8069522576692516
+        ],
+        "sourceDirection": [
+          -0.6408563820557884,
+          0.42261826174069944,
+          0.6408563820557887
+        ],
+        "lightDirection": [
+          0.6408563820557884,
+          -0.42261826174069944,
+          -0.6408563820557887
+        ],
+        "intensity": 0.095,
+        "enabled": true
+      },
+      "visualHour": 3,
+      "light": 0.095,
+      "sky": {
+        "sunStrength": 0.025,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.025,
+        "sunWarmth": 0,
+        "skyIllumination": 0.14
+      }
+    },
+    {
+      "hour": 6,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 90,
+        "elevation": 5,
+        "strength": 0.28,
+        "color": [
+          1,
+          0.6307571363461468,
+          0.35153259950043936
+        ],
+        "sourceDirection": [
+          0.9961946980917455,
+          0.08715574274765817,
+          -6.099933241728101e-17
+        ],
+        "lightDirection": [
+          -0.9961946980917455,
+          -0.08715574274765817,
+          6.099933241728101e-17
+        ],
+        "intensity": 1.064,
+        "enabled": true
+      },
+      "visualHour": 6,
+      "light": 1.064,
+      "sky": {
+        "sunStrength": 0.28,
+        "sunWarmth": 1
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.28,
+        "sunWarmth": 1,
+        "skyIllumination": 0.35
+      }
+    },
+    {
+      "hour": 9,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 135,
+        "elevation": 35,
+        "strength": 0.8,
+        "color": [
+          1,
+          0.8713671191987972,
+          0.6938717612919899
+        ],
+        "sourceDirection": [
+          0.5792279653395692,
+          0.573576436351046,
+          0.5792279653395691
+        ],
+        "lightDirection": [
+          -0.5792279653395692,
+          -0.573576436351046,
+          -0.5792279653395691
+        ],
+        "intensity": 3.04,
+        "enabled": true
+      },
+      "visualHour": 9,
+      "light": 3.04,
+      "sky": {
+        "sunStrength": 0.8,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.8,
+        "sunWarmth": 0,
+        "skyIllumination": 0.85
+      }
+    },
+    {
+      "hour": 12,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 1,
+        "color": [
+          1,
+          0.9301108583754237,
+          0.8069522576692516
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 3.8,
+        "enabled": true
+      },
+      "visualHour": 12,
+      "light": 3.8,
+      "sky": {
+        "sunStrength": 1,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 1,
+        "sunWarmth": 0,
+        "skyIllumination": 1
+      }
+    },
+    {
+      "hour": 15,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 225,
+        "elevation": 35,
+        "strength": 0.8,
+        "color": [
+          1,
+          0.7454042095403874,
+          0.45078578283822346
+        ],
+        "sourceDirection": [
+          -0.5792279653395691,
+          0.573576436351046,
+          0.5792279653395693
+        ],
+        "lightDirection": [
+          0.5792279653395691,
+          -0.573576436351046,
+          -0.5792279653395693
+        ],
+        "intensity": 3.04,
+        "enabled": true
+      },
+      "visualHour": 15,
+      "light": 3.04,
+      "sky": {
+        "sunStrength": 0.8,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.8,
+        "sunWarmth": 0,
+        "skyIllumination": 0.8
+      }
+    },
+    {
+      "hour": 18,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 270,
+        "elevation": 5,
+        "strength": 0.25,
+        "color": [
+          1,
+          0.4178850708481375,
+          0.162029375639111
+        ],
+        "sourceDirection": [
+          -0.9961946980917455,
+          0.08715574274765817,
+          1.82997997251843e-16
+        ],
+        "lightDirection": [
+          0.9961946980917455,
+          -0.08715574274765817,
+          -1.82997997251843e-16
+        ],
+        "intensity": 0.95,
+        "enabled": true
+      },
+      "visualHour": 18,
+      "light": 0.95,
+      "sky": {
+        "sunStrength": 0.25,
+        "sunWarmth": 1
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.25,
+        "sunWarmth": 1,
+        "skyIllumination": 0.25
+      }
+    },
+    {
+      "hour": 21,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 135,
+        "elevation": 25,
+        "strength": 0.035,
+        "color": [
+          0.6104955708078648,
+          0.7230551289219693,
+          0.8879231178819663
+        ],
+        "sourceDirection": [
+          0.6408563820557885,
+          0.42261826174069944,
+          0.6408563820557884
+        ],
+        "lightDirection": [
+          -0.6408563820557885,
+          -0.42261826174069944,
+          -0.6408563820557884
+        ],
+        "intensity": 0.133,
+        "enabled": true
+      },
+      "visualHour": 21,
+      "light": 0.133,
+      "sky": {
+        "sunStrength": 0.035,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.035,
+        "sunWarmth": 0,
+        "skyIllumination": 0.2
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "frame": 0,
+      "dt": 0.05,
+      "hour": 12,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 1,
+        "color": [
+          1,
+          0.9301108583754237,
+          0.8069522576692516
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 3.8,
+        "enabled": true
+      },
+      "visualHour": 12,
+      "light": 3.8,
+      "sky": {
+        "sunStrength": 1,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 1,
+        "sunWarmth": 0,
+        "skyIllumination": 1
+      }
+    },
+    {
+      "frame": 1,
+      "dt": 0.05,
+      "hour": 11.93923611111111,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.9898726851851852,
+        "color": [
+          1,
+          0.9285950336834352,
+          0.8046461685436862
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 3.7615162037037035,
+        "enabled": true
+      },
+      "visualHour": 11.93923611111111,
+      "light": 3.7615162037037035,
+      "sky": {
+        "sunStrength": 0.9898726851851852,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.9898726851851852,
+        "sunWarmth": 0,
+        "skyIllumination": 0.995847800925926
+      }
+    },
+    {
+      "frame": 2,
+      "dt": 0.05,
+      "hour": 11.76388888888889,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.9606481481481481,
+        "color": [
+          1,
+          0.9242207967151255,
+          0.7979914542099116
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 3.650462962962963,
+        "enabled": true
+      },
+      "visualHour": 11.76388888888889,
+      "light": 3.650462962962963,
+      "sky": {
+        "sunStrength": 0.9606481481481481,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.9606481481481481,
+        "sunWarmth": 0,
+        "skyIllumination": 0.9838657407407407
+      }
+    },
+    {
+      "frame": 3,
+      "dt": 0.05,
+      "hour": 11.484375,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.9140625,
+        "color": [
+          1,
+          0.9172480031319782,
+          0.7873834442323104
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 3.4734374999999997,
+        "enabled": true
+      },
+      "visualHour": 11.484375,
+      "light": 3.4734374999999997,
+      "sky": {
+        "sunStrength": 0.9140625,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.9140625,
+        "sunWarmth": 0,
+        "skyIllumination": 0.964765625
+      }
+    },
+    {
+      "frame": 4,
+      "dt": 0.05,
+      "hour": 11.11111111111111,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.8518518518518519,
+        "color": [
+          1,
+          0.9079365085954773,
+          0.7732174681752655
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 3.237037037037037,
+        "enabled": true
+      },
+      "visualHour": 11.11111111111111,
+      "light": 3.237037037037037,
+      "sky": {
+        "sunStrength": 0.8518518518518519,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.8518518518518519,
+        "sunWarmth": 0,
+        "skyIllumination": 0.9392592592592592
+      }
+    },
+    {
+      "frame": 5,
+      "dt": 0.05,
+      "hour": 10.65451388888889,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.7757523148148148,
+        "color": [
+          1,
+          0.8965461687671064,
+          0.7558888556031593
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 2.947858796296296,
+        "enabled": true
+      },
+      "visualHour": 10.65451388888889,
+      "light": 2.947858796296296,
+      "sky": {
+        "sunStrength": 0.7757523148148148,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.7757523148148148,
+        "sunWarmth": 0,
+        "skyIllumination": 0.9080584490740741
+      }
+    },
+    {
+      "frame": 6,
+      "dt": 0.05,
+      "hour": 10.125,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.6875,
+        "color": [
+          1,
+          0.8833368393083492,
+          0.7357929360803747
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 2.6125,
+        "enabled": true
+      },
+      "visualHour": 10.125,
+      "light": 2.6125,
+      "sky": {
+        "sunStrength": 0.6875,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.6875,
+        "sunWarmth": 0,
+        "skyIllumination": 0.871875
+      }
+    },
+    {
+      "frame": 7,
+      "dt": 0.05,
+      "hour": 9.53298611111111,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.5888310185185184,
+        "color": [
+          1,
+          0.8685683758806896,
+          0.7133250391712941
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 2.23755787037037,
+        "enabled": true
+      },
+      "visualHour": 9.53298611111111,
+      "light": 2.23755787037037,
+      "sky": {
+        "sunStrength": 0.5888310185185184,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.5888310185185184,
+        "sunWarmth": 0,
+        "skyIllumination": 0.8314207175925925
+      }
+    },
+    {
+      "frame": 8,
+      "dt": 0.05,
+      "hour": 8.88888888888889,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.4814814814814815,
+        "color": [
+          1,
+          0.8525006341456112,
+          0.6888804944403003
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 1.8296296296296297,
+        "enabled": true
+      },
+      "visualHour": 8.88888888888889,
+      "light": 1.8296296296296297,
+      "sky": {
+        "sunStrength": 0.4814814814814815,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.4814814814814815,
+        "sunWarmth": 0,
+        "skyIllumination": 0.7874074074074073
+      }
+    },
+    {
+      "frame": 9,
+      "dt": 0.05,
+      "hour": 8.203125,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.3671875,
+        "color": [
+          1,
+          0.8353934697645978,
+          0.6628546314517758
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 1.3953125,
+        "enabled": true
+      },
+      "visualHour": 8.203125,
+      "light": 1.3953125,
+      "sky": {
+        "sunStrength": 0.3671875,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.3671875,
+        "sunWarmth": 0,
+        "skyIllumination": 0.7405468749999999
+      }
+    },
+    {
+      "frame": 10,
+      "dt": 0.05,
+      "hour": 7.486111111111112,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.24768518518518523,
+        "color": [
+          1,
+          0.8175067383991332,
+          0.6356427797701035
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 0.9412037037037039,
+        "enabled": true
+      },
+      "visualHour": 7.486111111111112,
+      "light": 0.9412037037037039,
+      "sky": {
+        "sunStrength": 0.24768518518518523,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.24768518518518523,
+        "sunWarmth": 0,
+        "skyIllumination": 0.6915509259259259
+      }
+    },
+    {
+      "frame": 11,
+      "dt": 0.05,
+      "hour": 6.748263888888889,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.12471064814814814,
+        "color": [
+          1,
+          0.7991002957107012,
+          0.6076402689596658
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 0.4739004629629629,
+        "enabled": true
+      },
+      "visualHour": 6.748263888888889,
+      "light": 0.4739004629629629,
+      "sky": {
+        "sunStrength": 0.12471064814814814,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.12471064814814814,
+        "sunWarmth": 0,
+        "skyIllumination": 0.6411313657407407
+      }
+    },
+    {
+      "frame": 12,
+      "dt": 0.05,
+      "hour": 6,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": null,
+      "visualHour": 6,
+      "light": 0,
+      "sky": {
+        "sunStrength": 0,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0,
+        "sunWarmth": 0,
+        "skyIllumination": 0.59
+      }
+    },
+    {
+      "frame": 13,
+      "dt": 0.05,
+      "hour": 5.25173611111111,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.004988425925925934,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.01895601851851855,
+        "enabled": true
+      },
+      "visualHour": 5.25173611111111,
+      "light": 0.01895601851851855,
+      "sky": {
+        "sunStrength": 0.004988425925925934,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.004988425925925934,
+        "sunWarmth": 0,
+        "skyIllumination": 0.5388686342592591
+      }
+    },
+    {
+      "frame": 14,
+      "dt": 0.05,
+      "hour": 4.5138888888888875,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.009907407407407413,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.03764814814814817,
+        "enabled": true
+      },
+      "visualHour": 4.5138888888888875,
+      "light": 0.03764814814814817,
+      "sky": {
+        "sunStrength": 0.009907407407407413,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.009907407407407413,
+        "sunWarmth": 0,
+        "skyIllumination": 0.488449074074074
+      }
+    },
+    {
+      "frame": 15,
+      "dt": 0.05,
+      "hour": 3.7968749999999964,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.014687500000000018,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.05581250000000006,
+        "enabled": true
+      },
+      "visualHour": 3.7968749999999964,
+      "light": 0.05581250000000006,
+      "sky": {
+        "sunStrength": 0.014687500000000018,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.014687500000000018,
+        "sunWarmth": 0,
+        "skyIllumination": 0.4394531249999998
+      }
+    },
+    {
+      "frame": 16,
+      "dt": 0.05,
+      "hour": 3.111111111111107,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.01925925925925928,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.07318518518518527,
+        "enabled": true
+      },
+      "visualHour": 3.111111111111107,
+      "light": 0.07318518518518527,
+      "sky": {
+        "sunStrength": 0.01925925925925928,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.01925925925925928,
+        "sunWarmth": 0,
+        "skyIllumination": 0.39259259259259227
+      }
+    },
+    {
+      "frame": 17,
+      "dt": 0.05,
+      "hour": 2.4670138888888875,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.023553240740740753,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.08950231481481485,
+        "enabled": true
+      },
+      "visualHour": 2.4670138888888875,
+      "light": 0.08950231481481485,
+      "sky": {
+        "sunStrength": 0.023553240740740753,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.023553240740740753,
+        "sunWarmth": 0,
+        "skyIllumination": 0.3485792824074072
+      }
+    },
+    {
+      "frame": 18,
+      "dt": 0.05,
+      "hour": 1.8749999999999964,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.027500000000000017,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.10450000000000007,
+        "enabled": true
+      },
+      "visualHour": 1.8749999999999964,
+      "light": 0.10450000000000007,
+      "sky": {
+        "sunStrength": 0.027500000000000017,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.027500000000000017,
+        "sunWarmth": 0,
+        "skyIllumination": 0.30812499999999976
+      }
+    },
+    {
+      "frame": 19,
+      "dt": 0.05,
+      "hour": 1.3454861111111072,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.031030092592592623,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.11791435185185196,
+        "enabled": true
+      },
+      "visualHour": 1.3454861111111072,
+      "light": 0.11791435185185196,
+      "sky": {
+        "sunStrength": 0.031030092592592623,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.031030092592592623,
+        "sunWarmth": 0,
+        "skyIllumination": 0.27194155092592553
+      }
+    },
+    {
+      "frame": 20,
+      "dt": 0.05,
+      "hour": 0.8888888888888857,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.03407407407407409,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.12948148148148153,
+        "enabled": true
+      },
+      "visualHour": 0.8888888888888857,
+      "light": 0.12948148148148153,
+      "sky": {
+        "sunStrength": 0.03407407407407409,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.03407407407407409,
+        "sunWarmth": 0,
+        "skyIllumination": 0.24074074074074048
+      }
+    },
+    {
+      "frame": 21,
+      "dt": 0.05,
+      "hour": 0.5156249999999964,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.03656250000000002,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.13893750000000007,
+        "enabled": true
+      },
+      "visualHour": 0.5156249999999964,
+      "light": 0.13893750000000007,
+      "sky": {
+        "sunStrength": 0.03656250000000002,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.03656250000000002,
+        "sunWarmth": 0,
+        "skyIllumination": 0.21523437499999976
+      }
+    },
+    {
+      "frame": 22,
+      "dt": 0.05,
+      "hour": 0.23611111111110894,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.03842592592592595,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.1460185185185186,
+        "enabled": true
+      },
+      "visualHour": 0.23611111111110894,
+      "light": 0.1460185185185186,
+      "sky": {
+        "sunStrength": 0.03842592592592595,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.03842592592592595,
+        "sunWarmth": 0,
+        "skyIllumination": 0.19613425925925898
+      }
+    },
+    {
+      "frame": 23,
+      "dt": 0.05,
+      "hour": 0.06076388888888751,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.03959490740740741,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.15046064814814816,
+        "enabled": true
+      },
+      "visualHour": 0.06076388888888751,
+      "light": 0.15046064814814816,
+      "sky": {
+        "sunStrength": 0.03959490740740741,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.03959490740740741,
+        "sunWarmth": 0,
+        "skyIllumination": 0.18415219907407399
+      }
+    },
+    {
+      "frame": 24,
+      "dt": 0.05,
+      "hour": 0,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 180,
+        "elevation": 50,
+        "strength": 0.04,
+        "color": [
+          0.5711248294648731,
+          0.6866853124353135,
+          0.8549926081242338
+        ],
+        "sourceDirection": [
+          7.871877887341986e-17,
+          0.766044443118978,
+          0.6427876096865394
+        ],
+        "lightDirection": [
+          -7.871877887341986e-17,
+          -0.766044443118978,
+          -0.6427876096865394
+        ],
+        "intensity": 0.152,
+        "enabled": true
+      },
+      "visualHour": 0,
+      "light": 0.152,
+      "sky": {
+        "sunStrength": 0.04,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.04,
+        "sunWarmth": 0,
+        "skyIllumination": 0.18
+      }
+    }
+  ],
+  "automatic": [
+    {
+      "step": 210,
+      "hour": 18.34999999999968,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 275.2499999999952,
+        "elevation": 0.33333333333757764,
+        "strength": 0.0028135802469839025,
+        "color": [
+          1,
+          0.4178850708481375,
+          0.162029375639111
+        ],
+        "sourceDirection": [
+          -0.9957880754262205,
+          0.00581773135506791,
+          -0.09150007016841026
+        ],
+        "lightDirection": [
+          0.9957880754262205,
+          -0.00581773135506791,
+          0.09150007016841026
+        ],
+        "intensity": 0.010691604938538829,
+        "enabled": true
+      },
+      "visualHour": 18.34999999999968,
+      "light": 0.010691604938538829,
+      "sky": {
+        "sunStrength": 0.0028135802469839025,
+        "sunWarmth": 0.8444444444445859
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.0028135802469839025,
+        "sunWarmth": 0.8444444444445859,
+        "skyIllumination": 0.24416666666667197
+      }
+    },
+    {
+      "step": 225,
+      "hour": 18.37499999999966,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 275.6249999999949,
+        "elevation": 4.547473508864641e-12,
+        "strength": 5.428372769876658e-25,
+        "color": [
+          1,
+          0.4178850708481375,
+          0.162029375639111
+        ],
+        "sourceDirection": [
+          -0.9951847266722056,
+          7.936838537690753e-14,
+          -0.09801714032947169
+        ],
+        "lightDirection": [
+          0.9951847266722056,
+          -7.936838537690753e-14,
+          0.09801714032947169
+        ],
+        "intensity": 2.06278165255313e-24,
+        "enabled": true
+      },
+      "visualHour": 18.37499999999966,
+      "light": 2.06278165255313e-24,
+      "sky": {
+        "sunStrength": 5.428372769876658e-25,
+        "sunWarmth": 0.8333333333334849
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 5.428372769876658e-25,
+        "sunWarmth": 0.8333333333334849,
+        "skyIllumination": 0.24375000000000568
+      }
+    },
+    {
+      "step": 240,
+      "hour": 18.399999999999636,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": null,
+      "visualHour": 18.399999999999636,
+      "light": 0,
+      "sky": {
+        "sunStrength": 0,
+        "sunWarmth": 0.822222222222384
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0,
+        "sunWarmth": 0.822222222222384,
+        "skyIllumination": 0.2433333333333394
+      }
+    },
+    {
+      "step": 1800,
+      "hour": 20.99999999999727,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 134.99999999995907,
+        "elevation": 24.999999999972715,
+        "strength": 0.03499999999996817,
+        "color": [
+          0.6104955708078648,
+          0.7230551289219693,
+          0.8879231178819663
+        ],
+        "sourceDirection": [
+          0.6408563820563888,
+          0.42261826174026784,
+          0.6408563820554729
+        ],
+        "lightDirection": [
+          -0.6408563820563888,
+          -0.42261826174026784,
+          -0.6408563820554729
+        ],
+        "intensity": 0.13299999999987902,
+        "enabled": true
+      },
+      "visualHour": 20.99999999999727,
+      "light": 0.13299999999987902,
+      "sky": {
+        "sunStrength": 0.03499999999996817,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.03499999999996817,
+        "sunWarmth": 0,
+        "skyIllumination": 0.20000000000004547
+      }
+    },
+    {
+      "step": 3600,
+      "hour": 23.999999999994543,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 179.99999999991815,
+        "elevation": 49.999999999954525,
+        "strength": 0.039999999999990904,
+        "color": [
+          0.5711248294649447,
+          0.6866853124353797,
+          0.8549926081242938
+        ],
+        "sourceDirection": [
+          9.183875878871612e-13,
+          0.7660444431184679,
+          0.6427876096871473
+        ],
+        "lightDirection": [
+          -9.183875878871612e-13,
+          -0.7660444431184679,
+          -0.6427876096871473
+        ],
+        "intensity": 0.15199999999996544,
+        "enabled": true
+      },
+      "visualHour": 23.999999999994543,
+      "light": 0.15199999999996544,
+      "sky": {
+        "sunStrength": 0.039999999999990904,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.039999999999990904,
+        "sunWarmth": 0,
+        "skyIllumination": 0.18000000000003638
+      }
+    },
+    {
+      "step": 5400,
+      "hour": 2.999999999994464,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "moon",
+        "azimuth": 224.99999999991695,
+        "elevation": 25.000000000046132,
+        "strength": 0.02500000000002768,
+        "color": [
+          0.5520114015120354,
+          0.64447968197066,
+          0.8069522576693402
+        ],
+        "sourceDirection": [
+          -0.6408563820546189,
+          0.42261826174142914,
+          0.640856382056477
+        ],
+        "lightDirection": [
+          0.6408563820546189,
+          -0.42261826174142914,
+          -0.640856382056477
+        ],
+        "intensity": 0.09500000000010518,
+        "enabled": true
+      },
+      "visualHour": 2.999999999994464,
+      "light": 0.09500000000010518,
+      "sky": {
+        "sunStrength": 0.02500000000002768,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.02500000000002768,
+        "sunWarmth": 0,
+        "skyIllumination": 0.14000000000007382
+      }
+    },
+    {
+      "step": 7200,
+      "hour": 5.9999999999946665,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 89.99999999991999,
+        "elevation": 4.999999999928889,
+        "strength": 0.27999999999950226,
+        "color": [
+          1,
+          0.6307571363461468,
+          0.35153259950043936
+        ],
+        "sourceDirection": [
+          0.9961946980918537,
+          0.08715574274642178,
+          -1.3911856495397527e-12
+        ],
+        "lightDirection": [
+          -0.9961946980918537,
+          -0.08715574274642178,
+          1.3911856495397527e-12
+        ],
+        "intensity": 1.0639999999981085,
+        "enabled": true
+      },
+      "visualHour": 5.9999999999946665,
+      "light": 1.0639999999981085,
+      "sky": {
+        "sunStrength": 0.27999999999950226,
+        "sunWarmth": 0.9999999999976297
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.27999999999950226,
+        "sunWarmth": 0.9999999999976297,
+        "skyIllumination": 0.3499999999996266
+      }
+    },
+    {
+      "step": 9000,
+      "hour": 8.999999999995135,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 134.999999999927,
+        "elevation": 34.99999999995134,
+        "strength": 0.7999999999991567,
+        "color": [
+          1,
+          0.8713671191984069,
+          0.6938717612914347
+        ],
+        "sourceDirection": [
+          0.5792279653406514,
+          0.5735764363503504,
+          0.5792279653391759
+        ],
+        "lightDirection": [
+          -0.5792279653406514,
+          -0.5735764363503504,
+          -0.5792279653391759
+        ],
+        "intensity": 3.0399999999967955,
+        "enabled": true
+      },
+      "visualHour": 8.999999999995135,
+      "light": 3.0399999999967955,
+      "sky": {
+        "sunStrength": 0.7999999999991567,
+        "sunWarmth": 1.6219248166748912e-12
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.7999999999991567,
+        "sunWarmth": 1.6219248166748912e-12,
+        "skyIllumination": 0.8499999999991891
+      }
+    },
+    {
+      "step": 10800,
+      "hour": 11.999999999995604,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 179.99999999993406,
+        "elevation": 64.99999999995603,
+        "strength": 0.9999999999997069,
+        "color": [
+          1,
+          0.9301108583753377,
+          0.8069522576690858
+        ],
+        "sourceDirection": [
+          4.863311797256777e-13,
+          0.9063077870363256,
+          0.42261826174139494
+        ],
+        "lightDirection": [
+          -4.863311797256777e-13,
+          -0.9063077870363256,
+          -0.42261826174139494
+        ],
+        "intensity": 3.799999999998886,
+        "enabled": true
+      },
+      "visualHour": 11.999999999995604,
+      "light": 3.799999999998886,
+      "sky": {
+        "sunStrength": 0.9999999999997069,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.9999999999997069,
+        "sunWarmth": 0,
+        "skyIllumination": 0.9999999999997802
+      }
+    },
+    {
+      "step": 12600,
+      "hour": 14.999999999996072,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 224.99999999994108,
+        "elevation": 35.00000000003928,
+        "strength": 0.8000000000002618,
+        "color": [
+          1,
+          0.7454042095406292,
+          0.45078578283868975
+        ],
+        "sourceDirection": [
+          -0.5792279653386954,
+          0.5735764363516076,
+          0.579227965339887
+        ],
+        "lightDirection": [
+          0.5792279653386954,
+          -0.5735764363516076,
+          -0.579227965339887
+        ],
+        "intensity": 3.040000000000995,
+        "enabled": true
+      },
+      "visualHour": 14.999999999996072,
+      "light": 3.040000000000995,
+      "sky": {
+        "sunStrength": 0.8000000000002618,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.8000000000002618,
+        "sunWarmth": 0,
+        "skyIllumination": 0.8000000000002618
+      }
+    },
+    {
+      "step": 14400,
+      "hour": 17.99999999999441,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 269.99999999991616,
+        "elevation": 5.000000000055884,
+        "strength": 0.2500000000010245,
+        "color": [
+          1,
+          0.4178850708487476,
+          0.16202937563964892
+        ],
+        "sourceDirection": [
+          -0.9961946980916605,
+          0.08715574274862983,
+          1.4583311446286681e-12
+        ],
+        "lightDirection": [
+          0.9961946980916605,
+          -0.08715574274862983,
+          -1.4583311446286681e-12
+        ],
+        "intensity": 0.9500000000038931,
+        "enabled": true
+      },
+      "visualHour": 17.99999999999441,
+      "light": 0.9500000000038931,
+      "sky": {
+        "sunStrength": 0.2500000000010245,
+        "sunWarmth": 0.9999999999981372
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.2500000000010245,
+        "sunWarmth": 0.9999999999981372,
+        "skyIllumination": 0.2500000000010245
+      }
+    }
+  ],
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:8196/js/main.js",
+      "status": 200,
+      "bytes": 258056
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    }
+  ],
+  "initialJsBytes": 2897086,
+  "resources": {
+    "meshes": 670,
+    "vertices": 570475,
+    "materials": 95,
+    "textures": 148,
+    "lights": 17,
+    "cameras": 3
+  },
+  "retarget": {
+    "before": {
+      "hour": 10.125,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 0
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.6875,
+        "color": [
+          1,
+          0.8833368393083492,
+          0.7357929360803747
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 2.6125,
+        "enabled": true
+      },
+      "visualHour": 10.125,
+      "light": 2.6125,
+      "sky": {
+        "sunStrength": 0.6875,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.6875,
+        "sunWarmth": 0,
+        "skyIllumination": 0.871875
+      }
+    },
+    "after": {
+      "hour": 10.125,
+      "playback": {
+        "automatic": false,
+        "transitioning": true,
+        "targetHour": 6
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 0.6875,
+        "color": [
+          1,
+          0.8833368393083492,
+          0.7357929360803747
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 2.6125,
+        "enabled": true
+      },
+      "visualHour": 10.125,
+      "light": 2.6125,
+      "sky": {
+        "sunStrength": 0.6875,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.6875,
+        "sunWarmth": 0,
+        "skyIllumination": 0.871875
+      }
+    },
+    "final": {
+      "hour": 18,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "balcony",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 270,
+        "elevation": 5,
+        "strength": 0.25,
+        "color": [
+          1,
+          0.4178850708481375,
+          0.162029375639111
+        ],
+        "sourceDirection": [
+          -0.9961946980917455,
+          0.08715574274765817,
+          1.82997997251843e-16
+        ],
+        "lightDirection": [
+          0.9961946980917455,
+          -0.08715574274765817,
+          -1.82997997251843e-16
+        ],
+        "intensity": 0.95,
+        "enabled": true
+      },
+      "visualHour": 18,
+      "light": 0.95,
+      "sky": {
+        "sunStrength": 0.25,
+        "sunWarmth": 1
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.25,
+        "sunWarmth": 1,
+        "skyIllumination": 0.25
+      }
+    }
+  },
+  "cadence": {
+    "batches": 10,
+    "hour": 12.016666666666616,
+    "visual": 12.016666666666616
+  },
+  "background": {
+    "start": 12.018333333333283,
+    "blurred": 12.018333333333283,
+    "overlapped": 12.018333333333283,
+    "pauses": [
+      "hidden"
+    ],
+    "first": 12.018333333333283,
+    "clamped": 12.01999999999995
+  },
+  "inspectionPause": {
+    "hour": 12,
+    "after": {
+      "hour": 12.000833333333333,
+      "playback": {
+        "automatic": true,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "details",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180.0125,
+        "elevation": 64.99166666666667,
+        "strength": 0.9999444444444445,
+        "color": [
+          1,
+          0.9300595509729696,
+          0.8068533225373542
+        ],
+        "sourceDirection": [
+          -0.00009222975815865948,
+          0.9062463101163014,
+          0.4227500643338333
+        ],
+        "lightDirection": [
+          0.00009222975815865948,
+          -0.9062463101163014,
+          -0.4227500643338333
+        ],
+        "intensity": 3.799788888888889,
+        "enabled": true
+      },
+      "visualHour": 12.000833333333333,
+      "light": 3.799788888888889,
+      "sky": {
+        "sunStrength": 0.9999444444444445,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 0.9999444444444445,
+        "sunWarmth": 0,
+        "skyIllumination": 0.9999444444444445
+      }
+    },
+    "resumedOnSecondFrame": true
+  },
+  "walkingPause": {
+    "paused": {
+      "hour": 12,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "first-person",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0.032242690541192075,
+        -0.6596287429951215,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 1,
+        "color": [
+          1,
+          0.9301108583754237,
+          0.8069522576692516
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 3.8,
+        "enabled": true
+      },
+      "visualHour": 12,
+      "light": 3.8,
+      "sky": {
+        "sunStrength": 1,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 1,
+        "sunWarmth": 0,
+        "skyIllumination": 1
+      }
+    },
+    "after": {
+      "hour": 12,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "first-person",
+      "locked": false,
+      "position": [
+        20,
+        3,
+        -0.25000000000000355
+      ],
+      "rotation": [
+        0.032242690541192075,
+        -0.6596287429951215,
+        0
+      ],
+      "riding": false,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 1,
+        "color": [
+          1,
+          0.9301108583754237,
+          0.8069522576692516
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 3.8,
+        "enabled": true
+      },
+      "visualHour": 12,
+      "light": 3.8,
+      "sky": {
+        "sunStrength": 1,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 1,
+        "sunWarmth": 0,
+        "skyIllumination": 1
+      }
+    }
+  },
+  "ridingPause": {
+    "paused": {
+      "hour": 12,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [
+        "time-menu"
+      ],
+      "controls": false,
+      "view": "first-person",
+      "locked": false,
+      "position": [
+        43,
+        1.3999999999999986,
+        -17.2484375
+      ],
+      "rotation": [
+        0.032242690541192075,
+        -0.6596287429951215,
+        0
+      ],
+      "riding": true,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 1,
+        "color": [
+          1,
+          0.9301108583754237,
+          0.8069522576692516
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 3.8,
+        "enabled": true
+      },
+      "visualHour": 12,
+      "light": 3.8,
+      "sky": {
+        "sunStrength": 1,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 1,
+        "sunWarmth": 0,
+        "skyIllumination": 1
+      }
+    },
+    "after": {
+      "hour": 12,
+      "playback": {
+        "automatic": false,
+        "transitioning": false,
+        "targetHour": null
+      },
+      "pauses": [],
+      "controls": true,
+      "view": "first-person",
+      "locked": false,
+      "position": [
+        43,
+        1.3999999999999986,
+        -17.2484375
+      ],
+      "rotation": [
+        0.032242690541192075,
+        -0.6596287429951215,
+        0
+      ],
+      "riding": true,
+      "speed": 0,
+      "ladder": false,
+      "jumpQueued": false,
+      "primary": {
+        "kind": "sun",
+        "azimuth": 180,
+        "elevation": 65,
+        "strength": 1,
+        "color": [
+          1,
+          0.9301108583754237,
+          0.8069522576692516
+        ],
+        "sourceDirection": [
+          5.175581015019659e-17,
+          0.9063077870366499,
+          0.42261826174069944
+        ],
+        "lightDirection": [
+          -5.175581015019659e-17,
+          -0.9063077870366499,
+          -0.42261826174069944
+        ],
+        "intensity": 3.8,
+        "enabled": true
+      },
+      "visualHour": 12,
+      "light": 3.8,
+      "sky": {
+        "sunStrength": 1,
+        "sunWarmth": 0
+      },
+      "sea": {
+        "oceanTime": 0,
+        "sunStrength": 1,
+        "sunWarmth": 0,
+        "skyIllumination": 1
+      }
+    }
+  },
+  "inspectorInternalHide": {
+    "passed": true,
+    "method": "scene.debugLayer.hide(); two rendered frames release only the inspector pause"
+  },
+  "reducedMotion": {
+    "hour": 18,
+    "playback": {
+      "automatic": false,
+      "transitioning": false,
+      "targetHour": null
+    },
+    "pauses": [
+      "time-menu"
+    ],
+    "controls": false,
+    "view": "balcony",
+    "locked": false,
+    "position": [
+      33.99999999999999,
+      2.60388888888889,
+      -3.75
+    ],
+    "rotation": [
+      -0.010299316528501393,
+      3.037396211816486,
+      0
+    ],
+    "riding": false,
+    "speed": 0,
+    "ladder": false,
+    "jumpQueued": false,
+    "primary": {
+      "kind": "sun",
+      "azimuth": 270,
+      "elevation": 5,
+      "strength": 0.25,
+      "color": [
+        1,
+        0.4178850708481375,
+        0.162029375639111
+      ],
+      "sourceDirection": [
+        -0.9961946980917455,
+        0.08715574274765817,
+        1.82997997251843e-16
+      ],
+      "lightDirection": [
+        0.9961946980917455,
+        -0.08715574274765817,
+        -1.82997997251843e-16
+      ],
+      "intensity": 0.95,
+      "enabled": true
+    },
+    "visualHour": 18,
+    "light": 0.95,
+    "sky": {
+      "sunStrength": 0.25,
+      "sunWarmth": 1
+    },
+    "sea": {
+      "oceanTime": 0,
+      "sunStrength": 0.25,
+      "sunWarmth": 1,
+      "skyIllumination": 0.25
+    }
+  },
+  "passed": true,
+  "phase": "dispose",
+  "errors": [],
+  "warnings": [
+    "The keyword 'slider-vertical' specified to an 'appearance' property is not standardized. It will be removed in the future. Use <input type=range style=\"writing-mode: vertical-lr; direction: rtl\"> instead."
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8196/",
+      "status": 200,
+      "bytes": 25663
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/main.js",
+      "status": 200,
+      "bytes": 258056
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8196/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8196/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8196/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4190
+    },
+    {
+      "url": "http://127.0.0.1:8196/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8196/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8196/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8196/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/6c5c6c96-aab0-40b8-9f72-50dff9faff0c",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/23eb701d-9bc9-49bb-8546-0a9d3a063a4f",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/8a45d5a9-f1a7-416e-910e-348e80d1ac06",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/eeee725e-e193-432c-b3a2-b2d52525b9a8",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/2679b4be-e78f-4461-a250-93de064c8905",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/bbf665bf-8dda-480f-84ef-5462e1a95cdb",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/82d688b1-b850-4878-afcc-c15c20a92032",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/79927222-4c4b-42ed-875e-de358e4f78d6",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/1aeedcb6-8f67-4cfa-bde0-0b5d94404d5d",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/3264472e-738a-4195-83b1-2877215416ef",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/650457ba-eec1-4d1d-83e6-5ce1e35e9962",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/3001b399-44c3-49d0-927f-14646379e241",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/517c4d65-9295-47f0-b84c-2be31c7cffe6",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/6e36540d-7d31-4fee-9773-7013b6ab99b8",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/9c3f3e23-8765-4381-9722-ff59fb6c9fcb",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/f1857670-39c6-42a9-b8de-fab60edff872",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8196/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/2033.js",
+      "status": 200,
+      "bytes": 43100
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/9318.js",
+      "status": 200,
+      "bytes": 8482
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/1326.js",
+      "status": 200,
+      "bytes": 93582
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/4593.js",
+      "status": 200,
+      "bytes": 14090
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/5081.js",
+      "status": 200,
+      "bytes": 3320723
+    },
+    {
+      "url": "http://127.0.0.1:8196/js/7665.js",
+      "status": 200,
+      "bytes": 109982
+    }
+  ]
+}

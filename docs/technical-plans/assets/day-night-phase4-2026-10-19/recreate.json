@@ -1,0 +1,239 @@
+{
+  "baseline": "69606ac",
+  "fpsOrLoadTimeSampling": false,
+  "cycles": [
+    {
+      "index": 0,
+      "active": {
+        "document": {
+          "keydown": 4,
+          "pointerdown": 3,
+          "fullscreenchange": 1,
+          "webkitfullscreenchange": 1,
+          "pointerlockchange": 2,
+          "webkitpointerlockchange": 1,
+          "pointerlockerror": 1,
+          "visibilitychange": 3,
+          "keyup": 1,
+          "click": 1
+        },
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "resize": 2,
+          "blur": 4,
+          "focus": 2,
+          "gamepadconnected": 2,
+          "gamepaddisconnected": 2,
+          "pagehide": 1,
+          "__playwright_global_listeners_check__": 1
+        },
+        "toggle": {
+          "click": 1
+        }
+      },
+      "resources": {
+        "meshes": 670,
+        "materials": 95,
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3
+      },
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0,
+        "observers": 0,
+        "engineScenes": 0
+      },
+      "after": {
+        "document": {},
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "__playwright_global_listeners_check__": 1
+        },
+        "toggle": {}
+      },
+      "passed": true
+    },
+    {
+      "index": 1,
+      "active": {
+        "document": {
+          "keydown": 4,
+          "pointerdown": 3,
+          "fullscreenchange": 1,
+          "webkitfullscreenchange": 1,
+          "pointerlockchange": 2,
+          "webkitpointerlockchange": 1,
+          "pointerlockerror": 1,
+          "visibilitychange": 3,
+          "keyup": 1,
+          "click": 1
+        },
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "__playwright_global_listeners_check__": 1,
+          "resize": 2,
+          "blur": 4,
+          "focus": 2,
+          "gamepadconnected": 2,
+          "gamepaddisconnected": 2,
+          "pagehide": 1
+        },
+        "toggle": {
+          "click": 1
+        }
+      },
+      "resources": {
+        "meshes": 670,
+        "materials": 95,
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3
+      },
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0,
+        "observers": 0,
+        "engineScenes": 0
+      },
+      "after": {
+        "document": {},
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "__playwright_global_listeners_check__": 1
+        },
+        "toggle": {}
+      },
+      "passed": true
+    },
+    {
+      "index": 2,
+      "active": {
+        "document": {
+          "keydown": 4,
+          "pointerdown": 3,
+          "fullscreenchange": 1,
+          "webkitfullscreenchange": 1,
+          "pointerlockchange": 2,
+          "webkitpointerlockchange": 1,
+          "pointerlockerror": 1,
+          "visibilitychange": 3,
+          "keyup": 1,
+          "click": 1
+        },
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "__playwright_global_listeners_check__": 1,
+          "resize": 2,
+          "blur": 4,
+          "focus": 2,
+          "gamepadconnected": 2,
+          "gamepaddisconnected": 2,
+          "pagehide": 1
+        },
+        "toggle": {
+          "click": 1
+        }
+      },
+      "resources": {
+        "meshes": 670,
+        "materials": 95,
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3
+      },
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0,
+        "observers": 0,
+        "engineScenes": 0
+      },
+      "after": {
+        "document": {},
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "__playwright_global_listeners_check__": 1
+        },
+        "toggle": {}
+      },
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

@@ -1,0 +1,8 @@
+page.evaluate: Error: Existing production RoomScene/engine not found
+    at eval (eval at evaluate (:370:30), <anonymous>:12:27)
+    at UtilityScript.evaluate (<anonymous>:372:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at exports.capture (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/day-night-phase4-2026-10-19/browser-harness.cjs:2:28)
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/day-night-phase4-2026-10-19/check-matrix.cjs:23:46 {
+  log: []
+}

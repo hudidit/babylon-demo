@@ -1,0 +1,429 @@
+{
+  "baseline": "69606ac + day-night phase4",
+  "prefix": "/home/",
+  "fpsOrLoadTimeSampling": false,
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:8196/home/js/main.js",
+      "status": 200,
+      "bytes": 258056
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    }
+  ],
+  "initialJsBytes": 2897086,
+  "inspectorLoaded": true,
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8196/home/",
+      "status": 200,
+      "bytes": 25663
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/main.js",
+      "status": 200,
+      "bytes": 258056
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4190
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/8864d112-b5af-43ce-8ca7-6c73323421a5",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/3c9fb210-3b7f-4b6a-aaaf-6f4b9a0cb50e",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/d4a0c4db-7139-4197-b5f6-96b1e120f575",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/e192792b-a7ec-4241-a180-49a7fa969940",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/bd1adcbe-81ea-422d-8605-5eda656fb419",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/cf309cc1-c3eb-417d-b09c-eac75fc1c16c",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/e03cbdbc-c387-41f9-a1b8-65a8e7e55e1d",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/d65872bd-eebc-42bc-95dd-b8b5a438b6be",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/b99fb81c-7e86-44e2-ba5a-9949009edd2c",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/9aa0b077-3c6a-4579-bd45-78b3091b261e",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/fdbc1c6b-1909-4719-96b0-26f76ee7d96c",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/f2136e17-7311-474d-aafc-19529cfc64be",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/8b455816-abff-459a-9a7f-9a27e2d45a10",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/2e142580-4ffc-4845-8691-da197c1878f0",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/0187bdea-fa44-4271-8a18-99bc0134fa32",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8196/46ef506d-f848-4ff3-ad71-62ccc78c17b3",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/4593.js",
+      "status": 200,
+      "bytes": 14090
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/2033.js",
+      "status": 200,
+      "bytes": 43100
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/9318.js",
+      "status": 200,
+      "bytes": 8482
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/1326.js",
+      "status": 200,
+      "bytes": 93582
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/5081.js",
+      "status": 200,
+      "bytes": 3320723
+    },
+    {
+      "url": "http://127.0.0.1:8196/home/js/7665.js",
+      "status": 200,
+      "bytes": 109982
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "baseline": "69606ac",
+  "fpsOrLoadTimeSampling": false,
+  "suites": {
+    "controls": {
+      "script": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-controls.cjs",
+      "scriptSha256": "450eb239a4c921f005ec2e7e1d8f83e320f2917b569d408b34f92146e5fe805c",
+      "result": "controls.json",
+      "log": "controls.log",
+      "exitCode": 0,
+      "passed": true
+    },
+    "journey": {
+      "script": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-night-journey.cjs",
+      "scriptSha256": "453fdaf6aabb32a3a2c889b962f90ff994ed4fb7eca99a9c945005369a824867",
+      "result": "journey.json",
+      "log": "journey.log",
+      "exitCode": 0,
+      "passed": true
+    },
+    "master-mirror": {
+      "script": "docs/technical-plans/assets/day-night-phase2-2026-10-19/check-night-master-mirror.cjs",
+      "scriptSha256": "aa6677d8b509a3b98109c0be9307df69a23e8cfdf7ded19bb3a4a89b32c9f3e4",
+      "result": "mirrors/master/mirror-map.json",
+      "log": "master-mirror.log",
+      "exitCode": 0,
+      "passed": true
+    },
+    "public-mirror": {
+      "script": "docs/technical-plans/assets/day-night-phase2-2026-10-19/check-night-public-mirror.cjs",
+      "scriptSha256": "40c7327e0c94abd4571ec8b1fa1a089e71e2ce5959265c01348d188e16e97de0",
+      "result": "mirrors/public/public-mirror.json",
+      "log": "public-mirror.log",
+      "exitCode": 0,
+      "passed": true
+    },
+    "regression": {
+      "script": "docs/technical-plans/assets/lighthouse-finish-2026-10-19/check-regression.cjs",
+      "scriptSha256": "929ec470a9db520a4c766a2f61668de92c99f556bbb5725ebb20177ff0026d12",
+      "result": "regression/regression.json",
+      "log": "regression.log",
+      "exitCode": 0,
+      "passed": true
+    },
+    "jump": {
+      "script": "docs/technical-plans/assets/coastal-cliff-d-2026-10-18/check-jump.cjs",
+      "scriptSha256": "7b04f1a1c17e1a1b91801894aaca769e9b63aecd0b059d407e311393c12aa31e",
+      "result": "jump/jump.json",
+      "log": "jump.log",
+      "exitCode": 1,
+      "passed": false
+    }
+  },
+  "passed": false
+}

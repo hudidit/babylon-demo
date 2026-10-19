@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "hour": 0,
+      "centroid": [
+        640.1418918918919,
+        400.02027027027026
+      ],
+      "expected": [
+        640,
+        400
+      ],
+      "offsetPixels": 0.14333245564590202,
+      "corePixels": 148,
+      "passed": true
+    },
+    {
+      "hour": 6,
+      "centroid": [
+        640.0,
+        400.0
+      ],
+      "expected": [
+        640,
+        400
+      ],
+      "offsetPixels": 0.0,
+      "corePixels": 248,
+      "passed": true
+    },
+    {
+      "hour": 12,
+      "centroid": [
+        640.0,
+        400.0
+      ],
+      "expected": [
+        640,
+        400
+      ],
+      "offsetPixels": 0.0,
+      "corePixels": 284,
+      "passed": true
+    },
+    {
+      "hour": 18,
+      "centroid": [
+        640.0,
+        400.0
+      ],
+      "expected": [
+        640,
+        400
+      ],
+      "offsetPixels": 0.0,
+      "corePixels": 216,
+      "passed": true
+    }
+  ]
+}

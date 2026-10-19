@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "dawn",
+      "meanAbsoluteChannelDifference": [
+        0.038419452887537994,
+        0.03454103343465045,
+        0.03966261398176292
+      ],
+      "threshold": 1.5,
+      "passed": true
+    },
+    {
+      "name": "dusk",
+      "meanAbsoluteChannelDifference": [
+        0.02008206686930091,
+        0.017741641337386017,
+        0.019617021276595745
+      ],
+      "threshold": 1.5,
+      "passed": true
+    }
+  ]
+}

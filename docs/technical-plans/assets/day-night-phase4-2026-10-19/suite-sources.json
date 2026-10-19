@@ -1,0 +1,51 @@
+{
+  "baseline": "69606ac",
+  "scripts": [
+    {
+      "file": "check-controls.cjs",
+      "derivedFrom": "day-night-phase3-2026-10-19/check-controls.cjs",
+      "inputSha256": "ec99fa654b92cb0e6922639117b03b7ad645347f7614d54707030553165b2014"
+    },
+    {
+      "file": "check-lifecycle.cjs",
+      "derivedFrom": "day-night-phase3-2026-10-19/check-lifecycle.cjs",
+      "inputSha256": "82c84eacc5b5e8cc069200c44daf7af9e1b158fb5d0f494c44d5c31b87354a2d"
+    },
+    {
+      "file": "check-subpath.cjs",
+      "derivedFrom": "day-night-phase3-2026-10-19/check-subpath.cjs",
+      "inputSha256": "646f5b35bef6676214cb7336337696cd7148b0cc037496fb380d12ff4b7fdafc"
+    },
+    {
+      "file": "check-release.cjs",
+      "derivedFrom": "day-night-phase3-2026-10-19/check-release.cjs",
+      "inputSha256": "498dcaeafe8321ba753eb0fe411f72d86626e895589a3c060e993e10beb39cf9"
+    },
+    {
+      "file": "check-visuals.cjs",
+      "derivedFrom": "day-night-phase2-2026-10-19/check-visuals.cjs",
+      "inputSha256": "bea7b952f06749118075a51c42442b139797ed871eadbe4836375c83949ada53"
+    },
+    {
+      "file": "check-night-journey.cjs",
+      "derivedFrom": "day-night-phase2-2026-10-19/check-night-journey.cjs",
+      "inputSha256": "fa6db27a2a98cd7bdc286fad52d93368e0f0f85111d4bc358edc6a8d77ad61fa"
+    },
+    {
+      "file": "check-scooter.cjs",
+      "derivedFrom": "coastal-scooter-no-zones-2026-10-19/check-no-zones.cjs",
+      "inputSha256": "f36f4e75380afe2e960702abe94820ff6c90b38dc64cf661330a3adaa9677858"
+    },
+    {
+      "file": "check-sky-alignment.py",
+      "derivedFrom": "day-night-phase2-2026-10-19/check-sky-alignment.py",
+      "inputSha256": "3f376f273475f76f01632fc07abb74cc7b84e017620c8b813f6cbf6c9e42f15f"
+    },
+    {
+      "file": "diagnose-jump.cjs",
+      "derivedFrom": "coastal-cliff-d-2026-10-18/check-jump.cjs",
+      "inputSha256": "7b04f1a1c17e1a1b91801894aaca769e9b63aecd0b059d407e311393c12aa31e"
+    }
+  ],
+  "historicalSourceFilesUnmodified": true
+}

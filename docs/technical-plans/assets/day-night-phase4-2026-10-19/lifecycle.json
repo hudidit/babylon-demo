@@ -1,0 +1,121 @@
+{
+  "baseline": "69606ac + day-night phase4",
+  "fpsOrLoadTimeSampling": false,
+  "lateImport": {
+    "hour": 8.88888888888889,
+    "transitioning": true,
+    "environment": 0.7666666666666666,
+    "materials": [
+      {
+        "name": "wooden_bookshelf_worn",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-burgundy-0",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "brass",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-moss-0",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-navy-0",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-cushion-0",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-rust-0",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-cream-0",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-burgundy-1",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-moss-1",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-navy-1",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-cushion-1",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-rust-1",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "book-cream-1",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "ceramic",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "stem",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      },
+      {
+        "name": "cushion",
+        "intensity": 0.7666666666666666,
+        "base": 1
+      }
+    ]
+  },
+  "ladder": {
+    "before": [
+      -656,
+      20.700000000000003,
+      423.24999999999994
+    ],
+    "after": [
+      -656,
+      20.700000000000003,
+      423.24999999999994
+    ],
+    "attached": true,
+    "up": false
+  },
+  "hdrFailure": {
+    "passed": true,
+    "uncaught": [],
+    "expectedNetworkErrors": [
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: net::ERR_FAILED"
+    ]
+  },
+  "passed": true
+}
