@@ -1695,7 +1695,7 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
   room.camera = new babylon.ArcRotateCamera("orbit", 0.8, 1.08, 66, babylon.Vector3.Zero(), scene);
   room.firstPersonCamera = new babylon.UniversalCamera("walking", new babylon.Vector3(4, 1, 16), scene);
   room.scooter = loadSource("CoastalScooter").createScooterState();
-  room.scooterModel = { update() {} };
+  room.scooterModel = { update() {}, headlight: { setActive() {} } };
   room.jump = loadSource("HouseJump").createJumpState();
   room.interiorShell = new babylon.TransformNode("shell", scene);
   room.interiorShell.setEnabled(false);

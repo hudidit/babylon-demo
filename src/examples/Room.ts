@@ -182,7 +182,7 @@ export class RoomScene {
     const lighthouse = this.exterior.lighthouseDetails;
     this.interactions.addLamp(lighthouse.switch, () => lighthouse.on, () => lighthouse.toggle());
     this.interactions.addInspectable(lighthouse.record, item => this.openInspection(item));
-    this.scooterModel = new CoastalScooterModel(this.scene, this.exterior.sun, this.exterior.surfaces);
+    this.scooterModel = new CoastalScooterModel(this.scene, this.exterior.sun, this.exterior.surfaces, this.exterior.meshes);
     this.scooterModel.update(this.scooter, false);
     this.architecture = createHouseArchitecture(this.scene, furnishings);
     furnishHouseStudy(furnishings);
@@ -231,6 +231,7 @@ export class RoomScene {
       this.rooms.setState(this.builds[r.id], "ready"));
     this.scene.onBeforeRenderObservable.add(() => {
       this.updateTimeOfDay(this.engine.getDeltaTime() / 1000);
+      this.updateScooterHeadlight();
       this.audio.update();
       if (!this.inspection.isOpen && this.scene.activeCamera === this.camera
         && this.architecture.updateCutaway(this.camera.position, this.camera.target)) {
@@ -340,6 +341,7 @@ export class RoomScene {
     if (this.disposed) return;
     this.lighting.applyTimeOfDay(state);
     this.exterior.applyTimeOfDay(state);
+    this.scooterModel.headlight.applyTimeOfDay(state);
     this.scene.metadata.timeOfDay.visualApplied = true;
     this.scene.metadata.timeOfDay.visualHour = state.hour;
   }
@@ -355,6 +357,7 @@ export class RoomScene {
     this.currentView = view;
     this.exterior.setVisible(view !== "overview");
     this.scooterModel.update(this.scooter, view !== "overview");
+    this.updateScooterHeadlight();
     this.exterior.setHouseEnclosed(firstPerson || view === "coast");
     if (firstPerson) this.exterior.updateCutaway();
     if (!firstPerson) this.pointerLock?.release();
@@ -455,9 +458,13 @@ export class RoomScene {
     const hit = this.scene.pickWithRay(this.firstPersonCamera.getForwardRay(7.5), m => m.isPickable && m.isVisible && !m.metadata?.collisionOnly);
     return !!hit?.hit && !!hit.pickedMesh?.metadata?.scooter;
   }
+  private updateScooterHeadlight() {
+    this.scooterModel.headlight.setActive(this.scooter.riding && this.currentView === "first-person" && !document.hidden);
+  }
   private boardScooter() {
     if (!this.scooterTarget() || !scooterSupport(this.scooter)) return false;
     this.pauseScooter(); this.saveWalkingPose(); this.scooter.riding = true;
+    this.updateScooterHeadlight();
     const camera = this.firstPersonCamera, from = camera.position.clone(), yaw = camera.rotation.y;
     this.placeRiderCamera();
     this.scooterTransition = { from, to: camera.position.clone(), elapsed: 0, yaw, targetYaw: this.scooter.heading, pitch: camera.rotation.x, targetPitch: .08 };
@@ -496,6 +503,7 @@ export class RoomScene {
       }
       const from = camera.position.clone(), to = houseVector(point.x, point.y, point.height + HOUSE_JUMP.eyeHeight);
       this.scooter.riding = false; this.pauseScooter(); resetJumpState(this.jump, point.height);
+      this.updateScooterHeadlight();
       this.previousWalk.copyFrom(to); this.stableWalk = { position: to.clone(), feet: point.height };
       this.walkPose = { position: to.clone(), rotation: camera.rotation.clone(), feet: point.height };
       this.scooterTransition = { from, to, elapsed: 0, yaw: camera.rotation.y, targetYaw: camera.rotation.y, pitch: camera.rotation.x, targetPitch: camera.rotation.x };
@@ -642,6 +650,7 @@ export class RoomScene {
     this.pauseScooter(); resetScooter(this.scooter); this.scooterTransition = undefined;
     if (this.ladder) { this.ladder.attached = false; this.ladderTransition = undefined; this.pauseLadder(); }
     this.scooterModel.update(this.scooter, this.currentView !== "overview");
+    this.updateScooterHeadlight();
     this.updateControls();
     this.restoreStableWalk(true);
     this.firstPersonCamera.setTarget(houseVector(13, -3, 1.6));
@@ -985,6 +994,7 @@ export class RoomScene {
   };
   private visibilityChanged = () => {
     this.setPaused("hidden", document.hidden);
+    this.updateScooterHeadlight();
     if (document.hidden) { this.pauseScooter(); this.pauseLadder(); this.pauseAudio(); } else this.resumeAudio();
     this.engine.stopRenderLoop(this.render);
     if (!document.hidden && !this.disposed) this.engine.runRenderLoop(this.render);

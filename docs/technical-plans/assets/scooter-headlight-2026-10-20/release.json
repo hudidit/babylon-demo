@@ -1,0 +1,29 @@
+{
+  "baseline": "1f873d0",
+  "totals": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26293759,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 70774,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2692719,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42324614
+  },
+  "unchangedRuntimeFiles": 36,
+  "prefixes": [
+    {
+      "path": "/",
+      "files": 495,
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "files": 495,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

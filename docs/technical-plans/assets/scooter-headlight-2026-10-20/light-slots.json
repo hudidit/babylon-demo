@@ -1,0 +1,19 @@
+{
+  "baseline": "1f873d0",
+  "moduleReceiverMeshes": 38,
+  "constructorOriginalGroundSlots": 1,
+  "constructorMinimumSlots": 2,
+  "finalGroundSlots": 22,
+  "activeRoadSources": [
+    "coastal-afternoon-sun",
+    "scooter-headlight"
+  ],
+  "compiledRoadLightCount": 2,
+  "existingLoaderSource": "node_modules/@babylonjs/loaders/glTF/2.0/glTFLoader.pure.js:412-417",
+  "reason": "Existing glTF loader raises every scene material maxSimultaneousLights to at least scene.lights.length after each import. The headlight itself only raises scoped receiver materials to at least 2. Global loader behavior was not changed.",
+  "groundWriteTrace": {
+    "name": "coastal-ground",
+    "v": 22,
+    "stack": "Error\n    at d.set (<anonymous>:2:229)\n    at http://127.0.0.1:8212/js/9691.js:1:2359987\n    at async http://127.0.0.1:8212/js/9691.js:1:2360303\n    at async L._loadAsync (http://127.0.0.1:8212/js/9691.js:1:2357443)\n    at async http://127.0.0.1:8212/js/9691.js:1:2357019\n    at async L.importMeshAsync (http://127.0.0.1:8212/js/9691.js:1:2356682)\n    at async D (http://127.0.0.1:8212/js/9691.js:1:593192)\n    at async X.ImportMeshAsync (http://127.0.0.1:8212/js/9691.js:1:597517)"
+  }
+}

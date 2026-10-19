@@ -1,28 +1,34 @@
 import { Color3, CreateBox, CreateCylinder, Mesh, TransformNode, VertexBuffer } from "@babylonjs/core/pure";
-import type { DirectionalLight, Scene, PBRMaterial } from "@babylonjs/core/pure";
+import type { AbstractMesh, DirectionalLight, Scene, PBRMaterial } from "@babylonjs/core/pure";
 import { beveledBox } from "./RoomDetailGeometry";
 import { HOUSE_COORDINATES, planToWorld } from "./HouseLayout";
 import { SCOOTER, SCOOTER_PARKING, scooterSupport } from "./CoastalScooter";
 import type { ScooterState } from "./CoastalScooter";
 import type { CoastalMaterials } from "./CoastalMaterials";
 import { walkingSurfaceAt } from "./WalkingSurface";
+import { CoastalScooterHeadlight } from "./CoastalScooterHeadlight";
 
-/** Original compact geometry. Vertex colours share two materials across all moving parts. */
+/** Original compact geometry; the lamp lens has its own emissive material. */
 export class CoastalScooterModel {
   readonly root: TransformNode;
+  readonly headlight: CoastalScooterHeadlight;
   readonly meshes: Mesh[] = [];
   private readonly front: TransformNode;
   private readonly wheels: Mesh[] = [];
   private readonly materials: PBRMaterial[] = [];
   private disposed = false;
-  constructor(private readonly scene: Scene, private readonly sun: DirectionalLight, private readonly surfaces: CoastalMaterials) {
+  constructor(private readonly scene: Scene, private readonly sun: DirectionalLight, private readonly surfaces: CoastalMaterials,
+    receivers: readonly AbstractMesh[] = []) {
     this.root = new TransformNode("coastal-scooter", scene);
     this.root.scaling.setAll(HOUSE_COORDINATES.unitsPerMeter);
     this.front = new TransformNode("scooter-steering", scene); this.front.parent = this.root; this.front.position.z = .56;
     const paint = surfaces.solid("scooter-enamel", "#ffffff"), dark = surfaces.solid("scooter-rubber", "#ffffff");
     for (const m of [paint, dark]) { m.albedoColor = Color3.White(); m.maxSimultaneousLights = 1; }
     paint.metallic = .22; paint.roughness = .4; dark.metallic = .05; dark.roughness = .82;
-    this.materials.push(paint, dark);
+    const lens = surfaces.solid("scooter-headlight-lens", "#ffffff");
+    lens.roughness = .35;
+    this.materials.push(paint, dark, lens);
+    this.headlight = new CoastalScooterHeadlight(scene, this.front, lens, receivers);
     const groups = new Map<string, { parts: Mesh[]; material: PBRMaterial; parent: TransformNode }>();
     const add = (mesh: Mesh, group: string, material: PBRMaterial, color: string, parent = this.root) => {
       const c = Color3.FromHexString(color).toLinearSpace(), colors: number[] = [];
@@ -52,7 +58,7 @@ export class CoastalScooterModel {
     // Front assembly pivots at the fork. The complete handlebar stays inside the 65cm envelope.
     cylinder("scooter-front", paint, silver, .055, .78, [0, .74, 0], this.front);
     box("scooter-front", paint, green, [.29, .16, .14], [0, 1.13, 0], this.front);
-    box("scooter-front", paint, cream, [.22, .1, .018], [0, 1.13, .08], this.front);
+    box("scooter-headlight-lens", lens, cream, [.22, .1, .018], [0, 1.13, .08], this.front);
     box("scooter-front", paint, "#55695c", [.16, .015, .09], [0, 1.22, -.015], this.front);
     cylinder("scooter-controls", dark, silver, .03, .61, [0, 1.14, -.025], this.front, true);
     for (const x of [-.25, .25]) {
@@ -98,6 +104,7 @@ export class CoastalScooterModel {
   }
   dispose() {
     if (this.disposed) return; this.disposed = true;
+    this.headlight.dispose();
     for (const light of this.scene.lights) {
       light.includedOnlyMeshes = light.includedOnlyMeshes.filter(m => !this.meshes.includes(m as Mesh));
       light.excludedMeshes = light.excludedMeshes.filter(m => !this.meshes.includes(m as Mesh));

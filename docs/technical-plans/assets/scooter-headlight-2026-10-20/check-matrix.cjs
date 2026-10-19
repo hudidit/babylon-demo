@@ -1,0 +1,28 @@
+// Fixed production reference poses verify shader/light combinations. Actual riding is in check-browser.cjs.
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),pw=require(process.env.PLAYWRIGHT_PACKAGE||'playwright');
+const load=require('../lighthouse-d-2026-10-18/source-loader.cjs'),{scooterSupport,scooterEyeBack}=load('CoastalScooter'),{planToWorld}=load('HouseLayout');
+const out=path.join(__dirname,'engines');fs.mkdirSync(out,{recursive:true});
+const pose={x:-80,y:33,heading:Math.atan2(-24,19)},support=scooterSupport(pose),p=planToWorld(pose,support.height);
+(async()=>{const record={baseline:'1f873d0',method:'Fixed on/off production light and rider-camera fixtures after selecting midnight through the real time menu. Room per-frame callback is suspended only for these reference images; automatic control and real riding are checked separately.',physicalDevicesTested:false,fpsOrLoadTimeSampling:false,cases:[]};
+try{for(const kind of ['chromium','webkit']){
+ const browser=await pw[kind].launch({headless:true,...(kind==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{})});
+ try{for(const dpr of [1,2]){
+  const context=await browser.newContext({viewport:{width:1280,height:800},deviceScaleFactor:dpr,serviceWorkers:'block'}),page=await context.newPage(),errors=[],warnings=[];
+  page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());if(m.type()==='warning')warnings.push(m.text());});page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());});
+  await page.goto(process.env.STUDY_URL||'http://127.0.0.1:8212/');await page.waitForFunction(()=>document.querySelector('#scene-status').textContent.includes('全屋八个房间已布置'),null,{timeout:120000});
+  await require('../day-night-phase4-2026-10-19/browser-harness.cjs').capture(page);
+  const frames=()=>page.evaluate(async()=>{s.render();await new Promise(s.executeWhenReady.bind(s));for(let i=0;i<3;i++)s.render();});
+  await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await page.locator('#time-toggle').click();await page.locator('[data-time-hour="0"]').click();await page.evaluate(()=>{for(let i=0;i<30;i++)s.render();});await page.locator('#time-close').click();
+  assert.equal(await page.evaluate(()=>s.metadata.timeOfDay.state.hour),0);
+  await page.locator('[data-view="first-person"]').click();await page.keyboard.press('t');await page.locator('#time-close').click();await page.evaluate(()=>{s.getCameraByName('study-first-person')._checkInputs=()=>{};const observer=s.onBeforeRenderObservable.observers.find(o=>o.callback.toString().includes('updateScooterHeadlight'));s.onBeforeRenderObservable.remove(observer);});
+  for(const [width,height,name]of [[1280,800,'desktop'],[390,844,'portrait'],[844,390,'landscape']]){
+   await page.setViewportSize({width,height});await page.evaluate(({p,pose,support,back})=>{e.setHardwareScalingLevel(1/devicePixelRatio);e.resize();const root=s.getTransformNodeByName('coastal-scooter'),c=s.getCameraByName('study-first-person');root.position.set(p.x,p.y,p.z);root.rotation.set(-support.pitch,pose.heading,support.roll);s.getTransformNodeByName('scooter-steering').rotation.y=0;c.position.set(p.x-Math.sin(pose.heading)*back*5,p.y+1.42*5,p.z-Math.cos(pose.heading)*back*5);c.rotation.set(.15,pose.heading,0);c.cameraDirection.setAll(0);c.cameraRotation.setAll(0);c.getViewMatrix(true);},{p,pose,support,back:scooterEyeBack(width/height)});
+   const mode=async on=>{await page.evaluate(on=>{const l=s.getLightByName('scooter-headlight');l.setEnabled(on);l.intensity=on?8:0;s.getMaterialByName('scooter-headlight-lens').emissiveColor.set(on?1.5:0,on?1.3127:0,on?.9786:0);},on);await frames();return page.evaluate(()=>{s.render();const gl=e._gl,w=e.getRenderWidth(),h=e.getRenderHeight(),rw=Math.floor(w*.7),rh=Math.floor(h*.28),pixels=new Uint8Array(rw*rh*4);gl.readPixels(Math.floor(w*.15),Math.floor(h*.15),rw,rh,gl.RGBA,gl.UNSIGNED_BYTE,pixels);let sum=0;for(let i=0;i<pixels.length;i+=4)sum+=pixels[i]*.2126+pixels[i+1]*.7152+pixels[i+2]*.0722;return sum/(rw*rh);});};
+   const off=await mode(false),on=await mode(true);assert.ok(on>off+.5,`${kind} ${dpr} ${name}: ${on} vs ${off}`);
+   await page.evaluate(()=>{e.getDeltaTime=()=>0;e.runRenderLoop(self.shotRender=()=>s.render());});await page.waitForTimeout(160);await page.screenshot({path:path.join(out,`${kind}-${name}-dpr${dpr}.jpg`),type:'jpeg',quality:85});await page.evaluate(()=>{e.stopRenderLoop(shotRender);e.getDeltaTime=()=>50;});
+   const resources=await page.evaluate(()=>({ready:['scooter-enamel','scooter-rubber','scooter-headlight-lens'].map(name=>s.getMaterialByName(name).getEffect()?.isReady()),vehicleMeshes:s.meshes.filter(m=>m.metadata?.scooter).length,light:s.getLightByName('scooter-headlight').isEnabled(),renderSize:[e.getRenderWidth(),e.getRenderHeight()]}));assert.ok(resources.ready.every(Boolean));assert.equal(resources.vehicleMeshes,8);
+   record.cases.push({kind,version:browser.version(),dpr,name,off,on,resources,errors,warnings});
+  }
+  await page.evaluate(()=>window.dispatchEvent(new Event('pagehide')));assert.equal(await page.evaluate(()=>s.meshes.length),0);assert.deepEqual(errors,[]);assert.deepEqual(warnings,[]);await context.close();
+ }}finally{await browser.close();}
+}record.passed=true;}catch(error){record.failure=String(error.stack||error);throw error;}finally{fs.writeFileSync(path.join(out,'matrix.json'),JSON.stringify(record,null,2)+'\n');}console.log(JSON.stringify({passed:record.passed,cases:record.cases.length}));})().catch(error=>{console.error(error);process.exitCode=1;});

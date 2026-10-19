@@ -1,0 +1,285 @@
+{
+  "baseline": "1f873d0",
+  "method": "Fixed on/off production light and rider-camera fixtures after selecting midnight through the real time menu. Room per-frame callback is suspended only for these reference images; automatic control and real riding are checked separately.",
+  "physicalDevicesTested": false,
+  "fpsOrLoadTimeSampling": false,
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "desktop",
+      "off": 17.54922798649671,
+      "on": 18.750311388914035,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "portrait",
+      "off": 35.970146796432495,
+      "on": 38.489914909665984,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "landscape",
+      "off": 17.56969492147515,
+      "on": 18.421477695538723,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "desktop",
+      "off": 17.536962543370528,
+      "on": 18.740444353399553,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "portrait",
+      "off": 35.906645511318686,
+      "on": 38.443572842610635,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "landscape",
+      "off": 17.584431801692237,
+      "on": 18.464429562101714,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "desktop",
+      "off": 17.54368467794266,
+      "on": 18.746706980431785,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "portrait",
+      "off": 35.98075090334278,
+      "on": 38.50144666294068,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 1,
+      "name": "landscape",
+      "off": 17.577653668170917,
+      "on": 18.431304235734657,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "desktop",
+      "off": 17.53975442644135,
+      "on": 18.74474194039281,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "portrait",
+      "off": 35.91148769872361,
+      "on": 38.44998747677743,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "26.5",
+      "dpr": 2,
+      "name": "landscape",
+      "off": 17.591449500112905,
+      "on": 18.47189410156056,
+      "resources": {
+        "ready": [
+          true,
+          true,
+          true
+        ],
+        "vehicleMeshes": 8,
+        "light": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "passed": true
+}
