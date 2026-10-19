@@ -17,7 +17,8 @@ export interface TimeOfDayPreset {
   readonly name: string;
   readonly sun: CelestialKeyframe;
   readonly moon: CelestialKeyframe;
-  readonly sky: { readonly zenith: LinearTimeColor; readonly horizon: LinearTimeColor };
+  readonly sky: { readonly zenith: LinearTimeColor; readonly horizon: LinearTimeColor;
+    readonly cloudLight: LinearTimeColor; readonly cloudShade: LinearTimeColor; readonly starVisibility: number };
   readonly environment: { readonly exterior: number; readonly interior: number };
 }
 export interface CelestialState extends CelestialKeyframe {
@@ -48,6 +49,8 @@ interface PresetInput {
   sun: BodyInput;
   moon: BodyInput;
   sky: readonly [string, string];
+  clouds: readonly [string, string];
+  stars: number;
   environment: readonly [number, number];
 }
 const vector = (x: number, y: number, z: number): TimeVector => Object.freeze([x, y, z] as [number, number, number]);
@@ -62,28 +65,29 @@ function preset(input: PresetInput): TimeOfDayPreset {
   const body = ([azimuth, elevation, strength, color]: BodyInput): CelestialKeyframe =>
     Object.freeze({ azimuth, elevation, strength, color: linearColor(color) });
   return Object.freeze({ hour: input.hour, name: input.name, sun: body(input.sun), moon: body(input.moon),
-    sky: Object.freeze({ zenith: linearColor(input.sky[0]), horizon: linearColor(input.sky[1]) }),
+    sky: Object.freeze({ zenith: linearColor(input.sky[0]), horizon: linearColor(input.sky[1]),
+      cloudLight: linearColor(input.clouds[0]), cloudShade: linearColor(input.clouds[1]), starVisibility: input.stars }),
     environment: Object.freeze({ exterior: input.environment[0], interior: input.environment[1] }) });
 }
 
 /** Artistic northern-hemisphere tracks; not a dated astronomical ephemeris. */
 export const TIME_OF_DAY_PRESETS: readonly TimeOfDayPreset[] = Object.freeze([
   preset({ hour: 0, name: "午夜", sun: [0, -60, 0, "#FFD0A0"], moon: [180, 50, .040, "#C7D8EE"],
-    sky: ["#101B30", "#29394B"], environment: [.180, .10] }),
+    sky: ["#101B30", "#29394B"], clouds: ["#26364E", "#17253A"], stars: 1, environment: [.180, .10] }),
   preset({ hour: 3, name: "后夜", sun: [45, -35, 0, "#FFD0A0"], moon: [225, 25, .025, "#C4D2E8"],
-    sky: ["#10182A", "#303C4B"], environment: [.140, .08] }),
+    sky: ["#10182A", "#303C4B"], clouds: ["#24334A", "#162236"], stars: .9, environment: [.140, .08] }),
   preset({ hour: 6, name: "清晨", sun: [90, 5, .280, "#FFD0A0"], moon: [270, -5, 0, "#C4D2E8"],
-    sky: ["#7798BD", "#E9B99A"], environment: [.350, .40] }),
+    sky: ["#7798BD", "#E9B99A"], clouds: ["#E3DEDA", "#8B9AAE"], stars: 0, environment: [.350, .40] }),
   preset({ hour: 9, name: "上午", sun: [135, 35, .800, "#FFF0D9"], moon: [315, -35, 0, "#C7D8EE"],
-    sky: ["#6396C3", "#C5D5DB"], environment: [.850, .90] }),
+    sky: ["#6396C3", "#C5D5DB"], clouds: ["#F3F1EC", "#A0B4C8"], stars: 0, environment: [.850, .90] }),
   preset({ hour: 12, name: "正午", sun: [180, 65, 1, "#FFF7E8"], moon: [0, -60, 0, "#C7D8EE"],
-    sky: ["#528FC1", "#C9DEE8"], environment: [1, 1] }),
+    sky: ["#528FC1", "#C9DEE8"], clouds: ["#F6F4EF", "#A5B6C8"], stars: 0, environment: [1, 1] }),
   preset({ hour: 15, name: "午后", sun: [225, 35, .800, "#FFE0B3"], moon: [45, -35, 0, "#CDDDF2"],
-    sky: ["#6D97BD", "#E3CFB3"], environment: [.800, .85] }),
+    sky: ["#6D97BD", "#E3CFB3"], clouds: ["#F5EEE3", "#A3AEC0"], stars: 0, environment: [.800, .85] }),
   preset({ hour: 18, name: "黄昏", sun: [270, 5, .250, "#FFAD70"], moon: [90, -5, 0, "#CDDDF2"],
-    sky: ["#646D98", "#DCA083"], environment: [.250, .30] }),
+    sky: ["#646D98", "#DCA083"], clouds: ["#D6CED0", "#79849F"], stars: 0, environment: [.250, .30] }),
   preset({ hour: 21, name: "入夜", sun: [315, -35, 0, "#FFAD70"], moon: [135, 25, .035, "#CDDDF2"],
-    sky: ["#15243D", "#35475D"], environment: [.200, .12] }),
+    sky: ["#15243D", "#35475D"], clouds: ["#2E4059", "#1D2E46"], stars: .7, environment: [.200, .12] }),
 ]);
 
 export function wrapTimeOfDay(hour: number): number {
@@ -103,6 +107,10 @@ export function timeSourceDirection(azimuth: number, elevation: number): TimeVec
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 const colorLerp = (a: LinearTimeColor, b: LinearTimeColor, t: number): LinearTimeColor =>
   vector(lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t));
+function starGate(sunElevation: number) {
+  const t = Math.max(0, Math.min(1, (-4 - sunElevation) / 8));
+  return t * t * (3 - 2 * t);
+}
 function celestial(kind: CelestialState["kind"], a: CelestialKeyframe, b: CelestialKeyframe, t: number): CelestialState {
   // Both tracks advance clockwise, including 315 -> 0 across midnight/the daytime moon.
   const azimuth = (a.azimuth + (b.azimuth - a.azimuth + 360) % 360 * t) % 360;
@@ -122,7 +130,9 @@ export function evaluateTimeOfDay(hour: number): TimeOfDaySnapshot {
   const sun = celestial("sun", a.sun, b.sun, t), moon = celestial("moon", a.moon, b.moon, t);
   return Object.freeze({ hour: wrapped, periodHour: a.hour, periodName: a.name, sun, moon,
     primary: sun.enabled ? sun : moon.enabled ? moon : null,
-    sky: Object.freeze({ zenith: colorLerp(a.sky.zenith, b.sky.zenith, t), horizon: colorLerp(a.sky.horizon, b.sky.horizon, t) }),
+    sky: Object.freeze({ zenith: colorLerp(a.sky.zenith, b.sky.zenith, t), horizon: colorLerp(a.sky.horizon, b.sky.horizon, t),
+      cloudLight: colorLerp(a.sky.cloudLight, b.sky.cloudLight, t), cloudShade: colorLerp(a.sky.cloudShade, b.sky.cloudShade, t),
+      starVisibility: lerp(a.sky.starVisibility, b.sky.starVisibility, t) * starGate(sun.elevation) }),
     environment: Object.freeze({ exterior: lerp(a.environment.exterior, b.environment.exterior, t),
       interior: lerp(a.environment.interior, b.environment.interior, t) }) });
 }
@@ -161,6 +171,9 @@ export function blendTimeOfDay(from: TimeOfDaySnapshot, to: TimeOfDaySnapshot, t
   return Object.freeze({ hour, periodHour: period.hour, periodName: period.name, sun, moon,
     primary: sun.enabled ? sun : moon.enabled ? moon : null,
     sky: Object.freeze({ zenith: colorLerp(from.sky.zenith, to.sky.zenith, t), horizon: colorLerp(from.sky.horizon, to.sky.horizon, t),
+      cloudLight: colorLerp(from.sky.cloudLight, to.sky.cloudLight, t), cloudShade: colorLerp(from.sky.cloudShade, to.sky.cloudShade, t),
+      // This is a displayed value: re-evaluating at the blended hour would flash through unrelated night/day gates.
+      starVisibility: lerp(from.sky.starVisibility, to.sky.starVisibility, t),
       sunDirection: skySunDirection, warmth: reducedMotion ? warmth(t < .5 ? from : to) * factor : lerp(warmth(from), warmth(to), t) }),
     environment: Object.freeze({ exterior: lerp(from.environment.exterior, to.environment.exterior, t),
       interior: lerp(from.environment.interior, to.environment.interior, t) }) });

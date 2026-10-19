@@ -1,0 +1,34 @@
+{
+  "baseline": "bea1db6",
+  "totals": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26283838,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 70774,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2683071,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42314693
+  },
+  "staticInitialJsBytes": 2683071,
+  "staticInitialJsDelta": 4837,
+  "releaseDelta": 4837,
+  "unchangedRuntimeFiles": 36,
+  "prefixes": [
+    {
+      "path": "/",
+      "files": 495,
+      "bytes": 42314693,
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "files": 495,
+      "bytes": 42314693,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

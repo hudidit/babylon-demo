@@ -172,3 +172,49 @@ test('overlapping pause owners resume independently; only the time menu allows a
   pauses.set('time-menu', false); assert.equal(pauses.blocked, false);
   clock.resetDelta(); clock.advance(.1, pauses.blocked); clock.advance(.1, pauses.blocked); assert.ok(clock.snapshot.hour > 0);
 });
+
+test('stars fade with the solar horizon gate, stay absent in daylight and wrap midnight with linear cloud colours', () => {
+  assert.deepEqual(presets.map(p => at(p.hour).sky.starVisibility), [1, .9, 0, 0, 0, 0, 0, .7]);
+  for (let i = 0; i < 2400; i++) {
+    const state = at(i / 100);
+    assert.ok(state.sky.starVisibility >= 0 && state.sky.starVisibility <= 1);
+    if (state.sun.elevation >= -4) assert.equal(state.sky.starVisibility, 0);
+  }
+  // The artistic solar track reaches -4 and -12 degrees at these continuous hours.
+  const dawnOff = 3 + 31 / 40 * 3, duskOn = 18 + 9 / 40 * 3, duskFull = 18 + 17 / 40 * 3;
+  near(at(dawnOff).sky.starVisibility, 0); near(at(duskOn).sky.starVisibility, 0);
+  assert.ok(at(dawnOff - .01).sky.starVisibility > 0 && at(duskOn + .01).sky.starVisibility > 0);
+  for (const hour of [dawnOff, duskOn, duskFull, 3 + 23 / 40 * 3, 0, 3, 6, 18, 21, 24]) {
+    const before = at(hour - 1e-6).sky, after = at(hour + 1e-6).sky;
+    near(before.starVisibility, after.starVisibility, 1e-5);
+    for (const key of ['cloudLight', 'cloudShade']) assert.ok(distance(before[key], after[key]) < 1e-5);
+  }
+  near(at(12).sky.cloudLight[0], Math.pow((246 / 255 + .055) / 1.055, 2.4));
+  for (const key of ['cloudLight', 'cloudShade']) for (let c = 0; c < 3; c++)
+    near(at(10.5).sky[key][c], (at(9).sky[key][c] + at(12).sky[key][c]) / 2);
+  assert.ok(Object.isFrozen(at(0).sky.cloudLight) && Object.isFrozen(at(0).sky.cloudShade));
+});
+
+test('manual cloud/star fades blend the displayed values instead of evaluating an unrelated intermediate hour', () => {
+  for (const reduced of [false, true]) for (const [fromHour, toHour] of [[12, 0], [0, 6], [6, 18], [21, 3]]) {
+    const from = at(fromHour), to = at(toHour);
+    for (const t of [.1, .49, .5, .51, .9]) {
+      const state = blend(from, to, t, reduced);
+      near(state.sky.starVisibility, from.sky.starVisibility + (to.sky.starVisibility - from.sky.starVisibility) * t);
+      for (const key of ['cloudLight', 'cloudShade']) for (let c = 0; c < 3; c++)
+        near(state.sky[key][c], from.sky[key][c] + (to.sky[key][c] - from.sky[key][c]) * t);
+    }
+  }
+  // 12 -> 00 passes the numerical hour 06 halfway through, but still displays half the target stars.
+  near(blend(at(12), at(0), .5).sky.starVisibility, .5);
+  const clock = new RoomTimeOfDay(); clock.transitionTo(0);
+  for (let i = 0; i < 5; i++) clock.advance(.1);
+  const displayed = clock.snapshot;
+  clock.transitionTo(6); assert.equal(clock.snapshot, displayed);
+  clock.advance(.1);
+  assert.ok(clock.snapshot.sky.starVisibility > 0 && clock.snapshot.sky.starVisibility < displayed.sky.starVisibility);
+  clock.transitionTo(18, true);
+  clock.advance(.1); assert.ok(clock.snapshot.sky.starVisibility > 0);
+  clock.advance(.1); assert.equal(clock.snapshot.sky.starVisibility, 0);
+  assert.deepEqual(clock.snapshot.sky.cloudLight, at(18).sky.cloudLight);
+});

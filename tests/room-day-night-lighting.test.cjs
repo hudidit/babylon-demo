@@ -4,6 +4,7 @@ const load = require('../docs/technical-plans/assets/lighthouse-d-2026-10-18/sou
 load('RoomRuntime').registerRoomRuntime();
 const {evaluateTimeOfDay: at, blendTimeOfDay: blend} = load('RoomTimeOfDay');
 const {RoomExterior} = load('RoomExterior'), {RoomLighting} = load('RoomLighting');
+const {skyTimeUniforms} = load('CoastalSky');
 const near = (a, z, epsilon = 1e-8) => assert.ok(Math.abs(a - z) < epsilon, `${a} != ${z}`);
 function setup(t) {
   const engine = new b.NullEngine(), scene = new b.Scene(engine); scene.useDelayedTextureLoading = true;
@@ -26,6 +27,11 @@ test('sky, sea, scoped light and a single cached shadow follow all eight nodes a
     assert.deepEqual(exterior.ocean.material._vectors3.sunDirection, sky._vectors3.sunDirection);
     near(exterior.ocean.material._floats.sunStrength, state.primary?.strength || 0);
     near(exterior.ocean.material._floats.skyIllumination, state.environment.exterior);
+    near(sky._floats.skyStarVisibility, state.sky.starVisibility);
+    assert.deepEqual(sky._vectors3.skyCloudLight.asArray(), [...state.sky.cloudLight]);
+    assert.deepEqual(sky._vectors3.skyCloudShade.asArray(), [...state.sky.cloudShade]);
+    assert.deepEqual(sky._vectors3.skyMoonDirection.asArray(), [...state.moon.sourceDirection]);
+    if (state.primary?.kind === 'sun') assert.equal(sky._floats.skyMoonVisibility, 0);
     assert.deepEqual([scene.meshes.length, scene.materials.length, scene.textures.length, scene.lights.length], resources);
   }
   assert.equal(scene.iblIntensity, .35);
@@ -136,6 +142,11 @@ test('manual fades update natural shadow maps together, leave artificial caches 
     near(exterior.sky._floats.sunStrength, exterior.ocean.material._floats.sunStrength);
     near(exterior.sky._floats.sunWarmth, exterior.ocean.material._floats.sunWarmth);
     assert.deepEqual(exterior.sky._vectors3.skySunDirection, exterior.ocean.material._vectors3.skySunDirection);
+    for (const key of skyTimeUniforms) {
+      assert.deepEqual(exterior.sky._floats[key], exterior.ocean.material._floats[key], key);
+      assert.deepEqual(exterior.sky._vectors3[key], exterior.ocean.material._vectors3[key], key);
+    }
+    if (t === .5) assert.equal(exterior.sky._floats.skyMoonVisibility, 0, 'moon suppression fades away at a source handoff');
     if (t === .5) { assert.equal(exterior.sun.isEnabled(), false); assert.equal(exterior.ocean.material._floats.sunStrength, 0); }
   }
   assert.equal(artificialRefreshes, 0); assert.equal(naturalRefreshes, lights.natural.size * 12); assert.equal(exteriorRefreshes, 12);
