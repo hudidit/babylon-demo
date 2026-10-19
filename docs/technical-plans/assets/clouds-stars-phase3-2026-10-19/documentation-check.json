@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "localLinksChecked": 313,
+  "externalLinksUnchanged": 6,
+  "headingAnchorsChecked": true,
+  "currentStatusConsistent": true,
+  "historicalStageScopesPreserved": true,
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "8f50524b2684adefa6344e8cd6ef1b61bbd032ce715179c4322b838bafc0f816"
+    },
+    {
+      "path": "docs/technical-plans/README.md",
+      "sha256": "cabbec5af96d3e95c314f8154d15a40fb72c4eedbf43cba8e1587a4f9e4568f8"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-19-coastal-clouds-and-stars.md",
+      "sha256": "30156db79ceb13c09a015b06e2a5b98f71ebc6777cd60fe647e1563c15445bda"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-19-day-night-cycle.md",
+      "sha256": "33e936092775cb4439fe08044c52e8e8c37b3b30e945bf1786c0f9e1a68d3cb6"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/README.md",
+      "sha256": "8cb72c30d9aaf00a7962e4d81b34cbb3ee2dcb2a71f9032e89a1a0cc5e80783a"
+    }
+  ]
+}

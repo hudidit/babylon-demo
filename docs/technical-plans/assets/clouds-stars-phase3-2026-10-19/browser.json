@@ -1,0 +1,1952 @@
+{
+  "baseline": "47eb076",
+  "fpsOrLoadingBenchmark": false,
+  "method": "Final production dist; pose/speed fixtures and explicit fixed reference timesteps with actual W/Space/S/E/M events. No claim of new full-route travel time.",
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8201/",
+      "status": 200,
+      "bytes": 25663
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/main.js",
+      "status": 200,
+      "bytes": 264499
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8201/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8201/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4190
+    },
+    {
+      "url": "http://127.0.0.1:8201/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8201/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8201/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8201/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/133e70b7-6c70-4c6c-a212-d48bc1163789",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/7674bce6-0a05-4ca5-893c-0e0b6d652041",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/adaca36a-5962-4645-bdda-f3147e580da0",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/4bf1eaa4-5c78-4bb1-ba49-52e891f303c2",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/e15d7454-e242-492c-bf21-4379408ef9cb",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/9b7c4938-bf01-4353-aefc-99baea4f60ae",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/bb96be92-5945-4e2f-abb0-7b6677fe1948",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/223e2a5d-382b-468c-bf48-3e340bb43fbe",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/1cd5e2a0-60ea-4cd0-8106-9e4a9d35f618",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/469867b5-1bc6-4276-8e83-713c6b474cef",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/c8cdf9ac-8aab-4677-8b64-3eb671969ae9",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/5652820b-fef9-4ee5-a4ef-afd68e63bff3",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/1d26e395-33db-4005-b7f6-32ff578b953a",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/059677d6-09bf-4f78-9729-0419cda83c0c",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/ce20b1e9-99ab-41b8-be49-207d426a70bb",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/8a654089-4a1c-4d76-bf44-f726a0c0487e",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/4593.js",
+      "status": 200,
+      "bytes": 14090
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/9318.js",
+      "status": 200,
+      "bytes": 8482
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/2033.js",
+      "status": 200,
+      "bytes": 43100
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/1326.js",
+      "status": 200,
+      "bytes": 93582
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/5081.js",
+      "status": 200,
+      "bytes": 3320723
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/7665.js",
+      "status": 200,
+      "bytes": 109982
+    }
+  ],
+  "zones": [
+    {
+      "id": "home",
+      "cruising": {
+        "vehicle": {
+          "id": "home",
+          "label": "家门停车位",
+          "x": 14,
+          "y": 1.8296296296296295,
+          "heading": 3.141592653589793,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "accelerating": {
+        "vehicle": {
+          "id": "home",
+          "label": "家门停车位",
+          "x": 14,
+          "y": 2.098263888888889,
+          "heading": 3.141592653589793,
+          "speed": 3.083333333333334,
+          "distance": 0.10173611111111112,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    },
+    {
+      "id": "lookout",
+      "cruising": {
+        "vehicle": {
+          "id": "lookout",
+          "label": "观景点停车位",
+          "x": -71.59012107763981,
+          "y": 26.030225914174327,
+          "heading": -0.9,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "accelerating": {
+        "vehicle": {
+          "id": "lookout",
+          "label": "观景点停车位",
+          "x": -71.37969263351418,
+          "y": 25.863240180799753,
+          "heading": -0.9,
+          "speed": 3.083333333333334,
+          "distance": 0.10173611111111112,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    },
+    {
+      "id": "tower",
+      "cruising": {
+        "vehicle": {
+          "id": "tower",
+          "label": "灯塔停车位",
+          "x": -122.12699918794647,
+          "y": 83.84791581957319,
+          "heading": -0.35,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "accelerating": {
+        "vehicle": {
+          "id": "tower",
+          "label": "灯塔停车位",
+          "x": -122.03488508943906,
+          "y": 83.59556812668899,
+          "heading": -0.35,
+          "speed": 3.083333333333334,
+          "distance": 0.10173611111111112,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    },
+    {
+      "id": "bend-east",
+      "cruising": {
+        "vehicle": {
+          "id": "bend-east",
+          "label": "灯塔停车位",
+          "x": -4.25245880000864,
+          "y": -4.729004122639328,
+          "heading": -0.75,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "accelerating": {
+        "vehicle": {
+          "id": "bend-east",
+          "label": "灯塔停车位",
+          "x": -4.069347276627374,
+          "y": -4.925560819937491,
+          "heading": -0.75,
+          "speed": 3.083333333333334,
+          "distance": 0.10173611111111112,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    },
+    {
+      "id": "bend-west",
+      "cruising": {
+        "vehicle": {
+          "id": "bend-west",
+          "label": "灯塔停车位",
+          "x": -56.311655920299245,
+          "y": 8.200111965136351,
+          "heading": -1,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "accelerating": {
+        "vehicle": {
+          "id": "bend-west",
+          "label": "灯塔停车位",
+          "x": -56.0856079856072,
+          "y": 8.05496825542339,
+          "heading": -1,
+          "speed": 3.083333333333334,
+          "distance": 0.10173611111111112,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    },
+    {
+      "id": "edge-approach",
+      "cruising": {
+        "vehicle": {
+          "id": "edge-approach",
+          "label": "灯塔停车位",
+          "x": 14.370370370370367,
+          "y": 2.267864442865469e-17,
+          "heading": 1.5707963267948966,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "accelerating": {
+        "vehicle": {
+          "id": "edge-approach",
+          "label": "灯塔停车位",
+          "x": 14.10173611111111,
+          "y": 6.229540141496085e-18,
+          "heading": 1.5707963267948966,
+          "speed": 3.083333333333334,
+          "distance": 0.10173611111111112,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    }
+  ],
+  "obstacles": [
+    {
+      "id": "fence",
+      "referenceFrameSeconds": 0.2,
+      "frames": 15,
+      "vehicle": {
+        "id": "fence",
+        "label": "灯塔停车位",
+        "x": 15.079938271604926,
+        "y": 6.612714737988566e-17,
+        "heading": 1.5707963267948966,
+        "speed": 0,
+        "distance": 1.0799382716049386,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "hint": "骑行 0 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+      "riding": true,
+      "locked": true,
+      "roomLocked": true,
+      "view": "first-person",
+      "mapOpen": false,
+      "controlsEnabled": true,
+      "pauses": [],
+      "hidden": false,
+      "inputs": {
+        "forward": false,
+        "back": false,
+        "left": false,
+        "right": false,
+        "brake": false
+      }
+    },
+    {
+      "id": "tower",
+      "referenceFrameSeconds": 0.2,
+      "frames": 15,
+      "vehicle": {
+        "id": "tower",
+        "label": "灯塔停车位",
+        "x": -125,
+        "y": 85.61986882716029,
+        "heading": 0,
+        "speed": 0,
+        "distance": 1.6198688271604926,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "hint": "骑行 0 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+      "riding": true,
+      "locked": true,
+      "roomLocked": true,
+      "view": "first-person",
+      "mapOpen": false,
+      "controlsEnabled": true,
+      "pauses": [],
+      "hidden": false,
+      "inputs": {
+        "forward": false,
+        "back": false,
+        "left": false,
+        "right": false,
+        "brake": false
+      }
+    },
+    {
+      "id": "house",
+      "referenceFrameSeconds": 0.2,
+      "frames": 15,
+      "vehicle": {
+        "id": "house",
+        "label": "灯塔停车位",
+        "x": 13.125019290123461,
+        "y": 4.65,
+        "heading": -1.5707963267948966,
+        "speed": 0,
+        "distance": 0.17498070987654313,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "hint": "骑行 0 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+      "riding": true,
+      "locked": true,
+      "roomLocked": true,
+      "view": "first-person",
+      "mapOpen": false,
+      "controlsEnabled": true,
+      "pauses": [],
+      "hidden": false,
+      "inputs": {
+        "forward": false,
+        "back": false,
+        "left": false,
+        "right": false,
+        "brake": false
+      }
+    }
+  ],
+  "initialRequests": [
+    {
+      "url": "http://127.0.0.1:8201/",
+      "status": 200,
+      "bytes": 25663
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/main.js",
+      "status": 200,
+      "bytes": 264499
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8201/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8201/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8201/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4190
+    },
+    {
+      "url": "http://127.0.0.1:8201/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8201/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8201/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8201/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/133e70b7-6c70-4c6c-a212-d48bc1163789",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/7674bce6-0a05-4ca5-893c-0e0b6d652041",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/adaca36a-5962-4645-bdda-f3147e580da0",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/4bf1eaa4-5c78-4bb1-ba49-52e891f303c2",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/e15d7454-e242-492c-bf21-4379408ef9cb",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/9b7c4938-bf01-4353-aefc-99baea4f60ae",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/bb96be92-5945-4e2f-abb0-7b6677fe1948",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/223e2a5d-382b-468c-bf48-3e340bb43fbe",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/1cd5e2a0-60ea-4cd0-8106-9e4a9d35f618",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/469867b5-1bc6-4276-8e83-713c6b474cef",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/c8cdf9ac-8aab-4677-8b64-3eb671969ae9",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/5652820b-fef9-4ee5-a4ef-afd68e63bff3",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/1d26e395-33db-4005-b7f6-32ff578b953a",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/059677d6-09bf-4f78-9729-0419cda83c0c",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/ce20b1e9-99ab-41b8-be49-207d426a70bb",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8201/8a654089-4a1c-4d76-bf44-f726a0c0487e",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8201/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8201/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ],
+  "actualInitialJsBytes": 2903529,
+  "initialControlReady": {
+    "vehicle": {
+      "id": "home",
+      "label": "家门停车位",
+      "x": 14,
+      "y": 2.2,
+      "heading": 3.141592653589793,
+      "speed": 0,
+      "distance": 0,
+      "steer": 0,
+      "riding": false,
+      "exitRequested": false
+    },
+    "hint": "",
+    "riding": false,
+    "locked": true,
+    "roomLocked": true,
+    "view": "first-person",
+    "mapOpen": false,
+    "controlsEnabled": true,
+    "pauses": [],
+    "hidden": false,
+    "inputs": {
+      "forward": false,
+      "back": false,
+      "left": false,
+      "right": false,
+      "brake": false
+    }
+  },
+  "cruiseProbes": [
+    {
+      "id": "home",
+      "before": {
+        "vehicle": {
+          "id": "home",
+          "label": "家门停车位",
+          "x": 14,
+          "y": 2.2,
+          "heading": 3.141592653589793,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "requested": {
+        "vehicle": {
+          "id": "home",
+          "label": "家门停车位",
+          "x": 14,
+          "y": 2.2,
+          "heading": 3.141592653589793,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": true,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "cruising": {
+        "vehicle": {
+          "id": "home",
+          "label": "家门停车位",
+          "x": 14,
+          "y": 1.8296296296296295,
+          "heading": 3.141592653589793,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    },
+    {
+      "id": "lookout",
+      "before": {
+        "vehicle": {
+          "id": "lookout",
+          "label": "观景点停车位",
+          "x": -71.3,
+          "y": 25.8,
+          "heading": -0.9,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "requested": {
+        "vehicle": {
+          "id": "lookout",
+          "label": "观景点停车位",
+          "x": -71.3,
+          "y": 25.8,
+          "heading": -0.9,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": true,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "cruising": {
+        "vehicle": {
+          "id": "lookout",
+          "label": "观景点停车位",
+          "x": -71.59012107763981,
+          "y": 26.030225914174327,
+          "heading": -0.9,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    },
+    {
+      "id": "tower",
+      "before": {
+        "vehicle": {
+          "id": "tower",
+          "label": "灯塔停车位",
+          "x": -122,
+          "y": 83.5,
+          "heading": -0.35,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "requested": {
+        "vehicle": {
+          "id": "tower",
+          "label": "灯塔停车位",
+          "x": -122,
+          "y": 83.5,
+          "heading": -0.35,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": true,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "cruising": {
+        "vehicle": {
+          "id": "tower",
+          "label": "灯塔停车位",
+          "x": -122.12699918794647,
+          "y": 83.84791581957319,
+          "heading": -0.35,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    },
+    {
+      "id": "bend-east",
+      "before": {
+        "vehicle": {
+          "id": "bend-east",
+          "label": "灯塔停车位",
+          "x": -4,
+          "y": -5,
+          "heading": -0.75,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "requested": {
+        "vehicle": {
+          "id": "bend-east",
+          "label": "灯塔停车位",
+          "x": -4,
+          "y": -5,
+          "heading": -0.75,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": true,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "cruising": {
+        "vehicle": {
+          "id": "bend-east",
+          "label": "灯塔停车位",
+          "x": -4.25245880000864,
+          "y": -4.729004122639328,
+          "heading": -0.75,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    },
+    {
+      "id": "bend-west",
+      "before": {
+        "vehicle": {
+          "id": "bend-west",
+          "label": "灯塔停车位",
+          "x": -56,
+          "y": 8,
+          "heading": -1,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "requested": {
+        "vehicle": {
+          "id": "bend-west",
+          "label": "灯塔停车位",
+          "x": -56,
+          "y": 8,
+          "heading": -1,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": true,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "cruising": {
+        "vehicle": {
+          "id": "bend-west",
+          "label": "灯塔停车位",
+          "x": -56.311655920299245,
+          "y": 8.200111965136351,
+          "heading": -1,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    },
+    {
+      "id": "edge-approach",
+      "before": {
+        "vehicle": {
+          "id": "edge-approach",
+          "label": "灯塔停车位",
+          "x": 14,
+          "y": 0,
+          "heading": 1.5707963267948966,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "requested": {
+        "vehicle": {
+          "id": "edge-approach",
+          "label": "灯塔停车位",
+          "x": 14,
+          "y": 0,
+          "heading": 1.5707963267948966,
+          "speed": 11.11111111111111,
+          "distance": 0,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": true,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      },
+      "cruising": {
+        "vehicle": {
+          "id": "edge-approach",
+          "label": "灯塔停车位",
+          "x": 14.370370370370367,
+          "y": 2.267864442865469e-17,
+          "heading": 1.5707963267948966,
+          "speed": 11.11111111111111,
+          "distance": 0.37037037037037046,
+          "steer": 0,
+          "riding": true,
+          "exitRequested": false
+        },
+        "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+        "riding": true,
+        "locked": true,
+        "roomLocked": true,
+        "view": "first-person",
+        "mapOpen": false,
+        "controlsEnabled": true,
+        "pauses": [],
+        "hidden": false,
+        "inputs": {
+          "forward": false,
+          "back": false,
+          "left": false,
+          "right": false,
+          "brake": false
+        }
+      }
+    }
+  ],
+  "latestCruiseProbe": {
+    "id": "edge-approach",
+    "before": {
+      "vehicle": {
+        "id": "edge-approach",
+        "label": "灯塔停车位",
+        "x": 14,
+        "y": 0,
+        "heading": 1.5707963267948966,
+        "speed": 11.11111111111111,
+        "distance": 0,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+      "riding": true,
+      "locked": true,
+      "roomLocked": true,
+      "view": "first-person",
+      "mapOpen": false,
+      "controlsEnabled": true,
+      "pauses": [],
+      "hidden": false,
+      "inputs": {
+        "forward": false,
+        "back": false,
+        "left": false,
+        "right": false,
+        "brake": false
+      }
+    },
+    "requested": {
+      "vehicle": {
+        "id": "edge-approach",
+        "label": "灯塔停车位",
+        "x": 14,
+        "y": 0,
+        "heading": 1.5707963267948966,
+        "speed": 11.11111111111111,
+        "distance": 0,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "hint": "骑行 11 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+      "riding": true,
+      "locked": true,
+      "roomLocked": true,
+      "view": "first-person",
+      "mapOpen": false,
+      "controlsEnabled": true,
+      "pauses": [],
+      "hidden": false,
+      "inputs": {
+        "forward": true,
+        "back": false,
+        "left": false,
+        "right": false,
+        "brake": false
+      }
+    },
+    "cruising": {
+      "vehicle": {
+        "id": "edge-approach",
+        "label": "灯塔停车位",
+        "x": 14.370370370370367,
+        "y": 2.267864442865469e-17,
+        "heading": 1.5707963267948966,
+        "speed": 11.11111111111111,
+        "distance": 0.37037037037037046,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "hint": "骑行 40 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+      "riding": true,
+      "locked": true,
+      "roomLocked": true,
+      "view": "first-person",
+      "mapOpen": false,
+      "controlsEnabled": true,
+      "pauses": [],
+      "hidden": false,
+      "inputs": {
+        "forward": false,
+        "back": false,
+        "left": false,
+        "right": false,
+        "brake": false
+      }
+    }
+  },
+  "spaceBrakes": true,
+  "reverseBounded": true,
+  "mapPauses": true,
+  "dismountBefore": {
+    "vehicle": {
+      "id": "home",
+      "label": "家门停车位",
+      "x": 14,
+      "y": 2.2,
+      "heading": 3.141592653589793,
+      "speed": 0,
+      "distance": 0,
+      "steer": 0,
+      "riding": true,
+      "exitRequested": false
+    },
+    "hint": "骑行 0 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+    "riding": true,
+    "locked": true,
+    "roomLocked": true,
+    "view": "first-person",
+    "mapOpen": false,
+    "controlsEnabled": true,
+    "pauses": [],
+    "hidden": false,
+    "inputs": {
+      "forward": false,
+      "back": false,
+      "left": false,
+      "right": false,
+      "brake": false
+    }
+  },
+  "dismountRequested": {
+    "vehicle": {
+      "id": "home",
+      "label": "家门停车位",
+      "x": 14,
+      "y": 2.2,
+      "heading": 3.141592653589793,
+      "speed": 0,
+      "distance": 0,
+      "steer": 0,
+      "riding": true,
+      "exitRequested": true
+    },
+    "hint": "骑行 0 km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车",
+    "riding": true,
+    "locked": true,
+    "roomLocked": true,
+    "view": "first-person",
+    "mapOpen": false,
+    "controlsEnabled": true,
+    "pauses": [],
+    "hidden": false,
+    "inputs": {
+      "forward": false,
+      "back": false,
+      "left": false,
+      "right": false,
+      "brake": false
+    }
+  },
+  "dismountAfter": {
+    "vehicle": {
+      "id": "home",
+      "label": "家门停车位",
+      "x": 14,
+      "y": 2.2,
+      "heading": 3.141592653589793,
+      "speed": 0,
+      "distance": 0,
+      "steer": 0,
+      "riding": false,
+      "exitRequested": false
+    },
+    "hint": "已停车 · 空格跳跃 · M 地图寻车",
+    "riding": false,
+    "locked": true,
+    "roomLocked": true,
+    "view": "first-person",
+    "mapOpen": false,
+    "controlsEnabled": true,
+    "pauses": [],
+    "hidden": false,
+    "inputs": {
+      "forward": false,
+      "back": false,
+      "left": false,
+      "right": false,
+      "brake": false
+    }
+  },
+  "safeDismount": true,
+  "inspector": true,
+  "passed": true
+}

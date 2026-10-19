@@ -1,0 +1,1890 @@
+{
+  "baseline": "69606ac",
+  "fpsOrLoadTimeSampling": false,
+  "referenceDelta": 0.016666666666666666,
+  "landings": {
+    "bed": {
+      "x": 2.1,
+      "y": 8.45,
+      "top": 0.73,
+      "before": {
+        "position": [
+          -16.5,
+          3,
+          15.249999999999995
+        ],
+        "previous": [
+          -16.5,
+          3,
+          15.249999999999995
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "locked": true
+      },
+      "after": {
+        "position": [
+          -16.5,
+          6.65,
+          15.249999999999995
+        ],
+        "previous": [
+          -16.5,
+          6.65,
+          15.249999999999995
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      "expectedEyeY": 6.65
+    },
+    "sofa": {
+      "x": 10.24,
+      "y": 8.4,
+      "top": 0.441,
+      "before": {
+        "position": [
+          24.2,
+          3,
+          15
+        ],
+        "previous": [
+          24.2,
+          3,
+          15
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "locked": true
+      },
+      "after": {
+        "position": [
+          24.2,
+          5.205,
+          15
+        ],
+        "previous": [
+          24.2,
+          5.205,
+          15
+        ],
+        "jump": {
+          "feet": 0.441,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.441
+        },
+        "locked": true
+      },
+      "expectedEyeY": 5.205
+    },
+    "coffee-table": {
+      "x": 8.7,
+      "y": 8.4,
+      "top": 0.468,
+      "before": {
+        "position": [
+          16.499999999999993,
+          3,
+          15
+        ],
+        "previous": [
+          16.499999999999993,
+          3,
+          15
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "locked": true
+      },
+      "after": {
+        "position": [
+          16.499999999999993,
+          5.34,
+          15
+        ],
+        "previous": [
+          16.499999999999993,
+          5.34,
+          15
+        ],
+        "jump": {
+          "feet": 0.46799999999999997,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.46799999999999997
+        },
+        "locked": true
+      },
+      "expectedEyeY": 5.34
+    },
+    "chair": {
+      "x": 6.9,
+      "y": 1.8,
+      "top": 0.561,
+      "before": {
+        "position": [
+          7.5,
+          3,
+          -18.000000000000004
+        ],
+        "previous": [
+          7.5,
+          3,
+          -18.000000000000004
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "locked": true
+      },
+      "after": {
+        "position": [
+          7.5,
+          5.805,
+          -18.000000000000004
+        ],
+        "previous": [
+          7.5,
+          5.805,
+          -18.000000000000004
+        ],
+        "jump": {
+          "feet": 0.561,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.561
+        },
+        "locked": true
+      },
+      "expectedEyeY": 5.805
+    },
+    "balcony-floor": {
+      "x": 8.1,
+      "y": 11.8,
+      "top": 0,
+      "before": {
+        "position": [
+          13.499999999999996,
+          3,
+          32
+        ],
+        "previous": [
+          13.499999999999996,
+          3,
+          32
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "locked": true
+      },
+      "after": {
+        "position": [
+          13.499999999999996,
+          3,
+          32
+        ],
+        "previous": [
+          13.499999999999996,
+          3,
+          32
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "locked": true
+      },
+      "expectedEyeY": 3
+    },
+    "floor": {
+      "x": 9.4,
+      "y": 5.35,
+      "top": 0,
+      "before": {
+        "position": [
+          20,
+          3,
+          -0.25000000000000355
+        ],
+        "previous": [
+          20,
+          3,
+          -0.25000000000000355
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "locked": true
+      },
+      "after": {
+        "position": [
+          20,
+          3,
+          -0.25000000000000355
+        ],
+        "previous": [
+          20,
+          3,
+          -0.25000000000000355
+        ],
+        "jump": {
+          "feet": 0,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0
+        },
+        "locked": true
+      },
+      "expectedEyeY": 3
+    }
+  },
+  "floorJump": {
+    "apex": 6.443477295880964,
+    "landed": 3,
+    "samples": [
+      3.2995841952673164,
+      3.5855433905346334,
+      3.8578775858019494,
+      4.116586781069266,
+      4.361670976336583,
+      4.5931301716038995,
+      4.8109643668712145,
+      5.015173562138532,
+      5.2057577574058485,
+      5.3827169526731655,
+      5.546051147940483,
+      5.695760343207798,
+      5.831844538475115,
+      5.954303733742432,
+      6.0631379290097485,
+      6.158347124277066,
+      6.239931319544381,
+      6.307890514811698,
+      6.362224710079014,
+      6.40293390534633,
+      6.430018100613648,
+      6.443477295880964,
+      6.443311491148281,
+      6.4295206864155965,
+      6.402104881682913,
+      6.361064076950228,
+      6.306398272217546,
+      6.238107467484863,
+      6.15619166275218,
+      6.060650858019496,
+      5.951485053286813,
+      5.828694248554129,
+      5.692278443821445,
+      5.542237639088762,
+      5.378571834356078,
+      5.201281029623395,
+      5.0103652248907125,
+      4.805824420158029,
+      4.587658615425346,
+      4.355867810692661,
+      4.110452005959978,
+      3.851411201227295,
+      3.578745396494611,
+      3.2924545917619277,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ]
+  },
+  "walkOffBed": {
+    "samples": [
+      {
+        "position": [
+          -16.456518684764372,
+          6.65,
+          15.250991305460222
+        ],
+        "previous": [
+          -16.456518684764372,
+          6.65,
+          15.250991305460222
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -16.38912264614915,
+          6.65,
+          15.250977828923576
+        ],
+        "previous": [
+          -16.38912264614915,
+          6.65,
+          15.250977828923576
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -16.308573509675153,
+          6.65,
+          15.250961722288649
+        ],
+        "previous": [
+          -16.308573509675153,
+          6.65,
+          15.250961722288649
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -16.220790169378827,
+          6.65,
+          15.250944169099668
+        ],
+        "previous": [
+          -16.220790169378827,
+          6.65,
+          15.250944169099668
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -16.12902801698022,
+          6.65,
+          15.250925820305957
+        ],
+        "previous": [
+          -16.12902801698022,
+          6.65,
+          15.250925820305957
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -16.035077517925362,
+          6.65,
+          15.250907033929645
+        ],
+        "previous": [
+          -16.035077517925362,
+          6.65,
+          15.250907033929645
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -15.939923428209564,
+          6.65,
+          15.250888006882901
+        ],
+        "previous": [
+          -15.939923428209564,
+          6.65,
+          15.250888006882901
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -15.844107363630245,
+          6.65,
+          15.250868847467421
+        ],
+        "previous": [
+          -15.844107363630245,
+          6.65,
+          15.250868847467421
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -15.747927212875997,
+          6.65,
+          15.250849615249134
+        ],
+        "previous": [
+          -15.747927212875997,
+          6.65,
+          15.250849615249134
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -15.651546814725531,
+          6.65,
+          15.250830342989305
+        ],
+        "previous": [
+          -15.651546814725531,
+          6.65,
+          15.250830342989305
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -15.555056280507149,
+          6.65,
+          15.250811048706627
+        ],
+        "previous": [
+          -15.555056280507149,
+          6.65,
+          15.250811048706627
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -15.45850517145141,
+          6.65,
+          15.250791742311382
+        ],
+        "previous": [
+          -15.45850517145141,
+          6.65,
+          15.250791742311382
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -15.361920746235128,
+          6.65,
+          15.250772429254225
+        ],
+        "previous": [
+          -15.361920746235128,
+          6.65,
+          15.250772429254225
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -15.265317997130545,
+          6.65,
+          15.250753112533015
+        ],
+        "previous": [
+          -15.265317997130545,
+          6.65,
+          15.250753112533015
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -15.1687051698874,
+          6.65,
+          15.250733793796579
+        ],
+        "previous": [
+          -15.1687051698874,
+          6.65,
+          15.250733793796579
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -15.07208679966804,
+          6.65,
+          15.250714473951769
+        ],
+        "previous": [
+          -15.07208679966804,
+          6.65,
+          15.250714473951769
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -14.975465380811768,
+          6.65,
+          15.25069515349735
+        ],
+        "previous": [
+          -14.975465380811768,
+          6.65,
+          15.25069515349735
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -14.878842285205192,
+          6.65,
+          15.25067583270765
+        ],
+        "previous": [
+          -14.878842285205192,
+          6.65,
+          15.25067583270765
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -14.782218267385947,
+          6.65,
+          15.25065651173354
+        ],
+        "previous": [
+          -14.782218267385947,
+          6.65,
+          15.25065651173354
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -14.685593742349736,
+          6.65,
+          15.25063719065801
+        ],
+        "previous": [
+          -14.685593742349736,
+          6.65,
+          15.25063719065801
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -14.588968938344193,
+          6.65,
+          15.250617869526696
+        ],
+        "previous": [
+          -14.588968938344193,
+          6.65,
+          15.250617869526696
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -14.492343980905519,
+          6.65,
+          15.250598548364701
+        ],
+        "previous": [
+          -14.492343980905519,
+          6.65,
+          15.250598548364701
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -14.395718939078622,
+          6.65,
+          15.250579227185833
+        ],
+        "previous": [
+          -14.395718939078622,
+          6.65,
+          15.250579227185833
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -14.2990938508382,
+          6.65,
+          15.250559905997683
+        ],
+        "previous": [
+          -14.2990938508382,
+          6.65,
+          15.250559905997683
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -14.202468737070344,
+          6.65,
+          15.250540584804432
+        ],
+        "previous": [
+          -14.202468737070344,
+          6.65,
+          15.250540584804432
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -14.105843609262395,
+          6.65,
+          15.25052126360837
+        ],
+        "previous": [
+          -14.105843609262395,
+          6.65,
+          15.25052126360837
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -14.009218473732398,
+          6.65,
+          15.250501942410764
+        ],
+        "previous": [
+          -14.009218473732398,
+          6.65,
+          15.250501942410764
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -13.912593333955272,
+          6.65,
+          15.250482621212308
+        ],
+        "previous": [
+          -13.912593333955272,
+          6.65,
+          15.250482621212308
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -13.815968191842225,
+          6.65,
+          15.250463300013386
+        ],
+        "previous": [
+          -13.815968191842225,
+          6.65,
+          15.250463300013386
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -13.719343048444424,
+          6.65,
+          15.250443978814209
+        ],
+        "previous": [
+          -13.719343048444424,
+          6.65,
+          15.250443978814209
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -13.622717904340004,
+          6.65,
+          15.25042465761489
+        ],
+        "previous": [
+          -13.622717904340004,
+          6.65,
+          15.25042465761489
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -13.526092759846948,
+          6.65,
+          15.250405336415492
+        ],
+        "previous": [
+          -13.526092759846948,
+          6.65,
+          15.250405336415492
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -13.429467615140139,
+          6.65,
+          15.250386015216051
+        ],
+        "previous": [
+          -13.429467615140139,
+          6.65,
+          15.250386015216051
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -13.332842470315768,
+          6.65,
+          15.250366694016588
+        ],
+        "previous": [
+          -13.332842470315768,
+          6.65,
+          15.250366694016588
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -13.236217325426736,
+          6.65,
+          15.25034737281711
+        ],
+        "previous": [
+          -13.236217325426736,
+          6.65,
+          15.25034737281711
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -13.139592180502143,
+          6.65,
+          15.250328051617627
+        ],
+        "previous": [
+          -13.139592180502143,
+          6.65,
+          15.250328051617627
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -13.042967035557991,
+          6.65,
+          15.25030873041814
+        ],
+        "previous": [
+          -13.042967035557991,
+          6.65,
+          15.25030873041814
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -12.94634189060308,
+          6.65,
+          15.25028940921865
+        ],
+        "previous": [
+          -12.94634189060308,
+          6.65,
+          15.25028940921865
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -12.849716745642251,
+          6.65,
+          15.25027008801916
+        ],
+        "previous": [
+          -12.849716745642251,
+          6.65,
+          15.25027008801916
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -12.75309160067817,
+          6.65,
+          15.250250766819667
+        ],
+        "previous": [
+          -12.75309160067817,
+          6.65,
+          15.250250766819667
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -12.656466455712298,
+          6.65,
+          15.250231445620175
+        ],
+        "previous": [
+          -12.656466455712298,
+          6.65,
+          15.250231445620175
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -12.559841310745444,
+          6.65,
+          15.250212124420683
+        ],
+        "previous": [
+          -12.559841310745444,
+          6.65,
+          15.250212124420683
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -12.463216165778045,
+          6.65,
+          15.25019280322119
+        ],
+        "previous": [
+          -12.463216165778045,
+          6.65,
+          15.25019280322119
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -12.36659102081035,
+          6.65,
+          15.250173482021697
+        ],
+        "previous": [
+          -12.36659102081035,
+          6.65,
+          15.250173482021697
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -12.269965875842491,
+          6.65,
+          15.250154160822206
+        ],
+        "previous": [
+          -12.269965875842491,
+          6.65,
+          15.250154160822206
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -12.173340730874541,
+          6.65,
+          15.250134839622714
+        ],
+        "previous": [
+          -12.173340730874541,
+          6.65,
+          15.250134839622714
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -12.076715585906543,
+          6.65,
+          15.25011551842322
+        ],
+        "previous": [
+          -12.076715585906543,
+          6.65,
+          15.25011551842322
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -11.980090440938516,
+          6.65,
+          15.250096197223728
+        ],
+        "previous": [
+          -11.980090440938516,
+          6.65,
+          15.250096197223728
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -11.883465295970474,
+          6.65,
+          15.250076876024236
+        ],
+        "previous": [
+          -11.883465295970474,
+          6.65,
+          15.250076876024236
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -11.786840151002425,
+          6.65,
+          15.250057554824743
+        ],
+        "previous": [
+          -11.786840151002425,
+          6.65,
+          15.250057554824743
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -11.690215006034371,
+          6.65,
+          15.25003823362525
+        ],
+        "previous": [
+          -11.690215006034371,
+          6.65,
+          15.25003823362525
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -11.593589861066317,
+          6.65,
+          15.250018912425759
+        ],
+        "previous": [
+          -11.593589861066317,
+          6.65,
+          15.250018912425759
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -11.496964716098258,
+          6.65,
+          15.249999591226265
+        ],
+        "previous": [
+          -11.496964716098258,
+          6.65,
+          15.249999591226265
+        ],
+        "jump": {
+          "feet": 0.73,
+          "velocity": 0,
+          "grounded": true,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -11.4003395711302,
+          6.636375000000001,
+          15.249980270026773
+        ],
+        "previous": [
+          -11.4003395711302,
+          6.636375000000001,
+          15.249980270026773
+        ],
+        "jump": {
+          "feet": 0.727275,
+          "velocity": -0.1635,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -11.303714426162141,
+          6.609125000000001,
+          15.249960948827281
+        ],
+        "previous": [
+          -11.303714426162141,
+          6.609125000000001,
+          15.249960948827281
+        ],
+        "jump": {
+          "feet": 0.721825,
+          "velocity": -0.327,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -11.207089281194083,
+          6.568249999999999,
+          15.24994162762779
+        ],
+        "previous": [
+          -11.207089281194083,
+          6.568249999999999,
+          15.24994162762779
+        ],
+        "jump": {
+          "feet": 0.71365,
+          "velocity": -0.49050000000000005,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -11.110464136226025,
+          6.51375,
+          15.249922306428296
+        ],
+        "previous": [
+          -11.110464136226025,
+          6.51375,
+          15.249922306428296
+        ],
+        "jump": {
+          "feet": 0.70275,
+          "velocity": -0.654,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -11.013838991257966,
+          6.4456250000000015,
+          15.249902985228804
+        ],
+        "previous": [
+          -11.013838991257966,
+          6.4456250000000015,
+          15.249902985228804
+        ],
+        "jump": {
+          "feet": 0.689125,
+          "velocity": -0.8175,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -10.917213846289908,
+          6.363875,
+          15.249883664029312
+        ],
+        "previous": [
+          -10.917213846289908,
+          6.363875,
+          15.249883664029312
+        ],
+        "jump": {
+          "feet": 0.672775,
+          "velocity": -0.981,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -10.82058870132185,
+          6.268500000000001,
+          15.249864342829818
+        ],
+        "previous": [
+          -10.82058870132185,
+          6.268500000000001,
+          15.249864342829818
+        ],
+        "jump": {
+          "feet": 0.6537000000000001,
+          "velocity": -1.1445,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -10.723963556353791,
+          6.1594999999999995,
+          15.249845021630327
+        ],
+        "previous": [
+          -10.723963556353791,
+          6.1594999999999995,
+          15.249845021630327
+        ],
+        "jump": {
+          "feet": 0.6319,
+          "velocity": -1.308,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -10.627338411385734,
+          6.036874999999998,
+          15.249825700430835
+        ],
+        "previous": [
+          -10.627338411385734,
+          6.036874999999998,
+          15.249825700430835
+        ],
+        "jump": {
+          "feet": 0.607375,
+          "velocity": -1.4715,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -10.530713266417676,
+          5.900625000000002,
+          15.249806379231341
+        ],
+        "previous": [
+          -10.530713266417676,
+          5.900625000000002,
+          15.249806379231341
+        ],
+        "jump": {
+          "feet": 0.580125,
+          "velocity": -1.635,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -10.434088121449618,
+          5.75075,
+          15.249787058031849
+        ],
+        "previous": [
+          -10.434088121449618,
+          5.75075,
+          15.249787058031849
+        ],
+        "jump": {
+          "feet": 0.55015,
+          "velocity": -1.7985,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -10.337462976481557,
+          5.587250000000001,
+          15.249767736832357
+        ],
+        "previous": [
+          -10.337462976481557,
+          5.587250000000001,
+          15.249767736832357
+        ],
+        "jump": {
+          "feet": 0.5174500000000001,
+          "velocity": -1.962,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -10.240837831513499,
+          5.410125000000001,
+          15.249748415632865
+        ],
+        "previous": [
+          -10.240837831513499,
+          5.410125000000001,
+          15.249748415632865
+        ],
+        "jump": {
+          "feet": 0.4820250000000001,
+          "velocity": -2.1255,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -10.14421268654544,
+          5.219375000000001,
+          15.249729094433372
+        ],
+        "previous": [
+          -10.14421268654544,
+          5.219375000000001,
+          15.249729094433372
+        ],
+        "jump": {
+          "feet": 0.4438750000000001,
+          "velocity": -2.289,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -10.04758754157738,
+          5.015000000000001,
+          15.24970977323388
+        ],
+        "previous": [
+          -10.04758754157738,
+          5.015000000000001,
+          15.24970977323388
+        ],
+        "jump": {
+          "feet": 0.4030000000000001,
+          "velocity": -2.4525,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -9.950962396609322,
+          4.797000000000001,
+          15.249690452034388
+        ],
+        "previous": [
+          -9.950962396609322,
+          4.797000000000001,
+          15.249690452034388
+        ],
+        "jump": {
+          "feet": 0.35940000000000005,
+          "velocity": -2.616,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -9.854337251641264,
+          4.5653749999999995,
+          15.249671130834894
+        ],
+        "previous": [
+          -9.854337251641264,
+          4.5653749999999995,
+          15.249671130834894
+        ],
+        "jump": {
+          "feet": 0.31307500000000005,
+          "velocity": -2.7795,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -9.757712106673203,
+          4.320125000000001,
+          15.249651809635402
+        ],
+        "previous": [
+          -9.757712106673203,
+          4.320125000000001,
+          15.249651809635402
+        ],
+        "jump": {
+          "feet": 0.26402500000000007,
+          "velocity": -2.943,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -9.661086961705145,
+          4.061250000000001,
+          15.24963248843591
+        ],
+        "previous": [
+          -9.661086961705145,
+          4.061250000000001,
+          15.24963248843591
+        ],
+        "jump": {
+          "feet": 0.21225000000000005,
+          "velocity": -3.1065,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -9.564461816737087,
+          3.7887500000000003,
+          15.249613167236417
+        ],
+        "previous": [
+          -9.564461816737087,
+          3.7887500000000003,
+          15.249613167236417
+        ],
+        "jump": {
+          "feet": 0.15775000000000006,
+          "velocity": -3.27,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      },
+      {
+        "position": [
+          -9.467836671769026,
+          3.502625,
+          15.249593846036925
+        ],
+        "previous": [
+          -9.467836671769026,
+          3.502625,
+          15.249593846036925
+        ],
+        "jump": {
+          "feet": 0.10052500000000006,
+          "velocity": -3.4335,
+          "grounded": false,
+          "queued": false,
+          "originTop": 0.73
+        },
+        "locked": true
+      }
+    ],
+    "landed": {
+      "position": [
+        -9.467836671769026,
+        3,
+        15.249593846036925
+      ],
+      "previous": [
+        -9.467836671769026,
+        3,
+        15.249593846036925
+      ],
+      "jump": {
+        "feet": 0,
+        "velocity": 0,
+        "grounded": true,
+        "queued": false,
+        "originTop": 0
+      },
+      "locked": true
+    }
+  },
+  "orbitSpaceIgnored": {
+    "before": [
+      -74,
+      82,
+      83.99999999999999
+    ],
+    "after": [
+      -74,
+      82,
+      83.99999999999999
+    ],
+    "maxDifference": 0
+  },
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "failed": []
+}

@@ -1,0 +1,475 @@
+{
+  "baseline": "47eb0765898088cfeb61b7992dd8c838fa9deb66",
+  "runtimeVersion": "coastal-clouds-stars-v2",
+  "runtimeChanges": false,
+  "files": [
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase2-2026-10-19/browser-fixture.cjs",
+      "sha256": "3b586e7fc24ad0892d901b4ffda47c7ba95d0a56cd6ac7d9ce18f904cfad353f"
+    },
+    {
+      "path": "docs/technical-plans/assets/coastal-cliff-d-2026-10-18/serve-dist.py",
+      "sha256": "64ca8f4fcbcf4e5fa56c738120af214b5aac3c1326a939048f2176b85488c092"
+    },
+    {
+      "path": "docs/technical-plans/assets/day-night-phase4-2026-10-19/browser-harness.cjs",
+      "sha256": "ae42558b4ff0fbc84929327e7dea1e1e2388e6db957c5e04a4b82000b0cc5a4b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/browser-harness.cjs",
+      "sha256": "518b9a3c58b355f453062977ebaca0633cf927cd410a90ed074490b0ec334f07"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs",
+      "sha256": "5b10dece56d4bd2092a49195bf179f56fe54541691f1118663131163036a69f6"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e94ba83cc02d96a6954d091bf84233bceee7275e85107453a75f772a8a629dcf"
+    },
+    {
+      "path": "package.json",
+      "sha256": "d0b503f1aafb821f442916332ca0267497ca6fd05c7dd1c3919552acbcd5b6a9"
+    },
+    {
+      "path": "src/app.ts",
+      "sha256": "b89f0ceccfc146b7e2bb7372884beae4f1286a20a6bd10b10cd8db60c4799119"
+    },
+    {
+      "path": "src/components/BasicExamples.ts",
+      "sha256": "c0c1c32a7762906cd1d153ae7c56ea7f40df00e78e896d9a96b620011253c9eb"
+    },
+    {
+      "path": "src/components/RoomTimeMenu.ts",
+      "sha256": "a33d45bfc740c9df3cb8c5100f7e443f423ca98f5d3ceb153b8a9af5ae58bffd"
+    },
+    {
+      "path": "src/examples/BasicScene.ts",
+      "sha256": "e23b01945715d5f005041187928b9176b1dc6f0852dfcb05bc0c3c864d11925d"
+    },
+    {
+      "path": "src/examples/BigRoom.ts",
+      "sha256": "4859a3ac6c1495d5aa79b21943bf1e5e9b57b40923adaf54f8d50b47495f1e6c"
+    },
+    {
+      "path": "src/examples/BookshelfLayout.ts",
+      "sha256": "158bd501e25945ce23bbe50e1e0134337e31bf8ef38eab2313c5341f56698456"
+    },
+    {
+      "path": "src/examples/CoastalCliff.ts",
+      "sha256": "313ecfc00850d766782bccbb0e7aa80c5bbf74da1219ea1831a9ebcde6ea9ba0"
+    },
+    {
+      "path": "src/examples/CoastalFinish.ts",
+      "sha256": "51c34e79460a92052390028f16883db051b85f40f1ae1fe277a766a25798d892"
+    },
+    {
+      "path": "src/examples/CoastalLandmark.ts",
+      "sha256": "9b030ca9aa7bc6adf9e98a226bec14b8c1693a3d35de57fa243cf4fbd164888a"
+    },
+    {
+      "path": "src/examples/CoastalMap.ts",
+      "sha256": "01e5aa8860dce98143e0a204fe046f43e1f7a9099c2a893582c0a7a746e35241"
+    },
+    {
+      "path": "src/examples/CoastalMaterials.ts",
+      "sha256": "883c73b72cd2fd4a7245ca64f8ca96cc149768c6f44d43fb4f7b4ea1d05b8d19"
+    },
+    {
+      "path": "src/examples/CoastalOcean.ts",
+      "sha256": "fe626f9c4148bc7a3359d5d4f16b4945b1b236d7aff6b86aae9d9b68465b12d0"
+    },
+    {
+      "path": "src/examples/CoastalPath.ts",
+      "sha256": "e4c155df42afb723fdd8fa6a6377e0b2ead5552b7a53326aee4047740b357388"
+    },
+    {
+      "path": "src/examples/CoastalScatter.ts",
+      "sha256": "245d4ecb26a8f9243c306b8afc26d1ca54ff2244d612be61d051d454ea7e5235"
+    },
+    {
+      "path": "src/examples/CoastalScooter.ts",
+      "sha256": "34c3a62401d67b82256b23b8a7e61b3c101be8b54b47646c979d1b8aec5c4b99"
+    },
+    {
+      "path": "src/examples/CoastalScooterModel.ts",
+      "sha256": "5dbbb3155410d7bfe4ca7b625a575c69e56fec8e0dc6a59b7a2cd339c39b165f"
+    },
+    {
+      "path": "src/examples/CoastalSite.ts",
+      "sha256": "aacc8190a60fe5407592b906e0608edeae35fed2f47eff8136e7f94d21bd6284"
+    },
+    {
+      "path": "src/examples/CoastalSky.ts",
+      "sha256": "a3222c734ab92756d5d63d6e980ff36a075ad4b8f33ba1472b54a78bc8199d4c"
+    },
+    {
+      "path": "src/examples/CustomModels.ts",
+      "sha256": "efc2150cac93193a00b0ff097c498785d086c08425a2d6f06c351a3bac2faa2f"
+    },
+    {
+      "path": "src/examples/Grass.ts",
+      "sha256": "a51ecbd10b6f47932a5eff4c70227fa7025b6173a03ea6d92348e0f0bccc38bf"
+    },
+    {
+      "path": "src/examples/HouseArchitecture.ts",
+      "sha256": "318633a8c00c8af4e8048fde9a1852cc62fc32d248edda0052468476b96bc02e"
+    },
+    {
+      "path": "src/examples/HouseBalcony.ts",
+      "sha256": "50478c5410fa8d018c867cab9cf0d385edf8258297cc2b72a45e09418667edd4"
+    },
+    {
+      "path": "src/examples/HouseBedroom.ts",
+      "sha256": "2e0830835431736375feded5913680220218324ece061eb3a1a5b822e5aab975"
+    },
+    {
+      "path": "src/examples/HouseContent.ts",
+      "sha256": "397423ec8b5a25ba5883748f240c55ba85314b542aaabf6d56c2f961d64bab8d"
+    },
+    {
+      "path": "src/examples/HouseFloorPlan.ts",
+      "sha256": "7608046ff4b81d3b26e41c447ad409854928eae7c612f364a2e3eedd535047af"
+    },
+    {
+      "path": "src/examples/HouseJump.ts",
+      "sha256": "8f0c44a155b8cf493acce463dff4dcdbe7ea7522209c40174b1653031f582ba9"
+    },
+    {
+      "path": "src/examples/HouseLayout.ts",
+      "sha256": "9aa175d66ded9c0fd2193475a16216ea65bd4166aedc42684d685781e92b0f86"
+    },
+    {
+      "path": "src/examples/HouseRoomComponents.ts",
+      "sha256": "b493418ce0b3f73c040623d76a92ba7e530f5891ef8b9943002f4f1146932380"
+    },
+    {
+      "path": "src/examples/HouseRooms.ts",
+      "sha256": "33c7d58a3cde859ec4c158e0ecac64f6612fcb6e73b7c78d00bdb7531c2c2d39"
+    },
+    {
+      "path": "src/examples/HouseServiceRooms.ts",
+      "sha256": "6f6d1eb89c605f3bdb1b5d620ba7262197aa41397aa3dec78fe939bc3384b399"
+    },
+    {
+      "path": "src/examples/HouseStructure.ts",
+      "sha256": "e5b896662e0c7fc5074779dce611db2e6d4483bd2ebea940d6beef3a182c6693"
+    },
+    {
+      "path": "src/examples/HouseSuite.ts",
+      "sha256": "8fdb1e1ccc77bace6eddb7189258d84df88b131fe001dbfe66978947ba880df9"
+    },
+    {
+      "path": "src/examples/HouseWalking.ts",
+      "sha256": "33664169709893cc18e66934fb09407e0f0faa4d6e4864de1aadf00f57475912"
+    },
+    {
+      "path": "src/examples/LighthouseDetails.ts",
+      "sha256": "21146389b717a9f010144e9022c1b7141c5d00dab604f174a85d7a275d2a736c"
+    },
+    {
+      "path": "src/examples/LighthouseGeometry.ts",
+      "sha256": "fa8dcc16b8368a7356fd65aea7af862acd55c18abe5325127752b52f3ba85fa9"
+    },
+    {
+      "path": "src/examples/LighthouseInterior.ts",
+      "sha256": "f169bc17a25eb91104c541114edd72aafa11171bbddccff67766b33b019af7c9"
+    },
+    {
+      "path": "src/examples/LighthouseLadder.ts",
+      "sha256": "b09b1d18be7a0de08680280a7e040e4e0568828783d43a3ee8eb9104defb9260"
+    },
+    {
+      "path": "src/examples/LighthouseLayout.ts",
+      "sha256": "38f47cd848f67e77415a6424727ed49bbae24e141ac4bf7ee87badc00a984c02"
+    },
+    {
+      "path": "src/examples/LighthouseMap.ts",
+      "sha256": "021f14f273dde32e862126be100ad9139e437a1fc40daff820349fea3d22ef57"
+    },
+    {
+      "path": "src/examples/LighthouseRecords.ts",
+      "sha256": "b641dcfff369248feb8d3d7d002ed60b4d4cbfe4f42a7325c50fbf1e5bd4d2d6"
+    },
+    {
+      "path": "src/examples/LighthouseWalking.ts",
+      "sha256": "0eb30a00422401538a50531548be9db6e3e2a66beeb22fae095d9725e2a3bde1"
+    },
+    {
+      "path": "src/examples/PBR.ts",
+      "sha256": "ce9a4c1691f5e34bb869bff005a76bd3d581f5bd19fe0ca40de7728b341bb6a4"
+    },
+    {
+      "path": "src/examples/Rocket.ts",
+      "sha256": "eca5066f40907ee2588a03a456a88d6f903abe20efc45177d8f66a26b089912a"
+    },
+    {
+      "path": "src/examples/Room.ts",
+      "sha256": "e3854ac8ca472615a1a4ee7a627d7f205068d62399ef2a8ba08b9c19fb13b12b"
+    },
+    {
+      "path": "src/examples/RoomAudio.ts",
+      "sha256": "2ccf413bf37f2c509112b809226de54d6bbd58ee257b6717634c4b123b1fa3b8"
+    },
+    {
+      "path": "src/examples/RoomAudioBackend.ts",
+      "sha256": "3e6cf66bab8c2f1b38fe5fee05fb06dda2eb3b17a2b00d3b28c9efed62f92bf9"
+    },
+    {
+      "path": "src/examples/RoomAudioCatalog.ts",
+      "sha256": "306f258c47ab0b5704924275486f5dcec5ffc18bfc050f4e964ca4e913e2b52a"
+    },
+    {
+      "path": "src/examples/RoomCollisions.ts",
+      "sha256": "7e0eb56b7b95d2f402d712cc106cbf9e3842a54dd864b7947751dfbec50ea4c3"
+    },
+    {
+      "path": "src/examples/RoomDetailGeometry.ts",
+      "sha256": "bf582a11443ed1fd0c986642cd60a65e711179c18713b38b9c4342d1351d1276"
+    },
+    {
+      "path": "src/examples/RoomExterior.ts",
+      "sha256": "444746c54e76d5a5a8d7734e8816c4b3cc17fd2addae80be810678ef5209f224"
+    },
+    {
+      "path": "src/examples/RoomFinishing.ts",
+      "sha256": "7b7f2357fac5389ac452b7ee94cf21bcb80f2871e9ae76d61169ded1bc5e308b"
+    },
+    {
+      "path": "src/examples/RoomFloorPlan.ts",
+      "sha256": "2881aa5b7210c00ae4afbcc84ac74965f4caf1e92848c4eaa63c52efc77ef878"
+    },
+    {
+      "path": "src/examples/RoomFurnishings.ts",
+      "sha256": "d0b35b440eccb038240627ca1d14924f9456ce45702a7e47c575f50b35f2644c"
+    },
+    {
+      "path": "src/examples/RoomFurnitureAssets.ts",
+      "sha256": "99800111e655970da0fe97c41ce4464449ea0bda8b1fd757c00423bc663bcae7"
+    },
+    {
+      "path": "src/examples/RoomInteractions.ts",
+      "sha256": "8f75bce163172e340940a54330aaa022c5a2e2ad186e4e2232b77503efd48582"
+    },
+    {
+      "path": "src/examples/RoomItemInspection.ts",
+      "sha256": "c7c42fe3723b93ea27586db57b3753f7df7c54484e78157b418ef7066d3634d0"
+    },
+    {
+      "path": "src/examples/RoomLayout.ts",
+      "sha256": "1dc8003bfe25f746bbd5aa835dd3388fb310a76fb4148f5508d6ddfc0ba132c8"
+    },
+    {
+      "path": "src/examples/RoomLegacyArchitecture.ts",
+      "sha256": "596858ece3cd35a633ceb4b5bd0a16c497d7c0c8928301db522906fbceb8c4a3"
+    },
+    {
+      "path": "src/examples/RoomLighting.ts",
+      "sha256": "dcfa984bc2ae3512f0f6f09ff7c611c7ed5750a941bd8e4a19fb33d8ffbe00e7"
+    },
+    {
+      "path": "src/examples/RoomLivingRoom.ts",
+      "sha256": "85efcce388d59748fb0034498d2331509e255904f684d7ca4565fe1a4b36141b"
+    },
+    {
+      "path": "src/examples/RoomMaterialLibrary.ts",
+      "sha256": "d4864800cfb3088900095d2d0d99c6d698aa8ed3fa416d96cfddba4b58dcdc45"
+    },
+    {
+      "path": "src/examples/RoomMaterials.ts",
+      "sha256": "872f5c29b4b26a3d9f3166d49ea656e7c5b92187547d321de6c79ac53d0f012c"
+    },
+    {
+      "path": "src/examples/RoomMirrors.ts",
+      "sha256": "90783ebb510c1d0d83bd7fe434df4c2e4163a3cf01626233fe06ea6d973d8b75"
+    },
+    {
+      "path": "src/examples/RoomOwnership.ts",
+      "sha256": "671fbf44c73a62a83b63cf0728080246fe02bb37721403c433aa4780fdecfb34"
+    },
+    {
+      "path": "src/examples/RoomPauseState.ts",
+      "sha256": "baf91cf8ab02e3c08bc27550fe841549c60e7541ba89d49bd55ade218ca52694"
+    },
+    {
+      "path": "src/examples/RoomPointerLock.ts",
+      "sha256": "a70de7ba6a84b7700be44a53a54ede8c33d2357aae0a496d845df0952ce60bff"
+    },
+    {
+      "path": "src/examples/RoomRuntime.ts",
+      "sha256": "c261b5f6542b8b1405b26f05c9c1b583f27437a70861c1c083b4c0dcf18a2762"
+    },
+    {
+      "path": "src/examples/RoomShaders.ts",
+      "sha256": "141420f50a89d81b4f25e43d24dc282b7405b86b337b0877849f54001df2ff96"
+    },
+    {
+      "path": "src/examples/RoomSurfaceDetails.ts",
+      "sha256": "1f0049cbdd9fd280ff5ef04a3f7a36dcb1926573e55f456c846f722d7cd97809"
+    },
+    {
+      "path": "src/examples/RoomTimeOfDay.ts",
+      "sha256": "f85f143e7ad4622fedb75fda13531d24baebe621f0c2cadcfa86769e16c36cb0"
+    },
+    {
+      "path": "src/examples/Shadows.ts",
+      "sha256": "d2fb9633c9fef9125c42dae7205215fa040213e0b20e056d88fdf298ee3857b2"
+    },
+    {
+      "path": "src/examples/StandardMaterials.ts",
+      "sha256": "7f48c0435afca396036f93cbe368b8dd976dd8f126d3dae969a71e58af453e9f"
+    },
+    {
+      "path": "src/examples/Textures.ts",
+      "sha256": "472264476c342d030edfc8231aade681d08babae04c53febb5e807f03b5378dd"
+    },
+    {
+      "path": "src/examples/WalkingSurface.ts",
+      "sha256": "7afa83faf2eb8f854e73ecfc0c423cd958425359fe12cdee38c6ea11e1513165"
+    },
+    {
+      "path": "tests/coastal-assets.test.cjs",
+      "sha256": "682e57d627ade5a82d5315e9a55af22b25855f7b45d8043468a22ccc1b4b22a9"
+    },
+    {
+      "path": "tests/coastal-scooter.test.cjs",
+      "sha256": "6e6f8ae71bb79ad92370fa1a3a355fc3bf5b0141598ad16fa9446dfcf2791038"
+    },
+    {
+      "path": "tests/fixtures/room-runtime-probe.cjs",
+      "sha256": "a68c60078c446e1566d469e2833faca91daeae4c995a4987894a6258f880d5c2"
+    },
+    {
+      "path": "tests/house-floor-plan.test.cjs",
+      "sha256": "b0f0446fd1f216fe025b8b71034c6ff54d2d1670de934b3f792f092a45d40363"
+    },
+    {
+      "path": "tests/house-layout-foundation.test.cjs",
+      "sha256": "e2f10568de765fd0398f12d8ddeec0d7bd2c896ab9cab06dbd6649a1817f7d80"
+    },
+    {
+      "path": "tests/lighthouse-finish.test.cjs",
+      "sha256": "34ba49deb7a3c8d62f046f7471efc58498b6d704f8b49636df1198b175919881"
+    },
+    {
+      "path": "tests/lighthouse-interior.test.cjs",
+      "sha256": "66457a0ce9f5e398a6a3101e6a0b8509d36c6cf6782c2c432e4d9cac048cb31f"
+    },
+    {
+      "path": "tests/lighthouse-ladder.test.cjs",
+      "sha256": "15abbf3d56bf86f2f3f8cadac79e3ed64abf6d1319b67a70a81d7d2c6fa69844"
+    },
+    {
+      "path": "tests/lighthouse-site.test.cjs",
+      "sha256": "1bec23da9c527da5fc7f774cac5b1f332372563ce590f82a09c4bb83d58500e3"
+    },
+    {
+      "path": "tests/painted-wall.test.cjs",
+      "sha256": "a6ea8cd7d01a561037baf9d56c201056dabf4d86169eda7a24c7693f0ac447a4"
+    },
+    {
+      "path": "tests/reuse-baseline.test.cjs",
+      "sha256": "aef70844be98dce2978b9f80e20ac83df9ede3bd5d04c686c95e14c5304c2b6d"
+    },
+    {
+      "path": "tests/room-audio.test.cjs",
+      "sha256": "f614c3e952fd1026f2fc21d8590605dfc3ff5dce1f836622152b612ff8809271"
+    },
+    {
+      "path": "tests/room-day-night-lighting.test.cjs",
+      "sha256": "4d99adf36ea640920372f6ea2a9bced51a2d9e8ffbe96f8a93cef41f0bf5cd8d"
+    },
+    {
+      "path": "tests/room-layout.test.cjs",
+      "sha256": "1f1004ca9feeb00999ce82e2d972384e5e5a66e9819f3cda8abe11d59a4b0d79"
+    },
+    {
+      "path": "tests/room-pointer-lock.test.cjs",
+      "sha256": "bfac53dbebb7663a96565f5ca8445ecfb61b01fcb6c8559a1b5c1ce609b75502"
+    },
+    {
+      "path": "tests/room-runtime.test.cjs",
+      "sha256": "685438176b5097c8bea0a99b2d09e2fdb31b05f0d2682ab57d0cdbf45caaeb36"
+    },
+    {
+      "path": "tests/room-time-of-day.test.cjs",
+      "sha256": "9971698f90ab75e58a33cf2ab17df5edfe99f9c7ad52f8fdc0b7bcc5be3fc397"
+    },
+    {
+      "path": "tests/study-model-resources.test.cjs",
+      "sha256": "aaf06f240199485b9a07dd8c00823d868c22efaf67162b3e74699a22a512f246"
+    },
+    {
+      "path": "tests/study-release.test.cjs",
+      "sha256": "02f515556e5b051f7c646f52a2100257f449045da793b99330772063c9a48c34"
+    },
+    {
+      "path": "tools/StudyReleasePlugin.cjs",
+      "sha256": "f1bb0d23ab058fb6e2fcea2dee3ee4252be8868290c078b6c7da17e86a46f07e"
+    },
+    {
+      "path": "tools/coastal-material-inputs.json",
+      "sha256": "f6a1d007ebe9a27c9ff61e5b5585f96ea91f2656a1258269a57b6f3073c4589c"
+    },
+    {
+      "path": "tools/generate-coastal-environment.py",
+      "sha256": "715f663072f9baf017f5938f9b254fee6f41a38bdd9dc98b855dbbedb282a3ce"
+    },
+    {
+      "path": "tools/generate-painted-wall.py",
+      "sha256": "9ba9386349ed5efcf3ef568d879cf5b8adb0bb98a6468a2720c3d76e48942906"
+    },
+    {
+      "path": "tools/optimize-study-models.cjs",
+      "sha256": "115dcb83b4f387f6a1a84df470b191b4cc038647de966418f2b3433dd0bffd92"
+    },
+    {
+      "path": "tools/prepare-coastal-materials.py",
+      "sha256": "a6257684626eb3932c959746e8086024f4e5b5b3ac634417e41d39adcac1aaaa"
+    },
+    {
+      "path": "tools/prepare-forest-panorama.py",
+      "sha256": "5d048ff2b5fda1d75380603d6e8dde9383b2750c1334d7205d5de98631590e34"
+    },
+    {
+      "path": "tools/prepare-study-audio.py",
+      "sha256": "f9281a394abe097779b27c62fbe5a1fe3ba8d1940381766f04000fce655ccc61"
+    },
+    {
+      "path": "tools/study-audio-resources.cjs",
+      "sha256": "96188b1f572fcb894b67e3bf70e61e8f3e9e5b9bae7ca8096b096894a3f91fe2"
+    },
+    {
+      "path": "tools/study-bundle-analysis.cjs",
+      "sha256": "861e40a75404c396470cfbfca88acd971116170a6cb474f2ce6df61ffd521ceb"
+    },
+    {
+      "path": "tools/study-release.config.cjs",
+      "sha256": "fd2db6a7d83fc7964a33f9d4d8cdc5a106972b66502ffd2dfbfae3d1d3892a4f"
+    },
+    {
+      "path": "tools/verify-reuse-baseline.cjs",
+      "sha256": "29ad40bf9b6719056cde8ec76edb3e75ca2db892e27496ba8b29ee239a0b112e"
+    },
+    {
+      "path": "tools/verify-study-release.cjs",
+      "sha256": "a3f888b41d8e07c8200e54513eef53e943045bbad84d45f46bd9689c8f27f3d1"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "ed9642d8c1f59cea1d99f21c6074bbae1f3b4a0d81a371252ef88d59cebe6045"
+    },
+    {
+      "path": "webpack.config.js",
+      "sha256": "16762abfd7f6dcd688f4f29b527e122aa8a22168ff08acd4c3292307dbf7136b"
+    }
+  ],
+  "inspectorWarningSource": {
+    "package": "@fluentui/react-slider",
+    "version": "9.6.6",
+    "path": "node_modules/@fluentui/react-slider/lib/components/Slider/useSliderStyles.styles.raw.js",
+    "sha256": "8d5aa49da98aea747b1fbcaea798f4e3e9a016c0ea43b382d9d2de0c64ab92fa",
+    "rule": "@supports not (writing-mode: sideways-lr) => WebkitAppearance: 'slider-vertical'",
+    "scope": "One exact deprecation warning captured in Chrome controls suite after loading Inspector; no runtime/package/CSS change."
+  }
+}

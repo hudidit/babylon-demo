@@ -10,7 +10,7 @@
 | 关联规范 | [项目协作约定](../../AGENTS.md)、[资源与首屏优化原则](../resource-optimization-principles.md) |
 | 关联方案 | [海岸外景](2026-10-17-coastal-cliff-exterior.md)、[灯塔与步道](2026-10-18-lighthouse-coastal-path.md)、[灯塔内部](2026-10-18-lighthouse-interior.md)、[阅读区光影](2026-10-14-reading-area-shadows.md)、[小电驴](2026-10-18-coastal-electric-scooter.md) |
 
-后续扩展：[海岸天空白云与星空](2026-10-19-coastal-clouds-and-stars.md)第一、二阶段已完成天空云星/时间快照、海面过滤反射与双卫/八节点视觉验收，整体收口仍待第三阶段。该扩展单独维护；本方案原四阶段的交付范围和历史验收保持原记录，不据此视为已包含云星。
+后续扩展：[海岸天空白云与星空](2026-10-19-coastal-clouds-and-stars.md)一～三阶段工程/可用平台已完成，包含天空云星/时间快照、海面过滤反射、双卫/八节点视觉及完整循环/暂停/午夜五层往返/三轮重建，详见[第三阶段证据](assets/clouds-stars-phase3-2026-10-19/README.md)。Firefox/Safari/实机继续未验。该扩展单独维护；本方案原四阶段的交付范围和历史验收保持原记录，不据此视为已包含云星。
 
 ## 1. 背景与初始现状
 

@@ -1,0 +1,151 @@
+{
+  "baseline": "47eb076",
+  "runtimeChanged": false,
+  "initialScriptSha256": "09ad540b49c443edfc53ca58eac1743f96cf2db895961c144be4a260059dc0d2",
+  "completeDiagnosticScriptSha256": "2c0ad70a2a3578d3181cd85f8759b1db5aa1cfd17b35d8e92fc18d084a37422a",
+  "initialLimits": {
+    "meanCodeValues": 0.2,
+    "maximumCodeValues": 6
+  },
+  "referenceStep": {
+    "realSeconds": 0.1,
+    "sceneSeconds": 6
+  },
+  "observedChromiumCompleteCycle": {
+    "samples": 2414,
+    "lastHour": 17.99999999999441,
+    "referencePixels": [
+      {
+        "step": 404,
+        "hour": 18.67333333333272,
+        "compared": false,
+        "maximum": 0,
+        "mean": 0,
+        "changed": 0
+      },
+      {
+        "step": 405,
+        "hour": 18.674999999999386,
+        "compared": true,
+        "maximum": 5,
+        "mean": 0.022437825520833333,
+        "changed": 56664
+      },
+      {
+        "step": 406,
+        "hour": 18.67666666666605,
+        "compared": true,
+        "maximum": 5,
+        "mean": 0.023344075520833334,
+        "changed": 59427
+      },
+      {
+        "step": 764,
+        "hour": 19.273333333332175,
+        "compared": false,
+        "maximum": 0,
+        "mean": 0,
+        "changed": 0
+      },
+      {
+        "step": 765,
+        "hour": 19.27499999999884,
+        "compared": true,
+        "maximum": 4,
+        "mean": 0.4796272786458333,
+        "changed": 761109
+      },
+      {
+        "step": 766,
+        "hour": 19.276666666665506,
+        "compared": true,
+        "maximum": 3,
+        "mean": 0.03184537760416667,
+        "changed": 70074
+      },
+      {
+        "step": 3599,
+        "hour": 23.998333333327878,
+        "compared": false,
+        "maximum": 0,
+        "mean": 0,
+        "changed": 0
+      },
+      {
+        "step": 3600,
+        "hour": 23.999999999994543,
+        "compared": true,
+        "maximum": 10,
+        "mean": 0.0025319010416666667,
+        "changed": 3847
+      },
+      {
+        "step": 3601,
+        "hour": 0.0016666666612081826,
+        "compared": true,
+        "maximum": 7,
+        "mean": 0.0008046875,
+        "changed": 1283
+      },
+      {
+        "step": 6434,
+        "hour": 4.7233333333278,
+        "compared": false,
+        "maximum": 0,
+        "mean": 0,
+        "changed": 0
+      },
+      {
+        "step": 6435,
+        "hour": 4.724999999994467,
+        "compared": true,
+        "maximum": 3,
+        "mean": 0.032268880208333336,
+        "changed": 71709
+      },
+      {
+        "step": 6436,
+        "hour": 4.726666666661134,
+        "compared": true,
+        "maximum": 3,
+        "mean": 0.03187141927083333,
+        "changed": 70500
+      },
+      {
+        "step": 6794,
+        "hour": 5.323333333327894,
+        "compared": false,
+        "maximum": 0,
+        "mean": 0,
+        "changed": 0
+      },
+      {
+        "step": 6795,
+        "hour": 5.324999999994561,
+        "compared": true,
+        "maximum": 3,
+        "mean": 0.024326171875,
+        "changed": 62530
+      },
+      {
+        "step": 6796,
+        "hour": 5.326666666661228,
+        "compared": true,
+        "maximum": 3,
+        "mean": 0.024124348958333333,
+        "changed": 61743
+      }
+    ]
+  },
+  "reason": "Initial new assertion conflated near-static continuity with six scene seconds of real cloud/star colour progression. Shader state remained analytic and shared; broad changes stayed below one 8-bit code value on average, while sparse stars crossed existing postprocess quantisation levels. This is a fixture criterion correction; runtime/package/budget unchanged. Preserve raw failed records and logs.",
+  "finalChecks": {
+    "uniformTolerance": 1e-07,
+    "starStepMaximum": 0.02,
+    "cloudStepMaximum": 0.01,
+    "meanCodeValues": 1,
+    "maximumCodeValues": 16,
+    "fractionOverEightMaximum": 0.001,
+    "staticRepeatDifferences": 0
+  },
+  "performanceMeasurements": false
+}

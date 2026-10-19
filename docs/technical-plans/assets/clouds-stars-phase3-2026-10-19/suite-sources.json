@@ -1,0 +1,51 @@
+{
+  "baseline": "47eb076",
+  "notes": "Derived scripts extend existing production fixtures; historical sources and evidence remain unchanged. New automatic suite is original to stage 3. Other historical suites run directly with output redirection; their result baseline identifies origin only. See run-checks.json for actual final release and script hashes.",
+  "scripts": [
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-controls.cjs",
+      "derivedFrom": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-controls.cjs",
+      "inputSha256": "450eb239a4c921f005ec2e7e1d8f83e320f2917b569d408b34f92146e5fe805c"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-lifecycle.cjs",
+      "derivedFrom": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-lifecycle.cjs",
+      "inputSha256": "6e8b71bbef77657e67e57e03aa1194402b6fda81d21d5abccb5498f3bb291769"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-matrix.cjs",
+      "derivedFrom": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-matrix.cjs",
+      "inputSha256": "14a809c2601c409c5891ac59027e5bd4876c0e64cc85f8356c9641de6501820b"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-night-journey.cjs",
+      "derivedFrom": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-night-journey.cjs",
+      "inputSha256": "453fdaf6aabb32a3a2c889b962f90ff994ed4fb7eca99a9c945005369a824867"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-platforms.cjs",
+      "derivedFrom": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-platforms.cjs",
+      "inputSha256": "44e96869023662cabe88cfdf33a89e3670ee0780462654b746afe65deb97381a"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-recreate.cjs",
+      "derivedFrom": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-recreate.cjs",
+      "inputSha256": "f0e3ad0e5b5d36330bccb099588ffe49b66ec5b0f6419ca65dd3ea38cdcdcd30"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-release.cjs",
+      "derivedFrom": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-release.cjs",
+      "inputSha256": "07e2cedb22dceaef2cad677ac95a5c8c0387a0b02fb7fca85938bb8bcb69c107"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-scooter.cjs",
+      "derivedFrom": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-scooter.cjs",
+      "inputSha256": "5931baef4debbe27b3819f6fdf0d48fd361b1748b63d1585809ac709ef0ed87d"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-subpath.cjs",
+      "derivedFrom": "docs/technical-plans/assets/day-night-phase4-2026-10-19/check-subpath.cjs",
+      "inputSha256": "cdda6567d93e555364e75ff55b183c90fb4357f59099ec11400d10b1a38b0733"
+    }
+  ]
+}
