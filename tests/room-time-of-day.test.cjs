@@ -61,7 +61,7 @@ test('continuous evaluation wraps midnight clockwise and interpolates light in l
   near(at(10.5).sun.azimuth, 157.5); near(at(10.5).sun.elevation, 50);
   near(at(10.5).sun.strength, .9);
   for (let c = 0; c < 3; c++) near(at(10.5).sun.color[c], (at(9).sun.color[c] + at(12).sun.color[c]) / 2);
-  near(at(22.5).environment.exterior, .07);
+  near(at(22.5).environment.exterior, .19);
   assert.equal(at(23.9).periodHour, 21); assert.equal(at(24).periodHour, 0);
   for (const [input, expected] of [[24, 0], [48, 0], [-24, 0], [-3, 21], [25.5, 1.5], [-.5, 23.5], [-1e-20, 0]]) near(wrap(input), expected);
   assert.equal(Object.is(wrap(-0), -0), false);

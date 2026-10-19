@@ -69,9 +69,9 @@ function preset(input: PresetInput): TimeOfDayPreset {
 /** Artistic northern-hemisphere tracks; not a dated astronomical ephemeris. */
 export const TIME_OF_DAY_PRESETS: readonly TimeOfDayPreset[] = Object.freeze([
   preset({ hour: 0, name: "午夜", sun: [0, -60, 0, "#FFD0A0"], moon: [180, 50, .040, "#C7D8EE"],
-    sky: ["#101B30", "#29394B"], environment: [.060, .10] }),
+    sky: ["#101B30", "#29394B"], environment: [.180, .10] }),
   preset({ hour: 3, name: "后夜", sun: [45, -35, 0, "#FFD0A0"], moon: [225, 25, .025, "#C4D2E8"],
-    sky: ["#10182A", "#303C4B"], environment: [.045, .08] }),
+    sky: ["#10182A", "#303C4B"], environment: [.140, .08] }),
   preset({ hour: 6, name: "清晨", sun: [90, 5, .280, "#FFD0A0"], moon: [270, -5, 0, "#C4D2E8"],
     sky: ["#7798BD", "#E9B99A"], environment: [.350, .40] }),
   preset({ hour: 9, name: "上午", sun: [135, 35, .800, "#FFF0D9"], moon: [315, -35, 0, "#C7D8EE"],
@@ -83,7 +83,7 @@ export const TIME_OF_DAY_PRESETS: readonly TimeOfDayPreset[] = Object.freeze([
   preset({ hour: 18, name: "黄昏", sun: [270, 5, .250, "#FFAD70"], moon: [90, -5, 0, "#CDDDF2"],
     sky: ["#646D98", "#DCA083"], environment: [.250, .30] }),
   preset({ hour: 21, name: "入夜", sun: [315, -35, 0, "#FFAD70"], moon: [135, 25, .035, "#CDDDF2"],
-    sky: ["#15243D", "#35475D"], environment: [.080, .12] }),
+    sky: ["#15243D", "#35475D"], environment: [.200, .12] }),
 ]);
 
 export function wrapTimeOfDay(hour: number): number {

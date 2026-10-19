@@ -1,0 +1,45 @@
+{
+  "baseline": "ed703e8",
+  "totals": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26264536,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 70774,
+    "manifestBytes": 92704,
+    "initialJsBytes": 2669051,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42295391
+  },
+  "unchangedRuntimeFiles": 35,
+  "changedRuntimeFiles": [
+    {
+      "before": {
+        "path": "environment/coastal-daylight.hdr",
+        "bytes": 4444,
+        "sha256": "09c35ed0bf66e0f16ab58d1659fa7b13576aa76c3327672253fb07433de22502"
+      },
+      "after": {
+        "path": "environment/coastal-daylight.hdr",
+        "bytes": 4190,
+        "sha256": "bd1b1c0605ac0d4479df4f3de72a63473fd1fac38e0d43f7581b3996aefaa231"
+      }
+    }
+  ],
+  "prefixes": [
+    {
+      "path": "/",
+      "files": 495,
+      "bytes": 42295391,
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "files": 495,
+      "bytes": 42295391,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

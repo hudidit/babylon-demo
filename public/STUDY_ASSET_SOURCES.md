@@ -2,6 +2,12 @@
 
 本目录只包含当前书房运行素材、生产页面与全部动态调试分包。文件摘要和字节数见 [发布清单](release-manifest.json)。各类素材的许可状态独立记录。
 
+## 昼夜流转：第二阶段视觉联动（2026-10-19）
+
+八节点时间参数来自项目原创美术设计，不是特定地点/日期的天文观测。方向光复用为太阳/月光，天空球与海面共用解析天空和当前天体参数；窗光按开口朝向接受直射，室内外环境强度分别变化，人工灯开关与暖色保留。曝光/ACES保持，未新增下载、实时环境探针或阴影目标。菜单、平滑过渡与自动时钟属于后续阶段。
+
+`environment/coastal-daylight.hdr`保留原运行路径，内容替换为原创、无太阳亮斑的中性低频环境。由`tools/generate-coastal-environment.py`使用Python标准库从`CoastalSky.COASTAL_ENVIRONMENT`确定性生成；可用`--check`校验，六张扫描图不重新压缩。原/新字节与SHA256、替代原因和生成参数见[海岸来源清单](textures/coastal/source.json)。128面预过滤和材质级时段色调近似天空间接照明，不能复现完整定向彩色天空反射或现实月光照度。资源白名单路径与36个下载文件数量不变。
+
 ## Poly Haven 素材
 
 地板 `wood_floor`、木材 `wood_table_001`、亚麻 `rough_linen`、沙发 `sofa_03`、扶手椅 `modern_arm_chair_01` 和环境 `brown_photostudio_01` 的来源、作者、下载 URL、原件摘要及处理方式见 [来源清单](textures/study/manifest.json)。这些素材按来源记录使用 [CC0-1.0](https://polyhaven.com/license)。清单中 `public/` 前缀对应开发仓库，发布路径去掉该前缀；模型的 `sourceFiles` 为上游文件记录，不是额外运行依赖。该历史清单中的 `brick_wall_001` 已被漆面替换，不再作为运行素材发布。

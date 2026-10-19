@@ -1,0 +1,106 @@
+{
+  "baseline": "ed703e8 + day-night phase2",
+  "fpsOrLoadTimeSampling": false,
+  "lateImport": {
+    "hour": 0,
+    "materials": [
+      {
+        "name": "wooden_bookshelf_worn",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-burgundy-0",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "brass",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-moss-0",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-navy-0",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-cushion-0",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-rust-0",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-cream-0",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-burgundy-1",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-moss-1",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-navy-1",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-cushion-1",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-rust-1",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "book-cream-1",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "ceramic",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "stem",
+        "intensity": 0.1,
+        "base": 1
+      },
+      {
+        "name": "cushion",
+        "intensity": 0.1,
+        "base": 1
+      }
+    ],
+    "stage": 2
+  },
+  "hdrFailure": {
+    "passed": true,
+    "uncaught": [],
+    "expectedNetworkErrors": [
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: net::ERR_FAILED"
+    ]
+  },
+  "passed": true
+}

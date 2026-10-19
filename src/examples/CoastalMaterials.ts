@@ -2,6 +2,8 @@ import { Color3, Constants, HDRCubeTexture, MaterialPluginBase, PBRMaterial, Tex
 import type { BaseTexture, Scene, UniformBuffer } from "@babylonjs/core/pure";
 import { coastalCrestShader } from "./CoastalCliff";
 import { CoastalFinish } from "./CoastalFinish";
+import { timeEnvironmentColor } from "./CoastalSky";
+import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
 
 /** Small PBR extension: shared world-scale variation, a shore transition and a damp lower cliff.
  * Uses the normal/ARM workflow already registered by RoomRuntime; no triplanar shader system.
@@ -68,13 +70,15 @@ export class CoastalMaterials {
   private readonly plugins: CoastalSurface[] = [];
   private readonly failed = new Set<BaseTexture>();
   private disposed = false;
+  private time?: TimeOfDaySnapshot;
+  private readonly environmentBases = new Map<PBRMaterial, { intensity: number; color: Color3 }>();
   readonly textures: BaseTexture[] = [];
-  solid(name: string, color: string) {
+  solid(name: string, color: string, environmentIntensity = 3.8) {
     const material = new PBRMaterial(name, this.scene);
     material.albedoColor = Color3.FromHexString(color).toLinearSpace(); material.metallic = 0; material.roughness = .9;
-    material.reflectionTexture = this.environment; material.environmentIntensity = 3.8;
+    material.reflectionTexture = this.environment; material.environmentIntensity = environmentIntensity;
     material.maxSimultaneousLights = 1; material.usePhysicalLightFalloff = false;
-    this.materials.push(material); return material;
+    this.materials.push(material); this.trackEnvironment(material); return material;
   }
   finish(name: string, color: string, kind: "plaster" | "wood" | "path" | "paving" | "roof") {
     const m = this.solid(name, color);
@@ -112,7 +116,7 @@ export class CoastalMaterials {
         m.useAmbientOcclusionFromMetallicTextureRed = true; m.ambientTextureStrength = .4;
         this.plugins.push(new CoastalSurface(m, maps === rock ? "rock" : "ground", rock[0]));
       }
-      this.materials.push(m); return m;
+      this.materials.push(m); this.trackEnvironment(m); return m;
     };
     this.rock = make("coastal-rock", rock); this.farRock = make("coastal-rock-distant", rock);
     this.ground = make("coastal-ground", ground); this.farGround = make("coastal-ground-distant", ground);
@@ -123,6 +127,22 @@ export class CoastalMaterials {
     }
     this.foliage = make("coastal-foliage"); this.foliage.backFaceCulling = false;
     this.foliage.roughness = .95;
+  }
+  private trackEnvironment(material: PBRMaterial) {
+    this.environmentBases.set(material, { intensity: material.environmentIntensity, color: material.reflectionColor.clone() });
+    material.onDisposeObservable.addOnce(() => this.environmentBases.delete(material));
+    if (this.time) this.applyEnvironment(material, this.time);
+  }
+  private applyEnvironment(material: PBRMaterial, state: TimeOfDaySnapshot) {
+    const base = this.environmentBases.get(material)!;
+    material.environmentIntensity = this.failed.has(this.environment) ? 0 : base.intensity * state.environment.exterior;
+    material.reflectionColor.copyFrom(base.color.multiply(timeEnvironmentColor(state)));
+    if (this.failed.has(this.environment)) material.reflectionTexture = null;
+  }
+  applyTimeOfDay(state: TimeOfDaySnapshot) {
+    if (this.disposed) return;
+    this.time = state;
+    for (const material of this.environmentBases.keys()) this.applyEnvironment(material, state);
   }
   /** Failed downloads degrade only this component; disable IBL if the sky fails. */
   fallbackFor(texture: BaseTexture) {
@@ -141,5 +161,6 @@ export class CoastalMaterials {
     if (this.disposed) return; this.disposed = true;
     this.materials.forEach(m => m.dispose(false, false));
     this.textures.forEach(t => t.dispose());
+    this.environmentBases.clear();
   }
 }

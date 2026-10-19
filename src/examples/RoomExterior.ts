@@ -1,5 +1,5 @@
-import { Color3, DirectionalLight, Mesh, Plane, RenderTargetTexture, ShadowGenerator, PBRMaterial, StandardMaterial, Vector3, VertexBuffer, VertexData, CreateSphere } from "@babylonjs/core/pure";
-import type { AbstractMesh, Material, Scene } from "@babylonjs/core/pure";
+import { Color3, DirectionalLight, Mesh, Plane, RenderTargetTexture, ShadowGenerator, PBRMaterial, StandardMaterial, Vector3, VertexData, CreateSphere } from "@babylonjs/core/pure";
+import type { AbstractMesh, Material, Scene, ShaderMaterial } from "@babylonjs/core/pure";
 import { HOUSE_COORDINATES, HOUSE_ROOMS, planToWorld, worldToPlan } from "./HouseLayout";
 import { setRoomOwners } from "./RoomOwnership";
 import { COASTAL_CLIFF, coastalBoundary, coastalFoundation, coastalLandPatch, coastalSea, coastalSeaY,
@@ -7,7 +7,9 @@ import { COASTAL_CLIFF, coastalBoundary, coastalFoundation, coastalLandPatch, co
 import type { CoastalGeometry } from "./CoastalCliff";
 import { CoastalMaterials } from "./CoastalMaterials";
 import { coastalScatter } from "./CoastalScatter";
-import { COASTAL_SKY, coastalSkyColor, coastalSunDirection } from "./CoastalSky";
+import { applySkyTime, createCoastalSky } from "./CoastalSky";
+import { evaluateTimeOfDay, DEFAULT_TIME_OF_DAY } from "./RoomTimeOfDay";
+import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
 import { CoastalOcean } from "./CoastalOcean";
 import { createCoastalLandmark } from "./CoastalLandmark";
 import { COASTAL_SITE, coastalRouteLength, coastalRoute } from "./CoastalSite";
@@ -25,6 +27,7 @@ export class RoomExterior {
   readonly sun: DirectionalLight;
   readonly shadow: ShadowGenerator;
   readonly ocean: CoastalOcean;
+  readonly sky: ShaderMaterial;
   readonly lighthouseDoor: InteractiveDoor;
   readonly lighthouseDetails: LighthouseDetails;
   private readonly houseRoof: Mesh[];
@@ -37,7 +40,8 @@ export class RoomExterior {
   private readonly cutaway = new Plane(0, 0, 1, 0);
   private readonly clippedMaterials: (PBRMaterial | StandardMaterial)[] = [];
   private readonly corners: { x: number; z: number }[] = [];
-  private readonly unlit: StandardMaterial[] = [];
+  private time = evaluateTimeOfDay(DEFAULT_TIME_OF_DAY);
+  private readonly sourceDirection = Vector3.FromArray(this.time.primary!.sourceDirection);
   private disposed = false;
   private clipKey = "";
   private readonly sceneCleanup;
@@ -48,12 +52,7 @@ export class RoomExterior {
     const owners = HOUSE_ROOMS.map(r => r.id);
     this.surfaces = new CoastalMaterials(scene);
     this.clippedMaterials.push(this.surfaces.rock, this.surfaces.ground, this.surfaces.foliage);
-    const unlit = (name: string) => {
-      const m = new StandardMaterial(name, scene);
-      m.disableLighting = true; m.emissiveColor = Color3.White(); m.specularColor = Color3.Black();
-      this.unlit.push(m); return m;
-    };
-    const sky = unlit("coastal-sky");
+    this.sky = createCoastalSky(scene);
     const retain = (mesh: Mesh, layer: ExteriorLayer) => {
       mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "lighthouse-C", castsShadows: false, lightRooms: [] };
       mesh.metadata.lighthouse = nameIsLighthouse(mesh.name);
@@ -104,23 +103,14 @@ export class RoomExterior {
     setRoomOwners(this.lighthouseDoor.root, owners);
     setRoomOwners(this.lighthouseDoor.root.parent!, owners);
     this.detailMeshes = this.meshes.filter(m => m.metadata.detailDistance);
-    this.ocean = new CoastalOcean(scene, make("coastal-sea", coastalSea(), "sea", sky));
+    this.ocean = new CoastalOcean(scene, make("coastal-sea", coastalSea(), "sea", this.sky));
 
     const dome = CreateSphere("coastal-sky", { diameter: a.skyRadius * 2, segments: 96, sideOrientation: Mesh.BACKSIDE }, scene);
-    const positions = dome.getVerticesData(VertexBuffer.PositionKind)!, colors: number[] = [];
-    for (let i = 0; i < positions.length; i += 3) {
-      // StandardMaterial's default vertex colour conversion expects gamma input.
-      const c = coastalSkyColor(new Vector3(positions[i], positions[i + 1], positions[i + 2]).normalize()).toGammaSpace();
-      colors.push(c.r, c.g, c.b, 1);
-    }
-    dome.setVerticesData(VertexBuffer.ColorKind, colors);
-    dome.position.y = coastalSeaY; dome.material = sky; retain(dome, "sky");
+    dome.position.y = coastalSeaY; dome.material = this.sky; retain(dome, "sky");
 
-    this.sun = new DirectionalLight("coastal-afternoon-sun", coastalSunDirection.negate(), scene);
-    this.sun.position.copyFrom(coastalSunDirection.scale(240)).addInPlace(new Vector3(0, -5, 30));
-    this.sun.diffuse = Color3.FromArray(COASTAL_SKY.sunColor); this.sun.intensity = 3.8;
+    this.sun = new DirectionalLight("coastal-afternoon-sun", this.sourceDirection.negate(), scene);
     this.sun.includedOnlyMeshes = this.meshes.filter(m => m.material instanceof PBRMaterial);
-    this.sun.shadowMinZ = 20; this.sun.shadowMaxZ = 430;
+    this.sun.shadowMinZ = 5; this.sun.shadowMaxZ = 800;
     this.sun.shadowFrustumSize = 250; this.sun.autoUpdateExtends = false; this.sun.autoCalcShadowZBounds = false;
     setRoomOwners(this.sun, owners);
     this.shadow = new ShadowGenerator(1024, this.sun);
@@ -141,6 +131,31 @@ export class RoomExterior {
     scene.metadata = { ...scene.metadata, exteriorVersion: a.version,
       coastalSite: { version: COASTAL_SITE.version, stage: "C", outdoorWalking: true,
         tower: COASTAL_SITE.tower, interiorStage: 3, routeLength: coastalRouteLength((x, y) => coastalSurfaceHeight(x, y)!) } };
+    this.applyTimeOfDay(this.time);
+  }
+
+  /** Reuse the same scoped light/map for sun and moon, updating position and direction together. */
+  applyTimeOfDay(state: TimeOfDaySnapshot) {
+    if (this.disposed) return;
+    this.time = state;
+    const body = state.primary;
+    if (body) this.sourceDirection.copyFromFloats(...body.sourceDirection);
+    this.sun.direction.copyFrom(this.sourceDirection).negateInPlace();
+    this.sun.diffuse.copyFrom(body ? Color3.FromArray(body.color) : Color3.Black());
+    this.sun.specular.copyFrom(this.sun.diffuse);
+    this.sun.intensity = body?.intensity || 0;
+    this.sun.setEnabled(this.visible && !!body);
+    this.sun.metadata.timeBody = body?.kind || "twilight";
+    this.positionSunShadow();
+    this.shadow.setDarkness(body?.kind === "moon" ? .18 : 0);
+    applySkyTime(this.sky, state);
+    this.ocean.applyTimeOfDay(state);
+    this.surfaces.applyTimeOfDay(state);
+    this.refreshShadows();
+  }
+  private positionSunShadow() {
+    this.sun.position.copyFrom(this.shadowAnchors[this.shadowAnchor]).addInPlace(this.sourceDirection.scale(400));
+    this.sun.forceProjectionMatrixCompute();
   }
 
   /** Explicit static shell/rail list. Furniture, moving door leaves, sea and distant cliffs never enter this map. */
@@ -157,7 +172,7 @@ export class RoomExterior {
   setHouseEnclosed(enclosed: boolean) { this.enclosed = enclosed; this.houseRoof.forEach(m => m.isVisible = enclosed && this.visible); }
   setVisible(visible: boolean) {
     this.visible = visible;
-    this.meshes.forEach(mesh => mesh.isVisible = visible); this.sun.setEnabled(visible);
+    this.meshes.forEach(mesh => mesh.isVisible = visible); this.sun.setEnabled(visible && !!this.time.primary);
     this.setHouseEnclosed(this.enclosed);
     this.ocean.setVisible(visible);
     this.lighthouseDetails.setVisible(visible);
@@ -178,7 +193,7 @@ export class RoomExterior {
     const current = this.shadowAnchors[this.shadowAnchor];
     if (best !== this.shadowAnchor && Math.hypot(current.x - eye.x, current.z - eye.z) > distance + 30) {
       this.shadowAnchor = best;
-      this.sun.position.copyFrom(this.shadowAnchors[best]).addInPlace(coastalSunDirection.scale(240));
+      this.positionSunShadow();
       this.sun.shadowFrustumSize = best === 0 ? 250 : 280;
       // Wider outdoor coverage and the curved tower need more depth/normal separation.
       // Keep the previously validated near-house bias when returning to zone zero.
@@ -216,12 +231,12 @@ export class RoomExterior {
     if (this.disposed) return; this.disposed = true;
     this.scene.onDisposeObservable.remove(this.sceneCleanup);
     this.scene.onBeforeRenderObservable.remove(this.visualUpdate);
-    this.ocean.dispose(); this.shadow.dispose(); this.sun.dispose();
+    this.ocean.dispose(); this.sky.dispose(false, false); this.shadow.dispose(); this.sun.dispose();
     this.lighthouseDetails.dispose();
     this.meshes.forEach(m => m.dispose(false, false));
     const mount = this.lighthouseDoor.root.parent;
     this.lighthouseDoor.root.dispose(); mount?.dispose();
-    this.unlit.forEach(m => m.dispose(false, false)); this.surfaces.dispose();
+    this.surfaces.dispose();
   }
 }
 

@@ -92,7 +92,7 @@ export class RoomScene {
     // Render at the display refresh rate; leave Engine.maxFPS uncapped for high-refresh screens.
     this.scene = new Scene(this.engine);
     this.scene.metadata = { layoutVersion: HOUSE_LAYOUT_VERSION,
-      timeOfDay: { version: TIME_OF_DAY_VERSION, stage: 1, visualApplied: false, state: this.timeOfDay } };
+      timeOfDay: { version: TIME_OF_DAY_VERSION, stage: 2, visualApplied: false, state: this.timeOfDay } };
     this.builds = HOUSE_ROOMS.reduce((all, r) => { all[r.id] = this.rooms.begin(r.id); return all; }, {} as Record<HouseRoomId, RoomBuild>);
     // The final image-processing pass expects a linear clear colour.
     this.scene.clearColor = new Color4(0.14, 0.17, 0.18, 1).toLinearSpace();
@@ -206,6 +206,7 @@ export class RoomScene {
       this.interactions.addLamp(lamp, () => this.lighting.isLampOn(lamp.id), () => this.lighting.toggleLamp(lamp.id));
     });
     this.lighting.addMeshes(this.scene.meshes);
+    this.applyTimeOfDay(this.timeOfDay);
     this.trackRoomResources(this.scene.meshes);
     this.exterior.bindShadowCasters(this.scene.meshes);
     this.rooms.own(HOUSE_ROOMS.map(r => this.builds[r.id]), this.exterior, () => this.exterior.dispose());
@@ -287,13 +288,21 @@ export class RoomScene {
     this.visibilityChanged();
   }
 
-  /** Phase one stores time only; the next stage applies one shared state to all lighting. */
+  /** Immediate keyframe selection; menu, visual transitions and automatic clock follow in stage three. */
   get timeOfDay(): TimeOfDaySnapshot { return this.timeState.snapshot; }
   setTimeOfDay(hour: number): TimeOfDaySnapshot {
     if (this.disposed) return this.timeOfDay;
     const state = this.timeState.select(hour);
+    this.applyTimeOfDay(state);
     this.scene.metadata.timeOfDay.state = state;
     return state;
+  }
+  private applyTimeOfDay(state: TimeOfDaySnapshot) {
+    if (this.disposed) return;
+    this.lighting.applyTimeOfDay(state);
+    this.exterior.applyTimeOfDay(state);
+    this.scene.metadata.timeOfDay.visualApplied = true;
+    this.scene.metadata.timeOfDay.visualHour = state.hour;
   }
 
   setView(view: RoomView) {

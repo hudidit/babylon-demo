@@ -1,6 +1,6 @@
 {
   "version": "lighthouse-visual-c-v1",
-  "stage": "Lighthouse C: finished lighthouse, road/wayfinding, exterior house roof and cached local shadow zones; final D delivery pending",
+  "stage": "Day-night phase 2: shared sun/moon, analytic sky/ocean, window natural light and neutral sun-free IBL; menu and automatic clock remain phase 3",
   "author": "babylon-demo project contributors",
   "license": "Original geometry/sky: project ISC; photographic maps: CC0-1.0, see textures/coastal/source.json",
   "source": [
@@ -16,9 +16,12 @@
     "tools/prepare-coastal-materials.py",
     "src/examples/CoastalPath.ts",
     "src/examples/WalkingSurface.ts",
-    "src/examples/CoastalFinish.ts"
+    "src/examples/CoastalFinish.ts",
+    "src/examples/RoomTimeOfDay.ts",
+    "src/examples/RoomLighting.ts",
+    "tools/generate-coastal-environment.py"
   ],
-  "generation": "Deterministic metre-based terrain, closed chipped/layered cliff, plinth, opaque folded grass and shrub leaves, buried rock clusters. Seed 41723. Photographic Seaside Rock (Dimitrios Savva, 2m) and Aerial Grass Rock (Rob Tuytel, 15m), Poly Haven CC0. Coast-arc/height UV, macro/strata colour, damp lower wall, shore rock blend. Analytic linear RGBE sky shares the sunlight direction with the rendered sky and scoped outdoor sun; 128-face HDR prefilter and one cached 1024 local shadow. No AI-generated assets or photographic scenery walls. Ground PBR uses translation-only hex blending, identical geometry weights for albedo/normal/ARM; no tangent rotation. Coast columns share shading normals across patch boundaries, with hard vertical ledges. World-anchored near-dense/far-coarse ocean, three analytic displacement waves, filtered crossing ripple normals, linear Fresnel sky reflection and rough GGX sunlight from the same sky parameters, exterior-only marine haze. A generated 512x512 RGBA8 signed-distance/seabed field intersects the closed rock wall at mean sea level and controls water colour and animated broken foam. No additional image download or ocean reflection/refraction target.",
+  "generation": "Deterministic metre-based terrain, closed chipped/layered cliff, plinth, opaque folded grass and shrub leaves, buried rock clusters. Seed 41723. Photographic Seaside Rock (Dimitrios Savva, 2m) and Aerial Grass Rock (Rob Tuytel, 15m), Poly Haven CC0. Coast-arc/height UV, macro/strata colour, damp lower wall, shore rock blend. Neutral sun-free linear RGBE environment has no baked solar hotspot; dynamic analytic sky, ocean and a scoped sun/moon reuse the eight shared time nodes. 128-face HDR prefilter, per-material environment scale/tint, one cached 1024 local shadow. No AI-generated assets or photographic scenery walls. Ground PBR uses translation-only hex blending, identical geometry weights for albedo/normal/ARM; no tangent rotation. Coast columns share shading normals across patch boundaries, with hard vertical ledges. World-anchored near-dense/far-coarse ocean, three analytic displacement waves, filtered crossing ripple normals, linear Fresnel sky reflection and rough GGX sun/moon highlights from the same time/sky parameters, exterior-only marine haze. A generated 512x512 RGBA8 signed-distance/seabed field intersects the closed rock wall at mean sea level and controls water colour and animated broken foam. No additional image download or ocean reflection/refraction target.",
   "dimensionsMetres": {
     "balconySetbackAtCentre": 5,
     "seaBelowHouseFloor": 28,
@@ -34,7 +37,7 @@
     "environment/coastal-daylight.hdr"
   ],
   "supersedes": "Forest Slope panorama and bark no longer ship or load in the current scene; historical originals and provenance remain in the repository and frozen eight-room-v1 baseline.",
-  "limitations": "Ocean reflection excludes local house/cliff reflections; mean-sea-level shoreline/seabed do not track individual wave crests, no fluid physics. Sparse static grass and shrubs; one local shadow zone follows the current view rather than casting over the full 194m route at once. Lighthouse interior/climbing, night beam and vehicles are not implemented. Walking remains inside the explicit visible boundary. Desktop browser simulation does not constitute physical mobile/Safari acceptance; final stage D platform/archive acceptance remains separate.",
+  "limitations": "Low-frequency neutral IBL approximates time-dependent sky reflection and excludes local house/cliff reflections. Mean-sea-level shoreline/seabed do not track individual wave crests; no fluid physics. One local shadow zone follows the player; distant full-length sunrise/sunset tower shadows are not covered by a whole-route map. Lighthouse five floors, ladder, work light, map and scooter are delivered separately; no rotating night beam. Time nodes apply immediately through the scene API in phase 2; the menu, smooth transitions and automatic clock belong to phase 3. Browser viewport simulation does not constitute physical mobile/Safari acceptance.",
   "materialProvenance": "textures/coastal/source.json: fixed upstream URLs/authors/license, original PNG SHA256, processing parameters, delivered bytes/SHA256; upstream CC0 https://polyhaven.com/license",
   "generatedOceanTexture": {
     "size": [
@@ -68,6 +71,26 @@
     "materials": "Original filtered world-scale plaster/timber/seamed-roof finishes and gravel/paving reusing the existing coastal rock color/normal/ARM maps; shared outdoor HDR. No new image/model downloads.",
     "walking": "Shared rendered terrain/road/ramp triangles and platform tops; 0.26m player radius, 0.1m swept horizontal steps, maximum 30-degree walkable ground, 0.18m step, solid tower/bench/large rocks and height-independent exterior walls/guardrails. One batched original timber guardrail encloses the finite exploration area. The entry path first clears the door jamb; the bench is offset from the walking centreline.",
     "geometry": "Tapered permanent 64-sector shaft with real closed door/window recesses, stone base, octagonal glass lantern/internal brass lens, batched gallery rail, low-pitch house roof/eaves/gables/window sills, slatted bench and arrow-shaped route signs. Fine door/mullion detail hides at 85m and returns within 65m; permanent shell, lantern, gallery silhouette and walking support remain.",
-    "shadows": "One existing 1024 PCF render-once target, overlapping local house/path/tower anchors with 6m selection hysteresis; no additional light or render target. Static opaque outdoor architecture, rails, vegetation and rocks cast; interiors, water and transparent glass excluded. No reposition in background/hidden exterior. Near-house depth/normal bias stays 0.00015/0.045 world units; outdoor zones use 0.001/0.25 to suppress curved-tower shadow acne with the wider 280-unit frustum."
+    "shadows": "One existing 1024 PCF render-once target with house/path/tower anchors and 6m selection hysteresis. Current sun/moon direction and position update together; source is 400 world units from the current anchor, depth range 5..800, fixed 250/280-unit local frustum. Near-house bias 0.00015/0.045, outdoor 0.001/0.25; weak moon shadows use 0.18 darkness. Static local architecture/rails/vegetation/rocks only; no new light or RTT, distant long shadows remain outside local coverage."
+  },
+  "dayNight": {
+    "version": "coastal-day-night-v1",
+    "phase": 2,
+    "nodesHours": [
+      0,
+      3,
+      6,
+      9,
+      12,
+      15,
+      18,
+      21
+    ],
+    "defaultHour": 12,
+    "globalIblIntensity": 0.35,
+    "postProcessing": "Existing ACES/exposure 1.12, one linear-to-display image-processing pass",
+    "environment": "environment/coastal-daylight.hdr retains its URL but is now a neutral sun-free environment; generation, original replacement SHA256 and delivery SHA256 in textures/coastal/source.json",
+    "manualApi": "RoomScene.setTimeOfDay; immediate shared visual application, user lamp switches preserved",
+    "windowLighting": "Existing window proxies accept max(0, outwardNormal dot sourceDirection); back-facing openings retain indirect light only; material IBL tracks late imports and skips mirror RTTs/previews"
   }
 }

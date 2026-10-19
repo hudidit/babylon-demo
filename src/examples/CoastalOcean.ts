@@ -2,7 +2,9 @@ import { Constants, Frustum, RawTexture, ShaderMaterial, Texture, Vector3 } from
 import type { Mesh, Scene } from "@babylonjs/core/pure";
 import { COASTAL_CLIFF, coastalBoundary, coastalSeaY, coastalWallPoint } from "./CoastalCliff";
 import { HOUSE_COORDINATES } from "./HouseLayout";
-import { COASTAL_SKY, coastalSunDirection } from "./CoastalSky";
+import { applySkyTime, coastalSkyGLSL, skyTimeUniforms } from "./CoastalSky";
+import { evaluateTimeOfDay, DEFAULT_TIME_OF_DAY } from "./RoomTimeOfDay";
+import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
 
 /** Metres, seconds and linear radiance. Also used by the vertex and fragment shaders. */
 export const OCEAN_WAVES = [
@@ -112,11 +114,12 @@ export const oceanFragment = `
   #extension GL_OES_standard_derivatives : enable
   precision highp float;
   varying vec3 vPositionW;
-  uniform vec3 cameraPosition, sunDirection, sunColor, skyHorizon, skyZenith;
-  uniform float oceanTime;
+  uniform vec3 cameraPosition;
+  uniform float oceanTime, skyIllumination;
   uniform sampler2D shoreSampler;
   #include<clipPlaneFragmentDeclaration>
   ${waveCode}
+  ${coastalSkyGLSL}
   float hash(vec2 p) { return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
   float noise(vec2 p) {
     vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f);
@@ -130,9 +133,6 @@ export const oceanFragment = `
   vec2 rippleSlope(vec2 p, float scale, vec2 flow, mat2 rotation) {
     vec2 g=noiseSlope(rotation*p*scale+oceanTime*flow);
     return vec2(dot(rotation[0],g),dot(rotation[1],g));
-  }
-  vec3 sky(vec3 d) {
-    return mix(skyHorizon,skyZenith,pow(clamp(abs(d.y)*2.,0.,1.),.65));
   }
   void main() {
     #include<clipPlaneFragment>
@@ -159,7 +159,8 @@ export const oceanFragment = `
     float depth=mix(1.,field.b,inField);
     vec3 body=mix(vec3(.045,.19,.18),vec3(.019,.077,.115),smoothstep(0.,.6,depth));
     body*=.94+.06*sin(p.x*.048+p.y*.031+oceanTime*.12);
-    vec3 color=mix(body,sky(r),fresnel);
+    body*=skyIllumination;
+    vec3 color=mix(body,coastalSkyGradient(r),fresnel);
     // GGX with finite roughness, broadened as subpixel ripples disappear to avoid sparkling aliases.
     vec3 h=normalize(v+sunDirection);
     float nh=max(0.,dot(n,h)), nl=max(.001,dot(n,sunDirection)), vh=max(0.,dot(v,h));
@@ -169,14 +170,14 @@ export const oceanFragment = `
     float k=pow(rough+1.,2.)/8.;
     float geometry=(nv/(nv*(1.-k)+k))*(nl/(nl*(1.-k)+k));
     float sunF=.0204+.9796*pow(1.-vh,5.);
-    color+=sunColor*distribution*geometry*sunF/(4.*nv)*2.6;
+    color+=sunColor*sunStrength*distribution*geometry*sunF/(4.*nv)*2.6;
     // Broken advancing swash, shared with the depth transition rather than a fixed white outline.
     float breaker=sin(shoreDistance*2.8-oceanTime*1.12+noise(p*.45)*3.);
     float band=(1.-smoothstep(.5,3.0,shoreDistance))*smoothstep(-.25,.35,shoreDistance);
     float foam=band*smoothstep(.05,.7,breaker)*smoothstep(.28,.66,noise(p*2.1+vec2(oceanTime*.13,-oceanTime*.09)));
-    color=mix(color,vec3(.72,.81,.79),foam*.8);
+    color=mix(color,vec3(.72,.81,.79)*skyIllumination,foam*.8);
     float haze=smoothstep(550.,3300.,distanceToEye);
-    color=mix(color,skyHorizon,haze);
+    color=mix(color,coastalSkyGradient(normalize(vPositionW-cameraPosition)),haze);
     // Linear output: the existing scene image-processing pass applies ACES/exposure exactly once.
     gl_FragColor=vec4(color,1.);
   }`;
@@ -199,14 +200,12 @@ export class CoastalOcean {
     this.shoreTexture.wrapU = this.shoreTexture.wrapV = Texture.CLAMP_ADDRESSMODE;
     this.shoreTexture.gammaSpace = false;
     this.material = new ShaderMaterial("coastal-ocean", scene, { vertexSource: oceanVertex, fragmentSource: oceanFragment }, {
-      attributes: ["position"], uniforms: ["world", "viewProjection", "cameraPosition", "oceanTime", "sunDirection", "sunColor", "skyHorizon", "skyZenith"],
+      attributes: ["position"], uniforms: ["world", "viewProjection", "cameraPosition", "oceanTime", "skyIllumination", ...skyTimeUniforms],
       samplers: ["shoreSampler"], useClipPlane: true,
     });
     this.material.setTexture("shoreSampler", this.shoreTexture);
     this.material.setFloat("oceanTime", 0);
-    this.material.setVector3("sunDirection", coastalSunDirection);
-    for (const [key, value] of [["sunColor", COASTAL_SKY.sunColor], ["skyHorizon", COASTAL_SKY.horizon], ["skyZenith", COASTAL_SKY.zenith]] as const)
-      this.material.setVector3(key, Vector3.FromArray(value));
+    this.applyTimeOfDay(evaluateTimeOfDay(DEFAULT_TIME_OF_DAY));
     // ShaderMaterial's automatic cameraPosition uses the main eye; mirrors supply a reflected eye.
     this.material.onBindObservable.add(() => {
       const eye = scene._mirroredCameraPosition || scene.activeCamera?.globalPosition;
@@ -228,6 +227,11 @@ export class CoastalOcean {
     this.sceneCleanup = scene.onDisposeObservable.addOnce(() => this.dispose());
   }
   setVisible(visible: boolean) { this.mesh.isVisible = visible; this.clock.pause(); }
+  applyTimeOfDay(state: TimeOfDaySnapshot) {
+    if (this.disposed) return;
+    applySkyTime(this.material, state);
+    this.material.setFloat("skyIllumination", state.environment.exterior);
+  }
   dispose() {
     if (this.disposed) return;
     this.disposed = true;

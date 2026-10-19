@@ -32,20 +32,20 @@ test('coastal deliveries are locked, correctly sized and contain only the review
     if (file.input.includes('arm')) assert.match(file.semantic, /R=AO G=roughness B=metalness/);
   }
 });
-test('generated RGBE environment is valid and places its bright sun in the shared daylight direction', () => {
+test('generated RGBE environment is neutral, sun-free and reproducible independently of photographic maps', () => {
   const raw = fs.readFileSync(path.join(root, 'public/environment/coastal-daylight.hdr'));
   const info = RGBE_ReadHeader(raw), pixels = RGBE_ReadPixels(raw, info);
   assert.deepEqual([info.width, info.height], [256, 128]);
   assert.equal(pixels.length, 256 * 128 * 3);
   assert.ok(pixels.every(n => Number.isFinite(n) && n >= 0));
-  const sky = JSON.parse(fs.readFileSync(path.join(root, 'src/examples/CoastalSky.ts'), 'utf8').match(/export const COASTAL_SKY = (.*?) as const;/)[1]);
+  const sky = JSON.parse(fs.readFileSync(path.join(root, 'src/examples/CoastalSky.ts'), 'utf8').match(/export const COASTAL_ENVIRONMENT = (.*?) as const;/)[1]);
   assert.deepEqual(source.files.at(-1).parameters, sky, 'regenerate HDR whenever sky parameters change');
-  let brightest = 0;
-  for (let i = 0; i < pixels.length; i += 3) if (pixels[i] > pixels[brightest]) brightest = i;
-  assert.ok(pixels[brightest] > 8, 'sun radiance must not be clipped to LDR');
-  const pixel = brightest / 3, theta = (Math.floor(pixel / 256) + .5) / 128 * Math.PI;
-  const phi = (pixel % 256 + .5) / 256 * 2 * Math.PI - Math.PI;
-  const direction = [Math.sin(theta) * Math.cos(phi), Math.cos(theta), Math.sin(theta) * Math.sin(phi)];
-  const length = Math.hypot(...sky.sun), dot = direction.reduce((sum, v, i) => sum + v * sky.sun[i] / length, 0);
-  assert.ok(dot > .999, 'outdoor environment and direct sunlight must agree');
+  assert.ok(Math.max(...pixels) < 1, 'no fixed solar hotspot remains');
+  for (let y = 0; y < 128; y++) for (let x = 0; x < 256; x++) {
+    const i = (y * 256 + x) * 3;
+    assert.equal(pixels[i], pixels[y * 256 * 3], 'all azimuths share the same low-frequency environment');
+    assert.equal(pixels[i], pixels[i + 1]); assert.equal(pixels[i], pixels[i + 2]);
+  }
+  assert.equal(source.files.at(-1).replaces.sha256, '09c35ed0bf66e0f16ab58d1659fa7b13576aa76c3327672253fb07433de22502');
+  require('node:child_process').execFileSync('python3', ['tools/generate-coastal-environment.py', '--check'], {cwd: root});
 });

@@ -1,5 +1,5 @@
 {
-  "version": "coastal-static-v1",
+  "version": "coastal-day-night-v1",
   "tools": {
     "python": "3.12.14",
     "Pillow": "12.3.0",
@@ -154,39 +154,66 @@
     },
     {
       "file": "environment/coastal-daylight.hdr",
-      "bytes": 4444,
-      "deliverySha256": "09c35ed0bf66e0f16ab58d1659fa7b13576aa76c3327672253fb07433de22502",
-      "semantic": "linear RGBE analytic sky, 256x128; runtime cubemap 128 with harmonics and specular prefilter",
+      "bytes": 4190,
+      "deliverySha256": "bd1b1c0605ac0d4479df4f3de72a63473fd1fac38e0d43f7581b3996aefaa231",
+      "semantic": "linear RGBE neutral sun-free sky, 256x128; azimuth invariant; runtime cubemap 128 with harmonics and specular prefilter",
       "parameters": {
-        "sun": [
-          0.55,
-          0.78,
-          0.3
-        ],
         "horizon": [
-          0.66,
-          0.77,
-          0.83
+          0.75,
+          0.75,
+          0.75
         ],
         "zenith": [
-          0.23,
-          0.46,
-          0.68
+          0.55,
+          0.55,
+          0.55
         ],
         "ground": [
-          0.18,
-          0.22,
-          0.15
+          0.2,
+          0.2,
+          0.2
         ],
-        "sunColor": [
-          1,
-          0.93,
-          0.8
-        ],
-        "sunPower": 10,
-        "sunSharpness": 1800
+        "width": 256,
+        "height": 128
+      },
+      "generator": "tools/generate-coastal-environment.py",
+      "replaces": {
+        "commit": "ed703e8",
+        "bytes": 4444,
+        "sha256": "09c35ed0bf66e0f16ab58d1659fa7b13576aa76c3327672253fb07433de22502",
+        "parameters": {
+          "sun": [
+            0.55,
+            0.78,
+            0.3
+          ],
+          "horizon": [
+            0.66,
+            0.77,
+            0.83
+          ],
+          "zenith": [
+            0.23,
+            0.46,
+            0.68
+          ],
+          "ground": [
+            0.18,
+            0.22,
+            0.15
+          ],
+          "sunColor": [
+            1,
+            0.93,
+            0.8
+          ],
+          "sunPower": 10,
+          "sunSharpness": 1800
+        },
+        "reason": "Remove the baked fixed-direction sun; dynamic sun/moon and analytic sky now share scene time."
       }
     }
   ],
-  "runtimeBytes": 1321061
+  "runtimeBytes": 1320807,
+  "environmentProcedure": "tools/generate-coastal-environment.py; Python standard library; regenerate/--check without recompressing the six locked photographic maps"
 }

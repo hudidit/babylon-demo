@@ -28,8 +28,8 @@ export class LighthouseDetails {
     });
     const m = (name: string) => scene.getMaterialByName(name) as PBRMaterial;
     const metal = m("coastal-painted-metal"), brass = m("coastal-lantern-brass"), wood = m("coastal-weathered-timber"), green = m("coastal-lighthouse-door");
-    const paper = surfaces.solid("coastal-lighthouse-record-print", "#ffffff");
-    const atlas = lighthouseRecordTexture(scene); surfaces.textures.push(atlas); paper.albedoTexture = atlas; paper.environmentIntensity = .9;
+    const paper = surfaces.solid("coastal-lighthouse-record-print", "#ffffff", .9);
+    const atlas = lighthouseRecordTexture(scene); surfaces.textures.push(atlas); paper.albedoTexture = atlas;
     this.glow = surfaces.solid("coastal-lighthouse-work-glow", "#f0dfad"); this.glow.emissiveColor.set(.8, .51, .19);
     const lens = surfaces.solid("coastal-lighthouse-optical-glass", "#c6ded7");
     lens.metallic = .25; lens.roughness = .12; lens.alpha = .62;

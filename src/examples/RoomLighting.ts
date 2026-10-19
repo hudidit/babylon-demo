@@ -1,28 +1,37 @@
-import { Color3, HemisphericLight, RenderTargetTexture, ShadowGenerator, SpotLight, Vector3 } from "@babylonjs/core/pure";
-import type { AbstractMesh, PBRMaterial, Scene } from "@babylonjs/core/pure";
+import { Color3, HemisphericLight, PBRMaterial, RenderTargetTexture, ShadowGenerator, SpotLight, Vector3 } from "@babylonjs/core/pure";
+import type { AbstractMesh, Scene } from "@babylonjs/core/pure";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
 import type { HouseRoomId } from "./HouseLayout";
 import { HOUSE_CONTENT } from "./HouseContent";
 import { houseVector } from "./HouseWalking";
 import { HOUSE_SUITE } from "./HouseSuite";
 import { HOUSE_BEDROOM } from "./HouseBedroom";
-import { HOUSE_WINDOWS } from "./HouseStructure";
+import { HOUSE_WINDOWS, houseWindowSide } from "./HouseStructure";
 import { HOUSE_SERVICE } from "./HouseServiceRooms";
 import { localPosition } from "./HouseRoomComponents";
+import { timeEnvironmentColor } from "./CoastalSky";
+import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
 
 /** Room-specific window/lamp sources plus the original restrained indirect bounce. */
 export class RoomLighting {
   private readonly fill: HemisphericLight;
   private readonly shadows: ShadowGenerator[];
+  private readonly natural = new Map<SpotLight, { normal: Vector3; intensity: number }>();
+  private readonly environments = new Map<PBRMaterial, { intensity: number; color: Color3 }>();
+  private readonly fillIntensity: number;
+  private readonly ambient: Color3;
+  private time?: TimeOfDaySnapshot;
   private readonly lamps = new Map<string, { light: SpotLight; intensity: number; on: boolean;
     material?: PBRMaterial; glow?: Color3 }>();
 
-  constructor(scene: Scene, house = false) {
+  constructor(private readonly scene: Scene, house = false) {
     const fill = this.fill = new HemisphericLight("room-bounce-light", new Vector3(-0.35, 1, 0.15), scene);
     fill.intensity = house ? 0.38 : 0.18;
     fill.diffuse = new Color3(0.95, 0.97, 1);
     fill.groundColor = new Color3(0.68, 0.62, 0.53);
     fill.specular = Color3.Black();
+    this.fillIntensity = fill.intensity;
+    this.ambient = scene.ambientColor.clone();
 
     // Place daylight just in front of the garden window, rather than shining through opaque walls.
     const daylight = new SpotLight("window-daylight", new Vector3(-18.85, 5.6, 9),
@@ -78,6 +87,8 @@ export class RoomLighting {
       shadow.setDarkness(0);
       return shadow;
     });
+    if (house) this.registerWindow(daylight, "study-window");
+    else this.natural.set(daylight, { normal: new Vector3(-1, 0, 0), intensity: daylight.intensity });
   }
 
   addLivingRoom(scene: Scene, house = false) {
@@ -109,6 +120,7 @@ export class RoomLighting {
       shadow.bias = index ? 0.00015 : 0.0001; shadow.normalBias = 0.012;
       this.shadows.push(shadow);
     });
+    this.registerWindow(daylight, "living-window");
   }
 
   addMasterSuite(scene: Scene) {
@@ -135,6 +147,7 @@ export class RoomLighting {
       shadow.bias = 0.00012; shadow.normalBias = 0.012;
       this.shadows.push(shadow);
     });
+    this.registerWindow(daylight, "master-window");
   }
 
   addBedroom(scene: Scene) {
@@ -156,6 +169,7 @@ export class RoomLighting {
       shadow.usePercentageCloserFiltering = true; shadow.filteringQuality = ShadowGenerator.QUALITY_MEDIUM;
       shadow.bias = 0.00012; shadow.normalBias = 0.012; this.shadows.push(shadow);
     });
+    this.registerWindow(daylight, "bedroom-window");
   }
 
   addServiceRooms(scene: Scene) {
@@ -178,6 +192,7 @@ export class RoomLighting {
       shadow.usePercentageCloserFiltering=true;shadow.filteringQuality=ShadowGenerator.QUALITY_MEDIUM;
       shadow.bias=.00012;shadow.normalBias=.012;this.shadows.push(shadow);
     });
+    this.registerWindow(day, "kitchen-window");
   }
 
   addBalcony(scene: Scene) {
@@ -188,6 +203,47 @@ export class RoomLighting {
     light.shadowMinZ=.1;light.shadowMaxZ=light.range;
     const shadow=new ShadowGenerator(512,light);shadow.usePercentageCloserFiltering=true;
     shadow.filteringQuality=ShadowGenerator.QUALITY_MEDIUM;shadow.bias=.00012;shadow.normalBias=.012;this.shadows.push(shadow);
+    this.natural.set(light, { normal: new Vector3(0, 1, 0), intensity: light.intensity });
+  }
+
+  private registerWindow(light: SpotLight, id: string) {
+    const side = houseWindowSide(HOUSE_WINDOWS.find(w => w.id === id)!);
+    const normals = { north: [0, 0, -1], south: [0, 0, 1], east: [1, 0, 0], west: [-1, 0, 0] };
+    this.natural.set(light, { normal: Vector3.FromArray(normals[side]), intensity: light.intensity });
+  }
+  /** Natural lighting changes independently of the user's lamp switches and their cached maps. */
+  applyTimeOfDay(state: TimeOfDaySnapshot) {
+    this.time = state;
+    const body = state.primary, tint = timeEnvironmentColor(state);
+    this.fill.intensity = this.fillIntensity * state.environment.interior;
+    this.fill.diffuse.copyFrom(new Color3(.95, .97, 1).multiply(tint));
+    this.fill.groundColor.copyFrom(new Color3(.68, .62, .53).multiply(tint));
+    this.scene.ambientColor.copyFrom(this.ambient.scale(state.environment.interior));
+    for (const [light, base] of this.natural) {
+      const incidence = body ? Math.max(0, Vector3.Dot(base.normal, Vector3.FromArray(body.sourceDirection))) : 0;
+      light.intensity = base.intensity * (body?.strength || 0) * incidence;
+      light.diffuse.copyFrom(body ? Color3.FromArray(body.color) : Color3.Black());
+      light.specular.copyFrom(light.diffuse.scale(.65));
+      if (body && incidence > .00001) light.direction.copyFromFloats(...body.lightDirection);
+      light.forceProjectionMatrixCompute();
+      light.getShadowGenerator()?.getShadowMap()?.resetRefreshCounter();
+    }
+    for (const material of this.environments.keys()) this.applyEnvironment(material, state);
+  }
+  private applyEnvironment(material: PBRMaterial, state: TimeOfDaySnapshot) {
+    const base = this.environments.get(material)!;
+    material.environmentIntensity = base.intensity * state.environment.interior;
+    material.reflectionColor.copyFrom(base.color.multiply(timeEnvironmentColor(state)));
+  }
+  private trackEnvironment(mesh: AbstractMesh) {
+    const material = mesh.material;
+    if (!(material instanceof PBRMaterial) || mesh.metadata?.exterior || mesh.metadata?.mirrorPlane
+      || mesh.metadata?.inspectionPreview || material.reflectionTexture?.isRenderTarget) return;
+    if (!this.environments.has(material)) {
+      this.environments.set(material, { intensity: material.environmentIntensity, color: material.reflectionColor.clone() });
+      material.onDisposeObservable.addOnce(() => this.environments.delete(material));
+    }
+    if (this.time) this.applyEnvironment(material, this.time);
   }
 
   bindLamp(id: string, material: PBRMaterial) {
@@ -209,6 +265,7 @@ export class RoomLighting {
   addMeshes(meshes: AbstractMesh[]) {
     meshes.forEach(mesh => {
       if (mesh.getTotalVertices() === 0) return;
+      this.trackEnvironment(mesh);
       if (!mesh.metadata?.exterior) mesh.receiveShadows = true;
       else if (!this.fill.excludedMeshes.includes(mesh)) this.fill.excludedMeshes.push(mesh);
       this.shadows.forEach(shadow => {
@@ -250,6 +307,7 @@ export class RoomLighting {
     for (let i = this.shadows.length - 1; i >= 0; i--) {
       const shadow = this.shadows[i], light = shadow.getLight();
       if (!roomOwners(light).includes(id)) continue;
+      this.natural.delete(light as SpotLight);
       this.shadows.splice(i, 1); shadow.dispose(); light.dispose();
     }
   }
