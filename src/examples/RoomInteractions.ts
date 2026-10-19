@@ -9,6 +9,8 @@ export type InteractiveDrawer = {
   id: string; label: string; root: TransformNode; meshes: AbstractMesh[]; travel: Vector3;
 };
 export type InteractiveLamp = { id: string; label: string; meshes: AbstractMesh[] };
+export type InteractiveCurtain = { id: string; windowId: string; label: string; root: TransformNode;
+  meshes: Mesh[]; applyClosed: (amount: number) => void };
 export type InteractiveDoor = { id: string; label: string; root: TransformNode;
   meshes: AbstractMesh[]; width: number; openAngle: number; walkerRadius?: number };
 export type InteractiveSlidingDoor = { id: string; label: string; root: TransformNode;
@@ -40,6 +42,7 @@ export class RoomInteractions {
   }[] = [];
   private readonly doors: { door: InteractiveDoor; progress: number; open: boolean; blocked: boolean; moving: boolean }[] = [];
   private readonly slidingDoors: { door: InteractiveSlidingDoor; progress: number; open: boolean; blocked: boolean; moving: boolean }[] = [];
+  private readonly curtains: { curtain: InteractiveCurtain; progress: number; closed: boolean; light: (amount: number) => void }[] = [];
 
   constructor(private readonly scene: Scene, private readonly refreshShadows: (owners?: readonly HouseRoomId[]) => void,
     private readonly walkerPosition: () => Vector3 | undefined = () => undefined,
@@ -112,6 +115,14 @@ export class RoomInteractions {
       toggle: () => { const before = isOn(); toggle(); if (before !== isOn()) this.sound("switch", lamp); } });
   }
 
+  addCurtain(curtain: InteractiveCurtain, light: (amount: number) => void = () => {}) {
+    if (this.entities.has(curtain.id)) throw new Error("Duplicate interaction: " + curtain.id);
+    const state = { curtain, progress: 0, closed: false, light };
+    this.curtains.push(state);
+    this.add(curtain.id, curtain.meshes, {label: () => `${state.closed ? "打开" : "关闭"}${curtain.label}`,
+      toggle: () => { state.closed = !state.closed; }});
+  }
+
   addInspectable(item: InspectableItem, inspect: (item: InspectableItem) => void) {
     this.add(item.id, [item.mesh], { label: () => `查看${item.label}`, toggle: () => inspect(item) });
   }
@@ -139,6 +150,7 @@ export class RoomInteractions {
     for (let i = this.drawers.length - 1; i >= 0; i--) if (this.drawers[i].drawer.id === id) this.drawers.splice(i, 1);
     for (let i = this.doors.length - 1; i >= 0; i--) if (this.doors[i].door.id === id) this.doors.splice(i, 1);
     for (let i = this.slidingDoors.length - 1; i >= 0; i--) if (this.slidingDoors[i].door.id === id) this.slidingDoors.splice(i, 1);
+    for (let i = this.curtains.length - 1; i >= 0; i--) if (this.curtains[i].curtain.id === id) this.curtains.splice(i, 1);
     this.entities.delete(id);
   }
 
@@ -214,6 +226,15 @@ export class RoomInteractions {
         if (!state.open) this.sound("door-latch", state.door);
       }
       roomOwners(state.door.root).forEach(id => changed.add(id));
+    }
+    for (const state of this.curtains) {
+      const target = state.closed ? 1 : 0;
+      if (state.progress === target || step <= 0) continue;
+      const travel = Math.max(0, Math.min(deltaSeconds, .05)) / .85;
+      state.progress = target > state.progress ? Math.min(target, state.progress + travel) : Math.max(target, state.progress - travel);
+      const eased = state.progress * state.progress * (3 - 2 * state.progress);
+      state.curtain.applyClosed(eased); state.light(eased);
+      roomOwners(state.curtain.root).forEach(id => changed.add(id));
     }
     if (changed.size) this.refreshShadows([...changed]);
   }

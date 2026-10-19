@@ -1,6 +1,6 @@
 import { Color3, CreateBox, CreateGround, PBRMaterial, StandardMaterial, VertexBuffer } from "@babylonjs/core/pure";
 import type { Mesh, Scene } from "@babylonjs/core/pure";
-import { HOUSE_COORDINATES, HOUSE_DOORS, HOUSE_ROOMS, worldToPlan } from "./HouseLayout";
+import { HOUSE_COORDINATES, HOUSE_DOORS, HOUSE_ROOMS, houseRoom, worldToPlan } from "./HouseLayout";
 import type { HouseRoomId } from "./HouseLayout";
 import { houseWallSpans, houseWindowSide, HOUSE_CUT_HEIGHT, HOUSE_DOOR_HEIGHT, HOUSE_WINDOWS } from "./HouseStructure";
 import { houseVector } from "./HouseWalking";
@@ -124,10 +124,13 @@ export function createHouseArchitecture(scene: Scene, furniture: RoomFurnishings
     furniture.section(w.room, w.id, () => {
       // The sill and curtains face the room; derive that side from the room instead of the axis alone.
       const yaw = { north: Math.PI, south: 0, west: -Math.PI / 2, east: Math.PI / 2 }[houseWindowSide(w)];
-      const root = furniture.window([p.x, p.y, p.z], yaw, w.id);
+      const root = furniture.window([p.x, p.y, p.z], yaw, w.id, houseRoom(w.room).name + "窗帘");
       // Resize this architectural component to the actual opening, before merging/freezing.
       root.scaling.set(w.width * u / 10.3, w.height * u / 7.5, 1);
     }).forEach(m => { m.metadata.cut = { axis: w.axis, at: w.axis === "x" ? w.y : w.x }; hidden.push(m); });
+    furniture.curtains.find(curtain => curtain.windowId === w.id)!.meshes.forEach(mesh => {
+      mesh.metadata.cut = { axis: w.axis, at: w.axis === "x" ? w.y : w.x }; hidden.push(mesh);
+    });
   });
   // The real entrance leaf controls passage; stage B's shared surface/guardrail controller protects outdoors.
   for (const [id, x, y, h, width, height, yaw, axis, edge] of [

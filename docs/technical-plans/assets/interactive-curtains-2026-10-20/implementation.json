@@ -1,0 +1,95 @@
+{
+  "baseline": "603342d",
+  "date": "2026-10-20",
+  "releaseManifestSha256": "6d0c059c4314f266d25863142a6a8afa862ac9c13b3b465baed08ae7d106d30d",
+  "files": [
+    {
+      "path": "src/examples/RoomCurtains.ts",
+      "sha256": "24c2520d4165d1c0acc26c3d96d98d0731cc2bd2d6912582a8cab8f0226f57c7"
+    },
+    {
+      "path": "src/examples/RoomDetailGeometry.ts",
+      "sha256": "ceeac4b596c2648b7e79537c28f7b9f55b06d39bc7683553c8cf5f11c10fae1f"
+    },
+    {
+      "path": "src/examples/RoomFurnishings.ts",
+      "sha256": "e1e86bbb8db5196111ff5c187586cfb9423b9d76b35a2084e19d36d4c86707e8"
+    },
+    {
+      "path": "src/examples/RoomInteractions.ts",
+      "sha256": "acfb64609dd1b2a988ab0bee116c9a59a8b7ccdff02d8a163164b6551d9e9403"
+    },
+    {
+      "path": "src/examples/RoomLighting.ts",
+      "sha256": "c7a6f3adc43f7447b93e3b3750672e81e009fe5823d2fad1169a70b87c461282"
+    },
+    {
+      "path": "src/examples/HouseArchitecture.ts",
+      "sha256": "9d19270124ca1b9bc62e621dc2c277795ceab2a1d40b84472b0a1389dc2681c4"
+    },
+    {
+      "path": "src/examples/Room.ts",
+      "sha256": "6cd02999762fa62393303dd9cf270128ada75a28bb779ce31e0d96175a43636b"
+    },
+    {
+      "path": "src/examples/HouseStructure.ts",
+      "sha256": "e5b896662e0c7fc5074779dce611db2e6d4483bd2ebea940d6beef3a182c6693"
+    },
+    {
+      "path": "src/examples/RoomRuntime.ts",
+      "sha256": "c261b5f6542b8b1405b26f05c9c1b583f27437a70861c1c083b4c0dcf18a2762"
+    },
+    {
+      "path": "src/examples/RoomShaders.ts",
+      "sha256": "141420f50a89d81b4f25e43d24dc282b7405b86b337b0877849f54001df2ff96"
+    },
+    {
+      "path": "tests/room-curtains.test.cjs",
+      "sha256": "86675412dfb2abb27ea58ddaffb41774bf1985b3a27e29695c43782c8dc91c71"
+    },
+    {
+      "path": "package.json",
+      "sha256": "d0b503f1aafb821f442916332ca0267497ca6fd05c7dd1c3919552acbcd5b6a9"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e94ba83cc02d96a6954d091bf84233bceee7275e85107453a75f772a8a629dcf"
+    },
+    {
+      "path": "webpack.config.js",
+      "sha256": "16762abfd7f6dcd688f4f29b527e122aa8a22168ff08acd4c3292307dbf7136b"
+    },
+    {
+      "path": "tools/study-release.config.cjs",
+      "sha256": "fd2db6a7d83fc7964a33f9d4d8cdc5a106972b66502ffd2dfbfae3d1d3892a4f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs",
+      "sha256": "5b10dece56d4bd2092a49195bf179f56fe54541691f1118663131163036a69f6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/browser-harness.cjs",
+      "sha256": "518b9a3c58b355f453062977ebaca0633cf927cd410a90ed074490b0ec334f07"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-finish-2026-10-19/check-regression.cjs",
+      "sha256": "929ec470a9db520a4c766a2f61668de92c99f556bbb5725ebb20177ff0026d12"
+    },
+    {
+      "path": "docs/technical-plans/assets/coastal-cliff-d-2026-10-18/serve-dist.py",
+      "sha256": "64ca8f4fcbcf4e5fa56c738120af214b5aac3c1326a939048f2176b85488c092"
+    },
+    {
+      "path": "docs/technical-plans/assets/interactive-curtains-2026-10-20/check-browser.cjs",
+      "sha256": "6d0594695c0406b564836203e64fa553677d9f65ea34d13fdfa68d7476f418f3"
+    },
+    {
+      "path": "docs/technical-plans/assets/interactive-curtains-2026-10-20/check-regression.cjs",
+      "sha256": "3ac97b49bf6fbb995611ef4fa6b4e59f8558e262df2b287ea7804fa094ef3bb8"
+    },
+    {
+      "path": "docs/technical-plans/assets/interactive-curtains-2026-10-20/check-release.cjs",
+      "sha256": "d5aa0311f25f282c509b6998f27a8e69350c30733a7f5b52fbf58af7baddb6fc"
+    }
+  ]
+}

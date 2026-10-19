@@ -18,7 +18,8 @@ import { HOUSE_COORDINATES } from "./HouseLayout";
 export class RoomLighting {
   private readonly fill: HemisphericLight;
   private readonly shadows: ShadowGenerator[];
-  private readonly natural = new Map<SpotLight, { normal: Vector3; intensity: number }>();
+  private readonly natural = new Map<SpotLight, { normal: Vector3; intensity: number; windowId?: string }>();
+  private readonly curtainClosure = new Map<string, number>();
   private readonly environments = new Map<PBRMaterial, { intensity: number; color: Color3 }>();
   private readonly fillIntensity: number;
   private readonly ambient: Color3;
@@ -235,8 +236,17 @@ export class RoomLighting {
   private registerWindow(light: SpotLight, id: string) {
     const side = houseWindowSide(HOUSE_WINDOWS.find(w => w.id === id)!);
     const normals = { north: [0, 0, -1], south: [0, 0, 1], east: [1, 0, 0], west: [-1, 0, 0] };
-    this.natural.set(light, { normal: Vector3.FromArray(normals[side]), intensity: light.intensity });
+    this.natural.set(light, { normal: Vector3.FromArray(normals[side]), intensity: light.intensity, windowId: id });
   }
+  setCurtain(windowId: string, amount: number) {
+    this.curtainClosure.set(windowId, Math.max(0, Math.min(1, amount)));
+    for (const [light, base] of this.natural) if (base.windowId === windowId) {
+      const body = this.time?.primary;
+      const incidence = body ? Math.max(0, Vector3.Dot(base.normal, Vector3.FromArray(body.sourceDirection))) : 0;
+      light.intensity = base.intensity * (this.time ? (body?.strength || 0) * incidence : 1) * this.transmission(windowId);
+    }
+  }
+  private transmission(windowId?: string) { return 1 - .96 * (this.curtainClosure.get(windowId || "") || 0); }
   /** Natural lighting changes independently of the user's lamp switches and their cached maps. */
   applyTimeOfDay(state: TimeOfDaySnapshot) {
     this.time = state;
@@ -247,7 +257,7 @@ export class RoomLighting {
     this.scene.ambientColor.copyFrom(this.ambient.scale(state.environment.interior));
     for (const [light, base] of this.natural) {
       const incidence = body ? Math.max(0, Vector3.Dot(base.normal, Vector3.FromArray(body.sourceDirection))) : 0;
-      light.intensity = base.intensity * (body?.strength || 0) * incidence;
+      light.intensity = base.intensity * (body?.strength || 0) * incidence * this.transmission(base.windowId);
       light.diffuse.copyFrom(body ? Color3.FromArray(body.color) : Color3.Black());
       light.specular.copyFrom(light.diffuse.scale(.65));
       if (body && incidence > .00001) light.direction.copyFromFloats(...body.lightDirection);
@@ -335,6 +345,7 @@ export class RoomLighting {
   }
 
   removeRoom(id: HouseRoomId) {
+    HOUSE_WINDOWS.filter(window => window.room === id).forEach(window => this.curtainClosure.delete(window.id));
     for (const [lampId, lamp] of this.lamps) if (roomOwners(lamp.light).includes(id)) this.lamps.delete(lampId);
     for (let i = this.shadows.length - 1; i >= 0; i--) {
       const shadow = this.shadows[i], light = shadow.getLight();

@@ -200,13 +200,15 @@ export class RoomScene {
     this.lighting.addBalcony(this.scene);
     this.lighting.addCeilingLights();
     furnishings.finish().forEach(mesh => {
-      mesh.checkCollisions = true;
+      mesh.checkCollisions = !mesh.metadata?.softCurtain;
     });
     this.architecture.setEnclosed(false);
     new RoomMirrors(this.scene);
     furnishings.drawers.forEach(drawer => this.interactions.addDrawer(drawer));
     furnishings.doors.forEach(door => this.interactions.addDoor(door));
     furnishings.slidingDoors.forEach(door => this.interactions.addSlidingDoor(door));
+    furnishings.curtains.forEach(curtain => this.interactions.addCurtain(curtain,
+      amount => this.lighting.setCurtain(curtain.windowId, amount)));
     furnishings.inspectables.forEach(item => this.interactions.addInspectable(item, item => this.openInspection(item)));
     furnishings.lamps.forEach(lamp => {
       const material = this.scene.getMaterialByName(lamp.id === "desk-lamp" ? "desk-lamp-glow"

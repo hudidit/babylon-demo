@@ -2,7 +2,8 @@ import { Color3, DynamicTexture, Mesh, CreateBox, CreateCylinder, CreatePlane, C
 import type { AbstractMesh, Material, Scene } from "@babylonjs/core/pure";
 import { measureBookshelf } from "./BookshelfLayout";
 import { linenMaterial, mappedMaterial, surfaceMaterial } from "./RoomMaterials";
-import { beveledBox, creasedLetter, curtainPanel, ficusLeaf } from "./RoomDetailGeometry";
+import { beveledBox, creasedLetter, ficusLeaf } from "./RoomDetailGeometry";
+import { createWindowCurtains } from "./RoomCurtains";
 import { applyWear, letterTexture, stableRandom, wearTexture } from "./RoomSurfaceDetails";
 import { sharedRoomMaterials } from "./RoomMaterialLibrary";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
@@ -11,7 +12,7 @@ import type { HouseDoor, HouseRoomId } from "./HouseLayout";
 import { HOUSE_DOOR_HEIGHT, HOUSE_DOOR_JAMB, HOUSE_DOOR_FLOOR_GAP } from "./HouseStructure";
 import { HOUSE_WALKER_RADIUS } from "./HouseWalking";
 import { partitionMergedCollisions } from "./RoomCollisions";
-import type { InspectableItem, InteractiveDoor, InteractiveDrawer, InteractiveLamp, InteractiveSlidingDoor } from "./RoomInteractions";
+import type { InspectableItem, InteractiveCurtain, InteractiveDoor, InteractiveDrawer, InteractiveLamp, InteractiveSlidingDoor } from "./RoomInteractions";
 import { CONNECTING_PASSAGE, SHARED_WALL_SPANS } from "./RoomLayout";
 
 type Triple = [number, number, number];
@@ -26,6 +27,7 @@ export class RoomFurnishings {
   readonly inspectables: InspectableItem[] = [];
   readonly doors: InteractiveDoor[] = [];
   readonly slidingDoors: InteractiveSlidingDoor[] = [];
+  readonly curtains: InteractiveCurtain[] = [];
   private interactiveGroups: { meshes: Mesh[]; root: TransformNode; fixed: boolean }[] = [];
 
   constructor(private scene: Scene, roomId: HouseRoomId = "study") {
@@ -780,7 +782,7 @@ export class RoomFurnishings {
     this.place(image, [0, 0, -0.19], name + "-artwork", g);
   }
 
-  window(position: Triple = [-19.35, 2.5, 9], rotation = -Math.PI / 2, name = "garden-window") {
+  window(position: Triple = [-19.35, 2.5, 9], rotation = -Math.PI / 2, name = "garden-window", curtainLabel?: string) {
     if (!this.materials.has("window-glass")) {
       const mat = new StandardMaterial("window-glass", this.scene);
       mat.diffuseColor = new Color3(0.64, 0.78, 0.82);
@@ -822,27 +824,12 @@ export class RoomFurnishings {
     rod.rotation.z = Math.PI / 2;
     [-1, 1].forEach(side => {
       this.sphere("curtain-finial", [0.24, 0.24, 0.24], [side * 6.7, 4.63, -0.72], "brass", g);
-      const cloth = curtainPanel("linen-curtain", side, this.scene);
-      this.place(cloth, [0, 0, 0], "curtain-linen", g);
-      for (let i = 0; i < 7; i++) {
-        const ring = this.ring("curtain-hanging-ring", 0.24, 0.035,
-          [side * 5.55 + (i - 3) * 0.245, 4.53, -0.72], "brass", g);
-        ring.rotation.z = Math.PI / 2;
-      }
-      const tiePath = [];
-      for (let i = 0; i <= 20; i++) {
-        const angle = i / 20 * Math.PI * 2;
-        tiePath.push(new Vector3(side * 5.81 + Math.cos(angle) * 0.4, -1.33,
-          -0.79 + Math.sin(angle) * 0.14));
-      }
-      const tie = CreateTube("curtain-tie", { path: tiePath, radius: 0.045, tessellation: 6 }, this.scene);
-      this.place(tie, [0, 0, 0], "cushion", g);
-      const cord = CreateTube("curtain-tassel-cord", { path: [
-        new Vector3(side * 5.5, -1.33, -0.96), new Vector3(side * 5.43, -1.63, -1.02),
-        new Vector3(side * 5.48, -1.82, -1.01)], radius: 0.022, tessellation: 6 }, this.scene);
-      this.place(cord, [0, 0, 0], "cushion", g);
-      this.cylinder("curtain-tassel", 0.26, 0.14, [side * 5.48, -1.94, -1.01], "cushion", g, 0.06);
     });
+    const curtains = createWindowCurtains(this.scene, g, name + "-curtains", curtainLabel || "窗帘", {
+      linen: this.materials.get("curtain-linen")!, brass: this.materials.get("brass")!, tie: this.materials.get("cushion")!,
+    });
+    if (curtainLabel) this.curtains.push(curtains);
+    else this.parts.push(...curtains.meshes); // Legacy examples keep the original static batching path.
     return g;
   }
 
@@ -889,6 +876,7 @@ export class RoomFurnishings {
       meshes.splice(0, meshes.length, ...merged); // Keep the interaction descriptors current.
       interactive.push(...merged);
     });
+    this.curtains.forEach(curtain => interactive.push(...curtain.meshes));
     return [...fixed, ...interactive];
   }
 

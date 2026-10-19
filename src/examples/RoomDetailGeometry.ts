@@ -31,26 +31,35 @@ export function beveledBox(name: string, size: readonly number[], radius: number
 
 /** A tied linen panel: fullness above/below the tie, continuous pleats, a weighted hem. */
 export function curtainPanel(name: string, side: number, scene: Scene) {
+  const { positions, normals, uvs, indices } = curtainPanelGeometry(side);
+  return apply(name, positions, normals, uvs, indices, scene);
+}
+
+/** Same topology at both endpoints, so opening preserves the original tied silhouette exactly. */
+export function curtainPanelGeometry(side: number, closed = false) {
   const positions: number[] = [], normals: number[] = [], uvs: number[] = [], indices: number[] = [];
   const columns = 40, rows = 36;
   for (let y = 0; y <= rows; y++) {
     const t = y / rows;
     const gathered = Math.exp(-Math.pow((t - 0.64) / 0.14, 2));
-    const width = 1.65 - gathered * 0.95 + t * 0.2;
-    const center = side * (5.55 + gathered * 0.26);
+    const width = closed ? 6.4 : 1.65 - gathered * 0.95 + t * 0.2;
+    const center = side * (closed ? 3.18 : 5.55 + gathered * 0.26);
     for (let x = 0; x <= columns; x++) {
       const u = x / columns;
       const pleat = Math.sin(u * Math.PI * 12 + t * 0.25);
       positions.push(center + (u - 0.5) * width,
         4.4 - t * 8.95 - 0.055 * Math.sin(u * Math.PI * 6) * Math.pow(t, 12),
-        -0.68 + pleat * (0.16 - gathered * 0.09) - 0.13 * Math.sin(t * Math.PI));
+        // The sill projects to local Z=-.8; released fabric bows in front of it while
+        // its header stays at the hanging rings. Preserve the original open endpoint.
+        -0.68 + pleat * (0.16 - (closed ? 0 : gathered * 0.09)) - 0.13 * Math.sin(t * Math.PI)
+          - (closed ? .04 + .32 * Math.min(1, t * 8) : 0));
       uvs.push(u * 0.8, (1 - t) * 2.1);
     }
   }
   gridIndices(columns, rows, indices);
   VertexData.ComputeNormals(positions, indices, normals);
   VertexData._ComputeSides(Mesh.DOUBLESIDE, positions, indices, normals, uvs);
-  return apply(name, positions, normals, uvs, indices, scene);
+  return { positions, normals, uvs, indices };
 }
 
 /** A thin pointed leaf with a raised midrib and a drooping tip; no alpha transparency. */
