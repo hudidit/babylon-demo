@@ -37,7 +37,7 @@ test('top speed is 40 km/h and full-lock steering is half the earlier response',
  assert.ok(v.scooterSupport(turn));assert.ok(angle>.74&&angle<.80,'one second at full standstill lock should turn about 44°, half the previous response');
 });
 
-test('long frames sweep the entire vehicle against fence, tower, house and rocks, including in-place turning',()=>{
+test('long frames sweep the entire vehicle against fence, tower and house, including in-place turning',()=>{
  const cases=[stateAt(14,0,Math.PI/2),stateAt(-125,84,0),stateAt(13.3,4.65,-Math.PI/2)];
  for(const s of cases){assert.ok(v.scooterSupport(s));for(let i=0;i<60;i++)v.advanceScooter(s,input({forward:true}),2);assert.ok(v.scooterSupport(s));assert.equal(s.speed,0);}
  const s=stateAt(14,2.2);for(let i=0;i<40;i++)v.advanceScooter(s,input({right:true}),.2);assert.ok(v.scooterSupport(s));assert.equal(s.speed,0);

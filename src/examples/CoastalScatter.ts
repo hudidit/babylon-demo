@@ -4,16 +4,12 @@ import { planToWorld } from "./HouseLayout";
 import type { CoastalGeometry } from "./CoastalCliff";
 import { coastalRoute, coastalRouteDistance, COASTAL_SITE } from "./CoastalSite";
 export type CoastalScatterGeometry = CoastalGeometry & { colors: number[] };
-type RockObstacle = { x: number; y: number; radius: number };
-let obstacleCache: RockObstacle[] | undefined;
-export function coastalRockObstacles() { if (!obstacleCache) coastalScatter(); return obstacleCache!; }
 
 /** Fixed clusters, buried rocks, folded opaque blades and low woody cushions; never photo cards. */
 export function coastalScatter() {
   const empty = (): CoastalScatterGeometry => ({ positions: [], indices: [], uvs: [], colors: [] });
   let rocks = empty(), plants = empty(); let seed: number = COASTAL_CLIFF.seed;
   const near = { rocks, plants }, zones: { rocks: CoastalScatterGeometry; plants: CoastalScatterGeometry }[] = [];
-  const obstacles: RockObstacle[] = [];
   let useTriangles = false;
   const groundAt = (x: number, y: number) => useTriangles ? coastalSurfaceHeight(x, y)! : coastalGroundHeight(x, y);
   const route = coastalRoute();
@@ -26,7 +22,9 @@ export function coastalScatter() {
   const stone = (x: number, y: number, size: number) => {
     const base = groundAt(x, y) - size * .28, first = rocks.positions.length / 3;
     const angle = random() * Math.PI * 2, stretch = .65 + random() * .6;
-    if (size * .22 > .18) obstacles.push({ x, y, radius: size * 1.16 * Math.max(1, stretch) });
+    // Remove the low boulders that used to block walking and riding. Consume their
+    // random values first so the remaining stones and vegetation keep their layout.
+    if (size * .22 > .18) return;
     for (let row = 0; row <= 4; row++) for (let col = 0; col <= 8; col++) {
       const theta = row / 4 * Math.PI, phi = col / 8 * Math.PI * 2, rough = 1 + .16 * Math.sin(col * 5.3 + row * 9.7 + angle);
       const dx = Math.cos(phi) * Math.sin(theta) * size * rough, dy = Math.sin(phi) * Math.sin(theta) * size * stretch * rough;
@@ -102,6 +100,5 @@ export function coastalScatter() {
       }
     }
   }
-  obstacleCache = obstacles;
-  return { ...near, zones, obstacles };
+  return { ...near, zones };
 }

@@ -1,0 +1,690 @@
+{
+  "baseline": "82a7657",
+  "method": "Production dist, real W/E/Space/M events, pose fixtures, fixed reference simulation steps; no in-segment teleports or performance measurements.",
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8213/",
+      "status": 200,
+      "bytes": 25663
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/main.js",
+      "status": 200,
+      "bytes": 272394
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8213/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8213/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8213/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4190
+    },
+    {
+      "url": "http://127.0.0.1:8213/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8213/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8213/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8213/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/f0670d8a-8340-4ad1-a9c7-fc76d56f32b2",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/880c4f3e-a1e5-44d4-b75a-411bbde9400a",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/ca176531-f8fc-4724-bab3-7378a493d031",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/0c07df06-2933-4f81-aac0-dd57c0585da8",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/4ebeea69-3d7c-4efd-abb9-6d434be97f1b",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/4362f4c8-a81b-4ce9-8ab7-1e592969d240",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/a4b88178-8688-40db-9557-09bf8f578bb9",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/59415937-5f71-4dc6-9923-a2ae8b51457c",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/0d859baa-8dae-4745-8af3-f6571822ac20",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/3eb72a36-6de5-4d47-ad5c-ef74b270d642",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/7c3c0ba8-7720-4a9e-8bfc-55433a94bf3f",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/33ab544a-c3c7-4f8c-ad3d-1d6163880e00",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/426da6ca-300c-4ef2-9094-3d33c4cc2d06",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/4ebadc45-11c5-4123-9c94-1534f7bea4e3",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/69cfbfa7-f73d-46ba-b6b8-935e9c5c5730",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8213/b604d082-ae74-4abe-aaff-2b6d3e1197cd",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8213/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ],
+  "walking": [
+    {
+      "id": "house-side",
+      "reverse": false,
+      "frames": 252,
+      "point": {
+        "x": -1.2039623928721994,
+        "y": 1.7121688874003365
+      },
+      "feet": -0.14,
+      "grounded": true
+    },
+    {
+      "id": "house-side",
+      "reverse": true,
+      "frames": 252,
+      "point": {
+        "x": -1.2039623928721994,
+        "y": -2.910704538368881
+      },
+      "feet": -0.14,
+      "grounded": true
+    },
+    {
+      "id": "path-side",
+      "reverse": false,
+      "frames": 252,
+      "point": {
+        "x": -24.737584649352357,
+        "y": 10.543918375068602
+      },
+      "feet": 0.3473890975704009,
+      "grounded": true
+    },
+    {
+      "id": "path-side",
+      "reverse": true,
+      "frames": 252,
+      "point": {
+        "x": -24.737584649352357,
+        "y": 5.921044949299403
+      },
+      "feet": 0.4272173949316403,
+      "grounded": true
+    }
+  ],
+  "riding": [
+    {
+      "id": "house-side",
+      "reverse": false,
+      "point": {
+        "x": -1.2039623928721994,
+        "y": 1.2228155078490657
+      },
+      "feet": -0.14,
+      "grounded": true,
+      "scooter": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": -1.2039623928721994,
+        "y": 1.4528155078490659,
+        "heading": 0,
+        "speed": 5.166666666666664,
+        "distance": 4.552083333333341,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false,
+        "height": -0.14
+      },
+      "locked": true,
+      "controls": true
+    },
+    {
+      "id": "house-side",
+      "reverse": true,
+      "point": {
+        "x": -1.2039623928721994,
+        "y": -2.421351158817618
+      },
+      "feet": -0.14,
+      "grounded": true,
+      "scooter": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": -1.2039623928721994,
+        "y": -2.651351158817618,
+        "heading": 3.141592653589793,
+        "speed": 5.166666666666664,
+        "distance": 4.552083333333341,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false,
+        "height": -0.14
+      },
+      "locked": true,
+      "controls": true
+    },
+    {
+      "id": "path-side",
+      "reverse": false,
+      "point": {
+        "x": -24.737584649352357,
+        "y": 10.054564995517344
+      },
+      "feet": 0.4605439691000045,
+      "grounded": true,
+      "scooter": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": -24.737584649352357,
+        "y": 10.284564995517345,
+        "heading": 0,
+        "speed": 5.166666666666664,
+        "distance": 4.552083333333341,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false,
+        "height": 0.4605439691000045
+      },
+      "locked": true,
+      "controls": true
+    },
+    {
+      "id": "path-side",
+      "reverse": true,
+      "point": {
+        "x": -24.737584649352357,
+        "y": 6.410398328850659
+      },
+      "feet": 0.34769821771321296,
+      "grounded": true,
+      "scooter": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": -24.737584649352357,
+        "y": 6.180398328850659,
+        "heading": 3.141592653589793,
+        "speed": 5.166666666666664,
+        "distance": 4.552083333333341,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false,
+        "height": 0.34769821771321296
+      },
+      "locked": true,
+      "controls": true
+    }
+  ],
+  "blocked": [
+    {
+      "id": "guardrail",
+      "point": {
+        "x": 14.849938271604925,
+        "y": 0
+      },
+      "feet": -0.14,
+      "grounded": true,
+      "scooter": {
+        "id": "guardrail",
+        "label": "家门停车位",
+        "x": 15.079938271604926,
+        "y": 6.612714737988566e-17,
+        "heading": 1.5707963267948966,
+        "speed": 0,
+        "distance": 1.0799382716049386,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false,
+        "height": -0.14
+      },
+      "locked": true,
+      "controls": true
+    },
+    {
+      "id": "tower",
+      "point": {
+        "x": -125,
+        "y": 85.38986882716029
+      },
+      "feet": 3.04,
+      "grounded": true,
+      "scooter": {
+        "id": "tower",
+        "label": "家门停车位",
+        "x": -125,
+        "y": 85.61986882716029,
+        "heading": 0,
+        "speed": 0,
+        "distance": 1.6198688271604926,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false,
+        "height": 3.04
+      },
+      "locked": true,
+      "controls": true
+    },
+    {
+      "id": "house",
+      "point": {
+        "x": 13.355019290123462,
+        "y": 4.65
+      },
+      "feet": -0.14,
+      "grounded": true,
+      "scooter": {
+        "id": "house",
+        "label": "家门停车位",
+        "x": 13.125019290123461,
+        "y": 4.65,
+        "heading": -1.5707963267948966,
+        "speed": 0,
+        "distance": 0.17498070987654313,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false,
+        "height": -0.14
+      },
+      "locked": true,
+      "controls": true
+    }
+  ],
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:8213/js/main.js",
+      "status": 200,
+      "bytes": 272394
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8213/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    }
+  ],
+  "initialJsBytes": 2911424,
+  "removedMeshes": [
+    {
+      "x": -5.87443766114302,
+      "y": 29.907991962507367,
+      "absent": true
+    },
+    {
+      "x": -26.551404586760327,
+      "y": -11.91555729135871,
+      "absent": true
+    },
+    {
+      "x": -1.2039623928721994,
+      "y": -0.5992678254842758,
+      "absent": true
+    },
+    {
+      "x": -6.766278484137729,
+      "y": 36.31692306883633,
+      "absent": true
+    },
+    {
+      "x": -11.103238477837294,
+      "y": 44.11995466519147,
+      "absent": true
+    },
+    {
+      "x": 17.815616657724604,
+      "y": -11.864639135077596,
+      "absent": true
+    },
+    {
+      "x": 16.13684424967505,
+      "y": -25.142847813665867,
+      "absent": true
+    },
+    {
+      "x": 2.6913553457707167,
+      "y": -27.0951887043193,
+      "absent": true
+    },
+    {
+      "x": -24.737584649352357,
+      "y": 8.232481662184,
+      "absent": true
+    },
+    {
+      "x": 3.2473678758833557,
+      "y": -20.54499850422144,
+      "absent": true
+    },
+    {
+      "x": 18.511031127767637,
+      "y": -13.557379070669413,
+      "absent": true
+    },
+    {
+      "x": 31.714916152413934,
+      "y": 12.221875810064375,
+      "absent": true
+    },
+    {
+      "x": -8,
+      "y": 38,
+      "absent": true
+    }
+  ],
+  "mapPause": true,
+  "manualBrake": true,
+  "safeDismount": true,
+  "browser": "155.0.8059.82",
+  "passed": true
+}

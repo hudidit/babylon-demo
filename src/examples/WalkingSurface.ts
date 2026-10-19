@@ -5,7 +5,6 @@ import { coastalSurfaceAt, coastalSurfaceHeight, coastalTriangleAt } from "./Coa
 import type { CoastalPoint, CoastalSurface } from "./CoastalCliff";
 import { coastalPathGeometry, coastalEntryGeometry } from "./CoastalPath";
 import { COASTAL_SITE, COASTAL_WALK_BOUNDARY } from "./CoastalSite";
-import { coastalRockObstacles } from "./CoastalScatter";
 import { HOUSE_JUMP, jumpBlockedAt } from "./HouseJump";
 import { lighthousePointAllowed, lighthouseSurfaceAt } from "./LighthouseWalking";
 import type { LighthouseSupport } from "./LighthouseWalking";
@@ -93,7 +92,6 @@ export function walkingPointAllowed(p: PlanPoint, radius: number = HOUSE_JUMP.pl
   const support = surface ?? walkingSurfaceAt(p.x, p.y, feet), l = COASTAL_SITE.lookoutSeat;
   if (!lighthousePointAllowed(p.x, p.y, radius, feet, support?.lighthouse ? support as LighthouseSupport : undefined)) return false;
   if (Math.abs(p.x - l.x) < 1 + radius && Math.abs(p.y - l.y) < .31 + radius) return false;
-  if (coastalRockObstacles().some(r => Math.hypot(p.x - r.x, p.y - r.y) < r.radius + radius)) return false;
   if (!support || support.normal.y < Math.cos(Math.PI / 6)) return false;
   // All of the player's footprint must have real land support, also at the cliff and map edges.
   for (const [dx, dy] of [[radius, 0], [-radius, 0], [0, radius], [0, -radius]])
