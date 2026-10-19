@@ -2,7 +2,7 @@ const assert = require('node:assert/strict'), {test} = require('node:test');
 const b = require('@babylonjs/core/pure');
 const load = require('../docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs');
 load('RoomRuntime').registerRoomRuntime();
-const {evaluateTimeOfDay: at} = load('RoomTimeOfDay');
+const {evaluateTimeOfDay: at, blendTimeOfDay: blend} = load('RoomTimeOfDay');
 const {RoomExterior} = load('RoomExterior'), {RoomLighting} = load('RoomLighting');
 const near = (a, z, epsilon = 1e-8) => assert.ok(Math.abs(a - z) < epsilon, `${a} != ${z}`);
 function setup(t) {
@@ -118,4 +118,25 @@ test('sky and sea bind the reflected eye in mirror passes and restore the real e
     assert.ok(eye.equals(camera.globalPosition));
     material.getEffect = getEffect;
   }
+});
+
+test('manual fades update natural shadow maps together, leave artificial caches intact and share the sky handoff', t => {
+  const {scene} = setup(t), exterior = new RoomExterior(scene), lights = new RoomLighting(scene, true);
+  lights.addLivingRoom(scene, true);
+  const artificial = lights.shadows.filter(shadow => !lights.natural.has(shadow.getLight()));
+  let artificialRefreshes = 0;
+  artificial.forEach(shadow => { shadow.getShadowMap().resetRefreshCounter = () => artificialRefreshes++; });
+  let naturalRefreshes = 0, exteriorRefreshes = 0;
+  for (const light of lights.natural.keys()) light.getShadowGenerator().getShadowMap().resetRefreshCounter = () => naturalRefreshes++;
+  exterior.shadow.getShadowMap().resetRefreshCounter = () => exteriorRefreshes++;
+  for (const reduced of [false, true]) for (const t of [.1, .49, .5, .51, .9, 1]) {
+    const state = blend(at(18), at(0), t, reduced);
+    lights.applyTimeOfDay(state); exterior.applyTimeOfDay(state);
+    near(exterior.sun.intensity, state.primary?.intensity || 0);
+    near(exterior.sky._floats.sunStrength, exterior.ocean.material._floats.sunStrength);
+    near(exterior.sky._floats.sunWarmth, exterior.ocean.material._floats.sunWarmth);
+    assert.deepEqual(exterior.sky._vectors3.skySunDirection, exterior.ocean.material._vectors3.skySunDirection);
+    if (t === .5) { assert.equal(exterior.sun.isEnabled(), false); assert.equal(exterior.ocean.material._floats.sunStrength, 0); }
+  }
+  assert.equal(artificialRefreshes, 0); assert.equal(naturalRefreshes, lights.natural.size * 12); assert.equal(exteriorRefreshes, 12);
 });

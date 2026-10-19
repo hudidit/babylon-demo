@@ -1,0 +1,668 @@
+{
+  "baseline": "5569564 + day-night phase3",
+  "fpsOrLoadTimeSampling": false,
+  "physicalDevicesTested": false,
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "desktop",
+      "collapsed": {
+        "time": {
+          "x": 32,
+          "y": 669,
+          "width": 134.75,
+          "height": 44
+        },
+        "views": {
+          "x": 32,
+          "y": 725,
+          "width": 953.21875,
+          "height": 49
+        },
+        "map": {
+          "x": 1046,
+          "y": 508.28125,
+          "width": 208,
+          "height": 265.71875
+        }
+      },
+      "panel": {
+        "x": 32,
+        "y": 268.8125,
+        "width": 288,
+        "height": 390.1875
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "visible",
+        "map": "visible"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "portrait",
+      "collapsed": {
+        "time": {
+          "x": 12,
+          "y": 727,
+          "width": 112.21875,
+          "height": 44
+        },
+        "views": {
+          "x": 12,
+          "y": 783,
+          "width": 366,
+          "height": 49
+        },
+        "map": {
+          "x": 232,
+          "y": 559.9375,
+          "width": 146,
+          "height": 202.0625
+        }
+      },
+      "panel": {
+        "x": 12,
+        "y": 387.8125,
+        "width": 288,
+        "height": 390.1875
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "hidden",
+        "map": "hidden"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 1,
+      "name": "landscape",
+      "collapsed": {
+        "time": {
+          "x": 32,
+          "y": 259,
+          "width": 134.75,
+          "height": 44
+        },
+        "views": {
+          "x": 32,
+          "y": 315,
+          "width": 554,
+          "height": 49
+        },
+        "map": {
+          "x": 686,
+          "y": 117.375,
+          "width": 132,
+          "height": 188.625
+        }
+      },
+      "panel": {
+        "x": 12,
+        "y": 90,
+        "width": 288,
+        "height": 234
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "hidden",
+        "map": "hidden"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "desktop",
+      "collapsed": {
+        "time": {
+          "x": 32,
+          "y": 669,
+          "width": 134.75,
+          "height": 44
+        },
+        "views": {
+          "x": 32,
+          "y": 725,
+          "width": 953.21875,
+          "height": 49
+        },
+        "map": {
+          "x": 1046,
+          "y": 508.28125,
+          "width": 208,
+          "height": 265.71875
+        }
+      },
+      "panel": {
+        "x": 32,
+        "y": 268.8125,
+        "width": 288,
+        "height": 390.1875
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "visible",
+        "map": "visible"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "portrait",
+      "collapsed": {
+        "time": {
+          "x": 12,
+          "y": 727,
+          "width": 112.21875,
+          "height": 44
+        },
+        "views": {
+          "x": 12,
+          "y": 783,
+          "width": 366,
+          "height": 49
+        },
+        "map": {
+          "x": 232,
+          "y": 559.9375,
+          "width": 146,
+          "height": 202.0625
+        }
+      },
+      "panel": {
+        "x": 12,
+        "y": 387.8125,
+        "width": 288,
+        "height": 390.1875
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "hidden",
+        "map": "hidden"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.82",
+      "dpr": 2,
+      "name": "landscape",
+      "collapsed": {
+        "time": {
+          "x": 32,
+          "y": 259,
+          "width": 134.75,
+          "height": 44
+        },
+        "views": {
+          "x": 32,
+          "y": 315,
+          "width": 554,
+          "height": 49
+        },
+        "map": {
+          "x": 686,
+          "y": 117.375,
+          "width": 132,
+          "height": 188.625
+        }
+      },
+      "panel": {
+        "x": 12,
+        "y": 90,
+        "width": 288,
+        "height": 234
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "hidden",
+        "map": "hidden"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "name": "desktop",
+      "collapsed": {
+        "time": {
+          "x": 32,
+          "y": 671,
+          "width": 134.078125,
+          "height": 44
+        },
+        "views": {
+          "x": 32,
+          "y": 727,
+          "width": 941.1875,
+          "height": 47
+        },
+        "map": {
+          "x": 1046,
+          "y": 510.28125,
+          "width": 208,
+          "height": 263.71875
+        }
+      },
+      "panel": {
+        "x": 32,
+        "y": 270.8125,
+        "width": 288,
+        "height": 390.1875
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "visible",
+        "map": "visible"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "name": "portrait",
+      "collapsed": {
+        "time": {
+          "x": 12,
+          "y": 729,
+          "width": 111.59375,
+          "height": 44
+        },
+        "views": {
+          "x": 12,
+          "y": 785,
+          "width": 366,
+          "height": 47
+        },
+        "map": {
+          "x": 232,
+          "y": 561.9375,
+          "width": 146,
+          "height": 200.0625
+        }
+      },
+      "panel": {
+        "x": 12,
+        "y": 387.8125,
+        "width": 288,
+        "height": 390.1875
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "hidden",
+        "map": "hidden"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "name": "landscape",
+      "collapsed": {
+        "time": {
+          "x": 32,
+          "y": 261,
+          "width": 134.078125,
+          "height": 44
+        },
+        "views": {
+          "x": 32,
+          "y": 317,
+          "width": 554,
+          "height": 47
+        },
+        "map": {
+          "x": 686,
+          "y": 119.375,
+          "width": 132,
+          "height": 186.625
+        }
+      },
+      "panel": {
+        "x": 12,
+        "y": 90,
+        "width": 288,
+        "height": 234
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "hidden",
+        "map": "hidden"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "name": "desktop",
+      "collapsed": {
+        "time": {
+          "x": 32,
+          "y": 671,
+          "width": 134.078125,
+          "height": 44
+        },
+        "views": {
+          "x": 32,
+          "y": 727,
+          "width": 941.1875,
+          "height": 47
+        },
+        "map": {
+          "x": 1046,
+          "y": 510.28125,
+          "width": 208,
+          "height": 263.71875
+        }
+      },
+      "panel": {
+        "x": 32,
+        "y": 270.8125,
+        "width": 288,
+        "height": 390.1875
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "visible",
+        "map": "visible"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "name": "portrait",
+      "collapsed": {
+        "time": {
+          "x": 12,
+          "y": 729,
+          "width": 111.59375,
+          "height": 44
+        },
+        "views": {
+          "x": 12,
+          "y": 785,
+          "width": 366,
+          "height": 47
+        },
+        "map": {
+          "x": 232,
+          "y": 561.9375,
+          "width": 146,
+          "height": 200.0625
+        }
+      },
+      "panel": {
+        "x": 12,
+        "y": 387.8125,
+        "width": 288,
+        "height": 390.1875
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "hidden",
+        "map": "hidden"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "name": "landscape",
+      "collapsed": {
+        "time": {
+          "x": 32,
+          "y": 261,
+          "width": 134.078125,
+          "height": 44
+        },
+        "views": {
+          "x": 32,
+          "y": 317,
+          "width": 554,
+          "height": 47
+        },
+        "map": {
+          "x": 686,
+          "y": 119.375,
+          "width": 132,
+          "height": 186.625
+        }
+      },
+      "panel": {
+        "x": 12,
+        "y": 90,
+        "width": 288,
+        "height": 234
+      },
+      "heights": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "alternatives": {
+        "views": "hidden",
+        "map": "hidden"
+      },
+      "resources": {
+        "textures": 148,
+        "lights": 17,
+        "cameras": 3,
+        "scaling": 1
+      },
+      "touch": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "passed": true
+}

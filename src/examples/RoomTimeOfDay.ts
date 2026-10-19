@@ -37,7 +37,7 @@ export interface TimeOfDaySnapshot {
   readonly moon: CelestialState;
   /** Null during the short twilight interval when both bodies are below the horizon. */
   readonly primary: CelestialState | null;
-  readonly sky: TimeOfDayPreset["sky"];
+  readonly sky: TimeOfDayPreset["sky"] & { readonly sunDirection?: TimeVector; readonly warmth?: number };
   readonly environment: TimeOfDayPreset["environment"];
 }
 
@@ -127,14 +127,93 @@ export function evaluateTimeOfDay(hour: number): TimeOfDaySnapshot {
       interior: lerp(a.environment.interior, b.environment.interior, t) }) });
 }
 
-/** Manual keyframe state. Smooth visual transitions and automatic clock belong to later stages. */
+const shortestAngle = (a: number, b: number) => {
+  const delta = ((b - a + 540) % 360) - 180;
+  return delta === -180 && b > a ? 180 : delta;
+};
+const warmth = (state: TimeOfDaySnapshot) => state.sky.warmth ?? Math.max(0, 1 - Math.abs(state.sun.elevation - 5) / 30);
+
+/** Blend displayed lighting directly, without playing the intervening hours. */
+export function blendTimeOfDay(from: TimeOfDaySnapshot, to: TimeOfDaySnapshot, t: number, reducedMotion = false): TimeOfDaySnapshot {
+  if (t <= 0) return from;
+  if (t >= 1) return to;
+  const fade = reducedMotion || from.primary?.kind !== to.primary?.kind;
+  const factor = t < .5 ? 1 - 2 * t : 2 * t - 1;
+  const body = (a: CelestialState, b: CelestialState): CelestialState => {
+    const endpoint = t < .5 ? a : b;
+    const azimuth = fade ? endpoint.azimuth : wrapTimeOfDay((a.azimuth + shortestAngle(a.azimuth, b.azimuth) * t) / 15) * 15;
+    const elevation = fade ? endpoint.elevation : lerp(a.elevation, b.elevation, t);
+    const strength = elevation <= 0 ? 0 : fade ? endpoint.strength * factor : lerp(a.strength, b.strength, t);
+    const sourceDirection = timeSourceDirection(azimuth, elevation);
+    return Object.freeze({ kind: a.kind, azimuth, elevation, strength, color: colorLerp(a.color, b.color, t),
+      sourceDirection, lightDirection: vector(-sourceDirection[0], -sourceDirection[1], -sourceDirection[2]),
+      intensity: NOON_LIGHT_INTENSITY * strength, enabled: strength > 0 });
+  };
+  const sun = body(from.sun, to.sun), moon = body(from.moon, to.moon);
+  const hour = wrapTimeOfDay(from.hour + shortestAngle(from.hour * 15, to.hour * 15) / 15 * t);
+  const period = TIME_OF_DAY_PRESETS[Math.floor(hour / 3)];
+  const skyDirection = (state: TimeOfDaySnapshot) => state.sky.sunDirection || state.sun.sourceDirection;
+  const a = skyDirection(from), b = skyDirection(to);
+  const azimuth = (v: TimeVector) => Math.atan2(v[0], -v[2]) * 180 / Math.PI;
+  const skySunDirection = reducedMotion ? (t < .5 ? a : b) : timeSourceDirection(
+    azimuth(a) + shortestAngle(azimuth(a), azimuth(b)) * t,
+    lerp(Math.asin(a[1]) * 180 / Math.PI, Math.asin(b[1]) * 180 / Math.PI, t));
+  return Object.freeze({ hour, periodHour: period.hour, periodName: period.name, sun, moon,
+    primary: sun.enabled ? sun : moon.enabled ? moon : null,
+    sky: Object.freeze({ zenith: colorLerp(from.sky.zenith, to.sky.zenith, t), horizon: colorLerp(from.sky.horizon, to.sky.horizon, t),
+      sunDirection: skySunDirection, warmth: reducedMotion ? warmth(t < .5 ? from : to) * factor : lerp(warmth(from), warmth(to), t) }),
+    environment: Object.freeze({ exterior: lerp(from.environment.exterior, to.environment.exterior, t),
+      interior: lerp(from.environment.interior, to.environment.interior, t) }) });
+}
+
+export const TIME_TRANSITION_SECONDS = 1.2;
+export const TIME_REDUCED_TRANSITION_SECONDS = .2;
+export const TIME_CYCLE_SECONDS = 24 * 60;
+
+/** Scene-local deterministic clock. Rendering and DOM events remain with their owners. */
 export class RoomTimeOfDay {
   private current = evaluateTimeOfDay(DEFAULT_TIME_OF_DAY);
+  private transition?: { from: TimeOfDaySnapshot; to: TimeOfDaySnapshot; elapsed: number; duration: number; reduced: boolean };
+  private automatic = false;
+  private skipDelta = true;
   get snapshot(): TimeOfDaySnapshot { return this.current; }
-  select(hour: number): TimeOfDaySnapshot {
+  get playback() { return Object.freeze({ automatic: this.automatic, transitioning: !!this.transition, targetHour: this.transition?.to.hour ?? null }); }
+  private node(hour: number) {
     const wrapped = wrapTimeOfDay(hour);
     if (!TIME_OF_DAY_PRESETS.some(p => p.hour === wrapped)) throw new RangeError("Select a three-hour scene time node");
-    if (wrapped !== this.current.hour) this.current = evaluateTimeOfDay(wrapped);
+    return wrapped;
+  }
+  select(hour: number): TimeOfDaySnapshot {
+    const wrapped = this.node(hour);
+    const wasTransitioning = !!this.transition;
+    this.automatic = false; this.transition = undefined; this.resetDelta();
+    if (wasTransitioning || wrapped !== this.current.hour) this.current = evaluateTimeOfDay(wrapped);
+    return this.current;
+  }
+  transitionTo(hour: number, reducedMotion = false) {
+    const wrapped = this.node(hour);
+    this.automatic = false;
+    if (this.transition?.to.hour === wrapped) return;
+    if (!this.transition && wrapped === this.current.hour) return;
+    // A retarget starts at the actual displayed snapshot, even halfway through a day/moon fade.
+    this.transition = { from: this.current, to: evaluateTimeOfDay(wrapped), elapsed: 0,
+      duration: reducedMotion ? TIME_REDUCED_TRANSITION_SECONDS : TIME_TRANSITION_SECONDS, reduced: reducedMotion };
+    this.skipDelta = false;
+  }
+  setAutomatic(enabled: boolean) { this.automatic = enabled; this.resetDelta(); }
+  resetDelta() { this.skipDelta = true; }
+  advance(delta: number, automaticPaused = false, transitionPaused = false): TimeOfDaySnapshot {
+    if (!Number.isFinite(delta) || delta < 0) return this.current;
+    if (this.skipDelta) { this.skipDelta = false; return this.current; }
+    const dt = Math.min(.1, delta);
+    if (this.transition) {
+      if (transitionPaused) return this.current;
+      const transition = this.transition;
+      transition.elapsed = Math.min(transition.duration, transition.elapsed + dt);
+      const t = transition.elapsed / transition.duration;
+      this.current = blendTimeOfDay(transition.from, transition.to, t * t * (3 - 2 * t), transition.reduced);
+      if (t >= 1 - 1e-10) { this.current = transition.to; this.transition = undefined; }
+    } else if (this.automatic && !automaticPaused && dt > 0) this.current = evaluateTimeOfDay(this.current.hour + dt * 24 / TIME_CYCLE_SECONDS);
     return this.current;
   }
 }

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <link rel="icon" href="data:," />
     <title>余晖小居 · 书房与客厅</title>
     <style>
@@ -169,6 +169,42 @@
         #floor-plan-room-sizes { grid-template-columns: 1fr; }
         .map-caption { padding: 8px 20px; }
       }
+      [hidden] { display: none !important; }
+      .scene-controls { position: fixed; left: 32px; bottom: 26px; z-index: 12; max-width: calc(100% - 290px); display: flex; flex-direction: column; align-items: flex-start; gap: 12px; pointer-events: none; }
+      .scene-controls .help { position: static; display: block; max-width: 100%; margin: 0; line-height: 1.7; color: #f1e9d9; text-shadow: 0 1px 4px #000; }
+      .scene-controls .view-controls { position: static; width: max-content; max-width: 100%; pointer-events: auto; }
+      #time-controls { pointer-events: auto; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+      #time-toggle { min-height: 44px; display: flex; align-items: center; gap: 10px; border: 1px solid #cbbca6; border-radius: 8px; color: #40392f; background: #eee5d5; padding: 9px 14px; font-size: 12px; box-shadow: 0 5px 25px #0003; }
+      #time-symbol { font-size: 22px; line-height: 1; color: #73503d; }
+      #time-toggle .time-chevron { font-size: 14px; }
+      #time-toggle[aria-expanded="true"] .time-chevron { transform: rotate(180deg); }
+      #time-menu { width: min(288px, calc(100vw - 24px)); max-height: 60vh; max-height: 60dvh; overflow-y: auto; overscroll-behavior: contain; color: #40392f; background: #eee5d5; border: 1px solid #cbbca6; padding: 12px; border-radius: 10px; box-shadow: 0 8px 32px #0005; }
+      .time-header { position: sticky; top: -12px; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: -12px -12px 12px; padding: 8px 8px 4px 14px; background: #eee5d5; }
+      .time-header h2 { margin: 0; font-size: 14px; font-weight: 500; }
+      #time-close { width: 44px; height: 44px; padding: 0; border: 0; border-radius: 6px; color: #56564b; background: transparent; font-size: 24px; }
+      .time-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+      .time-options button { position: relative; min-height: 44px; border: 1px solid #cbbca6; border-radius: 6px; color: #56564b; background: #f6f0e5; padding: 8px 18px 8px 8px; font-size: 11px; white-space: nowrap; text-align: left; font-variant-numeric: tabular-nums; }
+      .time-options button:hover, #time-close:hover { background: #dfd1bc; }
+      .time-options button[aria-checked="true"] { border-color: #73503d; background: #73503d; color: #fff2dd; }
+      .time-options button[aria-checked="true"]::after { content: "✓"; position: absolute; right: 6px; }
+      .time-auto { margin-top: 14px; padding-top: 12px; border-top: 1px solid #cbbca6; }
+      .time-auto label { display: flex; align-items: center; gap: 9px; min-height: 44px; font-size: 12px; cursor: pointer; }
+      #time-automatic { width: 18px; height: 18px; accent-color: #73503d; }
+      .time-auto p, #time-current { font-size: 11px; line-height: 1.6; color: #6b6051; margin: 4px 0 0; }
+      .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+      body.viewing-item .scene-controls, body.viewing-map .scene-controls { visibility: hidden; }
+      @media (max-width: 640px) {
+        .scene-controls { left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); max-width: none; }
+        .scene-controls .view-controls { width: 100%; }
+        .scene-controls .help { display: none; }
+        #time-toggle { max-width: calc(100vw - 182px); padding: 9px; gap: 6px; font-size: 11px; }
+        #floor-plan-toggle { right: max(12px, env(safe-area-inset-right)); }
+      }
+      @media (max-width: 640px), (max-height: 560px) {
+        body.time-menu-open #time-menu { position: fixed; left: max(12px, env(safe-area-inset-left)); bottom: calc(max(12px, env(safe-area-inset-bottom)) + 54px); }
+        body.time-menu-open #time-toggle { position: fixed; left: max(12px, env(safe-area-inset-left)); bottom: max(12px, env(safe-area-inset-bottom)); max-width: calc(100vw - 24px); }
+        body.time-menu-open .scene-controls .view-controls, body.time-menu-open #floor-plan-toggle, body.time-menu-open .help { visibility: hidden; }
+      }
     </style>
   </head>
   <body>
@@ -203,7 +239,6 @@
       </div>
       <button id="settings-reset">恢复默认</button>
     </section>
-    <div class="help" id="view-help">拖动旋转 · 滚轮缩放 · 右键平移</div>
     <div id="interaction-reticle" aria-hidden="true" hidden></div>
     <div id="interaction-hint" role="status" hidden></div>
     <dialog id="item-inspection" aria-labelledby="item-inspection-title">
@@ -250,6 +285,26 @@
         <footer class="map-caption"><span id="map-caption-scope">尺寸单位：米 · 全屋户型规划</span><span>拖动与移动已暂停 · 返回继续探索</span></footer>
       </div>
     </dialog>
+    <div class="scene-controls">
+      <div class="help" id="view-help">拖动旋转 · 滚轮缩放 · 右键平移 · T 调整时间</div>
+      <div id="time-controls">
+        <section id="time-menu" aria-labelledby="time-title" hidden>
+          <header class="time-header"><h2 id="time-title">场景时间</h2><button id="time-close" aria-label="收起时间菜单">×</button></header>
+          <div class="time-options" role="radiogroup" aria-label="每三小时的时间节点">
+            <button data-time-hour="0" role="radio" aria-checked="false" tabindex="-1">00:00 午夜</button>
+            <button data-time-hour="3" role="radio" aria-checked="false" tabindex="-1">03:00 后夜</button>
+            <button data-time-hour="6" role="radio" aria-checked="false" tabindex="-1">06:00 清晨</button>
+            <button data-time-hour="9" role="radio" aria-checked="false" tabindex="-1">09:00 上午</button>
+            <button data-time-hour="12" role="radio" aria-checked="true">12:00 正午</button>
+            <button data-time-hour="15" role="radio" aria-checked="false" tabindex="-1">15:00 午后</button>
+            <button data-time-hour="18" role="radio" aria-checked="false" tabindex="-1">18:00 黄昏</button>
+            <button data-time-hour="21" role="radio" aria-checked="false" tabindex="-1">21:00 入夜</button>
+          </div>
+          <div class="time-auto"><label><input id="time-automatic" type="checkbox" aria-describedby="time-auto-description" />自动流转</label><p id="time-auto-description">一天约 24 分钟 · 展开菜单时暂停</p><p id="time-current">当前 12:00 · 手动时间</p></div>
+        </section>
+        <button id="time-toggle" aria-expanded="false" aria-controls="time-menu"><span id="time-symbol" aria-hidden="true">☼</span><span id="time-label">12:00 正午</span><span class="time-chevron" aria-hidden="true">⌃</span></button>
+        <span id="time-announcement" class="sr-only" role="status" aria-live="polite"></span>
+      </div>
     <nav class="view-controls" aria-label="场景视角">
       <button data-view="overview" aria-pressed="true">全屋全景</button>
       <button data-view="study" aria-pressed="false">书房</button>
@@ -266,5 +321,6 @@
       <button data-view="cabinet" aria-pressed="false">藏书角</button>
       <button data-view="first-person" aria-pressed="false">第一人称</button>
     </nav>
+    </div>
   </body>
 </html>

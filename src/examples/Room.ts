@@ -37,6 +37,8 @@ import type { HouseRoomId } from "./HouseLayout";
 import { roomOwners, setRoomOwners } from "./RoomOwnership";
 import { RoomTimeOfDay, TIME_OF_DAY_VERSION } from "./RoomTimeOfDay";
 import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
+import { RoomPauseState } from "./RoomPauseState";
+import type { RoomPauseReason } from "./RoomPauseState";
 
 export type RoomView = "overview" | "coast" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 // The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
@@ -49,6 +51,10 @@ export class RoomScene {
   readonly audio = new RoomAudio();
   readonly rooms = new HouseRooms();
   private readonly timeState = new RoomTimeOfDay();
+  private readonly pauses = new RoomPauseState();
+  private timeVisualElapsed = 0;
+  onTimeOfDayChange: () => void = () => {};
+  onPauseChange: () => void = () => {};
   private readonly builds: Record<HouseRoomId, RoomBuild>;
   private readonly architecture: ReturnType<typeof createHouseArchitecture>;
   private readonly camera: ArcRotateCamera;
@@ -92,7 +98,7 @@ export class RoomScene {
     // Render at the display refresh rate; leave Engine.maxFPS uncapped for high-refresh screens.
     this.scene = new Scene(this.engine);
     this.scene.metadata = { layoutVersion: HOUSE_LAYOUT_VERSION,
-      timeOfDay: { version: TIME_OF_DAY_VERSION, stage: 2, visualApplied: false, state: this.timeOfDay } };
+      timeOfDay: { version: TIME_OF_DAY_VERSION, stage: 3, visualApplied: false, state: this.timeOfDay } };
     this.builds = HOUSE_ROOMS.reduce((all, r) => { all[r.id] = this.rooms.begin(r.id); return all; }, {} as Record<HouseRoomId, RoomBuild>);
     // The final image-processing pass expects a linear clear colour.
     this.scene.clearColor = new Color4(0.14, 0.17, 0.18, 1).toLinearSpace();
@@ -219,6 +225,7 @@ export class RoomScene {
     HOUSE_ROOMS.filter(r => !["study", "living"].includes(r.id)).forEach(r =>
       this.rooms.setState(this.builds[r.id], "ready"));
     this.scene.onBeforeRenderObservable.add(() => {
+      this.updateTimeOfDay(this.engine.getDeltaTime() / 1000);
       this.audio.update();
       if (!this.inspection.isOpen && this.scene.activeCamera === this.camera
         && this.architecture.updateCutaway(this.camera.position, this.camera.target)) {
@@ -279,23 +286,50 @@ export class RoomScene {
     document.querySelector("#item-inspection")!.addEventListener("cancel", this.cancelInspection);
     document.addEventListener("keydown", this.keyDown);
     document.addEventListener("keyup", this.keyUp);
-    window.addEventListener("blur", this.leaveFirstPerson);
+    window.addEventListener("blur", this.foregroundLost);
     window.addEventListener("blur", this.pauseAudio);
-    window.addEventListener("focus", this.resumeAudio);
+    window.addEventListener("focus", this.foregroundReturned);
     window.addEventListener("resize", this.resize);
     document.addEventListener("visibilitychange", this.visibilityChanged);
     window.addEventListener("pagehide", this.dispose, { once: true });
     this.visibilityChanged();
   }
 
-  /** Immediate keyframe selection; menu, visual transitions and automatic clock follow in stage three. */
+  /** Immediate selection remains available for callers; the menu uses transitionTimeOfDay. */
   get timeOfDay(): TimeOfDaySnapshot { return this.timeState.snapshot; }
+  get timePlayback() { return this.timeState.playback; }
   setTimeOfDay(hour: number): TimeOfDaySnapshot {
     if (this.disposed) return this.timeOfDay;
     const state = this.timeState.select(hour);
     this.applyTimeOfDay(state);
-    this.scene.metadata.timeOfDay.state = state;
+    this.notifyTimeOfDay();
     return state;
+  }
+  transitionTimeOfDay(hour: number, reducedMotion = false) {
+    if (this.disposed) return;
+    this.timeState.transitionTo(hour, reducedMotion);
+    this.notifyTimeOfDay();
+  }
+  setTimeAutomatic(enabled: boolean) {
+    if (this.disposed) return;
+    this.timeState.setAutomatic(enabled);
+    // Stopping between 10Hz batches must leave light, shadow and displayed clock in agreement.
+    if (!enabled) this.applyTimeOfDay(this.timeOfDay);
+    this.notifyTimeOfDay();
+  }
+  private updateTimeOfDay(delta: number) {
+    const before = this.timeOfDay, transitioning = this.timePlayback.transitioning;
+    const state = this.timeState.advance(delta, this.pauses.blocked, this.pauses.transitionBlocked);
+    if (state === before) return;
+    this.timeVisualElapsed += Math.min(.1, Math.max(0, delta));
+    if (transitioning || this.timeVisualElapsed >= .1 - 1e-10) {
+      this.applyTimeOfDay(state); this.timeVisualElapsed = 0;
+    }
+    this.notifyTimeOfDay();
+  }
+  private notifyTimeOfDay() {
+    Object.assign(this.scene.metadata.timeOfDay, { state: this.timeOfDay, playback: this.timePlayback, pauseReasons: this.pauseReasons });
+    this.onTimeOfDayChange();
   }
   private applyTimeOfDay(state: TimeOfDaySnapshot) {
     if (this.disposed) return;
@@ -378,7 +412,7 @@ export class RoomScene {
     this.camera.movement.resetPanVelocity();
     this.updateControls();
     const help = document.querySelector("#view-help");
-    const instructions = firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互";
+    const instructions = (firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互") + " · T 调整时间";
     if (help) help.textContent = instructions;
     this.canvas.setAttribute("aria-label", "余晖小居八房三维场景，" + instructions);
     this.updateInteractionHint();
@@ -623,10 +657,22 @@ export class RoomScene {
   }
 
   setControlsEnabled(enabled: boolean) {
-    this.controlsEnabled = enabled;
-    if (!enabled) { this.pauseScooter(); this.pauseLadder(); this.pointerLock.release(); }
+    this.setPaused("external", !enabled);
+  }
+  get pauseReasons() { return this.pauses.snapshot; }
+  setPaused(reason: RoomPauseReason, paused: boolean) {
+    if (this.disposed || !this.pauses.set(reason, paused)) return;
+    this.timeState.resetDelta();
+    this.controlsEnabled = !this.pauses.blocked;
+    if (paused && !this.timePlayback.transitioning) this.applyTimeOfDay(this.timeOfDay);
+    if (!this.controlsEnabled) {
+      this.pauseScooter(); this.pauseLadder(); this.jump.queued = false;
+      this.interactions.silenceMotion(); this.pointerLock.release();
+    }
     this.updateControls();
     this.updateInteractionHint();
+    this.notifyTimeOfDay();
+    this.onPauseChange();
   }
 
   private get isViewing() { return !!(this.inspection?.isOpen || this.floorPlan?.isOpen); }
@@ -641,6 +687,7 @@ export class RoomScene {
     this.updateFloorPlan();
     // Set modal state before releasing the lock so its change event cannot leave first-person.
     this.floorPlan.open();
+    this.setPaused("map", true);
     this.interactions.silenceMotion();
     this.audio.stopAll();
     this.pointerLock.release();
@@ -651,6 +698,7 @@ export class RoomScene {
   private closeFloorPlan(resumePointer: boolean) {
     if (!this.floorPlan.isOpen) return;
     this.floorPlan.close();
+    this.setPaused("map", false);
     this.updateControls();
     this.updateInteractionHint();
     if (this.currentView === "first-person") {
@@ -682,6 +730,7 @@ export class RoomScene {
 
   private openInspection(item: InspectableItem) {
     if (!this.controlsEnabled || this.isViewing || !this.inspection.open(item)) return;
+    this.setPaused("inspection", true);
     this.interactions.silenceMotion();
     this.audio.stopAll();
     this.audio.play("paper", "inspection");
@@ -700,6 +749,7 @@ export class RoomScene {
     this.audio.play("paper", "inspection");
     document.querySelector<HTMLDialogElement>("#item-inspection")!.close();
     document.body.classList.remove("viewing-item");
+    this.setPaused("inspection", false);
     this.updateControls();
     this.updateInteractionHint();
     this.canvas.focus({ preventScroll: true });
@@ -719,11 +769,12 @@ export class RoomScene {
   }
 
   private leaveFirstPerson = () => {
-    if (this.isViewing) return;
+    if (this.isViewing || this.pauses.blocked) return;
     if (this.currentView === "first-person") this.setView(this.previousView);
   };
 
   private keyDown = (event: KeyboardEvent) => {
+    if (event.defaultPrevented) return;
     if (event.isTrusted && !event.repeat && event.key === "Escape") { this.resumeAudio(); this.audio.unlockFromGesture(); }
     if (this.floorPlan.isOpen) {
       if (event.key === "Escape") { event.preventDefault(); this.closeFloorPlan(false); }
@@ -733,6 +784,7 @@ export class RoomScene {
       if (event.key === "Escape") this.cancelInspection(event);
       return;
     }
+    if (!this.controlsEnabled) return;
     if (!event.repeat && event.key.toLowerCase() === "m" && !event.ctrlKey && !event.metaKey && !event.altKey
       && !(event.target instanceof HTMLElement && event.target.matches("input, textarea, select, [contenteditable]"))) {
       event.preventDefault();
@@ -822,6 +874,7 @@ export class RoomScene {
         : inLighthouse
           ? `${lighthouseRegion} · 靠近垂直梯按 E 上下楼 · M 地图`
           : "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出";
+      if (help) help.textContent += " · T 调整时间";
     }
     const ladderTarget = firstPerson && this.pointerLocked && this.controlsEnabled && this.ladderTarget();
     const vehicle = firstPerson && this.pointerLocked && this.controlsEnabled && this.scooterTarget();
@@ -926,10 +979,13 @@ export class RoomScene {
     this.resizeInspection();
   };
   private visibilityChanged = () => {
+    this.setPaused("hidden", document.hidden);
     if (document.hidden) { this.pauseScooter(); this.pauseLadder(); this.pauseAudio(); } else this.resumeAudio();
     this.engine.stopRenderLoop(this.render);
     if (!document.hidden && !this.disposed) this.engine.runRenderLoop(this.render);
   };
+  private foregroundLost = () => { this.setPaused("blur", true); };
+  private foregroundReturned = () => { this.setPaused("blur", false); this.resumeAudio(); };
   private pauseAudio = () => { this.interactions.silenceMotion(); this.audio.pause(); };
   private resumeAudio = () => { if (!document.hidden && !this.disposed) this.audio.foreground(); };
   private dispose = () => {
@@ -951,15 +1007,16 @@ export class RoomScene {
     this.canvas.removeEventListener("pointercancel", this.pointerCancel);
     document.removeEventListener("keydown", this.keyDown);
     document.removeEventListener("keyup", this.keyUp);
-    window.removeEventListener("blur", this.leaveFirstPerson);
+    window.removeEventListener("blur", this.foregroundLost);
     window.removeEventListener("blur", this.pauseAudio);
-    window.removeEventListener("focus", this.resumeAudio);
+    window.removeEventListener("focus", this.foregroundReturned);
     window.removeEventListener("resize", this.resize);
     document.removeEventListener("visibilitychange", this.visibilityChanged);
     this.engine.stopRenderLoop();
     this.finishing.dispose();
     this.contactShadows?.dispose(true);
     this.scene.dispose();
+    this.onTimeOfDayChange = this.onPauseChange = () => {};
     this.engine.dispose();
   };
 }

@@ -1,5 +1,6 @@
 import { MOVEMENT_SPEED, RoomScene, RoomView } from "../examples/Room";
 import { AUDIO_DEFAULTS, AUDIO_STORAGE_KEY, audioPreferences } from "../examples/RoomAudioCatalog";
+import { RoomTimeMenu } from "./RoomTimeMenu";
 
 export class ExampleBasicScene {
   constructor() {
@@ -9,13 +10,22 @@ export class ExampleBasicScene {
     document.body.appendChild(canvas);
     const room = new RoomScene(canvas);
     const resetAudio = this.bindAudio(room);
-    this.bindSettings(room, resetAudio);
+    const setSettingsOpen = this.bindSettings(room, resetAudio);
+    new RoomTimeMenu(room, () => setSettingsOpen(false));
+    const events = new AbortController(), signal = events.signal;
+    room.scene.onDisposeObservable.addOnce(() => events.abort());
     document.querySelectorAll<HTMLButtonElement>("[data-view]").forEach(button => {
-      button.addEventListener("click", () => room.setView(button.dataset.view as RoomView));
+      button.addEventListener("click", () => room.setView(button.dataset.view as RoomView), { signal });
     });
     const inspect = document.querySelector<HTMLButtonElement>("#inspect-btn")!;
+    let inspectorLoading = false;
+    const observer = room.scene.onBeforeRenderObservable.add(() => {
+      if (!inspectorLoading) room.setPaused("inspector", !!room.scene.debugLayer.isVisible());
+    });
+    room.scene.onDisposeObservable.addOnce(() => room.scene.onBeforeRenderObservable.remove(observer));
     inspect.addEventListener("click", async () => {
       inspect.disabled = true;
+      inspectorLoading = true;
       try {
         if (room.scene.debugLayer.isVisible()) {
           room.scene.debugLayer.hide();
@@ -23,15 +33,19 @@ export class ExampleBasicScene {
           room.scene.render();
         }
         else {
-          room.setControlsEnabled(false);
+          room.setPaused("inspector", true);
           await import("@babylonjs/inspector");
+          if (room.scene.isDisposed) return;
           await room.scene.debugLayer.show({ overlay: true, embedMode: true, enablePopup: false });
         }
+      } catch (error) {
+        console.error("Inspector failed to open", error);
       } finally {
-        room.setControlsEnabled(document.querySelector<HTMLElement>("#settings-menu")!.hidden);
+        inspectorLoading = false;
+        room.setPaused("inspector", !room.scene.isDisposed && !!room.scene.debugLayer.isVisible());
         inspect.disabled = false;
       }
-    });
+    }, { signal });
   }
 
   private bindAudio(room: RoomScene) {
@@ -98,6 +112,8 @@ export class ExampleBasicScene {
   }
 
   private bindSettings(room: RoomScene, resetAudio: () => void) {
+    const events = new AbortController(), signal = events.signal;
+    room.scene.onDisposeObservable.addOnce(() => events.abort());
     const toggle = document.querySelector<HTMLButtonElement>("#settings-btn")!;
     const menu = document.querySelector<HTMLElement>("#settings-menu")!;
     const speed = document.querySelector<HTMLInputElement>("#movement-speed")!;
@@ -122,24 +138,26 @@ export class ExampleBasicScene {
     const setOpen = (open: boolean) => {
       menu.hidden = !open;
       toggle.setAttribute("aria-expanded", String(open));
-      room.setControlsEnabled(!open);
+      room.setPaused("settings", open);
       if (open) speed.focus();
     };
-    toggle.addEventListener("click", () => setOpen(menu.hidden));
+    toggle.addEventListener("click", () => setOpen(menu.hidden), { signal });
     document.querySelector("#settings-close")!.addEventListener("click", () => {
       setOpen(false);
       toggle.focus();
-    });
-    speed.addEventListener("input", () => saveSpeed(speed.valueAsNumber));
-    document.querySelector("#settings-reset")!.addEventListener("click", () => { saveSpeed(MOVEMENT_SPEED.default); resetAudio(); });
+    }, { signal });
+    speed.addEventListener("input", () => saveSpeed(speed.valueAsNumber), { signal });
+    document.querySelector("#settings-reset")!.addEventListener("click", () => { saveSpeed(MOVEMENT_SPEED.default); resetAudio(); }, { signal });
     document.addEventListener("pointerdown", event => {
       if (!menu.hidden && !menu.contains(event.target as Node) && !toggle.contains(event.target as Node)) setOpen(false);
-    });
+    }, { signal });
     document.addEventListener("keydown", event => {
       if (event.key === "Escape" && !menu.hidden) {
+        event.preventDefault(); event.stopImmediatePropagation();
         setOpen(false);
         toggle.focus();
       }
-    });
+    }, { capture: true, signal });
+    return setOpen;
   }
 }

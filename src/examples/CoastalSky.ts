@@ -37,11 +37,11 @@ export function applySkyTime(material: ShaderMaterial, state: TimeOfDaySnapshot)
   const body = state.primary;
   material.setVector3("skyHorizon", Vector3.FromArray(state.sky.horizon));
   material.setVector3("skyZenith", Vector3.FromArray(state.sky.zenith));
-  material.setVector3("skySunDirection", Vector3.FromArray(state.sun.sourceDirection));
+  material.setVector3("skySunDirection", Vector3.FromArray(state.sky.sunDirection || state.sun.sourceDirection));
   material.setVector3("sunDirection", body ? Vector3.FromArray(body.sourceDirection) : new Vector3(0, 1, 0));
   material.setVector3("sunColor", body ? Vector3.FromArray(body.color) : Vector3.Zero());
   material.setFloat("sunStrength", body?.strength || 0);
-  material.setFloat("sunWarmth", Math.max(0, 1 - Math.abs(state.sun.elevation - 5) / 30));
+  material.setFloat("sunWarmth", state.sky.warmth ?? Math.max(0, 1 - Math.abs(state.sun.elevation - 5) / 30));
 }
 
 export const skyTimeUniforms = ["skyHorizon", "skyZenith", "skySunDirection", "sunDirection", "sunColor", "sunStrength", "sunWarmth"];

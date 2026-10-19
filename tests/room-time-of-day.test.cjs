@@ -2,7 +2,8 @@ const assert = require('node:assert/strict');
 const {test} = require('node:test');
 const load = require('../docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs');
 const {TIME_OF_DAY_PRESETS: presets, RoomTimeOfDay, evaluateTimeOfDay: at, wrapTimeOfDay: wrap,
-  timeSourceDirection: direction} = load('RoomTimeOfDay');
+  timeSourceDirection: direction, blendTimeOfDay: blend} = load('RoomTimeOfDay');
+const {RoomPauseState} = load('RoomPauseState');
 const near = (actual, expected, epsilon = 1e-10) => assert.ok(Math.abs(actual - expected) < epsilon, `${actual} != ${expected}`);
 const distance = (a, b) => Math.hypot(...a.map((n, i) => n - b[i]));
 
@@ -90,4 +91,84 @@ test('invalid evaluation and angles fail explicitly instead of producing NaN lig
   near(distance(direction(0, 0), [0, 0, -1]), 0);
   near(distance(direction(90, 0), [1, 0, 0]), 0);
   near(distance(direction(270, 0), [-1, 0, 0]), 0);
+});
+
+test('manual fades change sun/moon direction only while dark and preserve direct-source exclusivity', () => {
+  for (const [a, b] of [[12, 0], [0, 6], [6, 18], [21, 3]]) for (const reduced of [false, true]) {
+    const from = at(a), to = at(b);
+    assert.equal(blend(from, to, 0, reduced), from); assert.equal(blend(from, to, 1, reduced), to);
+    for (let i = 1; i < 100; i++) {
+      const t = i / 100, state = blend(from, to, t, reduced);
+      assert.ok(!(state.sun.enabled && state.moon.enabled));
+      for (const body of [state.sun, state.moon]) {
+        near(Math.hypot(...body.sourceDirection), 1);
+        if (body.elevation <= 0) assert.equal(body.intensity, 0);
+      }
+      if (reduced || from.primary.kind !== to.primary.kind) {
+        if (state.primary) assert.deepEqual(state.primary.sourceDirection, (t < .5 ? from : to).primary.sourceDirection);
+        if (t === .5) assert.equal(state.primary, null);
+      }
+    }
+  }
+  near(blend(at(6), at(18), .5).sun.azimuth, 180);
+  near(blend(at(18), at(6), .5).sun.azimuth, 180);
+});
+
+test('manual transitions last 1.2 seconds, retarget the displayed state and reject invalid targets atomically', () => {
+  const clock = new RoomTimeOfDay(); clock.transitionTo(0);
+  for (let i = 0; i < 4; i++) clock.advance(.1, true);
+  const displayed = clock.snapshot;
+  assert.equal(clock.playback.targetHour, 0); assert.ok(displayed.environment.exterior < 1);
+  clock.transitionTo(6); assert.equal(clock.snapshot, displayed);
+  const playback = clock.playback;
+  for (const invalid of [7, NaN, null, '6']) {
+    assert.throws(() => clock.transitionTo(invalid), RangeError); assert.deepEqual(clock.playback, playback); assert.equal(clock.snapshot, displayed);
+  }
+  for (let i = 0; i < 11; i++) clock.advance(.1, true);
+  assert.equal(clock.playback.transitioning, true);
+  clock.advance(.1, true); assert.equal(clock.playback.transitioning, false); assert.equal(clock.snapshot.hour, 6);
+  clock.transitionTo(18, true); clock.advance(.1); assert.equal(clock.snapshot.primary, null);
+  clock.advance(.1); assert.equal(clock.playback.transitioning, false); assert.equal(clock.snapshot.hour, 18);
+});
+
+test('automatic time takes 24 real minutes, wraps midnight clockwise and manual selection stops it', () => {
+  const clock = new RoomTimeOfDay(); clock.select(21); clock.setAutomatic(true);
+  clock.advance(.1); // First resumed frame is deliberately ignored.
+  for (let i = 0; i < 1800; i++) clock.advance(.1);
+  assert.ok(Math.min(clock.snapshot.hour, 24 - clock.snapshot.hour) < 1e-9);
+  for (let i = 0; i < 1800; i++) clock.advance(.1);
+  near(clock.snapshot.hour, 3, 1e-8);
+  for (let i = 0; i < 10800; i++) clock.advance(.1);
+  near(clock.snapshot.hour, 21, 1e-8);
+  const current = clock.snapshot;
+  clock.setAutomatic(false); clock.advance(.1); clock.advance(.1); assert.equal(clock.snapshot, current);
+  clock.setAutomatic(true); clock.advance(.1); clock.advance(.1); assert.ok(clock.snapshot.hour > current.hour);
+  clock.transitionTo(12); assert.equal(clock.playback.automatic, false);
+});
+
+test('long frames and background restoration never catch up the clock, including invalid deltas', () => {
+  const clock = new RoomTimeOfDay(); clock.setAutomatic(true); clock.advance(3600);
+  assert.equal(clock.snapshot.hour, 12);
+  clock.advance(3600); near(clock.snapshot.hour, 12 + .1 / 60);
+  const before = clock.snapshot;
+  for (const delta of [NaN, Infinity, -1]) assert.equal(clock.advance(delta), before);
+  clock.advance(3600, true); assert.equal(clock.snapshot, before);
+  clock.resetDelta(); clock.advance(3600); assert.equal(clock.snapshot, before);
+  clock.advance(.05); near(clock.snapshot.hour, before.hour + .05 / 60);
+});
+
+test('overlapping pause owners resume independently; only the time menu allows a manual fade', () => {
+  const pauses = new RoomPauseState(), clock = new RoomTimeOfDay();
+  pauses.set('time-menu', true); pauses.set('settings', true); pauses.set('hidden', true);
+  assert.equal(pauses.set('hidden', true), false);
+  clock.transitionTo(0); clock.advance(.1, pauses.blocked, pauses.transitionBlocked);
+  assert.equal(clock.snapshot.hour, 12);
+  pauses.set('settings', false); assert.equal(pauses.blocked, true); assert.equal(pauses.transitionBlocked, true);
+  pauses.set('hidden', false); assert.equal(pauses.transitionBlocked, false);
+  for (let i = 0; i < 12; i++) clock.advance(.1, pauses.blocked, pauses.transitionBlocked);
+  assert.equal(clock.snapshot.hour, 0);
+  clock.setAutomatic(true); clock.advance(.1); clock.advance(.1, pauses.blocked); assert.equal(clock.snapshot.hour, 0);
+  assert.equal(Reflect.set(pauses.snapshot, '0', 'external'), false);
+  pauses.set('time-menu', false); assert.equal(pauses.blocked, false);
+  clock.resetDelta(); clock.advance(.1, pauses.blocked); clock.advance(.1, pauses.blocked); assert.ok(clock.snapshot.hour > 0);
 });
