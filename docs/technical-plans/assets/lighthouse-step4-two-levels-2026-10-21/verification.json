@@ -1,0 +1,252 @@
+{
+  "baseline": "384d919",
+  "node": "v24.21.0",
+  "playwright": "1.64.1",
+  "manifestSha256": "4d15798d7195bee5cb121087d2cf98cf7e58680f2738799e4801b3184d9e681f",
+  "checks": {
+    "tests": 279,
+    "pass": 279,
+    "fail": 0,
+    "typecheck": true,
+    "developmentBuild": true,
+    "productionBuildAndRelease": true,
+    "localMarkdownFiles": 11,
+    "localMarkdownLinks": 332,
+    "deployedDocumentationLinks": 3,
+    "gitDiffWhitespace": true
+  },
+  "browsers": [
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/browser/browser.json",
+      "sha256": "b242a03b3da82995a7717ac2ff3f4502c3c4c807d8ef0a6570405c169c5f8d44",
+      "browser": "155.0.8059.85",
+      "initialJsBytes": 3018610,
+      "passed": true
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/browser-subpath/browser.json",
+      "sha256": "7f4be33febaa8d04bd72006b8363297220fa7f7ef1c6dbf434be1c4ce5c9ada5",
+      "browser": "155.0.8059.85",
+      "initialJsBytes": 3018610,
+      "passed": true
+    }
+  ],
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "e12af6751100e864c89ef4cca329de637d85d2674eb122bee16db7097a75d673"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-18-lighthouse-interior.md",
+      "sha256": "7ec307a93a18838a0eb60d7f31d9e74e3746636e7e2f6d93cbe1342084cdfe58"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-19-lighthouse-interior-finish.md",
+      "sha256": "1a64d1c4a0aeb52f7e45a1408f31aa6461e6d187e2a33ef989b8eba36532de43"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-19-lighthouse-vertical-ladder.md",
+      "sha256": "089869d1b8d67ca9a87f8836f08aec1bbbc0153191235631283db1e713a177d6"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-20-lighthouse-focused-experience.md",
+      "sha256": "2f2cc1baf11f92b50889c9b3624f879eab841926cac4cee1fc1aa8b62e022103"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-20-lighthouse-operation-and-keeper-routine.md",
+      "sha256": "51a559486d1a57444a01e8437664bdc0c7de00f26f98c9010d46969f63eeb466"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-20-lighthouse-project-02-equipment-and-maintenance.md",
+      "sha256": "87524145736cdc0b951d362353a6a424c1c9d4af883a8fc6fe659c7e016d1b78"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-21-lighthouse-two-levels-and-save.md",
+      "sha256": "e7f51c187d81094732bc7a0a866a3f39fc4ad569016f100f05c6fafb58c42214"
+    },
+    {
+      "path": "docs/technical-plans/README.md",
+      "sha256": "7c47cc4b8f3e6235e150978751435a8c9cef7bc4f1ae76f8b7a0df63983c2eb8"
+    },
+    {
+      "path": "docs/technical-plans/assets/coastal-cliff-d-2026-10-18/serve-dist.py",
+      "sha256": "64ca8f4fcbcf4e5fa56c738120af214b5aac3c1326a939048f2176b85488c092"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/browser-harness.cjs",
+      "sha256": "518b9a3c58b355f453062977ebaca0633cf927cd410a90ed074490b0ec334f07"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs",
+      "sha256": "5b10dece56d4bd2092a49195bf179f56fe54541691f1118663131163036a69f6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/README.md",
+      "sha256": "5080e701d40959124ef8473b4c4c6c009fcb74c111794105f4fb71f2a73603c3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/bundle-analysis.json",
+      "sha256": "a31ed6e41bae3d53df510a0ad84c3ac8378a08270a4ff00012e7b7e152ac89a8"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/check-browser.cjs",
+      "sha256": "00aa2042956a30ab5931bccf290cc5d497cd0242d7775bbfa28930a67ff91d95"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/check-release.cjs",
+      "sha256": "9e9ce5b92adc30d045a45f6464db942438c74fa248acb14b33a1ea08b350d799"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/development.log",
+      "sha256": "5fe1fe0bd58b8c5494371d08da5f333f22e6d23185876bd4770f0485e34c5db0"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/production.log",
+      "sha256": "85bc82f04f2fe26becc2ea606302185cf74c1a2b5d2959944574a3e2f3d8ed2c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/release-manifest.json",
+      "sha256": "4d15798d7195bee5cb121087d2cf98cf7e58680f2738799e4801b3184d9e681f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/release.json",
+      "sha256": "b6dd600cd6e319d8d46d5fe17f449e7163a93954abebc86ba5d2d9a54ff1919e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/tests.log",
+      "sha256": "182b9ad9fe8918f5373188607cdd605041275af57e5eeb3fe3554a1df645c6d3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-step4-two-levels-2026-10-21/typecheck.log",
+      "sha256": "d51a4680b3af1d0fdf2ee16eb9cb547bf4524a74c0b1370c87a2d0d6690a8ec3"
+    },
+    {
+      "path": "public/STUDY_ASSET_SOURCES.md",
+      "sha256": "756a15e41aeb397a45c6b7eb4aeae11a16e1a3593e5f7720db2f3b8d9f964008"
+    },
+    {
+      "path": "public/environment/coastal-cliff-source.json",
+      "sha256": "ff875f4dc67c675b2b333745c08a45ebbfc4f5e36490ee5624c311fa54c1039e"
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "7bda9d83366ccfe224ab253b1b5b5f0fb8bd2d999894aa61d6332612264e05f4"
+    },
+    {
+      "path": "src/examples/CoastalLandmark.ts",
+      "sha256": "c8923a7366cd5305fadb066dc7b839767fb2431a75fc85dbfda1f33b306eae33"
+    },
+    {
+      "path": "src/examples/CoastalScooter.ts",
+      "sha256": "a3d7994cba957dfaaa9e1e9111579e3f4edf68a4c830596e0b67945ddac48aa0"
+    },
+    {
+      "path": "src/examples/CoastalSite.ts",
+      "sha256": "edb1a6fb8735b4c6726124afdebfab6ed5695e09b3c3b6afa3c94c32f8fa4110"
+    },
+    {
+      "path": "src/examples/LighthouseDetails.ts",
+      "sha256": "3a7af6858acc6c779153f6334ca19d052aa7476cae8b64a1de45d3c684d4fb41"
+    },
+    {
+      "path": "src/examples/LighthouseEquipmentLayout.ts",
+      "sha256": "787d093bbeb59e44164eef4e64de0a5b6def96bbf534b996f22277f90143ad46"
+    },
+    {
+      "path": "src/examples/LighthouseExperience.ts",
+      "sha256": "59d282e054caf5c37125bc7772df470f674d76c0e20b29d425769a632da4d53b"
+    },
+    {
+      "path": "src/examples/LighthouseInspection.ts",
+      "sha256": "0a6c6f396e95a9f2d774f343a56c570a829c908e870aa8c54180225a8cf3eed1"
+    },
+    {
+      "path": "src/examples/LighthouseInterior.ts",
+      "sha256": "c86b135d60616e3c375f1859f86c0b7a8d43b3a01f888728a8cdd2f71c25f0dc"
+    },
+    {
+      "path": "src/examples/LighthouseLayout.ts",
+      "sha256": "c254258b806d658b01953601f6a10e1ee12c055a81b62ec28cceed18f9fe8aac"
+    },
+    {
+      "path": "src/examples/LighthouseMaintenance.ts",
+      "sha256": "05fb7f18ce88ef33e33faf029998033b6e21d0ee82a41427fbd2d7719ac567e6"
+    },
+    {
+      "path": "src/examples/LighthouseMap.ts",
+      "sha256": "afbc74a5e2a4c12a6df5aa288ca31e3bfd347563485f44f503b2644e070784b1"
+    },
+    {
+      "path": "src/examples/LighthouseOperation.ts",
+      "sha256": "4091a6adac2f69986229f8bb2f3a1a8e35664376e70f48c0ffbeffc76603fb4b"
+    },
+    {
+      "path": "src/examples/LighthousePanel.ts",
+      "sha256": "907f39572ba7a7af733d65705d04686367903ce6ba542b453ef2eb54c35122dd"
+    },
+    {
+      "path": "src/examples/LighthousePower.ts",
+      "sha256": "b86596d5f5a7a6d1e9c3960a470ed4278e8c2b0282aa666b05a7f031092e3993"
+    },
+    {
+      "path": "src/examples/LighthouseRecords.ts",
+      "sha256": "01602fb6413b6400b64bf19d59227f95719a0de6b472172bafe2887b35b20c4b"
+    },
+    {
+      "path": "src/examples/LighthouseSave.ts",
+      "sha256": "b4be1a3ee08ea438edda9ee5188b7f8a797f71ade5785c7be90296043ad882d3"
+    },
+    {
+      "path": "src/examples/LighthouseSaveValidation.ts",
+      "sha256": "3f7920f6b31e981fbe93e0a8cbbf8e8b7ae3dd9897a9c1e3587acebdc95af96c"
+    },
+    {
+      "path": "src/examples/LighthouseWalking.ts",
+      "sha256": "55824154989aa2eab16b14cc57eb134f5ae762ba842fd668de63ad366e634a0e"
+    },
+    {
+      "path": "src/examples/Room.ts",
+      "sha256": "50c7945dc6f5cf553051882f7d293c27902973154ce20a9f516a1efebddffe5b"
+    },
+    {
+      "path": "src/examples/RoomFurnishings.ts",
+      "sha256": "f2438b649d87a332b99b2c22f77f69f45a6cdd4db8efd29d1c357222da7c2796"
+    },
+    {
+      "path": "src/examples/RoomInteractions.ts",
+      "sha256": "888f59bf760cda3db2141e876d2808a0d30a4a07dcb620ac4b0a4f5cc122e353"
+    },
+    {
+      "path": "src/examples/RoomTimeOfDay.ts",
+      "sha256": "7aa86569a46abf4d21577f87ff9064b164f41df83a57d74439100664c2f6f7c7"
+    },
+    {
+      "path": "tests/door-auto-close.test.cjs",
+      "sha256": "d57773191dcb0af7d4ecb54f180369838062b8d2c5d83f523a4e8311e2acc07b"
+    },
+    {
+      "path": "tests/lighthouse-equipment.test.cjs",
+      "sha256": "6285fdd378bd1c827fae0bd64c4a3e26af26f0ecce43daaa449a978d22a44a98"
+    },
+    {
+      "path": "tests/lighthouse-finish.test.cjs",
+      "sha256": "d45fc40911f6b7c7c5b550030539069fff371d27d211be8741d8ce29634a7c96"
+    },
+    {
+      "path": "tests/lighthouse-inspection.test.cjs",
+      "sha256": "73c51ad59ae148d788d8a4b35f0d7858d11dd1ce508c82f63b42ccdc3c74d66d"
+    },
+    {
+      "path": "tests/lighthouse-interior.test.cjs",
+      "sha256": "03abb5728ee80e5ec1274c62832c84ad52a3b8e8c6cb5719ae1075dedb75a7d4"
+    },
+    {
+      "path": "tests/lighthouse-ladder.test.cjs",
+      "sha256": "b6177f6685f346336180a4bd8ab5014e2da325a2fbf1cecaedde683facbd46ff"
+    },
+    {
+      "path": "tests/lighthouse-save.test.cjs",
+      "sha256": "dd0d21184e30b3a08ea51065523eb517e316466b4c7ac6859a84bd0b4b6e423f"
+    }
+  ]
+}

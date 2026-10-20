@@ -247,6 +247,11 @@
       .lighthouse-action { flex: 1; min-height: 46px; margin: 18px 0 0; padding: 10px 14px; border: 1px solid #cbc3a2; border-bottom: 4px solid #9d987d; border-radius: 3px; background: linear-gradient(#e3dcc1, #c9c8ab); color: #253b30; font-size: 13px !important; letter-spacing: 1px; box-shadow: 0 3px 5px #0004; }
       .lighthouse-action:active { transform: translateY(2px); border-bottom-width: 2px; box-shadow: none; }
       .lighthouse-action:disabled { opacity: .5; cursor: default; }
+      #lighthouse-save-controls { border-top: 1px solid #6d796155; margin-top: 18px; padding-top: 14px; }
+      .lighthouse-save-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+      .lighthouse-save-actions button { min-height: 40px; background: #202e29; color: #ded5b9; border: 1px solid #84917c; border-radius: 2px; padding: 8px 14px; font-size: 12px !important; }
+      .lighthouse-save-actions button:disabled { opacity: .4; cursor: default !important; }
+      #lighthouse-save-status { font-size: 11px; color: #b8c3ab; margin: 9px 0 0; }
       .lighthouse-footer { display: flex; justify-content: space-between; gap: 12px; margin: 21px 0 0; padding-top: 12px; border-top: 1px solid #6d796155; color: #9ea994; font-size: 10px; letter-spacing: 1px; }
       .lighthouse-screw { color: #b0b8a1; }
       #lighthouse-paper { position: relative; padding: 23px 25px 15px; color: #394b45; background: repeating-linear-gradient(0deg, #fff0 0 3px, #897e4510 3px 4px), #eee6cd; box-shadow: 1px 3px 0 #b9b49a, 3px 6px 0 #1a2724, inset 0 0 40px #ad8c3c12; }
@@ -360,7 +365,11 @@
           <div id="lighthouse-checks"><p id="lighthouse-round-summary"></p><ul id="lighthouse-checklist"></ul></div>
           <table aria-label="巡视与操作记录"><thead><tr><th scope="col">时间</th><th scope="col">项目</th><th scope="col">结果</th></tr></thead><tbody id="lighthouse-record-rows"></tbody></table>
           <div class="lighthouse-paper-pages"><button id="lighthouse-record-prev" aria-label="上一页记录">← 前页</button><span id="lighthouse-record-page"></span><button id="lighthouse-record-next" aria-label="下一页记录">后页 →</button></div>
-          <p class="lighthouse-paper-note">仅记本次会话，刷新重新开始。最近七日的记录留在此处。</p>
+          <p class="lighthouse-paper-note">记录保留最近七日；在首层保存后，可从这里继续值守。</p>
+        </section>
+        <section id="lighthouse-save-controls" aria-label="值守存档" hidden>
+          <div class="lighthouse-save-actions"><button id="lighthouse-save">保存值守</button><button id="lighthouse-continue" disabled>继续值守</button><button id="lighthouse-save-clear" hidden>清除异常存档</button></div>
+          <p id="lighthouse-save-status" role="status"></p>
         </section>
         <footer class="lighthouse-footer"><span><span class="lighthouse-screw">⊕</span> 灯站值守 / 现场记录</span><span>查看时暂停 · Esc 合上 <span class="lighthouse-screw">⊕</span></span></footer>
       </div>
@@ -403,7 +412,7 @@
             <p>灯塔高20米，距阳台约155米。途中可看海、回望房屋，塔前留有绕行与观景空间。塔后平台设有独立机房与太阳能架，首层右侧为电池配电柜；可近距点击设备或铭牌查看用途与投运状态。</p>
             <button id="coast-preview">查看海岸全景</button>
             <button id="coast-return-home">回到家门</button>
-            <p class="map-disclaimer">可沿步道往返、绕塔与途中停留，虚线对应护栏内的探索范围。灯塔五层已开放：首层配电面板的小开关控制工作照明，工作台后夹板可查看维护记录；二至四层临窗看海，顶层灯具日间待机。靠近垂直梯按 E / 左键抓梯，W/↑上爬、S/↓下爬，每层自动停稳；按 E 离梯，或松开后重新按上下键继续。顶层东南侧通往观景外廊，小电驴请停在塔外。</p>
+            <p class="map-disclaimer">可沿步道往返、绕塔与途中停留，虚线对应护栏内的探索范围。灯塔两层已开放：首层配电面板的小开关控制工作照明，工作台后夹板可查看维护记录；首层直达顶部灯室，灯具日间待机。靠近垂直梯按 E / 左键抓梯，W/↑上爬、S/↓下爬，每层自动停稳；按 E 离梯，或松开后重新按上下键继续。顶层东南侧通往观景外廊，小电驴请停在塔外。</p>
           </aside>
         </div>
         <footer class="map-caption"><span id="map-caption-scope">尺寸单位：米 · 全屋户型规划</span><span>拖动与移动已暂停 · 返回继续探索</span></footer>

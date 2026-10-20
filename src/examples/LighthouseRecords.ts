@@ -23,7 +23,7 @@ const glyphs: Record<string, string> = {
   ":":"00000/00100/00100/00000/00100/00100/00000","-":"00000/00000/00000/11111/00000/00000/00000",
 };
 export const LIGHTHOUSE_LOG = ["COASTAL LIGHT", "MAINTENANCE LOG", "STATUS - SEE PANEL", "CHECK LENS AND DRIVE", "CHECK COVER SURFACE",
-  "CHECK BEFORE SIGNING", "KEEP GALLERY CLEAR", "WORK LIGHT - SWITCH", "1 SERVICE  2-4 VIEW", "5 LANTERN - GALLERY", "FICTIONAL SCENE LOG"];
+  "CHECK BEFORE SIGNING", "KEEP GALLERY CLEAR", "WORK LIGHT - SWITCH", "1 SERVICE", "2 LANTERN - GALLERY", "FICTIONAL SCENE LOG"];
 export function lighthouseRecordPixels() {
   const width = 1024, height = 512, pixels = new Uint8Array(width * height * 4);
   for (let i = 0; i < pixels.length; i += 4) pixels.set([231, 222, 197, 255], i);
@@ -37,7 +37,7 @@ export function lighthouseRecordPixels() {
   };
   LIGHTHOUSE_LOG.forEach((line, i) => text(line, 30, 28 + i * 43, i === 0 ? 4 : 3));
   rect(30, 103, 450, 2, [153, 139, 108, 255]);
-  ["1 SERVICE", "2 VIEW", "3 VIEW", "4 VIEW", "5 GALLERY"].forEach((line, i) => {
+  ["1 SERVICE", "2 GALLERY"].forEach((line, i) => {
     rect(512, i * 96, 512, 92, [48, 68, 63, 255]);
     text(line, 538, i * 96 + 26, 5, [240, 227, 183, 255]);
   });

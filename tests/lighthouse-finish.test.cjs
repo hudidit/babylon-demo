@@ -21,17 +21,17 @@ test('panel switch and record are pickable at walking distance, are occluded by 
  interactions.addLamp(d.switch,()=>d.on,()=>d.toggle());let inspected;
  interactions.addInspectable(d.record,item=>inspected=item);
  const ray=(from,to)=>new b.Ray(from,to.subtract(from).normalize(),7.5);
- const sw=interactions.pick(ray(point(-.75,-.01,a.floor+1.39),point(-1.63,-.01,a.floor+1.39)));
+ const sw=interactions.pick(ray(point(-1.6,-.01,a.floor+1.39),point(a.furniture[0].x+.09,-.01,a.floor+1.39)));
  assert.match(sw.label(),/关闭/);sw.toggle();assert.equal(d.on,false);assert.equal(events.at(-1).cue,'switch');assert.equal(events.at(-1).entity,'lighthouse-work-light');assert.ok(events.at(-1).position().x<point(-1,-.01,a.floor).x);
- const log=interactions.pick(ray(point(.08,.8,a.floor+1.51),point(.08,1.998,a.floor+1.51)));assert.match(log.label(),/维护记录/);log.toggle();assert.equal(inspected,d.record);
+ const log=interactions.pick(ray(point(.08,a.furniture[1].y-1.1,a.floor+1.51),point(.08,a.furniture[1].y+.178,a.floor+1.51)));assert.match(log.label(),/维护记录/);log.toggle();assert.equal(inspected,d.record);
  assert.ok(d.record.mesh.getVerticesData(b.VertexBuffer.NormalKind)[2]<-.99,'printed face must face the viewer in the left-handed scene');
- assert.equal(interactions.pick(ray(point(.08,3,a.floor+1.51),point(.08,1.998,a.floor+1.51))),undefined,'masonry prevents reading from outside');
+ assert.equal(interactions.pick(ray(point(.08,4,a.floor+1.51),point(.08,a.furniture[1].y+.178,a.floor+1.51))),undefined,'masonry prevents reading from outside');
  const inspection=new(load('RoomItemInspection').RoomItemInspection)(scene);assert.ok(inspection.open(d.record));assert.equal(scene.getMeshByName('inspection-'+d.record.id).geometry,d.record.mesh.geometry);inspection.close();inspection.dispose();assert.ok(scene.textures.includes(d.record.mesh.material.albedoTexture));
 });
 
 test('record atlas is deterministic, floor map matches real heights and identifies climbs without changing floors',()=>{
  const {lighthouseRecordPixels:p,LIGHTHOUSE_LOG}=load('LighthouseRecords'),one=p(),two=p();assert.deepEqual(one.pixels,two.pixels);assert.equal(one.pixels.length,2*1024*1024);assert.match(LIGHTHOUSE_LOG.join(' '),/FICTIONAL SCENE LOG/);
- const {lighthouseLevelsSvg:svg,lighthouseMapState:state}=load('LighthouseMap');assert.equal((svg().match(/data-lighthouse-floor=/g)||[]).length,5);
+ const {lighthouseLevelsSvg:svg,lighthouseMapState:state}=load('LighthouseMap');assert.equal((svg().match(/data-lighthouse-floor=/g)||[]).length,2);
  for(const f of floors){assert.equal(state(f.height).floor,f.index);assert.match(svg(),new RegExp(f.height.toFixed(2)));}
  assert.equal(state(a.floor+1).visible,true);assert.equal(state(a.floor+1).floor,undefined);for(const h of [undefined,NaN,Infinity,0,99])assert.equal(state(h).visible,false);
 });

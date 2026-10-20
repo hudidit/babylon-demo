@@ -34,7 +34,7 @@ export function scooterSupport(p: ScooterPose) {
   if (![p.x, p.y, p.heading].every(Number.isFinite)) return undefined;
   const sample = (side: number, along: number) => {
     const q = scooterOffset(p, side, along), s = walkingSurfaceAt(q.x, q.y);
-    return Math.hypot(q.x - COASTAL_SITE.tower.x, q.y - COASTAL_SITE.tower.y) >= 3.555
+    return Math.hypot(q.x - COASTAL_SITE.tower.x, q.y - COASTAL_SITE.tower.y) >= COASTAL_SITE.tower.radius + .755
       && !(q.x > 10.65 && q.x < 12.3 && q.y > 3.7 && q.y < 5.6) && !houseRoomAt(q.x, q.y) && !lighthouseServiceRoomAt(q.x, q.y)
       && walkingPointAllowed(q, .055) && s && s.normal.y >= Math.cos(Math.PI / 10) ? s : undefined;
   };

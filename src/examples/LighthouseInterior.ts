@@ -15,17 +15,16 @@ export function createLighthouseInterior(scene: Scene, retain: (mesh: Mesh, laye
   const metal = material("coastal-painted-metal"), green = material("coastal-lighthouse-door"), wood = material("coastal-weathered-timber");
   const brass = material("coastal-lantern-brass"), b = new CoastalBatch(scene, retain);
   b.geometry("coastal-lighthouse-inner-wall", plaster, coastalTowerLining(a.wallThickness));
-  b.cylinder("coastal-lighthouse-ground-floor", stone, t.x, t.y, t.ground + .49, .05, 5.76, 5.76, 64);
-  b.geometry("coastal-lighthouse-level-floors", wood, lighthouseFloorGeometry(LIGHTHOUSE_FLOORS.slice(1, 4)));
-  b.geometry("coastal-lighthouse-level-deck", metal, lighthouseFloorGeometry([LIGHTHOUSE_FLOORS[4]]));
+  b.cylinder("coastal-lighthouse-ground-floor", stone, t.x, t.y, t.ground + .49, .05, LIGHTHOUSE_FLOORS[0].radius * 2, LIGHTHOUSE_FLOORS[0].radius * 2, 64);
+  b.geometry("coastal-lighthouse-level-deck", metal, lighthouseFloorGeometry([LIGHTHOUSE_FLOORS[1]]));
   b.geometry("coastal-lighthouse-level-cornice", plaster, lighthouseFloorGeometry([
-    { ...LIGHTHOUSE_FLOORS[4], height: a.gallery - .32, radius: 2.25, thickness: .2 }]));
+    { ...LIGHTHOUSE_FLOORS[1], height: a.gallery - .32, radius: 2.75, thickness: .2 }]));
   b.geometry("coastal-lighthouse-ladder-rails", metal, lighthouseLadderGeometry(false));
   b.geometry("coastal-lighthouse-ladder-rungs", brass, lighthouseLadderGeometry(true));
   b.geometry("coastal-lighthouse-level-guards", metal, lighthouseHoleGuards());
   for (const step of a.steps)
     b.box("coastal-lighthouse-entry-steps", stone, step.width, .16, step.depth, t.x, t.y + step.y, step.top - .08);
-  b.box("coastal-lighthouse-entry-steps", stone, a.entranceHalfWidth * 2, .18, .58, t.x, t.y - 2.56, a.floor - .09);
+  b.box("coastal-lighthouse-entry-steps", stone, a.entranceHalfWidth * 2, .18, .58, t.x, t.y + a.doorY + .17, a.floor - .09);
   for (const f of a.furniture) {
     if (f.id === "cabinet") {
       b.box("coastal-lighthouse-maintenance-cabinet", green, f.width, f.height, f.depth, t.x + f.x, t.y + f.y, a.floor + f.height / 2);
@@ -42,17 +41,17 @@ export function createLighthouseInterior(scene: Scene, retain: (mesh: Mesh, laye
   b.finish();
 
   const mount = new TransformNode("lighthouse-door-mount", scene), root = new TransformNode("lighthouse-entry-door", scene);
-  const origin = planToWorld({ x: t.x + .5, y: t.y + a.doorY }, a.floor + .02);
+  const origin = planToWorld({ x: t.x + a.entranceHalfWidth, y: t.y + a.doorY }, a.floor + .02);
   mount.position.set(origin.x, origin.y, origin.z); mount.rotation.y = -Math.PI / 2; root.parent = mount;
-  const parts: Mesh[] = [], width = u, height = 2.02 * u;
+  const parts: Mesh[] = [], width = a.entranceHalfWidth * 2 * u, height = 2.02 * u;
   const part = (name: string, w: number, h: number, d: number, x: number, y: number, z: number, m: PBRMaterial) => {
     const mesh = CreateBox(name, { width: w * u, height: h * u, depth: d * u }, scene);
     mesh.position.set(x * u, y * u, z * u); mesh.material = m; parts.push(mesh);
   };
-  part("coastal-lighthouse-entry-door", .055, height / u, 1, 0, height / u / 2, .5, green);
+  part("coastal-lighthouse-entry-door", .055, height / u, width / u, 0, height / u / 2, width / u / 2, green);
   for (const side of [-1, 1]) {
-    for (let i = 1; i < 7; i++) part("coastal-lighthouse-door-rib", .012, 1.88, .012, side * .034, 1.03, i / 7, metal);
-    part("coastal-lighthouse-door-handle", .065, .04, .16, side * .06, 1.02, .86, brass);
+    for (let i = 1; i < 7; i++) part("coastal-lighthouse-door-rib", .012, 1.88, .012, side * .034, 1.03, i / 7 * width / u, metal);
+    part("coastal-lighthouse-door-handle", .065, .04, .16, side * .06, 1.02, width / u - .14, brass);
   }
   const meshes = [green, metal, brass].map(material => {
     const group = parts.filter(p => p.material === material), mesh = Mesh.MergeMeshes(group, true, true)!;
@@ -61,5 +60,5 @@ export function createLighthouseInterior(scene: Scene, retain: (mesh: Mesh, laye
     mesh.metadata.movingLighthouseDoor = true; return mesh;
   });
   return { id: "lighthouse-entry-door", label: "灯塔入口门", root, meshes, width,
-    openAngle: -Math.PI / 2, walkerRadius: .26 * u + .08 };
+    autoCloseSeconds: 10, openAngle: Math.PI / 2, walkerRadius: .26 * u + .08 };
 }

@@ -1,9 +1,10 @@
+import {saveFields, saveObject, saveNumber, saveDay, saveHour, saveBoolean, saveEnum, saveArray, saveOptional, saveText, saveRevision, savedEventOrder} from "./LighthouseSaveValidation";
 import { LIGHTHOUSE_OPERATION } from "./LighthouseOperation";
 import type { LighthouseOperationSnapshot } from "./LighthouseOperation";
 import type { TimeOfDayAdvance } from "./RoomTimeOfDay";
 
 export const LIGHTHOUSE_INSPECTION = Object.freeze({ observationSeconds: 10, cleaningSeconds: 1.5,
-  dirtyTransmission: .82, coverId: "lighthouse-optics-cleaning", retainedDays: 7 });
+  dirtyTransmission: .82, coverId: "lighthouse-optics-cleaning", retainedDays: 7, maintenanceDays: 3 });
 export type LighthouseCheckId = "check-control" | "check-optic" | "check-cover";
 export type LighthouseCheckStatus = "pending" | "dirty" | "awaiting-recheck" | "complete";
 export interface LighthouseEvidence {
@@ -11,7 +12,7 @@ export interface LighthouseEvidence {
 }
 export interface LighthouseInspectionEvent extends LighthouseEvidence {
   readonly id: number; readonly objectId: string; readonly kind: "observation" | "action" | "system";
-  readonly type: "control-read" | "optic-observed" | "cover-observed" | "cleaning-started" | "cleaning-cancelled" | "cover-cleaned" | "duty-day-started" | "equipment-changed";
+  readonly type: "control-read" | "optic-observed" | "cover-observed" | "cleaning-started" | "cleaning-cancelled" | "cover-cleaned" | "duty-day-started" | "equipment-changed" | "maintenance-due";
   readonly source: "local-panel" | "direct-view" | "active-action" | "automatic-clock";
 }
 export interface LighthouseDaySummary {
@@ -22,6 +23,7 @@ export interface LighthouseInspectionSnapshot {
   readonly dutyDay: number;
   readonly checks: Readonly<Record<LighthouseCheckId, LighthouseCheckStatus>>;
   readonly control?: LighthouseEvidence; readonly optic?: LighthouseEvidence; readonly coverEvidence?: LighthouseEvidence;
+  readonly nextMaintenanceDay: number;
   readonly dirty: boolean; readonly coverRevision: number; readonly transmission: number;
   readonly observationSeconds: number; readonly observedTurns: number; readonly outputSeen: boolean;
   readonly cleaning: boolean; readonly cleaningSeconds: number; readonly notice: string;
@@ -35,6 +37,7 @@ export class LighthouseInspection {
   private dutyDay = 1;
   private dirty = true;
   private revision = 0;
+  private nextMaintenanceDay = 4;
   private control?: LighthouseEvidence;
   private optic?: LighthouseEvidence;
   private cover?: LighthouseEvidence;
@@ -52,6 +55,29 @@ export class LighthouseInspection {
 
   constructor() { this.publish(); }
   get snapshot() { return this.current; }
+  exportState() {return saveFields(this, ["dutyDay", "dirty", "revision", "control", "optic", "cover", "coverStatus", "nextMaintenanceDay", "events", "history", "nextId"]);}
+  static fromSave(value: unknown) {
+    const status = saveEnum("pending", "dirty", "awaiting-recheck", "complete"), checks = saveObject({"check-control": status, "check-optic": status, "check-cover": status});
+    const evidence = saveObject({dutyDay: saveDay, hour: saveHour, result: saveText(), revision: saveOptional(saveRevision)});
+    const s = saveObject({dutyDay: saveDay, dirty: saveBoolean, revision: saveRevision, control: saveOptional(evidence), optic: saveOptional(evidence), cover: saveOptional(evidence),
+      coverStatus: status, nextMaintenanceDay: saveDay, nextId: saveDay,
+      history: saveArray(saveObject({dutyDay: saveDay, checks, completed: saveBoolean}), 6),
+      events: saveArray(saveObject({dutyDay: saveDay, hour: saveHour, result: saveText(), revision: saveOptional(saveRevision), id: saveDay,
+        objectId: saveEnum("lighthouse-control-panel", "lighthouse-beacon-main", "lighthouse-optics-cleaning", "lighthouse-maintenance-log"),
+        kind: saveEnum("observation", "action", "system"), type: saveEnum("control-read", "optic-observed", "cover-observed", "cleaning-started", "cleaning-cancelled", "cover-cleaned", "duty-day-started", "equipment-changed", "maintenance-due"),
+        source: saveEnum("local-panel", "direct-view", "active-action", "automatic-clock")}))})(value);
+    const current = [s.control, s.optic, s.cover].filter(Boolean);
+    if (current.some(e => e.dutyDay !== s.dutyDay || e.revision > s.revision) || s.coverStatus === "complete" && (s.dirty || s.cover?.revision !== s.revision)
+      || s.coverStatus === "dirty" && !s.dirty || s.coverStatus === "awaiting-recheck" && (s.dirty || !s.cover || s.cover.revision >= s.revision)
+      || !s.dirty && s.nextMaintenanceDay <= s.dutyDay || s.nextId < savedEventOrder(s.events)
+      || s.events.some(e => e.dutyDay > s.dutyDay || e.dutyDay <= s.dutyDay - 7 || e.revision > s.revision)
+      || s.history.some((d, index) => d.dutyDay >= s.dutyDay || d.dutyDay <= s.dutyDay - 7 || index > 0 && d.dutyDay <= s.history[index-1].dutyDay
+        || d.completed !== Object.values(d.checks).every(v => v === "complete"))) throw new Error("Invalid saved inspection evidence");
+    const model = new LighthouseInspection();
+    model.dutyDay=s.dutyDay; model.dirty=s.dirty; model.revision=s.revision; model.control=s.control; model.optic=s.optic; model.cover=s.cover;
+    model.coverStatus=s.coverStatus; model.nextMaintenanceDay=s.nextMaintenanceDay; model.events=s.events; model.history=s.history; model.nextId=s.nextId;
+    model.publish(); return model;
+  }
   invalidateMain(op: LighthouseOperationSnapshot) {
     this.control = this.optic = undefined; this.resetObservation();
     this.record(op, "lighthouse-beacon-main", "system", "equipment-changed", "active-action", "驱动或供电隔离状态变化，旧读数/周期仅作历史；重新现场确认。");
@@ -72,6 +98,12 @@ export class LighthouseInspection {
       this.resetObservation();
       this.record({...op, hour: 0}, "lighthouse-maintenance-log", "system", "duty-day-started", "automatic-clock", "新值守日：三项检查待确认，表面状态保留");
       this.notice = "新值守日已建立三项检查，表面状态保留。"; this.publish();
+    }
+    if (op.dutyDay >= this.nextMaintenanceDay && !this.dirty) {
+      this.cancelCleaning(op, "例行维护到期，重新检查保护面。");
+      this.dirty = true; this.revision++; this.cover = undefined; this.coverStatus = "pending";
+      this.record(op, LIGHTHOUSE_INSPECTION.coverId, "system", "maintenance-due", "automatic-clock", "保护面例行清洁到期，请现场检查并擦拭复查。", this.revision);
+      this.notice = "保护面例行清洁到期。"; this.publish();
     }
     if (this.cleaning && !LighthouseInspection.canClean(op)) this.cancelCleaning(op, "设备已运行，清洁中断；盐膜保持原状。");
     if (!op.running && !this.optic && this.seconds > 0) {this.resetObservation(); this.publish();}
@@ -117,7 +149,7 @@ export class LighthouseInspection {
         if (this.cleanSeconds >= LIGHTHOUSE_INSPECTION.cleaningSeconds - EPS) {
           // Revalidate at commit, rather than treating elapsed time as permission to touch a running optic.
           if (LighthouseInspection.canClean(op) && sight.cover) {
-            this.dirty = false; this.revision++; this.cleaning = false; this.cleanSeconds = 0;
+            this.dirty = false; this.revision++; this.nextMaintenanceDay = op.dutyDay + LIGHTHOUSE_INSPECTION.maintenanceDays; this.cleaning = false; this.cleanSeconds = 0;
             this.coverStatus = "awaiting-recheck"; this.notice = "擦拭完成。请再次查看保护面并复查。";
             this.record(op, LIGHTHOUSE_INSPECTION.coverId, "action", "cover-cleaned", "active-action", "盐膜已清除，待复查", this.revision);
           }
@@ -156,7 +188,7 @@ export class LighthouseInspection {
   private publish() {
     const summary = this.summary();
     this.current = Object.freeze({...summary, control: this.control, optic: this.optic, coverEvidence: this.cover,
-      dirty: this.dirty, coverRevision: this.revision, transmission: this.dirty ? LIGHTHOUSE_INSPECTION.dirtyTransmission : 1,
+      nextMaintenanceDay: this.nextMaintenanceDay, dirty: this.dirty, coverRevision: this.revision, transmission: this.dirty ? LIGHTHOUSE_INSPECTION.dirtyTransmission : 1,
       observationSeconds: this.seconds, observedTurns: this.turns, outputSeen: this.outputSeen,
       cleaning: this.cleaning, cleaningSeconds: this.cleanSeconds, notice: this.notice,
       days: Object.freeze([...this.history, summary]), events: this.events});

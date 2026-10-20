@@ -8,28 +8,24 @@ export const LIGHTHOUSE_WINDOWS = Object.freeze([
 ]);
 const tower = COASTAL_SITE.tower;
 export const LIGHTHOUSE = Object.freeze({
-  wallThickness: .28, floor: tower.ground + .54, entranceHalfWidth: .48, doorY: -2.73,
+  wallThickness: .28, floor: tower.ground + .54, entranceHalfWidth: .6, doorY: -tower.radius + .07,
+  plinthRadius: tower.radius + .7, lanternRadius: 2, galleryRadius: 3.35, railingRadius: 3.19,
   gallery: tower.ground + 16.64, exitPanel: 1,
-  ladder: Object.freeze({ x: -.8, y: .42, width: .66, climbY: .05, landingY: -.95,
-    minX: -1.35, maxX: -.25, minY: -.6, maxY: .6, speed: 1.6 }),
+  ladder: Object.freeze({ x: -1.1, y: .42, width: .66, climbY: .05, landingY: -.95,
+    minX: -1.65, maxX: -.55, minY: -.6, maxY: .6, speed: 1.6 }),
   furniture: Object.freeze([
-    Object.freeze({ id: "cabinet", x: -1.72, y: .1, width: .54, depth: .9, height: 1.15 }),
-    Object.freeze({ id: "workbench", x: .25, y: 1.82, width: 1.35, depth: .45, height: .87 }),
+    Object.freeze({ id: "cabinet", x: -2.55, y: .1, width: .54, depth: .9, height: 1.15 }),
+    Object.freeze({ id: "workbench", x: .25, y: 2.55, width: 1.35, depth: .45, height: .87 }),
   ]),
   steps: Object.freeze([
-    Object.freeze({ y: -3.15, width: 1.5, depth: .45, top: tower.ground + .20 }),
-    Object.freeze({ y: -2.98, width: 1.3, depth: .45, top: tower.ground + .36 }),
+    Object.freeze({ y: -tower.radius - .35, width: 1.9, depth: .45, top: tower.ground + .20 }),
+    Object.freeze({ y: -tower.radius - .18, width: 1.7, depth: .45, top: tower.ground + .36 }),
   ]),
 });
 export interface LighthouseFloor { index: number; label: string; height: number; radius: number; thickness: number; hole: boolean; }
-const floorRadius = (height: number) => tower.radius - (height - tower.ground - .49) / 15.85 * .8 - LIGHTHOUSE.wallThickness + .015;
 export const LIGHTHOUSE_FLOORS: readonly LighthouseFloor[] = Object.freeze([
-  { index: 0, label: "首层维护室", height: LIGHTHOUSE.floor, radius: 2.88, thickness: .05, hole: false },
-  ...LIGHTHOUSE_WINDOWS.map((w, i) => {
-    const height = tower.ground + .49 + w.bottom - .9;
-    return { index: i + 1, label: ["二层观景室", "三层观景室", "四层观景室"][i], height, radius: floorRadius(height), thickness: .16, hole: true };
-  }),
-  { index: 4, label: "顶层灯室", height: LIGHTHOUSE.gallery, radius: 3, thickness: .30, hole: true },
+  { index: 0, label: "首层维护室", height: LIGHTHOUSE.floor, radius: tower.radius + .08, thickness: .05, hole: false },
+  { index: 1, label: "顶层灯室", height: LIGHTHOUSE.gallery, radius: LIGHTHOUSE.galleryRadius, thickness: .30, hole: true },
 ].map(f => Object.freeze(f)));
 
 export function lighthouseInnerRadius(angle: number, height = 0) {
@@ -49,7 +45,7 @@ export function lighthouseFloorAt(x: number, y: number, floor: LighthouseFloor) 
 export function lighthouseGroundAt(x: number, y: number) {
   const dx = x - tower.x, dy = y - tower.y;
   if (Math.hypot(dx, dy) <= lighthouseInnerRadius(Math.atan2(dy, dx))) return { height: LIGHTHOUSE.floor, inside: true };
-  if (Math.abs(dx) <= LIGHTHOUSE.entranceHalfWidth && dy >= -2.84 && dy <= -2.3) return { height: LIGHTHOUSE.floor, inside: false };
+  if (Math.abs(dx) <= LIGHTHOUSE.entranceHalfWidth && dy >= -tower.radius - .04 && dy <= -tower.radius + .5) return { height: LIGHTHOUSE.floor, inside: false };
   let top: number | undefined;
   for (const step of LIGHTHOUSE.steps)
     if (Math.abs(dx) <= step.width / 2 && Math.abs(dy - step.y) <= step.depth / 2) top = Math.max(top ?? -Infinity, step.top);

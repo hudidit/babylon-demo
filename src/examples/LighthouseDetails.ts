@@ -33,7 +33,7 @@ export class LighthouseDetails {
   private readonly visibilityChanged = () => this.update();
 
   constructor(private readonly scene: Scene, surfaces: CoastalMaterials, retain: (mesh: Mesh, layer: "landmark") => Mesh) {
-    const t = COASTAL_SITE.tower, a = LIGHTHOUSE, b = new CoastalBatch(scene, (mesh, layer) => {
+    const t = COASTAL_SITE.tower, a = LIGHTHOUSE, cab = a.furniture[0], bench = a.furniture[1], b = new CoastalBatch(scene, (mesh, layer) => {
       retain(mesh, layer as "landmark"); mesh.metadata.lighthouseDetail = true; return mesh;
     });
     const m = (name: string) => scene.getMaterialByName(name) as PBRMaterial;
@@ -55,24 +55,24 @@ export class LighthouseDetails {
       b.geometry("coastal-lighthouse-detail-" + name, paper, {positions:p,indices:[0,1,2,0,2,3],uvs:uv});
     };
     // All low projections remain inside the existing cabinet/workbench footprints.
-    box("cabinet-joinery", metal, .018, .96, .014, -1.438, .1, a.floor+.59);
-    box("distribution-panel", green, .08, .64, .48, -1.69, .1, a.floor+1.55);
-    for (const y of [-.06,.09,.24]) box("panel-hardware", brass, .018, .06, .055, -1.64, y, a.floor+1.56);
-    box("work-switch", metal, .035, .15, .10, -1.63, -.01, a.floor+1.39);
-    box("toolboard", wood, .54, .47, .035, .74, 1.98, a.floor+1.43);
+    box("cabinet-joinery", metal, .018, .96, .014, cab.x + .282, cab.y, a.floor+.59);
+    box("distribution-panel", green, .08, .64, .48, cab.x + .03, cab.y, a.floor+1.55);
+    for (const y of [-.06,.09,.24]) box("panel-hardware", brass, .018, .06, .055, cab.x + .08, y, a.floor+1.56);
+    box("work-switch", metal, .035, .15, .10, cab.x + .09, -.01, a.floor+1.39);
+    box("toolboard", wood, .54, .47, .035, .74, bench.y + .16, a.floor+1.43);
     for (const [x,w] of [[.56,.035],[.72,.028],[.9,.025]]) {
-      box("tools", brass, w, .23, .025, x, 1.95, a.floor+1.43);
-      box("tools", metal, .09, .05, .025, x, 1.94, a.floor+1.55);
+      box("tools", brass, w, .23, .025, x, bench.y + .13, a.floor+1.43);
+      box("tools", metal, .09, .05, .025, x, bench.y + .12, a.floor+1.55);
     }
-    cylinder("cable-reel", wood, -.1, 1.82, a.floor+.87, .04, .25);
-    cylinder("cable-reel", metal, -.1, 1.82, a.floor+.91, .12, .18);
-    cylinder("cable-reel", wood, -.1, 1.82, a.floor+1.03, .035, .25);
-    box("clipboard", wood, .53, .77, .035, .08, 2.02, a.floor+1.51);
-    print("maintenance-record", .08, 1.998, a.floor+1.155, .48, .70, [0,1,.5,1,.5,0,0,0]);
-    box("tools", brass, .17, .045, .03, .08, 1.977, a.floor+1.88);
+    cylinder("cable-reel", wood, -.1, bench.y, a.floor+.87, .04, .25);
+    cylinder("cable-reel", metal, -.1, bench.y, a.floor+.91, .12, .18);
+    cylinder("cable-reel", wood, -.1, bench.y, a.floor+1.03, .035, .25);
+    box("clipboard", wood, .53, .77, .035, .08, bench.y + .2, a.floor+1.51);
+    print("maintenance-record", .08, bench.y + .178, a.floor+1.155, .48, .70, [0,1,.5,1,.5,0,0,0]);
+    box("tools", brass, .17, .045, .03, .08, bench.y + .157, a.floor+1.88);
     for (const f of LIGHTHOUSE_FLOORS) {
       // The signs face the clear ladder landing, above the handrail and outside the well.
-      const y = f.index === 4 ? 1.38 : Math.min(1.78, f.radius-.28);
+      const y = f.index === 1 ? 1.57 : Math.min(2.5, f.radius-.28);
       const signBottom = f.height + (f.index === 0 ? 2.12 : 1.56);
       box("sign-backs", metal, .78, .18, .035, .05, y, signBottom+.08);
       print("floor-signs", .05, y-.021, signBottom, .74, .14, [.5,(f.index*96+92)/512,1,(f.index*96+92)/512,1,f.index*96/512,.5,f.index*96/512]);

@@ -9,9 +9,9 @@ export const LIGHTHOUSE_SERVICE_ROOM = Object.freeze({ x: -5.1, y: 5.9, width: 2
   floor: plaza, clearHeight: 2.25, wall: .12, doorway: .96 });
 export const LIGHTHOUSE_SOLAR_RACK = Object.freeze({ x: 4.8, y: 5.8, width: 2.8, depth: 1.6,
   floor: plaza, low: .7, rise: .9 });
-export const LIGHTHOUSE_BACKUP_MOUNT = Object.freeze({ x: 3.5, y: 0, rootX: 1.57,
+export const LIGHTHOUSE_BACKUP_MOUNT = Object.freeze({ x: 3.85, y: 0, rootX: 1.82,
   bracketBottom: gallery + 2.04, mastBottom: gallery + 2.14, housingBottom: gallery + 3.51, lensBottom: gallery + 3.63, lensHeight: .32 });
-export const LIGHTHOUSE_SENSOR = Object.freeze({x: 1.56, y: -.5, bottom: gallery + 1.43, width: .1, depth: .14, height: .18});
+export const LIGHTHOUSE_SENSOR = Object.freeze({x: 1.82, y: -.5, bottom: gallery + 1.43, width: .1, depth: .14, height: .18});
 
 /** Stable identities and service positions shared by geometry, picking and maintenance. */
 export const LIGHTHOUSE_EQUIPMENT = Object.freeze(([
@@ -22,15 +22,15 @@ export const LIGHTHOUSE_EQUIPMENT = Object.freeze(([
   { id: "lighthouse-beacon-backup", parent: "lighthouse-beacon-backup", label: "独立备用导航灯", place: "灯室外 · 高位独立支架", floor: gallery,
     lines: ["BACKUP", "WHITE FL 10S"], purpose: "高于塔顶的独立备用灯头，白闪10秒一周期、亮0.8秒，360度临时降级覆盖。",
     guide: "主灯不可用时自动接替，日常无需手动切换。备用电池独立供电。",
-    sign: { x: 1.52, y: .63, bottom: gallery + 1.25, width: .56, height: .16, nx: Math.cos(Math.PI / 8), ny: Math.sin(Math.PI / 8) } },
+    sign: { x: 1.76, y: .73, bottom: gallery + 1.25, width: .56, height: .16, nx: Math.cos(Math.PI / 8), ny: Math.sin(Math.PI / 8) } },
   { id: "lighthouse-battery-main", parent: "lighthouse-power-system", label: "主电池配电柜", place: "首层维护室 · 右侧封闭柜体", floor,
     lines: ["BATTERY", "MAIN / BACKUP"], purpose: "封闭主电池与配电支路；与左侧工具柜、原工作灯和导航面板分别标识。",
     guide: "柜门保持关闭。白天储能，夜间供电；低电保护后等待太阳能补能，回升后在此确认恢复供电。",
-    sign: { x: 1.72, y: -.218, bottom: floor + .92, width: .52, height: .15, nx: 0, ny: -1 } },
+    sign: { x: 2.35, y: -.218, bottom: floor + .92, width: .52, height: .15, nx: 0, ny: -1 } },
   { id: "lighthouse-solar-charger", parent: "lighthouse-power-system", label: "太阳能充电控制器", place: "首层维护室 · 电池柜上部", floor,
     lines: ["CHARGER", "SERVICE / TEST"], purpose: "显示太阳能输入和主电池电量的控制器。",
     guide: "查看太阳能输入与主电池电量，到塔外巡视面板是否洁净。",
-    sign: { x: 1.72, y: -.242, bottom: floor + 1.57, width: .46, height: .13, nx: 0, ny: -1 } },
+    sign: { x: 2.35, y: -.242, bottom: floor + 1.57, width: .46, height: .13, nx: 0, ny: -1 } },
   { id: "lighthouse-solar-array", parent: "lighthouse-power-system", label: "太阳能支架与面板", place: "塔外平台 · 东南侧", floor: plaza,
     lines: ["SOLAR ARRAY", "CHECK SURFACE"], purpose: "朝南倾斜的独立面板与支架，现场排查遮挡污损。",
     guide: "从南侧巡视表面，发现污损时擦拭，再巡视确认。",
@@ -46,7 +46,7 @@ export const LIGHTHOUSE_EQUIPMENT = Object.freeze(([
   { id: "lighthouse-light-sensor", parent: "lighthouse-beacon-main", label: "光敏检测保护面", place: "灯室外廊 · 东侧固定检测器", floor: gallery,
     lines: ["LIGHT SENSOR", "DAY / AUTO"], purpose: "光敏检测器的固定保护面，用于交叉核对晴天日程和实际检测需求。",
     guide: "天黑亮灯，天亮待机，日常无需手动调整。",
-    sign: { x: 1.616, y: -.5, bottom: gallery + 1.44, width: .12, height: .16, nx: 1, ny: 0 } },
+    sign: { x: 1.876, y: -.5, bottom: gallery + 1.44, width: .12, height: .16, nx: 1, ny: 0 } },
 ] as const).map(device => Object.freeze({ ...device, lines: Object.freeze(device.lines), sign: Object.freeze(device.sign) })));
 export type LighthouseEquipmentId = typeof LIGHTHOUSE_EQUIPMENT[number]["id"];
 export const lighthouseEquipmentDefinition = (id: string) => LIGHTHOUSE_EQUIPMENT.find(device => device.id === id);
@@ -87,8 +87,8 @@ const backup = LIGHTHOUSE_BACKUP_MOUNT;
 const forSides = (make: (side: number) => LighthouseEquipmentBox[]) => [-1, 1].reduce<LighthouseEquipmentBox[]>((all, side) => all.concat(make(side)), []);
 /** These exact solids feed both the renderer and the shared walker/vehicle collision path. */
 export const LIGHTHOUSE_EQUIPMENT_BOXES: readonly LighthouseEquipmentBox[] = Object.freeze([
-  { id: "lighthouse-battery-main", name: "cabinet", finish: "paint", x: 1.72, y: .2, bottom: floor, width: .66, depth: .8, height: 1.9, blocking: true },
-  { id: "lighthouse-solar-charger", name: "controller", finish: "metal", x: 1.72, y: -.17, bottom: floor + 1.4, width: .54, depth: .12, height: .42, blocking: false },
+  { id: "lighthouse-battery-main", name: "cabinet", finish: "paint", x: 2.35, y: .2, bottom: floor, width: .66, depth: .8, height: 1.9, blocking: true },
+  { id: "lighthouse-solar-charger", name: "controller", finish: "metal", x: 2.35, y: -.17, bottom: floor + 1.4, width: .54, depth: .12, height: .42, blocking: false },
   { id: "lighthouse-drive-hatch", name: "closed-hatch", finish: "paint", x: .15, y: -.3, bottom: gallery + .53, width: .2, depth: .04, height: .28, blocking: false },
   { id: "lighthouse-beacon-backup", name: "overhead-bracket", finish: "metal", x: (backup.rootX + backup.x + .06) / 2, y: backup.y,
     bottom: backup.bracketBottom, width: backup.x - backup.rootX + .06, depth: .14, height: .1, blocking: true },

@@ -28,11 +28,11 @@ test('installation identities and state remain honest; main hatch follows actual
 });
 
 test('cabinet, solar panel and generator block the complete body through the shared collision route',()=>{
-  for(const [x,y,h]of [[1.72,.2,a.floor],[4.8,5.8,3.04],[-5.1,6.15,3.04],[-6.35,5.5,3.04]]) {
+  for(const [x,y,h]of [[2.35,.2,a.floor],[4.8,5.8,3.04],[-5.1,6.15,3.04],[-6.35,5.5,3.04]]) {
     assert.equal(walk.walkingPointAllowed(p(x,y),.26,h),false);
   }
-  const from=p(1,.2), stopped=walk.sweepWalking(from,p(2.2,.2),a.floor);
-  assert.ok(stopped&&stopped.x<t.x+1.2,'cabinet face protects the shoulders');
+  const from=p(1.6,.2), stopped=walk.sweepWalking(from,p(2.8,.2),a.floor);
+  assert.ok(stopped&&stopped.x<t.x+1.85,'cabinet face protects the shoulders');
   assert.equal(layout.lighthouseEquipmentPointAllowed(t.x+4.8,t.y+5.8,.26,3.04+.5),false,'jumping does not bypass the sloped panel');
 });
 
@@ -52,7 +52,7 @@ test('the engine room has a usable doorway, a clear service station, bounded cei
 
 test('original entrance, ladder landings, gallery loop and scooter parking stay clear',()=>{
   for(const floor of floors)for(const [x,y]of [[a.ladder.x,a.ladder.landingY],[0,-1.2],[.7,-.6]])assert.ok(walk.walkingPointAllowed(p(x,y),.26,floor.height));
-  for(let i=0;i<64;i++){const angle=i/64*Math.PI*2;assert.ok(walk.walkingPointAllowed(p(2.28*Math.cos(angle),2.28*Math.sin(angle)),.26,a.gallery));}
+  for(let i=0;i<64;i++){const angle=i/64*Math.PI*2;assert.ok(walk.walkingPointAllowed(p(2.66*Math.cos(angle),2.66*Math.sin(angle)),.26,a.gallery));}
   const {scooterSupport,scooterDismount,SCOOTER_PARKING}=load('CoastalScooter');
   const parking=SCOOTER_PARKING.find(q=>q.id==='tower');assert.ok(scooterSupport(parking));assert.ok(scooterDismount(parking));
   assert.equal(scooterSupport({...p(-6.35,5.5),heading:0}),undefined);
@@ -96,8 +96,8 @@ test('backup source clears the roof and body while the closed drive hatch stays 
   const {scene,equipment}=setup(t),u=5;
   const backup=equipment.device('lighthouse-beacon-backup').meshes.find(m=>m.name.endsWith('-solar'));
   assert.ok(backup.getBoundingInfo().boundingBox.minimumWorld.y>v(0,0,load('CoastalSite').COASTAL_SITE.tower.ground+20.04).y,'lens is above the original roof apex');
-  assert.ok(walk.walkingPointAllowed(p(2.45,-.45),.26,a.gallery));
-  const eye=v(2.45,-.45,a.gallery+1.6),mount=layout.LIGHTHOUSE_BACKUP_MOUNT,visible=[];
+  assert.ok(walk.walkingPointAllowed(p(2.8,-.45),.26,a.gallery));
+  const eye=v(2.8,-.45,a.gallery+1.6),mount=layout.LIGHTHOUSE_BACKUP_MOUNT,visible=[];
   for(let i=0;i<10;i++){
     const target=v(mount.x-.09,mount.y-.06,mount.lensBottom+mount.lensHeight*(i+.5)/10);
     const hit=scene.pickWithRay(new b.Ray(eye,target.subtract(eye).normalize(),20),m=>m.metadata?.lighthouse&&!m.metadata?.lighthouseMaintenanceTool);

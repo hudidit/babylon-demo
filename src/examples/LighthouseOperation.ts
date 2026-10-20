@@ -1,3 +1,4 @@
+import {saveFields, saveObject, saveNumber, saveDay, saveHour, saveBoolean, saveEnum, saveArray, saveOptional, savedEventOrder} from "./LighthouseSaveValidation";
 import { DEFAULT_TIME_OF_DAY, wrapTimeOfDay } from "./RoomTimeOfDay";
 import type { TimeOfDayAdvance } from "./RoomTimeOfDay";
 
@@ -61,6 +62,22 @@ export class LighthouseOperation {
   constructor() { this.record("initialized", "system"); this.publish(); }
 
   get snapshot(): LighthouseOperationSnapshot { return this.current; }
+
+  exportState() {return saveFields(this, ["hour", "dutyDay", "testRemaining", "turns", "operatingHours", "available", "detectedDemand", "events", "nextEventId"]);}
+  static fromSave(value: unknown) {
+    const state = saveEnum("day-standby", "night-running", "test-running");
+    const s = saveObject({hour: saveHour, dutyDay: saveDay, testRemaining: saveNumber(0, 30), turns: saveNumber(0, 1),
+      operatingHours: saveNumber(0, 24000000), nextEventId: saveDay, available: saveBoolean, detectedDemand: saveBoolean,
+      events: saveArray(saveObject({id: saveDay, dutyDay: saveDay, hour: saveHour, objectId: saveEnum("lighthouse-beacon-main"),
+        type: saveEnum("initialized", "state-changed", "time-selected", "duty-day-started", "test-started", "test-ended", "test-expired", "test-superseded"),
+        source: saveEnum("system", "automatic-clock", "manual-time", "command", "active-time"), result: state, previousState: saveOptional(state)}))})(value);
+    if (s.nextEventId < savedEventOrder(s.events) || s.turns === 1 || s.events.some(e => e.dutyDay > s.dutyDay || e.dutyDay <= s.dutyDay - 7)) throw new Error("Invalid saved operation calendar");
+    const model = new LighthouseOperation(); model.hour = s.hour; model.dutyDay = s.dutyDay; model.testRemaining = s.testRemaining;
+    model.turns = s.turns; model.operatingHours = s.operatingHours; model.available = s.available; model.detectedDemand = s.detectedDemand;
+    model.events = s.events; model.nextEventId = s.nextEventId;
+    model.state = lighthouseNavigationRequired(s.hour) || s.detectedDemand ? "night-running" : s.testRemaining > 0 ? "test-running" : "day-standby";
+    model.publish(); return model;
+  }
 
   /** Equipment gate and detector share this controller; there is no second main-light clock. */
   configure(available: boolean, detectedDemand: boolean) {

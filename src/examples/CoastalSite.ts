@@ -4,7 +4,7 @@ import type { PlanPoint } from "./HouseLayout";
 export const COASTAL_SITE = Object.freeze({
   version: "lighthouse-visual-c-v1",
   pathWidth: 1.8,
-  tower: Object.freeze({ x: -125, y: 90, ground: 3, height: 20, radius: 2.8 }),
+  tower: Object.freeze({ x: -125, y: 90, ground: 3, height: 20, radius: 3.4 }),
   plaza: Object.freeze({ width: 14, depth: 18 }),
   lookout: Object.freeze({ x: -70, y: 25, radius: 3 }),
   lookoutSeat: Object.freeze({ x: -68.8, y: 26.4 }),

@@ -12,7 +12,7 @@ export type InteractiveLamp = { id: string; label: string; meshes: AbstractMesh[
 export type InteractiveCurtain = { id: string; windowId: string; label: string; root: TransformNode;
   meshes: Mesh[]; applyClosed: (amount: number) => void };
 export type InteractiveDoor = { id: string; label: string; root: TransformNode;
-  meshes: AbstractMesh[]; width: number; openAngle: number; walkerRadius?: number };
+  meshes: AbstractMesh[]; width: number; openAngle: number; walkerRadius?: number; autoCloseSeconds?: number };
 export type InteractiveSlidingDoor = { id: string; label: string; root: TransformNode;
   meshes: AbstractMesh[]; fixedMeshes: AbstractMesh[]; closed: Vector3; travel: Vector3;
   width: number; halfThickness: number; walkerRadius: number };
@@ -42,7 +42,7 @@ export class RoomInteractions {
   private readonly drawers: {
     drawer: InteractiveDrawer; root: TransformNode; closed: Vector3; travel: Vector3; progress: number; open: boolean; moving: boolean;
   }[] = [];
-  private readonly doors: { door: InteractiveDoor; progress: number; open: boolean; blocked: boolean; moving: boolean }[] = [];
+  private readonly doors: { door: InteractiveDoor; progress: number; open: boolean; blocked: boolean; moving: boolean; openSeconds: number }[] = [];
   private readonly slidingDoors: { door: InteractiveSlidingDoor; progress: number; open: boolean; blocked: boolean; moving: boolean }[] = [];
   private readonly curtains: { curtain: InteractiveCurtain; progress: number; closed: boolean; light: (amount: number) => void }[] = [];
 
@@ -82,11 +82,11 @@ export class RoomInteractions {
 
   addDoor(door: InteractiveDoor) {
     if (this.entities.has(door.id)) throw new Error("Duplicate interaction: " + door.id);
-    const state = { door, progress: 0, open: false, blocked: false, moving: false };
+    const state = { door, progress: 0, open: false, blocked: false, moving: false, openSeconds: 0 };
     this.doors.push(state);
     this.add(door.id, door.meshes, {
       label: () => state.blocked ? "让开门口 · 点击反向开合" : `${state.open ? "关闭" : "打开"}${door.label}`,
-      toggle: () => { this.sound("stop", door); state.moving = false; state.open = !state.open; state.blocked = false; },
+      toggle: () => { this.sound("stop", door); state.moving = false; state.open = !state.open; state.openSeconds = 0; state.blocked = false; },
     });
   }
 
@@ -180,7 +180,8 @@ export class RoomInteractions {
   }
 
   /** Fixed travel time; reversing an in-flight drawer preserves its current position. */
-  update(deltaSeconds: number) {
+  update(deltaSeconds: number, activeSeconds = deltaSeconds) {
+    if (!Number.isFinite(deltaSeconds) || deltaSeconds <= 0) return;
     const changed = new Set<HouseRoomId>();
     const step = Math.max(0, Math.min(deltaSeconds, 0.05)) / 0.45;
     for (const drawer of this.drawers) {
@@ -200,6 +201,10 @@ export class RoomInteractions {
       roomOwners(drawer.root).forEach(id => changed.add(id));
     }
     for (const state of this.doors) {
+      if (state.open && state.progress === 1 && state.door.autoCloseSeconds) {
+        state.openSeconds += Number.isFinite(activeSeconds) ? Math.max(0, Math.min(activeSeconds, .1)) : 0;
+        if (state.openSeconds >= state.door.autoCloseSeconds - 1e-8) {state.open = false; state.openSeconds = 0;}
+      }
       const target = state.open ? 1 : 0;
       if (state.progress === target) continue;
       const step = Math.max(0, Math.min(deltaSeconds, 0.05)) / 0.7;

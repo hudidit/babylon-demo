@@ -58,7 +58,7 @@ export function coastalTowerShaft(): CoastalGeometry {
   const t = COASTAL_SITE.tower, positions: number[] = [], normals: number[] = [], indices: number[] = [], uvs: number[] = [];
   const levels = [0, 2.15, ...LIGHTHOUSE_WINDOWS.reduce<number[]>((levels, w) => levels.concat(w.bottom, w.bottom + w.height), []), 15.85], count = 64;
   for (const h of levels) for (let i = 0; i <= count; i++) {
-    const angle = i / count * Math.PI * 2 - Math.PI / 2, radius = 2.8 - h / 15.85 * .8;
+    const angle = i / count * Math.PI * 2 - Math.PI / 2, radius = t.radius - h / 15.85 * .8;
     const p = planToWorld({ x: t.x + Math.cos(angle) * radius, y: t.y + Math.sin(angle) * radius }, t.ground + .49 + h);
     positions.push(p.x, p.y, p.z); normals.push(Math.cos(angle), .8 / 15.85, Math.sin(angle)); uvs.push(i / count * 16, h);
   }
@@ -118,15 +118,15 @@ export function createCoastalLandmark(scene: Scene, surfaces: CoastalMaterials, 
   glass.alpha = .24; glass.metallic = .1; glass.roughness = .16; glass.backFaceCulling = false;
   const brass = surfaces.solid("coastal-lantern-brass", "#ad8a4b"); brass.metallic = .7; brass.roughness = .28;
   b.box("coastal-lighthouse-plaza", paving, site.plaza.width, .08, site.plaza.depth, t.x, t.y, t.ground);
-  b.cylinder("coastal-lighthouse-plinth", paving, t.x, t.y, t.ground + .04, .45, 7);
+  b.cylinder("coastal-lighthouse-plinth", paving, t.x, t.y, t.ground + .04, .45, LIGHTHOUSE.plinthRadius * 2);
   b.geometry("coastal-lighthouse-shaft", plaster, coastalTowerShaft());
   // The interior supplies a hollow cornice and a gallery with the shared ladder opening.
-  for (const [z, h, diameter] of [[18.55, .13, 3.9]])
+  for (const [z, h, diameter] of [[18.55, .13, 4.4]])
     b.cylinder("coastal-lighthouse-metalwork", metal, t.x, t.y, t.ground + z, h, diameter);
-  b.cylinder("coastal-lighthouse-cap", red, t.x, t.y, t.ground + 18.68, 1.36, 5.2, 0);
+  b.cylinder("coastal-lighthouse-cap", red, t.x, t.y, t.ground + 18.68, 1.36, 5.8, 0);
   // Entrance steps and threshold are authored by the shared interior layout.
-  const shaftRadius = (h: number) => 2.8 - h / 15.85 * .8;
-  for (const [bottom, height, width] of [[0, 2.15, 1.07], ...LIGHTHOUSE_WINDOWS.map(w => [w.bottom, w.height, w.width])]) {
+  const shaftRadius = (h: number) => t.radius - h / 15.85 * .8;
+  for (const [bottom, height, width] of [[0, 2.15, 1.27], ...LIGHTHOUSE_WINDOWS.map(w => [w.bottom, w.height, w.width])]) {
     const z = t.ground + .49 + bottom, radius = shaftRadius(bottom + height / 2);
     // Stone borders surround the shared shell/lining openings.
     for (const sign of [-1, 1]) {
@@ -141,18 +141,18 @@ export function createCoastalLandmark(scene: Scene, surfaces: CoastalMaterials, 
   }
   // Fixed octagonal glazing; the independent optical head is built by LighthouseBeacon.
   for (let i = 0; i < 8; i++) {
-    const a = i / 8 * Math.PI * 2, x = t.x + Math.cos(a) * 1.75, y = t.y + Math.sin(a) * 1.75;
+    const a = i / 8 * Math.PI * 2, x = t.x + Math.cos(a) * LIGHTHOUSE.lanternRadius, y = t.y + Math.sin(a) * LIGHTHOUSE.lanternRadius;
     b.box("coastal-lighthouse-metalwork", metal, .1, 1.8, .1, x, y, t.ground + 17.62);
     const mid = a + Math.PI / 8;
-    if (i !== LIGHTHOUSE.exitPanel) b.box("coastal-lighthouse-glazing", glass, 1.28, 1.7, .025,
-      t.x + Math.cos(mid) * 1.617, t.y + Math.sin(mid) * 1.617, t.ground + 17.62, mid + Math.PI / 2);
+    if (i !== LIGHTHOUSE.exitPanel) b.box("coastal-lighthouse-glazing", glass, 2 * LIGHTHOUSE.lanternRadius * Math.sin(Math.PI / 8) - .06, 1.7, .025,
+      t.x + Math.cos(mid) * LIGHTHOUSE.lanternRadius * Math.cos(Math.PI / 8), t.y + Math.sin(mid) * LIGHTHOUSE.lanternRadius * Math.cos(Math.PI / 8), t.ground + 17.62, mid + Math.PI / 2);
   }
   b.cylinder("coastal-lighthouse-metalwork", metal, t.x, t.y, t.ground + 16.7, .75, .18, .18, 12);
   for (let i = 0; i < 32; i++) {
     const a = i / 32 * Math.PI * 2, next = (i + 1) / 32 * Math.PI * 2;
-    b.box("coastal-lighthouse-metalwork", metal, .045, 1.10, .045, t.x + 2.84 * Math.cos(a), t.y + 2.84 * Math.sin(a), LIGHTHOUSE.gallery + .55);
-    for (const level of [16.99, 17.74]) b.box("coastal-lighthouse-metalwork", metal, 2 * 2.84 * Math.sin(Math.PI / 32) + .025, .045, .045,
-      t.x + 2.84 * (Math.cos(a) + Math.cos(next)) / 2, t.y + 2.84 * (Math.sin(a) + Math.sin(next)) / 2, t.ground + level, (a + next) / 2 + Math.PI / 2);
+    b.box("coastal-lighthouse-metalwork", metal, .045, 1.10, .045, t.x + LIGHTHOUSE.railingRadius * Math.cos(a), t.y + LIGHTHOUSE.railingRadius * Math.sin(a), LIGHTHOUSE.gallery + .55);
+    for (const level of [16.99, 17.74]) b.box("coastal-lighthouse-metalwork", metal, 2 * LIGHTHOUSE.railingRadius * Math.sin(Math.PI / 32) + .025, .045, .045,
+      t.x + LIGHTHOUSE.railingRadius * (Math.cos(a) + Math.cos(next)) / 2, t.y + LIGHTHOUSE.railingRadius * (Math.sin(a) + Math.sin(next)) / 2, t.ground + level, (a + next) / 2 + Math.PI / 2);
   }
   b.geometry("coastal-lighthouse-path", path, coastalPathGeometry(), "path");
   b.geometry("coastal-entry-ramp", paving, coastalEntryGeometry(), "path");

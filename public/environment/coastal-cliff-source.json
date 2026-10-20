@@ -44,7 +44,7 @@
     "environment/coastal-daylight.hdr"
   ],
   "supersedes": "Forest Slope panorama and bark no longer ship or load in the current scene; historical originals and provenance remain in the repository and frozen eight-room-v1 baseline.",
-  "limitations": "Low-frequency neutral IBL excludes local house/cliff reflections. Mean-sea-level shoreline/seabed do not track wave crests; no fluid physics. One local cached shadow zone, no full-route distant long shadows. Navigation uses a single rotating emissive face with view-dependent white flash; no volumetric beam, sea/house sweep, added light or shadow target, or calibrated maritime range. Inspection/cleaning, backup/power simulation and cross-session saves remain later stages. Browser viewport simulation is not physical mobile/Safari acceptance.",
+  "limitations": "Low-frequency neutral IBL excludes local house/cliff reflections. Mean-sea-level shoreline/seabed do not track wave crests; no fluid physics. One local cached shadow zone, no full-route distant long shadows. Navigation uses a single rotating emissive face with view-dependent white flash; no volumetric beam, sea/house sweep, added light or shadow target, or calibrated maritime range. Inspection, deterministic solar/cover maintenance and explicit local duty saves are delivered; weather/random risk and the four deferred advanced player operation groups remain optional. Browser viewport simulation is not physical mobile/Safari acceptance.",
   "materialProvenance": "textures/coastal/source.json: fixed upstream URLs/authors/license, original PNG SHA256, processing parameters, delivered bytes/SHA256; upstream CC0 https://polyhaven.com/license",
   "generatedOceanTexture": {
     "size": [
@@ -98,11 +98,12 @@
     "postProcessing": "Existing ACES/exposure 1.12, one linear-to-display image-processing pass",
     "environment": "environment/coastal-daylight.hdr retains its URL but is now a neutral sun-free environment; generation, original replacement SHA256 and delivery SHA256 in textures/coastal/source.json",
     "manualApi": "RoomScene.setTimeOfDay; immediate shared visual application, user lamp switches preserved",
-    "windowLighting": "Existing window proxies accept max(0, outwardNormal dot sourceDirection); back-facing openings retain indirect light only; material IBL tracks late imports and skips mirror RTTs/previews"
+    "windowLighting": "Existing window proxies accept max(0, outwardNormal dot sourceDirection); back-facing openings retain indirect light only; material IBL tracks late imports and skips mirror RTTs/previews",
+    "defaultAutomatic": true
   },
   "lighthouseEquipment": {
     "project": 2,
-    "step": 3,
+    "step": 4,
     "baseline": "9e3823e",
     "author": "babylon-demo project contributors",
     "license": "ISC",
@@ -172,12 +173,14 @@
       "src/examples/LighthouseOperation.ts",
       "src/examples/LighthousePower.ts",
       "src/examples/LighthousePanel.ts",
-      "src/examples/LighthouseExperience.ts"
+      "src/examples/LighthouseExperience.ts",
+      "src/examples/LighthouseSave.ts",
+      "src/examples/LighthouseSaveValidation.ts"
     ],
     "backupEmission": "Original local GLSL white emission on the existing cylindrical lens, with real geometry/depth and clip planes; no extra light, image, camera or render target.",
     "playerScope": {
       "updated": "2026-10-21",
-      "active": "Six player capability groups: automatic navigation, control readings, optic observation, cover cleaning, solar patrol/simple energy readings, session paper journal. Local instrument UI uses original CSS/SVG art, two gauges maximum, contextual actions and five journal rows per page. Center reticle ring follows accepted action/observation time and closes only on actual completion.",
+      "active": "Six player capability groups: automatic navigation, control readings, optic observation, cover cleaning, solar patrol/simple energy readings, session paper journal. Local instrument UI uses original CSS/SVG art, two gauges maximum, contextual actions and five journal rows per page. Center reticle ring follows accepted action/observation time and closes only on actual completion. Step four adds cover cleaning every three accepted duty days and solar cleaning every five, revision-aware reinspection, and one explicit local version-1 save/continue slot. New sessions start at noon with automatic time; continued sessions restore exact fractional time paused without offline catch-up. Invalid/future slots are retained until explicit clearing; writes and interrupted transactions cannot silently consume inventory.",
       "deferred": "Manual backup/self-tests/isolation, module diagnostics/replacement/drills, diesel fuel/refill/drill, sensor overrides/drill are optional plans. Simulation logic retained for future work; no current UI or Room command path enables these groups. Automatic safety/energy model remains active; recovery-ready battery supports one local verification action.",
       "additionalDownloadBytes": 0
     }
@@ -216,5 +219,27 @@
     "retainedDutyDays": 7,
     "dirtyTransmission": 0.82,
     "protectiveSurface": "Original fixed southern curved pane at radius 0.438m, +/-50.4 degrees, height 0.78m, centre gallery+1.21m; 34 vertices. Deterministic GLSL grain/streak salt film, one transparent material; initial film stays until a complete validated wipe. Reused box builder makes a 24-vertex cloth with one original solid fibre material, moving only during the action and excluded from picking/cached shadows. No downloaded texture or randomness."
+  },
+  "lighthouseInteriorCurrent": {
+    "updated": "2026-10-21",
+    "baseline": "384d919",
+    "diameterMetres": 6.8,
+    "heightMetres": 20,
+    "occupiedLevelsMetres": [
+      3.54,
+      19.64
+    ],
+    "entryClearWidthMetres": 1.2,
+    "doorAutoCloseActiveSeconds": 10,
+    "sources": [
+      "src/examples/LighthouseLayout.ts",
+      "src/examples/LighthouseInterior.ts",
+      "src/examples/CoastalLandmark.ts",
+      "src/examples/LighthouseWalking.ts",
+      "src/examples/LighthouseMap.ts",
+      "src/examples/LighthouseRecords.ts",
+      "src/examples/RoomInteractions.ts"
+    ],
+    "scope": "Replaces the historical five-storey layout with service floor and lantern/gallery only. Original three facade windows remain for daylight. Wider shaft, coordinated lantern/gallery/roof, entry threshold/steps and relocated ladder/cabinets share collision data. Total height and beacon optics unchanged. House entry and lighthouse doors close after ten accepted active seconds fully open, retaining swept-body protection. The lighthouse leaf now swings inward to clear a normal one-metre exterior approach; house swing remains unchanged. No extra download, light, shadow target, camera or dependency."
   }
 }

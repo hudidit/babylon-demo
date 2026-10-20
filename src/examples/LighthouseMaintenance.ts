@@ -1,3 +1,4 @@
+import {saveFields, saveObject, saveNumber, saveDay, saveHour, saveBoolean, saveEnum, saveArray, saveOptional, saveText, saveRevision, savedEventOrder} from "./LighthouseSaveValidation";
 import { lighthouseNavigationRequired, LIGHTHOUSE_OPERATION } from "./LighthouseOperation";
 import type { LighthouseOperation, LighthouseOperationSnapshot } from "./LighthouseOperation";
 import type { TimeOfDayAdvance } from "./RoomTimeOfDay";
@@ -12,7 +13,7 @@ export interface MaintenanceEvidence { readonly id: number; readonly component: 
 export interface MaintenanceAction { readonly command: MaintenanceCommand; readonly location: string; readonly tool: LighthouseTool;
   readonly component: Component; readonly revision: number; readonly elapsed: number; readonly duration: number; readonly energyWh: number; }
 export interface LighthouseMaintenanceSnapshot {
-  readonly session: LighthouseDrill; readonly revision: Readonly<Record<Component, number>>;
+  readonly solarRecheck: boolean; readonly nextSolarMaintenanceDay: number; readonly session: LighthouseDrill; readonly revision: Readonly<Record<Component, number>>;
   readonly driveFault: boolean; readonly chargerFault: boolean; readonly solarDirty: boolean; readonly sensorDirty: boolean;
   readonly mainIsolated: boolean; readonly chargeIsolated: boolean; readonly override: boolean; readonly trial: boolean;
   readonly forcedBackup: boolean;
@@ -33,6 +34,7 @@ const actionLabels: Partial<Record<MaintenanceCommand, string>> = {inspect: "现
 
 /** Device facts, local transactions and revision-bound observations, independent of rendering/storage. */
 export class LighthouseMaintenance {
+  private nextSolarMaintenanceDay = 6;
   private driveFault = false; private chargerFault = false; private solarDirty = false; private sensorDirty = false;
   private mainIsolated = false; private chargeIsolated = false; private override = false; private forcedBackup = false;
   private backupAvailable = true; private selfRemaining = 0; private backupPhase = 0; private backupWasOn = false;
@@ -53,6 +55,49 @@ export class LighthouseMaintenance {
     this.publish({hour: session === "drive" ? 21 : 12, running: false} as LighthouseOperationSnapshot);
   }
   get snapshot() { return this.current; }
+  exportState() {return {...saveFields(this, ["driveFault", "chargerFault", "solarDirty", "sensorDirty", "mainIsolated", "chargeIsolated", "override", "forcedBackup", "backupAvailable", "selfRemaining", "backupPhase", "backupWasOn", "powerMain", "powerTrial", "powerCompleted", "backupProof", "backupContext", "lastSource", "lastRequired", "trial", "mainProof", "chargerProof", "sensorProof", "diagnosis", "inspection", "revision", "inventory", "evidence", "nextId", "nextSolarMaintenanceDay"]), session: this.session};}
+  static fromSave(value: unknown, op: LighthouseOperationSnapshot) {
+    const components = ["drive", "backup", "charger", "solar", "sensor"];
+    const revisions = saveObject({drive:saveRevision, backup:saveRevision, charger:saveRevision, solar:saveRevision, sensor:saveRevision});
+    const partial = saveObject({drive:saveOptional(saveRevision), backup:saveOptional(saveRevision), charger:saveOptional(saveRevision), solar:saveOptional(saveRevision), sensor:saveOptional(saveRevision)});
+    const s = saveObject({session:saveEnum("normal", "drive", "charger", "sensor", "power"), driveFault: saveBoolean, chargerFault: saveBoolean, solarDirty: saveBoolean, sensorDirty: saveBoolean, mainIsolated: saveBoolean, chargeIsolated: saveBoolean, override: saveBoolean, forcedBackup: saveBoolean, backupAvailable: saveBoolean, backupWasOn: saveBoolean, powerMain: saveBoolean, powerTrial: saveBoolean, powerCompleted: saveBoolean, backupProof: saveBoolean, lastRequired: saveBoolean, trial: saveBoolean, selfRemaining: saveNumber(0,12), backupPhase: saveNumber(0,10), backupContext: saveEnum("off", "actual", "self-test"), lastSource: saveOptional(saveEnum("main", "backup", "none")), mainProof: saveNumber(-1,1000000,true), chargerProof: saveNumber(-1,1000000,true), sensorProof: saveNumber(-1,1000000,true), revision: revisions, diagnosis: partial, inspection: partial, inventory: saveObject({drive: saveNumber(0,1000,true), charger: saveNumber(0,1000,true)}), nextId: saveDay, nextSolarMaintenanceDay: saveDay, evidence: saveArray(saveObject({id:saveDay, component:saveEnum(...components), revision:saveRevision, day:saveDay, hour:saveHour, method:saveText(64), result:saveText()}),128)})(value);
+    if (s.nextId < savedEventOrder(s.evidence) || s.backupPhase === 10 || s.evidence.some(e => e.day > op.dutyDay || e.revision > s.revision[e.component])
+      || ["mainProof", "chargerProof", "sensorProof"].some((key,index) => s[key] > s.revision[["drive","charger","sensor"][index]])
+      || components.some(key => s.diagnosis[key] > s.revision[key] || s.inspection[key] > s.revision[key])
+      || !s.solarDirty && s.nextSolarMaintenanceDay <= op.dutyDay) throw new Error("Invalid saved maintenance revisions");
+    const model = new LighthouseMaintenance(s.session);
+    model.driveFault = s.driveFault;
+    model.chargerFault = s.chargerFault;
+    model.solarDirty = s.solarDirty;
+    model.sensorDirty = s.sensorDirty;
+    model.mainIsolated = s.mainIsolated;
+    model.chargeIsolated = s.chargeIsolated;
+    model.override = s.override;
+    model.forcedBackup = s.forcedBackup;
+    model.backupAvailable = s.backupAvailable;
+    model.selfRemaining = s.selfRemaining;
+    model.backupPhase = s.backupPhase;
+    model.backupWasOn = s.backupWasOn;
+    model.powerMain = s.powerMain;
+    model.powerTrial = s.powerTrial;
+    model.powerCompleted = s.powerCompleted;
+    model.backupProof = s.backupProof;
+    model.backupContext = s.backupContext;
+    model.lastSource = s.lastSource;
+    model.lastRequired = s.lastRequired;
+    model.trial = s.trial;
+    model.mainProof = s.mainProof;
+    model.chargerProof = s.chargerProof;
+    model.sensorProof = s.sensorProof;
+    model.diagnosis = {...s.diagnosis};
+    model.inspection = {...s.inspection};
+    model.revision = {...s.revision};
+    model.inventory = {...s.inventory};
+    model.evidence = s.evidence;
+    model.nextId = s.nextId;
+    model.nextSolarMaintenanceDay = s.nextSolarMaintenanceDay;
+    model.publish(op); return model;
+  }
   configurePower(main: boolean, trial: boolean, backup: boolean, op: LighthouseOperationSnapshot, completed=false) {
     this.powerMain = main; this.powerTrial = trial; this.powerCompleted=completed; this.setBackupAvailable(backup,op);
   }
@@ -63,6 +108,13 @@ export class LighthouseMaintenance {
     this.publish(op);return true;
   }
   synchronize(op: LighthouseOperation) {
+    const state = op.snapshot;
+    if (this.evidence[0]?.day <= state.dutyDay - 7) this.evidence = Object.freeze(this.evidence.filter(e => e.day > state.dutyDay - 7));
+    if (state.dutyDay >= this.nextSolarMaintenanceDay && !this.solarDirty) {
+      this.solarDirty = true; this.revision.solar++; delete this.inspection.solar; this.chargerProof = -1;
+      this.log(state, "solar", "维护到期", "太阳能面板例行清洁到期，请现场巡视、擦拭和复查。");
+      this.notice = "太阳能面板例行清洁到期。";
+    }
     op.configure(this.mainAvailable(), this.sensorDirty && !this.override);
     this.publish(op.snapshot);
     const s = this.snapshot;
@@ -214,6 +266,7 @@ export class LighthouseMaintenance {
     } else if (a.command === "clean") {
       if (c === "sensor") this.sensorDirty = false; else this.solarDirty = false;
       this.revision[c]++; this.inspection[c] = undefined;
+      if (c === "solar") this.nextSolarMaintenanceDay = state.dutyDay + 5;
       this.log(state, c, "擦拭完成", "污损已清除；旧观察为变化前记录，需现场复查。");
     } else if (a.command === "verify-sensor") {
       const pass = !this.sensorDirty && !this.override;
@@ -231,7 +284,7 @@ export class LighthouseMaintenance {
     const mainAvailable = this.mainAvailable();
     const main = mainAvailable && op.running;
     const backupOn = !main && this.backupAvailable && (required || this.forcedBackup || this.selfRemaining > 0);
-    this.current = Object.freeze({session: this.session, revision: Object.freeze({...this.revision}), driveFault: this.driveFault, chargerFault: this.chargerFault,
+    this.current = Object.freeze({solarRecheck: !this.solarDirty && this.revision.solar > 0 && this.inspection.solar !== this.revision.solar, nextSolarMaintenanceDay: this.nextSolarMaintenanceDay, session: this.session, revision: Object.freeze({...this.revision}), driveFault: this.driveFault, chargerFault: this.chargerFault,
       solarDirty: this.solarDirty, sensorDirty: this.sensorDirty, mainIsolated: this.mainIsolated, chargeIsolated: this.chargeIsolated, override: this.override,
       trial: this.trial, mainAvailable, detectedDemand: this.sensorDirty && !this.override, navigationRequired: required,
       forcedBackup: this.forcedBackup,

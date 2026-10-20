@@ -289,7 +289,7 @@ export class RoomFurnishings {
     for (const y of [1.5, 5.4, 9.5]) this.cylinder("door-hinge", 0.4, 0.13, [0, y, 0], "brass", root);
     const label = door.to === "outside" ? "入户门" : `${houseRoom(door.from).name}与${houseRoom(door.to).name}的门`;
     this.doors.push({ id: door.id, label, root, meshes: this.keepInteractive(start, root), width,
-      openAngle: -(door.swing ?? -1) * Math.PI / 2, walkerRadius: HOUSE_WALKER_RADIUS + 0.08 });
+      autoCloseSeconds: door.to === "outside" ? 10 : undefined, openAngle: -(door.swing ?? -1) * Math.PI / 2, walkerRadius: HOUSE_WALKER_RADIUS + 0.08 });
     this.currentRoom = previous;
   }
 

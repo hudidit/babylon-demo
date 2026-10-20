@@ -134,8 +134,8 @@ test('seven-day history prunes observations while retaining current checks, revi
     f.inspection.inspectCover({...f.operation.snapshot, dutyDay: day}, true);
   }
   const s = f.inspection.snapshot; assert.deepEqual(s.days.map(d => d.dutyDay), [4,5,6,7,8,9,10]);
-  assert.ok(s.events.every(e => e.dutyDay >= 4)); assert.equal(s.dirty, false); assert.equal(s.coverRevision, 1);
-  assert.equal(s.checks['check-cover'], 'complete'); assert.equal(first.dutyDay, 1); assert.equal(first.events.length, 3);
+  assert.ok(s.events.every(e => e.dutyDay >= 4)); assert.equal(s.dirty, true); assert.equal(s.coverRevision, 2);
+  assert.equal(s.checks['check-cover'], 'dirty'); assert.equal(first.dutyDay, 1); assert.equal(first.events.length, 3);
   assert.ok(Object.isFrozen(s)); assert.ok(Object.isFrozen(s.checks)); assert.ok(Object.isFrozen(s.days));
   assert.ok(s.events.every((event, i) => Object.isFrozen(event) && (!i || event.id > s.events[i-1].id)));
 });

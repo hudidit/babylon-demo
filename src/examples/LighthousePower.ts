@@ -1,3 +1,4 @@
+import {saveFields, saveObject, saveNumber, saveDay, saveHour, saveBoolean, saveText, saveArray, savedEventOrder} from "./LighthouseSaveValidation";
 import { lighthouseNavigationRequired } from "./LighthouseOperation";
 import type { LighthouseOperationSnapshot } from "./LighthouseOperation";
 import type { LighthouseMaintenanceSnapshot, LighthouseTool } from "./LighthouseMaintenance";
@@ -43,6 +44,32 @@ export class LighthousePower {
       {revision:{charger:0,solar:0}} as LighthouseMaintenanceSnapshot);
   }
   get snapshot() { return this.current; }
+  exportState() {return saveFields(this, ["mainWh", "backupWh", "fuel", "reserveFuel", "generatorRunning", "protected", "warning", "ready", "revision", "solarProof", "generatorProof", "recoveryProof", "generatorObserved", "events", "nextId"]);}
+  static fromSave(value: unknown, op: LighthouseOperationSnapshot, maintenance: LighthouseMaintenanceSnapshot) {
+    const s=saveObject({mainWh:saveNumber(0,2880),backupWh:saveNumber(0,120),fuel:saveNumber(0,12),reserveFuel:saveNumber(0,8),revision:saveNumber(0,1000000,true),solarProof:saveText(64),recoveryProof:saveNumber(-1,1000000,true),events:saveArray(saveObject({id:saveDay, day:saveDay, hour:saveHour, type:saveText(64), result:saveText()}),128),nextId:saveDay,generatorRunning:saveBoolean,protected:saveBoolean,warning:saveBoolean,ready:saveBoolean,generatorProof:saveBoolean,generatorObserved:saveBoolean})(value);
+    if (s.nextId < savedEventOrder(s.events) || s.events.some(e => e.day > op.dutyDay) || s.recoveryProof > s.revision
+      || Math.abs(s.mainWh - 720) > EPS && s.warning !== (s.mainWh < 720)
+      || s.ready !== (s.protected && s.mainWh >= 576 - EPS)
+      || s.generatorRunning && s.fuel <= 0 || !s.protected && s.mainWh <= 288 - EPS
+      || s.solarProof !== "" && !/^\d+:\d+:(true|false)$/.test(s.solarProof)) throw new Error("Invalid saved power state");
+    const model = new LighthousePower({mainWh:s.mainWh,backupWh:s.backupWh,fuel:s.fuel,reserveFuel:s.reserveFuel});
+    model.mainWh = s.mainWh;
+    model.backupWh = s.backupWh;
+    model.fuel = s.fuel;
+    model.reserveFuel = s.reserveFuel;
+    model.generatorRunning = s.generatorRunning;
+    model.protected = s.protected;
+    model.warning = s.warning;
+    model.ready = s.ready;
+    model.revision = s.revision;
+    model.solarProof = s.solarProof;
+    model.generatorProof = s.generatorProof;
+    model.recoveryProof = s.recoveryProof;
+    model.generatorObserved = s.generatorObserved;
+    model.events = s.events;
+    model.nextId = s.nextId;
+    model.synchronize(op,maintenance); return model;
+  }
   private pathRevision(m: LighthouseMaintenanceSnapshot) { return `${m.revision.charger}:${m.revision.solar}:${m.chargeIsolated}`; }
   private rates(hour: number, m: LighthouseMaintenanceSnapshot, test: boolean, selfTest: boolean) {
     const trial = m.trial && test, demand = lighthouseNavigationRequired(hour) || m.detectedDemand;
@@ -62,6 +89,7 @@ export class LighthousePower {
       mainLoad, backupLoad: backup ? C.backupW : 0};
   }
   synchronize(op: LighthouseOperationSnapshot, m: LighthouseMaintenanceSnapshot) {
+    if (this.events[0]?.day <= op.dutyDay - 7) this.events = Object.freeze(this.events.filter(e=>e.day>op.dutyDay-7));
     const r = this.rates(op.hour, m, op.testSecondsRemaining > 0, m.selfTestSecondsRemaining > 0);
     const boundedNet = (e: number, cap: number, n: number) => e >= cap - EPS ? Math.min(0, n) : e <= EPS ? Math.max(0, n) : n;
     this.current = Object.freeze({mainWh: this.mainWh, backupWh: this.backupWh, mainFraction: this.mainWh / C.mainCapacityWh, backupFraction: this.backupWh / C.backupCapacityWh,
@@ -170,5 +198,5 @@ export class LighthousePower {
     return this.generatorRunning ? "" : "机组未运行，请先启动。";
   }
   private reject(text: string, op: LighthouseOperationSnapshot,m:LighthouseMaintenanceSnapshot) {this.notice=text;this.synchronize(op,m);return false;}
-  private log(at: {hour:number;dutyDay:number},type:string,result:string) {this.events=Object.freeze([...this.events.slice(-127),Object.freeze({id:this.nextId++,day:at.dutyDay,hour:at.hour,type,result})]);}
+  private log(at: {hour:number;dutyDay:number},type:string,result:string) {this.events=Object.freeze([...this.events.filter(e=>e.day>at.dutyDay-7).slice(-127),Object.freeze({id:this.nextId++,day:at.dutyDay,hour:at.hour,type,result})]);}
 }

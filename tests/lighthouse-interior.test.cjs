@@ -27,10 +27,10 @@ test('entrance connects the plaza and first room in both directions with no side
     const angle=i/128*Math.PI*2;
     if(Math.sin(angle)<-.98)continue;
     const end=sweep(point(4.5*Math.cos(angle),4.5*Math.sin(angle)),point(0,0));
-    assert.ok(end&&Math.hypot(end.x-tower.x,end.y-tower.y)>=3.7,'the solid base cannot be climbed from its side');
+    assert.ok(end&&Math.hypot(end.x-tower.x,end.y-tower.y)>=a.plinthRadius+.25,'the solid base cannot be climbed from its side');
   }
-  assert.equal(allowed(point(.3,-2.7)),false,'player shoulders cannot cross a jamb');
-  assert.equal(allowed(point(2.45,0)),false,'tapered wall protects the whole body');
+  assert.equal(allowed(point(a.entranceHalfWidth-.24,a.doorY)),false,'player shoulders cannot cross a jamb');
+  assert.equal(allowed(point(tower.radius-.35,0)),false,'tapered wall protects the whole body');
   for(const f of a.furniture)assert.equal(allowed(point(f.x,f.y)),false,f.id);
 });
 
@@ -71,11 +71,11 @@ test('the door is picked from both sides, masonry occludes it, and a walker paus
   assert.ok(interactions.pick(ray(-4,1)));assert.ok(interactions.pick(ray(-1.9,-1)));
   assert.equal(interactions.pick(ray(4,-1)),undefined,'wall blocks picking the door from behind the tower');
   interactions.pick(ray(-4,1)).toggle();
-  const w=planToWorld(point(.1,-3.1),a.floor+1.6);walker=new b.Vector3(w.x,w.y,w.z);
+  const w=planToWorld(point(.1,a.doorY+.37),a.floor+1.6);walker=new b.Vector3(w.x,w.y,w.z);
   for(let i=0;i<30;i++)interactions.update(.05);
   const state=interactions.doors[0];assert.ok(state.blocked&&state.progress<1);
   walker=undefined;for(let i=0;i<30;i++)interactions.update(.05);
-  assert.ok(Math.abs(door.root.rotation.y+Math.PI/2)<1e-6);
+  assert.ok(Math.abs(door.root.rotation.y-Math.PI/2)<1e-6);
   assert.ok(door.meshes.every(m=>m.checkCollisions&&m.metadata.movingLighthouseDoor));
   assert.ok(!exterior.shadow.getShadowMap().renderList.some(m=>m.metadata.movingLighthouseDoor));
 });
@@ -94,4 +94,11 @@ test('interior reuses shared materials, remains enclosed under cutaway and relea
   const mount=door.root.parent;exterior.dispose();exterior.dispose();assert.ok(door.root.isDisposed()&&mount.isDisposed());
   assert.equal(scene.meshes.length,0);assert.equal(scene.transformNodes.length,0);assert.equal(scene.materials.length,0);
   assert.ok(scene.textures.every(t=>t.name.startsWith('data:EnvironmentBRDFTexture')),'only the reusable scene-owned BRDF remains');
+});
+
+test('a normal one-metre frontal approach can fully open the wider entry without sidestepping',t=>{
+ const {scene,exterior}=setup(t),p=planToWorld(point(0,a.doorY-1),a.floor+1.6),eye=new b.Vector3(p.x,p.y,p.z);
+ const i=new(load('RoomInteractions').RoomInteractions)(scene,()=>{},()=>eye);i.addDoor(exterior.lighthouseDoor);
+ i.actions.get(exterior.lighthouseDoor.meshes[0]).toggle();for(let n=0;n<25;n++)i.update(.05);
+ assert.equal(i.doors[0].blocked,false);assert.equal(i.doors[0].progress,1);assert.ok(exterior.lighthouseDoor.openAngle>0,'inward sweep clears the exterior approach');
 });

@@ -23,15 +23,15 @@ export function lighthouseRecords(location: string, i: LighthouseInspectionSnaps
   const labels: Record<string, [string, string]> = {
     "control-read": ["读取仪表", "读数已确认"], "optic-observed": ["观察灯具", "转动与出光正常"],
     "cover-observed": ["检查保护面", ""], "cover-cleaned": ["擦拭保护面", "已清洁，待复查"],
-    "cleaning-cancelled": ["擦拭中断", "表面保持原状"]
+    "cleaning-cancelled": ["擦拭中断", "表面保持原状"], "maintenance-due": ["例行清洁到期", "请检查保护面"]
   };
   const rows: LighthouseRecord[] = i.events.filter(e => !!labels[e.type] && (all || e.objectId === filter)).map(e => ({
     day: e.dutyDay, hour: e.hour, object: e.objectId, action: labels[e.type][0],
     result: labels[e.type][1] || (e.result.includes("盐膜") ? "发现盐膜，待清洁" : "表面洁净，已确认")
   }));
   if (all || location === "lighthouse-solar-array") m.evidence.filter(e => e.component === "solar" && !e.method.startsWith("开始")).forEach(e => rows.push({
-    day: e.day, hour: e.hour, object: "lighthouse-solar-array", action: e.method === "中断" ? "巡视中断" : e.method === "擦拭完成" ? "清洁面板" : "巡视面板",
-    result: e.method === "中断" ? "设备保持原状" : e.result.includes("污损") ? "发现污损" : "面板洁净"
+    day: e.day, hour: e.hour, object: "lighthouse-solar-array", action: e.method === "维护到期" ? "例行清洁到期" : e.method === "中断" ? "巡视中断" : e.method === "擦拭完成" ? "清洁面板" : "巡视面板",
+    result: e.method === "擦拭完成" ? "已清洁，待复查" : e.method === "维护到期" ? "请检查太阳能面板" : e.method === "中断" ? "设备保持原状" : e.result.includes("污损") ? "发现污损" : "面板洁净"
   }));
   if (all || location === "lighthouse-battery-main") p.events.filter(e => ["main-protected", "verify-main"].includes(e.type)).forEach(e => rows.push({
     day: e.day, hour: e.hour, object: "lighthouse-battery-main", action: "供电检查", result: e.type === "main-protected" ? "电量偏低，自动保护" : "供电恢复，已确认"
