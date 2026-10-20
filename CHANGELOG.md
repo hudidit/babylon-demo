@@ -19,6 +19,8 @@
 
 ### 技术方案
 
+- 将[灯塔总方案](docs/technical-plans/2026-10-20-lighthouse-operation-and-keeper-routine.md)拆为[基础运行与首次巡检](docs/technical-plans/2026-10-20-lighthouse-project-01-core-loop.md)、[设备细节与维护深化](docs/technical-plans/2026-10-20-lighthouse-project-02-equipment-and-maintenance.md)、[天气风险与巡检未知机制](docs/technical-plans/2026-10-20-lighthouse-project-03-weather-and-uncertainty.md)三个独立子项目，各自细化交互、范围、依赖、实施步骤和验收。将三项基础巡检提前到首版，完整主备/能量移至第二项，第三项区分真实故障与巡检发现并定义可复现随机、公平边界和保存迁移。原三阶段实施顺序已替代，现实依据与全量目标保留；本轮仅完成拆分设计，三项功能均待实施。
+
 - 建立[孤岛灯塔运行与守塔人日常方案](docs/technical-plans/2026-10-20-lighthouse-operation-and-keeper-routine.md)：依据灯塔管理机构、国家公园管理局与设备厂商资料，设计现代改造灯站的自动启停、10秒白闪、主备切换、供电、日常及周期检修和故障处置；明确18点至次日6点为场景示意日程，设备节奏不随24分钟昼夜加速。研究与方案已完成，导航灯、维护任务及天气功能待实施。
 
 - 建立并完成[移除室外挡路矮石块方案](docs/technical-plans/2026-10-20-remove-coastal-obstacles.md)，记录原阻挡阈值、几何/碰撞同步删除与随机序列保留、原提交失败路径、真实输入和独立发布验收；室外通行/载具原方案补充后续修复入口。
