@@ -166,15 +166,21 @@
       "shadowTargets": 0
     },
     "commissioned": true,
-    "stateBoundary": "Actual scene-hour Wh model: main 2880Wh and backup 120Wh, each starts at 80%; main lamp 50W, control 5W, backup 5W; analytic 250W sunny solar envelope 06-18, dirty factor 0.2; solar fault/isolation blocks only solar. Diesel 200W split up to 10W independent backup charge, remainder main; fuel 4 of 12 units initially, reserve 8, one unit per scene hour, stopped refill 4 units over three active seconds. Main warning 25%, protection 10%, recovery 20% plus local meter check with healthy drive; main isolation and faults remain independent. No background/manual time catch-up. Actual 5-active-second charging verification measures main battery Wh under automatic time, with source isolation and separate generator start/output verification. Four independent drills, including an explicitly labelled 21:00 / 11% main-battery supply exercise (normal initial energy stays 80%), suspend/restore energy, fuel and logs with the original session. No extra geometry, materials, download, light, camera or render target. Original vertex colour generator state feedback and reused switch cue; no added continuous engine audio. Persistent storage remains later.",
+    "stateBoundary": "Historical step-three simulation capability retained for optional future work; current player access is restricted by playerScope below. Actual scene-hour Wh model: main 2880Wh and backup 120Wh, each starts at 80%; main lamp 50W, control 5W, backup 5W; analytic 250W sunny solar envelope 06-18, dirty factor 0.2; solar fault/isolation blocks only solar. Diesel 200W split up to 10W independent backup charge, remainder main; fuel 4 of 12 units initially, reserve 8, one unit per scene hour, stopped refill 4 units over three active seconds. Main warning 25%, protection 10%, recovery 20% plus local meter check with healthy drive; main isolation and faults remain independent. No background/manual time catch-up. Actual 5-active-second charging verification measures main battery Wh under automatic time, with source isolation and separate generator start/output verification. Four independent drills, including an explicitly labelled 21:00 / 11% main-battery supply exercise (normal initial energy stays 80%), suspend/restore energy, fuel and logs with the original session. No extra geometry, materials, download, light, camera or render target. Original vertex colour generator state feedback and reused switch cue; no added continuous engine audio. Persistent storage remains later.",
     "behaviorSources": [
       "src/examples/LighthouseMaintenance.ts",
-      "src/examples/LighthouseMaintenancePanel.ts",
       "src/examples/LighthouseOperation.ts",
       "src/examples/LighthousePower.ts",
-      "src/examples/LighthousePowerPanel.ts"
+      "src/examples/LighthousePanel.ts",
+      "src/examples/LighthouseExperience.ts"
     ],
-    "backupEmission": "Original local GLSL white emission on the existing cylindrical lens, with real geometry/depth and clip planes; no extra light, image, camera or render target."
+    "backupEmission": "Original local GLSL white emission on the existing cylindrical lens, with real geometry/depth and clip planes; no extra light, image, camera or render target.",
+    "playerScope": {
+      "updated": "2026-10-21",
+      "active": "Six player capability groups: automatic navigation, control readings, optic observation, cover cleaning, solar patrol/simple energy readings, session paper journal. Local instrument UI uses original CSS/SVG art, two gauges maximum, contextual actions and five journal rows per page. Center reticle ring follows accepted action/observation time and closes only on actual completion.",
+      "deferred": "Manual backup/self-tests/isolation, module diagnostics/replacement/drills, diesel fuel/refill/drill, sensor overrides/drill are optional plans. Simulation logic retained for future work; no current UI or Room command path enables these groups. Automatic safety/energy model remains active; recovery-ready battery supports one local verification action.",
+      "additionalDownloadBytes": 0
+    }
   },
   "lighthouseOperation": {
     "phase": 3,

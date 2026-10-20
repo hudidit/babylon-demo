@@ -208,41 +208,91 @@
       body.viewing-lighthouse > .identity, body.viewing-lighthouse > .tools, body.viewing-lighthouse > .settings-panel,
       body.viewing-lighthouse > .scene-controls, body.viewing-lighthouse > #floor-plan-toggle,
       body.viewing-lighthouse > #interaction-reticle, body.viewing-lighthouse > #interaction-hint { visibility: hidden; }
-      #lighthouse-panel { width: min(560px, calc(100% - 28px)); max-height: calc(100dvh - 28px); padding: 0; margin: auto; border: 1px solid #c7bea9; border-radius: 14px; background: #f4f0e6; color: #37443c; box-shadow: 0 22px 90px #0007; overflow-y: auto; overscroll-behavior: contain; }
-      #lighthouse-panel::backdrop { background: #101b16ad; backdrop-filter: blur(4px); }
-      .lighthouse-heading { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 24px 16px; background: #f4f0e6; border-bottom: 1px solid #d5cebc; z-index: 1; }
-      #lighthouse-panel-place { margin: 0 0 7px; color: #7a705d; font-size: 11px; letter-spacing: 2px; }
-      #lighthouse-panel h2 { margin: 0; font-size: 22px; font-weight: 500; letter-spacing: 2px; }
-      #lighthouse-panel-return { flex-shrink: 0; min-height: 44px; padding: 10px 16px; border: 1px solid #a9ad98; border-radius: 7px; color: #fff6e6; background: #56664e; font-size: 12px; }
-      .lighthouse-body { padding: 20px 24px 24px; font-size: 13px; line-height: 1.7; }
-      #lighthouse-panel-state { display: inline-block; margin: 0 0 10px; padding: 5px 12px; border-radius: 5px; background: #dfe6d8; color: #354b32; font-weight: 600; }
-      #lighthouse-panel-clock { margin: 0 0 18px; color: #686f60; font-variant-numeric: tabular-nums; }
-      .lighthouse-readings { margin: 0 0 20px; }
-      .lighthouse-readings div { display: grid; grid-template-columns: 82px 1fr; gap: 12px; padding: 8px 0; border-bottom: 1px solid #ded8ca; }
-      .lighthouse-readings dt { color: #7b776a; } .lighthouse-readings dd { margin: 0; }
-      #lighthouse-panel-guide, .lighthouse-note { color: #6b6555; font-size: 12px; }
-      #lighthouse-test-toggle { width: 100%; min-height: 46px; margin: 10px 0; border: 1px solid #73503d; border-radius: 7px; background: #73503d; color: #fff2dd; padding: 10px 12px; font-size: 13px; }
-      #lighthouse-test-toggle[hidden] { display: none; }
-      #lighthouse-panel h3 { margin: 22px 0 8px; font-weight: 500; font-size: 13px; }
-      #lighthouse-panel-events { margin: 0; padding: 0; list-style: none; color: #686f60; font-size: 11px; font-variant-numeric: tabular-nums; }
-      #lighthouse-panel-events li { padding: 6px 0; border-bottom: 1px solid #e0dacd; }
-      .lighthouse-action { width: 100%; min-height: 44px; margin: 6px 0; padding: 10px 12px; border: 1px solid #879078; border-radius: 7px; background: #e4e8dc; color: #354b32; font-size: 13px; cursor: pointer; }
-      .lighthouse-action:disabled { opacity: .6; cursor: default; }
-      .lighthouse-action[hidden], #lighthouse-activity[hidden] { display: none; }
-      #lighthouse-checklist { padding-left: 19px; } #lighthouse-checklist li { margin: 7px 0; }
-      #lighthouse-checklist [data-state="complete"] { color: #426b36; }
-      #lighthouse-round-summary { border-left: 3px solid #899978; padding: 8px 12px; background: #e8eadf; }
-      #lighthouse-inspection-events { padding-left: 0; list-style: none; font-size: 11px; color: #686f60; overflow-wrap: anywhere; }
-      #lighthouse-inspection-events li { padding: 7px 0; border-bottom: 1px solid #ded8ca; }
-      #lighthouse-maintenance { border-top: 1px solid #c9c4b3; margin-top: 20px; }
-      #lighthouse-tool-label { display: block; margin: 14px 0 8px; }
-      #lighthouse-tool { width: 100%; min-height: 44px; padding: 8px; margin-top: 5px; background: #f9f7f0; color: #354b32; border: 1px solid #879078; border-radius: 6px; }
-      #lighthouse-tool-label[hidden], #lighthouse-drills[hidden] { display: none; }
-      #lighthouse-maintenance-notice { border-left: 3px solid #a17a42; padding: 8px 12px; background: #ece6d8; }
-      #lighthouse-maintenance-events { padding: 0; list-style: none; font-size: 11px; color: #686f60; overflow-wrap: anywhere; }
-      #lighthouse-maintenance-events li { padding: 7px 0; border-bottom: 1px solid #ded8ca; }
-      #lighthouse-activity { position: fixed; top: 76px; left: 50%; transform: translateX(-50%); max-width: calc(100% - 40px); box-sizing: border-box; padding: 10px 16px; border: 1px solid #d9ddbf66; border-radius: 8px; background: #26362ce8; color: #f3ecd7; font-size: 12px; line-height: 1.5; pointer-events: none; z-index: 4; }
-      @media (max-width: 480px), (max-height: 480px) { .lighthouse-heading { padding: 14px 16px; } .lighthouse-body { padding: 16px; } #lighthouse-panel h2 { font-size: 19px; } }
+      #lighthouse-panel { width: min(660px, calc(100% - 28px)); max-height: calc(100dvh - 28px); box-sizing: border-box; padding: 0; margin: auto; border: 1px solid #7e8275; border-radius: 6px; background: #303c38; color: #eee5ce; box-shadow: 0 24px 100px #0009, inset 0 0 0 5px #262f2c, inset 0 0 0 6px #555f54; overflow-y: auto; overscroll-behavior: contain; font-family: system-ui, sans-serif; }
+      #lighthouse-panel::backdrop { background: #0c1819a8; backdrop-filter: blur(3px); }
+      #lighthouse-panel [hidden], #lighthouse-activity[hidden] { display: none !important; }
+      .lighthouse-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 27px 30px 18px; }
+      #lighthouse-panel-place { margin: 0 0 7px; color: #b5b8a4; font-size: 10px; letter-spacing: 2px; }
+      #lighthouse-panel h2 { margin: 0; font-size: 23px; font-weight: 500; letter-spacing: 2px; }
+      #lighthouse-panel button { font: inherit; cursor: pointer; }
+      #lighthouse-panel button:focus-visible { outline: 2px solid #ead49b; outline-offset: 4px; }
+      #lighthouse-panel-return { flex-shrink: 0; min-height: 40px; padding: 9px 12px; border: 1px solid #8c9580; border-radius: 3px; color: #eee5ce; background: #202b28; font-size: 11px !important; }
+      .lighthouse-body { padding: 0 30px 24px; font-size: 13px; line-height: 1.65; }
+      .lighthouse-strip { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid #6d796155; padding: 12px 0; color: #c0c4ad; font-size: 11px; }
+      #lighthouse-panel-clock { margin: 0; font-variant-numeric: tabular-nums; letter-spacing: 1px; }
+      #lighthouse-record-toggle { background: none; border: 0; color: #e2d1a7; padding: 6px 0 6px 10px; font-size: 12px !important; text-decoration: underline; text-underline-offset: 5px; }
+      .lighthouse-status { display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 1px; }
+      #lighthouse-status-lamp { width: 8px; height: 8px; border-radius: 50%; background: #acb6a6; box-shadow: 0 0 0 3px #162421; }
+      #lighthouse-status-lamp[data-tone="good"] { background: #b8d4a1; box-shadow: 0 0 0 3px #162421, 0 0 12px #9fce8355; }
+      #lighthouse-status-lamp[data-tone="warn"] { background: #efbc70; }
+      #lighthouse-panel-state { margin: 0; }
+      #lighthouse-gauges { display: flex; justify-content: center; gap: 24px; margin: 17px 0 0; }
+      .lighthouse-gauge { flex: 1; max-width: 234px; min-width: 0; margin: 0; padding: 17px 8px 12px; background: #e2ddc5; border: 6px solid #182420; border-radius: 8px; box-shadow: 0 2px 0 #83907a66, inset 0 0 0 1px #b6b398, inset 0 6px 16px #3c3f301c; color: #2b3b32; }
+      .lighthouse-gauge svg { display: block; width: 100%; overflow: visible; }
+      .dial-track { fill: none; stroke: #a4ab8b; stroke-width: 7; }
+      .dial-ticks line { stroke: #465846; stroke-width: 1.5; }
+      .lighthouse-gauge text { text-anchor: middle; fill: #56634f; font: 10px system-ui; }
+      .lighthouse-gauge .dial-label { fill: #3c503e; font-size: 11px; letter-spacing: 2px; }
+      .dial-needle path { fill: #a2573c; } .dial-needle circle { fill: #344638; stroke: #d7d0b5; stroke-width: 2; }
+      .lighthouse-gauge figcaption { text-align: center; line-height: 1.5; }
+      .lighthouse-gauge strong { display: block; font: 23px ui-monospace, monospace; letter-spacing: -1px; }
+      .lighthouse-gauge figcaption span { color: #69735d; font-size: 10px; letter-spacing: 2px; }
+      #lighthouse-power-flow { text-align: center; min-height: 18px; margin: 10px 0 14px; font-size: 11px; color: #bdc7b1; letter-spacing: 2px; }
+      #lighthouse-status-face { margin: 24px auto 10px; width: 150px; height: 150px; border: 8px solid #1c2823; border-radius: 50%; background: radial-gradient(circle at 45% 35%, #74806a, #414e40); box-shadow: inset 0 0 0 1px #89917b, inset 0 0 25px #172b2699, 0 1px 0 #99a18966; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px; }
+      #lighthouse-status-face::before { content: "●"; color: #c4d8ab; font-size: 23px; text-shadow: 0 0 15px #d1e4b666; }
+      #lighthouse-status-face[data-tone="warn"]::before { color: #efbd79; }
+      #lighthouse-status-face-label { font-size: 14px; } #lighthouse-status-face-detail { font-size: 10px; color: #c1c8b2; letter-spacing: 2px; }
+      #lighthouse-panel-guide { margin: 0; padding: 13px 16px; background: #202e29; border-left: 2px solid #b6aa79; color: #d3d9c3; font-size: 12px; }
+      #lighthouse-actions { display: flex; gap: 12px; }
+      .lighthouse-action { flex: 1; min-height: 46px; margin: 18px 0 0; padding: 10px 14px; border: 1px solid #cbc3a2; border-bottom: 4px solid #9d987d; border-radius: 3px; background: linear-gradient(#e3dcc1, #c9c8ab); color: #253b30; font-size: 13px !important; letter-spacing: 1px; box-shadow: 0 3px 5px #0004; }
+      .lighthouse-action:active { transform: translateY(2px); border-bottom-width: 2px; box-shadow: none; }
+      .lighthouse-action:disabled { opacity: .5; cursor: default; }
+      .lighthouse-footer { display: flex; justify-content: space-between; gap: 12px; margin: 21px 0 0; padding-top: 12px; border-top: 1px solid #6d796155; color: #9ea994; font-size: 10px; letter-spacing: 1px; }
+      .lighthouse-screw { color: #b0b8a1; }
+      #lighthouse-paper { position: relative; padding: 23px 25px 15px; color: #394b45; background: repeating-linear-gradient(0deg, #fff0 0 3px, #897e4510 3px 4px), #eee6cd; box-shadow: 1px 3px 0 #b9b49a, 3px 6px 0 #1a2724, inset 0 0 40px #ad8c3c12; }
+      #lighthouse-paper::before { content: ""; position: absolute; top: -5px; left: calc(50% - 30px); width: 60px; height: 12px; background: linear-gradient(#bac0af, #717f70); border: 1px solid #4c5c51; border-radius: 2px; box-shadow: 0 2px 3px #0004; }
+      .lighthouse-paper-heading { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #4e6255; padding-bottom: 10px; margin-bottom: 12px; }
+      .lighthouse-paper-heading h3 { margin: 0; font: 20px Georgia, "Songti SC", serif; letter-spacing: 4px; }
+      .lighthouse-paper-heading span { font-size: 9px; letter-spacing: 2px; }
+      #lighthouse-round-summary { margin: 0 0 7px; font-size: 11px; letter-spacing: 2px; }
+      #lighthouse-checklist { list-style: none; padding: 0; margin: 0 0 14px; font-family: "Kaiti SC", "STKaiti", serif; }
+      #lighthouse-checklist li { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-bottom: 1px solid #87917c55; }
+      #lighthouse-checklist [data-state="complete"] { color: #41634e; }
+      #lighthouse-paper table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 12px; }
+      #lighthouse-paper th { font-weight: 500; color: #6e7661; padding: 7px 4px; text-align: left; border-block: 1px solid #87917c88; }
+      #lighthouse-paper th:first-child { width: 25%; } #lighthouse-paper th:nth-child(2) { width: 27%; }
+      #lighthouse-paper td { padding: 10px 4px; border-bottom: 1px solid #87917c55; overflow-wrap: anywhere; font-family: "Kaiti SC", "STKaiti", serif; font-size: 13px; }
+      #lighthouse-paper .lighthouse-empty { padding: 30px 4px; color: #7d8069; text-align: center; }
+      .lighthouse-paper-pages { display: flex; justify-content: space-between; align-items: center; margin-top: 13px; }
+      .lighthouse-paper-pages button { min-height: 36px; color: #486051; background: none; border: 1px solid #83917d88; padding: 4px 12px; font-size: 11px !important; }
+      .lighthouse-paper-pages button:disabled { opacity: .35; cursor: default !important; }
+      #lighthouse-panel #lighthouse-paper button:focus-visible { outline-color: #466350; }
+      #lighthouse-record-page { font: 11px ui-monospace, monospace; }
+      .lighthouse-paper-note { margin: 12px 0 0; color: #7c816a; font-size: 10px; }
+      body.lighthouse-action-active > #interaction-hint { visibility: hidden; }
+      #lighthouse-activity { position: fixed; top: 50%; left: 50%; width: 72px; height: 72px; transform: translate(-50%, -50%); color: #eee6ce; pointer-events: none; z-index: 21; }
+      #lighthouse-progress { width: 72px; height: 72px; overflow: visible; transform: rotate(-90deg); filter: drop-shadow(0 1px 2px #000b); }
+      #lighthouse-progress circle { fill: none; stroke-width: 2; }
+      #lighthouse-progress .progress-track { stroke: #fff3; }
+      #lighthouse-progress-value { stroke: #e9d3a2; stroke-linecap: round; }
+      #lighthouse-activity[data-state="complete"] #lighthouse-progress-value { stroke: #bbdca7; }
+      #lighthouse-activity-label, #lighthouse-activity-hint { position: absolute; width: 260px; left: 50%; transform: translateX(-50%); text-align: center; text-shadow: 0 1px 4px #000, 0 0 10px #0008; }
+      #lighthouse-activity-label { top: 78px; font-size: 12px; letter-spacing: 2px; }
+      #lighthouse-activity-hint { top: 100px; font-size: 10px; color: #e1d9c5; }
+      @media (max-width: 480px), (max-height: 480px) {
+        .lighthouse-heading { padding: 20px 20px 12px; gap: 10px; } .lighthouse-body { padding: 0 20px 18px; }
+        #lighthouse-panel h2 { font-size: 18px; } #lighthouse-panel-place { letter-spacing: 1px; } #lighthouse-gauges { gap: 12px; margin-top: 10px; }
+        .lighthouse-gauge { padding: 14px 3px 10px; border-width: 4px; } .lighthouse-gauge strong { font-size: 20px; }
+        #lighthouse-paper { padding: 21px 13px 12px; } #lighthouse-paper table, #lighthouse-paper td { font-size: 12px; }
+        .lighthouse-heading #lighthouse-panel-return { padding: 7px 9px; } .lighthouse-footer { letter-spacing: 0; }
+      }
+      @media (max-height: 480px) and (min-width: 600px) {
+        #lighthouse-panel { width: min(720px, calc(100% - 28px)); } #lighthouse-instrument { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+        .lighthouse-status { grid-column: 1 / -1; } #lighthouse-gauges, #lighthouse-status-face { grid-column: 1; grid-row: 2 / 5; align-self: center; }
+        #lighthouse-panel-guide, #lighthouse-actions, #lighthouse-power-flow { grid-column: 2; align-self: center; } #lighthouse-power-flow { margin: 12px 0 0; }
+        #lighthouse-gauges .lighthouse-gauge { max-width: 125px; } #lighthouse-actions { flex-direction: column; gap: 0; } .lighthouse-action { margin-top: 10px; }
+        .lighthouse-footer { margin-top: 14px; }
+      }
     </style>
   </head>
   <body>
@@ -279,72 +329,40 @@
     </section>
     <div id="interaction-reticle" aria-hidden="true" hidden></div>
     <div id="interaction-hint" role="status" hidden></div>
-    <div id="lighthouse-activity" role="status" hidden></div>
-    <dialog id="lighthouse-panel" aria-labelledby="lighthouse-panel-title" aria-describedby="lighthouse-panel-guide">
-      <header class="lighthouse-heading"><div><p id="lighthouse-panel-place"></p><h2 id="lighthouse-panel-title">导航灯运行</h2></div><button id="lighthouse-panel-return">返回场景</button></header>
+    <div id="lighthouse-activity" hidden>
+      <svg id="lighthouse-progress" viewBox="0 0 72 72" role="progressbar" aria-label="现场操作进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <circle class="progress-track" cx="36" cy="36" r="30"/>
+        <circle id="lighthouse-progress-value" cx="36" cy="36" r="30" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+      </svg><span id="lighthouse-activity-label" role="status"></span><span id="lighthouse-activity-hint"></span>
+    </div>
+    <dialog id="lighthouse-panel" aria-labelledby="lighthouse-panel-title">
+      <header class="lighthouse-heading"><div><p id="lighthouse-panel-place"></p><h2 id="lighthouse-panel-title">灯塔值守</h2></div><button id="lighthouse-panel-return">返回场景 ↗</button></header>
       <div class="lighthouse-body">
-        <p id="lighthouse-panel-state"></p><p id="lighthouse-panel-clock"></p>
-        <section id="lighthouse-equipment-content" hidden>
-          <dl class="lighthouse-readings">
-            <div><dt>设备编号</dt><dd id="lighthouse-equipment-id" style="overflow-wrap:anywhere"></dd></div>
-            <div><dt>用途</dt><dd id="lighthouse-equipment-purpose"></dd></div>
-            <div><dt>当前状态</dt><dd id="lighthouse-equipment-status"></dd></div>
-          </dl>
-        </section>
-        <p id="lighthouse-panel-guide"></p>
-          <label id="lighthouse-tool-label" hidden>携带工具 / 备件<select id="lighthouse-tool">
-            <option value="meter">检测工具</option><option value="cloth">清洁布</option>
-            <option value="drive-module">驱动模块</option><option value="charger-module">充电模块</option>
-          </select></label>
-        <section id="lighthouse-power-content" aria-label="能量与补能">
-          <h3>主备独立能量与补能</h3>
-          <dl class="lighthouse-readings">
-            <div><dt>主电池</dt><dd id="lighthouse-power-main"></dd></div>
-            <div><dt>备用电池</dt><dd id="lighthouse-power-backup"></dd></div>
-            <div><dt>充电输入</dt><dd id="lighthouse-power-input"></dd></div>
-            <div><dt>机组燃料</dt><dd id="lighthouse-power-fuel"></dd></div>
-          </dl>
-          <p id="lighthouse-power-status"></p><div id="lighthouse-power-actions"></div>
-          <p class="lighthouse-note" id="lighthouse-power-notice" role="status"></p>
-          <ul class="lighthouse-note" id="lighthouse-power-events"></ul>
-        </section>
-        <section id="lighthouse-operation-content">
-        <dl class="lighthouse-readings">
-          <div><dt>控制方式</dt><dd id="lighthouse-panel-mode"></dd></div>
-          <div><dt>实际灯态</dt><dd id="lighthouse-panel-output"></dd></div>
-          <div><dt>导航日程</dt><dd>18:00 至次日 06:00</dd></div>
-          <div><dt>灯质</dt><dd>单束白闪 · 同一方向每10秒一次 · 每分钟6圈</dd></div>
-          <div><dt>试灯余时</dt><dd id="lighthouse-panel-test"></dd></div>
-          <div><dt>保护面</dt><dd id="lighthouse-panel-surface"></dd></div>
-        </dl>
-        <button id="lighthouse-test-toggle" hidden></button>
-        <button class="lighthouse-action" id="lighthouse-confirm-control" hidden>确认本次读数</button>
-        <button class="lighthouse-action" id="lighthouse-cover-check" hidden>确认保护面观察结果</button>
-        <button class="lighthouse-action" id="lighthouse-clean-start" hidden>擦拭并返回场景</button>
-        <h3>本轮三项巡检</h3><ul id="lighthouse-checklist"></ul><p id="lighthouse-round-summary"></p>
-        <p class="lighthouse-note">晴天供电工况，主备能量、太阳能和柴油补能已接入；当前为会话状态，刷新重新开始，本地保存待后续。</p>
-        <h3>最近运行事件</h3><ul id="lighthouse-panel-events"></ul>
-        <h3>巡检与操作日志</h3><ul id="lighthouse-inspection-events"></ul>
-        <p class="lighthouse-note" id="lighthouse-day-history"></p>
-        </section>
-        <section id="lighthouse-maintenance" aria-label="设备维护与演练">
-          <h3 id="lighthouse-maintenance-session">正常值守</h3>
-          <p id="lighthouse-maintenance-status"></p>
-          <p class="lighthouse-note" id="lighthouse-parts"></p>
-
-          <div id="lighthouse-maintenance-actions"></div>
-          <p id="lighthouse-maintenance-notice" role="status"></p>
-          <p class="lighthouse-note" id="lighthouse-drill-guide"></p>
-          <div id="lighthouse-drills" hidden>
-            <button class="lighthouse-action" data-lighthouse-drill="drive">进入独立演练 · 主灯驱动异常</button>
-            <button class="lighthouse-action" data-lighthouse-drill="charger">进入独立演练 · 充电支路异常</button>
-            <button class="lighthouse-action" data-lighthouse-drill="sensor">进入独立演练 · 光敏污染</button>
-            <button class="lighthouse-action" data-lighthouse-drill="power">进入独立演练 · 低电补能（初始11%）</button>
-            <button class="lighthouse-action" data-lighthouse-drill="normal" hidden>退出演练 · 恢复原值守会话</button>
+        <div class="lighthouse-strip"><p id="lighthouse-panel-clock"></p><button id="lighthouse-record-toggle" aria-controls="lighthouse-paper" aria-expanded="false">翻看记录</button></div>
+        <section id="lighthouse-instrument" aria-label="设备仪表">
+          <div class="lighthouse-status"><span id="lighthouse-status-lamp" aria-hidden="true"></span><p id="lighthouse-panel-state"></p></div>
+          <div id="lighthouse-gauges"></div>
+          <div id="lighthouse-status-face"><span id="lighthouse-status-face-label"></span><span id="lighthouse-status-face-detail"></span></div>
+          <p id="lighthouse-power-flow"></p>
+          <p id="lighthouse-panel-guide" role="status"></p>
+          <div id="lighthouse-actions">
+            <button class="lighthouse-action" id="lighthouse-test-toggle" hidden></button>
+            <button class="lighthouse-action" id="lighthouse-confirm-control" hidden></button>
+            <button class="lighthouse-action" id="lighthouse-cover-check" hidden></button>
+            <button class="lighthouse-action" id="lighthouse-clean-start" hidden></button>
+            <button class="lighthouse-action" id="lighthouse-solar-inspect" hidden></button>
+            <button class="lighthouse-action" id="lighthouse-solar-clean" hidden></button>
+            <button class="lighthouse-action" id="lighthouse-power-restore" hidden></button>
           </div>
-          <h3>设备观察、操作与复验</h3><ul id="lighthouse-maintenance-events"></ul>
         </section>
-        <p class="lighthouse-note">查看设备时，场景时间与设备暂停；返回场景继续。</p>
+        <section id="lighthouse-paper" aria-label="纸质值守记录" hidden>
+          <div class="lighthouse-paper-heading"><h3>值守簿</h3><span>灯站 / 巡视与清洁</span></div>
+          <div id="lighthouse-checks"><p id="lighthouse-round-summary"></p><ul id="lighthouse-checklist"></ul></div>
+          <table aria-label="巡视与操作记录"><thead><tr><th scope="col">时间</th><th scope="col">项目</th><th scope="col">结果</th></tr></thead><tbody id="lighthouse-record-rows"></tbody></table>
+          <div class="lighthouse-paper-pages"><button id="lighthouse-record-prev" aria-label="上一页记录">← 前页</button><span id="lighthouse-record-page"></span><button id="lighthouse-record-next" aria-label="下一页记录">后页 →</button></div>
+          <p class="lighthouse-paper-note">仅记本次会话，刷新重新开始。最近七日的记录留在此处。</p>
+        </section>
+        <footer class="lighthouse-footer"><span><span class="lighthouse-screw">⊕</span> 灯站值守 / 现场记录</span><span>查看时暂停 · Esc 合上 <span class="lighthouse-screw">⊕</span></span></footer>
       </div>
     </dialog>
     <dialog id="item-inspection" aria-labelledby="item-inspection-title">

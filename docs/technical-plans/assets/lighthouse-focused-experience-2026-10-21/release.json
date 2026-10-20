@@ -1,0 +1,30 @@
+{
+  "baseline": "ccbdc3f",
+  "releaseManifestSha256": "81ccacc5e05920cd433904286d1ed42a6a62fd8e50d2ad8d89b2972d5d39a6be",
+  "totals": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26397620,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 85955,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2783636,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42443658
+  },
+  "unchangedRuntimeFiles": 36,
+  "prefixes": [
+    {
+      "path": "/",
+      "files": 495,
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "files": 495,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

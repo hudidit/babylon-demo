@@ -213,6 +213,7 @@ test('Room updates lighthouse even with a frozen manual hour and guards all muta
   const {RoomScene} = load('Room'), room = Object.create(RoomScene.prototype);
   room.timeState = new RoomTimeOfDay(); room.lighthouseState = new LighthouseOperation(); room.pauses = new RoomPauseState();
   room.lighthouseMaintenanceState = new(load('LighthouseMaintenance').LighthouseMaintenance)();
+  room.lighthousePowerState = new(load('LighthousePower').LighthousePower)();
   room.lighthousePanel = {};
   room.scene = {metadata: {timeOfDay: {}, lighthouseOperation: {stage: 1, visualApplied: false}}};
   room.exterior = {isVisible: true, lighthouseDetails: {beacon:{root:{position:{x:0,z:0}},apply:()=>{}},equipment:{apply:()=>{}},cover:{pane:{},apply:()=>{}}}}; room.timeVisualElapsed = 0;

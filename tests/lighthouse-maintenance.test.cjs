@@ -80,14 +80,17 @@ test('unavailable backup blocks night isolation and maintenance; automatic main 
  const inspection=new(load('LighthouseInspection').LighthouseInspection)();inspection.confirmControl(g.op.snapshot,true);inspection.invalidateMain(g.op.snapshot);
  assert.equal(inspection.snapshot.control,undefined);assert.equal(inspection.snapshot.completed,false);assert.equal(inspection.snapshot.events.at(-1).type,'equipment-changed');
 });
-test('scene drill swapping preserves normal clock, maintenance, parts and patrol objects; nested drills and remote commands are rejected',()=>{
- const proto=load('Room').RoomScene.prototype,f=setup(),inspection=new(load('LighthouseInspection').LighthouseInspection)();f.op.startTest();f.clock.setAutomatic(true);f.run(.5);
- const normal={clock:f.clock,op:f.op,m:f.m,inspection},room=Object.create(proto),ops=f.op.snapshot,time=f.clock.snapshot,parts=f.m.snapshot.inventory;
- Object.assign(room,{timeState:f.clock,lighthouseState:f.op,lighthouseInspectionState:inspection,lighthouseMaintenanceState:f.m,
-   lighthousePanel:{activeLocation:'control'},lighthouseCommandAllowed:()=>true,notifyLighthouseOperation:()=>{},applyTimeOfDay:()=>{},notifyTimeOfDay:()=>{}});
- room.selectLighthouseDrill('drive');assert.equal(room.lighthouseMaintenance.session,'drive');assert.equal(room.timeOfDay.hour,21);assert.equal(room.timePlayback.automatic,false);
- room.selectLighthouseDrill('charger');assert.equal(room.lighthouseMaintenance.session,'drive');
- room.selectLighthouseDrill('normal');assert.equal(room.timeState,normal.clock);assert.equal(room.lighthouseState,normal.op);assert.equal(room.lighthouseInspectionState,normal.inspection);assert.equal(room.lighthouseMaintenanceState,normal.m);
- assert.equal(room.timeOfDay,time);assert.equal(room.lighthouseOperation,ops);assert.deepEqual(room.lighthouseMaintenance.inventory,parts);assert.equal(room.timePlayback.automatic,true);
- room.lighthouseCommandAllowed=()=>false;room.selectLighthouseDrill('sensor');assert.equal(room.lighthouseMaintenance.session,'normal');
+test('focused scene rejects deferred commands without mutating normal session or consuming inventory',()=>{
+ const proto=load('Room').RoomScene.prototype,f=setup(),room=Object.create(proto);
+ Object.assign(room,{timeState:f.clock,lighthouseState:f.op,lighthouseMaintenanceState:f.m,
+  lighthousePanel:{activeLocation:'control'},lighthouseCommandAllowed:()=>true,notifyLighthouseOperation:()=>{}});
+ const before=f.m.snapshot;
+ for(const command of ['takeover','isolate-main','override-on','replace'])room.localLighthouseMaintenance(command,'meter');
+ assert.equal(f.m.snapshot,before);assert.equal(f.m.snapshot.session,'normal');
+ room.lighthousePanel.activeLocation='lighthouse-generator';
+ // No power subsystem is needed to reject disabled player commands before dispatch.
+ for(const command of ['start-generator','refuel','probe-generator'])room.localLighthousePower(command,'meter');
+ assert.equal(f.m.snapshot,before);assert.equal(room.selectLighthouseDrill,undefined);
+ room.lighthousePanel.activeLocation='lighthouse-solar-array';room.lighthouseCommandAllowed=()=>false;
+ room.localLighthouseMaintenance('inspect','meter');assert.equal(f.m.snapshot.action,undefined);
 });

@@ -1,0 +1,44 @@
+import type { LighthouseInspectionSnapshot } from "./LighthouseInspection";
+import type { LighthouseMaintenanceSnapshot, MaintenanceCommand } from "./LighthouseMaintenance";
+import type { LighthousePowerSnapshot, PowerCommand } from "./LighthousePower";
+
+/** The current player scope. Deferred simulations remain independently testable. */
+export const lighthouseMaintenanceAllowed = (location: string, command: MaintenanceCommand) =>
+  location === "lighthouse-solar-array" && (command === "inspect" || command === "clean");
+export const lighthousePowerAllowed = (location: string, command: PowerCommand) =>
+  location === "lighthouse-battery-main" && command === "verify-main";
+
+export function lighthouseProgress(i: LighthouseInspectionSnapshot, m: LighthouseMaintenanceSnapshot, p: LighthousePowerSnapshot) {
+  if (i.cleaning) return {kind: "cleaning", label: "擦拭中", fraction: i.cleaningSeconds / 1.5};
+  if (m.action) return {kind: m.action.command, label: m.action.command === "clean" ? "擦拭中" : "巡视中", fraction: m.action.elapsed / m.action.duration};
+  if (p.action) return {kind: p.action.command, label: "确认供电", fraction: p.action.elapsed / p.action.duration};
+  // Time alone must not draw a complete ring before an actual turn and output are confirmed.
+  if (!i.optic && i.observationSeconds > 0) return {kind: "observation", label: "观察灯具", fraction: Math.min(.97, i.observationSeconds / 10)};
+  return undefined;
+}
+export interface LighthouseRecord {day: number; hour: number; object: string; action: string; result: string;}
+export function lighthouseRecords(location: string, i: LighthouseInspectionSnapshot, m: LighthouseMaintenanceSnapshot, p: LighthousePowerSnapshot): LighthouseRecord[] {
+  const objects: Record<string, string> = {control: "lighthouse-control-panel", test: "lighthouse-beacon-main", cover: "lighthouse-optics-cleaning"};
+  const filter = objects[location] || location, all = location === "log";
+  const labels: Record<string, [string, string]> = {
+    "control-read": ["读取仪表", "读数已确认"], "optic-observed": ["观察灯具", "转动与出光正常"],
+    "cover-observed": ["检查保护面", ""], "cover-cleaned": ["擦拭保护面", "已清洁，待复查"],
+    "cleaning-cancelled": ["擦拭中断", "表面保持原状"]
+  };
+  const rows: LighthouseRecord[] = i.events.filter(e => !!labels[e.type] && (all || e.objectId === filter)).map(e => ({
+    day: e.dutyDay, hour: e.hour, object: e.objectId, action: labels[e.type][0],
+    result: labels[e.type][1] || (e.result.includes("盐膜") ? "发现盐膜，待清洁" : "表面洁净，已确认")
+  }));
+  if (all || location === "lighthouse-solar-array") m.evidence.filter(e => e.component === "solar" && !e.method.startsWith("开始")).forEach(e => rows.push({
+    day: e.day, hour: e.hour, object: "lighthouse-solar-array", action: e.method === "中断" ? "巡视中断" : e.method === "擦拭完成" ? "清洁面板" : "巡视面板",
+    result: e.method === "中断" ? "设备保持原状" : e.result.includes("污损") ? "发现污损" : "面板洁净"
+  }));
+  if (all || location === "lighthouse-battery-main") p.events.filter(e => ["main-protected", "verify-main"].includes(e.type)).forEach(e => rows.push({
+    day: e.day, hour: e.hour, object: "lighthouse-battery-main", action: "供电检查", result: e.type === "main-protected" ? "电量偏低，自动保护" : "供电恢复，已确认"
+  }));
+  return rows.map((row, order) => ({...row, order})).sort((a, b) => b.day - a.day || b.hour - a.hour || b.order - a.order);
+}
+export function lighthouseRecordPage(rows: LighthouseRecord[], page: number, size = 5) {
+  const pages = Math.max(1, Math.ceil(rows.length / size)), current = Math.max(0, Math.min(pages - 1, page));
+  return {rows: rows.slice(current * size, (current + 1) * size), page: current, pages};
+}

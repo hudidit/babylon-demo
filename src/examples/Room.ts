@@ -47,11 +47,10 @@ import { lighthouseBeamStrength } from "./LighthouseBeacon";
 import type { LighthousePanelLocation } from "./LighthousePanel";
 import { lighthouseEquipmentDefinition, LIGHTHOUSE_EQUIPMENT, LIGHTHOUSE_BACKUP_MOUNT, lighthouseEquipmentReading } from "./LighthouseEquipmentLayout";
 import { LighthouseMaintenance } from "./LighthouseMaintenance";
-import type { LighthouseDrill, LighthouseTool, MaintenanceCommand } from "./LighthouseMaintenance";
-import { LighthouseMaintenancePanel } from "./LighthouseMaintenancePanel";
+import type { LighthouseTool, MaintenanceCommand } from "./LighthouseMaintenance";
+import { lighthouseMaintenanceAllowed, lighthousePowerAllowed } from "./LighthouseExperience";
 import { LighthousePower } from "./LighthousePower";
 import type { PowerCommand } from "./LighthousePower";
-import { LighthousePowerPanel } from "./LighthousePowerPanel";
 
 export type RoomView = "overview" | "coast" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 // The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
@@ -68,11 +67,8 @@ export class RoomScene {
   private lighthouseInspectionState = new LighthouseInspection();
   private lighthouseMaintenanceState = new LighthouseMaintenance();
   private lighthousePowerState = new LighthousePower();
-  private suspendedLighthouse?: {time: RoomTimeOfDay; operation: LighthouseOperation; inspection: LighthouseInspection; maintenance: LighthouseMaintenance; power:LighthousePower};
   private lighthouseEvidenceKey = "";
   private readonly lighthousePanel: LighthousePanel;
-  private readonly lighthouseMaintenancePanel: LighthouseMaintenancePanel;
-  private readonly lighthousePowerPanel: LighthousePowerPanel;
   private readonly pauses = new RoomPauseState();
   private timeVisualElapsed = 0;
   onTimeOfDayChange: () => void = () => {};
@@ -203,10 +199,9 @@ export class RoomScene {
     this.interactions.addDoor(this.exterior.lighthouseDoor);
     const lighthouse = this.exterior.lighthouseDetails;
     this.lighthousePanel = new LighthousePanel(canvas.ownerDocument, resume => this.closeLighthousePanel(resume), () => this.toggleLocalLighthouseTest(), {
-      confirm: () => this.confirmLighthouseControl(), cover: () => this.inspectLighthouseCover(), clean: () => this.cleanLighthouseCover()});
-    this.lighthouseMaintenancePanel = new LighthouseMaintenancePanel(canvas.ownerDocument,
-      (command, tool) => this.localLighthouseMaintenance(command, tool), session => this.selectLighthouseDrill(session));
-    this.lighthousePowerPanel = new LighthousePowerPanel(canvas.ownerDocument,(command,tool)=>this.localLighthousePower(command,tool));
+      confirm: () => this.confirmLighthouseControl(), cover: () => this.inspectLighthouseCover(), clean: () => this.cleanLighthouseCover(),
+      solarInspect: () => this.localLighthouseMaintenance("inspect", "meter"), solarClean: () => this.localLighthouseMaintenance("clean", "cloth"),
+      restorePower: () => this.localLighthousePower("verify-main", "meter")});
     this.interactions.addDevice(lighthouse.panel, () => this.openLighthousePanel("control"));
     this.interactions.addDevice(lighthouse.test, () => this.openLighthousePanel("test"));
     this.interactions.addLamp(lighthouse.switch, () => lighthouse.on, () => lighthouse.toggle());
@@ -378,13 +373,9 @@ export class RoomScene {
       this.scene.metadata.lighthouseOperation.visualApplied = true;
     }
     if (this.lighthouseInspection) {
-      const rendered = this.lighthousePanel?.render(this.lighthouseOperation, this.lighthouseInspection);
-      const near = this.atLighthouseFloor(LIGHTHOUSE.gallery) && !this.isViewing && !this.pauses.blocked;
-      this.lighthousePanel?.renderActivity(this.lighthouseInspection, near, this.lighthouseOperation.running);
-      this.lighthouseMaintenancePanel?.render(this.lighthousePanel.activeLocation, this.lighthouseOperation, m, !!rendered);
-      this.lighthouseMaintenancePanel?.renderActivity(m, near, this.isViewing || this.pauses.blocked);
-      if(this.lighthousePowerState){this.lighthousePowerPanel?.render(this.lighthousePanel.activeLocation,this.lighthouseOperation,m,this.lighthousePower,this.timePlayback.automatic);
-        this.lighthousePowerPanel?.renderActivity(this.lighthousePower,this.isViewing||this.pauses.blocked);}
+      this.lighthousePanel?.render(this.lighthouseOperation, this.lighthouseInspection, m, this.lighthousePower, this.timePlayback.automatic);
+      const active = this.currentView === "first-person" && !this.isViewing && !this.pauses.blocked && this.exterior.isVisible;
+      this.lighthousePanel?.renderActivity(this.lighthouseInspection, active, this.lighthouseOperation.running, m, this.lighthousePower);
     }
   }
   setTimeOfDay(hour: number): TimeOfDaySnapshot {
@@ -847,11 +838,9 @@ export class RoomScene {
 
   private openLighthousePanel(location: LighthousePanelLocation) {
     if (!this.controlsEnabled || this.isViewing || !this.pointerLocked || !this.canAccessLighthouse(location)) return;
-    if (!this.lighthousePanel.open(location, this.lighthouseOperation, this.lighthouseInspection)) return;
+    if (!this.lighthousePanel.open(location, this.lighthouseOperation, this.lighthouseInspection, this.lighthouseMaintenance, this.lighthousePower, this.timePlayback.automatic)) return;
     // Modal state exists before lock release, preserving the first-person pose.
     this.setPaused("lighthouse-panel", true);
-    this.lighthouseMaintenancePanel.render(location, this.lighthouseOperation, this.lighthouseMaintenance);
-    this.lighthousePowerPanel.render(location,this.lighthouseOperation,this.lighthouseMaintenance,this.lighthousePower,this.timePlayback.automatic);
     this.audio.stopAll(); this.audio.play("switch", "lighthouse-control-panel");
     this.updateControls(); this.updateInteractionHint();
   }
@@ -869,7 +858,7 @@ export class RoomScene {
       this.lighthousePanel.notice("请在顶层灯座旁恢复操作；当前试灯状态保持。"); return;
     }
     if (this.lighthouseOperation.testSecondsRemaining > 0) this.endLighthouseTest();
-    else if (!this.startLighthouseTest()) {this.lighthousePanel.notice("主灯当前故障、隔离或由备用接替，请从检修口按隔离检测/受控试机流程操作。"); return;}
+    else if (!this.startLighthouseTest()) {this.lighthousePanel.notice("主灯暂不可用，请到首层电池柜查看供电状态。"); return;}
     this.audio.play("switch", "lighthouse-beacon-main"); this.closeLighthousePanel(true);
   }
 
@@ -878,39 +867,18 @@ export class RoomScene {
       && !this.pauseReasons.some(reason => reason !== "lighthouse-panel");
   }
   private localLighthouseMaintenance(command: MaintenanceCommand, tool: LighthouseTool) {
-    if(command==='probe'){this.localLighthousePower('probe-solar',tool);return;}
     const location = this.lighthousePanel.activeLocation;
-    if (!location) return;
+    if (!location || !lighthouseMaintenanceAllowed(location, command)) return;
     const accepted = this.lighthouseMaintenanceState.command(command, location, tool, this.lighthouseState, this.lighthouseCommandAllowed(location));
     this.notifyLighthouseOperation();
-    if (accepted && (this.lighthouseMaintenance.action || ["self-test", "takeover", "trial"].includes(command))) this.closeLighthousePanel(true);
+    if (accepted && this.lighthouseMaintenance.action) this.closeLighthousePanel(true);
   }
   private localLighthousePower(command:PowerCommand,tool:LighthouseTool) {
-    const location=this.lighthousePanel.activeLocation;if(!location)return;
+    const location=this.lighthousePanel.activeLocation;if(!location || !lighthousePowerAllowed(location, command))return;
     const accepted=this.lighthousePowerState.command(command,location,tool,this.lighthouseCommandAllowed(location),this.timePlayback.automatic,this.lighthouseOperation,this.lighthouseMaintenance);
     if(accepted)this.audio.play('switch',location);
     this.notifyLighthouseOperation();
     if(accepted&&this.lighthousePower.action)this.closeLighthousePanel(true);
-  }
-  private selectLighthouseDrill(session: LighthouseDrill) {
-    const location = this.lighthousePanel.activeLocation;
-    if ((location !== "control" && location !== "log") || !this.lighthouseCommandAllowed(location)) return;
-    if (session === "normal") {
-      if (!this.suspendedLighthouse) return;
-      const saved = this.suspendedLighthouse;
-      this.timeState = saved.time; this.lighthouseState = saved.operation; this.lighthouseInspectionState = saved.inspection;
-      this.lighthouseMaintenanceState = saved.maintenance; this.suspendedLighthouse = undefined;
-      this.lighthousePowerState = saved.power;
-    } else {
-      if (this.suspendedLighthouse || !["drive", "charger", "sensor", "power"].includes(session)) return;
-      this.suspendedLighthouse = {time: this.timeState, operation: this.lighthouseState, inspection: this.lighthouseInspectionState, maintenance: this.lighthouseMaintenanceState,power:this.lighthousePowerState};
-      this.timeState = new RoomTimeOfDay(); this.lighthouseState = new LighthouseOperation(); this.lighthouseInspectionState = new LighthouseInspection();
-      this.lighthouseMaintenanceState = new LighthouseMaintenance(session);
-      this.lighthousePowerState = new LighthousePower(session==='power'?{mainWh:2880*.11}:{});
-      this.timeState.select(session === "drive" || session === "power" ? 21 : 12); this.lighthouseState.selectTime(this.timeOfDay.hour);
-    }
-    this.lighthouseEvidenceKey = ""; this.timeState.resetDelta(); this.timeVisualElapsed = 0;
-    this.notifyLighthouseOperation(); this.applyTimeOfDay(this.timeOfDay); this.notifyTimeOfDay();
   }
   private confirmLighthouseControl() {
     if (!this.lighthouseCommandAllowed("control")) {this.lighthousePanel.notice("请回到首层运行面板旁确认读数。"); return;}
@@ -1248,8 +1216,6 @@ export class RoomScene {
     this.pauseScooter(); this.pauseLadder(); this.scooterModel.dispose();
     this.audio.dispose();
     this.lighthousePanel.dispose();
-    this.lighthouseMaintenancePanel.dispose();
-    this.lighthousePowerPanel.dispose();
     document.querySelector("#item-inspection-return")?.removeEventListener("click", this.returnFromInspection);
     document.querySelector("#item-inspection")?.removeEventListener("cancel", this.cancelInspection);
     document.querySelector<HTMLDialogElement>("#item-inspection")?.close();

@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-21",
+  "baseline": "ccbdc3f",
+  "localLinksChecked": 317,
+  "brokenLocalLinks": [],
+  "sameFinalProductionManifest": "81ccacc5e05920cd433904286d1ed42a6a62fd8e50d2ad8d89b2972d5d39a6be",
+  "passed": true,
+  "files": [
+    {
+      "path": "src/examples/LighthousePanel.ts",
+      "bytes": 19051,
+      "sha256": "c1b051738a704ef3efb4b445f88e87a8d574c8cfbc4083a53565386fba33ee1b"
+    },
+    {
+      "path": "src/examples/LighthouseExperience.ts",
+      "bytes": 3867,
+      "sha256": "3812edd4dd543373b3818cb7755f4bfe67f327b643235ad4d3d351e72ca465ab"
+    },
+    {
+      "path": "src/examples/LighthouseEquipmentLayout.ts",
+      "bytes": 16065,
+      "sha256": "4b1e09725cf3786e53944a37bd88d66fb17def887127f3c1105f0e7549a016ca"
+    },
+    {
+      "path": "src/examples/Room.ts",
+      "bytes": 75168,
+      "sha256": "77b817ddb04bf599154972a5329edd300782271dd925d297ca765a5cb846eacb"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 45220,
+      "sha256": "cd4e6b895d1d3d2094d508727702c69137c5faa3a92c003adac55e3afade5657"
+    },
+    {
+      "path": "public/environment/coastal-cliff-source.json",
+      "bytes": 15410,
+      "sha256": "515c1e0847390774141447d04f92ef0ed52d16ff964070871f907eef0ea55970"
+    },
+    {
+      "path": "public/STUDY_ASSET_SOURCES.md",
+      "bytes": 14341,
+      "sha256": "3bdf01b2555ce019f99e3a9e9398f392ce4aa1bc67fed73a9b713eaefe6ab279"
+    },
+    {
+      "path": "tests/lighthouse-experience.test.cjs",
+      "bytes": 4272,
+      "sha256": "be11408411c56dd7ad8994684093fc36be9e18f9b04ae12ca2b3d366649d9cab"
+    },
+    {
+      "path": "tests/lighthouse-maintenance.test.cjs",
+      "bytes": 11043,
+      "sha256": "3353a31d56f8c6f72b8baec359e44bf90df44a944e28e87be30a0db3d58bebcc"
+    },
+    {
+      "path": "tests/lighthouse-operation.test.cjs",
+      "bytes": 14799,
+      "sha256": "68f5ec28f001f4623db2d03c204b502cb4332067db2f27b5a3937f56444b51eb"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-focused-experience-2026-10-21/check-browser.cjs",
+      "bytes": 13787,
+      "sha256": "6dd9aff562492c9351451833f8630b0a150704f5527ce8dd7bf8f1ea9d96cabd"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-focused-experience-2026-10-21/check-release.cjs",
+      "bytes": 1790,
+      "sha256": "71307127358dbd3ee1e3d611f8f6fc709af50b4e89441699c76d95fd16c33e5e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-focused-experience-2026-10-21/browser/browser.json",
+      "bytes": 13974,
+      "sha256": "82a57dd48098d0b57981964bbd1b673dcebaf87088fc4803e6e7286918a575c2"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-focused-experience-2026-10-21/subpath/browser.json",
+      "bytes": 14279,
+      "sha256": "a7fcc5049f8df666ccb65a411d933b6be6d95db7acbe34b43ac74f483f7020aa"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-focused-experience-2026-10-21/release.json",
+      "bytes": 649,
+      "sha256": "168fcf17f87d86809085cb39557438d6d39b6d2f8947365f5d83f25ac2d99bcb"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-focused-experience-2026-10-21/release-manifest.json",
+      "bytes": 92706,
+      "sha256": "81ccacc5e05920cd433904286d1ed42a6a62fd8e50d2ad8d89b2972d5d39a6be"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-focused-experience-2026-10-21/bundle-analysis.json",
+      "bytes": 122753,
+      "sha256": "76e956a016b8b3d3098dcdaa17cf953530f72d6b39b95df30c39d437fe7b74a4"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-focused-experience-2026-10-21/tests.log",
+      "bytes": 35149,
+      "sha256": "91e67ca7fb05f7483ec8f15a65dcef1447b5ac454667569584e2904692bb21a6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-focused-experience-2026-10-21/typecheck.log",
+      "bytes": 51,
+      "sha256": "d51a4680b3af1d0fdf2ee16eb9cb547bf4524a74c0b1370c87a2d0d6690a8ec3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-focused-experience-2026-10-21/development-build.log",
+      "bytes": 1721,
+      "sha256": "e44c2c47871bbdfcc4a24d3c6dab6de52ff4c4708f2856fdfb6d00004b097425"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-focused-experience-2026-10-21/production-build.log",
+      "bytes": 4960,
+      "sha256": "d4f87dac33399f26b91ef47613d81f29bc4099bd8f03dac9a1f20599448472c5"
+    }
+  ]
+}
