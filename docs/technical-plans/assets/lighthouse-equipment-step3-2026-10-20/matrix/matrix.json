@@ -1,0 +1,1813 @@
+{
+  "baseline": "9e3823e",
+  "releaseManifestSha256": "8384ba5846c005ef1c26ce10a40bead2fae4c3ff33256db537d740c1b72774e3",
+  "fpsOrLoadTimeSampling": false,
+  "physicalDevicesTested": false,
+  "method": "Unmodified final dist, Chrome/WebKit GPU. Original camera fixtures; equipment hidden/restored only for visible-geometry pixel comparisons. Backup lens view uses an allowed gallery standing position.",
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "sensor",
+      "off": {
+        "luma": 138.90746489257614,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 17.349626464845844,
+        "difference": 121.74538167317615,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "battery",
+      "off": {
+        "luma": 160.22785208739225,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 35.40544667968667,
+        "difference": 123.53330485026578,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "solar",
+      "off": {
+        "luma": 74.9894168701174,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 50.615952478017654,
+        "difference": 23.968322753906346,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "room",
+      "off": {
+        "luma": 94.28337977294926,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 150.59318863526573,
+        "difference": 60.5630086263022,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "generator",
+      "off": {
+        "luma": 148.2496817138799,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 41.069475781240335,
+        "difference": 106.91164143879992,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 124.29375823978005,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 77.13332315673988,
+        "difference": 49.513407389326844,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "sensor",
+      "off": {
+        "luma": 138.2064446289021,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 17.67822469482578,
+        "difference": 120.74316406249982,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "battery",
+      "off": {
+        "luma": 160.1672653320205,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 35.62254392089769,
+        "difference": 123.25323486328675,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "solar",
+      "off": {
+        "luma": 75.07674984130887,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 50.64859754637646,
+        "difference": 24.077514648437422,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "room",
+      "off": {
+        "luma": 94.32927526855468,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 150.58052642823526,
+        "difference": 60.55100504557296,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "generator",
+      "off": {
+        "luma": 148.5259426269663,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 39.94188046874144,
+        "difference": 108.23771158853891,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 123.40222033694688,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 73.64472313232255,
+        "difference": 52.214680989586554,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "sensor",
+      "off": {
+        "luma": 138.17559505615154,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 80.21626199951932,
+        "difference": 58.51161702473981,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "battery",
+      "off": {
+        "luma": 155.97870607909863,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 31.438777905273334,
+        "difference": 123.32767740885647,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "solar",
+      "off": {
+        "luma": 78.12445463867185,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 51.050446777339864,
+        "difference": 26.734171549479267,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "room",
+      "off": {
+        "luma": 94.40579119872899,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 144.34161805421493,
+        "difference": 57.933146158854065,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "generator",
+      "off": {
+        "luma": 127.1782199951423,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 51.011645373532126,
+        "difference": 77.00809733072778,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 122.02949932863292,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 99.93294058838501,
+        "difference": 23.251688639322616,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "sensor",
+      "off": {
+        "luma": 138.6862516967572,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 18.120530792234955,
+        "difference": 120.84830729166967,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "battery",
+      "off": {
+        "luma": 160.23975249649047,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 35.454088241571554,
+        "difference": 123.50332132977887,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "solar",
+      "off": {
+        "luma": 75.80701367187577,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 50.63020892943088,
+        "difference": 24.925043741862147,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "room",
+      "off": {
+        "luma": 94.59427941589342,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 150.62108193970832,
+        "difference": 60.29915364583308,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "generator",
+      "off": {
+        "luma": 148.21655259705128,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 41.055810418721826,
+        "difference": 106.88320922851074,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 124.29174638990693,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 77.10279446104013,
+        "difference": 49.51653544109154,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "sensor",
+      "off": {
+        "luma": 138.2122824859345,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 18.327497207635922,
+        "difference": 120.20287577311313,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "battery",
+      "off": {
+        "luma": 160.178122061313,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 35.604719229119894,
+        "difference": 123.28340148928316,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "solar",
+      "off": {
+        "luma": 75.95409187011767,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 50.662550671373594,
+        "difference": 25.04299926757803,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "room",
+      "off": {
+        "luma": 94.58770585632384,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 150.6078424255453,
+        "difference": 60.32941691080757,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "generator",
+      "off": {
+        "luma": 148.54271353760092,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 40.02921440431662,
+        "difference": 108.16583251952493,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 123.40178101514678,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 73.61042926633307,
+        "difference": 52.21636962891774,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "sensor",
+      "off": {
+        "luma": 137.4402692993091,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 79.5797281036119,
+        "difference": 58.504979451497775,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "battery",
+      "off": {
+        "luma": 156.0027036683311,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 31.51212587586167,
+        "difference": 123.3820037841896,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "solar",
+      "off": {
+        "luma": 78.40751974487473,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 51.011133206186955,
+        "difference": 27.21147664388021,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "room",
+      "off": {
+        "luma": 94.7604457702598,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 144.3193232360853,
+        "difference": 57.7450968424479,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "generator",
+      "off": {
+        "luma": 127.12486074520302,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 50.99767314450206,
+        "difference": 76.93501790364161,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 122.02648133862691,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 99.86019800727765,
+        "difference": 23.285781860349406,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "sensor",
+      "off": {
+        "luma": 138.94402601318154,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 17.354940698244206,
+        "difference": 121.77547200520752,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "battery",
+      "off": {
+        "luma": 160.22785208739225,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 35.439369689940676,
+        "difference": 123.50266520182821,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "solar",
+      "off": {
+        "luma": 75.00510412597676,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 50.615952478017654,
+        "difference": 23.975748697916817,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "room",
+      "off": {
+        "luma": 94.32372619628919,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 150.59318863526573,
+        "difference": 60.525288899739834,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "generator",
+      "off": {
+        "luma": 148.2056304809698,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 41.069475781240335,
+        "difference": 106.86698404947691,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 124.29375823978005,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 77.13522309570448,
+        "difference": 49.51647949219062,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "sensor",
+      "off": {
+        "luma": 138.17893001708657,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 17.67797426757964,
+        "difference": 120.7171223958334,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "battery",
+      "off": {
+        "luma": 160.1672653320205,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 35.6393290893548,
+        "difference": 123.23581949870338,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "solar",
+      "off": {
+        "luma": 75.09247756347696,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 50.64859754637646,
+        "difference": 24.08536783854158,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "room",
+      "off": {
+        "luma": 94.34772792968701,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 150.58052642823526,
+        "difference": 60.53200276692675,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "generator",
+      "off": {
+        "luma": 148.52972543946638,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 39.94188046874144,
+        "difference": 108.23921712239309,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 123.40222033694688,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 73.6375610229472,
+        "difference": 52.214884440106914,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "sensor",
+      "off": {
+        "luma": 138.1468434692384,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 80.1974573486403,
+        "difference": 58.47558593750026,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "battery",
+      "off": {
+        "luma": 156.02038892821957,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 31.412148278808353,
+        "difference": 123.3912353515648,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "solar",
+      "off": {
+        "luma": 78.14753120117177,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 51.050496264644806,
+        "difference": 26.743021647135578,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "room",
+      "off": {
+        "luma": 94.44606697997908,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 144.3434364624181,
+        "difference": 57.89943440755221,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "generator",
+      "off": {
+        "luma": 127.14928132326729,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 51.01339580077823,
+        "difference": 76.97503662109236,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 122.02474157716804,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 99.91826280518104,
+        "difference": 23.259643554687013,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "sensor",
+      "off": {
+        "luma": 138.69347581174645,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 18.122597323607,
+        "difference": 120.85205586751538,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "battery",
+      "off": {
+        "luma": 160.23975249649047,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 35.44109562377376,
+        "difference": 123.51517232261712,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "solar",
+      "off": {
+        "luma": 75.8264780700687,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 50.63020892943088,
+        "difference": 24.935490926106862,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "room",
+      "off": {
+        "luma": 94.62465973815965,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 150.62108193970832,
+        "difference": 60.27115376790321,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "generator",
+      "off": {
+        "luma": 148.2496692047174,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 41.055810418721826,
+        "difference": 106.91546630858849,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 124.29174638990693,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 77.10123797300312,
+        "difference": 49.51885477702978,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "sensor",
+      "off": {
+        "luma": 138.2108676208234,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 18.326928729242372,
+        "difference": 120.20126851399694,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "battery",
+      "off": {
+        "luma": 160.178122061313,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 35.60159369506233,
+        "difference": 123.28640238446523,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "solar",
+      "off": {
+        "luma": 75.97072259216358,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 50.662550671373594,
+        "difference": 25.05143737792953,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "room",
+      "off": {
+        "luma": 94.61291522522048,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 150.6078424255453,
+        "difference": 60.3036244710294,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "generator",
+      "off": {
+        "luma": 148.5533420806919,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 40.02921440431662,
+        "difference": 108.17606608072266,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 123.40178101514678,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 73.60687622067879,
+        "difference": 52.22138468425667,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "sensor",
+      "off": {
+        "luma": 137.3951226318295,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 79.57814912412067,
+        "difference": 58.50395202636741,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "battery",
+      "off": {
+        "luma": 156.0089080353962,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 31.518397460944797,
+        "difference": 123.37836201986585,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "solar",
+      "off": {
+        "luma": 78.42921393432779,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 51.011055859385266,
+        "difference": 27.222986857096203,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "room",
+      "off": {
+        "luma": 94.78010478210054,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 144.3255218292267,
+        "difference": 57.73240661621034,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "generator",
+      "off": {
+        "luma": 127.12198509212679,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 51.003728942841875,
+        "difference": 76.92946370442276,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "backup-gallery",
+      "off": {
+        "luma": 122.02555368054571,
+        "difference": 0,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 99.85320536811747,
+        "difference": 23.289215087888373,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "passed": true,
+  "sourceBaseline": "9e3823e"
+}

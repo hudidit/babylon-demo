@@ -2,6 +2,7 @@ import { COASTAL_SITE } from "./CoastalSite";
 import { LIGHTHOUSE } from "./LighthouseLayout";
 import type { LighthouseOperationSnapshot } from "./LighthouseOperation";
 import type { LighthouseMaintenanceSnapshot } from "./LighthouseMaintenance";
+import type { LighthousePowerSnapshot } from "./LighthousePower";
 
 const floor = LIGHTHOUSE.floor, gallery = LIGHTHOUSE.gallery, plaza = COASTAL_SITE.tower.ground + .04;
 export const LIGHTHOUSE_SERVICE_ROOM = Object.freeze({ x: -5.1, y: 5.9, width: 2.6, depth: 2.6,
@@ -20,23 +21,23 @@ export const LIGHTHOUSE_EQUIPMENT = Object.freeze(([
     sign: { x: .15, y: -.322, bottom: gallery + .67, width: .18, height: .09, nx: 0, ny: -1 } },
   { id: "lighthouse-beacon-backup", parent: "lighthouse-beacon-backup", label: "独立备用导航灯", place: "灯室外 · 高位独立支架", floor: gallery,
     lines: ["BACKUP", "WHITE FL 10S"], purpose: "高于塔顶的独立备用灯头，白闪10秒一周期、亮0.8秒，360度临时降级覆盖。",
-    guide: "日间空闲可自检12活跃秒；有导航需求时核对实际接替。返回外廊仰望实际灯头连续10活跃秒，观察白闪；自检不能替代实际接替证据。独立供电本步按可用工况。",
+    guide: "日间空闲可自检12活跃秒；有导航需求时核对实际接替。返回外廊仰望实际灯头连续10活跃秒，观察白闪；自检不能替代实际接替证据。备用电池单独计量；机组隔离充电，不从主电池倒灌。",
     sign: { x: 1.52, y: .63, bottom: gallery + 1.25, width: .56, height: .16, nx: Math.cos(Math.PI / 8), ny: Math.sin(Math.PI / 8) } },
   { id: "lighthouse-battery-main", parent: "lighthouse-power-system", label: "主电池配电柜", place: "首层维护室 · 右侧封闭柜体", floor,
-    lines: ["BATTERY", "NO TELEMETRY"], purpose: "封闭主电池与配电支路；与左侧工具柜、原工作灯和导航面板分别标识。",
-    guide: "柜门保持关闭。电量、Wh和支路状态尚未接入，当前继续使用稳定供电工况；此处没有可用的补电或开柜操作。",
+    lines: ["BATTERY", "MAIN / BACKUP"], purpose: "封闭主电池与配电支路；与左侧工具柜、原工作灯和导航面板分别标识。",
+    guide: "柜门保持关闭。核对主备Wh、百分比和净充放电；低于10%主灯保护，回升20%后用检测工具复验，驱动故障与检修隔离仍分别处理。",
     sign: { x: 1.72, y: -.218, bottom: floor + .92, width: .52, height: .15, nx: 0, ny: -1 } },
   { id: "lighthouse-solar-charger", parent: "lighthouse-power-system", label: "太阳能充电控制器", place: "首层维护室 · 电池柜上部", floor,
     lines: ["CHARGER", "SERVICE / TEST"], purpose: "太阳能支路的隔离、模块检测和回充趋势检验位置。",
-    guide: "先到塔外排除面板污损，隔离后检测并匹配充电模块。替换后重新检测、接通、采样5活跃秒。检验采用200W标准输入/55W负载的测试回路，非主电池存能；完整能量模型留待后续。",
+    guide: "先到塔外排除面板污损，隔离后检测并匹配充电模块。替换后重新检测、接通、采样5活跃秒。开启自动流转、停柴油机，按主电池实际Wh变化验证太阳能；夜间、满电限充或负趋势不能判作有效回充。",
     sign: { x: 1.72, y: -.242, bottom: floor + 1.57, width: .46, height: .13, nx: 0, ny: -1 } },
   { id: "lighthouse-solar-array", parent: "lighthouse-power-system", label: "太阳能支架与面板", place: "塔外平台 · 东南侧", floor: plaza,
     lines: ["SOLAR ARRAY", "CHECK SURFACE"], purpose: "朝南倾斜的独立面板与支架，现场排查遮挡污损。",
     guide: "从南侧观察，再用清洁布擦拭并复查。面板洁净仍不能排除充电模块故障；返回首层隔离检测。",
     sign: { x: 4.8, y: 6.652, bottom: plaza + .36, width: .68, height: .18, nx: 0, ny: 1 } },
   { id: "lighthouse-generator", parent: "lighthouse-power-system", label: "柴油备用充电机组", place: "独立机房 · 后侧机座", floor: plaza,
-    lines: ["GENSET", "OFF - NOT IN SERVICE"], purpose: "设置在塔外独立机房内的备用充电机组，具有机座、外壳及通向屋外的排气管。",
-    guide: "机组保持关闭，当前没有燃料读数、启停、补给或充电输出。后续操作需分别确认启动成功与有效充电。",
+    lines: ["GENSET", "STOP TO REFUEL"], purpose: "设置在塔外独立机房内的备用充电机组，具有机座、外壳及通向屋外的排气管。",
+    guide: "先核对燃料，现场启动后开启自动流转；分别验证输出和主电池净回充。停机才能补给，储备有限；燃料单位为游戏参数。",
     sign: { x: LIGHTHOUSE_SERVICE_ROOM.x, y: LIGHTHOUSE_SERVICE_ROOM.y + .243, bottom: plaza + .58, width: .62, height: .16, nx: 0, ny: -1 } },
   { id: "lighthouse-generator-room", parent: "lighthouse-power-system", label: "塔外独立机房", place: "塔外平台 · 西南侧", floor: plaza,
     lines: ["GEN ROOM", "KEEP VENTS CLEAR"], purpose: "常开检修入口、两侧百叶通风口和屋外排气，机组不占用塔底维护室。",
@@ -50,24 +51,31 @@ export const LIGHTHOUSE_EQUIPMENT = Object.freeze(([
 export type LighthouseEquipmentId = typeof LIGHTHOUSE_EQUIPMENT[number]["id"];
 export const lighthouseEquipmentDefinition = (id: string) => LIGHTHOUSE_EQUIPMENT.find(device => device.id === id);
 
-export function lighthouseEquipmentReading(id: string, operation: LighthouseOperationSnapshot, maintenance?: LighthouseMaintenanceSnapshot) {
+export function lighthouseEquipmentReading(id: string, operation: LighthouseOperationSnapshot, maintenance?: LighthouseMaintenanceSnapshot, power?: LighthousePowerSnapshot) {
+  if (power) {
+    const p=power;
+    if(id === "lighthouse-beacon-backup" && !p.backupAvailable)return {state:"备用电源不可用",detail:`备用电池${p.backupWh.toFixed(1)}Wh；等待机组独立支路补能，不从主电池倒灌。`};
+    if(id === "lighthouse-battery-main")return {state:`主电池 ${(p.mainFraction*100).toFixed(1)}% · ${p.mainWh.toFixed(1)}Wh`,detail:`净${p.mainNetW.toFixed(1)}W；${p.protected ? p.recoveryReady ? "已回升20%，待检测解除保护" : "低电保护，先补能" : p.warning ? "25%低电预警" : "主供电可用"}。备用独立${p.backupWh.toFixed(1)}Wh。`};
+    if(id === "lighthouse-solar-charger" || id === "lighthouse-solar-array")return {state:`太阳能实际 ${p.solarW.toFixed(1)}W`,detail:`主电池净${p.mainNetW.toFixed(1)}W；${maintenance?.chargeIsolated ? "太阳能支路隔离" : "太阳能支路接通"}。开启自动流转后以实际Wh变化采样，满电或负趋势不记回充通过。`};
+    if(id === "lighthouse-generator" || id === "lighthouse-generator-room")return {state:p.generatorRunning?"机组运行 · 充电需独立复验":"机组停止",detail:`输出${p.generatorW}W（主${p.generatorMainW}W/备用${p.generatorBackupW}W）；燃料${p.fuel.toFixed(2)}单位，约${p.remainingHours.toFixed(2)}场景小时；储备${p.reserveFuel.toFixed(1)}单位。停机才能补给。`};
+  }
   if (maintenance) {
     const m = maintenance;
     if (id === "lighthouse-drive-hatch") return {state: m.mainIsolated ? m.trial ? "隔离中 · 受控试机" : "主灯隔离" : operation.running ? "主灯运行" : "主灯停转",
       detail: `导航需求${m.navigationRequired ? "有" : "无"} / 主灯实际${operation.running ? "转动出光" : "停转熄灭"}；${m.mainVerified ? "当前驱动修订试机已复验" : "故障结论需隔离检测，维修后必须试机复验"}。`};
     if (id === "lighthouse-beacon-backup") return {state: m.selfTestSecondsRemaining > 0 && !m.navigationRequired ? "备用自检 · 不作实际接替" : m.backupOn ? "备用白闪 · 临时降级覆盖" : "备用熄灭 · 待命",
       detail: `${m.backupConfirmed ? "实际接替已现场复验" : "实际接替尚未现场复验"}；10秒周期 / 0.8秒亮 / 360度。自检记录独立，主备互锁。`};
-    if (id === "lighthouse-solar-charger") return {state: m.chargeIsolated ? "充电支路隔离" : `检验输出 ${m.outputW}W`,
-      detail: `200W标准输入 / 55W检验负载，${m.chargerVerified ? "回充趋势已复验" : "需现场排查并采样"}。测试回路非主电池存能。`};
+    if (id === "lighthouse-solar-charger") return {state: m.chargeIsolated ? "充电支路隔离" : "充电支路接通",
+      detail: `${m.chargerVerified ? "回充趋势已复验" : "需现场排查并按实际主电池Wh采样"}。`};
     if (id === "lighthouse-solar-array") return {state: "现场检查面板", detail: "遮挡污损、支架和控制模块分别排查；面板清洁不会修复控制模块。"};
     if (id === "lighthouse-light-sensor") return {state: m.override ? "受控抑制检测需求" : m.detectedDemand ? "检测请求亮灯" : "检测与日程一致",
       detail: `${m.override ? "人工覆盖尚未撤销" : "人工覆盖关闭"}；${m.sensorVerified ? "当前保护面已复测" : "结论需现场观察、清洁后撤销覆盖并复测"}。夜间日程优先。`};
   }
   if (id === "lighthouse-drive-hatch") return { state: operation.running ? "主灯运行 · 检修口关闭" : "主灯停转 · 检修口关闭",
-    detail: "主灯跟随现有自动日程与局部试灯；检修隔离未接入。" };
-  if (id === "lighthouse-generator-room") return { state: "检修入口开放", detail: "机组关闭；实体通风口和屋外排气已布置。" };
-  if (id === "lighthouse-generator") return { state: "机组关闭 · 尚未投运", detail: "燃料与充电输出未接入。" };
-  return { state: "已安装 · 尚未投运", detail: id === "lighthouse-beacon-backup" ? "灯头熄灭；自检与主备接替未接入。" : "供电模拟与遥测未接入。" };
+    detail: "主灯实际转动/出光读取运行模型；供电和检修条件需核对设备遥测。" };
+  if (id === "lighthouse-generator-room") return { state: "检修入口开放", detail: "实体通风口和屋外排气已布置；机组状态需核对供电遥测。" };
+  if (id === "lighthouse-generator") return { state: "状态待同步", detail: "在机组旁核对燃料和输出遥测。" };
+  return { state: "状态待同步", detail: "需核对当前设备和供电遥测。" };
 }
 
 export interface LighthouseEquipmentBox {

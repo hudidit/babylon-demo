@@ -102,8 +102,8 @@
   },
   "lighthouseEquipment": {
     "project": 2,
-    "step": 2,
-    "baseline": "e13fe78",
+    "step": 3,
+    "baseline": "9e3823e",
     "author": "babylon-demo project contributors",
     "license": "ISC",
     "layoutSource": "src/examples/LighthouseEquipmentLayout.ts",
@@ -166,11 +166,13 @@
       "shadowTargets": 0
     },
     "commissioned": true,
-    "stateBoundary": "Main availability/detector input uses the original clock. Independent 360-degree backup white flash (10 active seconds, 0.8 bright), self-test and actual takeover evidence remain separate. Main isolation, diagnosis, matching module replacement and real rotation/output trial precede automatic restoration. Three independent drill sessions preserve suspended normal clock, equipment, parts and logs. Revision-bound observations and timed tool transactions cancel without part consumption. Charger verification integrates a 200W standard-input / 55W test-load circuit for five active seconds, explicitly not the main battery. Full battery/fuel, persistent inventory and storage remain later steps. Generator stays off. No calibrated navigation range or engineering ventilation claim.",
+    "stateBoundary": "Actual scene-hour Wh model: main 2880Wh and backup 120Wh, each starts at 80%; main lamp 50W, control 5W, backup 5W; analytic 250W sunny solar envelope 06-18, dirty factor 0.2; solar fault/isolation blocks only solar. Diesel 200W split up to 10W independent backup charge, remainder main; fuel 4 of 12 units initially, reserve 8, one unit per scene hour, stopped refill 4 units over three active seconds. Main warning 25%, protection 10%, recovery 20% plus local meter check with healthy drive; main isolation and faults remain independent. No background/manual time catch-up. Actual 5-active-second charging verification measures main battery Wh under automatic time, with source isolation and separate generator start/output verification. Four independent drills, including an explicitly labelled 21:00 / 11% main-battery supply exercise (normal initial energy stays 80%), suspend/restore energy, fuel and logs with the original session. No extra geometry, materials, download, light, camera or render target. Original vertex colour generator state feedback and reused switch cue; no added continuous engine audio. Persistent storage remains later.",
     "behaviorSources": [
       "src/examples/LighthouseMaintenance.ts",
       "src/examples/LighthouseMaintenancePanel.ts",
-      "src/examples/LighthouseOperation.ts"
+      "src/examples/LighthouseOperation.ts",
+      "src/examples/LighthousePower.ts",
+      "src/examples/LighthousePowerPanel.ts"
     ],
     "backupEmission": "Original local GLSL white emission on the existing cylindrical lens, with real geometry/depth and clip planes; no extra light, image, camera or render target."
   },

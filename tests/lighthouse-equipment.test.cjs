@@ -21,7 +21,7 @@ test('installation identities and state remain honest; main hatch follows actual
     assert.ok(d.parent&&d.purpose&&d.guide&&d.lines.length===2);
     const reading=layout.lighthouseEquipmentReading(d.id,state.snapshot);
     assert.doesNotMatch(reading.state+reading.detail,/100%|备用正常|[0-9]+Wh|[0-9]+W/);
-    if(!['lighthouse-drive-hatch','lighthouse-generator-room'].includes(d.id))assert.match(reading.state,/未投运/);
+    if(!['lighthouse-drive-hatch','lighthouse-generator-room'].includes(d.id))assert.match(reading.state,/待同步/);
   }
   assert.match(layout.lighthouseEquipmentReading('lighthouse-drive-hatch',state.snapshot).state,/停转/);
   state.startTest();assert.match(layout.lighthouseEquipmentReading('lighthouse-drive-hatch',state.snapshot).state,/运行/);

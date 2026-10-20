@@ -4,7 +4,7 @@ import type { LighthousePanelLocation } from "./LighthousePanel";
 import { lighthouseClockLabel } from "./LighthousePanel";
 import { lighthouseEquipmentDefinition, lighthouseEquipmentReading } from "./LighthouseEquipmentLayout";
 
-const sessionLabels = {normal: "正常值守", drive: "主灯驱动异常演练", charger: "充电支路异常演练", sensor: "光敏污染演练"};
+const sessionLabels = {normal: "正常值守", drive: "主灯驱动异常演练", charger: "充电支路异常演练", sensor: "光敏污染演练",power:"低电补能演练（主电池初始11%）"};
 const commandLabels: Record<MaintenanceCommand, string> = {inspect: "现场观察 · 返回场景2秒", diagnose: "隔离检测 · 返回场景2秒",
   clean: "擦拭表面 · 返回场景2秒", replace: "替换对应模块 · 返回场景3秒", "self-test": "备用自检12秒 · 返回外廊观察",
   takeover: "受控切换到备用 · 返回外廊核对", "isolate-main": "隔离主灯", trial: "受控试机30秒 · 返回观察一圈", restore: "解除隔离 / 恢复自动",
@@ -41,7 +41,7 @@ export class LighthouseMaintenancePanel {
   render(location: LighthousePanelLocation | undefined, op: LighthouseOperationSnapshot, s: LighthouseMaintenanceSnapshot, force = false) {
     if (!location) {this.key = ""; return;}
     const key = [location, op.hour, op.running, op.testSecondsRemaining, s.source, s.mainIsolated, s.chargeIsolated, s.override,
-      s.notice, s.evidence[s.evidence.length - 1]?.id, s.session, s.resolved, s.backupConfirmed, s.outputW, s.selfTestSecondsRemaining].join(":");
+      s.notice, s.evidence[s.evidence.length - 1]?.id, s.session, s.resolved, s.backupConfirmed, s.selfTestSecondsRemaining].join(":");
     if (!force && key === this.key) return; this.key = key;
     const set = (id: string, text: string) => {this.document.querySelector("#" + id)!.textContent = text;};
     const equipment = lighthouseEquipmentDefinition(location);
@@ -61,8 +61,9 @@ export class LighthouseMaintenancePanel {
     set("lighthouse-drill-guide", s.session === "drive" ? "夜间主灯请求与反馈不一致。先到外廊仰望备用灯10活跃秒，核对实际白闪。检修口隔离、检测、匹配模块替换后重新检测；试机观察主灯一圈，再恢复自动。"
       : s.session === "charger" ? "白天支路输出异常。先到塔外观察面板，擦拭后复查；回首层隔离检测，匹配模块替换后重新检测、接通并采样。擦主灯保护面不会修复充电模块。"
       : s.session === "sensor" ? "晴天日程与检测需求不一致。首层受控抑制检测需求，登顶外廊观察保护面、擦拭和复查；回首层撤销覆盖后再登顶用检测工具复测。夜间日程优先。"
+      : s.session==='power' ? "独立教学初值11%/21点，开启自动流转后自然耗电至10%保护。去机房启动、停机补给并验证实际回充；达到20%后回电池柜用检测工具复验。退出恢复原值守，正常值守初始80%。"
       : "可从首层运行面板或记录夹进入固定演练。演练独立计时、用料和记录，退出恢复原值守状态；刷新仍会重新开始本次会话。");
-    this.document.querySelector<HTMLElement>("#lighthouse-tool-label")!.hidden = !localCommands[location] || location === "control" || location === "lighthouse-beacon-backup";
+    this.document.querySelector<HTMLElement>("#lighthouse-tool-label")!.hidden = !localCommands[location] && !["lighthouse-battery-main","lighthouse-generator"].includes(location) || location === "control" || location === "lighthouse-beacon-backup";
     this.document.querySelectorAll<HTMLButtonElement>("[data-command]").forEach(button => {button.hidden = !localCommands[location]?.includes(button.dataset.command as MaintenanceCommand);});
     this.document.querySelector<HTMLElement>("#lighthouse-drills")!.hidden = location !== "control" && location !== "log";
     this.document.querySelectorAll<HTMLButtonElement>("[data-lighthouse-drill]").forEach(button => {

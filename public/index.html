@@ -292,6 +292,22 @@
           </dl>
         </section>
         <p id="lighthouse-panel-guide"></p>
+          <label id="lighthouse-tool-label" hidden>携带工具 / 备件<select id="lighthouse-tool">
+            <option value="meter">检测工具</option><option value="cloth">清洁布</option>
+            <option value="drive-module">驱动模块</option><option value="charger-module">充电模块</option>
+          </select></label>
+        <section id="lighthouse-power-content" aria-label="能量与补能">
+          <h3>主备独立能量与补能</h3>
+          <dl class="lighthouse-readings">
+            <div><dt>主电池</dt><dd id="lighthouse-power-main"></dd></div>
+            <div><dt>备用电池</dt><dd id="lighthouse-power-backup"></dd></div>
+            <div><dt>充电输入</dt><dd id="lighthouse-power-input"></dd></div>
+            <div><dt>机组燃料</dt><dd id="lighthouse-power-fuel"></dd></div>
+          </dl>
+          <p id="lighthouse-power-status"></p><div id="lighthouse-power-actions"></div>
+          <p class="lighthouse-note" id="lighthouse-power-notice" role="status"></p>
+          <ul class="lighthouse-note" id="lighthouse-power-events"></ul>
+        </section>
         <section id="lighthouse-operation-content">
         <dl class="lighthouse-readings">
           <div><dt>控制方式</dt><dd id="lighthouse-panel-mode"></dd></div>
@@ -306,7 +322,7 @@
         <button class="lighthouse-action" id="lighthouse-cover-check" hidden>确认保护面观察结果</button>
         <button class="lighthouse-action" id="lighthouse-clean-start" hidden>擦拭并返回场景</button>
         <h3>本轮三项巡检</h3><ul id="lighthouse-checklist"></ul><p id="lighthouse-round-summary"></p>
-        <p class="lighthouse-note">晴天、稳定供电工况。备用接替与局部维修已开放；完整主电池能量、燃料和存档仍待后续接入。</p>
+        <p class="lighthouse-note">晴天供电工况，主备能量、太阳能和柴油补能已接入；当前为会话状态，刷新重新开始，本地保存待后续。</p>
         <h3>最近运行事件</h3><ul id="lighthouse-panel-events"></ul>
         <h3>巡检与操作日志</h3><ul id="lighthouse-inspection-events"></ul>
         <p class="lighthouse-note" id="lighthouse-day-history"></p>
@@ -315,10 +331,7 @@
           <h3 id="lighthouse-maintenance-session">正常值守</h3>
           <p id="lighthouse-maintenance-status"></p>
           <p class="lighthouse-note" id="lighthouse-parts"></p>
-          <label id="lighthouse-tool-label" hidden>携带工具 / 备件<select id="lighthouse-tool">
-            <option value="meter">检测工具</option><option value="cloth">清洁布</option>
-            <option value="drive-module">驱动模块</option><option value="charger-module">充电模块</option>
-          </select></label>
+
           <div id="lighthouse-maintenance-actions"></div>
           <p id="lighthouse-maintenance-notice" role="status"></p>
           <p class="lighthouse-note" id="lighthouse-drill-guide"></p>
@@ -326,6 +339,7 @@
             <button class="lighthouse-action" data-lighthouse-drill="drive">进入独立演练 · 主灯驱动异常</button>
             <button class="lighthouse-action" data-lighthouse-drill="charger">进入独立演练 · 充电支路异常</button>
             <button class="lighthouse-action" data-lighthouse-drill="sensor">进入独立演练 · 光敏污染</button>
+            <button class="lighthouse-action" data-lighthouse-drill="power">进入独立演练 · 低电补能（初始11%）</button>
             <button class="lighthouse-action" data-lighthouse-drill="normal" hidden>退出演练 · 恢复原值守会话</button>
           </div>
           <h3>设备观察、操作与复验</h3><ul id="lighthouse-maintenance-events"></ul>

@@ -1,0 +1,238 @@
+{
+  "baseline": "9e3823e",
+  "browser": "155.0.8059.85",
+  "fpsOrLoadTimeSampling": false,
+  "curtains": [
+    {
+      "id": "master-window-curtains",
+      "pointerCloseOpen": true,
+      "reverse": true,
+      "dayNightPreserved": true,
+      "restoredExactly": true
+    },
+    {
+      "id": "study-window-curtains",
+      "pointerCloseOpen": true,
+      "reverse": true,
+      "dayNightPreserved": true,
+      "restoredExactly": true
+    },
+    {
+      "id": "kitchen-window-curtains",
+      "pointerCloseOpen": true,
+      "reverse": true,
+      "dayNightPreserved": true,
+      "restoredExactly": true
+    },
+    {
+      "id": "ensuite-window-curtains",
+      "pointerCloseOpen": true,
+      "reverse": true,
+      "dayNightPreserved": true,
+      "restoredExactly": true
+    },
+    {
+      "id": "bedroom-window-curtains",
+      "pointerCloseOpen": true,
+      "reverse": true,
+      "dayNightPreserved": true,
+      "restoredExactly": true
+    },
+    {
+      "id": "living-window-curtains",
+      "pointerCloseOpen": true,
+      "reverse": true,
+      "dayNightPreserved": true,
+      "restoredExactly": true
+    }
+  ],
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:8241/js/main.js",
+      "status": 200,
+      "bytes": 369964
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    }
+  ],
+  "initialJsBytes": 3008994,
+  "resources": {
+    "meshes": 717,
+    "vertices": 576812,
+    "materials": 106,
+    "textures": 153,
+    "lights": 22,
+    "cameras": 3
+  },
+  "originalLamps": [
+    {
+      "id": "floor-lamp",
+      "on": true,
+      "intensity": 3.3
+    },
+    {
+      "id": "desk-lamp",
+      "on": true,
+      "intensity": 1.25
+    },
+    {
+      "id": "living-lamp",
+      "on": true,
+      "intensity": 2.4
+    },
+    {
+      "id": "master-lamp",
+      "on": true,
+      "intensity": 2.3
+    },
+    {
+      "id": "ensuite-lamp",
+      "on": true,
+      "intensity": 3.2
+    },
+    {
+      "id": "bedroom-lamp",
+      "on": true,
+      "intensity": 2.3
+    },
+    {
+      "id": "kitchen-lamp",
+      "on": true,
+      "intensity": 3
+    },
+    {
+      "id": "bathroom-lamp",
+      "on": true,
+      "intensity": 3.8
+    },
+    {
+      "id": "living-ceiling-lamp",
+      "on": true,
+      "intensity": 4
+    },
+    {
+      "id": "master-ceiling-lamp",
+      "on": true,
+      "intensity": 3.2
+    },
+    {
+      "id": "bedroom-ceiling-lamp",
+      "on": true,
+      "intensity": 3
+    },
+    {
+      "id": "study-ceiling-lamp",
+      "on": true,
+      "intensity": 2.7
+    }
+  ],
+  "current": {
+    "id": "living-window-curtains",
+    "progress": 0.35294117647058826,
+    "closed": true,
+    "camera": {
+      "position": [
+        22.6,
+        3.2500000000000004,
+        8.24271812438967
+      ],
+      "target": [
+        26.25,
+        3.25,
+        8.242718124389649
+      ],
+      "radius": 3.6499999999999986,
+      "active": "study-camera",
+      "action": "打开客厅窗帘"
+    }
+  },
+  "mapPause": true,
+  "firstPersonPointer": true,
+  "collision": true,
+  "mirrors": [
+    {
+      "name": "ensuite-mirror-target-4661",
+      "curtainMeshes": [
+        "master-window-curtains-fabric",
+        "master-window-curtains-rings",
+        "master-window-curtains-ties",
+        "ensuite-window-curtains-fabric",
+        "ensuite-window-curtains-rings",
+        "ensuite-window-curtains-ties"
+      ]
+    },
+    {
+      "name": "bathroom-mirror-target-5150",
+      "curtainMeshes": [
+        "living-window-curtains-fabric",
+        "living-window-curtains-rings",
+        "living-window-curtains-ties"
+      ]
+    }
+  ],
+  "disposed": {
+    "meshes": 0,
+    "materials": 0,
+    "textures": 0,
+    "lights": 0
+  },
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "failedRequests": [],
+  "sourceBaseline": "603342d",
+  "releaseManifestSha256": "8384ba5846c005ef1c26ce10a40bead2fae4c3ff33256db537d740c1b72774e3"
+}

@@ -1,0 +1,28 @@
+{
+  "baseline": "9e3823e",
+  "manifestSha256": "0af36d10865ecff5a9d1a9ec7f8eb03af95a9467c02bd61653b05fbc84df0bf6",
+  "fpsOrLoadTimeSampling": false,
+  "suites": {
+    "power": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step3-2026-10-20/check-power.cjs",
+      "scriptSha256": "09e9d81577f948a59934c7fa18b1f08f1fa1dfbbe5b516e3116d827593567084",
+      "adapterSha256": "09e9d81577f948a59934c7fa18b1f08f1fa1dfbbe5b516e3116d827593567084",
+      "result": "power/power.json",
+      "resultSha256": "b66fb85fca92d13377bec9a8ad0ae9263b03ce210e10fa150304548ddb1f5759",
+      "log": "power.log"
+    },
+    "drills": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step3-2026-10-20/check-drills.cjs",
+      "scriptSha256": "63bb9b3114ecc9eba432d1593baa391dbbd1a0bd1a0c6ecfc694aef28fdbeb0e",
+      "adapterSha256": "63bb9b3114ecc9eba432d1593baa391dbbd1a0bd1a0c6ecfc694aef28fdbeb0e",
+      "result": "drills/drills.json",
+      "resultSha256": "dd59f1ebffee611683ad2806d40679e8fb83f6e7d6bddfcf7100d9953f9af17a",
+      "log": "drills.log"
+    }
+  },
+  "passed": false
+}

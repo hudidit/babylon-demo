@@ -10,6 +10,7 @@ import type { LighthouseEquipmentId } from "./LighthouseEquipmentLayout";
 import { lighthouseEquipmentPixels } from "./LighthouseRecords";
 import type { InteractiveDevice } from "./RoomInteractions";
 import type { LighthouseMaintenanceSnapshot } from "./LighthouseMaintenance";
+import type { LighthousePowerSnapshot } from "./LighthousePower";
 
 /** Fixed equipment, local surface feedback and a separate interlocked backup source. */
 export class LighthouseEquipment {
@@ -113,10 +114,10 @@ export class LighthouseEquipment {
     this.device("lighthouse-beacon-backup")!.meshes.find(m => m.name.endsWith("-solar"))!.material = this.backupMaterial;
   }
   device(id: LighthouseEquipmentId) { return this.devices.find(device => device.id === id); }
-  apply(state: LighthouseMaintenanceSnapshot) {
+  apply(state: LighthouseMaintenanceSnapshot, power?: LighthousePowerSnapshot) {
     if (this.disposed) return;
     this.backupMaterial.setFloat("flash", state.backupFlash ? 1 : 0);
-    const key = `${state.sensorDirty}:${state.solarDirty}:${state.mainIsolated}:${state.chargeIsolated}`;
+    const key = `${state.sensorDirty}:${state.solarDirty}:${state.mainIsolated}:${state.chargeIsolated}:${power?.generatorRunning}`;
     if (key === this.visualKey) return; this.visualKey = key;
     for (const [id, dirty] of [["lighthouse-light-sensor", state.sensorDirty], ["lighthouse-solar-array", state.solarDirty],
       ["lighthouse-drive-hatch", state.mainIsolated], ["lighthouse-solar-charger", state.chargeIsolated]] as const) {
@@ -125,6 +126,10 @@ export class LighthouseEquipment {
         const values: number[] = []; for (let i = 0; i < mesh.getTotalVertices(); i++) values.push(...color);
         mesh.setVerticesData("color", values);
       }
+    }
+    for(const mesh of this.device('lighthouse-generator')!.meshes.filter(m=>m.name.endsWith('-paint'))){
+      const color=power?.generatorRunning?[.6,1.4,.6,1]:[1,1,1,1],values:number[]=[];
+      for(let i=0;i<mesh.getTotalVertices();i++)values.push(...color);mesh.setVerticesData('color',values);
     }
   }
   dispose() { if (!this.disposed) {this.disposed = true; this.backupMaterial.dispose(false, false);} }

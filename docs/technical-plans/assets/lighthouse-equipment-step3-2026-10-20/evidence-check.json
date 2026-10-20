@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "baseline": "9e3823e",
+  "manifestSha256": "8384ba5846c005ef1c26ce10a40bead2fae4c3ff33256db537d740c1b72774e3",
+  "release": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26400309,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 84310,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2790142,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42444702
+  },
+  "jsWindows": [
+    {
+      "suite": "power",
+      "bytes": 3008994
+    },
+    {
+      "suite": "power-subpath",
+      "bytes": 3008994
+    },
+    {
+      "suite": "drills",
+      "bytes": 3008994
+    },
+    {
+      "suite": "drills-subpath",
+      "bytes": 3008994
+    },
+    {
+      "suite": "equipment",
+      "bytes": 3008994
+    },
+    {
+      "suite": "subpath",
+      "bytes": 3008994
+    },
+    {
+      "suite": "browser",
+      "bytes": 3008994
+    },
+    {
+      "suite": "journey",
+      "bytes": 3008994
+    },
+    {
+      "suite": "regression",
+      "bytes": 3008994
+    },
+    {
+      "suite": "curtains",
+      "bytes": 3008994
+    },
+    {
+      "suite": "ceiling",
+      "bytes": 3008994
+    },
+    {
+      "suite": "headlight",
+      "bytes": 3012317
+    }
+  ],
+  "maxObservedFirstScreenJsBytes": 3012317,
+  "verifiedSuites": 17,
+  "componentCases": 72,
+  "localLinks": 301,
+  "sourceSha256": {
+    "src/examples/LighthousePower.ts": "feb65b5455ae7b0926320ab751ea94bfd2e608c9ced7664d25a20ccdea977dab",
+    "src/examples/LighthousePowerPanel.ts": "f132aed36db7e5bb761f5d6984006d821876cbb7504915d86684a8dd88ab1cfc",
+    "src/examples/LighthouseMaintenance.ts": "a3741d433ca07685a26c227e76e78db9ce91f23db99dcaee6891e8d43092a464",
+    "src/examples/LighthouseMaintenancePanel.ts": "25c94b7d959bb4985291d532294fe4b38d1e8427168d7d7965c6d687e2bb5112",
+    "src/examples/LighthouseOperation.ts": "147216f10cc7f7b763fe31a7e48abbf0770323b5a82eb9ef0111a65c8cfc823a",
+    "src/examples/LighthouseInspection.ts": "1838ccf3d579d44557e22a83d3f72fc7b666e22ffe8c382f90c5bab4f04146a5",
+    "src/examples/LighthouseEquipment.ts": "db768d4ae8cb53dac907fa1102cdc7b56e6882e599d284930916c4f013a79fbc",
+    "src/examples/LighthouseEquipmentLayout.ts": "ee0d8fdb187593f8cf7fe838302bc22cc31ee147d8957a6c7ff38b0afd28f1b7",
+    "src/examples/LighthouseDetails.ts": "5c8eafc1cd8f41785ab64262b407be020e7c0ea1efc982ee35264ae4c2dd4ee8",
+    "src/examples/LighthousePanel.ts": "7419287cf168871675d7b577997e47f0ac570decfcbbf659064214f62f57f4ba",
+    "src/examples/LighthouseRecords.ts": "a086385016c539be91251a89257f281199135a1ae6f79b3b332d3fa04acd687e",
+    "src/examples/Room.ts": "664eccf0d2a976e3f2f675b8f211cb8dd34ca52a07690283ffbbbddfce303241",
+    "src/examples/WalkingSurface.ts": "c5e40ab873772df5b974862608783f01cff18c784c9b6a840ae53f94b2023a6e",
+    "src/examples/CoastalScooter.ts": "d53c0f00545480b8fdb4d18de4b01667a8d975b4afe4e903b217e118e3a43377",
+    "src/examples/CoastalMap.ts": "dd85e5c6f5cea57372c82eeec1e1b94fbc89a762a2897d8aae67c12adf5d5e69",
+    "public/index.html": "3bb1043bcec9a80d071bb70e149f132eade809aa380613f8f5d163367e3fb47c",
+    "public/STUDY_ASSET_SOURCES.md": "64f417911b234d5d385ed3d8154b68e2a2b596c320fb14af1d3e2d524263ecaf",
+    "public/environment/coastal-cliff-source.json": "b3298c6f213af99b4099277895ae82fc3c6008e0d027035149ac5a5b90ff200c"
+  },
+  "fpsOrLoadTimeSampling": false
+}

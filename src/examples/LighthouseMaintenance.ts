@@ -2,7 +2,7 @@ import { lighthouseNavigationRequired, LIGHTHOUSE_OPERATION } from "./Lighthouse
 import type { LighthouseOperation, LighthouseOperationSnapshot } from "./LighthouseOperation";
 import type { TimeOfDayAdvance } from "./RoomTimeOfDay";
 
-export type LighthouseDrill = "normal" | "drive" | "charger" | "sensor";
+export type LighthouseDrill = "normal" | "drive" | "charger" | "sensor" | "power";
 export type LighthouseTool = "meter" | "cloth" | "drive-module" | "charger-module";
 export type MaintenanceCommand = "inspect" | "diagnose" | "clean" | "replace" | "self-test" | "takeover"
   | "isolate-main" | "trial" | "restore" | "isolate-charge" | "reconnect" | "probe" | "override-on" | "override-off" | "verify-sensor";
@@ -15,18 +15,19 @@ export interface LighthouseMaintenanceSnapshot {
   readonly session: LighthouseDrill; readonly revision: Readonly<Record<Component, number>>;
   readonly driveFault: boolean; readonly chargerFault: boolean; readonly solarDirty: boolean; readonly sensorDirty: boolean;
   readonly mainIsolated: boolean; readonly chargeIsolated: boolean; readonly override: boolean; readonly trial: boolean;
+  readonly forcedBackup: boolean;
   readonly mainAvailable: boolean; readonly detectedDemand: boolean; readonly navigationRequired: boolean;
   readonly source: "main" | "backup" | "none"; readonly backupOn: boolean; readonly backupFlash: boolean; readonly backupPhase: number;
   readonly selfTestSecondsRemaining: number;
   readonly backupConfirmed: boolean; readonly mainVerified: boolean; readonly chargerVerified: boolean; readonly sensorVerified: boolean;
-  readonly outputW: number; readonly inventory: Readonly<{drive: number; charger: number}>;
+  readonly inventory: Readonly<{drive: number; charger: number}>;
   readonly action?: MaintenanceAction; readonly trialObserved: number; readonly notice: string;
   readonly evidence: readonly MaintenanceEvidence[]; readonly resolved: boolean;
 }
 const componentAt = (location: string): Component | undefined => ({"lighthouse-drive-hatch": "drive", "lighthouse-beacon-backup": "backup",
   "lighthouse-solar-charger": "charger", "lighthouse-solar-array": "solar", "lighthouse-light-sensor": "sensor"} as Record<string, Component>)[location];
 export const LIGHTHOUSE_MAINTENANCE = Object.freeze({backupPeriod: 10, backupBright: .8, selfTestSeconds: 12,
-  observationSeconds: 10, standardInputW: 200, testLoadW: 55, probeSeconds: 5});
+  observationSeconds: 10, probeSeconds: 5});
 const EPS = 1e-7;
 const actionLabels: Partial<Record<MaintenanceCommand, string>> = {inspect: "现场观察", diagnose: "隔离检测", clean: "擦拭表面", replace: "模块替换", probe: "回充采样", "verify-sensor": "光敏复测"};
 
@@ -35,6 +36,8 @@ export class LighthouseMaintenance {
   private driveFault = false; private chargerFault = false; private solarDirty = false; private sensorDirty = false;
   private mainIsolated = false; private chargeIsolated = false; private override = false; private forcedBackup = false;
   private backupAvailable = true; private selfRemaining = 0; private backupPhase = 0; private backupWasOn = false;
+  private powerMain = true; private powerTrial = true;
+  private powerCompleted = false;
   private backupObserved = 0; private backupSeen = false; private backupProof = false;
   private backupContext = "off";
   private lastSource?: "main" | "backup" | "none"; private lastRequired = false;
@@ -50,6 +53,15 @@ export class LighthouseMaintenance {
     this.publish({hour: session === "drive" ? 21 : 12, running: false} as LighthouseOperationSnapshot);
   }
   get snapshot() { return this.current; }
+  configurePower(main: boolean, trial: boolean, backup: boolean, op: LighthouseOperationSnapshot, completed=false) {
+    this.powerMain = main; this.powerTrial = trial; this.powerCompleted=completed; this.setBackupAvailable(backup,op);
+  }
+  confirmCharging(op: LighthouseOperationSnapshot, wh: number, revision: string) {
+    if (wh <= 0 || !Number.isFinite(wh) || this.chargerFault || this.solarDirty || this.chargeIsolated
+      || revision !== `${this.revision.charger}:${this.revision.solar}:${this.chargeIsolated}`) return false;
+    this.chargerProof = this.revision.charger; this.log(op,"charger","实际回充复验",`当前修订太阳能支路主电池净增加${wh.toFixed(4)}Wh，复验通过。`);
+    this.publish(op);return true;
+  }
   synchronize(op: LighthouseOperation) {
     op.configure(this.mainAvailable(), this.sensorDirty && !this.override);
     this.publish(op.snapshot);
@@ -85,6 +97,7 @@ export class LighthouseMaintenance {
       if (this.snapshot.navigationRequired && (!this.snapshot.backupOn || !this.backupProof)) return this.reject("导航仍需要：先在外廊确认备用实际接替，不能用自检记录替代。", state);
       if (!this.mainIsolated) {this.mainIsolated = true; this.mainProof = -1; op.endTest(); this.log(state, "drive", "隔离", "主灯隔离，主备按实际可用条件求值。");}
     } else if (command === "trial" && c === "drive") {
+      if (!this.powerTrial) return this.reject("供电不足：低电保护下试机需先回充至20%。",state);
       if (this.trial) return this.reject("受控试机已在执行，请完成观察后恢复，或等待超时回隔离。", state);
       if (!this.mainIsolated || this.driveFault || this.diagnosis.drive !== this.revision.drive) return this.reject("需在主灯隔离、检测通过且对应模块完好后受控试机。", state);
       if (this.snapshot.navigationRequired && (!this.backupAvailable || !this.backupProof)) return this.reject("试机前需确认备用可接回导航。", state);
@@ -151,7 +164,7 @@ export class LighthouseMaintenance {
       if (!sight.action || reason || a.revision !== this.revision[a.component]) this.cancel(state, reason || "距离、视线或设备修订变化，操作中断；未扣件。");
       else {
         const elapsed = Math.min(a.duration, a.elapsed + dt), accepted = elapsed - a.elapsed;
-        this.action = Object.freeze({...a, elapsed, energyWh: a.energyWh + (a.command === "probe" ? (s.outputW - LIGHTHOUSE_MAINTENANCE.testLoadW) * accepted / 3600 : 0)});
+        this.action = Object.freeze({...a, elapsed});
         if (elapsed >= a.duration - EPS) this.commit(op);
       }
     }
@@ -181,7 +194,7 @@ export class LighthouseMaintenance {
       if (!(c === "drive" ? this.driveFault : this.chargerFault)) return "模块没有需要替换的已诊断故障。";
       return this.inventory[c] > 0 ? "" : "对应备件不足；保留备用和待修记录，请联系支援补给。";
     }
-    if (command === "probe") return c !== "charger" || tool !== "meter" ? "请在充电控制器使用检测工具采样。" : this.chargeIsolated ? "先检测通过并重新接通支路。" : "";
+    if (command === "probe") return "请使用实际能量采样入口，按自动场景时间核对主电池Wh。";
     if (command === "verify-sensor") return c !== "sensor" || tool !== "meter" ? "请在光敏保护面使用检测工具复测。" : this.override ? "先回首层撤销人工覆盖，再复测检测状态。" : "";
     return "当前设备不支持此操作。";
   }
@@ -202,10 +215,6 @@ export class LighthouseMaintenance {
       if (c === "sensor") this.sensorDirty = false; else this.solarDirty = false;
       this.revision[c]++; this.inspection[c] = undefined;
       this.log(state, c, "擦拭完成", "污损已清除；旧观察为变化前记录，需现场复查。");
-    } else if (a.command === "probe") {
-      const pass = a.energyWh > 0 && !this.chargerFault && !this.solarDirty && !this.chargeIsolated;
-      if (pass) this.chargerProof = this.revision.charger;
-      this.log(state, c, "5秒回充采样", `${this.snapshot.outputW}W输出 / 55W检验负载；测试回路净能量 ${a.energyWh.toFixed(4)}Wh，${pass ? "正回充趋势复验通过" : "未形成有效回充，请继续交叉检查"}。非主电池存能。`);
     } else if (a.command === "verify-sensor") {
       const pass = !this.sensorDirty && !this.override;
       if (pass) this.sensorProof = this.revision.sensor;
@@ -225,15 +234,15 @@ export class LighthouseMaintenance {
     this.current = Object.freeze({session: this.session, revision: Object.freeze({...this.revision}), driveFault: this.driveFault, chargerFault: this.chargerFault,
       solarDirty: this.solarDirty, sensorDirty: this.sensorDirty, mainIsolated: this.mainIsolated, chargeIsolated: this.chargeIsolated, override: this.override,
       trial: this.trial, mainAvailable, detectedDemand: this.sensorDirty && !this.override, navigationRequired: required,
+      forcedBackup: this.forcedBackup,
       source: main ? "main" : backupOn ? "backup" : "none", backupOn, backupFlash: backupOn && this.backupPhase < LIGHTHOUSE_MAINTENANCE.backupBright,
       backupPhase: this.backupPhase, backupConfirmed: this.backupProof, mainVerified: this.mainProof === this.revision.drive,
       selfTestSecondsRemaining: this.selfRemaining,
       chargerVerified: this.chargerProof === this.revision.charger, sensorVerified: this.sensorProof === this.revision.sensor,
-      outputW: this.chargeIsolated || this.chargerFault ? 0 : this.solarDirty ? LIGHTHOUSE_MAINTENANCE.standardInputW * .2 : LIGHTHOUSE_MAINTENANCE.standardInputW,
       inventory: Object.freeze({...this.inventory}), action: this.action, trialObserved: this.trialObserved, notice: this.notice, evidence: this.evidence,
       resolved: this.session === "drive" ? !this.driveFault && !this.mainIsolated && !this.forcedBackup && this.mainProof === this.revision.drive
         : this.session === "charger" ? !this.chargerFault && !this.chargeIsolated && !this.solarDirty && this.chargerProof === this.revision.charger
-        : this.session === "sensor" ? !this.sensorDirty && !this.override && this.sensorProof === this.revision.sensor : false});
+        : this.session === "sensor" ? !this.sensorDirty && !this.override && this.sensorProof === this.revision.sensor : this.session === "power" ? this.powerCompleted : false});
   }
-  private mainAvailable() { return !this.driveFault && (!this.mainIsolated || this.trial) && (!this.forcedBackup || !this.backupAvailable || this.trial); }
+  private mainAvailable() { return !this.driveFault && (!this.mainIsolated || this.trial) && (this.powerMain || this.trial && this.powerTrial) && (!this.forcedBackup || !this.backupAvailable || this.trial); }
 }

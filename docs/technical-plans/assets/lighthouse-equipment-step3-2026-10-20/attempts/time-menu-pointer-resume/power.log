@@ -1,0 +1,7 @@
+page.waitForFunction: Timeout 30000ms exceeded.
+    at locked (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-equipment-step3-2026-10-20/check-power.cjs:19:36)
+    at automatic (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-equipment-step3-2026-10-20/check-power.cjs:42:153)
+    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-equipment-step3-2026-10-20/check-power.cjs:55:25 {
+  log: [],
+  name: 'TimeoutError'
+}

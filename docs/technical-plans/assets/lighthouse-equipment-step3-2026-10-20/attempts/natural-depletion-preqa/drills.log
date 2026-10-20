@@ -1,0 +1,19 @@
+TEST ENTRY {
+  location: 'test',
+  hint: '',
+  grounded: true,
+  feet: 19.64,
+  pose: [ -650.75, 101.20000000000002, 417.5 ],
+  rotation: [ 0.9838159474569841, -0.32994708896600705, 0 ]
+}
+DRIVE PASSED
+CHARGER PASSED
+TEST ENTRY {
+  location: 'test',
+  hint: '',
+  grounded: true,
+  feet: 19.64,
+  pose: [ -650.75, 101.20000000000002, 417.5 ],
+  rotation: [ 0.9838159474569841, -0.32994708896600705, 0 ]
+}
+{"passed":true,"initialJsBytes":3008021,"cases":["backupFlashPixelDifference","cancelPreservesPart","drive","normalRestoredExactly","solarSurfacePixelDifference","charger","sensorSurfacePixelDifference","sensor","selfTestSeparate","disposed"]}

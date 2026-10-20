@@ -1,0 +1,2960 @@
+{
+  "baseline": "9e3823e",
+  "releaseManifestSha256": "0af36d10865ecff5a9d1a9ec7f8eb03af95a9467c02bd61653b05fbc84df0bf6",
+  "fpsOrLoadTimeSampling": false,
+  "method": "Natural energy depletion, original bounded scene-hour updates, native generator/fuel/battery commands. Production local UI only. Grounded nearby pose fixtures between equipment. Original bounded frame receipts; no state/proof/fault setters. Real mouse click and selectOption for all commands, actual ray gates and committed parts. GPU pixels use actual model state.",
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8241/",
+      "status": 200,
+      "bytes": 33652
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/main.js",
+      "status": 200,
+      "bytes": 368991
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8241/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8241/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8241/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4190
+    },
+    {
+      "url": "http://127.0.0.1:8241/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8241/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8241/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8241/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/b5fe1d45-d4d7-4477-9424-cb2e3c9b5155",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/b06b5e0c-a54f-4da1-845f-ee024c434770",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/06c87165-6383-4efe-810d-619b6099ed1e",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/ddf7a67c-6efe-4057-bc99-b34020a0aa49",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/6d449f5b-f55f-4b6c-a9f6-152f6ff19ab0",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/ab5d443a-62c0-46d6-af8d-9ef5eee42e5d",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/49b88f6f-b9c5-4817-b742-b0001d333ff2",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/a696945b-f5ec-4758-85d0-3643702e3d06",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/5d6adc06-d47a-41d4-8b17-b694bdbff5c6",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/e84aa3bb-517b-4a10-a98c-d7af597b71c4",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/e1357c2e-48b2-4ca4-a615-3feb343ee296",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/d2ed2245-ef6d-498c-8b44-20f33d6eaeb8",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/4bb14c0a-82b7-4ba7-952c-6ce0337c2e1e",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/741ad30d-d5cf-4bb5-b3c0-752aa310b449",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/643b67ff-3971-445f-ba28-010ba3f1c1ab",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8241/7ec7f251-b0e2-485a-8ffd-cc3e1533a390",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8241/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "cases": {
+    "depletion": {
+      "frames": 38358,
+      "done": true,
+      "samples": [
+        {
+          "day": 1,
+          "hour": 14.99833333333349,
+          "p": {
+            "mainWh": 2289.0083333335524,
+            "backupWh": 96,
+            "mainFraction": 0.7947945601852613,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": -5,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 1,
+          "hour": 17.998333333332425,
+          "p": {
+            "mainWh": 2274.008333333767,
+            "backupWh": 96,
+            "mainFraction": 0.7895862268520024,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": -5,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 1,
+          "hour": 20.998333333332425,
+          "p": {
+            "mainWh": 2109.0916666669414,
+            "backupWh": 96,
+            "mainFraction": 0.7323234953704657,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 55,
+            "backupLoadW": 0,
+            "mainNetW": -55,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 1,
+          "hour": 23.998333333332425,
+          "p": {
+            "mainWh": 1944.0916666667367,
+            "backupWh": 96,
+            "mainFraction": 0.675031828703728,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 55,
+            "backupLoadW": 0,
+            "mainNetW": -55,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 2,
+          "hour": 2.9983333333332234,
+          "p": {
+            "mainWh": 1779.091666666634,
+            "backupWh": 96,
+            "mainFraction": 0.6177401620370256,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 55,
+            "backupLoadW": 0,
+            "mainNetW": -55,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 2,
+          "hour": 5.998333333333489,
+          "p": {
+            "mainWh": 1614.0916666665762,
+            "backupWh": 96,
+            "mainFraction": 0.5604484953703389,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 55,
+            "backupLoadW": 0,
+            "mainNetW": -55,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 2,
+          "hour": 8.99833333333349,
+          "p": {
+            "mainWh": 1599.0083333330624,
+            "backupWh": 96,
+            "mainFraction": 0.5552112268517578,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": -5,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 2,
+          "hour": 11.99833333333349,
+          "p": {
+            "mainWh": 1584.0083333328741,
+            "backupWh": 96,
+            "mainFraction": 0.5500028935183591,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": -5,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 2,
+          "hour": 14.99833333333349,
+          "p": {
+            "mainWh": 1569.0083333326859,
+            "backupWh": 96,
+            "mainFraction": 0.5447945601849604,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": -5,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 2,
+          "hour": 17.998333333332425,
+          "p": {
+            "mainWh": 1554.0083333327648,
+            "backupWh": 96,
+            "mainFraction": 0.5395862268516545,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": -5,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 2,
+          "hour": 20.998333333332425,
+          "p": {
+            "mainWh": 1389.091666665939,
+            "backupWh": 96,
+            "mainFraction": 0.48232349537011776,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 55,
+            "backupLoadW": 0,
+            "mainNetW": -55,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 2,
+          "hour": 23.998333333332425,
+          "p": {
+            "mainWh": 1224.0916666657345,
+            "backupWh": 96,
+            "mainFraction": 0.42503182870338,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 55,
+            "backupLoadW": 0,
+            "mainNetW": -55,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 3,
+          "hour": 2.9983333333332234,
+          "p": {
+            "mainWh": 1059.0916666656317,
+            "backupWh": 96,
+            "mainFraction": 0.3677401620366777,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 55,
+            "backupLoadW": 0,
+            "mainNetW": -55,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 3,
+          "hour": 5.998333333333489,
+          "p": {
+            "mainWh": 894.0916666655738,
+            "backupWh": 96,
+            "mainFraction": 0.3104484953699909,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 55,
+            "backupLoadW": 0,
+            "mainNetW": -55,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 3,
+          "hour": 8.99833333333349,
+          "p": {
+            "mainWh": 879.0083333322643,
+            "backupWh": 96,
+            "mainFraction": 0.30521122685148067,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": -5,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 3,
+          "hour": 11.99833333333349,
+          "p": {
+            "mainWh": 864.0083333322804,
+            "backupWh": 96,
+            "mainFraction": 0.3000028935181529,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": -5,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 3,
+          "hour": 14.99833333333349,
+          "p": {
+            "mainWh": 849.0083333322964,
+            "backupWh": 96,
+            "mainFraction": 0.29479456018482514,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": -5,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 3,
+          "hour": 17.998333333332425,
+          "p": {
+            "mainWh": 834.0083333323071,
+            "backupWh": 96,
+            "mainFraction": 0.2895862268514955,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": -5,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 3,
+          "hour": 20.998333333332425,
+          "p": {
+            "mainWh": 669.0916666656858,
+            "backupWh": 96,
+            "mainFraction": 0.2323234953700298,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": true,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 55,
+            "backupLoadW": 0,
+            "mainNetW": -55,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [
+              {
+                "id": 1,
+                "day": 3,
+                "hour": 20.07272727270853,
+                "type": "low-warning",
+                "result": "主电池达到25%低电预警。"
+              }
+            ],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 3,
+          "hour": 23.998333333332425,
+          "p": {
+            "mainWh": 504.0916666656858,
+            "backupWh": 96,
+            "mainFraction": 0.17503182870336312,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": true,
+            "mainAllowed": true,
+            "trialAllowed": false,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 55,
+            "backupLoadW": 0,
+            "mainNetW": -55,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [
+              {
+                "id": 1,
+                "day": 3,
+                "hour": 20.07272727270853,
+                "type": "low-warning",
+                "result": "主电池达到25%低电预警。"
+              }
+            ],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        },
+        {
+          "day": 4,
+          "hour": 2.9983333333332234,
+          "p": {
+            "mainWh": 339.09166666563436,
+            "backupWh": 96,
+            "mainFraction": 0.1177401620366786,
+            "backupFraction": 0.8,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": true,
+            "mainAllowed": true,
+            "trialAllowed": false,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 0,
+            "generatorMainW": 0,
+            "generatorBackupW": 0,
+            "mainLoadW": 55,
+            "backupLoadW": 0,
+            "mainNetW": -55,
+            "backupNetW": 0,
+            "generatorRunning": false,
+            "fuel": 4,
+            "reserveFuel": 8,
+            "remainingHours": 4,
+            "revision": 0,
+            "notice": "",
+            "events": [
+              {
+                "id": 1,
+                "day": 3,
+                "hour": 20.07272727270853,
+                "type": "low-warning",
+                "result": "主电池达到25%低电预警。"
+              }
+            ],
+            "solarVerified": false,
+            "generatorVerified": false
+          }
+        }
+      ],
+      "p": {
+        "mainWh": 287.9946969696039,
+        "backupWh": 95.99469696960392,
+        "mainFraction": 0.09999815867000136,
+        "backupFraction": 0.7999558080800326,
+        "protected": true,
+        "recoveryReady": false,
+        "warning": true,
+        "mainAllowed": false,
+        "trialAllowed": false,
+        "backupAvailable": true,
+        "solarW": 0,
+        "generatorW": 0,
+        "generatorMainW": 0,
+        "generatorBackupW": 0,
+        "mainLoadW": 5,
+        "backupLoadW": 5,
+        "mainNetW": -5,
+        "backupNetW": -5,
+        "generatorRunning": false,
+        "fuel": 4,
+        "reserveFuel": 8,
+        "remainingHours": 4,
+        "revision": 1,
+        "notice": "",
+        "events": [
+          {
+            "id": 1,
+            "day": 3,
+            "hour": 20.07272727270853,
+            "type": "low-warning",
+            "result": "主电池达到25%低电预警。"
+          },
+          {
+            "id": 2,
+            "day": 4,
+            "hour": 3.927272727254014,
+            "type": "main-protected",
+            "result": "主电池达到10%，主灯低电保护；按实际备用供电接替。"
+          }
+        ],
+        "solarVerified": false,
+        "generatorVerified": false
+      },
+      "m": {
+        "session": "charger",
+        "revision": {
+          "drive": 0,
+          "backup": 0,
+          "charger": 0,
+          "solar": 0,
+          "sensor": 0
+        },
+        "driveFault": false,
+        "chargerFault": true,
+        "solarDirty": true,
+        "sensorDirty": false,
+        "mainIsolated": false,
+        "chargeIsolated": false,
+        "override": false,
+        "trial": false,
+        "mainAvailable": false,
+        "detectedDemand": false,
+        "navigationRequired": true,
+        "forcedBackup": false,
+        "source": "backup",
+        "backupOn": true,
+        "backupFlash": true,
+        "backupPhase": 0.1,
+        "backupConfirmed": false,
+        "mainVerified": false,
+        "selfTestSecondsRemaining": 0,
+        "chargerVerified": false,
+        "sensorVerified": false,
+        "inventory": {
+          "drive": 1,
+          "charger": 1
+        },
+        "trialObserved": 0,
+        "notice": "",
+        "evidence": [
+          {
+            "id": 1,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 2,
+            "component": "drive",
+            "revision": 0,
+            "day": 2,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 3,
+            "component": "drive",
+            "revision": 0,
+            "day": 3,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 4,
+            "component": "backup",
+            "revision": 0,
+            "day": 4,
+            "hour": 3.9266666666665646,
+            "method": "导航降级",
+            "result": "主灯未反馈运行，备用按可用条件接替；等待现场复验，覆盖为临时降级。"
+          }
+        ],
+        "resolved": false
+      },
+      "op": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 3.928333333333231,
+        "dutyDay": 4,
+        "mode": "automatic",
+        "state": "night-running",
+        "running": false,
+        "available": false,
+        "detectedDemand": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0.5600000000000003,
+        "rotationRadians": 3.51858377202057,
+        "automaticOperatingHours": 33.92666666665841,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          },
+          {
+            "id": 2,
+            "dutyDay": 1,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 3,
+            "dutyDay": 2,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 4,
+            "dutyDay": 2,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 5,
+            "dutyDay": 2,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 6,
+            "dutyDay": 3,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 7,
+            "dutyDay": 3,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 8,
+            "dutyDay": 3,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 9,
+            "dutyDay": 4,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          }
+        ]
+      }
+    },
+    "cancelRefuelNoDebit": true,
+    "recharge": {
+      "frames": 892,
+      "done": true,
+      "samples": [],
+      "p": {
+        "mainWh": 576.1988636363452,
+        "backupWh": 102.79886363627753,
+        "mainFraction": 0.20006904987373098,
+        "backupFraction": 0.8566571969689795,
+        "protected": true,
+        "recoveryReady": true,
+        "warning": true,
+        "mainAllowed": false,
+        "trialAllowed": true,
+        "backupAvailable": true,
+        "solarW": 0,
+        "generatorW": 200,
+        "generatorMainW": 190,
+        "generatorBackupW": 10,
+        "mainLoadW": 5,
+        "backupLoadW": 5,
+        "mainNetW": 185,
+        "backupNetW": 5,
+        "generatorRunning": true,
+        "fuel": 6.436666666666331,
+        "reserveFuel": 4,
+        "remainingHours": 6.436666666666331,
+        "revision": 1,
+        "notice": "机组启动成功；有效充电需另行5秒采样。",
+        "events": [
+          {
+            "id": 1,
+            "day": 3,
+            "hour": 20.07272727270853,
+            "type": "low-warning",
+            "result": "主电池达到25%低电预警。"
+          },
+          {
+            "id": 2,
+            "day": 4,
+            "hour": 3.927272727254014,
+            "type": "main-protected",
+            "result": "主电池达到10%，主灯低电保护；按实际备用供电接替。"
+          },
+          {
+            "id": 3,
+            "day": 4,
+            "hour": 3.9308333333332315,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 4,
+            "day": 4,
+            "hour": 3.9808333333332393,
+            "type": "start-generator",
+            "result": "机组启动成功；有效充电需另行5秒采样。"
+          },
+          {
+            "id": 5,
+            "day": 4,
+            "hour": 4.020000000000003,
+            "type": "generator-stopped",
+            "result": "机组已停止，输出归零；可停机补给。"
+          },
+          {
+            "id": 6,
+            "day": 4,
+            "hour": 4.020000000000003,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 7,
+            "day": 4,
+            "hour": 4.028333333333338,
+            "type": "cancelled",
+            "result": "操作中断；未补给、未扣储备、未完成复验。"
+          },
+          {
+            "id": 8,
+            "day": 4,
+            "hour": 4.030833333333338,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 9,
+            "day": 4,
+            "hour": 4.080833333333346,
+            "type": "refuel",
+            "result": "已补给4.0燃料单位，储备同步扣除；未自动启动。"
+          },
+          {
+            "id": 10,
+            "day": 4,
+            "hour": 4.120000000000019,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 11,
+            "day": 4,
+            "hour": 4.170000000000027,
+            "type": "start-generator",
+            "result": "机组启动成功；有效充电需另行5秒采样。"
+          },
+          {
+            "id": 12,
+            "day": 4,
+            "hour": 5.693091728092092,
+            "type": "recovery-ready",
+            "result": "回充达到20%；保持低电保护，需在电池柜用检测工具复验。"
+          }
+        ],
+        "solarVerified": false,
+        "generatorVerified": false
+      },
+      "m": {
+        "session": "charger",
+        "revision": {
+          "drive": 0,
+          "backup": 0,
+          "charger": 0,
+          "solar": 0,
+          "sensor": 0
+        },
+        "driveFault": false,
+        "chargerFault": true,
+        "solarDirty": true,
+        "sensorDirty": false,
+        "mainIsolated": false,
+        "chargeIsolated": false,
+        "override": false,
+        "trial": false,
+        "mainAvailable": false,
+        "detectedDemand": false,
+        "navigationRequired": true,
+        "forcedBackup": false,
+        "source": "backup",
+        "backupOn": true,
+        "backupFlash": false,
+        "backupPhase": 6.049999999999835,
+        "backupConfirmed": false,
+        "mainVerified": false,
+        "selfTestSecondsRemaining": 0,
+        "chargerVerified": false,
+        "sensorVerified": false,
+        "inventory": {
+          "drive": 1,
+          "charger": 1
+        },
+        "trialObserved": 0,
+        "notice": "",
+        "evidence": [
+          {
+            "id": 1,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 2,
+            "component": "drive",
+            "revision": 0,
+            "day": 2,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 3,
+            "component": "drive",
+            "revision": 0,
+            "day": 3,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 4,
+            "component": "backup",
+            "revision": 0,
+            "day": 4,
+            "hour": 3.9266666666665646,
+            "method": "导航降级",
+            "result": "主灯未反馈运行，备用按可用条件接替；等待现场复验，覆盖为临时降级。"
+          }
+        ],
+        "resolved": false
+      },
+      "op": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 5.6941666666669315,
+        "dutyDay": 4,
+        "mode": "automatic",
+        "state": "night-running",
+        "running": false,
+        "available": false,
+        "detectedDemand": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0.5600000000000003,
+        "rotationRadians": 3.51858377202057,
+        "automaticOperatingHours": 33.92666666665841,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          },
+          {
+            "id": 2,
+            "dutyDay": 1,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 3,
+            "dutyDay": 2,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 4,
+            "dutyDay": 2,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 5,
+            "dutyDay": 2,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 6,
+            "dutyDay": 3,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 7,
+            "dutyDay": 3,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 8,
+            "dutyDay": 3,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 9,
+            "dutyDay": 4,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          }
+        ]
+      }
+    },
+    "verifiedRecovery": {
+      "m": {
+        "session": "charger",
+        "revision": {
+          "drive": 0,
+          "backup": 0,
+          "charger": 0,
+          "solar": 0,
+          "sensor": 0
+        },
+        "driveFault": false,
+        "chargerFault": true,
+        "solarDirty": true,
+        "sensorDirty": false,
+        "mainIsolated": false,
+        "chargeIsolated": false,
+        "override": false,
+        "trial": false,
+        "mainAvailable": true,
+        "detectedDemand": false,
+        "navigationRequired": true,
+        "forcedBackup": false,
+        "source": "main",
+        "backupOn": false,
+        "backupFlash": false,
+        "backupPhase": 0,
+        "backupConfirmed": false,
+        "mainVerified": false,
+        "selfTestSecondsRemaining": 0,
+        "chargerVerified": false,
+        "sensorVerified": false,
+        "inventory": {
+          "drive": 1,
+          "charger": 1
+        },
+        "trialObserved": 0,
+        "notice": "",
+        "evidence": [
+          {
+            "id": 1,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 2,
+            "component": "drive",
+            "revision": 0,
+            "day": 2,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 3,
+            "component": "drive",
+            "revision": 0,
+            "day": 3,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 4,
+            "component": "backup",
+            "revision": 0,
+            "day": 4,
+            "hour": 3.9266666666665646,
+            "method": "导航降级",
+            "result": "主灯未反馈运行，备用按可用条件接替；等待现场复验，覆盖为临时降级。"
+          },
+          {
+            "id": 5,
+            "component": "drive",
+            "revision": 0,
+            "day": 4,
+            "hour": 5.729166666666937,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          }
+        ],
+        "resolved": false
+      },
+      "op": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 5.783333333333612,
+        "dutyDay": 4,
+        "mode": "automatic",
+        "state": "night-running",
+        "running": true,
+        "available": true,
+        "detectedDemand": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0.8850000000000006,
+        "rotationRadians": 5.560618996853937,
+        "automaticOperatingHours": 33.98083333332503,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          },
+          {
+            "id": 2,
+            "dutyDay": 1,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 3,
+            "dutyDay": 2,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 4,
+            "dutyDay": 2,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 5,
+            "dutyDay": 2,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 6,
+            "dutyDay": 3,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 7,
+            "dutyDay": 3,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 8,
+            "dutyDay": 3,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 9,
+            "dutyDay": 4,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          }
+        ]
+      },
+      "p": {
+        "mainWh": 589.9863636363509,
+        "backupWh": 103.51553030294447,
+        "mainFraction": 0.20485637626262185,
+        "backupFraction": 0.862629419191204,
+        "protected": false,
+        "recoveryReady": false,
+        "warning": true,
+        "mainAllowed": true,
+        "trialAllowed": true,
+        "backupAvailable": true,
+        "solarW": 0,
+        "generatorW": 200,
+        "generatorMainW": 190,
+        "generatorBackupW": 10,
+        "mainLoadW": 55,
+        "backupLoadW": 0,
+        "mainNetW": 135,
+        "backupNetW": 10,
+        "generatorRunning": true,
+        "fuel": 6.34749999999965,
+        "reserveFuel": 4,
+        "remainingHours": 6.34749999999965,
+        "revision": 2,
+        "notice": "电池供电复验通过，低电保护解除；驱动故障和检修隔离仍独立求值。",
+        "events": [
+          {
+            "id": 1,
+            "day": 3,
+            "hour": 20.07272727270853,
+            "type": "low-warning",
+            "result": "主电池达到25%低电预警。"
+          },
+          {
+            "id": 2,
+            "day": 4,
+            "hour": 3.927272727254014,
+            "type": "main-protected",
+            "result": "主电池达到10%，主灯低电保护；按实际备用供电接替。"
+          },
+          {
+            "id": 3,
+            "day": 4,
+            "hour": 3.9308333333332315,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 4,
+            "day": 4,
+            "hour": 3.9808333333332393,
+            "type": "start-generator",
+            "result": "机组启动成功；有效充电需另行5秒采样。"
+          },
+          {
+            "id": 5,
+            "day": 4,
+            "hour": 4.020000000000003,
+            "type": "generator-stopped",
+            "result": "机组已停止，输出归零；可停机补给。"
+          },
+          {
+            "id": 6,
+            "day": 4,
+            "hour": 4.020000000000003,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 7,
+            "day": 4,
+            "hour": 4.028333333333338,
+            "type": "cancelled",
+            "result": "操作中断；未补给、未扣储备、未完成复验。"
+          },
+          {
+            "id": 8,
+            "day": 4,
+            "hour": 4.030833333333338,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 9,
+            "day": 4,
+            "hour": 4.080833333333346,
+            "type": "refuel",
+            "result": "已补给4.0燃料单位，储备同步扣除；未自动启动。"
+          },
+          {
+            "id": 10,
+            "day": 4,
+            "hour": 4.120000000000019,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 11,
+            "day": 4,
+            "hour": 4.170000000000027,
+            "type": "start-generator",
+            "result": "机组启动成功；有效充电需另行5秒采样。"
+          },
+          {
+            "id": 12,
+            "day": 4,
+            "hour": 5.693091728092092,
+            "type": "recovery-ready",
+            "result": "回充达到20%；保持低电保护，需在电池柜用检测工具复验。"
+          },
+          {
+            "id": 13,
+            "day": 4,
+            "hour": 5.695833333333598,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 14,
+            "day": 4,
+            "hour": 5.729166666666937,
+            "type": "verify-main",
+            "result": "电池供电复验通过，低电保护解除；驱动故障和检修隔离仍独立求值。"
+          }
+        ],
+        "solarVerified": false,
+        "generatorVerified": false
+      }
+    },
+    "generatorVerified": {
+      "m": {
+        "session": "charger",
+        "revision": {
+          "drive": 0,
+          "backup": 0,
+          "charger": 0,
+          "solar": 0,
+          "sensor": 0
+        },
+        "driveFault": false,
+        "chargerFault": true,
+        "solarDirty": true,
+        "sensorDirty": false,
+        "mainIsolated": false,
+        "chargeIsolated": false,
+        "override": false,
+        "trial": false,
+        "mainAvailable": true,
+        "detectedDemand": false,
+        "navigationRequired": true,
+        "forcedBackup": false,
+        "source": "main",
+        "backupOn": false,
+        "backupFlash": false,
+        "backupPhase": 0,
+        "backupConfirmed": false,
+        "mainVerified": false,
+        "selfTestSecondsRemaining": 0,
+        "chargerVerified": false,
+        "sensorVerified": false,
+        "inventory": {
+          "drive": 1,
+          "charger": 1
+        },
+        "trialObserved": 0,
+        "notice": "",
+        "evidence": [
+          {
+            "id": 1,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 2,
+            "component": "drive",
+            "revision": 0,
+            "day": 2,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 3,
+            "component": "drive",
+            "revision": 0,
+            "day": 3,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 4,
+            "component": "backup",
+            "revision": 0,
+            "day": 4,
+            "hour": 3.9266666666665646,
+            "method": "导航降级",
+            "result": "主灯未反馈运行，备用按可用条件接替；等待现场复验，覆盖为临时降级。"
+          },
+          {
+            "id": 5,
+            "component": "drive",
+            "revision": 0,
+            "day": 4,
+            "hour": 5.729166666666937,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          }
+        ],
+        "resolved": false
+      },
+      "op": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 5.872500000000293,
+        "dutyDay": 4,
+        "mode": "automatic",
+        "state": "night-running",
+        "running": true,
+        "available": true,
+        "detectedDemand": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0.42000000000000026,
+        "rotationRadians": 2.6389378290154277,
+        "automaticOperatingHours": 34.069999999991616,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          },
+          {
+            "id": 2,
+            "dutyDay": 1,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 3,
+            "dutyDay": 2,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 4,
+            "dutyDay": 2,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 5,
+            "dutyDay": 2,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 6,
+            "dutyDay": 3,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 7,
+            "dutyDay": 3,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 8,
+            "dutyDay": 3,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 9,
+            "dutyDay": 4,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          }
+        ]
+      },
+      "p": {
+        "mainWh": 602.0238636363582,
+        "backupWh": 104.40719696961185,
+        "mainFraction": 0.20903606376262437,
+        "backupFraction": 0.8700599747467653,
+        "protected": false,
+        "recoveryReady": false,
+        "warning": true,
+        "mainAllowed": true,
+        "trialAllowed": true,
+        "backupAvailable": true,
+        "solarW": 0,
+        "generatorW": 200,
+        "generatorMainW": 190,
+        "generatorBackupW": 10,
+        "mainLoadW": 55,
+        "backupLoadW": 0,
+        "mainNetW": 135,
+        "backupNetW": 10,
+        "generatorRunning": true,
+        "fuel": 6.25833333333297,
+        "reserveFuel": 4,
+        "remainingHours": 6.25833333333297,
+        "revision": 2,
+        "notice": "5活跃秒主电池净变化 11.2500Wh；实际正回充复验通过。",
+        "events": [
+          {
+            "id": 1,
+            "day": 3,
+            "hour": 20.07272727270853,
+            "type": "low-warning",
+            "result": "主电池达到25%低电预警。"
+          },
+          {
+            "id": 2,
+            "day": 4,
+            "hour": 3.927272727254014,
+            "type": "main-protected",
+            "result": "主电池达到10%，主灯低电保护；按实际备用供电接替。"
+          },
+          {
+            "id": 3,
+            "day": 4,
+            "hour": 3.9308333333332315,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 4,
+            "day": 4,
+            "hour": 3.9808333333332393,
+            "type": "start-generator",
+            "result": "机组启动成功；有效充电需另行5秒采样。"
+          },
+          {
+            "id": 5,
+            "day": 4,
+            "hour": 4.020000000000003,
+            "type": "generator-stopped",
+            "result": "机组已停止，输出归零；可停机补给。"
+          },
+          {
+            "id": 6,
+            "day": 4,
+            "hour": 4.020000000000003,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 7,
+            "day": 4,
+            "hour": 4.028333333333338,
+            "type": "cancelled",
+            "result": "操作中断；未补给、未扣储备、未完成复验。"
+          },
+          {
+            "id": 8,
+            "day": 4,
+            "hour": 4.030833333333338,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 9,
+            "day": 4,
+            "hour": 4.080833333333346,
+            "type": "refuel",
+            "result": "已补给4.0燃料单位，储备同步扣除；未自动启动。"
+          },
+          {
+            "id": 10,
+            "day": 4,
+            "hour": 4.120000000000019,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 11,
+            "day": 4,
+            "hour": 4.170000000000027,
+            "type": "start-generator",
+            "result": "机组启动成功；有效充电需另行5秒采样。"
+          },
+          {
+            "id": 12,
+            "day": 4,
+            "hour": 5.693091728092092,
+            "type": "recovery-ready",
+            "result": "回充达到20%；保持低电保护，需在电池柜用检测工具复验。"
+          },
+          {
+            "id": 13,
+            "day": 4,
+            "hour": 5.695833333333598,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 14,
+            "day": 4,
+            "hour": 5.729166666666937,
+            "type": "verify-main",
+            "result": "电池供电复验通过，低电保护解除；驱动故障和检修隔离仍独立求值。"
+          },
+          {
+            "id": 15,
+            "day": 4,
+            "hour": 5.785000000000279,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 16,
+            "day": 4,
+            "hour": 5.868333333333625,
+            "type": "probe-generator",
+            "result": "5活跃秒主电池净变化 11.2500Wh；实际正回充复验通过。"
+          }
+        ],
+        "solarVerified": false,
+        "generatorVerified": true
+      }
+    },
+    "exhaustion": {
+      "frames": 3755,
+      "done": true,
+      "samples": [
+        {
+          "day": 4,
+          "hour": 8.87250000000076,
+          "p": {
+            "mainWh": 1165.056060606078,
+            "backupWh": 120,
+            "mainFraction": 0.40453335437711047,
+            "backupFraction": 1,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 200,
+            "generatorMainW": 200,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": 195,
+            "backupNetW": 0,
+            "generatorRunning": true,
+            "fuel": 3.2583333333325015,
+            "reserveFuel": 4,
+            "remainingHours": 3.2583333333325015,
+            "revision": 2,
+            "notice": "5活跃秒主电池净变化 11.2500Wh；实际正回充复验通过。",
+            "events": [
+              {
+                "id": 1,
+                "day": 3,
+                "hour": 20.07272727270853,
+                "type": "low-warning",
+                "result": "主电池达到25%低电预警。"
+              },
+              {
+                "id": 2,
+                "day": 4,
+                "hour": 3.927272727254014,
+                "type": "main-protected",
+                "result": "主电池达到10%，主灯低电保护；按实际备用供电接替。"
+              },
+              {
+                "id": 3,
+                "day": 4,
+                "hour": 3.9308333333332315,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 4,
+                "day": 4,
+                "hour": 3.9808333333332393,
+                "type": "start-generator",
+                "result": "机组启动成功；有效充电需另行5秒采样。"
+              },
+              {
+                "id": 5,
+                "day": 4,
+                "hour": 4.020000000000003,
+                "type": "generator-stopped",
+                "result": "机组已停止，输出归零；可停机补给。"
+              },
+              {
+                "id": 6,
+                "day": 4,
+                "hour": 4.020000000000003,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 7,
+                "day": 4,
+                "hour": 4.028333333333338,
+                "type": "cancelled",
+                "result": "操作中断；未补给、未扣储备、未完成复验。"
+              },
+              {
+                "id": 8,
+                "day": 4,
+                "hour": 4.030833333333338,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 9,
+                "day": 4,
+                "hour": 4.080833333333346,
+                "type": "refuel",
+                "result": "已补给4.0燃料单位，储备同步扣除；未自动启动。"
+              },
+              {
+                "id": 10,
+                "day": 4,
+                "hour": 4.120000000000019,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 11,
+                "day": 4,
+                "hour": 4.170000000000027,
+                "type": "start-generator",
+                "result": "机组启动成功；有效充电需另行5秒采样。"
+              },
+              {
+                "id": 12,
+                "day": 4,
+                "hour": 5.693091728092092,
+                "type": "recovery-ready",
+                "result": "回充达到20%；保持低电保护，需在电池柜用检测工具复验。"
+              },
+              {
+                "id": 13,
+                "day": 4,
+                "hour": 5.695833333333598,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 14,
+                "day": 4,
+                "hour": 5.729166666666937,
+                "type": "verify-main",
+                "result": "电池供电复验通过，低电保护解除；驱动故障和检修隔离仍独立求值。"
+              },
+              {
+                "id": 15,
+                "day": 4,
+                "hour": 5.785000000000279,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 16,
+                "day": 4,
+                "hour": 5.868333333333625,
+                "type": "probe-generator",
+                "result": "5活跃秒主电池净变化 11.2500Wh；实际正回充复验通过。"
+              },
+              {
+                "id": 17,
+                "day": 4,
+                "hour": 6.54466830466853,
+                "type": "warning-cleared",
+                "result": "主电池回升越过25%，低电预警解除。"
+              }
+            ],
+            "solarVerified": false,
+            "generatorVerified": true
+          }
+        },
+        {
+          "day": 4,
+          "hour": 11.87250000000123,
+          "p": {
+            "mainWh": 1750.05606060616,
+            "backupWh": 120,
+            "mainFraction": 0.6076583543771389,
+            "backupFraction": 1,
+            "protected": false,
+            "recoveryReady": false,
+            "warning": false,
+            "mainAllowed": true,
+            "trialAllowed": true,
+            "backupAvailable": true,
+            "solarW": 0,
+            "generatorW": 200,
+            "generatorMainW": 200,
+            "generatorBackupW": 0,
+            "mainLoadW": 5,
+            "backupLoadW": 0,
+            "mainNetW": 195,
+            "backupNetW": 0,
+            "generatorRunning": true,
+            "fuel": 0.25833333333203257,
+            "reserveFuel": 4,
+            "remainingHours": 0.25833333333203257,
+            "revision": 2,
+            "notice": "5活跃秒主电池净变化 11.2500Wh；实际正回充复验通过。",
+            "events": [
+              {
+                "id": 1,
+                "day": 3,
+                "hour": 20.07272727270853,
+                "type": "low-warning",
+                "result": "主电池达到25%低电预警。"
+              },
+              {
+                "id": 2,
+                "day": 4,
+                "hour": 3.927272727254014,
+                "type": "main-protected",
+                "result": "主电池达到10%，主灯低电保护；按实际备用供电接替。"
+              },
+              {
+                "id": 3,
+                "day": 4,
+                "hour": 3.9308333333332315,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 4,
+                "day": 4,
+                "hour": 3.9808333333332393,
+                "type": "start-generator",
+                "result": "机组启动成功；有效充电需另行5秒采样。"
+              },
+              {
+                "id": 5,
+                "day": 4,
+                "hour": 4.020000000000003,
+                "type": "generator-stopped",
+                "result": "机组已停止，输出归零；可停机补给。"
+              },
+              {
+                "id": 6,
+                "day": 4,
+                "hour": 4.020000000000003,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 7,
+                "day": 4,
+                "hour": 4.028333333333338,
+                "type": "cancelled",
+                "result": "操作中断；未补给、未扣储备、未完成复验。"
+              },
+              {
+                "id": 8,
+                "day": 4,
+                "hour": 4.030833333333338,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 9,
+                "day": 4,
+                "hour": 4.080833333333346,
+                "type": "refuel",
+                "result": "已补给4.0燃料单位，储备同步扣除；未自动启动。"
+              },
+              {
+                "id": 10,
+                "day": 4,
+                "hour": 4.120000000000019,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 11,
+                "day": 4,
+                "hour": 4.170000000000027,
+                "type": "start-generator",
+                "result": "机组启动成功；有效充电需另行5秒采样。"
+              },
+              {
+                "id": 12,
+                "day": 4,
+                "hour": 5.693091728092092,
+                "type": "recovery-ready",
+                "result": "回充达到20%；保持低电保护，需在电池柜用检测工具复验。"
+              },
+              {
+                "id": 13,
+                "day": 4,
+                "hour": 5.695833333333598,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 14,
+                "day": 4,
+                "hour": 5.729166666666937,
+                "type": "verify-main",
+                "result": "电池供电复验通过，低电保护解除；驱动故障和检修隔离仍独立求值。"
+              },
+              {
+                "id": 15,
+                "day": 4,
+                "hour": 5.785000000000279,
+                "type": "action-started",
+                "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+              },
+              {
+                "id": 16,
+                "day": 4,
+                "hour": 5.868333333333625,
+                "type": "probe-generator",
+                "result": "5活跃秒主电池净变化 11.2500Wh；实际正回充复验通过。"
+              },
+              {
+                "id": 17,
+                "day": 4,
+                "hour": 6.54466830466853,
+                "type": "warning-cleared",
+                "result": "主电池回升越过25%，低电预警解除。"
+              }
+            ],
+            "solarVerified": false,
+            "generatorVerified": true
+          }
+        }
+      ],
+      "p": {
+        "mainWh": 1800.431060605899,
+        "backupWh": 120,
+        "mainFraction": 0.6251496738214927,
+        "backupFraction": 1,
+        "protected": false,
+        "recoveryReady": false,
+        "warning": false,
+        "mainAllowed": true,
+        "trialAllowed": true,
+        "backupAvailable": true,
+        "solarW": 0,
+        "generatorW": 0,
+        "generatorMainW": 0,
+        "generatorBackupW": 0,
+        "mainLoadW": 5,
+        "backupLoadW": 0,
+        "mainNetW": -5,
+        "backupNetW": 0,
+        "generatorRunning": false,
+        "fuel": 0,
+        "reserveFuel": 4,
+        "remainingHours": 0,
+        "revision": 2,
+        "notice": "燃料耗尽，机组停止；不能据启动记录判断仍在充电。",
+        "events": [
+          {
+            "id": 1,
+            "day": 3,
+            "hour": 20.07272727270853,
+            "type": "low-warning",
+            "result": "主电池达到25%低电预警。"
+          },
+          {
+            "id": 2,
+            "day": 4,
+            "hour": 3.927272727254014,
+            "type": "main-protected",
+            "result": "主电池达到10%，主灯低电保护；按实际备用供电接替。"
+          },
+          {
+            "id": 3,
+            "day": 4,
+            "hour": 3.9308333333332315,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 4,
+            "day": 4,
+            "hour": 3.9808333333332393,
+            "type": "start-generator",
+            "result": "机组启动成功；有效充电需另行5秒采样。"
+          },
+          {
+            "id": 5,
+            "day": 4,
+            "hour": 4.020000000000003,
+            "type": "generator-stopped",
+            "result": "机组已停止，输出归零；可停机补给。"
+          },
+          {
+            "id": 6,
+            "day": 4,
+            "hour": 4.020000000000003,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 7,
+            "day": 4,
+            "hour": 4.028333333333338,
+            "type": "cancelled",
+            "result": "操作中断；未补给、未扣储备、未完成复验。"
+          },
+          {
+            "id": 8,
+            "day": 4,
+            "hour": 4.030833333333338,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 9,
+            "day": 4,
+            "hour": 4.080833333333346,
+            "type": "refuel",
+            "result": "已补给4.0燃料单位，储备同步扣除；未自动启动。"
+          },
+          {
+            "id": 10,
+            "day": 4,
+            "hour": 4.120000000000019,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 11,
+            "day": 4,
+            "hour": 4.170000000000027,
+            "type": "start-generator",
+            "result": "机组启动成功；有效充电需另行5秒采样。"
+          },
+          {
+            "id": 12,
+            "day": 4,
+            "hour": 5.693091728092092,
+            "type": "recovery-ready",
+            "result": "回充达到20%；保持低电保护，需在电池柜用检测工具复验。"
+          },
+          {
+            "id": 13,
+            "day": 4,
+            "hour": 5.695833333333598,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 14,
+            "day": 4,
+            "hour": 5.729166666666937,
+            "type": "verify-main",
+            "result": "电池供电复验通过，低电保护解除；驱动故障和检修隔离仍独立求值。"
+          },
+          {
+            "id": 15,
+            "day": 4,
+            "hour": 5.785000000000279,
+            "type": "action-started",
+            "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+          },
+          {
+            "id": 16,
+            "day": 4,
+            "hour": 5.868333333333625,
+            "type": "probe-generator",
+            "result": "5活跃秒主电池净变化 11.2500Wh；实际正回充复验通过。"
+          },
+          {
+            "id": 17,
+            "day": 4,
+            "hour": 6.54466830466853,
+            "type": "warning-cleared",
+            "result": "主电池回升越过25%，低电预警解除。"
+          },
+          {
+            "id": 18,
+            "day": 4,
+            "hour": 12.130833333333262,
+            "type": "fuel-empty",
+            "result": "燃料耗尽，机组停止；不能据启动记录判断仍在充电。"
+          }
+        ],
+        "solarVerified": false,
+        "generatorVerified": false
+      },
+      "m": {
+        "session": "charger",
+        "revision": {
+          "drive": 0,
+          "backup": 0,
+          "charger": 0,
+          "solar": 0,
+          "sensor": 0
+        },
+        "driveFault": false,
+        "chargerFault": true,
+        "solarDirty": true,
+        "sensorDirty": false,
+        "mainIsolated": false,
+        "chargeIsolated": false,
+        "override": false,
+        "trial": false,
+        "mainAvailable": true,
+        "detectedDemand": false,
+        "navigationRequired": false,
+        "forcedBackup": false,
+        "source": "none",
+        "backupOn": false,
+        "backupFlash": false,
+        "backupPhase": 0,
+        "backupConfirmed": false,
+        "mainVerified": false,
+        "selfTestSecondsRemaining": 0,
+        "chargerVerified": false,
+        "sensorVerified": false,
+        "inventory": {
+          "drive": 1,
+          "charger": 1
+        },
+        "trialObserved": 0,
+        "notice": "",
+        "evidence": [
+          {
+            "id": 1,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 2,
+            "component": "drive",
+            "revision": 0,
+            "day": 2,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 3,
+            "component": "drive",
+            "revision": 0,
+            "day": 3,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 4,
+            "component": "backup",
+            "revision": 0,
+            "day": 4,
+            "hour": 3.9266666666665646,
+            "method": "导航降级",
+            "result": "主灯未反馈运行，备用按可用条件接替；等待现场复验，覆盖为临时降级。"
+          },
+          {
+            "id": 5,
+            "component": "drive",
+            "revision": 0,
+            "day": 4,
+            "hour": 5.729166666666937,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          }
+        ],
+        "resolved": false
+      },
+      "op": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 12.130833333334603,
+        "dutyDay": 4,
+        "mode": "automatic",
+        "state": "day-standby",
+        "running": false,
+        "available": true,
+        "detectedDemand": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0.1849999999981242,
+        "rotationRadians": 1.1623892818164374,
+        "automaticOperatingHours": 34.19749999999119,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          },
+          {
+            "id": 2,
+            "dutyDay": 1,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 3,
+            "dutyDay": 2,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 4,
+            "dutyDay": 2,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 5,
+            "dutyDay": 2,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 6,
+            "dutyDay": 3,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 7,
+            "dutyDay": 3,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 8,
+            "dutyDay": 3,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 9,
+            "dutyDay": 4,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 10,
+            "dutyDay": 4,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          }
+        ]
+      }
+    },
+    "disposed": true
+  },
+  "browser": "155.0.8059.85",
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:8241/js/main.js",
+      "status": 200,
+      "bytes": 368991
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8241/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    }
+  ],
+  "initialJsBytes": 3008021,
+  "passed": true,
+  "sourceBaseline": "9e3823e"
+}

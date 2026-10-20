@@ -1,0 +1,18 @@
+{
+  "baseline": "9e3823e",
+  "manifestSha256": "f153cc386185b0ec10ff976646621a45192879006807ff33594ee970aa90020f",
+  "fpsOrLoadTimeSampling": false,
+  "suites": {
+    "power": {
+      "passed": false,
+      "exitCode": 1,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step3-2026-10-20/check-power.cjs",
+      "scriptSha256": "09e9d81577f948a59934c7fa18b1f08f1fa1dfbbe5b516e3116d827593567084",
+      "adapterSha256": "09e9d81577f948a59934c7fa18b1f08f1fa1dfbbe5b516e3116d827593567084",
+      "result": "power/power.json",
+      "resultSha256": "936fb81be3fd58b54ef80c7bdf3cae6ab93b39fd5c3238a341793f627ea97c48",
+      "log": "power.log"
+    }
+  },
+  "passed": false
+}

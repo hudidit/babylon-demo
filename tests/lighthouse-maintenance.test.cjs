@@ -51,15 +51,15 @@ test('trial timeout returns to isolation and backup; frozen phase and absent out
  assert.equal(f.op.snapshot.rotationTurns,phase);assert.equal(f.m.snapshot.mainVerified,false);
  f.run(20.1,{main:false});assert.equal(f.m.snapshot.trial,false);assert.equal(f.m.snapshot.mainIsolated,true);assert.equal(f.m.snapshot.source,'backup');assert.equal(f.cmd('restore'),false);
 });
-test('charger drill excludes surface dirt, diagnoses a separate module and measures actual test-circuit energy before resolving',()=>{
- const f=setup('charger'),{m,cmd,action}=f;assert.equal(m.snapshot.outputW,0);
- action('probe','charger');assert.equal(m.snapshot.chargerVerified,false);assert.equal(cmd('isolate-charge','charger'),true);assert.equal(cmd('diagnose','charger'),false);
- action('inspect','solar');assert.equal(cmd('clean','solar','meter'),false);action('clean','solar','cloth');assert.equal(m.snapshot.outputW,0);
+test('charger drill excludes surface dirt and requires a current external energy receipt after replacing its separate module',()=>{
+ const f=setup('charger'),{m,cmd,action}=f;assert.equal(m.snapshot.chargerFault,true);
+ assert.equal(cmd('probe','charger'),false);assert.equal(m.snapshot.chargerVerified,false);assert.equal(cmd('isolate-charge','charger'),true);assert.equal(cmd('diagnose','charger'),false);
+ action('inspect','solar');assert.equal(cmd('clean','solar','meter'),false);action('clean','solar','cloth');assert.equal(m.snapshot.chargerFault,true);
  assert.equal(cmd('diagnose','charger'),false,'changed surface must be rechecked');action('inspect','solar');action('diagnose','charger');
  assert.equal(cmd('replace','charger','drive-module'),false);action('replace','charger','charger-module');assert.equal(m.snapshot.inventory.charger,0);assert.equal(cmd('reconnect','charger'),false);
- action('diagnose','charger');assert.equal(cmd('reconnect','charger'),true);assert.equal(m.snapshot.outputW,200);assert.equal(m.snapshot.resolved,false);
- action('probe','charger');assert.equal(m.snapshot.chargerVerified,true);assert.equal(m.snapshot.resolved,true);
- const record=m.snapshot.evidence.at(-1);assert.match(record.result,/0\.2014Wh/);assert.match(record.result,/非主电池/);
+ action('diagnose','charger');assert.equal(cmd('reconnect','charger'),true);assert.equal(m.snapshot.chargerFault,false);assert.equal(m.snapshot.resolved,false);
+ assert.equal(m.confirmCharging(f.op.snapshot,1,'0:1:false'),false);assert.equal(m.confirmCharging(f.op.snapshot,-1,'1:1:false'),false);assert.equal(m.confirmCharging(f.op.snapshot,1,'1:1:false'),true);assert.equal(m.snapshot.chargerVerified,true);assert.equal(m.snapshot.resolved,true);
+ const record=m.snapshot.evidence.at(-1);assert.match(record.result,/1\.0000Wh/);
  assert.equal(cmd('isolate-charge','charger'),true);assert.equal(m.snapshot.chargerVerified,false);assert.equal(m.snapshot.resolved,false);
 });
 test('sensor drill requires a controlled daytime override, surface observation and tool retest with override withdrawn; night remains authoritative',()=>{
