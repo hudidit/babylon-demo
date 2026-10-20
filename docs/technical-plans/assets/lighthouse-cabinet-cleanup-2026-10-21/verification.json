@@ -1,0 +1,159 @@
+{
+  "baseline": "ce81d01",
+  "node": "v24.21.0",
+  "playwright": "1.64.1",
+  "manifestSha256": "6af8f3b209acc7207ab7f0d6ae9a53adc821ec53b2d22feac09d5c24a9a214b3",
+  "beforeManifestSha256": "4d15798d7195bee5cb121087d2cf98cf7e58680f2738799e4801b3184d9e681f",
+  "checks": {
+    "tests": 279,
+    "pass": 279,
+    "fail": 0,
+    "typecheck": true,
+    "developmentBuild": true,
+    "productionBuildAndRelease": true,
+    "localMarkdownFiles": 5,
+    "localMarkdownLinks": 256,
+    "deployedDocumentationLinks": 3,
+    "gitDiffWhitespace": true
+  },
+  "browsers": [
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser/browser.json",
+      "sha256": "ba4856670b8a61904b80dea7fa257e2b264b8d2e6fd6ab4d943a7207a86f35c6",
+      "initialJsBytes": 3018360,
+      "passed": true
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser-subpath/browser.json",
+      "sha256": "994d3afb98e01c6c8cc593095671edbf86f56bfb2c474e6626c3c6f2aa0d0a6f",
+      "initialJsBytes": 3018360,
+      "passed": true
+    }
+  ],
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "f9ea4aa906fb5e6c6bfb43dd7cf00c1f1b9597b58176884f3e1042efdfb83127"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-21-lighthouse-two-levels-and-save.md",
+      "sha256": "bfb96b78b728ea5ab693d6387e287fea7436475f50a91df4aaf1b995e3e28067"
+    },
+    {
+      "path": "docs/technical-plans/README.md",
+      "sha256": "0a2d27c718547a56c1556074253e1c364feeeb1d9974205235604395458a4897"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/README.md",
+      "sha256": "4630daf9642388fede1ea1dd74de700cea5105d7db728f85976ce8060810e11f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/before/browser.json",
+      "sha256": "f7bf14e2e71d77d7caab4ab0ec28004c9ebebeae253050bd0172c2ea938e141f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/before/cabinet-area.jpg",
+      "sha256": "a241d639576d4fa059940eb05980a98adfd62f5db9b838414649aa8f794350c5"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/before/cabinet-front.jpg",
+      "sha256": "41d9f1acc751aefc060dcc65436f9f8555fff4e2c32761ec82eafed42c225e1f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/before/cabinet-side.jpg",
+      "sha256": "8b60ff8a0f5cdbaf5e16511450ffa2a98cd0af54feeab52c774a6a33c043e02c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser-subpath/cabinet-area.jpg",
+      "sha256": "4626ae9b47b7b9d4c9fdc40d4446bdcadc0a98bfe83231540f12053b073e10cd"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser-subpath/cabinet-front.jpg",
+      "sha256": "04a5c9bb21bab8163757a1eb61ce8d5a6e9e8f4d98f3be4561973794fc680333"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser-subpath/cabinet-side.jpg",
+      "sha256": "f566530acc3695e94c78dc375c11d1b132546c0c5f6082b96912e14bd8c31060"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser-subpath/lighthouse-battery-main.jpg",
+      "sha256": "3c8e931d3bbf370c86bf78cf49d3c65b252a0590a1231367398a0e6b8f15eb1a"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser-subpath/lighthouse-solar-charger.jpg",
+      "sha256": "f463cb2dc9fda330d8e2f1402e3f4ab4f45013e59b90b948dc7b1df95ac8988c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser/cabinet-area.jpg",
+      "sha256": "132279b2ce60ee4ccca2ec14652fae536bdbac593cec90f7259c93023b5d802a"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser/cabinet-front.jpg",
+      "sha256": "8aa31bee7384a8fc9284042ee72d50f06fd3f368a488b1d238ed407a2c55b29c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser/cabinet-side.jpg",
+      "sha256": "1f02c20749b8b4eff9811b29a44cc09a744695f9869372f1771b377d6270cf12"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser/lighthouse-battery-main.jpg",
+      "sha256": "e21ce382dbfe792808ed3232444ae41f27f5a0c724a9585ee62608c52f58cc85"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/browser/lighthouse-solar-charger.jpg",
+      "sha256": "3334e5efc9c861e93696cb091719d91ee8ccc8293943f94d1868f90aab9ba84c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/bundle-analysis.json",
+      "sha256": "b55b7423a8b755aa18d57827bc06142559a553bc86420eb360592f566869e1df"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/check-browser.cjs",
+      "sha256": "382d6a29c496298cd10260303359dc6ff5fa1e06a75a497fbd1ede510e67bca7"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/check-release.cjs",
+      "sha256": "f04f89b2b578806562d6a3c041eb78811908668eaf0f9bc49b0a819a7af397f0"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/development.log",
+      "sha256": "698cadda7eb868d099f1afd684abb7253cc14f5fdb2be5f60b45991731d31a8d"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/production.log",
+      "sha256": "c58220cf14bc78b47e20ffae40d6b152707613c1b59a619c7aab4726ba268731"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/release-manifest.json",
+      "sha256": "6af8f3b209acc7207ab7f0d6ae9a53adc821ec53b2d22feac09d5c24a9a214b3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/release.json",
+      "sha256": "45171fd14cf5364f87c64a109ebf7d0fa88c27c58edb78c448821193cf03053a"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/tests.log",
+      "sha256": "98b6f590966005a06b856028a016925ad7a5ba6cc0cc2de75d3a87d6b6885b1a"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-cabinet-cleanup-2026-10-21/typecheck.log",
+      "sha256": "d51a4680b3af1d0fdf2ee16eb9cb547bf4524a74c0b1370c87a2d0d6690a8ec3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/browser-harness.cjs",
+      "sha256": "518b9a3c58b355f453062977ebaca0633cf927cd410a90ed074490b0ec334f07"
+    },
+    {
+      "path": "public/STUDY_ASSET_SOURCES.md",
+      "sha256": "502f0c5f634b7bba241c291a04b0db573dbe2eca2424dc75b495cdecda58519d"
+    },
+    {
+      "path": "public/environment/coastal-cliff-source.json",
+      "sha256": "d77b28a9f1477494b918fca76a216923e478c3604b048ee6eb5f7738477d58fc"
+    },
+    {
+      "path": "src/examples/LighthouseEquipment.ts",
+      "sha256": "0c47d239afd1a8ee336ff654115221af524558d04a010ae77df6a623a9704183"
+    }
+  ]
+}

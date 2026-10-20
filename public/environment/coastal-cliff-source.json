@@ -240,6 +240,7 @@
       "src/examples/LighthouseRecords.ts",
       "src/examples/RoomInteractions.ts"
     ],
-    "scope": "Replaces the historical five-storey layout with service floor and lantern/gallery only. Original three facade windows remain for daylight. Wider shaft, coordinated lantern/gallery/roof, entry threshold/steps and relocated ladder/cabinets share collision data. Total height and beacon optics unchanged. House entry and lighthouse doors close after ten accepted active seconds fully open, retaining swept-body protection. The lighthouse leaf now swings inward to clear a normal one-metre exterior approach; house swing remains unchanged. No extra download, light, shadow target, camera or dependency."
+    "scope": "Replaces the historical five-storey layout with service floor and lantern/gallery only. Original three facade windows remain for daylight. Wider shaft, coordinated lantern/gallery/roof, entry threshold/steps and relocated ladder/cabinets share collision data. Total height and beacon optics unchanged. House entry and lighthouse doors close after ten accepted active seconds fully open, retaining swept-body protection. The lighthouse leaf now swings inward to clear a normal one-metre exterior approach; house swing remains unchanged. No extra download, light, shadow target, camera or dependency.",
+    "cabinetCleanup": "2026-10-21: Removed four orphaned decorative boxes left at the previous cabinet coordinates: cabinet seam, two handles and charger accent. The shared cabinet/controller solids, labels, collision, interaction and lighting remain. No new asset or dependency."
   }
 }

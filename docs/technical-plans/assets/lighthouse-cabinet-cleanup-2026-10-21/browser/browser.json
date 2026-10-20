@@ -1,0 +1,842 @@
+{
+  "baseline": "ce81d01",
+  "manifestSha256": "6af8f3b209acc7207ab7f0d6ae9a53adc821ec53b2d22feac09d5c24a9a214b3",
+  "method": "Independent production hosting. CDP captures existing Room only; grounded service-position camera fixtures, native pointer/mouse and rendering. No equipment, collision, time receipt or inventory mutation. Screenshots document appearance, not FPS.",
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8244/",
+      "status": 200,
+      "bytes": 38486
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/main.js",
+      "status": 200,
+      "bytes": 379330
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8244/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8244/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8244/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4190
+    },
+    {
+      "url": "http://127.0.0.1:8244/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8244/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8244/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8244/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/3a162748-3f90-4e2e-8d42-ec581223646c",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/b1dddf2f-9310-4fb8-99b5-ffa9d735b49e",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/b6886362-485c-40ac-8856-aac39eef4744",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/abfcac58-801c-4e3c-845d-1ded867679b2",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/a7101ad6-a569-48cb-9917-d19325391c4e",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/f96b044b-56a4-4a01-a5cc-741292432bb5",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/dadc88d8-579b-43c6-9f1c-52a8d03233ae",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/e1ef0697-7e28-4100-b5d3-0c8e866fb6b8",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/70336042-d5e9-4d20-b2e6-2490316c19c3",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/49bf9eed-9eb1-4317-8a09-5b83f99eb009",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/81f9e224-f409-4ad8-9175-d0d488868a5f",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/ec64f63b-d42c-4210-aacf-c709d5551b75",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/7e6621a4-73a2-4a39-95bf-3c1cef567a09",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/d3f7ebf2-3942-493b-b088-c3de23344a34",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/f34d9cce-8d66-47de-8dc5-bb96084500cc",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8244/6732c694-467d-4b2b-a25c-77bb14efc637",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8244/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8244/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "views": [
+    {
+      "name": "cabinet-area",
+      "x": 0,
+      "y": -1.5,
+      "tx": 1.65,
+      "ty": 0.2,
+      "h": 1.3
+    },
+    {
+      "name": "cabinet-front",
+      "x": 2.1,
+      "y": -1.2,
+      "tx": 2.35,
+      "ty": 0.2,
+      "h": 1.38
+    },
+    {
+      "name": "cabinet-side",
+      "x": 1.25,
+      "y": 0.1,
+      "tx": 2.35,
+      "ty": 0.2,
+      "h": 1.3
+    }
+  ],
+  "browser": "155.0.8059.85",
+  "initialJsBytes": 3018360,
+  "nearbyMeshes": [
+    {
+      "name": "coastal-lighthouse-detail-distribution-panel",
+      "vertices": 24,
+      "min": [
+        -664.7999755859375,
+        18.85000076293945,
+        422.3
+      ],
+      "max": [
+        -664.3999755859375,
+        22.050000762939455,
+        424.7
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-detail-work-switch",
+      "vertices": 24,
+      "min": [
+        -664.3874877929687,
+        19.274999618530273,
+        422.70001220703125
+      ],
+      "max": [
+        -664.2124877929688,
+        20.024999618530273,
+        423.20001220703125
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-detail-maintenance-record",
+      "vertices": 4,
+      "min": [
+        -652.8,
+        18.475,
+        436.63999999999993
+      ],
+      "max": [
+        -650.4000000000001,
+        21.975,
+        436.63999999999993
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-detail-lighthouse-door",
+      "vertices": 102,
+      "min": [
+        -654,
+        93.39999694824219,
+        421
+      ],
+      "max": [
+        -650,
+        93.99999694824218,
+        425
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-detail-test-control",
+      "vertices": 24,
+      "min": [
+        -652.6,
+        95.0000015258789,
+        421.0249938964844
+      ],
+      "max": [
+        -651.4,
+        95.80000152587891,
+        421.2749938964844
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-detail-test-label",
+      "vertices": 4,
+      "min": [
+        -652.525,
+        95.22500000000001,
+        421.01
+      ],
+      "max": [
+        -651.4749999999999,
+        95.57500000000002,
+        421.01
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-detail-painted-metal",
+      "vertices": 414,
+      "min": [
+        -663.3850268554687,
+        13.249999618530273,
+        423.465
+      ],
+      "max": [
+        -647.275,
+        102.39999847412109,
+        436.4125061035156
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-detail-panel-hardware",
+      "vertices": 72,
+      "min": [
+        -664.3949755859375,
+        20.35,
+        422.56251220703126
+      ],
+      "max": [
+        -664.3049755859375,
+        20.65,
+        424.33751220703124
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-detail-weathered-timber",
+      "vertices": 252,
+      "min": [
+        -653.125,
+        17.049999618530272,
+        435.125
+      ],
+      "max": [
+        -646.9499877929687,
+        22.175,
+        436.8375
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-detail-lantern-brass",
+      "vertices": 192,
+      "min": [
+        -654.0150122070313,
+        19.275000381469727,
+        420.98498779296875
+      ],
+      "max": [
+        -647.4375,
+        101.6500015258789,
+        436.61000366210936
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-detail-floor-signs",
+      "vertices": 8,
+      "min": [
+        -653.6,
+        23.3,
+        430.745
+      ],
+      "max": [
+        -649.9,
+        101.7,
+        435.395
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-detail-lighthouse-work-glow",
+      "vertices": 48,
+      "min": [
+        -648.3750244140625,
+        21.1375,
+        426.975
+      ],
+      "max": [
+        -647.4250244140625,
+        101.8625,
+        427.525
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-battery-main-paint",
+      "vertices": 24,
+      "min": [
+        -641.9,
+        12.700000762939453,
+        422
+      ],
+      "max": [
+        -638.6,
+        22.200000762939453,
+        426
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-solar-charger-metal",
+      "vertices": 24,
+      "min": [
+        -641.6,
+        19.7,
+        421.84999389648436
+      ],
+      "max": [
+        -638.9,
+        21.8,
+        422.4499938964844
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-drive-hatch-paint",
+      "vertices": 24,
+      "min": [
+        -651.75,
+        95.85000305175781,
+        421.4
+      ],
+      "max": [
+        -650.75,
+        97.25000305175782,
+        421.6
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-beacon-backup-paint",
+      "vertices": 24,
+      "min": [
+        -633.5,
+        110.75000305175782,
+        422.25
+      ],
+      "max": [
+        -632,
+        111.35000305175781,
+        423.75
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-generator-room-metal",
+      "vertices": 24,
+      "min": [
+        -684.4,
+        21.449999237060545,
+        445.6
+      ],
+      "max": [
+        -670.6,
+        22.14999923706055,
+        459.4
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-generator-paint",
+      "vertices": 24,
+      "min": [
+        -680.2,
+        10.799999618530274,
+        453.8
+      ],
+      "max": [
+        -674.8,
+        15.499999618530273,
+        457.7
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-drive-hatch-brass",
+      "vertices": 24,
+      "min": [
+        -650.8650122070312,
+        96,
+        421.3550146484375
+      ],
+      "max": [
+        -650.7850122070313,
+        96.5,
+        421.4250146484375
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-beacon-backup-solar",
+      "vertices": 102,
+      "min": [
+        -633.375,
+        111.35000152587891,
+        422.375
+      ],
+      "max": [
+        -632.125,
+        112.9500015258789,
+        423.625
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-solar-array-solar",
+      "vertices": 4,
+      "min": [
+        -635,
+        13.700000000000003,
+        448
+      ],
+      "max": [
+        -621,
+        18.200000000000003,
+        455.99999999999994
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-drive-hatch-labels",
+      "vertices": 4,
+      "min": [
+        -651.7,
+        96.55000000000001,
+        421.39
+      ],
+      "max": [
+        -650.8,
+        97.00000000000001,
+        421.39
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-beacon-backup-labels",
+      "vertices": 4,
+      "min": [
+        -643.735756805311,
+        99.45,
+        425.35656865448414
+      ],
+      "max": [
+        -642.6642431946889,
+        100.25,
+        427.9434313455158
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-battery-main-labels",
+      "vertices": 4,
+      "min": [
+        -641.55,
+        17.3,
+        421.90999999999997
+      ],
+      "max": [
+        -638.95,
+        18.05,
+        421.90999999999997
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-solar-charger-labels",
+      "vertices": 4,
+      "min": [
+        -641.4,
+        20.55,
+        421.78999999999996
+      ],
+      "max": [
+        -639.1,
+        21.200000000000003,
+        421.78999999999996
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-solar-array-labels",
+      "vertices": 4,
+      "min": [
+        -629.7,
+        12,
+        456.26
+      ],
+      "max": [
+        -626.3000000000001,
+        12.899999999999999,
+        456.26
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-generator-labels",
+      "vertices": 4,
+      "min": [
+        -679.05,
+        13.100000000000001,
+        453.715
+      ],
+      "max": [
+        -675.95,
+        13.900000000000002,
+        453.715
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-generator-room-labels",
+      "vertices": 4,
+      "min": [
+        -683.3500000000001,
+        16.950000000000003,
+        445.96
+      ],
+      "max": [
+        -680.25,
+        17.800000000000004,
+        445.96
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-beacon-backup-metal",
+      "vertices": 150,
+      "min": [
+        -642.8999877929688,
+        103.4000015258789,
+        422.125
+      ],
+      "max": [
+        -631.875,
+        113.35000152587891,
+        423.875
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-generator-room-plaster",
+      "vertices": 288,
+      "min": [
+        -684.0000122070312,
+        10.199999809265137,
+        445.99998779296874
+      ],
+      "max": [
+        -670.9999877929688,
+        21.450000762939453,
+        459.00001220703126
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-generator-metal",
+      "vertices": 240,
+      "min": [
+        -680.55,
+        10.2,
+        453.65
+      ],
+      "max": [
+        -674.45,
+        24.14999923706055,
+        459.72498779296876
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-solar-array-metal",
+      "vertices": 244,
+      "min": [
+        -635.25,
+        10.200000190734864,
+        447.75
+      ],
+      "max": [
+        -620.75,
+        18.400000762939452,
+        456.25
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-generator-room-paint",
+      "vertices": 240,
+      "min": [
+        -684.1000122070312,
+        16.749999237060546,
+        450.7
+      ],
+      "max": [
+        -670.8999877929688,
+        19.175,
+        454.3
+      ]
+    },
+    {
+      "name": "coastal-lighthouse-equipment-light-sensor-labels",
+      "vertices": 28,
+      "min": [
+        -643.1500244140625,
+        100.35000305175781,
+        420.15
+      ],
+      "max": [
+        -642.62,
+        101.25000305175782,
+        420.85
+      ]
+    }
+  ],
+  "equipmentInteraction": true,
+  "passed": true
+}

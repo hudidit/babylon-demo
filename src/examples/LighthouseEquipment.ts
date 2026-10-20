@@ -37,10 +37,6 @@ export class LighthouseEquipment {
     const box = (id: string, finish: keyof typeof materials, width: number, height: number, depth: number, x: number, y: number, bottom: number) =>
       batch.box(group(id, finish), materials[finish], width, height, depth, tower.x + x, tower.y + y, bottom + height / 2);
     for (const part of LIGHTHOUSE_EQUIPMENT_BOXES) box(part.id, part.finish, part.width, part.height, part.depth, part.x, part.y, part.bottom);
-    // Cabinet joins and closed handles stay inside the cabinet's protected footprint.
-    box("lighthouse-battery-main", "metal", .56, .022, .015, 1.72, -.207, LIGHTHOUSE.floor + 1.29);
-    for (const height of [.63, 1.04]) box("lighthouse-battery-main", "metal", .035, .13, .02, 1.95, -.217, LIGHTHOUSE.floor + height);
-    box("lighthouse-solar-charger", "paint", .09, .035, .014, 1.91, -.237, LIGHTHOUSE.floor + 1.43);
     box("lighthouse-drive-hatch", "brass", .016, .1, .014, .235, -.322, LIGHTHOUSE.gallery + .56);
     // The backup has its own 360-degree source; it does not reuse the main directional optic.
     batch.cylinder(group("lighthouse-beacon-backup", "solar"), materials.solar, tower.x + backup.x, tower.y + backup.y,
