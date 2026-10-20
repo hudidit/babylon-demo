@@ -33,7 +33,8 @@ function doorOverlapsWalkerHeight(door: { meshes: AbstractMesh[] }, eye: Vector3
 /** Explicit picking also includes non-pickable static furniture, so it can occlude an action. */
 export const interactionSurface = (mesh: AbstractMesh) =>
   mesh.isEnabled() && mesh.isVisible && mesh.visibility > 0 && mesh.getTotalVertices() > 0
-  && !mesh.metadata?.inspectionPreview && (!mesh.metadata?.exterior || mesh.metadata?.lighthouse);
+  && !mesh.metadata?.inspectionPreview && !mesh.metadata?.lighthouseMaintenanceTool
+  && (!mesh.metadata?.exterior || mesh.metadata?.lighthouse);
 
 export class RoomInteractions {
   private readonly actions = new Map<AbstractMesh, Action>();
@@ -133,13 +134,15 @@ export class RoomInteractions {
   }
 
   /** Revalidate a modal command against the actual world, rather than trusting an old click. */
-  canReachDevice(device: InteractiveDevice, eye: Vector3, range = 7.5): boolean {
+  canReachDevice(device: InteractiveDevice, eye: Vector3, range = 7.5, viewDirection?: Vector3, transparent: readonly Mesh[] = []): boolean {
     return device.meshes.some(mesh => {
       mesh.computeWorldMatrix(true);
       const target = mesh.getBoundingInfo().boundingBox.centerWorld, distance = Vector3.Distance(eye, target);
       if (distance > range || distance < 1e-7) return false;
-      const ray = new Ray(eye, target.subtract(eye).normalize(), range);
-      const hit = this.scene.pickWithRay(ray, interactionSurface);
+      const direction = target.subtract(eye).normalize();
+      if (viewDirection && Vector3.Dot(direction, viewDirection) < Math.cos(Math.PI / 7.2)) return false;
+      const ray = new Ray(eye, direction, range);
+      const hit = this.scene.pickWithRay(ray, mesh => interactionSurface(mesh) && !transparent.includes(mesh as Mesh));
       return !!hit?.pickedMesh && device.meshes.includes(hit.pickedMesh as Mesh) && hit.distance <= range;
     });
   }

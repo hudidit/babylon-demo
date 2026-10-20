@@ -164,7 +164,8 @@ export class RoomExterior {
       (m.metadata?.structure === "wall" && m.metadata?.span?.owners.length === 1 || /^balcony-rail-/.test(m.name)));
     const local = this.meshes.filter(m => ["rocks", "vegetation", "foundation", "landmark", "house-roof"].includes(m.metadata.exteriorLayer)
       && m.material instanceof PBRMaterial && m.material.alpha === 1
-      && !m.metadata.movingLighthouseDoor && !m.metadata.movingLighthouseOptic && !/plaza|lookout$/.test(m.name));
+      && !m.metadata.movingLighthouseDoor && !m.metadata.movingLighthouseOptic && !m.metadata.lighthouseMaintenanceTool && !m.metadata.lighthouseProtectivePane
+      && !/plaza|lookout$/.test(m.name));
     this.shadow.getShadowMap()!.renderList = [...local, ...shell];
     this.refreshShadows();
   }

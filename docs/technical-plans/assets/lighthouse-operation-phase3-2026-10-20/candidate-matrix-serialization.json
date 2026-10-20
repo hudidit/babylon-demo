@@ -1,0 +1,67 @@
+{
+  "baseline": "b10e876",
+  "method": "Final dist; real time menu to 21:00; then fixed real optical-head transforms/uniforms with Room update suspended for peak/opposite GPU comparison. No application state-machine or performance claim from these fixtures.",
+  "physicalDevicesTested": false,
+  "fpsOrLoadTimeSampling": false,
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "near",
+      "off": {
+        "luma": 26.449263888888936,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 205.3125,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "house",
+      "off": {
+        "luma": 23.978784722222205,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 31.40418333333333,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "coverCases": [],
+  "pending": {
+    "kind": "chromium",
+    "dpr": 1,
+    "stage": "initial scene",
+    "errors": [],
+    "warnings": []
+  },
+  "failure": "page.evaluate: Cannot serialize result: object reference chain is too long.\n    at coverFrame (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-operation-phase3-2026-10-20/check-matrix.cjs:81:26)\n    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-operation-phase3-2026-10-20/check-matrix.cjs:92:31"
+}

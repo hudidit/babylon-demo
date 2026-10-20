@@ -226,6 +226,15 @@
       #lighthouse-panel h3 { margin: 22px 0 8px; font-weight: 500; font-size: 13px; }
       #lighthouse-panel-events { margin: 0; padding: 0; list-style: none; color: #686f60; font-size: 11px; font-variant-numeric: tabular-nums; }
       #lighthouse-panel-events li { padding: 6px 0; border-bottom: 1px solid #e0dacd; }
+      .lighthouse-action { width: 100%; min-height: 44px; margin: 6px 0; padding: 10px 12px; border: 1px solid #879078; border-radius: 7px; background: #e4e8dc; color: #354b32; font-size: 13px; cursor: pointer; }
+      .lighthouse-action:disabled { opacity: .6; cursor: default; }
+      .lighthouse-action[hidden], #lighthouse-activity[hidden] { display: none; }
+      #lighthouse-checklist { padding-left: 19px; } #lighthouse-checklist li { margin: 7px 0; }
+      #lighthouse-checklist [data-state="complete"] { color: #426b36; }
+      #lighthouse-round-summary { border-left: 3px solid #899978; padding: 8px 12px; background: #e8eadf; }
+      #lighthouse-inspection-events { padding-left: 0; list-style: none; font-size: 11px; color: #686f60; overflow-wrap: anywhere; }
+      #lighthouse-inspection-events li { padding: 7px 0; border-bottom: 1px solid #ded8ca; }
+      #lighthouse-activity { position: fixed; top: 76px; left: 50%; transform: translateX(-50%); max-width: calc(100% - 40px); box-sizing: border-box; padding: 10px 16px; border: 1px solid #d9ddbf66; border-radius: 8px; background: #26362ce8; color: #f3ecd7; font-size: 12px; line-height: 1.5; pointer-events: none; z-index: 4; }
       @media (max-width: 480px), (max-height: 480px) { .lighthouse-heading { padding: 14px 16px; } .lighthouse-body { padding: 16px; } #lighthouse-panel h2 { font-size: 19px; } }
     </style>
   </head>
@@ -263,6 +272,7 @@
     </section>
     <div id="interaction-reticle" aria-hidden="true" hidden></div>
     <div id="interaction-hint" role="status" hidden></div>
+    <div id="lighthouse-activity" role="status" hidden></div>
     <dialog id="lighthouse-panel" aria-labelledby="lighthouse-panel-title" aria-describedby="lighthouse-panel-guide">
       <header class="lighthouse-heading"><div><p id="lighthouse-panel-place"></p><h2 id="lighthouse-panel-title">导航灯运行</h2></div><button id="lighthouse-panel-return">返回场景</button></header>
       <div class="lighthouse-body">
@@ -273,10 +283,17 @@
           <div><dt>导航日程</dt><dd>18:00 至次日 06:00</dd></div>
           <div><dt>灯质</dt><dd>单束白闪 · 同一方向每10秒一次 · 每分钟6圈</dd></div>
           <div><dt>试灯余时</dt><dd id="lighthouse-panel-test"></dd></div>
+          <div><dt>保护面</dt><dd id="lighthouse-panel-surface"></dd></div>
         </dl>
         <p id="lighthouse-panel-guide"></p><button id="lighthouse-test-toggle" hidden></button>
+        <button class="lighthouse-action" id="lighthouse-confirm-control" hidden>确认本次读数</button>
+        <button class="lighthouse-action" id="lighthouse-cover-check" hidden>确认保护面观察结果</button>
+        <button class="lighthouse-action" id="lighthouse-clean-start" hidden>擦拭并返回场景</button>
+        <h3>本轮三项巡检</h3><ul id="lighthouse-checklist"></ul><p id="lighthouse-round-summary"></p>
         <p class="lighthouse-note">查看面板时，设备与场景时间暂停；返回场景继续。当前按晴天、稳定供电运行；备用灯与电池监测尚未接入。</p>
         <h3>最近运行事件</h3><ul id="lighthouse-panel-events"></ul>
+        <h3>巡检与操作日志</h3><ul id="lighthouse-inspection-events"></ul>
+        <p class="lighthouse-note" id="lighthouse-day-history"></p>
       </div>
     </dialog>
     <dialog id="item-inspection" aria-labelledby="item-inspection-title">

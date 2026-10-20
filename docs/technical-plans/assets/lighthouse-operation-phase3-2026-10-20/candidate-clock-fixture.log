@@ -1,0 +1,9 @@
+page.evaluate: RangeError: Select a three-hour scene time node
+    at ns.node (http://127.0.0.1:8216/js/main.js:1:140638)
+    at ns.select (http://127.0.0.1:8216/js/main.js:1:140724)
+    at eval (eval at evaluate (:370:30), <anonymous>:1:21)
+    at UtilityScript.evaluate (<anonymous>:372:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-operation-phase3-2026-10-20/check-browser.cjs:169:20 {
+  log: []
+}

@@ -1,0 +1,6 @@
+page.evaluate: Cannot serialize result: object reference chain is too long.
+    at coverFrame (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-operation-phase3-2026-10-20/check-matrix.cjs:81:26)
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-operation-phase3-2026-10-20/check-matrix.cjs:92:31 {
+  log: [],
+  name: 'Error'
+}

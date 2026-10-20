@@ -79,17 +79,17 @@ export class LighthouseBeacon {
           #include<clipPlaneVertex>
         }`,
       fragmentSource: `precision highp float; varying vec2 vUV;
-        uniform vec3 cameraPosition, beamOrigin, beamDirection; uniform float beaconOn;
+        uniform vec3 cameraPosition, beamOrigin, beamDirection; uniform float beaconOn, surfaceTransmission;
         #include<clipPlaneFragmentDeclaration>
         ${beamLobeGLSL}
         void main(){
           #include<clipPlaneFragment>
           vec2 p=vUV*2.-1.;if(dot(p,p)>1.)discard;
           float beam=beamLobe();
-          float brightness=.025+beaconOn*beam*24.;
+          float brightness=.025+beaconOn*beam*24.*surfaceTransmission;
           gl_FragColor=vec4(vec3(.96,.98,1.)*brightness,1.);
         }`,
-    }, {attributes: ["position", "uv"], uniforms: ["world", "viewProjection", "cameraPosition", "beamOrigin", "beamDirection", "beaconOn", "viewportSize"], useClipPlane: true});
+    }, {attributes: ["position", "uv"], uniforms: ["world", "viewProjection", "cameraPosition", "beamOrigin", "beamDirection", "beaconOn", "surfaceTransmission", "viewportSize"], useClipPlane: true});
     this.material.backFaceCulling = false;
     this.material.setVector3("beamOrigin", this.root.position);
     this.material.setVector3("beamDirection", new Vector3(0, 0, 1)); this.material.setFloat("beaconOn", 0);
@@ -111,11 +111,12 @@ export class LighthouseBeacon {
     this.source.receiveShadows = false; this.meshes.push(this.source);
   }
 
-  apply(state: LighthouseOperationSnapshot) {
+  apply(state: LighthouseOperationSnapshot, transmission = 1) {
     if (this.disposed) return;
     this.root.rotation.y = state.rotationRadians;
     this.material.setVector3("beamDirection", new Vector3(Math.sin(state.rotationRadians), 0, Math.cos(state.rotationRadians)));
     this.material.setFloat("beaconOn", state.running ? 1 : 0);
+    this.material.setFloat("surfaceTransmission", transmission);
   }
 
   setVisible(visible: boolean) { if (!this.disposed) this.root.setEnabled(visible); }
