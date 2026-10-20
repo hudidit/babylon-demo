@@ -1,0 +1,148 @@
+{
+  "baseline": "e13fe78",
+  "manifestSha256": "fbf6549d7dfa49e5d2706823ee6eccc77ef13d7c31a2623ceb3d72a665d1a98c",
+  "fpsOrLoadTimeSampling": false,
+  "suites": {
+    "drills": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step2-2026-10-20/check-drills.cjs",
+      "scriptSha256": "fcd12efa45f101ef53893497f8d9572cb97edcde6afe4deace1c085a773587ba",
+      "adapterSha256": "fcd12efa45f101ef53893497f8d9572cb97edcde6afe4deace1c085a773587ba",
+      "result": "drills/drills.json",
+      "resultSha256": "3e4c236964218e33cce3e096ac8f4dedd395c49eaf718fa1cfb405f134a530a2",
+      "log": "drills.log"
+    },
+    "drills-subpath": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step2-2026-10-20/check-drills.cjs",
+      "scriptSha256": "fcd12efa45f101ef53893497f8d9572cb97edcde6afe4deace1c085a773587ba",
+      "adapterSha256": "fcd12efa45f101ef53893497f8d9572cb97edcde6afe4deace1c085a773587ba",
+      "result": "drills-subpath/drills.json",
+      "resultSha256": "24c3767b44a149586276441cb04199e4b1f20a3ece929eb0985383074ccd4b3f",
+      "log": "drills-subpath.log"
+    },
+    "equipment": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step2-2026-10-20/equipment-adapter.cjs",
+      "scriptSha256": "000d2f1699bcd7ff96632b00665630d243544b99408c8fcfd1c5da89e6402f2c",
+      "adapterSha256": "000d2f1699bcd7ff96632b00665630d243544b99408c8fcfd1c5da89e6402f2c",
+      "result": "equipment/equipment.json",
+      "resultSha256": "b5724724265012e6be5029ba8673c3da6d24e07c449edb2cc462937d1b0d6c24",
+      "log": "equipment.log"
+    },
+    "subpath": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step2-2026-10-20/equipment-adapter.cjs",
+      "scriptSha256": "000d2f1699bcd7ff96632b00665630d243544b99408c8fcfd1c5da89e6402f2c",
+      "adapterSha256": "000d2f1699bcd7ff96632b00665630d243544b99408c8fcfd1c5da89e6402f2c",
+      "result": "subpath/equipment.json",
+      "resultSha256": "200d504e09397c5130e1b297a2e94c4dd32e7fac5b33eb6dc67edf11b6dab964",
+      "log": "subpath.log"
+    },
+    "browser": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-operation-phase3-2026-10-20/check-browser.cjs",
+      "scriptSha256": "434d89b8e93d3bdccce3a1ebb30fab034b094d68566080a314500b74f8429ec6",
+      "adapterSha256": "90e35d2fac800e263690c45b81af87b034df5993cc3b25e54f1298bce86d697c",
+      "result": "browser/browser.json",
+      "resultSha256": "34f2d39056e8faed219c4ee96add23a3dbdcd9438c3c6aefdecc9ee9692b3fe9",
+      "log": "browser.log"
+    },
+    "journey": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-operation-phase3-2026-10-20/check-journey.cjs",
+      "scriptSha256": "ffc56c40ea1bb4c2e62f9901f0d3a8ea75c9eef26165cf22305775ad183571f3",
+      "adapterSha256": "90e35d2fac800e263690c45b81af87b034df5993cc3b25e54f1298bce86d697c",
+      "result": "journey/journey.json",
+      "resultSha256": "e59a560e8777b06fc9d8a6544988a74171b8f94fae09cb0d8fc60e9d34bb5b51",
+      "log": "journey.log"
+    },
+    "regression": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-finish-2026-10-19/check-regression.cjs",
+      "scriptSha256": "929ec470a9db520a4c766a2f61668de92c99f556bbb5725ebb20177ff0026d12",
+      "adapterSha256": "90e35d2fac800e263690c45b81af87b034df5993cc3b25e54f1298bce86d697c",
+      "result": "regression/regression.json",
+      "resultSha256": "2841adbcd84614a74893b2bcb56869f5831fc4ec88d81383894b3c2cc48a489c",
+      "log": "regression.log"
+    },
+    "curtains": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/interactive-curtains-2026-10-20/check-browser.cjs",
+      "scriptSha256": "6d0594695c0406b564836203e64fa553677d9f65ea34d13fdfa68d7476f418f3",
+      "adapterSha256": "90e35d2fac800e263690c45b81af87b034df5993cc3b25e54f1298bce86d697c",
+      "result": "curtains/browser.json",
+      "resultSha256": "e5ef925c0ea8b056ba7e5cc5bbc0ac41f189093009ad5fe9900a5c5c46c9b784",
+      "log": "curtains.log"
+    },
+    "ceiling": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/house-ceiling-lights-2026-10-20/check-browser.cjs",
+      "scriptSha256": "fe95b9be23484717bbce7eb199a03d8e2ffff70b1c7e4180e5bd4bd16aa04fbf",
+      "adapterSha256": "90e35d2fac800e263690c45b81af87b034df5993cc3b25e54f1298bce86d697c",
+      "result": "ceiling/browser.json",
+      "resultSha256": "fc364f00c16af26d7977575e0c76c8095306e8a3df0598642669b8989716bf1a",
+      "log": "ceiling.log"
+    },
+    "master-mirror": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/day-night-phase2-2026-10-19/check-night-master-mirror.cjs",
+      "scriptSha256": "aa6677d8b509a3b98109c0be9307df69a23e8cfdf7ded19bb3a4a89b32c9f3e4",
+      "adapterSha256": "90e35d2fac800e263690c45b81af87b034df5993cc3b25e54f1298bce86d697c",
+      "result": "master-mirror/mirror-map.json",
+      "resultSha256": "3aa6586dd8fcdcfd461d20d00bd20b5d947add9207873aefb6bdf2a129b126ec",
+      "log": "master-mirror.log"
+    },
+    "public-mirror": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/day-night-phase2-2026-10-19/check-night-public-mirror.cjs",
+      "scriptSha256": "40c7327e0c94abd4571ec8b1fa1a089e71e2ce5959265c01348d188e16e97de0",
+      "adapterSha256": "90e35d2fac800e263690c45b81af87b034df5993cc3b25e54f1298bce86d697c",
+      "result": "public-mirror/public-mirror.json",
+      "resultSha256": "491e6877f34df54ae7471825676edd33a8d3c0ab558bc60f7f6942a5a3127927",
+      "log": "public-mirror.log"
+    },
+    "headlight": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/scooter-headlight-2026-10-20/check-browser.cjs",
+      "scriptSha256": "de4dbf033705d995241f7ec5cfc282486d027556fe7f017b5f370faeb6ba75ec",
+      "adapterSha256": "90e35d2fac800e263690c45b81af87b034df5993cc3b25e54f1298bce86d697c",
+      "result": "headlight/browser.json",
+      "resultSha256": "6351af4fb5404e5f10e96d9462ecebdfbc84608e8b6cd03d2234a1e6f0af25b1",
+      "log": "headlight.log"
+    },
+    "matrix": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step2-2026-10-20/check-matrix.cjs",
+      "scriptSha256": "3adf67ac315da408588c09fc92d8295acf5a2990ea665b20f0c2b1ee516d9630",
+      "adapterSha256": "3adf67ac315da408588c09fc92d8295acf5a2990ea665b20f0c2b1ee516d9630",
+      "result": "matrix/matrix.json",
+      "resultSha256": "223ede6c4e711e391794a1d0d9f3f2a2d7adfdb9274bc80ad615855d49114929",
+      "log": "matrix.log"
+    },
+    "release": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step2-2026-10-20/check-release.cjs",
+      "scriptSha256": "6a6c61f4bc6c79749cefb61ec1b51c0b28cd1ba235c7dc0c3cef9ed79c4e57bd",
+      "adapterSha256": "6a6c61f4bc6c79749cefb61ec1b51c0b28cd1ba235c7dc0c3cef9ed79c4e57bd",
+      "result": "release.json",
+      "resultSha256": "db4e129391440af1f09ee949159c352284946010a21748d17d411c3185365ab6",
+      "log": "release.log"
+    }
+  },
+  "passed": true
+}

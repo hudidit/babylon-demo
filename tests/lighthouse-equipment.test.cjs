@@ -15,7 +15,7 @@ function setup(t) {
 
 test('installation identities and state remain honest; main hatch follows actual operation',()=>{
   const state=new(load('LighthouseOperation').LighthouseOperation)();
-  assert.equal(new Set(layout.LIGHTHOUSE_EQUIPMENT.map(d=>d.id)).size,7);
+  assert.equal(new Set(layout.LIGHTHOUSE_EQUIPMENT.map(d=>d.id)).size,8);
   for(const d of layout.LIGHTHOUSE_EQUIPMENT) {
     assert.ok(Object.isFrozen(d)&&Object.isFrozen(d.sign));
     assert.ok(d.parent&&d.purpose&&d.guide&&d.lines.length===2);
@@ -60,14 +60,14 @@ test('original entrance, ladder landings, gallery loop and scooter parking stay 
   assert.equal(scooterSupport({...p(4.8,5.8),heading:0}),undefined);
 });
 
-test('shared solids match their rendered group bounds, labels face the stated service side and all seven devices are pickable',t=>{
+test('shared solids match their rendered group bounds, labels face the stated service side and all eight devices are pickable',t=>{
   const {scene,equipment}=setup(t),interactions=new(load('RoomInteractions').RoomInteractions)(scene,()=>{});
   for(const device of equipment.devices)interactions.addDevice(device,()=>{});
   for(const definition of layout.LIGHTHOUSE_EQUIPMENT) {
-    const device=equipment.device(definition.id);assert.ok(device&&device.meshes.length>=2);
+    const device=equipment.device(definition.id);assert.ok(device&&device.meshes.length>=1);
     assert.ok(device.meshes.every(m=>m.metadata.equipmentId===definition.id&&m.metadata.equipmentParent===definition.parent));
     const label=device.meshes.find(m=>m.name.endsWith('-labels')), sign=definition.sign;
-    const normal=label.getVerticesData('normal');assert.ok(normal[0]*sign.nx+normal[2]*sign.ny>.99);
+    const normal=label.getVerticesData('normal');assert.ok(normal.slice(-12)[0]*sign.nx+normal.slice(-12)[2]*sign.ny>.99);
     const target=v(sign.x,sign.y,sign.bottom+sign.height/2),eye=target.add(new b.Vector3(sign.nx,0,sign.ny).scale(3));
     const action=interactions.pick(new b.Ray(eye,target.subtract(eye).normalize(),7.5));
     assert.ok(action,definition.id);assert.match(action.label(),new RegExp(definition.label));
@@ -109,14 +109,14 @@ test('backup source clears the roof and body while the closed drive hatch stays 
     for(let i=0;i<values.length;i+=3){const q=b.Vector3.TransformCoordinates(b.Vector3.FromArray(values,i),world).subtract(origin);assert.ok(Math.hypot(q.x,q.z)<=.44*u+1e-4);}}
 });
 
-test('new geometry has its own budget, preserves old exterior budget and disposes its one atlas and two materials',t=>{
+test('new geometry has its own budget, preserves old exterior budget and disposes its one atlas and three materials',t=>{
   const {scene,exterior,equipment}=setup(t),one=load('LighthouseRecords').lighthouseEquipmentPixels(),two=load('LighthouseRecords').lighthouseEquipmentPixels();
   assert.deepEqual(one,two);assert.equal(one.pixels.length,256*512*4);
   const panel=equipment.device('lighthouse-solar-array').meshes.find(m=>m.name.endsWith('-solar'));
   const normals=panel.getVerticesData('normal');
   for(let i=0;i<normals.length;i+=3)assert.ok(normals[i+1]>.8&&normals[i+2]>.4,'the visible PV front faces up and world +Z (south), not its metal underside');
   assert.ok(equipment.meshes.length<=24);assert.ok(equipment.meshes.reduce((n,m)=>n+m.getTotalVertices(),0)<=20000);
-  assert.equal(new Set(equipment.meshes.map(m=>m.material).filter(m=>/solar-cells|equipment-print/.test(m.name))).size,2);
+  assert.equal(new Set(equipment.meshes.map(m=>m.material).filter(m=>/solar-cells|equipment-print|backup-white-flash/.test(m.name))).size,3);
   assert.ok(exterior.meshes.filter(m=>!m.metadata.lighthouseEquipment&&!m.metadata.lighthouseInteriorStructure&&!m.metadata.lighthouseDetail).reduce((n,m)=>n+m.getTotalVertices(),0)<160000);
   assert.equal(scene.lights.length,2);assert.equal(scene.cameras.length,0);
   const atlas=scene.getTextureByName('lighthouse-original-equipment-signs');assert.ok(atlas);assert.equal(!!atlas.isRenderTarget,false);

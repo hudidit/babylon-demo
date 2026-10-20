@@ -21,7 +21,6 @@ export class LighthousePanel {
   private location?: LighthousePanelLocation;
   private lastState?: LighthouseOperationSnapshot;
   private lastInspection?: LighthouseInspectionSnapshot;
-  private lastActivity = "";
   constructor(private readonly document: Document, close: (resume: boolean) => void, test: () => void,
     actions: {confirm: () => void; cover: () => void; clean: () => void}) {
     this.dialog = document.querySelector<HTMLDialogElement>("#lighthouse-panel")!;
@@ -34,7 +33,7 @@ export class LighthousePanel {
     this.dialog.addEventListener("cancel", event => {event.preventDefault(); close(false);}, {signal});
     this.dialog.addEventListener("keydown", event => {
       if (event.key !== "Tab") return;
-      const buttons = Array.from(this.dialog.querySelectorAll<HTMLButtonElement>("button")).filter(button => button.getClientRects().length > 0 && !button.disabled);
+      const buttons = Array.from(this.dialog.querySelectorAll<HTMLButtonElement | HTMLSelectElement>("button,select")).filter(button => button.getClientRects().length > 0 && !button.disabled);
       const first = buttons[0], last = buttons[buttons.length - 1], focused = document.activeElement;
       if (event.shiftKey && focused === first || !event.shiftKey && focused === last) {
         event.preventDefault(); (event.shiftKey ? last : first)?.focus();
@@ -47,7 +46,7 @@ export class LighthousePanel {
   open(location: LighthousePanelLocation, state: LighthouseOperationSnapshot, inspection: LighthouseInspectionSnapshot) {
     if (this.isOpen) return false;
     this.location = location; this.lastState = undefined; this.render(state, inspection);
-    this.document.body.classList.add("viewing-lighthouse"); this.dialog.showModal();
+    this.document.body.classList.add("viewing-lighthouse"); this.dialog.showModal(); this.dialog.scrollTop = 0;
     this.document.querySelector<HTMLButtonElement>(location === "test" ? "#lighthouse-test-toggle" : "#lighthouse-panel-return")!.focus();
     return true;
   }
@@ -66,7 +65,7 @@ export class LighthousePanel {
       set("lighthouse-panel-state", reading.state); set("lighthouse-equipment-id", equipment.id);
       set("lighthouse-equipment-purpose", equipment.purpose); set("lighthouse-equipment-status", reading.detail);
       set("lighthouse-panel-guide", equipment.guide);
-      return;
+      return true;
     }
     const location = this.location as "control" | "test" | "cover" | "log";
     set("lighthouse-panel-place", ({test: "顶层灯室 · 灯座控制", control: "首层维护室 · 运行面板", cover: "顶层灯室 · 固定保护面", log: "首层维护室 · 维护记录夹"})[location]);
@@ -122,6 +121,7 @@ export class LighthousePanel {
       item.textContent = `#R${event.id} · 第${event.dutyDay}日 ${lighthouseClockLabel(event.hour)} · ${eventLabels[event.type]} · ${stateLabels[event.result]} · 导航灯 · 来源：${({system: "控制器", "automatic-clock": "自动时钟", "manual-time": "时间选点", command: "局部操作", "active-time": "活跃计时"})[event.source]}`;
       return item;
     }));
+    return true;
   }
   renderActivity(inspection: LighthouseInspectionSnapshot, visible: boolean, running: boolean) {
     const activity = this.document.querySelector<HTMLElement>("#lighthouse-activity")!;
@@ -130,7 +130,7 @@ export class LighthousePanel {
     const text = inspection.cleaning ? `正在擦拭 ${inspection.cleaningSeconds.toFixed(1)} / 1.5秒 · 保持看向保护面`
       : !inspection.optic && running ? `灯具观察 ${inspection.observationSeconds.toFixed(1)} / 10秒 · 连续看清一整圈与出光`
       : inspection.notice || (inspection.completed ? "本轮三项检查已完成，记录夹已更新。" : "点击灯头南侧固定保护面进行检查；试灯控制在下方灯座。" );
-    if (text !== this.lastActivity) {this.lastActivity = text; activity.textContent = text;}
+    if (text !== activity.textContent) activity.textContent = text;
   }
   notice(text: string) { this.document.querySelector("#lighthouse-panel-guide")!.textContent = text; }
   close() {

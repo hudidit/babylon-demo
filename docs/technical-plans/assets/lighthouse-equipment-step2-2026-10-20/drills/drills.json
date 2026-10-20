@@ -1,0 +1,1064 @@
+{
+  "baseline": "e13fe78",
+  "releaseManifestSha256": "b01420b4e5f71a47928c513722d67987572c049f9247da55de8e00e91a0d2c65",
+  "fpsOrLoadTimeSampling": false,
+  "method": "Production local UI only. Grounded nearby pose fixtures between equipment. Original bounded frame receipts; no state/proof/fault setters. Real mouse click and selectOption for all commands, actual ray gates and committed parts. GPU pixels use actual model state.",
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8220/",
+      "status": 200,
+      "bytes": 33080
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/main.js",
+      "status": 200,
+      "bytes": 352414
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8220/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8220/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4190
+    },
+    {
+      "url": "http://127.0.0.1:8220/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8220/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8220/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8220/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/0f846fc6-2413-4438-bed1-d0cc1479622b",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/da3b5282-dd74-41d3-aebd-f26cd9188c43",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/eec64570-0ea2-4499-8bef-b761495730f7",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/fd934bda-2a38-4067-8abe-7526e8998d4f",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/03d8261d-0b85-45d4-aa79-23e0fabfbc3f",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/2b92372a-8cdc-4446-ad49-82ed2a2040aa",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/9294fe3b-81c8-49ec-8e4f-a9c778a2ef92",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/fca3e349-cdc8-488d-b098-78a6fc25cc9b",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/09236b89-2afc-4f26-a31b-50e7e559a546",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/8952ede6-15e4-47bf-bb23-05447fe99f56",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/cfb5230b-904d-4719-9e54-bec11336d864",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/187820d4-ff0a-4ecb-b82c-23a69dabbce1",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/a445fb9d-3fce-4117-9213-c8c0611d9e99",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/fd656465-81aa-4c28-86d9-95ea6b589fe6",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/972d014b-fd17-4450-abf3-1fc60062d18b",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/23ddad63-4ed5-4392-94d9-4dba038be015",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "cases": {
+    "backupFlashPixelDifference": 92.51140625,
+    "cancelPreservesPart": true,
+    "drive": {
+      "m": {
+        "session": "drive",
+        "revision": {
+          "drive": 1,
+          "backup": 0,
+          "charger": 0,
+          "solar": 0,
+          "sensor": 0
+        },
+        "driveFault": false,
+        "chargerFault": false,
+        "solarDirty": false,
+        "sensorDirty": false,
+        "mainIsolated": false,
+        "chargeIsolated": false,
+        "override": false,
+        "trial": false,
+        "mainAvailable": true,
+        "detectedDemand": false,
+        "navigationRequired": true,
+        "source": "main",
+        "backupOn": false,
+        "backupFlash": false,
+        "backupPhase": 0,
+        "backupConfirmed": false,
+        "mainVerified": true,
+        "selfTestSecondsRemaining": 0,
+        "chargerVerified": false,
+        "sensorVerified": false,
+        "outputW": 200,
+        "inventory": {
+          "drive": 0,
+          "charger": 1
+        },
+        "trialObserved": 0,
+        "notice": "隔离清除、主灯按需求自动，备用退出。",
+        "evidence": [
+          {
+            "id": 1,
+            "component": "backup",
+            "revision": 0,
+            "day": 1,
+            "hour": 21,
+            "method": "导航降级",
+            "result": "主灯未反馈运行，备用按可用条件接替；等待现场复验，覆盖为临时降级。"
+          },
+          {
+            "id": 2,
+            "component": "backup",
+            "revision": 0,
+            "day": 1,
+            "hour": 21,
+            "method": "实际接替复验",
+            "result": "现场连续观察10活跃秒及白闪，确认实际备用导航；覆盖为临时降级。"
+          },
+          {
+            "id": 3,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 21,
+            "method": "隔离",
+            "result": "主灯隔离，主备按实际可用条件求值。"
+          },
+          {
+            "id": 4,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 21,
+            "method": "开始隔离检测",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 5,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 21,
+            "method": "隔离检测",
+            "result": "检测到对应模块反馈异常，需要匹配备件。"
+          },
+          {
+            "id": 6,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 21,
+            "method": "开始模块替换",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 7,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 21,
+            "method": "中断",
+            "result": "距离、视线或设备修订变化，操作中断；未扣件。"
+          },
+          {
+            "id": 8,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 21,
+            "method": "开始模块替换",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 9,
+            "component": "drive",
+            "revision": 1,
+            "day": 1,
+            "hour": 21,
+            "method": "模块替换",
+            "result": "已扣1件对应备件并替换；保持隔离，重新检测和复验。"
+          },
+          {
+            "id": 10,
+            "component": "drive",
+            "revision": 1,
+            "day": 1,
+            "hour": 21,
+            "method": "开始隔离检测",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 11,
+            "component": "drive",
+            "revision": 1,
+            "day": 1,
+            "hour": 21,
+            "method": "隔离检测",
+            "result": "对应模块检测通过。"
+          },
+          {
+            "id": 12,
+            "component": "drive",
+            "revision": 1,
+            "day": 1,
+            "hour": 21,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 13,
+            "component": "drive",
+            "revision": 1,
+            "day": 1,
+            "hour": 21,
+            "method": "受控试机",
+            "result": "测试支路临时接管；备用退出。看向主灯连续观察一圈，30秒超时回隔离。"
+          },
+          {
+            "id": 14,
+            "component": "drive",
+            "revision": 1,
+            "day": 1,
+            "hour": 21,
+            "method": "试机复验",
+            "result": "连续观察10活跃秒、正常转动及实际方向出光；可解除隔离恢复自动。"
+          },
+          {
+            "id": 15,
+            "component": "drive",
+            "revision": 1,
+            "day": 1,
+            "hour": 21,
+            "method": "恢复自动",
+            "result": "隔离清除、主灯按需求自动，备用退出。"
+          }
+        ],
+        "resolved": true
+      },
+      "op": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 21,
+        "dutyDay": 1,
+        "mode": "automatic",
+        "state": "night-running",
+        "running": true,
+        "available": true,
+        "detectedDemand": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0.10500000000000002,
+        "rotationRadians": 0.6597344572538567,
+        "automaticOperatingHours": 0,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          },
+          {
+            "id": 2,
+            "dutyDay": 1,
+            "hour": 21,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "manual-time",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 3,
+            "dutyDay": 1,
+            "hour": 21,
+            "objectId": "lighthouse-beacon-main",
+            "type": "time-selected",
+            "source": "manual-time",
+            "result": "night-running"
+          },
+          {
+            "id": 4,
+            "dutyDay": 1,
+            "hour": 21,
+            "objectId": "lighthouse-beacon-main",
+            "type": "test-started",
+            "source": "command",
+            "result": "night-running"
+          },
+          {
+            "id": 5,
+            "dutyDay": 1,
+            "hour": 21,
+            "objectId": "lighthouse-beacon-main",
+            "type": "test-ended",
+            "source": "command",
+            "result": "night-running"
+          }
+        ]
+      }
+    },
+    "normalRestoredExactly": true,
+    "solarSurfacePixelDifference": 5.76078125,
+    "charger": {
+      "m": {
+        "session": "charger",
+        "revision": {
+          "drive": 0,
+          "backup": 0,
+          "charger": 1,
+          "solar": 1,
+          "sensor": 0
+        },
+        "driveFault": false,
+        "chargerFault": false,
+        "solarDirty": false,
+        "sensorDirty": false,
+        "mainIsolated": false,
+        "chargeIsolated": false,
+        "override": false,
+        "trial": false,
+        "mainAvailable": true,
+        "detectedDemand": false,
+        "navigationRequired": false,
+        "source": "none",
+        "backupOn": false,
+        "backupFlash": false,
+        "backupPhase": 0,
+        "backupConfirmed": false,
+        "mainVerified": false,
+        "selfTestSecondsRemaining": 0,
+        "chargerVerified": true,
+        "sensorVerified": false,
+        "outputW": 200,
+        "inventory": {
+          "drive": 1,
+          "charger": 0
+        },
+        "trialObserved": 0,
+        "notice": "200W输出 / 55W检验负载；测试回路净能量 0.2014Wh，正回充趋势复验通过。非主电池存能。",
+        "evidence": [
+          {
+            "id": 1,
+            "component": "charger",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "开始回充采样",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 2,
+            "component": "charger",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "5秒回充采样",
+            "result": "0W输出 / 55W检验负载；测试回路净能量 -0.0764Wh，未形成有效回充，请继续交叉检查。非主电池存能。"
+          },
+          {
+            "id": 3,
+            "component": "solar",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "开始现场观察",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 4,
+            "component": "solar",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "现场观察",
+            "result": "面板有遮挡污损。"
+          },
+          {
+            "id": 5,
+            "component": "solar",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "开始擦拭表面",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 6,
+            "component": "solar",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "擦拭完成",
+            "result": "污损已清除；旧观察为变化前记录，需现场复查。"
+          },
+          {
+            "id": 7,
+            "component": "solar",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "开始现场观察",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 8,
+            "component": "solar",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "现场观察",
+            "result": "面板表面清洁，支架固定。"
+          },
+          {
+            "id": 9,
+            "component": "charger",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "隔离",
+            "result": "充电支路隔离；导航支路保持独立。"
+          },
+          {
+            "id": 10,
+            "component": "charger",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "开始隔离检测",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 11,
+            "component": "charger",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "隔离检测",
+            "result": "检测到对应模块反馈异常，需要匹配备件。"
+          },
+          {
+            "id": 12,
+            "component": "charger",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "开始模块替换",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 13,
+            "component": "charger",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "模块替换",
+            "result": "已扣1件对应备件并替换；保持隔离，重新检测和复验。"
+          },
+          {
+            "id": 14,
+            "component": "charger",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "开始隔离检测",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 15,
+            "component": "charger",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "隔离检测",
+            "result": "对应模块检测通过。"
+          },
+          {
+            "id": 16,
+            "component": "charger",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "重新接通",
+            "result": "支路重新接通；需独立进行回充采样复验。"
+          },
+          {
+            "id": 17,
+            "component": "charger",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "开始回充采样",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 18,
+            "component": "charger",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "5秒回充采样",
+            "result": "200W输出 / 55W检验负载；测试回路净能量 0.2014Wh，正回充趋势复验通过。非主电池存能。"
+          }
+        ],
+        "resolved": true
+      },
+      "op": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 12,
+        "dutyDay": 1,
+        "mode": "automatic",
+        "state": "day-standby",
+        "running": false,
+        "available": true,
+        "detectedDemand": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0,
+        "rotationRadians": 0,
+        "automaticOperatingHours": 0,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          }
+        ]
+      }
+    },
+    "sensorSurfacePixelDifference": 4.57859375,
+    "sensor": {
+      "m": {
+        "session": "sensor",
+        "revision": {
+          "drive": 0,
+          "backup": 0,
+          "charger": 0,
+          "solar": 0,
+          "sensor": 1
+        },
+        "driveFault": false,
+        "chargerFault": false,
+        "solarDirty": false,
+        "sensorDirty": false,
+        "mainIsolated": false,
+        "chargeIsolated": false,
+        "override": false,
+        "trial": false,
+        "mainAvailable": true,
+        "detectedDemand": false,
+        "navigationRequired": false,
+        "source": "none",
+        "backupOn": false,
+        "backupFlash": false,
+        "backupPhase": 0,
+        "backupConfirmed": false,
+        "mainVerified": false,
+        "selfTestSecondsRemaining": 0,
+        "chargerVerified": false,
+        "sensorVerified": true,
+        "outputW": 200,
+        "inventory": {
+          "drive": 1,
+          "charger": 1
+        },
+        "trialObserved": 0,
+        "notice": "光敏状态与日程一致，人工覆盖已撤销；正常夜间仍按日程亮灯。",
+        "evidence": [
+          {
+            "id": 1,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 2,
+            "component": "sensor",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "人工覆盖",
+            "result": "仅白天抑制光敏需求；清洁后必须撤销覆盖。"
+          },
+          {
+            "id": 3,
+            "component": "sensor",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "开始现场观察",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 4,
+            "component": "sensor",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "现场观察",
+            "result": "光敏保护面有污染，晴天检测需求异常。"
+          },
+          {
+            "id": 5,
+            "component": "sensor",
+            "revision": 0,
+            "day": 1,
+            "hour": 12,
+            "method": "开始擦拭表面",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 6,
+            "component": "sensor",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "擦拭完成",
+            "result": "污损已清除；旧观察为变化前记录，需现场复查。"
+          },
+          {
+            "id": 7,
+            "component": "sensor",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "开始现场观察",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 8,
+            "component": "sensor",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "现场观察",
+            "result": "光敏保护面洁净。"
+          },
+          {
+            "id": 9,
+            "component": "sensor",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "撤销覆盖",
+            "result": "已撤销光敏覆盖；需现场复测。"
+          },
+          {
+            "id": 10,
+            "component": "sensor",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "开始光敏复测",
+            "result": "开始现场操作，尚未提交或扣件。"
+          },
+          {
+            "id": 11,
+            "component": "sensor",
+            "revision": 1,
+            "day": 1,
+            "hour": 12,
+            "method": "检测工具复测",
+            "result": "光敏状态与日程一致，人工覆盖已撤销；正常夜间仍按日程亮灯。"
+          }
+        ],
+        "resolved": true
+      },
+      "op": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 12,
+        "dutyDay": 1,
+        "mode": "automatic",
+        "state": "day-standby",
+        "running": false,
+        "available": true,
+        "detectedDemand": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0.005,
+        "rotationRadians": 0.031415926535897934,
+        "automaticOperatingHours": 0,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          },
+          {
+            "id": 2,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "system",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 3,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "system",
+            "result": "day-standby",
+            "previousState": "night-running"
+          }
+        ]
+      }
+    },
+    "selfTestSeparate": true,
+    "disposed": true
+  },
+  "browser": "155.0.8059.85",
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:8220/js/main.js",
+      "status": 200,
+      "bytes": 352414
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    }
+  ],
+  "initialJsBytes": 2991444,
+  "passed": true,
+  "sourceBaseline": "e13fe78"
+}

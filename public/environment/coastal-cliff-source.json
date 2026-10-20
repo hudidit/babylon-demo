@@ -102,22 +102,77 @@
   },
   "lighthouseEquipment": {
     "project": 2,
-    "step": 1,
-    "baseline": "8e6e255",
+    "step": 2,
+    "baseline": "e13fe78",
     "author": "babylon-demo project contributors",
     "license": "ISC",
     "layoutSource": "src/examples/LighthouseEquipmentLayout.ts",
     "geometrySource": "src/examples/LighthouseEquipment.ts",
     "signageSource": "src/examples/LighthouseRecords.ts:lighthouseEquipmentPixels",
-    "deviceIds": ["lighthouse-drive-hatch", "lighthouse-beacon-backup", "lighthouse-battery-main", "lighthouse-solar-charger", "lighthouse-solar-array", "lighthouse-generator", "lighthouse-generator-room"],
-    "installation": "Closed main-drive hatch within the existing protected optical core; overhead backup bracket and independent dark lens above the roof apex. Closed main battery cabinet and separate controller in the first-floor right-hand space. South-facing solar rack and separate ventilated generator room inside the existing plaza, keeping the original 5.5m walking ring, route, parking and boundary.",
-    "roomMetres": {"relativeX": -5.1, "relativeY": 5.9, "width": 2.6, "depth": 2.6, "doorway": 0.96, "clearHeight": 2.25},
-    "solarMetres": {"relativeX": 4.8, "relativeY": 5.8, "width": 2.8, "depth": 1.6, "lowEdge": 0.7, "rise": 0.9, "lowEdgeFaces": "world +Z (south)"},
-    "backupMountMetres": {"relativeX": 3.5, "relativeY": 0, "bracketRootX": 1.57, "bracketAboveGallery": 2.04, "lensAboveGallery": 3.63, "lensHeight": 0.32, "clearGallerySightStation": [2.45, -0.45]},
-    "generatedAtlas": {"width": 256, "height": 512, "method": "Deterministic original 5x7 bitmap glyphs, seven 64px plaque rows; no canvas, font or image download"},
-    "increment": {"meshes": 23, "vertices": 1560, "materials": 2, "generatedTextures": 1, "downloads": 0, "lights": 0, "cameras": 0, "renderTargets": 0, "shadowTargets": 0},
-    "commissioned": false,
-    "stateBoundary": "New backup is dark and generator off; no energy, fuel, backup switching, maintenance isolation or repair actions. Local read-only UI and labels use the same stable installation definitions; main hatch reads existing operation. Shared solid dimensions drive visible geometry and walker/jump/vehicle collision. Scene scale and ventilation are illustrative, not real engineering specifications."
+    "deviceIds": [
+      "lighthouse-drive-hatch",
+      "lighthouse-beacon-backup",
+      "lighthouse-battery-main",
+      "lighthouse-solar-charger",
+      "lighthouse-solar-array",
+      "lighthouse-generator",
+      "lighthouse-generator-room",
+      "lighthouse-light-sensor"
+    ],
+    "installation": "Closed main-drive hatch within the existing protected optical core; overhead backup bracket and independent interlocked white-flash lens above the roof apex. Closed main battery cabinet and separate controller in the first-floor right-hand space. South-facing solar rack and separate ventilated generator room inside the existing plaza, keeping the original 5.5m walking ring, route, parking and boundary. Fixed light-sensor protective face on the east gallery glazing, clear of the walking ring.",
+    "roomMetres": {
+      "relativeX": -5.1,
+      "relativeY": 5.9,
+      "width": 2.6,
+      "depth": 2.6,
+      "doorway": 0.96,
+      "clearHeight": 2.25
+    },
+    "solarMetres": {
+      "relativeX": 4.8,
+      "relativeY": 5.8,
+      "width": 2.8,
+      "depth": 1.6,
+      "lowEdge": 0.7,
+      "rise": 0.9,
+      "lowEdgeFaces": "world +Z (south)"
+    },
+    "backupMountMetres": {
+      "relativeX": 3.5,
+      "relativeY": 0,
+      "bracketRootX": 1.57,
+      "bracketAboveGallery": 2.04,
+      "lensAboveGallery": 3.63,
+      "lensHeight": 0.32,
+      "clearGallerySightStation": [
+        2.45,
+        -0.45
+      ]
+    },
+    "generatedAtlas": {
+      "width": 256,
+      "height": 512,
+      "method": "Deterministic original 5x7 bitmap glyphs, eight 64px plaque rows; no canvas, font or image download"
+    },
+    "increment": {
+      "meshes": 24,
+      "vertices": 1588,
+      "materials": 3,
+      "generatedTextures": 1,
+      "downloads": 0,
+      "lights": 0,
+      "cameras": 0,
+      "renderTargets": 0,
+      "shadowTargets": 0
+    },
+    "commissioned": true,
+    "stateBoundary": "Main availability/detector input uses the original clock. Independent 360-degree backup white flash (10 active seconds, 0.8 bright), self-test and actual takeover evidence remain separate. Main isolation, diagnosis, matching module replacement and real rotation/output trial precede automatic restoration. Three independent drill sessions preserve suspended normal clock, equipment, parts and logs. Revision-bound observations and timed tool transactions cancel without part consumption. Charger verification integrates a 200W standard-input / 55W test-load circuit for five active seconds, explicitly not the main battery. Full battery/fuel, persistent inventory and storage remain later steps. Generator stays off. No calibrated navigation range or engineering ventilation claim.",
+    "behaviorSources": [
+      "src/examples/LighthouseMaintenance.ts",
+      "src/examples/LighthouseMaintenancePanel.ts",
+      "src/examples/LighthouseOperation.ts"
+    ],
+    "backupEmission": "Original local GLSL white emission on the existing cylindrical lens, with real geometry/depth and clip planes; no extra light, image, camera or render target."
   },
   "lighthouseOperation": {
     "phase": 3,

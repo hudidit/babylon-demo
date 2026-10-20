@@ -212,8 +212,13 @@ test('all snapshots, receipts and log entries are immutable; rejected selections
 test('Room updates lighthouse even with a frozen manual hour and guards all mutations after disposal', () => {
   const {RoomScene} = load('Room'), room = Object.create(RoomScene.prototype);
   room.timeState = new RoomTimeOfDay(); room.lighthouseState = new LighthouseOperation(); room.pauses = new RoomPauseState();
+  room.lighthouseMaintenanceState = new(load('LighthouseMaintenance').LighthouseMaintenance)();
+  room.lighthousePanel = {};
   room.scene = {metadata: {timeOfDay: {}, lighthouseOperation: {stage: 1, visualApplied: false}}};
-  room.exterior = {isVisible: true}; room.timeVisualElapsed = 0;
+  room.exterior = {isVisible: true, lighthouseDetails: {beacon:{root:{position:{x:0,z:0}},apply:()=>{}},equipment:{apply:()=>{}},cover:{pane:{},apply:()=>{}}}}; room.timeVisualElapsed = 0;
+  room.firstPersonCamera = {position:{x:0,z:1}}; room.lighthouseInspectionState = new(load('LighthouseInspection').LighthouseInspection)();
+  room.canObserveLighthouse = () => false; room.canObserveBackup = () => false;
+  room.lighthousePanel.render = () => {}; room.lighthousePanel.renderActivity = () => {};
   room.applyTimeOfDay = () => {}; room.onTimeOfDayChange = () => {};
   room.setTimeOfDay(21); room.updateTimeOfDay(.1); room.updateTimeOfDay(.1);
   near(room.lighthouseOperation.rotationTurns, .01);
@@ -223,5 +228,5 @@ test('Room updates lighthouse even with a frozen manual hour and guards all muta
   assert.equal(room.startLighthouseTest(), false); assert.equal(room.endLighthouseTest(), false);
   room.setTimeOfDay(12); room.transitionTimeOfDay(6); room.setTimeAutomatic(true); room.updateTimeOfDay(100);
   assert.equal(room.lighthouseOperation, before);
-  assert.equal(room.scene.metadata.lighthouseOperation.visualApplied, false);
+  assert.equal(room.scene.metadata.lighthouseOperation.visualApplied, true);
 });

@@ -1,0 +1,13 @@
+AssertionError [ERR_ASSERTION]: control
+
+false !== true
+
+    at open (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-equipment-step2-2026-10-20/check-drills.cjs:37:55)
+    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-equipment-step2-2026-10-20/check-drills.cjs:46:2 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

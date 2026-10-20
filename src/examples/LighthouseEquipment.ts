@@ -1,19 +1,23 @@
-import { RawTexture, Texture } from "@babylonjs/core/pure";
+import { RawTexture, Texture, ShaderMaterial } from "@babylonjs/core/pure";
 import type { Mesh, PBRMaterial, Scene } from "@babylonjs/core/pure";
 import { CoastalBatch } from "./CoastalLandmark";
 import type { CoastalMaterials } from "./CoastalMaterials";
 import { COASTAL_SITE } from "./CoastalSite";
 import { LIGHTHOUSE } from "./LighthouseLayout";
 import { planToWorld } from "./HouseLayout";
-import { LIGHTHOUSE_EQUIPMENT, LIGHTHOUSE_EQUIPMENT_BOXES, LIGHTHOUSE_SERVICE_ROOM, LIGHTHOUSE_SOLAR_RACK, LIGHTHOUSE_BACKUP_MOUNT } from "./LighthouseEquipmentLayout";
+import { LIGHTHOUSE_EQUIPMENT, LIGHTHOUSE_EQUIPMENT_BOXES, LIGHTHOUSE_SERVICE_ROOM, LIGHTHOUSE_SOLAR_RACK, LIGHTHOUSE_BACKUP_MOUNT, LIGHTHOUSE_SENSOR } from "./LighthouseEquipmentLayout";
 import type { LighthouseEquipmentId } from "./LighthouseEquipmentLayout";
 import { lighthouseEquipmentPixels } from "./LighthouseRecords";
 import type { InteractiveDevice } from "./RoomInteractions";
+import type { LighthouseMaintenanceSnapshot } from "./LighthouseMaintenance";
 
-/** Step one installation: all new devices remain uncommissioned and produce no light or power. */
+/** Fixed equipment, local surface feedback and a separate interlocked backup source. */
 export class LighthouseEquipment {
   readonly devices: readonly InteractiveDevice[];
   readonly meshes: readonly Mesh[];
+  readonly backupMaterial: ShaderMaterial;
+  private visualKey = "";
+  private disposed = false;
   constructor(scene: Scene, surfaces: CoastalMaterials, retain: (mesh: Mesh, layer: "landmark") => Mesh) {
     const tower = COASTAL_SITE.tower, room = LIGHTHOUSE_SERVICE_ROOM, solar = LIGHTHOUSE_SOLAR_RACK, backup = LIGHTHOUSE_BACKUP_MOUNT;
     const existing = (name: string) => scene.getMaterialByName(name) as PBRMaterial;
@@ -37,7 +41,7 @@ export class LighthouseEquipment {
     for (const height of [.63, 1.04]) box("lighthouse-battery-main", "metal", .035, .13, .02, 1.95, -.217, LIGHTHOUSE.floor + height);
     box("lighthouse-solar-charger", "paint", .09, .035, .014, 1.91, -.237, LIGHTHOUSE.floor + 1.43);
     box("lighthouse-drive-hatch", "brass", .016, .1, .014, .235, -.322, LIGHTHOUSE.gallery + .56);
-    // Independent 360-degree lens is deliberately dark until step two provides actual backup operation.
+    // The backup has its own 360-degree source; it does not reuse the main directional optic.
     batch.cylinder(group("lighthouse-beacon-backup", "solar"), materials.solar, tower.x + backup.x, tower.y + backup.y,
       backup.lensBottom, backup.lensHeight, .25, .25, 24);
     batch.cylinder(group("lighthouse-beacon-backup", "metal"), materials.metal, tower.x + backup.x, tower.y + backup.y,
@@ -69,6 +73,13 @@ export class LighthouseEquipment {
     for (let i = 0; i < 6; i++) box("lighthouse-generator", "metal", .34, .027, .014,
       room.x + .3, room.y + .251, room.floor + .18 + i * .055);
     box("lighthouse-generator", "metal", .22, .04, .17, room.x + .32, room.y + 1.36, room.floor + 2.75);
+    // One small fixed detector shares the last atlas row, including its closed body.
+    const sensor = LIGHTHOUSE_SENSOR;
+    const detector = batch.box(group("lighthouse-light-sensor", "labels"), materials.labels, sensor.width, sensor.height, sensor.depth,
+      tower.x + sensor.x, tower.y + sensor.y, sensor.bottom + sensor.height / 2);
+    const detectorUV = detector.getVerticesData("uv")!;
+    for (let i = 1; i < detectorUV.length; i += 2) detectorUV[i] = (7 + detectorUV[i]) / 8;
+    detector.setVerticesData("uv", detectorUV);
     // Plaques share device identities with the meshes, local UI and collision definitions.
     LIGHTHOUSE_EQUIPMENT.forEach((device, index) => {
       const sign = device.sign, tx = -sign.ny, ty = sign.nx, positions: number[] = [];
@@ -85,6 +96,36 @@ export class LighthouseEquipment {
       meshes.forEach(mesh => {mesh.metadata.equipmentId = device.id; mesh.metadata.equipmentParent = device.parent;});
       return Object.freeze({ id: device.id, label: device.label, meshes });
     });
+    this.backupMaterial = new ShaderMaterial("lighthouse-backup-white-flash", scene, {
+      vertexSource: `attribute vec3 position; uniform mat4 world, viewProjection;
+        #include<clipPlaneVertexDeclaration>
+        void main(){vec4 worldPos=world*vec4(position,1.);gl_Position=viewProjection*worldPos;
+          #include<clipPlaneVertex>
+        }`,
+      fragmentSource: `precision highp float; uniform float flash;
+        #include<clipPlaneFragmentDeclaration>
+        void main(){
+          #include<clipPlaneFragment>
+          gl_FragColor=vec4(mix(vec3(.014,.024,.033),vec3(24.),flash),1.);
+        }`
+    }, {attributes: ["position"], uniforms: ["world", "viewProjection", "flash"], useClipPlane: true});
+    this.backupMaterial.setFloat("flash", 0);
+    this.device("lighthouse-beacon-backup")!.meshes.find(m => m.name.endsWith("-solar"))!.material = this.backupMaterial;
   }
   device(id: LighthouseEquipmentId) { return this.devices.find(device => device.id === id); }
+  apply(state: LighthouseMaintenanceSnapshot) {
+    if (this.disposed) return;
+    this.backupMaterial.setFloat("flash", state.backupFlash ? 1 : 0);
+    const key = `${state.sensorDirty}:${state.solarDirty}:${state.mainIsolated}:${state.chargeIsolated}`;
+    if (key === this.visualKey) return; this.visualKey = key;
+    for (const [id, dirty] of [["lighthouse-light-sensor", state.sensorDirty], ["lighthouse-solar-array", state.solarDirty],
+      ["lighthouse-drive-hatch", state.mainIsolated], ["lighthouse-solar-charger", state.chargeIsolated]] as const) {
+      for (const mesh of this.device(id)!.meshes) {
+        const color = dirty ? id === "lighthouse-solar-array" ? [1.6, 1.1, .46, 1] : [.65, .42, .16, 1] : [1, 1, 1, 1];
+        const values: number[] = []; for (let i = 0; i < mesh.getTotalVertices(); i++) values.push(...color);
+        mesh.setVerticesData("color", values);
+      }
+    }
+  }
+  dispose() { if (!this.disposed) {this.disposed = true; this.backupMaterial.dispose(false, false);} }
 }

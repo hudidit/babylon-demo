@@ -1,0 +1,20 @@
+TEST ENTRY {
+  location: 'test',
+  hint: '',
+  grounded: true,
+  feet: 19.64,
+  pose: [ -650.75, 101.20000000000002, 417.5 ],
+  rotation: [ 0.9838159474569841, -0.32994708896600705, 0 ]
+}
+AssertionError [ERR_ASSERTION]: {"m":{"session":"drive","revision":{"drive":1,"backup":0,"charger":0,"solar":0,"sensor":0},"driveFault":false,"chargerFault":false,"solarDirty":false,"sensorDirty":false,"mainIsolated":true,"chargeIsolated":false,"override":false,"trial":true,"mainAvailable":true,"detectedDemand":false,"navigationRequired":true,"source":"main","backupOn":false,"backupFlash":false,"backupPhase":0,"backupConfirmed":false,"mainVerified":false,"chargerVerified":false,"sensorVerified":false,"outputW":200,"inventory":{"drive":0,"charger":1},"trialObserved":0.8000000000000002,"notice":"主灯仍未通过本次修订的转动/出光复验，不能恢复。","evidence":[{"id":1,"component":"backup","revision":0,"day":1,"hour":21,"method":"实际接替复验","result":"现场连续观察10活跃秒及白闪，确认实际备用导航；覆盖为临时降级。"},{"id":2,"component":"drive","revision":0,"day":1,"hour":21,"method":"隔离","result":"主灯隔离，主备按实际可用条件求值。"},{"id":3,"component":"drive","revision":0,"day":1,"hour":21,"method":"开始diagnose","result":"开始现场操作，尚未提交或扣件。"},{"id":4,"component":"drive","revision":0,"day":1,"hour":21,"method":"隔离检测","result":"检测到对应模块反馈异常，需要匹配备件。"},{"id":5,"component":"drive","revision":0,"day":1,"hour":21,"method":"开始replace","result":"开始现场操作，尚未提交或扣件。"},{"id":6,"component":"drive","revision":0,"day":1,"hour":21,"method":"中断","result":"距离、视线或设备修订变化，操作中断；未扣件。"},{"id":7,"component":"drive","revision":0,"day":1,"hour":21,"method":"开始replace","result":"开始现场操作，尚未提交或扣件。"},{"id":8,"component":"drive","revision":1,"day":1,"hour":21,"method":"模块替换","result":"已扣1件对应备件并替换；保持隔离，重新检测和复验。"},{"id":9,"component":"drive","revision":1,"day":1,"hour":21,"method":"开始diagnose","result":"开始现场操作，尚未提交或扣件。"},{"id":10,"component":"drive","revision":1,"day":1,"hour":21,"method":"隔离检测","result":"对应模块检测通过。"},{"id":11,"component":"drive","revision":1,"day":1,"hour":21,"method":"受控试机","result":"测试支路临时接管；备用退出。看向主灯连续观察一圈，30秒超时回隔离。"}],"resolved":false},"op":{"deviceId":"lighthouse-beacon-main","hour":21,"dutyDay":1,"mode":"test","state":"night-running","running":true,"available":true,"detectedDemand":false,"testSecondsRemaining":19.049999999999844,"rotationTurns":0.09500000000000001,"rotationRadians":0.5969026041820608,"automaticOperatingHours":0,"events":[{"id":1,"dutyDay":1,"hour":12,"objectId":"lighthouse-beacon-main","type":"initialized","source":"system","result":"day-standby"},{"id":2,"dutyDay":1,"hour":21,"objectId":"lighthouse-beacon-main","type":"state-changed","source":"manual-time","result":"night-running","previousState":"day-standby"},{"id":3,"dutyDay":1,"hour":21,"objectId":"lighthouse-beacon-main","type":"time-selected","source":"manual-time","result":"night-running"},{"id":4,"dutyDay":1,"hour":21,"objectId":"lighthouse-beacon-main","type":"test-started","source":"command","result":"night-running"}]}}
+
+false !== true
+
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-equipment-step2-2026-10-20/check-drills.cjs:64:83 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

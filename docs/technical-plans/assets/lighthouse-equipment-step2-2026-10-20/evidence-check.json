@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "baseline": "e13fe78",
+  "manifestSha256": "b01420b4e5f71a47928c513722d67987572c049f9247da55de8e00e91a0d2c65",
+  "release": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26381885,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 82405,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2772592,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42424373
+  },
+  "jsWindows": [
+    {
+      "suite": "drills",
+      "bytes": 2991444
+    },
+    {
+      "suite": "drills-subpath",
+      "bytes": 2991444
+    },
+    {
+      "suite": "equipment",
+      "bytes": 2991444
+    },
+    {
+      "suite": "subpath",
+      "bytes": 2991444
+    },
+    {
+      "suite": "browser",
+      "bytes": 2991444
+    },
+    {
+      "suite": "journey",
+      "bytes": 2991444
+    },
+    {
+      "suite": "regression",
+      "bytes": 2991444
+    },
+    {
+      "suite": "curtains",
+      "bytes": 2991444
+    },
+    {
+      "suite": "ceiling",
+      "bytes": 2991444
+    },
+    {
+      "suite": "headlight",
+      "bytes": 2994767
+    }
+  ],
+  "maxObservedFirstScreenJsBytes": 2994767,
+  "verifiedSuites": 15,
+  "componentCases": 72,
+  "localLinks": 281,
+  "sourceSha256": {
+    "src/examples/LighthouseMaintenance.ts": "c92ebcc9d37f2507d9c236ff3266502da50b963e31a948f1cd736e0ded555c41",
+    "src/examples/LighthouseMaintenancePanel.ts": "7505497d270b41206aacc8ee8f0f18c82629760f384d0efb87d4b3245f5dbd0f",
+    "src/examples/LighthouseOperation.ts": "147216f10cc7f7b763fe31a7e48abbf0770323b5a82eb9ef0111a65c8cfc823a",
+    "src/examples/LighthouseInspection.ts": "1838ccf3d579d44557e22a83d3f72fc7b666e22ffe8c382f90c5bab4f04146a5",
+    "src/examples/LighthouseEquipment.ts": "33157ab9bd79e0d5bd6f88f92e42dfb912b7426930a99671bed11837256c37ed",
+    "src/examples/LighthouseEquipmentLayout.ts": "f3ef2afafdccec890b8a46ea114fa23c4a838db47486e1e24e6f68e54ec34f25",
+    "src/examples/LighthouseDetails.ts": "5c8eafc1cd8f41785ab64262b407be020e7c0ea1efc982ee35264ae4c2dd4ee8",
+    "src/examples/LighthousePanel.ts": "7419287cf168871675d7b577997e47f0ac570decfcbbf659064214f62f57f4ba",
+    "src/examples/LighthouseRecords.ts": "a086385016c539be91251a89257f281199135a1ae6f79b3b332d3fa04acd687e",
+    "src/examples/Room.ts": "8bf76c0d84b2a71041fbe19eab3e09966f2a16412ed214a4178a72d8b7eb32c6",
+    "src/examples/WalkingSurface.ts": "c5e40ab873772df5b974862608783f01cff18c784c9b6a840ae53f94b2023a6e",
+    "src/examples/CoastalScooter.ts": "d53c0f00545480b8fdb4d18de4b01667a8d975b4afe4e903b217e118e3a43377",
+    "src/examples/CoastalMap.ts": "dd85e5c6f5cea57372c82eeec1e1b94fbc89a762a2897d8aae67c12adf5d5e69",
+    "public/index.html": "320550560b82ba138bd6b19f929c14253d84494c36d0cda99e77a1f47f3dbe66",
+    "public/STUDY_ASSET_SOURCES.md": "e13035f3d245581771909dd1bb0b23dc0ddd2bf378fd07558b4e3d8b666b86f6",
+    "public/environment/coastal-cliff-source.json": "5923bd77aa1d688edbadb7121a11e8c8afd1a15f3fa7452e8f140bac1eedec5b"
+  },
+  "fpsOrLoadTimeSampling": false
+}

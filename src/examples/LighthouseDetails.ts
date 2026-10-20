@@ -118,5 +118,5 @@ export class LighthouseDetails {
     this.light.setEnabled(active);
     if(active){const v=planToWorld({x:t.x+.82,y:t.y+.85},floor!.height+1.69);this.light.position.set(v.x,v.y,v.z);}
   }
-  dispose(){if(this.disposed)return;this.disposed=true;this.document?.removeEventListener("visibilitychange",this.visibilityChanged);this.light.dispose();this.beacon.dispose();this.cover.dispose();}
+  dispose(){if(this.disposed)return;this.disposed=true;this.document?.removeEventListener("visibilitychange",this.visibilityChanged);this.light.dispose();this.beacon.dispose();this.cover.dispose();this.equipment.dispose();}
 }

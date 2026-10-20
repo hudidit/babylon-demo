@@ -234,6 +234,13 @@
       #lighthouse-round-summary { border-left: 3px solid #899978; padding: 8px 12px; background: #e8eadf; }
       #lighthouse-inspection-events { padding-left: 0; list-style: none; font-size: 11px; color: #686f60; overflow-wrap: anywhere; }
       #lighthouse-inspection-events li { padding: 7px 0; border-bottom: 1px solid #ded8ca; }
+      #lighthouse-maintenance { border-top: 1px solid #c9c4b3; margin-top: 20px; }
+      #lighthouse-tool-label { display: block; margin: 14px 0 8px; }
+      #lighthouse-tool { width: 100%; min-height: 44px; padding: 8px; margin-top: 5px; background: #f9f7f0; color: #354b32; border: 1px solid #879078; border-radius: 6px; }
+      #lighthouse-tool-label[hidden], #lighthouse-drills[hidden] { display: none; }
+      #lighthouse-maintenance-notice { border-left: 3px solid #a17a42; padding: 8px 12px; background: #ece6d8; }
+      #lighthouse-maintenance-events { padding: 0; list-style: none; font-size: 11px; color: #686f60; overflow-wrap: anywhere; }
+      #lighthouse-maintenance-events li { padding: 7px 0; border-bottom: 1px solid #ded8ca; }
       #lighthouse-activity { position: fixed; top: 76px; left: 50%; transform: translateX(-50%); max-width: calc(100% - 40px); box-sizing: border-box; padding: 10px 16px; border: 1px solid #d9ddbf66; border-radius: 8px; background: #26362ce8; color: #f3ecd7; font-size: 12px; line-height: 1.5; pointer-events: none; z-index: 4; }
       @media (max-width: 480px), (max-height: 480px) { .lighthouse-heading { padding: 14px 16px; } .lighthouse-body { padding: 16px; } #lighthouse-panel h2 { font-size: 19px; } }
     </style>
@@ -299,10 +306,29 @@
         <button class="lighthouse-action" id="lighthouse-cover-check" hidden>确认保护面观察结果</button>
         <button class="lighthouse-action" id="lighthouse-clean-start" hidden>擦拭并返回场景</button>
         <h3>本轮三项巡检</h3><ul id="lighthouse-checklist"></ul><p id="lighthouse-round-summary"></p>
-        <p class="lighthouse-note">当前按晴天、稳定供电运行。新增备用灯、供电及补能设备已安装，接替、自检与能量监测尚未接入。</p>
+        <p class="lighthouse-note">晴天、稳定供电工况。备用接替与局部维修已开放；完整主电池能量、燃料和存档仍待后续接入。</p>
         <h3>最近运行事件</h3><ul id="lighthouse-panel-events"></ul>
         <h3>巡检与操作日志</h3><ul id="lighthouse-inspection-events"></ul>
         <p class="lighthouse-note" id="lighthouse-day-history"></p>
+        </section>
+        <section id="lighthouse-maintenance" aria-label="设备维护与演练">
+          <h3 id="lighthouse-maintenance-session">正常值守</h3>
+          <p id="lighthouse-maintenance-status"></p>
+          <p class="lighthouse-note" id="lighthouse-parts"></p>
+          <label id="lighthouse-tool-label" hidden>携带工具 / 备件<select id="lighthouse-tool">
+            <option value="meter">检测工具</option><option value="cloth">清洁布</option>
+            <option value="drive-module">驱动模块</option><option value="charger-module">充电模块</option>
+          </select></label>
+          <div id="lighthouse-maintenance-actions"></div>
+          <p id="lighthouse-maintenance-notice" role="status"></p>
+          <p class="lighthouse-note" id="lighthouse-drill-guide"></p>
+          <div id="lighthouse-drills" hidden>
+            <button class="lighthouse-action" data-lighthouse-drill="drive">进入独立演练 · 主灯驱动异常</button>
+            <button class="lighthouse-action" data-lighthouse-drill="charger">进入独立演练 · 充电支路异常</button>
+            <button class="lighthouse-action" data-lighthouse-drill="sensor">进入独立演练 · 光敏污染</button>
+            <button class="lighthouse-action" data-lighthouse-drill="normal" hidden>退出演练 · 恢复原值守会话</button>
+          </div>
+          <h3>设备观察、操作与复验</h3><ul id="lighthouse-maintenance-events"></ul>
         </section>
         <p class="lighthouse-note">查看设备时，场景时间与设备暂停；返回场景继续。</p>
       </div>

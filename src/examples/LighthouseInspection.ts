@@ -11,7 +11,7 @@ export interface LighthouseEvidence {
 }
 export interface LighthouseInspectionEvent extends LighthouseEvidence {
   readonly id: number; readonly objectId: string; readonly kind: "observation" | "action" | "system";
-  readonly type: "control-read" | "optic-observed" | "cover-observed" | "cleaning-started" | "cleaning-cancelled" | "cover-cleaned" | "duty-day-started";
+  readonly type: "control-read" | "optic-observed" | "cover-observed" | "cleaning-started" | "cleaning-cancelled" | "cover-cleaned" | "duty-day-started" | "equipment-changed";
   readonly source: "local-panel" | "direct-view" | "active-action" | "automatic-clock";
 }
 export interface LighthouseDaySummary {
@@ -52,6 +52,11 @@ export class LighthouseInspection {
 
   constructor() { this.publish(); }
   get snapshot() { return this.current; }
+  invalidateMain(op: LighthouseOperationSnapshot) {
+    this.control = this.optic = undefined; this.resetObservation();
+    this.record(op, "lighthouse-beacon-main", "system", "equipment-changed", "active-action", "驱动或供电隔离状态变化，旧读数/周期仅作历史；重新现场确认。");
+    this.publish();
+  }
   static canClean(op: LighthouseOperationSnapshot) {
     return op.state === "day-standby" && op.mode === "automatic" && !op.running && op.testSecondsRemaining === 0;
   }
@@ -73,7 +78,7 @@ export class LighthouseInspection {
   }
   confirmControl(op: LighthouseOperationSnapshot, accessible: boolean) {
     this.synchronize(op); if (!accessible) return false;
-    const result = `${op.mode === "test" ? "限时试灯" : "自动值守"} / ${op.state === "day-standby" ? "日间待机" : op.state === "night-running" ? "夜间导航运行" : "局部试灯运行"}`;
+    const result = `${op.mode === "test" ? "限时试灯" : "自动值守"} / ${op.running ? op.detectedDemand ? "检测请求下主灯运行" : op.state === "night-running" ? "夜间导航运行" : "局部试灯运行" : op.state === "day-standby" ? "日间待机" : "主灯未运行，需核对备用与实际反馈"}`;
     if (this.control?.result !== result) this.record(op, "lighthouse-control-panel", "observation", "control-read", "local-panel", result);
     this.control = this.evidence(op, result); this.publish(); return true;
   }

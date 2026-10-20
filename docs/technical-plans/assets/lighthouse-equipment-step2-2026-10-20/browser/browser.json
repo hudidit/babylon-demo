@@ -1,0 +1,2234 @@
+{
+  "baseline": "e13fe78",
+  "browser": "155.0.8059.85",
+  "method": "Unmodified final dist; actual local clicks, native dialog keyboard, pose fixtures and shared-clock reference steps; separate continuous journey.",
+  "fpsOrLoadTimeSampling": false,
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8220/",
+      "status": 200,
+      "bytes": 33080
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/main.js",
+      "status": 200,
+      "bytes": 352414
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8220/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8220/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8220/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4190
+    },
+    {
+      "url": "http://127.0.0.1:8220/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8220/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8220/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8220/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/3a0657fa-5f42-4b25-b539-dceeda78db96",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/759c8b6c-95da-406a-9879-1b612ea20ed3",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/c4807102-43fb-49ac-8126-9ab8a85a6bea",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/ee22a435-d5a7-4abf-8280-56597d820da7",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/0946ea2a-7704-40e5-ad58-3e291bd7fbe1",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/9e58e3a5-0873-4476-93db-73df8db82a52",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/39ccded0-41fd-405c-8721-3a4c75a8b27a",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/9079f593-e3d0-46e5-8d2a-56fe7f072ec0",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/183a2de0-e556-43fa-bfe1-9e41764da497",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/d9349785-eac3-42e7-b5e2-a326301b7f2f",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/b13914ec-bbc3-4ccf-b137-ebb1fd1f3b19",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/d7172b0e-37f7-423d-9d63-6f99903dfe94",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/a1d7c704-b2be-443d-8218-c7cce4059724",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/3cbc5759-e2a1-4055-ac35-347e0b66a30d",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/5ea309f7-cd92-4165-b4e7-86cc97834fd3",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8220/af172571-b7e4-4edd-af4f-15393d00651b",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8220/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    }
+  ],
+  "cases": {
+    "readOnlyPanelAndReturn": true,
+    "continuousSightReset": true,
+    "testStartPauseEndAndRevalidation": true,
+    "nightTestDoesNotStopNavigation": true,
+    "directionalGpuChange": true,
+    "mapCancelsCleaning": true,
+    "cleaningCancel:turn-away": true,
+    "cleaningCancel:blur": true,
+    "cleaningCancel:test-start": true,
+    "cleaningCancel:automatic-18": true,
+    "dailyRebuildPreservesCleanSurface": {
+      "previous": {
+        "dutyDay": 1,
+        "checks": {
+          "check-control": "complete",
+          "check-optic": "complete",
+          "check-cover": "complete"
+        },
+        "completed": true,
+        "control": {
+          "dutyDay": 1,
+          "hour": 12,
+          "result": "自动值守 / 日间待机"
+        },
+        "optic": {
+          "dutyDay": 1,
+          "hour": 21,
+          "result": "本次周期观察正常：连续10活跃秒、转台一圈及方向出光"
+        },
+        "coverEvidence": {
+          "dutyDay": 1,
+          "hour": 12,
+          "result": "保护面洁净，复查通过",
+          "revision": 1
+        },
+        "dirty": false,
+        "coverRevision": 1,
+        "transmission": 1,
+        "observationSeconds": 10,
+        "observedTurns": 1.000000000000007,
+        "outputSeen": true,
+        "cleaning": false,
+        "cleaningSeconds": 0,
+        "notice": "保护面洁净，复查通过",
+        "days": [
+          {
+            "dutyDay": 1,
+            "checks": {
+              "check-control": "complete",
+              "check-optic": "complete",
+              "check-cover": "complete"
+            },
+            "completed": true
+          }
+        ],
+        "events": [
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "自动值守 / 日间待机",
+            "id": 1,
+            "objectId": "lighthouse-control-panel",
+            "kind": "observation",
+            "type": "control-read",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 21,
+            "result": "本次周期观察正常：连续10活跃秒、转台一圈及方向出光",
+            "id": 2,
+            "objectId": "lighthouse-beacon-main",
+            "kind": "observation",
+            "type": "optic-observed",
+            "source": "direct-view"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "保护面有轻度盐膜，需停机擦拭后复查",
+            "revision": 0,
+            "id": 3,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "observation",
+            "type": "cover-observed",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 4,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "打开界面或失焦，清洁中断；盐膜保持原状。",
+            "revision": 0,
+            "id": 5,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-cancelled",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 6,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "离开、视线受阻或设备起动，清洁中断；盐膜保持原状。",
+            "revision": 0,
+            "id": 7,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-cancelled",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 8,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "打开界面或失焦，清洁中断；盐膜保持原状。",
+            "revision": 0,
+            "id": 9,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-cancelled",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 10,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "设备已运行，清洁中断；盐膜保持原状。",
+            "revision": 0,
+            "id": 11,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-cancelled",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 12,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 18.000166666666665,
+            "result": "设备已运行，清洁中断；盐膜保持原状。",
+            "revision": 0,
+            "id": 13,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-cancelled",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 14,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "盐膜已清除，待复查",
+            "revision": 1,
+            "id": 15,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cover-cleaned",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "保护面洁净，复查通过",
+            "revision": 1,
+            "id": 16,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "observation",
+            "type": "cover-observed",
+            "source": "local-panel"
+          }
+        ]
+      },
+      "next": {
+        "dutyDay": 2,
+        "checks": {
+          "check-control": "pending",
+          "check-optic": "pending",
+          "check-cover": "pending"
+        },
+        "completed": false,
+        "dirty": false,
+        "coverRevision": 1,
+        "transmission": 1,
+        "observationSeconds": 0.05,
+        "observedTurns": 0.004999999999999893,
+        "outputSeen": false,
+        "cleaning": false,
+        "cleaningSeconds": 0,
+        "notice": "新值守日已建立三项检查，表面状态保留。",
+        "days": [
+          {
+            "dutyDay": 1,
+            "checks": {
+              "check-control": "complete",
+              "check-optic": "complete",
+              "check-cover": "complete"
+            },
+            "completed": true
+          },
+          {
+            "dutyDay": 2,
+            "checks": {
+              "check-control": "pending",
+              "check-optic": "pending",
+              "check-cover": "pending"
+            },
+            "completed": false
+          }
+        ],
+        "events": [
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "自动值守 / 日间待机",
+            "id": 1,
+            "objectId": "lighthouse-control-panel",
+            "kind": "observation",
+            "type": "control-read",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 21,
+            "result": "本次周期观察正常：连续10活跃秒、转台一圈及方向出光",
+            "id": 2,
+            "objectId": "lighthouse-beacon-main",
+            "kind": "observation",
+            "type": "optic-observed",
+            "source": "direct-view"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "保护面有轻度盐膜，需停机擦拭后复查",
+            "revision": 0,
+            "id": 3,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "observation",
+            "type": "cover-observed",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 4,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "打开界面或失焦，清洁中断；盐膜保持原状。",
+            "revision": 0,
+            "id": 5,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-cancelled",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 6,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "离开、视线受阻或设备起动，清洁中断；盐膜保持原状。",
+            "revision": 0,
+            "id": 7,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-cancelled",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 8,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "打开界面或失焦，清洁中断；盐膜保持原状。",
+            "revision": 0,
+            "id": 9,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-cancelled",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 10,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "设备已运行，清洁中断；盐膜保持原状。",
+            "revision": 0,
+            "id": 11,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-cancelled",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 12,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 18.000166666666665,
+            "result": "设备已运行，清洁中断；盐膜保持原状。",
+            "revision": 0,
+            "id": 13,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-cancelled",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "开始擦拭",
+            "revision": 0,
+            "id": 14,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cleaning-started",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "盐膜已清除，待复查",
+            "revision": 1,
+            "id": 15,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "action",
+            "type": "cover-cleaned",
+            "source": "active-action"
+          },
+          {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "保护面洁净，复查通过",
+            "revision": 1,
+            "id": 16,
+            "objectId": "lighthouse-optics-cleaning",
+            "kind": "observation",
+            "type": "cover-observed",
+            "source": "local-panel"
+          },
+          {
+            "dutyDay": 2,
+            "hour": 0,
+            "result": "新值守日：三项检查待确认，表面状态保留",
+            "id": 17,
+            "objectId": "lighthouse-maintenance-log",
+            "kind": "system",
+            "type": "duty-day-started",
+            "source": "automatic-clock"
+          }
+        ]
+      }
+    },
+    "cleanCommitAndSeparateRecheck": true,
+    "disposal": true
+  },
+  "layout": [
+    {
+      "viewport": [
+        1280,
+        800
+      ],
+      "x": 360,
+      "y": 14,
+      "width": 560,
+      "height": 772,
+      "inside": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "x": 19,
+      "y": 14,
+      "width": 352,
+      "height": 816,
+      "inside": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "x": 142,
+      "y": 14,
+      "width": 560,
+      "height": 362,
+      "inside": true,
+      "horizontalOverflow": false
+    }
+  ],
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:8220/js/main.js",
+      "status": 200,
+      "bytes": 352414
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8220/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    }
+  ],
+  "initialJsBytes": 2991444,
+  "resources": {
+    "meshes": 717,
+    "vertices": 576812,
+    "materials": 106,
+    "textures": 153,
+    "lights": 22,
+    "cameras": 3,
+    "metadata": {
+      "version": "lighthouse-operation-v1",
+      "stage": 3,
+      "visualApplied": true,
+      "state": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 12,
+        "dutyDay": 1,
+        "mode": "automatic",
+        "state": "day-standby",
+        "running": false,
+        "available": true,
+        "detectedDemand": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0,
+        "rotationRadians": 0,
+        "automaticOperatingHours": 0,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          }
+        ]
+      },
+      "inspection": {
+        "dutyDay": 1,
+        "checks": {
+          "check-control": "pending",
+          "check-optic": "pending",
+          "check-cover": "pending"
+        },
+        "completed": false,
+        "dirty": true,
+        "coverRevision": 0,
+        "transmission": 0.82,
+        "observationSeconds": 0,
+        "observedTurns": 0,
+        "outputSeen": false,
+        "cleaning": false,
+        "cleaningSeconds": 0,
+        "notice": "",
+        "days": [
+          {
+            "dutyDay": 1,
+            "checks": {
+              "check-control": "pending",
+              "check-optic": "pending",
+              "check-cover": "pending"
+            },
+            "completed": false
+          }
+        ],
+        "events": []
+      }
+    },
+    "moving": [
+      {
+        "name": "coastal-lighthouse-optic-core",
+        "vertices": 510
+      },
+      {
+        "name": "coastal-lighthouse-optic-rings",
+        "vertices": 1206
+      },
+      {
+        "name": "coastal-lighthouse-optic-housing",
+        "vertices": 72
+      },
+      {
+        "name": "coastal-lighthouse-beacon-face",
+        "vertices": 4
+      }
+    ]
+  },
+  "signal": [
+    {
+      "seconds": 0,
+      "phase": 0.40499999999997105,
+      "luma": 67.03338024691361
+    },
+    {
+      "seconds": 0.05,
+      "phase": 0.40999999999997105,
+      "luma": 59.11707222222221
+    },
+    {
+      "seconds": 0.1,
+      "phase": 0.41499999999997106,
+      "luma": 65.40064506172843
+    },
+    {
+      "seconds": 0.15000000000000002,
+      "phase": 0.41999999999997106,
+      "luma": 69.13948950617295
+    },
+    {
+      "seconds": 0.2,
+      "phase": 0.42499999999997107,
+      "luma": 70.62192469135813
+    },
+    {
+      "seconds": 0.25,
+      "phase": 0.42999999999997107,
+      "luma": 71.82670061728408
+    },
+    {
+      "seconds": 0.30000000000000004,
+      "phase": 0.4349999999999711,
+      "luma": 197.7993827160494
+    },
+    {
+      "seconds": 0.35000000000000003,
+      "phase": 0.4399999999999711,
+      "luma": 198.42283950617283
+    },
+    {
+      "seconds": 0.4,
+      "phase": 0.4449999999999711,
+      "luma": 198.37037037037038
+    },
+    {
+      "seconds": 0.45,
+      "phase": 0.4499999999999711,
+      "luma": 198.41975308641975
+    },
+    {
+      "seconds": 0.5,
+      "phase": 0.4549999999999711,
+      "luma": 198.24074074074073
+    },
+    {
+      "seconds": 0.55,
+      "phase": 0.4599999999999711,
+      "luma": 198.33641975308643
+    },
+    {
+      "seconds": 0.6000000000000001,
+      "phase": 0.4649999999999711,
+      "luma": 198.07716049382717
+    },
+    {
+      "seconds": 0.65,
+      "phase": 0.4699999999999711,
+      "luma": 198.1851851851852
+    },
+    {
+      "seconds": 0.7000000000000001,
+      "phase": 0.4749999999999711,
+      "luma": 198.5462962962963
+    },
+    {
+      "seconds": 0.75,
+      "phase": 0.4799999999999711,
+      "luma": 198.3827160493827
+    },
+    {
+      "seconds": 0.8,
+      "phase": 0.4849999999999711,
+      "luma": 198.40740740740742
+    },
+    {
+      "seconds": 0.8500000000000001,
+      "phase": 0.4899999999999711,
+      "luma": 197.83024691358025
+    },
+    {
+      "seconds": 0.9,
+      "phase": 0.49499999999997113,
+      "luma": 196.99074074074073
+    },
+    {
+      "seconds": 0.9500000000000001,
+      "phase": 0.49999999999997113,
+      "luma": 70.64464753086442
+    },
+    {
+      "seconds": 1,
+      "phase": 0.5049999999999711,
+      "luma": 69.66742839506186
+    },
+    {
+      "seconds": 1.05,
+      "phase": 0.5099999999999711,
+      "luma": 67.33533395061744
+    },
+    {
+      "seconds": 1.1,
+      "phase": 0.5149999999999711,
+      "luma": 63.993134567901315
+    },
+    {
+      "seconds": 1.1500000000000001,
+      "phase": 0.5199999999999712,
+      "luma": 56.64102901234569
+    },
+    {
+      "seconds": 1.2000000000000002,
+      "phase": 0.5249999999999712,
+      "luma": 75.20209259259269
+    },
+    {
+      "seconds": 1.25,
+      "phase": 0.5299999999999712,
+      "luma": 97.61030617283959
+    },
+    {
+      "seconds": 1.3,
+      "phase": 0.5349999999999712,
+      "luma": 94.35483888888884
+    },
+    {
+      "seconds": 1.35,
+      "phase": 0.5399999999999712,
+      "luma": 87.63248641975309
+    },
+    {
+      "seconds": 1.4000000000000001,
+      "phase": 0.5449999999999712,
+      "luma": 88.36576913580238
+    },
+    {
+      "seconds": 1.4500000000000002,
+      "phase": 0.5499999999999712,
+      "luma": 93.01924691358019
+    },
+    {
+      "seconds": 1.5,
+      "phase": 0.5549999999999712,
+      "luma": 92.96588641975303
+    },
+    {
+      "seconds": 1.55,
+      "phase": 0.5599999999999712,
+      "luma": 92.87307962962953
+    },
+    {
+      "seconds": 1.6,
+      "phase": 0.5649999999999712,
+      "luma": 92.96268518518512
+    },
+    {
+      "seconds": 1.6500000000000001,
+      "phase": 0.5699999999999712,
+      "luma": 93.57081296296289
+    },
+    {
+      "seconds": 1.7000000000000002,
+      "phase": 0.5749999999999712,
+      "luma": 94.3354808641975
+    },
+    {
+      "seconds": 1.75,
+      "phase": 0.5799999999999712,
+      "luma": 95.3494925925926
+    },
+    {
+      "seconds": 1.8,
+      "phase": 0.5849999999999712,
+      "luma": 96.08804382716053
+    },
+    {
+      "seconds": 1.85,
+      "phase": 0.5899999999999712,
+      "luma": 96.78610123456797
+    },
+    {
+      "seconds": 1.9000000000000001,
+      "phase": 0.5949999999999712,
+      "luma": 97.16653703703707
+    },
+    {
+      "seconds": 1.9500000000000002,
+      "phase": 0.5999999999999712,
+      "luma": 97.61747098765439
+    },
+    {
+      "seconds": 2,
+      "phase": 0.6049999999999712,
+      "luma": 97.8481246913581
+    },
+    {
+      "seconds": 2.0500000000000003,
+      "phase": 0.6099999999999712,
+      "luma": 97.87852716049389
+    },
+    {
+      "seconds": 2.1,
+      "phase": 0.6149999999999712,
+      "luma": 97.9288086419754
+    },
+    {
+      "seconds": 2.15,
+      "phase": 0.6199999999999712,
+      "luma": 97.95085925925933
+    },
+    {
+      "seconds": 2.2,
+      "phase": 0.6249999999999712,
+      "luma": 97.91333209876551
+    },
+    {
+      "seconds": 2.25,
+      "phase": 0.6299999999999712,
+      "luma": 97.88206296296303
+    },
+    {
+      "seconds": 2.3000000000000003,
+      "phase": 0.6349999999999713,
+      "luma": 97.87302654320995
+    },
+    {
+      "seconds": 2.35,
+      "phase": 0.6399999999999713,
+      "luma": 97.86244629629638
+    },
+    {
+      "seconds": 2.4000000000000004,
+      "phase": 0.6449999999999713,
+      "luma": 97.94118271604947
+    },
+    {
+      "seconds": 2.45,
+      "phase": 0.6499999999999713,
+      "luma": 97.94094382716057
+    },
+    {
+      "seconds": 2.5,
+      "phase": 0.6549999999999713,
+      "luma": 97.93980987654328
+    },
+    {
+      "seconds": 2.5500000000000003,
+      "phase": 0.6599999999999713,
+      "luma": 97.89354197530872
+    },
+    {
+      "seconds": 2.6,
+      "phase": 0.6649999999999713,
+      "luma": 97.87302654320995
+    },
+    {
+      "seconds": 2.6500000000000004,
+      "phase": 0.6699999999999713,
+      "luma": 97.84878827160502
+    },
+    {
+      "seconds": 2.7,
+      "phase": 0.6749999999999713,
+      "luma": 97.95396172839514
+    },
+    {
+      "seconds": 2.75,
+      "phase": 0.6799999999999713,
+      "luma": 97.94799567901242
+    },
+    {
+      "seconds": 2.8000000000000003,
+      "phase": 0.6849999999999713,
+      "luma": 97.93982222222229
+    },
+    {
+      "seconds": 2.85,
+      "phase": 0.6899999999999713,
+      "luma": 97.88646543209884
+    },
+    {
+      "seconds": 2.9000000000000004,
+      "phase": 0.6949999999999713,
+      "luma": 97.8666308641976
+    },
+    {
+      "seconds": 2.95,
+      "phase": 0.6999999999999713,
+      "luma": 97.8465808641976
+    },
+    {
+      "seconds": 3,
+      "phase": 0.7049999999999713,
+      "luma": 97.9334462962964
+    },
+    {
+      "seconds": 3.0500000000000003,
+      "phase": 0.7099999999999713,
+      "luma": 97.93389197530871
+    },
+    {
+      "seconds": 3.1,
+      "phase": 0.7149999999999713,
+      "luma": 97.94225246913588
+    },
+    {
+      "seconds": 3.1500000000000004,
+      "phase": 0.7199999999999713,
+      "luma": 97.90646234567909
+    },
+    {
+      "seconds": 3.2,
+      "phase": 0.7249999999999713,
+      "luma": 97.87280370370378
+    },
+    {
+      "seconds": 3.25,
+      "phase": 0.7299999999999713,
+      "luma": 97.87302654320995
+    },
+    {
+      "seconds": 3.3000000000000003,
+      "phase": 0.7349999999999713,
+      "luma": 97.87852716049389
+    },
+    {
+      "seconds": 3.35,
+      "phase": 0.7399999999999713,
+      "luma": 97.9288086419754
+    },
+    {
+      "seconds": 3.4000000000000004,
+      "phase": 0.7449999999999714,
+      "luma": 97.95306666666674
+    },
+    {
+      "seconds": 3.45,
+      "phase": 0.7499999999999714,
+      "luma": 97.91112469135811
+    },
+    {
+      "seconds": 3.5,
+      "phase": 0.7549999999999714,
+      "luma": 97.88206296296303
+    },
+    {
+      "seconds": 3.5500000000000003,
+      "phase": 0.7599999999999714,
+      "luma": 97.87302654320995
+    },
+    {
+      "seconds": 3.6,
+      "phase": 0.7649999999999714,
+      "luma": 97.86244629629638
+    },
+    {
+      "seconds": 3.6500000000000004,
+      "phase": 0.7699999999999714,
+      "luma": 97.94118271604947
+    },
+    {
+      "seconds": 3.7,
+      "phase": 0.7749999999999714,
+      "luma": 97.94270185185192
+    },
+    {
+      "seconds": 3.75,
+      "phase": 0.7799999999999714,
+      "luma": 97.93980987654328
+    },
+    {
+      "seconds": 3.8000000000000003,
+      "phase": 0.7849999999999714,
+      "luma": 97.89354197530872
+    },
+    {
+      "seconds": 3.85,
+      "phase": 0.7899999999999714,
+      "luma": 97.87302654320995
+    },
+    {
+      "seconds": 3.9000000000000004,
+      "phase": 0.7949999999999714,
+      "luma": 97.84878827160502
+    },
+    {
+      "seconds": 3.95,
+      "phase": 0.7999999999999714,
+      "luma": 97.95396172839514
+    },
+    {
+      "seconds": 4,
+      "phase": 0.8049999999999714,
+      "luma": 97.94468641975315
+    },
+    {
+      "seconds": 4.05,
+      "phase": 0.8099999999999714,
+      "luma": 97.93982222222229
+    },
+    {
+      "seconds": 4.1000000000000005,
+      "phase": 0.8149999999999714,
+      "luma": 97.88646543209884
+    },
+    {
+      "seconds": 4.15,
+      "phase": 0.8199999999999714,
+      "luma": 97.8666308641976
+    },
+    {
+      "seconds": 4.2,
+      "phase": 0.8249999999999714,
+      "luma": 97.84018518518526
+    },
+    {
+      "seconds": 4.25,
+      "phase": 0.8299999999999714,
+      "luma": 97.86582962962972
+    },
+    {
+      "seconds": 4.3,
+      "phase": 0.8349999999999714,
+      "luma": 97.47778518518523
+    },
+    {
+      "seconds": 4.3500000000000005,
+      "phase": 0.8399999999999714,
+      "luma": 96.82942777777777
+    },
+    {
+      "seconds": 4.4,
+      "phase": 0.8449999999999714,
+      "luma": 96.06915308641979
+    },
+    {
+      "seconds": 4.45,
+      "phase": 0.8499999999999714,
+      "luma": 95.36871851851853
+    },
+    {
+      "seconds": 4.5,
+      "phase": 0.8549999999999714,
+      "luma": 94.54051975308639
+    },
+    {
+      "seconds": 4.55,
+      "phase": 0.8599999999999715,
+      "luma": 93.79337654320985
+    },
+    {
+      "seconds": 4.6000000000000005,
+      "phase": 0.8649999999999715,
+      "luma": 93.62987901234564
+    },
+    {
+      "seconds": 4.65,
+      "phase": 0.8699999999999715,
+      "luma": 94.07505246913581
+    },
+    {
+      "seconds": 4.7,
+      "phase": 0.8749999999999715,
+      "luma": 94.55760740740742
+    },
+    {
+      "seconds": 4.75,
+      "phase": 0.8799999999999715,
+      "luma": 94.90918518518521
+    },
+    {
+      "seconds": 4.800000000000001,
+      "phase": 0.8849999999999715,
+      "luma": 95.31622962962966
+    },
+    {
+      "seconds": 4.8500000000000005,
+      "phase": 0.8899999999999715,
+      "luma": 95.63996790123461
+    },
+    {
+      "seconds": 4.9,
+      "phase": 0.8949999999999715,
+      "luma": 96.07623209876554
+    },
+    {
+      "seconds": 4.95,
+      "phase": 0.8999999999999715,
+      "luma": 96.31015061728401
+    },
+    {
+      "seconds": 5,
+      "phase": 0.9049999999999715,
+      "luma": 96.66817716049391
+    },
+    {
+      "seconds": 5.050000000000001,
+      "phase": 0.9099999999999715,
+      "luma": 96.844175308642
+    },
+    {
+      "seconds": 5.1000000000000005,
+      "phase": 0.9149999999999715,
+      "luma": 96.95358333333338
+    },
+    {
+      "seconds": 5.15,
+      "phase": 0.9199999999999715,
+      "luma": 97.15113703703706
+    },
+    {
+      "seconds": 5.2,
+      "phase": 0.9249999999999715,
+      "luma": 97.44487222222229
+    },
+    {
+      "seconds": 5.25,
+      "phase": 0.9299999999999715,
+      "luma": 97.59880740740743
+    },
+    {
+      "seconds": 5.300000000000001,
+      "phase": 0.9349999999999715,
+      "luma": 97.7256617283951
+    },
+    {
+      "seconds": 5.3500000000000005,
+      "phase": 0.9399999999999715,
+      "luma": 97.80980370370376
+    },
+    {
+      "seconds": 5.4,
+      "phase": 0.9449999999999715,
+      "luma": 97.86749753086424
+    },
+    {
+      "seconds": 5.45,
+      "phase": 0.9499999999999715,
+      "luma": 97.86901172839511
+    },
+    {
+      "seconds": 5.5,
+      "phase": 0.9549999999999715,
+      "luma": 97.94066419753095
+    },
+    {
+      "seconds": 5.550000000000001,
+      "phase": 0.9599999999999715,
+      "luma": 97.93341419753092
+    },
+    {
+      "seconds": 5.6000000000000005,
+      "phase": 0.9649999999999715,
+      "luma": 97.94398209876549
+    },
+    {
+      "seconds": 5.65,
+      "phase": 0.9699999999999716,
+      "luma": 97.90841481481489
+    },
+    {
+      "seconds": 5.7,
+      "phase": 0.9749999999999716,
+      "luma": 97.88512098765437
+    },
+    {
+      "seconds": 5.75,
+      "phase": 0.9799999999999716,
+      "luma": 97.9027641975309
+    },
+    {
+      "seconds": 5.800000000000001,
+      "phase": 0.9849999999999716,
+      "luma": 97.90077592592594
+    },
+    {
+      "seconds": 5.8500000000000005,
+      "phase": 0.9899999999999716,
+      "luma": 97.84925493827166
+    },
+    {
+      "seconds": 5.9,
+      "phase": 0.9949999999999716,
+      "luma": 97.78831728395065
+    },
+    {
+      "seconds": 5.95,
+      "phase": 0,
+      "luma": 97.56261728395066
+    },
+    {
+      "seconds": 6,
+      "phase": 0.005,
+      "luma": 97.36685740740745
+    },
+    {
+      "seconds": 6.050000000000001,
+      "phase": 0.01,
+      "luma": 97.11455802469136
+    },
+    {
+      "seconds": 6.1000000000000005,
+      "phase": 0.015,
+      "luma": 96.86918024691361
+    },
+    {
+      "seconds": 6.15,
+      "phase": 0.02,
+      "luma": 96.74102716049391
+    },
+    {
+      "seconds": 6.2,
+      "phase": 0.025,
+      "luma": 96.55624876543217
+    },
+    {
+      "seconds": 6.25,
+      "phase": 0.030000000000000002,
+      "luma": 96.25504938271607
+    },
+    {
+      "seconds": 6.300000000000001,
+      "phase": 0.035,
+      "luma": 95.85914753086426
+    },
+    {
+      "seconds": 6.3500000000000005,
+      "phase": 0.04,
+      "luma": 95.61293271604943
+    },
+    {
+      "seconds": 6.4,
+      "phase": 0.045,
+      "luma": 95.13661790123459
+    },
+    {
+      "seconds": 6.45,
+      "phase": 0.049999999999999996,
+      "luma": 94.93436296296298
+    },
+    {
+      "seconds": 6.5,
+      "phase": 0.05499999999999999,
+      "luma": 94.45457407407409
+    },
+    {
+      "seconds": 6.550000000000001,
+      "phase": 0.05999999999999999,
+      "luma": 93.94330185185186
+    },
+    {
+      "seconds": 6.6000000000000005,
+      "phase": 0.06499999999999999,
+      "luma": 93.67214876543208
+    },
+    {
+      "seconds": 6.65,
+      "phase": 0.06999999999999999,
+      "luma": 93.90047283950612
+    },
+    {
+      "seconds": 6.7,
+      "phase": 0.075,
+      "luma": 94.64736481481481
+    },
+    {
+      "seconds": 6.75,
+      "phase": 0.08,
+      "luma": 95.59791851851851
+    },
+    {
+      "seconds": 6.800000000000001,
+      "phase": 0.085,
+      "luma": 96.3450580246914
+    },
+    {
+      "seconds": 6.8500000000000005,
+      "phase": 0.09000000000000001,
+      "luma": 96.92480246913583
+    },
+    {
+      "seconds": 6.9,
+      "phase": 0.09500000000000001,
+      "luma": 97.4062308641976
+    },
+    {
+      "seconds": 6.95,
+      "phase": 0.10000000000000002,
+      "luma": 97.76244259259265
+    },
+    {
+      "seconds": 7,
+      "phase": 0.10500000000000002,
+      "luma": 97.87368271604944
+    },
+    {
+      "seconds": 7.050000000000001,
+      "phase": 0.11000000000000003,
+      "luma": 97.87852716049389
+    },
+    {
+      "seconds": 7.1000000000000005,
+      "phase": 0.11500000000000003,
+      "luma": 97.9288086419754
+    },
+    {
+      "seconds": 7.15,
+      "phase": 0.12000000000000004,
+      "luma": 97.95306666666674
+    },
+    {
+      "seconds": 7.2,
+      "phase": 0.12500000000000003,
+      "luma": 97.91112469135811
+    },
+    {
+      "seconds": 7.25,
+      "phase": 0.13000000000000003,
+      "luma": 97.88206296296303
+    },
+    {
+      "seconds": 7.300000000000001,
+      "phase": 0.13500000000000004,
+      "luma": 97.87302654320995
+    },
+    {
+      "seconds": 7.3500000000000005,
+      "phase": 0.14000000000000004,
+      "luma": 97.86244629629638
+    },
+    {
+      "seconds": 7.4,
+      "phase": 0.14500000000000005,
+      "luma": 97.94118271604947
+    },
+    {
+      "seconds": 7.45,
+      "phase": 0.15000000000000005,
+      "luma": 97.94270185185192
+    },
+    {
+      "seconds": 7.5,
+      "phase": 0.15500000000000005,
+      "luma": 97.93980987654328
+    },
+    {
+      "seconds": 7.550000000000001,
+      "phase": 0.16000000000000006,
+      "luma": 97.89354197530872
+    },
+    {
+      "seconds": 7.6000000000000005,
+      "phase": 0.16500000000000006,
+      "luma": 97.87302654320995
+    },
+    {
+      "seconds": 7.65,
+      "phase": 0.17000000000000007,
+      "luma": 97.84878827160502
+    },
+    {
+      "seconds": 7.7,
+      "phase": 0.17500000000000007,
+      "luma": 97.95396172839514
+    },
+    {
+      "seconds": 7.75,
+      "phase": 0.18000000000000008,
+      "luma": 97.94799567901242
+    },
+    {
+      "seconds": 7.800000000000001,
+      "phase": 0.18500000000000008,
+      "luma": 97.93982222222229
+    },
+    {
+      "seconds": 7.8500000000000005,
+      "phase": 0.19000000000000009,
+      "luma": 97.88646543209884
+    },
+    {
+      "seconds": 7.9,
+      "phase": 0.1950000000000001,
+      "luma": 97.8666308641976
+    },
+    {
+      "seconds": 7.95,
+      "phase": 0.2000000000000001,
+      "luma": 97.8465808641976
+    },
+    {
+      "seconds": 8,
+      "phase": 0.2050000000000001,
+      "luma": 97.9334462962964
+    },
+    {
+      "seconds": 8.05,
+      "phase": 0.2100000000000001,
+      "luma": 97.93389197530871
+    },
+    {
+      "seconds": 8.1,
+      "phase": 0.2150000000000001,
+      "luma": 97.94225246913588
+    },
+    {
+      "seconds": 8.15,
+      "phase": 0.2200000000000001,
+      "luma": 97.90227037037047
+    },
+    {
+      "seconds": 8.200000000000001,
+      "phase": 0.22500000000000012,
+      "luma": 97.87280370370378
+    },
+    {
+      "seconds": 8.25,
+      "phase": 0.23000000000000012,
+      "luma": 97.87302654320995
+    },
+    {
+      "seconds": 8.3,
+      "phase": 0.23500000000000013,
+      "luma": 97.87852716049389
+    },
+    {
+      "seconds": 8.35,
+      "phase": 0.24000000000000013,
+      "luma": 97.9288086419754
+    },
+    {
+      "seconds": 8.4,
+      "phase": 0.24500000000000013,
+      "luma": 97.95306666666674
+    },
+    {
+      "seconds": 8.450000000000001,
+      "phase": 0.2500000000000001,
+      "luma": 97.91112469135811
+    },
+    {
+      "seconds": 8.5,
+      "phase": 0.2550000000000001,
+      "luma": 97.88206296296303
+    },
+    {
+      "seconds": 8.55,
+      "phase": 0.2600000000000001,
+      "luma": 97.87302654320995
+    },
+    {
+      "seconds": 8.6,
+      "phase": 0.2650000000000001,
+      "luma": 97.86244629629638
+    },
+    {
+      "seconds": 8.65,
+      "phase": 0.27000000000000013,
+      "luma": 97.94118271604947
+    },
+    {
+      "seconds": 8.700000000000001,
+      "phase": 0.27500000000000013,
+      "luma": 97.94270185185192
+    },
+    {
+      "seconds": 8.75,
+      "phase": 0.28000000000000014,
+      "luma": 97.93980987654328
+    },
+    {
+      "seconds": 8.8,
+      "phase": 0.28500000000000014,
+      "luma": 97.89354197530872
+    },
+    {
+      "seconds": 8.85,
+      "phase": 0.29000000000000015,
+      "luma": 97.87302654320995
+    },
+    {
+      "seconds": 8.9,
+      "phase": 0.29500000000000015,
+      "luma": 97.84878827160502
+    },
+    {
+      "seconds": 8.950000000000001,
+      "phase": 0.30000000000000016,
+      "luma": 97.95396172839514
+    },
+    {
+      "seconds": 9,
+      "phase": 0.30500000000000016,
+      "luma": 97.94468641975315
+    },
+    {
+      "seconds": 9.05,
+      "phase": 0.31000000000000016,
+      "luma": 97.93982222222229
+    },
+    {
+      "seconds": 9.1,
+      "phase": 0.31500000000000017,
+      "luma": 97.88646543209884
+    },
+    {
+      "seconds": 9.15,
+      "phase": 0.3200000000000002,
+      "luma": 97.86906111111118
+    },
+    {
+      "seconds": 9.200000000000001,
+      "phase": 0.3250000000000002,
+      "luma": 97.85297654320993
+    },
+    {
+      "seconds": 9.25,
+      "phase": 0.3300000000000002,
+      "luma": 97.6549820987655
+    },
+    {
+      "seconds": 9.3,
+      "phase": 0.3350000000000002,
+      "luma": 97.04347345679018
+    },
+    {
+      "seconds": 9.35,
+      "phase": 0.3400000000000002,
+      "luma": 96.43926543209876
+    },
+    {
+      "seconds": 9.4,
+      "phase": 0.3450000000000002,
+      "luma": 95.76755246913582
+    },
+    {
+      "seconds": 9.450000000000001,
+      "phase": 0.3500000000000002,
+      "luma": 95.12050679012344
+    },
+    {
+      "seconds": 9.5,
+      "phase": 0.3550000000000002,
+      "luma": 94.21955864197531
+    },
+    {
+      "seconds": 9.55,
+      "phase": 0.3600000000000002,
+      "luma": 93.33925308641969
+    },
+    {
+      "seconds": 9.600000000000001,
+      "phase": 0.3650000000000002,
+      "luma": 92.85209259259253
+    },
+    {
+      "seconds": 9.65,
+      "phase": 0.3700000000000002,
+      "luma": 92.83518333333323
+    },
+    {
+      "seconds": 9.700000000000001,
+      "phase": 0.3750000000000002,
+      "luma": 92.90216481481475
+    },
+    {
+      "seconds": 9.75,
+      "phase": 0.3800000000000002,
+      "luma": 92.90782777777777
+    },
+    {
+      "seconds": 9.8,
+      "phase": 0.38500000000000023,
+      "luma": 87.57094938271597
+    },
+    {
+      "seconds": 9.850000000000001,
+      "phase": 0.39000000000000024,
+      "luma": 88.86385925925921
+    },
+    {
+      "seconds": 9.9,
+      "phase": 0.39500000000000024,
+      "luma": 95.07834012345684
+    },
+    {
+      "seconds": 9.950000000000001,
+      "phase": 0.40000000000000024,
+      "luma": 97.43961172839518
+    },
+    {
+      "seconds": 10,
+      "phase": 0.40500000000000025,
+      "luma": 67.03338024691361
+    }
+  ],
+  "inspection": {
+    "dutyDay": 2,
+    "checks": {
+      "check-control": "pending",
+      "check-optic": "pending",
+      "check-cover": "complete"
+    },
+    "completed": false,
+    "coverEvidence": {
+      "dutyDay": 2,
+      "hour": 12,
+      "result": "保护面洁净，复查通过",
+      "revision": 1
+    },
+    "dirty": false,
+    "coverRevision": 1,
+    "transmission": 1,
+    "observationSeconds": 0,
+    "observedTurns": 0,
+    "outputSeen": false,
+    "cleaning": false,
+    "cleaningSeconds": 0,
+    "notice": "保护面洁净，复查通过",
+    "days": [
+      {
+        "dutyDay": 1,
+        "checks": {
+          "check-control": "complete",
+          "check-optic": "complete",
+          "check-cover": "complete"
+        },
+        "completed": true
+      },
+      {
+        "dutyDay": 2,
+        "checks": {
+          "check-control": "pending",
+          "check-optic": "pending",
+          "check-cover": "complete"
+        },
+        "completed": false
+      }
+    ],
+    "events": [
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "自动值守 / 日间待机",
+        "id": 1,
+        "objectId": "lighthouse-control-panel",
+        "kind": "observation",
+        "type": "control-read",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 21,
+        "result": "本次周期观察正常：连续10活跃秒、转台一圈及方向出光",
+        "id": 2,
+        "objectId": "lighthouse-beacon-main",
+        "kind": "observation",
+        "type": "optic-observed",
+        "source": "direct-view"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "保护面有轻度盐膜，需停机擦拭后复查",
+        "revision": 0,
+        "id": 3,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "observation",
+        "type": "cover-observed",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "开始擦拭",
+        "revision": 0,
+        "id": 4,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-started",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "打开界面或失焦，清洁中断；盐膜保持原状。",
+        "revision": 0,
+        "id": 5,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-cancelled",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "开始擦拭",
+        "revision": 0,
+        "id": 6,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-started",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "离开、视线受阻或设备起动，清洁中断；盐膜保持原状。",
+        "revision": 0,
+        "id": 7,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-cancelled",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "开始擦拭",
+        "revision": 0,
+        "id": 8,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-started",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "打开界面或失焦，清洁中断；盐膜保持原状。",
+        "revision": 0,
+        "id": 9,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-cancelled",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "开始擦拭",
+        "revision": 0,
+        "id": 10,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-started",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "设备已运行，清洁中断；盐膜保持原状。",
+        "revision": 0,
+        "id": 11,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-cancelled",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "开始擦拭",
+        "revision": 0,
+        "id": 12,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-started",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 18.000166666666665,
+        "result": "设备已运行，清洁中断；盐膜保持原状。",
+        "revision": 0,
+        "id": 13,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-cancelled",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "开始擦拭",
+        "revision": 0,
+        "id": 14,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-started",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "盐膜已清除，待复查",
+        "revision": 1,
+        "id": 15,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cover-cleaned",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "保护面洁净，复查通过",
+        "revision": 1,
+        "id": 16,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "observation",
+        "type": "cover-observed",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 2,
+        "hour": 0,
+        "result": "新值守日：三项检查待确认，表面状态保留",
+        "id": 17,
+        "objectId": "lighthouse-maintenance-log",
+        "kind": "system",
+        "type": "duty-day-started",
+        "source": "automatic-clock"
+      },
+      {
+        "dutyDay": 2,
+        "hour": 12,
+        "result": "保护面洁净，复查通过",
+        "revision": 1,
+        "id": 18,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "observation",
+        "type": "cover-observed",
+        "source": "local-panel"
+      }
+    ]
+  },
+  "passed": true,
+  "sourceBaseline": "b10e876",
+  "releaseManifestSha256": "b01420b4e5f71a47928c513722d67987572c049f9247da55de8e00e91a0d2c65"
+}

@@ -1,0 +1,18 @@
+{
+  "baseline": "e13fe78",
+  "manifestSha256": "4edd4131cd05d0c37455570232edbaaf0a91b6ec680d304d6ba29c6f18b7a998",
+  "fpsOrLoadTimeSampling": false,
+  "suites": {
+    "drills": {
+      "passed": false,
+      "exitCode": 1,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step2-2026-10-20/check-drills.cjs",
+      "scriptSha256": "ad507d2a3a084a8a816b44a3307d5c12fc9fefc12d7776355b17a5a7403378f0",
+      "adapterSha256": "ad507d2a3a084a8a816b44a3307d5c12fc9fefc12d7776355b17a5a7403378f0",
+      "result": "drills/drills.json",
+      "resultSha256": "d1129253c3b7d8d3c1cdfb056ba6e751b33cd8168a0734b30eb99785111064e8",
+      "log": "drills.log"
+    }
+  },
+  "passed": false
+}
