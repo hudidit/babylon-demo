@@ -1,0 +1,5874 @@
+{
+  "baseline": "8aea9e9",
+  "browser": "155.0.8059.85",
+  "cacheDisabled": true,
+  "fpsOrLoadTimeSampling": false,
+  "rooms": [
+    {
+      "id": "living-ceiling-lamp",
+      "nodes": [
+        {
+          "hour": 3,
+          "luminance": 47.403705405749015
+        },
+        {
+          "hour": 12,
+          "luminance": 103.44408274600447
+        },
+        {
+          "hour": 21,
+          "luminance": 51.56208252884493
+        }
+      ],
+      "onLuminance": 49.11496926559502,
+      "offLuminance": 20.44345656435434,
+      "restoredLuminance": 49.11496926559502
+    },
+    {
+      "id": "master-ceiling-lamp",
+      "nodes": [
+        {
+          "hour": 3,
+          "luminance": 70.4953690269725
+        },
+        {
+          "hour": 12,
+          "luminance": 147.8247648522428
+        },
+        {
+          "hour": 21,
+          "luminance": 74.97894052873387
+        }
+      ],
+      "onLuminance": 72.46451938445875,
+      "offLuminance": 29.135425305877174,
+      "restoredLuminance": 72.46451938445875
+    },
+    {
+      "id": "bedroom-ceiling-lamp",
+      "nodes": [
+        {
+          "hour": 3,
+          "luminance": 92.10588848331534
+        },
+        {
+          "hour": 12,
+          "luminance": 167.13528156813206
+        },
+        {
+          "hour": 21,
+          "luminance": 97.35878720230633
+        }
+      ],
+      "onLuminance": 94.62028896142914,
+      "offLuminance": 32.87879622305335,
+      "restoredLuminance": 94.62028896142914
+    },
+    {
+      "id": "study-ceiling-lamp",
+      "nodes": [
+        {
+          "hour": 3,
+          "luminance": 62.98456110885295
+        },
+        {
+          "hour": 12,
+          "luminance": 121.47614061662391
+        },
+        {
+          "hour": 21,
+          "luminance": 66.30899112638308
+        }
+      ],
+      "onLuminance": 64.7643531448713,
+      "offLuminance": 20.546791111235724,
+      "restoredLuminance": 64.7643531448713
+    }
+  ],
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:8217/js/main.js",
+      "status": 200,
+      "bytes": 305927
+    },
+    {
+      "url": "http://127.0.0.1:8217/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8217/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8217/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:8217/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8217/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8217/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8217/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8217/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8217/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8217/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8217/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    }
+  ],
+  "initialJsBytes": 2944957,
+  "resources": {
+    "meshes": 693,
+    "vertices": 575224,
+    "materials": 103,
+    "textures": 152,
+    "lights": 22,
+    "cameras": 3
+  },
+  "lightSlots": [
+    {
+      "name": "master-oak-floor",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-foundation-study-darkWood-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-ceiling",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light"
+      ],
+      "shaderLights": 1
+    },
+    {
+      "name": "study-oak-floor",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-foundation-study-darkWood-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-ceiling",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light"
+      ],
+      "shaderLights": 1
+    },
+    {
+      "name": "bedroom-oak-floor",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-foundation-study-darkWood-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-ceiling",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light"
+      ],
+      "shaderLights": 1
+    },
+    {
+      "name": "living-oak-floor",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-foundation-study-darkWood-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-ceiling",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light"
+      ],
+      "shaderLights": 1
+    },
+    {
+      "name": "house-wall-0-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-0-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-skirting-0-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-1-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-1-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-skirting-1-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-2-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-3-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-3-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-skirting-3-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-4-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-4-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-skirting-4-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-4-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-4-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-4-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-4-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-4-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-5-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-5-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-skirting-5-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-5-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-5-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-5-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-6-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-6-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-6-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-7-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-7-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-skirting-7-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-7-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-7-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-7-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-7-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-7-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-12-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-12-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-12-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-13-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-14-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-14-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-14-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-15-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "bathroom-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-15-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "bathroom-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-15-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "bathroom-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-16-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-16-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-skirting-16-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-21-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-21-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-skirting-21-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-22-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "house-wall-22-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "house-skirting-22-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "study-wainscot-22-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-22-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-22-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-22-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-22-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-23-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "house-wall-23-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "house-skirting-23-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "living-wainscot-23-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-23-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-23-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-23-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-23-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-24-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "living-cornice-24-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-24-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-25-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "house-wall-25-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "house-skirting-25-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "living-wainscot-25-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-25-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-25-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-25-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-25-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-26-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-26-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-26-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-26-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-26-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-26-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-26-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-26-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-27-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-27-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-27-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-28-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-28-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-28-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-28-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-28-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-28-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-28-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-28-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-29-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "house-wall-29-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "house-skirting-29-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "living-wainscot-29-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-29-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-29-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-29-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-29-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-30-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "living-cornice-30-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-30-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-31-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "house-wall-31-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "house-skirting-31-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "living-wainscot-31-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-31-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-31-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-31-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-31-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-33-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "house-wall-33-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "house-skirting-33-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "living-wainscot-33-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-33-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-33-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-33-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-33-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-wainscot-33-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-33-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-33-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-33-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-33-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-34-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "living-cornice-34-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-34-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-cornice-34-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-34-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-35-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "house-wall-35-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "house-skirting-35-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "living-wainscot-35-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-35-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-35-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-35-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-35-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-wainscot-35-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-35-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-35-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-35-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-35-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-36-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "house-wall-36-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "house-skirting-36-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "living-wainscot-36-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-36-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-36-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-36-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-36-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-37-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "living-cornice-37-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-37-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-38-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "house-wall-38-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "house-skirting-38-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "living-wainscot-38-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-38-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-38-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-38-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-38-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-39-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-39-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-39-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-wainscot-39-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-39-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wainscot-39-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-39-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cornice-39-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-41-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-41-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-41-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-41-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-41-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-41-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-41-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-41-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-42-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-42-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-42-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-43-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-43-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-43-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-43-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-43-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-43-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-43-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-43-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-44-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-44-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-44-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-44-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-44-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-44-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-45-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-45-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-45-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-46-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-46-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-46-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-46-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-46-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-46-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-46-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-46-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-48-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "ensuite-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-48-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "ensuite-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-48-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "ensuite-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-49-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bathroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-49-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bathroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-49-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bathroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-51-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-51-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-skirting-51-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-52-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-52-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-skirting-52-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-53-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-54-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-54-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-skirting-54-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "house-wall-55-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-55-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-55-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-55-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-55-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-55-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-55-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-55-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-56-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-56-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-56-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-57-low",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-wall-57-upper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "house-skirting-57-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-57-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-57-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wainscot-57-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-57-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-cornice-57-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "entry-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "entry-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "entry-door-header",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "master-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "master-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "master-door-header",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "ensuite-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "ensuite-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "ensuite-door-header",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "bathroom-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "bathroom-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "bathroom-door-header",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "bedroom-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "bedroom-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "bedroom-door-header",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "connecting-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "connecting-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "connecting-door-header",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "kitchen-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "kitchen-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "kitchen-door-header",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "balcony-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "balcony-door-jamb",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "balcony-door-header",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "balcony-door-fixed-study-window-glass-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "balcony-door-fixed-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "balcony-door-fixed-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-window-glass-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "master-window-study-window-glass-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-window-curtains-fabric",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-window-curtains-rings",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-window-curtains-ties",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-window-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-window-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-window-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-window-study-window-glass-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-window-curtains-fabric",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-window-curtains-rings",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-window-curtains-ties",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-window-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-window-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-window-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-window-study-window-glass-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-window-curtains-fabric",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-window-curtains-rings",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-window-curtains-ties",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-window-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-window-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-window-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "living-window-study-window-glass-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-window-curtains-fabric",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-window-curtains-rings",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-window-curtains-ties",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-window-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-window-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-window-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-wall-art-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wall-art-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wall-art-study-study-landscape-artwork",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "living-wall-art-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wall-art-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-wall-art-study-living-landscape-artwork",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-content-study-rug-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-content-study-desktop-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-content-study-deskLeather",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-letter-paper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-lampGlass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-desk-lamp-glow-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-content-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-content-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-content-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-content-study-book-paper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-content-study-book-burgundy-1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-content-study-book-navy-0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-content-study-book-cushion-1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-content-study-ceramic",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-content-study-moss",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "living-content-study-cream",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-rug-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-ceramic",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-living-lamp-shade",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-black",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-floor-lamp-shade",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-moss",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-cushion",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-rust",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-cream-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-coffee-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-book-paper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-book-burgundy-0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-book-navy-1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-book-cushion-0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-ceramic",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-navy",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-book-burgundy-1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-book-navy-0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-book-cushion-1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-black",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-stem",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-soil",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "living-content-study-leaf",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "master-bed-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-bed-study-cushion",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-bed-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-bed-study-cream",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-bed-study-moss",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-nightstand-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-nightstand-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-nightstand-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-nightstand-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-nightstand-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-nightstand-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-wardrobe-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-wardrobe-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-wardrobe-study-paintGreen",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-wardrobe-study-moss",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-wardrobe-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-accessories-study-rug-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-accessories-study-navy",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "master-accessories-study-ceramic",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-ceramic",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-master-lamp-glow",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-bed-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-bed-study-cushion",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-bed-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-bed-study-cream",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-bed-study-navy",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-nightstand-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-nightstand-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-nightstand-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-wardrobe-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-wardrobe-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-wardrobe-study-navy",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-wardrobe-study-cushion",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-wardrobe-study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-reading-seat-study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-reading-seat-study-cushion",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-reading-seat-study-paper",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-reading-seat-study-rust",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-reading-seat-study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-navy",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-bedroom-lamp-glow",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-living-ceiling-lamp-glow",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-master-ceiling-lamp-glow",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-bedroom-ceiling-lamp-glow",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-study-ceiling-lamp-glow",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-paintGreen",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-paintGreen",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "living-ceiling-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "study-paintGreen",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "ensuite-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-paintGreen",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bathroom-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-paintGreen",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "living-ceiling-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 7
+    },
+    {
+      "name": "study-paintGreen",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "study-paintGreen",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "kitchen-window-daylight",
+        "kitchen-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 6
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "balcony-daylight",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-wood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-darkWood",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "sofa_03_primitive0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "sofa_03_primitive1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "GothicCommode_01",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "GothicCommode_01_door03",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "GothicCommode_01_door02",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "GothicCommode_01_door01",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "modern_arm_chair_01_primitive0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "modern_arm_chair_01_primitive1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    },
+    {
+      "name": "wooden_bookshelf_worn",
+      "slots": 4,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-brass",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-burgundy-0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-brass-surface",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-moss-0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-navy-0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-cushion-0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-rust-0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-cream-0",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-burgundy-1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-moss-1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-navy-1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-cushion-1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-rust-1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-book-cream-1",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-ceramic",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-stem",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-cushion",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    }
+  ],
+  "compiledFloorLights": [
+    {
+      "name": "master-oak-floor",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "master-window-daylight",
+        "master-lamp-light",
+        "master-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "study-oak-floor",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "window-daylight",
+        "banker-lamp-light",
+        "study-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "bedroom-oak-floor",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "bedroom-window-daylight",
+        "bedroom-lamp-light",
+        "bedroom-ceiling-lamp-light"
+      ],
+      "shaderLights": 4
+    },
+    {
+      "name": "living-oak-floor",
+      "slots": 22,
+      "sources": [
+        "room-bounce-light",
+        "reading-lamp-light",
+        "living-window-daylight",
+        "living-table-lamp-light",
+        "living-ceiling-lamp-light"
+      ],
+      "shaderLights": 5
+    }
+  ],
+  "originalLampStates": [
+    {
+      "id": "floor-lamp",
+      "on": true
+    },
+    {
+      "id": "desk-lamp",
+      "on": true
+    },
+    {
+      "id": "living-lamp",
+      "on": true
+    },
+    {
+      "id": "master-lamp",
+      "on": true
+    },
+    {
+      "id": "ensuite-lamp",
+      "on": true
+    },
+    {
+      "id": "bedroom-lamp",
+      "on": true
+    },
+    {
+      "id": "kitchen-lamp",
+      "on": true
+    },
+    {
+      "id": "bathroom-lamp",
+      "on": true
+    }
+  ],
+  "disposed": {
+    "meshes": 0,
+    "lights": 0,
+    "textures": 0
+  },
+  "errors": [],
+  "warnings": [],
+  "failedRequests": [],
+  "passed": true,
+  "sourceBaseline": "08fb5ae",
+  "releaseManifestSha256": "76042f0795317efda7eb3aa51f9fec7fb52c88fee718212fd515de0a2cdaab02"
+}

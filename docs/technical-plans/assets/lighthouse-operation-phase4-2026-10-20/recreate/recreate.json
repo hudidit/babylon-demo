@@ -1,0 +1,286 @@
+{
+  "baseline": "8aea9e9",
+  "fpsOrLoadTimeSampling": false,
+  "cycles": [
+    {
+      "index": 0,
+      "active": {
+        "document": {
+          "keydown": 4,
+          "pointerdown": 3,
+          "fullscreenchange": 1,
+          "webkitfullscreenchange": 1,
+          "pointerlockchange": 2,
+          "webkitpointerlockchange": 1,
+          "pointerlockerror": 1,
+          "visibilitychange": 3,
+          "keyup": 1,
+          "click": 1
+        },
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "resize": 2,
+          "blur": 4,
+          "focus": 2,
+          "gamepadconnected": 2,
+          "gamepaddisconnected": 2,
+          "pagehide": 1,
+          "__playwright_global_listeners_check__": 1
+        },
+        "toggle": {
+          "click": 1
+        }
+      },
+      "sky": {
+        "stars": 1,
+        "seaStars": 1,
+        "light": [
+          0.019382360956935723,
+          0.03688945040110004,
+          0.07618538148130785
+        ],
+        "seaLight": [
+          0.019382360956935723,
+          0.03688945040110004,
+          0.07618538148130785
+        ],
+        "pixelSha256": "6661ffce8822d96429076caec6872e4d5916c6dcb7bed7b7f229856f1b1dd7b9"
+      },
+      "resources": {
+        "meshes": 693,
+        "materials": 103,
+        "textures": 152,
+        "lights": 22,
+        "cameras": 3
+      },
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0,
+        "observers": 0,
+        "engineScenes": 0
+      },
+      "after": {
+        "document": {},
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "__playwright_global_listeners_check__": 1
+        },
+        "toggle": {}
+      },
+      "passed": true
+    },
+    {
+      "index": 1,
+      "active": {
+        "document": {
+          "keydown": 4,
+          "pointerdown": 3,
+          "fullscreenchange": 1,
+          "webkitfullscreenchange": 1,
+          "pointerlockchange": 2,
+          "webkitpointerlockchange": 1,
+          "pointerlockerror": 1,
+          "visibilitychange": 3,
+          "keyup": 1,
+          "click": 1
+        },
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "__playwright_global_listeners_check__": 1,
+          "resize": 2,
+          "blur": 4,
+          "focus": 2,
+          "gamepadconnected": 2,
+          "gamepaddisconnected": 2,
+          "pagehide": 1
+        },
+        "toggle": {
+          "click": 1
+        }
+      },
+      "sky": {
+        "stars": 1,
+        "seaStars": 1,
+        "light": [
+          0.019382360956935723,
+          0.03688945040110004,
+          0.07618538148130785
+        ],
+        "seaLight": [
+          0.019382360956935723,
+          0.03688945040110004,
+          0.07618538148130785
+        ],
+        "pixelSha256": "6661ffce8822d96429076caec6872e4d5916c6dcb7bed7b7f229856f1b1dd7b9"
+      },
+      "resources": {
+        "meshes": 693,
+        "materials": 103,
+        "textures": 152,
+        "lights": 22,
+        "cameras": 3
+      },
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0,
+        "observers": 0,
+        "engineScenes": 0
+      },
+      "after": {
+        "document": {},
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "__playwright_global_listeners_check__": 1
+        },
+        "toggle": {}
+      },
+      "passed": true
+    },
+    {
+      "index": 2,
+      "active": {
+        "document": {
+          "keydown": 4,
+          "pointerdown": 3,
+          "fullscreenchange": 1,
+          "webkitfullscreenchange": 1,
+          "pointerlockchange": 2,
+          "webkitpointerlockchange": 1,
+          "pointerlockerror": 1,
+          "visibilitychange": 3,
+          "keyup": 1,
+          "click": 1
+        },
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "__playwright_global_listeners_check__": 1,
+          "resize": 2,
+          "blur": 4,
+          "focus": 2,
+          "gamepadconnected": 2,
+          "gamepaddisconnected": 2,
+          "pagehide": 1
+        },
+        "toggle": {
+          "click": 1
+        }
+      },
+      "sky": {
+        "stars": 1,
+        "seaStars": 1,
+        "light": [
+          0.019382360956935723,
+          0.03688945040110004,
+          0.07618538148130785
+        ],
+        "seaLight": [
+          0.019382360956935723,
+          0.03688945040110004,
+          0.07618538148130785
+        ],
+        "pixelSha256": "6661ffce8822d96429076caec6872e4d5916c6dcb7bed7b7f229856f1b1dd7b9"
+      },
+      "resources": {
+        "meshes": 693,
+        "materials": 103,
+        "textures": 152,
+        "lights": 22,
+        "cameras": 3
+      },
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0,
+        "observers": 0,
+        "engineScenes": 0
+      },
+      "after": {
+        "document": {},
+        "window": {
+          "mousemove": 1,
+          "pointerdown": 1,
+          "pointerup": 1,
+          "touchstart": 1,
+          "touchend": 1,
+          "touchcancel": 1,
+          "mousedown": 1,
+          "mouseup": 1,
+          "click": 1,
+          "auxclick": 1,
+          "dblclick": 1,
+          "contextmenu": 1,
+          "__playwright_global_listeners_check__": 1
+        },
+        "toggle": {}
+      },
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "errors": [],
+  "sourceBaseline": "47eb076",
+  "releaseManifestSha256": "76042f0795317efda7eb3aa51f9fec7fb52c88fee718212fd515de0a2cdaab02"
+}

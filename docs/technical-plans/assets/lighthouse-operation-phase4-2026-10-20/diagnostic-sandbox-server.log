@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/huzi/work/babylon-demo/docs/technical-plans/assets/coastal-cliff-d-2026-10-18/serve-dist.py", line 28, in <module>
+    ThreadingHTTPServer(('127.0.0.1', args.port), partial(Handler, directory=args.root)).serve_forever()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted

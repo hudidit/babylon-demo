@@ -1,0 +1,245 @@
+{
+  "baseline": "8aea9e9",
+  "checkedLocalLinks": 328,
+  "missingLinks": [],
+  "suites": [
+    {
+      "name": "browser",
+      "passed": true
+    },
+    {
+      "name": "subpath",
+      "passed": true
+    },
+    {
+      "name": "journey",
+      "passed": true
+    },
+    {
+      "name": "matrix",
+      "passed": true
+    },
+    {
+      "name": "regression",
+      "passed": true
+    },
+    {
+      "name": "master-mirror",
+      "passed": true
+    },
+    {
+      "name": "public-mirror",
+      "passed": true
+    },
+    {
+      "name": "curtains",
+      "passed": true
+    },
+    {
+      "name": "ceiling",
+      "passed": true
+    },
+    {
+      "name": "scooter",
+      "passed": true
+    },
+    {
+      "name": "headlight",
+      "passed": true
+    },
+    {
+      "name": "continuity",
+      "passed": true
+    },
+    {
+      "name": "lifecycle",
+      "passed": true
+    },
+    {
+      "name": "recreate",
+      "passed": true
+    },
+    {
+      "name": "platforms",
+      "passed": true
+    },
+    {
+      "name": "release",
+      "passed": true
+    }
+  ],
+  "buildGeneratedTargets": [
+    "release-manifest.json",
+    "licenses/babylonjs-Apache-2.0.md",
+    "licenses/babylonjs-NOTICE.md"
+  ],
+  "earlyAdditionalRequests": [
+    {
+      "path": "/js/1442.js",
+      "bytes": 3323
+    }
+  ],
+  "budgets": {
+    "actualInitialJsBytes": [
+      2944957,
+      2944957
+    ],
+    "conservativeInitialJsBytes": 2948280,
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26332658,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 76701,
+    "manifestBytes": 92705,
+    "initialJsBytes": 2726105,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42369441
+  },
+  "platformCoverage": {
+    "chromium": true,
+    "webkit": true,
+    "firefox": false,
+    "safari": false,
+    "physicalDevices": false,
+    "availabilityProbeIsFunctionalTest": false
+  },
+  "completedSimulatedCycles": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "completeCycles": 8,
+      "checkpoints": 24,
+      "dutyDay": 9,
+      "retainedDays": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "automaticOperatingHours": 95.99999999996176,
+      "completedComponentPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "completeCycles": 4,
+      "checkpoints": 24,
+      "dutyDay": 5,
+      "retainedDays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "automaticOperatingHours": 47.99999999998409,
+      "completedComponentPassed": true
+    }
+  ],
+  "extraEightDayStressPassed": false,
+  "runtimeSourcesUnchanged": true,
+  "documents": 8,
+  "sourceScripts": [
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-lifecycle.cjs",
+      "sha256": "056e3e75ede3867d13215e92d3f7250c353456632685bd397bd4b14f78796702"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-platforms.cjs",
+      "sha256": "d4b3106e0fc332d51e44a4a3eab8edde63df122f13d59962afb52e797b653b92"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-recreate.cjs",
+      "sha256": "f4ad6f44662fd015fb75395dbdb8a021f4f9a3a295b8ddc14dc246f0592c685c"
+    },
+    {
+      "path": "docs/technical-plans/assets/clouds-stars-phase3-2026-10-19/check-scooter.cjs",
+      "sha256": "fddcca18b17e9d4b76e5bacd39ae9e2bfd3f2f159320194d5044854d2da619cc"
+    },
+    {
+      "path": "docs/technical-plans/assets/coastal-cliff-d-2026-10-18/serve-dist.py",
+      "sha256": "64ca8f4fcbcf4e5fa56c738120af214b5aac3c1326a939048f2176b85488c092"
+    },
+    {
+      "path": "docs/technical-plans/assets/day-night-phase2-2026-10-19/check-night-master-mirror.cjs",
+      "sha256": "aa6677d8b509a3b98109c0be9307df69a23e8cfdf7ded19bb3a4a89b32c9f3e4"
+    },
+    {
+      "path": "docs/technical-plans/assets/day-night-phase2-2026-10-19/check-night-public-mirror.cjs",
+      "sha256": "40c7327e0c94abd4571ec8b1fa1a089e71e2ce5959265c01348d188e16e97de0"
+    },
+    {
+      "path": "docs/technical-plans/assets/day-night-phase4-2026-10-19/browser-harness.cjs",
+      "sha256": "ae42558b4ff0fbc84929327e7dea1e1e2388e6db957c5e04a4b82000b0cc5a4b"
+    },
+    {
+      "path": "docs/technical-plans/assets/house-ceiling-lights-2026-10-20/check-browser.cjs",
+      "sha256": "fe95b9be23484717bbce7eb199a03d8e2ffff70b1c7e4180e5bd4bd16aa04fbf"
+    },
+    {
+      "path": "docs/technical-plans/assets/interactive-curtains-2026-10-20/check-browser.cjs",
+      "sha256": "6d0594695c0406b564836203e64fa553677d9f65ea34d13fdfa68d7476f418f3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/browser-harness.cjs",
+      "sha256": "518b9a3c58b355f453062977ebaca0633cf927cd410a90ed074490b0ec334f07"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs",
+      "sha256": "5b10dece56d4bd2092a49195bf179f56fe54541691f1118663131163036a69f6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-finish-2026-10-19/check-journey.cjs",
+      "sha256": "dda2bf975b92f4a491d610afb8ae6728024769b03ef60be2885e21e814018f83"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-finish-2026-10-19/check-regression.cjs",
+      "sha256": "929ec470a9db520a4c766a2f61668de92c99f556bbb5725ebb20177ff0026d12"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-operation-phase3-2026-10-20/check-browser.cjs",
+      "sha256": "434d89b8e93d3bdccce3a1ebb30fab034b094d68566080a314500b74f8429ec6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-operation-phase3-2026-10-20/check-journey.cjs",
+      "sha256": "ffc56c40ea1bb4c2e62f9901f0d3a8ea75c9eef26165cf22305775ad183571f3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-operation-phase3-2026-10-20/check-matrix.cjs",
+      "sha256": "9670415dd23cb2243d0dca1ee619724f3b551dd98f6bdbfb098feb0498b3f557"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-operation-phase4-2026-10-20/check-continuity.cjs",
+      "sha256": "9258f11aa6fd6beaf5313ef9f0c7657a5d21b2a512cc09f2fb01047fc3361803"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-operation-phase4-2026-10-20/check-release.cjs",
+      "sha256": "4b1e8800fb6c6614fbe951bc119ce93d60502ec192d73f03bb29d2e232de669a"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-operation-phase4-2026-10-20/diagnostic-eight-day-stress.cjs",
+      "sha256": "616e76c12baf53834cc4f365840f654a5535e6fbaa0dc43170c87dc1280295a5"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-operation-phase4-2026-10-20/run-checks.cjs",
+      "sha256": "e6ec7e0005ac83ac361398250621c2ea28b0f4c79893eddc76863a1c084647b0"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-operation-phase4-2026-10-20/suite-adapter.cjs",
+      "sha256": "a87e79307ba649724e3e86964057f775219143626555de112b7813d59daac149"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-operation-phase4-2026-10-20/verify-evidence.cjs",
+      "sha256": "0d90b411ba6a1074f3562daf0533a60fb7155e0f632cbf088e0ba354035aac4c"
+    },
+    {
+      "path": "docs/technical-plans/assets/scooter-headlight-2026-10-20/check-browser.cjs",
+      "sha256": "de4dbf033705d995241f7ec5cfc282486d027556fe7f017b5f370faeb6ba75ec"
+    }
+  ],
+  "passed": true
+}

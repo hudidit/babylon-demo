@@ -1,0 +1,624 @@
+{
+  "baseline": "8aea9e9",
+  "fpsOrLoadTimeSampling": false,
+  "physicalDevicesTested": false,
+  "method": "Audit only completed production-observer cycles from the identical-manifest stress record (Chrome 8, WebKit 4), then new bounded fresh-session/reload checks. Overall eight-cycle-per-engine stress was deliberately interrupted; no unfinished fifth WebKit cycle or performance claim.",
+  "stressAttemptPassed": false,
+  "completedCycles": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "completeCycles": 8,
+      "checkpoints": 24,
+      "dutyDay": 9,
+      "retainedDays": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "automaticOperatingHours": 95.99999999996176,
+      "completedComponentPassed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "completeCycles": 4,
+      "checkpoints": 24,
+      "dutyDay": 5,
+      "retainedDays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "automaticOperatingHours": 47.99999999998409,
+      "completedComponentPassed": true
+    }
+  ],
+  "freshSessions": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "errors": [],
+      "warnings": [],
+      "failedRequests": [],
+      "initial": {
+        "operation": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 12,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "day-standby",
+          "running": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0,
+          "rotationRadians": 0,
+          "automaticOperatingHours": 0,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            }
+          ]
+        },
+        "inspection": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false,
+          "dirty": true,
+          "coverRevision": 0,
+          "transmission": 0.82,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "pending"
+              },
+              "completed": false
+            }
+          ],
+          "events": []
+        },
+        "hour": 12,
+        "automatic": false
+      },
+      "liveCycle": {
+        "operation": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 21,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "night-running",
+          "running": true,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0,
+          "rotationRadians": 0,
+          "automaticOperatingHours": 0,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "manual-time",
+              "result": "night-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "night-running"
+            }
+          ]
+        },
+        "inspection": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false,
+          "dirty": true,
+          "coverRevision": 0,
+          "transmission": 0.82,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "pending"
+              },
+              "completed": false
+            }
+          ],
+          "events": []
+        },
+        "hour": 21,
+        "automatic": false
+      },
+      "automatic": {
+        "operation": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 21.01666666666665,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "night-running",
+          "running": true,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0.09999999999999999,
+          "rotationRadians": 0.6283185307179586,
+          "automaticOperatingHours": 0.01666666666665151,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "manual-time",
+              "result": "night-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "night-running"
+            }
+          ]
+        },
+        "inspection": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false,
+          "dirty": true,
+          "coverRevision": 0,
+          "transmission": 0.82,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "pending"
+              },
+              "completed": false
+            }
+          ],
+          "events": []
+        },
+        "hour": 21.01666666666665,
+        "automatic": true
+      },
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "observers": 0
+      },
+      "refreshed": {
+        "operation": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 12,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "day-standby",
+          "running": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0,
+          "rotationRadians": 0,
+          "automaticOperatingHours": 0,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            }
+          ]
+        },
+        "inspection": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false,
+          "dirty": true,
+          "coverRevision": 0,
+          "transmission": 0.82,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "pending"
+              },
+              "completed": false
+            }
+          ],
+          "events": []
+        },
+        "hour": 12,
+        "automatic": false
+      },
+      "passed": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "errors": [],
+      "warnings": [],
+      "failedRequests": [],
+      "initial": {
+        "operation": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 12,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "day-standby",
+          "running": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0,
+          "rotationRadians": 0,
+          "automaticOperatingHours": 0,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            }
+          ]
+        },
+        "inspection": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false,
+          "dirty": true,
+          "coverRevision": 0,
+          "transmission": 0.82,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "pending"
+              },
+              "completed": false
+            }
+          ],
+          "events": []
+        },
+        "hour": 12,
+        "automatic": false
+      },
+      "liveCycle": {
+        "operation": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 21,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "night-running",
+          "running": true,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0,
+          "rotationRadians": 0,
+          "automaticOperatingHours": 0,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "manual-time",
+              "result": "night-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "night-running"
+            }
+          ]
+        },
+        "inspection": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false,
+          "dirty": true,
+          "coverRevision": 0,
+          "transmission": 0.82,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "pending"
+              },
+              "completed": false
+            }
+          ],
+          "events": []
+        },
+        "hour": 21,
+        "automatic": false
+      },
+      "automatic": {
+        "operation": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 21.01666666666665,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "night-running",
+          "running": true,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0.09999999999999999,
+          "rotationRadians": 0.6283185307179586,
+          "automaticOperatingHours": 0.01666666666665151,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "manual-time",
+              "result": "night-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "night-running"
+            }
+          ]
+        },
+        "inspection": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false,
+          "dirty": true,
+          "coverRevision": 0,
+          "transmission": 0.82,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "pending"
+              },
+              "completed": false
+            }
+          ],
+          "events": []
+        },
+        "hour": 21.01666666666665,
+        "automatic": true
+      },
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "observers": 0
+      },
+      "refreshed": {
+        "operation": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 12,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "day-standby",
+          "running": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0,
+          "rotationRadians": 0,
+          "automaticOperatingHours": 0,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            }
+          ]
+        },
+        "inspection": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false,
+          "dirty": true,
+          "coverRevision": 0,
+          "transmission": 0.82,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "pending"
+              },
+              "completed": false
+            }
+          ],
+          "events": []
+        },
+        "hour": 12,
+        "automatic": false
+      },
+      "passed": true
+    }
+  ],
+  "provenance": {
+    "baseline": "8aea9e9",
+    "releaseManifestSha256": "76042f0795317efda7eb3aa51f9fec7fb52c88fee718212fd515de0a2cdaab02",
+    "sourceSha256": "616e76c12baf53834cc4f365840f654a5535e6fbaa0dc43170c87dc1280295a5",
+    "resultSha256": "0bb2c6ae7b0f9fa16147d4393d932aafe8620612c74404f19477c8cf121fbaae",
+    "originalSuite": {
+      "script": "docs/technical-plans/assets/lighthouse-operation-phase4-2026-10-20/check-continuity.cjs",
+      "scriptSha256": "616e76c12baf53834cc4f365840f654a5535e6fbaa0dc43170c87dc1280295a5",
+      "adapterSha256": "616e76c12baf53834cc4f365840f654a5535e6fbaa0dc43170c87dc1280295a5",
+      "result": "continuity/continuity.json",
+      "log": "continuity.log",
+      "exitCode": 1,
+      "passed": false,
+      "resultSha256": "0bb2c6ae7b0f9fa16147d4393d932aafe8620612c74404f19477c8cf121fbaae"
+    },
+    "overallPassed": false,
+    "interruption": "Agent intentionally stopped only the temporary WebKit content process after a long no-output stress run. Chrome completed 8 cycles; WebKit completed 4; fifth WebKit cycle and overall 8-cycle-per-engine completion are not claimed. This is a fixture interruption, not an application performance result."
+  },
+  "passed": true,
+  "sourceBaseline": "8aea9e9",
+  "releaseManifestSha256": "76042f0795317efda7eb3aa51f9fec7fb52c88fee718212fd515de0a2cdaab02"
+}

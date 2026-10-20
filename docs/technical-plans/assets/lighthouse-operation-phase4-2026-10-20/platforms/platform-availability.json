@@ -1,0 +1,27 @@
+{
+  "baseline": "8aea9e9",
+  "checkedOn": "2026-10-20",
+  "settingsChanged": false,
+  "physicalDevicesTested": false,
+  "firefox": {
+    "available": false,
+    "lighthouseTested": false,
+    "error": "TimeoutError: browserType.launch: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - <launching> /private/tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app/Contents/MacOS/firefox -no-remote -headless -profile /var/folders/6n/l6184h5j0797kpzl5fcps6sm0000gn/T/playwright_firefoxdev_profile-yROWWb -juggler-pipe -silent\u001b[22m\n\u001b[2m  - <launched> pid=47457\u001b[22m\n\u001b[2m  - [pid=47457][err] *** You are running in headless mode.\u001b[22m\n\u001b[2m  - [pid=47457][err] sandbox_extension_issue_file_to_process failed for /private/tmp/study-audio-test-browsers/firefox-1538/firefox/Nightly.app/Contents/MacOS/plugin-container.app: 1 (Operation not permitted)\u001b[22m\n\u001b[2m  - [pid=47457][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.478303) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt\u001b[22m\n"
+  },
+  "safariVersion": "Included with Safari 27.0 (22625.1.29.11.26)",
+  "safari": {
+    "available": false,
+    "lighthouseTested": false,
+    "status": 500,
+    "body": {
+      "value": {
+        "error": "session not created",
+        "message": "Could not create a session: You must enable 'Allow remote automation' in the Developer section of Safari Settings to control Safari via WebDriver.",
+        "stacktrace": ""
+      }
+    },
+    "driverLogs": ""
+  },
+  "sourceBaseline": "47eb076",
+  "releaseManifestSha256": "76042f0795317efda7eb3aa51f9fec7fb52c88fee718212fd515de0a2cdaab02"
+}

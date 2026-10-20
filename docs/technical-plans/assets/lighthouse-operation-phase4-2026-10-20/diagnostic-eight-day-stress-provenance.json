@@ -1,0 +1,18 @@
+{
+  "baseline": "8aea9e9",
+  "releaseManifestSha256": "76042f0795317efda7eb3aa51f9fec7fb52c88fee718212fd515de0a2cdaab02",
+  "sourceSha256": "616e76c12baf53834cc4f365840f654a5535e6fbaa0dc43170c87dc1280295a5",
+  "resultSha256": "0bb2c6ae7b0f9fa16147d4393d932aafe8620612c74404f19477c8cf121fbaae",
+  "originalSuite": {
+    "script": "docs/technical-plans/assets/lighthouse-operation-phase4-2026-10-20/check-continuity.cjs",
+    "scriptSha256": "616e76c12baf53834cc4f365840f654a5535e6fbaa0dc43170c87dc1280295a5",
+    "adapterSha256": "616e76c12baf53834cc4f365840f654a5535e6fbaa0dc43170c87dc1280295a5",
+    "result": "continuity/continuity.json",
+    "log": "continuity.log",
+    "exitCode": 1,
+    "passed": false,
+    "resultSha256": "0bb2c6ae7b0f9fa16147d4393d932aafe8620612c74404f19477c8cf121fbaae"
+  },
+  "overallPassed": false,
+  "interruption": "Agent intentionally stopped only the temporary WebKit content process after a long no-output stress run. Chrome completed 8 cycles; WebKit completed 4; fifth WebKit cycle and overall 8-cycle-per-engine completion are not claimed. This is a fixture interruption, not an application performance result."
+}

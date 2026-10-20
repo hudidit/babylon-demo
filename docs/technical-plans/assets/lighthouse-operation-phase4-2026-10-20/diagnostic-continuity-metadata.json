@@ -1,0 +1,75 @@
+{
+  "baseline": "8aea9e9",
+  "fpsOrLoadTimeSampling": false,
+  "physicalDevicesTested": false,
+  "method": "Final dist; real time/settings UI; original scene observers at 100 ms reference steps. No equipment/clock/model replacement. Synthetic focus/visibility events isolate pause boundaries; no physical background-time claim.",
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "errors": [],
+      "warnings": [],
+      "failedRequests": [],
+      "days": [],
+      "initial": {
+        "operation": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 12,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "day-standby",
+          "running": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0,
+          "rotationRadians": 0,
+          "automaticOperatingHours": 0,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            }
+          ]
+        },
+        "inspection": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false,
+          "dirty": true,
+          "coverRevision": 0,
+          "transmission": 0.82,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "pending"
+              },
+              "completed": false
+            }
+          ],
+          "events": []
+        },
+        "hour": 12
+      },
+      "failure": "TypeError: Cannot read properties of undefined (reading 'automatic')\n    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-operation-phase4-2026-10-20/check-continuity.cjs:34:95\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:541:9)"
+    }
+  ],
+  "sourceBaseline": "8aea9e9",
+  "releaseManifestSha256": "76042f0795317efda7eb3aa51f9fec7fb52c88fee718212fd515de0a2cdaab02"
+}
