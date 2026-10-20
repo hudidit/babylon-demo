@@ -1,8 +1,10 @@
 import type { LighthouseOperationSnapshot, LighthouseEventType } from "./LighthouseOperation";
 import { LighthouseInspection } from "./LighthouseInspection";
 import type { LighthouseInspectionSnapshot, LighthouseCheckId } from "./LighthouseInspection";
+import { lighthouseEquipmentDefinition, lighthouseEquipmentReading } from "./LighthouseEquipmentLayout";
+import type { LighthouseEquipmentId } from "./LighthouseEquipmentLayout";
 
-export type LighthousePanelLocation = "control" | "test" | "cover" | "log";
+export type LighthousePanelLocation = "control" | "test" | "cover" | "log" | LighthouseEquipmentId;
 export const lighthouseClockLabel = (hour: number) => {
   const minutes = Math.floor(hour * 60 + 1e-7) % 1440;
   return String(Math.floor(minutes / 60)).padStart(2, "0") + ":" + String(minutes % 60).padStart(2, "0");
@@ -32,7 +34,7 @@ export class LighthousePanel {
     this.dialog.addEventListener("cancel", event => {event.preventDefault(); close(false);}, {signal});
     this.dialog.addEventListener("keydown", event => {
       if (event.key !== "Tab") return;
-      const buttons = Array.from(this.dialog.querySelectorAll<HTMLButtonElement>("button")).filter(button => !button.hidden && !button.disabled);
+      const buttons = Array.from(this.dialog.querySelectorAll<HTMLButtonElement>("button")).filter(button => button.getClientRects().length > 0 && !button.disabled);
       const first = buttons[0], last = buttons[buttons.length - 1], focused = document.activeElement;
       if (event.shiftKey && focused === first || !event.shiftKey && focused === last) {
         event.preventDefault(); (event.shiftKey ? last : first)?.focus();
@@ -53,7 +55,21 @@ export class LighthousePanel {
     if (!this.location || state === this.lastState && inspection === this.lastInspection) return;
     this.lastState = state; this.lastInspection = inspection;
     const set = (id: string, text: string) => {this.document.querySelector("#" + id)!.textContent = text;};
-    set("lighthouse-panel-place", ({test: "顶层灯室 · 灯座控制", control: "首层维护室 · 运行面板", cover: "顶层灯室 · 固定保护面", log: "首层维护室 · 维护记录夹"})[this.location]);
+    const equipment = lighthouseEquipmentDefinition(this.location);
+    this.document.querySelector<HTMLElement>("#lighthouse-operation-content")!.hidden = !!equipment;
+    this.document.querySelector<HTMLElement>("#lighthouse-equipment-content")!.hidden = !equipment;
+    this.dialog.dataset.equipment = equipment?.id || "";
+    set("lighthouse-panel-clock", `第 ${state.dutyDay} 个值守日 · ${lighthouseClockLabel(state.hour)}`);
+    if (equipment) {
+      const reading = lighthouseEquipmentReading(equipment.id, state);
+      set("lighthouse-panel-place", equipment.place); set("lighthouse-panel-title", equipment.label);
+      set("lighthouse-panel-state", reading.state); set("lighthouse-equipment-id", equipment.id);
+      set("lighthouse-equipment-purpose", equipment.purpose); set("lighthouse-equipment-status", reading.detail);
+      set("lighthouse-panel-guide", equipment.guide);
+      return;
+    }
+    const location = this.location as "control" | "test" | "cover" | "log";
+    set("lighthouse-panel-place", ({test: "顶层灯室 · 灯座控制", control: "首层维护室 · 运行面板", cover: "顶层灯室 · 固定保护面", log: "首层维护室 · 维护记录夹"})[location]);
     set("lighthouse-panel-title", this.location === "log" ? "值守与巡检记录" : this.location === "cover" ? "保护面检查" : "导航灯运行");
     set("lighthouse-panel-state", stateLabels[state.state]);
     set("lighthouse-panel-clock", `第 ${state.dutyDay} 个值守日 · ${lighthouseClockLabel(state.hour)}`);
@@ -80,7 +96,7 @@ export class LighthousePanel {
       cover: inspection.checks["check-cover"] === "awaiting-recheck" ? "盐膜已擦除，请确认复查结果。擦拭完成与复查通过分别记录。" : "先确认表面读数，再按需擦拭。仅白天自动待机可清洁；保持看向保护面，走开、开界面、失焦或设备起动会中断。夜间主灯保持自动导航。",
       log: "记录只在本次会话保留，刷新重新开始。自动跨午夜建立下一日清单，已清除的盐膜保持洁净。记录保留最近7个值守日。"
     };
-    set("lighthouse-panel-guide", guides[this.location]);
+    set("lighthouse-panel-guide", guides[location]);
     const labels: Record<LighthouseCheckId, string> = {"check-control": "首层运行读数", "check-optic": "灯具与转台周期", "check-cover": "固定保护面"};
     const statuses = {pending: "未检查", dirty: "已发现盐膜 · 待擦拭", "awaiting-recheck": "已擦拭 · 待复查", complete: "已确认"};
     const tasks = this.document.querySelector("#lighthouse-checklist")!;

@@ -1,0 +1,13 @@
+{
+  "checkedOn": "2026-10-20",
+  "node": "v24.21.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "babylon": "9.30.0",
+  "typescript": "5.9.3",
+  "webpack": "5.111.1",
+  "playwright": "1.64.1",
+  "cacheDisabled": true,
+  "server": "127.0.0.1:8219; final dist only",
+  "performanceSampling": false
+}

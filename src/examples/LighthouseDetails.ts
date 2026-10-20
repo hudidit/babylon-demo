@@ -11,6 +11,7 @@ import type { InspectableItem, InteractiveLamp } from "./RoomInteractions";
 import { LighthouseBeacon } from "./LighthouseBeacon";
 import { LighthouseCover } from "./LighthouseCover";
 import type { InteractiveDevice } from "./RoomInteractions";
+import { LighthouseEquipment } from "./LighthouseEquipment";
 
 /** Static maintenance contents and a single local work light owned by the coast. */
 export class LighthouseDetails {
@@ -22,6 +23,7 @@ export class LighthouseDetails {
   readonly beacon: LighthouseBeacon;
   readonly cover: LighthouseCover;
   readonly log: InteractiveDevice;
+  readonly equipment: LighthouseEquipment;
   on = true;
   private visible = true;
   private disposed = false;
@@ -92,8 +94,10 @@ export class LighthouseDetails {
     this.test = {id:"lighthouse-beacon-main",label:"灯室试灯控制",meshes:meshes.filter(m=>/test-control|test-label/.test(m.name))};
     this.beacon = new LighthouseBeacon(scene, surfaces, retain);
     this.cover = new LighthouseCover(scene, surfaces, retain);
+    this.equipment = new LighthouseEquipment(scene, surfaces, retain);
     this.targets = scene.meshes.filter((m): m is Mesh => !!m.metadata?.lighthouse &&
-      (/inner-wall|ground-floor|level-|ladder-|maintenance-cabinet|workbench|service-hardware|entry-door|door-rib|door-handle|detail-/.test(m.name)));
+      (/inner-wall|ground-floor|level-|ladder-|maintenance-cabinet|workbench|service-hardware|entry-door|door-rib|door-handle|detail-/.test(m.name)
+        || m.metadata?.equipmentId === "lighthouse-battery-main" || m.metadata?.equipmentId === "lighthouse-solar-charger"));
     this.targets.forEach(mesh => {if(mesh.material) (mesh.material as PBRMaterial).maxSimultaneousLights=2;});
     this.light = new SpotLight("lighthouse-local-work-light", Vector3.Zero(), new Vector3(0,-1,0), Math.PI*.85, 1, scene);
     this.light.diffuse = Color3.FromHexString("#ffe1ad").toLinearSpace();this.light.specular = this.light.diffuse.scale(.35);

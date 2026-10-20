@@ -191,9 +191,9 @@ test("shared PBR coast keeps house support, sea height, bounded geometry and own
   assert.equal(scene.metadata.exteriorVersion, COASTAL_CLIFF.version);
   assert.equal(scene.meshes.filter(m => m.name === 'coastal-sea').length, 1);
   assert.equal(scene.meshes.filter(m => m.name === 'coastal-sky').length, 1);
-  assert.equal(exterior.surfaces.textures.length, 8, 'six shared PBR maps, one outdoor HDR and one generated signage atlas');
+  assert.equal(exterior.surfaces.textures.length, 9, 'six shared PBR maps, one outdoor HDR and two generated signage atlases');
   assert.equal(scene.lights.filter(l => l.name === 'coastal-afternoon-sun').length, 1);
-  assert.ok(exterior.meshes.filter(m => !m.metadata.lighthouseInteriorStructure && !m.metadata.lighthouseDetail).reduce((n, m) => n + m.getTotalVertices(), 0) < 160000);
+  assert.ok(exterior.meshes.filter(m => !m.metadata.lighthouseInteriorStructure && !m.metadata.lighthouseDetail && !m.metadata.lighthouseEquipment).reduce((n, m) => n + m.getTotalVertices(), 0) < 160000);
   assert.equal(coastalCrestY(8.1), COASTAL_CLIFF.balconyEdgeY + COASTAL_CLIFF.setback);
   const sea = scene.getMeshByName('coastal-sea');
   assert.equal(coastalSeaY, -145);

@@ -45,6 +45,7 @@ import { LighthousePanel } from "./LighthousePanel";
 import { LighthouseInspection } from "./LighthouseInspection";
 import { lighthouseBeamStrength } from "./LighthouseBeacon";
 import type { LighthousePanelLocation } from "./LighthousePanel";
+import { lighthouseEquipmentDefinition, LIGHTHOUSE_EQUIPMENT, lighthouseEquipmentReading } from "./LighthouseEquipmentLayout";
 
 export type RoomView = "overview" | "coast" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 // The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
@@ -196,6 +197,8 @@ export class RoomScene {
     this.interactions.addLamp(lighthouse.switch, () => lighthouse.on, () => lighthouse.toggle());
     this.interactions.addDevice(lighthouse.log, () => this.openLighthousePanel("log"));
     this.interactions.addDevice(lighthouse.cover.device, () => this.openLighthousePanel("cover"));
+    lighthouse.equipment.devices.forEach(device => this.interactions.addDevice(device,
+      () => this.openLighthousePanel(device.id as LighthousePanelLocation)));
     this.scooterModel = new CoastalScooterModel(this.scene, this.exterior.sun, this.exterior.surfaces, this.exterior.meshes);
     this.scooterModel.update(this.scooter, false);
     this.notifyLighthouseOperation();
@@ -333,6 +336,11 @@ export class RoomScene {
     this.lighthouseInspectionState?.synchronize(this.lighthouseOperation);
     this.scene.metadata.lighthouseOperation.state = this.lighthouseOperation;
     this.scene.metadata.lighthouseOperation.inspection = this.lighthouseInspection;
+    if (!this.scene.metadata.lighthouseEquipment) this.scene.metadata.lighthouseEquipment = { project: 2, step: 1, commissioned: false,
+      devices: LIGHTHOUSE_EQUIPMENT.map(device => ({id: device.id, parent: device.parent, label: device.label,
+        ...lighthouseEquipmentReading(device.id, this.lighthouseOperation)})) };
+    const hatch = this.scene.metadata.lighthouseEquipment.devices[0], reading = lighthouseEquipmentReading(hatch.id, this.lighthouseOperation);
+    if (hatch.state !== reading.state) Object.assign(hatch, reading);
     if (this.exterior?.lighthouseDetails?.beacon) {
       this.exterior.lighthouseDetails.beacon.apply(this.lighthouseOperation, this.lighthouseInspection?.transmission);
       if (this.lighthouseInspection) this.exterior.lighthouseDetails.cover?.apply(this.lighthouseInspection);
@@ -756,6 +764,12 @@ export class RoomScene {
   }
   private canAccessLighthouse(location: LighthousePanelLocation) {
     const details = this.exterior.lighthouseDetails;
+    const equipment = lighthouseEquipmentDefinition(location);
+    if (equipment) {
+      const device = details.equipment.device(equipment.id);
+      return !!device && this.atLighthouseFloor(equipment.floor)
+        && this.interactions.canReachDevice(device, this.firstPersonCamera.position);
+    }
     const device = location === "test" ? details.test : location === "cover" ? details.cover.device : location === "log" ? details.log : details.panel;
     return this.atLighthouseFloor(location === "test" || location === "cover" ? LIGHTHOUSE.gallery : LIGHTHOUSE.floor)
       && this.interactions.canReachDevice(device, this.firstPersonCamera.position);
@@ -1005,9 +1019,9 @@ export class RoomScene {
       const help = document.querySelector("#view-help");
       const point = worldToPlan(this.firstPersonCamera.position);
       const lighthouseRegion = walkingSurfaceAt(point.x, point.y, this.jump.feet)?.region;
-      const inLighthouse = lighthouseRegion?.startsWith("灯塔") && !["灯塔前场", "灯塔入口"].includes(lighthouseRegion);
+      const inLighthouse = lighthouseRegion?.startsWith("灯塔") && !["灯塔前场", "灯塔入口", "灯塔独立机房"].includes(lighthouseRegion);
       if (help) help.textContent = this.ladder?.attached ? "垂直梯 · W/↑ 上爬 · S/↓ 下爬 · E 到层离梯 · 松键停留 · M 地图" : this.scooter.riding ? "鼠标环顾 · WASD 驾驶 · 空格刹车 · E 下车 · M 地图 · ESC 退出"
-        : inLighthouse
+        : lighthouseRegion === "灯塔独立机房" ? "独立机房 · 点击设备查看 · 保持检修入口畅通 · M 地图" : inLighthouse
           ? `${lighthouseRegion} · 靠近垂直梯按 E 上下楼 · M 地图`
           : "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出";
       if (help) help.textContent += " · T 调整时间";

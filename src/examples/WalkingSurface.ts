@@ -8,6 +8,7 @@ import { COASTAL_SITE, COASTAL_WALK_BOUNDARY } from "./CoastalSite";
 import { HOUSE_JUMP, jumpBlockedAt } from "./HouseJump";
 import { lighthousePointAllowed, lighthouseSurfaceAt } from "./LighthouseWalking";
 import type { LighthouseSupport } from "./LighthouseWalking";
+import { LIGHTHOUSE_SERVICE_ROOM, lighthouseEquipmentPointAllowed, lighthouseServiceRoomAt } from "./LighthouseEquipmentLayout";
 
 export type WalkingSurface = CoastalSurface & { kind: "floor" | "terrain" | "path" | "platform"; region: string; ceiling?: number; lighthouse?: boolean };
 const flat = { x: 0, y: 1, z: 0 };
@@ -74,6 +75,9 @@ export function walkingSurfaceAt(x: number, y: number, feet?: number, maxStep = 
   }
   if (Math.abs(x - t.x) <= COASTAL_SITE.plaza.width / 2 && Math.abs(y - t.y) <= COASTAL_SITE.plaza.depth / 2)
     use({ height: t.ground + .04, normal: flat }, "platform");
+  if (lighthouseServiceRoomAt(x, y)) {
+    result.region = "灯塔独立机房"; result.ceiling = LIGHTHOUSE_SERVICE_ROOM.floor + LIGHTHOUSE_SERVICE_ROOM.clearHeight;
+  }
   // The lookout is a 32-sided cylinder, so test its real footprint instead of its bounding circle.
   const dx = x - l.x, dy = y - l.y, angle = Math.atan2(dy, dx), sector = Math.PI / 16;
   const radius = l.radius * Math.cos(sector / 2) / Math.cos(((angle % sector + sector) % sector) - sector / 2);
@@ -90,6 +94,8 @@ export function walkingPointAllowed(p: PlanPoint, radius: number = HOUSE_JUMP.pl
   if (!withinWalkingBoundary(p, radius) || jumpBlockedAt(p.x, p.y)) return false;
   if (outerWalls.some(w => distance(p, w.a, w.b) < radius + HOUSE_COORDINATES.wallThickness / 2 - .002)) return false;
   const support = surface ?? walkingSurfaceAt(p.x, p.y, feet), l = COASTAL_SITE.lookoutSeat;
+  if (!lighthouseEquipmentPointAllowed(p.x, p.y, radius, feet ?? support?.height ?? 0)) return false;
+  if (support?.ceiling !== undefined && (feet ?? support.height) + 1.68 > support.ceiling + 1e-6) return false;
   if (!lighthousePointAllowed(p.x, p.y, radius, feet, support?.lighthouse ? support as LighthouseSupport : undefined)) return false;
   if (Math.abs(p.x - l.x) < 1 + radius && Math.abs(p.y - l.y) < .31 + radius) return false;
   if (!support || support.normal.y < Math.cos(Math.PI / 6)) return false;

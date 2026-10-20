@@ -277,6 +277,15 @@
       <header class="lighthouse-heading"><div><p id="lighthouse-panel-place"></p><h2 id="lighthouse-panel-title">导航灯运行</h2></div><button id="lighthouse-panel-return">返回场景</button></header>
       <div class="lighthouse-body">
         <p id="lighthouse-panel-state"></p><p id="lighthouse-panel-clock"></p>
+        <section id="lighthouse-equipment-content" hidden>
+          <dl class="lighthouse-readings">
+            <div><dt>设备编号</dt><dd id="lighthouse-equipment-id" style="overflow-wrap:anywhere"></dd></div>
+            <div><dt>用途</dt><dd id="lighthouse-equipment-purpose"></dd></div>
+            <div><dt>当前状态</dt><dd id="lighthouse-equipment-status"></dd></div>
+          </dl>
+        </section>
+        <p id="lighthouse-panel-guide"></p>
+        <section id="lighthouse-operation-content">
         <dl class="lighthouse-readings">
           <div><dt>控制方式</dt><dd id="lighthouse-panel-mode"></dd></div>
           <div><dt>实际灯态</dt><dd id="lighthouse-panel-output"></dd></div>
@@ -285,15 +294,17 @@
           <div><dt>试灯余时</dt><dd id="lighthouse-panel-test"></dd></div>
           <div><dt>保护面</dt><dd id="lighthouse-panel-surface"></dd></div>
         </dl>
-        <p id="lighthouse-panel-guide"></p><button id="lighthouse-test-toggle" hidden></button>
+        <button id="lighthouse-test-toggle" hidden></button>
         <button class="lighthouse-action" id="lighthouse-confirm-control" hidden>确认本次读数</button>
         <button class="lighthouse-action" id="lighthouse-cover-check" hidden>确认保护面观察结果</button>
         <button class="lighthouse-action" id="lighthouse-clean-start" hidden>擦拭并返回场景</button>
         <h3>本轮三项巡检</h3><ul id="lighthouse-checklist"></ul><p id="lighthouse-round-summary"></p>
-        <p class="lighthouse-note">查看面板时，设备与场景时间暂停；返回场景继续。当前按晴天、稳定供电运行；备用灯与电池监测尚未接入。</p>
+        <p class="lighthouse-note">当前按晴天、稳定供电运行。新增备用灯、供电及补能设备已安装，接替、自检与能量监测尚未接入。</p>
         <h3>最近运行事件</h3><ul id="lighthouse-panel-events"></ul>
         <h3>巡检与操作日志</h3><ul id="lighthouse-inspection-events"></ul>
         <p class="lighthouse-note" id="lighthouse-day-history"></p>
+        </section>
+        <p class="lighthouse-note">查看设备时，场景时间与设备暂停；返回场景继续。</p>
       </div>
     </dialog>
     <dialog id="item-inspection" aria-labelledby="item-inspection-title">
@@ -331,7 +342,7 @@
             <div id="lighthouse-levels" style="max-width:360px;margin:16px auto"></div>
             <p id="coast-plan-description">从东侧家门绕过屋后，沿崖顶步道经过观景点，抵达西南岬角的灯塔。可在家门停车位骑上小电驴，地图车标用于寻车。地图与三维北向俯视的左右一致。</p>
             <dl class="map-area" style="margin-top:24px"><dt>家门至灯塔路线</dt><dd><span id="coast-route-length"></span> <small>m</small></dd></dl>
-            <p>灯塔高20米，距阳台约155米。途中可看海、回望房屋，塔前留有绕行与观景空间。</p>
+            <p>灯塔高20米，距阳台约155米。途中可看海、回望房屋，塔前留有绕行与观景空间。塔后平台设有独立机房与太阳能架，首层右侧为电池配电柜；可近距点击设备或铭牌查看用途与投运状态。</p>
             <button id="coast-preview">查看海岸全景</button>
             <button id="coast-return-home">回到家门</button>
             <p class="map-disclaimer">可沿步道往返、绕塔与途中停留，虚线对应护栏内的探索范围。灯塔五层已开放：首层配电面板的小开关控制工作照明，工作台后夹板可查看维护记录；二至四层临窗看海，顶层灯具日间待机。靠近垂直梯按 E / 左键抓梯，W/↑上爬、S/↓下爬，每层自动停稳；按 E 离梯，或松开后重新按上下键继续。顶层东南侧通往观景外廊，小电驴请停在塔外。</p>

@@ -1,0 +1,22 @@
+
+> babylon-learning@0.0.1 build
+> webpack --output-path /private/tmp/babylon-lighthouse-equipment-step1-development
+
+assets by chunk 61.2 MiB (id hint: vendors)
+  asset js/vendors-node_modules_babylonjs_inspector_lib_index_js.js 20.7 MiB [emitted] (id hint: vendors)
+  asset js/vendors-node_modules_babylonjs_core_index_js.js 11.2 MiB [emitted] (id hint: vendors)
+  asset js/vendors-node_modules_babylonjs_core_Cameras_arcRotateCamera_pure_js-node_modules_babylonjs_co-10036b.js 7.74 MiB [emitted] (id hint: vendors)
+  asset js/vendors-node_modules_babylonjs_node-geometry-editor_dist_babylon_nodeGeometryEditor_js.js 5.91 MiB [emitted] (id hint: vendors)
+  asset js/vendors-node_modules_babylonjs_node-editor_dist_babylon_nodeEditor_js.js 1.95 MiB [emitted] (id hint: vendors)
+  asset js/vendors-node_modules_babylonjs_gui_index_js.js 1.93 MiB [emitted] (id hint: vendors)
+  asset js/vendors-node_modules_babylonjs_node-particle-editor_dist_babylon_nodeParticleEditor_js.js 1.85 MiB [emitted] (id hint: vendors)
+  asset js/vendors-node_modules_babylonjs_node-render-graph-editor_dist_babylon_nodeRenderGraphEditor_js.js 1.85 MiB [emitted] (id hint: vendors)
+  asset js/vendors-node_modules_babylonjs_gui-editor_dist_babylon_guiEditor_js.js 1.8 MiB [emitted] (id hint: vendors)
+  + 76 assets
+assets by chunk 839 KiB (id hint: shaderIncludes)
+  asset js/shader-includes-wgsl.js 635 KiB [emitted] (name: shader-includes-wgsl) (id hint: shaderIncludes)
+  asset js/shader-includes-glsl.js 204 KiB [emitted] (name: shader-includes-glsl) (id hint: shaderIncludes)
++ 364 assets
+Entrypoint main 8.5 MiB = js/vendors-node_modules_babylonjs_core_Cameras_arcRotateCamera_pure_js-node_modules_babylonjs_co-10036b.js 7.74 MiB js/main.js 772 KiB
+5373 modules
+webpack 5.111.1 compiled successfully in 4869 ms

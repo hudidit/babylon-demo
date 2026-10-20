@@ -1,5 +1,6 @@
 import { RawTexture, Texture } from "@babylonjs/core/pure";
 import type { Scene } from "@babylonjs/core/pure";
+import { LIGHTHOUSE_EQUIPMENT } from "./LighthouseEquipmentLayout";
 
 // Original bitmap lettering: no browser canvas, font download or external image dependency.
 const glyphs: Record<string, string> = {
@@ -48,4 +49,19 @@ export function lighthouseRecordTexture(scene: Scene) {
   const texture = RawTexture.CreateRGBATexture(pixels, width, height, scene, true, false, Texture.TRILINEAR_SAMPLINGMODE);
   texture.name = "lighthouse-original-records-and-signs"; texture.gammaSpace = true;
   texture.anisotropicFilteringLevel = 8; return texture;
+}
+
+/** Seven installation plaques share one deterministic, original bitmap atlas. */
+export function lighthouseEquipmentPixels() {
+  const width = 256, height = 512, pixels = new Uint8Array(width * height * 4);
+  for (let i = 0; i < pixels.length; i += 4) pixels.set([48, 68, 63, 255], i);
+  LIGHTHOUSE_EQUIPMENT.forEach((device, index) => device.lines.forEach((line, row) => {
+    const scale = row ? 2 : 3, left = Math.floor((width - line.length * 6 * scale) / 2), top = index * 64 + (row ? 39 : 8);
+    [...line].forEach((letter, column) => glyphs[letter]?.split("/").forEach((bits, y) => [...bits].forEach((bit, x) => {
+      if (bit !== "1") return;
+      for (let dy = 0; dy < scale; dy++) for (let dx = 0; dx < scale; dx++)
+        pixels.set([240, 227, 183, 255], ((top + y * scale + dy) * width + left + column * 6 * scale + x * scale + dx) * 4);
+    })));
+  }));
+  return { width, height, pixels };
 }

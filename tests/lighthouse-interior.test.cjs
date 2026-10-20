@@ -88,7 +88,7 @@ test('scooter cannot use the newly walkable entrance or the first room',()=>{
 test('interior reuses shared materials, remains enclosed under cutaway and releases its nodes',t=>{
   const {scene,exterior}=setup(t),door=exterior.lighthouseDoor;
   const meshes=exterior.meshes.filter(m=>m.name.includes('lighthouse')&&m!==scene.getMeshByName('coastal-lighthouse-path'));
-  assert.equal(exterior.surfaces.textures.length,8);assert.equal(scene.metadata.coastalSite.interiorStage,3);
+  assert.equal(exterior.surfaces.textures.length,9);assert.equal(scene.metadata.coastalSite.interiorStage,3);
   exterior.updateCutaway({x:60,z:30},{x:0,z:0});assert.ok(meshes.every(m=>!m.material.clipPlane2));
   exterior.setVisible(false);assert.ok(meshes.every(m=>!m.isVisible));exterior.setVisible(true);assert.ok(meshes.every(m=>m.isVisible));
   const mount=door.root.parent;exterior.dispose();exterior.dispose();assert.ok(door.root.isDisposed()&&mount.isDisposed());

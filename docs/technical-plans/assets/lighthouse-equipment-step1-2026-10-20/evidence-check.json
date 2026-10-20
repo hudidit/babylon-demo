@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "baseline": "8e6e255",
+  "manifestSha256": "1acb19a6038c274885e4884d860bb6de99f8f37f75b2822b6963de242190e4b1",
+  "release": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26347818,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 80068,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2740505,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42387969
+  },
+  "jsWindows": [
+    {
+      "suite": "equipment",
+      "bytes": 2959357
+    },
+    {
+      "suite": "subpath",
+      "bytes": 2959357
+    },
+    {
+      "suite": "browser",
+      "bytes": 2959357
+    },
+    {
+      "suite": "journey",
+      "bytes": 2959357
+    },
+    {
+      "suite": "regression",
+      "bytes": 2959357
+    },
+    {
+      "suite": "curtains",
+      "bytes": 2959357
+    },
+    {
+      "suite": "ceiling",
+      "bytes": 2959357
+    },
+    {
+      "suite": "headlight",
+      "bytes": 2962680
+    }
+  ],
+  "maxObservedFirstScreenJsBytes": 2962680,
+  "verifiedSuites": 12,
+  "componentCases": 60,
+  "localLinks": 309,
+  "sourceSha256": {
+    "src/examples/LighthouseEquipment.ts": "ac2e45b8f57f2a973ce34de28dbbe943a622b961a66c72f70fbcc80d53bdd6b2",
+    "src/examples/LighthouseEquipmentLayout.ts": "90eb05fbd2226119d3e4547131c10a2e7192164b0b45ef50187329c1ccc3637e",
+    "src/examples/LighthouseDetails.ts": "783618f3922f2cddc32acb99d3ab5b09826a579d6e7e35e743c303fee2655fba",
+    "src/examples/LighthousePanel.ts": "ba479f8ff8c403f18a392a5e1486add6fda57c57d5f2ff4423077ef1fa0c3347",
+    "src/examples/LighthouseRecords.ts": "a086385016c539be91251a89257f281199135a1ae6f79b3b332d3fa04acd687e",
+    "src/examples/Room.ts": "f246d8d842f299adec2b9c38f86f79edfa79047c83fc50d6a88c2fd00ace5c11",
+    "src/examples/WalkingSurface.ts": "c5e40ab873772df5b974862608783f01cff18c784c9b6a840ae53f94b2023a6e",
+    "src/examples/CoastalScooter.ts": "d53c0f00545480b8fdb4d18de4b01667a8d975b4afe4e903b217e118e3a43377",
+    "src/examples/CoastalMap.ts": "dd85e5c6f5cea57372c82eeec1e1b94fbc89a762a2897d8aae67c12adf5d5e69",
+    "public/index.html": "826e53f6abe3ab76a62eedafe9e3808bd883c46410dac5cf38287cd6a860922f",
+    "public/STUDY_ASSET_SOURCES.md": "1cd7426a3716a6cae357b532ca913a1d391d51ba3788f509212ebebaf40f3c7f",
+    "public/environment/coastal-cliff-source.json": "cbdc0f2197251ab019739893725270b3a0bc10da3485f78aa22c07426c365966"
+  },
+  "fpsOrLoadTimeSampling": false
+}
