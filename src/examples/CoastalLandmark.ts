@@ -139,7 +139,7 @@ export function createCoastalLandmark(scene: Scene, surfaces: CoastalMaterials, 
       b.box("coastal-lighthouse-fine-metal", metal, width, .035, .03, t.x, t.y - radius + .17, z + height / 2, 0, "landmark", true);
     }
   }
-  // Octagonal glazing and opaque internal lamp read as a lantern without a daylight beam.
+  // Fixed octagonal glazing; the independent optical head is built by LighthouseBeacon.
   for (let i = 0; i < 8; i++) {
     const a = i / 8 * Math.PI * 2, x = t.x + Math.cos(a) * 1.75, y = t.y + Math.sin(a) * 1.75;
     b.box("coastal-lighthouse-metalwork", metal, .1, 1.8, .1, x, y, t.ground + 17.62);
@@ -148,8 +148,6 @@ export function createCoastalLandmark(scene: Scene, surfaces: CoastalMaterials, 
       t.x + Math.cos(mid) * 1.617, t.y + Math.sin(mid) * 1.617, t.ground + 17.62, mid + Math.PI / 2);
   }
   b.cylinder("coastal-lighthouse-metalwork", metal, t.x, t.y, t.ground + 16.7, .75, .18, .18, 12);
-  b.cylinder("coastal-lighthouse-lens", brass, t.x, t.y, t.ground + 17.45, .85, .7, .55, 24);
-  for (const z of [17.48, 17.7, 17.92, 18.14]) b.cylinder("coastal-lighthouse-metalwork", metal, t.x, t.y, t.ground + z, .025, .76, .76, 24);
   for (let i = 0; i < 32; i++) {
     const a = i / 32 * Math.PI * 2, next = (i + 1) / 32 * Math.PI * 2;
     b.box("coastal-lighthouse-metalwork", metal, .045, 1.10, .045, t.x + 2.84 * Math.cos(a), t.y + 2.84 * Math.sin(a), LIGHTHOUSE.gallery + .55);

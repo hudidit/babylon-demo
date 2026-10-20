@@ -1,4 +1,4 @@
-export type RoomPauseReason = "time-menu" | "settings" | "map" | "inspection" | "inspector" | "blur" | "hidden" | "external";
+export type RoomPauseReason = "time-menu" | "settings" | "map" | "inspection" | "lighthouse-panel" | "inspector" | "blur" | "hidden" | "external";
 
 /** Independent owners remove only their own pause; a remaining owner still blocks controls. */
 export class RoomPauseState {

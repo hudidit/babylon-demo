@@ -1,0 +1,159 @@
+{
+  "baseline": "31f88dc",
+  "method": "Final dist; real time menu to 21:00; then fixed real optical-head transforms/uniforms with Room update suspended for peak/opposite GPU comparison. No application state-machine or performance claim from these fixtures.",
+  "physicalDevicesTested": false,
+  "fpsOrLoadTimeSampling": false,
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "near",
+      "off": {
+        "luma": 26.051909722222256,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 204.91666666666666,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "house",
+      "off": {
+        "luma": 23.46151666666665,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 26.572784722222206,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "near",
+      "off": {
+        "luma": 25.608830555555592,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 205.13194444444446,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "house",
+      "off": {
+        "luma": 23.42596666666666,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 29.18002361111112,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "near",
+      "off": {
+        "luma": 32.87559861111112,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 203.83333333333334,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "house",
+      "off": {
+        "luma": 32.674081944444424,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 32.64018749999998,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "failure": "AssertionError [ERR_ASSERTION]: {\"kind\":\"chromium\",\"version\":\"155.0.8059.85\",\"dpr\":1,\"viewport\":\"landscape\",\"pose\":\"house\",\"off\":{\"luma\":32.674081944444424,\"ready\":true,\"renderSize\":[844,390]},\"on\":{\"luma\":32.64018749999998,\"ready\":true,\"renderSize\":[844,390]},\"errors\":[],\"warnings\":[]}\n    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-operation-phase2-2026-10-20/check-matrix.cjs:66:52"
+}

@@ -51,7 +51,7 @@ export class RoomTimeMenu {
     };
     const syncPanels = () => {
       const reasons = room.pauseReasons;
-      const blocked = reasons.some(reason => ["map", "inspection", "inspector"].includes(reason));
+      const blocked = reasons.some(reason => ["map", "inspection", "lighthouse-panel", "inspector"].includes(reason));
       if (blocked || !opening && reasons.includes("settings")) setOpen(false, false);
       root.hidden = blocked;
       if (blocked) closeSettings();

@@ -1,0 +1,609 @@
+{
+  "baseline": "31f88dc",
+  "method": "Final dist; real time menu to 21:00; then fixed real optical-head transforms/uniforms with Room update suspended for peak/opposite GPU comparison. No application state-machine or performance claim from these fixtures.",
+  "physicalDevicesTested": false,
+  "fpsOrLoadTimeSampling": false,
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "near",
+      "off": {
+        "luma": 27.15394027777782,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 205.35416666666666,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "house",
+      "off": {
+        "luma": 23.46151666666665,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 31.36339166666666,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "near",
+      "off": {
+        "luma": 25.421895833333377,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 204.875,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "house",
+      "off": {
+        "luma": 23.42596666666666,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 33.42127083333334,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "near",
+      "off": {
+        "luma": 32.37477083333336,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 204.07638888888889,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "house",
+      "off": {
+        "luma": 32.674081944444424,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 38.41556805555552,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "near",
+      "off": {
+        "luma": 25.936988888888962,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 205.75347222222223,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "house",
+      "off": {
+        "luma": 23.708510763888878,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 27.692259374999992,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "near",
+      "off": {
+        "luma": 24.54904270833341,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 205.49652777777777,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "house",
+      "off": {
+        "luma": 24.557969791666622,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 28.848246527777732,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "near",
+      "off": {
+        "luma": 30.536262847222353,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 203.96006944444446,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.85",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "house",
+      "off": {
+        "luma": 31.91960138888899,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 33.11286041666679,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "near",
+      "off": {
+        "luma": 27.68795833333338,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 205.02777777777777,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "desktop",
+      "pose": "house",
+      "off": {
+        "luma": 23.46151666666665,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "on": {
+        "luma": 31.36339166666666,
+        "ready": true,
+        "renderSize": [
+          1280,
+          800
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "near",
+      "off": {
+        "luma": 25.9022916666667,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 205.55555555555554,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "portrait",
+      "pose": "house",
+      "off": {
+        "luma": 23.42596666666666,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "on": {
+        "luma": 33.42127083333334,
+        "ready": true,
+        "renderSize": [
+          390,
+          844
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "near",
+      "off": {
+        "luma": 32.78327916666667,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 204.09027777777777,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": "landscape",
+      "pose": "house",
+      "off": {
+        "luma": 32.674081944444424,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "on": {
+        "luma": 38.41556805555552,
+        "ready": true,
+        "renderSize": [
+          844,
+          390
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "near",
+      "off": {
+        "luma": 25.363247916666737,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 205.453125,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "desktop",
+      "pose": "house",
+      "off": {
+        "luma": 23.708510763888878,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "on": {
+        "luma": 27.692259374999992,
+        "ready": true,
+        "renderSize": [
+          2560,
+          1600
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "near",
+      "off": {
+        "luma": 25.160570833333395,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 205.28819444444446,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "portrait",
+      "pose": "house",
+      "off": {
+        "luma": 24.557969791666622,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "on": {
+        "luma": 28.848246527777732,
+        "ready": true,
+        "renderSize": [
+          780,
+          1688
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "near",
+      "off": {
+        "luma": 31.015712152777958,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 204.39236111111111,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": "landscape",
+      "pose": "house",
+      "off": {
+        "luma": 31.91960138888899,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "on": {
+        "luma": 33.11286041666679,
+        "ready": true,
+        "renderSize": [
+          1688,
+          780
+        ]
+      },
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "passed": true
+}

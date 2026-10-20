@@ -1,5 +1,5 @@
-import { Matrix, Vector3 } from "@babylonjs/core/pure";
-import type { AbstractMesh, Mesh, Ray, Scene, TransformNode } from "@babylonjs/core/pure";
+import { Matrix, Ray, Vector3 } from "@babylonjs/core/pure";
+import type { AbstractMesh, Mesh, Scene, TransformNode } from "@babylonjs/core/pure";
 import type { AudioCue, RoomAudioEvent } from "./RoomAudioCatalog";
 import { roomOwners } from "./RoomOwnership";
 import type { HouseRoomId } from "./HouseLayout";
@@ -17,6 +17,7 @@ export type InteractiveSlidingDoor = { id: string; label: string; root: Transfor
   meshes: AbstractMesh[]; fixedMeshes: AbstractMesh[]; closed: Vector3; travel: Vector3;
   width: number; halfThickness: number; walkerRadius: number };
 export type InspectableItem = { id: string; label: string; mesh: Mesh; displayRotation: Vector3 };
+export type InteractiveDevice = { id: string; label: string; meshes: Mesh[] };
 type Action = { label: () => string; toggle: () => void };
 
 /** An entry door below the gallery cannot obstruct a saved pose or pause from a walker upstairs. */
@@ -125,6 +126,22 @@ export class RoomInteractions {
 
   addInspectable(item: InspectableItem, inspect: (item: InspectableItem) => void) {
     this.add(item.id, [item.mesh], { label: () => `查看${item.label}`, toggle: () => inspect(item) });
+  }
+
+  addDevice(device: InteractiveDevice, open: () => void) {
+    this.add(device.id, device.meshes, {label: () => `查看${device.label}`, toggle: open});
+  }
+
+  /** Revalidate a modal command against the actual world, rather than trusting an old click. */
+  canReachDevice(device: InteractiveDevice, eye: Vector3, range = 7.5): boolean {
+    return device.meshes.some(mesh => {
+      mesh.computeWorldMatrix(true);
+      const target = mesh.getBoundingInfo().boundingBox.centerWorld, distance = Vector3.Distance(eye, target);
+      if (distance > range || distance < 1e-7) return false;
+      const ray = new Ray(eye, target.subtract(eye).normalize(), range);
+      const hit = this.scene.pickWithRay(ray, interactionSurface);
+      return !!hit?.pickedMesh && device.meshes.includes(hit.pickedMesh as Mesh) && hit.distance <= range;
+    });
   }
 
   private add(id: string, meshes: AbstractMesh[], action: Action) {

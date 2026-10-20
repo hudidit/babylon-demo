@@ -21,8 +21,8 @@ const glyphs: Record<string, string> = {
   4:"00010/00110/01010/10010/11111/00010/00010",5:"11111/10000/10000/11110/00001/00001/11110",
   ":":"00000/00100/00100/00000/00100/00100/00000","-":"00000/00000/00000/11111/00000/00000/00000",
 };
-export const LIGHTHOUSE_LOG = ["COASTAL LIGHT", "MAINTENANCE LOG", "DAYLIGHT STANDBY", "01 LENS CLEANED", "02 CABLES CHECKED",
-  "03 TOOLS RETURNED", "04 GALLERY CLEAR", "WORK LIGHT - PANEL", "1 SERVICE  2-4 VIEW", "5 LANTERN - GALLERY", "FICTIONAL SCENE LOG"];
+export const LIGHTHOUSE_LOG = ["COASTAL LIGHT", "MAINTENANCE LOG", "STATUS - SEE PANEL", "CHECK LENS AND DRIVE", "CHECK COVER SURFACE",
+  "CHECK BEFORE SIGNING", "KEEP GALLERY CLEAR", "WORK LIGHT - SWITCH", "1 SERVICE  2-4 VIEW", "5 LANTERN - GALLERY", "FICTIONAL SCENE LOG"];
 export function lighthouseRecordPixels() {
   const width = 1024, height = 512, pixels = new Uint8Array(width * height * 4);
   for (let i = 0; i < pixels.length; i += 4) pixels.set([231, 222, 197, 255], i);
@@ -40,6 +40,7 @@ export function lighthouseRecordPixels() {
     rect(512, i * 96, 512, 92, [48, 68, 63, 255]);
     text(line, 538, i * 96 + 26, 5, [240, 227, 183, 255]);
   });
+  text("TEST", 538, 488, 2);
   return { width, height, pixels };
 }
 export function lighthouseRecordTexture(scene: Scene) {

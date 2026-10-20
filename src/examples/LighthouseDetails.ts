@@ -8,12 +8,17 @@ import { LIGHTHOUSE, LIGHTHOUSE_FLOORS } from "./LighthouseLayout";
 import { lighthouseRecordTexture } from "./LighthouseRecords";
 import { setRoomOwners } from "./RoomOwnership";
 import type { InspectableItem, InteractiveLamp } from "./RoomInteractions";
+import { LighthouseBeacon } from "./LighthouseBeacon";
+import type { InteractiveDevice } from "./RoomInteractions";
 
 /** Static maintenance contents and a single local work light owned by the coast. */
 export class LighthouseDetails {
   readonly light: SpotLight;
   readonly switch: InteractiveLamp;
   readonly record: InspectableItem;
+  readonly panel: InteractiveDevice;
+  readonly test: InteractiveDevice;
+  readonly beacon: LighthouseBeacon;
   on = true;
   private visible = true;
   private disposed = false;
@@ -31,10 +36,8 @@ export class LighthouseDetails {
     const paper = surfaces.solid("coastal-lighthouse-record-print", "#ffffff", .9);
     const atlas = lighthouseRecordTexture(scene); surfaces.textures.push(atlas); paper.albedoTexture = atlas;
     this.glow = surfaces.solid("coastal-lighthouse-work-glow", "#f0dfad"); this.glow.emissiveColor.set(.8, .51, .19);
-    const lens = surfaces.solid("coastal-lighthouse-optical-glass", "#c6ded7");
-    lens.metallic = .25; lens.roughness = .12; lens.alpha = .62;
     const batchName = (name: string, material: PBRMaterial) => "coastal-lighthouse-detail-" +
-      (name === "work-switch" ? name : material.name.replace(/^coastal-/, ""));
+      (["work-switch", "distribution-panel", "panel-hardware", "test-control"].includes(name) ? name : material.name.replace(/^coastal-/, ""));
     const box = (name: string, material: PBRMaterial, w: number, h: number, d: number, x: number, y: number, z: number, angle = 0) =>
       b.box(batchName(name, material), material, w, h, d, t.x + x, t.y + y, z, angle);
     const cylinder = (name: string, material: PBRMaterial, x: number, y: number, z: number, h: number, diameter: number, top = diameter, sides = 24) =>
@@ -72,14 +75,18 @@ export class LighthouseDetails {
       box("work-glows", this.glow, .19, .045, .11, .82, .85, f.height+1.71);
       for (const x of [.75,.89]) box("light-housings", metal, .018, .12, .17, x, .85, f.height+1.77);
     }
-    // Original daylight-standby optic: opaque core, transparent concentric rings and protective uprights.
+    // Fixed base and protection frame; only LighthouseBeacon owns rotating parts.
     cylinder("optic-base", green, 0, 0, a.gallery+.04, .12, .8);
-    for (let i=0;i<9;i++) cylinder("optic-rings", lens, 0, 0, t.ground+17.46+i*.085, .055, .82-Math.abs(i-4)*.025, undefined, 32);
     for (let i=0;i<4;i++) {const angle=i*Math.PI/2;box("optic-frame",brass,.026,.9,.026,.39*Math.cos(angle),.39*Math.sin(angle),t.ground+17.88);}
     box("optic-cable", metal, .04, .48, .04, .13, .12, a.gallery+.30);
+    box("test-control", green, .24, .16, .05, 0, -.37, a.gallery+.44);
+    print("test-label", 0, -.398, a.gallery+.405, .21, .07, [.52,1,.68,1,.68,.945,.52,.945]);
     const meshes = b.finish();
     this.switch = {id:"lighthouse-work-light",label:"灯塔工作照明",meshes:meshes.filter(m=>m.name.endsWith("work-switch"))};
-    this.record = {id:"lighthouse-maintenance-log",label:"灯塔维护记录（日间待机）",mesh:meshes.find(m=>m.name.endsWith("maintenance-record"))!,displayRotation:Vector3.Zero()};
+    this.record = {id:"lighthouse-maintenance-log",label:"灯塔维护记录",mesh:meshes.find(m=>m.name.endsWith("maintenance-record"))!,displayRotation:Vector3.Zero()};
+    this.panel = {id:"lighthouse-control-panel",label:"首层运行面板",meshes:meshes.filter(m=>/distribution-panel|panel-hardware/.test(m.name))};
+    this.test = {id:"lighthouse-beacon-main",label:"灯室试灯控制",meshes:meshes.filter(m=>/test-control|test-label/.test(m.name))};
+    this.beacon = new LighthouseBeacon(scene, surfaces, retain);
     this.targets = scene.meshes.filter((m): m is Mesh => !!m.metadata?.lighthouse &&
       (/inner-wall|ground-floor|level-|ladder-|maintenance-cabinet|workbench|service-hardware|entry-door|door-rib|door-handle|detail-/.test(m.name)));
     this.targets.forEach(mesh => {if(mesh.material) (mesh.material as PBRMaterial).maxSimultaneousLights=2;});
@@ -91,7 +98,7 @@ export class LighthouseDetails {
     this.document?.addEventListener("visibilitychange", this.visibilityChanged);
   }
   toggle() {if(!this.disposed){this.on=!this.on;this.glow.emissiveColor.copyFrom(this.on?new Color3(.8,.51,.19):Color3.Black());this.update();}}
-  setVisible(visible:boolean){this.visible=visible;this.update();}
+  setVisible(visible:boolean){this.visible=visible;this.beacon.setVisible(visible);this.update();}
   update() {
     if(this.disposed)return;
     const camera=this.scene.activeCamera,p=camera&&worldToPlan(camera.globalPosition),t=COASTAL_SITE.tower;
@@ -102,5 +109,5 @@ export class LighthouseDetails {
     this.light.setEnabled(active);
     if(active){const v=planToWorld({x:t.x+.82,y:t.y+.85},floor!.height+1.69);this.light.position.set(v.x,v.y,v.z);}
   }
-  dispose(){if(this.disposed)return;this.disposed=true;this.document?.removeEventListener("visibilitychange",this.visibilityChanged);this.light.dispose();}
+  dispose(){if(this.disposed)return;this.disposed=true;this.document?.removeEventListener("visibilitychange",this.visibilityChanged);this.light.dispose();this.beacon.dispose();}
 }

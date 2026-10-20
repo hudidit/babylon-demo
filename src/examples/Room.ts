@@ -41,6 +41,8 @@ import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
 import { RoomPauseState } from "./RoomPauseState";
 import type { RoomPauseReason } from "./RoomPauseState";
 import { LighthouseOperation, LIGHTHOUSE_OPERATION_VERSION } from "./LighthouseOperation";
+import { LighthousePanel } from "./LighthousePanel";
+import type { LighthousePanelLocation } from "./LighthousePanel";
 
 export type RoomView = "overview" | "coast" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 // The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
@@ -54,6 +56,7 @@ export class RoomScene {
   readonly rooms = new HouseRooms();
   private readonly timeState = new RoomTimeOfDay();
   private readonly lighthouseState = new LighthouseOperation();
+  private readonly lighthousePanel: LighthousePanel;
   private readonly pauses = new RoomPauseState();
   private timeVisualElapsed = 0;
   onTimeOfDayChange: () => void = () => {};
@@ -102,7 +105,7 @@ export class RoomScene {
     this.scene = new Scene(this.engine);
     this.scene.metadata = { layoutVersion: HOUSE_LAYOUT_VERSION,
       timeOfDay: { version: TIME_OF_DAY_VERSION, stage: 3, visualApplied: false, state: this.timeOfDay },
-      lighthouseOperation: { version: LIGHTHOUSE_OPERATION_VERSION, stage: 1, visualApplied: false, state: this.lighthouseOperation } };
+      lighthouseOperation: { version: LIGHTHOUSE_OPERATION_VERSION, stage: 2, visualApplied: false, state: this.lighthouseOperation } };
     this.builds = HOUSE_ROOMS.reduce((all, r) => { all[r.id] = this.rooms.begin(r.id); return all; }, {} as Record<HouseRoomId, RoomBuild>);
     // The final image-processing pass expects a linear clear colour.
     this.scene.clearColor = new Color4(0.14, 0.17, 0.18, 1).toLinearSpace();
@@ -183,10 +186,14 @@ export class RoomScene {
     this.exterior = new RoomExterior(this.scene);
     this.interactions.addDoor(this.exterior.lighthouseDoor);
     const lighthouse = this.exterior.lighthouseDetails;
+    this.lighthousePanel = new LighthousePanel(canvas.ownerDocument, resume => this.closeLighthousePanel(resume), () => this.toggleLocalLighthouseTest());
+    this.interactions.addDevice(lighthouse.panel, () => this.openLighthousePanel("control"));
+    this.interactions.addDevice(lighthouse.test, () => this.openLighthousePanel("test"));
     this.interactions.addLamp(lighthouse.switch, () => lighthouse.on, () => lighthouse.toggle());
     this.interactions.addInspectable(lighthouse.record, item => this.openInspection(item));
     this.scooterModel = new CoastalScooterModel(this.scene, this.exterior.sun, this.exterior.surfaces, this.exterior.meshes);
     this.scooterModel.update(this.scooter, false);
+    this.notifyLighthouseOperation();
     this.architecture = createHouseArchitecture(this.scene, furnishings);
     furnishHouseStudy(furnishings);
     furnishHouseLiving(furnishings);
@@ -318,6 +325,11 @@ export class RoomScene {
   }
   private notifyLighthouseOperation() {
     this.scene.metadata.lighthouseOperation.state = this.lighthouseOperation;
+    if (this.exterior?.lighthouseDetails?.beacon) {
+      this.exterior.lighthouseDetails.beacon.apply(this.lighthouseOperation);
+      this.scene.metadata.lighthouseOperation.visualApplied = true;
+    }
+    this.lighthousePanel?.render(this.lighthouseOperation);
   }
   setTimeOfDay(hour: number): TimeOfDaySnapshot {
     if (this.disposed) return this.timeOfDay;
@@ -709,7 +721,41 @@ export class RoomScene {
     this.onPauseChange();
   }
 
-  private get isViewing() { return !!(this.inspection?.isOpen || this.floorPlan?.isOpen); }
+  private get isViewing() { return !!(this.inspection?.isOpen || this.floorPlan?.isOpen || this.lighthousePanel?.isOpen); }
+
+  private canAccessLighthouse(location: LighthousePanelLocation) {
+    const expected = location === "test" ? LIGHTHOUSE.gallery : LIGHTHOUSE.floor;
+    const details = this.exterior.lighthouseDetails;
+    return !this.disposed && this.currentView === "first-person" && this.exterior.isVisible
+      && !this.ladder.attached && !this.ladderTransition && !this.scooter.riding && !this.scooterTransition
+      && this.jump.grounded && Math.abs(this.jump.feet - expected) < .08
+      && this.interactions.canReachDevice(location === "test" ? details.test : details.panel, this.firstPersonCamera.position);
+  }
+
+  private openLighthousePanel(location: LighthousePanelLocation) {
+    if (!this.controlsEnabled || this.isViewing || !this.pointerLocked || !this.canAccessLighthouse(location)) return;
+    if (!this.lighthousePanel.open(location, this.lighthouseOperation)) return;
+    // Modal state exists before lock release, preserving the first-person pose.
+    this.setPaused("lighthouse-panel", true);
+    this.audio.stopAll(); this.audio.play("switch", "lighthouse-control-panel");
+    this.updateControls(); this.updateInteractionHint();
+  }
+
+  private closeLighthousePanel(resumePointer: boolean) {
+    if (!this.lighthousePanel.isOpen) return;
+    this.lighthousePanel.close(); this.setPaused("lighthouse-panel", false);
+    this.updateControls(); this.updateInteractionHint(); this.canvas.focus({preventScroll: true});
+    if (resumePointer && this.currentView === "first-person" && this.controlsEnabled) this.pointerLock.request();
+  }
+
+  private toggleLocalLighthouseTest() {
+    if (this.lighthousePanel.activeLocation !== "test" || !this.canAccessLighthouse("test")
+      || this.pauseReasons.some(reason => reason !== "lighthouse-panel")) {
+      this.lighthousePanel.notice("请在顶层灯座旁恢复操作；当前试灯状态保持。"); return;
+    }
+    if (this.lighthouseOperation.testSecondsRemaining > 0) this.endLighthouseTest(); else this.startLighthouseTest();
+    this.audio.play("switch", "lighthouse-beacon-main"); this.closeLighthousePanel(true);
+  }
 
   private updateFloorPlan() {
     this.floorPlan.update(this.currentView, this.firstPersonCamera.position, this.firstPersonCamera.getForwardRay().direction, this.scooter, this.ladder?.attached ? this.ladder.feet : undefined);
@@ -810,6 +856,7 @@ export class RoomScene {
   private keyDown = (event: KeyboardEvent) => {
     if (event.defaultPrevented) return;
     if (event.isTrusted && !event.repeat && event.key === "Escape") { this.resumeAudio(); this.audio.unlockFromGesture(); }
+    if (this.lighthousePanel.isOpen) return; // The native dialog owns Escape/Tab/Enter.
     if (this.floorPlan.isOpen) {
       if (event.key === "Escape") { event.preventDefault(); this.closeFloorPlan(false); }
       return;
@@ -1028,6 +1075,7 @@ export class RoomScene {
     this.disposed = true;
     this.pauseScooter(); this.pauseLadder(); this.scooterModel.dispose();
     this.audio.dispose();
+    this.lighthousePanel.dispose();
     document.querySelector("#item-inspection-return")?.removeEventListener("click", this.returnFromInspection);
     document.querySelector("#item-inspection")?.removeEventListener("cancel", this.cancelInspection);
     document.querySelector<HTMLDialogElement>("#item-inspection")?.close();
