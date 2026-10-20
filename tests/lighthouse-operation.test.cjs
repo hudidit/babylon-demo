@@ -32,7 +32,7 @@ test('default noon is session-local standby; schedule includes 18:00 and exclude
   assert.equal(one.snapshot.dutyDay, 1); assert.equal(one.snapshot.mode, 'automatic');
   assert.equal(one.snapshot.automaticOperatingHours, 0);
   one.startTest(); assert.equal(two.snapshot.running, false);
-  assert.equal(new RoomTimeOfDay().playback.automatic, false);
+  assert.equal(new RoomTimeOfDay().playback.automatic, true);
 });
 
 test('clock receipts distinguish accepted automatic hours, active seconds, manual fades, skips and invalid frames', () => {

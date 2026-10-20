@@ -1,0 +1,49 @@
+{
+  "baseline": "c770eff",
+  "manifestSha256": "a4b233ce9fcb0d9d8b12e6cb8730fa372f5a743a3afb8e20eef2d49f730a418c",
+  "totals": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26397631,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 85955,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2783636,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42443669
+  },
+  "httpChecks": [
+    {
+      "prefix": "",
+      "files": 495,
+      "passed": true
+    },
+    {
+      "prefix": "home/",
+      "files": 495,
+      "passed": true
+    }
+  ],
+  "unchangedRuntimeFiles": 36,
+  "changedPublishedFiles": [
+    {
+      "path": "bundle-analysis.json",
+      "beforeBytes": 122753,
+      "afterBytes": 122753,
+      "sha256": "9ee5237ed903afe3d2e21ceec525685aafd7f63025f561f56e146a73a50e3f2e"
+    },
+    {
+      "path": "index.html",
+      "beforeBytes": 37687,
+      "afterBytes": 37698,
+      "sha256": "1859ef653485a7a3a5cc24ebaa3e4197de9398fab902a23151ac21ee747a2e20"
+    },
+    {
+      "path": "js/main.js",
+      "beforeBytes": 363458,
+      "afterBytes": 363458,
+      "sha256": "fb3092c21e21d2ae8353f11b292aad150a88617259549aa9a6802c19fd5467fe"
+    }
+  ]
+}

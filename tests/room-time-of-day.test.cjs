@@ -131,6 +131,18 @@ test('manual transitions last 1.2 seconds, retarget the displayed state and reje
   clock.advance(.1); assert.equal(clock.playback.transitioning, false); assert.equal(clock.snapshot.hour, 18);
 });
 
+test('fresh sessions advance automatically from noon and opting out does not change the next session default', () => {
+  const clock = new RoomTimeOfDay();
+  assert.equal(clock.playback.automatic, true); assert.equal(clock.snapshot.hour, 12);
+  clock.advance(.1); // Startup frame never counts loading or background time.
+  for (let i = 0; i < 600; i++) clock.advance(.1);
+  near(clock.snapshot.hour, 13); near(clock.lastAdvance.automaticHours, .1 / 60);
+  clock.setAutomatic(false); const stopped = clock.snapshot;
+  for (let i = 0; i < 100; i++) clock.advance(.1);
+  assert.equal(clock.snapshot, stopped); assert.equal(clock.lastAdvance.automaticHours, 0);
+  const next = new RoomTimeOfDay(); assert.equal(next.playback.automatic, true); assert.equal(next.snapshot.hour, 12);
+});
+
 test('automatic time takes 24 real minutes, wraps midnight clockwise and manual selection stops it', () => {
   const clock = new RoomTimeOfDay(); clock.select(21); clock.setAutomatic(true);
   clock.advance(.1); // First resumed frame is deliberately ignored.
@@ -147,7 +159,7 @@ test('automatic time takes 24 real minutes, wraps midnight clockwise and manual 
 });
 
 test('long frames and background restoration never catch up the clock, including invalid deltas', () => {
-  const clock = new RoomTimeOfDay(); clock.setAutomatic(true); clock.advance(3600);
+  const clock = new RoomTimeOfDay(); clock.advance(3600);
   assert.equal(clock.snapshot.hour, 12);
   clock.advance(3600); near(clock.snapshot.hour, 12 + .1 / 60);
   const before = clock.snapshot;

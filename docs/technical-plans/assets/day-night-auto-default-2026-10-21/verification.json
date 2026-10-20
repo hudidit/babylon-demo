@@ -1,0 +1,63 @@
+{
+  "baseline": "c770eff",
+  "manifestSha256": "a4b233ce9fcb0d9d8b12e6cb8730fa372f5a743a3afb8e20eef2d49f730a418c",
+  "localLinksChecked": 265,
+  "passed": true,
+  "files": [
+    {
+      "path": "docs/technical-plans/assets/day-night-auto-default-2026-10-21/browser.json",
+      "bytes": 51050,
+      "sha256": "bdf0962386c96868ec5bc84811571cd3632cf6cd3b99e177c98e91bfd0cfb5e1"
+    },
+    {
+      "path": "docs/technical-plans/assets/day-night-auto-default-2026-10-21/check-browser.cjs",
+      "bytes": 7663,
+      "sha256": "c330786f40b0646daffafa3a52974cb0ad13b7471716ba11627e87a97390af5e"
+    },
+    {
+      "path": "docs/technical-plans/assets/day-night-auto-default-2026-10-21/development-build.log",
+      "bytes": 1721,
+      "sha256": "1ff92a6b88f047303dd2eeed725deff00909d28eca457420798a586f9e242c00"
+    },
+    {
+      "path": "docs/technical-plans/assets/day-night-auto-default-2026-10-21/production-build.log",
+      "bytes": 4960,
+      "sha256": "c54c020023d24a4cadab21b05bf2589b44de4f4bffa7a21be9c83b317bc19e7f"
+    },
+    {
+      "path": "docs/technical-plans/assets/day-night-auto-default-2026-10-21/release-summary.json",
+      "bytes": 1212,
+      "sha256": "173380b18fb21c1ddba3d03a97628e0a4cc6d83177e4e9cfda5b78351807899b"
+    },
+    {
+      "path": "docs/technical-plans/assets/day-night-auto-default-2026-10-21/tests.log",
+      "bytes": 35280,
+      "sha256": "0b23b22e8c1df3ffa4cc09974bdd4ec4170a253335a6c5d8222416ec7dea4534"
+    },
+    {
+      "path": "docs/technical-plans/assets/day-night-auto-default-2026-10-21/typecheck.log",
+      "bytes": 51,
+      "sha256": "d51a4680b3af1d0fdf2ee16eb9cb547bf4524a74c0b1370c87a2d0d6690a8ec3"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 45231,
+      "sha256": "31f041e187858c796cb524fe052fad354b22c827eed071a66b508f5cf197dd96"
+    },
+    {
+      "path": "src/examples/RoomTimeOfDay.ts",
+      "bytes": 15606,
+      "sha256": "8fac8f13976cbea9afb2d5387a60de0dc315270a517b3754fee831e72d4319c5"
+    },
+    {
+      "path": "tests/lighthouse-operation.test.cjs",
+      "bytes": 14798,
+      "sha256": "6316abe814319d8188e0afb60a4768bdee08a58c0df188f636fb31585a8c237f"
+    },
+    {
+      "path": "tests/room-time-of-day.test.cjs",
+      "bytes": 14784,
+      "sha256": "e658e26af31ce2d7bb1d59f8952a5bc6e48cdd24070a027a4e3e185df0f43279"
+    }
+  ]
+}

@@ -197,7 +197,7 @@ export interface TimeOfDayAdvance {
 export class RoomTimeOfDay {
   private current = evaluateTimeOfDay(DEFAULT_TIME_OF_DAY);
   private transition?: { from: TimeOfDaySnapshot; to: TimeOfDaySnapshot; elapsed: number; duration: number; reduced: boolean };
-  private automatic = false;
+  private automatic = true;
   private skipDelta = true;
   private accepted: TimeOfDayAdvance = Object.freeze({ fromHour: DEFAULT_TIME_OF_DAY, toHour: DEFAULT_TIME_OF_DAY,
     activeSeconds: 0, automaticHours: 0, midnightCrossings: 0, manualCompleted: false });
