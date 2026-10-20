@@ -183,13 +183,26 @@ export const TIME_TRANSITION_SECONDS = 1.2;
 export const TIME_REDUCED_TRANSITION_SECONDS = .2;
 export const TIME_CYCLE_SECONDS = 24 * 60;
 
+/** Accepted time, shared by equipment and future calendar consumers. Visual fades are not elapsed days. */
+export interface TimeOfDayAdvance {
+  readonly fromHour: number;
+  readonly toHour: number;
+  readonly activeSeconds: number;
+  readonly automaticHours: number;
+  readonly midnightCrossings: number;
+  readonly manualCompleted: boolean;
+}
+
 /** Scene-local deterministic clock. Rendering and DOM events remain with their owners. */
 export class RoomTimeOfDay {
   private current = evaluateTimeOfDay(DEFAULT_TIME_OF_DAY);
   private transition?: { from: TimeOfDaySnapshot; to: TimeOfDaySnapshot; elapsed: number; duration: number; reduced: boolean };
   private automatic = false;
   private skipDelta = true;
+  private accepted: TimeOfDayAdvance = Object.freeze({ fromHour: DEFAULT_TIME_OF_DAY, toHour: DEFAULT_TIME_OF_DAY,
+    activeSeconds: 0, automaticHours: 0, midnightCrossings: 0, manualCompleted: false });
   get snapshot(): TimeOfDaySnapshot { return this.current; }
+  get lastAdvance(): TimeOfDayAdvance { return this.accepted; }
   get playback() { return Object.freeze({ automatic: this.automatic, transitioning: !!this.transition, targetHour: this.transition?.to.hour ?? null }); }
   private node(hour: number) {
     const wrapped = wrapTimeOfDay(hour);
@@ -216,17 +229,30 @@ export class RoomTimeOfDay {
   setAutomatic(enabled: boolean) { this.automatic = enabled; this.resetDelta(); }
   resetDelta() { this.skipDelta = true; }
   advance(delta: number, automaticPaused = false, transitionPaused = false): TimeOfDaySnapshot {
+    const fromHour = this.current.hour;
+    this.accepted = Object.freeze({ fromHour, toHour: fromHour, activeSeconds: 0,
+      automaticHours: 0, midnightCrossings: 0, manualCompleted: false });
     if (!Number.isFinite(delta) || delta < 0) return this.current;
     if (this.skipDelta) { this.skipDelta = false; return this.current; }
     const dt = Math.min(.1, delta);
+    let automaticHours = 0, midnightCrossings = 0, manualCompleted = false;
     if (this.transition) {
       if (transitionPaused) return this.current;
       const transition = this.transition;
       transition.elapsed = Math.min(transition.duration, transition.elapsed + dt);
       const t = transition.elapsed / transition.duration;
       this.current = blendTimeOfDay(transition.from, transition.to, t * t * (3 - 2 * t), transition.reduced);
-      if (t >= 1 - 1e-10) { this.current = transition.to; this.transition = undefined; }
-    } else if (this.automatic && !automaticPaused && dt > 0) this.current = evaluateTimeOfDay(this.current.hour + dt * 24 / TIME_CYCLE_SECONDS);
+      if (t >= 1 - 1e-10) { this.current = transition.to; this.transition = undefined; manualCompleted = true; }
+    } else if (this.automatic && !automaticPaused && dt > 0) {
+      let nextHour = fromHour + dt * 24 / TIME_CYCLE_SECONDS;
+      // Eliminate accumulated floating-point error at exact hour/day boundaries.
+      if (Math.abs(nextHour - Math.round(nextHour)) < 1e-10) nextHour = Math.round(nextHour);
+      automaticHours = nextHour - fromHour;
+      midnightCrossings = Math.floor(nextHour / 24);
+      this.current = evaluateTimeOfDay(nextHour);
+    }
+    this.accepted = Object.freeze({ fromHour, toHour: this.current.hour,
+      activeSeconds: automaticPaused || transitionPaused ? 0 : dt, automaticHours, midnightCrossings, manualCompleted });
     return this.current;
   }
 }

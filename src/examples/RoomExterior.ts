@@ -170,6 +170,7 @@ export class RoomExterior {
   }
   refreshShadows() { if (!this.disposed) this.shadow.getShadowMap()?.resetRefreshCounter(); }
   setHouseEnclosed(enclosed: boolean) { this.enclosed = enclosed; this.houseRoof.forEach(m => m.isVisible = enclosed && this.visible); }
+  get isVisible() { return this.visible; }
   setVisible(visible: boolean) {
     this.visible = visible;
     this.meshes.forEach(mesh => mesh.isVisible = visible); this.sun.setEnabled(visible && !!this.time.primary);

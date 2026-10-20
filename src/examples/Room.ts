@@ -40,6 +40,7 @@ import { RoomTimeOfDay, TIME_OF_DAY_VERSION } from "./RoomTimeOfDay";
 import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
 import { RoomPauseState } from "./RoomPauseState";
 import type { RoomPauseReason } from "./RoomPauseState";
+import { LighthouseOperation, LIGHTHOUSE_OPERATION_VERSION } from "./LighthouseOperation";
 
 export type RoomView = "overview" | "coast" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 // The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
@@ -52,6 +53,7 @@ export class RoomScene {
   readonly audio = new RoomAudio();
   readonly rooms = new HouseRooms();
   private readonly timeState = new RoomTimeOfDay();
+  private readonly lighthouseState = new LighthouseOperation();
   private readonly pauses = new RoomPauseState();
   private timeVisualElapsed = 0;
   onTimeOfDayChange: () => void = () => {};
@@ -99,7 +101,8 @@ export class RoomScene {
     // Render at the display refresh rate; leave Engine.maxFPS uncapped for high-refresh screens.
     this.scene = new Scene(this.engine);
     this.scene.metadata = { layoutVersion: HOUSE_LAYOUT_VERSION,
-      timeOfDay: { version: TIME_OF_DAY_VERSION, stage: 3, visualApplied: false, state: this.timeOfDay } };
+      timeOfDay: { version: TIME_OF_DAY_VERSION, stage: 3, visualApplied: false, state: this.timeOfDay },
+      lighthouseOperation: { version: LIGHTHOUSE_OPERATION_VERSION, stage: 1, visualApplied: false, state: this.lighthouseOperation } };
     this.builds = HOUSE_ROOMS.reduce((all, r) => { all[r.id] = this.rooms.begin(r.id); return all; }, {} as Record<HouseRoomId, RoomBuild>);
     // The final image-processing pass expects a linear clear colour.
     this.scene.clearColor = new Color4(0.14, 0.17, 0.18, 1).toLinearSpace();
@@ -304,9 +307,23 @@ export class RoomScene {
   /** Immediate selection remains available for callers; the menu uses transitionTimeOfDay. */
   get timeOfDay(): TimeOfDaySnapshot { return this.timeState.snapshot; }
   get timePlayback() { return this.timeState.playback; }
+  get lighthouseOperation() { return this.lighthouseState.snapshot; }
+  startLighthouseTest(): boolean {
+    if (this.disposed) return false;
+    const started = this.lighthouseState.startTest(); this.notifyLighthouseOperation(); return started;
+  }
+  endLighthouseTest(): boolean {
+    if (this.disposed) return false;
+    const ended = this.lighthouseState.endTest(); this.notifyLighthouseOperation(); return ended;
+  }
+  private notifyLighthouseOperation() {
+    this.scene.metadata.lighthouseOperation.state = this.lighthouseOperation;
+  }
   setTimeOfDay(hour: number): TimeOfDaySnapshot {
     if (this.disposed) return this.timeOfDay;
     const state = this.timeState.select(hour);
+    this.lighthouseState.selectTime(state.hour);
+    this.notifyLighthouseOperation();
     this.applyTimeOfDay(state);
     this.notifyTimeOfDay();
     return state;
@@ -324,8 +341,11 @@ export class RoomScene {
     this.notifyTimeOfDay();
   }
   private updateTimeOfDay(delta: number) {
+    if (this.disposed) return;
     const before = this.timeOfDay, transitioning = this.timePlayback.transitioning;
     const state = this.timeState.advance(delta, this.pauses.blocked, this.pauses.transitionBlocked);
+    this.lighthouseState.advance(this.timeState.lastAdvance, this.exterior.isVisible);
+    this.notifyLighthouseOperation();
     if (state === before) return;
     this.timeVisualElapsed += Math.min(.1, Math.max(0, delta));
     if (transitioning || this.timeVisualElapsed >= .1 - 1e-10) {

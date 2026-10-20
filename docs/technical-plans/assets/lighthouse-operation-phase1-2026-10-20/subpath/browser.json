@@ -1,0 +1,2239 @@
+{
+  "baseline": "b8d9f12",
+  "method": "Independent dist, existing CDP scene capture, actual menu/map/settings events and accepted clock reference steps.",
+  "mode": "phase1",
+  "browser": "155.0.8059.85",
+  "fpsOrLoadTimeSampling": false,
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8214/home/",
+      "status": 200,
+      "bytes": 25663
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/main.js",
+      "status": 200,
+      "bytes": 276640
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/study/wood_table_001/normal.jpg",
+      "status": 200,
+      "bytes": 51927
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/study/wood_table_001/color.jpg",
+      "status": 200,
+      "bytes": 215573
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/study/rough_linen/normal.jpg",
+      "status": 200,
+      "bytes": 916843
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/study/wood_table_001/arm.jpg",
+      "status": 200,
+      "bytes": 214520
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/study/rough_linen/arm.jpg",
+      "status": 200,
+      "bytes": 1191393
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/coastal/rock-color.jpg",
+      "status": 200,
+      "bytes": 678872
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/coastal/rock-normal.jpg",
+      "status": 200,
+      "bytes": 291272
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/coastal/rock-arm.jpg",
+      "status": 200,
+      "bytes": 111357
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/coastal/ground-color.jpg",
+      "status": 200,
+      "bytes": 166163
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/coastal/ground-normal.jpg",
+      "status": 200,
+      "bytes": 54823
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/coastal/ground-arm.jpg",
+      "status": 200,
+      "bytes": 14130
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/study/wood_floor/arm.jpg",
+      "status": 200,
+      "bytes": 447855
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/study/wood_floor/normal.jpg",
+      "status": 200,
+      "bytes": 423303
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/study/wood_floor/color.jpg",
+      "status": 200,
+      "bytes": 734493
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/study/painted_wall/color.png",
+      "status": 200,
+      "bytes": 58252
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/study/painted_wall/normal.png",
+      "status": 200,
+      "bytes": 403149
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/study/painted_wall/arm.png",
+      "status": 200,
+      "bytes": 75148
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/textures/pictures/pic1.jpg",
+      "status": 200,
+      "bytes": 29797
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/environment/study-interior.hdr",
+      "status": 200,
+      "bytes": 1649529
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/environment/coastal-daylight.hdr",
+      "status": 200,
+      "bytes": 4190
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/models/study/sofa_03.glb",
+      "status": 200,
+      "bytes": 818172
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/models/gothic_commode.glb",
+      "status": 200,
+      "bytes": 1549376
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/models/study/modern_arm_chair_01.glb",
+      "status": 200,
+      "bytes": 2696208
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/models/wooden_bookshelf.glb",
+      "status": 200,
+      "bytes": 2783464
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/dbb070c0-0e8c-4dcf-beb3-8f2ad2808f94",
+      "status": 200,
+      "bytes": 112563
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/9c01f6fc-3885-47bf-aaca-72c13c49d8db",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/50d1db6c-e893-400b-841e-dd3c04835de9",
+      "status": 200,
+      "bytes": 170206
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/ee00e959-c12b-4f0d-bbe5-84decb395958",
+      "status": 200,
+      "bytes": 151815
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/2e593aae-3cd9-4b4f-b08c-cc426495f156",
+      "status": 200,
+      "bytes": 404049
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/f8a4aa1b-96bc-4c92-aa7a-ab1a00264d93",
+      "status": 200,
+      "bytes": 645899
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/7ef3b45f-63a0-4223-94b6-f1f37c10946d",
+      "status": 200,
+      "bytes": 334774
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/7a71bbf6-8394-4ad1-baf0-1102c286baf5",
+      "status": 200,
+      "bytes": 876217
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/0de8edb5-2e40-4d6c-b87d-821395d7ddf7",
+      "status": 200,
+      "bytes": 1222163
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/59eca478-4b2f-4ecb-84c4-3c67e1c1e8c1",
+      "status": 200,
+      "bytes": 354145
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/0645a7a3-3b66-44c9-ad77-3572c2f1607c",
+      "status": 200,
+      "bytes": 560864
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/41cebae9-eab9-4b98-9f97-f835d1fb2202",
+      "status": 200,
+      "bytes": 460937
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/d0a12b77-c8f3-4f50-9905-662a1ea53de0",
+      "status": 200,
+      "bytes": 577931
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/673b023b-63fa-4d75-b574-84afe38d4621",
+      "status": 200,
+      "bytes": 302377
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/68129d67-4f83-4aa3-92fb-2e7c6146c1c6",
+      "status": 200,
+      "bytes": 228851
+    },
+    {
+      "url": "blob:http://127.0.0.1:8214/e3691340-0942-4bb2-91fb-4b0ed2f23c57",
+      "status": 200,
+      "bytes": 321223
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200,
+      "bytes": 30764
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200,
+      "bytes": 38444
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/switch-1.702a81fab4.wav",
+      "status": 200,
+      "bytes": 11564
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200,
+      "bytes": 19244
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200,
+      "bytes": 28844
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200,
+      "bytes": 15404
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200,
+      "bytes": 55724
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200,
+      "bytes": 16364
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/paper-2.862694da2b.wav",
+      "status": 200,
+      "bytes": 27884
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200,
+      "bytes": 16364
+    }
+  ],
+  "views": [
+    {
+      "view": "balcony",
+      "resources": {
+        "meshes": 685,
+        "vertices": 575062,
+        "materials": 100,
+        "textures": 152,
+        "lights": 22,
+        "cameras": 3
+      },
+      "lighting": [
+        {
+          "name": "room-bounce-light",
+          "enabled": true,
+          "intensity": 0.38,
+          "direction": [
+            -0.35,
+            1,
+            0.15
+          ],
+          "diffuse": [
+            0.8088101658090109,
+            0.9030566671766399,
+            1
+          ]
+        },
+        {
+          "name": "window-daylight",
+          "enabled": true,
+          "intensity": 0,
+          "direction": [
+            0.13031167282892078,
+            -0.47780946703937627,
+            0.8687444855261386
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "reading-lamp-light",
+          "enabled": true,
+          "intensity": 3.3,
+          "direction": [
+            0.5734623443633283,
+            -0.8192319205190405,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "banker-lamp-light",
+          "enabled": true,
+          "intensity": 1.25,
+          "direction": [
+            -0.5167036117861568,
+            -0.7949286335171643,
+            0.3179714534068657
+          ],
+          "diffuse": [
+            1,
+            0.88,
+            0.68
+          ]
+        },
+        {
+          "name": "lighthouse-local-work-light",
+          "enabled": false,
+          "intensity": 2.1,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.7592995506950911,
+            0.42590528570714575
+          ]
+        },
+        {
+          "name": "coastal-afternoon-sun",
+          "enabled": true,
+          "intensity": 3.8,
+          "direction": [
+            -5.175581015019659e-17,
+            -0.9063077870366499,
+            -0.42261826174069944
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "scooter-headlight",
+          "enabled": false,
+          "intensity": 0,
+          "direction": [
+            0,
+            -0.17715299831526515,
+            0.9841833239736953
+          ],
+          "diffuse": [
+            1,
+            0.8751375823652049,
+            0.6523701054108211
+          ]
+        },
+        {
+          "name": "living-window-daylight",
+          "enabled": true,
+          "intensity": 1.8114533552568805e-16,
+          "direction": [
+            -0.9245003270420484,
+            -0.3698001308168194,
+            -0.09245003270420485
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "living-table-lamp-light",
+          "enabled": true,
+          "intensity": 2.4,
+          "direction": [
+            0.4472135954999579,
+            -0.8944271909999159,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "master-window-daylight",
+          "enabled": true,
+          "intensity": 0,
+          "direction": [
+            0.0890870806374748,
+            -0.44543540318737396,
+            0.8908708063747479
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "master-lamp-light",
+          "enabled": true,
+          "intensity": 2.3,
+          "direction": [
+            0.5184758473652126,
+            -0.8295613557843402,
+            0.20739033894608505
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "ensuite-lamp-light",
+          "enabled": true,
+          "intensity": 3.2,
+          "direction": [
+            -0.5050762722761053,
+            -0.8081220356417685,
+            0.3030457633656632
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "bedroom-window-daylight",
+          "enabled": true,
+          "intensity": 1.3523784375702383,
+          "direction": [
+            -5.175581015019659e-17,
+            -0.9063077870366499,
+            -0.42261826174069944
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "bedroom-lamp-light",
+          "enabled": true,
+          "intensity": 2.3,
+          "direction": [
+            0.5184758473652126,
+            -0.8295613557843402,
+            0.20739033894608505
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "kitchen-window-daylight",
+          "enabled": true,
+          "intensity": 0,
+          "direction": [
+            0.08728715609439697,
+            -0.4800793585191833,
+            0.8728715609439696
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "kitchen-lamp-light",
+          "enabled": true,
+          "intensity": 3,
+          "direction": [
+            0.19402850002906638,
+            -0.9701425001453319,
+            -0.14552137502179976
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "bathroom-lamp-light",
+          "enabled": true,
+          "intensity": 3.8,
+          "direction": [
+            0.48795003647426655,
+            -0.7807200583588265,
+            0.39036002917941326
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "balcony-daylight",
+          "enabled": true,
+          "intensity": 1.99387713148063,
+          "direction": [
+            -5.175581015019659e-17,
+            -0.9063077870366499,
+            -0.42261826174069944
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "living-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 4,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "master-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 3.2,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "bedroom-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 3,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "study-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 2.7,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        }
+      ],
+      "camera": [
+        13.499999999999929,
+        3.0000000000000124,
+        30.24999999999997
+      ]
+    },
+    {
+      "view": "reading",
+      "resources": {
+        "meshes": 685,
+        "vertices": 575062,
+        "materials": 100,
+        "textures": 152,
+        "lights": 22,
+        "cameras": 3
+      },
+      "lighting": [
+        {
+          "name": "room-bounce-light",
+          "enabled": true,
+          "intensity": 0.38,
+          "direction": [
+            -0.35,
+            1,
+            0.15
+          ],
+          "diffuse": [
+            0.8088101658090109,
+            0.9030566671766399,
+            1
+          ]
+        },
+        {
+          "name": "window-daylight",
+          "enabled": true,
+          "intensity": 0,
+          "direction": [
+            0.13031167282892078,
+            -0.47780946703937627,
+            0.8687444855261386
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "reading-lamp-light",
+          "enabled": true,
+          "intensity": 3.3,
+          "direction": [
+            0.5734623443633283,
+            -0.8192319205190405,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "banker-lamp-light",
+          "enabled": true,
+          "intensity": 1.25,
+          "direction": [
+            -0.5167036117861568,
+            -0.7949286335171643,
+            0.3179714534068657
+          ],
+          "diffuse": [
+            1,
+            0.88,
+            0.68
+          ]
+        },
+        {
+          "name": "lighthouse-local-work-light",
+          "enabled": false,
+          "intensity": 2.1,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.7592995506950911,
+            0.42590528570714575
+          ]
+        },
+        {
+          "name": "coastal-afternoon-sun",
+          "enabled": true,
+          "intensity": 3.8,
+          "direction": [
+            -5.175581015019659e-17,
+            -0.9063077870366499,
+            -0.42261826174069944
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "scooter-headlight",
+          "enabled": false,
+          "intensity": 0,
+          "direction": [
+            0,
+            -0.17715299831526515,
+            0.9841833239736953
+          ],
+          "diffuse": [
+            1,
+            0.8751375823652049,
+            0.6523701054108211
+          ]
+        },
+        {
+          "name": "living-window-daylight",
+          "enabled": true,
+          "intensity": 1.8114533552568805e-16,
+          "direction": [
+            -0.9245003270420484,
+            -0.3698001308168194,
+            -0.09245003270420485
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "living-table-lamp-light",
+          "enabled": true,
+          "intensity": 2.4,
+          "direction": [
+            0.4472135954999579,
+            -0.8944271909999159,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "master-window-daylight",
+          "enabled": true,
+          "intensity": 0,
+          "direction": [
+            0.0890870806374748,
+            -0.44543540318737396,
+            0.8908708063747479
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "master-lamp-light",
+          "enabled": true,
+          "intensity": 2.3,
+          "direction": [
+            0.5184758473652126,
+            -0.8295613557843402,
+            0.20739033894608505
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "ensuite-lamp-light",
+          "enabled": true,
+          "intensity": 3.2,
+          "direction": [
+            -0.5050762722761053,
+            -0.8081220356417685,
+            0.3030457633656632
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "bedroom-window-daylight",
+          "enabled": true,
+          "intensity": 1.3523784375702383,
+          "direction": [
+            -5.175581015019659e-17,
+            -0.9063077870366499,
+            -0.42261826174069944
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "bedroom-lamp-light",
+          "enabled": true,
+          "intensity": 2.3,
+          "direction": [
+            0.5184758473652126,
+            -0.8295613557843402,
+            0.20739033894608505
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "kitchen-window-daylight",
+          "enabled": true,
+          "intensity": 0,
+          "direction": [
+            0.08728715609439697,
+            -0.4800793585191833,
+            0.8728715609439696
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "kitchen-lamp-light",
+          "enabled": true,
+          "intensity": 3,
+          "direction": [
+            0.19402850002906638,
+            -0.9701425001453319,
+            -0.14552137502179976
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "bathroom-lamp-light",
+          "enabled": true,
+          "intensity": 3.8,
+          "direction": [
+            0.48795003647426655,
+            -0.7807200583588265,
+            0.39036002917941326
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "balcony-daylight",
+          "enabled": true,
+          "intensity": 1.99387713148063,
+          "direction": [
+            -5.175581015019659e-17,
+            -0.9063077870366499,
+            -0.42261826174069944
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "living-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 4,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "master-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 3.2,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "bedroom-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 3,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "study-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 2.7,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        }
+      ],
+      "camera": [
+        4.5000000000000036,
+        9.999999999999998,
+        9.000000000000007
+      ]
+    },
+    {
+      "view": "coast",
+      "resources": {
+        "meshes": 685,
+        "vertices": 575062,
+        "materials": 100,
+        "textures": 152,
+        "lights": 22,
+        "cameras": 3
+      },
+      "lighting": [
+        {
+          "name": "room-bounce-light",
+          "enabled": true,
+          "intensity": 0.38,
+          "direction": [
+            -0.35,
+            1,
+            0.15
+          ],
+          "diffuse": [
+            0.8088101658090109,
+            0.9030566671766399,
+            1
+          ]
+        },
+        {
+          "name": "window-daylight",
+          "enabled": true,
+          "intensity": 0,
+          "direction": [
+            0.13031167282892078,
+            -0.47780946703937627,
+            0.8687444855261386
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "reading-lamp-light",
+          "enabled": true,
+          "intensity": 3.3,
+          "direction": [
+            0.5734623443633283,
+            -0.8192319205190405,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "banker-lamp-light",
+          "enabled": true,
+          "intensity": 1.25,
+          "direction": [
+            -0.5167036117861568,
+            -0.7949286335171643,
+            0.3179714534068657
+          ],
+          "diffuse": [
+            1,
+            0.88,
+            0.68
+          ]
+        },
+        {
+          "name": "lighthouse-local-work-light",
+          "enabled": false,
+          "intensity": 2.1,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.7592995506950911,
+            0.42590528570714575
+          ]
+        },
+        {
+          "name": "coastal-afternoon-sun",
+          "enabled": true,
+          "intensity": 3.8,
+          "direction": [
+            -5.175581015019659e-17,
+            -0.9063077870366499,
+            -0.42261826174069944
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "scooter-headlight",
+          "enabled": false,
+          "intensity": 0,
+          "direction": [
+            0,
+            -0.17715299831526515,
+            0.9841833239736953
+          ],
+          "diffuse": [
+            1,
+            0.8751375823652049,
+            0.6523701054108211
+          ]
+        },
+        {
+          "name": "living-window-daylight",
+          "enabled": true,
+          "intensity": 1.8114533552568805e-16,
+          "direction": [
+            -0.9245003270420484,
+            -0.3698001308168194,
+            -0.09245003270420485
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "living-table-lamp-light",
+          "enabled": true,
+          "intensity": 2.4,
+          "direction": [
+            0.4472135954999579,
+            -0.8944271909999159,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "master-window-daylight",
+          "enabled": true,
+          "intensity": 0,
+          "direction": [
+            0.0890870806374748,
+            -0.44543540318737396,
+            0.8908708063747479
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "master-lamp-light",
+          "enabled": true,
+          "intensity": 2.3,
+          "direction": [
+            0.5184758473652126,
+            -0.8295613557843402,
+            0.20739033894608505
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "ensuite-lamp-light",
+          "enabled": true,
+          "intensity": 3.2,
+          "direction": [
+            -0.5050762722761053,
+            -0.8081220356417685,
+            0.3030457633656632
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "bedroom-window-daylight",
+          "enabled": true,
+          "intensity": 1.3523784375702383,
+          "direction": [
+            -5.175581015019659e-17,
+            -0.9063077870366499,
+            -0.42261826174069944
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "bedroom-lamp-light",
+          "enabled": true,
+          "intensity": 2.3,
+          "direction": [
+            0.5184758473652126,
+            -0.8295613557843402,
+            0.20739033894608505
+          ],
+          "diffuse": [
+            1,
+            0.85,
+            0.64
+          ]
+        },
+        {
+          "name": "kitchen-window-daylight",
+          "enabled": true,
+          "intensity": 0,
+          "direction": [
+            0.08728715609439697,
+            -0.4800793585191833,
+            0.8728715609439696
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "kitchen-lamp-light",
+          "enabled": true,
+          "intensity": 3,
+          "direction": [
+            0.19402850002906638,
+            -0.9701425001453319,
+            -0.14552137502179976
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "bathroom-lamp-light",
+          "enabled": true,
+          "intensity": 3.8,
+          "direction": [
+            0.48795003647426655,
+            -0.7807200583588265,
+            0.39036002917941326
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "balcony-daylight",
+          "enabled": true,
+          "intensity": 1.99387713148063,
+          "direction": [
+            -5.175581015019659e-17,
+            -0.9063077870366499,
+            -0.42261826174069944
+          ],
+          "diffuse": [
+            1,
+            0.9301108583754237,
+            0.8069522576692516
+          ]
+        },
+        {
+          "name": "living-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 4,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "master-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 3.2,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "bedroom-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 3,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        },
+        {
+          "name": "study-ceiling-lamp-light",
+          "enabled": true,
+          "intensity": 2.7,
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "diffuse": [
+            1,
+            0.94,
+            0.82
+          ]
+        }
+      ],
+      "camera": [
+        -351.9999999999997,
+        894.9999999999999,
+        1148
+      ]
+    }
+  ],
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:8214/home/js/main.js",
+      "status": 200,
+      "bytes": 276640
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:8214/home/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    }
+  ],
+  "initialJsBytes": 2915670,
+  "initial": {
+    "hour": 12,
+    "automatic": false,
+    "operation": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 12,
+      "dutyDay": 1,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0,
+      "rotationRadians": 0,
+      "automaticOperatingHours": 0,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        }
+      ]
+    },
+    "metadata": {
+      "version": "lighthouse-operation-v1",
+      "stage": 1,
+      "visualApplied": false,
+      "state": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 12,
+        "dutyDay": 1,
+        "mode": "automatic",
+        "state": "day-standby",
+        "running": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0,
+        "rotationRadians": 0,
+        "automaticOperatingHours": 0,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          }
+        ]
+      }
+    }
+  },
+  "manualNight": {
+    "deviceId": "lighthouse-beacon-main",
+    "hour": 21,
+    "dutyDay": 1,
+    "mode": "automatic",
+    "state": "night-running",
+    "running": true,
+    "testSecondsRemaining": 0,
+    "rotationTurns": 0.24999999999998435,
+    "rotationRadians": 1.5707963267947982,
+    "automaticOperatingHours": 0,
+    "events": [
+      {
+        "id": 1,
+        "dutyDay": 1,
+        "hour": 12,
+        "objectId": "lighthouse-beacon-main",
+        "type": "initialized",
+        "source": "system",
+        "result": "day-standby"
+      },
+      {
+        "id": 2,
+        "dutyDay": 1,
+        "hour": 21,
+        "objectId": "lighthouse-beacon-main",
+        "type": "state-changed",
+        "source": "manual-time",
+        "result": "night-running",
+        "previousState": "day-standby"
+      },
+      {
+        "id": 3,
+        "dutyDay": 1,
+        "hour": 21,
+        "objectId": "lighthouse-beacon-main",
+        "type": "time-selected",
+        "source": "manual-time",
+        "result": "night-running"
+      },
+      {
+        "id": 4,
+        "dutyDay": 1,
+        "hour": 21,
+        "objectId": "lighthouse-beacon-main",
+        "type": "test-started",
+        "source": "command",
+        "result": "night-running"
+      },
+      {
+        "id": 5,
+        "dutyDay": 1,
+        "hour": 21,
+        "objectId": "lighthouse-beacon-main",
+        "type": "test-expired",
+        "source": "active-time",
+        "result": "night-running"
+      }
+    ]
+  },
+  "pauses": true,
+  "boundaries": {
+    "before": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 17.98333333333244,
+      "dutyDay": 1,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0.4499999999999845,
+      "rotationRadians": 2.8274333882307165,
+      "automaticOperatingHours": 0,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "manual-time",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 3,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "night-running"
+        },
+        {
+          "id": 4,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-started",
+          "source": "command",
+          "result": "night-running"
+        },
+        {
+          "id": 5,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-expired",
+          "source": "active-time",
+          "result": "night-running"
+        },
+        {
+          "id": 6,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "manual-time",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 7,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 8,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "command",
+          "result": "test-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 9,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-started",
+          "source": "command",
+          "result": "test-running"
+        },
+        {
+          "id": 10,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "command",
+          "result": "day-standby",
+          "previousState": "test-running"
+        },
+        {
+          "id": 11,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-ended",
+          "source": "command",
+          "result": "day-standby"
+        },
+        {
+          "id": 12,
+          "dutyDay": 1,
+          "hour": 15,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        }
+      ]
+    },
+    "evening": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 18,
+      "dutyDay": 1,
+      "mode": "automatic",
+      "state": "night-running",
+      "running": true,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0.5499999999999846,
+      "rotationRadians": 3.4557519189486756,
+      "automaticOperatingHours": 0.016666666667561003,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "manual-time",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 3,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "night-running"
+        },
+        {
+          "id": 4,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-started",
+          "source": "command",
+          "result": "night-running"
+        },
+        {
+          "id": 5,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-expired",
+          "source": "active-time",
+          "result": "night-running"
+        },
+        {
+          "id": 6,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "manual-time",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 7,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 8,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "command",
+          "result": "test-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 9,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-started",
+          "source": "command",
+          "result": "test-running"
+        },
+        {
+          "id": 10,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "command",
+          "result": "day-standby",
+          "previousState": "test-running"
+        },
+        {
+          "id": 11,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-ended",
+          "source": "command",
+          "result": "day-standby"
+        },
+        {
+          "id": 12,
+          "dutyDay": 1,
+          "hour": 15,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 13,
+          "dutyDay": 1,
+          "hour": 17.98333333333244,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "command",
+          "result": "test-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 14,
+          "dutyDay": 1,
+          "hour": 17.98333333333244,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-started",
+          "source": "command",
+          "result": "test-running"
+        },
+        {
+          "id": 15,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "test-running"
+        },
+        {
+          "id": 16,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-superseded",
+          "source": "automatic-clock",
+          "result": "night-running"
+        }
+      ]
+    },
+    "midnight": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 0,
+      "dutyDay": 2,
+      "mode": "automatic",
+      "state": "night-running",
+      "running": true,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0.5500000000000003,
+      "rotationRadians": 3.455751918948774,
+      "automaticOperatingHours": 3.016666666667561,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "manual-time",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 3,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "night-running"
+        },
+        {
+          "id": 4,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-started",
+          "source": "command",
+          "result": "night-running"
+        },
+        {
+          "id": 5,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-expired",
+          "source": "active-time",
+          "result": "night-running"
+        },
+        {
+          "id": 6,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "manual-time",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 7,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 8,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "command",
+          "result": "test-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 9,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-started",
+          "source": "command",
+          "result": "test-running"
+        },
+        {
+          "id": 10,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "command",
+          "result": "day-standby",
+          "previousState": "test-running"
+        },
+        {
+          "id": 11,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-ended",
+          "source": "command",
+          "result": "day-standby"
+        },
+        {
+          "id": 12,
+          "dutyDay": 1,
+          "hour": 15,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 13,
+          "dutyDay": 1,
+          "hour": 17.98333333333244,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "command",
+          "result": "test-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 14,
+          "dutyDay": 1,
+          "hour": 17.98333333333244,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-started",
+          "source": "command",
+          "result": "test-running"
+        },
+        {
+          "id": 15,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "test-running"
+        },
+        {
+          "id": 16,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-superseded",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 17,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "night-running"
+        },
+        {
+          "id": 18,
+          "dutyDay": 2,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        }
+      ]
+    },
+    "morning": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 6,
+      "dutyDay": 2,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0.5500000000000003,
+      "rotationRadians": 3.455751918948774,
+      "automaticOperatingHours": 6.0166666666675646,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "manual-time",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 3,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "night-running"
+        },
+        {
+          "id": 4,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-started",
+          "source": "command",
+          "result": "night-running"
+        },
+        {
+          "id": 5,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-expired",
+          "source": "active-time",
+          "result": "night-running"
+        },
+        {
+          "id": 6,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "manual-time",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 7,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 8,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "command",
+          "result": "test-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 9,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-started",
+          "source": "command",
+          "result": "test-running"
+        },
+        {
+          "id": 10,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "command",
+          "result": "day-standby",
+          "previousState": "test-running"
+        },
+        {
+          "id": 11,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-ended",
+          "source": "command",
+          "result": "day-standby"
+        },
+        {
+          "id": 12,
+          "dutyDay": 1,
+          "hour": 15,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 13,
+          "dutyDay": 1,
+          "hour": 17.98333333333244,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "command",
+          "result": "test-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 14,
+          "dutyDay": 1,
+          "hour": 17.98333333333244,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-started",
+          "source": "command",
+          "result": "test-running"
+        },
+        {
+          "id": 15,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "test-running"
+        },
+        {
+          "id": 16,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "test-superseded",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 17,
+          "dutyDay": 1,
+          "hour": 21,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "night-running"
+        },
+        {
+          "id": 18,
+          "dutyDay": 2,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 19,
+          "dutyDay": 2,
+          "hour": 3,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "night-running"
+        },
+        {
+          "id": 20,
+          "dutyDay": 2,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        }
+      ]
+    }
+  },
+  "coastHiding": true,
+  "disposed": true,
+  "passed": true
+}
