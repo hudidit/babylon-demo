@@ -7,6 +7,7 @@ import { evaluateTimeOfDay, DEFAULT_TIME_OF_DAY } from "./RoomTimeOfDay";
 import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
 import type { LighthouseWeatherSnapshot } from "./LighthouseWeather";
 import { applyCoastalWeather } from "./CoastalWeather";
+import { lighthouseShaftGLSL, lighthouseShaftUniforms } from "./LighthouseBeam";
 
 /** Metres, seconds and linear radiance. Also used by the vertex and fragment shaders. */
 export const OCEAN_WAVES = [
@@ -124,6 +125,7 @@ export const oceanFragment = `
   ${coastalSkyGLSL}
   ${coastalSkyCloudsGLSL}
   ${coastalSkyReflectionGLSL}
+  ${lighthouseShaftGLSL}
   float hash(vec2 p) { return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
   float noise(vec2 p) {
     vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f);
@@ -182,6 +184,14 @@ export const oceanFragment = `
     float band=(1.-smoothstep(.5,3.0,shoreDistance))*smoothstep(-.25,.35,shoreDistance);
     float foam=band*smoothstep(.05,.7,breaker)*smoothstep(.28,.66,noise(p*2.1+vec2(oceanTime*.13,-oceanTime*.09)));
     color=mix(color,vec3(.72,.81,.79)*skyIllumination,foam*.8);
+    // The rotating beacon shares the air cone's position, direction, finite range and dirty-pane transmission.
+    if(shaftPower>0.) {
+      vec3 beamPoint=shaftCoordinates(vPositionW);
+      float illumination=shaftEnvelope(beamPoint)*shaftPower;
+      vec3 light=normalize(shaftOrigin-vPositionW),halfLight=normalize(light+v);
+      float glint=pow(max(0.,dot(n,halfLight)),64.);
+      color+=vec3(.72,.84,1.)*illumination*(.55+glint*5.)/(1.+max(0.,beamPoint.z)*.0015);
+    }
     float haze=smoothstep(550.,3300.,distanceToEye);
     color=mix(color,coastalSkyGradient(normalize(vPositionW-cameraPosition)),haze);
     // Linear output: the existing scene image-processing pass applies ACES/exposure exactly once.
@@ -206,11 +216,15 @@ export class CoastalOcean {
     this.shoreTexture.wrapU = this.shoreTexture.wrapV = Texture.CLAMP_ADDRESSMODE;
     this.shoreTexture.gammaSpace = false;
     this.material = new ShaderMaterial("coastal-ocean", scene, { vertexSource: oceanVertex, fragmentSource: oceanFragment }, {
-      attributes: ["position"], uniforms: ["world", "viewProjection", "cameraPosition", "oceanTime", "skyIllumination", ...skyTimeUniforms],
+      attributes: ["position"], uniforms: ["world", "viewProjection", "cameraPosition", "oceanTime", "skyIllumination", ...skyTimeUniforms, ...lighthouseShaftUniforms],
       samplers: ["shoreSampler"], useClipPlane: true,
     });
     this.material.setTexture("shoreSampler", this.shoreTexture);
     this.material.setFloat("oceanTime", 0);
+    this.material.setFloat("shaftPower", 0);
+    this.material.setVector3("shaftOrigin", Vector3.Zero());
+    this.material.setVector3("shaftDirection", new Vector3(0, 0, 1));
+    this.material.setVector3("shaftRight", new Vector3(1, 0, 0));
     this.applyTimeOfDay(evaluateTimeOfDay(DEFAULT_TIME_OF_DAY));
     // ShaderMaterial's automatic cameraPosition uses the main eye; mirrors supply a reflected eye.
     this.material.onBindObservable.add(() => {

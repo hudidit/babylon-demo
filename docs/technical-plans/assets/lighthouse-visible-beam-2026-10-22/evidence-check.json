@@ -1,0 +1,44 @@
+{
+  "baseline": "c9a2807",
+  "manifestSha256": "12413c390bd791f886cd96b09dab16b8dcd383b067cbce52845b2ad60cf9f7aa",
+  "node": "v24.21.0",
+  "sourceFingerprints": {
+    "src/examples/LighthouseBeam.ts": "e4c73af178368e09a2d2bab48ab6f258be08e2e17e82c3f28e3a98a63167ea8d",
+    "src/examples/LighthouseBeacon.ts": "ce3e192ff2a35e4c1fdcc1ad09ffba125b707bf0e0b49fdbb509769b73c715d2",
+    "src/examples/CoastalOcean.ts": "9f69626ad3a3cae73a62fc2cd556550f067390841e93d877aeef88990f4b9a70",
+    "src/examples/RoomExterior.ts": "04814f91009240a2afa165b273e387419c700d14e08e04d489b854a7431d8d36",
+    "tests/lighthouse-beacon.test.cjs": "22da09231c27b0d4579ddddc99b373cd09bd361e5ba2e58bc055690edfa60e24"
+  },
+  "scriptFingerprints": {
+    "check-browser.cjs": "90ad33e32aa026a5156ec85483c5ed534d2c698bd0cf244ffa8a138f58ee6b80",
+    "check-matrix.cjs": "541c1536c70ed0e4fccf5e555dd9fc9ff98c73778c6751fc30fd444637c262f0",
+    "check-release.cjs": "2a6a4d7f12fe68906888dc7db033d7ce4bce25668fec9f04a88059e5c7b72280",
+    "verify-evidence.cjs": "acf3cba6f1bb1883b72c94b569c085c72e89684c975f4ec0702fe171c9fc1bd9"
+  },
+  "resultFingerprints": {
+    "after/browser.json": "5e54d42ebfaf1df77e0c9fd11ca53bde58b83825fec7c453f46de891fc1fc92d",
+    "matrix/matrix.json": "32d7d8ad3e0afdb1a57751d5d5993512fd3fe23c5647864da246b88ecc0d2984",
+    "release.json": "ec56e54d5a89cb145979ce3a3dff9ca9d55f72bade325c8629f4180fbcd3ecb0",
+    "regression/regression.json": "f766dde6bb0d94fa8e0688c6263f0dffd56fb9599a97c819cc0ba2d4a26ce00e",
+    "recreate/recreate.json": "25ac77ab7da7a5a0a79e89d4a71d5896bcb1a526cb0d82cfac6e0045fc9778ae"
+  },
+  "suites": {
+    "browser": true,
+    "matrixCases": 48,
+    "releasePrefixes": [
+      {
+        "path": "/",
+        "files": 495,
+        "passed": true
+      },
+      {
+        "path": "/home/",
+        "files": 495,
+        "passed": true
+      }
+    ],
+    "regression": true,
+    "recreateCycles": 3
+  },
+  "passed": true
+}

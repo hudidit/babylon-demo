@@ -6,6 +6,7 @@ import { COASTAL_SITE } from "./CoastalSite";
 import { HOUSE_ROOMS, HOUSE_COORDINATES, planToWorld } from "./HouseLayout";
 import { setRoomOwners } from "./RoomOwnership";
 import type { LighthouseOperationSnapshot } from "./LighthouseOperation";
+import { LighthouseBeam } from "./LighthouseBeam";
 
 export const LIGHTHOUSE_BEAM = Object.freeze({ innerAngle: 6 * Math.PI / 180, outerAngle: 12 * Math.PI / 180,
   opticHeight: 17.85, sourceWidth: .36, sourceHeight: .58, sourceForward: .39, minimumSignalPixels: 3 });
@@ -31,6 +32,7 @@ export class LighthouseBeacon {
   readonly meshes: Mesh[];
   readonly source: Mesh;
   readonly material: ShaderMaterial;
+  readonly volume: LighthouseBeam;
   private disposed = false;
 
   constructor(private readonly scene: Scene, surfaces: CoastalMaterials, retain: (mesh: Mesh, layer: "landmark") => Mesh) {
@@ -109,6 +111,7 @@ export class LighthouseBeacon {
     retain(this.source, "landmark"); this.source.unfreezeWorldMatrix(); this.source.parent = this.root;
     this.source.metadata = {...this.source.metadata, movingLighthouseOptic: true, deviceId: "lighthouse-beacon-main"};
     this.source.receiveShadows = false; this.meshes.push(this.source);
+    this.volume = new LighthouseBeam(scene, this.root, LIGHTHOUSE_BEAM.sourceForward, retain);
   }
 
   apply(state: LighthouseOperationSnapshot, transmission = 1) {
@@ -117,8 +120,9 @@ export class LighthouseBeacon {
     this.material.setVector3("beamDirection", new Vector3(Math.sin(state.rotationRadians), 0, Math.cos(state.rotationRadians)));
     this.material.setFloat("beaconOn", state.running ? 1 : 0);
     this.material.setFloat("surfaceTransmission", transmission);
+    this.volume.apply(state.rotationRadians, state.running, transmission);
   }
 
-  setVisible(visible: boolean) { if (!this.disposed) this.root.setEnabled(visible); }
-  dispose() { if (this.disposed) return; this.disposed = true; this.root.dispose(); this.material.dispose(false, false); }
+  setVisible(visible: boolean) { if (!this.disposed) {this.root.setEnabled(visible); this.volume.setVisible(visible);} }
+  dispose() { if (this.disposed) return; this.disposed = true; this.volume.dispose(); this.root.dispose(); this.material.dispose(false, false); }
 }

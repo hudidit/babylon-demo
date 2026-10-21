@@ -106,6 +106,7 @@ export class RoomExterior {
     setRoomOwners(this.lighthouseDoor.root.parent!, owners);
     this.detailMeshes = this.meshes.filter(m => m.metadata.detailDistance);
     this.ocean = new CoastalOcean(scene, make("coastal-sea", coastalSea(), "sea", this.sky));
+    this.lighthouseDetails.beacon.volume.connectOcean(this.ocean.material);
 
     const dome = CreateSphere("coastal-sky", { diameter: a.skyRadius * 2, segments: 96, sideOrientation: Mesh.BACKSIDE }, scene);
     dome.position.y = coastalSeaY; dome.material = this.sky; retain(dome, "sky");
@@ -152,6 +153,7 @@ export class RoomExterior {
     this.shadow.setDarkness(body?.kind === "moon" ? .18 : 0);
     applySkyTime(this.sky, state);
     applyCoastalWeather(this.sky,weather,state);
+    applyCoastalWeather(this.lighthouseDetails.beacon.volume.material,weather,state);
     this.ocean.applyTimeOfDay(state,weather);
     this.surfaces.applyTimeOfDay(state);
     this.refreshShadows();

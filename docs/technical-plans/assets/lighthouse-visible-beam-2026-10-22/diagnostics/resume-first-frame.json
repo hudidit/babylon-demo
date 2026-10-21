@@ -1,0 +1,118 @@
+{
+  "baseline": false,
+  "manifestSha256": "12413c390bd791f886cd96b09dab16b8dcd383b067cbce52845b2ad60cf9f7aa",
+  "errors": [],
+  "warnings": [],
+  "views": [
+    {
+      "name": "sea-side",
+      "state": {
+        "turns": 0.25000000000000006,
+        "power": 0.82
+      }
+    },
+    {
+      "name": "sea-forward",
+      "state": {
+        "turns": 0,
+        "power": 0.82
+      }
+    },
+    {
+      "name": "coastal-path",
+      "state": {
+        "turns": 0.25000000000000006,
+        "power": 0.82
+      }
+    },
+    {
+      "name": "home-distance",
+      "state": {
+        "turns": 0.21000000000000005,
+        "power": 0.82
+      }
+    },
+    {
+      "name": "sea-landing",
+      "state": {
+        "turns": 0.25000000000000006,
+        "power": 0.82
+      }
+    }
+  ],
+  "browser": "155.0.8059.86",
+  "firstScreenJs": {
+    "files": [
+      {
+        "url": "http://127.0.0.1:8254/js/main.js",
+        "bytes": 423413,
+        "sha256": "90a34767676cb8d1c40e1e05596dbf3973a95fdb75ce2067f567e5b563bbb04e"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/9691.js",
+        "bytes": 2420178,
+        "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/1203.js",
+        "bytes": 138571,
+        "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/8558.js",
+        "bytes": 12560,
+        "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/6612.js",
+        "bytes": 14807,
+        "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/4742.js",
+        "bytes": 8962,
+        "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/7449.js",
+        "bytes": 2072,
+        "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/9615.js",
+        "bytes": 9069,
+        "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/5587.js",
+        "bytes": 1107,
+        "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/6560.js",
+        "bytes": 2517,
+        "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/4472.js",
+        "bytes": 14991,
+        "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/9915.js",
+        "bytes": 14196,
+        "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+      }
+    ],
+    "bytes": 3062443
+  },
+  "rotation": {
+    "before": 0.25000000000000006,
+    "after": 0.4950000000000003,
+    "direction": [
+      0.031238687653334967,
+      -0.10452846326765346,
+      -0.9940311588479509
+    ]
+  }
+}

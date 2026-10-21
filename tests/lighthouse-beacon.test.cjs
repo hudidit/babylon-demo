@@ -1,6 +1,7 @@
 const assert = require('node:assert/strict'), {test} = require('node:test');
 const load = require('../docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs');
 const {lighthouseBeamStrength: beam, LIGHTHOUSE_BEAM} = load('LighthouseBeacon');
+const {LIGHTHOUSE_SHAFT: shaft, lighthouseShaftEnvelope: envelope} = load('LighthouseBeam');
 const {LighthouseOperation} = load('LighthouseOperation');
 const {LIGHTHOUSE: layout} = load('LighthouseLayout'), {COASTAL_SITE: {tower}} = load('CoastalSite');
 const {planToWorld} = load('HouseLayout');
@@ -76,6 +77,45 @@ test('navigation emission follows operation, remains independent from the work l
   exterior.setVisible(false); assert.equal(beacon.root.isEnabled(), false);
   exterior.setVisible(true); assert.equal(beacon.root.isEnabled(), true);
   assert.equal(scene.lights.length, lights); assert.equal(scene.textures.filter(t => t.isRenderTarget).length, targets);
+});
+
+test('the visible shaft reaches the sea within its finite forward range and keeps soft transverse edges', () => {
+  const {coastalSeaY} = load('CoastalCliff'), origin = planToWorld(tower, tower.ground + LIGHTHOUSE_BEAM.opticHeight);
+  const waterDistance = (origin.y - coastalSeaY) / (5 * Math.sin(shaft.pitch));
+  assert.ok(waterDistance > 350 && waterDistance < shaft.length * .8);
+  assert.ok(envelope(0, 0, waterDistance) > .9);
+  assert.ok(envelope(5, 0, waterDistance) < envelope(0, 0, waterDistance));
+  for (const z of [-1, 0, shaft.length, shaft.length + 100]) assert.equal(envelope(0, 0, z), 0);
+  assert.equal(envelope(100, 0, 200), 0); assert.equal(envelope(0, 100, 200), 0);
+  assert.equal(envelope(NaN, 0, 200), 0);
+});
+
+test('air and ocean share rotating direction, dirty-pane dimming, shutdown and exterior visibility', t => {
+  const {exterior, beacon, scene} = setup(t), op = new LighthouseOperation(), volume = beacon.volume;
+  const lights = scene.lights.length, textures = scene.textures.length, observers = scene.onBeforeRenderObservable.observers.length;
+  const ocean = exterior.ocean.material;
+  op.selectTime(0);
+  beacon.apply({...op.snapshot, rotationRadians: Math.PI / 2}, .38);
+  for (const m of [volume.material, ocean]) {
+    near(m._floats.shaftPower, .38);
+    near(m._vectors3.shaftDirection.x, Math.cos(shaft.pitch)); near(m._vectors3.shaftDirection.y, -Math.sin(shaft.pitch));
+    near(m._vectors3.shaftDirection.z, 0);
+    near(m._vectors3.shaftOrigin.x, beacon.root.position.x + LIGHTHOUSE_BEAM.sourceForward * 5);
+  }
+  assert.equal(volume.mesh.isEnabled(), true);
+  exterior.setVisible(false);
+  assert.equal(volume.mesh.isEnabled(), false); assert.equal(ocean._floats.shaftPower, 0);
+  exterior.setVisible(true); near(ocean._floats.shaftPower, .38);
+  op.selectTime(12); beacon.apply(op.snapshot);
+  assert.equal(volume.mesh.isEnabled(), false); assert.equal(ocean._floats.shaftPower, 0);
+  op.startTest(); beacon.apply(op.snapshot); assert.equal(volume.mesh.isEnabled(), true);
+  beacon.apply({...op.snapshot, running: false}); assert.equal(ocean._floats.shaftPower, 0);
+  assert.equal(volume.mesh.checkCollisions, false); assert.equal(volume.mesh.isPickable, false);
+  assert.equal(exterior.shadow.getShadowMap().renderList.includes(volume.mesh), false);
+  assert.equal(volume.material.disableDepthWrite, true); assert.equal(volume.material.depthFunction, 0);
+  assert.ok(volume.mesh.getTotalVertices() < 150);
+  assert.equal(scene.lights.length, lights); assert.equal(scene.textures.length, textures);
+  assert.equal(scene.onBeforeRenderObservable.observers.length, observers);
 });
 
 test('local controls require a clear short ray; walls, glazing, floor and range block access', t => {
