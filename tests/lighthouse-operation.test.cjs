@@ -214,8 +214,11 @@ test('Room updates lighthouse even with a frozen manual hour and guards all muta
   room.timeState = new RoomTimeOfDay(); room.lighthouseState = new LighthouseOperation(); room.pauses = new RoomPauseState();
   room.lighthouseMaintenanceState = new(load('LighthouseMaintenance').LighthouseMaintenance)();
   room.lighthousePowerState = new(load('LighthousePower').LighthousePower)();
+  room.weatherState = new(load('LighthouseRisk').LighthouseWeatherRisk)({seed:1,fixedWeather:'clear'});
+  room.rain = {apply:()=>{}};
   room.lighthousePanel = {};
   room.scene = {metadata: {timeOfDay: {}, lighthouseOperation: {stage: 1, visualApplied: false}}};
+  room.scene.activeCamera={globalPosition:{}};
   room.exterior = {isVisible: true, lighthouseDetails: {beacon:{root:{position:{x:0,z:0}},apply:()=>{}},equipment:{apply:()=>{}},cover:{pane:{},apply:()=>{}}}}; room.timeVisualElapsed = 0;
   room.firstPersonCamera = {position:{x:0,z:1}}; room.lighthouseInspectionState = new(load('LighthouseInspection').LighthouseInspection)();
   room.canObserveLighthouse = () => false; room.canObserveBackup = () => false;

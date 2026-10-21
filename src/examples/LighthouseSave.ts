@@ -28,7 +28,10 @@ export function decodeLighthouseSave(raw: string): LighthouseSession {
 }
 export function encodeLighthouseSave(s: LighthouseSession) {
   if (s.clock.playback.transitioning) throw new Error("Wait for the time transition before saving");
-  const raw = JSON.stringify({version: 1, hour: s.clock.snapshot.hour, operation: s.operation.exportState(), inspection: s.inspection.exportState(),
+  const operation = s.operation.exportState();
+  // V1 saves retain real energy/history; transient weather is explicitly session-only until V2.
+  if (s.maintenance.transientWeatherDemand) operation.detectedDemand = s.maintenance.snapshot.sensorDirty && !s.maintenance.snapshot.override;
+  const raw = JSON.stringify({version: 1, hour: s.clock.snapshot.hour, operation, inspection: s.inspection.exportState(),
     maintenance: s.maintenance.exportState(), power: s.power.exportState()});
   decodeLighthouseSave(raw); return raw;
 }

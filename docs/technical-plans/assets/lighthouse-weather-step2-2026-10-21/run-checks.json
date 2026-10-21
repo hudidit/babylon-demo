@@ -1,0 +1,103 @@
+{
+  "baseline": "3d1dd3c",
+  "manifestSha256": "e93a9204f67bcf389a2cb31adca312a939a74c0eb5ee0b8f8097f4d801b52280",
+  "suites": {
+    "work": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-work.cjs",
+      "scriptSha256": "7671fad45aca0fb6edbbed455adabb159f56c7fc4f400d6ab1fb43e00e21f0e0",
+      "result": "work/work.json",
+      "resultSha256": "2cba685b56ba2332693e72593fa08a6ebf28696a5fa61fc018c3f79a113b8565"
+    },
+    "weather": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-weather.cjs",
+      "scriptSha256": "e3bd8f4478439912e6bde511d04984235782ec8dc8f317f9c444c4f84247993b",
+      "result": "browser/weather.json",
+      "resultSha256": "d6f6fd35e257b5cf3c11e4ac4fd2d76ab7eaff63c5b412174a7e88797ce0a16d"
+    },
+    "matrix": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-matrix.cjs",
+      "scriptSha256": "eee19ce234bf2d2491f0f91cebacff0dc751d5c2b5865bf4dde0e19dbb9c016c",
+      "result": "matrix/matrix.json",
+      "resultSha256": "5ccd9d113ec12e0bbe635416dada733a647b74a36c3e8ed1069b55901281f291"
+    },
+    "regression": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/suite-adapter.cjs",
+      "scriptSha256": "732904ffd2c15a02d41d76195f7c1756715278de157bea760c6377a8f2088647",
+      "result": "regression/regression.json",
+      "resultSha256": "105c7ee41802e748bd6992a35a357b9ed454d391e3bcefb1db933f20783331ff"
+    },
+    "curtains": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/suite-adapter.cjs",
+      "scriptSha256": "732904ffd2c15a02d41d76195f7c1756715278de157bea760c6377a8f2088647",
+      "result": "curtains/browser.json",
+      "resultSha256": "7e6014e2c0ad8d31d983b35f3fb754bdcef721ab7c5691c5eeeedd9b0ced22c3"
+    },
+    "ceiling": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/suite-adapter.cjs",
+      "scriptSha256": "732904ffd2c15a02d41d76195f7c1756715278de157bea760c6377a8f2088647",
+      "result": "ceiling/browser.json",
+      "resultSha256": "4d817b7ee7023dc696686259d565b219ec079c276821a43d2c6388c00d9b0b17"
+    },
+    "master-mirror": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/suite-adapter.cjs",
+      "scriptSha256": "732904ffd2c15a02d41d76195f7c1756715278de157bea760c6377a8f2088647",
+      "result": "master-mirror/mirror-map.json",
+      "resultSha256": "55acefcb95177c05ac0648531e0668bf0f64ffe875a5a3ce19e1b2111533ebde"
+    },
+    "public-mirror": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/suite-adapter.cjs",
+      "scriptSha256": "732904ffd2c15a02d41d76195f7c1756715278de157bea760c6377a8f2088647",
+      "result": "public-mirror/public-mirror.json",
+      "resultSha256": "942c6fd5ca1bd3fcfbc6dbd646ff29a3c0f71d0c66b65b3c5a287e1d49462dcc"
+    },
+    "headlight": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/suite-adapter.cjs",
+      "scriptSha256": "732904ffd2c15a02d41d76195f7c1756715278de157bea760c6377a8f2088647",
+      "result": "headlight/browser.json",
+      "resultSha256": "9e0b418508f64656e35eee4efc49ba39657418c4df082006ef6a3d6dc34cf6f2"
+    },
+    "recreate": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/suite-adapter.cjs",
+      "scriptSha256": "732904ffd2c15a02d41d76195f7c1756715278de157bea760c6377a8f2088647",
+      "result": "recreate/recreate.json",
+      "resultSha256": "3e3aa515fe3f6183b828fef34c4956225f37b0c3908bb3bedd2358862292e495"
+    },
+    "mirror-clouds": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/clouds-stars-phase2-2026-10-19/check-mirrors.cjs",
+      "scriptSha256": "78ae4abf522d491c5d511c4c2a5cd2cefb1193be1219823501b1f1a4e0038e8a",
+      "result": "mirror-clouds/mirror-clouds.json",
+      "resultSha256": "7e8f86091057bee93d1885c7ca35f2427de8e436773d44f23e42f3a028d1814f"
+    },
+    "release": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-release.cjs",
+      "scriptSha256": "4d63e9ad2a60f9eb4be319b6f75afe05030e86c865e63c948c164c5a26d6b184",
+      "result": "release.json",
+      "resultSha256": "3f6c4289e528e619e3b4c4f62301812322d17ba3a460c69acdc7e408dffd2bde"
+    }
+  },
+  "passed": true
+}

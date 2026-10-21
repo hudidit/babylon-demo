@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(comparison.changed>5)
+
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-weather.cjs:38:53 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

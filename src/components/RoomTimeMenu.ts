@@ -17,6 +17,9 @@ export class RoomTimeMenu {
     const status = document.querySelector<HTMLElement>("#time-current")!;
     const live = document.querySelector<HTMLElement>("#time-announcement")!;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const weatherSelect=document.querySelector<HTMLSelectElement>("#weather-mode")!;
+    const weatherMotion=document.querySelector<HTMLInputElement>("#weather-reduced-motion")!;
+    weatherMotion.checked=reduced.matches;room.setReducedWeatherMotion(reduced.matches);
     const events = new AbortController(), signal = events.signal;
     let opening = false;
     const setOpen = (open: boolean, focus = true) => {
@@ -46,6 +49,10 @@ export class RoomTimeMenu {
         button.setAttribute("aria-checked", String(checked)); button.tabIndex = checked ? 0 : -1;
       });
       automatic.checked = playback.automatic;
+      const weather=room.weather.weather,weatherLabel=({clear:"晴朗",overcast:"阴天",fog:"海雾",storm:"风雨"})[weather.kind];
+      weatherSelect.value=weather.mode==="automatic"?"automatic":weather.kind;
+      document.querySelector("#weather-label")!.textContent=weatherLabel;
+      document.querySelector("#weather-current")!.textContent=`${weatherLabel}${weather.phase==="entering"?" · 转变中":""} · 能见约${weather.visibilityKm.toFixed(1)} km · 太阳能${Math.round(weather.solarMultiplier*100)}%${weather.rain>=.15?" · 暂缓外廊作业":""}`;
       status.textContent = playback.transitioning ? "切换中…" : "当前 " + formatTime(state.hour)
         + (playback.automatic ? room.pauseReasons.length ? " · 收起后继续流转" : " · 自动流转中" : " · 手动时间");
     };
@@ -67,6 +74,9 @@ export class RoomTimeMenu {
       room.setTimeAutomatic(automatic.checked);
       live.textContent = automatic.checked ? "自动流转已开启，收起菜单后继续" : "自动流转已关闭";
     }, { signal });
+    weatherSelect.addEventListener("change",()=>{room.setWeather(weatherSelect.value==="automatic"?null:weatherSelect.value as "clear"|"overcast"|"fog"|"storm");live.textContent="天气已切换，设备状态保留";},{signal});
+    weatherMotion.addEventListener("change",()=>room.setReducedWeatherMotion(weatherMotion.checked),{signal});
+    reduced.addEventListener("change",event=>{weatherMotion.checked=event.matches;room.setReducedWeatherMotion(event.matches);},{signal});
     document.addEventListener("pointerdown", event => {
       if (!menu.hidden && !root.contains(event.target as Node)) setOpen(false, false);
     }, { capture: true, signal });

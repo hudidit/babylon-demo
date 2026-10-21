@@ -1,0 +1,7 @@
+page.evaluate: TypeError: Cannot read properties of null (reading 'constructor')
+    at eval (eval at evaluate (:370:30), <anonymous>:8:145)
+    at async <anonymous>:396:30
+    at mirrorFrame (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-weather.cjs:36:30)
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-weather.cjs:45:69 {
+  log: []
+}

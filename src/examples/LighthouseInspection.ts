@@ -86,6 +86,13 @@ export class LighthouseInspection {
   static canClean(op: LighthouseOperationSnapshot) {
     return op.state === "day-standby" && op.mode === "automatic" && !op.running && op.testSecondsRemaining === 0;
   }
+  soilFromWeather(op: LighthouseOperationSnapshot) {
+    if (this.dirty) return;
+    this.cancelCleaning(op, "天气暴露改变保护面，重新检查后操作。");
+    this.dirty = true; this.revision++; this.cover = undefined; this.coverStatus = "pending";
+    this.record(op, LIGHTHOUSE_INSPECTION.coverId, "system", "maintenance-due", "automatic-clock", "天气暴露使保护面重新积盐，请现场检查、清洁和复查。", this.revision);
+    this.notice = "保护面出现天气暴露污损。"; this.publish();
+  }
   /** Called on commands as well as frames, so a running device cancels a pending transaction immediately. */
   synchronize(op: LighthouseOperationSnapshot) {
     if (op.dutyDay > this.dutyDay) {

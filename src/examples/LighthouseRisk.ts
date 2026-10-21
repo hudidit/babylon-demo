@@ -31,6 +31,7 @@ export interface LighthouseProblem {
   readonly revision: number;
   readonly createdHour: number;
   readonly stage: "latent" | "degraded" | "serious";
+  readonly origin?: "existing";
   readonly cause: Readonly<{weather: LighthouseWeatherKind; ratePerHour: number; weatherMultiplier: number;
     conditionMultiplier: number; soil: number; probability: number}>;
 }
@@ -54,6 +55,13 @@ export interface LighthouseWeatherRiskOptions {
   readonly rules?: readonly LighthouseRiskRule[];
   readonly remedies?: readonly LighthouseRemedy[];
 }
+export interface LighthouseWeatherInterval {
+  readonly fromElapsedHours: number;
+  readonly hours: number;
+  readonly solarFrom: number;
+  readonly solarTo: number;
+  readonly lowVisibility: boolean;
+}
 const COMPONENTS: readonly LighthouseRiskComponent[] = ["cover", "solar", "drive", "charger", "sensor", "seal", "backup"];
 const REMEDY: Readonly<Record<LighthouseRiskComponent, LighthouseRemedy>> = Object.freeze({cover: "clean-cover", solar: "clean-solar",
   drive: "replace-drive", charger: "replace-charger", sensor: "clean-sensor", seal: "repair-seal", backup: "repair-backup"});
@@ -66,13 +74,13 @@ export function lighthouseRiskProbability(ratePerHour: number, hours: number) {
 }
 
 /**
- * Stage-one simulation only. Room, equipment, inspection and version-1 saves do not import this module.
+ * Pure weather/risk simulation. The scene bridge consumes intervals; V1 saves do not persist this model.
  * Time is accepted automatic scene time; fixed boundaries own every random draw and problem change.
  */
 export class LighthouseWeatherRisk {
   private readonly random: LighthouseRandom;
   private readonly weather: LighthouseWeatherSequence;
-  private readonly visibility: LighthouseVisibility;
+  private visibility: LighthouseVisibility;
   private readonly rules: readonly LighthouseRiskRule[];
   private readonly remedies: readonly LighthouseRemedy[];
   private components: Partial<Record<LighthouseRiskComponent, RiskComponentState>> = {};
@@ -101,6 +109,7 @@ export class LighthouseWeatherRisk {
     this.weather = new LighthouseWeatherSequence(this.random, options.fixedWeather);
     this.visibility = new LighthouseVisibility(this.weather.sample().visibilityKm);
   }
+  get acceptedAutomaticHours() {return this.acceptedHours;}
   get snapshot() {
     const elapsedHours = round(this.acceptedHours), remainderHours = round(Math.max(0, this.acceptedHours - this.ticks / 12));
     const weather = this.weather.sample(Math.min(1, remainderHours * 12));
@@ -116,19 +125,71 @@ export class LighthouseWeatherRisk {
     if (stream !== "inspection" && stream !== "forecast") throw new RangeError("Not an information stream");
     return this.random.next(stream);
   }
-  advance(advance: Pick<TimeOfDayAdvance, "automaticHours">) {
+  setFixedWeather(kind: LighthouseWeatherKind | null) {
+    this.weather.setFixed(kind);
+    this.visibility = new LighthouseVisibility(this.weather.sample().visibilityKm);
+  }
+  /** Reconcile existing teaching/due dirt with the risk pool; never roll a second copy of the same dirt. */
+  synchronizeSurface(component: "cover" | "solar", dirty: boolean) {
+    const problem = this.problems.find(p => p.component === component), state = this.components[component];
+    if (!state) return;
+    if (!dirty) {if (problem) this.maintain(component, problem.id); return;}
+    if (problem) return;
+    const rule = this.rules.find(r => r.component === component)!, weather = this.snapshot.weather;
+    this.problems.push(Object.freeze({id: `weather-problem-${this.nextProblem++}`, component, objectId: rule.objectId,
+      revision: state.revision + 1, createdHour: round(this.acceptedHours), stage: "degraded", origin: "existing",
+      cause: Object.freeze({weather: weather.kind, ratePerHour: 0, weatherMultiplier: weather.exposureMultiplier,
+        conditionMultiplier: state.conditionMultiplier, soil: state.soil, probability: 0})}));
+    this.components[component] = Object.freeze({...state, revision: state.revision + 1});
+  }
+  advance(advance: Pick<TimeOfDayAdvance, "automaticHours">, consume?: (interval: LighthouseWeatherInterval) => void) {
     const hours = advance.automaticHours;
     if (!nonnegative(hours) || hours > 24) throw new RangeError("Invalid accepted automatic interval (maximum one day)");
     // Compensated accumulation avoids frame-size drift. All decisions use integer tick indices.
-    const increment = hours - this.compensation, sum = this.acceptedHours + increment;
+    if (hours === 0) return;
+    const from = this.acceptedHours, increment = hours - this.compensation, sum = this.acceptedHours + increment;
     this.compensation = sum - this.acceptedHours - increment; this.acceptedHours = sum;
     const target = Math.floor((this.acceptedHours + 1e-9) * 12);
+    let cursor = from;
     while (this.ticks < target) {
+      if (consume) this.consumeInterval(cursor, (this.ticks + 1) / 12, consume);
       const weather = this.weather.sample(.5), hour = (this.ticks + 1) / 12;
       this.riskTick(weather, hour);
       this.visibility.advanceLinear(this.weather.sample().visibilityKm, this.weather.sample(1).visibilityKm, 1 / 12);
       this.weather.advanceTick();
       this.ticks++;
+      cursor = this.ticks / 12;
+    }
+    if (consume && this.acceptedHours > cursor + 1e-12) this.consumeInterval(cursor, this.acceptedHours, consume);
+  }
+  private consumeInterval(from: number, to: number, consume: (interval: LighthouseWeatherInterval) => void) {
+    const start = this.ticks / 12, a = this.weather.sample(Math.max(0, Math.min(1, (from - start) * 12))),
+      b = this.weather.sample(Math.max(0, Math.min(1, (to - start) * 12))), hours = to - from;
+    if (hours <= 1e-12) return;
+    const initial = this.visibility.sampleLinear(this.weather.sample().visibilityKm, a.visibilityKm, Math.max(0, from - start));
+    let required = initial.required, recovery = initial.recoveryHours;
+    const boundaries = [0, 1];
+    if (a.visibilityKm !== b.visibilityKm) for (const threshold of [2, 3]) {
+      const t = (threshold - a.visibilityKm) / (b.visibilityKm - a.visibilityKm);
+      if (t > 0 && t < 1) boundaries.push(t);
+    }
+    boundaries.sort((x,y) => x-y);
+    const emit = (lo: number, hi: number, lowVisibility: boolean) => {
+      if (hi - lo <= 1e-12) return;
+      consume({fromElapsedHours: from + lo * hours, hours: (hi-lo)*hours,
+        solarFrom: a.solarMultiplier + (b.solarMultiplier-a.solarMultiplier)*lo,
+        solarTo: a.solarMultiplier + (b.solarMultiplier-a.solarMultiplier)*hi, lowVisibility});
+    };
+    for (let i=1;i<boundaries.length;i++) {
+      const lo=boundaries[i-1], hi=boundaries[i], visibility=a.visibilityKm+(b.visibilityKm-a.visibilityKm)*(lo+hi)/2;
+      if (visibility < 2) {required=true; recovery=0;}
+      else if (visibility < 3) recovery=0;
+      if (required && visibility >= 3) {
+        const duration=(hi-lo)*hours, needed=Math.max(0,1/6-recovery);
+        if (duration >= needed-1e-10) {const at=Math.min(hi,lo+needed/hours);emit(lo,at,true);emit(at,hi,false);required=false;recovery=0;continue;}
+        recovery+=duration;
+      }
+      emit(lo,hi,required);
     }
   }
   /** Called only after a future scene bridge commits the existing local cleaning/repair transaction. */

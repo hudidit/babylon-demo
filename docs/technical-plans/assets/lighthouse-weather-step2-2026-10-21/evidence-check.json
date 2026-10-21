@@ -1,0 +1,63 @@
+{
+  "baseline": "3d1dd3c",
+  "passed": true,
+  "manifestSha256": "e93a9204f67bcf389a2cb31adca312a939a74c0eb5ee0b8f8097f4d801b52280",
+  "tests": 311,
+  "newTests": 13,
+  "suites": 12,
+  "weatherMatrix": 108,
+  "actualFirstScreenJs": [
+    {
+      "prefix": "",
+      "bytes": 3044555
+    },
+    {
+      "prefix": "home/",
+      "bytes": 3044555
+    }
+  ],
+  "totals": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26442231,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 89433,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2825703,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42491747
+  },
+  "unchangedRuntimeFiles": 36,
+  "versions": {
+    "node": "v24.21.0",
+    "typescript": "5.9.3",
+    "webpack": "5.111.1",
+    "chrome": "155.0.8059.86",
+    "webkit": "27.2"
+  },
+  "files": {
+    "src/examples/Room.ts": "339203d5f0519f53620950c810f2cca67c424a19de86c635c4a844f907de8c52",
+    "src/examples/CoastalWeather.ts": "cedcb46ddde88567759985ac1db999a272048e31bbb21b171bb08f570cdfb44e",
+    "src/examples/CoastalRain.ts": "6afb971744b70d98d2bf1decc3b14d4b2b19bbbc6f3e82beb1de303fe5145a51",
+    "src/examples/LighthouseWeatherSession.ts": "3f8a694c362c58ed95ddc66182bc501a48f0f05b22e2e32a09124ce098316d9a",
+    "src/examples/LighthouseRisk.ts": "e659d922592b10f417b754542bed5182ba9f80e8908b78552bf20619fc0b8049",
+    "src/examples/LighthouseWeather.ts": "60efecfd4bbe3944d0c18463929b2798c289ca671017dfd06a53296b8a3daf30",
+    "src/examples/LighthousePower.ts": "fc8be4f2ec290039b24d62edcfa406c49010a741a486719f94dc26354d590e5c",
+    "src/examples/LighthouseOperation.ts": "165208ffaeb39441036a4bae3a03c59e34899159e587e36575837b2b8a3d0f6e",
+    "src/examples/LighthouseMaintenance.ts": "c96f730009394cee8c523f4b8c3bc5277d2bcfde9734a26e6cc10e639e393d23",
+    "src/examples/LighthouseInspection.ts": "a06a8e742f48be2b27d736c06c6378ca25e7f10497b324c6b0dfeacc79611484",
+    "src/examples/LighthouseSave.ts": "2c789b04300adc45cd9eff5e0731cb25d232d4916b46535b41c459f22846096f",
+    "src/examples/LighthousePanel.ts": "3a04348706965b10a67b29b552428fcd34ca3910cb04c005d4f156be77c6a28b",
+    "src/examples/LighthouseExperience.ts": "b7cd69b10921847251261e569d3241646b834aed472931041fc3d157f03c0d33",
+    "src/examples/CoastalSky.ts": "daddbef1cf9a232b6eff3ad26b5449eef64af9186c92fe3bfefaff7a50801c40",
+    "src/examples/CoastalOcean.ts": "eac04ff2b29683fdd2b76e01879f33defd466e236e983fa39c2d4fb544a3c018",
+    "src/examples/RoomExterior.ts": "45405034c830edf6907136c07706e3eedaa23bf30ab5c631aedd4697b7c6ceae",
+    "src/components/RoomTimeMenu.ts": "1be3d2ffe470a6e34a9004b39f25546387d35315be033bff579a302f3c3cf058",
+    "public/index.html": "d90b3319228046c61b425ae64e9ef2711bdb5348d77002a767bdc76b4d4c85a4",
+    "tests/coastal-weather.test.cjs": "3d410d3eb2b63ad6dd8dc02f5455857aac46cd5e56029c050ac9117632f85ab0",
+    "tests/fixtures/room-runtime-probe.cjs": "b4a02f8e20d77384247dcb632beef2794b770628e71c37124d930c5974e65b6f",
+    "tests/lighthouse-operation.test.cjs": "1570001aaecd685644818d66c21cfc9f524bd4bc7b4336b3870a13b1672d9977",
+    "tests/lighthouse-weather-linkage.test.cjs": "b1637598109690fc008f05440ae21fd46bde2be7d9da496bd93fafbc3b5c8f92"
+  }
+}

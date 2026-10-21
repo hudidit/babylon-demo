@@ -1,0 +1,23 @@
+{
+  "baseline": "3d1dd3c",
+  "manifestSha256": "76c2b618fb486373c129ae1c6fb9fa0e65ead2f063dd5486eba7ff6ab62d1a27",
+  "suites": {
+    "work": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-work.cjs",
+      "scriptSha256": "7671fad45aca0fb6edbbed455adabb159f56c7fc4f400d6ab1fb43e00e21f0e0",
+      "result": "work/work.json",
+      "resultSha256": "8dc29256e9883d2168e6266346839e3e83d24c497225b04b080ea52a05994eba"
+    },
+    "weather": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-weather.cjs",
+      "scriptSha256": "e3bd8f4478439912e6bde511d04984235782ec8dc8f317f9c444c4f84247993b",
+      "result": "browser/weather.json",
+      "resultSha256": "b7afb44a122428084b1c4923926a069c262329fa1560db92b87e547929f31136"
+    }
+  },
+  "passed": false
+}

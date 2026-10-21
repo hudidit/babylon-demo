@@ -26,9 +26,21 @@ export const lighthouseSolarW = (hour: number) => hour >= 6 && hour <= 18 ? C.so
 /** A single monotonic daylight segment; the integrator splits at midnight, dawn, noon and dusk. */
 export const lighthouseSolarWh = (hour: number, hours: number) => C.solarPeakW * 12 / Math.PI *
   (Math.cos((Math.max(6, hour) - 6) * Math.PI / 12) - Math.cos((Math.min(18, hour + hours) - 6) * Math.PI / 12)) * (hour < 18 && hour + hours > 6 ? 1 : 0);
+/** Integrate daylight × a linear weather multiplier on a daylight-only segment. */
+export function lighthouseWeatherSolarWh(hour: number, hours: number, multiplier: number, slope = 0) {
+  const start = Math.max(0, 6-hour), end = Math.min(hours,18-hour), k = Math.PI/12;
+  if (end <= start) return 0;
+  const primitive = (t: number) => -(multiplier+slope*t)*Math.cos(k*(hour+t-6))/k + slope*Math.sin(k*(hour+t-6))/(k*k);
+  return C.solarPeakW*(primitive(end)-primitive(start));
+}
 
 /** Wh and fuel only consume accepted automatic scene hours. Actions consume bounded active seconds. */
 export class LighthousePower {
+  private weatherSolar = 1;
+  setWeatherSolar(multiplier: number) {
+    if (!Number.isFinite(multiplier) || multiplier < 0 || multiplier > 1) throw new RangeError("Invalid solar weather multiplier");
+    this.weatherSolar = multiplier;
+  }
   private mainWh: number; private backupWh: number; private fuel: number; private reserveFuel: number;
   private generatorRunning = false; private protected = false; private warning = false; private ready = false; private revision = 0;
   private action?: PowerAction; private notice = ""; private nextId = 1; private events: readonly PowerEvent[] = Object.freeze([]);
@@ -82,10 +94,11 @@ export class LighthousePower {
     const generator = this.generatorRunning ? C.generatorW : 0;
     const generatorBackup = generator ? this.backupWh < C.backupCapacityWh - EPS ? C.backupChargeW : backup ? C.backupW : 0 : 0;
     const generatorMain = generator - generatorBackup;
-    const solarFactor = m.chargerFault || m.chargeIsolated ? 0 : m.solarDirty ? .2 : 1;
+    const solarSurfaceFactor = m.chargerFault || m.chargeIsolated ? 0 : m.solarDirty ? .2 : 1;
+    const solarFactor = solarSurfaceFactor * this.weatherSolar;
     const solar = lighthouseSolarW(hour) * solarFactor;
     const mainLoad = C.controlW + (main ? C.mainLampW : 0);
-    return {mainAllowed, trialAllowed, backupAvailable, solarFactor, solar, generator, generatorMain, generatorBackup,
+    return {mainAllowed, trialAllowed, backupAvailable, solarSurfaceFactor, solarFactor, solar, generator, generatorMain, generatorBackup,
       mainLoad, backupLoad: backup ? C.backupW : 0};
   }
   synchronize(op: LighthouseOperationSnapshot, m: LighthouseMaintenanceSnapshot) {
@@ -102,10 +115,12 @@ export class LighthousePower {
       action: this.action, notice: this.notice, events: this.events, solarVerified: this.solarProof === this.pathRevision(m), generatorVerified: this.generatorProof,
       exerciseComplete:this.recoveryProof===this.revision&&this.generatorObserved&&this.reserveFuel<C.reserveFuel});
   }
-  advance(frame: TimeOfDayAdvance, op: LighthouseOperationSnapshot, m: LighthouseMaintenanceSnapshot) {
+  advance(frame: TimeOfDayAdvance, op: LighthouseOperationSnapshot, m: LighthouseMaintenanceSnapshot, weatherTo = this.weatherSolar) {
     const hours = frame.automaticHours;
     if (!Number.isFinite(hours) || hours < 0 || hours > 1 / 600 + EPS || !Number.isFinite(frame.fromHour)
       || !Number.isFinite(frame.activeSeconds) || frame.activeSeconds < 0 || frame.activeSeconds > .10000001) return;
+    if (!Number.isFinite(weatherTo) || weatherTo < 0 || weatherTo > 1) throw new RangeError("Invalid solar weather endpoint");
+    const weatherFrom = this.weatherSolar, slope = hours > 0 ? (weatherTo-weatherFrom)/hours : 0;
     let remaining = hours, elapsed = 0, hour = frame.fromHour, day = op.dutyDay;
     for (let count = 0; remaining > 1e-12 && count < 32; count++) {
       if (hour >= 24 - 1e-10) {hour = 0; day++;}
@@ -116,14 +131,22 @@ export class LighthousePower {
       let step = Math.min(remaining, boundary - hour, this.generatorRunning ? this.fuel / C.fuelPerHour : Infinity);
       for (const seconds of [op.testSecondsRemaining, m.selfTestSecondsRemaining]) if (seconds > activeAt + 1e-10)
         step = Math.min(step, seconds / frame.activeSeconds * hours - elapsed);
-      const netAt = (h: number) => lighthouseSolarW(h) * r.solarFactor + r.generatorMain - r.mainLoad;
+      const factorAt = (h: number) => (weatherFrom+slope*(elapsed+h-hour))*r.solarSurfaceFactor;
+      const netAt = (h: number) => lighthouseSolarW(h) * factorAt(h) + r.generatorMain - r.mainLoad;
       const root = (end: number, fn: (t: number) => number, target: number) => {
         let lo = 0, hi = end; const increasing = fn(end) > fn(0);
         for (let i = 0; i < 48; i++) {const mid = (lo + hi) / 2; if ((fn(mid) < target) === increasing) lo = mid; else hi = mid;}
         return (lo + hi) / 2;
       };
+      const derivative = (t: number) => C.solarPeakW*r.solarSurfaceFactor*(Math.PI/12*Math.cos((hour+t-6)*Math.PI/12)
+        *(weatherFrom+slope*(elapsed+t))+slope*Math.sin((hour+t-6)*Math.PI/12));
+      if (slope !== 0 && hour >= 6 && hour+step <= 18 && derivative(0)*derivative(step) < 0) {
+        const turning=root(step,derivative,0);
+        if (turning>1e-10&&step-turning>1e-10) step=turning;
+      }
       if (netAt(hour) * netAt(hour + step) < -EPS) step = root(step, t => netAt(hour + t), 0);
-      const mainDelta = (t: number) => lighthouseSolarWh(hour, t) * r.solarFactor + (r.generatorMain - r.mainLoad) * t;
+      const mainDelta = (t: number) => (slope === 0 ? lighthouseSolarWh(hour,t)*weatherFrom
+        : lighthouseWeatherSolarWh(hour,t,weatherFrom+slope*elapsed,slope))*r.solarSurfaceFactor + (r.generatorMain-r.mainLoad)*t;
       const backupDelta = (t: number) => (r.generatorBackup - r.backupLoad) * t;
       for (const [energy, targets, delta] of [[this.mainWh, [0, C.mainCapacityWh * C.protect, C.mainCapacityWh * C.recover, C.mainCapacityWh * C.warning, C.mainCapacityWh], mainDelta],
         [this.backupWh, [0, C.backupCapacityWh], backupDelta]] as [number, number[], (t: number) => number][]) {
@@ -148,6 +171,7 @@ export class LighthousePower {
       if (this.generatorRunning && this.fuel <= EPS) {this.fuel = 0; this.generatorRunning = false; this.generatorProof = false; this.notice="燃料耗尽，机组停止；不能据启动记录判断仍在充电。"; this.log(at, "fuel-empty", this.notice);}
       if (step < 1e-12) break;
     }
+    this.weatherSolar = weatherTo;
     this.synchronize({...op, hour: frame.toHour}, m);
   }
   cancel(op: LighthouseOperationSnapshot) {

@@ -7,13 +7,14 @@ import type { LighthousePowerSnapshot } from "./LighthousePower";
 import { lighthouseEquipmentDefinition } from "./LighthouseEquipmentLayout";
 import type { LighthouseEquipmentId } from "./LighthouseEquipmentLayout";
 import { lighthouseProgress, lighthouseRecords, lighthouseRecordPage } from "./LighthouseExperience";
+import type { LighthouseWeatherSnapshot } from "./LighthouseWeather";
 
 export type LighthousePanelLocation = "control" | "test" | "cover" | "log" | LighthouseEquipmentId;
 export const lighthouseClockLabel = (hour: number) => {
   const minutes = Math.floor(hour * 60 + 1e-7) % 1440;
   return String(Math.floor(minutes / 60)).padStart(2, "0") + ":" + String(minutes % 60).padStart(2, "0");
 };
-type Snapshot = [LighthouseOperationSnapshot, LighthouseInspectionSnapshot, LighthouseMaintenanceSnapshot, LighthousePowerSnapshot, boolean];
+type Snapshot = [LighthouseOperationSnapshot, LighthouseInspectionSnapshot, LighthouseMaintenanceSnapshot, LighthousePowerSnapshot, boolean, LighthouseWeatherSnapshot?];
 
 /** A local instrument face and a separate, paginated paper log. Authority stays with RoomScene. */
 export class LighthousePanel {
@@ -65,21 +66,25 @@ export class LighthousePanel {
     this.el<HTMLButtonElement>(location === "test" ? "lighthouse-test-toggle" : "lighthouse-panel-return").focus();
     return true;
   }
-  render(op: LighthouseOperationSnapshot, i: LighthouseInspectionSnapshot, m: LighthouseMaintenanceSnapshot, p: LighthousePowerSnapshot, automatic: boolean) {
+  render(op: LighthouseOperationSnapshot, i: LighthouseInspectionSnapshot, m: LighthouseMaintenanceSnapshot, p: LighthousePowerSnapshot, automatic: boolean, weather?:LighthouseWeatherSnapshot) {
     if (!this.location || !m || !p) return;
-    this.state = [op, i, m, p, automatic];
+    this.state = [op, i, m, p, automatic, weather];
     const location = this.location, equipment = lighthouseEquipmentDefinition(location);
     const key = [location, this.paper, this.page, op.dutyDay, lighthouseClockLabel(op.hour), op.running, Math.ceil(op.testSecondsRemaining),
       i.dirty, i.nextMaintenanceDay, i.completed, i.checks["check-cover"], !!i.control, !!i.optic, i.events[i.events.length - 1]?.id,
       m.solarDirty, m.solarRecheck, m.nextSolarMaintenanceDay, m.backupOn, m.detectedDemand, m.evidence[m.evidence.length - 1]?.id,
       Math.round(p.mainFraction * 1000), Math.round(p.backupFraction * 1000), Math.round(p.solarW), Math.sign(p.mainNetW),
-      p.protected, p.recoveryReady, p.warning, p.events[p.events.length - 1]?.id, automatic].join(":");
+      p.protected, p.recoveryReady, p.warning, p.events[p.events.length - 1]?.id, automatic,
+      weather?.kind,weather?.phase,Math.round((weather?.rain||0)*100),Math.round((weather?.visibilityKm||0)*10)].join(":");
     if (key === this.displayKey) return; this.displayKey = key;
     this.el("lighthouse-save-controls").hidden = location !== "control" && location !== "log";
     this.dialog.dataset.equipment = equipment?.id || ""; this.dialog.dataset.paper = String(this.paper);
     this.set("lighthouse-panel-place", equipment?.place || ({control: "首层维护室 · 运行面板", test: "顶层灯室 · 灯座控制", cover: "顶层灯室 · 固定保护面", log: "首层维护室 · 记录夹"})[location]);
     this.set("lighthouse-panel-title", equipment?.label || ({control: "灯塔值守", test: "导航灯试灯", cover: "灯具保护面", log: "值守记录"})[location]);
     this.set("lighthouse-panel-clock", `第 ${op.dutyDay} 日 / ${lighthouseClockLabel(op.hour)}`);
+    const workAllowed=!weather||weather.rain<.15;
+    const weatherLine=this.document.getElementById("lighthouse-panel-weather");
+    if(weatherLine)weatherLine.textContent=weather?`${({clear:"晴朗",overcast:"阴天",fog:"海雾",storm:"风雨"})[weather.kind]} · 能见约${weather.visibilityKm.toFixed(1)} km${!workAllowed?" · 暂缓外廊和室外擦拭":m.detectedDemand&&op.hour>=6&&op.hour<18?" · 低能见度导航中":""}`:"";
     this.el("lighthouse-instrument").hidden = this.paper; this.el("lighthouse-paper").hidden = !this.paper;
     const toggle = this.el<HTMLButtonElement>("lighthouse-record-toggle"); toggle.hidden = location === "log";
     toggle.textContent = this.paper ? "合上记录 · 查看设备" : "翻看记录";
@@ -111,6 +116,8 @@ export class LighthousePanel {
       status = "机组停放"; tone = "idle"; guide = "保持通风口与入口畅通，日常由太阳能供电。";
     }
     this.set("lighthouse-panel-state", status); this.el("lighthouse-status-lamp").dataset.tone = tone;
+    if(location==="lighthouse-solar-array"&&!workAllowed)guide="风雨中暂缓室外擦拭。可先在室内读表，天气缓和后巡视、清洁和复查。";
+    if(location==="lighthouse-light-sensor"&&weather)guide="夜间和低能见度时自动亮灯；能见度恢复后保留确认时间。";
     this.set("lighthouse-panel-guide", guide);
     this.el("lighthouse-gauges").replaceChildren(...gauges.map(g => this.gauge(g)));
     this.el("lighthouse-status-face").hidden = gauges.length > 0;
@@ -125,6 +132,7 @@ export class LighthousePanel {
     show("lighthouse-clean-start", location === "cover" && mayClean, "拿起清洁布 · 擦拭");
     show("lighthouse-solar-inspect", location === "lighthouse-solar-array", m.solarRecheck ? "复查面板 · 返回观察" : "巡视面板 · 返回观察");
     show("lighthouse-solar-clean", location === "lighthouse-solar-array" && m.solarDirty, "拿起清洁布 · 擦拭");
+    this.el<HTMLButtonElement>("lighthouse-solar-clean").disabled=!workAllowed;
     show("lighthouse-power-restore", location === "lighthouse-battery-main" && p.recoveryReady, "确认恢复供电");
     this.set("lighthouse-power-flow", ["control", "lighthouse-battery-main", "lighthouse-solar-charger", "lighthouse-solar-array"].includes(location)
       ? `${automatic ? p.mainNetW > .5 ? "↑ 正在储能" : p.mainNetW < -.5 ? "↓ 正在供电" : "电量平稳" : "时钟暂停 · 电量保持"}` : location === "test" && op.testSecondsRemaining > 0 ? `试灯余时 ${Math.ceil(op.testSecondsRemaining)} 秒` : "");

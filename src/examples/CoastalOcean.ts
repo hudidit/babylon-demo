@@ -5,6 +5,8 @@ import { HOUSE_COORDINATES } from "./HouseLayout";
 import { applySkyTime, coastalSkyGLSL, coastalSkyCloudsGLSL, coastalSkyReflectionGLSL, skyTimeUniforms } from "./CoastalSky";
 import { evaluateTimeOfDay, DEFAULT_TIME_OF_DAY } from "./RoomTimeOfDay";
 import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
+import type { LighthouseWeatherSnapshot } from "./LighthouseWeather";
+import { applyCoastalWeather } from "./CoastalWeather";
 
 /** Metres, seconds and linear radiance. Also used by the vertex and fragment shaders. */
 export const OCEAN_WAVES = [
@@ -183,7 +185,7 @@ export const oceanFragment = `
     float haze=smoothstep(550.,3300.,distanceToEye);
     color=mix(color,coastalSkyGradient(normalize(vPositionW-cameraPosition)),haze);
     // Linear output: the existing scene image-processing pass applies ACES/exposure exactly once.
-    gl_FragColor=vec4(color,1.);
+    gl_FragColor=vec4(coastalWeatherFog(color,distanceToEye),1.);
   }`;
 
 /** No image requests or reflection RTT. One generated shoreline field, one shared animation observer. */
@@ -231,9 +233,10 @@ export class CoastalOcean {
     this.sceneCleanup = scene.onDisposeObservable.addOnce(() => this.dispose());
   }
   setVisible(visible: boolean) { this.mesh.isVisible = visible; this.clock.pause(); }
-  applyTimeOfDay(state: TimeOfDaySnapshot) {
+  applyTimeOfDay(state: TimeOfDaySnapshot, weather?: LighthouseWeatherSnapshot) {
     if (this.disposed) return;
     applySkyTime(this.material, state);
+    applyCoastalWeather(this.material,weather,state);
     this.material.setFloat("skyIllumination", state.environment.exterior);
   }
   dispose() {

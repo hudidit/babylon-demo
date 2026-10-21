@@ -1,0 +1,200 @@
+{
+  "baseline": "fefe1b3",
+  "browser": "155.0.8059.86",
+  "fpsOrLoadTimeSampling": false,
+  "method": "Actual first-person camera fixtures. Change only sky cloud uniforms, then restore; main-frame differences are masked to the physical mirror face. Doors use real pointer input.",
+  "ensuite": {
+    "changedPixels": 7752,
+    "peakRgbSum": 305,
+    "repeatDifferences": 0,
+    "maskPixels": 463264,
+    "hull": [
+      {
+        "x": 332.1828008491977,
+        "y": 917.4264919123076
+      },
+      {
+        "x": 371.2177207851772,
+        "y": 133.01684979956954
+      },
+      {
+        "x": 977.7816555559345,
+        "y": 37.08041580591469
+      },
+      {
+        "x": 1041.8177694124013,
+        "y": 1042.8437393293802
+      }
+    ],
+    "plane": [
+      1,
+      0,
+      -2.220446049250313e-16,
+      15.560000381469727
+    ],
+    "eye": [
+      -19.75,
+      2.999999761581421,
+      -1.5000001192092896
+    ],
+    "mirroredEye": [
+      -11.370000762939455,
+      2.999999761581421,
+      -1.5000001192092913
+    ],
+    "listHasSky": true,
+    "listHasSea": true
+  },
+  "ensuiteNightStars": {
+    "changedPixels": 0,
+    "peakRgbSum": 0,
+    "repeatDifferences": 0,
+    "maskPixels": 463264,
+    "hull": [
+      {
+        "x": 332.1828008491977,
+        "y": 917.4264919123076
+      },
+      {
+        "x": 371.2177207851772,
+        "y": 133.01684979956954
+      },
+      {
+        "x": 977.7816555559345,
+        "y": 37.08041580591469
+      },
+      {
+        "x": 1041.8177694124013,
+        "y": 1042.8437393293802
+      }
+    ],
+    "plane": [
+      1,
+      0,
+      -2.220446049250313e-16,
+      15.560000381469727
+    ],
+    "eye": [
+      -19.75,
+      2.999999761581421,
+      -1.5000001192092896
+    ],
+    "mirroredEye": [
+      -11.370000762939455,
+      2.999999761581421,
+      -1.5000001192092913
+    ],
+    "listHasSky": true,
+    "listHasSea": true
+  },
+  "publicClosed": {
+    "changedPixels": 0,
+    "peakRgbSum": 0,
+    "repeatDifferences": 0,
+    "maskPixels": 726911,
+    "hull": [
+      {
+        "x": 103.48689840001472,
+        "y": 1073.702701271037
+      },
+      {
+        "x": 149.3999778643365,
+        "y": -155.70252383499323
+      },
+      {
+        "x": 1024.9062987574357,
+        "y": -26.464696192497193
+      },
+      {
+        "x": 1052.6090154332012,
+        "y": 928.3194457780282
+      }
+    ],
+    "plane": [
+      -1,
+      0,
+      -2.220446049250313e-16,
+      -14.439999618530273
+    ],
+    "eye": [
+      -11,
+      3,
+      -0.7499998807907104
+    ],
+    "mirroredEye": [
+      -17.879999237060545,
+      3,
+      -0.749999880790712
+    ],
+    "listHasSky": true,
+    "listHasSea": true
+  },
+  "publicDoorHint": "左键 · 打开公卫与客厅的门",
+  "publicDoorAngle": -1.5707963267948966,
+  "publicOpen": {
+    "changedPixels": 0,
+    "peakRgbSum": 0,
+    "repeatDifferences": 0,
+    "maskPixels": 726911,
+    "hull": [
+      {
+        "x": 103.48689840001472,
+        "y": 1073.702701271037
+      },
+      {
+        "x": 149.3999778643365,
+        "y": -155.70252383499323
+      },
+      {
+        "x": 1024.9062987574357,
+        "y": -26.464696192497193
+      },
+      {
+        "x": 1052.6090154332012,
+        "y": 928.3194457780282
+      }
+    ],
+    "plane": [
+      -1,
+      0,
+      -2.220446049250313e-16,
+      -14.439999618530273
+    ],
+    "eye": [
+      -11,
+      3,
+      -0.7499998807907104
+    ],
+    "mirroredEye": [
+      -17.879999237060545,
+      3,
+      -0.749999880790712
+    ],
+    "listHasSky": true,
+    "listHasSea": true
+  },
+  "publicOpenHasCloudPixels": false,
+  "targets": [
+    {
+      "room": "ensuite",
+      "size": {
+        "width": 512,
+        "height": 512
+      },
+      "noPrePass": true,
+      "refreshRate": 0
+    },
+    {
+      "room": "bathroom",
+      "size": {
+        "width": 512,
+        "height": 512
+      },
+      "noPrePass": true,
+      "refreshRate": 0
+    }
+  ],
+  "passed": true,
+  "errors": [],
+  "warnings": []
+}

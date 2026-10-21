@@ -27,6 +27,9 @@ try {
   const box = b.CreateBox('obstacle', {}, scene);
   box.material = new b.PBRMaterial('wood', scene);
   box.material.albedoTexture = new b.Texture(null, scene);
+  scene.fogMode=b.Scene.FOGMODE_EXP2;scene.fogDensity=.0005;scene.fogColor.set(.4,.45,.5);
+  const shaders=b.ShaderStore.IncludesShadersStore;
+  for(const name of ['fogVertexDeclaration','fogVertex','fogFragmentDeclaration','fogFragment'])assert.ok(shaders[name],`Missing fog shader ${name}`);
   const clone = box.material.clone('copy');
   assert.equal(clone.getClassName(), 'PBRMaterial');
   assert.ok(clone.albedoTexture, 'PBR clone must retain its registered texture parser');

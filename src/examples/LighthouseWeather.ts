@@ -37,12 +37,18 @@ export class LighthouseWeatherSequence {
   private from: LighthouseWeatherKind;
   private ageTicks = 0;
   private remainingTicks: number;
-  readonly mode: "fixed" | "automatic";
+  mode: "fixed" | "automatic";
   constructor(private readonly random: LighthouseRandom, fixed?: LighthouseWeatherKind) {
     if (fixed !== undefined && !isLighthouseWeather(fixed)) throw new RangeError("Unknown weather condition");
     this.mode = fixed === undefined ? "automatic" : "fixed";
     this.kind = this.from = fixed ?? "clear";
     this.remainingTicks = this.mode === "automatic" ? this.duration() : 0;
+  }
+  setFixed(kind: LighthouseWeatherKind | null) {
+    if (kind !== null && !isLighthouseWeather(kind)) throw new RangeError("Unknown weather condition");
+    this.mode = kind === null ? "automatic" : "fixed";
+    this.kind = this.from = kind ?? this.kind;
+    this.ageTicks = 0; this.remainingTicks = kind === null ? this.duration() : 0;
   }
   private duration() {return C.minTicks + Math.floor(this.random.next("weather") * (C.maxTicks - C.minTicks + 1));}
   advanceTick() {

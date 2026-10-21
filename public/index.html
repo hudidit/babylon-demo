@@ -188,6 +188,12 @@
       .time-options button[aria-checked="true"] { border-color: #73503d; background: #73503d; color: #fff2dd; }
       .time-options button[aria-checked="true"]::after { content: "✓"; position: absolute; right: 6px; }
       .time-auto { margin-top: 14px; padding-top: 12px; border-top: 1px solid #cbbca6; }
+      .weather-controls { border-top: 1px solid #cbbca6; margin-top: 12px; padding-top: 12px; font-size: 11px; line-height: 1.7; }
+      .weather-controls label { display:flex;align-items:center;gap:8px; }
+      #weather-mode { flex:1;min-height:36px;border:1px solid #cbbca6;border-radius:5px;color:#40392f;background:#f6f0e5; }
+      #weather-current { margin:8px 0; }
+      #weather-label { border-left:1px solid #cbbca6;padding-left:8px; }
+      #lighthouse-panel-weather {font-size:11px;line-height:1.7;margin:10px 0;color:#cdd2bb;}
       .time-auto label { display: flex; align-items: center; gap: 9px; min-height: 44px; font-size: 12px; cursor: pointer; }
       #time-automatic { width: 18px; height: 18px; accent-color: #73503d; }
       .time-auto p, #time-current { font-size: 11px; line-height: 1.6; color: #6b6051; margin: 4px 0 0; }
@@ -344,6 +350,7 @@
       <header class="lighthouse-heading"><div><p id="lighthouse-panel-place"></p><h2 id="lighthouse-panel-title">灯塔值守</h2></div><button id="lighthouse-panel-return">返回场景 ↗</button></header>
       <div class="lighthouse-body">
         <div class="lighthouse-strip"><p id="lighthouse-panel-clock"></p><button id="lighthouse-record-toggle" aria-controls="lighthouse-paper" aria-expanded="false">翻看记录</button></div>
+        <p id="lighthouse-panel-weather"></p>
         <section id="lighthouse-instrument" aria-label="设备仪表">
           <div class="lighthouse-status"><span id="lighthouse-status-lamp" aria-hidden="true"></span><p id="lighthouse-panel-state"></p></div>
           <div id="lighthouse-gauges"></div>
@@ -368,6 +375,7 @@
           <p class="lighthouse-paper-note">记录保留最近七日；在首层保存后，可从这里继续值守。</p>
         </section>
         <section id="lighthouse-save-controls" aria-label="值守存档" hidden>
+          <p class="lighthouse-paper-note">保存设备、时间与记录；天气仅保留在本次会话，继续后重新开始。</p>
           <div class="lighthouse-save-actions"><button id="lighthouse-save">保存值守</button><button id="lighthouse-continue" disabled>继续值守</button><button id="lighthouse-save-clear" hidden>清除异常存档</button></div>
           <p id="lighthouse-save-status" role="status"></p>
         </section>
@@ -434,8 +442,9 @@
             <button data-time-hour="21" role="radio" aria-checked="false" tabindex="-1">21:00 入夜</button>
           </div>
           <div class="time-auto"><label><input id="time-automatic" type="checkbox" checked aria-describedby="time-auto-description" />自动流转</label><p id="time-auto-description">一天约 24 分钟 · 展开菜单时暂停</p><p id="time-current">当前 12:00 · 自动流转中</p></div>
+          <div class="weather-controls"><label for="weather-mode">天气<select id="weather-mode"><option value="automatic">自动变化</option><option value="clear">固定晴朗</option><option value="overcast">固定阴天</option><option value="fog">固定海雾</option><option value="storm">固定风雨</option></select></label><p id="weather-current"></p><label><input id="weather-reduced-motion" type="checkbox" />减少雨线动态</label></div>
         </section>
-        <button id="time-toggle" aria-expanded="false" aria-controls="time-menu"><span id="time-symbol" aria-hidden="true">☼</span><span id="time-label">12:00 正午</span><span class="time-chevron" aria-hidden="true">⌃</span></button>
+        <button id="time-toggle" aria-expanded="false" aria-controls="time-menu"><span id="time-symbol" aria-hidden="true">☼</span><span id="time-label">12:00 正午</span><span id="weather-label">晴朗</span><span class="time-chevron" aria-hidden="true">⌃</span></button>
         <span id="time-announcement" class="sr-only" role="status" aria-live="polite"></span>
       </div>
     <nav class="view-controls" aria-label="场景视角">

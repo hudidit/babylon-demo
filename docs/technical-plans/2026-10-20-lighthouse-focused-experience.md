@@ -2,7 +2,7 @@
 
 状态：已完成（工程与Chrome生产浏览器验收）。创建：2026-10-20；更新：2026-10-21。输入基线：`ccbdc3f`。本文调整[运行总方案](2026-10-20-lighthouse-operation-and-keeper-routine.md)、[子项目一](2026-10-20-lighthouse-project-01-core-loop.md)及[子项目二](2026-10-20-lighthouse-project-02-equipment-and-maintenance.md)的当前玩家交付范围；旧交付证据保留其历史有效性。
 
-> **2026-10-21 后续授权**：用户明确要求完成子项目二步骤四，新增到期维护及明确本地保存/继续，空间改为双层，见[入口自动关门、灯塔两层改造与步骤四](2026-10-21-lighthouse-two-levels-and-save.md)。后续[步骤五综合验收](2026-10-21-lighthouse-maintenance-acceptance.md)也已按六组当前范围完成；下文“待选”记录减量交付时的边界，四组复杂玩家操作继续保留为备选。用户随后明确授权[子项目三步骤一](2026-10-20-lighthouse-project-03-weather-and-uncertainty.md#步骤一实现及验收记录2026-10-21)，天气/风险纯逻辑已完成，当前生产场景保持晴天，二～五待实施。
+> **2026-10-21 后续授权**：用户明确要求完成子项目二步骤四，新增到期维护及明确本地保存/继续，空间改为双层，见[入口自动关门、灯塔两层改造与步骤四](2026-10-21-lighthouse-two-levels-and-save.md)。后续[步骤五综合验收](2026-10-21-lighthouse-maintenance-acceptance.md)也已按六组当前范围完成；下文“待选”记录减量交付时的边界，四组复杂玩家操作继续保留为备选。用户随后明确授权[子项目三步骤一](2026-10-20-lighthouse-project-03-weather-and-uncertainty.md#步骤一实现及验收记录2026-10-21)，天气/风险纯逻辑及步骤二可见/设备联动已完成；当前新会话从晴朗开始自动变化，三～五待实施。
 
 ## 背景与目标
 

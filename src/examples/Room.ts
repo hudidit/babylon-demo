@@ -15,6 +15,11 @@ import { RoomItemInspection } from "./RoomItemInspection";
 import { RoomFloorPlan } from "./RoomFloorPlan";
 import { RoomMirrors } from "./RoomMirrors";
 import { RoomExterior } from "./RoomExterior";
+import { LighthouseWeatherRisk } from "./LighthouseRisk";
+import type { LighthouseWeatherKind } from "./LighthouseWeather";
+import { advanceWeatherDuty, synchronizeWeatherDuty } from "./LighthouseWeatherSession";
+import { applyCoastalSceneFog, coastalWeatherTime, lighthouseOutsideWorkAllowed } from "./CoastalWeather";
+import { CoastalRain } from "./CoastalRain";
 import type { InspectableItem } from "./RoomInteractions";
 import { createHouseArchitecture } from "./HouseArchitecture";
 import { houseVector, HOUSE_SPAWN, HOUSE_WALKER_RADIUS } from "./HouseWalking";
@@ -68,6 +73,9 @@ export class RoomScene {
   private lighthouseInspectionState = new LighthouseInspection();
   private lighthouseMaintenanceState = new LighthouseMaintenance();
   private lighthousePowerState = new LighthousePower();
+  private weatherState = new LighthouseWeatherRisk({seed:crypto.getRandomValues(new Uint32Array(1))[0]});
+  private readonly rain: CoastalRain;
+  private reducedWeatherMotion = false;
   private readonly lighthouseSave = new LighthouseSave();
   private lighthouseEvidenceKey = "";
   private readonly lighthousePanel: LighthousePanel;
@@ -198,6 +206,7 @@ export class RoomScene {
 
     const furnishings = new RoomFurnishings(this.scene);
     this.exterior = new RoomExterior(this.scene);
+    this.rain = new CoastalRain(this.scene);
     this.interactions.addDoor(this.exterior.lighthouseDoor);
     const lighthouse = this.exterior.lighthouseDetails;
     this.lighthousePanel = new LighthousePanel(canvas.ownerDocument, resume => this.closeLighthousePanel(resume), () => this.toggleLocalLighthouseTest(), {
@@ -339,13 +348,22 @@ export class RoomScene {
   get lighthouseInspection() { return this.lighthouseInspectionState?.snapshot; }
   get lighthouseMaintenance() { return this.lighthouseMaintenanceState.snapshot; }
   get lighthousePower() { return this.lighthousePowerState.snapshot; }
+  get weather() {return this.weatherState.snapshot;}
+  private get weatherDuty() {return {weather:this.weatherState,operation:this.lighthouseState,inspection:this.lighthouseInspectionState,
+    maintenance:this.lighthouseMaintenanceState,power:this.lighthousePowerState};}
+  setWeather(kind:LighthouseWeatherKind|null) {
+    if(this.disposed)return;
+    this.weatherState.setFixedWeather(kind);this.enforceWeatherWork();
+    this.notifyLighthouseOperation();this.applyTimeOfDay(this.timeOfDay);this.notifyTimeOfDay();
+  }
+  setReducedWeatherMotion(reduced:boolean) {this.reducedWeatherMotion=reduced;this.applyTimeOfDay(this.timeOfDay);}
+  private enforceWeatherWork() {
+    if(!lighthouseOutsideWorkAllowed(this.weather.weather)&&this.lighthouseMaintenance.action?.location==="lighthouse-solar-array"
+      &&this.lighthouseMaintenance.action.command==="clean")this.lighthouseMaintenanceState.cancel(this.lighthouseOperation,"风雨中暂缓室外擦拭；操作中断，表面和物料保持。");
+  }
   private synchronizeLighthousePower() {
     if(!this.lighthousePowerState)return;
-    this.lighthousePowerState.synchronize(this.lighthouseOperation,this.lighthouseMaintenance);
-    const p=this.lighthousePower;
-    this.lighthouseMaintenanceState.configurePower(p.mainAllowed,p.trialAllowed,p.backupAvailable,this.lighthouseOperation,p.exerciseComplete);
-    this.lighthouseMaintenanceState.synchronize(this.lighthouseState);
-    this.lighthousePowerState.synchronize(this.lighthouseOperation,this.lighthouseMaintenance);
+    synchronizeWeatherDuty(this.weatherDuty);
   }
   startLighthouseTest(): boolean {
     if (this.disposed) return false;
@@ -358,6 +376,8 @@ export class RoomScene {
     const ended = this.lighthouseState.endTest(); this.notifyLighthouseOperation(); return ended;
   }
   private notifyLighthouseOperation() {
+    this.weatherState.synchronizeSurface("cover",this.lighthouseInspection.dirty);
+    this.weatherState.synchronizeSurface("solar",this.lighthouseMaintenance.solarDirty);
     this.synchronizeLighthousePower();
     this.lighthouseMaintenanceState.synchronize(this.lighthouseState);
     const m = this.lighthouseMaintenance, evidenceKey = `${m.revision.drive}:${m.mainIsolated}:${m.mainAvailable}`;
@@ -366,6 +386,7 @@ export class RoomScene {
     this.lighthouseInspectionState?.synchronize(this.lighthouseOperation);
     this.scene.metadata.lighthouseOperation.state = this.lighthouseOperation;
     this.scene.metadata.lighthouseOperation.inspection = this.lighthouseInspection;
+    this.scene.metadata.weather=this.weather;
     this.scene.metadata.lighthouseEquipment = { project: 2, step: 4, commissioned: true, state: m, power:this.lighthousePowerState?.snapshot,
       devices: LIGHTHOUSE_EQUIPMENT.map(device => ({id: device.id, parent: device.parent, label: device.label,
         ...lighthouseEquipmentReading(device.id, this.lighthouseOperation, m,this.lighthousePowerState?.snapshot)})) };
@@ -376,7 +397,7 @@ export class RoomScene {
       this.scene.metadata.lighthouseOperation.visualApplied = true;
     }
     if (this.lighthouseInspection) {
-      this.lighthousePanel?.render(this.lighthouseOperation, this.lighthouseInspection, m, this.lighthousePower, this.timePlayback.automatic);
+      this.lighthousePanel?.render(this.lighthouseOperation, this.lighthouseInspection, m, this.lighthousePower, this.timePlayback.automatic, this.weather.weather);
       const active = this.currentView === "first-person" && !this.isViewing && !this.pauses.blocked && this.exterior.isVisible;
       this.lighthousePanel?.renderActivity(this.lighthouseInspection, active, this.lighthouseOperation.running, m, this.lighthousePower);
     }
@@ -408,9 +429,8 @@ export class RoomScene {
     const state = this.timeState.advance(delta, this.pauses.blocked, this.pauses.transitionBlocked);
     this.lighthouseMaintenanceState.synchronize(this.lighthouseState);
     const operationBefore = this.lighthouseOperation;
-    this.lighthousePowerState?.advance(this.timeState.lastAdvance,operationBefore,this.lighthouseMaintenance);
-    this.synchronizeLighthousePower();
-    this.lighthouseState.advance(this.timeState.lastAdvance, this.exterior.isVisible);
+    advanceWeatherDuty(this.weatherDuty,this.timeState.lastAdvance,this.exterior.isVisible);
+    this.enforceWeatherWork();
     const details = this.exterior.lighthouseDetails, eye = this.firstPersonCamera.position, origin = details.beacon.root.position;
     const output = this.lighthouseOperation.running ? lighthouseBeamStrength(this.lighthouseOperation.rotationTurns, eye.x - origin.x, eye.z - origin.z) * this.lighthouseInspection.transmission : 0;
     this.lighthouseMaintenanceState.advance(this.exterior.isVisible ? this.timeState.lastAdvance : {...this.timeState.lastAdvance, activeSeconds: 0}, this.lighthouseState, {
@@ -430,6 +450,8 @@ export class RoomScene {
       });
     }
     this.notifyLighthouseOperation();
+    this.rain.apply(this.weather.weather,coastalWeatherTime(state,this.weather.weather),this.scene.activeCamera.globalPosition,
+      this.timeState.lastAdvance.activeSeconds,this.exterior.isVisible,this.reducedWeatherMotion);
     if (state === before) return;
     this.timeVisualElapsed += Math.min(.1, Math.max(0, delta));
     if (transitioning || this.timeVisualElapsed >= .1 - 1e-10) {
@@ -443,8 +465,11 @@ export class RoomScene {
   }
   private applyTimeOfDay(state: TimeOfDaySnapshot) {
     if (this.disposed) return;
-    this.lighting.applyTimeOfDay(state);
-    this.exterior.applyTimeOfDay(state);
+    const weather=this.weather.weather, visual=coastalWeatherTime(state,weather);
+    applyCoastalSceneFog(this.scene,weather,visual);
+    this.lighting.applyTimeOfDay(visual);
+    this.exterior.applyTimeOfDay(visual,weather);
+    this.rain.apply(weather,visual,this.scene.activeCamera.globalPosition,0,this.exterior.isVisible,this.reducedWeatherMotion);
     this.scooterModel.headlight.applyTimeOfDay(state);
     this.scene.metadata.timeOfDay.visualApplied = true;
     this.scene.metadata.timeOfDay.visualHour = state.hour;
@@ -841,7 +866,7 @@ export class RoomScene {
 
   private openLighthousePanel(location: LighthousePanelLocation) {
     if (!this.controlsEnabled || this.isViewing || !this.pointerLocked || !this.canAccessLighthouse(location)) return;
-    if (!this.lighthousePanel.open(location, this.lighthouseOperation, this.lighthouseInspection, this.lighthouseMaintenance, this.lighthousePower, this.timePlayback.automatic)) return;
+    if (!this.lighthousePanel.open(location, this.lighthouseOperation, this.lighthouseInspection, this.lighthouseMaintenance, this.lighthousePower, this.timePlayback.automatic, this.weather.weather)) return;
     // Modal state exists before lock release, preserving the first-person pose.
     this.setPaused("lighthouse-panel", true);
     this.lighthousePanel.renderStorage(this.lighthouseSave.inspect());
@@ -873,6 +898,9 @@ export class RoomScene {
   private localLighthouseMaintenance(command: MaintenanceCommand, tool: LighthouseTool) {
     const location = this.lighthousePanel.activeLocation;
     if (!location || !lighthouseMaintenanceAllowed(location, command)) return;
+    if(location==="lighthouse-solar-array"&&command==="clean"&&!lighthouseOutsideWorkAllowed(this.weather.weather)) {
+      this.lighthousePanel.notice("风雨中暂缓室外擦拭；可先在室内读表，天气缓和后再检查。");return;
+    }
     const accepted = this.lighthouseMaintenanceState.command(command, location, tool, this.lighthouseState, this.lighthouseCommandAllowed(location));
     this.notifyLighthouseOperation();
     if (accepted && this.lighthouseMaintenance.action) this.closeLighthousePanel(true);
@@ -899,10 +927,11 @@ export class RoomScene {
     if (s) {
       this.timeState=s.clock; this.lighthouseState=s.operation; this.lighthouseInspectionState=s.inspection;
       this.lighthouseMaintenanceState=s.maintenance; this.lighthousePowerState=s.power;
+      this.weatherState=new LighthouseWeatherRisk({seed:crypto.getRandomValues(new Uint32Array(1))[0]});
       this.lighthouseEvidenceKey=""; this.timeVisualElapsed=0;
       this.notifyLighthouseOperation(); this.applyTimeOfDay(this.timeOfDay); this.notifyTimeOfDay();
     }
-    this.lighthousePanel.renderStorage(result.status);
+    this.lighthousePanel.renderStorage({...result.status,message:result.status.message+(s?"；天气已重新开始，设备和记录按存档继续。":"")});
   }
   private clearLighthouseSave() {
     if (this.storageLighthouseAllowed()) this.lighthousePanel.renderStorage(this.lighthouseSave.clearInvalid());
@@ -1077,6 +1106,7 @@ export class RoomScene {
     if (event.isTrusted && event.button === 0) { this.resumeAudio(); this.audio.unlockFromGesture(); }
     if (event.button !== 0 || !this.controlsEnabled || this.isViewing) return;
     if (this.currentView === "first-person" && !this.pointerLocked) {
+      this.canvas.focus({preventScroll:true});
       this.pointerLock.request();
       this.pointerStart = undefined;
       return;
@@ -1139,6 +1169,8 @@ export class RoomScene {
         : `骑行 ${Math.abs(this.scooter.speed * 3.6).toFixed(0)} km/h · W 前进 / S 刹车倒车 · A/D 转向 · 空格急刹 · E 下车`
         : firstPerson && this.scooterNoticeUntil > performance.now() ? this.scooterNotice
         : vehicle ? "左键 / E · 骑上小电驴" : action ? `左键 · ${action.label()}` : firstPerson && !this.pointerLocked ? "点击画面开始环顾 · ESC 退出" : "";
+      if(firstPerson&&!hint.textContent&&!this.pauses.blocked&&!lighthouseOutsideWorkAllowed(this.weather.weather)
+        &&Math.abs(this.jump.feet-LIGHTHOUSE.gallery)<.2)hint.textContent="风雨中暂缓外廊作业 · 可返回灯室，通道保持开放";
       hint.hidden = !hint.textContent;
     }
   }
@@ -1242,6 +1274,7 @@ export class RoomScene {
     this.disposed = true;
     this.pauseScooter(); this.pauseLadder(); this.scooterModel.dispose();
     this.audio.dispose();
+    this.rain.dispose();
     this.lighthousePanel.dispose();
     document.querySelector("#item-inspection-return")?.removeEventListener("click", this.returnFromInspection);
     document.querySelector("#item-inspection")?.removeEventListener("cancel", this.cancelInspection);

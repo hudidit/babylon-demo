@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: {"start":[-646.5,101.20000000000002,435],"retreat":{"position":[-646.5,101.20000000000002,435],"feet":19.64}}
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-work.cjs:24:184 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

@@ -35,6 +35,17 @@ const actionLabels: Partial<Record<MaintenanceCommand, string>> = {inspect: "现
 /** Device facts, local transactions and revision-bound observations, independent of rendering/storage. */
 export class LighthouseMaintenance {
   private nextSolarMaintenanceDay = 6;
+  private weatherDemand = false;
+  private outsideWorkAllowed = true;
+  get transientWeatherDemand() { return this.weatherDemand; }
+  setWeatherDemand(required: boolean) { this.weatherDemand = required; }
+  setOutsideWorkAllowed(allowed: boolean) { this.outsideWorkAllowed = allowed; }
+  soilFromWeather(op: LighthouseOperationSnapshot) {
+    if (this.solarDirty) return;
+    this.solarDirty = true; this.revision.solar++; delete this.inspection.solar; this.chargerProof = -1;
+    this.log(op, "solar", "天气暴露污损", "太阳能表面出现污损，等待合适天气现场巡视、擦拭和独立复查。");
+    this.publish(op);
+  }
   private driveFault = false; private chargerFault = false; private solarDirty = false; private sensorDirty = false;
   private mainIsolated = false; private chargeIsolated = false; private override = false; private forcedBackup = false;
   private backupAvailable = true; private selfRemaining = 0; private backupPhase = 0; private backupWasOn = false;
@@ -115,7 +126,7 @@ export class LighthouseMaintenance {
       this.log(state, "solar", "维护到期", "太阳能面板例行清洁到期，请现场巡视、擦拭和复查。");
       this.notice = "太阳能面板例行清洁到期。";
     }
-    op.configure(this.mainAvailable(), this.sensorDirty && !this.override);
+    op.configure(this.mainAvailable(), this.weatherDemand || this.sensorDirty && !this.override);
     this.publish(op.snapshot);
     const s = this.snapshot;
     if (s.navigationRequired && (s.source !== this.lastSource || !this.lastRequired)) {
@@ -223,6 +234,7 @@ export class LighthouseMaintenance {
     this.synchronize(op);
   }
   private guard(command: MaintenanceCommand, c: Component, tool: LighthouseTool, op: LighthouseOperationSnapshot): string {
+    if (command === "clean" && c === "solar" && !this.outsideWorkAllowed) return "风雨中暂缓室外擦拭；先在室内读表，天气缓和后再操作。";
     if (command === "inspect") return "";
     if (command === "diagnose") {
       if (tool !== "meter") return "请使用检测工具。";
@@ -280,13 +292,13 @@ export class LighthouseMaintenance {
     this.evidence = Object.freeze([...this.evidence.slice(-127), Object.freeze({id: this.nextId++, component, revision: this.revision[component], day: op.dutyDay || 1, hour: op.hour, method, result})]);
   }
   private publish(op: LighthouseOperationSnapshot) {
-    const required = lighthouseNavigationRequired(op.hour) || this.sensorDirty && !this.override;
+    const required = lighthouseNavigationRequired(op.hour) || this.weatherDemand || this.sensorDirty && !this.override;
     const mainAvailable = this.mainAvailable();
     const main = mainAvailable && op.running;
     const backupOn = !main && this.backupAvailable && (required || this.forcedBackup || this.selfRemaining > 0);
     this.current = Object.freeze({solarRecheck: !this.solarDirty && this.revision.solar > 0 && this.inspection.solar !== this.revision.solar, nextSolarMaintenanceDay: this.nextSolarMaintenanceDay, session: this.session, revision: Object.freeze({...this.revision}), driveFault: this.driveFault, chargerFault: this.chargerFault,
       solarDirty: this.solarDirty, sensorDirty: this.sensorDirty, mainIsolated: this.mainIsolated, chargeIsolated: this.chargeIsolated, override: this.override,
-      trial: this.trial, mainAvailable, detectedDemand: this.sensorDirty && !this.override, navigationRequired: required,
+      trial: this.trial, mainAvailable, detectedDemand: this.weatherDemand || this.sensorDirty && !this.override, navigationRequired: required,
       forcedBackup: this.forcedBackup,
       source: main ? "main" : backupOn ? "backup" : "none", backupOn, backupFlash: backupOn && this.backupPhase < LIGHTHOUSE_MAINTENANCE.backupBright,
       backupPhase: this.backupPhase, backupConfirmed: this.backupProof, mainVerified: this.mainProof === this.revision.drive,

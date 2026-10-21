@@ -25,13 +25,15 @@ export function lighthouseRecords(location: string, i: LighthouseInspectionSnaps
     "cover-observed": ["检查保护面", ""], "cover-cleaned": ["擦拭保护面", "已清洁，待复查"],
     "cleaning-cancelled": ["擦拭中断", "表面保持原状"], "maintenance-due": ["例行清洁到期", "请检查保护面"]
   };
-  const rows: LighthouseRecord[] = i.events.filter(e => !!labels[e.type] && (all || e.objectId === filter)).map(e => ({
-    day: e.dutyDay, hour: e.hour, object: e.objectId, action: labels[e.type][0],
-    result: labels[e.type][1] || (e.result.includes("盐膜") ? "发现盐膜，待清洁" : "表面洁净，已确认")
-  }));
+  const rows: LighthouseRecord[] = i.events.filter(e => !!labels[e.type] && (all || e.objectId === filter)).map(e => {
+    // V1 retains its event schema; distinguish the explicit weather cause in its saved result.
+    const weather = e.type === "maintenance-due" && e.result.startsWith("天气暴露");
+    return {day: e.dutyDay, hour: e.hour, object: e.objectId, action: weather ? "天气暴露污损" : labels[e.type][0],
+      result: weather ? e.result : labels[e.type][1] || (e.result.includes("盐膜") ? "发现盐膜，待清洁" : "表面洁净，已确认")};
+  });
   if (all || location === "lighthouse-solar-array") m.evidence.filter(e => e.component === "solar" && !e.method.startsWith("开始")).forEach(e => rows.push({
-    day: e.day, hour: e.hour, object: "lighthouse-solar-array", action: e.method === "维护到期" ? "例行清洁到期" : e.method === "中断" ? "巡视中断" : e.method === "擦拭完成" ? "清洁面板" : "巡视面板",
-    result: e.method === "擦拭完成" ? "已清洁，待复查" : e.method === "维护到期" ? "请检查太阳能面板" : e.method === "中断" ? "设备保持原状" : e.result.includes("污损") ? "发现污损" : "面板洁净"
+    day: e.day, hour: e.hour, object: "lighthouse-solar-array", action: e.method === "天气暴露污损" ? e.method : e.method === "维护到期" ? "例行清洁到期" : e.method === "中断" ? "巡视中断" : e.method === "擦拭完成" ? "清洁面板" : "巡视面板",
+    result: e.method === "天气暴露污损" ? e.result : e.method === "擦拭完成" ? "已清洁，待复查" : e.method === "维护到期" ? "请检查太阳能面板" : e.method === "中断" ? "设备保持原状" : e.result.includes("污损") ? "发现污损" : "面板洁净"
   }));
   if (all || location === "lighthouse-battery-main") p.events.filter(e => ["main-protected", "verify-main"].includes(e.type)).forEach(e => rows.push({
     day: e.day, hour: e.hour, object: "lighthouse-battery-main", action: "供电检查", result: e.type === "main-protected" ? "电量偏低，自动保护" : "供电恢复，已确认"

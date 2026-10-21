@@ -1,0 +1,2014 @@
+{
+  "passed": true,
+  "mirror": {
+    "plane": [
+      1,
+      0,
+      -2.220446049250313e-16,
+      15.560000381469727
+    ],
+    "size": [
+      512,
+      512
+    ],
+    "texture": "ensuite-mirror-target-4616",
+    "cameras": 3,
+    "hasMirrorPrePass": false,
+    "mainPrePass": true,
+    "list": [
+      {
+        "name": "coastal-platform-0",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-inland-0",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-platform-1",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-inland-1",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-cliff-front-0",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-cliff-front-1",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-cliff-front-2",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-cliff-front-3",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-cliff-front-4",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-cliff-east",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-cliff-west",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-cliff-distant",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-solid-underside",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-house-plinth",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-anchored-rocks",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-grass-and-shrubs",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-path-rocks-0",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-path-plants-0",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-path-rocks-1",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-path-plants-1",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-path-rocks-2",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-path-plants-2",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-plaza",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-shaft",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-cap",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-path",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-entry-ramp",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-walk-guardrail",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-lookout",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-plinth",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-metalwork",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-glazing",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-fine-metal",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lookout-timber",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lookout-frame",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-route-signs",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-route-sign-marks",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-house-roof",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-house-eaves",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-house-sills",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-inner-wall",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-ground-floor",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-level-deck",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-level-cornice",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-ladder-rails",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-ladder-rungs",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-level-guards",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-maintenance-cabinet",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-entry-steps",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-service-hardware",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-workbench",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-workbench-frame",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-entry-door",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-door-ribs",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-door-handle",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-distribution-panel",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-work-switch",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-maintenance-record",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-lighthouse-door",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-test-control",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-test-label",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-painted-metal",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-panel-hardware",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-weathered-timber",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-lantern-brass",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-floor-signs",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-detail-lighthouse-work-glow",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-protective-surface",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-battery-main-paint",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-solar-charger-metal",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-drive-hatch-paint",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-beacon-backup-paint",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-generator-room-metal",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-generator-paint",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-drive-hatch-brass",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-beacon-backup-solar",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-solar-array-solar",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-drive-hatch-labels",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-beacon-backup-labels",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-battery-main-labels",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-solar-charger-labels",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-solar-array-labels",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-generator-labels",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-generator-room-labels",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-beacon-backup-metal",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-generator-room-plaster",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-generator-metal",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-solar-array-metal",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-generator-room-paint",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-lighthouse-equipment-light-sensor-labels",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-sea",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-sky",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "coastal-weather-rain",
+        "owners": [
+          "balcony",
+          "bathroom",
+          "bedroom",
+          "ensuite",
+          "kitchen",
+          "living",
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "master-oak-floor",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-foundation-study-darkWood-surface",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-ceiling",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-oak-floor",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-foundation-study-darkWood-surface",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-ceiling",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-0-low",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-0-upper",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-0-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-1-low",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-1-upper",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-1-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-2-upper",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-3-low",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-3-upper",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-3-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-12-low",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-12-upper",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-12-study-darkWood",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-13-upper",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-14-low",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-14-upper",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-14-study-darkWood",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-15-low",
+        "owners": [
+          "bathroom",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-15-upper",
+        "owners": [
+          "bathroom",
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-15-study-darkWood",
+        "owners": [
+          "bathroom",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-16-low",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-16-upper",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-16-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-17-low",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-17-upper",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-skirting-17-study-darkWood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-18-low",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-18-upper",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-skirting-18-study-darkWood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-19-upper",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-20-low",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-20-upper",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-skirting-20-study-darkWood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-22-low",
+        "owners": [
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "house-wall-22-upper",
+        "owners": [
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "house-skirting-22-study-darkWood",
+        "owners": [
+          "master",
+          "study"
+        ]
+      },
+      {
+        "name": "house-wall-23-low",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-23-upper",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-23-study-darkWood",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-24-upper",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-25-low",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-25-upper",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-skirting-25-study-darkWood",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "house-wall-48-low",
+        "owners": [
+          "bedroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-48-upper",
+        "owners": [
+          "bedroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-skirting-48-study-darkWood",
+        "owners": [
+          "bedroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-50-low",
+        "owners": [
+          "bathroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-wall-50-upper",
+        "owners": [
+          "bathroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "house-skirting-50-study-darkWood",
+        "owners": [
+          "bathroom",
+          "ensuite"
+        ]
+      },
+      {
+        "name": "master-door-jamb",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "master-door-jamb",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "master-door-header",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-door-jamb",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-door-jamb",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-door-header",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-study-window-glass-surface",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-curtains-fabric",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-curtains-rings",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-curtains-ties",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-study-wood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-window-study-brass",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-window-study-window-glass-surface",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-window-curtains-fabric",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-window-curtains-rings",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-window-curtains-ties",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-window-study-darkWood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-window-study-wood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-window-study-brass",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "master-bed-study-wood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-bed-study-cushion",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-bed-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-bed-study-cream",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-bed-study-moss",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-wood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-brass",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-wood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-nightstand-study-brass",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-wardrobe-study-wood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-wardrobe-study-darkWood",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-wardrobe-study-paintGreen",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-wardrobe-study-moss",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-wardrobe-study-brass",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-accessories-study-rug-surface",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-accessories-study-navy",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "master-accessories-study-ceramic",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "study-ceramic",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "study-master-lamp-glow",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "ensuite-tiles-study-bath-grout",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-tiles-study-bath-tile",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-darkWood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-wood",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-ceramic",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-paintGreen",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-brass",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-vanity-study-bath-porcelain",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-toilet-study-brass",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-toilet-study-paper",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-toilet-study-bath-porcelain",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-shower-study-bath-tile",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-shower-study-black",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-shower-study-bath-glass-surface",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "ensuite-shower-study-brass",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "study-brass",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "study-ensuite-lamp-glow",
+        "owners": [
+          "ensuite"
+        ]
+      },
+      {
+        "name": "study-master-ceiling-lamp-glow",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "study-paintGreen",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "study-darkWood",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "study-brass",
+        "owners": [
+          "living",
+          "master"
+        ]
+      },
+      {
+        "name": "study-paintGreen",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "study-darkWood",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "study-brass",
+        "owners": [
+          "ensuite",
+          "master"
+        ]
+      },
+      {
+        "name": "study-brass",
+        "owners": [
+          "master"
+        ]
+      },
+      {
+        "name": "study-brass",
+        "owners": [
+          "master"
+        ]
+      }
+    ],
+    "selfExcluded": true,
+    "usesSceneHDR": false
+  },
+  "front": {
+    "hash": "b48506ee6284fd84b14e653e864b549f87b870ba3d8f9844df47aa3b9def8a70",
+    "changedPixels": 0
+  },
+  "hiddenToilet": {
+    "hash": "cbfd2a657930a6cfd00553021bfa019b13596b0cbd680c5917b59835e5ec57c1",
+    "changedPixels": 5119
+  },
+  "lightOff": {
+    "hash": "362fa00cfee81a77219dcb9d138c85b9c707e7a63255238e60fda89282ab3736",
+    "changedPixels": 235682
+  }
+}

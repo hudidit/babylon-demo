@@ -143,6 +143,12 @@ export class LighthouseOperation {
     }
     if (hours > 0) this.hour = frame.toHour;
     if (frame.manualCompleted) this.selectTime(frame.toHour);
+    // Sub-frame weather/visibility splits may differ by an ulp. Keep the shared receipt authoritative
+    // without a manual selection event; V1 saves require exact clock/equipment hour equality.
+    if (hours > 0 && Number.isFinite(frame.toHour)) {
+      const end = wrapTimeOfDay(frame.toHour), error = ((end - this.hour + 36) % 24) - 12;
+      if (Math.abs(error) < 1e-9) {this.hour = end; this.updateState("automatic-clock");}
+    }
     this.publish();
   }
 

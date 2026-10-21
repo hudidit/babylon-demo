@@ -1,0 +1,15 @@
+{
+  "baseline": "3d1dd3c",
+  "manifestSha256": "599fdb6ff75276b040a56fbca56c87e210946b4b3a257e58e716cc59e7286910",
+  "suites": {
+    "work": {
+      "passed": true,
+      "exitCode": 0,
+      "script": "docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-work.cjs",
+      "scriptSha256": "7671fad45aca0fb6edbbed455adabb159f56c7fc4f400d6ab1fb43e00e21f0e0",
+      "result": "work/work.json",
+      "resultSha256": "1a8acb77e178116fd272265801ab0378e0ad6a5ab9f30cf9324efdb570714a8d"
+    }
+  },
+  "passed": false
+}

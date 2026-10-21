@@ -17,6 +17,8 @@ import { coastalSurfaceHeight } from "./CoastalCliff";
 import { createLighthouseInterior } from "./LighthouseInterior";
 import { LighthouseDetails } from "./LighthouseDetails";
 import type { InteractiveDoor } from "./RoomInteractions";
+import type { LighthouseWeatherSnapshot } from "./LighthouseWeather";
+import { applyCoastalWeather } from "./CoastalWeather";
 
 type ExteriorLayer = "terrain" | "cliff" | "foundation" | "vegetation" | "rocks" | "distant" | "sea" | "sky" | "landmark" | "path" | "house-roof";
 
@@ -135,7 +137,7 @@ export class RoomExterior {
   }
 
   /** Reuse the same scoped light/map for sun and moon, updating position and direction together. */
-  applyTimeOfDay(state: TimeOfDaySnapshot) {
+  applyTimeOfDay(state: TimeOfDaySnapshot, weather?: LighthouseWeatherSnapshot) {
     if (this.disposed) return;
     this.time = state;
     const body = state.primary;
@@ -149,7 +151,8 @@ export class RoomExterior {
     this.positionSunShadow();
     this.shadow.setDarkness(body?.kind === "moon" ? .18 : 0);
     applySkyTime(this.sky, state);
-    this.ocean.applyTimeOfDay(state);
+    applyCoastalWeather(this.sky,weather,state);
+    this.ocean.applyTimeOfDay(state,weather);
     this.surfaces.applyTimeOfDay(state);
     this.refreshShadows();
   }

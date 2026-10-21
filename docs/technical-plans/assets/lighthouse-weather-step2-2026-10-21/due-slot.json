@@ -1,0 +1,10 @@
+{
+  "baseline": "3d1dd3c",
+  "method": "Original bounded .1-second pure clock/equipment models, healthy 80% initial energy, natural unmaintained progression to duty day 6, then manual noon. Legal V1 fixture, no day/Wh/dirty assignment; not a browser multi-day run.",
+  "frames": 64800,
+  "sha256": "6a221591e9deb09109f81c452dcd8d23869612ad3a4fef61b3071bd7b1450287",
+  "day": 6,
+  "hour": 12,
+  "solarDirty": true,
+  "passed": true
+}

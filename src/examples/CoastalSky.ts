@@ -1,6 +1,7 @@
 import { Color3, ShaderMaterial, Vector3 } from "@babylonjs/core/pure";
 import type { Scene } from "@babylonjs/core/pure";
 import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
+import { coastalWeatherGLSL, weatherUniforms } from "./CoastalWeather";
 
 // Read by tools/generate-coastal-environment.py. Neutral, azimuth-independent, sun-free IBL.
 export const COASTAL_ENVIRONMENT = {"horizon":[0.75,0.75,0.75],"zenith":[0.55,0.55,0.55],"ground":[0.20,0.20,0.20],"width":256,"height":128} as const;
@@ -20,6 +21,7 @@ export function timeEnvironmentColor(state: TimeOfDaySnapshot): Color3 {
 
 /** Shared by the dome and ocean reflection. All inputs/outputs are linear. */
 export const coastalSkyGLSL = `
+  ${coastalWeatherGLSL}
   uniform vec3 skyHorizon, skyZenith, skySunDirection, sunDirection, sunColor;
   uniform vec3 skyCloudLight, skyCloudShade, skyMoonDirection;
   uniform float sunStrength, sunWarmth, skyStarVisibility, skyMoonVisibility;
@@ -65,9 +67,10 @@ export const coastalSkyCloudsGLSL = `
     // An analytic density gradient paints a soft lit top; this is not volume scattering.
     normal=normalize(vec3(0.,.8,0.)-base.yzw);
     float edge=sqrt(.0375*.0375+pow(filterAngle*${COASTAL_SKY_DETAILS.cloudScale}*.20,2.));
-    float density=smoothstep(${COASTAL_SKY_DETAILS.cloudThreshold}+.0175-edge,${COASTAL_SKY_DETAILS.cloudThreshold}+.0175+edge,n);
+    float threshold=${COASTAL_SKY_DETAILS.cloudThreshold}-weatherCloudCover*.24;
+    float density=smoothstep(threshold+.0175-edge,threshold+.0175+edge,n);
     // Very large footprints converge to a diffuse coverage rather than aliasing tiny islands.
-    return mix(density,.18,smoothstep(.16,.65,filterAngle))
+    return mix(density,.18+weatherCloudCover*.7,smoothstep(.16,.65,filterAngle))
       *smoothstep(.025,.18,d.y);
   }
   vec3 coastalCloudColor(vec3 d, float density, vec3 normal) {
@@ -91,7 +94,7 @@ export const coastalSkyReflectionGLSL = `
     float starBand=1.-smoothstep(${COASTAL_SKY_DETAILS.reflectionStarFadeStart},${COASTAL_SKY_DETAILS.reflectionStarFadeEnd},roughness);
     vec3 meanStars=vec3(.89,.885,.885)*${reflectedStarMean.toFixed(9)}*coastalStarVisibility(d)*starBand;
     // The ocean's existing GGX lobe supplies the sun/moon highlight exactly once.
-    return mix(coastalSkyGradient(d)+meanStars*(1.-cloud),coastalCloudColor(d,cloud,normal),cloud*.88);
+    return coastalWeatherAtmosphere(mix(coastalSkyGradient(d)+meanStars*(1.-cloud),coastalCloudColor(d,cloud,normal),cloud*.88),d);
   }`;
 
 /** Fine stars and the celestial disk belong to the background, never the sea-haze gradient. */
@@ -128,7 +131,7 @@ export const coastalSkyDetailsGLSL = `
     float glow=pow(alignment,350.)*.12;
     vec3 clear=coastalSkyGradient(d)+coastalStars(d,q,dx,dy)*(1.-cloud)
       +sunColor*(disk*10.+glow)*sunStrength*(1.-cloud*.65);
-    return mix(clear,coastalCloudColor(d,cloud,cloudNormal),cloud*.88);
+    return coastalWeatherAtmosphere(mix(clear,coastalCloudColor(d,cloud,cloudNormal),cloud*.88),d);
   }`;
 
 export function applySkyTime(material: ShaderMaterial, state: TimeOfDaySnapshot) {
@@ -148,7 +151,7 @@ export function applySkyTime(material: ShaderMaterial, state: TimeOfDaySnapshot)
 }
 
 export const skyTimeUniforms = ["skyHorizon", "skyZenith", "skySunDirection", "sunDirection", "sunColor", "sunStrength", "sunWarmth",
-  "skyCloudLight", "skyCloudShade", "skyStarVisibility", "skyMoonDirection", "skyMoonVisibility"];
+  "skyCloudLight", "skyCloudShade", "skyStarVisibility", "skyMoonDirection", "skyMoonVisibility", ...weatherUniforms];
 export function createCoastalSky(scene: Scene): ShaderMaterial {
   const material = new ShaderMaterial("coastal-sky", scene, {
     vertexSource: `precision highp float;
