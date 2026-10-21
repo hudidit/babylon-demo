@@ -1,0 +1,858 @@
+{
+  "baseline": "1f9ef6c",
+  "method": "Isolated pure logic, deterministic stress-rate replay; these .2/.15 rates are fixtures, not default balancing or actual play. Four-hour command boundaries, 48 automatic scene hours, no rendering/wall-clock/offline progression.",
+  "rules": [
+    {
+      "component": "cover",
+      "objectId": "lighthouse-optics-cleaning",
+      "remedy": "clean-cover",
+      "baseRatePerHour": 0.2,
+      "soilPerHour": 0.03,
+      "minimumSoil": 0.15,
+      "seriousAfterHours": null
+    },
+    {
+      "component": "solar",
+      "objectId": "lighthouse-solar-array",
+      "remedy": "clean-solar",
+      "baseRatePerHour": 0.15,
+      "soilPerHour": 0.02,
+      "minimumSoil": 0.15,
+      "seriousAfterHours": null
+    }
+  ],
+  "seeds": [
+    {
+      "seed": 0,
+      "steps": [
+        {
+          "stepHours": 0.16666666666666666,
+          "sha256": "639f57738f5a95f79d195adac2313f307ca0d90b882829db774b3d9e3326859a"
+        },
+        {
+          "stepHours": 0.016666666666666666,
+          "sha256": "639f57738f5a95f79d195adac2313f307ca0d90b882829db774b3d9e3326859a"
+        },
+        {
+          "stepHours": 0.0016666666666666668,
+          "sha256": "639f57738f5a95f79d195adac2313f307ca0d90b882829db774b3d9e3326859a"
+        }
+      ],
+      "snapshot": {
+        "elapsedHours": 48,
+        "ticks": 576,
+        "remainderHours": 0,
+        "version": "lighthouse-weather-risk-v1",
+        "rules": [
+          {
+            "component": "cover",
+            "objectId": "lighthouse-optics-cleaning",
+            "remedy": "clean-cover",
+            "baseRatePerHour": 0.2,
+            "soilPerHour": 0.03,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null
+          },
+          {
+            "component": "solar",
+            "objectId": "lighthouse-solar-array",
+            "remedy": "clean-solar",
+            "baseRatePerHour": 0.15,
+            "soilPerHour": 0.02,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null
+          }
+        ],
+        "remedies": [
+          "clean-cover",
+          "clean-solar"
+        ],
+        "weather": {
+          "mode": "automatic",
+          "kind": "overcast",
+          "from": "storm",
+          "phase": "holding",
+          "transition": 1,
+          "remainingHours": 3.5,
+          "solarMultiplier": 0.35,
+          "visibilityKm": 8,
+          "daylightMultiplier": 0.65,
+          "cloudCover": 0.9,
+          "rain": 0,
+          "exposureMultiplier": 1.3
+        },
+        "visibility": {
+          "required": false,
+          "recoveryHours": 0
+        },
+        "components": {
+          "cover": {
+            "revision": 10,
+            "soil": 0.31325,
+            "conditionMultiplier": 0.35,
+            "treatmentAvailable": true
+          },
+          "solar": {
+            "revision": 7,
+            "soil": 0.346833347,
+            "conditionMultiplier": 0.35,
+            "treatmentAvailable": true
+          }
+        },
+        "problems": [
+          {
+            "id": "weather-problem-7",
+            "component": "solar",
+            "objectId": "lighthouse-solar-array",
+            "revision": 7,
+            "createdHour": 44.333333333333336,
+            "stage": "degraded",
+            "cause": {
+              "weather": "storm",
+              "ratePerHour": 0.18238500173249997,
+              "weatherMultiplier": 3,
+              "conditionMultiplier": 0.35,
+              "soil": 0.158000011,
+              "probability": 0.015083832081689234
+            }
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "hour": 4,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 2,
+            "hour": 4,
+            "component": "solar",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 3,
+            "hour": 12,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 4,
+            "hour": 16,
+            "component": "solar",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 5,
+            "hour": 18.583333333333332,
+            "component": "cover",
+            "problemId": "weather-problem-1",
+            "type": "created"
+          },
+          {
+            "id": 6,
+            "hour": 20,
+            "component": "cover",
+            "problemId": "weather-problem-1",
+            "type": "maintained"
+          },
+          {
+            "id": 7,
+            "hour": 20.416666666666668,
+            "component": "solar",
+            "problemId": "weather-problem-2",
+            "type": "created"
+          },
+          {
+            "id": 8,
+            "hour": 26.25,
+            "component": "cover",
+            "problemId": "weather-problem-3",
+            "type": "created"
+          },
+          {
+            "id": 9,
+            "hour": 28,
+            "component": "cover",
+            "problemId": "weather-problem-3",
+            "type": "maintained"
+          },
+          {
+            "id": 10,
+            "hour": 28,
+            "component": "solar",
+            "problemId": "weather-problem-2",
+            "type": "maintained"
+          },
+          {
+            "id": 11,
+            "hour": 33.833333333333336,
+            "component": "cover",
+            "problemId": "weather-problem-4",
+            "type": "created"
+          },
+          {
+            "id": 12,
+            "hour": 36,
+            "component": "cover",
+            "problemId": "weather-problem-4",
+            "type": "maintained"
+          },
+          {
+            "id": 13,
+            "hour": 37.583333333333336,
+            "component": "solar",
+            "problemId": "weather-problem-5",
+            "type": "created"
+          },
+          {
+            "id": 14,
+            "hour": 40,
+            "component": "solar",
+            "problemId": "weather-problem-5",
+            "type": "maintained"
+          },
+          {
+            "id": 15,
+            "hour": 41.333333333333336,
+            "component": "cover",
+            "problemId": "weather-problem-6",
+            "type": "created"
+          },
+          {
+            "id": 16,
+            "hour": 44,
+            "component": "cover",
+            "problemId": "weather-problem-6",
+            "type": "maintained"
+          },
+          {
+            "id": 17,
+            "hour": 44.333333333333336,
+            "component": "solar",
+            "problemId": "weather-problem-7",
+            "type": "created"
+          }
+        ],
+        "seriousCooldownUntil": 0,
+        "random": {
+          "algorithm": "lcg32-streams-v1",
+          "seed": 0,
+          "streams": {
+            "weather": {
+              "state": 2738403493,
+              "draws": 17
+            },
+            "equipment": {
+              "state": 2061682270,
+              "draws": 321
+            },
+            "inspection": {
+              "state": 2968492035,
+              "draws": 0
+            },
+            "forecast": {
+              "state": 233162409,
+              "draws": 0
+            }
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "seed": 1,
+      "steps": [
+        {
+          "stepHours": 0.16666666666666666,
+          "sha256": "4ab5053711c7030022232c76d4b78718e8a94df3c8a1a439624a2285c4a38f38"
+        },
+        {
+          "stepHours": 0.016666666666666666,
+          "sha256": "4ab5053711c7030022232c76d4b78718e8a94df3c8a1a439624a2285c4a38f38"
+        },
+        {
+          "stepHours": 0.0016666666666666668,
+          "sha256": "4ab5053711c7030022232c76d4b78718e8a94df3c8a1a439624a2285c4a38f38"
+        }
+      ],
+      "snapshot": {
+        "elapsedHours": 48,
+        "ticks": 576,
+        "remainderHours": 0,
+        "version": "lighthouse-weather-risk-v1",
+        "rules": [
+          {
+            "component": "cover",
+            "objectId": "lighthouse-optics-cleaning",
+            "remedy": "clean-cover",
+            "baseRatePerHour": 0.2,
+            "soilPerHour": 0.03,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null
+          },
+          {
+            "component": "solar",
+            "objectId": "lighthouse-solar-array",
+            "remedy": "clean-solar",
+            "baseRatePerHour": 0.15,
+            "soilPerHour": 0.02,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null
+          }
+        ],
+        "remedies": [
+          "clean-cover",
+          "clean-solar"
+        ],
+        "weather": {
+          "mode": "automatic",
+          "kind": "overcast",
+          "from": "clear",
+          "phase": "holding",
+          "transition": 1,
+          "remainingHours": 1.583333333,
+          "solarMultiplier": 0.35,
+          "visibilityKm": 8,
+          "daylightMultiplier": 0.65,
+          "cloudCover": 0.9,
+          "rain": 0,
+          "exposureMultiplier": 1.3
+        },
+        "visibility": {
+          "required": false,
+          "recoveryHours": 0
+        },
+        "components": {
+          "cover": {
+            "revision": 7,
+            "soil": 0.13575,
+            "conditionMultiplier": 0.35,
+            "treatmentAvailable": true
+          },
+          "solar": {
+            "revision": 6,
+            "soil": 0.189000032,
+            "conditionMultiplier": 0.35,
+            "treatmentAvailable": true
+          }
+        },
+        "problems": [],
+        "events": [
+          {
+            "id": 1,
+            "hour": 4,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 2,
+            "hour": 4,
+            "component": "solar",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 3,
+            "hour": 10.916666666666666,
+            "component": "solar",
+            "problemId": "weather-problem-1",
+            "type": "created"
+          },
+          {
+            "id": 4,
+            "hour": 12,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 5,
+            "hour": 16,
+            "component": "solar",
+            "problemId": "weather-problem-1",
+            "type": "maintained"
+          },
+          {
+            "id": 6,
+            "hour": 19.5,
+            "component": "cover",
+            "problemId": "weather-problem-2",
+            "type": "created"
+          },
+          {
+            "id": 7,
+            "hour": 20,
+            "component": "cover",
+            "problemId": "weather-problem-2",
+            "type": "maintained"
+          },
+          {
+            "id": 8,
+            "hour": 28,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 9,
+            "hour": 28,
+            "component": "solar",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 10,
+            "hour": 36,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 11,
+            "hour": 38.583333333333336,
+            "component": "solar",
+            "problemId": "weather-problem-3",
+            "type": "created"
+          },
+          {
+            "id": 12,
+            "hour": 40,
+            "component": "solar",
+            "problemId": "weather-problem-3",
+            "type": "maintained"
+          },
+          {
+            "id": 13,
+            "hour": 44,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          }
+        ],
+        "seriousCooldownUntil": 0,
+        "random": {
+          "algorithm": "lcg32-streams-v1",
+          "seed": 1,
+          "streams": {
+            "weather": {
+              "state": 1598735446,
+              "draws": 17
+            },
+            "equipment": {
+              "state": 382429327,
+              "draws": 385
+            },
+            "inspection": {
+              "state": 192991645,
+              "draws": 0
+            },
+            "forecast": {
+              "state": 3714746839,
+              "draws": 0
+            }
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "seed": 123,
+      "steps": [
+        {
+          "stepHours": 0.16666666666666666,
+          "sha256": "96860ef160e1cfee15f7254eb1a9baaf7e5bcfeb2f0f0c6108728b2c3aeb8e53"
+        },
+        {
+          "stepHours": 0.016666666666666666,
+          "sha256": "96860ef160e1cfee15f7254eb1a9baaf7e5bcfeb2f0f0c6108728b2c3aeb8e53"
+        },
+        {
+          "stepHours": 0.0016666666666666668,
+          "sha256": "96860ef160e1cfee15f7254eb1a9baaf7e5bcfeb2f0f0c6108728b2c3aeb8e53"
+        }
+      ],
+      "snapshot": {
+        "elapsedHours": 48,
+        "ticks": 576,
+        "remainderHours": 0,
+        "version": "lighthouse-weather-risk-v1",
+        "rules": [
+          {
+            "component": "cover",
+            "objectId": "lighthouse-optics-cleaning",
+            "remedy": "clean-cover",
+            "baseRatePerHour": 0.2,
+            "soilPerHour": 0.03,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null
+          },
+          {
+            "component": "solar",
+            "objectId": "lighthouse-solar-array",
+            "remedy": "clean-solar",
+            "baseRatePerHour": 0.15,
+            "soilPerHour": 0.02,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null
+          }
+        ],
+        "remedies": [
+          "clean-cover",
+          "clean-solar"
+        ],
+        "weather": {
+          "mode": "automatic",
+          "kind": "overcast",
+          "from": "clear",
+          "phase": "holding",
+          "transition": 1,
+          "remainingHours": 1.833333333,
+          "solarMultiplier": 0.35,
+          "visibilityKm": 8,
+          "daylightMultiplier": 0.65,
+          "cloudCover": 0.9,
+          "rain": 0,
+          "exposureMultiplier": 1.3
+        },
+        "visibility": {
+          "required": false,
+          "recoveryHours": 0
+        },
+        "components": {
+          "cover": {
+            "revision": 7,
+            "soil": 0.1485,
+            "conditionMultiplier": 0.35,
+            "treatmentAvailable": true
+          },
+          "solar": {
+            "revision": 4,
+            "soil": 0.179000032,
+            "conditionMultiplier": 0.35,
+            "treatmentAvailable": true
+          }
+        },
+        "problems": [],
+        "events": [
+          {
+            "id": 1,
+            "hour": 4,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 2,
+            "hour": 4,
+            "component": "solar",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 3,
+            "hour": 12,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 4,
+            "hour": 14,
+            "component": "cover",
+            "problemId": "weather-problem-1",
+            "type": "created"
+          },
+          {
+            "id": 5,
+            "hour": 16,
+            "component": "solar",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 6,
+            "hour": 20,
+            "component": "cover",
+            "problemId": "weather-problem-1",
+            "type": "maintained"
+          },
+          {
+            "id": 7,
+            "hour": 28,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 8,
+            "hour": 28,
+            "component": "solar",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 9,
+            "hour": 36,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 10,
+            "hour": 40,
+            "component": "solar",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 11,
+            "hour": 44,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          }
+        ],
+        "seriousCooldownUntil": 0,
+        "random": {
+          "algorithm": "lcg32-streams-v1",
+          "seed": 123,
+          "streams": {
+            "weather": {
+              "state": 3370649273,
+              "draws": 17
+            },
+            "equipment": {
+              "state": 4238670171,
+              "draws": 449
+            },
+            "inspection": {
+              "state": 2515743446,
+              "draws": 0
+            },
+            "forecast": {
+              "state": 2375057506,
+              "draws": 0
+            }
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "seed": 20261021,
+      "steps": [
+        {
+          "stepHours": 0.16666666666666666,
+          "sha256": "0d9423205343e846280f20a4df210aaae3295fa8d9cd01ff53016e397ab220c1"
+        },
+        {
+          "stepHours": 0.016666666666666666,
+          "sha256": "0d9423205343e846280f20a4df210aaae3295fa8d9cd01ff53016e397ab220c1"
+        },
+        {
+          "stepHours": 0.0016666666666666668,
+          "sha256": "0d9423205343e846280f20a4df210aaae3295fa8d9cd01ff53016e397ab220c1"
+        }
+      ],
+      "snapshot": {
+        "elapsedHours": 48,
+        "ticks": 576,
+        "remainderHours": 0,
+        "version": "lighthouse-weather-risk-v1",
+        "rules": [
+          {
+            "component": "cover",
+            "objectId": "lighthouse-optics-cleaning",
+            "remedy": "clean-cover",
+            "baseRatePerHour": 0.2,
+            "soilPerHour": 0.03,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null
+          },
+          {
+            "component": "solar",
+            "objectId": "lighthouse-solar-array",
+            "remedy": "clean-solar",
+            "baseRatePerHour": 0.15,
+            "soilPerHour": 0.02,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null
+          }
+        ],
+        "remedies": [
+          "clean-cover",
+          "clean-solar"
+        ],
+        "weather": {
+          "mode": "automatic",
+          "kind": "clear",
+          "from": "overcast",
+          "phase": "holding",
+          "transition": 1,
+          "remainingHours": 3.083333333,
+          "solarMultiplier": 1,
+          "visibilityKm": 12,
+          "daylightMultiplier": 1,
+          "cloudCover": 0.2,
+          "rain": 0,
+          "exposureMultiplier": 1
+        },
+        "visibility": {
+          "required": false,
+          "recoveryHours": 0
+        },
+        "components": {
+          "cover": {
+            "revision": 8,
+            "soil": 0.1425,
+            "conditionMultiplier": 0.35,
+            "treatmentAvailable": true
+          },
+          "solar": {
+            "revision": 6,
+            "soil": 0.192000032,
+            "conditionMultiplier": 0.35,
+            "treatmentAvailable": true
+          }
+        },
+        "problems": [],
+        "events": [
+          {
+            "id": 1,
+            "hour": 4,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 2,
+            "hour": 4,
+            "component": "solar",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 3,
+            "hour": 12,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 4,
+            "hour": 16,
+            "component": "solar",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 5,
+            "hour": 20,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          },
+          {
+            "id": 6,
+            "hour": 23,
+            "component": "cover",
+            "problemId": "weather-problem-1",
+            "type": "created"
+          },
+          {
+            "id": 7,
+            "hour": 23.75,
+            "component": "solar",
+            "problemId": "weather-problem-2",
+            "type": "created"
+          },
+          {
+            "id": 8,
+            "hour": 28,
+            "component": "cover",
+            "problemId": "weather-problem-1",
+            "type": "maintained"
+          },
+          {
+            "id": 9,
+            "hour": 28,
+            "component": "solar",
+            "problemId": "weather-problem-2",
+            "type": "maintained"
+          },
+          {
+            "id": 10,
+            "hour": 33.333333333333336,
+            "component": "cover",
+            "problemId": "weather-problem-3",
+            "type": "created"
+          },
+          {
+            "id": 11,
+            "hour": 36,
+            "component": "cover",
+            "problemId": "weather-problem-3",
+            "type": "maintained"
+          },
+          {
+            "id": 12,
+            "hour": 38.916666666666664,
+            "component": "solar",
+            "problemId": "weather-problem-4",
+            "type": "created"
+          },
+          {
+            "id": 13,
+            "hour": 40,
+            "component": "solar",
+            "problemId": "weather-problem-4",
+            "type": "maintained"
+          },
+          {
+            "id": 14,
+            "hour": 44,
+            "component": "cover",
+            "problemId": null,
+            "type": "maintained"
+          }
+        ],
+        "seriousCooldownUntil": 0,
+        "random": {
+          "algorithm": "lcg32-streams-v1",
+          "seed": 20261021,
+          "streams": {
+            "weather": {
+              "state": 2944493445,
+              "draws": 19
+            },
+            "equipment": {
+              "state": 2485637802,
+              "draws": 364
+            },
+            "inspection": {
+              "state": 1162352929,
+              "draws": 0
+            },
+            "forecast": {
+              "state": 2100156727,
+              "draws": 0
+            }
+          }
+        }
+      },
+      "passed": true
+    }
+  ],
+  "files": {
+    "LighthouseRandom.ts": "bab813935073ce60d31e402d75c43bf76c2d1b753f19c8f925143b96d5d4c040",
+    "LighthouseWeather.ts": "02c13e952018fd1a9d9e5dbf278e1cb5c108f9a8e5339b39f94106bfa233e303",
+    "LighthouseRisk.ts": "4cbe5fa0e2c398e8fdee736abcf5b3fad9f16f0efc37f3351dd3843ec8597096"
+  },
+  "passed": true
+}

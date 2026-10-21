@@ -1,0 +1,39 @@
+{
+  "baseline": "1f9ef6c",
+  "passed": true,
+  "manifestSha256": "6af8f3b209acc7207ab7f0d6ae9a53adc821ec53b2d22feac09d5c24a9a214b3",
+  "productionFilesUnchanged": true,
+  "modelSeeds": 4,
+  "replayStepCounts": [
+    3,
+    3,
+    3,
+    3
+  ],
+  "tests": 298,
+  "newTests": 19,
+  "totals": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26414475,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 89433,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2799508,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42463991
+  },
+  "browser": "155.0.8059.86",
+  "files": {
+    "src/examples/LighthouseRandom.ts": "bab813935073ce60d31e402d75c43bf76c2d1b753f19c8f925143b96d5d4c040",
+    "src/examples/LighthouseWeather.ts": "02c13e952018fd1a9d9e5dbf278e1cb5c108f9a8e5339b39f94106bfa233e303",
+    "src/examples/LighthouseRisk.ts": "4cbe5fa0e2c398e8fdee736abcf5b3fad9f16f0efc37f3351dd3843ec8597096",
+    "tests/lighthouse-weather-risk.test.cjs": "2f0afb33c1fc2af14a6ec87aaa41e9df4b40520bb2d2689b610b300707098034"
+  },
+  "environment": {
+    "node": "v24.21.0",
+    "typescript": "5.9.3",
+    "webpack": "5.111.1"
+  }
+}
