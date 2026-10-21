@@ -19,6 +19,8 @@ export class RoomTimeMenu {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const weatherSelect=document.querySelector<HTMLSelectElement>("#weather-mode")!;
     const weatherMotion=document.querySelector<HTMLInputElement>("#weather-reduced-motion")!;
+    const sessionMode=document.querySelector<HTMLSelectElement>("#lighthouse-session-mode")!;
+    const seed=document.querySelector<HTMLInputElement>("#lighthouse-exercise-seed")!;
     weatherMotion.checked=reduced.matches;room.setReducedWeatherMotion(reduced.matches);
     const events = new AbortController(), signal = events.signal;
     let opening = false;
@@ -51,7 +53,10 @@ export class RoomTimeMenu {
       automatic.checked = playback.automatic;
       const weather=room.weather.weather,weatherLabel=({clear:"晴朗",overcast:"阴天",fog:"海雾",storm:"风雨"})[weather.kind];
       weatherSelect.value=weather.mode==="automatic"?"automatic":weather.kind;
-      document.querySelector("#weather-label")!.textContent=weatherLabel;
+      sessionMode.value=room.lighthouseSessionMode;
+      document.querySelector("#lighthouse-session-current")!.textContent=room.lighthouseSessionMode==="exercise"
+        ?`独立演练 · 种子 ${room.weather.random.seed} · 返回值守可恢复原进度`:"正常值守 · 选择固定天气会进入独立演练";
+      document.querySelector("#weather-label")!.textContent=(room.lighthouseSessionMode==="exercise"?"演练 · ":"")+weatherLabel;
       document.querySelector("#weather-current")!.textContent=`${weatherLabel}${weather.phase==="entering"?" · 转变中":""} · 能见约${weather.visibilityKm.toFixed(1)} km · 太阳能${Math.round(weather.solarMultiplier*100)}%${weather.rain>=.15?" · 暂缓外廊作业":""}`;
       status.textContent = playback.transitioning ? "切换中…" : "当前 " + formatTime(state.hour)
         + (playback.automatic ? room.pauseReasons.length ? " · 收起后继续流转" : " · 自动流转中" : " · 手动时间");
@@ -74,7 +79,15 @@ export class RoomTimeMenu {
       room.setTimeAutomatic(automatic.checked);
       live.textContent = automatic.checked ? "自动流转已开启，收起菜单后继续" : "自动流转已关闭";
     }, { signal });
-    weatherSelect.addEventListener("change",()=>{room.setWeather(weatherSelect.value==="automatic"?null:weatherSelect.value as "clear"|"overcast"|"fog"|"storm");live.textContent="天气已切换，设备状态保留";},{signal});
+    weatherSelect.addEventListener("change",()=>{room.setWeather(weatherSelect.value==="automatic"?null:weatherSelect.value as "clear"|"overcast"|"fog"|"storm");live.textContent="已在独立演练中切换天气，正常值守进度保留";},{signal});
+    sessionMode.addEventListener("change",()=>{const ok=room.setLighthouseSessionMode(sessionMode.value as "duty"|"exercise");render();live.textContent=ok?"已切换会话，时间暂停；收起菜单前可开启自动流转":"时间切换完成后再切换会话";},{signal});
+    document.querySelector("#lighthouse-exercise-restart")!.addEventListener("click",()=>{
+      const value=seed.value.trim(),n=Number(value);
+      const ok=/^\d+$/.test(value)&&room.restartLighthouseExercise(n);
+      seed.setCustomValidity(ok?"":"请输入0至4294967295的整数，且等待时间切换完成");
+      if(!ok)seed.reportValidity();else live.textContent="已按种子重开独立演练；设备回到初始状态，正常值守进度保留";
+    },{signal});
+    seed.addEventListener("input",()=>seed.setCustomValidity(""),{signal});
     weatherMotion.addEventListener("change",()=>room.setReducedWeatherMotion(weatherMotion.checked),{signal});
     reduced.addEventListener("change",event=>{weatherMotion.checked=event.matches;room.setReducedWeatherMotion(event.matches);},{signal});
     document.addEventListener("pointerdown", event => {

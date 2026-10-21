@@ -94,7 +94,7 @@ test('real five-second detection enables only the corresponding cleaning transac
 test('cross checks use observed environment/input and V1 keeps honest wording without pretending to persist latent state',()=>{
  const f=duty();f.step(51);f.maintenance.compareSolar(f.operation.snapshot,85,100);assert.match(f.maintenance.snapshot.notice,/差额.*不能判断内部原因/);
  f.maintenance.compareSolar(f.operation.snapshot,0,0);assert.match(f.maintenance.snapshot.notice,/日照不足/);
- const restored=decodeLighthouseSave(encodeLighthouseSave(f));assert.equal(restored.maintenance.snapshot.solarDirty,true);assert.equal(restored.maintenance.snapshot.solarLatent,false);
+ const restored=decodeLighthouseSave(encodeLighthouseSave({...f,weather:undefined}));assert.equal(restored.maintenance.snapshot.solarDirty,true);assert.equal(restored.maintenance.snapshot.solarLatent,false);
  assert.equal(restored.power.snapshot.mainWh,f.power.snapshot.mainWh);assert.equal(restored.clock.playback.automatic,false);
  const rows=load('LighthouseExperience').lighthouseRecords('log',restored.inspection.snapshot,restored.maintenance.snapshot,restored.power.snapshot);assert.ok(rows.some(r=>r.action==='读数对照'&&r.result.includes('日照不足')));
 });

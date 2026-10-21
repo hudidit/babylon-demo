@@ -4,10 +4,20 @@ import type { LighthouseInspection } from "./LighthouseInspection";
 import type { LighthouseMaintenance } from "./LighthouseMaintenance";
 import type { LighthousePower } from "./LighthousePower";
 import type { TimeOfDayAdvance } from "./RoomTimeOfDay";
+import type { LighthouseDiscoveryFact } from "./LighthouseDiscovery";
 
 export interface LighthouseWeatherDuty {
   weather: LighthouseWeatherRisk; operation: LighthouseOperation; inspection: LighthouseInspection;
   maintenance: LighthouseMaintenance; power: LighthousePower;
+}
+export function lighthouseDiscoveryFacts(s:LighthouseWeatherDuty):readonly LighthouseDiscoveryFact[] {
+  const w=s.weather.snapshot,m=s.maintenance.snapshot,i=s.inspection.snapshot;
+  return (["cover","solar"] as const).map(target=>{
+    const problem=w.problems.find(p=>p.component===target),dirty=target==="cover"?i.dirty:m.solarDirty;
+    return {target,revision:target==="cover"?i.coverRevision:m.revision.solar,problemId:problem?.id||`clean-${target}`,
+      stage:!dirty?"clear":target==="solar"&&m.solarLatent?"latent":"obvious",
+      severity:problem?Math.min(1,Math.max(0,(w.elapsedHours-problem.createdHour)/2)):0};
+  });
 }
 export function synchronizeWeatherDuty(s: LighthouseWeatherDuty) {
   const w=s.weather.snapshot;

@@ -1,4 +1,5 @@
 import type { LighthouseRandom } from "./LighthouseRandom";
+import {saveObject, saveEnum, saveNumber, saveBoolean} from "./LighthouseSaveValidation";
 
 export type LighthouseWeatherKind = "clear" | "overcast" | "fog" | "storm";
 export interface LighthouseWeatherConditions {
@@ -51,6 +52,18 @@ export class LighthouseWeatherSequence {
     this.ageTicks = 0; this.remainingTicks = kind === null ? this.duration() : 0;
   }
   private duration() {return C.minTicks + Math.floor(this.random.next("weather") * (C.maxTicks - C.minTicks + 1));}
+  exportState() {return {mode: this.mode, kind: this.kind, from: this.from, ageTicks: this.ageTicks, remainingTicks: this.remainingTicks};}
+  static fromState(value: unknown, random: LighthouseRandom) {
+    const kind = saveEnum("clear", "overcast", "fog", "storm");
+    const s = saveObject({mode: saveEnum("fixed", "automatic"), kind, from: kind,
+      ageTicks: saveNumber(0, 72, true), remainingTicks: saveNumber(0, 72, true)})(value);
+    if (s.mode === "fixed" ? s.kind !== s.from || s.ageTicks !== 0 || s.remainingTicks !== 0
+      : s.remainingTicks < 1 || s.ageTicks + s.remainingTicks < 24 || s.ageTicks + s.remainingTicks > 72
+        || s.kind !== s.from && s.kind !== "overcast" && s.from !== "overcast") throw new Error("Invalid weather sequence");
+    const model = new LighthouseWeatherSequence(random, "clear");
+    model.mode=s.mode;model.kind=s.kind;model.from=s.from;model.ageTicks=s.ageTicks;model.remainingTicks=s.remainingTicks;
+    return model;
+  }
   advanceTick() {
     if (this.mode === "fixed") return;
     this.ageTicks++;
@@ -117,6 +130,12 @@ export class LighthouseVisibility {
     return sample.snapshot;
   }
   get snapshot() {return Object.freeze({required: this.required, recoveryHours: round(this.recovery)});}
+  exportState() {return {required: this.required, recovery: this.recovery};}
+  static fromState(value: unknown) {
+    const s=saveObject({required:saveBoolean,recovery:saveNumber(0,1/6)})(value);
+    if (s.recovery>=1/6 || !s.required && s.recovery!==0) throw new Error("Invalid visibility recovery");
+    const model=new LighthouseVisibility();model.required=s.required;model.recovery=s.recovery;return model;
+  }
 }
 
 export function lighthouseWeatherNavigationRequired(hour: number, lowVisibility: boolean) {

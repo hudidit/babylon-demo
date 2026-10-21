@@ -224,7 +224,8 @@ test('Room updates lighthouse even with a frozen manual hour and guards all muta
   room.canObserveLighthouse = () => false; room.canObserveBackup = () => false;
   room.lighthousePanel.render = () => {}; room.lighthousePanel.renderActivity = () => {};
   room.applyTimeOfDay = () => {}; room.onTimeOfDayChange = () => {};
-  room.setTimeOfDay(21); room.updateTimeOfDay(.1); room.updateTimeOfDay(.1);
+  room.setTimeOfDay(21); room.restoredDiscovery=true;room.updateTimeOfDay(.1); room.updateTimeOfDay(.1);
+  assert.equal(room.restoredDiscovery,false,'accepted active time rebinds location even when automatic time is off');
   near(room.lighthouseOperation.rotationTurns, .01);
   assert.equal(room.lighthouseOperation, room.scene.metadata.lighthouseOperation.state);
   room.startLighthouseTest(); const before = room.lighthouseOperation;

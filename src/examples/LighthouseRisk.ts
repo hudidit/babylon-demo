@@ -3,6 +3,7 @@ import { LighthouseVisibility, LighthouseWeatherSequence } from "./LighthouseWea
 import type { LighthouseRandomStream } from "./LighthouseRandom";
 import type { LighthouseWeatherKind, LighthouseWeatherSnapshot } from "./LighthouseWeather";
 import type { TimeOfDayAdvance } from "./RoomTimeOfDay";
+import {saveObject, saveEnum, saveNumber, saveArray, saveText, saveOptional, saveBoolean, saveRevision, saveDay, savedEventOrder} from "./LighthouseSaveValidation";
 
 export const LIGHTHOUSE_WEATHER_RISK_VERSION = "lighthouse-weather-risk-v1";
 export type LighthouseRiskComponent = "cover" | "solar" | "drive" | "charger" | "sensor" | "seal" | "backup";
@@ -76,12 +77,12 @@ export function lighthouseRiskProbability(ratePerHour: number, hours: number) {
 }
 
 /**
- * Pure weather/risk simulation. The scene bridge consumes intervals; V1 saves do not persist this model.
+ * Pure weather/risk simulation. The scene bridge consumes intervals; V2 checkpoints retain exact history.
  * Time is accepted automatic scene time; fixed boundaries own every random draw and problem change.
  */
 export class LighthouseWeatherRisk {
-  private readonly random: LighthouseRandom;
-  private readonly weather: LighthouseWeatherSequence;
+  private random: LighthouseRandom;
+  private weather: LighthouseWeatherSequence;
   private visibility: LighthouseVisibility;
   private readonly rules: readonly LighthouseRiskRule[];
   private readonly remedies: readonly LighthouseRemedy[];
@@ -113,6 +114,44 @@ export class LighthouseWeatherRisk {
     this.visibility = new LighthouseVisibility(this.weather.sample().visibilityKm);
   }
   get acceptedAutomaticHours() {return this.acceptedHours;}
+  exportState() {
+    return {version:LIGHTHOUSE_WEATHER_RISK_VERSION,random:this.random.snapshot,weather:this.weather.exportState(),visibility:this.visibility.exportState(),
+      rules:this.rules,remedies:this.remedies,components:{...this.components},problems:[...this.problems],events:[...this.events],
+      nextProblem:this.nextProblem,nextEvent:this.nextEvent,ticks:this.ticks,acceptedHours:this.acceptedHours,
+      compensation:this.compensation,seriousCooldownUntil:this.seriousCooldownUntil};
+  }
+  static fromState(value: unknown) {
+    const component=saveEnum(...COMPONENTS),remedy=saveEnum(...COMPONENTS.map(c=>REMEDY[c])),weather=saveEnum("clear","overcast","fog","storm");
+    const number=saveNumber(0,1e9), nullable=(v:unknown)=>v===null?null:number(v), raw=(v:unknown)=>v;
+    const rule=saveObject({component,objectId:saveText(128),remedy,baseRatePerHour:number,soilPerHour:number,minimumSoil:saveNumber(0,1),
+      seriousAfterHours:nullable,visibleAfterHours:saveOptional(number)});
+    const s=saveObject({version:saveEnum(LIGHTHOUSE_WEATHER_RISK_VERSION),random:raw,weather:raw,visibility:raw,
+      rules:saveArray(rule,7),remedies:saveArray(remedy,7),components:raw,
+      problems:saveArray(saveObject({id:saveText(64),component,objectId:saveText(128),revision:saveRevision,createdHour:number,
+        stage:saveEnum("latent","degraded","serious"),origin:saveOptional(saveEnum("existing")),
+        cause:saveObject({weather,ratePerHour:number,weatherMultiplier:saveNumber(1,3),conditionMultiplier:number,soil:saveNumber(0,1),probability:saveNumber(0,1)})}),7),
+      events:saveArray(saveObject({id:saveDay,hour:number,component,problemId:(v:unknown)=>v===null?null:saveText(64)(v),type:saveEnum("created","escalated","maintained")}),256),
+      nextProblem:saveDay,nextEvent:saveDay,ticks:saveNumber(0,12e9,true),acceptedHours:number,compensation:saveNumber(-1e-6,1e-6),seriousCooldownUntil:number})(value);
+    const random=LighthouseRandom.fromState(s.random), model=new LighthouseWeatherRisk({seed:random.seed,fixedWeather:"clear",rules:s.rules,remedies:s.remedies});
+    const schema={};for(const r of model.rules)schema[r.component]=saveObject({revision:saveRevision,soil:saveNumber(0,1),conditionMultiplier:number,treatmentAvailable:saveBoolean});
+    const components=saveObject(schema)(s.components), remainder=s.acceptedHours-s.ticks/12;
+    const validId=(id:string)=>/^weather-problem-[1-9]\d*$/.test(id)&&Number(id.slice(16))<s.nextProblem;
+    if(remainder < -1e-9 || remainder>=1/12+1e-9 || s.ticks!==Math.floor((s.acceptedHours+1e-9)*12)
+      || new Set(s.remedies).size!==s.remedies.length || new Set(s.problems.map(p=>p.component)).size!==s.problems.length
+      || new Set(s.problems.map(p=>p.id)).size!==s.problems.length || s.problems.filter(p=>p.stage==="serious").length>1
+      || s.seriousCooldownUntil>s.acceptedHours+6+1e-9 || s.nextEvent<savedEventOrder(s.events)
+      || s.problems.some(p=>{const r=model.rules.find(r=>r.component===p.component);return !r||!validId(p.id)||p.objectId!==r.objectId
+        ||p.revision!==components[p.component].revision||p.createdHour>s.acceptedHours+1e-9
+        ||p.stage==="serious"&&(r.seriousAfterHours===null||p.createdHour<24-1e-9||s.acceptedHours-p.createdHour<r.seriousAfterHours-1e-9)
+        ||p.stage==="latent"&&r.seriousAfterHours===null&&r.visibleAfterHours===undefined
+        ||p.origin&&p.stage!=="degraded";})
+      ||s.events.some(e=>!components[e.component]||e.hour>s.acceptedHours+1e-9||e.problemId!==null&&!validId(e.problemId))) throw new Error("Inconsistent weather/risk checkpoint");
+    model.random=random;model.weather=LighthouseWeatherSequence.fromState(s.weather,random);model.visibility=LighthouseVisibility.fromState(s.visibility);
+    const km=model.weather.sample().visibilityKm,v=model.visibility.exportState();
+    if(km<2&&!v.required || km<3&&v.recovery>0)throw new Error("Inconsistent visibility history");
+    model.components={...components};model.problems=[...s.problems];model.events=[...s.events];model.nextProblem=s.nextProblem;model.nextEvent=s.nextEvent;
+    model.ticks=s.ticks;model.acceptedHours=s.acceptedHours;model.compensation=s.compensation;model.seriousCooldownUntil=s.seriousCooldownUntil;return model;
+  }
   get snapshot() {
     const elapsedHours = round(this.acceptedHours), remainderHours = round(Math.max(0, this.acceptedHours - this.ticks / 12));
     const weather = this.weather.sample(Math.min(1, remainderHours * 12));

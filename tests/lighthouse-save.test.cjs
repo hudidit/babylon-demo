@@ -20,7 +20,7 @@ test('one slot restores exact fractional time, committed evidence, resources and
  const before=restored.clock.snapshot;restored.clock.advance(3600);assert.equal(restored.clock.snapshot,before);restored.clock.advance(.1);assert.equal(restored.clock.snapshot,before);
  assert.equal(restored.inspection.snapshot.dirty,false);assert.equal(restored.inspection.snapshot.checks['check-cover'],'complete');
  const events=restored.inspection.snapshot.events;restored.inspection.invalidateMain(restored.operation.snapshot);assert.ok(restored.inspection.snapshot.events.at(-1).id>events.at(-1).id);
- const storage=memory(),slot=new LighthouseSave(()=>storage);assert.equal(slot.inspect().available,false);assert.equal(slot.save(f).available,true);assert.ok(slot.load().session);assert.equal(storage.raw,raw);
+ const storage=memory(),slot=new LighthouseSave(()=>storage);assert.equal(slot.inspect().available,false);assert.equal(slot.save(f).available,true);assert.ok(slot.load().session);assert.equal(JSON.parse(storage.raw).version,2);
 });
 
 test('saving an unfinished wipe or transaction restores pre-commit state without inventing completion or consuming resources',()=>{

@@ -53,7 +53,7 @@ test('pause, manual selection and resume reset do not advance weather, random st
 });
 test('V1 saves from active daytime fog preserve true energy/history without mutating the live weather request',()=>{
  const f=fixture('fog');f.run(60);assert.equal(f.operation.snapshot.detectedDemand,true);const before=f.operation.snapshot;
- const raw=encodeLighthouseSave(f),restored=decodeLighthouseSave(raw);
+ const raw=encodeLighthouseSave({...f,weather:undefined}),restored=decodeLighthouseSave(raw);
  assert.equal(f.operation.snapshot,before);assert.equal(f.operation.snapshot.running,true);assert.equal(restored.operation.snapshot.detectedDemand,false);
  assert.equal(restored.power.snapshot.mainWh,f.power.snapshot.mainWh);assert.equal(JSON.stringify(restored.operation.snapshot.events),JSON.stringify(before.events));
  assert.equal(JSON.parse(raw).version,1);assert.equal(restored.clock.playback.automatic,false);
@@ -80,5 +80,5 @@ test('paper records retain weather causes across V1 saves and never label an aut
  assert.equal(f.inspection.snapshot.dirty,false);f.inspection.soilFromWeather(f.operation.snapshot);f.maintenance.soilFromWeather(f.operation.snapshot);
  const records=s=>load('LighthouseExperience').lighthouseRecords('log',s.inspection.snapshot,s.maintenance.snapshot,s.power.snapshot);
  const before=records(f),weather=before.filter(r=>r.action==='天气暴露污损');assert.equal(weather.length,2);assert.ok(weather.every(r=>r.result.includes('天气暴露')||r.result.includes('太阳能表面')));
- assert.equal(before.find(r=>r.object==='lighthouse-solar-array').action,'天气暴露污损');assert.deepEqual(records(decodeLighthouseSave(encodeLighthouseSave(f))),before);
+ assert.equal(before.find(r=>r.object==='lighthouse-solar-array').action,'天气暴露污损');assert.deepEqual(records(decodeLighthouseSave(encodeLighthouseSave({...f,weather:undefined}))),before);
 });

@@ -1,0 +1,13 @@
+{
+  "baseline": "1533c6e",
+  "manifestSha256": "53c97930bec6c934bb707c07bd42254ae718dd8c1cc2cdbefc6953ad56ae4034",
+  "node": "v24.21.0",
+  "runSha256": "d7c763d088371621e7d5dbe04297fe1b90778134bfaec6b1c54e66e740cacde6",
+  "verifierSha256": "d3c839dbb32b3bc0d6597e0eb4057cac6ece4c8db5543cfe396a4b5bba30fbce",
+  "suites": 7,
+  "weatherCases": 48,
+  "recreateCycles": 3,
+  "actualFirstScreenJsBytes": 3074217,
+  "releaseBytes": 42522931,
+  "passed": true
+}

@@ -77,6 +77,12 @@ export class LighthouseMaintenance {
     this.publish({hour: session === "drive" ? 21 : 12, running: false} as LighthouseOperationSnapshot);
   }
   get snapshot() { return this.current; }
+  exportWeatherState() {return {solarLatent:this.solarLatent,loggedSurfaceClues:Array.from(this.loggedSurfaceClues)};}
+  restoreWeatherState(value:unknown,op:LighthouseOperationSnapshot) {
+    const s=saveObject({solarLatent:saveBoolean,loggedSurfaceClues:saveArray(saveDay,128)})(value);
+    if(s.solarLatent&&!this.solarDirty||new Set(s.loggedSurfaceClues).size!==s.loggedSurfaceClues.length)throw new Error("Invalid saved solar/knowledge state");
+    this.solarLatent=s.solarLatent;this.loggedSurfaceClues=new Set(s.loggedSurfaceClues);this.publish(op);
+  }
   exportState() {return {...saveFields(this, ["driveFault", "chargerFault", "solarDirty", "sensorDirty", "mainIsolated", "chargeIsolated", "override", "forcedBackup", "backupAvailable", "selfRemaining", "backupPhase", "backupWasOn", "powerMain", "powerTrial", "powerCompleted", "backupProof", "backupContext", "lastSource", "lastRequired", "trial", "mainProof", "chargerProof", "sensorProof", "diagnosis", "inspection", "revision", "inventory", "evidence", "nextId", "nextSolarMaintenanceDay"]), session: this.session};}
   static fromSave(value: unknown, op: LighthouseOperationSnapshot) {
     const components = ["drive", "backup", "charger", "solar", "sensor"];

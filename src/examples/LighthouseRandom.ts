@@ -38,12 +38,20 @@ export class LighthouseRandom {
   /** Primitive checkpoint only; the version-1 player save is deliberately unchanged. */
   static fromState(value: LighthouseRandomState) {
     if (!value || value.algorithm !== LIGHTHOUSE_RANDOM_VERSION || !uint32(value.seed)
+      || Object.keys(value).sort().join() !== "algorithm,seed,streams"
       || !value.streams || Object.keys(value.streams).length !== LIGHTHOUSE_RANDOM_STREAMS.length
       || LIGHTHOUSE_RANDOM_STREAMS.some(name => !value.streams[name] || !uint32(value.streams[name].state)
+        || Object.keys(value.streams[name]).sort().join() !== "draws,state"
         || !Number.isSafeInteger(value.streams[name].draws) || value.streams[name].draws < 0))
       throw new RangeError("Invalid random checkpoint");
     const model = new LighthouseRandom(value.seed);
-    LIGHTHOUSE_RANDOM_STREAMS.forEach(name => {model.streams[name] = {...value.streams[name]};});
+    LIGHTHOUSE_RANDOM_STREAMS.forEach(name => {
+      let n=value.streams[name].draws,a=1664525,c=1013904223,state=model.streams[name].state;
+      // Affine exponentiation validates even large draw counts without replaying every sample.
+      while(n>0){if(n%2===1)state=(Math.imul(a,state)+c)>>>0;c=(Math.imul(a,c)+c)>>>0;a=Math.imul(a,a)>>>0;n=Math.floor(n/2);}
+      if(state!==value.streams[name].state)throw new RangeError("Random state does not match draw count");
+      model.streams[name] = {...value.streams[name]};
+    });
     return model;
   }
 }

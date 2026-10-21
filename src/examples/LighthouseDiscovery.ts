@@ -23,12 +23,13 @@ export class LighthouseDiscovery {
   private nextId = 1;
   private elapsedHours = 0;
   constructor(private readonly draw: () => number) {}
-  synchronize(facts: readonly LighthouseDiscoveryFact[], elapsedHours: number, near: readonly LighthouseDiscoveryTarget[]) {
+  synchronize(facts: readonly LighthouseDiscoveryFact[], elapsedHours: number, near: readonly LighthouseDiscoveryTarget[] | null) {
     if (!Number.isFinite(elapsedHours) || elapsedHours < this.elapsedHours - 1e-9
       || facts.length !== 2 || targets.some(t => facts.filter(f => f.target === t).length !== 1)
       || facts.some(f => !Number.isSafeInteger(f.revision) || f.revision < 0 || !f.problemId
         || !["clear", "latent", "obvious"].includes(f.stage) || !Number.isFinite(f.severity) || f.severity < 0 || f.severity > 1)) throw new RangeError("Invalid discovery facts/time");
     this.facts = facts.map(f => Object.freeze({...f})); this.elapsedHours = elapsedHours;
+    if (near === null) return; // Restoring a paused session binds facts without inventing an area departure.
     for (const target of targets) {
       const v = this.visits[target], here = near.includes(target);
       if (v.near && !here) v.leftAt = elapsedHours;
@@ -91,7 +92,8 @@ export class LighthouseDiscovery {
       entries: saveArray(saveObject({id: saveDay, target: saveEnum("cover", "solar"), revision: saveRevision, problemId: saveText(128),
         method: saveEnum("patrol", "surface-test"), visit: saveDay, day: saveDay, hour: saveNumber(0, 24),
         status: saveEnum("unseen", "suspected", "confirmed", "clear"), result: saveText(), next: saveText()}), 128)})(value);
-    if (state.entries.some((e, i) => e.id >= state.nextId || e.hour >= 24 || e.visit > state.visits[e.target].number || i > 0 && e.id <= state.entries[i - 1].id)
+    if (new Set(state.entries.map(e=>[e.target,e.revision,e.problemId,e.method,e.visit].join(":"))).size!==state.entries.length
+      || state.entries.some((e, i) => !e.problemId || e.id >= state.nextId || e.hour >= 24 || e.visit > state.visits[e.target].number || i > 0 && e.id <= state.entries[i - 1].id)
       || targets.some(t => state.visits[t].leftAt > state.elapsedHours || state.visits[t].near && state.visits[t].leftAt !== undefined)) throw new RangeError("Invalid discovery checkpoint");
     const model = new LighthouseDiscovery(draw); model.visits = {cover: {...state.visits.cover}, solar: {...state.visits.solar}}; model.entries = state.entries; model.nextId = state.nextId; model.elapsedHours = state.elapsedHours;
     return model;

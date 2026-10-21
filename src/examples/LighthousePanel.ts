@@ -214,7 +214,11 @@ export class LighthousePanel {
     this.set("lighthouse-activity-label", complete ? `${this.interrupted ? "○" : "✓"} ${this.completionLabel}` : progress!.label);
     this.set("lighthouse-activity-hint", complete ? "" : "保持准星对准 · 移开中断");
   }
-  renderStorage(status: LighthouseSaveStatus) {
+  renderStorage(status: LighthouseSaveStatus, mode:"duty"|"exercise"="duty") {
+    this.set("lighthouse-panel-session",mode==="duty"?"正常值守":"独立演练 · 正常值守进度已保留");
+    this.set("lighthouse-save-scope", mode==="duty"?"正常值守存档":"独立演练存档 · 不影响正常值守");
+    this.set("lighthouse-save", mode==="duty"?"保存值守":"保存演练");
+    this.set("lighthouse-continue", mode==="duty"?"继续值守":"继续演练");
     this.el<HTMLButtonElement>("lighthouse-continue").disabled = !status.available;
     this.el("lighthouse-save-clear").hidden = !status.invalid;
     this.set("lighthouse-save-status", status.message);

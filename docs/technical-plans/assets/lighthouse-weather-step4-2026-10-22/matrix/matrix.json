@@ -1,0 +1,1113 @@
+{
+  "manifestSha256": "53c97930bec6c934bb707c07bd42254ae718dd8c1cc2cdbefc6953ad56ae4034",
+  "method": "Unmodified production bundle, native time/weather menu; orbit observation fixtures. Fixed deltas verify rendering and state, not FPS.",
+  "cases": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        1280,
+        800
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        1280,
+        800
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        1280,
+        800
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        1280,
+        800
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        390,
+        844
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        390,
+        844
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        390,
+        844
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        390,
+        844
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        844,
+        390
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        844,
+        390
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        844,
+        390
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 1,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        844,
+        390
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        2560,
+        1600
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        2560,
+        1600
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        2560,
+        1600
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        2560,
+        1600
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        780,
+        1688
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        780,
+        1688
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        780,
+        1688
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        780,
+        1688
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        1688,
+        780
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        1688,
+        780
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        1688,
+        780
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "dpr": 2,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        1688,
+        780
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        1280,
+        800
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        1280,
+        800
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        1280,
+        800
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        1280,
+        800
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        390,
+        844
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        390,
+        844
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        390,
+        844
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        390,
+        844
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        844,
+        390
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        844,
+        390
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        844,
+        390
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 1,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        844,
+        390
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        2560,
+        1600
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        2560,
+        1600
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        2560,
+        1600
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        2560,
+        1600
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        780,
+        1688
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        780,
+        1688
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        780,
+        1688
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        780,
+        1688
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "clear",
+      "hour": 0,
+      "size": [
+        1688,
+        780
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "fog",
+      "hour": 0,
+      "size": [
+        1688,
+        780
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.0004933708187379912,
+      "sceneFog": 0.0004933708187379912,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "storm",
+      "hour": 0,
+      "size": [
+        1688,
+        780
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0.82,
+      "oceanPower": 0.82,
+      "fog": 0.00015475876123075151,
+      "sceneFog": 0.00015475876123075151,
+      "running": true
+    },
+    {
+      "kind": "webkit",
+      "version": "27.2",
+      "dpr": 2,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "weather": "clear",
+      "hour": 12,
+      "size": [
+        1688,
+        780
+      ],
+      "volumeReady": true,
+      "oceanReady": true,
+      "transmission": 0.82,
+      "power": 0,
+      "oceanPower": 0,
+      "fog": 0,
+      "sceneFog": 0,
+      "running": false
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "passed": true
+}

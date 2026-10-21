@@ -1,0 +1,16 @@
+✔ exact weather checkpoints retain fractional risk time, transitions and all stream positions across repeated restores (21.71425ms)
+✔ full V2 sessions resume actual weather, energy, calendar, latent surfaces and knowledge without adding history (315.992833ms)
+✔ a cached missed patrol, two-miss hint, deterministic deep check and logged clue IDs survive saving (284.228959ms)
+✔ serious problem protection, maintenance revisions and cooldown are exact model checkpoints (2.092166ms)
+✔ V1 migration is atomic and one-time; read-only inspection never creates a seed or changes the slot (0.941875ms)
+✔ normal and exercise slots are independent, reject cross-slot writes and reproduce boundary seeds (6.577333ms)
+✔ corrupt, unsupported or contradictory V2 data is retained and cannot replace a live session (3.200292ms)
+✔ a full checkpoint cancels unfinished field work without consuming inventory, proving completion or drawing information (314.442042ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1158.30825
