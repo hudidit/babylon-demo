@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+0 !== 1
+
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/check-journey.cjs:40:102 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 0,
+  expected: 1,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

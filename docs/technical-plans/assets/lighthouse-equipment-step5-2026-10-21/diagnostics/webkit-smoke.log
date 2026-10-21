@@ -1,0 +1,11 @@
+2026-10-21T07:50:13.565Z pw:browser <launching> /private/tmp/study-audio-test-browsers/webkit-2336/Playwright.app/Contents/MacOS/Playwright --inspector-pipe --headless --no-startup-window
+2026-10-21T07:50:13.566Z pw:browser <launched> pid=91629
+2026-10-21T07:50:13.731Z pw:browser [pid=91629] <gracefully close start>
+2026-10-21T07:50:13.734Z pw:browser [pid=91629] <process did exit: exitCode=0, signal=null>
+2026-10-21T07:50:13.734Z pw:browser [pid=91629] starting temporary directories cleanup
+2026-10-21T07:50:13.734Z pw:browser [pid=91629] finished temporary directories cleanup
+2026-10-21T07:50:13.734Z pw:browser [pid=91629] <gracefully close end>
+browser.newPage: Target page, context or browser has been closed
+    at [stdin]:1:350 {
+  log: []
+}

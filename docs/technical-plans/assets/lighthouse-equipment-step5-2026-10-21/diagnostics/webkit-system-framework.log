@@ -1,0 +1,40 @@
+browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /private/tmp/study-audio-test-browsers/webkit-2336/Playwright.app/Contents/MacOS/Playwright --inspector-pipe --headless --no-startup-window
+<launched> pid=91252
+[pid=91252][err] dyld[91252]: Symbol not found: _OBJC_CLASS_$__WKBrowserContext
+[pid=91252][err]   Referenced from: <580A184D-69CD-386D-A2EC-11CBE18010F2> /private/tmp/study-audio-test-browsers/webkit-2336/Playwright.app/Contents/MacOS/Playwright
+[pid=91252][err]   Expected in:     <3B029500-4E32-3E3E-8BC8-CA4D2FD0AEB2> /System/Library/Frameworks/WebKit.framework/Versions/A/WebKit
+Call log:
+[2m  - <launching> /private/tmp/study-audio-test-browsers/webkit-2336/Playwright.app/Contents/MacOS/Playwright --inspector-pipe --headless --no-startup-window[22m
+[2m  - <launched> pid=91252[22m
+[2m  - [pid=91252][err] dyld[91252]: Symbol not found: _OBJC_CLASS_$__WKBrowserContext[22m
+[2m  - [pid=91252][err]   Referenced from: <580A184D-69CD-386D-A2EC-11CBE18010F2> /private/tmp/study-audio-test-browsers/webkit-2336/Playwright.app/Contents/MacOS/Playwright[22m
+[2m  - [pid=91252][err]   Expected in:     <3B029500-4E32-3E3E-8BC8-CA4D2FD0AEB2> /System/Library/Frameworks/WebKit.framework/Versions/A/WebKit[22m
+[2m  - [pid=91252] <gracefully close start>[22m
+[2m  - [pid=91252] <kill>[22m
+[2m  - [pid=91252] <will force kill>[22m
+[2m  - [pid=91252] exception while trying to kill process: Error: kill EPERM[22m
+[2m  - [pid=91252] <process did exit: exitCode=null, signal=SIGABRT>[22m
+[2m  - [pid=91252] starting temporary directories cleanup[22m
+[2m  - [pid=91252] finished temporary directories cleanup[22m
+[2m  - [pid=91252] <gracefully close end>[22m
+
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/check-matrix.cjs:22:32 {
+  log: [
+    '  - <launching> /private/tmp/study-audio-test-browsers/webkit-2336/Playwright.app/Contents/MacOS/Playwright --inspector-pipe --headless --no-startup-window',
+    '  - <launched> pid=91252',
+    '  - [pid=91252][err] dyld[91252]: Symbol not found: _OBJC_CLASS_$__WKBrowserContext',
+    '  - [pid=91252][err]   Referenced from: <580A184D-69CD-386D-A2EC-11CBE18010F2> /private/tmp/study-audio-test-browsers/webkit-2336/Playwright.app/Contents/MacOS/Playwright',
+    '  - [pid=91252][err]   Expected in:     <3B029500-4E32-3E3E-8BC8-CA4D2FD0AEB2> /System/Library/Frameworks/WebKit.framework/Versions/A/WebKit',
+    '  - [pid=91252] <gracefully close start>',
+    '  - [pid=91252] <kill>',
+    '  - [pid=91252] <will force kill>',
+    '  - [pid=91252] exception while trying to kill process: Error: kill EPERM',
+    '  - [pid=91252] <process did exit: exitCode=null, signal=SIGABRT>',
+    '  - [pid=91252] starting temporary directories cleanup',
+    '  - [pid=91252] finished temporary directories cleanup',
+    '  - [pid=91252] <gracefully close end>'
+  ]
+}

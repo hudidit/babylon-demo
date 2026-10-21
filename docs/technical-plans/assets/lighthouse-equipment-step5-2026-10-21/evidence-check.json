@@ -1,0 +1,1532 @@
+{
+  "baseline": "9ebc1ce",
+  "manifestSha256": "6af8f3b209acc7207ab7f0d6ae9a53adc821ec53b2d22feac09d5c24a9a214b3",
+  "passed": true,
+  "suites": 14,
+  "checks": {
+    "tests": 279,
+    "typecheck": true,
+    "developmentBuild": true,
+    "productionBuildAndRelease": true,
+    "unchangedRuntimeSource": true,
+    "localMarkdownLinks": 307
+  },
+  "totals": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26414475,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 89433,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2799508,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42463991
+  },
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "d130bbaab8b1e1f7a4a8ad7c4727258454e3a12556a3a6f1260ed6f0260e72c4"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-20-lighthouse-focused-experience.md",
+      "sha256": "12b5dbe3ba4a7ee11c47ec922c18124f8ee7e504fd81a7568b1844db994cec53"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-20-lighthouse-operation-and-keeper-routine.md",
+      "sha256": "288e40e60f65db082f0059134861febb787660ef8799c3c2f24e6155edb2211e"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-20-lighthouse-project-02-equipment-and-maintenance.md",
+      "sha256": "af6162671e40df591fc09f8a9c8a4aeff6447f3bf41f2530f4fff8793399fadd"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-20-lighthouse-project-03-weather-and-uncertainty.md",
+      "sha256": "7f483d3a58e5362ae8cfff22dff46fe6934aed40b2932b898a9d1641aa405ff7"
+    },
+    {
+      "path": "docs/technical-plans/2026-10-21-lighthouse-maintenance-acceptance.md",
+      "sha256": "c344a28c9b725ec601ee38f5621c06a48597b5c04f89849096c4683992fe7d46"
+    },
+    {
+      "path": "docs/technical-plans/README.md",
+      "sha256": "1efd8b9602bc869cc3528fc9ecee743160f7759e215fce5f5475f33f935e2e24"
+    },
+    {
+      "path": "docs/technical-plans/assets/coastal-cliff-d-2026-10-18/serve-dist.py",
+      "sha256": "64ca8f4fcbcf4e5fa56c738120af214b5aac3c1326a939048f2176b85488c092"
+    },
+    {
+      "path": "docs/technical-plans/assets/day-night-phase4-2026-10-19/browser-harness.cjs",
+      "sha256": "ae42558b4ff0fbc84929327e7dea1e1e2388e6db957c5e04a4b82000b0cc5a4b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/browser-harness.cjs",
+      "sha256": "518b9a3c58b355f453062977ebaca0633cf927cd410a90ed074490b0ec334f07"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs",
+      "sha256": "5b10dece56d4bd2092a49195bf179f56fe54541691f1118663131163036a69f6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/README.md",
+      "sha256": "b09dd8c3220abc3f8e8c3b4c798dfd4beb6effc3ddccc1fe2ad6381089fab61a"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/adapters/initial-suites.cjs",
+      "sha256": "6ac2f3f7671d3e7dfd9464f3830a744e9f572a28fc5c5dc38f0b20c6e65aefff"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/browser.json",
+      "sha256": "b50ad4814f1c7fd40ea897f82c82aafbb3704a5750863b9c1444bd9a61c3f921"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/continued-paper.jpg",
+      "sha256": "e2b17881827da2e5ebb09fef31f7d49fa8a6fad42d09ac8e1e9af06a89654ed7"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/day-6-solar-due.jpg",
+      "sha256": "38c5233d6413fc590e28f2606d772923c34ac851e9be173b96f7c6d8d9d646a0"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/day-nine-saved-complete.jpg",
+      "sha256": "4218b85b4b9f0f74cc8e8390afd715f22892232461c46cf94966b2a5a89e958e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/entry-open.jpg",
+      "sha256": "fb32ceb6863ab78525885f166fe7835eb41eef7d26a5431947b751f137ee181c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/gallery-and-optic.jpg",
+      "sha256": "2fe04afa2292e0c16b1defee54b8288abb4d170d65968cd48b1de2bbce93af9b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/ground-room.jpg",
+      "sha256": "5060f303816a6861ea9b644f5d95acd4e476b50ce98da7c30a9fe71a40bab11e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/save-panel-390.jpg",
+      "sha256": "cfa2eb24073e4d17f9e6ccad335fa5c0d051917e0e69848a81416a54a3e4f5d3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/save-panel-844.jpg",
+      "sha256": "93070cf46c54b8872e8dd3ecd4cc1266f1076fe6e99be38ad5d6de1a3ea5b708"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/saved-duty.jpg",
+      "sha256": "2dbddfbc3516d938c767a0ad0e11a322629a949565fae5650ca5ef803df4db60"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/tower-exterior.jpg",
+      "sha256": "e02aeb4e5daa627a58119b4ef959d652e7438288cd3b8ab870b283936927a749"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/two-level-map.jpg",
+      "sha256": "2e55e50d34d94a32c62886c3265c2db7e1bbdb650bb346420e3cab09df9f3fb5"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/browser/upper-room.jpg",
+      "sha256": "58b118c71db4f5fc34adc259c8ef6616cc1d9dcc4638cb4954da1abee61e61c7"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/bundle-analysis.json",
+      "sha256": "b55b7423a8b755aa18d57827bc06142559a553bc86420eb360592f566869e1df"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/bedroom-evening-on.jpg",
+      "sha256": "d0ceade1c4f1693ea1a0e313331ff6bcb5c8dfc300d84da30129792d58d93525"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/bedroom-fixture.jpg",
+      "sha256": "5f37b6da453c238bee52d67cf1834525dd011e4fcb58c1b072949ab32072fc52"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/bedroom-midnight-off.jpg",
+      "sha256": "7cca0faf1869c3a1b094fda665d17576ac0532161eb7054d0b93b50054c887ca"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/bedroom-midnight-on.jpg",
+      "sha256": "ebdcbc90d7e3a46e6b438a73c220d13dbf25229b56d23a8f7d00845ec49003ca"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/browser.json",
+      "sha256": "1a418afe48d25179aa6928685cd161d70382f20090b31903404bee2ab94e5449"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/living-evening-on.jpg",
+      "sha256": "56070701ff8db5cf1519bcee7d19e1eda7bb458de3ab33ed13c684174db3e621"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/living-fixture.jpg",
+      "sha256": "ac628d7785d9cb2068798060b301a8c39c6bc428bb51080482207cbc3630ab97"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/living-midnight-off.jpg",
+      "sha256": "e2239066e7a6ed25f93137529fff9f0d72929a6988aa2da49d84b9e9314aafe7"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/living-midnight-on.jpg",
+      "sha256": "8a6e37e59f8ace4fe82e01171fdc233959f07b8c692ea106f29f0e448e8690a1"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/master-evening-on.jpg",
+      "sha256": "3c16953d6160add42c9b8ec031f8f8bd3ae373a5604d85dff230269e3c21cace"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/master-fixture.jpg",
+      "sha256": "a19944b26023a6b37920d6736a442b345a7f0232a2166ee8b7975135f70f8a25"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/master-midnight-off.jpg",
+      "sha256": "df079086cf9e94c5ddfa414643f090c3a9919811ad20c1f3f06375dc1f9529c5"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/master-midnight-on.jpg",
+      "sha256": "222866052cdf42d7c3c6a7b246e8319b3e7fc1dd2f200eadd3804865d0ce1b68"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/study-evening-on.jpg",
+      "sha256": "71596bd6004c65d1549f570341e99f2a36237bc7727925d5c6f6cd781951da31"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/study-fixture.jpg",
+      "sha256": "9d964c0230b4b63d66d4d464525b8888b264512c9f5e885294452fe70b901d47"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/study-midnight-off.jpg",
+      "sha256": "051b7d4aceae104e4e4dd8201225be4e364e192e31274a2d3a52c95f5b1dc03b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/ceiling/study-midnight-on.jpg",
+      "sha256": "8598ad242c0e8b1d50109479ea616b970413ba441c548cd73f3712dc5f2af9ab"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/check-duty.cjs",
+      "sha256": "c66b1f481b56f50d310ecf7b82aff57ae30dd79ecd65379a6bb984df8a796b7d"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/check-journey.cjs",
+      "sha256": "a206d31e76213486587ff8a7e2ff3d781cd6550c6380183cf6a5ca88e31e5bfe"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/check-matrix.cjs",
+      "sha256": "ccd646261e5de525265d666007f790c044d6f2fa2ebadb0a21de8434670e81da"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/check-models.cjs",
+      "sha256": "873248e05165c30d88174b242d7828f8533263a552a8087d108a84e48d997bd6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/check-recovery.cjs",
+      "sha256": "c3081fb447f1346b5e3c1b4e645ba77cc560fda0650935061ea714b71c152dc4"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/check-release.cjs",
+      "sha256": "c8d7ae7d887c96985315cbadc0f3392e3c6e537835e829d3a7dc6b58b1c43dd6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/check-subpath.cjs",
+      "sha256": "76943c35a68aad6694d95f255acd6b50af0b15e25deda3258e7f11e795805f88"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/bedroom-window-curtains-closed.jpg",
+      "sha256": "e3d0717ff8578c0d3a3326616bc1300c950754bd46bccfe30183a7df354a7b35"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/bedroom-window-curtains-moving.jpg",
+      "sha256": "a4234b56f53e487188712137a0377850fb52c71f065733534bc25eb8642d6c5a"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/bedroom-window-curtains-open.jpg",
+      "sha256": "7686135fe63a55e490bef2461752caf20d59486fdc81f0504f65dd63e03d9ea9"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/browser.json",
+      "sha256": "0b594b994347c027c8047703014c512c4cfc327e3143f580f40c35edc9dae5d0"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/ensuite-window-curtains-closed.jpg",
+      "sha256": "1059ebc38cf2a4f915ed524f69ed54a980f7b6f5549c542548c5101a28609a4c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/ensuite-window-curtains-moving.jpg",
+      "sha256": "d7cdfe77133a5da7b52234abb9d409e29aa0f4187ab99fce16b929339c82b4a1"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/ensuite-window-curtains-open.jpg",
+      "sha256": "e691b72636a89be62d8f6279ed1d43b7ca32b83dd5e139c82e8bd7a6c4680cf1"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/first-person-closed.jpg",
+      "sha256": "824272ec53d6a3b27f00a9c6923e4dddac95062731d101adf9a2fbda22df24d6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/kitchen-window-curtains-closed.jpg",
+      "sha256": "80f6c962d18f1177768a4855679de7a17627c26246310853c0591e18c295ee76"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/kitchen-window-curtains-moving.jpg",
+      "sha256": "1a675804a277944a235ac129e7722cb5492bf1ecf79f76a594fa039566bbe8eb"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/kitchen-window-curtains-open.jpg",
+      "sha256": "2137080d31708d23ca4ae7ed8e6000bed126fe09b03891c7be6c9fdb3ec022fa"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/living-window-curtains-closed.jpg",
+      "sha256": "de733064326013de64ac75913d6354cfbbfec3d05f267578e46013bb7f06a1ad"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/living-window-curtains-midnight-closed.jpg",
+      "sha256": "b131db0a3a1dcb8ef68d32d0823d5fe3d2d3fc40beb5203c1a81ab759a28805b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/living-window-curtains-moving.jpg",
+      "sha256": "bbce001893875c52920cfdd3334a14bfeda1f05d6710be19a3072e0feb3e5e3a"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/living-window-curtains-open.jpg",
+      "sha256": "04906cd2fca1db8516e1fdb084a6f404308f546d011139775baae43c6c2331a0"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/master-window-curtains-closed.jpg",
+      "sha256": "0b327ed1991e8add0d19332fd621778fef8019fbcb032dbcaefdaf3ee0d231ec"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/master-window-curtains-moving.jpg",
+      "sha256": "5c11a989bf513ce5d3465a203ceb27b7e064cdb8b078ae4c8f4df73902e4c29d"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/master-window-curtains-open.jpg",
+      "sha256": "bdba16e3216e0e51ac6146509591ec40aaa8f696446623cf79e5dbf20df60623"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/study-window-curtains-closed.jpg",
+      "sha256": "60d11d3f78d14da41210703434db25a44989c82148e0deb942c73fc604afdb74"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/study-window-curtains-moving.jpg",
+      "sha256": "214a48329bcf7c8cef7d643c63033822f26ea6fcfd45c9500dca025a9f039d65"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/curtains/study-window-curtains-open.jpg",
+      "sha256": "d0b9bbc83adf2ea4441b01fb0d4e792594c95e09b3170e526d03d52fa3a92443"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/development-build.log",
+      "sha256": "138ba523811e7a9e0ce7e9278272a1ff810656a81fdcaaac3fd209a7cc5e2472"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/door-aim-out-of-reach.log",
+      "sha256": "125bcbc59ff4dca0d783901a9355a4bcb8a9be97a50025adf9e9f63a8239dfc7"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/home-gate-waypoint.log",
+      "sha256": "95b5cc8982b0669c90039488e304b240b1211708d5dc0d32ddc9c5155c21bea2"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/house-clear-standing-point.log",
+      "sha256": "40bbf21d6c9521e2c7c95eaa67f14e35ee07a2fd1d6b7f49cdaa8d4768774bd6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/house-outward-sweep.log",
+      "sha256": "11b5816ff5684068106ada9a1c6c53f14ed38e98b2bf75bb4be01e9f99afe3d5"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/ladder-guard-route.log",
+      "sha256": "09a80827cc1cdc592362dab2c8d33f007f62b77511a306fca7a0db316d15d41f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/old-approach.log",
+      "sha256": "2d8a9ae095817c37106c5f7bb6d3c647502d50a67fd3789643bbce911478fd6f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/recreate-initial.log",
+      "sha256": "1f251b671eef88e30d3580a173a32529e53cfc2c18df173bfbf5fe7b078db3d0"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/runner-batches.json",
+      "sha256": "5076aa7a221a5fc72cf059bca53887fea7802a2a7c2d4997bea3e1cf05ba6f69"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/webkit-content-process.log",
+      "sha256": "b79779c58a7eb9e2fb68dad5f430311584d97b7ded4d92c3d2905cf66daefa37"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/webkit-install.log",
+      "sha256": "a4ab0a1187da856ca2652b641683b7dfe270bbc6f2d7b1991c7f7caba676039d"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/webkit-smoke.log",
+      "sha256": "697853e9c80b7fcd5f7c68b3a77599f06df4b7f8ef74f0ce3ff30178bd2ed183"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/diagnostics/webkit-system-framework.log",
+      "sha256": "0754c3c867ec87658f1d20c3f1d466526025aae7166eabd44d4b1f0bcbe02be4"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/duty.log",
+      "sha256": "bf2ac38d46f0efcf999a01c62afb4d93c92ed39cce11acc31c6d3b466a512e43"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/environment.json",
+      "sha256": "478523e4fbaf2e98257387181e105ec65beda568b6e255289898c29a01763fb9"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/headlight.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/headlight/browser.json",
+      "sha256": "aa6621462bbfcb6a339f12a316b3b3db44ab1ad33742a3b18d2a8a3e4c47020e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/headlight/night-reference-off.jpg",
+      "sha256": "5c0d99b99f17128eab52d8efa5e3f959041c8918628572124397b714e63f64ae"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/headlight/night-riding.jpg",
+      "sha256": "d0ea00b686fffe8b7d872a9606c9e046aa7be317fc79010700dac177f5e4a655"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/headlight/night-steering.jpg",
+      "sha256": "14d107c2ccce7e0449dabf8f2adfbf7dd07cc5ee659f1f95e8e229f7966f08ec"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/headlight/noon-riding.jpg",
+      "sha256": "a9febcd770f056fe7db35bf0af9aa6c1590fc08851c15c035aac93ce23dbe33b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/journey.log",
+      "sha256": "8589968db622fe94ef2e224d5bbb8962a294430ad41940d7ea3e6fc2337ac573"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/journey/entrance-open.jpg",
+      "sha256": "f861b7ec0e68587f0f2ccf6ff0c6002a92a546f774ebe86573d70fd317c6273e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/journey/gallery-view.jpg",
+      "sha256": "6d92a0535bdf40eddb5ceb335d21c2fdef7eddad82c46ef879a3ae4d8e84f529"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/journey/ground-ladder.jpg",
+      "sha256": "8d4aef33c286ca9824f8150086f4c60a69f85d46d942b0e048dddce5257e5fa6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/journey/journey.json",
+      "sha256": "ffe8d4d584b2565106500973ebe1285377dd931f554db927f9290e4487ba2972"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/journey/ladder-mid-map.jpg",
+      "sha256": "c1f9932c8e5724c92042a077c63c561d9925fb006e09b00c4fc0f01955c1e69e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/journey/map-1964.jpg",
+      "sha256": "379b8e69a37a1e43f831ebbb9dc7aa4ef3df29568b8e77fc01d655267147277b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror.log",
+      "sha256": "2a1e708b662a2d53a6258bab861bc3e108bb4bf20a38228547414056faa27d9b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror/ensuite-landscape.jpg",
+      "sha256": "abef6a30622ddcacb6c2bc1607813c6a1c938c35d2d15e744c3d48791eca80bc"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror/ensuite-portrait.jpg",
+      "sha256": "8c0c0d54856543fa51cb4755d557652910381fc985caa78a52b61eb510c1145d"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror/map-desktop.jpg",
+      "sha256": "3ef35325b2309b2675c1d4c265bee2e5953808a7ed4a3352e0055ce5ea687ed0"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror/map-landscape.jpg",
+      "sha256": "78b9c65bbd6eb89ce454ad6236b03ab60c429353a4b04109f2b1407c7b8b0cf2"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror/map-portrait.jpg",
+      "sha256": "6c4c440168ea89e1e5d0a4666de73b8552e9d24275d9d0ac09f6f34e7b69d054"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror/mirror-door-open.jpg",
+      "sha256": "16fe0504feb0ddf9ae16b3a9bb146788a07da93395cf059009036ee7aa02e373"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror/mirror-front.jpg",
+      "sha256": "25cfd6b7e0440fa38c2afef5cae3535c685c1e779fd52caf485fd2283a625d52"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror/mirror-light-off.jpg",
+      "sha256": "b9da464741fbcb1885e2c591cbc3cd73251fa5d799bfa0f4672f26d6d9e00222"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror/mirror-map.json",
+      "sha256": "dca57287a1680acf40264be43c4fd4146fa0c202bcde0633c2fbddb984a6566c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror/mirror-other-view.jpg",
+      "sha256": "dca88433ccb0d038a0ce7409f143ed1fdac8e8e99c5ca996de7ee2399b2d34d2"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/master-mirror/overview.jpg",
+      "sha256": "5913af53545f18665f7e5fb333ce2d5b96f506163411dab11e0efc1af47a833c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix.log",
+      "sha256": "387afd65ba89c3e9a2f002c5722d5899c1b3455804342f5199f7e7feba698075"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-desktop-backup-gallery-dpr1.jpg",
+      "sha256": "1c9df84eef3076aaee5015e2ec24fef8ff1483ec528d1453bf2f90da12a95cf4"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-desktop-battery-dpr1.jpg",
+      "sha256": "5c9349a4c53641ec9b05a647a8aa51e2c673a9919fdd21896846bebadbc827d0"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-desktop-charger-dpr1.jpg",
+      "sha256": "563627d4d2b1ee1cf3ad8349a0e102bcb9589181a454ecdd3da5cd38805c65a2"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-desktop-drive-hatch-dpr1.jpg",
+      "sha256": "ff43459d813e4a065de6d2287c4b280af57464f0a964b0e6bec36351372f455b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-desktop-generator-dpr1.jpg",
+      "sha256": "1ecb6fdd9d67518d7e1ea1ba9dd1d90c9662a2f614e0d706a30f1b10c3fe618e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-desktop-room-dpr1.jpg",
+      "sha256": "7976422138307bcd2e619925e83baf93fc18e340cdbbb6f9b04d8553b196c204"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-desktop-sensor-dpr1.jpg",
+      "sha256": "9377382ac1605bf52e8d8848c6ee5ccda203b1a7541b98204321506b5ce6f654"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-desktop-solar-dpr1.jpg",
+      "sha256": "1672d78098bd3fc424df6ca6f0d43c2df1d6649653249147cda89dab05b9c307"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-portrait-backup-gallery-dpr2.jpg",
+      "sha256": "580f2dd3406968d278393b5367df03089c6811106367166ba71d346cd5ddeb46"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-portrait-battery-dpr2.jpg",
+      "sha256": "81f1c58eb2c75625c4ba4de6ca33b73138aaa7673c98015709ad3512dbc18199"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-portrait-charger-dpr2.jpg",
+      "sha256": "2ad0ce89d30303b93e12ed7fdd625b17727c9c96555fb40ee549eef295c08245"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-portrait-drive-hatch-dpr2.jpg",
+      "sha256": "8971345f87db838a1ab504b849a46b7746519cff696fbcf746cf5747663372f3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-portrait-generator-dpr2.jpg",
+      "sha256": "5f2406a85cde7d4200191a34e806352451ce77d2fe62b1a00687c7ea245d291a"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-portrait-room-dpr2.jpg",
+      "sha256": "569dde3ecfb1ef917a1fb7fcbb6d4791c82d0e7805fef977ff748f19f6f4b223"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-portrait-sensor-dpr2.jpg",
+      "sha256": "d67b8f864a461644d4f2b4da74a39c6637021163e02834c7c1b6adaa882e1741"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-portrait-solar-dpr2.jpg",
+      "sha256": "0407820486c85fa4ffc7eda1d981c5360f55c9d97f3138cee3f6c11a22144455"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/chromium-site-overview.jpg",
+      "sha256": "1be5857121cac095b4092f06a384f1aee86045bf22b22febe16b439b7592b7e1"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/matrix.json",
+      "sha256": "a67b2bc584453fefe112f117d8b777e1ed95deefae56a1f30ad1056aac0a9b04"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-desktop-backup-gallery-dpr1.jpg",
+      "sha256": "8896eecc8709a81016e626fd7c022eec05184b5bbe13622e193a0a625eff4818"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-desktop-battery-dpr1.jpg",
+      "sha256": "d0726cb7f563a4d138789d2b3af984b1cf9a64bba10914fee17092324ab5e254"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-desktop-charger-dpr1.jpg",
+      "sha256": "3e1fca79db4dd79308ad7648268035f369a79aa7fa352769b95220a9d27859d9"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-desktop-drive-hatch-dpr1.jpg",
+      "sha256": "f70d88349fea3e7c95c97508ba171d5fd547fc8f4ef585612a1f0f94bc363b9f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-desktop-generator-dpr1.jpg",
+      "sha256": "dc7bd96e60aa5513d21603f6f895d4daa2d8d59d8edd5f0f36eccee3ec48967e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-desktop-room-dpr1.jpg",
+      "sha256": "d4b93ef2869af1f8319752f5731acaa6b3af1af5efb302f35f2c7d71508ab631"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-desktop-sensor-dpr1.jpg",
+      "sha256": "4f0f7f10a1a123c742cca176cb200a5c9e589d8268ea334f51ed008826663782"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-desktop-solar-dpr1.jpg",
+      "sha256": "2aa3f16f54f2ae57c495ad4803d8bbc418a071feed44ac745abb1a5909ed7d62"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-portrait-backup-gallery-dpr2.jpg",
+      "sha256": "526837c4563cb0c6e80fb04a7efe66e4533862a494c5f1b15d4f9b74c772d257"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-portrait-battery-dpr2.jpg",
+      "sha256": "eebb12ed66f1e5ccfc36f93459551f4578472e9a7e042b2710cdcf8123a34f8e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-portrait-charger-dpr2.jpg",
+      "sha256": "685571f168b5f65be2b55530ec6c844f6ae6be01f25bcd5b3a810ddd0e756de4"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-portrait-drive-hatch-dpr2.jpg",
+      "sha256": "89ff52d67d4d8310a899a7f1ec9fdf498dbf9aa03870a3de6cb66104a30686d8"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-portrait-generator-dpr2.jpg",
+      "sha256": "2dcfa87abb8ded7f247139fdafd59a95d2249fd64d7fd297880dee09e5740dd2"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-portrait-room-dpr2.jpg",
+      "sha256": "a493fac2c8e4a4338f194918f8a9e326573116565037ec6d5ddcda3ab986baf5"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-portrait-sensor-dpr2.jpg",
+      "sha256": "e02a7d15e577e05e78beeb77e02ffa7081c74753b84ef915c4e8348865abff3c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-portrait-solar-dpr2.jpg",
+      "sha256": "282400871958ae59b3fe183d45b1aaa7a07a8ed9912dbbb04991ce8dfa191dca"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/matrix/webkit-site-overview.jpg",
+      "sha256": "1262d95e1a8b2c3e00039e9b9c3d5daed69cdd75d8b5cc2990d6865a21aa95d0"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/model-session.cjs",
+      "sha256": "77e9aa0487884c6376c424e825916053871de0c4c31e54fdb9581f4072a5a6a2"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/models.json",
+      "sha256": "5c188b934c5b1ba7243cd415a9ec7b526f6075d05f9b664abb3e6f4ca9c0442e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/models.log",
+      "sha256": "bd056f0dba8091167d7108b2801518d05c71702a044207bc9af9f83774de9591"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/neglect-protection-slot.json",
+      "sha256": "9df52812de30c359e479103799ca04c1176533ab50b34495b71e9b46c42be0a9"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/production-build.log",
+      "sha256": "f30c71cbada31c808ae6cd08c060269b279187492318b3039b0581902f627801"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/public-mirror.log",
+      "sha256": "942c6fd5ca1bd3fcfbc6dbd646ff29a3c0f71d0c66b65b3c5a287e1d49462dcc"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/public-mirror/public-mirror-front.jpg",
+      "sha256": "240f485d9622654b8522f291826cf6172ca5eec2c2ed2eab416d789aa892545f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/public-mirror/public-mirror-light-off.jpg",
+      "sha256": "6e5556fca9da2cdb600962934f1f2ea44c971b3437d9b43fccfcf310f0c82c9f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/public-mirror/public-mirror.json",
+      "sha256": "942c6fd5ca1bd3fcfbc6dbd646ff29a3c0f71d0c66b65b3c5a287e1d49462dcc"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/recovery.log",
+      "sha256": "85477c624d50b5a6b1f706bcc7c5e78bd6b73c92afa5b9ebe7b33962103034e5"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/recovery/natural-low-battery-protection.jpg",
+      "sha256": "2430e191caa7c3fa8891be69eb8fce57f62f8a4e6f0d81d4dae0bdbab1a03c48"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/recovery/recovered-duty-saved.jpg",
+      "sha256": "ba237d106d940345a969b6d0bcd1ecf39600ac6d6e440c84829685c984c056ec"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/recovery/recovery-awaits-local-confirmation.jpg",
+      "sha256": "3207ef34690619121d920e621e30d773f801881549f55e30b46178272df9bd70"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/recovery/recovery.json",
+      "sha256": "890751394e80640de7b2a70f22a0cdb30c88f631c57dd964cdb99676859fa915"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/recreate.log",
+      "sha256": "44ca482e4c77b291fbddf0aadbb42d9d3fac42335b8e3f324eecae1f631db550"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/recreate/recreate.json",
+      "sha256": "25fb8d5ba7e456c3827215b4e79e8311cac42c7499e405093136e219610089e6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression.log",
+      "sha256": "09b90f39a4f37e2dfdc5aa7fd0c66ffce0ac13dc6352aee345a87e74100ce17f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/balcony-coast.jpg",
+      "sha256": "05012e97f2ac6a523bd0643057d5142dc2c77570de55f59b0d2c760331d115a9"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/balcony-first-person.jpg",
+      "sha256": "c134d9036e3be915ef441c1be5255301da8125ca484bc589bbc77928fa700ac3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/balcony-seat-close.jpg",
+      "sha256": "3f4d5f56082f83dfc1e14cb016155954e5f7e60621bc771ae7cfa4584e4dcc22"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/balcony.jpg",
+      "sha256": "b41cf0946f697b2cdc732366556e30b5401739f2456e2fb67bf7dd345e144855"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/bathroom-first-person.jpg",
+      "sha256": "d6479896a178dba9d8306950d7aaf9c09972ecbe2eca0e9ef88cf56e1138d579"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/bathroom-shower-close.jpg",
+      "sha256": "33e2e86796d579c545d6b94393631f15db1615c28696fe6b183583d36223e4e9"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/bathroom-vanity-close.jpg",
+      "sha256": "1ec9d4b9fbe9a189a3cda549c97115a2dabb08e5ab0271225c72c85397ee7048"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/bathroom.jpg",
+      "sha256": "b9e2472d27842b2b3e5e1276813dea94e15c8bd1fbb90d329d21d1fb4974c2eb"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/bedroom-bed-close.jpg",
+      "sha256": "c063ea953b3d1335a8b055fa4068e4f0419c0f3ba603e79d833a4f4a512e4828"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/bedroom-lamp-off.jpg",
+      "sha256": "02b1ef74b07e90244e22f145b5c61b74005f9b07261d121fa3e42f4dcd0dd6bd"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/bedroom-lamp-on.jpg",
+      "sha256": "a09d4b0b4bef1cf131bedec4e04c0685410ab61dbcd7e60125598a27c6fc197c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/bedroom-seat-close.jpg",
+      "sha256": "dd6e80b8189150d68786388d7d84ec247a4fc0dd27e6cd4137d051ff21f1b19e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/bedroom-wardrobe-close.jpg",
+      "sha256": "09ec5be0dc08b52874738bd1491d52d84ee5e455a88981bbb5a69ed3de626d4f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/bedroom.jpg",
+      "sha256": "d23ca4ae56eb0e97497dab8338bfc970c8e86e529f9619a3c4430ec08a8917e2"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/cabinet-drawer-2-open.jpg",
+      "sha256": "c337d3fd3f426ab38cfbdd328cb9ce5ce5e6866deac01e74c1d0a969061b53dc"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/cabinet.jpg",
+      "sha256": "1634ac5a372d406cd1f66563474974452cb8d903b78ff992e3c5763c11bcef78"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/console-drawer-2-open.jpg",
+      "sha256": "28b92380ddfb344f4aca36068be100ea8aced15a3f9eb9e17f5e086f477c69f0"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/desk.jpg",
+      "sha256": "95747368b544e7e335d997065c915101b76b8707c3948f0fd3659378954d7e05"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/details.jpg",
+      "sha256": "930cdee6b832cb095e6cb1f9c4819b7250ac502d643e54444d48a24ba4998b47"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/ensuite-light-off.jpg",
+      "sha256": "ba5525da67090d19b5ffb67222d087138093f5680c514246d1a7baa79672e205"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/ensuite-shower-close.jpg",
+      "sha256": "12434240d2d2d7109fd07b8029590a0c598601cea0eaaea18f022d867284bafa"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/ensuite-vanity-close.jpg",
+      "sha256": "0dda232752b01c103c2f47c3f16ea5600456263920d845accaf42309bf637c29"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/ensuite.jpg",
+      "sha256": "9354ef009e32aa1e9b555f43c9f8a672673b6718bf1dcf0d4cd6425e5009cbaa"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/entry-first-person.jpg",
+      "sha256": "fe047e85f04f5a94a3fe8fdcc0a97b4b2301cdf1b7a6233e413891cfea89a54d"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/inspection-desktop.jpg",
+      "sha256": "d680541797610b6eec6a0936405dc15b43046bb90355445cf0120df01a0406f9"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/inspection-portrait.jpg",
+      "sha256": "a707cb33d975ee80bc004d1ed54f3ac0332b71748f0e747819cc6470ac63f3c2"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/kitchen-cooker-close.jpg",
+      "sha256": "11f902b5e0ac867047cbfc25de6784954097cb7a40d3a3f4621c669d6f4bc53c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/kitchen-sink-close.jpg",
+      "sha256": "efb26bcda6fe31f06e512454cfa675a8eb0de91a888958a07e87a543e42fc692"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/kitchen.jpg",
+      "sha256": "109de5eaa11da473a0d7a9fc58effef4ffcf8a08bfe94819a2f5193c5c992d00"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/living.jpg",
+      "sha256": "fbe6aa29a6a3b418ef113f6153e681838d0c5ee0885c13b437a4dc63c6bcff4d"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/map-desktop.jpg",
+      "sha256": "f6a40c1f2759115170b5c539b372a401d98cfdf7a50b7a64eca2120c85295aff"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/map-landscape.jpg",
+      "sha256": "6e4002b33bb783c0c307f03853ee21bfdac88b01efd5d1f39c037f5f7c25bdf2"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/map-portrait.jpg",
+      "sha256": "0ab473d0568220868b33e8479b680d34e0eebc16982592e36302877aced7619a"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/master-bed-close.jpg",
+      "sha256": "c19f1ec06edd12d7564af789c63162fa5e63240d5daa4d03fec8e155b7ffc134"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/master-first-person.jpg",
+      "sha256": "efb3b9f4ae3d8a54487d4b9e82c6eb5b1a508bfb79e90986af048cc89abb07de"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/master-wardrobe-close.jpg",
+      "sha256": "e182939bf556504359046214e3ab765daadcee6865ff6dee28140264bcfff7f8"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/master.jpg",
+      "sha256": "d0de988999e60aae343403e3f0464141ffaeac1744eb31a10df58fd611f099e6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/overview.jpg",
+      "sha256": "66d0461a60c44d01ca7e9816f8a119e5cbb368177d19a331462e0e1a6df51b5d"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/reading.jpg",
+      "sha256": "ea28b77fc5616b2b513a42a02eabce20fd5376213e4085ddabd5535615a81b31"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/regression.json",
+      "sha256": "3486fdf36f96ec1f152fc077603fae519c2c0175291858f277400410d2cee568"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/sliding-door-blocked.jpg",
+      "sha256": "4377d841d944fc34ba3221458757893c34ed45f355d08db44edaaceac03fb994"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/sliding-door-open.jpg",
+      "sha256": "414a197f04199c2a3b10249b2fb1039d1df02ca320945a5903aa03226cd36ece"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/study-first-person.jpg",
+      "sha256": "85c54f3776f460672b0355f6ac602b8b84498a5b1b46cd4bcd4300740579da78"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/study.jpg",
+      "sha256": "225ee0cee5a19ce520719a05f6306e08daa5c2ac492c21298ab8ff4758e6b3c5"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/regression/writing-drawer-1-open.jpg",
+      "sha256": "856bc03000c1b3a315f979b4360ef8bc02f22682a2fcf74204ca98f3d715cac6"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/release-manifest.json",
+      "sha256": "6af8f3b209acc7207ab7f0d6ae9a53adc821ec53b2d22feac09d5c24a9a214b3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/release.json",
+      "sha256": "00a85dd87fc5089e8ae6aea99d58a9d4edd36db20343c61bc619bba4d94be134"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/release.log",
+      "sha256": "769a486a605ea83522a13583684bbae23a918d12041b13da442ab3ea08a123bb"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/run-checks.cjs",
+      "sha256": "072b41f09ef19ab54158e415042b19070213896cd51505840511b66aca5ca241"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/run-checks.json",
+      "sha256": "953e4a9503d6d97d0dc749b2d98aed8d80236b22b770f362153afcc02859880e"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath.log",
+      "sha256": "f64c0ef5f58cd2973412b03901e075c193ae16fca1ca0f7266a4b0140e02a947"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/browser.json",
+      "sha256": "3c33b1069ad4bff64c700a6f333d8fed25ec05820d1aca17944637922a87fe75"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/continued-paper.jpg",
+      "sha256": "5e7fa60ae2464ab479149ea0c08b1322127ed779745a97467c52eb1ffbdceb53"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/entry-open.jpg",
+      "sha256": "1b9519736c45de455c0438cf8579bdb0f1a47b0f853927c4b135147bfca61315"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/gallery-and-optic.jpg",
+      "sha256": "829e84134b196885eef40ad8933f01e096673ddc44b0aacf2507e87a83388a15"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/ground-room.jpg",
+      "sha256": "25480e97ac9adf24d4e18141013b6e59da60ea146e0fd25684f5e68119309c6c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/save-panel-390.jpg",
+      "sha256": "afb2d089b70a7147f821fd863f4b9f6a4ba9c0d541deaf071ac3ea510cb1724f"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/save-panel-844.jpg",
+      "sha256": "163186d14b57cd9c92587c105f3d5a2237a0792e92597ef7fd7ba8634ea1b4dd"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/saved-duty.jpg",
+      "sha256": "01ccd2e5b429fc22feb1aac5afbfa1746515497acd2ddf6615dffa0b8117ef0c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/solar-maintenance-due.jpg",
+      "sha256": "61674cc7dd1a74472266af7805db06d74dc69a56d5030e2e63be96a9f947c8b3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/tower-exterior.jpg",
+      "sha256": "7b0448a71a90d88f1b5c879a863d8669cbcd13413f1687033356f0e5d05cf56b"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/two-level-map.jpg",
+      "sha256": "73b13faffee367d66e9a47687090e910eaca394fc959e16c533ee5d9d6b71789"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/subpath/upper-room.jpg",
+      "sha256": "341e3161e405121768348a74397b2b6748557b1f4ec97ea910dbe4b5c070baeb"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/suite-adapter.cjs",
+      "sha256": "732904ffd2c15a02d41d76195f7c1756715278de157bea760c6377a8f2088647"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/tests.log",
+      "sha256": "16865950ebc8c4abbab967c929e17695876c3db4820f5a26765f11bfadbfb85c"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/typecheck.log",
+      "sha256": "d51a4680b3af1d0fdf2ee16eb9cb547bf4524a74c0b1370c87a2d0d6690a8ec3"
+    },
+    {
+      "path": "docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/verify-evidence.cjs",
+      "sha256": "e09863ccd19069ac79222f6aefd8f7bddcf41e987c852651bfe00d80921d6c20"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e94ba83cc02d96a6954d091bf84233bceee7275e85107453a75f772a8a629dcf"
+    },
+    {
+      "path": "package.json",
+      "sha256": "d0b503f1aafb821f442916332ca0267497ca6fd05c7dd1c3919552acbcd5b6a9"
+    },
+    {
+      "path": "public/STUDY_ASSET_SOURCES.md",
+      "sha256": "502f0c5f634b7bba241c291a04b0db573dbe2eca2424dc75b495cdecda58519d"
+    },
+    {
+      "path": "public/environment/coastal-cliff-source.json",
+      "sha256": "d77b28a9f1477494b918fca76a216923e478c3604b048ee6eb5f7738477d58fc"
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "7bda9d83366ccfe224ab253b1b5b5f0fb8bd2d999894aa61d6332612264e05f4"
+    },
+    {
+      "path": "src/app.ts",
+      "sha256": "b89f0ceccfc146b7e2bb7372884beae4f1286a20a6bd10b10cd8db60c4799119"
+    },
+    {
+      "path": "src/components/BasicExamples.ts",
+      "sha256": "c0c1c32a7762906cd1d153ae7c56ea7f40df00e78e896d9a96b620011253c9eb"
+    },
+    {
+      "path": "src/components/RoomTimeMenu.ts",
+      "sha256": "aa2d327c98d514571cf19aa8872b8ef4206ca8c4c23696284a8044bee0a89e6f"
+    },
+    {
+      "path": "src/examples/BasicScene.ts",
+      "sha256": "e23b01945715d5f005041187928b9176b1dc6f0852dfcb05bc0c3c864d11925d"
+    },
+    {
+      "path": "src/examples/BigRoom.ts",
+      "sha256": "4859a3ac6c1495d5aa79b21943bf1e5e9b57b40923adaf54f8d50b47495f1e6c"
+    },
+    {
+      "path": "src/examples/BookshelfLayout.ts",
+      "sha256": "158bd501e25945ce23bbe50e1e0134337e31bf8ef38eab2313c5341f56698456"
+    },
+    {
+      "path": "src/examples/CoastalCliff.ts",
+      "sha256": "313ecfc00850d766782bccbb0e7aa80c5bbf74da1219ea1831a9ebcde6ea9ba0"
+    },
+    {
+      "path": "src/examples/CoastalFinish.ts",
+      "sha256": "51c34e79460a92052390028f16883db051b85f40f1ae1fe277a766a25798d892"
+    },
+    {
+      "path": "src/examples/CoastalLandmark.ts",
+      "sha256": "c8923a7366cd5305fadb066dc7b839767fb2431a75fc85dbfda1f33b306eae33"
+    },
+    {
+      "path": "src/examples/CoastalMap.ts",
+      "sha256": "dd85e5c6f5cea57372c82eeec1e1b94fbc89a762a2897d8aae67c12adf5d5e69"
+    },
+    {
+      "path": "src/examples/CoastalMaterials.ts",
+      "sha256": "883c73b72cd2fd4a7245ca64f8ca96cc149768c6f44d43fb4f7b4ea1d05b8d19"
+    },
+    {
+      "path": "src/examples/CoastalOcean.ts",
+      "sha256": "fe626f9c4148bc7a3359d5d4f16b4945b1b236d7aff6b86aae9d9b68465b12d0"
+    },
+    {
+      "path": "src/examples/CoastalPath.ts",
+      "sha256": "e4c155df42afb723fdd8fa6a6377e0b2ead5552b7a53326aee4047740b357388"
+    },
+    {
+      "path": "src/examples/CoastalScatter.ts",
+      "sha256": "f606f93b26f6fc1f24f44874446d04118e6b54e9ebe52dc84c62f54ef0095ec0"
+    },
+    {
+      "path": "src/examples/CoastalScooter.ts",
+      "sha256": "a3d7994cba957dfaaa9e1e9111579e3f4edf68a4c830596e0b67945ddac48aa0"
+    },
+    {
+      "path": "src/examples/CoastalScooterHeadlight.ts",
+      "sha256": "d9b3de3a791aa192c8ca56efa27c12500c7748d1a6febbf45b5788627c840c90"
+    },
+    {
+      "path": "src/examples/CoastalScooterModel.ts",
+      "sha256": "8268ff10146ae50923269b456ba058e8c488450da1d7e6ed874db3fd9fdbf0fc"
+    },
+    {
+      "path": "src/examples/CoastalSite.ts",
+      "sha256": "edb1a6fb8735b4c6726124afdebfab6ed5695e09b3c3b6afa3c94c32f8fa4110"
+    },
+    {
+      "path": "src/examples/CoastalSky.ts",
+      "sha256": "a3222c734ab92756d5d63d6e980ff36a075ad4b8f33ba1472b54a78bc8199d4c"
+    },
+    {
+      "path": "src/examples/CustomModels.ts",
+      "sha256": "efc2150cac93193a00b0ff097c498785d086c08425a2d6f06c351a3bac2faa2f"
+    },
+    {
+      "path": "src/examples/Grass.ts",
+      "sha256": "a51ecbd10b6f47932a5eff4c70227fa7025b6173a03ea6d92348e0f0bccc38bf"
+    },
+    {
+      "path": "src/examples/HouseArchitecture.ts",
+      "sha256": "9d19270124ca1b9bc62e621dc2c277795ceab2a1d40b84472b0a1389dc2681c4"
+    },
+    {
+      "path": "src/examples/HouseBalcony.ts",
+      "sha256": "50478c5410fa8d018c867cab9cf0d385edf8258297cc2b72a45e09418667edd4"
+    },
+    {
+      "path": "src/examples/HouseBedroom.ts",
+      "sha256": "2e0830835431736375feded5913680220218324ece061eb3a1a5b822e5aab975"
+    },
+    {
+      "path": "src/examples/HouseCeilingLights.ts",
+      "sha256": "050016bf643af1e72b2a1f3f3466a6c620bd7ff531b0fb3c8246aaa547699be2"
+    },
+    {
+      "path": "src/examples/HouseContent.ts",
+      "sha256": "397423ec8b5a25ba5883748f240c55ba85314b542aaabf6d56c2f961d64bab8d"
+    },
+    {
+      "path": "src/examples/HouseFloorPlan.ts",
+      "sha256": "7608046ff4b81d3b26e41c447ad409854928eae7c612f364a2e3eedd535047af"
+    },
+    {
+      "path": "src/examples/HouseJump.ts",
+      "sha256": "8f0c44a155b8cf493acce463dff4dcdbe7ea7522209c40174b1653031f582ba9"
+    },
+    {
+      "path": "src/examples/HouseLayout.ts",
+      "sha256": "9aa175d66ded9c0fd2193475a16216ea65bd4166aedc42684d685781e92b0f86"
+    },
+    {
+      "path": "src/examples/HouseRoomComponents.ts",
+      "sha256": "b493418ce0b3f73c040623d76a92ba7e530f5891ef8b9943002f4f1146932380"
+    },
+    {
+      "path": "src/examples/HouseRooms.ts",
+      "sha256": "33c7d58a3cde859ec4c158e0ecac64f6612fcb6e73b7c78d00bdb7531c2c2d39"
+    },
+    {
+      "path": "src/examples/HouseServiceRooms.ts",
+      "sha256": "6f6d1eb89c605f3bdb1b5d620ba7262197aa41397aa3dec78fe939bc3384b399"
+    },
+    {
+      "path": "src/examples/HouseStructure.ts",
+      "sha256": "e5b896662e0c7fc5074779dce611db2e6d4483bd2ebea940d6beef3a182c6693"
+    },
+    {
+      "path": "src/examples/HouseSuite.ts",
+      "sha256": "8fdb1e1ccc77bace6eddb7189258d84df88b131fe001dbfe66978947ba880df9"
+    },
+    {
+      "path": "src/examples/HouseWalking.ts",
+      "sha256": "33664169709893cc18e66934fb09407e0f0faa4d6e4864de1aadf00f57475912"
+    },
+    {
+      "path": "src/examples/LighthouseBeacon.ts",
+      "sha256": "af1ac18285ec23d10b6b19c3287b7422cf3fad15603c32208f24336524d402fc"
+    },
+    {
+      "path": "src/examples/LighthouseCover.ts",
+      "sha256": "4426c16aba0af9e1216d96f608b3d76fc724d3c7439433191644ab0591bc8080"
+    },
+    {
+      "path": "src/examples/LighthouseDetails.ts",
+      "sha256": "3a7af6858acc6c779153f6334ca19d052aa7476cae8b64a1de45d3c684d4fb41"
+    },
+    {
+      "path": "src/examples/LighthouseEquipment.ts",
+      "sha256": "0c47d239afd1a8ee336ff654115221af524558d04a010ae77df6a623a9704183"
+    },
+    {
+      "path": "src/examples/LighthouseEquipmentLayout.ts",
+      "sha256": "787d093bbeb59e44164eef4e64de0a5b6def96bbf534b996f22277f90143ad46"
+    },
+    {
+      "path": "src/examples/LighthouseExperience.ts",
+      "sha256": "59d282e054caf5c37125bc7772df470f674d76c0e20b29d425769a632da4d53b"
+    },
+    {
+      "path": "src/examples/LighthouseGeometry.ts",
+      "sha256": "fa8dcc16b8368a7356fd65aea7af862acd55c18abe5325127752b52f3ba85fa9"
+    },
+    {
+      "path": "src/examples/LighthouseInspection.ts",
+      "sha256": "0a6c6f396e95a9f2d774f343a56c570a829c908e870aa8c54180225a8cf3eed1"
+    },
+    {
+      "path": "src/examples/LighthouseInterior.ts",
+      "sha256": "c86b135d60616e3c375f1859f86c0b7a8d43b3a01f888728a8cdd2f71c25f0dc"
+    },
+    {
+      "path": "src/examples/LighthouseLadder.ts",
+      "sha256": "b09b1d18be7a0de08680280a7e040e4e0568828783d43a3ee8eb9104defb9260"
+    },
+    {
+      "path": "src/examples/LighthouseLayout.ts",
+      "sha256": "c254258b806d658b01953601f6a10e1ee12c055a81b62ec28cceed18f9fe8aac"
+    },
+    {
+      "path": "src/examples/LighthouseMaintenance.ts",
+      "sha256": "05fb7f18ce88ef33e33faf029998033b6e21d0ee82a41427fbd2d7719ac567e6"
+    },
+    {
+      "path": "src/examples/LighthouseMap.ts",
+      "sha256": "afbc74a5e2a4c12a6df5aa288ca31e3bfd347563485f44f503b2644e070784b1"
+    },
+    {
+      "path": "src/examples/LighthouseOperation.ts",
+      "sha256": "4091a6adac2f69986229f8bb2f3a1a8e35664376e70f48c0ffbeffc76603fb4b"
+    },
+    {
+      "path": "src/examples/LighthousePanel.ts",
+      "sha256": "907f39572ba7a7af733d65705d04686367903ce6ba542b453ef2eb54c35122dd"
+    },
+    {
+      "path": "src/examples/LighthousePower.ts",
+      "sha256": "b86596d5f5a7a6d1e9c3960a470ed4278e8c2b0282aa666b05a7f031092e3993"
+    },
+    {
+      "path": "src/examples/LighthouseRecords.ts",
+      "sha256": "01602fb6413b6400b64bf19d59227f95719a0de6b472172bafe2887b35b20c4b"
+    },
+    {
+      "path": "src/examples/LighthouseSave.ts",
+      "sha256": "b4be1a3ee08ea438edda9ee5188b7f8a797f71ade5785c7be90296043ad882d3"
+    },
+    {
+      "path": "src/examples/LighthouseSaveValidation.ts",
+      "sha256": "3f7920f6b31e981fbe93e0a8cbbf8e8b7ae3dd9897a9c1e3587acebdc95af96c"
+    },
+    {
+      "path": "src/examples/LighthouseWalking.ts",
+      "sha256": "55824154989aa2eab16b14cc57eb134f5ae762ba842fd668de63ad366e634a0e"
+    },
+    {
+      "path": "src/examples/PBR.ts",
+      "sha256": "ce9a4c1691f5e34bb869bff005a76bd3d581f5bd19fe0ca40de7728b341bb6a4"
+    },
+    {
+      "path": "src/examples/Rocket.ts",
+      "sha256": "eca5066f40907ee2588a03a456a88d6f903abe20efc45177d8f66a26b089912a"
+    },
+    {
+      "path": "src/examples/Room.ts",
+      "sha256": "50c7945dc6f5cf553051882f7d293c27902973154ce20a9f516a1efebddffe5b"
+    },
+    {
+      "path": "src/examples/RoomAudio.ts",
+      "sha256": "2ccf413bf37f2c509112b809226de54d6bbd58ee257b6717634c4b123b1fa3b8"
+    },
+    {
+      "path": "src/examples/RoomAudioBackend.ts",
+      "sha256": "3e6cf66bab8c2f1b38fe5fee05fb06dda2eb3b17a2b00d3b28c9efed62f92bf9"
+    },
+    {
+      "path": "src/examples/RoomAudioCatalog.ts",
+      "sha256": "306f258c47ab0b5704924275486f5dcec5ffc18bfc050f4e964ca4e913e2b52a"
+    },
+    {
+      "path": "src/examples/RoomCollisions.ts",
+      "sha256": "7e0eb56b7b95d2f402d712cc106cbf9e3842a54dd864b7947751dfbec50ea4c3"
+    },
+    {
+      "path": "src/examples/RoomCurtains.ts",
+      "sha256": "24c2520d4165d1c0acc26c3d96d98d0731cc2bd2d6912582a8cab8f0226f57c7"
+    },
+    {
+      "path": "src/examples/RoomDetailGeometry.ts",
+      "sha256": "ceeac4b596c2648b7e79537c28f7b9f55b06d39bc7683553c8cf5f11c10fae1f"
+    },
+    {
+      "path": "src/examples/RoomExterior.ts",
+      "sha256": "23241cb3bb3ce43b07f1e5bb6f1c4d12e490ed6bb3f01cedd1235c7d78d3cdc4"
+    },
+    {
+      "path": "src/examples/RoomFinishing.ts",
+      "sha256": "7b7f2357fac5389ac452b7ee94cf21bcb80f2871e9ae76d61169ded1bc5e308b"
+    },
+    {
+      "path": "src/examples/RoomFloorPlan.ts",
+      "sha256": "2881aa5b7210c00ae4afbcc84ac74965f4caf1e92848c4eaa63c52efc77ef878"
+    },
+    {
+      "path": "src/examples/RoomFurnishings.ts",
+      "sha256": "f2438b649d87a332b99b2c22f77f69f45a6cdd4db8efd29d1c357222da7c2796"
+    },
+    {
+      "path": "src/examples/RoomFurnitureAssets.ts",
+      "sha256": "99800111e655970da0fe97c41ce4464449ea0bda8b1fd757c00423bc663bcae7"
+    },
+    {
+      "path": "src/examples/RoomInteractions.ts",
+      "sha256": "888f59bf760cda3db2141e876d2808a0d30a4a07dcb620ac4b0a4f5cc122e353"
+    },
+    {
+      "path": "src/examples/RoomItemInspection.ts",
+      "sha256": "c7c42fe3723b93ea27586db57b3753f7df7c54484e78157b418ef7066d3634d0"
+    },
+    {
+      "path": "src/examples/RoomLayout.ts",
+      "sha256": "1dc8003bfe25f746bbd5aa835dd3388fb310a76fb4148f5508d6ddfc0ba132c8"
+    },
+    {
+      "path": "src/examples/RoomLegacyArchitecture.ts",
+      "sha256": "596858ece3cd35a633ceb4b5bd0a16c497d7c0c8928301db522906fbceb8c4a3"
+    },
+    {
+      "path": "src/examples/RoomLighting.ts",
+      "sha256": "c7a6f3adc43f7447b93e3b3750672e81e009fe5823d2fad1169a70b87c461282"
+    },
+    {
+      "path": "src/examples/RoomLivingRoom.ts",
+      "sha256": "85efcce388d59748fb0034498d2331509e255904f684d7ca4565fe1a4b36141b"
+    },
+    {
+      "path": "src/examples/RoomMaterialLibrary.ts",
+      "sha256": "d4864800cfb3088900095d2d0d99c6d698aa8ed3fa416d96cfddba4b58dcdc45"
+    },
+    {
+      "path": "src/examples/RoomMaterials.ts",
+      "sha256": "872f5c29b4b26a3d9f3166d49ea656e7c5b92187547d321de6c79ac53d0f012c"
+    },
+    {
+      "path": "src/examples/RoomMirrors.ts",
+      "sha256": "90783ebb510c1d0d83bd7fe434df4c2e4163a3cf01626233fe06ea6d973d8b75"
+    },
+    {
+      "path": "src/examples/RoomOwnership.ts",
+      "sha256": "671fbf44c73a62a83b63cf0728080246fe02bb37721403c433aa4780fdecfb34"
+    },
+    {
+      "path": "src/examples/RoomPauseState.ts",
+      "sha256": "4a833f746b8bbeb80bfa7775bec95cd53c4ab19f092e72d1b7b36bbdb477e5e5"
+    },
+    {
+      "path": "src/examples/RoomPointerLock.ts",
+      "sha256": "a70de7ba6a84b7700be44a53a54ede8c33d2357aae0a496d845df0952ce60bff"
+    },
+    {
+      "path": "src/examples/RoomRuntime.ts",
+      "sha256": "c261b5f6542b8b1405b26f05c9c1b583f27437a70861c1c083b4c0dcf18a2762"
+    },
+    {
+      "path": "src/examples/RoomShaders.ts",
+      "sha256": "141420f50a89d81b4f25e43d24dc282b7405b86b337b0877849f54001df2ff96"
+    },
+    {
+      "path": "src/examples/RoomSurfaceDetails.ts",
+      "sha256": "1f0049cbdd9fd280ff5ef04a3f7a36dcb1926573e55f456c846f722d7cd97809"
+    },
+    {
+      "path": "src/examples/RoomTimeOfDay.ts",
+      "sha256": "7aa86569a46abf4d21577f87ff9064b164f41df83a57d74439100664c2f6f7c7"
+    },
+    {
+      "path": "src/examples/Shadows.ts",
+      "sha256": "d2fb9633c9fef9125c42dae7205215fa040213e0b20e056d88fdf298ee3857b2"
+    },
+    {
+      "path": "src/examples/StandardMaterials.ts",
+      "sha256": "7f48c0435afca396036f93cbe368b8dd976dd8f126d3dae969a71e58af453e9f"
+    },
+    {
+      "path": "src/examples/Textures.ts",
+      "sha256": "472264476c342d030edfc8231aade681d08babae04c53febb5e807f03b5378dd"
+    },
+    {
+      "path": "src/examples/WalkingSurface.ts",
+      "sha256": "c5e40ab873772df5b974862608783f01cff18c784c9b6a840ae53f94b2023a6e"
+    },
+    {
+      "path": "tests/coastal-assets.test.cjs",
+      "sha256": "682e57d627ade5a82d5315e9a55af22b25855f7b45d8043468a22ccc1b4b22a9"
+    },
+    {
+      "path": "tests/coastal-obstacles.test.cjs",
+      "sha256": "43f15a25371c56db6d06278c43c28346be63deab09a0458c078868cdad3c176f"
+    },
+    {
+      "path": "tests/coastal-scooter-headlight.test.cjs",
+      "sha256": "6b00e4cd89264864234744b6f32e4f65d53953461392ab56ed4fb1bf0f6e8201"
+    },
+    {
+      "path": "tests/coastal-scooter.test.cjs",
+      "sha256": "a1ce7627074425811acb581515bb7f51ee8026bdac46cdf457c2718c7b635408"
+    },
+    {
+      "path": "tests/door-auto-close.test.cjs",
+      "sha256": "d57773191dcb0af7d4ecb54f180369838062b8d2c5d83f523a4e8311e2acc07b"
+    },
+    {
+      "path": "tests/fixtures/coastal-obstacles-before.json",
+      "sha256": "a5d3374359a8f29f421b9b2d709a2229e5981f6f680c73f3d5b8fc5cffa91160"
+    },
+    {
+      "path": "tests/fixtures/room-runtime-probe.cjs",
+      "sha256": "a68c60078c446e1566d469e2833faca91daeae4c995a4987894a6258f880d5c2"
+    },
+    {
+      "path": "tests/house-ceiling-lights.test.cjs",
+      "sha256": "132341ee86897fb9f7fea297de6c818f703ba9598cf7ead1118b743d32a6eda8"
+    },
+    {
+      "path": "tests/house-floor-plan.test.cjs",
+      "sha256": "b0f0446fd1f216fe025b8b71034c6ff54d2d1670de934b3f792f092a45d40363"
+    },
+    {
+      "path": "tests/house-layout-foundation.test.cjs",
+      "sha256": "e2f10568de765fd0398f12d8ddeec0d7bd2c896ab9cab06dbd6649a1817f7d80"
+    },
+    {
+      "path": "tests/lighthouse-beacon.test.cjs",
+      "sha256": "7615285d02109789c269e385c6eb3d7acfb9c06cefc9c1d030d745c4a7573267"
+    },
+    {
+      "path": "tests/lighthouse-equipment.test.cjs",
+      "sha256": "6285fdd378bd1c827fae0bd64c4a3e26af26f0ecce43daaa449a978d22a44a98"
+    },
+    {
+      "path": "tests/lighthouse-experience.test.cjs",
+      "sha256": "be11408411c56dd7ad8994684093fc36be9e18f9b04ae12ca2b3d366649d9cab"
+    },
+    {
+      "path": "tests/lighthouse-finish.test.cjs",
+      "sha256": "d45fc40911f6b7c7c5b550030539069fff371d27d211be8741d8ce29634a7c96"
+    },
+    {
+      "path": "tests/lighthouse-inspection.test.cjs",
+      "sha256": "73c51ad59ae148d788d8a4b35f0d7858d11dd1ce508c82f63b42ccdc3c74d66d"
+    },
+    {
+      "path": "tests/lighthouse-interior.test.cjs",
+      "sha256": "03abb5728ee80e5ec1274c62832c84ad52a3b8e8c6cb5719ae1075dedb75a7d4"
+    },
+    {
+      "path": "tests/lighthouse-ladder.test.cjs",
+      "sha256": "b6177f6685f346336180a4bd8ab5014e2da325a2fbf1cecaedde683facbd46ff"
+    },
+    {
+      "path": "tests/lighthouse-maintenance.test.cjs",
+      "sha256": "3353a31d56f8c6f72b8baec359e44bf90df44a944e28e87be30a0db3d58bebcc"
+    },
+    {
+      "path": "tests/lighthouse-operation.test.cjs",
+      "sha256": "6316abe814319d8188e0afb60a4768bdee08a58c0df188f636fb31585a8c237f"
+    },
+    {
+      "path": "tests/lighthouse-power.test.cjs",
+      "sha256": "46b48a3c21b7024ddafea6293539f81e8c63e03c21c09dadc4e0adfbb15987c4"
+    },
+    {
+      "path": "tests/lighthouse-save.test.cjs",
+      "sha256": "dd0d21184e30b3a08ea51065523eb517e316466b4c7ac6859a84bd0b4b6e423f"
+    },
+    {
+      "path": "tests/lighthouse-site.test.cjs",
+      "sha256": "2bbe19458500ac2fc40a889cd00726918a08c8e901f5a0a93dcfcc48c00140e0"
+    },
+    {
+      "path": "tests/painted-wall.test.cjs",
+      "sha256": "a6ea8cd7d01a561037baf9d56c201056dabf4d86169eda7a24c7693f0ac447a4"
+    },
+    {
+      "path": "tests/reuse-baseline.test.cjs",
+      "sha256": "aef70844be98dce2978b9f80e20ac83df9ede3bd5d04c686c95e14c5304c2b6d"
+    },
+    {
+      "path": "tests/room-audio.test.cjs",
+      "sha256": "f614c3e952fd1026f2fc21d8590605dfc3ff5dce1f836622152b612ff8809271"
+    },
+    {
+      "path": "tests/room-curtains.test.cjs",
+      "sha256": "86675412dfb2abb27ea58ddaffb41774bf1985b3a27e29695c43782c8dc91c71"
+    },
+    {
+      "path": "tests/room-day-night-lighting.test.cjs",
+      "sha256": "4d99adf36ea640920372f6ea2a9bced51a2d9e8ffbe96f8a93cef41f0bf5cd8d"
+    },
+    {
+      "path": "tests/room-layout.test.cjs",
+      "sha256": "8a73bbe40a8fad188275bdc0879d7217177169031ceabbecf8f250fc2af69f19"
+    },
+    {
+      "path": "tests/room-pointer-lock.test.cjs",
+      "sha256": "bfac53dbebb7663a96565f5ca8445ecfb61b01fcb6c8559a1b5c1ce609b75502"
+    },
+    {
+      "path": "tests/room-runtime.test.cjs",
+      "sha256": "685438176b5097c8bea0a99b2d09e2fdb31b05f0d2682ab57d0cdbf45caaeb36"
+    },
+    {
+      "path": "tests/room-time-of-day.test.cjs",
+      "sha256": "e658e26af31ce2d7bb1d59f8952a5bc6e48cdd24070a027a4e3e185df0f43279"
+    },
+    {
+      "path": "tests/study-model-resources.test.cjs",
+      "sha256": "aaf06f240199485b9a07dd8c00823d868c22efaf67162b3e74699a22a512f246"
+    },
+    {
+      "path": "tests/study-release.test.cjs",
+      "sha256": "02f515556e5b051f7c646f52a2100257f449045da793b99330772063c9a48c34"
+    },
+    {
+      "path": "tools/StudyReleasePlugin.cjs",
+      "sha256": "f1bb0d23ab058fb6e2fcea2dee3ee4252be8868290c078b6c7da17e86a46f07e"
+    },
+    {
+      "path": "tools/coastal-material-inputs.json",
+      "sha256": "f6a1d007ebe9a27c9ff61e5b5585f96ea91f2656a1258269a57b6f3073c4589c"
+    },
+    {
+      "path": "tools/generate-coastal-environment.py",
+      "sha256": "715f663072f9baf017f5938f9b254fee6f41a38bdd9dc98b855dbbedb282a3ce"
+    },
+    {
+      "path": "tools/generate-painted-wall.py",
+      "sha256": "9ba9386349ed5efcf3ef568d879cf5b8adb0bb98a6468a2720c3d76e48942906"
+    },
+    {
+      "path": "tools/optimize-study-models.cjs",
+      "sha256": "115dcb83b4f387f6a1a84df470b191b4cc038647de966418f2b3433dd0bffd92"
+    },
+    {
+      "path": "tools/prepare-coastal-materials.py",
+      "sha256": "a6257684626eb3932c959746e8086024f4e5b5b3ac634417e41d39adcac1aaaa"
+    },
+    {
+      "path": "tools/prepare-forest-panorama.py",
+      "sha256": "5d048ff2b5fda1d75380603d6e8dde9383b2750c1334d7205d5de98631590e34"
+    },
+    {
+      "path": "tools/prepare-study-audio.py",
+      "sha256": "f9281a394abe097779b27c62fbe5a1fe3ba8d1940381766f04000fce655ccc61"
+    },
+    {
+      "path": "tools/study-audio-resources.cjs",
+      "sha256": "96188b1f572fcb894b67e3bf70e61e8f3e9e5b9bae7ca8096b096894a3f91fe2"
+    },
+    {
+      "path": "tools/study-bundle-analysis.cjs",
+      "sha256": "861e40a75404c396470cfbfca88acd971116170a6cb474f2ce6df61ffd521ceb"
+    },
+    {
+      "path": "tools/study-release.config.cjs",
+      "sha256": "fd2db6a7d83fc7964a33f9d4d8cdc5a106972b66502ffd2dfbfae3d1d3892a4f"
+    },
+    {
+      "path": "tools/verify-reuse-baseline.cjs",
+      "sha256": "29ad40bf9b6719056cde8ec76edb3e75ca2db892e27496ba8b29ee239a0b112e"
+    },
+    {
+      "path": "tools/verify-study-release.cjs",
+      "sha256": "a3f888b41d8e07c8200e54513eef53e943045bbad84d45f46bd9689c8f27f3d1"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "ed9642d8c1f59cea1d99f21c6074bbae1f3b4a0d81a371252ef88d59cebe6045"
+    },
+    {
+      "path": "webpack.config.js",
+      "sha256": "16762abfd7f6dcd688f4f29b527e122aa8a22168ff08acd4c3292307dbf7136b"
+    }
+  ]
+}

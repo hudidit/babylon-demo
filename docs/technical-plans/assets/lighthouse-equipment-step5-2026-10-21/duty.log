@@ -1,0 +1,9 @@
+NORMAL_DAY_COMPLETE 2 {"mainWh":2880,"nextCover":4,"nextSolar":6}
+NORMAL_DAY_COMPLETE 3 {"mainWh":2880,"nextCover":4,"nextSolar":6}
+NORMAL_DAY_COMPLETE 4 {"mainWh":2880,"nextCover":7,"nextSolar":6}
+NORMAL_DAY_COMPLETE 5 {"mainWh":2880,"nextCover":7,"nextSolar":6}
+NORMAL_DAY_COMPLETE 6 {"mainWh":2393.0129116801463,"nextCover":7,"nextSolar":11}
+NORMAL_DAY_COMPLETE 7 {"mainWh":2880,"nextCover":10,"nextSolar":11}
+NORMAL_DAY_COMPLETE 8 {"mainWh":2880,"nextCover":10,"nextSolar":11}
+NORMAL_DAY_COMPLETE 9 {"mainWh":2880,"nextCover":10,"nextSolar":11}
+{"passed":true,"initialJsBytes":3018360,"cases":["houseDoorAutoClose","passages","towerDelayPauseAndAntiPinch","upperGalleryPassage","completeRoundAndExplicitSave","days","maintenanceExpiryCleanRecheck","eightContinuousCycles","restoreExactStateAfterExpiry","deniedWriteAndUnknownVersionSafe","reloadNewSessionAndExplicitContinue","disposed"],"resources":{"meshes":714,"vertices":574688,"materials":106,"textures":153,"lights":22,"cameras":3},"errors":[],"warnings":[]}
