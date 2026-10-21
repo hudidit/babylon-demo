@@ -5,7 +5,7 @@ import type { TimeOfDayAdvance } from "./RoomTimeOfDay";
 
 export type LighthouseDrill = "normal" | "drive" | "charger" | "sensor" | "power";
 export type LighthouseTool = "meter" | "cloth" | "drive-module" | "charger-module";
-export type MaintenanceCommand = "inspect" | "diagnose" | "clean" | "replace" | "self-test" | "takeover"
+export type MaintenanceCommand = "inspect" | "surface-test" | "diagnose" | "clean" | "replace" | "self-test" | "takeover"
   | "isolate-main" | "trial" | "restore" | "isolate-charge" | "reconnect" | "probe" | "override-on" | "override-off" | "verify-sensor";
 type Component = "drive" | "backup" | "charger" | "solar" | "sensor";
 export interface MaintenanceEvidence { readonly id: number; readonly component: Component; readonly revision: number;
@@ -13,7 +13,7 @@ export interface MaintenanceEvidence { readonly id: number; readonly component: 
 export interface MaintenanceAction { readonly command: MaintenanceCommand; readonly location: string; readonly tool: LighthouseTool;
   readonly component: Component; readonly revision: number; readonly elapsed: number; readonly duration: number; readonly energyWh: number; }
 export interface LighthouseMaintenanceSnapshot {
-  readonly solarRecheck: boolean; readonly nextSolarMaintenanceDay: number; readonly session: LighthouseDrill; readonly revision: Readonly<Record<Component, number>>;
+  readonly solarLatent: boolean; readonly solarRecheck: boolean; readonly nextSolarMaintenanceDay: number; readonly session: LighthouseDrill; readonly revision: Readonly<Record<Component, number>>;
   readonly driveFault: boolean; readonly chargerFault: boolean; readonly solarDirty: boolean; readonly sensorDirty: boolean;
   readonly mainIsolated: boolean; readonly chargeIsolated: boolean; readonly override: boolean; readonly trial: boolean;
   readonly forcedBackup: boolean;
@@ -30,20 +30,31 @@ const componentAt = (location: string): Component | undefined => ({"lighthouse-d
 export const LIGHTHOUSE_MAINTENANCE = Object.freeze({backupPeriod: 10, backupBright: .8, selfTestSeconds: 12,
   observationSeconds: 10, probeSeconds: 5});
 const EPS = 1e-7;
-const actionLabels: Partial<Record<MaintenanceCommand, string>> = {inspect: "现场观察", diagnose: "隔离检测", clean: "擦拭表面", replace: "模块替换", probe: "回充采样", "verify-sensor": "光敏复测"};
+const actionLabels: Partial<Record<MaintenanceCommand, string>> = {inspect: "现场观察", "surface-test": "表面细查", diagnose: "隔离检测", clean: "擦拭表面", replace: "模块替换", probe: "回充采样", "verify-sensor": "光敏复测"};
 
 /** Device facts, local transactions and revision-bound observations, independent of rendering/storage. */
 export class LighthouseMaintenance {
+  private solarLatent = false;
+  private loggedSurfaceClues = new Set<number>();
+  private surfaceObserver?: (method: "patrol" | "surface-test", op: LighthouseOperationSnapshot) => {result: string; identified: boolean; id: number} | undefined;
+  setSurfaceObserver(observer: typeof this.surfaceObserver) { this.surfaceObserver = observer; }
   private nextSolarMaintenanceDay = 6;
   private weatherDemand = false;
   private outsideWorkAllowed = true;
   get transientWeatherDemand() { return this.weatherDemand; }
   setWeatherDemand(required: boolean) { this.weatherDemand = required; }
   setOutsideWorkAllowed(allowed: boolean) { this.outsideWorkAllowed = allowed; }
-  soilFromWeather(op: LighthouseOperationSnapshot) {
-    if (this.solarDirty) return;
+  soilFromWeather(op: LighthouseOperationSnapshot, latent = false) {
+    if (this.solarDirty) {
+      if (this.solarLatent && !latent) {
+        this.solarLatent = false; this.revision.solar++; delete this.inspection.solar; this.chargerProof = -1;
+        this.log(op, "solar", "天气暴露污损", "表面污损已明显，请重新巡视、清洁和复查。"); this.publish(op);
+      }
+      return;
+    }
+    this.solarLatent = latent;
     this.solarDirty = true; this.revision.solar++; delete this.inspection.solar; this.chargerProof = -1;
-    this.log(op, "solar", "天气暴露污损", "太阳能表面出现污损，等待合适天气现场巡视、擦拭和独立复查。");
+    this.log(op, "solar", latent ? "输入变化待查" : "天气暴露污损", latent ? "太阳能输入条件变化，请对照天气和日照，必要时现场细查表面。" : "太阳能表面出现污损，等待合适天气现场巡视、擦拭和独立复查。");
     this.publish(op);
   }
   private driveFault = false; private chargerFault = false; private solarDirty = false; private sensorDirty = false;
@@ -112,6 +123,14 @@ export class LighthouseMaintenance {
   configurePower(main: boolean, trial: boolean, backup: boolean, op: LighthouseOperationSnapshot, completed=false) {
     this.powerMain = main; this.powerTrial = trial; this.powerCompleted=completed; this.setBackupAvailable(backup,op);
   }
+  compareSolar(op: LighthouseOperationSnapshot, actualW: number, expectedW: number) {
+    const result = expectedW < 5 ? "当前日照不足，无法从低输入判断表面；可近距细查，或待日照充足时再对照。"
+      : `当前输入${actualW.toFixed(1)}W，按日照与天气估算${expectedW.toFixed(1)}W；` + (actualW < expectedW * .95
+        ? "输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。" : "与当前环境大致相符，仍不能排除内部隐患。");
+    const last = this.evidence[this.evidence.length - 1];
+    if (last?.method !== "读数对照" || last.result !== result) this.log(op, "solar", "读数对照", result);
+    this.notice = result; this.publish(op);
+  }
   confirmCharging(op: LighthouseOperationSnapshot, wh: number, revision: string) {
     if (wh <= 0 || !Number.isFinite(wh) || this.chargerFault || this.solarDirty || this.chargeIsolated
       || revision !== `${this.revision.charger}:${this.revision.solar}:${this.chargeIsolated}`) return false;
@@ -122,7 +141,7 @@ export class LighthouseMaintenance {
     const state = op.snapshot;
     if (this.evidence[0]?.day <= state.dutyDay - 7) this.evidence = Object.freeze(this.evidence.filter(e => e.day > state.dutyDay - 7));
     if (state.dutyDay >= this.nextSolarMaintenanceDay && !this.solarDirty) {
-      this.solarDirty = true; this.revision.solar++; delete this.inspection.solar; this.chargerProof = -1;
+      this.solarDirty = true; this.solarLatent = false; this.revision.solar++; delete this.inspection.solar; this.chargerProof = -1;
       this.log(state, "solar", "维护到期", "太阳能面板例行清洁到期，请现场巡视、擦拭和复查。");
       this.notice = "太阳能面板例行清洁到期。";
     }
@@ -184,7 +203,7 @@ export class LighthouseMaintenance {
       if (!c) return this.reject("此处没有对应设备操作。", state);
       const reason = this.guard(command, c, tool, state);
       if (reason) return this.reject(reason, state);
-      const duration = command === "replace" ? 3 : command === "probe" || command === "verify-sensor" ? LIGHTHOUSE_MAINTENANCE.probeSeconds : 2;
+      const duration = command === "replace" ? 3 : command === "probe" || command === "verify-sensor" || command === "surface-test" ? LIGHTHOUSE_MAINTENANCE.probeSeconds : 2;
       this.action = Object.freeze({command, location, component: c, tool, revision: this.revision[c], elapsed: 0, duration, energyWh: 0});
       this.notice = "返回场景后保持看向设备；走开、开界面或失焦会中断。";
       this.log(state, c, "开始" + actionLabels[command], "开始现场操作，尚未提交或扣件。");
@@ -236,6 +255,7 @@ export class LighthouseMaintenance {
   private guard(command: MaintenanceCommand, c: Component, tool: LighthouseTool, op: LighthouseOperationSnapshot): string {
     if (command === "clean" && c === "solar" && !this.outsideWorkAllowed) return "风雨中暂缓室外擦拭；先在室内读表，天气缓和后再操作。";
     if (command === "inspect") return "";
+    if (command === "surface-test") return c === "solar" && tool === "meter" ? "" : "请在太阳能面板旁近距细查表面。";
     if (command === "diagnose") {
       if (tool !== "meter") return "请使用检测工具。";
       if (c === "drive" && (!this.mainIsolated || this.trial || op.running) || c === "charger" && !this.chargeIsolated) return "先隔离对应支路且停止试机，再进行模块检测。";
@@ -264,8 +284,18 @@ export class LighthouseMaintenance {
   }
   private commit(op: LighthouseOperation) {
     const a = this.action!; this.action = undefined; const c = a.component, state = op.snapshot;
-    if (a.command === "inspect") {
-      this.inspection[c] = this.revision[c];
+    if (a.command === "inspect" || a.command === "surface-test") {
+      const clue = c === "solar" ? this.surfaceObserver?.(a.command === "inspect" ? "patrol" : "surface-test", state) : undefined;
+      if (c === "solar" && this.surfaceObserver && !clue) {this.notice = "离开设备区域，本次检查未记录。"; return;}
+      if (!clue || clue.identified) this.inspection[c] = this.revision[c];
+      else delete this.inspection[c];
+      if (clue) {
+        if (!this.loggedSurfaceClues.has(clue.id)) {
+          this.log(state, c, a.command === "surface-test" ? "表面细查" : "现场观察", clue.result); this.loggedSurfaceClues.add(clue.id);
+          if (this.loggedSurfaceClues.size > 128) this.loggedSurfaceClues.delete(this.loggedSurfaceClues.values().next().value);
+        }
+        this.notice = clue.result; return;
+      }
       this.log(state, c, "现场观察", c === "solar" ? this.solarDirty ? "面板有遮挡污损。" : "面板表面清洁，支架固定。" : c === "sensor" ? this.sensorDirty ? "光敏保护面有污染，晴天检测需求异常。" : "光敏保护面洁净。" : "现场设备观察已记录，模块结论需使用检测工具。");
     } else if (a.command === "diagnose") {
       this.diagnosis[c] = this.revision[c];
@@ -276,7 +306,7 @@ export class LighthouseMaintenance {
       this.revision[c]++; this.diagnosis[c] = undefined;
       this.log(state, c, "模块替换", "已扣1件对应备件并替换；保持隔离，重新检测和复验。");
     } else if (a.command === "clean") {
-      if (c === "sensor") this.sensorDirty = false; else this.solarDirty = false;
+      if (c === "sensor") this.sensorDirty = false; else {this.solarDirty = false; this.solarLatent = false;}
       this.revision[c]++; this.inspection[c] = undefined;
       if (c === "solar") this.nextSolarMaintenanceDay = state.dutyDay + 5;
       this.log(state, c, "擦拭完成", "污损已清除；旧观察为变化前记录，需现场复查。");
@@ -296,7 +326,7 @@ export class LighthouseMaintenance {
     const mainAvailable = this.mainAvailable();
     const main = mainAvailable && op.running;
     const backupOn = !main && this.backupAvailable && (required || this.forcedBackup || this.selfRemaining > 0);
-    this.current = Object.freeze({solarRecheck: !this.solarDirty && this.revision.solar > 0 && this.inspection.solar !== this.revision.solar, nextSolarMaintenanceDay: this.nextSolarMaintenanceDay, session: this.session, revision: Object.freeze({...this.revision}), driveFault: this.driveFault, chargerFault: this.chargerFault,
+    this.current = Object.freeze({solarLatent: this.solarLatent, solarRecheck: !this.solarDirty && this.revision.solar > 0 && this.inspection.solar !== this.revision.solar, nextSolarMaintenanceDay: this.nextSolarMaintenanceDay, session: this.session, revision: Object.freeze({...this.revision}), driveFault: this.driveFault, chargerFault: this.chargerFault,
       solarDirty: this.solarDirty, sensorDirty: this.sensorDirty, mainIsolated: this.mainIsolated, chargeIsolated: this.chargeIsolated, override: this.override,
       trial: this.trial, mainAvailable, detectedDemand: this.weatherDemand || this.sensorDirty && !this.override, navigationRequired: required,
       forcedBackup: this.forcedBackup,

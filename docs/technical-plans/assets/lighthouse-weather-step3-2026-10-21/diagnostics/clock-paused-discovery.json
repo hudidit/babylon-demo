@@ -1,0 +1,590 @@
+{
+  "baseline": "51a626c",
+  "manifestSha256": "a152726dab45ed37df23a961a34a9ec03a68e5530d09edb21e481ad543683d96",
+  "method": "Unmodified production dist; deterministic entropy seed 216 selected before construction. Grounded camera fixtures, native modal/buttons and original bounded .1-second clock callbacks. Default risk rates, no private dirty/Wh/day/evidence assignment. Area departure fixtures are not a claim of continuous manual multi-day play or performance.",
+  "errors": [],
+  "warnings": [],
+  "browser": "155.0.8059.86",
+  "firstScreenJs": {
+    "files": [
+      {
+        "url": "http://127.0.0.1:8254/js/main.js",
+        "bytes": 415818,
+        "sha256": "6c4a1167f0cf916f9de490691fcec1749e5e52800e1722b1ef9ed075062e9dba"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/9691.js",
+        "bytes": 2420178,
+        "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/1203.js",
+        "bytes": 138571,
+        "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/8558.js",
+        "bytes": 12560,
+        "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/4742.js",
+        "bytes": 8962,
+        "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/6612.js",
+        "bytes": 14807,
+        "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/7449.js",
+        "bytes": 2072,
+        "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/5587.js",
+        "bytes": 1107,
+        "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/9615.js",
+        "bytes": 9069,
+        "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/6560.js",
+        "bytes": 2517,
+        "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/4472.js",
+        "bytes": 14991,
+        "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/9915.js",
+        "bytes": 14196,
+        "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+      }
+    ],
+    "bytes": 3054848
+  },
+  "initial": {
+    "op": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 12,
+      "dutyDay": 1,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "available": true,
+      "detectedDemand": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0,
+      "rotationRadians": 0,
+      "automaticOperatingHours": 0,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        }
+      ]
+    },
+    "i": {
+      "dutyDay": 1,
+      "checks": {
+        "check-control": "pending",
+        "check-optic": "pending",
+        "check-cover": "pending"
+      },
+      "completed": false,
+      "nextMaintenanceDay": 4,
+      "dirty": true,
+      "coverRevision": 0,
+      "transmission": 0.82,
+      "observationSeconds": 0,
+      "observedTurns": 0,
+      "outputSeen": false,
+      "cleaning": false,
+      "cleaningSeconds": 0,
+      "notice": "",
+      "days": [
+        {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        }
+      ],
+      "events": []
+    },
+    "m": {
+      "solarLatent": false,
+      "solarRecheck": false,
+      "nextSolarMaintenanceDay": 6,
+      "session": "normal",
+      "revision": {
+        "drive": 0,
+        "backup": 0,
+        "charger": 0,
+        "solar": 0,
+        "sensor": 0
+      },
+      "driveFault": false,
+      "chargerFault": false,
+      "solarDirty": false,
+      "sensorDirty": false,
+      "mainIsolated": false,
+      "chargeIsolated": false,
+      "override": false,
+      "trial": false,
+      "mainAvailable": true,
+      "detectedDemand": false,
+      "navigationRequired": false,
+      "forcedBackup": false,
+      "source": "none",
+      "backupOn": false,
+      "backupFlash": false,
+      "backupPhase": 0,
+      "backupConfirmed": false,
+      "mainVerified": false,
+      "selfTestSecondsRemaining": 0,
+      "chargerVerified": false,
+      "sensorVerified": false,
+      "inventory": {
+        "drive": 1,
+        "charger": 1
+      },
+      "trialObserved": 0,
+      "notice": "",
+      "evidence": [],
+      "resolved": false
+    },
+    "p": {
+      "mainWh": 2308.059228677687,
+      "backupWh": 96,
+      "mainFraction": 0.8014094544019746,
+      "backupFraction": 0.8,
+      "protected": false,
+      "recoveryReady": false,
+      "warning": false,
+      "mainAllowed": true,
+      "trialAllowed": true,
+      "backupAvailable": true,
+      "solarW": 250,
+      "generatorW": 0,
+      "generatorMainW": 0,
+      "generatorBackupW": 0,
+      "mainLoadW": 5,
+      "backupLoadW": 0,
+      "mainNetW": 245,
+      "backupNetW": 0,
+      "generatorRunning": false,
+      "fuel": 4,
+      "reserveFuel": 8,
+      "remainingHours": 4,
+      "revision": 0,
+      "notice": "",
+      "events": [],
+      "solarVerified": false,
+      "generatorVerified": false,
+      "exerciseComplete": false
+    },
+    "w": {
+      "elapsedHours": 0.016568333,
+      "ticks": 0,
+      "remainderHours": 0.016568333,
+      "version": "lighthouse-weather-risk-v1",
+      "rules": [
+        {
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "remedy": "clean-cover",
+          "baseRatePerHour": 0.006,
+          "soilPerHour": 0.03,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null
+        },
+        {
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "remedy": "clean-solar",
+          "baseRatePerHour": 0.004,
+          "soilPerHour": 0.02,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null,
+          "visibleAfterHours": 2
+        }
+      ],
+      "remedies": [
+        "clean-cover",
+        "clean-solar"
+      ],
+      "weather": {
+        "mode": "fixed",
+        "kind": "clear",
+        "from": "clear",
+        "phase": "holding",
+        "transition": 1,
+        "remainingHours": null,
+        "solarMultiplier": 1,
+        "visibilityKm": 12,
+        "daylightMultiplier": 1,
+        "cloudCover": 0.2,
+        "rain": 0,
+        "exposureMultiplier": 1
+      },
+      "visibility": {
+        "required": false,
+        "recoveryHours": 0
+      },
+      "components": {
+        "cover": {
+          "revision": 1,
+          "soil": 0,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        },
+        "solar": {
+          "revision": 0,
+          "soil": 0,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        }
+      },
+      "problems": [
+        {
+          "id": "weather-problem-1",
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "revision": 1,
+          "createdHour": 0,
+          "stage": "degraded",
+          "origin": "existing",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 0,
+            "probability": 0
+          }
+        }
+      ],
+      "events": [],
+      "seriousCooldownUntil": 0,
+      "random": {
+        "algorithm": "lcg32-streams-v1",
+        "seed": 216,
+        "streams": {
+          "weather": {
+            "state": 2254400679,
+            "draws": 1
+          },
+          "equipment": {
+            "state": 3405229748,
+            "draws": 0
+          },
+          "inspection": {
+            "state": 117319779,
+            "draws": 0
+          },
+          "forecast": {
+            "state": 2562458305,
+            "draws": 0
+          }
+        }
+      }
+    },
+    "d": {
+      "cover": {
+        "visit": 1,
+        "history": []
+      },
+      "solar": {
+        "visit": 1,
+        "history": []
+      }
+    },
+    "hour": 12,
+    "automatic": false
+  },
+  "generated": {
+    "frames": 60000,
+    "state": {
+      "op": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 12,
+        "dutyDay": 1,
+        "mode": "automatic",
+        "state": "day-standby",
+        "running": false,
+        "available": true,
+        "detectedDemand": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0,
+        "rotationRadians": 0,
+        "automaticOperatingHours": 0,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          },
+          {
+            "id": 2,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "time-selected",
+            "source": "manual-time",
+            "result": "day-standby"
+          }
+        ]
+      },
+      "i": {
+        "dutyDay": 1,
+        "checks": {
+          "check-control": "pending",
+          "check-optic": "pending",
+          "check-cover": "pending"
+        },
+        "completed": false,
+        "nextMaintenanceDay": 4,
+        "dirty": true,
+        "coverRevision": 0,
+        "transmission": 0.82,
+        "observationSeconds": 0,
+        "observedTurns": 0,
+        "outputSeen": false,
+        "cleaning": false,
+        "cleaningSeconds": 0,
+        "notice": "",
+        "days": [
+          {
+            "dutyDay": 1,
+            "checks": {
+              "check-control": "pending",
+              "check-optic": "pending",
+              "check-cover": "pending"
+            },
+            "completed": false
+          }
+        ],
+        "events": []
+      },
+      "m": {
+        "solarLatent": false,
+        "solarRecheck": false,
+        "nextSolarMaintenanceDay": 6,
+        "session": "normal",
+        "revision": {
+          "drive": 0,
+          "backup": 0,
+          "charger": 0,
+          "solar": 0,
+          "sensor": 0
+        },
+        "driveFault": false,
+        "chargerFault": false,
+        "solarDirty": false,
+        "sensorDirty": false,
+        "mainIsolated": false,
+        "chargeIsolated": false,
+        "override": false,
+        "trial": false,
+        "mainAvailable": true,
+        "detectedDemand": false,
+        "navigationRequired": false,
+        "forcedBackup": false,
+        "source": "none",
+        "backupOn": false,
+        "backupFlash": false,
+        "backupPhase": 0,
+        "backupConfirmed": false,
+        "mainVerified": false,
+        "selfTestSecondsRemaining": 0,
+        "chargerVerified": false,
+        "sensorVerified": false,
+        "inventory": {
+          "drive": 1,
+          "charger": 1
+        },
+        "trialObserved": 0,
+        "notice": "",
+        "evidence": [],
+        "resolved": false
+      },
+      "p": {
+        "mainWh": 2308.059228677687,
+        "backupWh": 96,
+        "mainFraction": 0.8014094544019746,
+        "backupFraction": 0.8,
+        "protected": false,
+        "recoveryReady": false,
+        "warning": false,
+        "mainAllowed": true,
+        "trialAllowed": true,
+        "backupAvailable": true,
+        "solarW": 250,
+        "generatorW": 0,
+        "generatorMainW": 0,
+        "generatorBackupW": 0,
+        "mainLoadW": 5,
+        "backupLoadW": 0,
+        "mainNetW": 245,
+        "backupNetW": 0,
+        "generatorRunning": false,
+        "fuel": 4,
+        "reserveFuel": 8,
+        "remainingHours": 4,
+        "revision": 0,
+        "notice": "",
+        "events": [],
+        "solarVerified": false,
+        "generatorVerified": false,
+        "exerciseComplete": false
+      },
+      "w": {
+        "elapsedHours": 0.016568333,
+        "ticks": 0,
+        "remainderHours": 0.016568333,
+        "version": "lighthouse-weather-risk-v1",
+        "rules": [
+          {
+            "component": "cover",
+            "objectId": "lighthouse-optics-cleaning",
+            "remedy": "clean-cover",
+            "baseRatePerHour": 0.006,
+            "soilPerHour": 0.03,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null
+          },
+          {
+            "component": "solar",
+            "objectId": "lighthouse-solar-array",
+            "remedy": "clean-solar",
+            "baseRatePerHour": 0.004,
+            "soilPerHour": 0.02,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null,
+            "visibleAfterHours": 2
+          }
+        ],
+        "remedies": [
+          "clean-cover",
+          "clean-solar"
+        ],
+        "weather": {
+          "mode": "fixed",
+          "kind": "clear",
+          "from": "clear",
+          "phase": "holding",
+          "transition": 1,
+          "remainingHours": null,
+          "solarMultiplier": 1,
+          "visibilityKm": 12,
+          "daylightMultiplier": 1,
+          "cloudCover": 0.2,
+          "rain": 0,
+          "exposureMultiplier": 1
+        },
+        "visibility": {
+          "required": false,
+          "recoveryHours": 0
+        },
+        "components": {
+          "cover": {
+            "revision": 1,
+            "soil": 0,
+            "conditionMultiplier": 1,
+            "treatmentAvailable": true
+          },
+          "solar": {
+            "revision": 0,
+            "soil": 0,
+            "conditionMultiplier": 1,
+            "treatmentAvailable": true
+          }
+        },
+        "problems": [
+          {
+            "id": "weather-problem-1",
+            "component": "cover",
+            "objectId": "lighthouse-optics-cleaning",
+            "revision": 1,
+            "createdHour": 0,
+            "stage": "degraded",
+            "origin": "existing",
+            "cause": {
+              "weather": "clear",
+              "ratePerHour": 0,
+              "weatherMultiplier": 1,
+              "conditionMultiplier": 1,
+              "soil": 0,
+              "probability": 0
+            }
+          }
+        ],
+        "events": [],
+        "seriousCooldownUntil": 0,
+        "random": {
+          "algorithm": "lcg32-streams-v1",
+          "seed": 216,
+          "streams": {
+            "weather": {
+              "state": 2254400679,
+              "draws": 1
+            },
+            "equipment": {
+              "state": 3405229748,
+              "draws": 0
+            },
+            "inspection": {
+              "state": 117319779,
+              "draws": 0
+            },
+            "forecast": {
+              "state": 2562458305,
+              "draws": 0
+            }
+          }
+        }
+      },
+      "d": {
+        "cover": {
+          "visit": 1,
+          "history": []
+        },
+        "solar": {
+          "visit": 1,
+          "history": []
+        }
+      },
+      "hour": 12,
+      "automatic": false
+    }
+  }
+}

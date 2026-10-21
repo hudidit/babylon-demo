@@ -1,0 +1,4931 @@
+{
+  "baseline": "51a626c",
+  "manifestSha256": "a152726dab45ed37df23a961a34a9ec03a68e5530d09edb21e481ad543683d96",
+  "method": "Unmodified production dist; deterministic entropy seed 216 selected before construction. Grounded camera fixtures, native modal/buttons and original bounded .1-second clock callbacks. Default risk rates, no private dirty/Wh/day/evidence assignment. Area departure fixtures are not a claim of continuous manual multi-day play or performance.",
+  "errors": [],
+  "warnings": [],
+  "browser": "155.0.8059.86",
+  "firstScreenJs": {
+    "files": [
+      {
+        "url": "http://127.0.0.1:8254/js/main.js",
+        "bytes": 415818,
+        "sha256": "6c4a1167f0cf916f9de490691fcec1749e5e52800e1722b1ef9ed075062e9dba"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/9691.js",
+        "bytes": 2420178,
+        "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/1203.js",
+        "bytes": 138571,
+        "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/8558.js",
+        "bytes": 12560,
+        "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/6612.js",
+        "bytes": 14807,
+        "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/4742.js",
+        "bytes": 8962,
+        "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/7449.js",
+        "bytes": 2072,
+        "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/5587.js",
+        "bytes": 1107,
+        "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/9615.js",
+        "bytes": 9069,
+        "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/6560.js",
+        "bytes": 2517,
+        "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/4472.js",
+        "bytes": 14991,
+        "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+      },
+      {
+        "url": "http://127.0.0.1:8254/js/9915.js",
+        "bytes": 14196,
+        "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+      }
+    ],
+    "bytes": 3054848
+  },
+  "initial": {
+    "op": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 12,
+      "dutyDay": 1,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "available": true,
+      "detectedDemand": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0,
+      "rotationRadians": 0,
+      "automaticOperatingHours": 0,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        }
+      ]
+    },
+    "i": {
+      "dutyDay": 1,
+      "checks": {
+        "check-control": "pending",
+        "check-optic": "pending",
+        "check-cover": "pending"
+      },
+      "completed": false,
+      "nextMaintenanceDay": 4,
+      "dirty": true,
+      "coverRevision": 0,
+      "transmission": 0.82,
+      "observationSeconds": 0,
+      "observedTurns": 0,
+      "outputSeen": false,
+      "cleaning": false,
+      "cleaningSeconds": 0,
+      "notice": "",
+      "days": [
+        {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        }
+      ],
+      "events": []
+    },
+    "m": {
+      "solarLatent": false,
+      "solarRecheck": false,
+      "nextSolarMaintenanceDay": 6,
+      "session": "normal",
+      "revision": {
+        "drive": 0,
+        "backup": 0,
+        "charger": 0,
+        "solar": 0,
+        "sensor": 0
+      },
+      "driveFault": false,
+      "chargerFault": false,
+      "solarDirty": false,
+      "sensorDirty": false,
+      "mainIsolated": false,
+      "chargeIsolated": false,
+      "override": false,
+      "trial": false,
+      "mainAvailable": true,
+      "detectedDemand": false,
+      "navigationRequired": false,
+      "forcedBackup": false,
+      "source": "none",
+      "backupOn": false,
+      "backupFlash": false,
+      "backupPhase": 0,
+      "backupConfirmed": false,
+      "mainVerified": false,
+      "selfTestSecondsRemaining": 0,
+      "chargerVerified": false,
+      "sensorVerified": false,
+      "inventory": {
+        "drive": 1,
+        "charger": 1
+      },
+      "trialObserved": 0,
+      "notice": "",
+      "evidence": [],
+      "resolved": false
+    },
+    "p": {
+      "mainWh": 2307.260126604986,
+      "backupWh": 96,
+      "mainFraction": 0.801131988404509,
+      "backupFraction": 0.8,
+      "protected": false,
+      "recoveryReady": false,
+      "warning": false,
+      "mainAllowed": true,
+      "trialAllowed": true,
+      "backupAvailable": true,
+      "solarW": 250,
+      "generatorW": 0,
+      "generatorMainW": 0,
+      "generatorBackupW": 0,
+      "mainLoadW": 5,
+      "backupLoadW": 0,
+      "mainNetW": 245,
+      "backupNetW": 0,
+      "generatorRunning": false,
+      "fuel": 4,
+      "reserveFuel": 8,
+      "remainingHours": 4,
+      "revision": 0,
+      "notice": "",
+      "events": [],
+      "solarVerified": false,
+      "generatorVerified": false,
+      "exerciseComplete": false
+    },
+    "w": {
+      "elapsedHours": 0.013306667,
+      "ticks": 0,
+      "remainderHours": 0.013306667,
+      "version": "lighthouse-weather-risk-v1",
+      "rules": [
+        {
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "remedy": "clean-cover",
+          "baseRatePerHour": 0.006,
+          "soilPerHour": 0.03,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null
+        },
+        {
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "remedy": "clean-solar",
+          "baseRatePerHour": 0.004,
+          "soilPerHour": 0.02,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null,
+          "visibleAfterHours": 2
+        }
+      ],
+      "remedies": [
+        "clean-cover",
+        "clean-solar"
+      ],
+      "weather": {
+        "mode": "fixed",
+        "kind": "clear",
+        "from": "clear",
+        "phase": "holding",
+        "transition": 1,
+        "remainingHours": null,
+        "solarMultiplier": 1,
+        "visibilityKm": 12,
+        "daylightMultiplier": 1,
+        "cloudCover": 0.2,
+        "rain": 0,
+        "exposureMultiplier": 1
+      },
+      "visibility": {
+        "required": false,
+        "recoveryHours": 0
+      },
+      "components": {
+        "cover": {
+          "revision": 1,
+          "soil": 0,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        },
+        "solar": {
+          "revision": 0,
+          "soil": 0,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        }
+      },
+      "problems": [
+        {
+          "id": "weather-problem-1",
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "revision": 1,
+          "createdHour": 0,
+          "stage": "degraded",
+          "origin": "existing",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 0,
+            "probability": 0
+          }
+        }
+      ],
+      "events": [],
+      "seriousCooldownUntil": 0,
+      "random": {
+        "algorithm": "lcg32-streams-v1",
+        "seed": 216,
+        "streams": {
+          "weather": {
+            "state": 2254400679,
+            "draws": 1
+          },
+          "equipment": {
+            "state": 3405229748,
+            "draws": 0
+          },
+          "inspection": {
+            "state": 117319779,
+            "draws": 0
+          },
+          "forecast": {
+            "state": 2562458305,
+            "draws": 0
+          }
+        }
+      }
+    },
+    "d": {
+      "cover": {
+        "visit": 1,
+        "history": []
+      },
+      "solar": {
+        "visit": 1,
+        "history": []
+      }
+    },
+    "hour": 12,
+    "automatic": true
+  },
+  "generated": {
+    "frames": 43800,
+    "state": {
+      "op": {
+        "deviceId": "lighthouse-beacon-main",
+        "hour": 12.99833333333349,
+        "dutyDay": 4,
+        "mode": "automatic",
+        "state": "day-standby",
+        "running": false,
+        "available": true,
+        "detectedDemand": false,
+        "testSecondsRemaining": 0,
+        "rotationTurns": 0,
+        "rotationRadians": 0,
+        "automaticOperatingHours": 36,
+        "events": [
+          {
+            "id": 1,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "initialized",
+            "source": "system",
+            "result": "day-standby"
+          },
+          {
+            "id": 2,
+            "dutyDay": 1,
+            "hour": 12,
+            "objectId": "lighthouse-beacon-main",
+            "type": "time-selected",
+            "source": "manual-time",
+            "result": "day-standby"
+          },
+          {
+            "id": 3,
+            "dutyDay": 1,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 4,
+            "dutyDay": 2,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 5,
+            "dutyDay": 2,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 6,
+            "dutyDay": 2,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 7,
+            "dutyDay": 3,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 8,
+            "dutyDay": 3,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          },
+          {
+            "id": 9,
+            "dutyDay": 3,
+            "hour": 18,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "night-running",
+            "previousState": "day-standby"
+          },
+          {
+            "id": 10,
+            "dutyDay": 4,
+            "hour": 0,
+            "objectId": "lighthouse-beacon-main",
+            "type": "duty-day-started",
+            "source": "automatic-clock",
+            "result": "night-running"
+          },
+          {
+            "id": 11,
+            "dutyDay": 4,
+            "hour": 6,
+            "objectId": "lighthouse-beacon-main",
+            "type": "state-changed",
+            "source": "automatic-clock",
+            "result": "day-standby",
+            "previousState": "night-running"
+          }
+        ]
+      },
+      "i": {
+        "dutyDay": 4,
+        "checks": {
+          "check-control": "pending",
+          "check-optic": "pending",
+          "check-cover": "pending"
+        },
+        "completed": false,
+        "nextMaintenanceDay": 4,
+        "dirty": true,
+        "coverRevision": 0,
+        "transmission": 0.82,
+        "observationSeconds": 0,
+        "observedTurns": 0,
+        "outputSeen": false,
+        "cleaning": false,
+        "cleaningSeconds": 0,
+        "notice": "新值守日已建立三项检查，表面状态保留。",
+        "days": [
+          {
+            "dutyDay": 1,
+            "checks": {
+              "check-control": "pending",
+              "check-optic": "pending",
+              "check-cover": "pending"
+            },
+            "completed": false
+          },
+          {
+            "dutyDay": 2,
+            "checks": {
+              "check-control": "pending",
+              "check-optic": "pending",
+              "check-cover": "pending"
+            },
+            "completed": false
+          },
+          {
+            "dutyDay": 3,
+            "checks": {
+              "check-control": "pending",
+              "check-optic": "pending",
+              "check-cover": "pending"
+            },
+            "completed": false
+          },
+          {
+            "dutyDay": 4,
+            "checks": {
+              "check-control": "pending",
+              "check-optic": "pending",
+              "check-cover": "pending"
+            },
+            "completed": false
+          }
+        ],
+        "events": [
+          {
+            "dutyDay": 2,
+            "hour": 0,
+            "result": "新值守日：三项检查待确认，表面状态保留",
+            "id": 1,
+            "objectId": "lighthouse-maintenance-log",
+            "kind": "system",
+            "type": "duty-day-started",
+            "source": "automatic-clock"
+          },
+          {
+            "dutyDay": 3,
+            "hour": 0,
+            "result": "新值守日：三项检查待确认，表面状态保留",
+            "id": 2,
+            "objectId": "lighthouse-maintenance-log",
+            "kind": "system",
+            "type": "duty-day-started",
+            "source": "automatic-clock"
+          },
+          {
+            "dutyDay": 4,
+            "hour": 0,
+            "result": "新值守日：三项检查待确认，表面状态保留",
+            "id": 3,
+            "objectId": "lighthouse-maintenance-log",
+            "kind": "system",
+            "type": "duty-day-started",
+            "source": "automatic-clock"
+          }
+        ]
+      },
+      "m": {
+        "solarLatent": true,
+        "solarRecheck": false,
+        "nextSolarMaintenanceDay": 6,
+        "session": "normal",
+        "revision": {
+          "drive": 0,
+          "backup": 0,
+          "charger": 0,
+          "solar": 1,
+          "sensor": 0
+        },
+        "driveFault": false,
+        "chargerFault": false,
+        "solarDirty": true,
+        "sensorDirty": false,
+        "mainIsolated": false,
+        "chargeIsolated": false,
+        "override": false,
+        "trial": false,
+        "mainAvailable": true,
+        "detectedDemand": false,
+        "navigationRequired": false,
+        "forcedBackup": false,
+        "source": "none",
+        "backupOn": false,
+        "backupFlash": false,
+        "backupPhase": 0,
+        "backupConfirmed": false,
+        "mainVerified": false,
+        "selfTestSecondsRemaining": 0,
+        "chargerVerified": false,
+        "sensorVerified": false,
+        "inventory": {
+          "drive": 1,
+          "charger": 1
+        },
+        "trialObserved": 0,
+        "notice": "",
+        "evidence": [
+          {
+            "id": 1,
+            "component": "drive",
+            "revision": 0,
+            "day": 1,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 2,
+            "component": "drive",
+            "revision": 0,
+            "day": 2,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 3,
+            "component": "drive",
+            "revision": 0,
+            "day": 3,
+            "hour": 18,
+            "method": "主灯导航",
+            "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+          },
+          {
+            "id": 4,
+            "component": "solar",
+            "revision": 1,
+            "day": 4,
+            "hour": 12.655000000000102,
+            "method": "输入变化待查",
+            "result": "太阳能输入条件变化，请对照天气和日照，必要时现场细查表面。"
+          }
+        ],
+        "resolved": false
+      },
+      "p": {
+        "mainWh": 2880,
+        "backupWh": 96,
+        "mainFraction": 1,
+        "backupFraction": 0.8,
+        "protected": false,
+        "recoveryReady": false,
+        "warning": false,
+        "mainAllowed": true,
+        "trialAllowed": true,
+        "backupAvailable": true,
+        "solarW": 205.28321640785953,
+        "generatorW": 0,
+        "generatorMainW": 0,
+        "generatorBackupW": 0,
+        "mainLoadW": 5,
+        "backupLoadW": 0,
+        "mainNetW": 0,
+        "backupNetW": 0,
+        "generatorRunning": false,
+        "fuel": 4,
+        "reserveFuel": 8,
+        "remainingHours": 4,
+        "revision": 0,
+        "notice": "",
+        "events": [],
+        "solarVerified": false,
+        "generatorVerified": false,
+        "exerciseComplete": false
+      },
+      "w": {
+        "elapsedHours": 73.01164,
+        "ticks": 876,
+        "remainderHours": 0.01164,
+        "version": "lighthouse-weather-risk-v1",
+        "rules": [
+          {
+            "component": "cover",
+            "objectId": "lighthouse-optics-cleaning",
+            "remedy": "clean-cover",
+            "baseRatePerHour": 0.006,
+            "soilPerHour": 0.03,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null
+          },
+          {
+            "component": "solar",
+            "objectId": "lighthouse-solar-array",
+            "remedy": "clean-solar",
+            "baseRatePerHour": 0.004,
+            "soilPerHour": 0.02,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null,
+            "visibleAfterHours": 2
+          }
+        ],
+        "remedies": [
+          "clean-cover",
+          "clean-solar"
+        ],
+        "weather": {
+          "mode": "fixed",
+          "kind": "clear",
+          "from": "clear",
+          "phase": "holding",
+          "transition": 1,
+          "remainingHours": null,
+          "solarMultiplier": 1,
+          "visibilityKm": 12,
+          "daylightMultiplier": 1,
+          "cloudCover": 0.2,
+          "rain": 0,
+          "exposureMultiplier": 1
+        },
+        "visibility": {
+          "required": false,
+          "recoveryHours": 0
+        },
+        "components": {
+          "cover": {
+            "revision": 1,
+            "soil": 1,
+            "conditionMultiplier": 1,
+            "treatmentAvailable": true
+          },
+          "solar": {
+            "revision": 1,
+            "soil": 1,
+            "conditionMultiplier": 1,
+            "treatmentAvailable": true
+          }
+        },
+        "problems": [
+          {
+            "id": "weather-problem-1",
+            "component": "cover",
+            "objectId": "lighthouse-optics-cleaning",
+            "revision": 1,
+            "createdHour": 0,
+            "stage": "degraded",
+            "origin": "existing",
+            "cause": {
+              "weather": "clear",
+              "ratePerHour": 0,
+              "weatherMultiplier": 1,
+              "conditionMultiplier": 1,
+              "soil": 0,
+              "probability": 0
+            }
+          },
+          {
+            "id": "weather-problem-2",
+            "component": "solar",
+            "objectId": "lighthouse-solar-array",
+            "revision": 1,
+            "createdHour": 72.66666666666667,
+            "stage": "latent",
+            "cause": {
+              "weather": "clear",
+              "ratePerHour": 0.008,
+              "weatherMultiplier": 1,
+              "conditionMultiplier": 1,
+              "soil": 1,
+              "probability": 0.0006664444938189311
+            }
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "hour": 72.66666666666667,
+            "component": "solar",
+            "problemId": "weather-problem-2",
+            "type": "created"
+          }
+        ],
+        "seriousCooldownUntil": 0,
+        "random": {
+          "algorithm": "lcg32-streams-v1",
+          "seed": 216,
+          "streams": {
+            "weather": {
+              "state": 2254400679,
+              "draws": 1
+            },
+            "equipment": {
+              "state": 1355257,
+              "draws": 783
+            },
+            "inspection": {
+              "state": 117319779,
+              "draws": 0
+            },
+            "forecast": {
+              "state": 2562458305,
+              "draws": 0
+            }
+          }
+        }
+      },
+      "d": {
+        "cover": {
+          "visit": 1,
+          "history": []
+        },
+        "solar": {
+          "visit": 1,
+          "history": []
+        }
+      },
+      "hour": 12.99833333333349,
+      "automatic": true
+    }
+  },
+  "comparison": "当前输入205.3W，按日照与天气估算241.5W；输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。",
+  "first": {
+    "op": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 13.036666666666672,
+      "dutyDay": 4,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "available": true,
+      "detectedDemand": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0,
+      "rotationRadians": 0,
+      "automaticOperatingHours": 36,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 3,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 4,
+          "dutyDay": 2,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 5,
+          "dutyDay": 2,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 6,
+          "dutyDay": 2,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 7,
+          "dutyDay": 3,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 8,
+          "dutyDay": 3,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 9,
+          "dutyDay": 3,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 10,
+          "dutyDay": 4,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 11,
+          "dutyDay": 4,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        }
+      ]
+    },
+    "i": {
+      "dutyDay": 4,
+      "checks": {
+        "check-control": "pending",
+        "check-optic": "pending",
+        "check-cover": "pending"
+      },
+      "completed": false,
+      "nextMaintenanceDay": 4,
+      "dirty": true,
+      "coverRevision": 0,
+      "transmission": 0.82,
+      "observationSeconds": 0,
+      "observedTurns": 0,
+      "outputSeen": false,
+      "cleaning": false,
+      "cleaningSeconds": 0,
+      "notice": "新值守日已建立三项检查，表面状态保留。",
+      "days": [
+        {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 2,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 3,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 4,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        }
+      ],
+      "events": [
+        {
+          "dutyDay": 2,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 1,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 3,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 2,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 4,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 3,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        }
+      ]
+    },
+    "m": {
+      "solarLatent": true,
+      "solarRecheck": false,
+      "nextSolarMaintenanceDay": 6,
+      "session": "normal",
+      "revision": {
+        "drive": 0,
+        "backup": 0,
+        "charger": 0,
+        "solar": 1,
+        "sensor": 0
+      },
+      "driveFault": false,
+      "chargerFault": false,
+      "solarDirty": true,
+      "sensorDirty": false,
+      "mainIsolated": false,
+      "chargeIsolated": false,
+      "override": false,
+      "trial": false,
+      "mainAvailable": true,
+      "detectedDemand": false,
+      "navigationRequired": false,
+      "forcedBackup": false,
+      "source": "none",
+      "backupOn": false,
+      "backupFlash": false,
+      "backupPhase": 0,
+      "backupConfirmed": false,
+      "mainVerified": false,
+      "selfTestSecondsRemaining": 0,
+      "chargerVerified": false,
+      "sensorVerified": false,
+      "inventory": {
+        "drive": 1,
+        "charger": 1
+      },
+      "trialObserved": 0,
+      "notice": "本次普通巡视未见明显异常，尚未排除细薄污膜。 可做5秒近距细查；重复普通巡视不会增加本次信息。",
+      "evidence": [
+        {
+          "id": 1,
+          "component": "drive",
+          "revision": 0,
+          "day": 1,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 2,
+          "component": "drive",
+          "revision": 0,
+          "day": 2,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 3,
+          "component": "drive",
+          "revision": 0,
+          "day": 3,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 4,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.655000000000102,
+          "method": "输入变化待查",
+          "result": "太阳能输入条件变化，请对照天气和日照，必要时现场细查表面。"
+        },
+        {
+          "id": 5,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "读数对照",
+          "result": "当前输入205.3W，按日照与天气估算241.5W；输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。"
+        },
+        {
+          "id": 6,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 7,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.031666666666672,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 可做5秒近距细查；重复普通巡视不会增加本次信息。"
+        }
+      ],
+      "resolved": false
+    },
+    "p": {
+      "mainWh": 2880,
+      "backupWh": 96,
+      "mainFraction": 1,
+      "backupFraction": 0.8,
+      "protected": false,
+      "recoveryReady": false,
+      "warning": false,
+      "mainAllowed": true,
+      "trialAllowed": true,
+      "backupAvailable": true,
+      "solarW": 204.7218363279593,
+      "generatorW": 0,
+      "generatorMainW": 0,
+      "generatorBackupW": 0,
+      "mainLoadW": 5,
+      "backupLoadW": 0,
+      "mainNetW": 0,
+      "backupNetW": 0,
+      "generatorRunning": false,
+      "fuel": 4,
+      "reserveFuel": 8,
+      "remainingHours": 4,
+      "revision": 0,
+      "notice": "",
+      "events": [],
+      "solarVerified": false,
+      "generatorVerified": false,
+      "exerciseComplete": false
+    },
+    "w": {
+      "elapsedHours": 73.049973333,
+      "ticks": 876,
+      "remainderHours": 0.049973333,
+      "version": "lighthouse-weather-risk-v1",
+      "rules": [
+        {
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "remedy": "clean-cover",
+          "baseRatePerHour": 0.006,
+          "soilPerHour": 0.03,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null
+        },
+        {
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "remedy": "clean-solar",
+          "baseRatePerHour": 0.004,
+          "soilPerHour": 0.02,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null,
+          "visibleAfterHours": 2
+        }
+      ],
+      "remedies": [
+        "clean-cover",
+        "clean-solar"
+      ],
+      "weather": {
+        "mode": "fixed",
+        "kind": "clear",
+        "from": "clear",
+        "phase": "holding",
+        "transition": 1,
+        "remainingHours": null,
+        "solarMultiplier": 1,
+        "visibilityKm": 12,
+        "daylightMultiplier": 1,
+        "cloudCover": 0.2,
+        "rain": 0,
+        "exposureMultiplier": 1
+      },
+      "visibility": {
+        "required": false,
+        "recoveryHours": 0
+      },
+      "components": {
+        "cover": {
+          "revision": 1,
+          "soil": 1,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        },
+        "solar": {
+          "revision": 1,
+          "soil": 1,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        }
+      },
+      "problems": [
+        {
+          "id": "weather-problem-1",
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "revision": 1,
+          "createdHour": 0,
+          "stage": "degraded",
+          "origin": "existing",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 0,
+            "probability": 0
+          }
+        },
+        {
+          "id": "weather-problem-2",
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "revision": 1,
+          "createdHour": 72.66666666666667,
+          "stage": "latent",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0.008,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 1,
+            "probability": 0.0006664444938189311
+          }
+        }
+      ],
+      "events": [
+        {
+          "id": 1,
+          "hour": 72.66666666666667,
+          "component": "solar",
+          "problemId": "weather-problem-2",
+          "type": "created"
+        }
+      ],
+      "seriousCooldownUntil": 0,
+      "random": {
+        "algorithm": "lcg32-streams-v1",
+        "seed": 216,
+        "streams": {
+          "weather": {
+            "state": 2254400679,
+            "draws": 1
+          },
+          "equipment": {
+            "state": 1355257,
+            "draws": 783
+          },
+          "inspection": {
+            "state": 3440996966,
+            "draws": 1
+          },
+          "forecast": {
+            "state": 2562458305,
+            "draws": 0
+          }
+        }
+      }
+    },
+    "d": {
+      "cover": {
+        "visit": 1,
+        "history": []
+      },
+      "solar": {
+        "latest": {
+          "id": 1,
+          "target": "solar",
+          "revision": 1,
+          "problemId": "weather-problem-2",
+          "method": "patrol",
+          "visit": 1,
+          "day": 4,
+          "hour": 13.031666666666672,
+          "status": "unseen",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+          "next": "可做5秒近距细查；重复普通巡视不会增加本次信息。"
+        },
+        "visit": 1,
+        "history": [
+          {
+            "id": 1,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 1,
+            "day": 4,
+            "hour": 13.031666666666672,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "可做5秒近距细查；重复普通巡视不会增加本次信息。",
+            "valid": true
+          }
+        ]
+      }
+    },
+    "hour": 13.036666666666672,
+    "automatic": true
+  },
+  "repeated": {
+    "op": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 13.075000000000012,
+      "dutyDay": 4,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "available": true,
+      "detectedDemand": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0,
+      "rotationRadians": 0,
+      "automaticOperatingHours": 36,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 3,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 4,
+          "dutyDay": 2,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 5,
+          "dutyDay": 2,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 6,
+          "dutyDay": 2,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 7,
+          "dutyDay": 3,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 8,
+          "dutyDay": 3,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 9,
+          "dutyDay": 3,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 10,
+          "dutyDay": 4,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 11,
+          "dutyDay": 4,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        }
+      ]
+    },
+    "i": {
+      "dutyDay": 4,
+      "checks": {
+        "check-control": "pending",
+        "check-optic": "pending",
+        "check-cover": "pending"
+      },
+      "completed": false,
+      "nextMaintenanceDay": 4,
+      "dirty": true,
+      "coverRevision": 0,
+      "transmission": 0.82,
+      "observationSeconds": 0,
+      "observedTurns": 0,
+      "outputSeen": false,
+      "cleaning": false,
+      "cleaningSeconds": 0,
+      "notice": "新值守日已建立三项检查，表面状态保留。",
+      "days": [
+        {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 2,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 3,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 4,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        }
+      ],
+      "events": [
+        {
+          "dutyDay": 2,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 1,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 3,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 2,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 4,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 3,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        }
+      ]
+    },
+    "m": {
+      "solarLatent": true,
+      "solarRecheck": false,
+      "nextSolarMaintenanceDay": 6,
+      "session": "normal",
+      "revision": {
+        "drive": 0,
+        "backup": 0,
+        "charger": 0,
+        "solar": 1,
+        "sensor": 0
+      },
+      "driveFault": false,
+      "chargerFault": false,
+      "solarDirty": true,
+      "sensorDirty": false,
+      "mainIsolated": false,
+      "chargeIsolated": false,
+      "override": false,
+      "trial": false,
+      "mainAvailable": true,
+      "detectedDemand": false,
+      "navigationRequired": false,
+      "forcedBackup": false,
+      "source": "none",
+      "backupOn": false,
+      "backupFlash": false,
+      "backupPhase": 0,
+      "backupConfirmed": false,
+      "mainVerified": false,
+      "selfTestSecondsRemaining": 0,
+      "chargerVerified": false,
+      "sensorVerified": false,
+      "inventory": {
+        "drive": 1,
+        "charger": 1
+      },
+      "trialObserved": 0,
+      "notice": "本次普通巡视未见明显异常，尚未排除细薄污膜。 可做5秒近距细查；重复普通巡视不会增加本次信息。",
+      "evidence": [
+        {
+          "id": 1,
+          "component": "drive",
+          "revision": 0,
+          "day": 1,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 2,
+          "component": "drive",
+          "revision": 0,
+          "day": 2,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 3,
+          "component": "drive",
+          "revision": 0,
+          "day": 3,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 4,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.655000000000102,
+          "method": "输入变化待查",
+          "result": "太阳能输入条件变化，请对照天气和日照，必要时现场细查表面。"
+        },
+        {
+          "id": 5,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "读数对照",
+          "result": "当前输入205.3W，按日照与天气估算241.5W；输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。"
+        },
+        {
+          "id": 6,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 7,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.031666666666672,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 可做5秒近距细查；重复普通巡视不会增加本次信息。"
+        },
+        {
+          "id": 8,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.036666666666672,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        }
+      ],
+      "resolved": false
+    },
+    "p": {
+      "mainWh": 2880,
+      "backupWh": 96,
+      "mainFraction": 1,
+      "backupFraction": 0.8,
+      "protected": false,
+      "recoveryReady": false,
+      "warning": false,
+      "mainAllowed": true,
+      "trialAllowed": true,
+      "backupAvailable": true,
+      "solarW": 204.1398380385611,
+      "generatorW": 0,
+      "generatorMainW": 0,
+      "generatorBackupW": 0,
+      "mainLoadW": 5,
+      "backupLoadW": 0,
+      "mainNetW": 0,
+      "backupNetW": 0,
+      "generatorRunning": false,
+      "fuel": 4,
+      "reserveFuel": 8,
+      "remainingHours": 4,
+      "revision": 0,
+      "notice": "",
+      "events": [],
+      "solarVerified": false,
+      "generatorVerified": false,
+      "exerciseComplete": false
+    },
+    "w": {
+      "elapsedHours": 73.088306667,
+      "ticks": 877,
+      "remainderHours": 0.004973333,
+      "version": "lighthouse-weather-risk-v1",
+      "rules": [
+        {
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "remedy": "clean-cover",
+          "baseRatePerHour": 0.006,
+          "soilPerHour": 0.03,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null
+        },
+        {
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "remedy": "clean-solar",
+          "baseRatePerHour": 0.004,
+          "soilPerHour": 0.02,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null,
+          "visibleAfterHours": 2
+        }
+      ],
+      "remedies": [
+        "clean-cover",
+        "clean-solar"
+      ],
+      "weather": {
+        "mode": "fixed",
+        "kind": "clear",
+        "from": "clear",
+        "phase": "holding",
+        "transition": 1,
+        "remainingHours": null,
+        "solarMultiplier": 1,
+        "visibilityKm": 12,
+        "daylightMultiplier": 1,
+        "cloudCover": 0.2,
+        "rain": 0,
+        "exposureMultiplier": 1
+      },
+      "visibility": {
+        "required": false,
+        "recoveryHours": 0
+      },
+      "components": {
+        "cover": {
+          "revision": 1,
+          "soil": 1,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        },
+        "solar": {
+          "revision": 1,
+          "soil": 1,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        }
+      },
+      "problems": [
+        {
+          "id": "weather-problem-1",
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "revision": 1,
+          "createdHour": 0,
+          "stage": "degraded",
+          "origin": "existing",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 0,
+            "probability": 0
+          }
+        },
+        {
+          "id": "weather-problem-2",
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "revision": 1,
+          "createdHour": 72.66666666666667,
+          "stage": "latent",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0.008,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 1,
+            "probability": 0.0006664444938189311
+          }
+        }
+      ],
+      "events": [
+        {
+          "id": 1,
+          "hour": 72.66666666666667,
+          "component": "solar",
+          "problemId": "weather-problem-2",
+          "type": "created"
+        }
+      ],
+      "seriousCooldownUntil": 0,
+      "random": {
+        "algorithm": "lcg32-streams-v1",
+        "seed": 216,
+        "streams": {
+          "weather": {
+            "state": 2254400679,
+            "draws": 1
+          },
+          "equipment": {
+            "state": 1355257,
+            "draws": 783
+          },
+          "inspection": {
+            "state": 3440996966,
+            "draws": 1
+          },
+          "forecast": {
+            "state": 2562458305,
+            "draws": 0
+          }
+        }
+      }
+    },
+    "d": {
+      "cover": {
+        "visit": 1,
+        "history": []
+      },
+      "solar": {
+        "latest": {
+          "id": 1,
+          "target": "solar",
+          "revision": 1,
+          "problemId": "weather-problem-2",
+          "method": "patrol",
+          "visit": 1,
+          "day": 4,
+          "hour": 13.031666666666672,
+          "status": "unseen",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+          "next": "可做5秒近距细查；重复普通巡视不会增加本次信息。"
+        },
+        "visit": 1,
+        "history": [
+          {
+            "id": 1,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 1,
+            "day": 4,
+            "hour": 13.031666666666672,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "可做5秒近距细查；重复普通巡视不会增加本次信息。",
+            "valid": true
+          }
+        ]
+      }
+    },
+    "hour": 13.075000000000012,
+    "automatic": true
+  },
+  "views": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "card": "本次普通巡视：本次普通巡视未见明显异常，尚未排除细薄污膜。可做5秒近距细查；重复普通巡视不会增加本次信息。",
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "card": "本次普通巡视：本次普通巡视未见明显异常，尚未排除细薄污膜。可做5秒近距细查；重复普通巡视不会增加本次信息。",
+      "overflow": false
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "card": "本次普通巡视：本次普通巡视未见明显异常，尚未排除细薄污膜。可做5秒近距细查；重复普通巡视不会增加本次信息。",
+      "overflow": false
+    }
+  ],
+  "second": {
+    "op": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 13.296666666666713,
+      "dutyDay": 4,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "available": true,
+      "detectedDemand": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0,
+      "rotationRadians": 0,
+      "automaticOperatingHours": 36,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 3,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 4,
+          "dutyDay": 2,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 5,
+          "dutyDay": 2,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 6,
+          "dutyDay": 2,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 7,
+          "dutyDay": 3,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 8,
+          "dutyDay": 3,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 9,
+          "dutyDay": 3,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 10,
+          "dutyDay": 4,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 11,
+          "dutyDay": 4,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        }
+      ]
+    },
+    "i": {
+      "dutyDay": 4,
+      "checks": {
+        "check-control": "pending",
+        "check-optic": "pending",
+        "check-cover": "pending"
+      },
+      "completed": false,
+      "nextMaintenanceDay": 4,
+      "dirty": true,
+      "coverRevision": 0,
+      "transmission": 0.82,
+      "observationSeconds": 0,
+      "observedTurns": 0,
+      "outputSeen": false,
+      "cleaning": false,
+      "cleaningSeconds": 0,
+      "notice": "新值守日已建立三项检查，表面状态保留。",
+      "days": [
+        {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 2,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 3,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 4,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        }
+      ],
+      "events": [
+        {
+          "dutyDay": 2,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 1,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 3,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 2,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 4,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 3,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        }
+      ]
+    },
+    "m": {
+      "solarLatent": true,
+      "solarRecheck": false,
+      "nextSolarMaintenanceDay": 6,
+      "session": "normal",
+      "revision": {
+        "drive": 0,
+        "backup": 0,
+        "charger": 0,
+        "solar": 1,
+        "sensor": 0
+      },
+      "driveFault": false,
+      "chargerFault": false,
+      "solarDirty": true,
+      "sensorDirty": false,
+      "mainIsolated": false,
+      "chargeIsolated": false,
+      "override": false,
+      "trial": false,
+      "mainAvailable": true,
+      "detectedDemand": false,
+      "navigationRequired": false,
+      "forcedBackup": false,
+      "source": "none",
+      "backupOn": false,
+      "backupFlash": false,
+      "backupPhase": 0,
+      "backupConfirmed": false,
+      "mainVerified": false,
+      "selfTestSecondsRemaining": 0,
+      "chargerVerified": false,
+      "sensorVerified": false,
+      "inventory": {
+        "drive": 1,
+        "charger": 1
+      },
+      "trialObserved": 0,
+      "notice": "本次普通巡视未见明显异常，尚未排除细薄污膜。 两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。",
+      "evidence": [
+        {
+          "id": 1,
+          "component": "drive",
+          "revision": 0,
+          "day": 1,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 2,
+          "component": "drive",
+          "revision": 0,
+          "day": 2,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 3,
+          "component": "drive",
+          "revision": 0,
+          "day": 3,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 4,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.655000000000102,
+          "method": "输入变化待查",
+          "result": "太阳能输入条件变化，请对照天气和日照，必要时现场细查表面。"
+        },
+        {
+          "id": 5,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "读数对照",
+          "result": "当前输入205.3W，按日照与天气估算241.5W；输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。"
+        },
+        {
+          "id": 6,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 7,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.031666666666672,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 可做5秒近距细查；重复普通巡视不会增加本次信息。"
+        },
+        {
+          "id": 8,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.036666666666672,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 9,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.258333333333374,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 10,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.291666666666712,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。"
+        }
+      ],
+      "resolved": false
+    },
+    "p": {
+      "mainWh": 2880,
+      "backupWh": 96,
+      "mainFraction": 1,
+      "backupFraction": 0.8,
+      "protected": false,
+      "recoveryReady": false,
+      "warning": false,
+      "mainAllowed": true,
+      "trialAllowed": true,
+      "backupAvailable": true,
+      "solarW": 200.3731421319078,
+      "generatorW": 0,
+      "generatorMainW": 0,
+      "generatorBackupW": 0,
+      "mainLoadW": 5,
+      "backupLoadW": 0,
+      "mainNetW": 0,
+      "backupNetW": 0,
+      "generatorRunning": false,
+      "fuel": 4,
+      "reserveFuel": 8,
+      "remainingHours": 4,
+      "revision": 0,
+      "notice": "",
+      "events": [],
+      "solarVerified": false,
+      "generatorVerified": false,
+      "exerciseComplete": false
+    },
+    "w": {
+      "elapsedHours": 73.309973333,
+      "ticks": 879,
+      "remainderHours": 0.059973333,
+      "version": "lighthouse-weather-risk-v1",
+      "rules": [
+        {
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "remedy": "clean-cover",
+          "baseRatePerHour": 0.006,
+          "soilPerHour": 0.03,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null
+        },
+        {
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "remedy": "clean-solar",
+          "baseRatePerHour": 0.004,
+          "soilPerHour": 0.02,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null,
+          "visibleAfterHours": 2
+        }
+      ],
+      "remedies": [
+        "clean-cover",
+        "clean-solar"
+      ],
+      "weather": {
+        "mode": "fixed",
+        "kind": "clear",
+        "from": "clear",
+        "phase": "holding",
+        "transition": 1,
+        "remainingHours": null,
+        "solarMultiplier": 1,
+        "visibilityKm": 12,
+        "daylightMultiplier": 1,
+        "cloudCover": 0.2,
+        "rain": 0,
+        "exposureMultiplier": 1
+      },
+      "visibility": {
+        "required": false,
+        "recoveryHours": 0
+      },
+      "components": {
+        "cover": {
+          "revision": 1,
+          "soil": 1,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        },
+        "solar": {
+          "revision": 1,
+          "soil": 1,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        }
+      },
+      "problems": [
+        {
+          "id": "weather-problem-1",
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "revision": 1,
+          "createdHour": 0,
+          "stage": "degraded",
+          "origin": "existing",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 0,
+            "probability": 0
+          }
+        },
+        {
+          "id": "weather-problem-2",
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "revision": 1,
+          "createdHour": 72.66666666666667,
+          "stage": "latent",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0.008,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 1,
+            "probability": 0.0006664444938189311
+          }
+        }
+      ],
+      "events": [
+        {
+          "id": 1,
+          "hour": 72.66666666666667,
+          "component": "solar",
+          "problemId": "weather-problem-2",
+          "type": "created"
+        }
+      ],
+      "seriousCooldownUntil": 0,
+      "random": {
+        "algorithm": "lcg32-streams-v1",
+        "seed": 216,
+        "streams": {
+          "weather": {
+            "state": 2254400679,
+            "draws": 1
+          },
+          "equipment": {
+            "state": 1355257,
+            "draws": 783
+          },
+          "inspection": {
+            "state": 4131677837,
+            "draws": 2
+          },
+          "forecast": {
+            "state": 2562458305,
+            "draws": 0
+          }
+        }
+      }
+    },
+    "d": {
+      "cover": {
+        "visit": 1,
+        "history": []
+      },
+      "solar": {
+        "latest": {
+          "id": 2,
+          "target": "solar",
+          "revision": 1,
+          "problemId": "weather-problem-2",
+          "method": "patrol",
+          "visit": 2,
+          "day": 4,
+          "hour": 13.291666666666712,
+          "status": "unseen",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+          "next": "两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。"
+        },
+        "visit": 2,
+        "history": [
+          {
+            "id": 1,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 1,
+            "day": 4,
+            "hour": 13.031666666666672,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "可做5秒近距细查；重复普通巡视不会增加本次信息。",
+            "valid": true
+          },
+          {
+            "id": 2,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 2,
+            "day": 4,
+            "hour": 13.291666666666712,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。",
+            "valid": true
+          }
+        ]
+      }
+    },
+    "hour": 13.296666666666713,
+    "automatic": true
+  },
+  "deep": {
+    "op": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 13.38000000000006,
+      "dutyDay": 4,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "available": true,
+      "detectedDemand": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0,
+      "rotationRadians": 0,
+      "automaticOperatingHours": 36,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 3,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 4,
+          "dutyDay": 2,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 5,
+          "dutyDay": 2,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 6,
+          "dutyDay": 2,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 7,
+          "dutyDay": 3,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 8,
+          "dutyDay": 3,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 9,
+          "dutyDay": 3,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 10,
+          "dutyDay": 4,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 11,
+          "dutyDay": 4,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        }
+      ]
+    },
+    "i": {
+      "dutyDay": 4,
+      "checks": {
+        "check-control": "pending",
+        "check-optic": "pending",
+        "check-cover": "pending"
+      },
+      "completed": false,
+      "nextMaintenanceDay": 4,
+      "dirty": true,
+      "coverRevision": 0,
+      "transmission": 0.82,
+      "observationSeconds": 0,
+      "observedTurns": 0,
+      "outputSeen": false,
+      "cleaning": false,
+      "cleaningSeconds": 0,
+      "notice": "新值守日已建立三项检查，表面状态保留。",
+      "days": [
+        {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 2,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 3,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 4,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        }
+      ],
+      "events": [
+        {
+          "dutyDay": 2,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 1,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 3,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 2,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 4,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 3,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        }
+      ]
+    },
+    "m": {
+      "solarLatent": true,
+      "solarRecheck": false,
+      "nextSolarMaintenanceDay": 6,
+      "session": "normal",
+      "revision": {
+        "drive": 0,
+        "backup": 0,
+        "charger": 0,
+        "solar": 1,
+        "sensor": 0
+      },
+      "driveFault": false,
+      "chargerFault": false,
+      "solarDirty": true,
+      "sensorDirty": false,
+      "mainIsolated": false,
+      "chargeIsolated": false,
+      "override": false,
+      "trial": false,
+      "mainAvailable": true,
+      "detectedDemand": false,
+      "navigationRequired": false,
+      "forcedBackup": false,
+      "source": "none",
+      "backupOn": false,
+      "backupFlash": false,
+      "backupPhase": 0,
+      "backupConfirmed": false,
+      "mainVerified": false,
+      "selfTestSecondsRemaining": 0,
+      "chargerVerified": false,
+      "sensorVerified": false,
+      "inventory": {
+        "drive": 1,
+        "charger": 1
+      },
+      "trialObserved": 0,
+      "notice": "太阳能面板近距细查确认早期薄膜，可清洁后独立复查。 使用清洁布，完成后另做一次表面复查。",
+      "evidence": [
+        {
+          "id": 1,
+          "component": "drive",
+          "revision": 0,
+          "day": 1,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 2,
+          "component": "drive",
+          "revision": 0,
+          "day": 2,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 3,
+          "component": "drive",
+          "revision": 0,
+          "day": 3,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 4,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.655000000000102,
+          "method": "输入变化待查",
+          "result": "太阳能输入条件变化，请对照天气和日照，必要时现场细查表面。"
+        },
+        {
+          "id": 5,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "读数对照",
+          "result": "当前输入205.3W，按日照与天气估算241.5W；输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。"
+        },
+        {
+          "id": 6,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 7,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.031666666666672,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 可做5秒近距细查；重复普通巡视不会增加本次信息。"
+        },
+        {
+          "id": 8,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.036666666666672,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 9,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.258333333333374,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 10,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.291666666666712,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。"
+        },
+        {
+          "id": 11,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.296666666666713,
+          "method": "开始表面细查",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 12,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.38000000000006,
+          "method": "表面细查",
+          "result": "太阳能面板近距细查确认早期薄膜，可清洁后独立复查。 使用清洁布，完成后另做一次表面复查。"
+        }
+      ],
+      "resolved": false
+    },
+    "p": {
+      "mainWh": 2880,
+      "backupWh": 96,
+      "mainFraction": 1,
+      "backupFraction": 0.8,
+      "protected": false,
+      "recoveryReady": false,
+      "warning": false,
+      "mainAllowed": true,
+      "trialAllowed": true,
+      "backupAvailable": true,
+      "solarW": 198.78185655134564,
+      "generatorW": 0,
+      "generatorMainW": 0,
+      "generatorBackupW": 0,
+      "mainLoadW": 5,
+      "backupLoadW": 0,
+      "mainNetW": 0,
+      "backupNetW": 0,
+      "generatorRunning": false,
+      "fuel": 4,
+      "reserveFuel": 8,
+      "remainingHours": 4,
+      "revision": 0,
+      "notice": "",
+      "events": [],
+      "solarVerified": false,
+      "generatorVerified": false,
+      "exerciseComplete": false
+    },
+    "w": {
+      "elapsedHours": 73.393306667,
+      "ticks": 880,
+      "remainderHours": 0.059973333,
+      "version": "lighthouse-weather-risk-v1",
+      "rules": [
+        {
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "remedy": "clean-cover",
+          "baseRatePerHour": 0.006,
+          "soilPerHour": 0.03,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null
+        },
+        {
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "remedy": "clean-solar",
+          "baseRatePerHour": 0.004,
+          "soilPerHour": 0.02,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null,
+          "visibleAfterHours": 2
+        }
+      ],
+      "remedies": [
+        "clean-cover",
+        "clean-solar"
+      ],
+      "weather": {
+        "mode": "fixed",
+        "kind": "clear",
+        "from": "clear",
+        "phase": "holding",
+        "transition": 1,
+        "remainingHours": null,
+        "solarMultiplier": 1,
+        "visibilityKm": 12,
+        "daylightMultiplier": 1,
+        "cloudCover": 0.2,
+        "rain": 0,
+        "exposureMultiplier": 1
+      },
+      "visibility": {
+        "required": false,
+        "recoveryHours": 0
+      },
+      "components": {
+        "cover": {
+          "revision": 1,
+          "soil": 1,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        },
+        "solar": {
+          "revision": 1,
+          "soil": 1,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        }
+      },
+      "problems": [
+        {
+          "id": "weather-problem-1",
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "revision": 1,
+          "createdHour": 0,
+          "stage": "degraded",
+          "origin": "existing",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 0,
+            "probability": 0
+          }
+        },
+        {
+          "id": "weather-problem-2",
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "revision": 1,
+          "createdHour": 72.66666666666667,
+          "stage": "latent",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0.008,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 1,
+            "probability": 0.0006664444938189311
+          }
+        }
+      ],
+      "events": [
+        {
+          "id": 1,
+          "hour": 72.66666666666667,
+          "component": "solar",
+          "problemId": "weather-problem-2",
+          "type": "created"
+        }
+      ],
+      "seriousCooldownUntil": 0,
+      "random": {
+        "algorithm": "lcg32-streams-v1",
+        "seed": 216,
+        "streams": {
+          "weather": {
+            "state": 2254400679,
+            "draws": 1
+          },
+          "equipment": {
+            "state": 1355257,
+            "draws": 783
+          },
+          "inspection": {
+            "state": 4131677837,
+            "draws": 2
+          },
+          "forecast": {
+            "state": 2562458305,
+            "draws": 0
+          }
+        }
+      }
+    },
+    "d": {
+      "cover": {
+        "visit": 1,
+        "history": []
+      },
+      "solar": {
+        "latest": {
+          "id": 3,
+          "target": "solar",
+          "revision": 1,
+          "problemId": "weather-problem-2",
+          "method": "surface-test",
+          "visit": 2,
+          "day": 4,
+          "hour": 13.38000000000006,
+          "status": "confirmed",
+          "result": "太阳能面板近距细查确认早期薄膜，可清洁后独立复查。",
+          "next": "使用清洁布，完成后另做一次表面复查。"
+        },
+        "visit": 2,
+        "history": [
+          {
+            "id": 1,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 1,
+            "day": 4,
+            "hour": 13.031666666666672,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "可做5秒近距细查；重复普通巡视不会增加本次信息。",
+            "valid": true
+          },
+          {
+            "id": 2,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 2,
+            "day": 4,
+            "hour": 13.291666666666712,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。",
+            "valid": true
+          },
+          {
+            "id": 3,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "surface-test",
+            "visit": 2,
+            "day": 4,
+            "hour": 13.38000000000006,
+            "status": "confirmed",
+            "result": "太阳能面板近距细查确认早期薄膜，可清洁后独立复查。",
+            "next": "使用清洁布，完成后另做一次表面复查。",
+            "valid": true
+          }
+        ]
+      }
+    },
+    "hour": 13.38000000000006,
+    "automatic": true
+  },
+  "paper": "第4日 13:22表面细查太阳能面板近距细查确认早期薄膜，可清洁后独立复查。 使用清洁布，完成后另做一次表面复查。第4日 13:17现场观察本次普通巡视未见明显异常，尚未排除细薄污膜。 两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。第4日 13:01现场观察本次普通巡视未见明显异常，尚未排除细薄污膜。 可做5秒近距细查；重复普通巡视不会增加本次信息。第4日 12:59读数对照当前输入205.3W，按日照与天气估算241.5W；输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。第4日 12:39输入变化待查太阳能输入条件变化，请对照天气和日照，必要时现场细查表面。",
+  "cleaned": {
+    "op": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 13.418333333333399,
+      "dutyDay": 4,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "available": true,
+      "detectedDemand": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0,
+      "rotationRadians": 0,
+      "automaticOperatingHours": 36,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 3,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 4,
+          "dutyDay": 2,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 5,
+          "dutyDay": 2,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 6,
+          "dutyDay": 2,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 7,
+          "dutyDay": 3,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 8,
+          "dutyDay": 3,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 9,
+          "dutyDay": 3,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 10,
+          "dutyDay": 4,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 11,
+          "dutyDay": 4,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        }
+      ]
+    },
+    "i": {
+      "dutyDay": 4,
+      "checks": {
+        "check-control": "pending",
+        "check-optic": "pending",
+        "check-cover": "pending"
+      },
+      "completed": false,
+      "nextMaintenanceDay": 4,
+      "dirty": true,
+      "coverRevision": 0,
+      "transmission": 0.82,
+      "observationSeconds": 0,
+      "observedTurns": 0,
+      "outputSeen": false,
+      "cleaning": false,
+      "cleaningSeconds": 0,
+      "notice": "新值守日已建立三项检查，表面状态保留。",
+      "days": [
+        {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 2,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 3,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 4,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        }
+      ],
+      "events": [
+        {
+          "dutyDay": 2,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 1,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 3,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 2,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 4,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 3,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        }
+      ]
+    },
+    "m": {
+      "solarLatent": false,
+      "solarRecheck": true,
+      "nextSolarMaintenanceDay": 9,
+      "session": "normal",
+      "revision": {
+        "drive": 0,
+        "backup": 0,
+        "charger": 0,
+        "solar": 2,
+        "sensor": 0
+      },
+      "driveFault": false,
+      "chargerFault": false,
+      "solarDirty": false,
+      "sensorDirty": false,
+      "mainIsolated": false,
+      "chargeIsolated": false,
+      "override": false,
+      "trial": false,
+      "mainAvailable": true,
+      "detectedDemand": false,
+      "navigationRequired": false,
+      "forcedBackup": false,
+      "source": "none",
+      "backupOn": false,
+      "backupFlash": false,
+      "backupPhase": 0,
+      "backupConfirmed": false,
+      "mainVerified": false,
+      "selfTestSecondsRemaining": 0,
+      "chargerVerified": false,
+      "sensorVerified": false,
+      "inventory": {
+        "drive": 1,
+        "charger": 1
+      },
+      "trialObserved": 0,
+      "notice": "污损已清除；旧观察为变化前记录，需现场复查。",
+      "evidence": [
+        {
+          "id": 1,
+          "component": "drive",
+          "revision": 0,
+          "day": 1,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 2,
+          "component": "drive",
+          "revision": 0,
+          "day": 2,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 3,
+          "component": "drive",
+          "revision": 0,
+          "day": 3,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 4,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.655000000000102,
+          "method": "输入变化待查",
+          "result": "太阳能输入条件变化，请对照天气和日照，必要时现场细查表面。"
+        },
+        {
+          "id": 5,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "读数对照",
+          "result": "当前输入205.3W，按日照与天气估算241.5W；输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。"
+        },
+        {
+          "id": 6,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 7,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.031666666666672,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 可做5秒近距细查；重复普通巡视不会增加本次信息。"
+        },
+        {
+          "id": 8,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.036666666666672,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 9,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.258333333333374,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 10,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.291666666666712,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。"
+        },
+        {
+          "id": 11,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.296666666666713,
+          "method": "开始表面细查",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 12,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.38000000000006,
+          "method": "表面细查",
+          "result": "太阳能面板近距细查确认早期薄膜，可清洁后独立复查。 使用清洁布，完成后另做一次表面复查。"
+        },
+        {
+          "id": 13,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.38000000000006,
+          "method": "开始擦拭表面",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 14,
+          "component": "solar",
+          "revision": 2,
+          "day": 4,
+          "hour": 13.413333333333398,
+          "method": "擦拭完成",
+          "result": "污损已清除；旧观察为变化前记录，需现场复查。"
+        }
+      ],
+      "resolved": false
+    },
+    "p": {
+      "mainWh": 2880,
+      "backupWh": 96,
+      "mainFraction": 1,
+      "backupFraction": 0.8,
+      "protected": false,
+      "recoveryReady": false,
+      "warning": false,
+      "mainAllowed": true,
+      "trialAllowed": true,
+      "backupAvailable": true,
+      "solarW": 232.96240928491903,
+      "generatorW": 0,
+      "generatorMainW": 0,
+      "generatorBackupW": 0,
+      "mainLoadW": 5,
+      "backupLoadW": 0,
+      "mainNetW": 0,
+      "backupNetW": 0,
+      "generatorRunning": false,
+      "fuel": 4,
+      "reserveFuel": 8,
+      "remainingHours": 4,
+      "revision": 0,
+      "notice": "",
+      "events": [],
+      "solarVerified": false,
+      "generatorVerified": false,
+      "exerciseComplete": false
+    },
+    "w": {
+      "elapsedHours": 73.43164,
+      "ticks": 881,
+      "remainderHours": 0.014973333,
+      "version": "lighthouse-weather-risk-v1",
+      "rules": [
+        {
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "remedy": "clean-cover",
+          "baseRatePerHour": 0.006,
+          "soilPerHour": 0.03,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null
+        },
+        {
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "remedy": "clean-solar",
+          "baseRatePerHour": 0.004,
+          "soilPerHour": 0.02,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null,
+          "visibleAfterHours": 2
+        }
+      ],
+      "remedies": [
+        "clean-cover",
+        "clean-solar"
+      ],
+      "weather": {
+        "mode": "fixed",
+        "kind": "clear",
+        "from": "clear",
+        "phase": "holding",
+        "transition": 1,
+        "remainingHours": null,
+        "solarMultiplier": 1,
+        "visibilityKm": 12,
+        "daylightMultiplier": 1,
+        "cloudCover": 0.2,
+        "rain": 0,
+        "exposureMultiplier": 1
+      },
+      "visibility": {
+        "required": false,
+        "recoveryHours": 0
+      },
+      "components": {
+        "cover": {
+          "revision": 1,
+          "soil": 1,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        },
+        "solar": {
+          "revision": 2,
+          "soil": 0,
+          "conditionMultiplier": 0.35,
+          "treatmentAvailable": true
+        }
+      },
+      "problems": [
+        {
+          "id": "weather-problem-1",
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "revision": 1,
+          "createdHour": 0,
+          "stage": "degraded",
+          "origin": "existing",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 0,
+            "probability": 0
+          }
+        }
+      ],
+      "events": [
+        {
+          "id": 1,
+          "hour": 72.66666666666667,
+          "component": "solar",
+          "problemId": "weather-problem-2",
+          "type": "created"
+        },
+        {
+          "id": 2,
+          "hour": 73.42664,
+          "component": "solar",
+          "problemId": "weather-problem-2",
+          "type": "maintained"
+        }
+      ],
+      "seriousCooldownUntil": 0,
+      "random": {
+        "algorithm": "lcg32-streams-v1",
+        "seed": 216,
+        "streams": {
+          "weather": {
+            "state": 2254400679,
+            "draws": 1
+          },
+          "equipment": {
+            "state": 1355257,
+            "draws": 783
+          },
+          "inspection": {
+            "state": 4131677837,
+            "draws": 2
+          },
+          "forecast": {
+            "state": 2562458305,
+            "draws": 0
+          }
+        }
+      }
+    },
+    "d": {
+      "cover": {
+        "visit": 1,
+        "history": []
+      },
+      "solar": {
+        "visit": 2,
+        "history": [
+          {
+            "id": 1,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 1,
+            "day": 4,
+            "hour": 13.031666666666672,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "可做5秒近距细查；重复普通巡视不会增加本次信息。",
+            "valid": false
+          },
+          {
+            "id": 2,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 2,
+            "day": 4,
+            "hour": 13.291666666666712,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。",
+            "valid": false
+          },
+          {
+            "id": 3,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "surface-test",
+            "visit": 2,
+            "day": 4,
+            "hour": 13.38000000000006,
+            "status": "confirmed",
+            "result": "太阳能面板近距细查确认早期薄膜，可清洁后独立复查。",
+            "next": "使用清洁布，完成后另做一次表面复查。",
+            "valid": false
+          }
+        ]
+      }
+    },
+    "hour": 13.418333333333399,
+    "automatic": true
+  },
+  "rechecked": {
+    "op": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 13.456666666666738,
+      "dutyDay": 4,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "available": true,
+      "detectedDemand": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0,
+      "rotationRadians": 0,
+      "automaticOperatingHours": 36,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 3,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 4,
+          "dutyDay": 2,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 5,
+          "dutyDay": 2,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 6,
+          "dutyDay": 2,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 7,
+          "dutyDay": 3,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 8,
+          "dutyDay": 3,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 9,
+          "dutyDay": 3,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 10,
+          "dutyDay": 4,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 11,
+          "dutyDay": 4,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        }
+      ]
+    },
+    "i": {
+      "dutyDay": 4,
+      "checks": {
+        "check-control": "pending",
+        "check-optic": "pending",
+        "check-cover": "pending"
+      },
+      "completed": false,
+      "nextMaintenanceDay": 4,
+      "dirty": true,
+      "coverRevision": 0,
+      "transmission": 0.82,
+      "observationSeconds": 0,
+      "observedTurns": 0,
+      "outputSeen": false,
+      "cleaning": false,
+      "cleaningSeconds": 0,
+      "notice": "新值守日已建立三项检查，表面状态保留。",
+      "days": [
+        {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 2,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 3,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 4,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        }
+      ],
+      "events": [
+        {
+          "dutyDay": 2,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 1,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 3,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 2,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 4,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 3,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        }
+      ]
+    },
+    "m": {
+      "solarLatent": false,
+      "solarRecheck": false,
+      "nextSolarMaintenanceDay": 9,
+      "session": "normal",
+      "revision": {
+        "drive": 0,
+        "backup": 0,
+        "charger": 0,
+        "solar": 2,
+        "sensor": 0
+      },
+      "driveFault": false,
+      "chargerFault": false,
+      "solarDirty": false,
+      "sensorDirty": false,
+      "mainIsolated": false,
+      "chargeIsolated": false,
+      "override": false,
+      "trial": false,
+      "mainAvailable": true,
+      "detectedDemand": false,
+      "navigationRequired": false,
+      "forcedBackup": false,
+      "source": "none",
+      "backupOn": false,
+      "backupFlash": false,
+      "backupPhase": 0,
+      "backupConfirmed": false,
+      "mainVerified": false,
+      "selfTestSecondsRemaining": 0,
+      "chargerVerified": false,
+      "sensorVerified": false,
+      "inventory": {
+        "drive": 1,
+        "charger": 1
+      },
+      "trialObserved": 0,
+      "notice": "太阳能面板本次表面检查未见污损；不代表设备内部无故障。 表面已查；若输入仍偏低，请到首层对照天气、日照和读数。",
+      "evidence": [
+        {
+          "id": 1,
+          "component": "drive",
+          "revision": 0,
+          "day": 1,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 2,
+          "component": "drive",
+          "revision": 0,
+          "day": 2,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 3,
+          "component": "drive",
+          "revision": 0,
+          "day": 3,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 4,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.655000000000102,
+          "method": "输入变化待查",
+          "result": "太阳能输入条件变化，请对照天气和日照，必要时现场细查表面。"
+        },
+        {
+          "id": 5,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "读数对照",
+          "result": "当前输入205.3W，按日照与天气估算241.5W；输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。"
+        },
+        {
+          "id": 6,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 7,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.031666666666672,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 可做5秒近距细查；重复普通巡视不会增加本次信息。"
+        },
+        {
+          "id": 8,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.036666666666672,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 9,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.258333333333374,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 10,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.291666666666712,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。"
+        },
+        {
+          "id": 11,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.296666666666713,
+          "method": "开始表面细查",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 12,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.38000000000006,
+          "method": "表面细查",
+          "result": "太阳能面板近距细查确认早期薄膜，可清洁后独立复查。 使用清洁布，完成后另做一次表面复查。"
+        },
+        {
+          "id": 13,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.38000000000006,
+          "method": "开始擦拭表面",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 14,
+          "component": "solar",
+          "revision": 2,
+          "day": 4,
+          "hour": 13.413333333333398,
+          "method": "擦拭完成",
+          "result": "污损已清除；旧观察为变化前记录，需现场复查。"
+        },
+        {
+          "id": 15,
+          "component": "solar",
+          "revision": 2,
+          "day": 4,
+          "hour": 13.418333333333399,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 16,
+          "component": "solar",
+          "revision": 2,
+          "day": 4,
+          "hour": 13.451666666666737,
+          "method": "现场观察",
+          "result": "太阳能面板本次表面检查未见污损；不代表设备内部无故障。 表面已查；若输入仍偏低，请到首层对照天气、日照和读数。"
+        }
+      ],
+      "resolved": false
+    },
+    "p": {
+      "mainWh": 2880,
+      "backupWh": 96,
+      "mainFraction": 1,
+      "backupFraction": 0.8,
+      "protected": false,
+      "recoveryReady": false,
+      "warning": false,
+      "mainAllowed": true,
+      "trialAllowed": true,
+      "backupAvailable": true,
+      "solarW": 232.04034845188716,
+      "generatorW": 0,
+      "generatorMainW": 0,
+      "generatorBackupW": 0,
+      "mainLoadW": 5,
+      "backupLoadW": 0,
+      "mainNetW": 0,
+      "backupNetW": 0,
+      "generatorRunning": false,
+      "fuel": 4,
+      "reserveFuel": 8,
+      "remainingHours": 4,
+      "revision": 0,
+      "notice": "",
+      "events": [],
+      "solarVerified": false,
+      "generatorVerified": false,
+      "exerciseComplete": false
+    },
+    "w": {
+      "elapsedHours": 73.469973333,
+      "ticks": 881,
+      "remainderHours": 0.053306667,
+      "version": "lighthouse-weather-risk-v1",
+      "rules": [
+        {
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "remedy": "clean-cover",
+          "baseRatePerHour": 0.006,
+          "soilPerHour": 0.03,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null
+        },
+        {
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "remedy": "clean-solar",
+          "baseRatePerHour": 0.004,
+          "soilPerHour": 0.02,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null,
+          "visibleAfterHours": 2
+        }
+      ],
+      "remedies": [
+        "clean-cover",
+        "clean-solar"
+      ],
+      "weather": {
+        "mode": "fixed",
+        "kind": "clear",
+        "from": "clear",
+        "phase": "holding",
+        "transition": 1,
+        "remainingHours": null,
+        "solarMultiplier": 1,
+        "visibilityKm": 12,
+        "daylightMultiplier": 1,
+        "cloudCover": 0.2,
+        "rain": 0,
+        "exposureMultiplier": 1
+      },
+      "visibility": {
+        "required": false,
+        "recoveryHours": 0
+      },
+      "components": {
+        "cover": {
+          "revision": 1,
+          "soil": 1,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        },
+        "solar": {
+          "revision": 2,
+          "soil": 0,
+          "conditionMultiplier": 0.35,
+          "treatmentAvailable": true
+        }
+      },
+      "problems": [
+        {
+          "id": "weather-problem-1",
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "revision": 1,
+          "createdHour": 0,
+          "stage": "degraded",
+          "origin": "existing",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 0,
+            "probability": 0
+          }
+        }
+      ],
+      "events": [
+        {
+          "id": 1,
+          "hour": 72.66666666666667,
+          "component": "solar",
+          "problemId": "weather-problem-2",
+          "type": "created"
+        },
+        {
+          "id": 2,
+          "hour": 73.42664,
+          "component": "solar",
+          "problemId": "weather-problem-2",
+          "type": "maintained"
+        }
+      ],
+      "seriousCooldownUntil": 0,
+      "random": {
+        "algorithm": "lcg32-streams-v1",
+        "seed": 216,
+        "streams": {
+          "weather": {
+            "state": 2254400679,
+            "draws": 1
+          },
+          "equipment": {
+            "state": 1355257,
+            "draws": 783
+          },
+          "inspection": {
+            "state": 4131677837,
+            "draws": 2
+          },
+          "forecast": {
+            "state": 2562458305,
+            "draws": 0
+          }
+        }
+      }
+    },
+    "d": {
+      "cover": {
+        "visit": 1,
+        "history": []
+      },
+      "solar": {
+        "latest": {
+          "id": 4,
+          "target": "solar",
+          "revision": 2,
+          "problemId": "clean-solar",
+          "method": "patrol",
+          "visit": 2,
+          "day": 4,
+          "hour": 13.451666666666737,
+          "status": "clear",
+          "result": "太阳能面板本次表面检查未见污损；不代表设备内部无故障。",
+          "next": "表面已查；若输入仍偏低，请到首层对照天气、日照和读数。"
+        },
+        "visit": 2,
+        "history": [
+          {
+            "id": 1,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 1,
+            "day": 4,
+            "hour": 13.031666666666672,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "可做5秒近距细查；重复普通巡视不会增加本次信息。",
+            "valid": false
+          },
+          {
+            "id": 2,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 2,
+            "day": 4,
+            "hour": 13.291666666666712,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。",
+            "valid": false
+          },
+          {
+            "id": 3,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "surface-test",
+            "visit": 2,
+            "day": 4,
+            "hour": 13.38000000000006,
+            "status": "confirmed",
+            "result": "太阳能面板近距细查确认早期薄膜，可清洁后独立复查。",
+            "next": "使用清洁布，完成后另做一次表面复查。",
+            "valid": false
+          },
+          {
+            "id": 4,
+            "target": "solar",
+            "revision": 2,
+            "problemId": "clean-solar",
+            "method": "patrol",
+            "visit": 2,
+            "day": 4,
+            "hour": 13.451666666666737,
+            "status": "clear",
+            "result": "太阳能面板本次表面检查未见污损；不代表设备内部无故障。",
+            "next": "表面已查；若输入仍偏低，请到首层对照天气、日照和读数。",
+            "valid": true
+          }
+        ]
+      }
+    },
+    "hour": 13.456666666666738,
+    "automatic": true
+  },
+  "interruption": {
+    "op": {
+      "deviceId": "lighthouse-beacon-main",
+      "hour": 13.47166666666674,
+      "dutyDay": 4,
+      "mode": "automatic",
+      "state": "day-standby",
+      "running": false,
+      "available": true,
+      "detectedDemand": false,
+      "testSecondsRemaining": 0,
+      "rotationTurns": 0,
+      "rotationRadians": 0,
+      "automaticOperatingHours": 36,
+      "events": [
+        {
+          "id": 1,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "initialized",
+          "source": "system",
+          "result": "day-standby"
+        },
+        {
+          "id": 2,
+          "dutyDay": 1,
+          "hour": 12,
+          "objectId": "lighthouse-beacon-main",
+          "type": "time-selected",
+          "source": "manual-time",
+          "result": "day-standby"
+        },
+        {
+          "id": 3,
+          "dutyDay": 1,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 4,
+          "dutyDay": 2,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 5,
+          "dutyDay": 2,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 6,
+          "dutyDay": 2,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 7,
+          "dutyDay": 3,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 8,
+          "dutyDay": 3,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        },
+        {
+          "id": 9,
+          "dutyDay": 3,
+          "hour": 18,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "night-running",
+          "previousState": "day-standby"
+        },
+        {
+          "id": 10,
+          "dutyDay": 4,
+          "hour": 0,
+          "objectId": "lighthouse-beacon-main",
+          "type": "duty-day-started",
+          "source": "automatic-clock",
+          "result": "night-running"
+        },
+        {
+          "id": 11,
+          "dutyDay": 4,
+          "hour": 6,
+          "objectId": "lighthouse-beacon-main",
+          "type": "state-changed",
+          "source": "automatic-clock",
+          "result": "day-standby",
+          "previousState": "night-running"
+        }
+      ]
+    },
+    "i": {
+      "dutyDay": 4,
+      "checks": {
+        "check-control": "pending",
+        "check-optic": "pending",
+        "check-cover": "pending"
+      },
+      "completed": false,
+      "nextMaintenanceDay": 4,
+      "dirty": true,
+      "coverRevision": 0,
+      "transmission": 0.82,
+      "observationSeconds": 0,
+      "observedTurns": 0,
+      "outputSeen": false,
+      "cleaning": false,
+      "cleaningSeconds": 0,
+      "notice": "新值守日已建立三项检查，表面状态保留。",
+      "days": [
+        {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 2,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 3,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        },
+        {
+          "dutyDay": 4,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false
+        }
+      ],
+      "events": [
+        {
+          "dutyDay": 2,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 1,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 3,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 2,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        },
+        {
+          "dutyDay": 4,
+          "hour": 0,
+          "result": "新值守日：三项检查待确认，表面状态保留",
+          "id": 3,
+          "objectId": "lighthouse-maintenance-log",
+          "kind": "system",
+          "type": "duty-day-started",
+          "source": "automatic-clock"
+        }
+      ]
+    },
+    "m": {
+      "solarLatent": false,
+      "solarRecheck": false,
+      "nextSolarMaintenanceDay": 9,
+      "session": "normal",
+      "revision": {
+        "drive": 0,
+        "backup": 0,
+        "charger": 0,
+        "solar": 2,
+        "sensor": 0
+      },
+      "driveFault": false,
+      "chargerFault": false,
+      "solarDirty": false,
+      "sensorDirty": false,
+      "mainIsolated": false,
+      "chargeIsolated": false,
+      "override": false,
+      "trial": false,
+      "mainAvailable": true,
+      "detectedDemand": false,
+      "navigationRequired": false,
+      "forcedBackup": false,
+      "source": "none",
+      "backupOn": false,
+      "backupFlash": false,
+      "backupPhase": 0,
+      "backupConfirmed": false,
+      "mainVerified": false,
+      "selfTestSecondsRemaining": 0,
+      "chargerVerified": false,
+      "sensorVerified": false,
+      "inventory": {
+        "drive": 1,
+        "charger": 1
+      },
+      "trialObserved": 0,
+      "notice": "操作中断；未扣备件，设备保持原状。",
+      "evidence": [
+        {
+          "id": 1,
+          "component": "drive",
+          "revision": 0,
+          "day": 1,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 2,
+          "component": "drive",
+          "revision": 0,
+          "day": 2,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 3,
+          "component": "drive",
+          "revision": 0,
+          "day": 3,
+          "hour": 18,
+          "method": "主灯导航",
+          "result": "主灯实际运行，备用退出；现场检查仍需独立完成。"
+        },
+        {
+          "id": 4,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.655000000000102,
+          "method": "输入变化待查",
+          "result": "太阳能输入条件变化，请对照天气和日照，必要时现场细查表面。"
+        },
+        {
+          "id": 5,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "读数对照",
+          "result": "当前输入205.3W，按日照与天气估算241.5W；输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。"
+        },
+        {
+          "id": 6,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 12.99833333333349,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 7,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.031666666666672,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 可做5秒近距细查；重复普通巡视不会增加本次信息。"
+        },
+        {
+          "id": 8,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.036666666666672,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 9,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.258333333333374,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 10,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.291666666666712,
+          "method": "现场观察",
+          "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。"
+        },
+        {
+          "id": 11,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.296666666666713,
+          "method": "开始表面细查",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 12,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.38000000000006,
+          "method": "表面细查",
+          "result": "太阳能面板近距细查确认早期薄膜，可清洁后独立复查。 使用清洁布，完成后另做一次表面复查。"
+        },
+        {
+          "id": 13,
+          "component": "solar",
+          "revision": 1,
+          "day": 4,
+          "hour": 13.38000000000006,
+          "method": "开始擦拭表面",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 14,
+          "component": "solar",
+          "revision": 2,
+          "day": 4,
+          "hour": 13.413333333333398,
+          "method": "擦拭完成",
+          "result": "污损已清除；旧观察为变化前记录，需现场复查。"
+        },
+        {
+          "id": 15,
+          "component": "solar",
+          "revision": 2,
+          "day": 4,
+          "hour": 13.418333333333399,
+          "method": "开始现场观察",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 16,
+          "component": "solar",
+          "revision": 2,
+          "day": 4,
+          "hour": 13.451666666666737,
+          "method": "现场观察",
+          "result": "太阳能面板本次表面检查未见污损；不代表设备内部无故障。 表面已查；若输入仍偏低，请到首层对照天气、日照和读数。"
+        },
+        {
+          "id": 17,
+          "component": "solar",
+          "revision": 2,
+          "day": 4,
+          "hour": 13.456666666666738,
+          "method": "开始表面细查",
+          "result": "开始现场操作，尚未提交或扣件。"
+        },
+        {
+          "id": 18,
+          "component": "solar",
+          "revision": 2,
+          "day": 4,
+          "hour": 13.47166666666674,
+          "method": "中断",
+          "result": "操作中断；未扣备件，设备保持原状。"
+        }
+      ],
+      "resolved": false
+    },
+    "p": {
+      "mainWh": 2880,
+      "backupWh": 96,
+      "mainFraction": 1,
+      "backupFraction": 0.8,
+      "protected": false,
+      "recoveryReady": false,
+      "warning": false,
+      "mainAllowed": true,
+      "trialAllowed": true,
+      "backupAvailable": true,
+      "solarW": 231.67317536764415,
+      "generatorW": 0,
+      "generatorMainW": 0,
+      "generatorBackupW": 0,
+      "mainLoadW": 5,
+      "backupLoadW": 0,
+      "mainNetW": 0,
+      "backupNetW": 0,
+      "generatorRunning": false,
+      "fuel": 4,
+      "reserveFuel": 8,
+      "remainingHours": 4,
+      "revision": 0,
+      "notice": "",
+      "events": [],
+      "solarVerified": false,
+      "generatorVerified": false,
+      "exerciseComplete": false
+    },
+    "w": {
+      "elapsedHours": 73.484973333,
+      "ticks": 881,
+      "remainderHours": 0.068306667,
+      "version": "lighthouse-weather-risk-v1",
+      "rules": [
+        {
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "remedy": "clean-cover",
+          "baseRatePerHour": 0.006,
+          "soilPerHour": 0.03,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null
+        },
+        {
+          "component": "solar",
+          "objectId": "lighthouse-solar-array",
+          "remedy": "clean-solar",
+          "baseRatePerHour": 0.004,
+          "soilPerHour": 0.02,
+          "minimumSoil": 0.15,
+          "seriousAfterHours": null,
+          "visibleAfterHours": 2
+        }
+      ],
+      "remedies": [
+        "clean-cover",
+        "clean-solar"
+      ],
+      "weather": {
+        "mode": "fixed",
+        "kind": "clear",
+        "from": "clear",
+        "phase": "holding",
+        "transition": 1,
+        "remainingHours": null,
+        "solarMultiplier": 1,
+        "visibilityKm": 12,
+        "daylightMultiplier": 1,
+        "cloudCover": 0.2,
+        "rain": 0,
+        "exposureMultiplier": 1
+      },
+      "visibility": {
+        "required": false,
+        "recoveryHours": 0
+      },
+      "components": {
+        "cover": {
+          "revision": 1,
+          "soil": 1,
+          "conditionMultiplier": 1,
+          "treatmentAvailable": true
+        },
+        "solar": {
+          "revision": 2,
+          "soil": 0,
+          "conditionMultiplier": 0.35,
+          "treatmentAvailable": true
+        }
+      },
+      "problems": [
+        {
+          "id": "weather-problem-1",
+          "component": "cover",
+          "objectId": "lighthouse-optics-cleaning",
+          "revision": 1,
+          "createdHour": 0,
+          "stage": "degraded",
+          "origin": "existing",
+          "cause": {
+            "weather": "clear",
+            "ratePerHour": 0,
+            "weatherMultiplier": 1,
+            "conditionMultiplier": 1,
+            "soil": 0,
+            "probability": 0
+          }
+        }
+      ],
+      "events": [
+        {
+          "id": 1,
+          "hour": 72.66666666666667,
+          "component": "solar",
+          "problemId": "weather-problem-2",
+          "type": "created"
+        },
+        {
+          "id": 2,
+          "hour": 73.42664,
+          "component": "solar",
+          "problemId": "weather-problem-2",
+          "type": "maintained"
+        }
+      ],
+      "seriousCooldownUntil": 0,
+      "random": {
+        "algorithm": "lcg32-streams-v1",
+        "seed": 216,
+        "streams": {
+          "weather": {
+            "state": 2254400679,
+            "draws": 1
+          },
+          "equipment": {
+            "state": 1355257,
+            "draws": 783
+          },
+          "inspection": {
+            "state": 4131677837,
+            "draws": 2
+          },
+          "forecast": {
+            "state": 2562458305,
+            "draws": 0
+          }
+        }
+      }
+    },
+    "d": {
+      "cover": {
+        "visit": 1,
+        "history": []
+      },
+      "solar": {
+        "latest": {
+          "id": 4,
+          "target": "solar",
+          "revision": 2,
+          "problemId": "clean-solar",
+          "method": "patrol",
+          "visit": 2,
+          "day": 4,
+          "hour": 13.451666666666737,
+          "status": "clear",
+          "result": "太阳能面板本次表面检查未见污损；不代表设备内部无故障。",
+          "next": "表面已查；若输入仍偏低，请到首层对照天气、日照和读数。"
+        },
+        "visit": 2,
+        "history": [
+          {
+            "id": 1,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 1,
+            "day": 4,
+            "hour": 13.031666666666672,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "可做5秒近距细查；重复普通巡视不会增加本次信息。",
+            "valid": false
+          },
+          {
+            "id": 2,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "patrol",
+            "visit": 2,
+            "day": 4,
+            "hour": 13.291666666666712,
+            "status": "unseen",
+            "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。",
+            "next": "两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。",
+            "valid": false
+          },
+          {
+            "id": 3,
+            "target": "solar",
+            "revision": 1,
+            "problemId": "weather-problem-2",
+            "method": "surface-test",
+            "visit": 2,
+            "day": 4,
+            "hour": 13.38000000000006,
+            "status": "confirmed",
+            "result": "太阳能面板近距细查确认早期薄膜，可清洁后独立复查。",
+            "next": "使用清洁布，完成后另做一次表面复查。",
+            "valid": false
+          },
+          {
+            "id": 4,
+            "target": "solar",
+            "revision": 2,
+            "problemId": "clean-solar",
+            "method": "patrol",
+            "visit": 2,
+            "day": 4,
+            "hour": 13.451666666666737,
+            "status": "clear",
+            "result": "太阳能面板本次表面检查未见污损；不代表设备内部无故障。",
+            "next": "表面已查；若输入仍偏低，请到首层对照天气、日照和读数。",
+            "valid": true
+          }
+        ]
+      }
+    },
+    "hour": 13.47166666666674,
+    "automatic": true
+  },
+  "saved": {
+    "wh": 2880,
+    "preservedSurfaceRows": [
+      {
+        "id": 7,
+        "component": "solar",
+        "revision": 1,
+        "day": 4,
+        "hour": 13.031666666666672,
+        "method": "现场观察",
+        "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 可做5秒近距细查；重复普通巡视不会增加本次信息。"
+      },
+      {
+        "id": 10,
+        "component": "solar",
+        "revision": 1,
+        "day": 4,
+        "hour": 13.291666666666712,
+        "method": "现场观察",
+        "result": "本次普通巡视未见明显异常，尚未排除细薄污膜。 两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。"
+      },
+      {
+        "id": 12,
+        "component": "solar",
+        "revision": 1,
+        "day": 4,
+        "hour": 13.38000000000006,
+        "method": "表面细查",
+        "result": "太阳能面板近距细查确认早期薄膜，可清洁后独立复查。 使用清洁布，完成后另做一次表面复查。"
+      },
+      {
+        "id": 16,
+        "component": "solar",
+        "revision": 2,
+        "day": 4,
+        "hour": 13.451666666666737,
+        "method": "现场观察",
+        "result": "太阳能面板本次表面检查未见污损；不代表设备内部无故障。 表面已查；若输入仍偏低，请到首层对照天气、日照和读数。"
+      }
+    ],
+    "weather": "clear"
+  },
+  "passed": true
+}

@@ -94,7 +94,7 @@ export class LighthousePower {
     const generator = this.generatorRunning ? C.generatorW : 0;
     const generatorBackup = generator ? this.backupWh < C.backupCapacityWh - EPS ? C.backupChargeW : backup ? C.backupW : 0 : 0;
     const generatorMain = generator - generatorBackup;
-    const solarSurfaceFactor = m.chargerFault || m.chargeIsolated ? 0 : m.solarDirty ? .2 : 1;
+    const solarSurfaceFactor = m.chargerFault || m.chargeIsolated ? 0 : m.solarDirty ? m.solarLatent ? .85 : .2 : 1;
     const solarFactor = solarSurfaceFactor * this.weatherSolar;
     const solar = lighthouseSolarW(hour) * solarFactor;
     const mainLoad = C.controlW + (main ? C.mainLampW : 0);

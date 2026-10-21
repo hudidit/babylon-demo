@@ -37,7 +37,7 @@ test('paper records filter by local object and remove technical events while pre
  assert.equal(lighthouseRecords('lighthouse-solar-charger',{...i,events},m,p).length,0);
  assert.equal(lighthouseRecords('log',{...i,events},m,p).length,5);
  const solar=lighthouseRecords('lighthouse-solar-array',i,{...m,evidence:[{id:1,component:'solar',method:'开始现场观察',day:1,hour:12},{id:2,component:'solar',method:'现场观察',day:1,hour:12,result:'面板有遮挡污损。'}]},p);
- assert.equal(solar.length,1);assert.equal(solar[0].result,'发现污损');
+ assert.equal(solar.length,1);assert.equal(solar[0].result,'面板有遮挡污损。');
 });
 test('paper pagination clamps changing and empty records and never requires an unbounded scroll', () => {
  const rows=Array.from({length:12},(_,n)=>({day:1,hour:n}));

@@ -15,6 +15,9 @@ import { RoomItemInspection } from "./RoomItemInspection";
 import { RoomFloorPlan } from "./RoomFloorPlan";
 import { RoomMirrors } from "./RoomMirrors";
 import { RoomExterior } from "./RoomExterior";
+import { LighthouseDiscovery } from "./LighthouseDiscovery";
+import type { LighthouseDiscoveryTarget } from "./LighthouseDiscovery";
+import { lighthouseSolarW } from "./LighthousePower";
 import { LighthouseWeatherRisk } from "./LighthouseRisk";
 import type { LighthouseWeatherKind } from "./LighthouseWeather";
 import { advanceWeatherDuty, synchronizeWeatherDuty } from "./LighthouseWeatherSession";
@@ -74,6 +77,7 @@ export class RoomScene {
   private lighthouseMaintenanceState = new LighthouseMaintenance();
   private lighthousePowerState = new LighthousePower();
   private weatherState = new LighthouseWeatherRisk({seed:crypto.getRandomValues(new Uint32Array(1))[0]});
+  private discovery = new LighthouseDiscovery(() => this.weatherState.drawInformation("inspection"));
   private readonly rain: CoastalRain;
   private reducedWeatherMotion = false;
   private readonly lighthouseSave = new LighthouseSave();
@@ -211,7 +215,8 @@ export class RoomScene {
     const lighthouse = this.exterior.lighthouseDetails;
     this.lighthousePanel = new LighthousePanel(canvas.ownerDocument, resume => this.closeLighthousePanel(resume), () => this.toggleLocalLighthouseTest(), {
       confirm: () => this.confirmLighthouseControl(), cover: () => this.inspectLighthouseCover(), clean: () => this.cleanLighthouseCover(),
-      solarInspect: () => this.localLighthouseMaintenance("inspect", "meter"), solarClean: () => this.localLighthouseMaintenance("clean", "cloth"),
+      solarInspect: () => this.localLighthouseMaintenance("inspect", "meter"), solarTest: () => this.localLighthouseMaintenance("surface-test", "meter"),
+      compare: () => this.compareLighthouseSolar(), solarClean: () => this.localLighthouseMaintenance("clean", "cloth"),
       restorePower: () => this.localLighthousePower("verify-main", "meter"),
       save: () => this.saveLighthouseDuty(), load: () => this.continueLighthouseDuty(), clearSave: () => this.clearLighthouseSave()});
     this.interactions.addDevice(lighthouse.panel, () => this.openLighthousePanel("control"));
@@ -348,6 +353,7 @@ export class RoomScene {
   get lighthouseInspection() { return this.lighthouseInspectionState?.snapshot; }
   get lighthouseMaintenance() { return this.lighthouseMaintenanceState.snapshot; }
   get lighthousePower() { return this.lighthousePowerState.snapshot; }
+  get lighthouseDiscovery() {return {cover: this.discovery.view("cover"), solar: this.discovery.view("solar")};}
   get weather() {return this.weatherState.snapshot;}
   private get weatherDuty() {return {weather:this.weatherState,operation:this.lighthouseState,inspection:this.lighthouseInspectionState,
     maintenance:this.lighthouseMaintenanceState,power:this.lighthousePowerState};}
@@ -375,6 +381,29 @@ export class RoomScene {
     if (this.disposed) return false;
     const ended = this.lighthouseState.endTest(); this.notifyLighthouseOperation(); return ended;
   }
+  private synchronizeDiscovery() {
+    if (!this.discovery) return;
+    const near: LighthouseDiscoveryTarget[] = [];
+    for (const target of ["cover", "solar"] as const) {
+      const device = target === "cover" ? this.exterior?.lighthouseDetails?.cover?.device : this.exterior?.lighthouseDetails?.equipment.device("lighthouse-solar-array");
+      const mesh = device?.meshes[0];
+      if (mesh && this.atLighthouseFloor(target === "cover" ? LIGHTHOUSE.gallery : lighthouseEquipmentDefinition("lighthouse-solar-array")!.floor)) {
+        mesh.computeWorldMatrix(true);
+        if (Vector3.Distance(this.firstPersonCamera.position, mesh.getBoundingInfo().boundingBox.centerWorld) <= 15) near.push(target);
+      }
+    }
+    const w = this.weather, m = this.lighthouseMaintenance, i = this.lighthouseInspection;
+    this.discovery.synchronize((["cover", "solar"] as const).map(target => {
+      const problem = w.problems.find(p => p.component === target), dirty = target === "cover" ? i.dirty : m.solarDirty;
+      return {target, revision: target === "cover" ? i.coverRevision : m.revision.solar,
+        problemId: problem?.id || `clean-${target}`, stage: !dirty ? "clear" as const : target === "solar" && m.solarLatent ? "latent" as const : "obvious" as const,
+        severity: problem ? Math.min(1, Math.max(0, (w.elapsedHours - problem.createdHour) / 2)) : 0};
+    }), this.weatherState.acceptedAutomaticHours, near);
+    this.lighthouseMaintenanceState.setSurfaceObserver((method, op) => {
+      const clue = this.discovery.observe("solar", method, op.dutyDay, op.hour);
+      return clue && {id: clue.id, result: `${clue.result} ${clue.next}`, identified: clue.status === "confirmed" || clue.status === "clear"};
+    });
+  }
   private notifyLighthouseOperation() {
     this.weatherState.synchronizeSurface("cover",this.lighthouseInspection.dirty);
     this.weatherState.synchronizeSurface("solar",this.lighthouseMaintenance.solarDirty);
@@ -384,6 +413,7 @@ export class RoomScene {
     if (this.lighthouseEvidenceKey && evidenceKey !== this.lighthouseEvidenceKey) this.lighthouseInspectionState.invalidateMain(this.lighthouseOperation);
     this.lighthouseEvidenceKey = evidenceKey;
     this.lighthouseInspectionState?.synchronize(this.lighthouseOperation);
+    this.synchronizeDiscovery();
     this.scene.metadata.lighthouseOperation.state = this.lighthouseOperation;
     this.scene.metadata.lighthouseOperation.inspection = this.lighthouseInspection;
     this.scene.metadata.weather=this.weather;
@@ -397,7 +427,7 @@ export class RoomScene {
       this.scene.metadata.lighthouseOperation.visualApplied = true;
     }
     if (this.lighthouseInspection) {
-      this.lighthousePanel?.render(this.lighthouseOperation, this.lighthouseInspection, m, this.lighthousePower, this.timePlayback.automatic, this.weather.weather);
+      this.lighthousePanel?.render(this.lighthouseOperation, this.lighthouseInspection, m, this.lighthousePower, this.timePlayback.automatic, this.weather.weather, this.discovery?.view("solar"));
       const active = this.currentView === "first-person" && !this.isViewing && !this.pauses.blocked && this.exterior.isVisible;
       this.lighthousePanel?.renderActivity(this.lighthouseInspection, active, this.lighthouseOperation.running, m, this.lighthousePower);
     }
@@ -431,6 +461,7 @@ export class RoomScene {
     const operationBefore = this.lighthouseOperation;
     advanceWeatherDuty(this.weatherDuty,this.timeState.lastAdvance,this.exterior.isVisible);
     this.enforceWeatherWork();
+    this.synchronizeDiscovery();
     const details = this.exterior.lighthouseDetails, eye = this.firstPersonCamera.position, origin = details.beacon.root.position;
     const output = this.lighthouseOperation.running ? lighthouseBeamStrength(this.lighthouseOperation.rotationTurns, eye.x - origin.x, eye.z - origin.z) * this.lighthouseInspection.transmission : 0;
     this.lighthouseMaintenanceState.advance(this.exterior.isVisible ? this.timeState.lastAdvance : {...this.timeState.lastAdvance, activeSeconds: 0}, this.lighthouseState, {
@@ -866,7 +897,7 @@ export class RoomScene {
 
   private openLighthousePanel(location: LighthousePanelLocation) {
     if (!this.controlsEnabled || this.isViewing || !this.pointerLocked || !this.canAccessLighthouse(location)) return;
-    if (!this.lighthousePanel.open(location, this.lighthouseOperation, this.lighthouseInspection, this.lighthouseMaintenance, this.lighthousePower, this.timePlayback.automatic, this.weather.weather)) return;
+    if (!this.lighthousePanel.open(location, this.lighthouseOperation, this.lighthouseInspection, this.lighthouseMaintenance, this.lighthousePower, this.timePlayback.automatic, this.weather.weather, this.discovery.view("solar"))) return;
     // Modal state exists before lock release, preserving the first-person pose.
     this.setPaused("lighthouse-panel", true);
     this.lighthousePanel.renderStorage(this.lighthouseSave.inspect());
@@ -928,13 +959,21 @@ export class RoomScene {
       this.timeState=s.clock; this.lighthouseState=s.operation; this.lighthouseInspectionState=s.inspection;
       this.lighthouseMaintenanceState=s.maintenance; this.lighthousePowerState=s.power;
       this.weatherState=new LighthouseWeatherRisk({seed:crypto.getRandomValues(new Uint32Array(1))[0]});
+      this.discovery=new LighthouseDiscovery(() => this.weatherState.drawInformation("inspection"));
       this.lighthouseEvidenceKey=""; this.timeVisualElapsed=0;
       this.notifyLighthouseOperation(); this.applyTimeOfDay(this.timeOfDay); this.notifyTimeOfDay();
     }
-    this.lighthousePanel.renderStorage({...result.status,message:result.status.message+(s?"；天气已重新开始，设备和记录按存档继续。":"")});
+    this.lighthousePanel.renderStorage({...result.status,message:result.status.message+(s?"；天气已重新开始，设备和记录按存档继续；本次线索访问重新建立，已存污损需现场复查。":"")});
   }
   private clearLighthouseSave() {
     if (this.storageLighthouseAllowed()) this.lighthousePanel.renderStorage(this.lighthouseSave.clearInvalid());
+  }
+  private compareLighthouseSolar() {
+    const location = this.lighthousePanel.activeLocation;
+    if ((location !== "control" && location !== "lighthouse-solar-array") || !this.lighthouseCommandAllowed(location)) return;
+    this.lighthouseMaintenanceState.compareSolar(this.lighthouseOperation, this.lighthousePower.solarW,
+      lighthouseSolarW(this.lighthouseOperation.hour) * this.weather.weather.solarMultiplier);
+    this.notifyLighthouseOperation(); this.lighthousePanel.notice(this.lighthouseMaintenance.notice);
   }
   private confirmLighthouseControl() {
     if (!this.lighthouseCommandAllowed("control")) {this.lighthousePanel.notice("请回到首层运行面板旁确认读数。"); return;}
@@ -942,7 +981,8 @@ export class RoomScene {
   }
   private inspectLighthouseCover() {
     if (!this.lighthouseCommandAllowed("cover")) {this.lighthousePanel.notice("请回到顶层固定保护面旁进行观察。"); return;}
-    this.lighthouseInspectionState.inspectCover(this.lighthouseOperation, true); this.notifyLighthouseOperation();
+    this.lighthouseInspectionState.inspectCover(this.lighthouseOperation, true);
+    this.discovery.observe("cover", "patrol", this.lighthouseOperation.dutyDay, this.lighthouseOperation.hour); this.notifyLighthouseOperation();
   }
   private cleanLighthouseCover() {
     if (!this.lighthouseCommandAllowed("cover") || !LighthouseInspection.canClean(this.lighthouseOperation)) {

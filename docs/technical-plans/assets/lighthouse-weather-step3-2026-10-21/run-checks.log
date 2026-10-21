@@ -1,0 +1,12 @@
+START work
+{"name":"work","passed":true,"exitCode":0,"script":"docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-work.cjs","scriptSha256":"7671fad45aca0fb6edbbed455adabb159f56c7fc4f400d6ab1fb43e00e21f0e0","result":"work/work.json","resultSha256":"0bfcf5ba0b68a90d8e438a96836a378cb1f5b4714ec01d45d67aa55a4a41079d"}
+START weather
+{"name":"weather","passed":true,"exitCode":0,"script":"docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-weather.cjs","scriptSha256":"e3bd8f4478439912e6bde511d04984235782ec8dc8f317f9c444c4f84247993b","result":"weather/weather.json","resultSha256":"effd0948ff883381c1fe232fadf49c858becf670117c6e8db435bc4438fb0194"}
+START matrix
+{"name":"matrix","passed":true,"exitCode":0,"script":"docs/technical-plans/assets/lighthouse-weather-step2-2026-10-21/check-matrix.cjs","scriptSha256":"eee19ce234bf2d2491f0f91cebacff0dc751d5c2b5865bf4dde0e19dbb9c016c","result":"matrix/matrix.json","resultSha256":"7fdfe8c680c27dd052cb8d3908b89490307840279f4a2fdce960322d31204038"}
+START regression
+{"name":"regression","passed":true,"exitCode":0,"script":"docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/suite-adapter.cjs","scriptSha256":"732904ffd2c15a02d41d76195f7c1756715278de157bea760c6377a8f2088647","result":"regression/regression.json","resultSha256":"bb11aacbba8df65f95d9e6fbbe5fcd3ab3c20bf97cf24ae83b0abd6bf7d30eea"}
+START recreate
+{"name":"recreate","passed":true,"exitCode":0,"script":"docs/technical-plans/assets/lighthouse-equipment-step5-2026-10-21/suite-adapter.cjs","scriptSha256":"732904ffd2c15a02d41d76195f7c1756715278de157bea760c6377a8f2088647","result":"recreate/recreate.json","resultSha256":"3e3aa515fe3f6183b828fef34c4956225f37b0c3908bb3bedd2358862292e495"}
+START release
+{"name":"release","passed":true,"exitCode":0,"script":"docs/technical-plans/assets/lighthouse-weather-step3-2026-10-21/check-release.cjs","scriptSha256":"f82fdc9a44c78f6f2808792bee22e5c169fb3e38322d552d7789537dd713f901","result":"release.json","resultSha256":"918b9b984aacdd9a70280626c9e4f10f141633698eea3b7381e35c2e866c92b3"}

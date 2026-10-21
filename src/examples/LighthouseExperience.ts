@@ -4,13 +4,13 @@ import type { LighthousePowerSnapshot, PowerCommand } from "./LighthousePower";
 
 /** The current player scope. Deferred simulations remain independently testable. */
 export const lighthouseMaintenanceAllowed = (location: string, command: MaintenanceCommand) =>
-  location === "lighthouse-solar-array" && (command === "inspect" || command === "clean");
+  location === "lighthouse-solar-array" && (command === "inspect" || command === "surface-test" || command === "clean");
 export const lighthousePowerAllowed = (location: string, command: PowerCommand) =>
   location === "lighthouse-battery-main" && command === "verify-main";
 
 export function lighthouseProgress(i: LighthouseInspectionSnapshot, m: LighthouseMaintenanceSnapshot, p: LighthousePowerSnapshot) {
   if (i.cleaning) return {kind: "cleaning", label: "擦拭中", fraction: i.cleaningSeconds / 1.5};
-  if (m.action) return {kind: m.action.command, label: m.action.command === "clean" ? "擦拭中" : "巡视中", fraction: m.action.elapsed / m.action.duration};
+  if (m.action) return {kind: m.action.command, label: m.action.command === "clean" ? "擦拭中" : m.action.command === "surface-test" ? "近距细查" : "巡视中", fraction: m.action.elapsed / m.action.duration};
   if (p.action) return {kind: p.action.command, label: "确认供电", fraction: p.action.elapsed / p.action.duration};
   // Time alone must not draw a complete ring before an actual turn and output are confirmed.
   if (!i.optic && i.observationSeconds > 0) return {kind: "observation", label: "观察灯具", fraction: Math.min(.97, i.observationSeconds / 10)};
@@ -32,8 +32,8 @@ export function lighthouseRecords(location: string, i: LighthouseInspectionSnaps
       result: weather ? e.result : labels[e.type][1] || (e.result.includes("盐膜") ? "发现盐膜，待清洁" : "表面洁净，已确认")};
   });
   if (all || location === "lighthouse-solar-array") m.evidence.filter(e => e.component === "solar" && !e.method.startsWith("开始")).forEach(e => rows.push({
-    day: e.day, hour: e.hour, object: "lighthouse-solar-array", action: e.method === "天气暴露污损" ? e.method : e.method === "维护到期" ? "例行清洁到期" : e.method === "中断" ? "巡视中断" : e.method === "擦拭完成" ? "清洁面板" : "巡视面板",
-    result: e.method === "天气暴露污损" ? e.result : e.method === "擦拭完成" ? "已清洁，待复查" : e.method === "维护到期" ? "请检查太阳能面板" : e.method === "中断" ? "设备保持原状" : e.result.includes("污损") ? "发现污损" : "面板洁净"
+    day: e.day, hour: e.hour, object: "lighthouse-solar-array", action: e.method === "维护到期" ? "例行清洁到期" : e.method === "中断" ? "巡视中断" : e.method === "擦拭完成" ? "清洁面板" : e.method,
+    result: e.result
   }));
   if (all || location === "lighthouse-battery-main") p.events.filter(e => ["main-protected", "verify-main"].includes(e.type)).forEach(e => rows.push({
     day: e.day, hour: e.hour, object: "lighthouse-battery-main", action: "供电检查", result: e.type === "main-protected" ? "电量偏低，自动保护" : "供电恢复，已确认"

@@ -1,0 +1,1813 @@
+Initial scene and audio ready
+{
+  "passed": true,
+  "scene": {
+    "sceneOwnedVehicleNodes": [
+      "coastal-scooter",
+      "scooter-steering"
+    ],
+    "sceneOwnedVehicleMeshes": [
+      "scooter-body",
+      "scooter-trim",
+      "scooter-front",
+      "scooter-headlight-lens",
+      "scooter-controls",
+      "scooter-rear-wheel",
+      "scooter-front-wheel",
+      "scooter-parking"
+    ],
+    "unownedNodes": [],
+    "metadata": {
+      "layoutVersion": "house-plan-v1",
+      "timeOfDay": {
+        "version": "coastal-day-night-v1",
+        "stage": 3,
+        "visualApplied": true,
+        "state": {
+          "hour": 12,
+          "periodHour": 12,
+          "periodName": "正午",
+          "sun": {
+            "kind": "sun",
+            "azimuth": 180,
+            "elevation": 65,
+            "strength": 1,
+            "color": [
+              1,
+              0.9301108583754237,
+              0.8069522576692516
+            ],
+            "sourceDirection": [
+              5.175581015019659e-17,
+              0.9063077870366499,
+              0.42261826174069944
+            ],
+            "lightDirection": [
+              -5.175581015019659e-17,
+              -0.9063077870366499,
+              -0.42261826174069944
+            ],
+            "intensity": 3.8,
+            "enabled": true
+          },
+          "moon": {
+            "kind": "moon",
+            "azimuth": 0,
+            "elevation": -60,
+            "strength": 0,
+            "color": [
+              0.5711248294648731,
+              0.6866853124353135,
+              0.8549926081242338
+            ],
+            "sourceDirection": [
+              0,
+              -0.8660254037844386,
+              -0.5000000000000001
+            ],
+            "lightDirection": [
+              0,
+              0.8660254037844386,
+              0.5000000000000001
+            ],
+            "intensity": 0,
+            "enabled": false
+          },
+          "primary": {
+            "kind": "sun",
+            "azimuth": 180,
+            "elevation": 65,
+            "strength": 1,
+            "color": [
+              1,
+              0.9301108583754237,
+              0.8069522576692516
+            ],
+            "sourceDirection": [
+              5.175581015019659e-17,
+              0.9063077870366499,
+              0.42261826174069944
+            ],
+            "lightDirection": [
+              -5.175581015019659e-17,
+              -0.9063077870366499,
+              -0.42261826174069944
+            ],
+            "intensity": 3.8,
+            "enabled": true
+          },
+          "sky": {
+            "zenith": [
+              0.08437621154414882,
+              0.27467731206038465,
+              0.5332764040105052
+            ],
+            "horizon": [
+              0.5840784178911641,
+              0.7304607400903537,
+              0.8069522576692516
+            ],
+            "cloudLight": [
+              0.9215818562772946,
+              0.9046611743911496,
+              0.8631572134541023
+            ],
+            "cloudShade": [
+              0.3762621229909065,
+              0.467783796112159,
+              0.5775804404296506
+            ],
+            "starVisibility": 0
+          },
+          "environment": {
+            "exterior": 1,
+            "interior": 1
+          }
+        },
+        "visualHour": 12,
+        "playback": {
+          "automatic": false,
+          "transitioning": false,
+          "targetHour": null
+        },
+        "pauseReasons": []
+      },
+      "lighthouseOperation": {
+        "version": "lighthouse-operation-v1",
+        "stage": 3,
+        "visualApplied": true,
+        "state": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 12,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "day-standby",
+          "running": false,
+          "available": true,
+          "detectedDemand": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0,
+          "rotationRadians": 0,
+          "automaticOperatingHours": 0,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "day-standby"
+            }
+          ]
+        },
+        "inspection": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "pending"
+          },
+          "completed": false,
+          "nextMaintenanceDay": 4,
+          "dirty": true,
+          "coverRevision": 0,
+          "transmission": 0.82,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "pending"
+              },
+              "completed": false
+            }
+          ],
+          "events": []
+        }
+      },
+      "exteriorVersion": "lighthouse-visual-c-v1",
+      "coastalSite": {
+        "version": "lighthouse-visual-c-v1",
+        "stage": "C",
+        "outdoorWalking": true,
+        "tower": {
+          "x": -125,
+          "y": 90,
+          "ground": 3,
+          "height": 20,
+          "radius": 3.4
+        },
+        "interiorStage": 3,
+        "routeLength": 194.070067021444
+      },
+      "scooter": {
+        "version": "coastal-scooter-v1",
+        "parking": [
+          {
+            "id": "home",
+            "label": "家门停车位",
+            "x": 14,
+            "y": 2.2,
+            "heading": 3.141592653589793
+          },
+          {
+            "id": "lookout",
+            "label": "观景点停车位",
+            "x": -71.3,
+            "y": 25.8,
+            "heading": -0.9
+          },
+          {
+            "id": "tower",
+            "label": "灯塔停车位",
+            "x": -122,
+            "y": 83.5,
+            "heading": -0.35
+          }
+        ]
+      },
+      "weather": {
+        "elapsedHours": 0.010791667,
+        "ticks": 0,
+        "remainderHours": 0.010791667,
+        "version": "lighthouse-weather-risk-v1",
+        "rules": [
+          {
+            "component": "cover",
+            "objectId": "lighthouse-optics-cleaning",
+            "remedy": "clean-cover",
+            "baseRatePerHour": 0.006,
+            "soilPerHour": 0.03,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null
+          },
+          {
+            "component": "solar",
+            "objectId": "lighthouse-solar-array",
+            "remedy": "clean-solar",
+            "baseRatePerHour": 0.004,
+            "soilPerHour": 0.02,
+            "minimumSoil": 0.15,
+            "seriousAfterHours": null,
+            "visibleAfterHours": 2
+          }
+        ],
+        "remedies": [
+          "clean-cover",
+          "clean-solar"
+        ],
+        "weather": {
+          "mode": "automatic",
+          "kind": "clear",
+          "from": "clear",
+          "phase": "holding",
+          "transition": 1,
+          "remainingHours": 4.072541666,
+          "solarMultiplier": 1,
+          "visibilityKm": 12,
+          "daylightMultiplier": 1,
+          "cloudCover": 0.2,
+          "rain": 0,
+          "exposureMultiplier": 1
+        },
+        "visibility": {
+          "required": false,
+          "recoveryHours": 0
+        },
+        "components": {
+          "cover": {
+            "revision": 1,
+            "soil": 0,
+            "conditionMultiplier": 1,
+            "treatmentAvailable": true
+          },
+          "solar": {
+            "revision": 0,
+            "soil": 0,
+            "conditionMultiplier": 1,
+            "treatmentAvailable": true
+          }
+        },
+        "problems": [
+          {
+            "id": "weather-problem-1",
+            "component": "cover",
+            "objectId": "lighthouse-optics-cleaning",
+            "revision": 1,
+            "createdHour": 0,
+            "stage": "degraded",
+            "origin": "existing",
+            "cause": {
+              "weather": "clear",
+              "ratePerHour": 0,
+              "weatherMultiplier": 1,
+              "conditionMultiplier": 1,
+              "soil": 0,
+              "probability": 0
+            }
+          }
+        ],
+        "events": [],
+        "seriousCooldownUntil": 0,
+        "random": {
+          "algorithm": "lcg32-streams-v1",
+          "seed": 1939047097,
+          "streams": {
+            "weather": {
+              "state": 2256868020,
+              "draws": 1
+            },
+            "equipment": {
+              "state": 3446349683,
+              "draws": 0
+            },
+            "inspection": {
+              "state": 3553155378,
+              "draws": 0
+            },
+            "forecast": {
+              "state": 2877101947,
+              "draws": 0
+            }
+          }
+        }
+      },
+      "lighthouseEquipment": {
+        "project": 2,
+        "step": 4,
+        "commissioned": true,
+        "state": {
+          "solarLatent": false,
+          "solarRecheck": false,
+          "nextSolarMaintenanceDay": 6,
+          "session": "normal",
+          "revision": {
+            "drive": 0,
+            "backup": 0,
+            "charger": 0,
+            "solar": 0,
+            "sensor": 0
+          },
+          "driveFault": false,
+          "chargerFault": false,
+          "solarDirty": false,
+          "sensorDirty": false,
+          "mainIsolated": false,
+          "chargeIsolated": false,
+          "override": false,
+          "trial": false,
+          "mainAvailable": true,
+          "detectedDemand": false,
+          "navigationRequired": false,
+          "forcedBackup": false,
+          "source": "none",
+          "backupOn": false,
+          "backupFlash": false,
+          "backupPhase": 0,
+          "backupConfirmed": false,
+          "mainVerified": false,
+          "selfTestSecondsRemaining": 0,
+          "chargerVerified": false,
+          "sensorVerified": false,
+          "inventory": {
+            "drive": 1,
+            "charger": 1
+          },
+          "trialObserved": 0,
+          "notice": "",
+          "evidence": [],
+          "resolved": false
+        },
+        "power": {
+          "mainWh": 2306.643954744186,
+          "backupWh": 96,
+          "mainFraction": 0.8009180398417313,
+          "backupFraction": 0.8,
+          "protected": false,
+          "recoveryReady": false,
+          "warning": false,
+          "mainAllowed": true,
+          "trialAllowed": true,
+          "backupAvailable": true,
+          "solarW": 250,
+          "generatorW": 0,
+          "generatorMainW": 0,
+          "generatorBackupW": 0,
+          "mainLoadW": 5,
+          "backupLoadW": 0,
+          "mainNetW": 245,
+          "backupNetW": 0,
+          "generatorRunning": false,
+          "fuel": 4,
+          "reserveFuel": 8,
+          "remainingHours": 4,
+          "revision": 0,
+          "notice": "",
+          "events": [],
+          "solarVerified": false,
+          "generatorVerified": false,
+          "exerciseComplete": false
+        },
+        "devices": [
+          {
+            "id": "lighthouse-drive-hatch",
+            "parent": "lighthouse-beacon-main",
+            "label": "主灯驱动检修口",
+            "state": "主灯停转",
+            "detail": "导航需求无 / 主灯实际停转熄灭；故障结论需隔离检测，维修后必须试机复验。"
+          },
+          {
+            "id": "lighthouse-beacon-backup",
+            "parent": "lighthouse-beacon-backup",
+            "label": "独立备用导航灯",
+            "state": "备用熄灭 · 待命",
+            "detail": "实际接替尚未现场复验；10秒周期 / 0.8秒亮 / 360度。自检记录独立，主备互锁。"
+          },
+          {
+            "id": "lighthouse-battery-main",
+            "parent": "lighthouse-power-system",
+            "label": "主电池配电柜",
+            "state": "主电池 80.1% · 2306.6Wh",
+            "detail": "净245.0W；主供电可用。备用独立96.0Wh。"
+          },
+          {
+            "id": "lighthouse-solar-charger",
+            "parent": "lighthouse-power-system",
+            "label": "太阳能充电控制器",
+            "state": "太阳能实际 250.0W",
+            "detail": "主电池净245.0W；太阳能支路接通。开启自动流转后以实际Wh变化采样，满电或负趋势不记回充通过。"
+          },
+          {
+            "id": "lighthouse-solar-array",
+            "parent": "lighthouse-power-system",
+            "label": "太阳能支架与面板",
+            "state": "太阳能实际 250.0W",
+            "detail": "主电池净245.0W；太阳能支路接通。开启自动流转后以实际Wh变化采样，满电或负趋势不记回充通过。"
+          },
+          {
+            "id": "lighthouse-generator",
+            "parent": "lighthouse-power-system",
+            "label": "柴油备用充电机组",
+            "state": "机组停止",
+            "detail": "输出0W（主0W/备用0W）；燃料4.00单位，约4.00场景小时；储备8.0单位。停机才能补给。"
+          },
+          {
+            "id": "lighthouse-generator-room",
+            "parent": "lighthouse-power-system",
+            "label": "塔外独立机房",
+            "state": "机组停止",
+            "detail": "输出0W（主0W/备用0W）；燃料4.00单位，约4.00场景小时；储备8.0单位。停机才能补给。"
+          },
+          {
+            "id": "lighthouse-light-sensor",
+            "parent": "lighthouse-beacon-main",
+            "label": "光敏检测保护面",
+            "state": "检测与日程一致",
+            "detail": "人工覆盖关闭；结论需现场观察、清洁后撤销覆盖并复测。夜间日程优先。"
+          }
+        ]
+      }
+    },
+    "meshes": 715,
+    "vertices": 575264,
+    "materials": 107,
+    "textures": 153,
+    "textureInventory": [
+      {
+        "name": "./environment/study-interior.hdr",
+        "size": [
+          128,
+          128
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "window-daylight_shadowMap",
+        "size": [
+          2048,
+          2048
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "reading-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "banker-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "SSAORandomTexture",
+        "size": [
+          128,
+          128
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "sceneprePassRT",
+        "size": [
+          1280,
+          800
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "data:EnvironmentBRDFTexture0",
+        "size": [
+          256,
+          256
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "ficus-leaf-veins",
+        "size": [
+          256,
+          512
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "paper-edges",
+        "size": [
+          128,
+          256
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "handled-wood",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_table_001/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "handled-brass",
+        "size": [
+          256,
+          256
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "cloth-book-covers",
+        "size": [
+          256,
+          256
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "handwritten-letter",
+        "size": [
+          512,
+          768
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./environment/coastal-daylight.hdr",
+        "size": [
+          128,
+          128
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/coastal/rock-color.jpg",
+        "size": [
+          2048,
+          2048
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/coastal/rock-normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/coastal/rock-arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/coastal/ground-color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/coastal/ground-normal.jpg",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/coastal/ground-arm.jpg",
+        "size": [
+          256,
+          256
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "lighthouse-original-records-and-signs",
+        "size": [
+          1024,
+          512
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "lighthouse-original-equipment-signs",
+        "size": [
+          256,
+          512
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "coastal-shore-distance-depth",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "coastal-afternoon-sun_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/painted_wall/color.png",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/painted_wall/normal.png",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/painted_wall/arm.png",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/color.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/normal.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/wood_floor/arm.jpg",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/pictures/pic1.jpg",
+        "size": [
+          550,
+          330
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/pictures/pic1.jpg",
+        "size": [
+          550,
+          330
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "woven-persian-rug",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/normal.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "./textures/study/rough_linen/arm.jpg",
+        "size": [
+          1024,
+          1026
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "living-window-daylight_shadowMap",
+        "size": [
+          2048,
+          2048
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "living-table-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "master-window-daylight_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "master-lamp-light_shadowMap",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "ensuite-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "bedroom-window-daylight_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "bedroom-lamp-light_shadowMap",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "kitchen-window-daylight_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "kitchen-lamp-light_shadowMap",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "bathroom-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "balcony-daylight_shadowMap",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "living-ceiling-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "master-ceiling-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "bedroom-ceiling-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "study-ceiling-lamp-light_shadowMap",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "ensuite-mirror-target-4616",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "bathroom-mirror-target-5105",
+        "size": [
+          512,
+          512
+        ],
+        "renderTarget": true
+      },
+      {
+        "name": "prePass_Color",
+        "size": [
+          1280,
+          800
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "prePass_Normal",
+        "size": [
+          1280,
+          800
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "prePass_Depth",
+        "size": [
+          1280,
+          800
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "sofa_03 (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "sofa_03 (Base Color)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "sofa_03 (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "sofa_03_fringe (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "sofa_03_fringe (Base Color)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "sofa_03_fringe (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "GothicCommode_01 (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "GothicCommode_01 (Base Color)",
+        "size": [
+          2048,
+          2048
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "GothicCommode_01 (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "modern_arm_chair_01_legs (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "modern_arm_chair_01_legs (Base Color)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "modern_arm_chair_01_legs (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "modern_arm_chair_01_pillow (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "modern_arm_chair_01_pillow (Base Color)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "modern_arm_chair_01_pillow (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "wooden_bookshelf_worn (Normal)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "wooden_bookshelf_worn (Base Color)",
+        "size": [
+          2048,
+          2048
+        ],
+        "renderTarget": false
+      },
+      {
+        "name": "wooden_bookshelf_worn (Metallic Roughness)",
+        "size": [
+          1024,
+          1024
+        ],
+        "renderTarget": false
+      }
+    ],
+    "lights": 22,
+    "cameras": 3,
+    "unowned": [],
+    "states": [
+      {
+        "id": "master",
+        "state": "ready"
+      },
+      {
+        "id": "study",
+        "state": "ready"
+      },
+      {
+        "id": "kitchen",
+        "state": "ready"
+      },
+      {
+        "id": "ensuite",
+        "state": "ready"
+      },
+      {
+        "id": "bathroom",
+        "state": "ready"
+      },
+      {
+        "id": "bedroom",
+        "state": "ready"
+      },
+      {
+        "id": "living",
+        "state": "ready"
+      },
+      {
+        "id": "balcony",
+        "state": "ready"
+      }
+    ],
+    "actions": [
+      "balcony-door",
+      "bathroom-door",
+      "bathroom-lamp",
+      "bedroom-ceiling-lamp",
+      "bedroom-door",
+      "bedroom-lamp",
+      "bedroom-window-curtains",
+      "cabinet-drawer-1",
+      "cabinet-drawer-2",
+      "cabinet-drawer-3",
+      "connecting-door",
+      "console-drawer-1",
+      "console-drawer-2",
+      "console-drawer-3",
+      "desk-lamp",
+      "desk-letter",
+      "ensuite-door",
+      "ensuite-lamp",
+      "ensuite-window-curtains",
+      "entry-door",
+      "floor-lamp",
+      "kitchen-door",
+      "kitchen-lamp",
+      "kitchen-window-curtains",
+      "lighthouse-battery-main",
+      "lighthouse-beacon-backup",
+      "lighthouse-beacon-main",
+      "lighthouse-control-panel",
+      "lighthouse-drive-hatch",
+      "lighthouse-entry-door",
+      "lighthouse-generator",
+      "lighthouse-generator-room",
+      "lighthouse-light-sensor",
+      "lighthouse-maintenance-log",
+      "lighthouse-optics-cleaning",
+      "lighthouse-solar-array",
+      "lighthouse-solar-charger",
+      "lighthouse-work-light",
+      "living-ceiling-lamp",
+      "living-lamp",
+      "living-window-curtains",
+      "master-ceiling-lamp",
+      "master-door",
+      "master-lamp",
+      "master-window-curtains",
+      "study-ceiling-lamp",
+      "study-window-curtains",
+      "writing-drawer-1",
+      "writing-drawer-2"
+    ]
+  },
+  "initialJsBytes": 3054848,
+  "release": {
+    "filesVerified": 495,
+    "bytes": 42502754,
+    "staticJsBytes": 2835996
+  }
+}

@@ -193,6 +193,9 @@
       #weather-mode { flex:1;min-height:36px;border:1px solid #cbbca6;border-radius:5px;color:#40392f;background:#f6f0e5; }
       #weather-current { margin:8px 0; }
       #weather-label { border-left:1px solid #cbbca6;padding-left:8px; }
+      #lighthouse-discovery {padding:12px 16px;border:1px solid #75826d;color:#e4e5cc;font-size:12px;line-height:1.75;}
+      #lighthouse-discovery p {margin:0;} #lighthouse-discovery-next {color:#cdd2bb;margin-top:8px !important;}
+      #lighthouse-discovery {grid-column:1 / -1;}
       #lighthouse-panel-weather {font-size:11px;line-height:1.7;margin:10px 0;color:#cdd2bb;}
       .time-auto label { display: flex; align-items: center; gap: 9px; min-height: 44px; font-size: 12px; cursor: pointer; }
       #time-automatic { width: 18px; height: 18px; accent-color: #73503d; }
@@ -357,12 +360,15 @@
           <div id="lighthouse-status-face"><span id="lighthouse-status-face-label"></span><span id="lighthouse-status-face-detail"></span></div>
           <p id="lighthouse-power-flow"></p>
           <p id="lighthouse-panel-guide" role="status"></p>
+          <aside id="lighthouse-discovery" aria-label="本次表面检查" hidden><p id="lighthouse-discovery-result"></p><p id="lighthouse-discovery-next"></p></aside>
           <div id="lighthouse-actions">
             <button class="lighthouse-action" id="lighthouse-test-toggle" hidden></button>
             <button class="lighthouse-action" id="lighthouse-confirm-control" hidden></button>
             <button class="lighthouse-action" id="lighthouse-cover-check" hidden></button>
             <button class="lighthouse-action" id="lighthouse-clean-start" hidden></button>
             <button class="lighthouse-action" id="lighthouse-solar-inspect" hidden></button>
+            <button class="lighthouse-action" id="lighthouse-solar-test" hidden></button>
+            <button class="lighthouse-action" id="lighthouse-solar-compare" hidden></button>
             <button class="lighthouse-action" id="lighthouse-solar-clean" hidden></button>
             <button class="lighthouse-action" id="lighthouse-power-restore" hidden></button>
           </div>
@@ -375,7 +381,7 @@
           <p class="lighthouse-paper-note">记录保留最近七日；在首层保存后，可从这里继续值守。</p>
         </section>
         <section id="lighthouse-save-controls" aria-label="值守存档" hidden>
-          <p class="lighthouse-paper-note">保存设备、时间与记录；天气仅保留在本次会话，继续后重新开始。</p>
+          <p class="lighthouse-paper-note">保存设备、时间与记录；天气仅保留在本次会话，继续后重新开始；线索访问也会重建，已存污损按可见状态恢复并需现场复查。</p>
           <div class="lighthouse-save-actions"><button id="lighthouse-save">保存值守</button><button id="lighthouse-continue" disabled>继续值守</button><button id="lighthouse-save-clear" hidden>清除异常存档</button></div>
           <p id="lighthouse-save-status" role="status"></p>
         </section>

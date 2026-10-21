@@ -41,7 +41,7 @@ export function advanceWeatherDuty(s: LighthouseWeatherDuty, frame: TimeOfDayAdv
   } else s.operation.advance(frame,visible);
   for (const problem of s.weather.snapshot.problems) if(!problem.origin) {
     if(problem.component==="cover")s.inspection.soilFromWeather(s.operation.snapshot);
-    if(problem.component==="solar")s.maintenance.soilFromWeather(s.operation.snapshot);
+    if(problem.component==="solar")s.maintenance.soilFromWeather(s.operation.snapshot,problem.stage==="latent");
   }
   synchronizeWeatherDuty(s);
 }

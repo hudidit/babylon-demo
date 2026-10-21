@@ -113,9 +113,9 @@ export class LighthouseEquipment {
   apply(state: LighthouseMaintenanceSnapshot, power?: LighthousePowerSnapshot) {
     if (this.disposed) return;
     this.backupMaterial.setFloat("flash", state.backupFlash ? 1 : 0);
-    const key = `${state.sensorDirty}:${state.solarDirty}:${state.mainIsolated}:${state.chargeIsolated}:${power?.generatorRunning}`;
+    const key = `${state.sensorDirty}:${state.solarDirty}:${state.solarLatent}:${state.mainIsolated}:${state.chargeIsolated}:${power?.generatorRunning}`;
     if (key === this.visualKey) return; this.visualKey = key;
-    for (const [id, dirty] of [["lighthouse-light-sensor", state.sensorDirty], ["lighthouse-solar-array", state.solarDirty],
+    for (const [id, dirty] of [["lighthouse-light-sensor", state.sensorDirty], ["lighthouse-solar-array", state.solarDirty && !state.solarLatent],
       ["lighthouse-drive-hatch", state.mainIsolated], ["lighthouse-solar-charger", state.chargeIsolated]] as const) {
       for (const mesh of this.device(id)!.meshes) {
         const color = dirty ? id === "lighthouse-solar-array" ? [1.6, 1.1, .46, 1] : [.65, .42, .16, 1] : [1, 1, 1, 1];

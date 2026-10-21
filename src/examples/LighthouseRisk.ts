@@ -16,12 +16,14 @@ export interface LighthouseRiskRule {
   readonly minimumSoil: number;
   /** Explicit latent stage before navigation can be affected; null never becomes serious. */
   readonly seriousAfterHours: number | null;
+  /** Surface-only warning stage; has an existing cleaning remedy and never disables navigation. */
+  readonly visibleAfterHours?: number;
 }
 export const LIGHTHOUSE_RISK_RULES: readonly LighthouseRiskRule[] = Object.freeze([
   Object.freeze({component: "cover", objectId: "lighthouse-optics-cleaning", remedy: "clean-cover", baseRatePerHour: .006,
     soilPerHour: .03, minimumSoil: .15, seriousAfterHours: null}),
   Object.freeze({component: "solar", objectId: "lighthouse-solar-array", remedy: "clean-solar", baseRatePerHour: .004,
-    soilPerHour: .02, minimumSoil: .15, seriousAfterHours: null}),
+    soilPerHour: .02, minimumSoil: .15, seriousAfterHours: null, visibleAfterHours: 2}),
 ]);
 export const LIGHTHOUSE_CURRENT_REMEDIES: readonly LighthouseRemedy[] = Object.freeze(["clean-cover", "clean-solar"]);
 export interface LighthouseProblem {
@@ -98,6 +100,7 @@ export class LighthouseWeatherRisk {
       if (!COMPONENTS.includes(rule.component) || rule.remedy !== REMEDY[rule.component] || !rule.objectId
         || !nonnegative(rule.baseRatePerHour) || !nonnegative(rule.soilPerHour)
         || !nonnegative(rule.minimumSoil) || rule.minimumSoil > 1
+        || rule.visibleAfterHours !== undefined && (!nonnegative(rule.visibleAfterHours) || rule.visibleAfterHours < 1 / 12 || rule.seriousAfterHours !== null)
         || rule.seriousAfterHours !== null && (!Number.isFinite(rule.seriousAfterHours) || rule.seriousAfterHours < 1 / 12))
         throw new RangeError("Invalid risk rule");
       return Object.freeze({...rule});
@@ -120,7 +123,7 @@ export class LighthouseWeatherRisk {
       events: Object.freeze([...this.events]), seriousCooldownUntil: this.seriousCooldownUntil,
       random: this.random.snapshot});
   }
-  /** Inspection/forecast consumers cannot perturb weather or equipment randomness. No discovery policy yet. */
+  /** Inspection/forecast consumers cannot perturb weather or equipment randomness. Discovery owns caching and only requests a draw for a new effective latent patrol. */
   drawInformation(stream: Extract<LighthouseRandomStream, "inspection" | "forecast">) {
     if (stream !== "inspection" && stream !== "forecast") throw new RangeError("Not an information stream");
     return this.random.next(stream);
@@ -217,6 +220,12 @@ export class LighthouseWeatherRisk {
       this.components[rule.component] = state;
       const problem = this.problems.find(problem => problem.component === rule.component);
       if (problem && this.remedies.includes(rule.remedy) && state.treatmentAvailable) {
+        if (problem.stage === "latent" && rule.visibleAfterHours !== undefined && hour - problem.createdHour >= rule.visibleAfterHours - 1e-9) {
+          const revised = Object.freeze({...problem, stage: "degraded" as const, revision: state.revision + 1});
+          this.components[rule.component] = Object.freeze({...state, revision: revised.revision});
+          this.problems = this.problems.map(p => p.id === problem.id ? revised : p);
+          this.log("escalated", rule.component, problem.id, hour);
+        }
         if (problem.stage === "latent" && rule.seriousAfterHours !== null && hour - problem.createdHour >= rule.seriousAfterHours - 1e-9
           && hour >= 24 && hour >= this.seriousCooldownUntil
           && !this.problems.some(problem => problem.stage === "serious")) {
@@ -240,7 +249,7 @@ export class LighthouseWeatherRisk {
       if (probability === 0 || this.random.next("equipment") >= probability) continue;
       const id = `weather-problem-${this.nextProblem++}`, revision = state.revision + 1;
       const created: LighthouseProblem = Object.freeze({id, component: rule.component, objectId: rule.objectId, revision,
-        createdHour: hour, stage: rule.seriousAfterHours === null ? "degraded" : "latent",
+        createdHour: hour, stage: rule.seriousAfterHours === null && rule.visibleAfterHours === undefined ? "degraded" : "latent",
         cause: Object.freeze({weather: weather.kind, ratePerHour: rate, weatherMultiplier: weather.exposureMultiplier,
           conditionMultiplier: state.conditionMultiplier, soil: state.soil, probability})});
       this.components[rule.component] = Object.freeze({...state, revision});
