@@ -96,7 +96,7 @@ test('low power blocks ordinary rest while a separate recharge wait uses real so
  assert.equal(plan(f.s).target,undefined);assert.match(plan(f.s).reason,/电量|供电/);
  const recovery=plan(f.s,true);assert.ok(recovery.target>0);const before=f.e.power.snapshot.mainWh,w=new Wait(f.s,f.bridge,recovery);
  while(w.batch(300));assert.equal(f.e.power.snapshot.recoveryReady,true);assert.ok(f.e.power.snapshot.mainWh>before);
- assert.match(w.reason,/回充/);assert.equal(f.e.power.snapshot.protected,true);assert.equal(plan(f.s,true).target,undefined);
+ assert.match(w.reason,/电量回升/);assert.equal(f.e.power.snapshot.protected,true);assert.equal(plan(f.s,true).target,undefined);
  assert.ok(f.e.power.snapshot.events.some(e=>/回升|20%/.test(e.result)));assert.equal(f.e.inspection.snapshot.optic,undefined);
 });
 test('unsafe outdoor work and unavailable navigation cannot be papered over with handover or safe-rest controls',()=>{
@@ -123,15 +123,15 @@ test('new story schedule and uncertainty checkpoints reject corrupt cross-model 
 test('recharge waiting stops for a newly protected main battery and a later loss of actual backup navigation',()=>{
  const f=fixture();f.to(5.5);f.e.power=new LighthousePower({mainWh:300,backupWh:1});f.sync();
  const first=new Wait(f.s,f.bridge,plan(f.s,true));while(first.batch(100));
- assert.equal(f.e.power.snapshot.protected,true);assert.equal(f.e.maintenance.snapshot.source,'backup');assert.match(first.reason,/新变化/);
+ assert.equal(f.e.power.snapshot.protected,true);assert.equal(f.e.maintenance.snapshot.source,'backup');assert.match(first.reason,/灯况或电量有变化/);
  const second=new Wait(f.s,f.bridge,plan(f.s,true));while(second.batch(100));
- assert.equal(f.e.maintenance.snapshot.navigationRequired,true);assert.equal(f.e.maintenance.snapshot.source,'none');assert.match(second.reason,/新变化/);
+ assert.equal(f.e.maintenance.snapshot.navigationRequired,true);assert.equal(f.e.maintenance.snapshot.source,'none');assert.match(second.reason,/灯况或电量有变化/);
  assert.ok(f.e.maintenance.snapshot.evidence.some(e=>e.method==='导航不可用'));assert.ok(plan(f.s,true).target>f.e.weather.acceptedAutomaticHours);
 });
 test('ordinary save services refuse a story schedule even though its inner equipment codec is shared',()=>{
  const {LighthouseSave,encodeLighthouseSave,LIGHTHOUSE_SAVE_KEY}=load('LighthouseSave'),f=fixture(),values=new Map();
  const storage={getItem:k=>values.get(k)??null,setItem:(k,v)=>values.set(k,v),removeItem:k=>values.delete(k)},normal=new LighthouseSave(()=>storage);
- assert.match(normal.save(f.e).message,/保存失败/);assert.equal(values.size,0);
+ assert.match(normal.save(f.e).message,/没存上/);assert.equal(values.size,0);
  const raw=encodeLighthouseSave(f.e);values.set(LIGHTHOUSE_SAVE_KEY,raw);assert.equal(normal.inspect().invalid,true);assert.equal(normal.load().session,undefined);
  assert.equal(values.get(LIGHTHOUSE_SAVE_KEY),raw);assert.equal(encode(decode(encode(f.s))),encode(f.s));
 });

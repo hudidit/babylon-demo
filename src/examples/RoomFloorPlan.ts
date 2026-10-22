@@ -80,7 +80,7 @@ export class RoomFloorPlan {
     document.querySelector<HTMLElement>("#house-map-notes")!.hidden = scope !== "house";
     document.querySelector<HTMLElement>("#coast-map-notes")!.hidden = scope !== "coast";
     document.querySelector("#floor-plan-title")!.textContent = scope === "house" ? "余晖小居 · 户型图" : "余晖小居 · 海岸路线";
-    document.querySelector("#map-caption-scope")!.textContent = scope === "house" ? "尺寸单位：米 · 全屋户型规划" : "尺寸单位：米 · 海岸步行路线";
+    document.querySelector("#map-caption-scope")!.textContent = scope === "house" ? "尺寸单位：米 · 房屋平面图" : "尺寸单位：米 · 海岸步行路线";
     document.querySelector("#floor-plan-drawing")!.setAttribute("aria-label", scope === "house" ? "全屋按比例户型图" : "房屋至灯塔海岸路线图");
     this.dialog.setAttribute("aria-describedby", scope === "house" ? "floor-plan-description" : "coast-plan-description");
     this.refresh();

@@ -46,7 +46,7 @@ test('a cached missed patrol, two-miss hint, deterministic deep check and logged
  assert.deepEqual(json(observe(s)),json(first));assert.deepEqual(json(s.weather.snapshot.random),random);
  // Binding the new scene without a location cannot make loading itself count as departure.
  for(let n=0;n<20;n++)sync(s,null);assert.equal(observe(s).visit,1);
- sync(s,[]);step(s,1/6,[]);sync(s,['solar']);const second=observe(s);assert.equal(second.status,'unseen');assert.match(second.next,/两次有效巡视/);s=decode(encode(s));sync(s,['solar']);assert.equal(observe(s).id,second.id);assert.equal(s.weather.snapshot.random.streams.inspection.draws,2);
+ sync(s,[]);step(s,1/6,[]);sync(s,['solar']);const second=observe(s);assert.equal(second.status,'unseen');assert.match(second.next,/看过两次.*拿不准/);s=decode(encode(s));sync(s,['solar']);assert.equal(observe(s).id,second.id);assert.equal(s.weather.snapshot.random.streams.inspection.draws,2);
  const act=command=>{assert.equal(s.maintenance.command(command,'lighthouse-solar-array','meter',s.operation,true),true);for(let i=0;i<(command==='surface-test'?51:21);i++)step(s,0,['solar'],.1);};
  act('inspect');const rows=s.maintenance.snapshot.evidence.filter(e=>e.method==='现场观察').length;s=decode(encode(s));sync(s,['solar']);act('inspect');assert.equal(s.maintenance.snapshot.evidence.filter(e=>e.method==='现场观察').length,rows);
  act('surface-test');assert.equal(s.discovery.view('solar').latest.status,'confirmed');assert.equal(s.weather.snapshot.random.streams.inspection.draws,2);
@@ -62,12 +62,12 @@ test('V1 migration is atomic and one-time; read-only inspection never creates a 
  for(let n=0;n<5;n++){assert.equal(slot.inspect().available,true);assert.equal(store.getItem(dutyKey),raw);}assert.equal(seeds,0);
  const first=slot.load();assert.ok(first.session);assert.equal(first.session.weather.snapshot.random.seed,0);assert.equal(first.session.inspection.snapshot.dirty,true);assert.equal(JSON.parse(store.getItem(dutyKey)).version,2);
  const upgraded=store.getItem(dutyKey);for(let n=0;n<5;n++)assert.deepEqual(json(slot.load().session.weather.exportState()),json(first.session.weather.exportState()));assert.equal(seeds,1);assert.equal(store.getItem(dutyKey),upgraded);
- const failStore={...store,getItem:()=>raw,setItem:()=>{throw new Error('quota');}},failed=new LighthouseSave(()=>failStore,'duty',()=>1);assert.equal(failed.load().session,undefined);assert.match(failed.load().status.message,/升级未能保存/);assert.equal(failStore.getItem(dutyKey),raw);
+ const failStore={...store,getItem:()=>raw,setItem:()=>{throw new Error('quota');}},failed=new LighthouseSave(()=>failStore,'duty',()=>1);assert.equal(failed.load().session,undefined);assert.match(failed.load().status.message,/升级后没能存上.*还没有载入/);assert.equal(failStore.getItem(dutyKey),raw);
 });
 test('normal and exercise slots are independent, reject cross-slot writes and reproduce boundary seeds',()=>{
  const store=memory(),duty=new LighthouseSave(()=>store),exercise=new LighthouseSave(()=>store,'exercise');const a=fixture(0,null,'duty'),b=fixture(0xffffffff,'storm');
  assert.equal(duty.save(a).available,true);const raw=store.getItem(dutyKey);assert.equal(exercise.save(b).available,true);assert.equal(store.getItem(dutyKey),raw);assert.equal(exercise.load().session.weather.snapshot.random.seed,0xffffffff);assert.equal(duty.load().session.weather.snapshot.random.seed,0);
- const before=store.getItem(exerciseKey);assert.match(exercise.save(a).message,/保存失败/);assert.equal(store.getItem(exerciseKey),before);
+ const before=store.getItem(exerciseKey);assert.match(exercise.save(a).message,/没存上/);assert.equal(store.getItem(exerciseKey),before);
  for(const seed of [0,0xffffffff]){const x=fixture(seed,null),y=fixture(seed,null);for(let n=0;n<150;n++){step(x,.031);step(y,.031);}assert.equal(encode(x),encode(y));}
 });
 test('corrupt, unsupported or contradictory V2 data is retained and cannot replace a live session',()=>{

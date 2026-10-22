@@ -80,11 +80,11 @@ test('unknown, corrupt and cross-model saves are retained and cannot replace the
 test('quota, denied reads, failed deletion, time selection and wrong-mode writes preserve old data and live state',()=>{
  const s=create('failure-safe',0),good=encode(s),before=s.story.exportState();let stored=good;
  const failing={getItem:()=>stored,setItem:()=>{throw new Error('quota');},removeItem:()=>{throw new Error('denied');}},slot=new LighthouseStorySave(()=>failing);
- assert.match(slot.save(s).message,/保存失败/);assert.equal(stored,good);assert.deepEqual(s.story.exportState(),before);
- const denied=new LighthouseStorySave(()=>{throw new Error('denied');});assert.equal(denied.load().session,undefined);assert.match(denied.save(s).message,/失败/);
- stored='unknown';assert.match(slot.clearInvalid().message,/保留/);assert.equal(stored,'unknown');
- const store=memory({[key]:good,[explorationKey]:'keep'}),safe=new LighthouseStorySave(()=>store);s.equipment.clock.transitionTo(21);assert.match(safe.save(s).message,/失败/);assert.equal(store.map.get(key),good);
- const wrong=create('wrong-mode',0);wrong.equipment.mode='exercise';assert.match(safe.save(wrong).message,/失败/);wrong.equipment.mode='duty';wrong.mode='duty';assert.match(safe.save(wrong).message,/失败/);
+ assert.match(slot.save(s).message,/没存上/);assert.equal(stored,good);assert.deepEqual(s.story.exportState(),before);
+ const denied=new LighthouseStorySave(()=>{throw new Error('denied');});assert.equal(denied.load().session,undefined);assert.match(denied.save(s).message,/没存上/);
+ stored='unknown';assert.match(slot.clearInvalid().message,/原数据还在/);assert.equal(stored,'unknown');
+ const store=memory({[key]:good,[explorationKey]:'keep'}),safe=new LighthouseStorySave(()=>store);s.equipment.clock.transitionTo(21);assert.match(safe.save(s).message,/没存上/);assert.equal(store.map.get(key),good);
+ const wrong=create('wrong-mode',0);wrong.equipment.mode='exercise';assert.match(safe.save(wrong).message,/没存上/);wrong.equipment.mode='duty';wrong.mode='duty';assert.match(safe.save(wrong).message,/没存上/);
  assert.equal(store.map.get(key),good);assert.equal(store.map.get(explorationKey),'keep');
  const corrupt=memory({[key]:'future',[explorationKey]:'keep'}),clear=new LighthouseStorySave(()=>corrupt);assert.equal(clear.clearInvalid().invalid,false);assert.equal(corrupt.map.has(key),false);assert.equal(corrupt.map.get(explorationKey),'keep');
 });

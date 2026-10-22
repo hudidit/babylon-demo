@@ -1,0 +1,22 @@
+AssertionError [ERR_ASSERTION]: 等待下一时段
+
+手头还有能做的事，先看看值守任务和设备记录。
+
+可以在这里等一会儿
+
+开始等待
+
+已等 23.02 小时（岛上时间） · 表面有新变化，先去看一眼。刚才等待的时间已经过去。
+
+false !== true
+
+    at waitOnce (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-copy-2026-10-22/check-chapters.cjs:46:60)
+    at async waitUntil (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-copy-2026-10-22/check-chapters.cjs:49:72)
+    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-copy-2026-10-22/check-chapters.cjs:88:20 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

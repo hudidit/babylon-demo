@@ -54,13 +54,13 @@ export class LighthouseDiscovery {
     else status = this.draw() < .35 + .45 * fact.severity ? "suspected" : "unseen";
     const misses = current.filter(e => e.method === "patrol" && e.status === "unseen").length + (status === "unseen" ? 1 : 0);
     const surface = target === "cover" ? "保护面" : "太阳能面板";
-    const result = status === "clear" ? `${surface}本次表面检查未见污损；不代表设备内部无故障。`
-      : status === "confirmed" ? `${surface}${fact.stage === "latent" ? "近距细查确认早期薄膜" : "确认可见污损"}，可清洁后独立复查。`
-      : status === "suspected" ? "表面反光有轻微差异，疑似薄膜；尚未确定原因。"
-      : "本次普通巡视未见明显异常，尚未排除细薄污膜。";
-    const next = status === "unseen" && misses >= 2 ? "两次有效巡视仍未排除疑点；请在面板旁保持看向表面，完成5秒近距细查。"
-      : status === "unseen" || status === "suspected" ? "可做5秒近距细查；重复普通巡视不会增加本次信息。"
-      : status === "confirmed" ? "使用清洁布，完成后另做一次表面复查。" : "表面已查；若输入仍偏低，请到首层对照天气、日照和读数。";
+    const result = status === "clear" ? `${surface}表面没看到污损。设备内部是否正常，还要另查。`
+      : status === "confirmed" ? `${surface}上${fact.stage === "latent" ? "有一层薄薄的污膜" : "看得见污损"}，擦净后再检查一遍。`
+      : status === "suspected" ? "这块反光有点不一样，像是有层薄膜，还没看准。"
+      : "这次巡视没看到明显污损，薄薄的污膜仍可能漏看。";
+    const next = status === "unseen" && misses >= 2 ? "已经看过两次，还是拿不准。靠近面板细看5秒，确认有没有污膜。"
+      : status === "unseen" || status === "suspected" ? "靠近面板细看5秒。再匆匆看一遍，还是很难判断。"
+      : status === "confirmed" ? "用布擦净，再回来检查一遍。" : "表面查过了。输入还低的话，到首层对照天气、日照和读数。";
     const entry: LighthouseClue = Object.freeze({id: this.nextId++, target, revision: fact.revision, problemId: fact.problemId,
       method, visit: visit.number, day, hour, status, result, next});
     const all = [...this.entries, entry], protectedEntries = new Set<LighthouseClue>();

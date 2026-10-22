@@ -1,0 +1,830 @@
+{
+  "baseline": "93974e4",
+  "method": "Final dist only, native controls and grounded local pose/ray fixtures. Wait runs its production batches; field work uses bounded original clock callbacks. No forged Wh, issues, observations or tasks; no full-walk/FPS claim.",
+  "cases": {
+    "displayCopyPreservesOriginalState": true,
+    "firstChapterNative": true,
+    "backgroundPausesWithoutCatchup": true,
+    "nativeWaitCancel": true,
+    "fogRealNavigationAndSurfaceTreatment": true,
+    "inputNoteAndPendingReplyRestore": true
+  },
+  "layouts": [
+    {
+      "name": "zhou-letter",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "story-letter-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "zhou-letter",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-letter-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "zhou-letter",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "story-letter-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "zhou-letter",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-letter-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "fog-task",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "fog-task",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "fog-task",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "fog-task",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "life-notes",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "life-notes",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "life-notes",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "life-notes",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        }
+      ]
+    }
+  ],
+  "screens": [
+    "zhou-letter-1280.jpg",
+    "zhou-letter-390.jpg",
+    "zhou-letter-844.jpg",
+    "zhou-letter-320.jpg",
+    "shore-arrival-reply-1280.jpg",
+    "fog-task-1280.jpg",
+    "fog-task-390.jpg",
+    "fog-task-844.jpg",
+    "fog-task-320.jpg",
+    "input-pending-1280.jpg",
+    "device-input-reading-1280.jpg",
+    "device-input-reading-390.jpg",
+    "device-input-reading-844.jpg",
+    "device-input-reading-320.jpg",
+    "input-report-ready-1280.jpg",
+    "life-notes-1280.jpg",
+    "life-notes-390.jpg",
+    "life-notes-844.jpg",
+    "life-notes-320.jpg"
+  ],
+  "errors": [],
+  "warnings": [],
+  "firstScreenJs": [
+    {
+      "path": "/js/main.js",
+      "bytes": 503267,
+      "sha256": "2315b40840c7b49202503b083b73ef0966bbfb0a41de0df805693821aa07932c"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2072,
+      "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "storyInteractionJs": [
+    {
+      "path": "/js/3690.js",
+      "bytes": 17411,
+      "sha256": "2d6ab52629518e0d9b3fdc61d526f4f122f7f6bff06b4e88fb2ba8214cdd3c18"
+    }
+  ],
+  "laterJs": [],
+  "manifestSha256": "6183fc3788be9f30d3b793958b25f55940080cfad4b88fc8421b2e9c0ab03a6e",
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26587815,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 93605,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2923445,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42641690
+  },
+  "storyChunk": {
+    "path": "js/3690.js",
+    "kind": "build",
+    "bytes": 17411,
+    "sha256": "2d6ab52629518e0d9b3fdc61d526f4f122f7f6bff06b4e88fb2ba8214cdd3c18"
+  },
+  "sources": {
+    "public/index.html": "5207e77929e816ae23d1d663ac0c051bfc9c21a75ca8673c77089d7de2df93bd",
+    "public/STUDY_ASSET_SOURCES.md": "20d5dde971bf591110f222c2df027b09df16563cf7a10c4d0e2db48fc85b0056",
+    "src/examples/Room.ts": "4e0fed931345a43493a121d557a43844503349af82c9923d9aba46bb3bbed456",
+    "src/examples/RoomInteractions.ts": "1b82fdd2ecc6e1f1f05690ed8aae84dd0d0f72691373f2919a6de18c5f135c1a",
+    "src/examples/RoomTimeOfDay.ts": "7aa86569a46abf4d21577f87ff9064b164f41df83a57d74439100664c2f6f7c7",
+    "src/examples/LighthouseStory.ts": "af0ad38533a04f2ea4c91ba513319122755742fe4754c025a2aac0821437b9a5",
+    "src/examples/LighthouseStorySave.ts": "e4abef84bd938bab2a937367bd37e9c4c7242411257bb4c6ed9f52206096271a",
+    "src/examples/LighthouseStoryBridge.ts": "4c09a58d7ec881cef3dccdf52a5039e39b02c75e61988f4140c2b1014dc26393",
+    "src/examples/LighthouseStoryPanel.ts": "2a758e56c4c5448907e0901c889d18c9ba1bd03857bc29002300c694378ab25a",
+    "src/examples/LighthouseStoryChapters.ts": "4eee24f89960c4191a4626486214c15070cb2fcf3b0c2114749d31d9b6b27b8f",
+    "src/examples/LighthouseStoryWait.ts": "7391fd9ecc44fc75d535fc3981e109b04ad4329098eb22f485b0fe7562d62f2b",
+    "src/examples/LighthouseRisk.ts": "49118557494a37743970d7033fd3f8a46fb9822d782f0a277e914d03bead2bc6",
+    "src/examples/LighthouseWeather.ts": "ccd1c9d1e441d82ba9dc56fb68deea1e3e08c4bb7724233b73734e59e10d29b3",
+    "src/examples/LighthouseWeatherSession.ts": "8961f27ea0bcf4181d6f2ffea3f7200a42cb12003a0d9dcac8dc4737169fe624",
+    "src/examples/LighthouseMaintenance.ts": "4f26943a01e798056ddc080249867151f3926699014a040ea97f18a940e3da9b",
+    "src/examples/LighthouseInspection.ts": "14cc332f7fbd2a69782aba8debdefc8b06736383cf2482ebc0b781f242dc6bd2",
+    "src/examples/LighthouseSave.ts": "de29d88554fc284794a352f2bb22f78203a20dcbfc18caffaa5e92d08ae8168b",
+    "src/examples/LighthouseBeam.ts": "c628ed1fb632d20f2cbcc551f7e452806bf94b3939030d477aa6a28aa293d083",
+    "tests/lighthouse-story-chapters.test.cjs": "a79de89fed6de5e2e287d009ed487b00ca66cbb3e5ca525557aec34c9b4cde95",
+    "tests/lighthouse-beacon.test.cjs": "1c5887370ba004fc4f0b85ae7f4ada83fc4623dfbc46d0e5f1f4ec928a97648e",
+    "tests/lighthouse-copy.test.cjs": "a44b6894a34733892753083bfcc623864214932c9eef0840aa4a88bb36e50927",
+    "src/examples/LighthousePanel.ts": "3f09ea5b6d35d0fd2890b9f78991b1f14894bf355c2019d0a58dc77869e09fb0",
+    "src/components/RoomTimeMenu.ts": "824e4f7ce8d1b5fdec50b64a26064e5b6bd2953819f7518df7252d342ac361f2",
+    "src/examples/RoomFloorPlan.ts": "381d23f2ae8f9cf8fff3a2349c5cb6a79a46e097f5dc82beebf39d23fd33ef6a",
+    "src/examples/LighthouseDiscovery.ts": "7a50a0d80b636b5e49a2d9900fe1990f02ce8b3087804952e1d221d8cd09986a"
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3142297,
+  "step": "native wait",
+  "storyInteractionBytes": 17411,
+  "waitStops": [
+    {
+      "at": 18,
+      "reason": "表面有新变化，先去看一眼。刚才等待的时间已经过去。",
+      "work": {
+        "phase": "solar",
+        "day": 2,
+        "kind": "solar",
+        "checks": [
+          {
+            "id": "fog",
+            "complete": false
+          },
+          {
+            "id": "cleaned",
+            "complete": false
+          },
+          {
+            "id": "recheck",
+            "complete": false
+          },
+          {
+            "id": "comparison",
+            "complete": false
+          }
+        ],
+        "knownIssues": [],
+        "issueLabels": [],
+        "canReport": false,
+        "canReview": false,
+        "canNote": false
+      }
+    },
+    {
+      "at": 18.5,
+      "reason": "时间到了，回现场看看吧。",
+      "work": {
+        "phase": "solar",
+        "day": 2,
+        "kind": "solar",
+        "checks": [
+          {
+            "id": "fog",
+            "complete": false
+          },
+          {
+            "id": "cleaned",
+            "complete": false
+          },
+          {
+            "id": "recheck",
+            "complete": false
+          },
+          {
+            "id": "comparison",
+            "complete": false
+          }
+        ],
+        "knownIssues": [],
+        "issueLabels": [],
+        "canReport": false,
+        "canReview": false,
+        "canNote": false
+      }
+    },
+    {
+      "at": 42.16666666666669,
+      "reason": "表面有新变化，先去看一眼。刚才等待的时间已经过去。",
+      "work": {
+        "phase": "handover",
+        "day": 3,
+        "kind": "handover",
+        "checks": [
+          {
+            "id": "storm",
+            "complete": false
+          },
+          {
+            "id": "control",
+            "complete": false
+          },
+          {
+            "id": "surface",
+            "complete": false
+          },
+          {
+            "id": "handover",
+            "complete": false
+          }
+        ],
+        "knownIssues": [],
+        "issueLabels": [],
+        "canReport": false,
+        "canReview": false,
+        "canNote": false
+      }
+    }
+  ],
+  "deviceLayouts": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false
+    }
+  ],
+  "failure": "AssertionError [ERR_ASSERTION]: 等待下一时段\n\n手头还有能做的事，先看看值守任务和设备记录。\n\n可以在这里等一会儿\n\n开始等待\n\n已等 23.02 小时（岛上时间） · 表面有新变化，先去看一眼。刚才等待的时间已经过去。\n\nfalse !== true\n\n    at waitOnce (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-copy-2026-10-22/check-chapters.cjs:46:60)\n    at async waitUntil (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-copy-2026-10-22/check-chapters.cjs:49:72)\n    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-copy-2026-10-22/check-chapters.cjs:88:20"
+}

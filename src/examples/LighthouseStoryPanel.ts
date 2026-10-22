@@ -8,10 +8,10 @@ type Actions = {close: (resume: boolean) => void; start: () => void; resume: () 
   save: () => void; leave: () => void; letter: () => void; accept: () => void; report: () => void;
   reply: () => void; read: (id: string) => void; clear: () => void; review:()=>void; note:()=>void;
   material:(id:StoryMaterial)=>void; diary:(choice:"three-days"|"familiar-path"|"blank")=>void; wait:()=>void; cancelWait:()=>void};
-const letter = "三天，工作不多。到塔里先看首层读数，再上去看转动和出光。保护面如果有盐膜，等白天停灯再擦，擦完记得再看一次。\n\n有些时候，中午也要确认灯亮着，遇到雾就明白了。屋里桌灯的开关在手边。三天后的中午，下一班跟接送艇一起过来。\n\n旧联络呼号还留在册子后面，现在接送都按岸站值班的正式通知走。\n\n周";
+const letter = "这三天，辛苦你照看灯站。到塔里先在首层读表，再上灯室看转动和出光。保护面容易起盐膜，要擦就等白天停灯以后。擦完别急着走，再看一遍。\n\n起雾的时候，中午也得亮灯。屋里台灯的开关就在手边，自己用着方便就好。满三天后的中午，接送艇过来，下一班也跟着来。\n\n册子后面还留着旧呼号。接送安排听岸站值班的，有变动他们会通知。\n\n周";
 
-const messageTitles: Record<string,string> = {"pickup-plan":"三天后的接送安排", "arrival-report":"你提交的接班报告", "arrival-ack":"岸站确认接班", "night-notice":"夜间导航提醒",
-  "transport-warning":"外海接送提醒", "pickup-cancelled":"接送航次取消", "solar-report":"输入变化报告", "solar-ack":"岸站收到复查记录", "old-call":"旧呼号来信", "source-check-reply":"正式来源核对"};
+const messageTitles: Record<string,string> = {"pickup-plan":"三天后的接送安排", "arrival-report":"发给岸站的接班报告", "arrival-ack":"岸站确认接班", "night-notice":"夜间导航提醒",
+  "transport-warning":"外海接送提醒", "pickup-cancelled":"接送航次取消", "solar-report":"面板检查报告", "solar-ack":"岸站收到复查记录", "handover-report":"给下一班的交接单", "stay-registration":"继续留站的登记", "source-check":"发给岸站的核对请求", "old-call":"旧呼号来信", "source-check-reply":"岸站的核对回复"};
 
 /** A field journal presents committed game state; changing pages never performs work or reads a message. */
 export class LighthouseStoryPanel {
@@ -111,9 +111,9 @@ export class LighthouseStoryPanel {
     const time=message.sentAt+12,hour=Math.floor(time%24),minute=Math.floor((time%1)*60+1e-7);
     this.text("story-message-meta",`${message.displaySource} / 第${Math.floor(time/24)+1}日 ${String(hour).padStart(2,"0")}:${String(minute).padStart(2,"0")} / ${message.state==="unread"?"未读":message.direction==="incoming"?"已读":"已发送"}`);
     const details=this.chapters?.storyReportDetails(this.view,id);
-    this.text("story-message-body",message.body+(details?"\n\n"+details:""));
-    const button=this.el<HTMLButtonElement>("story-message-read");button.hidden=message.direction!=="incoming";button.disabled=message.state!=="unread";
-    button.dataset.storyRead=id;button.textContent=message.state==="unread"?"读完并留档":"已读并留档";
+    this.text("story-message-body",(this.chapters?.storyMessageText(this.view,id)||"正在展开这条联络…")+(details?"\n\n"+details:""));
+    const button=this.el<HTMLButtonElement>("story-message-read");button.hidden=message.direction!=="incoming";button.disabled=message.state!=="unread"||!this.chapters;
+    button.dataset.storyRead=id;button.textContent=message.state==="unread"?"读完这条联络":"已读";
     this.el("story-message-empty").hidden=true;
     this.revealMessage();
   }
@@ -139,17 +139,17 @@ export class LighthouseStoryPanel {
     this.el("story-cover-clear").hidden=!status.invalid;
     this.text("story-cover-status",status.invalid||!status.available?status.message:"");
     this.el<HTMLButtonElement>("story-load").disabled=!status.available;this.el("story-clear").hidden=!status.invalid;
-    this.text("story-storage",status.message.startsWith("故事已保存")?"故事已保存。下次继续时，时间会先暂停。":status.message);
+    this.text("story-storage",status.message.startsWith("故事已保存")?"故事已保存。下次继续时，时间先暂停。":status.message);
     const objective=this.el<HTMLButtonElement>("story-objective");objective.hidden=!active;
-    this.text("story-objective-title",active?done?"交接准备已完成":view.objective.title:"");
-    this.text("story-objective-detail",active?done?"交接记录已留档":"值守任务 · J 打开值守簿":"");
-    objective.setAttribute("aria-label",active?`${done?"交接准备已完成":view.objective.title}，打开值守簿`:"值守簿");
+    this.text("story-objective-title",active?done?"交接单已收好":view.objective.title:"");
+    this.text("story-objective-detail",active?done?"等下一班上岛":"J 打开值守簿":"");
+    objective.setAttribute("aria-label",active?`${done?"交接单已收好":view.objective.title}，打开值守簿`:"值守簿");
     this.el("lighthouse-story-record").hidden=!active;
     if(!view)return;
     if(previous?.id!==view.id){this.selectedMessage=undefined;this.messageKey="";this.selectPage(view.tasks[0].status==="complete"?"duty":"letter");this.el("story-pages").scrollTop=0;}
     if(chapters&&wait)chapters.renderStoryChapter(this.document,view,work,canUseRecords,wait);
     else {
-      this.text("story-goal",view.objective.title);this.text("story-next","正在展开值守记录…");
+      this.text("story-goal",view.objective.title);this.text("story-next","正在翻开值守簿…");
       ["story-report","story-review","story-solar-note","story-checks","story-wait"].forEach(id=>this.el(id).hidden=true);
     }
     this.el("story-view-radio").hidden=!view.reports.length;
@@ -171,7 +171,7 @@ export class LighthouseStoryPanel {
     if(wait?.running)this.dialog.querySelectorAll<HTMLButtonElement>("button").forEach(button=>{
       if(button.id==="story-wait-cancel")return;this.waitDisabled.set(button,button.disabled);button.disabled=true;
     });
-    this.text("story-reading-state",wait?.running?"等待中，设备继续值守":"阅读时，值守暂停");
+    this.text("story-reading-state",wait?.running?"等待时，灯站照常运行":"阅读时，时间暂停");
     if(this.isOpen&&wait?.running&&this.document.activeElement!==this.el("story-wait-cancel"))this.el("story-wait-cancel").focus({preventScroll:true});
     else if(this.isOpen&&focused&&hadFocus&&(!focused.isConnected||!focused.getClientRects().length||(focused as HTMLButtonElement).disabled)) {
       const next=this.el("story-page-"+this.page).querySelector<HTMLElement>('button:not(:disabled):not([hidden])');

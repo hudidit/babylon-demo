@@ -83,7 +83,7 @@ test('malformed, unknown, excessive, inconsistent and future-revision saves neve
 test('storage denial, failed writes and time transitions leave the live session and previous data intact',()=>{
  const f=fixture(),before=serial(f),good=encode(f);let raw=good;
  const slot=new LighthouseSave(()=>({getItem:()=>raw,setItem:()=>{throw new Error('QuotaExceeded');},removeItem:()=>{throw new Error('Denied');}}));
- assert.match(slot.save(f).message,/保存失败/);assert.equal(raw,good);assert.deepEqual(serial(f),before);
- const blocked=new LighthouseSave(()=>{throw new Error('Denied');});assert.equal(blocked.inspect().available,false);assert.equal(blocked.load().session,undefined);assert.match(blocked.save(f).message,/保存失败/);
- const storage=memory(good),transition=new LighthouseSave(()=>storage);f.clock.transitionTo(21);assert.match(transition.save(f).message,/保存失败/);assert.equal(storage.raw,good);
+ assert.match(slot.save(f).message,/没存上/);assert.equal(raw,good);assert.deepEqual(serial(f),before);
+ const blocked=new LighthouseSave(()=>{throw new Error('Denied');});assert.equal(blocked.inspect().available,false);assert.equal(blocked.load().session,undefined);assert.match(blocked.save(f).message,/没存上/);
+ const storage=memory(good),transition=new LighthouseSave(()=>storage);f.clock.transitionTo(21);assert.match(transition.save(f).message,/没存上/);assert.equal(storage.raw,good);
 });

@@ -131,9 +131,9 @@ export class LighthouseMaintenance {
     this.powerMain = main; this.powerTrial = trial; this.powerCompleted=completed; this.setBackupAvailable(backup,op);
   }
   compareSolar(op: LighthouseOperationSnapshot, actualW: number, expectedW: number, recordReading = false) {
-    const result = expectedW < 5 ? "当前日照不足，无法从低输入判断表面；可近距细查，或待日照充足时再对照。"
-      : `当前输入${actualW.toFixed(1)}W，按日照与天气估算${expectedW.toFixed(1)}W；` + (actualW < expectedW * .95
-        ? "输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。" : "与当前环境大致相符，仍不能排除内部隐患。");
+    const result = expectedW < 5 ? "现在日照太弱，输入低不一定是面板脏。可以先细查表面，等阳光足了再对照读数。"
+      : `输入是${actualW.toFixed(1)} W，按现在的日照和天气，估计有${expectedW.toFixed(1)} W。` + (actualW < expectedW * .95
+        ? "比估算值低，先去细查面板。光看读数，还判断不了内部原因。" : "与当前天气大致相符，设备内部还不能凭这个下结论。");
     const last = this.evidence[this.evidence.length - 1];
     if (recordReading || last?.method !== "读数对照" || last.result !== result) this.log(op, "solar", "读数对照", result);
     this.notice = result; this.publish(op);
@@ -212,7 +212,7 @@ export class LighthouseMaintenance {
       if (reason) return this.reject(reason, state);
       const duration = command === "replace" ? 3 : command === "probe" || command === "verify-sensor" || command === "surface-test" ? LIGHTHOUSE_MAINTENANCE.probeSeconds : 2;
       this.action = Object.freeze({command, location, component: c, tool, revision: this.revision[c], elapsed: 0, duration, energyWh: 0});
-      this.notice = "返回场景后保持看向设备；走开、开界面或失焦会中断。";
+      this.notice = "回场景后，让准星对着设备。走开、打开界面或切走窗口都会停下。";
       this.log(state, c, "开始" + actionLabels[command], "开始现场操作，尚未提交或扣件。");
     }
     if (!this.action) this.notice = this.nextId > evidenceBefore ? this.evidence[this.evidence.length - 1].result : "状态保持，未重复执行或扣件。";
@@ -250,7 +250,7 @@ export class LighthouseMaintenance {
     }
     if (this.action) {
       const a = this.action, reason = this.guard(a.command, a.component, a.tool, state);
-      if (!sight.action || reason || a.revision !== this.revision[a.component]) this.cancel(state, reason || "距离、视线或设备修订变化，操作中断；未扣件。");
+      if (!sight.action || reason || a.revision !== this.revision[a.component]) this.cancel(state, reason || "走远、被挡住或设备状态改变了，操作已停下，备件未扣。");
       else {
         const elapsed = Math.min(a.duration, a.elapsed + dt), accepted = elapsed - a.elapsed;
         this.action = Object.freeze({...a, elapsed});
@@ -272,7 +272,7 @@ export class LighthouseMaintenance {
     }
     if (command === "clean") {
       if (tool !== "cloth") return "请使用清洁布；清洁不会修复损坏模块。";
-      if (this.inspection[c] !== this.revision[c]) return "请先确认当前保护面/面板的现场观察。";
+      if (this.inspection[c] !== this.revision[c]) return "先近距离看看现在的表面，再决定怎么清洁。";
       if (c === "sensor") return !this.sensorDirty ? "保护面已洁净，请撤销覆盖并复测。" : !this.override || lighthouseNavigationRequired(op.hour) ? "光敏清洁需在白天受控抑制检测需求，夜间日程优先。" : "";
       return c === "solar" ? this.solarDirty ? "" : "面板已洁净。" : "清洁只用于光敏保护面或太阳能表面，不能更换模块。";
     }
@@ -316,7 +316,7 @@ export class LighthouseMaintenance {
       if (c === "sensor") this.sensorDirty = false; else {this.solarDirty = false; this.solarLatent = false;}
       this.revision[c]++; this.inspection[c] = undefined;
       if (c === "solar") this.nextSolarMaintenanceDay = state.dutyDay + 5;
-      this.log(state, c, "擦拭完成", "污损已清除；旧观察为变化前记录，需现场复查。");
+      this.log(state, c, "擦拭完成", "污膜擦掉了，再查一遍是否擦净。上次检查的是擦拭前的表面。");
     } else if (a.command === "verify-sensor") {
       const pass = !this.sensorDirty && !this.override;
       if (pass) this.sensorProof = this.revision.sensor;

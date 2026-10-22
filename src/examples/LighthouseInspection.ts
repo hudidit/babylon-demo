@@ -80,7 +80,7 @@ export class LighthouseInspection {
   }
   invalidateMain(op: LighthouseOperationSnapshot) {
     this.control = this.optic = undefined; this.resetObservation();
-    this.record(op, "lighthouse-beacon-main", "system", "equipment-changed", "active-action", "驱动或供电隔离状态变化，旧读数/周期仅作历史；重新现场确认。");
+    this.record(op, "lighthouse-beacon-main", "system", "equipment-changed", "active-action", "驱动或供电状态变了，请重新读表、看灯。上次的结果留在记录里。");
     this.publish();
   }
   /** A deliberate new observation never copies the previous weather/period's cycle. */
@@ -159,7 +159,7 @@ export class LighthouseInspection {
           // Revalidate at commit, rather than treating elapsed time as permission to touch a running optic.
           if (LighthouseInspection.canClean(op) && sight.cover) {
             this.dirty = false; this.revision++; this.nextMaintenanceDay = op.dutyDay + LIGHTHOUSE_INSPECTION.maintenanceDays; this.cleaning = false; this.cleanSeconds = 0;
-            this.coverStatus = "awaiting-recheck"; this.notice = "擦拭完成。请再次查看保护面并复查。";
+            this.coverStatus = "awaiting-recheck"; this.notice = "擦完了，再看一遍保护面，确认擦净。";
             this.record(op, LIGHTHOUSE_INSPECTION.coverId, "action", "cover-cleaned", "active-action", "盐膜已清除，待复查", this.revision);
           }
         }
@@ -177,7 +177,7 @@ export class LighthouseInspection {
     if (this.seconds >= LIGHTHOUSE_INSPECTION.observationSeconds - EPS && this.turns >= 1 - EPS && this.outputSeen) {
       this.optic = this.evidence(op, `本次周期观察正常：连续观察${LIGHTHOUSE_INSPECTION.observationSeconds}秒、转台一圈及方向出光`);
       this.record(op, "lighthouse-beacon-main", "observation", "optic-observed", "direct-view", this.optic.result);
-      this.notice = "本次周期观察正常，已记录；此结果不代表全面检修。";
+      this.notice = "主灯转完一圈，转动和出光正常，已记下。这次只查了这两项。";
     }
     this.publish();
   }

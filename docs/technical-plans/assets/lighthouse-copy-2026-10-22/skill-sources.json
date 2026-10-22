@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-22",
+  "baseline": "93974e4",
+  "selected": [
+    {
+      "name": "humanizer-zh",
+      "repository": "op7418/Humanizer-zh",
+      "commit": "f4518a8eab97b8bfebc66a89d34320a89bef6930",
+      "license": "MIT",
+      "starsAtCheck": 20400,
+      "installedAt": "/Users/huzi/.codex/skills/humanizer-zh",
+      "use": "中文编辑；保留事实、条件与作者口吻，不作来源检测或游戏行业认证。",
+      "filesSha256": {
+        "SKILL.md": "95627fd4437d886f98032ccc62d79136e6310f1fc04e354bb86431795ff206df",
+        "LICENSE": "aa00e74769e1b9d8e7fa7094dbfcca9b129a0ded6dce1cf4da050b99146d2fa7"
+      }
+    },
+    {
+      "name": "ux-writing",
+      "repository": "content-designer/ux-writing-skill",
+      "commit": "98cacde4ba2dd10ed28df43a8d53eef1e321c539",
+      "license": "MIT",
+      "starsAtCheck": 245,
+      "installedAt": "/Users/huzi/.codex/skills/ux-writing",
+      "use": "界面操作/错误恢复/口吻表；不采用英文词数与理解率作为中文验收。",
+      "authorClaim": "README署名Christopher Greer并自述为Stripe Staff Content Designer；非Stripe官方背书。",
+      "filesSha256": {
+        "SKILL.md": "67dda2a5ba7e26f69860e1018a37068ca201735ff8ae98199c143138d91b4550",
+        "LICENSE": "6f3b004f129a7de55824bef23ca8fdde66adda81c5055bb6f357a4b769186a3b"
+      },
+      "installationNote": "上游下载包未带LICENSE，从同一固定提交补全原MIT许可。"
+    }
+  ],
+  "upstream": {
+    "repository": "blader/humanizer",
+    "commit": "8c307f367c91bd974002f10f2be2965d642c13df",
+    "license": "MIT",
+    "starsAtCheck": 59489,
+    "use": "交叉核对来源，实际应用Humanizer-zh。"
+  },
+  "copiedRuntimeContent": false
+}

@@ -12,15 +12,15 @@ function fixture(draw=()=>.99){let draws=0;const d=new LighthouseDiscovery(()=>{
 const inspect=(d,method='patrol')=>d.observe('solar',method,1,12);
 function revisit(d,h=1/6,f=facts()){d.synchronize(f,h-1/6,[]);d.synchronize(f,h,['solar']);}
 test('ordinary latent patrol caches one honest incomplete result across repeated reads, button presses and unchanged facts',()=>{
- const f=fixture(),a=inspect(f.d);assert.equal(a.status,'unseen');assert.match(a.result,/尚未排除/);
+ const f=fixture(),a=inspect(f.d);assert.equal(a.status,'unseen');assert.match(a.result,/仍可能漏看/);
  for(let i=0;i<100;i++){f.d.synchronize(facts({severity:.99}),0,['solar']);assert.equal(inspect(f.d),a);assert.equal(f.d.view('solar').latest,a);}
  assert.equal(f.draws(),1);assert.equal(f.d.view('solar').history.length,1);assert.equal(f.d.view('solar').visit,1);
 });
 test('obvious surfaces and deeper checks give definite scoped evidence without any inspection randomness',()=>{
  const f=fixture();assert.equal(f.d.observe('cover','patrol',1,12).status,'confirmed');
- const deep=inspect(f.d,'surface-test');assert.equal(deep.status,'confirmed');assert.match(deep.result,/早期薄膜/);assert.equal(f.draws(),0);
+ const deep=inspect(f.d,'surface-test');assert.equal(deep.status,'confirmed');assert.match(deep.result,/薄薄的污膜/);assert.equal(f.draws(),0);
  assert.equal(inspect(f.d).status,'confirmed');assert.equal(f.draws(),0);
- f.d.synchronize(facts({stage:'clear',revision:2,problemId:'clean-solar'}),0,['solar']);const clear=inspect(f.d,'surface-test');assert.equal(clear.status,'clear');assert.match(clear.result,/不代表设备内部无故障/);
+ f.d.synchronize(facts({stage:'clear',revision:2,problemId:'clean-solar'}),0,['solar']);const clear=inspect(f.d,'surface-test');assert.equal(clear.status,'clear');assert.match(clear.result,/设备内部是否正常.*另查/);
  assert.equal(f.d.view('solar').history.filter(e=>!e.valid).length,2);
 });
 test('initial latent discovery thresholds range from .35 to .8 with strict probability boundaries',()=>{
@@ -36,7 +36,7 @@ test('leaving the area requires ten continuous automatic scene minutes, and paus
  f.d.synchronize(facts(),.17,[]);f.d.synchronize(facts(),.17+1/6,['solar']);assert.equal(inspect(f.d).visit,2);assert.equal(f.draws(),2);
 });
 test('two effective misses point to a deterministic next method and existing suspicion is never erased by a later glance',()=>{
- const f=fixture();inspect(f.d);revisit(f.d);const second=inspect(f.d);assert.equal(second.status,'unseen');assert.match(second.next,/两次有效巡视.*5秒近距细查/);
+ const f=fixture();inspect(f.d);revisit(f.d);const second=inspect(f.d);assert.equal(second.status,'unseen');assert.match(second.next,/两次.*细看5秒/);
  assert.equal(inspect(f.d,'surface-test').status,'confirmed');assert.equal(f.draws(),2);
  const g=fixture(()=>0);assert.equal(inspect(g.d).status,'suspected');revisit(g.d);assert.equal(inspect(g.d).status,'suspected');assert.equal(g.draws(),1);
 });
@@ -92,9 +92,9 @@ test('real five-second detection enables only the corresponding cleaning transac
  f.maintenance.command('inspect','lighthouse-solar-array','meter',f.operation,true);f.step(20);assert.equal(f.d.view('solar').latest.status,'clear');assert.equal(f.maintenance.snapshot.solarRecheck,false);
 });
 test('cross checks use observed environment/input and V1 keeps honest wording without pretending to persist latent state',()=>{
- const f=duty();f.step(51);f.maintenance.compareSolar(f.operation.snapshot,85,100);assert.match(f.maintenance.snapshot.notice,/差额.*不能判断内部原因/);
- f.maintenance.compareSolar(f.operation.snapshot,0,0);assert.match(f.maintenance.snapshot.notice,/日照不足/);
+ const f=duty();f.step(51);f.maintenance.compareSolar(f.operation.snapshot,85,100);assert.match(f.maintenance.snapshot.notice,/比估算值低.*判断不了内部原因/);
+ f.maintenance.compareSolar(f.operation.snapshot,0,0);assert.match(f.maintenance.snapshot.notice,/日照太弱/);
  const restored=decodeLighthouseSave(encodeLighthouseSave({...f,weather:undefined}));assert.equal(restored.maintenance.snapshot.solarDirty,true);assert.equal(restored.maintenance.snapshot.solarLatent,false);
  assert.equal(restored.power.snapshot.mainWh,f.power.snapshot.mainWh);assert.equal(restored.clock.playback.automatic,false);
- const rows=load('LighthouseExperience').lighthouseRecords('log',restored.inspection.snapshot,restored.maintenance.snapshot,restored.power.snapshot);assert.ok(rows.some(r=>r.action==='读数对照'&&r.result.includes('日照不足')));
+ const rows=load('LighthouseExperience').lighthouseRecords('log',restored.inspection.snapshot,restored.maintenance.snapshot,restored.power.snapshot);assert.ok(rows.some(r=>r.action==='读数对照'&&r.result.includes('日照太弱')));
 });

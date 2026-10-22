@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <link rel="icon" href="data:," />
-    <title>余晖小居 · 书房与客厅</title>
+    <title>余晖小居 · 海角灯站</title>
     <style>
       * { box-sizing: border-box; }
       html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #242c2e; }
@@ -492,12 +492,12 @@
       </defs></svg>
       <header class="journal-header"><div class="journal-brand"><svg aria-hidden="true"><use href="#journal-beacon"/></svg><h2 id="story-title">灯站值守簿</h2></div><button id="story-return">返回场景<kbd>Esc</kbd></button></header>
       <section id="story-cover" aria-label="交班之前">
-        <div class="journal-cover-copy"><p class="journal-station">海角灯站 / 三天代班</p><h3 class="journal-cover-title">交班之前</h3><p class="journal-cover-lead">先熟悉这座岛，再照看今晚的灯。<br>你的第一班，从周师傅留下的一封信开始。</p>
-          <div class="journal-cover-actions"><button id="story-resume" class="journal-primary" hidden>返回本次故事<span aria-hidden="true">↗</span></button><button id="story-cover-continue" class="journal-primary" hidden>继续已保存故事<span aria-hidden="true">↗</span></button><button id="story-new">开始新故事<span aria-hidden="true">＋</span></button></div>
-          <p id="story-cover-status" class="journal-cover-caption" role="status"></p><button id="story-cover-clear" class="journal-quiet" hidden>清除不可用的故事存档</button><p class="journal-cover-caption">三章值守：接班 · 海雾 · 交接准备<br>阅读时暂停值守，随时可以返回岛上。</p>
+        <div class="journal-cover-copy"><p class="journal-station">海角灯站 / 三天代班</p><h3 class="journal-cover-title">交班之前</h3><p class="journal-cover-lead">先读周师傅留下的信。<br>这三天，灯站就交给你照看了。</p>
+          <div class="journal-cover-actions"><button id="story-resume" class="journal-primary" hidden>接着这次故事<span aria-hidden="true">↗</span></button><button id="story-cover-continue" class="journal-primary" hidden>从存档继续故事<span aria-hidden="true">↗</span></button><button id="story-new">开始新故事<span aria-hidden="true">＋</span></button></div>
+          <p id="story-cover-status" class="journal-cover-caption" role="status"></p><button id="story-cover-clear" class="journal-quiet" hidden>清除不可用的故事存档</button><p class="journal-cover-caption">接班、看灯、理好交接单。<br>阅读时暂停，合上簿子就能回岛上。</p>
         </div>
         <svg class="journal-cover-art" viewBox="0 0 320 390" aria-hidden="true"><path d="M22 312c37-19 54-10 91-24 29-11 59-8 79-19 25-14 55-7 103-26M19 327c54-11 74-9 100-19 31-12 54-9 84-24 24-12 53-6 92-23M18 345c47-15 81-5 113-20 34-15 50-7 78-22 23-11 59-7 88-20M35 364c42-14 62-2 100-15 40-15 62-13 83-23 19-9 42-10 65-15"/><path class="beacon-line" d="M134 273l13-121h40l14 121M124 277h87M143 153v-24h47v24M139 129l28-22 28 22M141 154h53M149 166h37M151 194h37M149 225h42M159 273v-27h18v27M168 107V92M147 141h42"/><path d="M143 136L33 70v153l110-76M191 136l105-65v151l-105-75M167 61v15M167 24v15M94 60l10 13M241 60l-10 13M116 101l-12-8M217 101l12-8"/><circle cx="167" cy="141" r="90" stroke-dasharray="2 6"/><path d="M56 290l10-16h35l9 13M65 275v20h37v-20M82 294v-12h7v12M110 288c28-12 20 2 31-2"/></svg>
-        <section id="story-new-prompt" class="journal-confirm" hidden aria-label="开始新故事确认"><h3>接下这三天值守？</h3><p id="story-new-warning">故事从第一日正午开始。下次保存会替换原故事存档，探索与演练进度各自保留。</p><div class="journal-action-row"><button id="story-new-confirm" class="journal-primary">从接班信开始</button><button id="story-new-cancel">再想一想</button></div></section>
+        <section id="story-new-prompt" class="journal-confirm" hidden aria-label="开始新故事确认"><h3>接下这三天值守？</h3><p id="story-new-warning">从第一日正午重新接班。下次保存会覆盖原来的故事存档，探索和演练的存档会保留。</p><div class="journal-action-row"><button id="story-new-confirm" class="journal-primary">从接班信开始</button><button id="story-new-cancel">再想一想</button></div></section>
       </section>
       <div id="story-active" hidden>
         <nav class="journal-tabs" role="tablist" aria-label="值守簿分页" aria-orientation="vertical">
@@ -506,17 +506,17 @@
           <button id="story-tab-radio" class="journal-tab" role="tab" data-story-page="radio" aria-controls="story-page-radio" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#journal-radio"/></svg><span class="journal-tab-label">岸站联络</span><span id="story-unread" hidden></span></button>
           <button id="story-tab-life" class="journal-tab" role="tab" data-story-page="life" aria-controls="story-page-life" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#journal-letter"/></svg><span class="journal-tab-label">生活记录</span></button>
           <button id="story-tab-save" class="journal-tab" role="tab" data-story-page="save" aria-controls="story-page-save" aria-selected="false" tabindex="-1" aria-label="保存与离开"><svg aria-hidden="true"><use href="#journal-save"/></svg><span class="journal-tab-label">保存</span></button>
-          <p class="journal-tab-foot">海角灯站<br>三天的值守记录</p>
+          <p class="journal-tab-foot">海角灯站<br>这一班的值守记录</p>
         </nav>
         <div id="story-pages">
-          <section id="story-page-duty" class="journal-page" role="tabpanel" aria-labelledby="story-tab-duty" tabindex="0"><p id="story-chapter"></p><h3 id="story-goal"></h3><ol id="story-steps" class="journal-steps" aria-label="当前章节进度"></ol><p id="story-next"></p><ul id="story-checks"></ul><p id="story-report-summary"></p><div class="journal-action-row"><button id="story-view-letter" class="journal-primary">阅读交接信</button><button id="story-report" class="journal-primary">提交接班报告</button><button id="story-review" class="journal-primary" hidden>整理风雨工作安排</button><button id="story-solar-note" hidden>先记下待查结论</button><button id="story-view-radio">打开岸站联络</button></div><p id="story-report-hint"></p><section id="story-wait" class="journal-wait-card" aria-labelledby="story-wait-title" hidden><h4 id="story-wait-title">等待下一时段</h4><p id="story-wait-detail"></p><p id="story-wait-place"></p><div class="journal-action-row"><button id="story-wait-start">开始等待</button><button id="story-wait-cancel" hidden>停止等待</button></div><p id="story-wait-progress" role="status" aria-live="polite"></p></section></section>
-          <section id="story-page-letter" class="journal-page" role="tabpanel" aria-labelledby="story-tab-letter" tabindex="0" hidden><div class="journal-page-head"><h3>周师傅的交接信</h3><p>交接材料 / 可重读</p></div><div class="journal-letter"><p id="story-letter-text"></p><span id="story-letter-stamp">待读</span></div><div class="journal-letter-actions"><button id="story-letter-read">读完交接信</button><button id="story-accept" class="journal-primary">接下三天值守</button></div></section>
-          <section id="story-page-radio" class="journal-page" role="tabpanel" aria-labelledby="story-tab-radio" tabindex="0" hidden><div class="journal-page-head"><div class="journal-radio-heading"><svg aria-hidden="true"><use href="#journal-radio"/></svg><h3>岸站联络</h3></div><p>原文与时间留档</p></div><button id="story-reply" class="journal-primary" hidden>接收岸站回复</button><div class="journal-correspondence"><div id="story-messages" aria-label="联络列表"></div><article id="story-message-reader" aria-labelledby="story-message-title"><h4 id="story-message-title"></h4><p id="story-message-meta"></p><p id="story-message-body"></p><button id="story-message-read">阅读这条联络</button><p id="story-message-empty" hidden>暂未收到联络。先完成当前值守任务。</p></article></div></section>
+          <section id="story-page-duty" class="journal-page" role="tabpanel" aria-labelledby="story-tab-duty" tabindex="0"><p id="story-chapter"></p><h3 id="story-goal"></h3><ol id="story-steps" class="journal-steps" aria-label="当前章节进度"></ol><p id="story-next"></p><ul id="story-checks"></ul><p id="story-report-summary"></p><div class="journal-action-row"><button id="story-view-letter" class="journal-primary">阅读交接信</button><button id="story-report" class="journal-primary">发出接班报告</button><button id="story-review" class="journal-primary" hidden>记下雨天的工作安排</button><button id="story-solar-note" hidden>先记下疑点</button><button id="story-view-radio">打开岸站联络</button></div><p id="story-report-hint"></p><section id="story-wait" class="journal-wait-card" aria-labelledby="story-wait-title" hidden><h4 id="story-wait-title">等待下一时段</h4><p id="story-wait-detail"></p><p id="story-wait-place"></p><div class="journal-action-row"><button id="story-wait-start">开始等待</button><button id="story-wait-cancel" hidden>停止等待</button></div><p id="story-wait-progress" role="status" aria-live="polite"></p></section></section>
+          <section id="story-page-letter" class="journal-page" role="tabpanel" aria-labelledby="story-tab-letter" tabindex="0" hidden><div class="journal-page-head"><h3>周师傅的交接信</h3><p>周师傅留在桌上的信</p></div><div class="journal-letter"><p id="story-letter-text"></p><span id="story-letter-stamp">待读</span></div><div class="journal-letter-actions"><button id="story-letter-read">读完交接信</button><button id="story-accept" class="journal-primary">接下三天值守</button></div></section>
+          <section id="story-page-radio" class="journal-page" role="tabpanel" aria-labelledby="story-tab-radio" tabindex="0" hidden><div class="journal-page-head"><div class="journal-radio-heading"><svg aria-hidden="true"><use href="#journal-radio"/></svg><h3>岸站联络</h3></div><p>来往消息 · 按发送时间记录</p></div><button id="story-reply" class="journal-primary" hidden>接收岸站回复</button><div class="journal-correspondence"><div id="story-messages" aria-label="联络列表"></div><article id="story-message-reader" aria-labelledby="story-message-title"><h4 id="story-message-title"></h4><p id="story-message-meta"></p><p id="story-message-body"></p><button id="story-message-read">阅读这条联络</button><p id="story-message-empty" hidden>还没有新消息，先忙手头的事吧。</p></article></div></section>
           <section id="story-page-life" class="journal-page" role="tabpanel" aria-labelledby="story-tab-life" tabindex="0" hidden><div class="journal-page-head"><h3>岛上的几页纸</h3><p>可选 · 留给自己</p></div><p id="story-life-empty" class="journal-save-note"></p><div id="story-life-materials"></div><section id="story-diary" hidden><h4>离站前，留一句话</h4><p id="story-diary-result"></p><div class="journal-action-row"><button data-story-diary="three-days">我以为三天会很快</button><button data-story-diary="familiar-path">现在不用看地图了</button><button data-story-diary="blank">这一页留白</button></div></section></section>
-          <section id="story-page-save" class="journal-page" role="tabpanel" aria-labelledby="story-tab-save" tabindex="0" hidden><div class="journal-page-head"><h3>保存与离开</h3><p>故事记录独立保管</p></div><div class="journal-save-record"><h4 id="story-save-title">本次值守</h4><p id="story-save-detail"></p></div><div class="journal-action-row"><button id="story-save" class="journal-primary">保存故事</button><button id="story-load">继续已保存故事</button></div><p id="story-storage" role="status"></p><button id="story-clear" class="journal-danger" hidden>清除不可用的故事存档</button><p class="journal-save-note">离开前请保存。再次继续时，时间会先暂停。<br>返回探索会恢复本页面的探索进度；探索记录需单独保存。</p><button id="story-leave">保存故事并返回探索</button></section>
+          <section id="story-page-save" class="journal-page" role="tabpanel" aria-labelledby="story-tab-save" tabindex="0" hidden><div class="journal-page-head"><h3>保存与离开</h3><p>故事进度单独保存</p></div><div class="journal-save-record"><h4 id="story-save-title">本次值守</h4><p id="story-save-detail"></p></div><div class="journal-action-row"><button id="story-save" class="journal-primary">保存故事</button><button id="story-load">从存档继续故事</button></div><p id="story-storage" role="status"></p><button id="story-clear" class="journal-danger" hidden>清除不可用的故事存档</button><p class="journal-save-note">离开前记得保存。下次继续时，时间先暂停。<br>返回探索后，会接上本页面原来的探索进度；探索需要另存。</p><button id="story-leave">保存故事并返回探索</button></section>
         </div>
       </div>
-      <footer class="journal-footer"><span id="story-reading-state">阅读时，值守暂停</span><p id="story-notice" role="status" aria-live="polite"></p><span class="journal-key-help">Tab 选择 · Enter 确认</span></footer>
+      <footer class="journal-footer"><span id="story-reading-state">阅读时，时间暂停</span><p id="story-notice" role="status" aria-live="polite"></p><span class="journal-key-help">Tab 选择 · Enter 确认</span></footer>
     </dialog>
     <section id="settings-menu" class="settings-panel" aria-labelledby="settings-title" hidden>
       <div class="settings-header">
@@ -610,40 +610,40 @@
     <button id="floor-plan-toggle" aria-label="查看全屋户型图，快捷键 M" aria-haspopup="dialog" aria-expanded="false" aria-controls="floor-plan-dialog" aria-keyshortcuts="M">
       <span class="map-mini-heading"><span id="map-mini-title">全屋地图</span><span aria-hidden="true">↗</span></span>
       <span id="floor-plan-mini" aria-hidden="true"></span>
-      <span class="map-mini-footer"><span id="floor-plan-location">全屋布局</span><span><kbd>M</kbd> 展开</span></span>
+      <span class="map-mini-footer"><span id="floor-plan-location">房屋布局</span><span><kbd>M</kbd> 展开</span></span>
     </button>
     <dialog id="floor-plan-dialog" aria-labelledby="floor-plan-title" aria-describedby="floor-plan-description">
       <div class="map-sheet">
         <header class="map-heading"><div><p>THE AFTERNOON HOME / FLOOR PLAN</p><h2 id="floor-plan-title">余晖小居 · 户型图</h2></div><button id="floor-plan-return" autofocus>返回场景<span>ESC</span></button></header>
         <div class="map-scopes" role="group" aria-label="地图范围"><button id="map-scope-house" aria-pressed="true">房屋</button><button id="map-scope-coast" aria-pressed="false">海岸</button></div>
-        <div class="map-body" tabindex="0" role="region" aria-label="户型与布局说明，可滚动查看">
+        <div class="map-body" tabindex="0" role="region" aria-label="户型与屋内怎么走，可滚动查看">
           <figure id="floor-plan-drawing" aria-label="全屋按比例户型图"></figure>
           <aside class="map-notes" id="house-map-notes">
-            <h3>布局说明</h3>
-            <p id="floor-plan-description">入户直接进入客厅，通往小书房、厨房和两间卧室，连接南侧阳台。地图按实景北向俯视显示，左右与房屋一致；起居与通行动线开放相连。</p>
+            <h3>屋内怎么走</h3>
+            <p id="floor-plan-description">进门是客厅，书房、厨房和两间卧室都从这里走。南边通阳台。地图上方为北，与岛上的方向一致。</p>
             <div class="map-legend" aria-label="地图图例">
-              <div><i aria-hidden="true"></i><span>已有内容 · 全屋八个房间</span></div>
-              <div><i class="legend-planned" aria-hidden="true"></i><span>加载状态 · 失败时保留基础结构</span></div>
-              <div><i class="legend-position" aria-hidden="true"></i><span>位置与朝向 · 漫游时显示</span></div>
-              <div><i class="legend-door" aria-hidden="true"></i><span>门 / 通口 · 与实景对应</span></div>
+              <div><i aria-hidden="true"></i><span>屋内共八个房间</span></div>
+              <div><i class="legend-planned" aria-hidden="true"></i><span>房间加载情况</span></div>
+              <div><i class="legend-position" aria-hidden="true"></i><span>你的位置和朝向</span></div>
+              <div><i class="legend-door" aria-hidden="true"></i><span>门和通道</span></div>
             </div>
-            <dl class="map-area"><dt>规划地面面积（含阳台）</dt><dd><span id="floor-plan-area"></span> <small>m²</small></dd></dl>
-            <p>主卧扩大至25.9 m²，书房调整为10.2 m²。主卫由主卧独享；公卫位于主卧外，从客厅进入。</p>
+            <dl class="map-area"><dt>地面面积（含阳台）</dt><dd><span id="floor-plan-area"></span> <small>m²</small></dd></dl>
+            <p>主卧有独立卫生间。客厅旁另有一间公用卫生间。房间尺寸列在下面。</p>
             <section class="map-room-schedule" aria-label="房间尺寸清单"><h3>房间尺寸</h3><dl id="floor-plan-room-sizes"></dl></section>
-            <p class="map-disclaimer">标注为墙中心线尺寸，未扣墙厚，阳台按完整地面面积计入。全屋八房已布置；打开东侧入户门，可沿海岸步道走到灯塔。</p>
+            <p class="map-disclaimer">尺寸按墙中心线计算，含墙厚；阳台计完整地面面积。打开东侧家门，就能沿海岸步道走到灯塔。</p>
           </aside>
           <aside class="map-notes" id="coast-map-notes" hidden>
             <h3>走向海角的灯塔</h3>
             <div id="lighthouse-levels" style="max-width:360px;margin:16px auto"></div>
-            <p id="coast-plan-description">从东侧家门绕过屋后，沿崖顶步道经过观景点，抵达西南岬角的灯塔。可在家门停车位骑上小电驴，地图车标用于寻车。地图与三维北向俯视的左右一致。</p>
+            <p id="coast-plan-description">出东侧家门，绕过屋后，沿崖顶步道经过观景点，就到海角的灯塔。家门旁的小电驴可以骑，停在哪儿，地图上就标在哪儿。上方为北。</p>
             <dl class="map-area" style="margin-top:24px"><dt>家门至灯塔路线</dt><dd><span id="coast-route-length"></span> <small>m</small></dd></dl>
-            <p>灯塔高20米，距阳台约155米。途中可看海、回望房屋，塔前留有绕行与观景空间。塔后平台设有独立机房与太阳能架，首层右侧为电池配电柜；可近距点击设备或铭牌查看用途与投运状态。</p>
+            <p>塔高20米，距阳台约155米。塔后平台有机房和太阳能面板，电池柜在塔内首层右侧。走近设备或铭牌，点击就能查看。</p>
             <button id="coast-preview">查看岛屿远景</button>
             <button id="coast-return-home">回到家门</button>
-            <p class="map-disclaimer">可沿步道往返、绕塔与途中停留，虚线对应护栏内的探索范围。灯塔两层已开放：首层配电面板的小开关控制工作照明，工作台后夹板可查看维护记录；首层直达顶部灯室，灯具日间待机。靠近垂直梯按 E / 左键抓梯，W/↑上爬、S/↓下爬，每层自动停稳；按 E 离梯，或松开后重新按上下键继续。顶层东南侧通往观景外廊，小电驴请停在塔外。</p>
+            <p class="map-disclaimer">虚线内是这次能走动的灯站生活区，接送用的工作码头在图外。塔内首层可以读表、翻记录；靠梯按 E 或左键抓梯，W/↑上爬、S/↓下爬，到层按 E 离梯，松键可停住。顶层是灯室，东南侧通外廊。小电驴停在塔外。</p>
           </aside>
         </div>
-        <footer class="map-caption"><span id="map-caption-scope">尺寸单位：米 · 全屋户型规划</span><span>拖动与移动已暂停 · 返回继续探索</span></footer>
+        <footer class="map-caption"><span id="map-caption-scope">尺寸单位：米 · 房屋平面图</span><span>拖动与移动已暂停 · 返回继续探索</span></footer>
       </div>
     </dialog>
     <div class="scene-controls">
@@ -663,7 +663,7 @@
           </div>
           <div class="time-auto"><label><input id="time-automatic" type="checkbox" checked aria-describedby="time-auto-description" />自动流转</label><p id="time-auto-description">一天约 24 分钟 · 展开菜单时暂停</p><p id="time-current">当前 12:00 · 自动流转中</p></div>
           <div class="weather-controls">
-            <label for="lighthouse-session-mode">会话<select id="lighthouse-session-mode"><option value="duty">正常值守</option><option value="exercise">独立演练</option><option value="story" disabled>故事 · 第一章</option></select></label>
+            <label for="lighthouse-session-mode">模式<select id="lighthouse-session-mode"><option value="duty">正常值守</option><option value="exercise">独立演练</option><option value="story" disabled>故事值守</option></select></label>
             <p id="lighthouse-session-current"></p>
             <label for="weather-mode">天气<select id="weather-mode"><option value="automatic">自动变化</option><option value="clear">固定晴朗</option><option value="overcast">固定阴天</option><option value="fog">固定海雾</option><option value="storm">固定风雨</option></select></label><p id="weather-current"></p>
             <label for="lighthouse-exercise-seed">场景编号<input id="lighthouse-exercise-seed" type="text" inputmode="numeric" value="20261022" maxlength="10" /></label>

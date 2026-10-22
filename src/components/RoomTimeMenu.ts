@@ -58,7 +58,7 @@ export class RoomTimeMenu {
       sessionMode.disabled = weatherSelect.disabled = seed.disabled = story;
       document.querySelector<HTMLButtonElement>("#lighthouse-exercise-restart")!.disabled = story;
       options.forEach(button => button.disabled = story);
-      document.querySelector("#lighthouse-session-current")!.textContent=story ? "故事 · 时间天气随值守推进；切换请打开故事与联络。" : room.lighthouseSessionMode==="exercise"
+      document.querySelector("#lighthouse-session-current")!.textContent=story ? "故事值守 · 天气随剧情变化，切换模式请打开故事与联络。" : room.lighthouseSessionMode==="exercise"
         ?`独立演练 · 场景编号 ${room.weather.random.seed} · 返回值守可恢复原进度`:"正常值守 · 选择固定天气会进入独立演练";
       document.querySelector("#weather-label")!.textContent=(story ? "故事 · " : room.lighthouseSessionMode==="exercise"?"演练 · ":"")+weatherLabel;
       document.querySelector("#weather-current")!.textContent=`${weatherLabel}${weather.phase==="entering"?" · 转变中":""} · 能见约${weather.visibilityKm.toFixed(1)} km · 太阳能${Math.round(weather.solarMultiplier*100)}%${weather.rain>=.15?" · 暂缓外廊作业":""}`;
@@ -84,11 +84,11 @@ export class RoomTimeMenu {
       live.textContent = automatic.checked ? "自动流转已开启，收起菜单后继续" : "自动流转已关闭";
     }, { signal });
     weatherSelect.addEventListener("change",()=>{room.setWeather(weatherSelect.value==="automatic"?null:weatherSelect.value as "clear"|"overcast"|"fog"|"storm");live.textContent="已在独立演练中切换天气，正常值守进度保留";},{signal});
-    sessionMode.addEventListener("change",()=>{const ok=room.setLighthouseSessionMode(sessionMode.value as "duty"|"exercise");render();live.textContent=ok?"已切换会话，时间暂停；收起菜单前可开启自动流转":"时间切换完成后再切换会话";},{signal});
+    sessionMode.addEventListener("change",()=>{const ok=room.setLighthouseSessionMode(sessionMode.value as "duty"|"exercise");render();live.textContent=ok?"模式已切换，时间先暂停。想继续走时，请开启自动流转。":"等时间切换完，再换模式。";},{signal});
     document.querySelector("#lighthouse-exercise-restart")!.addEventListener("click",()=>{
       const value=seed.value.trim(),n=Number(value);
       const ok=/^\d+$/.test(value)&&room.restartLighthouseExercise(n);
-      seed.setCustomValidity(ok?"":"请输入0至4294967295的整数，且等待时间切换完成");
+      seed.setCustomValidity(ok?"":"场景编号请填0至4294967295的整数；时间切换完才能重新开始。");
       if(!ok)seed.reportValidity();else live.textContent="已重新开始演练；设备回到初始状态，正常值守进度保留";
     },{signal});
     seed.addEventListener("input",()=>seed.setCustomValidity(""),{signal});

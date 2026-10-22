@@ -73,31 +73,31 @@ export class LighthouseStorySave {
   inspect(): LighthouseSaveStatus {
     try {
       const raw = this.storage().getItem(LIGHTHOUSE_STORY_SAVE_KEY);
-      if (raw === null) return {available: false, invalid: false, message: "故事尚未保存 · 与探索及演练独立"};
+      if (raw === null) return {available: false, invalid: false, message: "还没保存故事。故事、探索和演练各存一份。"};
       try {
         const session = decodeLighthouseStorySave(raw), view = session.story.snapshot;
         return {available: true, invalid: false, message: `故事存档 · 第${view.calendar.day}日 · ${view.finished ? "本章已结束，可回看" : view.objective.title}`};
-      } catch {return {available: false, invalid: true, message: "故事存档损坏或版本不支持，原数据已保留。"};}
-    } catch {return {available: false, invalid: false, message: "无法读取故事存档，当前会话保持。"};}
+      } catch {return {available: false, invalid: true, message: "这个故事存档暂时读不了，可能已损坏或版本不支持。原数据已保留。"};}
+    } catch {return {available: false, invalid: false, message: "暂时读不了故事存档，你可以接着玩，稍后再试。"};}
   }
   save(session: LighthouseStorySession): LighthouseSaveStatus & {saved: boolean} {
     try {
       const store = this.storage(), old = store.getItem(LIGHTHOUSE_STORY_SAVE_KEY);
       if (old !== null) {try {decodeLighthouseStorySave(old);} catch {return {...this.inspect(), saved: false};}}
       const raw = encodeLighthouseStorySave(session); store.setItem(LIGHTHOUSE_STORY_SAVE_KEY, raw);
-      return {available: true, invalid: false, saved: true, message: "故事已保存 · 任务、消息和完整天气设备一起保留，继续后先暂停"};
-    } catch {return {...this.inspect(), saved: false, message: "故事保存失败，原数据和当前会话保持。"};}
+      return {available: true, invalid: false, saved: true, message: "故事已保存。下次继续时，时间先暂停。"};
+    } catch {return {...this.inspect(), saved: false, message: "这次故事没存上。旧档未改动，你可以接着玩，稍后再试一次。"};}
   }
   load(): {session?: LighthouseStorySession; status: LighthouseSaveStatus} {
     try {
       const raw = this.storage().getItem(LIGHTHOUSE_STORY_SAVE_KEY); if (raw === null) return {status: this.inspect()};
       const session = decodeLighthouseStorySave(raw);
-      return {session, status: {available: true, invalid: false, message: "已继续故事 · 时间暂停，不结算离线时间"}};
+      return {session, status: {available: true, invalid: false, message: "已继续故事，时间先暂停，离线期间没有推进。"}};
     } catch {return {status: this.inspect()};}
   }
   clearInvalid(): LighthouseSaveStatus {
     const status = this.inspect(); if (!status.invalid) return status;
     try {this.storage().removeItem(LIGHTHOUSE_STORY_SAVE_KEY); return this.inspect();}
-    catch {return {...status, message: "无法清除故事旧档，原数据已保留。"};}
+    catch {return {...status, message: "没能清除故事旧档，原数据还在。请稍后再试。"};}
   }
 }

@@ -93,9 +93,9 @@ export class LighthouseSave {
   private decode(raw:string){const s=decodeLighthouseSave(raw);if(s.mode&&s.mode!==this.mode||s.weather?.storyScheduled)throw new Error("Wrong slot mode");return s;}
   inspect():LighthouseSaveStatus {
     try{
-      const raw=this.storage().getItem(this.key);if(raw===null)return {available:false,invalid:false,message:this.mode==="duty"?"尚未保存 · 保存后可从这里继续值守":"演练尚未保存 · 与正常值守独立"};
+      const raw=this.storage().getItem(this.key);if(raw===null)return {available:false,invalid:false,message:this.mode==="duty"?"尚未保存 · 保存后可从这里继续值守":"还没保存演练，演练和正常值守各存一份。"};
       try{const s=this.decode(raw);return {available:true,invalid:false,message:`${this.mode==="duty"?"值守":"演练"}存档 · 第${s.operation.snapshot.dutyDay}日 ${timeLabel(s.clock.snapshot.hour)}${s.weather?"":" · 继续时升级旧存档"}`};}
-      catch{return {available:false,invalid:true,message:"旧存档损坏或版本不支持，已保留；可继续当前游戏或清除旧存档。"};}
+      catch{return {available:false,invalid:true,message:"旧存档读不了，可能已损坏或版本不支持。原数据已保留，你可以接着玩，或清除旧档。"};}
     }catch{return {available:false,invalid:false,message:"无法读取本地存档，本次游戏仍可继续。"};}
   }
   save(session:LighthouseSession):LighthouseSaveStatus {
@@ -104,8 +104,8 @@ export class LighthouseSave {
       if(session.mode&&session.mode!==this.mode||session.weather?.storyScheduled)throw new Error("Wrong session mode");
       const full=session.weather?completeLighthouseSession(session,this.mode,0):completeLighthouseSession(decodeLighthouseSave(encodeLighthouseSave(session)),this.mode,this.seed());
       const raw=encodeLighthouseSave(full);store.setItem(this.key,raw);
-      return {...this.inspect(),message:`${this.mode==="duty"?"值守":"独立演练"}已保存 · 天气和线索完整保留，继续后先暂停`};
-    }catch{return {...this.inspect(),message:"保存失败（存储受限、空间不足或时间正在切换），当前值守保持，请稍后重试。"};}
+      return {...this.inspect(),message:`${this.mode==="duty"?"值守":"独立演练"}已保存 · 天气、设备和记录一起保存，下次继续时先暂停`};
+    }catch{return {...this.inspect(),message:"这次没存上，可能是存储受限、空间不足或时间正在切换。你可以接着玩，稍后再试。"};}
   }
   load():{session?:LighthouseCompleteSession;status:LighthouseSaveStatus} {
     try{
@@ -113,9 +113,9 @@ export class LighthouseSave {
       const s=this.decode(raw);let session:LighthouseCompleteSession;
       if(!s.weather){
         session=completeLighthouseSession(s,this.mode,this.seed());const upgraded=encodeLighthouseSave(session);
-        try{store.setItem(this.key,upgraded);}catch{return {status:{...this.inspect(),message:"旧存档升级未能保存，本次尚未继续；原数据和当前会话保持。"}};}
+        try{store.setItem(this.key,upgraded);}catch{return {status:{...this.inspect(),message:"旧存档升级后没能存上，还没有载入。旧档未改动，你可以接着玩，稍后重试。"}};}
       }else session=s as LighthouseCompleteSession;
-      return {session,status:{available:true,invalid:false,message:`${this.mode==="duty"?"已继续值守":"已继续独立演练"} · 天气、随机和线索已恢复，时间暂停，请从T菜单开启自动流转`}};
+      return {session,status:{available:true,invalid:false,message:`${this.mode==="duty"?"已继续值守":"已继续独立演练"} · 已恢复上次的天气、设备和记录。时间先暂停，按 T 可继续流转`}};
     }catch{return {status:this.inspect()};}
   }
   clearInvalid():LighthouseSaveStatus {

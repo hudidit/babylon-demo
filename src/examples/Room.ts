@@ -444,7 +444,7 @@ export class RoomScene {
   private storySwitchAllowed() {
     if (!this.storyInterfaceAllowed()) return false;
     if (this.scooter.riding || this.ladder.attached || this.scooterTransition || this.ladderTransition) {
-      this.storyPanel.notice("请先下车或离开垂直梯，再切换故事；当前进度保持。"); return false;
+      this.storyPanel.notice("先下车或到楼层离梯，再切换故事。"); return false;
     }
     return true;
   }
@@ -461,8 +461,8 @@ export class RoomScene {
     const allowed=recovery?this.canAccessLighthouse("lighthouse-battery-main")||this.canAccessLighthouse("control"):this.atStoryDesk();
     const wait=this.storyWait,at=this.weatherState.acceptedAutomaticHours;
     return {plan:wait?.running?wait.plan:this.storyChapters.storyWaitPlan(this.storySession,recovery),allowed,
-      place:recovery?"请在首层电池柜或运行面板旁守候回充。":"请回住宅书桌旁休息或等待。",
-      running:!!wait?.running,progress:wait?`${wait.running?"已结算":"本次结算"} ${(at-wait.from).toFixed(2)} 场景小时 · ${wait.reason}`:""};
+      place:recovery?"到首层电池柜或运行面板旁，就能等充电。":"回住宅书桌旁，就能休息或等待。",
+      running:!!wait?.running,progress:wait?`已等 ${(at-wait.from).toFixed(2)} 小时（岛上时间） · ${wait.reason}`:""};
   }
   private startStoryWait() {
     if(!this.storyInterfaceAllowed()||!this.storyPanel.isOpen||!this.storyChapters||!this.storyBridge)return;
@@ -477,8 +477,8 @@ export class RoomScene {
     if(!this.storyPanel.isOpen){this.cancelStoryWait();return;}
     const blocked=this.canvas.ownerDocument.hidden||!this.canvas.ownerDocument.hasFocus()
       ||this.pauseReasons.some(reason=>reason!=="story-panel");
-    if(blocked)wait.reason="窗口暂停中，返回后继续结算；不会补算离线时间。";
-    else {wait.reason="正在结算值守时间…";wait.batch();this.notifyLighthouseOperation();this.applyTimeOfDay(this.timeOfDay);this.notifyTimeOfDay();}
+    if(blocked)wait.reason="离开窗口时暂停，回来后接着等，离线不计时。";
+    else {wait.reason="灯站照常运行，正在等待…";wait.batch();this.notifyLighthouseOperation();this.applyTimeOfDay(this.timeOfDay);this.notifyTimeOfDay();}
     this.renderStory(true);
     if(wait.running)this.storyWaitTimer=window.setTimeout(this.runStoryWait,blocked?250:16);
   };
@@ -498,7 +498,7 @@ export class RoomScene {
     const view = story?.snapshot;
     this.scene.metadata.lighthouseStory = view;
     this.storyPanel.render(view, story?.fieldWork, this.storyStorage, !!this.storyCheckpoint, canReport,this.storyChapters,wait);
-    if(story)this.canvas.ownerDocument.getElementById("lighthouse-story-record").textContent=wait?.plan.recovery?"打开值守簿 · 守候回充":"打开值守簿";
+    if(story)this.canvas.ownerDocument.getElementById("lighthouse-story-record").textContent=wait?.plan.recovery?"打开值守簿 · 等待充电":"打开值守簿";
   }
   private openStoryPanel = () => {
     if (this.disposed || this.storyPanel.isOpen || this.inspection.isOpen || this.floorPlan.isOpen
@@ -546,26 +546,26 @@ export class RoomScene {
     if(this.storyChapters||this.storyChaptersLoading)return;this.storyChaptersLoading=true;
     import(/* webpackChunkName: "lighthouse-story-chapters" */ "./LighthouseStoryChapters").then(chapters=>{
       if(this.disposed)return;this.storyChapters=chapters;this.storyChaptersLoading=false;this.renderStory(true);
-    }).catch(()=>{this.storyChaptersLoading=false;if(!this.disposed)this.storyPanel.notice("值守页暂未载入，请重新打开值守簿；当前进度保持。");});
+    }).catch(()=>{this.storyChaptersLoading=false;if(!this.disposed)this.storyPanel.notice("值守页没能打开。关上再打开试试，当前进度还在。");});
   }
   private startStory() {
     if (!this.storySwitchAllowed()) return;
     const session = createLighthouseStorySession(crypto.randomUUID(), crypto.getRandomValues(new Uint32Array(1))[0]);
     session.equipment.clock.setAutomatic(true);
     this.rememberExploration(); this.applyStory(session);
-    this.storyPanel.notice("新故事已开始 · 阅读时暂停，返回场景后时间流转。刷新前请保存故事。");
+    this.storyPanel.notice("先读信，合上簿子后时间继续。刷新前记得保存。");
   }
   private resumeStory() {
     if (!this.storySwitchAllowed() || this.storyBridge || !this.storyCheckpoint) return;
     const session = decodeLighthouseStorySave(this.storyCheckpoint);
     this.rememberExploration(); this.applyStory(session);
-    this.storyPanel.notice("已返回本次故事 · 位于住宅书桌旁，时间暂停；可在时间菜单开启自动流转。");
+    this.storyPanel.notice("已回到这次故事，人在书桌旁。时间先暂停，按 T 可以继续流转。");
   }
   private continueStory() {
     if (!this.storySwitchAllowed()) return;
     const result = this.storySave.load(); this.storyStorage = result.status;
     if (result.session) {this.rememberExploration(); this.applyStory(result.session);}
-    this.storyPanel.notice(result.session ? "已继续故事 · 时间暂停；可在时间菜单开启自动流转。" : result.status.message);
+    this.storyPanel.notice(result.session ? "故事已继续。时间先暂停，按 T 可以继续流转。" : result.status.message);
     this.renderStory(true);
   }
   private saveStory() {
@@ -590,14 +590,14 @@ export class RoomScene {
       this.stableWalk = {position: pose.position.clone(), feet: pose.feet};
     }
     if (open) this.storyPanel.open();
-    this.storyPanel.notice("故事已保存，探索会话已恢复并暂停。探索进度仍需在灯塔记录处单独保存。");
+    this.storyPanel.notice("故事已保存，已回到探索。探索进度请在灯塔记录处另存。");
     this.renderStory(true);
   }
   private storyCommand(command: () => boolean) {
     if (!this.storyBridge || !this.storyInterfaceAllowed()) return;
     this.storyBridge.synchronize(this.completeSession);
     const accepted = command();
-    this.storyPanel.notice(accepted ? "已记入故事。刷新前请保存。" : "请检查当前任务、有效现场记录和填写地点；已有记录保持。");
+    this.storyPanel.notice(accepted ? "记下了。离开或刷新前，记得保存。" : "还不能写下这项结果。看看值守清单，并在书桌或首层记录夹旁填写。");
     this.renderStory(true);
   }
   setReducedWeatherMotion(reduced:boolean) {this.reducedWeatherMotion=reduced;this.applyTimeOfDay(this.timeOfDay);}
@@ -1218,7 +1218,7 @@ export class RoomScene {
   }
   private cleanLighthouseCover() {
     if (!this.lighthouseCommandAllowed("cover") || !LighthouseInspection.canClean(this.lighthouseOperation)) {
-      this.lighthousePanel.notice("仅在顶层近距离、白天自动待机时可以擦拭。运行状态保持。"); return;
+      this.lighthousePanel.notice("靠近顶层保护面，等白天停灯后再擦。"); return;
     }
     // Closing releases only this modal's pause. The action advances later from accepted active receipts.
     if (!this.lighthouseInspectionState.startCleaning(this.lighthouseOperation, true)) return;
@@ -1444,7 +1444,7 @@ export class RoomScene {
         : firstPerson && this.scooterNoticeUntil > performance.now() ? this.scooterNotice
         : vehicle ? "左键 / E · 骑上小电驴" : action ? `左键 · ${action.label()}` : firstPerson && !this.pointerLocked ? "点击画面开始环顾 · ESC 退出" : "";
       if(firstPerson&&!hint.textContent&&!this.pauses.blocked&&!lighthouseOutsideWorkAllowed(this.weather.weather)
-        &&Math.abs(this.jump.feet-LIGHTHOUSE.gallery)<.2)hint.textContent="风雨中暂缓外廊作业 · 可返回灯室，通道保持开放";
+        &&Math.abs(this.jump.feet-LIGHTHOUSE.gallery)<.2)hint.textContent="风雨中先回灯室，外廊工作等天气好些再做";
       hint.hidden = !hint.textContent;
     }
   }
