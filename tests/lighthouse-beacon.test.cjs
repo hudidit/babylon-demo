@@ -121,9 +121,9 @@ test('air and ocean share rotating direction, dirty-pane dimming, shutdown and e
 test('local controls require a clear short ray; walls, glazing, floor and range block access', t => {
   const {b, scene, details, point} = setup(t), interactions = new (load('RoomInteractions').RoomInteractions)(scene, () => {});
   let opened = 0; interactions.addDevice(details.panel, () => opened++); interactions.addDevice(details.test, () => opened++);
-  const panelEye = point(-1.8, -.95, layout.floor + 1.6), topEye = point(.25, -1.1, layout.gallery + 1.6);
+  const panelEye = point(1.52, -1.14, layout.floor + 1.6), topEye = point(.25, -1.1, layout.gallery + 1.6);
   const {walkingPointAllowed} = load('WalkingSurface');
-  assert.ok(walkingPointAllowed({x: tower.x - 1.8, y: tower.y - .95}, .26, layout.floor));
+  assert.ok(walkingPointAllowed({x: tower.x + 1.52, y: tower.y - 1.14}, .26, layout.floor));
   assert.ok(walkingPointAllowed({x: tower.x + .25, y: tower.y - 1.1}, .26, layout.gallery));
   assert.equal(load('LighthouseLadder').canBoardLighthouseLadder({x: tower.x + .25, y: tower.y - 1.1}, layout.gallery, true), false);
   assert.equal(interactions.canReachDevice(details.panel, panelEye), true);
@@ -166,6 +166,42 @@ test('scene authorization rejects wrong storey, ladder, vehicle, airborne and or
   room.jump.feet = layout.floor; assert.equal(room.canAccessLighthouse('test'), false); room.jump.feet = layout.gallery;
   room.currentView = 'coast'; assert.equal(room.canAccessLighthouse('test'), false); room.currentView = 'first-person';
   camera.position.copyFrom(point(0, -3, layout.gallery + 1.6)); assert.equal(room.canAccessLighthouse('test'), false);
+});
+
+test('stationary whole-lamp observation covers a complete rotation from multiple walkable positions', t => {
+  const {b,scene,exterior,beacon,point,camera}=setup(t),{RoomScene}=load('Room');
+  const room=Object.create(RoomScene.prototype);
+  camera.fov=.95;
+  Object.assign(room,{scene,exterior,currentView:'first-person',firstPersonCamera:camera,
+    pauses:new(load('RoomPauseState').RoomPauseState)(),jump:{feet:layout.gallery,grounded:true},ladder:{attached:false},scooter:{riding:false}});
+  const {walkingPointAllowed}=load('WalkingSurface');let positions=0;
+  const aim=target=>{camera.setTarget(target);camera.getViewMatrix(true);scene.updateTransformMatrix(true);};
+  for(const radius of [1.2,1.6])for(let side=0;side<12;side++) {
+    const x=radius*Math.cos((side+.5)*Math.PI/6),y=radius*Math.sin((side+.5)*Math.PI/6);
+    if(!walkingPointAllowed({x:tower.x+x,y:tower.y+y},.26,layout.gallery))continue;
+    camera.position.copyFrom(point(x,y,layout.gallery+1.6));aim(beacon.root.position);positions++;
+    const originalEye=camera.position.clone(),originalRotation=camera.rotation.clone();
+    for(let phase=0;phase<32;phase++) {
+      beacon.apply({...new LighthouseOperation().snapshot,rotationTurns:phase/32,rotationRadians:phase/32*Math.PI*2,running:true});
+      assert.equal(room.canObserveMain(),true,JSON.stringify({radius,side,phase}));
+    }
+    assert.deepEqual(camera.position.asArray(),originalEye.asArray());assert.deepEqual(camera.rotation.asArray(),originalRotation.asArray());
+    camera.rotation.y+=.5;camera.getViewMatrix(true);scene.updateTransformMatrix(true);
+    assert.equal(room.canObserveMain(),true,'whole-lamp visibility does not require the crosshair on the emitting face');
+    aim(camera.position.scale(2).subtract(beacon.root.position));assert.equal(room.canObserveMain(),false,'looking away stops observation');
+  }
+  assert.ok(positions>=10,'test ordinary positions around the lamp, including beyond device-operation range');
+  camera.position.copyFrom(point(.25,-1.6,layout.gallery+1.6));aim(beacon.root.position);
+  const obstacle=b.CreateBox('observation-solid-obstacle',{size:8},scene);
+  obstacle.position.copyFrom(camera.position.add(beacon.root.position).scale(.5));obstacle.computeWorldMatrix(true);
+  assert.equal(room.canObserveMain(),false,'a fully occluding object prevents evidence');obstacle.dispose();
+  assert.equal(room.canObserveMain(),true);
+  for(const [object,key,value]of [[room,'currentView','coast'],[room.jump,'grounded',false],[room.jump,'feet',layout.floor],[room.ladder,'attached',true],[room.scooter,'riding',true]]) {
+    const before=object[key];object[key]=value;assert.equal(room.canObserveMain(),false,key);object[key]=before;
+  }
+  room.pauses.set('settings',true);assert.equal(room.canObserveMain(),false);
+  room.pauses.set('settings',false);camera.position.copyFrom(point(0,-3.2,layout.gallery+1.6));aim(beacon.root.position);
+  assert.equal(room.canObserveMain(),false,'range and outer glazing still prevent observation');
 });
 
 test('independent lighthouse pause cannot be cleared by another UI and printed records claim no completed inspection', () => {

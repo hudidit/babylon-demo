@@ -102,3 +102,33 @@ test('a normal one-metre frontal approach can fully open the wider entry without
  i.actions.get(exterior.lighthouseDoor.meshes[0]).toggle();for(let n=0;n<25;n++)i.update(.05);
  assert.equal(i.doors[0].blocked,false);assert.equal(i.doors[0].progress,1);assert.ok(exterior.lighthouseDoor.openAngle>0,'inward sweep clears the exterior approach');
 });
+
+test('the control panel has a clear frontal operating bay and its complete face can be picked',t=>{
+  const {scene,exterior}=setup(t),panel=exterior.lighthouseDetails.panel,p=a.controlPanel;
+  const nx=Math.cos(p.angle),ny=Math.sin(p.angle),tx=-ny,ty=nx;
+  const interactions=new(load('RoomInteractions').RoomInteractions)(scene,()=>{});
+  let clicks=0;interactions.addDevice(panel,()=>clicks++);
+  const {canBoardLighthouseLadder}=load('LighthouseLadder');
+  for(const lateral of [-.25,0,.25]) {
+    const standing=point(p.x-nx*1.1+tx*lateral,p.y-ny*1.1+ty*lateral);
+    assert.equal(allowed(standing,.26,a.floor),true,'standing bay is walkable');
+    assert.equal(canBoardLighthouseLadder(standing,a.floor,true),false,'panel clicks cannot board the ladder');
+    const eyeAt=planToWorld(standing,a.floor+1.6),eye=new b.Vector3(eyeAt.x,eyeAt.y,eyeAt.z);
+    assert.equal(interactions.canReachDevice(panel,eye),true,'local command authority sees the same panel');
+    for(const across of [-.3,0,.3])for(const up of [-.25,0,.25]) {
+      const targetAt=planToWorld(point(p.x-nx*p.depth/2+tx*across,p.y-ny*p.depth/2+ty*across),a.floor+p.centerHeight+up);
+      const target=new b.Vector3(targetAt.x,targetAt.y,targetAt.z),ray=new b.Ray(eye,target.subtract(eye).normalize(),7.5);
+      const action=interactions.pick(ray);assert.ok(action,JSON.stringify({lateral,across,up}));
+      assert.match(action.label(),/首层运行面板/);action.toggle();
+    }
+  }
+  assert.equal(clicks,27,'all 27 direct/offset samples open with one action');
+  const outside=planToWorld(point(p.x+nx,p.y+ny),a.floor+1.6);
+  assert.equal(interactions.canReachDevice(panel,new b.Vector3(outside.x,outside.y,outside.z)),false,'masonry still blocks access');
+  const far=planToWorld(point(p.x-nx*2,p.y-ny*2),a.floor+1.6);
+  assert.equal(interactions.canReachDevice(panel,new b.Vector3(far.x,far.y,far.z)),false,'1.5m command range is retained');
+  for(const fraction of [.25,.5,.75,1]) {
+    const target=point((p.x-nx*1.1)*fraction,-2+(p.y-ny*1.1+2)*fraction);
+    assert.equal(allowed(target,.26,a.floor),true,'entry-to-panel approach stays clear');
+  }
+});

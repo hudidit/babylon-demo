@@ -44,7 +44,7 @@ const materials:readonly {id:StoryMaterial;title:string;body:string;after:number
   {id:"CL05",title:"册子后面的旧呼号页",after:3,body:"旧呼号，留底。\n\n接送安排听岸站值班的通知。终端上还留着旧名字，真收到消息，要问清楚是谁发的。"},
   {id:"CL06",title:"周师傅的离站清单",after:5,body:"报告写好。钥匙留给接班的人。临走前，台灯记得关。\n\n最后再去看一眼。"}
 ];
-const checkCopy:Record<string,readonly [string,string]>={control:["今天的读数","首层运行面板 · 读表并记下"],main:["灯转得怎样","顶层灯室 · 看满30秒、完整一圈，确认有光照出"],cover:["擦完再看一遍","顶层保护面 · 清洁后重新检查"],
+const checkCopy:Record<string,readonly [string,string]>={control:["今天的读数","首层运行面板 · 读表并记下"],main:["灯转得怎样","顶层灯室 · 白天先在灯座开启60秒试灯，再原地看灯具整体30秒，确认转完一圈、见过出光"],cover:["擦完再看一遍","顶层保护面 · 清洁后重新检查"],
   fog:["雾里的灯和读数","白天起雾时看灯，再到首层对照天气与太阳能输入"],cleaned:["擦去面板上的污膜","先巡视2秒或近距细查5秒，确认污损后再擦拭"],recheck:["面板擦净了吗","面板旁 · 擦完后，再检查一遍"],comparison:["再读一次输入","首层运行面板 · 白天对照天气、日照与输入读数"],
   storm:["先把室内工作做好","读岸站的接送提醒，记下今天的读数，再安排工作"],surface:["雨停后去看面板","查完表面再对照输入；已经干净就不用再擦"],handover:["理好交接单","写下灯和电的情况、已办的事，以及下一班要接着做的事"]};
 export function renderStoryChapter(document:Document,view:View,work:LighthouseStory["fieldWork"],canUseRecords:boolean,wait:StoryWaitView) {
@@ -54,7 +54,7 @@ export function renderStoryChapter(document:Document,view:View,work:LighthouseSt
   text("story-chapter",`${arrival?"第一章 接班的午后":solar?"第二章 雾中的记录":"第三章 离站前的清单"} / 第${view.calendar.day}日`);
   text("story-goal",done?"交接单已收好":view.objective.title);
   text("story-next",done?"交接单收好了。下一班还没到，钥匙先由你保管。可以去岛上走走，也可以在这里留一句话。\n故事暂时到这里，记得保存记录。"
-    :arrival?view.objective.id==="ST01"?"读读周师傅留下的信，看看这三天要照看的事。":view.objective.id==="ST03"?"回住宅书桌或到灯塔首层记录夹旁，发出接班报告，再看看岸站的回复。":"沿步道到灯塔，先在首层读表。白天停灯时擦净顶层保护面，再检查一遍，最后试灯，看满30秒和完整一圈。找路可按 M 看地图。"
+    :arrival?view.objective.id==="ST01"?"读读周师傅留下的信，看看这三天要照看的事。":view.objective.id==="ST03"?"回住宅书桌或到灯塔首层记录夹旁，发出接班报告，再看看岸站的回复。":"沿步道到灯塔，先在首层读表。白天停灯时擦净顶层保护面，再检查一遍。然后点击灯座旁的试灯控制，选择“试灯，回场景看灯”，开启60秒试灯；原地看灯具整体30秒，确认转完一圈、见过出光即可，不用追着光束移动。找路可按 M 看地图。"
     :solar?view.objective.id==="ST04"?view.elapsedHours<18?"接班的事办好了。可以在岛上走走，或回书桌旁休息，等明早雾起。到时去看看灯，再到首层对照天气、日照和太阳能输入。":"白天起雾时，先看看是主灯还是备用灯在亮，再到首层对照天气、日照和输入。雾已经散了，就回书桌旁等下一次。"
       :view.reports.some(r=>r.id==="solar")?"报告发出去了，到岸站联络页看看回复。":"去面板旁近距细查5秒。看见污膜就擦掉，擦完再查一次，然后回首层重新对照输入。匆匆看一眼，薄薄的污膜可能看不出来。"
     :view.objective.reason+"\n雨大时先做室内工作，面板等雨小了再擦。");

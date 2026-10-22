@@ -54,10 +54,17 @@ export class LighthouseDetails {
       }
       b.geometry("coastal-lighthouse-detail-" + name, paper, {positions:p,indices:[0,1,2,0,2,3],uvs:uv});
     };
-    // All low projections remain inside the existing cabinet/workbench footprints.
+    // Cabinet joinery remains within its shared footprint.
     box("cabinet-joinery", metal, .018, .96, .014, cab.x + .282, cab.y, a.floor+.59);
-    box("distribution-panel", green, .08, .64, .48, cab.x + .03, cab.y, a.floor+1.55);
-    for (const y of [-.06,.09,.24]) box("panel-hardware", brass, .018, .06, .055, cab.x + .08, y, a.floor+1.56);
+    // Face the clear entrance-side operating bay, away from the west ladder landing.
+    const panel = a.controlPanel, normalX = Math.cos(panel.angle), normalY = Math.sin(panel.angle);
+    box("distribution-panel", green, panel.depth, panel.height, panel.width, panel.x, panel.y,
+      a.floor + panel.centerHeight, panel.angle);
+    for (const offset of [-.24, 0, .24]) {
+      const front = panel.depth / 2 + .014;
+      box("panel-hardware", brass, .028, .085, .085, panel.x - normalX * front - normalY * offset,
+        panel.y - normalY * front + normalX * offset, a.floor + panel.centerHeight, panel.angle);
+    }
     box("work-switch", metal, .035, .15, .10, cab.x + .09, -.01, a.floor+1.39);
     box("toolboard", wood, .54, .47, .035, .74, bench.y + .16, a.floor+1.43);
     for (const [x,w] of [[.56,.035],[.72,.028],[.9,.025]]) {

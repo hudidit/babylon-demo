@@ -1,0 +1,388 @@
+{
+  "baseline": "3dc759d",
+  "cases": [
+    {
+      "path": "/",
+      "errors": [],
+      "warnings": [],
+      "firstScreenJs": [
+        {
+          "path": "/js/main.js",
+          "bytes": 506687,
+          "sha256": "b40b6a71741d968e637a83d7f4ad2344fa9f79b196ae6c2b8d8844af4520a56f"
+        },
+        {
+          "path": "/js/9691.js",
+          "bytes": 2420178,
+          "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+        },
+        {
+          "path": "/js/1203.js",
+          "bytes": 138571,
+          "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+        },
+        {
+          "path": "/js/8558.js",
+          "bytes": 12560,
+          "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+        },
+        {
+          "path": "/js/7449.js",
+          "bytes": 2072,
+          "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+        },
+        {
+          "path": "/js/4742.js",
+          "bytes": 8962,
+          "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+        },
+        {
+          "path": "/js/6612.js",
+          "bytes": 14807,
+          "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+        },
+        {
+          "path": "/js/9615.js",
+          "bytes": 9069,
+          "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+        },
+        {
+          "path": "/js/5587.js",
+          "bytes": 1107,
+          "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+        },
+        {
+          "path": "/js/4472.js",
+          "bytes": 14991,
+          "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+        },
+        {
+          "path": "/js/6560.js",
+          "bytes": 2517,
+          "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+        },
+        {
+          "path": "/js/9915.js",
+          "bytes": 14196,
+          "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+        }
+      ],
+      "checks": [
+        "initial ESC entry and browser ESC exit",
+        "three tower round trips preserve position and heading",
+        "native held ESC never re-enters overview",
+        "settings, time, map and story own ESC in overview",
+        "repeat, composition, modifier, input and pause filters",
+        "first-person map closes without changing view",
+        "clear midday native 60-second test confirms actual 30-second cycle and story check",
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "help": {
+            "text": "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互 · ESC 自由探索 · T 时间 · J 联络",
+            "scrollWidth": 446,
+            "clientWidth": 446,
+            "right": 478.296875,
+            "viewport": 1280
+          }
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "help": {
+            "text": "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互 · ESC 自由探索 · T 时间 · J 联络",
+            "scrollWidth": 0,
+            "clientWidth": 0,
+            "right": 0,
+            "viewport": 390
+          }
+        }
+      ],
+      "pointerAttempts": [
+        {
+          "label": "initial overview",
+          "lockedFromEscape": true
+        },
+        {
+          "label": "tower fixture",
+          "lockedFromEscape": true
+        },
+        {
+          "label": "tower return 1",
+          "lockedFromEscape": true
+        },
+        {
+          "label": "tower return 2",
+          "lockedFromEscape": true
+        },
+        {
+          "label": "tower return 3",
+          "lockedFromEscape": true
+        },
+        {
+          "label": "first-person map",
+          "lockedFromEscape": true
+        },
+        {
+          "label": "relocated operation panel",
+          "lockedFromEscape": true
+        }
+      ],
+      "firstScreenBytes": 3145717,
+      "towerPose": {
+        "position": [
+          -627,
+          18,
+          423
+        ],
+        "rotation": [
+          0.13,
+          1.27,
+          0
+        ]
+      },
+      "panelClicks": [
+        {
+          "lateral": -0.25,
+          "across": 0,
+          "up": 0,
+          "singleClick": true
+        },
+        {
+          "lateral": -0.25,
+          "across": -0.3,
+          "up": 0.25,
+          "singleClick": true
+        },
+        {
+          "lateral": -0.25,
+          "across": 0.3,
+          "up": -0.25,
+          "singleClick": true
+        },
+        {
+          "lateral": -0.25,
+          "across": 0.24,
+          "up": 0,
+          "singleClick": true
+        },
+        {
+          "lateral": 0,
+          "across": 0,
+          "up": 0,
+          "singleClick": true
+        },
+        {
+          "lateral": 0,
+          "across": -0.3,
+          "up": 0.25,
+          "singleClick": true
+        },
+        {
+          "lateral": 0,
+          "across": 0.3,
+          "up": -0.25,
+          "singleClick": true
+        },
+        {
+          "lateral": 0,
+          "across": 0.24,
+          "up": 0,
+          "singleClick": true
+        },
+        {
+          "lateral": 0.25,
+          "across": 0,
+          "up": 0,
+          "singleClick": true
+        },
+        {
+          "lateral": 0.25,
+          "across": -0.3,
+          "up": 0.25,
+          "singleClick": true
+        },
+        {
+          "lateral": 0.25,
+          "across": 0.3,
+          "up": -0.25,
+          "singleClick": true
+        },
+        {
+          "lateral": 0.25,
+          "across": 0.24,
+          "up": 0,
+          "singleClick": true
+        }
+      ],
+      "storyGuide": "○今天的读数首层运行面板 · 读表并记下待确认○灯转得怎样顶层灯室 · 白天先在灯座开启60秒试灯，再原地看灯具整体30秒，确认转完一圈、见过出光待确认○擦完再看一遍顶层保护面 · 清洁后重新检查待确认",
+      "dayTest": {
+        "hour": 12,
+        "running": true,
+        "remaining": 60,
+        "position": [
+          -650.75,
+          101.20000000000002,
+          415
+        ],
+        "rotation": [
+          0.23632768232622114,
+          -0.1549967418883123,
+          0
+        ],
+        "endPosition": [
+          -650.75,
+          101.20000000000002,
+          415
+        ],
+        "endRotation": [
+          0.23632768232622114,
+          -0.1549967418883123,
+          0
+        ],
+        "weather": "clear",
+        "samples": [
+          {
+            "seconds": 29.9,
+            "confirmed": false,
+            "observation": 29.900000000000155,
+            "turns": 0.9966666666662984,
+            "outputSeen": true,
+            "remaining": 30.1000000000113
+          },
+          {
+            "seconds": 30,
+            "confirmed": true,
+            "observation": 30,
+            "turns": 1.0000000000000264,
+            "outputSeen": true,
+            "remaining": 30.000000000015987
+          }
+        ],
+        "fact": {
+          "id": "main",
+          "complete": true
+        }
+      }
+    },
+    {
+      "path": "/home/",
+      "errors": [],
+      "warnings": [],
+      "firstScreenJs": [
+        {
+          "path": "/home/js/main.js",
+          "bytes": 506687,
+          "sha256": "b40b6a71741d968e637a83d7f4ad2344fa9f79b196ae6c2b8d8844af4520a56f"
+        },
+        {
+          "path": "/home/js/9691.js",
+          "bytes": 2420178,
+          "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+        },
+        {
+          "path": "/home/js/1203.js",
+          "bytes": 138571,
+          "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+        },
+        {
+          "path": "/home/js/8558.js",
+          "bytes": 12560,
+          "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+        },
+        {
+          "path": "/home/js/7449.js",
+          "bytes": 2072,
+          "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+        },
+        {
+          "path": "/home/js/6612.js",
+          "bytes": 14807,
+          "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+        },
+        {
+          "path": "/home/js/4742.js",
+          "bytes": 8962,
+          "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+        },
+        {
+          "path": "/home/js/5587.js",
+          "bytes": 1107,
+          "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+        },
+        {
+          "path": "/home/js/9615.js",
+          "bytes": 9069,
+          "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+        },
+        {
+          "path": "/home/js/6560.js",
+          "bytes": 2517,
+          "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+        },
+        {
+          "path": "/home/js/4472.js",
+          "bytes": 14991,
+          "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+        },
+        {
+          "path": "/home/js/9915.js",
+          "bytes": 14196,
+          "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+        }
+      ],
+      "checks": [
+        "initial ESC entry and browser ESC exit"
+      ],
+      "pointerAttempts": [
+        {
+          "label": "initial overview",
+          "lockedFromEscape": true
+        }
+      ],
+      "firstScreenBytes": 3145717
+    }
+  ],
+  "prefixes": [
+    {
+      "path": "/",
+      "files": 496,
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "files": 496,
+      "passed": true
+    }
+  ],
+  "manifestSha256": "532170fb56b1eb180422d2020c407ca4a8cae364fae93ee2c3b7660b20872275",
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26600130,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 95239,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2926865,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42655639
+  },
+  "unchangedRuntimeAssets": 36,
+  "sources": {
+    "src/examples/Room.ts": "2796988abc7deed6142c0033b1ae81d9e9662a41e3b8d2ab3cf19ea5b00b017c",
+    "public/index.html": "466d04ea8de64e126da3adfc134764a762e38adc8678b6d5b200af1ce9e697bb",
+    "src/examples/LighthouseLayout.ts": "ba58f86bb89d8b447c7de475d4e0c2817889b830835134e8959dc15a4c79a934",
+    "src/examples/LighthouseDetails.ts": "31a99b927da2259b3eca2535618c5dc9cd6a2ea8f9873f0c84272c83b2a098b9",
+    "src/examples/LighthouseStoryChapters.ts": "95944d0be83d6daffe20f104a051a4f0b13ad2b5b99a02b6adf316744e121e36",
+    "src/examples/LighthousePanel.ts": "7bbf19644c4de4a92bb65b00ad365c50f87435e52b57123d1d616bcd8de27099",
+    "public/environment/coastal-cliff-source.json": "7d9ddfa1f504478fff9bfba83e858a06263a1aa0feaa1839b189871eeaa9cc91",
+    "public/STUDY_ASSET_SOURCES.md": "4f877ae6bb8818eecf79adea7f663a0957e21c637ba857fbb765b1f1d9c1ce65"
+  },
+  "browser": "155.0.8059.86",
+  "passed": true
+}

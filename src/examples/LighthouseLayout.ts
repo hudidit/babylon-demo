@@ -11,6 +11,8 @@ export const LIGHTHOUSE = Object.freeze({
   wallThickness: .28, floor: tower.ground + .54, entranceHalfWidth: .6, doorY: -tower.radius + .07,
   plinthRadius: tower.radius + .7, lanternRadius: 2, galleryRadius: 3.35, railingRadius: 3.19,
   gallery: tower.ground + 16.64, exitPanel: 1,
+  controlPanel: Object.freeze({ x: 2.4, y: -1.8, angle: -Math.atan2(3, 4),
+    width: .84, height: .74, depth: .14, centerHeight: 1.5 }),
   ladder: Object.freeze({ x: -1.1, y: .42, width: .66, climbY: .05, landingY: -.95,
     minX: -1.65, maxX: -.55, minY: -.6, maxY: .6, speed: 1.6 }),
   furniture: Object.freeze([

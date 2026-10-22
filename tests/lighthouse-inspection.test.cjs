@@ -60,6 +60,13 @@ test('turning away or stopping resets observation; pause freezes it and never su
   f.operation.startTest(); f.run(5); f.step(.1, false, false); near(f.inspection.snapshot.observationSeconds, 0);
 });
 
+test('a fixed observer can watch the whole cycle with only a brief passing flash', () => {
+  const f=fixture();f.operation.startTest();f.sight.output=0;
+  for(let n=0;n<300;n++) {f.sight.output=n===90?1:0;f.step(.1);}
+  assert.ok(f.inspection.snapshot.optic);near(f.inspection.snapshot.observedTurns,1);
+  assert.equal(f.inspection.snapshot.outputSeen,true);
+});
+
 test('a frozen or artificially discontinuous turntable cannot earn an observation by waiting', () => {
   const f = fixture(); f.operation.startTest(); const op = f.operation.snapshot;
   for (let i = 0; i < 200; i++) f.inspection.advance({...f.clock.lastAdvance, activeSeconds: .1}, op, op, f.sight);

@@ -69,6 +69,7 @@ import type {LighthouseStorySession} from "./LighthouseStorySave";
 export type RoomView = "overview" | "coast" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 // The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
 export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.825 };
+const WALK_HELP = "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出";
 
 /** Island, lighthouse and house share the same scene and first-person walking world. */
 export class RoomScene {
@@ -707,7 +708,7 @@ export class RoomScene {
     this.lighthouseMaintenanceState.advance(this.exterior.isVisible ? this.timeState.lastAdvance : {...this.timeState.lastAdvance, activeSeconds: 0}, this.lighthouseState, {
       action: !!this.lighthouseMaintenance.action && this.canObserveEquipment(this.lighthouseMaintenance.action.location),
       backup: this.lighthouseMaintenance.backupOn && this.canObserveBackup(),
-      main: this.lighthouseMaintenance.trial && this.canObserveLighthouse({id: "lighthouse-beacon-main", label: "灯具与转台", meshes: details.beacon.meshes}, [details.cover.pane]), mainOutput: output
+      main: this.lighthouseMaintenance.trial && this.canObserveMain(), mainOutput: output
     });
     if(this.lighthousePowerState) this.lighthousePowerState.advanceAction(this.timeState.lastAdvance,this.lighthouseOperation,this.lighthouseMaintenance,
       !!this.lighthousePower.action&&this.canObserveEquipment(this.lighthousePower.action.location),this.timePlayback.automatic,
@@ -715,8 +716,8 @@ export class RoomScene {
     if (this.lighthouseInspectionState) {
       const inspection = this.lighthouseInspection;
       this.lighthouseInspectionState.advance(this.timeState.lastAdvance, operationBefore, this.lighthouseOperation, {
-        optic: !inspection.optic && this.canObserveLighthouse({id: "lighthouse-beacon-main", label: "灯具与转台", meshes: details.beacon.meshes}, [details.cover.pane]),
-        output: lighthouseBeamStrength(this.lighthouseOperation.rotationTurns, eye.x - origin.x, eye.z - origin.z),
+        optic: !inspection.optic && this.canObserveMain(),
+        output,
         cover: inspection.cleaning && this.canObserveLighthouse(details.cover.device)
       });
     }
@@ -821,7 +822,7 @@ export class RoomScene {
     this.camera.movement.resetPanVelocity();
     this.updateControls();
     const help = document.querySelector("#view-help");
-    const instructions = (firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互") + " · T 时间 · J 联络";
+    const instructions = (firstPerson ? WALK_HELP : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互 · ESC 自由探索") + " · T 时间 · J 联络";
     if (help) help.textContent = instructions;
     this.canvas.setAttribute("aria-label", "海岛灯站三维场景，" + instructions);
     this.updateInteractionHint();
@@ -1115,10 +1116,21 @@ export class RoomScene {
     return this.atLighthouseFloor(location === "test" || location === "cover" ? LIGHTHOUSE.gallery : LIGHTHOUSE.floor)
       && this.interactions.canReachDevice(device, this.firstPersonCamera.position);
   }
-  private canObserveLighthouse(device: import("./RoomInteractions").InteractiveDevice, transparent: readonly Mesh[] = []) {
+  private canObserveLighthouse(device: import("./RoomInteractions").InteractiveDevice) {
     return this.atLighthouseFloor(LIGHTHOUSE.gallery) && !this.isViewing && !this.pauses.blocked
       && this.interactions.canReachDevice(device, this.firstPersonCamera.position, 7.5,
-        this.firstPersonCamera.getForwardRay().direction, transparent);
+        this.firstPersonCamera.getForwardRay().direction);
+  }
+  private canObserveMain() {
+    if (!this.atLighthouseFloor(LIGHTHOUSE.gallery) || this.isViewing || this.pauses.blocked) return false;
+    const {beacon, cover} = this.exterior.lighthouseDetails, camera = this.firstPersonCamera, eye = camera.position;
+    if (!camera.isInFrustum(beacon.meshes[0])) return false;
+    // Stable targets cover the whole optic; the player watches a cycle from one position.
+    return [[1, 1, 1], [-1, 1, -1], [1, -1, -1], [-1, -1, 1]].some(offset => {
+      const direction = beacon.root.position.add(Vector3.FromArray(offset).scale(.8)).subtract(eye).normalize();
+      const hit = this.scene.pickWithRay(new Ray(eye, direction, 15), mesh => interactionSurface(mesh) && mesh !== cover.pane);
+      return hit?.distance <= 15 && beacon.meshes.includes(hit.pickedMesh as Mesh);
+    });
   }
   private canObserveEquipment(location: string) {
     const equipment = lighthouseEquipmentDefinition(location), device = equipment && this.exterior.lighthouseDetails.equipment.device(equipment.id);
@@ -1376,7 +1388,11 @@ export class RoomScene {
       if (!this.ladder?.attached && !this.scooter.riding && !this.scooterTransition && this.jump) requestJump(this.jump);
       return;
     }
-    if (event.key === "Escape") this.leaveFirstPerson();
+    if (event.key === "Escape" && !event.repeat && !event.isComposing) {
+      event.preventDefault();
+      if (this.currentView === "first-person") this.leaveFirstPerson();
+      else this.setView("first-person");
+    }
   };
 
   private pointerDown = (event: PointerEvent) => {
@@ -1428,7 +1444,7 @@ export class RoomScene {
       if (help) help.textContent = this.ladder?.attached ? "垂直梯 · W/↑ 上爬 · S/↓ 下爬 · E 到层离梯 · 松键停留 · M 地图" : this.scooter.riding ? "鼠标环顾 · WASD 驾驶 · 空格刹车 · E 下车 · M 地图 · ESC 退出"
         : lighthouseRegion === "灯塔独立机房" ? "独立机房 · 点击设备查看 · 保持检修入口畅通 · M 地图" : inLighthouse
           ? `${lighthouseRegion} · 靠近垂直梯按 E 上下楼 · M 地图`
-          : "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出";
+          : WALK_HELP;
       if (help) help.textContent += " · T 调整时间";
     }
     const ladderTarget = firstPerson && this.pointerLocked && this.controlsEnabled && this.ladderTarget();

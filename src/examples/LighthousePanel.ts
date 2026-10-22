@@ -164,7 +164,7 @@ export class LighthousePanel {
       guide = i.checks["check-cover"] === "pending" ? "先查看表面，再决定是否擦拭。" : i.dirty ? LighthouseInspection.canClean(op) ? "擦拭时保持准星对准保护面，圆环闭合后复查。" : "等待白天停灯后，再擦拭保护面。" : `确认洁净后记入巡检；下次例行清洁在第${i.nextMaintenanceDay}日。`;
     } else if (location === "test" || location === "lighthouse-drive-hatch") {
       gauges.push({label: "转台转速", value: op.running ? 60 / LIGHTHOUSE_OPERATION.rotationSeconds : 0, max: 8, unit: "rpm", note: op.running ? `每${LIGHTHOUSE_OPERATION.rotationSeconds}秒一圈` : "转台停止"});
-      guide = location === "test" ? i.optic ? "本次转动与出光已确认。" : "开启试灯后看向灯头，准星圆环闭合即完成观察。" : "检修口保持关闭。可在灯座试灯，观察转动与出光。";
+      guide = location === "test" ? i.optic ? "本次转动与出光已确认。" : "原地看整盏灯，无需追光；白天先试灯。" : "检修口保持关闭。可在灯座试灯，观察转动与出光。";
     } else if (location === "lighthouse-beacon-backup") {
       status = m.backupOn ? "备用灯接替中" : "备用灯待命"; tone = m.backupOn ? "warn" : "idle";
       gauges.push({label: "备用电池", value: p.backupFraction * 100, max: 100, unit: "%", note: "独立供电"}); guide = "主灯不可用时自动接替，日常无需切换。";
@@ -205,7 +205,7 @@ export class LighthousePanel {
       .map(id => this.el<HTMLButtonElement>(id)).find(button => !button.hidden && !button.disabled);
     buttons.forEach(button => button.classList.toggle("device-primary",button === primary));
     this.set("lighthouse-action-heading",buttons.some(button => !button.hidden) ? "现场操作" : "值守说明");
-    this.set("lighthouse-work-note",({control:"记下的读数可以到巡视记录里翻看。", test:i.optic ? "本次观察结果可以在巡视记录中回看。" : "试灯持续60秒。返回场景后，看着灯头转满一圈、至少30秒，确认有光照出。",
+    this.set("lighthouse-work-note",({control:"记下的读数可以到巡视记录里翻看。", test:i.optic ? "本次观察结果可以在巡视记录中回看。" : "试灯60秒。看满30秒、转满一圈且见过出光即完成。",
       cover:"擦完以后，再看一遍保护面，确认擦净了才算查完。", "lighthouse-solar-array":"巡视和细查都会记下结果。擦完面板，还要回来再查一遍。"})[location] || "");
     this.set("lighthouse-power-flow", ["control", "lighthouse-battery-main", "lighthouse-solar-charger", "lighthouse-solar-array"].includes(location)
       ? `${automatic ? p.mainNetW > .5 ? "↑ 正在储能" : p.mainNetW < -.5 ? "↓ 正在供电" : "电量平稳" : "时间暂停 · 电量不变"}` : location === "test" && op.testSecondsRemaining > 0 ? `试灯余时 ${Math.ceil(op.testSecondsRemaining)} 秒` : "");
