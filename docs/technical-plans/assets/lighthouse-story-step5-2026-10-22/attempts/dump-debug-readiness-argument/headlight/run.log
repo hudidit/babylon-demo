@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(record.initialJsBytes<3*1048576)
+
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/scooter-headlight-2026-10-20/check-browser.cjs:19:153 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

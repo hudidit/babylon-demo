@@ -1,0 +1,428 @@
+{
+  "baseline": "a7178ce",
+  "name": "first-chapter-prototype",
+  "scope": "chapter one route prototype",
+  "method": "Final dist only. Game new-story/continue may place the desk; harness never writes camera position, jump state, ladder height, story facts, clock or Wh. Native W/S/E and mouse controls; camera aim changes only. Fixed 50 ms reference frames, not wall-clock player duration or FPS measurements.",
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/js/main.js",
+      "status": 200
+    },
+    {
+      "path": "/js/9691.js",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/rough_linen/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/rough_linen/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/color.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/normal.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/arm.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/pictures/pic1.jpg",
+      "status": 200
+    },
+    {
+      "path": "/environment/study-interior.hdr",
+      "status": 200
+    },
+    {
+      "path": "/js/1203.js",
+      "status": 200
+    },
+    {
+      "path": "/environment/coastal-daylight.hdr",
+      "status": 200
+    },
+    {
+      "path": "/models/study/sofa_03.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/gothic_commode.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/wooden_bookshelf.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/study/modern_arm_chair_01.glb",
+      "status": 200
+    },
+    {
+      "path": "/js/8558.js",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/8f2c9507-b6e2-4827-aacf-77f476fbf1e6",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/4f0c98bd-91ae-4afd-98ef-d4b9e42e33bc",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/50c2ae1b-3b9b-44b2-8e34-2a1ccd5a99a1",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/96dbfe04-37bf-494f-9f8e-5fb27a9b4bba",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/7c967423-d0bd-4b62-8a94-a6d6b584ee97",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/32a69344-5b6f-492f-a39b-515d73eda22d",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/0297f5d2-6348-491c-ad9b-73c3f73eebb9",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/19938062-b993-4c4f-a243-084229f1f9b4",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/13b461dc-91cb-4c07-ae41-34ee95b165d7",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/190c9166-75dd-4029-a46e-3d788a0c5104",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/09562049-5106-4db2-ae18-36f3192767ed",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/ce2724c0-5457-4542-a5d0-1587941a8c3d",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/2f30a8ff-3b5d-411a-a60a-e779345b0cac",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/c57c729d-c975-4289-9552-74d359dbf0fd",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/6f12b843-6b76-43ed-a08d-cb97f4b3a8f3",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:55435/9fe74375-e3a4-4f96-a5a0-ef6459f9eb2d",
+      "status": 200
+    },
+    {
+      "path": "/js/6612.js",
+      "status": 200
+    },
+    {
+      "path": "/js/4742.js",
+      "status": 200
+    },
+    {
+      "path": "/js/7449.js",
+      "status": 200
+    },
+    {
+      "path": "/js/5587.js",
+      "status": 200
+    },
+    {
+      "path": "/js/9615.js",
+      "status": 200
+    },
+    {
+      "path": "/js/6560.js",
+      "status": 200
+    },
+    {
+      "path": "/js/4472.js",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200
+    },
+    {
+      "path": "/js/9915.js",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/switch-1.702a81fab4.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/paper-2.862694da2b.wav",
+      "status": 200
+    },
+    {
+      "path": "/js/3690.js",
+      "status": 200
+    }
+  ],
+  "firstScreenJs": [
+    {
+      "path": "/js/main.js",
+      "bytes": 506186,
+      "sha256": "768222bbecd2ba2f2b9536c847e70f1a929656b8cfb59e3cc341edb415ff8ada"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2072,
+      "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "manifestSha256": "9cb8af79f12a0704aa4d83e38389f6f21101f3380658f786ac4edddc7affd2e4",
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26599400,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 94294,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2926364,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42653964
+  },
+  "sources": {
+    "src/examples/Room.ts": "e0b838567e07a433a76cbb08602f6ea7e7276fc6ae151de39a73037dd68e3cd8",
+    "src/examples/RoomInteractions.ts": "1b82fdd2ecc6e1f1f05690ed8aae84dd0d0f72691373f2919a6de18c5f135c1a",
+    "src/examples/LighthouseStory.ts": "f30625cc5a24bca1cc531ea91c7952bf56d7fea83f0667de73249eca06ada921",
+    "src/examples/LighthouseStorySave.ts": "e4abef84bd938bab2a937367bd37e9c4c7242411257bb4c6ed9f52206096271a",
+    "src/examples/LighthouseStoryWait.ts": "d1d2b10408579383a1873423e799dc880e6eacaad213cbb6f8382b9821f71b34",
+    "src/examples/LighthouseStoryChapters.ts": "0dc35b373c732f4fd29e3e1bfa5c94a2c7c43c89d93ce4b59ec6ea9bd1b79632",
+    "src/examples/LighthouseStoryEpilogue.ts": "bffa9525ed0d693fa3430c3bbe9da3da573b63f856812cc63ff29fc903594777",
+    "src/examples/LighthouseStoryBridge.ts": "78525fe8a699f0dd72e629897753f73a5e8a9b007f4dc98c3af96f0a4692ae52",
+    "src/examples/LighthouseInspection.ts": "14cc332f7fbd2a69782aba8debdefc8b06736383cf2482ebc0b781f242dc6bd2",
+    "src/examples/LighthouseMaintenance.ts": "4053d5a864a90f7abc8bd7acab11353b002a8cdad23add162c330670d8a17283",
+    "src/examples/LighthousePower.ts": "4944f5e984d5ec774c652afe79772d2c6f01dd5454aac404fe1975f8add012a6",
+    "src/examples/WalkingSurface.ts": "c5e40ab873772df5b974862608783f01cff18c784c9b6a840ae53f94b2023a6e",
+    "src/examples/LighthouseWalking.ts": "55824154989aa2eab16b14cc57eb134f5ae762ba842fd668de63ad366e634a0e",
+    "src/examples/LighthouseLadder.ts": "b09b1d18be7a0de08680280a7e040e4e0568828783d43a3ee8eb9104defb9260"
+  },
+  "browser": "155.0.8059.86",
+  "phases": [],
+  "readings": [
+    {
+      "id": "letter",
+      "body": "这三天，辛苦你照看灯站。到塔里先在首层读表，再上灯室看转动和出光。保护面容易起盐膜，要擦就等白天停灯以后。擦完别急着走，再看一遍。\n\n起雾的时候，中午也得亮灯。屋里台灯的开关就在手边，自己用着方便就好。满三天后的中午，接送艇过来，下一班也跟着来。\n\n册子后面还留着旧呼号。接送安排听岸站值班的，有变动他们会通知。\n\n周",
+      "characters": 159
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "id": "pickup-plan",
+      "characters": 78,
+      "body": "海角灯站，接送先定在第4日中午12点，正好满三天。艇到工作码头接你，下一班随艇上岛。有变动会再通知。\n\n工作码头在生活区以外。你现在可以沿屋外步道往返灯塔。"
+    }
+  ],
+  "waits": [],
+  "steps": [],
+  "screens": [
+    "failure.jpg"
+  ],
+  "firstScreenBytes": 3145216,
+  "step": "第一章：读信、连续步行与首次巡视",
+  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'connecting-door'\n\n    at Playthrough.door (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:24:183)\n    at async Playthrough.deskToEntry (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:26:72)\n    at async Playthrough.homeToTower (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:28:22)\n    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-playthrough.cjs:20:2",
+  "failedState": {
+    "x": 6.56757313214008,
+    "y": 2.565727817102959,
+    "feet": 0,
+    "grounded": true,
+    "attached": false,
+    "ladderFeet": 3.54,
+    "controls": true,
+    "locked": true,
+    "pauses": [],
+    "view": "first-person",
+    "at": 0.019166666666649235,
+    "hour": 12.01916666666665,
+    "objective": "ST02",
+    "complete": 1,
+    "wh": 2308.6958132254967,
+    "backupWh": 96,
+    "weather": "clear",
+    "source": "none",
+    "reference": {
+      "frames": 24,
+      "active": 1.1500000000000004,
+      "walkDistance": 1.194335561920408,
+      "ladderDistance": 0
+    }
+  },
+  "routeSummary": {
+    "recordedNodes": 2,
+    "fullRouteSamplesOmitted": true,
+    "lastCompletedGoals": [
+      {
+        "x": 6.15,
+        "y": 2.5
+      },
+      {
+        "x": 6.65,
+        "y": 2.6
+      }
+    ]
+  }
+}

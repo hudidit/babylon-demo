@@ -1,0 +1,112 @@
+{
+  "baseline": "1f873d0",
+  "browser": "155.0.8059.86",
+  "fpsOrLoadTimeSampling": false,
+  "initialJs": [
+    {
+      "url": "http://127.0.0.1:57390/js/main.js",
+      "status": 200,
+      "bytes": 506186
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/9691.js",
+      "status": 200,
+      "bytes": 2420178
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/1203.js",
+      "status": 200,
+      "bytes": 138571
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/8558.js",
+      "status": 200,
+      "bytes": 12560
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/7449.js",
+      "status": 200,
+      "bytes": 2072
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/6612.js",
+      "status": 200,
+      "bytes": 14807
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/4742.js",
+      "status": 200,
+      "bytes": 8962
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/5587.js",
+      "status": 200,
+      "bytes": 1107
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/9615.js",
+      "status": 200,
+      "bytes": 9069
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/6560.js",
+      "status": 200,
+      "bytes": 2517
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/4472.js",
+      "status": 200,
+      "bytes": 14991
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/9915.js",
+      "status": 200,
+      "bytes": 14196
+    },
+    {
+      "url": "http://127.0.0.1:57390/js/1442.js",
+      "status": 200,
+      "bytes": 3323
+    }
+  ],
+  "initialJsBytes": 3148539,
+  "debug": {
+    "scooter": {
+      "id": "home",
+      "label": "家门停车位",
+      "x": 14,
+      "y": 2.2,
+      "heading": 3.141592653589793,
+      "speed": 0,
+      "distance": 0,
+      "steer": 0,
+      "riding": false,
+      "exitRequested": false
+    },
+    "notice": "",
+    "view": "coast",
+    "night": 0,
+    "active": false,
+    "pauses": [],
+    "playback": {
+      "automatic": true,
+      "transitioning": false,
+      "targetHour": null
+    },
+    "hour": 12.020603333334126,
+    "enabled": false,
+    "observers": [
+      "()=>{var i;const s=e.activeCamera,o=!(null===(i=this.document)||void 0===i?void 0:i.hidden)&&t.isVisible&&t.isEnabled()&&t.visibility>0&&!!s&&!!(s.layerMask&t.l",
+      "()=>this.updateVisuals()",
+      "()=>{const t=this.scene.activeCamera;t&&e.isEnabled()&&e.isVisible&&!(e.visibility<=0)&&t.layerMask&e.layerMask&&s.signedDistanceTo(t.globalPosition)<-.01&&e.is",
+      "()=>{const t=this.scene.activeCamera;t&&e.isEnabled()&&e.isVisible&&!(e.visibility<=0)&&t.layerMask&e.layerMask&&s.signedDistanceTo(t.globalPosition)<-.01&&e.is",
+      "()=>{if(this.updateTimeOfDay(this.engine.getDeltaTime()/1e3),this.updateScooterHeadlight(),this.audio.update(),!this.inspection.isOpen&&this.scene.activeCamera=",
+      "()=>{h||t.setPaused(\"inspector\",!!t.scene.debugLayer.isVisible())}"
+    ],
+    "delta": 50
+  },
+  "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(record.initialJsBytes<3*1048576)\n\n    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/scooter-headlight-2026-10-20/check-browser.cjs:19:153",
+  "errors": [],
+  "warnings": [],
+  "failedRequests": []
+}

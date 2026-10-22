@@ -41,6 +41,17 @@ test('full V2 sessions resume actual weather, energy, calendar, latent surfaces 
   for(let n=0;n<240;n++){step(a,.037);step(b,.037);}assert.deepEqual(json(a.weather.exportState()),json(b.weather.exportState()));assert.deepEqual(json(a.discovery.exportState()),json(b.discovery.exportState()));assert.equal(a.power.snapshot.mainWh,b.power.snapshot.mainWh);assert.deepEqual(json(a.operation.exportState()),json(b.operation.exportState()));}
  const a=latent(),raw=encode(a),b=decode(raw);assert.equal(b.maintenance.snapshot.solarLatent,true);assert.deepEqual(json(b.maintenance.exportState()),json(a.maintenance.exportState()));for(let n=0;n<25;n++){step(a,.1);step(b,.1);}assert.equal(b.maintenance.snapshot.solarLatent,false);assert.deepEqual(json(b.weather.exportState()),json(a.weather.exportState()));assert.equal(b.power.snapshot.mainWh,a.power.snapshot.mainWh);
 });
+test('daytime fog restores a protected main battery and actual backup source before validating equipment',()=>{
+ const s=fixture(0,'fog');s.power=new LighthousePower({mainWh:200,backupWh:100});
+ // Visibility demand is accepted by the original weather/clock bridge, independent of night scheduling.
+ for(let n=0;n<600&&!s.weather.snapshot.visibility.required;n++)step(s,1/600,[]);
+ sync(s,[]);assert.equal(s.operation.snapshot.hour>=6&&s.operation.snapshot.hour<18,true);
+ assert.equal(s.weather.snapshot.visibility.required,true);assert.equal(s.operation.snapshot.available,false);
+ assert.equal(s.maintenance.snapshot.source,'backup');const raw=encode(s),restored=decode(raw);
+ assert.equal(restored.maintenance.snapshot.source,'backup');assert.equal(encode(restored),raw);
+ assert.equal(restored.clock.playback.automatic,false);
+ const bad=JSON.parse(raw);bad.operation.available=true;assert.throws(()=>decode(JSON.stringify(bad)),/Inconsistent saved equipment/);
+});
 test('a cached missed patrol, two-miss hint, deterministic deep check and logged clue IDs survive saving',()=>{
  let s=latent();const first=observe(s);assert.equal(first.status,'unseen');const random=json(s.weather.snapshot.random);s=decode(encode(s));sync(s,null);
  assert.deepEqual(json(observe(s)),json(first));assert.deepEqual(json(s.weather.snapshot.random),random);

@@ -1,0 +1,3228 @@
+{
+  "baseline": "a7178ce",
+  "method": "Final dist only, native controls and grounded local pose/ray fixtures. Wait runs its production batches; field work uses bounded original clock callbacks. No forged Wh, issues, observations or tasks; no full-walk/FPS claim.",
+  "cases": {
+    "displayCopyPreservesOriginalState": true,
+    "firstChapterNative": true,
+    "backgroundPausesWithoutCatchup": true,
+    "nativeWaitCancel": true,
+    "fogRealNavigationAndSurfaceTreatment": true,
+    "inputNoteAndPendingReplyRestore": true,
+    "stormIndoorPlanAndRainAfterHandover": true,
+    "optionalMaterialsAndDiary": true,
+    "thirdChapterRefreshRestore": true,
+    "realStayAndNightMain": true,
+    "sourcePendingAndOriginalReplyRestore": true,
+    "endingRestoreReplayAndKeyboardBack": true,
+    "finalSaveFailurePreservesOldAndRetries": true,
+    "realBackupRayAndTenSecondProgress": true,
+    "independentSlots": true,
+    "reducedMotion": true,
+    "subpathStoryChunkAndSave": true,
+    "failedStoryChunkRetryPreservesSave": true,
+    "disposeDuringWaitRestoresControls": true
+  },
+  "layouts": [
+    {
+      "name": "zhou-letter",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "story-letter-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "zhou-letter",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-letter-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "zhou-letter",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "story-letter-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "zhou-letter",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-letter-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "fog-task",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "fog-task",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "fog-task",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "fog-task",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "life-notes",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "life-notes",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "life-notes",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "life-notes",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "handover-report",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        }
+      ]
+    },
+    {
+      "name": "handover-report",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        }
+      ]
+    },
+    {
+      "name": "handover-report",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        }
+      ]
+    },
+    {
+      "name": "handover-report",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        }
+      ]
+    },
+    {
+      "name": "handover-ready",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "handover-ready",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "handover-ready",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "handover-ready",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "cancellation-notice",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "story-message-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "cancellation-notice",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "story-message-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "cancellation-notice",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "story-message-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "cancellation-notice",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "story-message-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "stay-night-task",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        },
+        {
+          "id": "story-wait-start",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "stay-night-task",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        },
+        {
+          "id": "story-wait-start",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "stay-night-task",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        },
+        {
+          "id": "story-wait-start",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "stay-night-task",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        },
+        {
+          "id": "story-wait-start",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "old-call-message",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "story-message-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "old-call-message",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "story-message-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "old-call-message",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "story-message-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "old-call-message",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "story-message-read",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "source-check-reply",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        }
+      ]
+    },
+    {
+      "name": "source-check-reply",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        }
+      ]
+    },
+    {
+      "name": "source-check-reply",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        }
+      ]
+    },
+    {
+      "name": "source-check-reply",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        },
+        {
+          "id": "",
+          "height": 71.078125
+        }
+      ]
+    },
+    {
+      "name": "goals-complete-choice",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "story-finish",
+          "height": 44
+        },
+        {
+          "id": "story-keep",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "goals-complete-choice",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-finish",
+          "height": 44
+        },
+        {
+          "id": "story-keep",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "goals-complete-choice",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "story-finish",
+          "height": 44
+        },
+        {
+          "id": "story-keep",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "goals-complete-choice",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-finish",
+          "height": 44
+        },
+        {
+          "id": "story-keep",
+          "height": 44
+        },
+        {
+          "id": "story-view-radio",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "ending-work-summary",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 50
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 50
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 50
+        },
+        {
+          "id": "story-tab-life",
+          "height": 50
+        },
+        {
+          "id": "story-tab-save",
+          "height": 50
+        },
+        {
+          "id": "story-ending-stay",
+          "height": 44
+        },
+        {
+          "id": "story-ending-records",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "ending-work-summary",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-ending-stay",
+          "height": 44
+        },
+        {
+          "id": "story-ending-records",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "ending-work-summary",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 48.609375
+        },
+        {
+          "id": "story-tab-life",
+          "height": 48.59375
+        },
+        {
+          "id": "story-tab-save",
+          "height": 48.59375
+        },
+        {
+          "id": "story-ending-stay",
+          "height": 44
+        },
+        {
+          "id": "story-ending-records",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "ending-work-summary",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "buttons": [
+        {
+          "id": "story-return",
+          "height": 44
+        },
+        {
+          "id": "story-tab-duty",
+          "height": 44
+        },
+        {
+          "id": "story-tab-letter",
+          "height": 44
+        },
+        {
+          "id": "story-tab-radio",
+          "height": 44
+        },
+        {
+          "id": "story-tab-life",
+          "height": 44
+        },
+        {
+          "id": "story-tab-save",
+          "height": 44
+        },
+        {
+          "id": "story-ending-stay",
+          "height": 44
+        },
+        {
+          "id": "story-ending-records",
+          "height": 44
+        }
+      ]
+    }
+  ],
+  "screens": [
+    "zhou-letter-1280.jpg",
+    "zhou-letter-390.jpg",
+    "zhou-letter-844.jpg",
+    "zhou-letter-320.jpg",
+    "shore-arrival-reply-1280.jpg",
+    "fog-task-1280.jpg",
+    "fog-task-390.jpg",
+    "fog-task-844.jpg",
+    "fog-task-320.jpg",
+    "input-pending-1280.jpg",
+    "device-input-reading-1280.jpg",
+    "device-input-reading-390.jpg",
+    "device-input-reading-844.jpg",
+    "device-input-reading-320.jpg",
+    "input-report-ready-1280.jpg",
+    "life-notes-1280.jpg",
+    "life-notes-390.jpg",
+    "life-notes-844.jpg",
+    "life-notes-320.jpg",
+    "storm-outside-restricted-1280.jpg",
+    "storm-work-plan-1280.jpg",
+    "handover-report-1280.jpg",
+    "handover-report-390.jpg",
+    "handover-report-844.jpg",
+    "handover-report-320.jpg",
+    "handover-report-end-1280.jpg",
+    "handover-ready-1280.jpg",
+    "handover-ready-390.jpg",
+    "handover-ready-844.jpg",
+    "handover-ready-320.jpg",
+    "personal-record-1280.jpg",
+    "cancellation-notice-1280.jpg",
+    "cancellation-notice-390.jpg",
+    "cancellation-notice-844.jpg",
+    "cancellation-notice-320.jpg",
+    "stay-night-task-1280.jpg",
+    "stay-night-task-390.jpg",
+    "stay-night-task-844.jpg",
+    "stay-night-task-320.jpg",
+    "old-call-message-1280.jpg",
+    "old-call-message-390.jpg",
+    "old-call-message-844.jpg",
+    "old-call-message-320.jpg",
+    "source-check-reply-1280.jpg",
+    "source-check-reply-390.jpg",
+    "source-check-reply-844.jpg",
+    "source-check-reply-320.jpg",
+    "goals-complete-choice-1280.jpg",
+    "goals-complete-choice-390.jpg",
+    "goals-complete-choice-844.jpg",
+    "goals-complete-choice-320.jpg",
+    "ending-work-summary-1280.jpg",
+    "ending-work-summary-390.jpg",
+    "ending-work-summary-844.jpg",
+    "ending-work-summary-320.jpg",
+    "ending-actions-1280.jpg",
+    "ending-actions-390.jpg",
+    "ending-actions-844.jpg",
+    "ending-actions-320.jpg",
+    "backup-actual-progress-1280.jpg",
+    "backup-night-confirmation-1280.jpg"
+  ],
+  "errors": [],
+  "warnings": [],
+  "firstScreenJs": [
+    {
+      "path": "/js/main.js",
+      "bytes": 506186,
+      "sha256": "aa65b41244f6631d30d8c6f840603d2ab4bdaf3119daeecd0457e45951f37229"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2072,
+      "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "storyInteractionJs": [
+    {
+      "path": "/js/3690.js",
+      "bytes": 24245,
+      "sha256": "c55a190153bb2f44ce48309972c9ae36271e18b71867fe44cb73274f14ae893b"
+    }
+  ],
+  "laterJs": [
+    {
+      "path": "/js/main.js",
+      "bytes": 506186,
+      "sha256": "aa65b41244f6631d30d8c6f840603d2ab4bdaf3119daeecd0457e45951f37229"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2072,
+      "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    },
+    {
+      "path": "/js/3690.js",
+      "bytes": 24245,
+      "sha256": "c55a190153bb2f44ce48309972c9ae36271e18b71867fe44cb73274f14ae893b"
+    },
+    {
+      "path": "/js/main.js",
+      "bytes": 506186,
+      "sha256": "aa65b41244f6631d30d8c6f840603d2ab4bdaf3119daeecd0457e45951f37229"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2072,
+      "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    },
+    {
+      "path": "/js/3690.js",
+      "bytes": 24245,
+      "sha256": "c55a190153bb2f44ce48309972c9ae36271e18b71867fe44cb73274f14ae893b"
+    }
+  ],
+  "manifestSha256": "cdccc19acc1723a77a770daa1908abbfeea887430633e81541d6aa771ff79ebe",
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26599400,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 94294,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2926364,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42653964
+  },
+  "storyChunk": {
+    "path": "js/3690.js",
+    "kind": "build",
+    "bytes": 24245,
+    "sha256": "c55a190153bb2f44ce48309972c9ae36271e18b71867fe44cb73274f14ae893b"
+  },
+  "sources": {
+    "public/index.html": "981d4dcadfcf296bbe97b50f0365caa738a9ad5e17af83daa8f988f1d9e61a46",
+    "public/STUDY_ASSET_SOURCES.md": "e61590ae5cba6052db7fceebb57d4e2ecc8c2390505a98daf994ec8a3296fb78",
+    "src/examples/Room.ts": "e0b838567e07a433a76cbb08602f6ea7e7276fc6ae151de39a73037dd68e3cd8",
+    "src/examples/RoomInteractions.ts": "1b82fdd2ecc6e1f1f05690ed8aae84dd0d0f72691373f2919a6de18c5f135c1a",
+    "src/examples/RoomTimeOfDay.ts": "7aa86569a46abf4d21577f87ff9064b164f41df83a57d74439100664c2f6f7c7",
+    "src/examples/LighthouseStory.ts": "f30625cc5a24bca1cc531ea91c7952bf56d7fea83f0667de73249eca06ada921",
+    "src/examples/LighthouseStorySave.ts": "e4abef84bd938bab2a937367bd37e9c4c7242411257bb4c6ed9f52206096271a",
+    "src/examples/LighthouseStoryBridge.ts": "78525fe8a699f0dd72e629897753f73a5e8a9b007f4dc98c3af96f0a4692ae52",
+    "src/examples/LighthouseStoryPanel.ts": "8024d7ca7770cacd6ea067012a18c513137fd807c50381680026039b15948cef",
+    "src/examples/LighthouseStoryChapters.ts": "0dc35b373c732f4fd29e3e1bfa5c94a2c7c43c89d93ce4b59ec6ea9bd1b79632",
+    "src/examples/LighthouseStoryWait.ts": "d1d2b10408579383a1873423e799dc880e6eacaad213cbb6f8382b9821f71b34",
+    "src/examples/LighthouseStoryEpilogue.ts": "bffa9525ed0d693fa3430c3bbe9da3da573b63f856812cc63ff29fc903594777",
+    "src/examples/LighthouseMaintenance.ts": "4053d5a864a90f7abc8bd7acab11353b002a8cdad23add162c330670d8a17283",
+    "src/examples/LighthouseExperience.ts": "dd7524bd7c72af41ed4a6babb5e0cc911d2afa786f846dccf8cb9422d5dae407",
+    "src/examples/LighthouseRisk.ts": "49118557494a37743970d7033fd3f8a46fb9822d782f0a277e914d03bead2bc6",
+    "src/examples/LighthouseWeather.ts": "ccd1c9d1e441d82ba9dc56fb68deea1e3e08c4bb7724233b73734e59e10d29b3",
+    "src/examples/LighthouseWeatherSession.ts": "8961f27ea0bcf4181d6f2ffea3f7200a42cb12003a0d9dcac8dc4737169fe624",
+    "src/examples/LighthouseInspection.ts": "14cc332f7fbd2a69782aba8debdefc8b06736383cf2482ebc0b781f242dc6bd2",
+    "src/examples/LighthouseSave.ts": "85cd30e1d63e63eb624888c9c6885ddeaecc23c0c7093366e7c8f7acd1b71d9d",
+    "src/examples/LighthouseBeam.ts": "c628ed1fb632d20f2cbcc551f7e452806bf94b3939030d477aa6a28aa293d083",
+    "tests/lighthouse-story-chapters.test.cjs": "77189ebf101ea3768624f42eebfef47070b52f5e9904047f89d526df576bde6f",
+    "tests/lighthouse-beacon.test.cjs": "1c5887370ba004fc4f0b85ae7f4ada83fc4623dfbc46d0e5f1f4ec928a97648e",
+    "tests/lighthouse-copy.test.cjs": "a44b6894a34733892753083bfcc623864214932c9eef0840aa4a88bb36e50927",
+    "src/examples/LighthousePanel.ts": "9ab5dd66dc86e926a199ec09fd25594eef1d1c1256d83d0136e120f2b5c712a0",
+    "src/components/RoomTimeMenu.ts": "824e4f7ce8d1b5fdec50b64a26064e5b6bd2953819f7518df7252d342ac361f2",
+    "src/examples/RoomFloorPlan.ts": "381d23f2ae8f9cf8fff3a2349c5cb6a79a46e097f5dc82beebf39d23fd33ef6a",
+    "src/examples/LighthouseDiscovery.ts": "7a50a0d80b636b5e49a2d9900fe1990f02ce8b3087804952e1d221d8cd09986a"
+  },
+  "browser": "155.0.8059.86",
+  "sceneSeed": 0,
+  "firstScreenBytes": 3145216,
+  "storyInteractionBytes": 24245,
+  "waitStops": [
+    {
+      "at": 18,
+      "reason": "表面有新变化，先去看一眼。刚才等待的时间已经过去。",
+      "work": {
+        "phase": "solar",
+        "day": 2,
+        "kind": "solar",
+        "checks": [
+          {
+            "id": "fog",
+            "complete": false
+          },
+          {
+            "id": "cleaned",
+            "complete": false
+          },
+          {
+            "id": "recheck",
+            "complete": false
+          },
+          {
+            "id": "comparison",
+            "complete": false
+          }
+        ],
+        "knownIssues": [],
+        "issueLabels": [],
+        "canReport": false,
+        "canReview": false,
+        "canNote": false
+      }
+    },
+    {
+      "at": 18.5,
+      "reason": "时间到了，回现场看看吧。",
+      "work": {
+        "phase": "solar",
+        "day": 2,
+        "kind": "solar",
+        "checks": [
+          {
+            "id": "fog",
+            "complete": false
+          },
+          {
+            "id": "cleaned",
+            "complete": false
+          },
+          {
+            "id": "recheck",
+            "complete": false
+          },
+          {
+            "id": "comparison",
+            "complete": false
+          }
+        ],
+        "knownIssues": [],
+        "issueLabels": [],
+        "canReport": false,
+        "canReview": false,
+        "canNote": false
+      }
+    },
+    {
+      "at": 23.500000000000078,
+      "reason": "表面有新变化，先去看一眼。刚才等待的时间已经过去。",
+      "work": {
+        "phase": "handover",
+        "day": 2,
+        "kind": "handover",
+        "checks": [
+          {
+            "id": "storm",
+            "complete": false
+          },
+          {
+            "id": "control",
+            "complete": false
+          },
+          {
+            "id": "surface",
+            "complete": true
+          },
+          {
+            "id": "handover",
+            "complete": false
+          }
+        ],
+        "knownIssues": [],
+        "issueLabels": [],
+        "canReport": false,
+        "canReview": false,
+        "canNote": false
+      }
+    },
+    {
+      "at": 42.5,
+      "reason": "时间到了，回现场看看吧。",
+      "work": {
+        "phase": "handover",
+        "day": 3,
+        "kind": "handover",
+        "checks": [
+          {
+            "id": "storm",
+            "complete": false
+          },
+          {
+            "id": "control",
+            "complete": false
+          },
+          {
+            "id": "surface",
+            "complete": false
+          },
+          {
+            "id": "handover",
+            "complete": false
+          }
+        ],
+        "knownIssues": [],
+        "issueLabels": [],
+        "canReport": false,
+        "canReview": false,
+        "canNote": false
+      }
+    },
+    {
+      "at": 48.5,
+      "reason": "时间到了，回现场看看吧。",
+      "work": {
+        "phase": "handover",
+        "day": 3,
+        "kind": "handover",
+        "checks": [
+          {
+            "id": "storm",
+            "complete": true
+          },
+          {
+            "id": "control",
+            "complete": true
+          },
+          {
+            "id": "surface",
+            "complete": false
+          },
+          {
+            "id": "handover",
+            "complete": false
+          }
+        ],
+        "knownIssues": [],
+        "issueLabels": [],
+        "canReport": false,
+        "canReview": false,
+        "canNote": false
+      }
+    },
+    {
+      "at": 72,
+      "reason": "时间到了，回现场看看吧。",
+      "work": {
+        "phase": "complete",
+        "day": 4,
+        "checks": [
+          {
+            "id": "storm",
+            "complete": true
+          },
+          {
+            "id": "control",
+            "complete": false
+          },
+          {
+            "id": "surface",
+            "complete": false
+          },
+          {
+            "id": "handover",
+            "complete": true
+          }
+        ],
+        "knownIssues": [],
+        "issueLabels": [],
+        "canReport": false,
+        "canReview": false,
+        "canNote": false
+      }
+    },
+    {
+      "at": 78,
+      "reason": "时间到了，回现场看看吧。",
+      "work": {
+        "phase": "complete",
+        "day": 4,
+        "checks": [
+          {
+            "id": "storm",
+            "complete": true
+          },
+          {
+            "id": "control",
+            "complete": false
+          },
+          {
+            "id": "surface",
+            "complete": false
+          },
+          {
+            "id": "handover",
+            "complete": true
+          }
+        ],
+        "knownIssues": [],
+        "issueLabels": [],
+        "canReport": false,
+        "canReview": false,
+        "canNote": false
+      }
+    }
+  ],
+  "deviceLayouts": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false
+    }
+  ],
+  "controlledBackupFixture": {
+    "mainWh": 200,
+    "backupWh": 120,
+    "source": "real night-start checkpoint; original model constructors, bridge and validated codec; only low-battery initial condition changed"
+  },
+  "backupViewGate": {
+    "allowed": true,
+    "eye": [
+      -638,
+      101.20000000000002,
+      420.74999999999994
+    ],
+    "feet": 19.64,
+    "grounded": true,
+    "pauses": [],
+    "locked": true,
+    "hits": [
+      {
+        "name": "coastal-lighthouse-equipment-beacon-backup-solar",
+        "distance": 12.434471319229017
+      },
+      {
+        "name": "coastal-lighthouse-equipment-beacon-backup-metal",
+        "distance": 12.882488854402073
+      }
+    ]
+  },
+  "disposed": {
+    "meshes": 0,
+    "materials": 0,
+    "textures": 0,
+    "lights": 0,
+    "cameras": 0,
+    "waitTimer": null
+  },
+  "chunkRetry": {
+    "pageErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_FAILED"
+    ]
+  },
+  "disposedDuringWait": {
+    "timer": null,
+    "running": false,
+    "dialog": false,
+    "newDisabled": false,
+    "meshes": 0,
+    "materials": 0,
+    "textures": 0,
+    "lights": 0,
+    "cameras": 0
+  },
+  "passed": true
+}

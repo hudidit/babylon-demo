@@ -1,0 +1,62 @@
+{
+  "baseline": "a7178ce",
+  "method": "Final dist only, actual cold browser loads, native journal controls, strict codec-generated checkpoints; no pose changes or accelerated scene callbacks. Automated WebKit is not physical Safari/iOS device certification.",
+  "engines": [
+    {
+      "kind": "chromium",
+      "version": "155.0.8059.86",
+      "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "cases": [],
+      "errors": [],
+      "warnings": [],
+      "firstScreenJs": [
+        {
+          "path": "/js/main.js",
+          "bytes": 506186,
+          "sha256": "aa65b41244f6631d30d8c6f840603d2ab4bdaf3119daeecd0457e45951f37229"
+        },
+        {
+          "path": "/js/9691.js",
+          "bytes": 2420178,
+          "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+        },
+        {
+          "path": "/js/1203.js",
+          "bytes": 138571,
+          "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+        },
+        {
+          "path": "/js/8558.js",
+          "bytes": 12560,
+          "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+        }
+      ],
+      "firstScreenBytes": 3077495
+    }
+  ],
+  "layouts": [],
+  "errors": [],
+  "manifestSha256": "cdccc19acc1723a77a770daa1908abbfeea887430633e81541d6aa771ff79ebe",
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26599400,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 94294,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2926364,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42653964
+  },
+  "sources": {
+    "public/index.html": "981d4dcadfcf296bbe97b50f0365caa738a9ad5e17af83daa8f988f1d9e61a46",
+    "src/examples/LighthouseSave.ts": "85cd30e1d63e63eb624888c9c6885ddeaecc23c0c7093366e7c8f7acd1b71d9d",
+    "src/examples/LighthouseStory.ts": "f30625cc5a24bca1cc531ea91c7952bf56d7fea83f0667de73249eca06ada921",
+    "src/examples/LighthouseStorySave.ts": "e4abef84bd938bab2a937367bd37e9c4c7242411257bb4c6ed9f52206096271a",
+    "src/examples/LighthouseStoryPanel.ts": "8024d7ca7770cacd6ea067012a18c513137fd807c50381680026039b15948cef",
+    "src/examples/LighthouseStoryChapters.ts": "0dc35b373c732f4fd29e3e1bfa5c94a2c7c43c89d93ce4b59ec6ea9bd1b79632",
+    "src/examples/LighthouseStoryEpilogue.ts": "bffa9525ed0d693fa3430c3bbe9da3da573b63f856812cc63ff29fc903594777"
+  },
+  "failure": "page.waitForFunction: Timeout 30000ms exceeded.\n    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-engines.cjs:19:146"
+}

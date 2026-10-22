@@ -1,0 +1,196 @@
+{
+  "baseline": "a7178ce",
+  "method": "Final dist, original validated late-fog checkpoint, native surface actions/recovery wait/battery confirmation and save/load. Equipment-local grounded pose fixtures are explicit; no Wh/fuel/evidence assignment, no diesel or deferred repair command, no continuous-walk or timing claim.",
+  "errors": [],
+  "warnings": [],
+  "waits": [
+    {
+      "at": 95.16666666666669,
+      "mainWh": 576.1268015331077,
+      "backupWh": 73.0847467314237,
+      "reason": "电量回升了，到电池柜看看，确认是否可以恢复供电。",
+      "ready": true
+    }
+  ],
+  "manifestSha256": "cdccc19acc1723a77a770daa1908abbfeea887430633e81541d6aa771ff79ebe",
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26599400,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 94294,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2926364,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42653964
+  },
+  "sources": {
+    "src/examples/Room.ts": "e0b838567e07a433a76cbb08602f6ea7e7276fc6ae151de39a73037dd68e3cd8",
+    "src/examples/LighthouseSave.ts": "85cd30e1d63e63eb624888c9c6885ddeaecc23c0c7093366e7c8f7acd1b71d9d",
+    "src/examples/LighthouseStorySave.ts": "e4abef84bd938bab2a937367bd37e9c4c7242411257bb4c6ed9f52206096271a",
+    "src/examples/LighthouseStoryWait.ts": "d1d2b10408579383a1873423e799dc880e6eacaad213cbb6f8382b9821f71b34",
+    "src/examples/LighthouseStoryBridge.ts": "78525fe8a699f0dd72e629897753f73a5e8a9b007f4dc98c3af96f0a4692ae52",
+    "src/examples/LighthouseExperience.ts": "dd7524bd7c72af41ed4a6babb5e0cc911d2afa786f846dccf8cb9422d5dae407",
+    "src/examples/LighthousePower.ts": "4944f5e984d5ec774c652afe79772d2c6f01dd5454aac404fe1975f8add012a6",
+    "src/examples/LighthouseMaintenance.ts": "4053d5a864a90f7abc8bd7acab11353b002a8cdad23add162c330670d8a17283",
+    "src/examples/LighthousePanel.ts": "9ab5dd66dc86e926a199ec09fd25594eef1d1c1256d83d0136e120f2b5c712a0"
+  },
+  "browser": "155.0.8059.86",
+  "routes": [],
+  "phases": [],
+  "readings": [],
+  "steps": [],
+  "screens": [
+    "solar-only-recharge-ready.jpg",
+    "solar-only-recovery-failure.jpg"
+  ],
+  "before": {
+    "power": {
+      "mainWh": 283.2494789866057,
+      "backupWh": 91.92733932640962,
+      "mainFraction": 0.09835051353701588,
+      "backupFraction": 0.7660611610534135,
+      "protected": true,
+      "recoveryReady": false,
+      "warning": true,
+      "mainAllowed": false,
+      "trialAllowed": false,
+      "backupAvailable": true,
+      "solarW": 2.936839324951192,
+      "generatorW": 0,
+      "generatorMainW": 0,
+      "generatorBackupW": 0,
+      "mainLoadW": 5,
+      "backupLoadW": 5,
+      "mainNetW": -2.063160675048808,
+      "backupNetW": -5,
+      "generatorRunning": false,
+      "fuel": 4,
+      "reserveFuel": 8,
+      "remainingHours": 4,
+      "revision": 1,
+      "notice": "",
+      "events": [
+        {
+          "id": 1,
+          "day": 4,
+          "hour": 9.91153650245029,
+          "type": "low-warning",
+          "result": "主电池达到25%低电预警。"
+        },
+        {
+          "id": 2,
+          "day": 4,
+          "hour": 11.213237935837558,
+          "type": "warning-cleared",
+          "result": "主电池回升越过25%，低电预警解除。"
+        },
+        {
+          "id": 3,
+          "day": 4,
+          "hour": 21.553144632971396,
+          "type": "low-warning",
+          "result": "主电池达到25%低电预警。"
+        },
+        {
+          "id": 4,
+          "day": 5,
+          "hour": 5.407690087503269,
+          "type": "main-protected",
+          "result": "主电池达到10%，主灯低电保护；按实际备用供电接替。"
+        }
+      ],
+      "solarVerified": false,
+      "generatorVerified": false,
+      "exerciseComplete": false
+    },
+    "source": "backup",
+    "at": 90.5
+  },
+  "after": {
+    "power": {
+      "mainWh": 576.1268015331077,
+      "backupWh": 73.0847467314237,
+      "mainFraction": 0.20004402831010684,
+      "backupFraction": 0.6090395560951976,
+      "protected": false,
+      "recoveryReady": false,
+      "warning": true,
+      "mainAllowed": true,
+      "trialAllowed": true,
+      "backupAvailable": true,
+      "solarW": 164.749951201489,
+      "generatorW": 0,
+      "generatorMainW": 0,
+      "generatorBackupW": 0,
+      "mainLoadW": 5,
+      "backupLoadW": 0,
+      "mainNetW": 159.749951201489,
+      "backupNetW": 0,
+      "generatorRunning": false,
+      "fuel": 4,
+      "reserveFuel": 8,
+      "remainingHours": 4,
+      "revision": 2,
+      "notice": "电池供电复验通过，低电保护解除；驱动故障和检修隔离仍独立求值。",
+      "events": [
+        {
+          "id": 1,
+          "day": 4,
+          "hour": 9.91153650245029,
+          "type": "low-warning",
+          "result": "主电池达到25%低电预警。"
+        },
+        {
+          "id": 2,
+          "day": 4,
+          "hour": 11.213237935837558,
+          "type": "warning-cleared",
+          "result": "主电池回升越过25%，低电预警解除。"
+        },
+        {
+          "id": 3,
+          "day": 4,
+          "hour": 21.553144632971396,
+          "type": "low-warning",
+          "result": "主电池达到25%低电预警。"
+        },
+        {
+          "id": 4,
+          "day": 5,
+          "hour": 5.407690087503269,
+          "type": "main-protected",
+          "result": "主电池达到10%，主灯低电保护；按实际备用供电接替。"
+        },
+        {
+          "id": 5,
+          "day": 5,
+          "hour": 11.165871956918552,
+          "type": "recovery-ready",
+          "result": "回充达到20%；保持低电保护，需在电池柜用检测工具复验。"
+        },
+        {
+          "id": 6,
+          "day": 5,
+          "hour": 11.166666666666693,
+          "type": "action-started",
+          "result": "返回场景保持看向设备；走开、开界面或失焦会中断。"
+        },
+        {
+          "id": 7,
+          "day": 5,
+          "hour": 11.166666666666693,
+          "type": "verify-main",
+          "result": "电池供电复验通过，低电保护解除；驱动故障和检修隔离仍独立求值。"
+        }
+      ],
+      "solarVerified": false,
+      "generatorVerified": false,
+      "exerciseComplete": false
+    },
+    "source": "none",
+    "at": 95.16666666666669
+  },
+  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'none' !== 'main'\n\n    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-recovery.cjs:14:724"
+}

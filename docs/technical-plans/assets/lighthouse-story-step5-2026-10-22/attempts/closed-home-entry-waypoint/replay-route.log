@@ -1,0 +1,41 @@
+第一章：读信、连续步行与首次巡视
+route 第一章：读信、连续步行与首次巡视 10/138
+route 第一章：读信、连续步行与首次巡视 20/138
+route 第一章：读信、连续步行与首次巡视 30/138
+route 第一章：读信、连续步行与首次巡视 40/138
+route 第一章：读信、连续步行与首次巡视 50/138
+route 第一章：读信、连续步行与首次巡视 60/138
+route 第一章：读信、连续步行与首次巡视 70/138
+route 第一章：读信、连续步行与首次巡视 80/138
+route 第一章：读信、连续步行与首次巡视 90/138
+route 第一章：读信、连续步行与首次巡视 100/138
+route 第一章：读信、连续步行与首次巡视 110/138
+route 第一章：读信、连续步行与首次巡视 120/138
+route 第一章：读信、连续步行与首次巡视 130/138
+第一至二章之间：连续返回住宅和主动等待
+route 第一至二章之间：连续返回住宅和主动等待 10/138
+route 第一至二章之间：连续返回住宅和主动等待 20/138
+route 第一至二章之间：连续返回住宅和主动等待 30/138
+route 第一至二章之间：连续返回住宅和主动等待 40/138
+route 第一至二章之间：连续返回住宅和主动等待 50/138
+route 第一至二章之间：连续返回住宅和主动等待 60/138
+route 第一至二章之间：连续返回住宅和主动等待 70/138
+route 第一至二章之间：连续返回住宅和主动等待 80/138
+route 第一至二章之间：连续返回住宅和主动等待 90/138
+route 第一至二章之间：连续返回住宅和主动等待 100/138
+route 第一至二章之间：连续返回住宅和主动等待 110/138
+route 第一至二章之间：连续返回住宅和主动等待 120/138
+route 第一至二章之间：连续返回住宅和主动等待 130/138
+{"name":"replay-minimal","phase":"第一至二章之间：连续返回住宅和主动等待","phases":1,"routes":302}
+AssertionError [ERR_ASSERTION]: Walking blocked {"goal":{"x":10.8,"y":4.65},"q":{"x":11.097600020891427,"y":4.638020484582761,"feet":-0.02287733440111738,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[87],"keyboardAttached":true,"scooter":false,"at":7.7699999999993,"hour":19.7699999999993,"objective":"ST04","complete":3,"wh":2782.4590077012604,"backupWh":96,"weather":"clear","rain":0,"source":"main","reference":{"frames":9330,"active":466.2000000000717,"walkDistance":412.91273081962214,"ladderDistance":32.199999999999726}},"samples":[{"x":12.161278461522219,"y":4.382318993868591,"feet":-0.0772431213666912,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[87],"keyboardAttached":true,"scooter":false,"at":7.731666666666001,"hour":19.731666666666,"objective":"ST04","complete":3,"wh":2784.5673410346217,"backupWh":96,"weather":"clear","rain":0,"source":"main","reference":{"frames":9284,"active":463.9000000000712,"walkDistance":411.7825520480897,"ladderDistance":32.199999999999726}},{"x":11.097600020891427,"y":4.603098879057086,"feet":-0.022877334401117368,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[87],"keyboardAttached":true,"scooter":false,"at":7.748333333332653,"hour":19.748333333332653,"objective":"ST04","complete":3,"wh":2783.6506743679593,"backupWh":96,"weather":"clear","rain":0,"source":"main","reference":{"frames":9304,"active":464.90000000007143,"walkDistance":412.8778092140965,"ladderDistance":32.199999999999726}},{"x":11.097600020891427,"y":4.638020484582761,"feet":-0.02287733440111738,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[87],"keyboardAttached":true,"scooter":false,"at":7.764999999999304,"hour":19.764999999999304,"objective":"ST04","complete":3,"wh":2782.734007701259,"backupWh":96,"weather":"clear","rain":0,"source":"main","reference":{"frames":9324,"active":465.90000000007166,"walkDistance":412.91273081962214,"ladderDistance":32.199999999999726}}]}
+    at Playthrough.walk (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:18:194)
+    at async Playthrough.walks (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:21:53)
+    at async Playthrough.towerToHome (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:30:148)
+    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-playthrough.cjs:28:79 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

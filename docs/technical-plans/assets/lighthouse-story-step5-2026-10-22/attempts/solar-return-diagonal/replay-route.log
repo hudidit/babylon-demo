@@ -1,0 +1,54 @@
+第一章：读信、连续步行与首次巡视
+route 第一章：读信、连续步行与首次巡视 10/138
+route 第一章：读信、连续步行与首次巡视 20/138
+route 第一章：读信、连续步行与首次巡视 30/138
+route 第一章：读信、连续步行与首次巡视 40/138
+route 第一章：读信、连续步行与首次巡视 50/138
+route 第一章：读信、连续步行与首次巡视 60/138
+route 第一章：读信、连续步行与首次巡视 70/138
+route 第一章：读信、连续步行与首次巡视 80/138
+route 第一章：读信、连续步行与首次巡视 90/138
+route 第一章：读信、连续步行与首次巡视 100/138
+route 第一章：读信、连续步行与首次巡视 110/138
+route 第一章：读信、连续步行与首次巡视 120/138
+route 第一章：读信、连续步行与首次巡视 130/138
+第一至二章之间：连续返回住宅和主动等待
+route 第一至二章之间：连续返回住宅和主动等待 10/138
+route 第一至二章之间：连续返回住宅和主动等待 20/138
+route 第一至二章之间：连续返回住宅和主动等待 30/138
+route 第一至二章之间：连续返回住宅和主动等待 40/138
+route 第一至二章之间：连续返回住宅和主动等待 50/138
+route 第一至二章之间：连续返回住宅和主动等待 60/138
+route 第一至二章之间：连续返回住宅和主动等待 70/138
+route 第一至二章之间：连续返回住宅和主动等待 80/138
+route 第一至二章之间：连续返回住宅和主动等待 90/138
+route 第一至二章之间：连续返回住宅和主动等待 100/138
+route 第一至二章之间：连续返回住宅和主动等待 110/138
+route 第一至二章之间：连续返回住宅和主动等待 120/138
+route 第一至二章之间：连续返回住宅和主动等待 130/138
+第二章：雾中步行、实际导航与面板处置
+route 第二章：雾中步行、实际导航与面板处置 10/138
+route 第二章：雾中步行、实际导航与面板处置 20/138
+route 第二章：雾中步行、实际导航与面板处置 30/138
+route 第二章：雾中步行、实际导航与面板处置 40/138
+route 第二章：雾中步行、实际导航与面板处置 50/138
+route 第二章：雾中步行、实际导航与面板处置 60/138
+route 第二章：雾中步行、实际导航与面板处置 70/138
+route 第二章：雾中步行、实际导航与面板处置 80/138
+route 第二章：雾中步行、实际导航与面板处置 90/138
+route 第二章：雾中步行、实际导航与面板处置 100/138
+route 第二章：雾中步行、实际导航与面板处置 110/138
+route 第二章：雾中步行、实际导航与面板处置 120/138
+route 第二章：雾中步行、实际导航与面板处置 130/138
+{"name":"replay-minimal","phase":"第二章：雾中步行、实际导航与面板处置","phases":2,"routes":477}
+AssertionError [ERR_ASSERTION]: Walking blocked {"goal":{"x":-125,"y":85.9},"q":{"x":-123.73678478953482,"y":85.82671245686191,"feet":3.04,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[87],"keyboardAttached":true,"scooter":false,"at":23.20749999999981,"hour":11.207499999999811,"objective":"ST05","complete":4,"wh":2082.898012989679,"backupWh":96,"weather":"fog","rain":0,"source":"main","reference":{"frames":15777,"active":788.2499999998308,"walkDistance":673.0819141804263,"ladderDistance":64.39999999999918}},"samples":[{"x":-119.83195756633557,"y":85.6001671671381,"feet":3.04,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[87],"keyboardAttached":true,"scooter":false,"at":23.12999999999988,"hour":11.129999999999882,"objective":"ST05","complete":4,"wh":2078.647550220692,"backupWh":96,"weather":"fog","rain":0,"source":"main","reference":{"frames":15684,"active":783.5999999998351,"walkDistance":669.1705207699739,"ladderDistance":64.39999999999918}},{"x":-120.98759100456343,"y":85.66721324872799,"feet":3.04,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[87],"keyboardAttached":true,"scooter":false,"at":23.146666666666533,"hour":11.146666666666533,"objective":"ST05","complete":4,"wh":2079.5583765233787,"backupWh":96,"weather":"fog","rain":0,"source":"main","reference":{"frames":15704,"active":784.5999999998342,"walkDistance":670.3280974717984,"ladderDistance":64.39999999999918}},{"x":-122.14514628244612,"y":85.73437081994891,"feet":3.04,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[87],"keyboardAttached":true,"scooter":false,"at":23.163333333333185,"hour":11.163333333333185,"objective":"ST05","complete":4,"wh":2080.4710153625965,"backupWh":96,"weather":"fog","rain":0,"source":"main","reference":{"frames":15724,"active":785.5999999998332,"walkDistance":671.4875992444257,"ladderDistance":64.39999999999918}},{"x":-123.30270156032881,"y":85.80152837781772,"feet":3.04,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[87],"keyboardAttached":true,"scooter":false,"at":23.179999999999836,"hour":11.179999999999836,"objective":"ST05","complete":4,"wh":2081.3854319110155,"backupWh":96,"weather":"fog","rain":0,"source":"main","reference":{"frames":15744,"active":786.5999999998323,"walkDistance":672.6471010162797,"ladderDistance":64.39999999999918}},{"x":-123.73678478953482,"y":85.82671245686191,"feet":3.04,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[87],"keyboardAttached":true,"scooter":false,"at":23.196666666666488,"hour":11.196666666666488,"objective":"ST05","complete":4,"wh":2082.3015913074332,"backupWh":96,"weather":"fog","rain":0,"source":"main","reference":{"frames":15764,"active":787.5999999998314,"walkDistance":673.0819141804263,"ladderDistance":64.39999999999918}}]}
+    at Playthrough.walk (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:18:194)
+    at async Playthrough.returnFromSolar (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:40:87)
+    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-playthrough.cjs:32:184 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

@@ -1,0 +1,27 @@
+/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-branches.cjs:43
+}catch(e){record.failure=String(e.stack||e);throw e;}finally{fs.writeFileSync(path.join(__dirname,'branches.json'),JSON.stringify(record,null,2)+'\n');}
+                                            ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '91672af6273c668c74b06d227c330df137cc38d125df33845724b64432008e13'
+- 'f0a887799af8dc92c0ff268aa5c5f9143c4bbe9c8cc05b5be8bb84b41cea3706'
+
+    at Object.<anonymous> (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-branches.cjs:36:671)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '91672af6273c668c74b06d227c330df137cc38d125df33845724b64432008e13',
+  expected: 'f0a887799af8dc92c0ff268aa5c5f9143c4bbe9c8cc05b5be8bb84b41cea3706',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.21.0

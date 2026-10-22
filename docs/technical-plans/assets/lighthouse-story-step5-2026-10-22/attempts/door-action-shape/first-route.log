@@ -1,0 +1,19 @@
+第一章：读信、连续步行与首次巡视
+{"name":"first-chapter-prototype","phase":"第一章：读信、连续步行与首次巡视","phases":0,"routes":2}
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ undefined
+- 'connecting-door'
+
+    at Playthrough.door (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:24:183)
+    at async Playthrough.deskToEntry (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:26:72)
+    at async Playthrough.homeToTower (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:28:22)
+    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-playthrough.cjs:20:2 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: 'connecting-door',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

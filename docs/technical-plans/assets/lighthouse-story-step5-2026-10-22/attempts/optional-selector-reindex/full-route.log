@@ -1,0 +1,26 @@
+第一章：读信、连续步行与首次巡视
+route 第一章：读信、连续步行与首次巡视 10/138
+route 第一章：读信、连续步行与首次巡视 20/138
+route 第一章：读信、连续步行与首次巡视 30/138
+route 第一章：读信、连续步行与首次巡视 40/138
+route 第一章：读信、连续步行与首次巡视 50/138
+route 第一章：读信、连续步行与首次巡视 60/138
+route 第一章：读信、连续步行与首次巡视 70/138
+route 第一章：读信、连续步行与首次巡视 80/138
+route 第一章：读信、连续步行与首次巡视 90/138
+route 第一章：读信、连续步行与首次巡视 100/138
+route 第一章：读信、连续步行与首次巡视 110/138
+route 第一章：读信、连续步行与首次巡视 120/138
+route 第一章：读信、连续步行与首次巡视 130/138
+{"name":"new-story-all-notes","phase":"第一章：读信、连续步行与首次巡视","phases":1,"routes":161}
+locator.getAttribute: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-story-material]:not(:disabled)').nth(1)[22m
+
+    at optional (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-playthrough.cjs:27:173)
+    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-playthrough.cjs:28:2 {
+  log: [
+    "  - waiting for locator('[data-story-material]:not(:disabled)').nth(1)"
+  ],
+  name: 'TimeoutError'
+}

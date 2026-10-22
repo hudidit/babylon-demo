@@ -1,0 +1,26 @@
+第一章：读信、连续步行与首次巡视
+route 第一章：读信、连续步行与首次巡视 10/138
+route 第一章：读信、连续步行与首次巡视 20/138
+route 第一章：读信、连续步行与首次巡视 30/138
+route 第一章：读信、连续步行与首次巡视 40/138
+route 第一章：读信、连续步行与首次巡视 50/138
+route 第一章：读信、连续步行与首次巡视 60/138
+route 第一章：读信、连续步行与首次巡视 70/138
+route 第一章：读信、连续步行与首次巡视 80/138
+route 第一章：读信、连续步行与首次巡视 90/138
+route 第一章：读信、连续步行与首次巡视 100/138
+route 第一章：读信、连续步行与首次巡视 110/138
+route 第一章：读信、连续步行与首次巡视 120/138
+route 第一章：读信、连续步行与首次巡视 130/138
+{"name":"first-chapter-prototype","phase":"第一章：读信、连续步行与首次巡视","phases":0,"routes":151}
+AssertionError [ERR_ASSERTION]: Walking blocked {"goal":{"x":-126.1,"y":89.05},"q":{"x":-127.02987144582201,"y":89.10076602832726,"feet":3.54,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","at":3.0699999999999363,"hour":15.069999999999936,"objective":"ST02","complete":1,"wh":2880,"backupWh":96,"weather":"clear","rain":0,"source":"none","reference":{"frames":3686,"active":184.20000000000763,"walkDistance":205.46291025827102,"ladderDistance":0}},"samples":[{"x":-127.02987144582201,"y":89.10076602832726,"feet":3.54,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","at":3.0499999999999545,"hour":15.049999999999955,"objective":"ST02","complete":1,"wh":2880,"backupWh":96,"weather":"clear","rain":0,"source":"none","reference":{"frames":3662,"active":183.00000000000736,"walkDistance":205.46291025827102,"ladderDistance":0}},{"x":-127.02987144582201,"y":89.10076602832726,"feet":3.54,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","at":3.066666666666606,"hour":15.066666666666606,"objective":"ST02","complete":1,"wh":2880,"backupWh":96,"weather":"clear","rain":0,"source":"none","reference":{"frames":3682,"active":184.0000000000076,"walkDistance":205.46291025827102,"ladderDistance":0}}]}
+    at Playthrough.walk (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:17:194)
+    at async Playthrough.climb (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:34:18)
+    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-playthrough.cjs:20:122 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

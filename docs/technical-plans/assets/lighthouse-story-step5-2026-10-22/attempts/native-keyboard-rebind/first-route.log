@@ -1,0 +1,26 @@
+第一章：读信、连续步行与首次巡视
+route 第一章：读信、连续步行与首次巡视 10/138
+route 第一章：读信、连续步行与首次巡视 20/138
+route 第一章：读信、连续步行与首次巡视 30/138
+route 第一章：读信、连续步行与首次巡视 40/138
+route 第一章：读信、连续步行与首次巡视 50/138
+route 第一章：读信、连续步行与首次巡视 60/138
+route 第一章：读信、连续步行与首次巡视 70/138
+route 第一章：读信、连续步行与首次巡视 80/138
+route 第一章：读信、连续步行与首次巡视 90/138
+route 第一章：读信、连续步行与首次巡视 100/138
+route 第一章：读信、连续步行与首次巡视 110/138
+route 第一章：读信、连续步行与首次巡视 120/138
+route 第一章：读信、连续步行与首次巡视 130/138
+{"name":"first-chapter-prototype","phase":"第一章：读信、连续步行与首次巡视","phases":0,"routes":151}
+AssertionError [ERR_ASSERTION]: Walking blocked {"goal":{"x":-127.05,"y":88.75},"q":{"x":-127.02987144582201,"y":89.10076602832726,"feet":3.54,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[],"keyboardAttached":true,"scooter":false,"at":3.4499999999995907,"hour":15.44999999999959,"objective":"ST02","complete":1,"wh":2880,"backupWh":96,"weather":"clear","rain":0,"source":"none","reference":{"frames":4142,"active":207.00000000001282,"walkDistance":205.46291025827102,"ladderDistance":0}},"samples":[{"x":-127.02987144582201,"y":89.10076602832726,"feet":3.54,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[],"keyboardAttached":false,"scooter":false,"at":3.429999999999609,"hour":15.429999999999609,"objective":"ST02","complete":1,"wh":2880,"backupWh":96,"weather":"clear","rain":0,"source":"none","reference":{"frames":4118,"active":205.80000000001255,"walkDistance":205.46291025827102,"ladderDistance":0}},{"x":-127.02987144582201,"y":89.10076602832726,"feet":3.54,"grounded":true,"attached":false,"ladderFeet":3.54,"controls":true,"locked":true,"pauses":[],"view":"first-person","focus":"gameCanvas","hasFocus":true,"keys":[],"keyboardAttached":true,"scooter":false,"at":3.4466666666662604,"hour":15.44666666666626,"objective":"ST02","complete":1,"wh":2880,"backupWh":96,"weather":"clear","rain":0,"source":"none","reference":{"frames":4138,"active":206.80000000001277,"walkDistance":205.46291025827102,"ladderDistance":0}}]}
+    at Playthrough.walk (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:17:194)
+    at async Playthrough.climb (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:34:24)
+    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-playthrough.cjs:20:122 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

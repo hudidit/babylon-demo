@@ -1,0 +1,16 @@
+第一章：读信、连续步行与首次巡视
+{"name":"home-return-prototype","phase":"第一章：读信、连续步行与首次巡视","phases":0,"routes":9}
+AssertionError [ERR_ASSERTION]: Expected native door action entry-door
+
+false !== true
+
+    at Playthrough.door (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:25:183)
+    at async Playthrough.entryToDesk (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:28:49)
+    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-playthrough.cjs:22:124 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

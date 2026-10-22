@@ -1,0 +1,350 @@
+{
+  "method": "Offline arithmetic from completed native-input records; reference seconds remain distinct from wall-clock player time. Walking seconds sum each route start/end active receipts; ladder height is measured, traversal seconds are not inferred as observed input time.",
+  "routes": [
+    {
+      "name": "new-story-all-notes",
+      "passed": true,
+      "phases": [
+        {
+          "name": "第一章：读信、连续步行与首次巡视",
+          "referenceActiveSeconds": 269.25000000002694,
+          "walkingSeconds": 186.25000000001222,
+          "walkingMeters": 213.93137877780734,
+          "ladderMeters": 32.199999999999726,
+          "acceptedIslandHours": 4.487499999999557,
+          "wallSeconds": 34.943
+        },
+        {
+          "name": "第一至二章之间：连续返回住宅和主动等待",
+          "referenceActiveSeconds": 206.55000000004696,
+          "walkingSeconds": 181.10000000004175,
+          "walkingMeters": 207.91666652768666,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 13.512500000000443,
+          "wallSeconds": 52.934
+        },
+        {
+          "name": "第二章：雾中步行、实际导航与面板处置",
+          "referenceActiveSeconds": 323.6999999997467,
+          "walkingSeconds": 228.34999999982665,
+          "walkingMeters": 262.6029563085683,
+          "ladderMeters": 32.199999999999456,
+          "acceptedIslandHours": 5.394999999999641,
+          "wallSeconds": 43.554
+        },
+        {
+          "name": "第二至三章之间：返回住宅和联络",
+          "referenceActiveSeconds": 206.54999999981214,
+          "walkingSeconds": 181.0999999998353,
+          "walkingMeters": 207.91666994378647,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 19.10500000000036,
+          "wallSeconds": 54.763
+        },
+        {
+          "name": "第三章：风雨中的室内工作",
+          "referenceActiveSeconds": 208.49999999981037,
+          "walkingSeconds": 182.49999999983402,
+          "walkingMeters": 209.6596307275613,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 3.4749999999991132,
+          "wallSeconds": 27.669
+        },
+        {
+          "name": "第三章：等风雨缓和",
+          "referenceActiveSeconds": 206.54999999981214,
+          "walkingSeconds": 181.0999999998353,
+          "walkingMeters": 207.91666972030634,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 3.442500000000507,
+          "wallSeconds": 52.091
+        },
+        {
+          "name": "第三章：雨后复查与交接准备",
+          "referenceActiveSeconds": 255.2999999997678,
+          "walkingSeconds": 220.69999999979927,
+          "walkingMeters": 253.82532255603974,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 4.254999999999768,
+          "wallSeconds": 33.905
+        },
+        {
+          "name": "尾声：接送取消与留站",
+          "referenceActiveSeconds": 206.54999999981214,
+          "walkingSeconds": 181.09999999983597,
+          "walkingMeters": 207.91666993905892,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 24.32750000000061,
+          "wallSeconds": 55.893
+        },
+        {
+          "name": "尾声：连续登塔、夜间导航与核对",
+          "referenceActiveSeconds": 246.75000000014688,
+          "walkingSeconds": 179.39999999998508,
+          "walkingMeters": 206.0767532496459,
+          "ladderMeters": 16.099999999999724,
+          "acceptedIslandHours": 4.112499999999898,
+          "wallSeconds": 31.248
+        }
+      ],
+      "walkNodes": 1410,
+      "walkingMeters": 1977.762717750461,
+      "ladderMeters": 80.4999999999989,
+      "walkingSeconds": 1721.5999999990056,
+      "referenceActiveSeconds": 2129.699999998982,
+      "scriptWallSeconds": 387.00000000000006,
+      "acceptedIslandHours": 82.1124999999999,
+      "nativeWaitIslandHours": 46.61750000000171,
+      "readings": [
+        {
+          "id": "letter",
+          "characters": 159
+        },
+        {
+          "id": "pickup-plan",
+          "characters": 78
+        },
+        {
+          "id": "arrival-ack",
+          "characters": 49
+        },
+        {
+          "id": "CL02",
+          "characters": 58
+        },
+        {
+          "id": "CL05",
+          "characters": 64
+        },
+        {
+          "id": "solar-ack",
+          "characters": 39
+        },
+        {
+          "id": "CL06",
+          "characters": 50
+        },
+        {
+          "id": "transport-warning",
+          "characters": 48
+        },
+        {
+          "id": "pickup-cancelled",
+          "characters": 83
+        },
+        {
+          "id": "old-call",
+          "characters": 40
+        },
+        {
+          "id": "source-check-reply",
+          "characters": 49
+        }
+      ],
+      "visibleReadingCharacters": 717,
+      "materials": [
+        {
+          "id": "CL01",
+          "at": 0,
+          "order": 2
+        },
+        {
+          "id": "CL02",
+          "at": 4.487499999999557,
+          "order": 15
+        },
+        {
+          "id": "CL05",
+          "at": 4.487499999999557,
+          "order": 16
+        },
+        {
+          "id": "CL06",
+          "at": 23.39499999999964,
+          "order": 31
+        }
+      ],
+      "endingAt": 82.1124999999999,
+      "endingCalendar": {
+        "day": 4,
+        "hour": 22.112499999999898
+      }
+    },
+    {
+      "name": "replay-minimal",
+      "passed": true,
+      "phases": [
+        {
+          "name": "第一章：读信、连续步行与首次巡视",
+          "referenceActiveSeconds": 269.25000000002694,
+          "walkingSeconds": 186.25000000001222,
+          "walkingMeters": 213.93137877780734,
+          "ladderMeters": 32.199999999999726,
+          "acceptedIslandHours": 4.487499999999557,
+          "wallSeconds": 34.749
+        },
+        {
+          "name": "第一至二章之间：连续返回住宅和主动等待",
+          "referenceActiveSeconds": 206.55000000004696,
+          "walkingSeconds": 181.10000000004175,
+          "walkingMeters": 207.91666652768666,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 13.512500000000443,
+          "wallSeconds": 52.89
+        },
+        {
+          "name": "第二章：雾中步行、实际导航与面板处置",
+          "referenceActiveSeconds": 323.6999999997467,
+          "walkingSeconds": 228.34999999982665,
+          "walkingMeters": 262.6029563085683,
+          "ladderMeters": 32.199999999999456,
+          "acceptedIslandHours": 5.394999999999641,
+          "wallSeconds": 43.548
+        },
+        {
+          "name": "第二至三章之间：返回住宅和联络",
+          "referenceActiveSeconds": 206.54999999981214,
+          "walkingSeconds": 181.0999999998353,
+          "walkingMeters": 207.91666994378647,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 19.10500000000036,
+          "wallSeconds": 54.379
+        },
+        {
+          "name": "第三章：风雨中的室内工作",
+          "referenceActiveSeconds": 208.49999999981037,
+          "walkingSeconds": 182.49999999983402,
+          "walkingMeters": 209.6596307275613,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 3.4749999999991132,
+          "wallSeconds": 28.004
+        },
+        {
+          "name": "第三章：等风雨缓和",
+          "referenceActiveSeconds": 206.54999999981214,
+          "walkingSeconds": 181.0999999998353,
+          "walkingMeters": 207.91666972030634,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 3.442500000000507,
+          "wallSeconds": 51.805
+        },
+        {
+          "name": "第三章：雨后复查与交接准备",
+          "referenceActiveSeconds": 255.2999999997678,
+          "walkingSeconds": 220.69999999979927,
+          "walkingMeters": 253.82532255603974,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 4.254999999999768,
+          "wallSeconds": 33.658
+        },
+        {
+          "name": "尾声：接送取消与留站",
+          "referenceActiveSeconds": 206.54999999981214,
+          "walkingSeconds": 181.09999999983597,
+          "walkingMeters": 207.91666993905892,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 24.32750000000061,
+          "wallSeconds": 55.474
+        },
+        {
+          "name": "尾声：连续登塔、夜间导航与核对",
+          "referenceActiveSeconds": 246.75000000014688,
+          "walkingSeconds": 179.39999999998508,
+          "walkingMeters": 206.0767532496459,
+          "ladderMeters": 16.099999999999724,
+          "acceptedIslandHours": 4.112499999999898,
+          "wallSeconds": 30.99
+        }
+      ],
+      "walkNodes": 1410,
+      "walkingMeters": 1977.762717750461,
+      "ladderMeters": 80.4999999999989,
+      "walkingSeconds": 1721.5999999990056,
+      "referenceActiveSeconds": 2129.699999998982,
+      "scriptWallSeconds": 385.497,
+      "acceptedIslandHours": 82.1124999999999,
+      "nativeWaitIslandHours": 46.61750000000171,
+      "readings": [
+        {
+          "id": "letter",
+          "characters": 159
+        },
+        {
+          "id": "pickup-plan",
+          "characters": 78
+        },
+        {
+          "id": "arrival-ack",
+          "characters": 49
+        },
+        {
+          "id": "solar-ack",
+          "characters": 39
+        },
+        {
+          "id": "transport-warning",
+          "characters": 48
+        },
+        {
+          "id": "pickup-cancelled",
+          "characters": 83
+        },
+        {
+          "id": "old-call",
+          "characters": 40
+        },
+        {
+          "id": "source-check-reply",
+          "characters": 49
+        }
+      ],
+      "visibleReadingCharacters": 545,
+      "materials": [
+        {
+          "id": "CL01",
+          "at": 0,
+          "order": 2
+        }
+      ],
+      "endingAt": 82.1124999999999,
+      "endingCalendar": {
+        "day": 4,
+        "hour": 22.112499999999898
+      }
+    },
+    {
+      "name": "real-render-travel",
+      "passed": true,
+      "phases": [
+        {
+          "name": "第一章：读信、连续步行与首次巡视",
+          "referenceActiveSeconds": 187.36070000028369,
+          "walkingSeconds": 177.087700001953,
+          "walkingMeters": 201.82331455316975,
+          "ladderMeters": 0,
+          "acceptedIslandHours": 3.1226783333380794,
+          "wallSeconds": 188.074
+        }
+      ],
+      "walkNodes": 149,
+      "walkingMeters": 201.82331455316975,
+      "ladderMeters": 0,
+      "walkingSeconds": 177.087700001953,
+      "referenceActiveSeconds": 187.36070000028369,
+      "scriptWallSeconds": 188.074,
+      "acceptedIslandHours": 3.1226783333380794,
+      "nativeWaitIslandHours": 0,
+      "readings": [
+        {
+          "id": "letter",
+          "characters": 159
+        },
+        {
+          "id": "pickup-plan",
+          "characters": 78
+        }
+      ],
+      "visibleReadingCharacters": 237
+    }
+  ]
+}

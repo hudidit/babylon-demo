@@ -1,0 +1,1015 @@
+{
+  "baseline": "a7178ce",
+  "method": "Original clock receipts, equipment/risk/discovery models, committed native model events and strict full-session codec. Model sight inputs are fixtures, not physical browser line-of-sight. No synthetic story evidence/completions, no skipped validators.",
+  "routes": [
+    {
+      "seed": 0,
+      "variant": "normal",
+      "restoreEvery": false,
+      "checkpoints": 16,
+      "events": [
+        {
+          "label": "arrival-ack",
+          "at": 0,
+          "task": "ST04",
+          "messages": 3
+        },
+        {
+          "label": "fog-observed",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 4
+        },
+        {
+          "label": "cleaned-not-rechecked",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 4
+        },
+        {
+          "label": "solar-report-awaiting",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 5
+        },
+        {
+          "label": "solar-reply-unread",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 6
+        },
+        {
+          "label": "solar-ack",
+          "at": 18.5,
+          "task": "ST06",
+          "messages": 6
+        },
+        {
+          "label": "storm-plan",
+          "at": 42.5,
+          "task": "ST07",
+          "messages": 7
+        },
+        {
+          "label": "handover",
+          "at": 48.5,
+          "task": "ST08",
+          "messages": 8
+        },
+        {
+          "label": "stay-registered",
+          "at": 72,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-before-observation",
+          "at": 78,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-observed",
+          "at": 78,
+          "task": "ST10",
+          "messages": 11
+        },
+        {
+          "label": "source-awaiting",
+          "at": 78,
+          "task": "ST10",
+          "messages": 12
+        },
+        {
+          "label": "source-reply-unread",
+          "at": 78,
+          "task": "ST10",
+          "messages": 13
+        },
+        {
+          "label": "goals-complete",
+          "at": 78,
+          "task": "ST11",
+          "messages": 13
+        },
+        {
+          "label": "ending-unseen",
+          "at": 78,
+          "messages": 13
+        },
+        {
+          "label": "ending-seen",
+          "at": 78,
+          "messages": 13
+        }
+      ],
+      "finishAt": 78,
+      "finishDay": 4,
+      "solarProblem": "weather-problem-2",
+      "mainWh": 2879.809007701327,
+      "retainedFacts": 16,
+      "completionTimes": [
+        {
+          "id": "ST01",
+          "at": 0
+        },
+        {
+          "id": "ST02",
+          "at": 0
+        },
+        {
+          "id": "ST03",
+          "at": 0
+        },
+        {
+          "id": "ST04",
+          "at": 18.5
+        },
+        {
+          "id": "ST05",
+          "at": 18.5
+        },
+        {
+          "id": "ST06",
+          "at": 42.5
+        },
+        {
+          "id": "ST07",
+          "at": 48.5
+        },
+        {
+          "id": "ST08",
+          "at": 72
+        },
+        {
+          "id": "ST09",
+          "at": 78
+        },
+        {
+          "id": "ST10",
+          "at": 78
+        },
+        {
+          "id": "ST11",
+          "at": 78
+        }
+      ],
+      "finalSha256": "cf53e5e8e8c4f5a16f56616397d279e6d79e2df18f9fd1646c0e9e84c4b44b6f",
+      "ending": {
+        "at": "第4日 18:00",
+        "work": [
+          "接班巡视 · 第1日 12:00\n首层读数、主灯转动和出光、保护面检查均已记下，岸站已回复。",
+          "面板清洁与复查 · 第2日 06:30\n污膜已擦净，表面重新检查，天气、日照和输入重新对照。当时输入14.7 W，估算14.7 W。",
+          "交接单 · 第3日 12:30\n灯况、已办的事和下一班待办已收好。接班人还没到，钥匙仍由你保管。",
+          "延班后的夜间导航 · 第4日 18:00\n主灯已连续观察30秒，转完一圈并有光照出。"
+        ],
+        "pending": "收好这一章时，没有已确认但未处理的关键异常。",
+        "diary": "你没有留下个人记录。",
+        "source": "接送延期，新的航次还没定。\n旧呼号消息（第4日 18:00）和岸站的核对回复都已留存。岸站没有这条消息的发送记录，发送者仍未查明。"
+      }
+    },
+    {
+      "seed": 0,
+      "variant": "normal",
+      "restoreEvery": true,
+      "checkpoints": 16,
+      "events": [
+        {
+          "label": "arrival-ack",
+          "at": 0,
+          "task": "ST04",
+          "messages": 3
+        },
+        {
+          "label": "fog-observed",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 4
+        },
+        {
+          "label": "cleaned-not-rechecked",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 4
+        },
+        {
+          "label": "solar-report-awaiting",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 5
+        },
+        {
+          "label": "solar-reply-unread",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 6
+        },
+        {
+          "label": "solar-ack",
+          "at": 18.5,
+          "task": "ST06",
+          "messages": 6
+        },
+        {
+          "label": "storm-plan",
+          "at": 42.5,
+          "task": "ST07",
+          "messages": 7
+        },
+        {
+          "label": "handover",
+          "at": 48.5,
+          "task": "ST08",
+          "messages": 8
+        },
+        {
+          "label": "stay-registered",
+          "at": 72,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-before-observation",
+          "at": 78,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-observed",
+          "at": 78,
+          "task": "ST10",
+          "messages": 11
+        },
+        {
+          "label": "source-awaiting",
+          "at": 78,
+          "task": "ST10",
+          "messages": 12
+        },
+        {
+          "label": "source-reply-unread",
+          "at": 78,
+          "task": "ST10",
+          "messages": 13
+        },
+        {
+          "label": "goals-complete",
+          "at": 78,
+          "task": "ST11",
+          "messages": 13
+        },
+        {
+          "label": "ending-unseen",
+          "at": 78,
+          "messages": 13
+        },
+        {
+          "label": "ending-seen",
+          "at": 78,
+          "messages": 13
+        }
+      ],
+      "finishAt": 78,
+      "finishDay": 4,
+      "solarProblem": "weather-problem-2",
+      "mainWh": 2879.809007701327,
+      "retainedFacts": 16,
+      "completionTimes": [
+        {
+          "id": "ST01",
+          "at": 0
+        },
+        {
+          "id": "ST02",
+          "at": 0
+        },
+        {
+          "id": "ST03",
+          "at": 0
+        },
+        {
+          "id": "ST04",
+          "at": 18.5
+        },
+        {
+          "id": "ST05",
+          "at": 18.5
+        },
+        {
+          "id": "ST06",
+          "at": 42.5
+        },
+        {
+          "id": "ST07",
+          "at": 48.5
+        },
+        {
+          "id": "ST08",
+          "at": 72
+        },
+        {
+          "id": "ST09",
+          "at": 78
+        },
+        {
+          "id": "ST10",
+          "at": 78
+        },
+        {
+          "id": "ST11",
+          "at": 78
+        }
+      ],
+      "finalSha256": "cf53e5e8e8c4f5a16f56616397d279e6d79e2df18f9fd1646c0e9e84c4b44b6f",
+      "ending": {
+        "at": "第4日 18:00",
+        "work": [
+          "接班巡视 · 第1日 12:00\n首层读数、主灯转动和出光、保护面检查均已记下，岸站已回复。",
+          "面板清洁与复查 · 第2日 06:30\n污膜已擦净，表面重新检查，天气、日照和输入重新对照。当时输入14.7 W，估算14.7 W。",
+          "交接单 · 第3日 12:30\n灯况、已办的事和下一班待办已收好。接班人还没到，钥匙仍由你保管。",
+          "延班后的夜间导航 · 第4日 18:00\n主灯已连续观察30秒，转完一圈并有光照出。"
+        ],
+        "pending": "收好这一章时，没有已确认但未处理的关键异常。",
+        "diary": "你没有留下个人记录。",
+        "source": "接送延期，新的航次还没定。\n旧呼号消息（第4日 18:00）和岸站的核对回复都已留存。岸站没有这条消息的发送记录，发送者仍未查明。"
+      }
+    },
+    {
+      "seed": 0,
+      "variant": "all-materials",
+      "restoreEvery": false,
+      "checkpoints": 16,
+      "events": [
+        {
+          "label": "arrival-ack",
+          "at": 0,
+          "task": "ST04",
+          "messages": 3
+        },
+        {
+          "label": "fog-observed",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 4
+        },
+        {
+          "label": "cleaned-not-rechecked",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 4
+        },
+        {
+          "label": "solar-report-awaiting",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 5
+        },
+        {
+          "label": "solar-reply-unread",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 6
+        },
+        {
+          "label": "solar-ack",
+          "at": 18.5,
+          "task": "ST06",
+          "messages": 6
+        },
+        {
+          "label": "storm-plan",
+          "at": 42.5,
+          "task": "ST07",
+          "messages": 7
+        },
+        {
+          "label": "handover",
+          "at": 48.5,
+          "task": "ST08",
+          "messages": 8
+        },
+        {
+          "label": "stay-registered",
+          "at": 72,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-before-observation",
+          "at": 78,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-observed",
+          "at": 78,
+          "task": "ST10",
+          "messages": 11
+        },
+        {
+          "label": "source-awaiting",
+          "at": 78,
+          "task": "ST10",
+          "messages": 12
+        },
+        {
+          "label": "source-reply-unread",
+          "at": 78,
+          "task": "ST10",
+          "messages": 13
+        },
+        {
+          "label": "goals-complete",
+          "at": 78,
+          "task": "ST11",
+          "messages": 13
+        },
+        {
+          "label": "ending-unseen",
+          "at": 78,
+          "messages": 13
+        },
+        {
+          "label": "ending-seen",
+          "at": 78,
+          "messages": 13
+        }
+      ],
+      "finishAt": 78,
+      "finishDay": 4,
+      "solarProblem": "weather-problem-2",
+      "mainWh": 2879.809007701327,
+      "retainedFacts": 16,
+      "completionTimes": [
+        {
+          "id": "ST01",
+          "at": 0
+        },
+        {
+          "id": "ST02",
+          "at": 0
+        },
+        {
+          "id": "ST03",
+          "at": 0
+        },
+        {
+          "id": "ST04",
+          "at": 18.5
+        },
+        {
+          "id": "ST05",
+          "at": 18.5
+        },
+        {
+          "id": "ST06",
+          "at": 42.5
+        },
+        {
+          "id": "ST07",
+          "at": 48.5
+        },
+        {
+          "id": "ST08",
+          "at": 72
+        },
+        {
+          "id": "ST09",
+          "at": 78
+        },
+        {
+          "id": "ST10",
+          "at": 78
+        },
+        {
+          "id": "ST11",
+          "at": 78
+        }
+      ],
+      "finalSha256": "6c3bc8b0e3de7d5bab0b047c5846b87fccb2c18507c7cb2bd9ffee0988e382b1",
+      "ending": {
+        "at": "第4日 18:00",
+        "work": [
+          "接班巡视 · 第1日 12:00\n首层读数、主灯转动和出光、保护面检查均已记下，岸站已回复。",
+          "面板清洁与复查 · 第2日 06:30\n污膜已擦净，表面重新检查，天气、日照和输入重新对照。当时输入14.7 W，估算14.7 W。",
+          "交接单 · 第3日 12:30\n灯况、已办的事和下一班待办已收好。接班人还没到，钥匙仍由你保管。",
+          "延班后的夜间导航 · 第4日 18:00\n主灯已连续观察30秒，转完一圈并有光照出。"
+        ],
+        "pending": "收好这一章时，没有已确认但未处理的关键异常。",
+        "diary": "现在不用看地图了。",
+        "source": "接送延期，新的航次还没定。\n旧呼号消息（第4日 18:00）和岸站的核对回复都已留存。岸站没有这条消息的发送记录，发送者仍未查明。"
+      }
+    },
+    {
+      "seed": 0,
+      "variant": "all-materials",
+      "restoreEvery": true,
+      "checkpoints": 16,
+      "events": [
+        {
+          "label": "arrival-ack",
+          "at": 0,
+          "task": "ST04",
+          "messages": 3
+        },
+        {
+          "label": "fog-observed",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 4
+        },
+        {
+          "label": "cleaned-not-rechecked",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 4
+        },
+        {
+          "label": "solar-report-awaiting",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 5
+        },
+        {
+          "label": "solar-reply-unread",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 6
+        },
+        {
+          "label": "solar-ack",
+          "at": 18.5,
+          "task": "ST06",
+          "messages": 6
+        },
+        {
+          "label": "storm-plan",
+          "at": 42.5,
+          "task": "ST07",
+          "messages": 7
+        },
+        {
+          "label": "handover",
+          "at": 48.5,
+          "task": "ST08",
+          "messages": 8
+        },
+        {
+          "label": "stay-registered",
+          "at": 72,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-before-observation",
+          "at": 78,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-observed",
+          "at": 78,
+          "task": "ST10",
+          "messages": 11
+        },
+        {
+          "label": "source-awaiting",
+          "at": 78,
+          "task": "ST10",
+          "messages": 12
+        },
+        {
+          "label": "source-reply-unread",
+          "at": 78,
+          "task": "ST10",
+          "messages": 13
+        },
+        {
+          "label": "goals-complete",
+          "at": 78,
+          "task": "ST11",
+          "messages": 13
+        },
+        {
+          "label": "ending-unseen",
+          "at": 78,
+          "messages": 13
+        },
+        {
+          "label": "ending-seen",
+          "at": 78,
+          "messages": 13
+        }
+      ],
+      "finishAt": 78,
+      "finishDay": 4,
+      "solarProblem": "weather-problem-2",
+      "mainWh": 2879.809007701327,
+      "retainedFacts": 16,
+      "completionTimes": [
+        {
+          "id": "ST01",
+          "at": 0
+        },
+        {
+          "id": "ST02",
+          "at": 0
+        },
+        {
+          "id": "ST03",
+          "at": 0
+        },
+        {
+          "id": "ST04",
+          "at": 18.5
+        },
+        {
+          "id": "ST05",
+          "at": 18.5
+        },
+        {
+          "id": "ST06",
+          "at": 42.5
+        },
+        {
+          "id": "ST07",
+          "at": 48.5
+        },
+        {
+          "id": "ST08",
+          "at": 72
+        },
+        {
+          "id": "ST09",
+          "at": 78
+        },
+        {
+          "id": "ST10",
+          "at": 78
+        },
+        {
+          "id": "ST11",
+          "at": 78
+        }
+      ],
+      "finalSha256": "6c3bc8b0e3de7d5bab0b047c5846b87fccb2c18507c7cb2bd9ffee0988e382b1",
+      "ending": {
+        "at": "第4日 18:00",
+        "work": [
+          "接班巡视 · 第1日 12:00\n首层读数、主灯转动和出光、保护面检查均已记下，岸站已回复。",
+          "面板清洁与复查 · 第2日 06:30\n污膜已擦净，表面重新检查，天气、日照和输入重新对照。当时输入14.7 W，估算14.7 W。",
+          "交接单 · 第3日 12:30\n灯况、已办的事和下一班待办已收好。接班人还没到，钥匙仍由你保管。",
+          "延班后的夜间导航 · 第4日 18:00\n主灯已连续观察30秒，转完一圈并有光照出。"
+        ],
+        "pending": "收好这一章时，没有已确认但未处理的关键异常。",
+        "diary": "现在不用看地图了。",
+        "source": "接送延期，新的航次还没定。\n旧呼号消息（第4日 18:00）和岸站的核对回复都已留存。岸站没有这条消息的发送记录，发送者仍未查明。"
+      }
+    },
+    {
+      "seed": 0,
+      "variant": "early-treatment",
+      "restoreEvery": false,
+      "checkpoints": 16,
+      "events": [
+        {
+          "label": "arrival-ack",
+          "at": 0,
+          "task": "ST04",
+          "messages": 3
+        },
+        {
+          "label": "early-treatment",
+          "at": 18.5,
+          "task": "ST04",
+          "messages": 4
+        },
+        {
+          "label": "fog-observed",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 4
+        },
+        {
+          "label": "solar-report-awaiting",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 5
+        },
+        {
+          "label": "solar-reply-unread",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 6
+        },
+        {
+          "label": "solar-ack",
+          "at": 18.5,
+          "task": "ST06",
+          "messages": 6
+        },
+        {
+          "label": "storm-plan",
+          "at": 42.5,
+          "task": "ST07",
+          "messages": 7
+        },
+        {
+          "label": "handover",
+          "at": 48.5,
+          "task": "ST08",
+          "messages": 8
+        },
+        {
+          "label": "stay-registered",
+          "at": 72,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-before-observation",
+          "at": 78,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-observed",
+          "at": 78,
+          "task": "ST10",
+          "messages": 11
+        },
+        {
+          "label": "source-awaiting",
+          "at": 78,
+          "task": "ST10",
+          "messages": 12
+        },
+        {
+          "label": "source-reply-unread",
+          "at": 78,
+          "task": "ST10",
+          "messages": 13
+        },
+        {
+          "label": "goals-complete",
+          "at": 78,
+          "task": "ST11",
+          "messages": 13
+        },
+        {
+          "label": "ending-unseen",
+          "at": 78,
+          "messages": 13
+        },
+        {
+          "label": "ending-seen",
+          "at": 78,
+          "messages": 13
+        }
+      ],
+      "finishAt": 78,
+      "finishDay": 4,
+      "solarProblem": "weather-problem-2",
+      "mainWh": 2879.809007701327,
+      "retainedFacts": 17,
+      "completionTimes": [
+        {
+          "id": "ST01",
+          "at": 0
+        },
+        {
+          "id": "ST02",
+          "at": 0
+        },
+        {
+          "id": "ST03",
+          "at": 0
+        },
+        {
+          "id": "ST04",
+          "at": 18.5
+        },
+        {
+          "id": "ST05",
+          "at": 18.5
+        },
+        {
+          "id": "ST06",
+          "at": 42.5
+        },
+        {
+          "id": "ST07",
+          "at": 48.5
+        },
+        {
+          "id": "ST08",
+          "at": 72
+        },
+        {
+          "id": "ST09",
+          "at": 78
+        },
+        {
+          "id": "ST10",
+          "at": 78
+        },
+        {
+          "id": "ST11",
+          "at": 78
+        }
+      ],
+      "finalSha256": "cabc2be50ba991188a70e15bdcf78ae691b2ba36f3568a0cfadd45b94199911d",
+      "ending": {
+        "at": "第4日 18:00",
+        "work": [
+          "接班巡视 · 第1日 12:00\n首层读数、主灯转动和出光、保护面检查均已记下，岸站已回复。",
+          "面板清洁与复查 · 第2日 06:30\n污膜已擦净，表面重新检查，天气、日照和输入重新对照。当时输入14.7 W，估算14.7 W。",
+          "交接单 · 第3日 12:30\n灯况、已办的事和下一班待办已收好。接班人还没到，钥匙仍由你保管。",
+          "延班后的夜间导航 · 第4日 18:00\n主灯已连续观察30秒，转完一圈并有光照出。"
+        ],
+        "pending": "收好这一章时，没有已确认但未处理的关键异常。",
+        "diary": "你没有留下个人记录。",
+        "source": "接送延期，新的航次还没定。\n旧呼号消息（第4日 18:00）和岸站的核对回复都已留存。岸站没有这条消息的发送记录，发送者仍未查明。"
+      }
+    },
+    {
+      "seed": 0,
+      "variant": "early-treatment",
+      "restoreEvery": true,
+      "checkpoints": 16,
+      "events": [
+        {
+          "label": "arrival-ack",
+          "at": 0,
+          "task": "ST04",
+          "messages": 3
+        },
+        {
+          "label": "early-treatment",
+          "at": 18.5,
+          "task": "ST04",
+          "messages": 4
+        },
+        {
+          "label": "fog-observed",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 4
+        },
+        {
+          "label": "solar-report-awaiting",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 5
+        },
+        {
+          "label": "solar-reply-unread",
+          "at": 18.5,
+          "task": "ST05",
+          "messages": 6
+        },
+        {
+          "label": "solar-ack",
+          "at": 18.5,
+          "task": "ST06",
+          "messages": 6
+        },
+        {
+          "label": "storm-plan",
+          "at": 42.5,
+          "task": "ST07",
+          "messages": 7
+        },
+        {
+          "label": "handover",
+          "at": 48.5,
+          "task": "ST08",
+          "messages": 8
+        },
+        {
+          "label": "stay-registered",
+          "at": 72,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-before-observation",
+          "at": 78,
+          "task": "ST09",
+          "messages": 10
+        },
+        {
+          "label": "night-observed",
+          "at": 78,
+          "task": "ST10",
+          "messages": 11
+        },
+        {
+          "label": "source-awaiting",
+          "at": 78,
+          "task": "ST10",
+          "messages": 12
+        },
+        {
+          "label": "source-reply-unread",
+          "at": 78,
+          "task": "ST10",
+          "messages": 13
+        },
+        {
+          "label": "goals-complete",
+          "at": 78,
+          "task": "ST11",
+          "messages": 13
+        },
+        {
+          "label": "ending-unseen",
+          "at": 78,
+          "messages": 13
+        },
+        {
+          "label": "ending-seen",
+          "at": 78,
+          "messages": 13
+        }
+      ],
+      "finishAt": 78,
+      "finishDay": 4,
+      "solarProblem": "weather-problem-2",
+      "mainWh": 2879.809007701327,
+      "retainedFacts": 17,
+      "completionTimes": [
+        {
+          "id": "ST01",
+          "at": 0
+        },
+        {
+          "id": "ST02",
+          "at": 0
+        },
+        {
+          "id": "ST03",
+          "at": 0
+        },
+        {
+          "id": "ST04",
+          "at": 18.5
+        },
+        {
+          "id": "ST05",
+          "at": 18.5
+        },
+        {
+          "id": "ST06",
+          "at": 42.5
+        },
+        {
+          "id": "ST07",
+          "at": 48.5
+        },
+        {
+          "id": "ST08",
+          "at": 72
+        },
+        {
+          "id": "ST09",
+          "at": 78
+        },
+        {
+          "id": "ST10",
+          "at": 78
+        },
+        {
+          "id": "ST11",
+          "at": 78
+        }
+      ],
+      "finalSha256": "cabc2be50ba991188a70e15bdcf78ae691b2ba36f3568a0cfadd45b94199911d",
+      "ending": {
+        "at": "第4日 18:00",
+        "work": [
+          "接班巡视 · 第1日 12:00\n首层读数、主灯转动和出光、保护面检查均已记下，岸站已回复。",
+          "面板清洁与复查 · 第2日 06:30\n污膜已擦净，表面重新检查，天气、日照和输入重新对照。当时输入14.7 W，估算14.7 W。",
+          "交接单 · 第3日 12:30\n灯况、已办的事和下一班待办已收好。接班人还没到，钥匙仍由你保管。",
+          "延班后的夜间导航 · 第4日 18:00\n主灯已连续观察30秒，转完一圈并有光照出。"
+        ],
+        "pending": "收好这一章时，没有已确认但未处理的关键异常。",
+        "diary": "你没有留下个人记录。",
+        "source": "接送延期，新的航次还没定。\n旧呼号消息（第4日 18:00）和岸站的核对回复都已留存。岸站没有这条消息的发送记录，发送者仍未查明。"
+      }
+    }
+  ],
+  "boundaries": [],
+  "errors": [],
+  "sources": {
+    "src/examples/LighthouseStory.ts": "f30625cc5a24bca1cc531ea91c7952bf56d7fea83f0667de73249eca06ada921",
+    "src/examples/LighthouseStorySave.ts": "e4abef84bd938bab2a937367bd37e9c4c7242411257bb4c6ed9f52206096271a",
+    "src/examples/LighthouseStoryBridge.ts": "78525fe8a699f0dd72e629897753f73a5e8a9b007f4dc98c3af96f0a4692ae52",
+    "src/examples/LighthouseStoryChapters.ts": "0dc35b373c732f4fd29e3e1bfa5c94a2c7c43c89d93ce4b59ec6ea9bd1b79632",
+    "src/examples/LighthouseStoryWait.ts": "d1d2b10408579383a1873423e799dc880e6eacaad213cbb6f8382b9821f71b34",
+    "src/examples/LighthouseStoryEpilogue.ts": "bffa9525ed0d693fa3430c3bbe9da3da573b63f856812cc63ff29fc903594777",
+    "src/examples/LighthouseDiscovery.ts": "7a50a0d80b636b5e49a2d9900fe1990f02ce8b3087804952e1d221d8cd09986a",
+    "src/examples/LighthouseWeatherSession.ts": "8961f27ea0bcf4181d6f2ffea3f7200a42cb12003a0d9dcac8dc4737169fe624"
+  },
+  "failure": "Error: Inconsistent saved equipment\n    at decodeLighthouseSave (eval at load (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs:4:2), <anonymous>:66:15)\n    at encodeLighthouseSave (eval at load (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs:4:2), <anonymous>:105:5)\n    at encodeLighthouseStorySave (eval at load (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs:4:2), <anonymous>:69:76)\n    at checkpoint (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-branches.cjs:8:43)\n    at route (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-branches.cjs:15:79)\n    at Object.<anonymous> (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-branches.cjs:36:23)\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\n    at Module._load (node:internal/modules/cjs/loader:1443:12)"
+}

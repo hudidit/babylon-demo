@@ -1,0 +1,2674 @@
+{
+  "baseline": "a7178ce",
+  "name": "home-return-prototype",
+  "scope": "Native house doorway and desk return prototype only",
+  "method": "Final dist only. Game new-story/continue may place the desk; harness never writes camera position, jump state, ladder height, story facts, clock or Wh. Native W/S/E and mouse controls; camera aim changes only. Fixed 50 ms reference frames, not wall-clock player duration or FPS measurements.",
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/js/main.js",
+      "status": 200
+    },
+    {
+      "path": "/js/9691.js",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/rough_linen/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/rough_linen/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/color.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/arm.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/normal.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/pictures/pic1.jpg",
+      "status": 200
+    },
+    {
+      "path": "/environment/study-interior.hdr",
+      "status": 200
+    },
+    {
+      "path": "/js/1203.js",
+      "status": 200
+    },
+    {
+      "path": "/environment/coastal-daylight.hdr",
+      "status": 200
+    },
+    {
+      "path": "/models/study/sofa_03.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/gothic_commode.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/study/modern_arm_chair_01.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/wooden_bookshelf.glb",
+      "status": 200
+    },
+    {
+      "path": "/js/8558.js",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/c40428b1-bf66-4d99-97e8-90a4ed2088e4",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/94b75740-d761-4025-9e82-b99cab5f83d5",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/2e79b64c-9c07-48f2-a37f-761432c61ef4",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/42ac58e5-9bd6-472c-a753-155e82d544d9",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/0dfdc1ae-21e7-4028-81db-0d159a581266",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/8a0ab4af-e741-4f6a-9272-9c04b71286e7",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/da960798-2c85-474f-90e6-ef94bd5859cc",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/f21c2fbb-6a7c-4b9f-bcee-3dc63d947b2e",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/16ba976b-3107-497e-b160-ba75e1a13140",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/b91ee3ca-3ca1-4a5e-bae3-ee2a165fc0fc",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/bba238f8-7b54-4649-a112-bb00cfbbf5ec",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/85366748-af5b-44ff-9141-4d2ce1f9b5c6",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/36615e65-d351-40c7-9987-fd1c4cd69da3",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/88ea1b9a-0776-4ce0-91f9-95f9558d03bb",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/b0e31e7c-bf07-4b31-a96e-12892471efb2",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56559/04aa5dd1-d139-4afd-8fde-802ed9108cfa",
+      "status": 200
+    },
+    {
+      "path": "/js/7449.js",
+      "status": 200
+    },
+    {
+      "path": "/js/4742.js",
+      "status": 200
+    },
+    {
+      "path": "/js/6612.js",
+      "status": 200
+    },
+    {
+      "path": "/js/9615.js",
+      "status": 200
+    },
+    {
+      "path": "/js/5587.js",
+      "status": 200
+    },
+    {
+      "path": "/js/6560.js",
+      "status": 200
+    },
+    {
+      "path": "/js/4472.js",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200
+    },
+    {
+      "path": "/js/9915.js",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/switch-1.702a81fab4.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/paper-2.862694da2b.wav",
+      "status": 200
+    },
+    {
+      "path": "/js/3690.js",
+      "status": 200
+    }
+  ],
+  "firstScreenJs": [
+    {
+      "path": "/js/main.js",
+      "bytes": 506186,
+      "sha256": "aa65b41244f6631d30d8c6f840603d2ab4bdaf3119daeecd0457e45951f37229"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2072,
+      "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "manifestSha256": "cdccc19acc1723a77a770daa1908abbfeea887430633e81541d6aa771ff79ebe",
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26599400,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 94294,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2926364,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42653964
+  },
+  "sources": {
+    "src/examples/Room.ts": "e0b838567e07a433a76cbb08602f6ea7e7276fc6ae151de39a73037dd68e3cd8",
+    "src/examples/RoomInteractions.ts": "1b82fdd2ecc6e1f1f05690ed8aae84dd0d0f72691373f2919a6de18c5f135c1a",
+    "src/examples/LighthouseStory.ts": "f30625cc5a24bca1cc531ea91c7952bf56d7fea83f0667de73249eca06ada921",
+    "src/examples/LighthouseStorySave.ts": "e4abef84bd938bab2a937367bd37e9c4c7242411257bb4c6ed9f52206096271a",
+    "src/examples/LighthouseStoryWait.ts": "d1d2b10408579383a1873423e799dc880e6eacaad213cbb6f8382b9821f71b34",
+    "src/examples/LighthouseStoryChapters.ts": "0dc35b373c732f4fd29e3e1bfa5c94a2c7c43c89d93ce4b59ec6ea9bd1b79632",
+    "src/examples/LighthouseStoryEpilogue.ts": "bffa9525ed0d693fa3430c3bbe9da3da573b63f856812cc63ff29fc903594777",
+    "src/examples/LighthouseStoryBridge.ts": "78525fe8a699f0dd72e629897753f73a5e8a9b007f4dc98c3af96f0a4692ae52",
+    "src/examples/LighthouseInspection.ts": "14cc332f7fbd2a69782aba8debdefc8b06736383cf2482ebc0b781f242dc6bd2",
+    "src/examples/LighthouseMaintenance.ts": "4053d5a864a90f7abc8bd7acab11353b002a8cdad23add162c330670d8a17283",
+    "src/examples/LighthousePower.ts": "4944f5e984d5ec774c652afe79772d2c6f01dd5454aac404fe1975f8add012a6",
+    "src/examples/WalkingSurface.ts": "c5e40ab873772df5b974862608783f01cff18c784c9b6a840ae53f94b2023a6e",
+    "src/examples/LighthouseWalking.ts": "55824154989aa2eab16b14cc57eb134f5ae762ba842fd668de63ad366e634a0e",
+    "src/examples/LighthouseLadder.ts": "b09b1d18be7a0de08680280a7e040e4e0568828783d43a3ee8eb9104defb9260"
+  },
+  "browser": "155.0.8059.86",
+  "routes": [
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 6,
+        "y": 2.25
+      },
+      "start": {
+        "x": 6.15,
+        "y": 1.6499999999999995,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.0016666666666651508,
+        "hour": 12.001666666666665,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2304.4083333201115,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 3,
+          "active": 0.1,
+          "walkDistance": 0,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 6.026257073174719,
+        "y": 2.1449716894514554,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.00916666666665833,
+        "hour": 12.009166666666658,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2306.2458311336472,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 12,
+          "active": 0.5499999999999999,
+          "walkDistance": 0.5102051404069889,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 6.1382783776832195,
+          "y": 1.6968864863864606,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.0024999999999977263,
+          "hour": 12.002499999999998,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2304.6124999553776,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 4,
+            "active": 0.15000000000000002,
+            "walkDistance": 0.048329484121031566,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 6.65,
+        "y": 2.6
+      },
+      "start": {
+        "x": 6.026257073174719,
+        "y": 2.1449716894514554,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.03416666666663559,
+        "hour": 12.034166666666636,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2312.370719431127,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 42,
+          "active": 2.0500000000000007,
+          "walkDistance": 0.5102051404069889,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 6.565451087310773,
+        "y": 2.515206226736681,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.0441666666666265,
+        "hour": 12.044166666666626,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2314.8205872926087,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 54,
+          "active": 2.6499999999999986,
+          "walkDistance": 1.1756509073343568,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 6.06530123155087,
+          "y": 2.173454892389688,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.03499999999996817,
+          "hour": 12.034999999999968,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2312.5748775585816,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 43,
+            "active": 2.1000000000000005,
+            "walkDistance": 0.5585346257438146,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 6.65,
+        "y": 3.9
+      },
+      "start": {
+        "x": 6.565451087310773,
+        "y": 2.515206226736681,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.046666666666624224,
+        "hour": 12.046666666666624,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2315.4330431027797,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 57,
+          "active": 2.799999999999998,
+          "walkDistance": 1.1756509073343568,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 6.642474228790131,
+        "y": 3.7767383488642583,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.06499999999994088,
+        "hour": 12.06499999999994,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2319.9242157404765,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 79,
+          "active": 3.899999999999994,
+          "walkDistance": 2.4395321752875834,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 6.568396370607812,
+          "y": 2.563445880945056,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.0474999999999568,
+          "hour": 12.047499999999957,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2315.6371939421674,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 58,
+            "active": 2.849999999999998,
+            "walkDistance": 1.2239803903839759,
+            "ladderDistance": 0
+          }
+        },
+        {
+          "x": 6.638941124777925,
+          "y": 3.7188710173802275,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.06416666666660831,
+          "hour": 12.064166666666608,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2319.720078852296,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 78,
+            "active": 3.8499999999999943,
+            "walkDistance": 2.381557086869852,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 6.65,
+        "y": 5.35
+      },
+      "start": {
+        "x": 6.642474228790131,
+        "y": 3.7767383488642583,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.06749999999993861,
+        "hour": 12.067499999999939,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2320.5366217249284,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 82,
+          "active": 4.049999999999994,
+          "walkDistance": 2.4395321752875834,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 6.649629288998211,
+        "y": 5.27250290527974,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.08916666666658557,
+        "hour": 12.089166666666586,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2325.843808814722,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 108,
+          "active": 5.349999999999989,
+          "walkDistance": 3.9353138448889275,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 6.642705412519742,
+          "y": 3.825067280542259,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.06833333333327118,
+          "hour": 12.068333333333271,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2320.740755460001,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 83,
+            "active": 4.099999999999993,
+            "walkDistance": 2.4878616599015713,
+            "ladderDistance": 0
+          }
+        },
+        {
+          "x": 6.6482426720174015,
+          "y": 4.982630770458923,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.08499999999992269,
+          "hour": 12.084999999999923,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2324.823246232427,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 103,
+            "active": 5.09999999999999,
+            "walkDistance": 3.6454383936133334,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 9.4,
+        "y": 5.35
+      },
+      "start": {
+        "x": 6.649629288998211,
+        "y": 5.27250290527974,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.0916666666665833,
+        "hour": 12.091666666666583,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2326.4561337125056,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 111,
+          "active": 5.4999999999999885,
+          "walkDistance": 3.9353138448889275,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 9.294227225978727,
+        "y": 5.358976335669512,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.1324999999998795,
+        "hour": 12.13249999999988,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2336.455857255967,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 160,
+          "active": 7.94999999999998,
+          "walkDistance": 6.616391334409516,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 6.69793960007852,
+          "y": 5.273864142825505,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.09249999999991587,
+          "hour": 12.092499999999916,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2326.6602398436885,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 112,
+            "active": 5.549999999999988,
+            "walkDistance": 3.983643329929969,
+            "ladderDistance": 0
+          }
+        },
+        {
+          "x": 7.817917606528855,
+          "y": 5.364564359158927,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.10916666666656738,
+          "hour": 12.109166666666567,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2330.742118165616,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 132,
+            "active": 6.549999999999985,
+            "walkDistance": 5.1159921335721945,
+            "ladderDistance": 0
+          }
+        },
+        {
+          "x": 8.83208767115054,
+          "y": 5.398195498721471,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.1258333333332189,
+          "hour": 12.125833333333219,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2334.8234769642822,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 152,
+            "active": 7.549999999999981,
+            "walkDistance": 6.152590611159443,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 9.4,
+        "y": 4.65
+      },
+      "start": {
+        "x": 9.294227225978727,
+        "y": 5.358976335669512,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.13499999999987722,
+        "hour": 12.134999999999877,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2337.0679741286485,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 163,
+          "active": 8.09999999999998,
+          "walkDistance": 6.616391334409516,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 9.386621276509198,
+        "y": 4.739675234745209,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.14416666666653555,
+        "hour": 12.144166666666536,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2339.3122769614797,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 174,
+          "active": 8.649999999999988,
+          "walkDistance": 7.242546677898241,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 9.301358614585626,
+          "y": 5.311175890200129,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.1358333333332098,
+          "hour": 12.13583333333321,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2337.2720098873287,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 164,
+            "active": 8.14999999999998,
+            "walkDistance": 6.664720821170024,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 9.9,
+        "y": 4.65
+      },
+      "start": {
+        "x": 9.386621276509198,
+        "y": 4.739675234745209,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.14666666666653327,
+        "hour": 12.146666666666533,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2339.924324091135,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 177,
+          "active": 8.79999999999999,
+          "walkDistance": 7.242546677898241,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 9.774995773322429,
+        "y": 4.671835319277679,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.1524999999998613,
+        "hour": 12.152499999999861,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2341.3523725308064,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 184,
+          "active": 9.149999999999995,
+          "walkDistance": 7.636801676478567,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 9.434229904472534,
+          "y": 4.73135912501349,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.14749999999986585,
+          "hour": 12.147499999999866,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2340.1283363246816,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 178,
+            "active": 8.84999999999999,
+            "walkDistance": 7.290876163076766,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 11.5,
+        "y": 4.65
+      },
+      "start": {
+        "x": 9.774995773322429,
+        "y": 4.671835319277679,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.17749999999983856,
+        "hour": 12.177499999999839,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2347.471531129746,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 214,
+          "active": 10.650000000000016,
+          "walkDistance": 7.636801676478567,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 11.386598514822424,
+        "y": 4.65143545152027,
+        "feet": -0.03764836853536834,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.20083333333315068,
+        "hour": 12.20083333333315,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2353.1810367871003,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 242,
+          "active": 12.050000000000036,
+          "walkDistance": 9.2485335248376,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 9.823321386478067,
+          "y": 4.671223607824808,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.17833333333317114,
+          "hour": 12.178333333333171,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2347.6754718416187,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 215,
+            "active": 10.700000000000017,
+            "walkDistance": 7.6851311610378925,
+            "ladderDistance": 0
+          }
+        },
+        {
+          "x": 10.98080539190807,
+          "y": 4.656572032776826,
+          "feet": -0.016907831141968047,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.19499999999982265,
+          "hour": 12.194999999999823,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2351.7538274458393,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 235,
+            "active": 11.700000000000031,
+            "walkDistance": 8.842707893474092,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 11.6,
+        "y": 4.65
+      },
+      "start": {
+        "x": 11.386598514822424,
+        "y": 4.65143545152027,
+        "feet": -0.03764836853536834,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.41166666666629226,
+        "hour": 12.411666666666292,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2404.6592151622845,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 495,
+          "active": 24.700000000000216,
+          "walkDistance": 9.2485335248376,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 11.491295937195341,
+        "y": 4.650731198172221,
+        "feet": -0.04299957012331743,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.4133333333329574,
+        "hour": 12.413333333332957,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2405.065121201547,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 497,
+          "active": 24.800000000000217,
+          "walkDistance": 9.353233315784436,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 11.434926907816674,
+          "y": 4.651110367534046,
+          "feet": -0.04011848639951889,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.41249999999962483,
+          "hour": 12.412499999999625,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2404.862170631341,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 496,
+            "active": 24.750000000000217,
+            "walkDistance": 9.296863011168458,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 12.3,
+        "y": 4.65
+      },
+      "start": {
+        "x": 11.491295937195341,
+        "y": 4.650731198172221,
+        "feet": -0.04299957012331743,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.41833333333295286,
+        "hour": 12.418333333332953,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2406.282721194964,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 503,
+          "active": 25.10000000000022,
+          "walkDistance": 9.353233315784436,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 12.175426059927485,
+        "y": 4.650112637103099,
+        "feet": -0.07796622084073812,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.42833333333294377,
+        "hour": 12.428333333332944,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2408.7173825247537,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 515,
+          "active": 25.70000000000023,
+          "walkDistance": 10.037363718154698,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 11.539625401795771,
+          "y": 4.650687500994649,
+          "feet": -0.045469742758450504,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.41916666666628544,
+          "hour": 12.419166666666285,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2406.485637197199,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 504,
+            "active": 25.150000000000222,
+            "walkDistance": 9.401562800139304,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 9.4,
+        "y": 4.65
+      },
+      "start": {
+        "x": 12.175426059927485,
+        "y": 4.650112637103099,
+        "feet": -0.07796622084073812,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.4508333333329233,
+        "hour": 12.450833333332923,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2414.192666744052,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 542,
+          "active": 27.05000000000025,
+          "walkDistance": 10.037363718154698,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 9.5201425769208,
+        "y": 4.650004875488538,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.48916666666622177,
+        "hour": 12.489166666666222,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2423.5118379662235,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 588,
+          "active": 29.350000000000282,
+          "walkDistance": 12.692647203348074,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 12.127096575162426,
+          "y": 4.650110675673264,
+          "feet": -0.07549604717496844,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.4516666666662559,
+          "hour": 12.451666666666256,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2414.3953813144244,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 543,
+            "active": 27.10000000000025,
+            "walkDistance": 10.085693202959561,
+            "ladderDistance": 0
+          }
+        },
+        {
+          "x": 10.969519837831317,
+          "y": 4.650063696197668,
+          "feet": -0.016331013933600647,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.4683333333329074,
+          "hour": 12.468333333332907,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2418.4485336244225,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 563,
+            "active": 28.100000000000264,
+            "walkDistance": 11.243269941243984,
+            "ladderDistance": 0
+          }
+        },
+        {
+          "x": 9.810018029102903,
+          "y": 4.650016639381686,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.4849999999995589,
+          "hour": 12.484999999999559,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2422.4994624173564,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 583,
+            "active": 29.10000000000028,
+            "walkDistance": 12.402771750927267,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 9.4,
+        "y": 5.35
+      },
+      "start": {
+        "x": 9.5201425769208,
+        "y": 4.650004875488538,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.4916666666662195,
+        "hour": 12.49166666666622,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2424.1191937171684,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 591,
+          "active": 29.500000000000284,
+          "walkDistance": 12.692647203348074,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 9.41422216104495,
+        "y": 5.2671364248747965,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.5008333333328778,
+        "hour": 12.500833333332878,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2426.3457135471713,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 602,
+          "active": 30.050000000000292,
+          "walkDistance": 13.318802522535893,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 9.511967162310834,
+          "y": 4.697637865208476,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.4924999999995521,
+          "hour": 12.492499999999552,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2424.3216339787464,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 592,
+            "active": 29.550000000000285,
+            "walkDistance": 12.740976688279165,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 6.65,
+        "y": 5.35
+      },
+      "start": {
+        "x": 9.41422216104495,
+        "y": 5.2671364248747965,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.5033333333328756,
+        "hour": 12.503333333332876,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2426.9528219879344,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 605,
+          "active": 30.200000000000294,
+          "walkDistance": 13.318802522535893,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 6.776479670725628,
+        "y": 5.358988856008252,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.5449999999995043,
+        "hour": 12.544999999999504,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2437.0631792480895,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 655,
+          "active": 32.70000000000028,
+          "walkDistance": 15.992988952654803,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 9.365914376305014,
+          "y": 5.268584555332384,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.5041666666662081,
+          "hour": 12.504166666666208,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2427.1551795374858,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 606,
+            "active": 30.250000000000295,
+            "walkDistance": 13.36713200782492,
+            "ladderDistance": 0
+          }
+        },
+        {
+          "x": 8.333850987934838,
+          "y": 5.364334426189792,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.5208333333328596,
+          "hour": 12.52083333333286,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2431.201061292638,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 626,
+            "active": 31.25000000000031,
+            "walkDistance": 14.415365052448331,
+            "ladderDistance": 0
+          }
+        },
+        {
+          "x": 7.296942742592639,
+          "y": 5.395977942804054,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.5374999999995111,
+          "hour": 12.537499999999511,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2435.244471743359,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 646,
+            "active": 32.250000000000306,
+            "walkDistance": 15.471213137079536,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 6.65,
+        "y": 3.9
+      },
+      "start": {
+        "x": 6.776479670725628,
+        "y": 5.358988856008252,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.547499999999502,
+        "hour": 12.547499999999502,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2437.669299101686,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 658,
+          "active": 32.85000000000027,
+          "walkDistance": 15.992988952654803,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 6.657309099647225,
+        "y": 3.9843131175617463,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.5674999999994839,
+        "hour": 12.567499999999484,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2442.516132111776,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 682,
+          "active": 34.0500000000002,
+          "walkDistance": 17.372820468052456,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 6.7723056443906575,
+          "y": 5.310839954168329,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.5483333333328346,
+          "hour": 12.548333333332835,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2437.8713260810064,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 659,
+            "active": 32.90000000000027,
+            "walkDistance": 16.041318438936322,
+            "ladderDistance": 0
+          }
+        },
+        {
+          "x": 6.6723303330085715,
+          "y": 4.157588511377133,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.5649999999994861,
+          "hour": 12.564999999999486,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2441.910487134695,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 679,
+            "active": 33.90000000000021,
+            "walkDistance": 17.198895198026584,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 6.65,
+        "y": 2.6
+      },
+      "start": {
+        "x": 6.657309099647225,
+        "y": 3.9843131175617463,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.5699999999994816,
+        "hour": 12.569999999999482,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2443.121716537452,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 685,
+          "active": 34.200000000000195,
+          "walkDistance": 17.372820468052456,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 6.650635966601172,
+        "y": 2.720449432997179,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.5883333333327982,
+        "hour": 12.588333333332798,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2447.5607936453657,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 707,
+          "active": 35.30000000000013,
+          "walkDistance": 18.636701769388047,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 6.657053926103958,
+          "y": 3.93598430687154,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.5708333333328142,
+          "hour": 12.570833333332814,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2443.3235645110462,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 686,
+            "active": 34.25000000000019,
+            "walkDistance": 17.421149952389317,
+            "ladderDistance": 0
+          }
+        },
+        {
+          "x": 6.650942067721551,
+          "y": 2.7784237148267863,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.5874999999994657,
+          "hour": 12.587499999999466,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2447.359089840767,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 706,
+            "active": 35.250000000000135,
+            "walkDistance": 18.578726679465266,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 6,
+        "y": 2.25
+      },
+      "start": {
+        "x": 6.650635966601172,
+        "y": 2.720449432997179,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.590833333332796,
+        "hour": 12.590833333332796,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2448.1658631819673,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 710,
+          "active": 35.450000000000124,
+          "walkDistance": 18.636701769388047,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 6.117495846497838,
+        "y": 2.2770123798509543,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.6033333333327846,
+        "hour": 12.603333333332785,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2451.190260251773,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 725,
+          "active": 36.20000000000008,
+          "walkDistance": 19.391949825046858,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 6.61147185458819,
+          "y": 2.692131392801622,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.5916666666661285,
+          "hour": 12.591666666666129,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2448.367539035776,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 711,
+            "active": 35.50000000000012,
+            "walkDistance": 18.68503125386991,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "goal": {
+        "x": 6.15,
+        "y": 1.6
+      },
+      "start": {
+        "x": 6.117495846497838,
+        "y": 2.2770123798509543,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.6058333333327823,
+        "hour": 12.605833333332782,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2451.794947691834,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 728,
+          "active": 36.35000000000007,
+          "walkDistance": 19.391949825046858,
+          "ladderDistance": 0
+        }
+      },
+      "end": {
+        "x": 6.144743455730175,
+        "y": 1.709485871252026,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.6141666666661081,
+        "hour": 12.614166666666108,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2453.810104391922,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 738,
+          "active": 36.850000000000044,
+          "walkDistance": 19.960130051886345,
+          "ladderDistance": 0
+        }
+      },
+      "samples": [
+        {
+          "x": 6.119813531717387,
+          "y": 2.2287385005000706,
+          "feet": 0,
+          "grounded": true,
+          "attached": false,
+          "ladderFeet": 3.54,
+          "controls": true,
+          "locked": true,
+          "pauses": [],
+          "view": "first-person",
+          "focus": "gameCanvas",
+          "hasFocus": true,
+          "keys": [
+            87
+          ],
+          "keyboardAttached": true,
+          "scooter": false,
+          "at": 0.6066666666661149,
+          "hour": 12.606666666666115,
+          "objective": "ST02",
+          "complete": 1,
+          "wh": 2451.996495827518,
+          "backupWh": 96,
+          "weather": "clear",
+          "rain": 0,
+          "source": "none",
+          "reference": {
+            "frames": 729,
+            "active": 36.40000000000007,
+            "walkDistance": 19.44027930975713,
+            "ladderDistance": 0
+          }
+        }
+      ],
+      "method": "Native W, camera steering only; reference render frames, no position assignment"
+    }
+  ],
+  "phases": [
+    {
+      "name": "第一章：读信、连续步行与首次巡视",
+      "wallStart": 1792675933193,
+      "start": {
+        "x": 6.15,
+        "y": 1.6499999999999995,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": false,
+        "locked": false,
+        "pauses": [
+          "story-panel"
+        ],
+        "view": "first-person",
+        "focus": "story-tab-letter",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": false,
+        "scooter": false,
+        "at": 0,
+        "hour": 12,
+        "objective": "ST01",
+        "complete": 0,
+        "wh": 2304,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 0,
+          "active": 0,
+          "walkDistance": 0,
+          "ladderDistance": 0
+        }
+      },
+      "wallSeconds": 7.441,
+      "end": {
+        "x": 6.144743455730175,
+        "y": 1.709485871252026,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 0.6166666666661058,
+        "hour": 12.616666666666106,
+        "objective": "ST02",
+        "complete": 1,
+        "wh": 2454.41450995378,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 741,
+          "active": 37.000000000000036,
+          "walkDistance": 19.960130051886345,
+          "ladderDistance": 0
+        }
+      },
+      "referenceActiveSeconds": 37.000000000000036,
+      "walkMeters": 19.960130051886345,
+      "ladderMeters": 0,
+      "acceptedHours": 0.6166666666661058
+    }
+  ],
+  "readings": [
+    {
+      "id": "letter",
+      "body": "这三天，辛苦你照看灯站。到塔里先在首层读表，再上灯室看转动和出光。保护面容易起盐膜，要擦就等白天停灯以后。擦完别急着走，再看一遍。\n\n起雾的时候，中午也得亮灯。屋里台灯的开关就在手边，自己用着方便就好。满三天后的中午，接送艇过来，下一班也跟着来。\n\n册子后面还留着旧呼号。接送安排听岸站值班的，有变动他们会通知。\n\n周",
+      "characters": 159
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "id": "pickup-plan",
+      "characters": 78,
+      "body": "海角灯站，接送先定在第4日中午12点，正好满三天。艇到工作码头接你，下一班随艇上岛。有变动会再通知。\n\n工作码头在生活区以外。你现在可以沿屋外步道往返灯塔。"
+    }
+  ],
+  "waits": [],
+  "steps": [],
+  "screens": [],
+  "firstScreenBytes": 3145216,
+  "step": "第一章：读信、连续步行与首次巡视",
+  "passed": true
+}

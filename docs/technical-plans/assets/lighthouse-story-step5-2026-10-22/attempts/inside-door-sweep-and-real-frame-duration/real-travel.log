@@ -1,0 +1,19 @@
+第一章：读信、连续步行与首次巡视
+{"name":"real-render-travel","phase":"第一章：读信、连续步行与首次巡视","phases":0,"routes":1}
+AssertionError [ERR_ASSERTION]: Door did not fully open connecting-door
++ actual - expected
+
++ 0.6164285714285714
+- 1
+
+    at Playthrough.door (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:26:69)
+    at async Playthrough.deskToEntry (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:27:48)
+    at async Playthrough.homeToTower (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:29:22)
+    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-playthrough.cjs:21:219 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 0.6164285714285714,
+  expected: 1,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

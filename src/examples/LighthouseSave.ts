@@ -42,8 +42,8 @@ export function decodeLighthouseSave(raw: string): LighthouseSession {
   if(weather){
     if(JSON.stringify(weather.snapshot.rules)!==JSON.stringify(LIGHTHOUSE_RISK_RULES)
       ||JSON.stringify(weather.snapshot.remedies)!==JSON.stringify(LIGHTHOUSE_CURRENT_REMEDIES))throw new Error("Unsupported player risk pool");
-    maintenance.restoreWeatherState(s.maintenanceWeather,operation.snapshot);
     maintenance.setWeatherDemand(weather.snapshot.visibility.required);maintenance.setOutsideWorkAllowed(weather.snapshot.weather.rain<.15);
+    maintenance.restoreWeatherState(s.maintenanceWeather,operation.snapshot);
   }
   const power=LighthousePower.fromSave(s.power,operation.snapshot,maintenance.snapshot);
   if(weather)power.setWeatherSolar(weather.snapshot.weather.solarMultiplier);

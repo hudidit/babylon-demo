@@ -1,0 +1,20 @@
+0 normal day 4
+0 all-materials day 4
+0 early-treatment day 4
+/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-branches.cjs:43
+}catch(e){record.failure=String(e.stack||e);throw e;}finally{fs.writeFileSync(path.join(__dirname,'branches.json'),JSON.stringify(record,null,2)+'\n');}
+                                            ^
+
+Error: Inconsistent saved equipment
+    at decodeLighthouseSave (eval at load (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs:4:2), <anonymous>:66:15)
+    at encodeLighthouseSave (eval at load (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs:4:2), <anonymous>:105:5)
+    at encodeLighthouseStorySave (eval at load (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs:4:2), <anonymous>:69:76)
+    at checkpoint (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-branches.cjs:8:43)
+    at route (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-branches.cjs:15:79)
+    at Object.<anonymous> (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-branches.cjs:36:23)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+
+Node.js v24.21.0

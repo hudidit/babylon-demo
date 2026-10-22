@@ -1,0 +1,30 @@
+{
+  "seed": 0,
+  "variant": "normal",
+  "changes": [
+    {
+      "path": "/equipment/discovery/visits/solar/number",
+      "a": 5,
+      "b": 2
+    },
+    {
+      "path": "/equipment/discovery/visits/solar/near",
+      "a": true,
+      "b": false
+    },
+    {
+      "path": "/equipment/discovery/visits/solar/leftAt",
+      "b": 48.501666666666665
+    },
+    {
+      "path": "/equipment/discovery/entries/2/visit",
+      "a": 3,
+      "b": 2
+    },
+    {
+      "path": "/equipment/discovery/entries/3/visit",
+      "a": 3,
+      "b": 2
+    }
+  ]
+}

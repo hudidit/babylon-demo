@@ -1,0 +1,683 @@
+{
+  "baseline": "a7178ce",
+  "name": "replay-minimal",
+  "scope": "ST01-ST11 continuous native input route",
+  "method": "Final dist only. Game new-story/continue may place the desk; harness never writes camera position, jump state, ladder height, story facts, clock or Wh. Native W/S/E and mouse controls; camera aim changes only. Fixed 50 ms reference frames, not wall-clock player duration or FPS measurements.",
+  "errors": [],
+  "warnings": [],
+  "requests": [
+    {
+      "path": "/home/",
+      "status": 200
+    },
+    {
+      "path": "/home/js/main.js",
+      "status": 200
+    },
+    {
+      "path": "/home/js/9691.js",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/study/wood_table_001/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/study/wood_table_001/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/study/wood_table_001/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/study/rough_linen/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/study/rough_linen/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/coastal/rock-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/coastal/rock-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/coastal/rock-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/coastal/ground-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/coastal/ground-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/coastal/ground-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/study/wood_floor/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/study/wood_floor/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/study/painted_wall/color.png",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/study/wood_floor/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/study/painted_wall/normal.png",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/study/painted_wall/arm.png",
+      "status": 200
+    },
+    {
+      "path": "/home/textures/pictures/pic1.jpg",
+      "status": 200
+    },
+    {
+      "path": "/home/environment/study-interior.hdr",
+      "status": 200
+    },
+    {
+      "path": "/home/js/1203.js",
+      "status": 200
+    },
+    {
+      "path": "/home/environment/coastal-daylight.hdr",
+      "status": 200
+    },
+    {
+      "path": "/home/models/study/sofa_03.glb",
+      "status": 200
+    },
+    {
+      "path": "/home/models/gothic_commode.glb",
+      "status": 200
+    },
+    {
+      "path": "/home/models/study/modern_arm_chair_01.glb",
+      "status": 200
+    },
+    {
+      "path": "/home/models/wooden_bookshelf.glb",
+      "status": 200
+    },
+    {
+      "path": "/home/js/8558.js",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/6801e528-71ed-400a-8042-3f9f83daf241",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/71c755c2-b2a4-4a01-bf6f-ce00ec73d263",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/081059b4-c8e7-416c-a2e1-f4176bf90ff1",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/ee84683e-979e-4142-b7d9-414ced4c5635",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/086498fd-5582-489b-ba8c-e8cd84eca921",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/4a76c895-9d99-4a0e-b292-a23b1b72d186",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/1b052c6b-bed2-44db-bc49-881d2f3e9bc6",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/ff094096-25e1-424f-8005-3ba8f439a2eb",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/8242e4b3-97a5-4ebd-92a7-b5080293c1fc",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/7ac2d794-f0a1-4c9e-93f0-4274623cb95c",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/b61771fb-bb4f-4876-b7b3-d82e3912ce0f",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/0cba78dc-3e3d-4ded-afdf-f6f913a7ea4a",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/a665d7c8-8d63-4526-b683-90bde2380a71",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/30366748-8fd5-4672-85a0-a365541afab9",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/d4fcc2a6-f3b3-4175-b6df-e0e4e115bf50",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:56833/a258ee57-e627-4563-ad8b-b77a91bd397c",
+      "status": 200
+    },
+    {
+      "path": "/home/js/7449.js",
+      "status": 200
+    },
+    {
+      "path": "/home/js/4742.js",
+      "status": 200
+    },
+    {
+      "path": "/home/js/6612.js",
+      "status": 200
+    },
+    {
+      "path": "/home/js/5587.js",
+      "status": 200
+    },
+    {
+      "path": "/home/js/9615.js",
+      "status": 200
+    },
+    {
+      "path": "/home/js/6560.js",
+      "status": 200
+    },
+    {
+      "path": "/home/js/4472.js",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/js/9915.js",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/switch-1.702a81fab4.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/audio/study/paper-2.862694da2b.wav",
+      "status": 200
+    },
+    {
+      "path": "/home/js/3690.js",
+      "status": 200
+    }
+  ],
+  "firstScreenJs": [
+    {
+      "path": "/home/js/main.js",
+      "bytes": 506186,
+      "sha256": "aa65b41244f6631d30d8c6f840603d2ab4bdaf3119daeecd0457e45951f37229"
+    },
+    {
+      "path": "/home/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/home/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/home/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/home/js/7449.js",
+      "bytes": 2072,
+      "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+    },
+    {
+      "path": "/home/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/home/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/home/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/home/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/home/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/home/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/home/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "manifestSha256": "cdccc19acc1723a77a770daa1908abbfeea887430633e81541d6aa771ff79ebe",
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26599400,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 94294,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2926364,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42653964
+  },
+  "tooling": {
+    "check-playthrough.cjs": "622c950d1df7021b0ebd7b171e9aa3b297629975ed91cb94b959b4bfa593ab33",
+    "playthrough-harness.cjs": "6ba3d326db607e6f8ef8f5947c25e747344987350922b48331d37c238b31c15c"
+  },
+  "sources": {
+    "src/examples/Room.ts": "e0b838567e07a433a76cbb08602f6ea7e7276fc6ae151de39a73037dd68e3cd8",
+    "src/examples/RoomInteractions.ts": "1b82fdd2ecc6e1f1f05690ed8aae84dd0d0f72691373f2919a6de18c5f135c1a",
+    "src/examples/LighthouseStory.ts": "f30625cc5a24bca1cc531ea91c7952bf56d7fea83f0667de73249eca06ada921",
+    "src/examples/LighthouseStorySave.ts": "e4abef84bd938bab2a937367bd37e9c4c7242411257bb4c6ed9f52206096271a",
+    "src/examples/LighthouseStoryWait.ts": "d1d2b10408579383a1873423e799dc880e6eacaad213cbb6f8382b9821f71b34",
+    "src/examples/LighthouseStoryChapters.ts": "0dc35b373c732f4fd29e3e1bfa5c94a2c7c43c89d93ce4b59ec6ea9bd1b79632",
+    "src/examples/LighthouseStoryEpilogue.ts": "bffa9525ed0d693fa3430c3bbe9da3da573b63f856812cc63ff29fc903594777",
+    "src/examples/LighthouseStoryBridge.ts": "78525fe8a699f0dd72e629897753f73a5e8a9b007f4dc98c3af96f0a4692ae52",
+    "src/examples/LighthouseInspection.ts": "14cc332f7fbd2a69782aba8debdefc8b06736383cf2482ebc0b781f242dc6bd2",
+    "src/examples/LighthouseMaintenance.ts": "4053d5a864a90f7abc8bd7acab11353b002a8cdad23add162c330670d8a17283",
+    "src/examples/LighthousePower.ts": "4944f5e984d5ec774c652afe79772d2c6f01dd5454aac404fe1975f8add012a6",
+    "src/examples/WalkingSurface.ts": "c5e40ab873772df5b974862608783f01cff18c784c9b6a840ae53f94b2023a6e",
+    "src/examples/LighthouseWalking.ts": "55824154989aa2eab16b14cc57eb134f5ae762ba842fd668de63ad366e634a0e",
+    "src/examples/LighthouseLadder.ts": "b09b1d18be7a0de08680280a7e040e4e0568828783d43a3ee8eb9104defb9260"
+  },
+  "browser": "155.0.8059.86",
+  "phases": [
+    {
+      "name": "第一章：读信、连续步行与首次巡视",
+      "wallStart": 1792676169662,
+      "start": {
+        "x": 6.15,
+        "y": 1.6499999999999995,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": false,
+        "locked": false,
+        "pauses": [
+          "story-panel"
+        ],
+        "view": "first-person",
+        "focus": "story-tab-letter",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": false,
+        "scooter": false,
+        "at": 0,
+        "hour": 12,
+        "objective": "ST01",
+        "complete": 0,
+        "wh": 2304,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 0,
+          "active": 0,
+          "walkDistance": 0,
+          "ladderDistance": 0
+        }
+      },
+      "wallSeconds": 38.997,
+      "end": {
+        "x": -124.92489498127316,
+        "y": 91.51109380157851,
+        "feet": 3.54,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": false,
+        "locked": false,
+        "pauses": [
+          "story-panel"
+        ],
+        "view": "first-person",
+        "focus": "",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": false,
+        "scooter": false,
+        "at": 4.487499999999557,
+        "hour": 16.487499999999557,
+        "objective": "ST04",
+        "complete": 3,
+        "wh": 2880,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "main",
+        "reference": {
+          "frames": 5390,
+          "active": 269.25000000002694,
+          "walkDistance": 213.93137877780734,
+          "ladderDistance": 32.199999999999726
+        }
+      },
+      "referenceActiveSeconds": 269.25000000002694,
+      "walkMeters": 213.93137877780734,
+      "ladderMeters": 32.199999999999726,
+      "acceptedHours": 4.487499999999557
+    },
+    {
+      "name": "第一至二章之间：连续返回住宅和主动等待",
+      "wallStart": 1792676208713,
+      "start": {
+        "x": -124.92489498127316,
+        "y": 91.51109380157851,
+        "feet": 3.54,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": true,
+        "locked": true,
+        "pauses": [],
+        "view": "first-person",
+        "focus": "gameCanvas",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": true,
+        "scooter": false,
+        "at": 4.487499999999557,
+        "hour": 16.487499999999557,
+        "objective": "ST04",
+        "complete": 3,
+        "wh": 2880,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "main",
+        "reference": {
+          "frames": 5390,
+          "active": 269.25000000002694,
+          "walkDistance": 213.93137877780734,
+          "ladderDistance": 32.199999999999726
+        }
+      },
+      "wallSeconds": 59.209,
+      "end": {
+        "x": 6.144766837520546,
+        "y": 1.7095178561824893,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": false,
+        "locked": false,
+        "pauses": [
+          "story-panel"
+        ],
+        "view": "first-person",
+        "focus": "story-view-radio",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": false,
+        "scooter": false,
+        "at": 18,
+        "hour": 6,
+        "objective": "ST04",
+        "complete": 3,
+        "wh": 2219.809007699732,
+        "backupWh": 96,
+        "weather": "fog",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 9522,
+          "active": 475.8000000000739,
+          "walkDistance": 421.848045305494,
+          "ladderDistance": 32.199999999999726
+        }
+      },
+      "referenceActiveSeconds": 206.55000000004696,
+      "walkMeters": 207.91666652768666,
+      "ladderMeters": 0,
+      "acceptedHours": 13.512500000000443
+    }
+  ],
+  "readings": [
+    {
+      "id": "letter",
+      "body": "这三天，辛苦你照看灯站。到塔里先在首层读表，再上灯室看转动和出光。保护面容易起盐膜，要擦就等白天停灯以后。擦完别急着走，再看一遍。\n\n起雾的时候，中午也得亮灯。屋里台灯的开关就在手边，自己用着方便就好。满三天后的中午，接送艇过来，下一班也跟着来。\n\n册子后面还留着旧呼号。接送安排听岸站值班的，有变动他们会通知。\n\n周",
+      "characters": 159
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "id": "pickup-plan",
+      "characters": 78,
+      "body": "海角灯站，接送先定在第4日中午12点，正好满三天。艇到工作码头接你，下一班随艇上岛。有变动会再通知。\n\n工作码头在生活区以外。你现在可以沿屋外步道往返灯塔。"
+    },
+    {
+      "phase": "第一章：读信、连续步行与首次巡视",
+      "id": "arrival-ack",
+      "characters": 49,
+      "body": "接班记录收到了。明天可能起雾，白天也留意一下灯。第三天晚上把交接单理好，满三天后的中午，艇来接你。"
+    }
+  ],
+  "waits": [
+    {
+      "phase": "第一至二章之间：连续返回住宅和主动等待",
+      "before": {
+        "x": 6.144766837520546,
+        "y": 1.7095178561824893,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": false,
+        "locked": false,
+        "pauses": [
+          "story-panel"
+        ],
+        "view": "first-person",
+        "focus": "story-tab-duty",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": false,
+        "scooter": false,
+        "at": 7.929999999999154,
+        "hour": 19.929999999999154,
+        "objective": "ST04",
+        "complete": 3,
+        "wh": 2773.6590077012133,
+        "backupWh": 96,
+        "weather": "clear",
+        "rain": 0,
+        "source": "main",
+        "reference": {
+          "frames": 9522,
+          "active": 475.8000000000739,
+          "walkDistance": 421.848045305494,
+          "ladderDistance": 32.199999999999726
+        }
+      },
+      "after": {
+        "x": 6.144766837520546,
+        "y": 1.7095178561824893,
+        "feet": 0,
+        "grounded": true,
+        "attached": false,
+        "ladderFeet": 3.54,
+        "controls": false,
+        "locked": false,
+        "pauses": [
+          "story-panel"
+        ],
+        "view": "first-person",
+        "focus": "story-view-radio",
+        "hasFocus": true,
+        "keys": [],
+        "keyboardAttached": false,
+        "scooter": false,
+        "at": 18,
+        "hour": 6,
+        "objective": "ST04",
+        "complete": 3,
+        "wh": 2219.809007699732,
+        "backupWh": 96,
+        "weather": "fog",
+        "rain": 0,
+        "source": "none",
+        "reference": {
+          "frames": 9522,
+          "active": 475.8000000000739,
+          "walkDistance": 421.848045305494,
+          "ladderDistance": 32.199999999999726
+        }
+      },
+      "reason": "表面有新变化，先去看一眼。刚才等待的时间已经过去。"
+    }
+  ],
+  "steps": [],
+  "screens": [
+    "chapter-one-complete.jpg",
+    "failure.jpg"
+  ],
+  "firstScreenBytes": 3145216,
+  "step": "第二章：雾中步行、实际导航与面板处置",
+  "failure": "AssertionError [ERR_ASSERTION]: Walking blocked {\"goal\":{\"x\":-125,\"y\":85.9},\"q\":{\"x\":-123.73678478953482,\"y\":85.82671245686191,\"feet\":3.04,\"grounded\":true,\"attached\":false,\"ladderFeet\":3.54,\"controls\":true,\"locked\":true,\"pauses\":[],\"view\":\"first-person\",\"focus\":\"gameCanvas\",\"hasFocus\":true,\"keys\":[87],\"keyboardAttached\":true,\"scooter\":false,\"at\":23.20749999999981,\"hour\":11.207499999999811,\"objective\":\"ST05\",\"complete\":4,\"wh\":2082.898012989679,\"backupWh\":96,\"weather\":\"fog\",\"rain\":0,\"source\":\"main\",\"reference\":{\"frames\":15777,\"active\":788.2499999998308,\"walkDistance\":673.0819141804263,\"ladderDistance\":64.39999999999918}},\"samples\":[{\"x\":-119.83195756633557,\"y\":85.6001671671381,\"feet\":3.04,\"grounded\":true,\"attached\":false,\"ladderFeet\":3.54,\"controls\":true,\"locked\":true,\"pauses\":[],\"view\":\"first-person\",\"focus\":\"gameCanvas\",\"hasFocus\":true,\"keys\":[87],\"keyboardAttached\":true,\"scooter\":false,\"at\":23.12999999999988,\"hour\":11.129999999999882,\"objective\":\"ST05\",\"complete\":4,\"wh\":2078.647550220692,\"backupWh\":96,\"weather\":\"fog\",\"rain\":0,\"source\":\"main\",\"reference\":{\"frames\":15684,\"active\":783.5999999998351,\"walkDistance\":669.1705207699739,\"ladderDistance\":64.39999999999918}},{\"x\":-120.98759100456343,\"y\":85.66721324872799,\"feet\":3.04,\"grounded\":true,\"attached\":false,\"ladderFeet\":3.54,\"controls\":true,\"locked\":true,\"pauses\":[],\"view\":\"first-person\",\"focus\":\"gameCanvas\",\"hasFocus\":true,\"keys\":[87],\"keyboardAttached\":true,\"scooter\":false,\"at\":23.146666666666533,\"hour\":11.146666666666533,\"objective\":\"ST05\",\"complete\":4,\"wh\":2079.5583765233787,\"backupWh\":96,\"weather\":\"fog\",\"rain\":0,\"source\":\"main\",\"reference\":{\"frames\":15704,\"active\":784.5999999998342,\"walkDistance\":670.3280974717984,\"ladderDistance\":64.39999999999918}},{\"x\":-122.14514628244612,\"y\":85.73437081994891,\"feet\":3.04,\"grounded\":true,\"attached\":false,\"ladderFeet\":3.54,\"controls\":true,\"locked\":true,\"pauses\":[],\"view\":\"first-person\",\"focus\":\"gameCanvas\",\"hasFocus\":true,\"keys\":[87],\"keyboardAttached\":true,\"scooter\":false,\"at\":23.163333333333185,\"hour\":11.163333333333185,\"objective\":\"ST05\",\"complete\":4,\"wh\":2080.4710153625965,\"backupWh\":96,\"weather\":\"fog\",\"rain\":0,\"source\":\"main\",\"reference\":{\"frames\":15724,\"active\":785.5999999998332,\"walkDistance\":671.4875992444257,\"ladderDistance\":64.39999999999918}},{\"x\":-123.30270156032881,\"y\":85.80152837781772,\"feet\":3.04,\"grounded\":true,\"attached\":false,\"ladderFeet\":3.54,\"controls\":true,\"locked\":true,\"pauses\":[],\"view\":\"first-person\",\"focus\":\"gameCanvas\",\"hasFocus\":true,\"keys\":[87],\"keyboardAttached\":true,\"scooter\":false,\"at\":23.179999999999836,\"hour\":11.179999999999836,\"objective\":\"ST05\",\"complete\":4,\"wh\":2081.3854319110155,\"backupWh\":96,\"weather\":\"fog\",\"rain\":0,\"source\":\"main\",\"reference\":{\"frames\":15744,\"active\":786.5999999998323,\"walkDistance\":672.6471010162797,\"ladderDistance\":64.39999999999918}},{\"x\":-123.73678478953482,\"y\":85.82671245686191,\"feet\":3.04,\"grounded\":true,\"attached\":false,\"ladderFeet\":3.54,\"controls\":true,\"locked\":true,\"pauses\":[],\"view\":\"first-person\",\"focus\":\"gameCanvas\",\"hasFocus\":true,\"keys\":[87],\"keyboardAttached\":true,\"scooter\":false,\"at\":23.196666666666488,\"hour\":11.196666666666488,\"objective\":\"ST05\",\"complete\":4,\"wh\":2082.3015913074332,\"backupWh\":96,\"weather\":\"fog\",\"rain\":0,\"source\":\"main\",\"reference\":{\"frames\":15764,\"active\":787.5999999998314,\"walkDistance\":673.0819141804263,\"ladderDistance\":64.39999999999918}}]}\n    at Playthrough.walk (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:18:194)\n    at async Playthrough.returnFromSolar (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/playthrough-harness.cjs:40:87)\n    at async /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step5-2026-10-22/check-playthrough.cjs:32:184",
+  "failedState": {
+    "x": -123.73678478953482,
+    "y": 85.82671245686191,
+    "feet": 3.04,
+    "grounded": true,
+    "attached": false,
+    "ladderFeet": 3.54,
+    "controls": true,
+    "locked": true,
+    "pauses": [],
+    "view": "first-person",
+    "focus": "gameCanvas",
+    "hasFocus": true,
+    "keys": [],
+    "keyboardAttached": true,
+    "scooter": false,
+    "at": 23.20749999999981,
+    "hour": 11.207499999999811,
+    "objective": "ST05",
+    "complete": 4,
+    "wh": 2082.898012989679,
+    "backupWh": 96,
+    "weather": "fog",
+    "rain": 0,
+    "source": "main",
+    "reference": {
+      "frames": 15777,
+      "active": 788.2499999998308,
+      "walkDistance": 673.0819141804263,
+      "ladderDistance": 64.39999999999918
+    }
+  },
+  "routeSummary": {
+    "recordedNodes": 477,
+    "fullRouteSamplesOmitted": true,
+    "lastCompletedGoals": [
+      {
+        "x": -119.8,
+        "y": 85.5
+      },
+      {
+        "x": -117.7,
+        "y": 97.6
+      },
+      {
+        "x": -120.2,
+        "y": 97.402
+      },
+      {
+        "x": -117.7,
+        "y": 97.6
+      },
+      {
+        "x": -119.8,
+        "y": 85.5
+      }
+    ]
+  }
+}

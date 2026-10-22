@@ -1,0 +1,46 @@
+{
+  "baseline": "a7178ce",
+  "method": "Same final dist; original native vehicle/road-light pixel and 3-cycle application recreation suites. Explicit local poses, fixed clock/manual selections and reference steps are inherited; no travel or FPS claim. Adaptations: current ready label, current coast view button, explicit frozen-noon initial condition for the now-automatic clock, explicit executeWhenReady callback (do not pass Promise.reject as the checkRenderTargets flag), output directory only.",
+  "suites": {
+    "headlight": {
+      "passed": true,
+      "exitCode": 0,
+      "source": "../scooter-headlight-2026-10-20/check-browser.cjs",
+      "sourceSha256": "de4dbf033705d995241f7ec5cfc282486d027556fe7f017b5f370faeb6ba75ec",
+      "result": "originals/headlight/browser.json",
+      "resultSha256": "cb58c24afa6f59da69201902710749f9feb28e257ac5c3b5a6570aad3dda03e3"
+    },
+    "recreate": {
+      "passed": true,
+      "exitCode": 0,
+      "source": "../clouds-stars-phase3-2026-10-19/check-recreate.cjs",
+      "sourceSha256": "f4ad6f44662fd015fb75395dbdb8a021f4f9a3a295b8ddc14dc246f0592c685c",
+      "result": "originals/recreate/recreate.json",
+      "resultSha256": "25ac77ab7da7a5a0a79e89d4a71d5896bcb1a526cb0d82cfac6e0045fc9778ae"
+    }
+  },
+  "errors": [],
+  "manifestSha256": "cdccc19acc1723a77a770daa1908abbfeea887430633e81541d6aa771ff79ebe",
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26599400,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 94294,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2926364,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42653964
+  },
+  "sources": {
+    "src/examples/Room.ts": "e0b838567e07a433a76cbb08602f6ea7e7276fc6ae151de39a73037dd68e3cd8",
+    "src/examples/CoastalScooter.ts": "a3d7994cba957dfaaa9e1e9111579e3f4edf68a4c830596e0b67945ddac48aa0",
+    "src/components/BasicExamples.ts": "1fa73465ac328a4cf7bf2118bf38b4c5c55f85ff3050321c792e27e878d55563",
+    "src/examples/RoomRuntime.ts": "c261b5f6542b8b1405b26f05c9c1b583f27437a70861c1c083b4c0dcf18a2762",
+    "src/examples/RoomTimeOfDay.ts": "7aa86569a46abf4d21577f87ff9064b164f41df83a57d74439100664c2f6f7c7",
+    "src/examples/LighthouseSave.ts": "85cd30e1d63e63eb624888c9c6885ddeaecc23c0c7093366e7c8f7acd1b71d9d",
+    "src/examples/LighthouseStoryPanel.ts": "8024d7ca7770cacd6ea067012a18c513137fd807c50381680026039b15948cef"
+  },
+  "passed": true
+}
