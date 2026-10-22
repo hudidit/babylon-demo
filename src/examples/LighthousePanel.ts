@@ -33,7 +33,7 @@ export class LighthousePanel {
   private completionLabel = "";
   private interrupted = false;
   constructor(private readonly document: Document, close: (resume: boolean) => void, test: () => void,
-    actions: {confirm: () => void; cover: () => void; clean: () => void; solarInspect: () => void; solarTest: () => void; compare: () => void; solarClean: () => void; restorePower: () => void; save: () => void; load: () => void; clearSave: () => void}) {
+    actions: {confirm: () => void; cover: () => void; clean: () => void; solarInspect: () => void; solarTest: () => void; compare: () => void; solarClean: () => void; restorePower: () => void; save: () => void; load: () => void; clearSave: () => void; story?: () => void}) {
     this.dialog = this.el<HTMLDialogElement>("lighthouse-panel");
     const signal = this.events.signal;
     const listen = (id: string, fn: () => void) => this.el(id).addEventListener("click", fn, {signal});
@@ -44,6 +44,7 @@ export class LighthousePanel {
     listen("lighthouse-solar-inspect", actions.solarInspect); listen("lighthouse-solar-clean", actions.solarClean);
     listen("lighthouse-power-restore", actions.restorePower);
     listen("lighthouse-save", actions.save); listen("lighthouse-continue", actions.load); listen("lighthouse-save-clear", actions.clearSave);
+    listen("lighthouse-story-record", () => actions.story?.());
     listen("lighthouse-record-toggle", () => {this.paper = !this.paper; this.page = 0; this.refresh();});
     listen("lighthouse-record-prev", () => {this.page--; this.refresh();});
     listen("lighthouse-record-next", () => {this.page++; this.refresh();});
@@ -215,11 +216,12 @@ export class LighthousePanel {
     this.set("lighthouse-activity-label", complete ? `${this.interrupted ? "○" : "✓"} ${this.completionLabel}` : progress!.label);
     this.set("lighthouse-activity-hint", complete ? "" : "保持准星对准 · 移开中断");
   }
-  renderStorage(status: LighthouseSaveStatus, mode:"duty"|"exercise"="duty") {
-    this.set("lighthouse-panel-session",mode==="duty"?"正常值守":"独立演练 · 正常值守进度已保留");
-    this.set("lighthouse-save-scope", mode==="duty"?"正常值守存档":"独立演练存档 · 不影响正常值守");
-    this.set("lighthouse-save", mode==="duty"?"保存值守":"保存演练");
-    this.set("lighthouse-continue", mode==="duty"?"继续值守":"继续演练");
+  renderStorage(status: LighthouseSaveStatus, mode:"duty"|"exercise"|"story"="duty") {
+    const label = mode === "story" ? "故事" : mode === "duty" ? "值守" : "演练";
+    this.set("lighthouse-panel-session",mode === "story" ? "故事 · 第一章" : mode==="duty"?"正常值守":"独立演练 · 正常值守进度已保留");
+    this.set("lighthouse-save-scope", `${label}存档 · 各模式独立保存`);
+    this.set("lighthouse-save", `保存${label}`);
+    this.set("lighthouse-continue", `继续${label}`);
     this.el<HTMLButtonElement>("lighthouse-continue").disabled = !status.available;
     this.el("lighthouse-save-clear").hidden = !status.invalid;
     this.set("lighthouse-save-status", status.message);

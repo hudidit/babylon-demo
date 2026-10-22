@@ -308,6 +308,22 @@
         #lighthouse-gauges .lighthouse-gauge { max-width: 125px; } #lighthouse-actions { flex-direction: column; gap: 0; } .lighthouse-action { margin-top: 10px; }
         .lighthouse-footer { margin-top: 14px; }
       }
+      #story-objective { position: fixed; top: 136px; left: 24px; z-index: 15; max-width: min(350px, calc(100vw - 48px)); padding: 10px 14px; border: 1px solid #cbbca6; border-radius: 8px; background: #eee5d5ed; color: #493c2f; font-size: 12px; text-align: left; }
+      #story-panel { width: min(640px, calc(100% - 24px)); max-height: calc(100dvh - 24px); padding: 22px; border: 1px solid #cbbca6; border-radius: 12px; color: #40392f; background: #f1e8d8; line-height: 1.75; overscroll-behavior: contain; }
+      #story-panel::backdrop { background: #18201dc4; }
+      #story-panel h2, #story-panel h3 { font-weight: 500; margin: 0 0 10px; }
+      #story-panel p, #story-panel li { font-size: 13px; }
+      #story-panel button, #lighthouse-story-record { min-height: 40px; padding: 8px 12px; margin: 4px 4px 4px 0; border: 1px solid #bba98d; border-radius: 6px; color: #493c2f; background: #faf4e9; }
+      #story-panel button:disabled { opacity: .55; cursor: default; }
+      #story-panel header { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0; background: #f1e8d8; }
+      #story-panel section, #story-panel article { border-top: 1px solid #cbbca6; margin-top: 18px; padding-top: 16px; }
+      #story-letter-text, #story-messages p { white-space: pre-wrap; overflow-wrap: anywhere; }
+      #story-letter-text { font-family: "Kaiti SC", "STKaiti", serif; font-size: 16px !important; }
+      #story-storage, #story-notice { color: #73503d; }
+      #story-messages h4 { font-size: 12px; font-weight: 500; }
+      @media(max-width: 600px) { #story-objective { top: 125px; left: 12px; max-width: calc(100vw - 24px); } #story-panel { padding: 16px; } }
+      @media(max-width: 640px) { #story-open { position: fixed; left: 18px; top: 108px; } }
+      @media(max-height: 480px) { #story-objective { top: 66px; left: auto; right: 12px; max-width: 270px; } }
     </style>
   </head>
   <body>
@@ -317,10 +333,28 @@
       <p id="scene-status" role="status">正在准备岛屿与灯站…</p>
     </div>
     <nav class="tools" aria-label="场景工具">
+      <button id="story-open" aria-haspopup="dialog" aria-keyshortcuts="J" title="J 打开故事与联络">故事与联络</button>
       <button id="audio-toggle" data-audio-toggle aria-pressed="true" aria-label="关闭交互音效">音效：开</button>
       <button id="settings-btn" aria-expanded="false" aria-controls="settings-menu">设置</button>
       <button id="inspect-btn">调试</button>
     </nav>
+    <button id="story-objective" hidden aria-haspopup="dialog"></button>
+    <dialog id="story-panel" aria-labelledby="story-title">
+      <header><h2 id="story-title">交班之前</h2><button id="story-return">返回场景</button></header>
+      <p>三天代班，先从一封交接信开始。当前可游玩第一章，后续章节正在制作。</p>
+      <div><button id="story-new">开始新故事</button><button id="story-resume" hidden>返回本次故事</button><button id="story-load">继续已保存故事</button></div>
+      <p id="story-new-warning" hidden>新故事从第一日正午开始；下次保存会替换原故事存档。探索和演练进度各自保留。</p>
+      <button id="story-new-confirm" hidden>从接班信开始</button>
+      <p id="story-storage" role="status"></p>
+      <button id="story-clear" hidden>清除不可用的故事存档</button>
+      <div><button id="story-save" hidden>保存故事</button><button id="story-leave" hidden>保存故事并返回探索</button></div>
+      <p id="story-notice" role="status" aria-live="polite"></p>
+      <div id="story-active" hidden>
+        <section><p id="story-chapter"></p><h3 id="story-goal"></h3><p id="story-next"></p><ul id="story-checks"></ul></section>
+        <section><h3>周师傅的交接信</h3><p id="story-letter-text"></p><button id="story-letter-read">读完交接信</button><button id="story-accept">接下三天值守</button></section>
+        <section><h3>接班报告与联络</h3><p id="story-report-hint"></p><button id="story-report">提交接班报告</button><button id="story-reply" hidden>接收岸站回复</button><div id="story-messages"></div></section>
+      </div>
+    </dialog>
     <section id="settings-menu" class="settings-panel" aria-labelledby="settings-title" hidden>
       <div class="settings-header">
         <h2 id="settings-title">设置</h2>
@@ -353,7 +387,7 @@
     <dialog id="lighthouse-panel" aria-labelledby="lighthouse-panel-title">
       <header class="lighthouse-heading"><div><p id="lighthouse-panel-place"></p><h2 id="lighthouse-panel-title">灯塔值守</h2></div><button id="lighthouse-panel-return">返回场景 ↗</button></header>
       <div class="lighthouse-body">
-        <div class="lighthouse-strip"><p id="lighthouse-panel-clock"></p><button id="lighthouse-record-toggle" aria-controls="lighthouse-paper" aria-expanded="false">翻看记录</button></div>
+        <div class="lighthouse-strip"><p id="lighthouse-panel-clock"></p><button id="lighthouse-record-toggle" aria-controls="lighthouse-paper" aria-expanded="false">翻看记录</button><button id="lighthouse-story-record" hidden>故事与联络</button></div>
         <p id="lighthouse-panel-weather"></p>
         <p id="lighthouse-panel-session">正常值守</p>
         <section id="lighthouse-instrument" aria-label="设备仪表">
@@ -452,7 +486,7 @@
           </div>
           <div class="time-auto"><label><input id="time-automatic" type="checkbox" checked aria-describedby="time-auto-description" />自动流转</label><p id="time-auto-description">一天约 24 分钟 · 展开菜单时暂停</p><p id="time-current">当前 12:00 · 自动流转中</p></div>
           <div class="weather-controls">
-            <label for="lighthouse-session-mode">会话<select id="lighthouse-session-mode"><option value="duty">正常值守</option><option value="exercise">独立演练</option></select></label>
+            <label for="lighthouse-session-mode">会话<select id="lighthouse-session-mode"><option value="duty">正常值守</option><option value="exercise">独立演练</option><option value="story" disabled>故事 · 第一章</option></select></label>
             <p id="lighthouse-session-current"></p>
             <label for="weather-mode">天气<select id="weather-mode"><option value="automatic">自动变化</option><option value="clear">固定晴朗</option><option value="overcast">固定阴天</option><option value="fog">固定海雾</option><option value="storm">固定风雨</option></select></label><p id="weather-current"></p>
             <label for="lighthouse-exercise-seed">场景编号<input id="lighthouse-exercise-seed" type="text" inputmode="numeric" value="20261022" maxlength="10" /></label>

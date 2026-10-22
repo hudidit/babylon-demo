@@ -115,16 +115,16 @@ export class LighthouseInspection {
     if (this.cleaning && !LighthouseInspection.canClean(op)) this.cancelCleaning(op, "设备已运行，清洁中断；盐膜保持原状。");
     if (!op.running && !this.optic && this.seconds > 0) {this.resetObservation(); this.publish();}
   }
-  confirmControl(op: LighthouseOperationSnapshot, accessible: boolean) {
+  confirmControl(op: LighthouseOperationSnapshot, accessible: boolean, recordReading = false) {
     this.synchronize(op); if (!accessible) return false;
     const result = `${op.mode === "test" ? "限时试灯" : "自动值守"} / ${op.running ? op.detectedDemand ? "检测请求下主灯运行" : op.state === "night-running" ? "夜间导航运行" : "局部试灯运行" : op.state === "day-standby" ? "日间待机" : "主灯未运行，需核对备用与实际反馈"}`;
-    if (this.control?.result !== result) this.record(op, "lighthouse-control-panel", "observation", "control-read", "local-panel", result);
+    if (recordReading || this.control?.result !== result) this.record(op, "lighthouse-control-panel", "observation", "control-read", "local-panel", result);
     this.control = this.evidence(op, result); this.publish(); return true;
   }
-  inspectCover(op: LighthouseOperationSnapshot, accessible: boolean) {
+  inspectCover(op: LighthouseOperationSnapshot, accessible: boolean, recordReading = false) {
     this.synchronize(op); if (!accessible) return false;
     const result = this.dirty ? "保护面有轻度盐膜，需停机擦拭后复查" : "保护面洁净，复查通过";
-    if (!this.cover || this.cover.revision !== this.revision) this.record(op, LIGHTHOUSE_INSPECTION.coverId,
+    if (recordReading || !this.cover || this.cover.revision !== this.revision) this.record(op, LIGHTHOUSE_INSPECTION.coverId,
       "observation", "cover-observed", "local-panel", result, this.revision);
     this.cover = this.evidence(op, result, this.revision); this.coverStatus = this.dirty ? "dirty" : "complete";
     this.notice = result; this.publish(); return true;

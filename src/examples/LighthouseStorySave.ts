@@ -16,7 +16,7 @@ type StoryStorage = Pick<Storage, "getItem" | "setItem" | "removeItem">;
 const MAX_STORY_SLOT_LENGTH = 1048576;
 const EPS = 1e-7;
 
-/** Read-only bindings; scene event forwarding and the story mode menu belong to step two. */
+/** Read-only bindings shared by checkpoint validation and the live scene bridge. */
 export function lighthouseStoryContext(equipment: LighthouseCompleteSession): StoryContext {
   const {inspection, maintenance, power, weather, discovery} = equipment;
   const i = inspection.snapshot, m = maintenance.snapshot, p = power.snapshot, w = weather.snapshot, r = m.revision;
@@ -79,13 +79,13 @@ export class LighthouseStorySave {
       } catch {return {available: false, invalid: true, message: "故事存档损坏或版本不支持，原数据已保留。"};}
     } catch {return {available: false, invalid: false, message: "无法读取故事存档，当前会话保持。"};}
   }
-  save(session: LighthouseStorySession): LighthouseSaveStatus {
+  save(session: LighthouseStorySession): LighthouseSaveStatus & {saved: boolean} {
     try {
       const store = this.storage(), old = store.getItem(LIGHTHOUSE_STORY_SAVE_KEY);
-      if (old !== null) {try {decodeLighthouseStorySave(old);} catch {return this.inspect();}}
+      if (old !== null) {try {decodeLighthouseStorySave(old);} catch {return {...this.inspect(), saved: false};}}
       const raw = encodeLighthouseStorySave(session); store.setItem(LIGHTHOUSE_STORY_SAVE_KEY, raw);
-      return {available: true, invalid: false, message: "故事已保存 · 任务、消息和完整天气设备一起保留，继续后先暂停"};
-    } catch {return {...this.inspect(), message: "故事保存失败，原数据和当前会话保持。"};}
+      return {available: true, invalid: false, saved: true, message: "故事已保存 · 任务、消息和完整天气设备一起保留，继续后先暂停"};
+    } catch {return {...this.inspect(), saved: false, message: "故事保存失败，原数据和当前会话保持。"};}
   }
   load(): {session?: LighthouseStorySession; status: LighthouseSaveStatus} {
     try {

@@ -54,16 +54,20 @@ export class RoomTimeMenu {
       const weather=room.weather.weather,weatherLabel=({clear:"晴朗",overcast:"阴天",fog:"海雾",storm:"风雨"})[weather.kind];
       weatherSelect.value=weather.mode==="automatic"?"automatic":weather.kind;
       sessionMode.value=room.lighthouseSessionMode;
-      document.querySelector("#lighthouse-session-current")!.textContent=room.lighthouseSessionMode==="exercise"
+      const story = room.lighthouseSessionMode === "story";
+      sessionMode.disabled = weatherSelect.disabled = seed.disabled = story;
+      document.querySelector<HTMLButtonElement>("#lighthouse-exercise-restart")!.disabled = story;
+      options.forEach(button => button.disabled = story);
+      document.querySelector("#lighthouse-session-current")!.textContent=story ? "故事 · 时间天气随值守推进；切换请打开故事与联络。" : room.lighthouseSessionMode==="exercise"
         ?`独立演练 · 场景编号 ${room.weather.random.seed} · 返回值守可恢复原进度`:"正常值守 · 选择固定天气会进入独立演练";
-      document.querySelector("#weather-label")!.textContent=(room.lighthouseSessionMode==="exercise"?"演练 · ":"")+weatherLabel;
+      document.querySelector("#weather-label")!.textContent=(story ? "故事 · " : room.lighthouseSessionMode==="exercise"?"演练 · ":"")+weatherLabel;
       document.querySelector("#weather-current")!.textContent=`${weatherLabel}${weather.phase==="entering"?" · 转变中":""} · 能见约${weather.visibilityKm.toFixed(1)} km · 太阳能${Math.round(weather.solarMultiplier*100)}%${weather.rain>=.15?" · 暂缓外廊作业":""}`;
       status.textContent = playback.transitioning ? "切换中…" : "当前 " + formatTime(state.hour)
         + (playback.automatic ? room.pauseReasons.length ? " · 收起后继续流转" : " · 自动流转中" : " · 手动时间");
     };
     const syncPanels = () => {
       const reasons = room.pauseReasons;
-      const blocked = reasons.some(reason => ["map", "inspection", "lighthouse-panel", "inspector"].includes(reason));
+      const blocked = reasons.some(reason => ["map", "inspection", "lighthouse-panel", "story-panel", "inspector"].includes(reason));
       if (blocked || !opening && reasons.includes("settings")) setOpen(false, false);
       root.hidden = blocked;
       if (blocked) closeSettings();

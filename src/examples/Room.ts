@@ -61,6 +61,10 @@ import { LighthousePower } from "./LighthousePower";
 import { LighthouseSave, encodeLighthouseSave, decodeLighthouseSave, completeLighthouseSession } from "./LighthouseSave";
 import type { LighthouseCompleteSession, LighthouseSessionMode } from "./LighthouseSave";
 import type { PowerCommand } from "./LighthousePower";
+import {LighthouseStoryBridge} from "./LighthouseStoryBridge";
+import {LighthouseStoryPanel} from "./LighthouseStoryPanel";
+import {LighthouseStorySave, createLighthouseStorySession, encodeLighthouseStorySave, decodeLighthouseStorySave} from "./LighthouseStorySave";
+import type {LighthouseStorySession} from "./LighthouseStorySave";
 
 export type RoomView = "overview" | "coast" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 // The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
@@ -85,6 +89,15 @@ export class RoomScene {
   private readonly dutySave = new LighthouseSave();
   private readonly exerciseSave = new LighthouseSave(undefined,"exercise");
   private readonly sessionCheckpoints:Partial<Record<LighthouseSessionMode,string>> = {};
+  private readonly storySave = new LighthouseStorySave();
+  private storyStorage = this.storySave.inspect();
+  private storyBridge?: LighthouseStoryBridge;
+  private storyCheckpoint?: string;
+  private storyReturnMode: LighthouseSessionMode = "duty";
+  private explorationPose?: {view: RoomView; position: Vector3; rotation: Vector3; feet: number};
+  private readonly storyPanel: LighthouseStoryPanel;
+  private storyLetter?: InspectableItem;
+  private storyDisplayKey = "";
   private restoredDiscovery = false;
   private get lighthouseSave() {return this.sessionMode==="exercise"?this.exerciseSave:this.dutySave;}
   private lighthouseEvidenceKey = "";
@@ -224,7 +237,18 @@ export class RoomScene {
       solarInspect: () => this.localLighthouseMaintenance("inspect", "meter"), solarTest: () => this.localLighthouseMaintenance("surface-test", "meter"),
       compare: () => this.compareLighthouseSolar(), solarClean: () => this.localLighthouseMaintenance("clean", "cloth"),
       restorePower: () => this.localLighthousePower("verify-main", "meter"),
-      save: () => this.saveLighthouseDuty(), load: () => this.continueLighthouseDuty(), clearSave: () => this.clearLighthouseSave()});
+      save: () => this.saveLighthouseDuty(), load: () => this.continueLighthouseDuty(), clearSave: () => this.clearLighthouseSave(),
+      story: () => this.openStoryPanel()});
+    this.storyPanel = new LighthouseStoryPanel(canvas.ownerDocument, {
+      close: resume => this.closeStoryPanel(resume), start: () => this.startStory(), resume: () => this.resumeStory(), load: () => this.continueStory(),
+      save: () => this.saveStory(), leave: () => this.leaveStory(), clear: () => {this.storyStorage = this.storySave.clearInvalid(); this.renderStory(true);},
+      letter: () => this.storyCommand(() => this.storyBridge.story.readMaterial("CL01")),
+      accept: () => this.storyCommand(() => this.storyBridge.story.acceptDuty()),
+      report: () => this.storyCommand(() => this.canUseStoryRecords() && this.storyBridge.story.submitReport("arrival")),
+      reply: () => this.storyCommand(() => this.storyBridge.story.deliverReply("arrival-report")),
+      read: id => this.storyCommand(() => this.storyBridge.story.readMessage(id))});
+    document.querySelector("#story-open")!.addEventListener("click", this.openStoryPanel);
+    document.querySelector("#story-objective")!.addEventListener("click", this.openStoryPanel);
     this.interactions.addDevice(lighthouse.panel, () => this.openLighthousePanel("control"));
     this.interactions.addDevice(lighthouse.test, () => this.openLighthousePanel("test"));
     this.interactions.addLamp(lighthouse.switch, () => lighthouse.on, () => lighthouse.toggle());
@@ -260,7 +284,10 @@ export class RoomScene {
     furnishings.slidingDoors.forEach(door => this.interactions.addSlidingDoor(door));
     furnishings.curtains.forEach(curtain => this.interactions.addCurtain(curtain,
       amount => this.lighting.setCurtain(curtain.windowId, amount)));
-    furnishings.inspectables.forEach(item => this.interactions.addInspectable(item, item => this.openInspection(item)));
+    furnishings.inspectables.forEach(item => {
+      if (item.id === "desk-letter") this.storyLetter = item;
+      this.interactions.addInspectable(item, item => this.openInspection(item));
+    });
     furnishings.lamps.forEach(lamp => {
       const material = this.scene.getMaterialByName(lamp.id === "desk-lamp" ? "desk-lamp-glow"
         : lamp.id === "living-lamp" ? "living-lamp-shade" : lamp.id === "floor-lamp" ? "floor-lamp-shade" : lamp.id + "-glow") as PBRMaterial;
@@ -361,11 +388,12 @@ export class RoomScene {
   get lighthousePower() { return this.lighthousePowerState.snapshot; }
   get lighthouseDiscovery() {return {cover: this.discovery.view("cover"), solar: this.discovery.view("solar")};}
   get weather() {return this.weatherState.snapshot;}
-  get lighthouseSessionMode() {return this.sessionMode;}
+  get lighthouseSessionMode() {return this.storyBridge ? "story" as const : this.sessionMode;}
+  get lighthouseStory() {return this.storyBridge?.story.snapshot;}
   private get weatherDuty() {return {weather:this.weatherState,operation:this.lighthouseState,inspection:this.lighthouseInspectionState,
     maintenance:this.lighthouseMaintenanceState,power:this.lighthousePowerState};}
   setWeather(kind:LighthouseWeatherKind|null) {
-    if(this.disposed)return;
+    if(this.disposed || this.storyBridge)return;
     if(kind!==null&&this.sessionMode!=="exercise"&&!this.setLighthouseSessionMode("exercise"))return;
     this.weatherState.setFixedWeather(kind);this.enforceWeatherWork();
     this.notifyLighthouseOperation();this.applyTimeOfDay(this.timeOfDay);this.notifyTimeOfDay();
@@ -379,7 +407,7 @@ export class RoomScene {
     this.notifyLighthouseOperation();this.applyTimeOfDay(this.timeOfDay);this.notifyTimeOfDay();
   }
   setLighthouseSessionMode(mode:LighthouseSessionMode) {
-    if(this.disposed||this.timePlayback.transitioning||mode!=="duty"&&mode!=="exercise")return false;
+    if(this.disposed||this.storyBridge||this.timePlayback.transitioning||mode!=="duty"&&mode!=="exercise")return false;
     if(mode===this.sessionMode)return true;
     const current=encodeLighthouseSave(this.completeSession);
     // Prepare the replacement before changing any live reference. Neither slot is written here.
@@ -387,13 +415,134 @@ export class RoomScene {
     s.mode=mode;this.sessionCheckpoints[this.sessionMode]=current;this.applyLighthouseSession(s);return true;
   }
   restartLighthouseExercise(seed:number) {
-    if(this.disposed||this.timePlayback.transitioning||!Number.isInteger(seed)||seed<0||seed>0xffffffff)return false;
+    if(this.disposed||this.storyBridge||this.timePlayback.transitioning||!Number.isInteger(seed)||seed<0||seed>0xffffffff)return false;
     const clock=new RoomTimeOfDay();clock.restore(12);
     const s=completeLighthouseSession({clock,operation:new LighthouseOperation(),inspection:new LighthouseInspection(),
       maintenance:new LighthouseMaintenance(),power:new LighthousePower()},"exercise",seed);
     synchronizeWeatherDuty(s);
     if(this.sessionMode==="duty")this.sessionCheckpoints.duty=encodeLighthouseSave(this.completeSession);
     this.applyLighthouseSession(decodeLighthouseSave(encodeLighthouseSave(s)) as LighthouseCompleteSession);return true;
+  }
+  private get storySession(): LighthouseStorySession {
+    return {mode: "story", story: this.storyBridge.story, equipment: this.completeSession};
+  }
+  private storyInterfaceAllowed() {
+    return !this.disposed && !this.timePlayback.transitioning && (this.storyPanel.isOpen || this.storageLighthouseAllowed())
+      && !this.pauseReasons.some(reason => reason !== "story-panel" && reason !== "lighthouse-panel");
+  }
+  private storySwitchAllowed() {
+    if (!this.storyInterfaceAllowed()) return false;
+    if (this.scooter.riding || this.ladder.attached || this.scooterTransition || this.ladderTransition) {
+      this.storyPanel.notice("请先下车或离开垂直梯，再切换故事；当前进度保持。"); return false;
+    }
+    return true;
+  }
+  private canUseStoryRecords() {
+    if (this.currentView !== "first-person") return false;
+    const letter = this.storyLetter;
+    return !!letter && this.jump.grounded && Math.abs(this.jump.feet) < .08
+      && this.interactions.canReachDevice({id: letter.id, label: letter.label, meshes: [letter.mesh]}, this.firstPersonCamera.position)
+      || this.canAccessLighthouse("log");
+  }
+  private renderStory(force = false) {
+    if (!this.storyPanel) return;
+    const story = this.storyBridge?.story, canReport = !!story?.canSubmitArrival && this.canUseStoryRecords();
+    const key = `${!!story}:${story?.revision}:${Math.floor((story?.calendar().hour || 0) * 60)}:${canReport}:${this.storyStorage.message}:${!!this.storyCheckpoint}:${this.storyPanel.isOpen}`;
+    if (!force && key === this.storyDisplayKey) return;
+    this.storyDisplayKey = key;
+    const view = story?.snapshot;
+    this.scene.metadata.lighthouseStory = view;
+    this.storyPanel.render(view, story?.arrivalChecks, this.storyStorage, !!this.storyCheckpoint, canReport);
+  }
+  private openStoryPanel = () => {
+    if (this.disposed || this.storyPanel.isOpen || this.inspection.isOpen || this.floorPlan.isOpen
+      || this.pauseReasons.some(reason => ["inspector", "external", "blur", "hidden"].includes(reason))) return;
+    this.setPaused("story-panel", true);
+    if (this.lighthousePanel.isOpen) this.closeLighthousePanel(false);
+    this.storyStorage = this.storySave.inspect();
+    this.storyPanel.open(); this.storyPanel.notice(""); this.renderStory(true);
+  };
+  private closeStoryPanel(resume: boolean) {
+    if (!this.storyPanel.isOpen) return;
+    this.storyPanel.close(); this.setPaused("story-panel", false);
+    this.canvas.focus({preventScroll: true});
+    if (resume && this.currentView === "first-person" && this.controlsEnabled) this.pointerLock.request();
+  }
+  private rememberExploration() {
+    if (this.storyBridge) return;
+    this.storyReturnMode = this.sessionMode;
+    this.sessionCheckpoints[this.sessionMode] = encodeLighthouseSave(this.completeSession);
+    this.explorationPose = {view: this.currentView, position: this.firstPersonCamera.position.clone(),
+      rotation: this.firstPersonCamera.rotation.clone(), feet: this.jump.feet};
+  }
+  private applyStory(session: LighthouseStorySession) {
+    this.storyBridge = new LighthouseStoryBridge(session.story, session.equipment);
+    this.applyLighthouseSession(session.equipment);
+    if (this.lighthousePanel.isOpen) {this.renderStory(true); return;}
+    // The checkpoint has no player-position field; resume at the same safe, documented desk entrance.
+    const open = this.storyPanel.isOpen;
+    if (open) this.storyPanel.close();
+    this.setView("first-person");
+    this.firstPersonCamera.position.copyFrom(houseVector(6.15, 1.65, 1.6));
+    this.storyLetter.mesh.computeWorldMatrix(true);
+    this.firstPersonCamera.setTarget(this.storyLetter.mesh.getBoundingInfo().boundingBox.centerWorld);
+    resetJumpState(this.jump); this.previousWalk.copyFrom(this.firstPersonCamera.position);
+    this.stableWalk = {position: this.firstPersonCamera.position.clone(), feet: 0};
+    this.walkPose = {...this.stableWalk, rotation: this.firstPersonCamera.rotation.clone()};
+    if (open) this.storyPanel.open();
+    this.updateFloorPlan(); this.renderStory(true);
+  }
+  private startStory() {
+    if (!this.storySwitchAllowed()) return;
+    const session = createLighthouseStorySession(crypto.randomUUID(), crypto.getRandomValues(new Uint32Array(1))[0]);
+    session.equipment.clock.setAutomatic(true);
+    this.rememberExploration(); this.applyStory(session);
+    this.storyPanel.notice("新故事已开始 · 阅读时暂停，返回场景后时间流转。刷新前请保存故事。");
+  }
+  private resumeStory() {
+    if (!this.storySwitchAllowed() || this.storyBridge || !this.storyCheckpoint) return;
+    const session = decodeLighthouseStorySave(this.storyCheckpoint);
+    this.rememberExploration(); this.applyStory(session);
+    this.storyPanel.notice("已返回本次故事 · 位于住宅书桌旁，时间暂停；可在时间菜单开启自动流转。");
+  }
+  private continueStory() {
+    if (!this.storySwitchAllowed()) return;
+    const result = this.storySave.load(); this.storyStorage = result.status;
+    if (result.session) {this.rememberExploration(); this.applyStory(result.session);}
+    this.storyPanel.notice(result.session ? "已继续故事 · 时间暂停；可在时间菜单开启自动流转。" : result.status.message);
+    this.renderStory(true);
+  }
+  private saveStory() {
+    if (!this.storyBridge || !this.storyInterfaceAllowed()) return {...this.storyStorage, saved: false};
+    this.storyBridge.synchronize(this.completeSession);
+    const status = this.storySave.save(this.storySession); this.storyStorage = status;
+    this.storyPanel.notice(status.saved ? "" : status.message); this.renderStory(true); return status;
+  }
+  private leaveStory() {
+    if (!this.storyBridge || !this.storySwitchAllowed() || !this.saveStory().saved) return;
+    const checkpoint = encodeLighthouseStorySave(this.storySession);
+    const exploration = decodeLighthouseSave(this.sessionCheckpoints[this.storyReturnMode]) as LighthouseCompleteSession;
+    this.storyCheckpoint = checkpoint; this.storyBridge = undefined;
+    this.applyLighthouseSession(exploration);
+    const open = this.storyPanel.isOpen, pose = this.explorationPose;
+    if (open) this.storyPanel.close();
+    if (pose) {
+      this.setView(pose.view);
+      this.firstPersonCamera.position.copyFrom(pose.position); this.firstPersonCamera.rotation.copyFrom(pose.rotation);
+      resetJumpState(this.jump, pose.feet); this.previousWalk.copyFrom(pose.position);
+      this.walkPose = {position: pose.position.clone(), rotation: pose.rotation.clone(), feet: pose.feet};
+      this.stableWalk = {position: pose.position.clone(), feet: pose.feet};
+    }
+    if (open) this.storyPanel.open();
+    this.storyPanel.notice("故事已保存，探索会话已恢复并暂停。探索进度仍需在灯塔记录处单独保存。");
+    this.renderStory(true);
+  }
+  private storyCommand(command: () => boolean) {
+    if (!this.storyBridge || !this.storyInterfaceAllowed()) return;
+    this.storyBridge.synchronize(this.completeSession);
+    const accepted = command();
+    this.storyPanel.notice(accepted ? "已记入故事。刷新前请保存。" : "请检查当前目标、三项现场证据和提交地点；已有记录保持。");
+    this.renderStory(true);
   }
   setReducedWeatherMotion(reduced:boolean) {this.reducedWeatherMotion=reduced;this.applyTimeOfDay(this.timeOfDay);}
   private enforceWeatherWork() {
@@ -436,11 +585,13 @@ export class RoomScene {
     this.weatherState.synchronizeSurface("solar",this.lighthouseMaintenance.solarDirty);
     this.synchronizeLighthousePower();
     this.lighthouseMaintenanceState.synchronize(this.lighthouseState);
-    const m = this.lighthouseMaintenance, evidenceKey = `${m.revision.drive}:${m.mainIsolated}:${m.mainAvailable}`;
+    const m = this.lighthouseMaintenance, evidenceKey = `${m.revision.drive}:${m.mainIsolated}:${m.mainAvailable}:${this.lighthouseInspection.coverRevision}:${this.lighthousePower.revision}`;
     if (this.lighthouseEvidenceKey && evidenceKey !== this.lighthouseEvidenceKey) this.lighthouseInspectionState.invalidateMain(this.lighthouseOperation);
     this.lighthouseEvidenceKey = evidenceKey;
     this.lighthouseInspectionState?.synchronize(this.lighthouseOperation);
     this.synchronizeDiscovery();
+    this.storyBridge?.synchronize(this.completeSession);
+    this.renderStory();
     this.scene.metadata.lighthouseOperation.state = this.lighthouseOperation;
     this.scene.metadata.lighthouseOperation.inspection = this.lighthouseInspection;
     this.scene.metadata.weather=this.weather;
@@ -460,7 +611,7 @@ export class RoomScene {
     }
   }
   setTimeOfDay(hour: number): TimeOfDaySnapshot {
-    if (this.disposed) return this.timeOfDay;
+    if (this.disposed || this.storyBridge) return this.timeOfDay;
     const state = this.timeState.select(hour);
     this.lighthouseState.selectTime(state.hour);
     this.notifyLighthouseOperation();
@@ -469,7 +620,7 @@ export class RoomScene {
     return state;
   }
   transitionTimeOfDay(hour: number, reducedMotion = false) {
-    if (this.disposed) return;
+    if (this.disposed || this.storyBridge) return;
     this.timeState.transitionTo(hour, reducedMotion);
     this.notifyTimeOfDay();
   }
@@ -609,7 +760,7 @@ export class RoomScene {
     this.camera.movement.resetPanVelocity();
     this.updateControls();
     const help = document.querySelector("#view-help");
-    const instructions = (firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互") + " · T 调整时间";
+    const instructions = (firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互") + " · T 时间 · J 联络";
     if (help) help.textContent = instructions;
     this.canvas.setAttribute("aria-label", "海岛灯站三维场景，" + instructions);
     this.updateInteractionHint();
@@ -884,7 +1035,7 @@ export class RoomScene {
     this.onPauseChange();
   }
 
-  private get isViewing() { return !!(this.inspection?.isOpen || this.floorPlan?.isOpen || this.lighthousePanel?.isOpen); }
+  private get isViewing() { return !!(this.inspection?.isOpen || this.floorPlan?.isOpen || this.lighthousePanel?.isOpen || this.storyPanel?.isOpen); }
 
   private atLighthouseFloor(expected: number) {
     return !this.disposed && this.currentView === "first-person" && this.exterior.isVisible
@@ -928,7 +1079,7 @@ export class RoomScene {
     if (!this.lighthousePanel.open(location, this.lighthouseOperation, this.lighthouseInspection, this.lighthouseMaintenance, this.lighthousePower, this.timePlayback.automatic, this.weather.weather, this.discovery.view("solar"))) return;
     // Modal state exists before lock release, preserving the first-person pose.
     this.setPaused("lighthouse-panel", true);
-    this.lighthousePanel.renderStorage(this.lighthouseSave.inspect(),this.sessionMode);
+    this.lighthousePanel.renderStorage(this.storyBridge ? this.storySave.inspect() : this.lighthouseSave.inspect(),this.lighthouseSessionMode);
     this.audio.stopAll(); this.audio.play("switch", "lighthouse-control-panel");
     this.updateControls(); this.updateInteractionHint();
   }
@@ -977,15 +1128,18 @@ export class RoomScene {
   }
   private saveLighthouseDuty() {
     if (!this.storageLighthouseAllowed()) return;
-    this.lighthousePanel.renderStorage(this.lighthouseSave.save(this.completeSession),this.sessionMode);
+    const status = this.storyBridge ? this.saveStory() : this.lighthouseSave.save(this.completeSession);
+    this.lighthousePanel.renderStorage(status,this.lighthouseSessionMode);
   }
   private continueLighthouseDuty() {
     if (!this.storageLighthouseAllowed()) return;
+    if (this.storyBridge) {this.continueStory(); this.lighthousePanel.renderStorage(this.storyStorage,"story"); return;}
     const result = this.lighthouseSave.load(), s = result.session;
     if (s) this.applyLighthouseSession(s);
     this.lighthousePanel.renderStorage(result.status,this.sessionMode);
   }
   private clearLighthouseSave() {
+    if (this.storyBridge && this.storageLighthouseAllowed()) {this.storyStorage = this.storySave.clearInvalid(); this.lighthousePanel.renderStorage(this.storyStorage,"story"); return;}
     if (this.storageLighthouseAllowed()) this.lighthousePanel.renderStorage(this.lighthouseSave.clearInvalid(),this.sessionMode);
   }
   private compareLighthouseSolar() {
@@ -997,11 +1151,11 @@ export class RoomScene {
   }
   private confirmLighthouseControl() {
     if (!this.lighthouseCommandAllowed("control")) {this.lighthousePanel.notice("请回到首层运行面板旁确认读数。"); return;}
-    this.lighthouseInspectionState.confirmControl(this.lighthouseOperation, true); this.notifyLighthouseOperation();
+    this.lighthouseInspectionState.confirmControl(this.lighthouseOperation, true, !!this.storyBridge); this.notifyLighthouseOperation();
   }
   private inspectLighthouseCover() {
     if (!this.lighthouseCommandAllowed("cover")) {this.lighthousePanel.notice("请回到顶层固定保护面旁进行观察。"); return;}
-    this.lighthouseInspectionState.inspectCover(this.lighthouseOperation, true);
+    this.lighthouseInspectionState.inspectCover(this.lighthouseOperation, true, !!this.storyBridge);
     this.discovery.observe("cover", "patrol", this.lighthouseOperation.dutyDay, this.lighthouseOperation.hour); this.notifyLighthouseOperation();
   }
   private cleanLighthouseCover() {
@@ -1065,6 +1219,7 @@ export class RoomScene {
   }
 
   private openInspection(item: InspectableItem) {
+    if (this.storyBridge && item.id === "desk-letter") {this.openStoryPanel(); return;}
     if (!this.controlsEnabled || this.isViewing || !this.inspection.open(item)) return;
     this.setPaused("inspection", true);
     this.interactions.silenceMotion();
@@ -1112,7 +1267,7 @@ export class RoomScene {
   private keyDown = (event: KeyboardEvent) => {
     if (event.defaultPrevented) return;
     if (event.isTrusted && !event.repeat && event.key === "Escape") { this.resumeAudio(); this.audio.unlockFromGesture(); }
-    if (this.lighthousePanel.isOpen) return; // The native dialog owns Escape/Tab/Enter.
+    if (this.lighthousePanel.isOpen || this.storyPanel.isOpen) return; // Native dialogs own Escape/Tab/Enter.
     if (this.floorPlan.isOpen) {
       if (event.key === "Escape") { event.preventDefault(); this.closeFloorPlan(false); }
       return;
@@ -1130,6 +1285,7 @@ export class RoomScene {
     }
     const editable = event.target instanceof HTMLElement && event.target.matches("input, textarea, select, [contenteditable]");
     if (editable || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (!event.repeat && event.code === "KeyJ") {event.preventDefault(); this.openStoryPanel(); return;}
     if (this.currentView === "first-person" && this.controlsEnabled && this.pointerLocked) {
       if (this.ladder?.attached) {
         if (["KeyW", "ArrowUp", "KeyS", "ArrowDown"].includes(event.code)) {
@@ -1337,6 +1493,9 @@ export class RoomScene {
     this.pauseScooter(); this.pauseLadder(); this.scooterModel.dispose();
     this.audio.dispose();
     this.rain.dispose();
+    this.storyPanel.dispose();
+    document.querySelector("#story-open")?.removeEventListener("click", this.openStoryPanel);
+    document.querySelector("#story-objective")?.removeEventListener("click", this.openStoryPanel);
     this.lighthousePanel.dispose();
     document.querySelector("#item-inspection-return")?.removeEventListener("click", this.returnFromInspection);
     document.querySelector("#item-inspection")?.removeEventListener("cancel", this.cancelInspection);

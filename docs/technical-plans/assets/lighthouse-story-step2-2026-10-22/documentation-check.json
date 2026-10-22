@@ -1,0 +1,32 @@
+{
+  "files": [
+    "CHANGELOG.md",
+    "docs/technical-plans/README.md",
+    "docs/technical-plans/2026-10-22-lighthouse-story-first-chapter.md",
+    "docs/technical-plans/2026-10-22-lighthouse-story-state-machine.md",
+    "docs/technical-plans/2026-10-21-lighthouse-three-day-story.md",
+    "docs/technical-plans/2026-10-20-lighthouse-focused-experience.md",
+    "docs/technical-plans/2026-10-20-lighthouse-operation-and-keeper-routine.md",
+    "public/STUDY_ASSET_SOURCES.md",
+    "docs/technical-plans/assets/lighthouse-story-step2-2026-10-22/README.md"
+  ],
+  "links": 394,
+  "anchors": 23,
+  "sourceBindings": 23,
+  "errors": [],
+  "node": "v24.21.0",
+  "release": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26520567,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 90713,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2899549,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42571363
+  },
+  "manifestSha256": "24eb3a139577dc126540d9d73ec0e992b20df914d18a6dba1198d6c4abfa8219",
+  "passed": true
+}

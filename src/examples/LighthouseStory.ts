@@ -351,6 +351,14 @@ export class LighthouseStory {
       retainedFacts: this.s.facts.length}));
   }
   exportState() {return clone(this.s);}
+  get revision() {return this.s.sequence;}
+  get arrivalChecks() {
+    const c = this.s.context, facts = this.s.facts;
+    return {control: facts.some(f => f.kind === "control" && this.fresh(f, c)),
+      main: facts.some(f => f.kind === "main" && this.fresh(f, c) && observationPassed(f)),
+      cover: facts.some(f => f.kind === "cover" && this.fresh(f, c) && f.data.status === "clear" && f.problemId === null)};
+  }
+  get canSubmitArrival() {return !!this.done("ST02") && !this.report("arrival") && !this.s.context.actionInProgress && !!this.arrivalProof();}
 
   static fromState(value: unknown): LighthouseStory {
     const proof = {context: readContext, facts: saveArray(v => readFact(v), 64)};
