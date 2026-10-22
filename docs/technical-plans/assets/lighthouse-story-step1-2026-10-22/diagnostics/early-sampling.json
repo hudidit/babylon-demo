@@ -1,0 +1,39 @@
+{
+  "baseline": "9b80607",
+  "node": "v24.21.0",
+  "prefixes": [
+    {
+      "path": "/",
+      "files": 495,
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "files": 495,
+      "passed": true
+    }
+  ],
+  "browserCases": [],
+  "totals": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26473415,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 89433,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2855365,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42522931
+  },
+  "manifestSha256": "53c97930bec6c934bb707c07bd42254ae718dd8c1cc2cdbefc6953ad56ae4034",
+  "exactBaselineManifest": true,
+  "sources": {
+    "src/examples/LighthouseStory.ts": "acffabd3fb66e6231866455ddb3a8676fbac180aac8e35a86ee9071530239463",
+    "src/examples/LighthouseStorySave.ts": "0c7d4ce75edeb60ab12f8f44626b44210ca061cfaed12e93bdd622518ec4e64e",
+    "tests/lighthouse-story.test.cjs": "4541ab8628103319f3ffa690ce34f8c17442f60490d38415e315b4404a908ccb",
+    "tests/lighthouse-story-save.test.cjs": "14731f71295f746d9c3aa0e866d0adea00fdec39d66ea2e9dc042166b3427fa6"
+  },
+  "unconnectedStoryModules": true,
+  "browser": "155.0.8059.86"
+}

@@ -1,0 +1,16 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 3032337
+- 3074217
+
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step1-2026-10-22/check-release.cjs:38:171
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at process.processImmediate (node:internal/timers:541:9) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 3032337,
+  expected: 3074217,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

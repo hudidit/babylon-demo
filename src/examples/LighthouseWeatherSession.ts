@@ -36,12 +36,18 @@ export function advanceWeatherDuty(s: LighthouseWeatherDuty, frame: TimeOfDayAdv
   s.weather.synchronizeSurface("solar",s.maintenance.snapshot.solarDirty);
   const start=s.weather.acceptedAutomaticHours;
   if (frame.automaticHours>0) {
+    // A risk/visibility split may land an ulp below 24. Do not hand the already-crossed
+    // midnight back to the next interval; only the original receipt owns the calendar.
+    const boundaryHour=(hour:number)=>{const h=(hour%24+24)%24;return h<1e-9||24-h<1e-9?0:h;};
+    let crossed=0;
     s.weather.advance(frame,interval=>{
       const offset=interval.fromElapsedHours-start, from=frame.fromHour+offset, to=from+interval.hours;
       const last=Math.abs(interval.fromElapsedHours+interval.hours-s.weather.acceptedAutomaticHours)<1e-11;
-      const receipt:TimeOfDayAdvance={fromHour:(from%24+24)%24,toHour:last?frame.toHour:(to%24+24)%24,
+      const midnights=last?frame.midnightCrossings-crossed:Math.max(0,Math.min(frame.midnightCrossings-crossed,Math.floor((to+1e-9)/24)-Math.floor((from+1e-9)/24)));
+      crossed+=midnights;
+      const receipt:TimeOfDayAdvance={fromHour:boundaryHour(from),toHour:last?frame.toHour:boundaryHour(to),
         activeSeconds:frame.activeSeconds*interval.hours/frame.automaticHours,automaticHours:interval.hours,
-        midnightCrossings:Math.floor(to/24)-Math.floor(from/24),manualCompleted:false};
+        midnightCrossings:midnights,manualCompleted:false};
       s.maintenance.setWeatherDemand(interval.lowVisibility);s.maintenance.synchronize(s.operation);
       s.power.setWeatherSolar(interval.solarFrom);
       s.power.advance(receipt,s.operation.snapshot,s.maintenance.snapshot,interval.solarTo);

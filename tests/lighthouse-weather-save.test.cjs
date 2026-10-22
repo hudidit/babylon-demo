@@ -17,6 +17,18 @@ function latent(){const s=fixture();for(let n=0;!s.maintenance.snapshot.solarLat
 const observe=s=>s.discovery.observe('solar','patrol',s.operation.snapshot.dutyDay,s.operation.snapshot.hour);
 function memory(initial={}){const map=new Map(Object.entries(initial));return{getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,v),removeItem:k=>map.delete(k),map};}
 
+test('weather subintervals cross each shared-clock midnight once across fractional frames and manual time origins',()=>{
+ for(const h of [.037,1/600,.25])for(const origin of [12,23.99]){
+  const s=fixture(216,null);s.clock.restore(origin);s.operation.selectTime(origin);sync(s);let expected=1;
+  const count=Math.ceil(13/h);
+  for(let n=0;n<count;n++){const from=s.clock.snapshot.hour,raw=from+h,to=Math.abs(raw-Math.round(raw))<1e-10?Math.round(raw):raw;
+   expected+=Math.floor(to/24);step(s,to-from,[],0);
+   assert.equal(s.operation.snapshot.dutyDay,expected,JSON.stringify({h,origin,n,hour:s.clock.snapshot.hour}));assert.equal(s.inspection.snapshot.dutyDay,expected);
+  }
+  const events=s.operation.snapshot.events.filter(e=>e.type==='duty-day-started');assert.equal(events.length,expected-1);assert.equal(encode(decode(encode(s))),encode(s));
+ }
+});
+
 test('exact weather checkpoints retain fractional risk time, transitions and all stream positions across repeated restores',()=>{
  for(const seed of [0,216,0xffffffff]){let a=new LighthouseWeatherRisk({seed});for(let n=0;n<1500;n++){
    a.advance({automaticHours:.037});if(n%19===0){const state=json(a.exportState()),b=LighthouseWeatherRisk.fromState(state);assert.deepEqual(json(b.exportState()),state);assert.deepEqual(json(b.snapshot),json(a.snapshot));b.drawInformation('forecast');a.drawInformation('forecast');

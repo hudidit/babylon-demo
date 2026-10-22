@@ -1,0 +1,18 @@
+{
+  "baseline": "9b80607",
+  "baselineSourceSha256": "d1a027cde3ab25379ae3d41f9690c414bcad3dccc7a4195cc579ebbb50e45f07",
+  "currentSourceSha256": "10feb416462faa7a3e6e8550711ebbeb6f543f30d9e37eb26fbda78c2e9c347e",
+  "before": {
+    "acceptedHours": 12.024999999999999,
+    "hour": 0.024999999999877787,
+    "day": 3,
+    "midnightEvents": 2
+  },
+  "after": {
+    "acceptedHours": 12.024999999999999,
+    "hour": 0.024999999999877787,
+    "day": 2,
+    "midnightEvents": 1
+  },
+  "passed": true
+}

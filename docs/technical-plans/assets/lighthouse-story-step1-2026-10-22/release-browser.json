@@ -1,0 +1,262 @@
+{
+  "baseline": "9b80607",
+  "node": "v24.21.0",
+  "prefixes": [
+    {
+      "path": "/",
+      "files": 495,
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "files": 495,
+      "passed": true
+    }
+  ],
+  "browserCases": [
+    {
+      "path": "/",
+      "errors": [],
+      "warnings": [],
+      "firstScreenJs": [
+        {
+          "path": "/js/main.js",
+          "bytes": 435352,
+          "sha256": "113b310f404bfb38948e1b29011ed6d86194c9a568e03985aa77b3516ef31afd"
+        },
+        {
+          "path": "/js/9691.js",
+          "bytes": 2420178,
+          "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+        },
+        {
+          "path": "/js/1203.js",
+          "bytes": 138571,
+          "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+        },
+        {
+          "path": "/js/8558.js",
+          "bytes": 12560,
+          "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+        },
+        {
+          "path": "/js/7449.js",
+          "bytes": 2072,
+          "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+        },
+        {
+          "path": "/js/4742.js",
+          "bytes": 8962,
+          "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+        },
+        {
+          "path": "/js/6612.js",
+          "bytes": 14807,
+          "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+        },
+        {
+          "path": "/js/5587.js",
+          "bytes": 1107,
+          "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+        },
+        {
+          "path": "/js/9615.js",
+          "bytes": 9069,
+          "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+        },
+        {
+          "path": "/js/4472.js",
+          "bytes": 14991,
+          "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+        },
+        {
+          "path": "/js/6560.js",
+          "bytes": 2517,
+          "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+        },
+        {
+          "path": "/js/9915.js",
+          "bytes": 14196,
+          "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+        }
+      ],
+      "viewports": [
+        {
+          "width": 1280,
+          "height": 800,
+          "passed": true
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "passed": true
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "passed": true
+        }
+      ],
+      "firstScreenBytes": 3074382,
+      "originalModeIsolation": true,
+      "noImplicitSave": true,
+      "midnight": {
+        "before": 1,
+        "after": 2,
+        "crossings": 1,
+        "hour": 0.006666666666666668,
+        "inspectionDay": 2,
+        "callbacks": 1805
+      },
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0
+      },
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "errors": [],
+      "warnings": [],
+      "firstScreenJs": [
+        {
+          "path": "/home/js/main.js",
+          "bytes": 435352,
+          "sha256": "113b310f404bfb38948e1b29011ed6d86194c9a568e03985aa77b3516ef31afd"
+        },
+        {
+          "path": "/home/js/9691.js",
+          "bytes": 2420178,
+          "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+        },
+        {
+          "path": "/home/js/1203.js",
+          "bytes": 138571,
+          "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+        },
+        {
+          "path": "/home/js/8558.js",
+          "bytes": 12560,
+          "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+        },
+        {
+          "path": "/home/js/6612.js",
+          "bytes": 14807,
+          "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+        },
+        {
+          "path": "/home/js/7449.js",
+          "bytes": 2072,
+          "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+        },
+        {
+          "path": "/home/js/4742.js",
+          "bytes": 8962,
+          "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+        },
+        {
+          "path": "/home/js/5587.js",
+          "bytes": 1107,
+          "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+        },
+        {
+          "path": "/home/js/9615.js",
+          "bytes": 9069,
+          "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+        },
+        {
+          "path": "/home/js/4472.js",
+          "bytes": 14991,
+          "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+        },
+        {
+          "path": "/home/js/6560.js",
+          "bytes": 2517,
+          "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+        },
+        {
+          "path": "/home/js/9915.js",
+          "bytes": 14196,
+          "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+        }
+      ],
+      "viewports": [
+        {
+          "width": 1280,
+          "height": 800,
+          "passed": true
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "passed": true
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "passed": true
+        }
+      ],
+      "firstScreenBytes": 3074382,
+      "originalModeIsolation": true,
+      "noImplicitSave": true,
+      "midnight": {
+        "before": 1,
+        "after": 2,
+        "crossings": 1,
+        "hour": 0.006666666666666668,
+        "inspectionDay": 2,
+        "callbacks": 1805
+      },
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0
+      },
+      "passed": true
+    }
+  ],
+  "totals": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26473580,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 89433,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2855530,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42523096
+  },
+  "manifestSha256": "3083decac4878b50cf65fe4dc72a2d1b534f1fb27de0b9998608883b711c94f6",
+  "unchangedRuntimeAssets": 36,
+  "changedFiles": [
+    {
+      "path": "bundle-analysis.json",
+      "before": 123653,
+      "after": 123653
+    },
+    {
+      "path": "js/main.js",
+      "before": 435187,
+      "after": 435352
+    }
+  ],
+  "firstScreenDelta": 165,
+  "sources": {
+    "src/examples/LighthouseStory.ts": "acffabd3fb66e6231866455ddb3a8676fbac180aac8e35a86ee9071530239463",
+    "src/examples/LighthouseStorySave.ts": "0c7d4ce75edeb60ab12f8f44626b44210ca061cfaed12e93bdd622518ec4e64e",
+    "src/examples/LighthouseWeatherSession.ts": "10feb416462faa7a3e6e8550711ebbeb6f543f30d9e37eb26fbda78c2e9c347e",
+    "tests/lighthouse-story.test.cjs": "4541ab8628103319f3ffa690ce34f8c17442f60490d38415e315b4404a908ccb",
+    "tests/lighthouse-story-save.test.cjs": "4c5a36de6356a69953a817e5ba7cb94954d9a0e76203be1e269052ace25e6328",
+    "tests/lighthouse-weather-save.test.cjs": "2155111d26ede6eee548c8d98667cc6533373fd13475a167395069672bdf9a5e"
+  },
+  "unconnectedStoryModules": true,
+  "browser": "155.0.8059.86",
+  "passed": true
+}
