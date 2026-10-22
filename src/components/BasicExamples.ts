@@ -6,7 +6,7 @@ export class ExampleBasicScene {
   constructor() {
     const canvas = document.createElement("canvas");
     canvas.id = "gameCanvas";
-    canvas.setAttribute("aria-label", "复古书房与客厅三维场景，可拖动旋转、滚轮缩放");
+    canvas.setAttribute("aria-label", "海岛灯站三维场景，可拖动旋转、滚轮缩放");
     document.body.appendChild(canvas);
     const room = new RoomScene(canvas);
     const resetAudio = this.bindAudio(room);

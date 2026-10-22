@@ -24,7 +24,7 @@ test('drive drill requires actual backup, isolated diagnosis, correct replacemen
  assert.equal(cmd('replace','drive','drive-module'),false);assert.equal(m.snapshot.inventory.drive,0);assert.equal(cmd('trial'),false);
  action('diagnose');assert.equal(cmd('restore'),false);assert.equal(cmd('trial'),true);assert.equal(m.snapshot.source,'main');assert.equal(m.snapshot.backupOn,false);
  assert.equal(cmd('trial'),false);assert.equal(cmd('diagnose'),false);assert.equal(cmd('restore'),false);
- run(5);run(.1,{main:false});run(5);assert.equal(m.snapshot.mainVerified,false);run(5.1);assert.equal(m.snapshot.mainVerified,true);
+ run(15);run(.1,{main:false});run(15);assert.equal(m.snapshot.mainVerified,false);run(15.1);assert.equal(m.snapshot.mainVerified,true);
  assert.equal(cmd('restore'),true);assert.equal(m.snapshot.resolved,true);assert.equal(m.snapshot.source,'main');
  assert.ok(m.snapshot.evidence.some(e=>e.component==='drive'&&e.revision===0&&e.method==='隔离检测'));
  assert.ok(m.snapshot.evidence.some(e=>e.component==='drive'&&e.revision===1&&e.method==='试机复验'));
@@ -49,7 +49,7 @@ test('trial timeout returns to isolation and backup; frozen phase and absent out
  const phase=f.op.snapshot.rotationTurns;
  for(let i=0;i<220;i++)f.m.advance({activeSeconds:.05},f.op,{action:true,main:true,backup:true,mainOutput:1});
  assert.equal(f.op.snapshot.rotationTurns,phase);assert.equal(f.m.snapshot.mainVerified,false);
- f.run(20.1,{main:false});assert.equal(f.m.snapshot.trial,false);assert.equal(f.m.snapshot.mainIsolated,true);assert.equal(f.m.snapshot.source,'backup');assert.equal(f.cmd('restore'),false);
+ f.run(50.1,{main:false});assert.equal(f.m.snapshot.trial,false);assert.equal(f.m.snapshot.mainIsolated,true);assert.equal(f.m.snapshot.source,'backup');assert.equal(f.cmd('restore'),false);
 });
 test('charger drill excludes surface dirt and requires a current external energy receipt after replacing its separate module',()=>{
  const f=setup('charger'),{m,cmd,action}=f;assert.equal(m.snapshot.chargerFault,true);

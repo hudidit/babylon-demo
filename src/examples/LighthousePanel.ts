@@ -1,5 +1,6 @@
 import type { LighthouseSaveStatus } from "./LighthouseSave";
 import type { LighthouseOperationSnapshot } from "./LighthouseOperation";
+import { LIGHTHOUSE_OPERATION } from "./LighthouseOperation";
 import { LighthouseInspection } from "./LighthouseInspection";
 import type { LighthouseInspectionSnapshot } from "./LighthouseInspection";
 import type { LighthouseMaintenanceSnapshot } from "./LighthouseMaintenance";
@@ -113,7 +114,7 @@ export class LighthousePanel {
       status = i.dirty ? "表面有盐膜" : i.checks["check-cover"] === "awaiting-recheck" ? "已清洁 · 待复查" : "保护面洁净"; tone = i.dirty ? "warn" : "good";
       guide = i.checks["check-cover"] === "pending" ? "先查看表面，再决定是否擦拭。" : i.dirty ? LighthouseInspection.canClean(op) ? "擦拭时保持准星对准保护面，圆环闭合后复查。" : "等待白天停灯后，再擦拭保护面。" : `确认洁净后记入巡检；下次例行清洁在第${i.nextMaintenanceDay}日。`;
     } else if (location === "test" || location === "lighthouse-drive-hatch") {
-      gauges.push({label: "转台转速", value: op.running ? 6 : 0, max: 8, unit: "rpm", note: op.running ? "每十秒一圈" : "转台停止"});
+      gauges.push({label: "转台转速", value: op.running ? 60 / LIGHTHOUSE_OPERATION.rotationSeconds : 0, max: 8, unit: "rpm", note: op.running ? `每${LIGHTHOUSE_OPERATION.rotationSeconds}秒一圈` : "转台停止"});
       guide = location === "test" ? i.optic ? "本次转动与出光已确认。" : "开启试灯后看向灯头，准星圆环闭合即完成观察。" : "检修口保持关闭。可在灯座试灯，观察转动与出光。";
     } else if (location === "lighthouse-beacon-backup") {
       status = m.backupOn ? "备用灯接替中" : "备用灯待命"; tone = m.backupOn ? "warn" : "idle";

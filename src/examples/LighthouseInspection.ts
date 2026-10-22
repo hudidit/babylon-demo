@@ -3,7 +3,7 @@ import { LIGHTHOUSE_OPERATION } from "./LighthouseOperation";
 import type { LighthouseOperationSnapshot } from "./LighthouseOperation";
 import type { TimeOfDayAdvance } from "./RoomTimeOfDay";
 
-export const LIGHTHOUSE_INSPECTION = Object.freeze({ observationSeconds: 10, cleaningSeconds: 1.5,
+export const LIGHTHOUSE_INSPECTION = Object.freeze({ observationSeconds: LIGHTHOUSE_OPERATION.rotationSeconds, cleaningSeconds: 1.5,
   dirtyTransmission: .82, coverId: "lighthouse-optics-cleaning", retainedDays: 7, maintenanceDays: 3 });
 export type LighthouseCheckId = "check-control" | "check-optic" | "check-cover";
 export type LighthouseCheckStatus = "pending" | "dirty" | "awaiting-recheck" | "complete";
@@ -173,7 +173,7 @@ export class LighthouseInspection {
     this.seconds = Math.min(LIGHTHOUSE_INSPECTION.observationSeconds, this.seconds + dt);
     this.turns += phase; this.outputSeen ||= sight.output > .25;
     if (this.seconds >= LIGHTHOUSE_INSPECTION.observationSeconds - EPS && this.turns >= 1 - EPS && this.outputSeen) {
-      this.optic = this.evidence(op, "本次周期观察正常：连续10活跃秒、转台一圈及方向出光");
+      this.optic = this.evidence(op, `本次周期观察正常：连续观察${LIGHTHOUSE_INSPECTION.observationSeconds}秒、转台一圈及方向出光`);
       this.record(op, "lighthouse-beacon-main", "observation", "optic-observed", "direct-view", this.optic.result);
       this.notice = "本次周期观察正常，已记录；此结果不代表全面检修。";
     }

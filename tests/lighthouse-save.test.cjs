@@ -32,6 +32,20 @@ test('saving an unfinished wipe or transaction restores pre-commit state without
  const resumed=decode(encode(g));assert.equal(resumed.power.snapshot.action,undefined);assert.equal(resumed.power.snapshot.fuel,4);assert.equal(resumed.power.snapshot.reserveFuel,8);
 });
 
+test('legacy thirty-second test saves retain their remaining time, phase and committed ten-second observation text',()=>{
+ const f=fixture();f.inspection.confirmControl(f.operation.snapshot,true);f.inspection.inspectCover(f.operation.snapshot,true);
+ f.inspection.startCleaning(f.operation.snapshot,true);f.run(1.5);f.inspection.inspectCover(f.operation.snapshot,true);f.operation.startTest();f.run(30);
+ const saved=serial(f),oldResult='本次周期观察正常：连续10活跃秒、转台一圈及方向出光';
+ saved.operation.testRemaining=12.75;saved.operation.turns=.625;saved.inspection.optic.result=oldResult;
+ saved.inspection.events.findLast(e=>e.type==='optic-observed').result=oldResult;
+ const restored=decode(JSON.stringify(saved));assert.deepEqual(serial(restored),saved);
+ assert.equal(restored.operation.snapshot.testSecondsRemaining,12.75);assert.equal(restored.operation.snapshot.rotationTurns,.625);
+ assert.equal(restored.inspection.snapshot.completed,true);assert.equal(restored.inspection.snapshot.optic.result,oldResult);
+ restored.operation.advance({fromHour:saved.hour,toHour:saved.hour,automaticHours:0,activeSeconds:.1,midnightCrossings:0,manualCompleted:false});
+ assert.ok(Math.abs(restored.operation.snapshot.rotationTurns-(.625+.1/30))<1e-10);
+ assert.ok(Math.abs(restored.operation.snapshot.testSecondsRemaining-12.65)<1e-10);
+});
+
 test('committed module inventory and fuel transactions remain atomic across repeated save/load and stale proofs stay stale',()=>{
  const f=fixture('drive');f.run(10.1);assert.ok(f.maintenance.snapshot.backupConfirmed);
  const command=(c,tool='meter')=>f.maintenance.command(c,'lighthouse-drive-hatch',tool,f.operation,true);

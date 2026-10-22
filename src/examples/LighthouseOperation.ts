@@ -4,7 +4,7 @@ import type { TimeOfDayAdvance } from "./RoomTimeOfDay";
 
 export const LIGHTHOUSE_OPERATION_VERSION = "lighthouse-operation-v1";
 export const LIGHTHOUSE_OPERATION = Object.freeze({ deviceId: "lighthouse-beacon-main",
-  startHour: 18, stopHour: 6, rotationSeconds: 10, testSeconds: 30, retainedDays: 7 });
+  startHour: 18, stopHour: 6, rotationSeconds: 30, testSeconds: 60, retainedDays: 7 });
 export type LighthouseOperatingState = "day-standby" | "night-running" | "test-running";
 export type LighthouseEventSource = "system" | "automatic-clock" | "manual-time" | "command" | "active-time";
 export type LighthouseEventType = "initialized" | "state-changed" | "time-selected" | "duty-day-started"
@@ -66,7 +66,7 @@ export class LighthouseOperation {
   exportState() {return saveFields(this, ["hour", "dutyDay", "testRemaining", "turns", "operatingHours", "available", "detectedDemand", "events", "nextEventId"]);}
   static fromSave(value: unknown) {
     const state = saveEnum("day-standby", "night-running", "test-running");
-    const s = saveObject({hour: saveHour, dutyDay: saveDay, testRemaining: saveNumber(0, 30), turns: saveNumber(0, 1),
+    const s = saveObject({hour: saveHour, dutyDay: saveDay, testRemaining: saveNumber(0, LIGHTHOUSE_OPERATION.testSeconds), turns: saveNumber(0, 1),
       operatingHours: saveNumber(0, 24000000), nextEventId: saveDay, available: saveBoolean, detectedDemand: saveBoolean,
       events: saveArray(saveObject({id: saveDay, dutyDay: saveDay, hour: saveHour, objectId: saveEnum("lighthouse-beacon-main"),
         type: saveEnum("initialized", "state-changed", "time-selected", "duty-day-started", "test-started", "test-ended", "test-expired", "test-superseded"),

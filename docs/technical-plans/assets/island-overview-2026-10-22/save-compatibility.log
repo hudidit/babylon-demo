@@ -1,0 +1,15 @@
+✔ one slot restores exact fractional time, committed evidence, resources and event identifiers without offline catch-up (4.96925ms)
+✔ saving an unfinished wipe or transaction restores pre-commit state without inventing completion or consuming resources (0.943292ms)
+✔ legacy thirty-second test saves retain their remaining time, phase and committed ten-second observation text (3.406167ms)
+✔ committed module inventory and fuel transactions remain atomic across repeated save/load and stale proofs stay stale (1.665833ms)
+✔ maintenance expiry changes real surfaces/revisions once on accepted day progression; cleaning reschedules and requires recheck (0.70925ms)
+✔ malformed, unknown, excessive, inconsistent and future-revision saves never overwrite an existing slot (3.121833ms)
+✔ storage denial, failed writes and time transitions leave the live session and previous data intact (0.762125ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 190.283708

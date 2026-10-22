@@ -66,7 +66,7 @@ export type RoomView = "overview" | "coast" | "study" | "living" | "master" | "e
 // The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
 export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.825 };
 
-/** A shared eight-room scene with cutaway presets and enclosed first-person roaming. */
+/** Island, lighthouse and house share the same scene and first-person walking world. */
 export class RoomScene {
   readonly scene: Scene;
   readonly engine: Engine;
@@ -122,8 +122,8 @@ export class RoomScene {
   private readonly inspection: RoomItemInspection;
   private readonly floorPlan: RoomFloorPlan;
   private readonly exterior: RoomExterior;
-  private currentView: RoomView = "overview";
-  private previousView: Exclude<RoomView, "first-person"> = "overview";
+  private currentView: RoomView = "coast";
+  private previousView: Exclude<RoomView, "first-person"> = "coast";
   private pointerLocked = false;
   private pointerStart?: { x: number; y: number; id: number; dragged: boolean };
   private focusElapsed = 0;
@@ -330,11 +330,11 @@ export class RoomScene {
       this.lighting.freezeShadows();
       const failed = ["study", "living"].filter((id: HouseRoomId) => this.rooms.snapshot(id).state === "error");
       const status = document.querySelector("#scene-status");
-      if (status) status.textContent = failed.length ? "部分家具加载失败 · 刷新重试 · 基础结构可用" : "全屋八个房间已布置 · 可自由漫游";
+      if (status) status.textContent = failed.length ? "部分家具加载失败 · 刷新重试 · 基础结构可用" : "住宅与灯塔已就绪 · 可自由探索";
       this.audio.sceneReady();
     }));
 
-    this.setView("overview");
+    this.setView("coast");
     canvas.addEventListener("pointerdown", this.pointerDown);
     canvas.addEventListener("pointermove", this.pointerMove);
     canvas.addEventListener("pointerup", this.pointerUp);
@@ -611,7 +611,7 @@ export class RoomScene {
     const help = document.querySelector("#view-help");
     const instructions = (firstPerson ? "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出" : "拖动旋转 · 滚轮缩放 · 右键平移 · 点击物品交互") + " · T 调整时间";
     if (help) help.textContent = instructions;
-    this.canvas.setAttribute("aria-label", "余晖小居八房三维场景，" + instructions);
+    this.canvas.setAttribute("aria-label", "海岛灯站三维场景，" + instructions);
     this.updateInteractionHint();
     this.updateFloorPlan();
     if (firstPerson && this.controlsEnabled) {
@@ -1305,6 +1305,8 @@ export class RoomScene {
     const aspect = this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight());
     // The sea-facing eye stays on the balcony in portrait; pulling back would enter the house.
     let scale = ["overview", "coast", "study", "living", "master", "ensuite", "bedroom", "kitchen", "bathroom"].includes(this.currentView) ? Math.max(1, 1.4 / aspect) : 1;
+    // The coastal pair already has ample side margins; keep both landmarks readable in portrait.
+    if (this.currentView === "coast") scale = Math.max(1, 1 / aspect);
     // The guest room already frames the sea window closely; a full portrait pullback would become an all-house overview.
     if (this.currentView === "bedroom") scale = Math.min(scale, 1.9);
     // The whole-house portrait radius exceeds the old fixed orbit limit.

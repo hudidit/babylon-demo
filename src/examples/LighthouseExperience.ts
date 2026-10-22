@@ -1,3 +1,4 @@
+import { LIGHTHOUSE_INSPECTION } from "./LighthouseInspection";
 import type { LighthouseInspectionSnapshot } from "./LighthouseInspection";
 import type { LighthouseMaintenanceSnapshot, MaintenanceCommand } from "./LighthouseMaintenance";
 import type { LighthousePowerSnapshot, PowerCommand } from "./LighthousePower";
@@ -13,7 +14,7 @@ export function lighthouseProgress(i: LighthouseInspectionSnapshot, m: Lighthous
   if (m.action) return {kind: m.action.command, label: m.action.command === "clean" ? "擦拭中" : m.action.command === "surface-test" ? "近距细查" : "巡视中", fraction: m.action.elapsed / m.action.duration};
   if (p.action) return {kind: p.action.command, label: "确认供电", fraction: p.action.elapsed / p.action.duration};
   // Time alone must not draw a complete ring before an actual turn and output are confirmed.
-  if (!i.optic && i.observationSeconds > 0) return {kind: "observation", label: "观察灯具", fraction: Math.min(.97, i.observationSeconds / 10)};
+  if (!i.optic && i.observationSeconds > 0) return {kind: "observation", label: "观察灯具", fraction: Math.min(.97, i.observationSeconds / LIGHTHOUSE_INSPECTION.observationSeconds)};
   return undefined;
 }
 export interface LighthouseRecord {day: number; hour: number; object: string; action: string; result: string;}

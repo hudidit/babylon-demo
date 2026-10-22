@@ -190,7 +190,7 @@ export class LighthouseMaintenance {
       if (!this.mainIsolated || this.driveFault || this.diagnosis.drive !== this.revision.drive) return this.reject("需在主灯隔离、检测通过且对应模块完好后受控试机。", state);
       if (this.snapshot.navigationRequired && (!this.backupAvailable || !this.backupProof)) return this.reject("试机前需确认备用可接回导航。", state);
       this.trial = true; this.trialObserved = this.trialTurns = 0; this.lastTrialPhase = state.rotationTurns; this.trialSeen = false; this.mainProof = -1;
-      this.synchronize(op); op.startTest(); this.log(state, "drive", "受控试机", "测试支路临时接管；备用退出。看向主灯连续观察一圈，30秒超时回隔离。");
+      this.synchronize(op); op.startTest(); this.log(state, "drive", "受控试机", `测试支路临时接管；备用退出。看向主灯连续观察一圈，${LIGHTHOUSE_OPERATION.testSeconds}秒超时回隔离。`);
     } else if (command === "restore" && (c === "drive" || location === "control")) {
       if (this.mainIsolated && (this.driveFault || this.mainProof !== this.revision.drive)) return this.reject("主灯仍未通过本次修订的转动/出光复验，不能恢复。", state);
       if (this.driveFault) return this.reject("主灯请求/反馈仍不一致，继续保留备用与待修记录。", state);
@@ -241,8 +241,8 @@ export class LighthouseMaintenance {
       if (state.testSecondsRemaining <= EPS) {this.trial = false; this.notice = "试机到期，主灯保持隔离；按需回备用。"; this.log(state, "drive", "试机到期", this.notice);}
       else if (sight.main && state.running && Math.abs((state.rotationTurns - this.lastTrialPhase + 1) % 1 - dt / LIGHTHOUSE_OPERATION.rotationSeconds) < 1e-6) {
         this.trialObserved += dt; this.trialTurns += dt / LIGHTHOUSE_OPERATION.rotationSeconds; this.trialSeen ||= sight.mainOutput > .25;
-        if (this.trialObserved >= LIGHTHOUSE_MAINTENANCE.observationSeconds - EPS && this.trialTurns >= 1 - EPS && this.trialSeen && this.mainProof !== this.revision.drive) {
-          this.mainProof = this.revision.drive; this.log(state, "drive", "试机复验", "连续观察10活跃秒、正常转动及实际方向出光；可解除隔离恢复自动。");
+        if (this.trialObserved >= LIGHTHOUSE_OPERATION.rotationSeconds - EPS && this.trialTurns >= 1 - EPS && this.trialSeen && this.mainProof !== this.revision.drive) {
+          this.mainProof = this.revision.drive; this.log(state, "drive", "试机复验", `连续观察${LIGHTHOUSE_OPERATION.rotationSeconds}秒、转动一圈及实际方向出光；可解除隔离恢复自动。`);
         }
       } else {this.trialObserved = this.trialTurns = 0; this.trialSeen = false;}
       this.lastTrialPhase = state.rotationTurns;

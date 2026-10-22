@@ -84,20 +84,21 @@ test('midnight advances duty day only from accepted automatic time, without rest
   assert.equal(f.operation.snapshot.rotationTurns, old.rotationTurns);
 });
 
-test('device rotation keeps a ten-active-second period with manual night time and unequal frame sizes', () => {
+test('device rotation keeps a thirty-active-second period with manual night time and unequal frame sizes', () => {
   for (const dt of [.1, .05, .02, 1 / 60]) {
-    const f = fixture(21); f.run(10, dt); near(f.operation.snapshot.rotationTurns, 0);
-    f.run(2.5, dt); near(f.operation.snapshot.rotationTurns, .25);
+    const f = fixture(21); f.run(30, dt); near(f.operation.snapshot.rotationTurns, 0);
+    f.run(7.5, dt); near(f.operation.snapshot.rotationTurns, .25);
     assert.equal(f.operation.snapshot.hour, 21); assert.equal(f.operation.snapshot.automaticOperatingHours, 0);
-    f.run(7.5, dt); near(f.operation.snapshot.rotationRadians, 0);
+    f.run(7.5, dt); near(f.operation.snapshot.rotationTurns, .5);
+    f.run(15, dt); near(f.operation.snapshot.rotationRadians, 0);
   }
 });
 
-test('daytime test lasts thirty active seconds, repeat start does not extend it, and ending is idempotent', () => {
+test('daytime test lasts sixty active seconds, repeat start does not extend it, and ending is idempotent', () => {
   const f = fixture(); assert.equal(f.operation.startTest(), true); f.run(5);
   const previous = f.operation.snapshot;
   assert.equal(f.operation.startTest(), false); assert.equal(f.operation.snapshot, previous);
-  f.run(24.9); assert.equal(f.operation.snapshot.state, 'test-running');
+  f.run(54.9); assert.equal(f.operation.snapshot.state, 'test-running');
   f.step(.1); assert.equal(f.operation.snapshot.state, 'day-standby');
   assert.equal(f.operation.snapshot.testSecondsRemaining, 0);
   near(f.operation.snapshot.rotationTurns, 0); assert.equal(f.operation.endTest(), false);
@@ -109,10 +110,10 @@ test('daytime test lasts thirty active seconds, repeat start does not extend it,
 
 test('night tests and timeout preserve navigation state, phase and original start event', () => {
   const f = fixture(21); f.run(2); f.operation.startTest(); f.run(1);
-  assert.equal(f.operation.snapshot.state, 'night-running'); near(f.operation.snapshot.rotationTurns, .3);
-  f.operation.endTest(); f.operation.startTest(); f.run(30);
+  assert.equal(f.operation.snapshot.state, 'night-running'); near(f.operation.snapshot.rotationTurns, .1);
+  f.operation.endTest(); f.operation.startTest(); f.run(60);
   assert.equal(f.operation.snapshot.state, 'night-running');
-  near(f.operation.snapshot.rotationTurns, .3);
+  near(f.operation.snapshot.rotationTurns, .1);
   assert.equal(f.operation.snapshot.events.filter(e => e.type === 'state-changed').length, 1);
 });
 
@@ -122,20 +123,20 @@ test('18:00 takes over daytime test, while a valid night test can continue after
   assert.equal(f.operation.snapshot.testSecondsRemaining, 0);
   assert.equal(f.operation.snapshot.events.filter(e => e.type === 'test-superseded').length, 1);
   f.select(3); f.automatic(); f.run(179); f.operation.startTest(); f.run(1);
-  assert.equal(f.operation.snapshot.state, 'test-running'); near(f.operation.snapshot.testSecondsRemaining, 29);
-  f.run(29); assert.equal(f.operation.snapshot.state, 'day-standby');
+  assert.equal(f.operation.snapshot.state, 'test-running'); near(f.operation.snapshot.testSecondsRemaining, 59);
+  f.run(59); assert.equal(f.operation.snapshot.state, 'day-standby');
   const event = f.operation.snapshot.events.filter(e => e.type === 'test-expired').at(-1);
-  near(event.hour, 6 + 29 / 60);
+  near(event.hour, 6 + 59 / 60);
 });
 
 test('one clock frame splits schedule crossings and test expiry without counting a stopped segment as running', () => {
   const f = fixture(15); f.automatic(); f.run(179.95, .05);
   f.step(.1); assert.equal(f.operation.snapshot.state, 'night-running');
-  near(f.operation.snapshot.rotationTurns, .005); near(f.operation.snapshot.automaticOperatingHours, .05 / 60);
-  f.select(12); f.step(.1); f.operation.startTest(); f.run(29.95, .05);
+  near(f.operation.snapshot.rotationTurns, .05 / 30); near(f.operation.snapshot.automaticOperatingHours, .05 / 60);
+  f.select(12); f.step(.1); f.operation.startTest(); f.run(59.95, .05);
   const before = f.operation.snapshot.rotationTurns; f.step(.1);
   assert.equal(f.operation.snapshot.state, 'day-standby');
-  near(f.operation.snapshot.rotationTurns, (before + .005) % 1);
+  near(f.operation.snapshot.rotationTurns, (before + .05 / 30) % 1);
 });
 
 test('manual fades settle once, can be retargeted and cannot create a day, work hours or intermediate schedule events', () => {
@@ -146,7 +147,7 @@ test('manual fades settle once, can be retargeted and cannot create a day, work 
   for (let i = 0; i < 12; i++) f.step(.1, true, false);
   assert.equal(f.operation.snapshot.hour, 12); assert.equal(f.operation.snapshot.state, 'day-standby');
   assert.equal(f.operation.snapshot.dutyDay, 1); assert.equal(f.operation.snapshot.automaticOperatingHours, 0);
-  near(f.operation.snapshot.rotationTurns, .1);
+  near(f.operation.snapshot.rotationTurns, 1 / 30);
   assert.equal(f.operation.snapshot.events.filter(e => e.type === 'time-selected').length, 2);
   f.select(12); assert.equal(f.operation.snapshot.events.filter(e => e.type === 'time-selected').length, 2);
 });
@@ -161,7 +162,7 @@ test('overlapping pauses freeze phase and test; return frame and invalid deltas 
   assert.equal(f.operation.snapshot, before);
   pauses.set('hidden', false); f.clock.resetDelta(); f.step(3600);
   assert.equal(f.operation.snapshot, before);
-  f.step(.05); near(f.operation.snapshot.testSecondsRemaining, 27.95);
+  f.step(.05); near(f.operation.snapshot.testSecondsRemaining, 57.95);
 });
 
 test('coast hiding freezes visible motion/test while the shared automatic calendar and schedule stay synchronized', () => {
@@ -170,7 +171,7 @@ test('coast hiding freezes visible motion/test while the shared automatic calend
   assert.equal(f.operation.snapshot.state, 'night-running'); assert.equal(f.operation.snapshot.rotationTurns, 0);
   assert.equal(f.operation.snapshot.hour, 18);
   f.run(360, .1, false); assert.equal(f.operation.snapshot.dutyDay, 2);
-  f.run(1); near(f.operation.snapshot.rotationTurns, .1);
+  f.run(1); near(f.operation.snapshot.rotationTurns, 1 / 30);
 });
 
 test('daily log keeps seven duty days with monotonic IDs; pruning preserves phase, calendar and work hours', () => {
@@ -226,7 +227,7 @@ test('Room updates lighthouse even with a frozen manual hour and guards all muta
   room.applyTimeOfDay = () => {}; room.onTimeOfDayChange = () => {};
   room.setTimeOfDay(21); room.restoredDiscovery=true;room.updateTimeOfDay(.1); room.updateTimeOfDay(.1);
   assert.equal(room.restoredDiscovery,false,'accepted active time rebinds location even when automatic time is off');
-  near(room.lighthouseOperation.rotationTurns, .01);
+  near(room.lighthouseOperation.rotationTurns, .1 / 30);
   assert.equal(room.lighthouseOperation, room.scene.metadata.lighthouseOperation.state);
   room.startLighthouseTest(); const before = room.lighthouseOperation;
   room.disposed = true;

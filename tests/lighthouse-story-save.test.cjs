@@ -21,7 +21,7 @@ function arrival(){const s=create('actual-device-events',0),e=s.equipment,i=e.in
  s.story.readMaterial('CL01');s.story.acceptDuty();i.inspectCover(e.operation.snapshot,true);assert.equal(i.startCleaning(e.operation.snapshot,true),true);active(s,1.5);
  assert.equal(i.snapshot.dirty,false);i.inspectCover(e.operation.snapshot,true);sync(s);
  const cover=i.snapshot.events.findLast(event=>event.type==='cover-observed');
- assert.equal(e.operation.startTest(),true);sync(s);i.confirmControl(e.operation.snapshot,true);active(s,10.1);
+ assert.equal(e.operation.startTest(),true);sync(s);i.confirmControl(e.operation.snapshot,true);active(s,30.1);
  const events=[cover,i.snapshot.events.findLast(event=>event.type==='control-read'),i.snapshot.events.findLast(event=>event.type==='optic-observed')];
  assert.ok(events.every(Boolean));
  for(const event of events.sort((a,b)=>a.id-b.id)){

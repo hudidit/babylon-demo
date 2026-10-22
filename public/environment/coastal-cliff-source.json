@@ -192,8 +192,8 @@
     "baseline": "b10e876",
     "deviceId": "lighthouse-beacon-main",
     "controlId": "lighthouse-control-panel",
-    "rotationSeconds": 10,
-    "testActiveSeconds": 30,
+    "rotationSeconds": 30,
+    "testActiveSeconds": 60,
     "scheduleHours": [
       18,
       6
@@ -201,7 +201,7 @@
     "generatedGeometry": "Existing static optic core, ring bands and nine glass rings separated into a rotating transform. Fixed frame/base/outer glass retained. Single forward emissive face and asymmetric housing remain inside the original 0.44m protected core; fixed test control remains on the south side of the base.",
     "emission": "Original GLSL directional lobe: inner 6 degrees, outer 12 degrees, smooth forward white signal; per-render main or reflected eye, existing tone mapping/bloom/depth and clip planes. Source code contains complete reproduction parameters; no image asset. At distance, the existing face receives a minimum 3-pixel directional footprint in its vertex shader, with its actual depth/clip planes retained; close views retain real dimensions. This is an artistic visibility compensation, not calibrated photometry or navigation range. Phase 3 applies an artistic salt-film transmission multiplier (dirty 0.82, clean 1.0) to the existing directional emission; motor, schedule and power remain unchanged.",
     "records": "Existing deterministic atlas retained. Physical clipboard now opens the dynamic Chinese session journal; three daily checks, timestamped observations, revision-bound surface evidence and separate action/operation events. Seven duty-day history; automatic midnight resets only checks, clean surface persists. Refresh resets the session; no cross-session storage.",
-    "interaction": "Native Chinese dialog with explicit local confirmation; 10 continuous active seconds of clear nearby top-floor optic sight, actual phase travel >=1 turn and forward output; 1.5 active second wipe requires previously observed dirt, grounded same-floor access and continued clear aim. Any UI/blur, departure/climbing or running mode cancels. Standby is revalidated at commit; cleaning requires a separate recheck. First-floor control and clipboard, fixed top-floor cover and test control use the original 1.5m nearest-ray gate and independent pause ownership.",
+    "interaction": "Native Chinese dialog with explicit local confirmation; 30 continuous active seconds of clear nearby top-floor optic sight, actual phase travel >=1 turn and forward output; 1.5 active second wipe requires previously observed dirt, grounded same-floor access and continued clear aim. Any UI/blur, departure/climbing or running mode cancels. Standby is revalidated at commit; cleaning requires a separate recheck. First-floor control and clipboard, fixed top-floor cover and test control use the original 1.5m nearest-ray gate and independent pause ownership.",
     "additionalDownloadBytes": 0,
     "additionalLights": 0,
     "additionalShadowTargets": 0,
@@ -214,7 +214,7 @@
     ],
     "coverId": "lighthouse-optics-cleaning",
     "logId": "lighthouse-maintenance-log",
-    "observationActiveSeconds": 10,
+    "observationActiveSeconds": 30,
     "cleaningActiveSeconds": 1.5,
     "retainedDutyDays": 7,
     "dirtyTransmission": 0.82,

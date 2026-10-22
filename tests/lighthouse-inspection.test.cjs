@@ -38,15 +38,16 @@ test('reading requires local authority; repeated readings refresh time without d
   assert.match(f.inspection.snapshot.control.result, /夜间导航运行/); assert.equal(f.inspection.snapshot.events.length, 2);
 });
 
-test('optic evidence needs ten continuous accepted active seconds, one actual turn and output', () => {
+test('optic evidence needs thirty continuous accepted active seconds, one actual turn and output within the test window', () => {
   for (const dt of [.1, .05, .02]) {
-    const f = fixture(); f.operation.startTest(); f.run(9.8, dt);
+    const f = fixture(); f.operation.startTest(); f.run(29.8, dt);
     assert.equal(f.inspection.snapshot.checks['check-optic'], 'pending'); f.run(.2, dt);
     assert.equal(f.inspection.snapshot.checks['check-optic'], 'complete');
-    assert.match(f.inspection.snapshot.optic.result, /本次周期观察正常/); near(f.inspection.snapshot.observedTurns, 1);
+    assert.match(f.inspection.snapshot.optic.result, /连续观察30秒/); near(f.inspection.snapshot.observedTurns, 1);
+    assert.equal(f.operation.snapshot.running, true); near(f.operation.snapshot.testSecondsRemaining, 30);
     const count = f.inspection.snapshot.events.length; f.run(5, dt); assert.equal(f.inspection.snapshot.events.length, count);
   }
-  const f = fixture(); f.operation.startTest(); f.sight.output = 0; f.run(12);
+  const f = fixture(); f.operation.startTest(); f.sight.output = 0; f.run(32);
   assert.equal(f.inspection.snapshot.optic, undefined);
   f.sight.output = 1; f.step(); assert.ok(f.inspection.snapshot.optic);
 });
@@ -110,7 +111,7 @@ test('starting a test or selecting night cancels immediately, and a last-frame 1
 
 test('three independent checks form the round summary only after cover recheck', () => {
   const f = prepared(); f.run(1.5); f.inspection.confirmControl(f.operation.snapshot, true);
-  f.operation.startTest(); f.run(10); assert.equal(f.inspection.snapshot.completed, false);
+  f.operation.startTest(); f.run(30); assert.equal(f.inspection.snapshot.completed, false);
   f.inspection.inspectCover(f.operation.snapshot, true); assert.equal(f.inspection.snapshot.completed, true);
   assert.equal(f.inspection.snapshot.days[0].completed, true); assert.equal(f.operation.snapshot.state, 'test-running');
 });
