@@ -98,6 +98,10 @@ export class RoomScene {
   private readonly storyPanel: LighthouseStoryPanel;
   private storyLetter?: InspectableItem;
   private storyDisplayKey = "";
+  private storyChapters?: typeof import("./LighthouseStoryChapters");
+  private storyChaptersLoading = false;
+  private storyWait?: import("./LighthouseStoryWait").LighthouseStoryWait;
+  private storyWaitTimer?: number;
   private restoredDiscovery = false;
   private get lighthouseSave() {return this.sessionMode==="exercise"?this.exerciseSave:this.dutySave;}
   private lighthouseEvidenceKey = "";
@@ -244,9 +248,16 @@ export class RoomScene {
       save: () => this.saveStory(), leave: () => this.leaveStory(), clear: () => {this.storyStorage = this.storySave.clearInvalid(); this.renderStory(true);},
       letter: () => this.storyCommand(() => this.storyBridge.story.readMaterial("CL01")),
       accept: () => this.storyCommand(() => this.storyBridge.story.acceptDuty()),
-      report: () => this.storyCommand(() => this.canUseStoryRecords() && this.storyBridge.story.submitReport("arrival")),
-      reply: () => this.storyCommand(() => this.storyBridge.story.deliverReply("arrival-report")),
-      read: id => this.storyCommand(() => this.storyBridge.story.readMessage(id))});
+      report: () => this.storyCommand(() => {const story=this.storyBridge.story,work=story.fieldWork;
+        return this.canUseStoryRecords()&&!!work.kind&&story.submitReport(work.kind,work.kind==="handover"?work.knownIssues:[]);}),
+      reply: () => this.storyCommand(() => {const id=this.storyBridge.story.snapshot.messages.find(m=>["arrival-report","solar-report"].includes(m.id)&&m.state==="awaiting-reply")?.id;
+        return !!id&&this.storyBridge.story.deliverReply(id as "arrival-report"|"solar-report");}),
+      read: id => this.storyCommand(() => this.storyBridge.story.readMessage(id)),
+      review:()=>this.storyCommand(()=>this.canUseStoryRecords()&&this.storyBridge.story.reviewStormPlan()),
+      note:()=>this.storyCommand(()=>this.canUseStoryRecords()&&this.storyBridge.story.recordSolarUncertainty()),
+      material:id=>this.storyCommand(()=>this.storyBridge.story.readMaterial(id)),
+      diary:choice=>this.storyCommand(()=>this.storyBridge.story.fieldWork.phase==="complete"&&this.storyBridge.story.chooseDiary(choice)),
+      wait:()=>this.startStoryWait(),cancelWait:()=>this.cancelStoryWait()});
     document.querySelector("#story-open")!.addEventListener("click", this.openStoryPanel);
     document.querySelector("#story-objective")!.addEventListener("click", this.openStoryPanel);
     this.interactions.addDevice(lighthouse.panel, () => this.openLighthousePanel("control"));
@@ -427,7 +438,7 @@ export class RoomScene {
     return {mode: "story", story: this.storyBridge.story, equipment: this.completeSession};
   }
   private storyInterfaceAllowed() {
-    return !this.disposed && !this.timePlayback.transitioning && (this.storyPanel.isOpen || this.storageLighthouseAllowed())
+    return !this.disposed && !this.storyWait?.running && !this.timePlayback.transitioning && (this.storyPanel.isOpen || this.storageLighthouseAllowed())
       && !this.pauseReasons.some(reason => reason !== "story-panel" && reason !== "lighthouse-panel");
   }
   private storySwitchAllowed() {
@@ -437,22 +448,57 @@ export class RoomScene {
     }
     return true;
   }
-  private canUseStoryRecords() {
+  private atStoryDesk() {
     if (this.currentView !== "first-person") return false;
     const letter = this.storyLetter;
     return !!letter && this.jump.grounded && Math.abs(this.jump.feet) < .08
-      && this.interactions.canReachDevice({id: letter.id, label: letter.label, meshes: [letter.mesh]}, this.firstPersonCamera.position)
-      || this.canAccessLighthouse("log");
+      && this.interactions.canReachDevice({id: letter.id, label: letter.label, meshes: [letter.mesh]}, this.firstPersonCamera.position);
+  }
+  private canUseStoryRecords() {return this.atStoryDesk()||this.canAccessLighthouse("log");}
+  private get storyWaitView():import("./LighthouseStoryChapters").StoryWaitView|undefined {
+    if(!this.storyBridge||!this.storyChapters)return;
+    const recovery=this.lighthousePower.protected||this.lighthousePower.warning;
+    const allowed=recovery?this.canAccessLighthouse("lighthouse-battery-main")||this.canAccessLighthouse("control"):this.atStoryDesk();
+    const wait=this.storyWait,at=this.weatherState.acceptedAutomaticHours;
+    return {plan:wait?.running?wait.plan:this.storyChapters.storyWaitPlan(this.storySession,recovery),allowed,
+      place:recovery?"请在首层电池柜或运行面板旁守候回充。":"请回住宅书桌旁休息或等待。",
+      running:!!wait?.running,progress:wait?`${wait.running?"已结算":"本次结算"} ${(at-wait.from).toFixed(2)} 场景小时 · ${wait.reason}`:""};
+  }
+  private startStoryWait() {
+    if(!this.storyInterfaceAllowed()||!this.storyPanel.isOpen||!this.storyChapters||!this.storyBridge)return;
+    const view=this.storyWaitView;
+    if(!view.allowed||view.plan.target===undefined){this.storyPanel.notice(view.allowed?view.plan.reason:view.place);return;}
+    this.storyWait=new this.storyChapters.LighthouseStoryWait(this.storySession,this.storyBridge,view.plan);
+    this.renderStory(true);this.runStoryWait();
+  }
+  private runStoryWait=()=>{
+    this.storyWaitTimer=undefined;
+    const wait=this.storyWait;if(!wait?.running||this.disposed)return;
+    if(!this.storyPanel.isOpen){this.cancelStoryWait();return;}
+    const blocked=this.canvas.ownerDocument.hidden||!this.canvas.ownerDocument.hasFocus()
+      ||this.pauseReasons.some(reason=>reason!=="story-panel");
+    if(blocked)wait.reason="窗口暂停中，返回后继续结算；不会补算离线时间。";
+    else {wait.reason="正在结算值守时间…";wait.batch();this.notifyLighthouseOperation();this.applyTimeOfDay(this.timeOfDay);this.notifyTimeOfDay();}
+    this.renderStory(true);
+    if(wait.running)this.storyWaitTimer=window.setTimeout(this.runStoryWait,blocked?250:16);
+  };
+  private cancelStoryWait() {
+    if(this.storyWaitTimer!==undefined)window.clearTimeout(this.storyWaitTimer);this.storyWaitTimer=undefined;
+    this.storyWait?.cancel();if(!this.disposed){this.notifyLighthouseOperation();this.notifyTimeOfDay();this.renderStory(true);}
   }
   private renderStory(force = false) {
     if (!this.storyPanel) return;
-    const story = this.storyBridge?.story, canReport = !!story?.canSubmitArrival && this.canUseStoryRecords();
-    const key = `${!!story}:${story?.revision}:${Math.floor((story?.calendar().hour || 0) * 60)}:${canReport}:${this.storyStorage.message}:${!!this.storyCheckpoint}:${this.storyPanel.isOpen}`;
+    const story = this.storyBridge?.story,atDesk=!!story&&this.atStoryDesk(),canReport=!!story&&(atDesk||this.canAccessLighthouse("log"));
+    const recovery=this.lighthousePower.protected||this.lighthousePower.warning;
+    const waitAllowed=!!story&&(recovery?this.canAccessLighthouse("lighthouse-battery-main")||this.canAccessLighthouse("control"):atDesk);
+    const key = `${!!story}:${story?.revision}:${Math.floor((story?.calendar().hour || 0) * 60)}:${canReport}:${recovery}:${waitAllowed}:${this.storyStorage.message}:${!!this.storyCheckpoint}:${this.storyPanel.isOpen}`;
     if (!force && key === this.storyDisplayKey) return;
     this.storyDisplayKey = key;
+    const wait=this.storyWaitView;
     const view = story?.snapshot;
     this.scene.metadata.lighthouseStory = view;
-    this.storyPanel.render(view, story?.arrivalChecks, this.storyStorage, !!this.storyCheckpoint, canReport);
+    this.storyPanel.render(view, story?.fieldWork, this.storyStorage, !!this.storyCheckpoint, canReport,this.storyChapters,wait);
+    if(story)this.canvas.ownerDocument.getElementById("lighthouse-story-record").textContent=wait?.plan.recovery?"打开值守簿 · 守候回充":"打开值守簿";
   }
   private openStoryPanel = () => {
     if (this.disposed || this.storyPanel.isOpen || this.inspection.isOpen || this.floorPlan.isOpen
@@ -460,10 +506,12 @@ export class RoomScene {
     this.setPaused("story-panel", true);
     if (this.lighthousePanel.isOpen) this.closeLighthousePanel(false);
     this.storyStorage = this.storySave.inspect();
+    if(this.storyBridge)this.loadStoryChapters();
     this.storyPanel.open(); this.storyPanel.notice(""); this.renderStory(true);
   };
   private closeStoryPanel(resume: boolean) {
     if (!this.storyPanel.isOpen) return;
+    this.cancelStoryWait();
     this.storyPanel.close(); this.setPaused("story-panel", false);
     this.canvas.focus({preventScroll: true});
     if (resume && this.currentView === "first-person" && this.controlsEnabled) this.pointerLock.request();
@@ -476,7 +524,9 @@ export class RoomScene {
       rotation: this.firstPersonCamera.rotation.clone(), feet: this.jump.feet};
   }
   private applyStory(session: LighthouseStorySession) {
+    this.storyWait=undefined;
     this.storyBridge = new LighthouseStoryBridge(session.story, session.equipment);
+    this.loadStoryChapters();
     this.applyLighthouseSession(session.equipment);
     if (this.lighthousePanel.isOpen) {this.renderStory(true); return;}
     // The checkpoint has no player-position field; resume at the same safe, documented desk entrance.
@@ -491,6 +541,12 @@ export class RoomScene {
     this.walkPose = {...this.stableWalk, rotation: this.firstPersonCamera.rotation.clone()};
     if (open) this.storyPanel.open();
     this.updateFloorPlan(); this.renderStory(true);
+  }
+  private loadStoryChapters() {
+    if(this.storyChapters||this.storyChaptersLoading)return;this.storyChaptersLoading=true;
+    import(/* webpackChunkName: "lighthouse-story-chapters" */ "./LighthouseStoryChapters").then(chapters=>{
+      if(this.disposed)return;this.storyChapters=chapters;this.storyChaptersLoading=false;this.renderStory(true);
+    }).catch(()=>{this.storyChaptersLoading=false;if(!this.disposed)this.storyPanel.notice("值守页暂未载入，请重新打开值守簿；当前进度保持。");});
   }
   private startStory() {
     if (!this.storySwitchAllowed()) return;
@@ -541,7 +597,7 @@ export class RoomScene {
     if (!this.storyBridge || !this.storyInterfaceAllowed()) return;
     this.storyBridge.synchronize(this.completeSession);
     const accepted = command();
-    this.storyPanel.notice(accepted ? "已记入故事。刷新前请保存。" : "请检查当前目标、三项现场证据和提交地点；已有记录保持。");
+    this.storyPanel.notice(accepted ? "已记入故事。刷新前请保存。" : "请检查当前任务、有效现场记录和填写地点；已有记录保持。");
     this.renderStory(true);
   }
   setReducedWeatherMotion(reduced:boolean) {this.reducedWeatherMotion=reduced;this.applyTimeOfDay(this.timeOfDay);}
@@ -557,7 +613,9 @@ export class RoomScene {
     if (this.disposed) return false;
     this.lighthouseMaintenanceState.synchronize(this.lighthouseState);
     if (this.lighthouseMaintenance.mainIsolated || this.lighthouseMaintenance.source === "backup") return false;
-    const started = this.lighthouseState.startTest(); this.notifyLighthouseOperation(); return started;
+    const started = this.lighthouseState.startTest();
+    if(started&&this.storyBridge)this.lighthouseInspectionState.renewObservation();
+    this.notifyLighthouseOperation(); return started;
   }
   endLighthouseTest(): boolean {
     if (this.disposed) return false;
@@ -1146,7 +1204,7 @@ export class RoomScene {
     const location = this.lighthousePanel.activeLocation;
     if ((location !== "control" && location !== "lighthouse-solar-array") || !this.lighthouseCommandAllowed(location)) return;
     this.lighthouseMaintenanceState.compareSolar(this.lighthouseOperation, this.lighthousePower.solarW,
-      lighthouseSolarW(this.lighthouseOperation.hour) * this.weather.weather.solarMultiplier);
+      lighthouseSolarW(this.lighthouseOperation.hour) * this.weather.weather.solarMultiplier, !!this.storyBridge);
     this.notifyLighthouseOperation(); this.lighthousePanel.notice(this.lighthouseMaintenance.notice);
   }
   private confirmLighthouseControl() {
@@ -1490,6 +1548,7 @@ export class RoomScene {
   private dispose = () => {
     if (this.disposed) return;
     this.disposed = true;
+    this.cancelStoryWait();
     this.pauseScooter(); this.pauseLadder(); this.scooterModel.dispose();
     this.audio.dispose();
     this.rain.dispose();

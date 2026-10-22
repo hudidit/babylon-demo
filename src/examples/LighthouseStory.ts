@@ -49,6 +49,7 @@ interface StoryState {
   cursors: Record<StorySource, number>; facts: readonly StoredFact[];
   materials: readonly Material[]; diary?: Mark & {choice: "three-days" | "familiar-path" | "blank"};
   solarProblem?: Mark & {id: string}; completions: readonly Completion[]; reports: readonly Report[];
+  solarNote?: Mark & Proof;
   messages: readonly StoryMessage[]; endingSeen?: Mark;
 }
 const taskTitles = ["接下三天值守", "完成第一轮巡视", "把接班情况记下来", "核对雾天的灯与输入", "给输入变化留下结论",
@@ -220,6 +221,14 @@ export class LighthouseStory {
     if (this.s.context.problems.solar !== id) return false;
     this.s.solarProblem = {id, ...this.mark()}; return true;
   }
+  get solarProblemId() {return this.s.solarProblem?.id;}
+  recordSolarUncertainty() {
+    if(!this.done("ST04")||this.report("solar")||this.s.solarNote||this.s.context.actionInProgress||this.solarProof())return false;
+    const comparison=this.pick(this.s.facts,f=>f.kind==="comparison"&&this.fresh(f,this.s.context));
+    if(!comparison)return false;
+    const surface=this.pick(this.s.facts,f=>f.kind==="solar-check"&&this.fresh(f,this.s.context));
+    this.s.solarNote={...this.mark(),...this.capture([comparison,...(surface?[surface]:[])])};return true;
+  }
   chooseDiary(choice: "three-days" | "familiar-path" | "blank") {
     saveEnum("three-days", "familiar-path", "blank")(choice); if (this.s.diary) return false;
     this.s.diary = {choice, ...this.mark()}; return true;
@@ -343,7 +352,7 @@ export class LighthouseStory {
       objective: {id: next, title: next ? taskTitles[count] : "未完待续", reason: this.nextReason(next)},
       messages: this.s.messages.map(m => ({...m, state: m.direction === "incoming" ? m.readOrder === undefined ? "unread" : "read"
         : this.s.messages.some(v => v.replyTo === m.id) ? "replied" : ["arrival-report", "solar-report", "source-check"].includes(m.id) ? "awaiting-reply" : "sent"})),
-      materials: this.s.materials, diary: this.s.diary, reports: this.s.reports,
+      materials: this.s.materials, diary: this.s.diary, reports: this.s.reports, solarNote:this.s.solarNote,
       transport: {plannedAt: 72, departure: this.calendar(72), status: cancel ? "cancelled" : this.message("transport-warning") ? "at-risk" : "planned",
         cancelledAt: cancel?.sentAt, stayRegistered: !!this.done("ST08"), nextWindow: null},
       sourceCheck: {status: verification ? "no-official-record" : this.message("source-check") ? "pending" : "not-requested", originalMessageId: this.message("old-call")?.id,
@@ -359,6 +368,24 @@ export class LighthouseStory {
       cover: facts.some(f => f.kind === "cover" && this.fresh(f, c) && f.data.status === "clear" && f.problemId === null)};
   }
   get canSubmitArrival() {return !!this.done("ST02") && !this.report("arrival") && !this.s.context.actionInProgress && !!this.arrivalProof();}
+  get fieldWork() {
+    const c=this.s.context,facts=this.s.facts,solar=this.solarProof(),fog=!!this.done("ST04"),day=this.calendar().day;
+    const phase=!this.done("ST03")?"arrival":!this.done("ST05")?"solar":!this.done("ST07")?"handover":"complete";
+    const kind=phase==="complete"?undefined:phase as StoryReportKind;
+    const cleanedFact=this.pick(facts,f=>f.kind==="solar-cleaned"&&f.data.resolvedProblemId===this.s.solarProblem?.id),cleaned=!!cleanedFact;
+    const recheck=!!cleanedFact&&facts.some(f=>f.kind==="solar-check"&&f.order>cleanedFact.order&&f.data.status==="clear"&&this.fresh(f,c));
+    const checks=phase==="arrival"?Object.entries(this.arrivalChecks).map(([id,complete])=>({id,complete}))
+      :phase==="solar"?[{id:"fog",complete:fog},{id:"cleaned",complete:cleaned},{id:"recheck",complete:recheck},{id:"comparison",complete:!!solar}]
+      :[{id:"storm",complete:!!this.done("ST06")},{id:"control",complete:facts.some(f=>f.kind==="control"&&this.fresh(f,c))},
+        {id:"surface",complete:facts.some(f=>f.kind==="solar-check"&&this.fresh(f,c)&&["clear","confirmed"].includes(f.data.status))},
+        {id:"handover",complete:!!this.done("ST07")}];
+    return {phase,day,kind,checks,knownIssues:[...c.knownCriticalIssues],
+      issueLabels:c.knownCriticalIssues.map(id=>id===c.problems.cover?"保护面污损待清洁":id===c.problems.solar?"太阳能表面污损待处理":({"drive-fault":"驱动异常待处理","charger-fault":"充电异常待处理","sensor-dirty":"光敏表面待处理"})[id]||"已知设备异常待处理"),
+      canReport:!!kind&&!this.report(kind)&&!c.actionInProgress&&(kind==="arrival"?this.canSubmitArrival:kind==="solar"?fog&&!!solar:!!this.done("ST06")&&!!this.handoverProof(c,facts,c.knownCriticalIssues)),
+      canReview:!!this.done("ST05")&&!this.done("ST06")&&c.elapsedHours>=42&&this.read("transport-warning")&&!c.actionInProgress
+        &&facts.some(f=>f.kind==="control"&&f.at>=42&&this.fresh(f,c)),
+      canNote:fog&&!this.report("solar")&&!this.s.solarNote&&!solar&&facts.some(f=>f.kind==="comparison"&&this.fresh(f,c))};
+  }
 
   static fromState(value: unknown): LighthouseStory {
     const proof = {context: readContext, facts: saveArray(v => readFact(v), 64)};
@@ -368,6 +395,7 @@ export class LighthouseStory {
       facts: proof.facts, materials: saveArray(saveObject({id: saveEnum(...materialIds), ...readMark}), 6),
       diary: saveOptional(saveObject({choice: saveEnum("three-days", "familiar-path", "blank"), ...readMark})),
       solarProblem: saveOptional(saveObject({id: textId, ...readMark})),
+      solarNote:saveOptional(saveObject({...readMark,...proof})),
       completions: saveArray(saveObject({id: saveEnum(...LIGHTHOUSE_STORY_TASKS), ...readMark, ...proof}), 11),
       reports: saveArray(saveObject({id: saveEnum("arrival", "solar", "handover"), ...readMark, ...proof, unresolved: saveArray(textId, 32)}), 3),
       messages: saveArray(saveObject({id: saveEnum(...messageIds), direction: saveEnum("incoming", "outgoing"), sentAt: elapsed, order: saveDay,
@@ -384,9 +412,9 @@ export class LighthouseStory {
     if (!unique(s.materials.map(m => m.id)) || !unique(s.reports.map(r => r.id)) || !unique(s.messages.map(m => m.id)) || !unique(s.context.knownCriticalIssues)) fail();
     const marks: Mark[] = [...s.materials, ...s.completions, ...s.reports, ...s.messages.map(m => ({at: m.sentAt, order: m.order})),
       ...s.messages.filter(m => m.readOrder !== undefined).map(m => ({at: m.readAt, order: m.readOrder})),
-      ...(s.solarProblem ? [s.solarProblem] : []), ...(s.diary ? [s.diary] : []), ...(s.endingSeen ? [s.endingSeen] : [])];
+      ...(s.solarProblem ? [s.solarProblem] : []), ...(s.solarNote?[s.solarNote]:[]), ...(s.diary ? [s.diary] : []), ...(s.endingSeen ? [s.endingSeen] : [])];
     const allFacts = [...s.facts];
-    [...s.completions, ...s.reports].forEach(p => allFacts.push(...p.facts));
+    [...s.completions, ...s.reports,...(s.solarNote?[s.solarNote]:[])].forEach(p => allFacts.push(...p.facts));
     const factsByKey = new Map<string, StoredFact>();
     if (!unique(s.facts.map(factKey))) fail();
     for (const f of allFacts) {
@@ -399,10 +427,12 @@ export class LighthouseStory {
     marks.push(...factsByKey.values());
     for (const source of sources) if (s.cursors[source] !== Math.max(0, ...[...factsByKey.values()].filter(f => f.source === source).map(f => f.eventId))) fail();
     if (marks.some(m => !within(m)) || !unique(marks.map(m => String(m.order))) || s.sequence !== Math.max(...marks.map(m => m.order))) fail();
-    for (const p of [...s.completions, ...s.reports]) {
+    for (const p of [...s.completions, ...s.reports,...(s.solarNote?[s.solarNote]:[])]) {
       if (p.at !== p.context.elapsedHours || !unique(p.context.knownCriticalIssues) || p.facts.some(f => !before(f, p))
         || Object.keys(p.context.revisions).some(k => p.context.revisions[k] > s.context.revisions[k])) fail();
     }
+    if(s.solarNote&&(!before(this.done("ST04"),s.solarNote)||!s.solarNote.facts.some(f=>f.kind==="comparison"&&this.fresh(f,s.solarNote.context))
+      ||s.solarNote.context.actionInProgress||s.solarNote.facts.some(f=>f.kind!=="comparison"&&f.kind!=="solar-check")))fail();
     for (let i = 0; i < s.completions.length; i++) {
       const c = s.completions[i], proof = c.facts;
       if (c.id !== LIGHTHOUSE_STORY_TASKS[i] || i > 0 && !before(s.completions[i - 1], c)) fail();

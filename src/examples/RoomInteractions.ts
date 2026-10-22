@@ -34,6 +34,7 @@ function doorOverlapsWalkerHeight(door: { meshes: AbstractMesh[] }, eye: Vector3
 export const interactionSurface = (mesh: AbstractMesh) =>
   mesh.isEnabled() && mesh.isVisible && mesh.visibility > 0 && mesh.getTotalVertices() > 0
   && !mesh.metadata?.inspectionPreview && !mesh.metadata?.lighthouseMaintenanceTool
+  && !mesh.metadata?.lighthouseLightVolume
   && (!mesh.metadata?.exterior || mesh.metadata?.lighthouse);
 
 export class RoomInteractions {

@@ -1,5 +1,5 @@
 import type { LighthouseRandom } from "./LighthouseRandom";
-import {saveObject, saveEnum, saveNumber, saveBoolean} from "./LighthouseSaveValidation";
+import {saveObject, saveEnum, saveNumber, saveBoolean, saveOptional} from "./LighthouseSaveValidation";
 
 export type LighthouseWeatherKind = "clear" | "overcast" | "fog" | "storm";
 export interface LighthouseWeatherConditions {
@@ -32,12 +32,23 @@ export const isLighthouseWeather = (value: unknown): value is LighthouseWeatherK
   typeof value === "string" && Object.prototype.hasOwnProperty.call(LIGHTHOUSE_WEATHER, value);
 const round = (n: number) => Math.round(n * 1e9) / 1e9;
 
+/** Accepted hours since the story's day-one noon. Late play always has another daylight fog window. */
+function storyPhase(tick: number) {
+  const hours = tick / 12, offset = hours < 60 ? 0 : 60 + Math.floor((hours - 60) / 24) * 24;
+  const entries: readonly (readonly [number, LighthouseWeatherKind])[] = hours < 60
+    ? [[0,"clear"],[12,"overcast"],[18,"fog"],[24,"overcast"],[26,"clear"],[40,"overcast"],[42,"storm"],[48,"overcast"],[50,"clear"],[60,"clear"]]
+    : [[0,"clear"],[4,"overcast"],[6,"fog"],[10,"overcast"],[11,"clear"],[24,"clear"]];
+  const index = entries.findIndex((entry, n) => n < entries.length - 1 && hours < offset + entries[n+1][0]);
+  return {kind: entries[index][1], from: entries[Math.max(0,index-1)][1], start: (offset+entries[index][0])*12, end:(offset+entries[index+1][0])*12};
+}
+
 /** Driven once per accepted five-minute boundary by LighthouseWeatherRisk. */
 export class LighthouseWeatherSequence {
   private kind: LighthouseWeatherKind;
   private from: LighthouseWeatherKind;
   private ageTicks = 0;
   private remainingTicks: number;
+  private story?: {tick: number; joinedAt: number; from: LighthouseWeatherKind};
   mode: "fixed" | "automatic";
   constructor(private readonly random: LighthouseRandom, fixed?: LighthouseWeatherKind) {
     if (fixed !== undefined && !isLighthouseWeather(fixed)) throw new RangeError("Unknown weather condition");
@@ -46,25 +57,45 @@ export class LighthouseWeatherSequence {
     this.remainingTicks = this.mode === "automatic" ? this.duration() : 0;
   }
   setFixed(kind: LighthouseWeatherKind | null) {
+    this.story = undefined;
     if (kind !== null && !isLighthouseWeather(kind)) throw new RangeError("Unknown weather condition");
     this.mode = kind === null ? "automatic" : "fixed";
     this.kind = this.from = kind ?? this.kind;
     this.ageTicks = 0; this.remainingTicks = kind === null ? this.duration() : 0;
   }
   private duration() {return C.minTicks + Math.floor(this.random.next("weather") * (C.maxTicks - C.minTicks + 1));}
-  exportState() {return {mode: this.mode, kind: this.kind, from: this.from, ageTicks: this.ageTicks, remainingTicks: this.remainingTicks};}
+  useStorySchedule(tick: number) {
+    if (this.story) return;
+    if (!Number.isSafeInteger(tick) || tick < 0) throw new RangeError("Invalid story weather tick");
+    this.story = {tick, joinedAt:tick, from:this.sample().kind}; this.applyStoryPhase();
+  }
+  get storyScheduled() {return !!this.story;}
+  private applyStoryPhase() {
+    const p = storyPhase(this.story.tick), start = Math.max(p.start, this.story.joinedAt);
+    this.mode="automatic";this.kind=p.kind;this.from=this.story.joinedAt>=p.start?this.story.from:p.from;
+    this.ageTicks=this.story.tick-start;this.remainingTicks=p.end-this.story.tick;
+  }
+  exportState() {return {mode: this.mode, kind: this.kind, from: this.from, ageTicks: this.ageTicks, remainingTicks: this.remainingTicks,
+    ...(this.story ? {story:{...this.story}} : {})};}
   static fromState(value: unknown, random: LighthouseRandom) {
     const kind = saveEnum("clear", "overcast", "fog", "storm");
     const s = saveObject({mode: saveEnum("fixed", "automatic"), kind, from: kind,
-      ageTicks: saveNumber(0, 72, true), remainingTicks: saveNumber(0, 72, true)})(value);
-    if (s.mode === "fixed" ? s.kind !== s.from || s.ageTicks !== 0 || s.remainingTicks !== 0
+      ageTicks: saveNumber(0, 288, true), remainingTicks: saveNumber(0, 288, true),
+      story:saveOptional(saveObject({tick:saveNumber(0,12e9,true),joinedAt:saveNumber(0,12e9,true),from:kind}))})(value);
+    if (!s.story && (s.mode === "fixed" ? s.kind !== s.from || s.ageTicks !== 0 || s.remainingTicks !== 0
       : s.remainingTicks < 1 || s.ageTicks + s.remainingTicks < 24 || s.ageTicks + s.remainingTicks > 72
-        || s.kind !== s.from && s.kind !== "overcast" && s.from !== "overcast") throw new Error("Invalid weather sequence");
+        || s.kind !== s.from && s.kind !== "overcast" && s.from !== "overcast")) throw new Error("Invalid weather sequence");
     const model = new LighthouseWeatherSequence(random, "clear");
     model.mode=s.mode;model.kind=s.kind;model.from=s.from;model.ageTicks=s.ageTicks;model.remainingTicks=s.remainingTicks;
+    if (s.story) {
+      if (s.story.joinedAt>s.story.tick) throw new Error("Invalid story weather origin");
+      model.story={...s.story};model.applyStoryPhase();
+      if (model.mode!==s.mode||model.kind!==s.kind||model.from!==s.from||model.ageTicks!==s.ageTicks||model.remainingTicks!==s.remainingTicks) throw new Error("Inconsistent story weather");
+    }
     return model;
   }
   advanceTick() {
+    if (this.story) {this.story.tick++;this.applyStoryPhase();return;}
     if (this.mode === "fixed") return;
     this.ageTicks++;
     if (--this.remainingTicks > 0) return;

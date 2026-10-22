@@ -90,7 +90,7 @@ const timeLabel=(hour:number)=>`${String(Math.floor(hour)).padStart(2,"0")}:${St
 export class LighthouseSave {
   constructor(private readonly storage:()=>SlotStorage=()=>window.localStorage,readonly mode:LighthouseSessionMode="duty",private readonly seed:()=>number=freshSeed) {}
   private get key(){return this.mode==="duty"?LIGHTHOUSE_SAVE_KEY:LIGHTHOUSE_EXERCISE_SAVE_KEY;}
-  private decode(raw:string){const s=decodeLighthouseSave(raw);if(s.mode&&s.mode!==this.mode)throw new Error("Wrong slot mode");return s;}
+  private decode(raw:string){const s=decodeLighthouseSave(raw);if(s.mode&&s.mode!==this.mode||s.weather?.storyScheduled)throw new Error("Wrong slot mode");return s;}
   inspect():LighthouseSaveStatus {
     try{
       const raw=this.storage().getItem(this.key);if(raw===null)return {available:false,invalid:false,message:this.mode==="duty"?"尚未保存 · 保存后可从这里继续值守":"演练尚未保存 · 与正常值守独立"};
@@ -101,7 +101,7 @@ export class LighthouseSave {
   save(session:LighthouseSession):LighthouseSaveStatus {
     try{
       const store=this.storage(),previous=store.getItem(this.key);if(previous!==null){try{this.decode(previous);}catch{return this.inspect();}}
-      if(session.mode&&session.mode!==this.mode)throw new Error("Wrong session mode");
+      if(session.mode&&session.mode!==this.mode||session.weather?.storyScheduled)throw new Error("Wrong session mode");
       const full=session.weather?completeLighthouseSession(session,this.mode,0):completeLighthouseSession(decodeLighthouseSave(encodeLighthouseSave(session)),this.mode,this.seed());
       const raw=encodeLighthouseSave(full);store.setItem(this.key,raw);
       return {...this.inspect(),message:`${this.mode==="duty"?"值守":"独立演练"}已保存 · 天气和线索完整保留，继续后先暂停`};

@@ -1,0 +1,560 @@
+{
+  "baseline": "8be5882",
+  "method": "Final dist only; cold Chromium DPR 1, no service workers; native controls and local pose fixtures; actual shared-clock updates, no phase/Wh/evidence overrides.",
+  "prefixes": [
+    {
+      "path": "/",
+      "files": 496,
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "files": 496,
+      "passed": true
+    }
+  ],
+  "cases": [
+    {
+      "path": "/",
+      "errors": [],
+      "warnings": [
+        "The keyword 'slider-vertical' specified to an 'appearance' property is not standardized. It will be removed in the future. Use <input type=range style=\"writing-mode: vertical-lr; direction: rtl\"> instead."
+      ],
+      "firstScreenJs": [
+        {
+          "path": "/js/main.js",
+          "bytes": 502841,
+          "sha256": "0d6957eb1299f25f4d969622530e553d4e81923bcb2dd5d955e46b5fe4597094"
+        },
+        {
+          "path": "/js/9691.js",
+          "bytes": 2420178,
+          "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+        },
+        {
+          "path": "/js/1203.js",
+          "bytes": 138571,
+          "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+        },
+        {
+          "path": "/js/8558.js",
+          "bytes": 12560,
+          "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+        },
+        {
+          "path": "/js/6612.js",
+          "bytes": 14807,
+          "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+        },
+        {
+          "path": "/js/4742.js",
+          "bytes": 8962,
+          "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+        },
+        {
+          "path": "/js/7449.js",
+          "bytes": 2072,
+          "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+        },
+        {
+          "path": "/js/5587.js",
+          "bytes": 1107,
+          "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+        },
+        {
+          "path": "/js/9615.js",
+          "bytes": 9069,
+          "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+        },
+        {
+          "path": "/js/6560.js",
+          "bytes": 2517,
+          "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+        },
+        {
+          "path": "/js/4472.js",
+          "bytes": 14991,
+          "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+        },
+        {
+          "path": "/js/9915.js",
+          "bytes": 14196,
+          "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+        }
+      ],
+      "viewports": [
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "landmarks": {
+            "house": [
+              {
+                "x": -0.3263908691892343,
+                "y": 0.24864765455883445,
+                "z": 0.9942034977371103
+              },
+              {
+                "x": -0.3833083574830696,
+                "y": 0.26802350745665166,
+                "z": 0.9941555252960592
+              },
+              {
+                "x": -0.33775304818568586,
+                "y": 0.2136571751949105,
+                "z": 0.9939668825331852
+              },
+              {
+                "x": -0.39103605977717604,
+                "y": 0.19414263287449782,
+                "z": 0.9940175257993417
+              }
+            ],
+            "lighthouse": [
+              {
+                "x": 0.3907409670669436,
+                "y": -0.29978330783824586,
+                "z": 0.9921853234825501
+              },
+              {
+                "x": 0.41621402228064647,
+                "y": -0.15656762651366002,
+                "z": 0.9916106486135804
+              }
+            ]
+          },
+          "buttons": [
+            {
+              "x": 38,
+              "y": 731,
+              "right": 119.015625,
+              "bottom": 768
+            },
+            {
+              "x": 123.015625,
+              "y": 731,
+              "right": 204.03125,
+              "bottom": 768
+            }
+          ],
+          "overflow": false,
+          "miniCoast": true,
+          "passed": true
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "landmarks": {
+            "house": [
+              {
+                "x": -0.5553761905920558,
+                "y": 0.12219004541155115,
+                "z": 0.9976602983809604
+              },
+              {
+                "x": -0.649892358670257,
+                "y": 0.1312406064885091,
+                "z": 0.9976487547821901
+              },
+              {
+                "x": -0.5647117562523217,
+                "y": 0.10316852865161853,
+                "z": 0.9976041510220697
+              },
+              {
+                "x": -0.6562426458605624,
+                "y": 0.09409591218990791,
+                "z": 0.9976160033567708
+              }
+            ],
+            "lighthouse": [
+              {
+                "x": 0.5776435675112667,
+                "y": -0.12799134671232776,
+                "z": 0.9972368608025817
+              },
+              {
+                "x": 0.5931423075245383,
+                "y": -0.06443863462360615,
+                "z": 0.9971358791828916
+              }
+            ]
+          },
+          "buttons": [
+            {
+              "x": 18,
+              "y": 789,
+              "right": 91.015625,
+              "bottom": 826
+            },
+            {
+              "x": 95.015625,
+              "y": 789,
+              "right": 168.03125,
+              "bottom": 826
+            }
+          ],
+          "overflow": false,
+          "miniCoast": true,
+          "passed": true
+        },
+        {
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "landmarks": {
+            "house": [
+              {
+                "x": -0.24131267586343955,
+                "y": 0.24864765455883445,
+                "z": 0.9942034977371103
+              },
+              {
+                "x": -0.2833938515297034,
+                "y": 0.26802350745665166,
+                "z": 0.9941555252960592
+              },
+              {
+                "x": -0.24971314927154653,
+                "y": 0.2136571751949105,
+                "z": 0.9939668825331852
+              },
+              {
+                "x": -0.2891072237373482,
+                "y": 0.19414263287449782,
+                "z": 0.9940175257993417
+              }
+            ],
+            "lighthouse": [
+              {
+                "x": 0.28888905512697016,
+                "y": -0.29978330783824586,
+                "z": 0.9921853234825501
+              },
+              {
+                "x": 0.3077222143606243,
+                "y": -0.15656762651366002,
+                "z": 0.9916106486135804
+              }
+            ]
+          },
+          "buttons": [
+            {
+              "x": 38,
+              "y": 321,
+              "right": 111.015625,
+              "bottom": 358
+            },
+            {
+              "x": 115.015625,
+              "y": 321,
+              "right": 188.03125,
+              "bottom": 358
+            }
+          ],
+          "overflow": false,
+          "miniCoast": true,
+          "passed": true
+        }
+      ],
+      "firstScreenBytes": 3141871,
+      "dragAndZoom": true,
+      "exploreAndEscapeReturn": true,
+      "maps": true,
+      "rotation": {
+        "before": 0,
+        "samples": [
+          {
+            "seconds": 7.5,
+            "phase": 0.24999999999999967,
+            "radians": 1.5707963267948946,
+            "ocean": [
+              0.9945218953682733,
+              -0.10452846326765346,
+              2.04835089490931e-15
+            ],
+            "volume": [
+              0.9945218953682733,
+              -0.10452846326765346,
+              2.04835089490931e-15
+            ]
+          },
+          {
+            "seconds": 15,
+            "phase": 0.5000000000000012,
+            "radians": 3.1415926535898007,
+            "ocean": [
+              -7.386365720191143e-15,
+              -0.10452846326765346,
+              -0.9945218953682733
+            ],
+            "volume": [
+              -7.386365720191143e-15,
+              -0.10452846326765346,
+              -0.9945218953682733
+            ]
+          },
+          {
+            "seconds": 30,
+            "phase": 0,
+            "radians": 0,
+            "ocean": [
+              0,
+              -0.10452846326765346,
+              0.9945218953682733
+            ],
+            "volume": [
+              0,
+              -0.10452846326765346,
+              0.9945218953682733
+            ]
+          }
+        ]
+      },
+      "resume": {
+        "before": 0,
+        "first": 0,
+        "second": 0.0033333333333333335
+      },
+      "pauseAndResume": true,
+      "observation": {
+        "sight": true,
+        "samples": [
+          {
+            "seconds": 15,
+            "observation": 14.999999999999963,
+            "turns": 0.5000000000000115,
+            "proof": false,
+            "remaining": 44.99999999999979,
+            "outputSeen": true
+          },
+          {
+            "seconds": 29.9,
+            "observation": 29.900000000000155,
+            "turns": 0.9966666666666935,
+            "proof": false,
+            "remaining": 30.099999999999575,
+            "outputSeen": true
+          },
+          {
+            "seconds": 30,
+            "observation": 30,
+            "turns": 1.0000000000000269,
+            "proof": true,
+            "remaining": 29.999999999999574,
+            "outputSeen": true
+          }
+        ],
+        "result": "本次周期观察正常：连续观察30秒、转台一圈及方向出光"
+      },
+      "testExpiresAt60": true,
+      "gauge": "0\n4\n8\n转台转速\n2 rpm\n每30秒一圈",
+      "beforeSave": {
+        "open": true,
+        "location": "control",
+        "locked": false,
+        "browserLocked": false,
+        "view": "first-person",
+        "pauses": [
+          "lighthouse-panel"
+        ],
+        "eye": [
+          -662.25,
+          20.700000000000003,
+          419
+        ],
+        "floor": 3.54,
+        "reachable": true
+      },
+      "saveAndContinue": true,
+      "inspector": true,
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0
+      },
+      "knownInspectorWarnings": [
+        "The keyword 'slider-vertical' specified to an 'appearance' property is not standardized. It will be removed in the future. Use <input type=range style=\"writing-mode: vertical-lr; direction: rtl\"> instead."
+      ],
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "errors": [],
+      "warnings": [],
+      "firstScreenJs": [
+        {
+          "path": "/home/js/main.js",
+          "bytes": 502841,
+          "sha256": "0d6957eb1299f25f4d969622530e553d4e81923bcb2dd5d955e46b5fe4597094"
+        },
+        {
+          "path": "/home/js/9691.js",
+          "bytes": 2420178,
+          "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+        },
+        {
+          "path": "/home/js/1203.js",
+          "bytes": 138571,
+          "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+        },
+        {
+          "path": "/home/js/8558.js",
+          "bytes": 12560,
+          "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+        },
+        {
+          "path": "/home/js/7449.js",
+          "bytes": 2072,
+          "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+        },
+        {
+          "path": "/home/js/6612.js",
+          "bytes": 14807,
+          "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+        },
+        {
+          "path": "/home/js/4742.js",
+          "bytes": 8962,
+          "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+        },
+        {
+          "path": "/home/js/9615.js",
+          "bytes": 9069,
+          "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+        },
+        {
+          "path": "/home/js/5587.js",
+          "bytes": 1107,
+          "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+        },
+        {
+          "path": "/home/js/6560.js",
+          "bytes": 2517,
+          "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+        },
+        {
+          "path": "/home/js/4472.js",
+          "bytes": 14991,
+          "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+        },
+        {
+          "path": "/home/js/9915.js",
+          "bytes": 14196,
+          "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+        }
+      ],
+      "viewports": [
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "landmarks": {
+            "house": [
+              {
+                "x": -0.3263908691892343,
+                "y": 0.24864765455883445,
+                "z": 0.9942034977371103
+              },
+              {
+                "x": -0.3833083574830696,
+                "y": 0.26802350745665166,
+                "z": 0.9941555252960592
+              },
+              {
+                "x": -0.33775304818568586,
+                "y": 0.2136571751949105,
+                "z": 0.9939668825331852
+              },
+              {
+                "x": -0.39103605977717604,
+                "y": 0.19414263287449782,
+                "z": 0.9940175257993417
+              }
+            ],
+            "lighthouse": [
+              {
+                "x": 0.3907409670669436,
+                "y": -0.29978330783824586,
+                "z": 0.9921853234825501
+              },
+              {
+                "x": 0.41621402228064647,
+                "y": -0.15656762651366002,
+                "z": 0.9916106486135804
+              }
+            ]
+          },
+          "buttons": [
+            {
+              "x": 38,
+              "y": 731,
+              "right": 119.015625,
+              "bottom": 768
+            },
+            {
+              "x": 123.015625,
+              "y": 731,
+              "right": 204.03125,
+              "bottom": 768
+            }
+          ],
+          "overflow": false,
+          "miniCoast": true,
+          "passed": true
+        }
+      ],
+      "firstScreenBytes": 3141871,
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0
+      },
+      "knownInspectorWarnings": [],
+      "passed": true
+    }
+  ],
+  "manifestSha256": "6064d23b60aae9e28d790680304b796770051eecb280c34277d5bc4c995d75eb",
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26585094,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 92769,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2923019,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42638133
+  },
+  "unchangedRuntimeAssets": 36,
+  "sources": {
+    "public/index.html": "a01fe2f82b029fb0bf89cfc1135e59c1cdf0e46506df06e3679f2b9f398049b8",
+    "public/environment/coastal-cliff-source.json": "64cece6ec54ea4bc8028598181138e362d0c17ac2c58f7487b31198a3dcced45",
+    "public/STUDY_ASSET_SOURCES.md": "2a6cfbccaa456b3e0a77b839d8f5e4489cf465704ba60f7ea282fb81cbdae4fb",
+    "src/components/BasicExamples.ts": "1fa73465ac328a4cf7bf2118bf38b4c5c55f85ff3050321c792e27e878d55563",
+    "src/examples/Room.ts": "c2bc31caefb83d06cdde50826905c255eaa6d81eb5b139cd42e22138564b0bb1",
+    "src/examples/LighthouseOperation.ts": "ba987a98798cdfaebaa471659d46ee524448e135c54e6ec6ed8b0a49be55efba",
+    "src/examples/LighthouseInspection.ts": "5b4d1b286a167887217bb7e8a10b1c76c6211b22e6268910a2e6eb423104140c",
+    "src/examples/LighthouseExperience.ts": "f2516a77f774e0b6edb161300b5bf39cc3744801549c00db49d71289d0e700a0",
+    "src/examples/LighthousePanel.ts": "cab152219a19916ecc8967ff7b70b29ca74f9eb4fcfe8279a6034a7ecbfd4333",
+    "src/examples/LighthouseMaintenance.ts": "0891e538cfe8275bd1e453bc3d5bdc474eb278febd7637f274df0a4b9aa2780f",
+    "tests/lighthouse-operation.test.cjs": "be6b22c5e41d4d5cc8f9f001e200a54452fb6961d415e31c7342fcf5c34ce52d",
+    "tests/lighthouse-inspection.test.cjs": "a01824a5e802de7f7baffaf79e19bde50875eee4b47a3b96511f743d2e77c2fa",
+    "tests/lighthouse-experience.test.cjs": "7e1626edfbcf122abadb528133dfc08633d63a0503d671a92daf86fe4bd584ef",
+    "tests/lighthouse-maintenance.test.cjs": "ed68306ea827fb320b92ad4693d41611ab0027ba559490281573a2fec5f1ac6f",
+    "tests/lighthouse-save.test.cjs": "8b77cf86c2091d5b08957c1cd69763ce2fda91a37d80bef650a2be5726966f2a",
+    "tests/lighthouse-story-save.test.cjs": "40c82db4bcc59021ec05f036a17c901e837113f30f20b8d80adade3edfe780b4"
+  },
+  "browser": "155.0.8059.86",
+  "passed": true
+}

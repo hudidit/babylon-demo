@@ -79,7 +79,7 @@ export class LighthouseBeam {
     retain(this.mesh, "landmark"); this.mesh.unfreezeWorldMatrix(); this.mesh.parent = root;
     this.mesh.position.z = sourceForward * u; this.mesh.rotation.x = a.pitch;
     this.mesh.isPickable = false; this.mesh.checkCollisions = false; this.mesh.receiveShadows = false;
-    this.mesh.metadata = {...this.mesh.metadata, movingLighthouseOptic: true, deviceId: "lighthouse-beacon-main"};
+    this.mesh.metadata = {...this.mesh.metadata, movingLighthouseOptic: true, lighthouseLightVolume:true, deviceId: "lighthouse-beacon-main"};
     this.material = new ShaderMaterial("lighthouse-air-scattering", scene, {
       vertexSource: `precision highp float; attribute vec3 position, normal; uniform mat4 world, viewProjection;
         varying vec3 vPositionW, vNormalW;

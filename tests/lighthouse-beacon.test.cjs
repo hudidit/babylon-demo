@@ -137,6 +137,22 @@ test('local controls require a clear short ray; walls, glazing, floor and range 
   assert.match(action.label(), /首层运行面板/); action.toggle(); assert.equal(opened, 1);
 });
 
+test('running atmospheric light never occludes local buttons or direct observation; solid geometry still blocks access', t => {
+  const {b,scene,beacon,details,point}=setup(t),{RoomInteractions,interactionSurface}=load('RoomInteractions');
+  const interactions=new RoomInteractions(scene,()=>{}),op=new LighthouseOperation(),eye=point(.25,-1.1,layout.gallery+1.6);
+  interactions.addDevice(details.test,()=>{});op.selectTime(21);
+  for(let n=0;n<32;n++) {
+    beacon.apply({...op.snapshot,rotationTurns:n/32,rotationRadians:n/32*Math.PI*2});
+    assert.equal(interactionSurface(beacon.volume.mesh),false);
+    assert.equal(interactions.canReachDevice(details.test,eye),true,`phase ${n}/32`);
+    const direction=beacon.root.position.subtract(eye).normalize();
+    assert.equal(interactions.canReachDevice({id:'lighthouse-beacon-main',label:'main',meshes:beacon.meshes},eye,7.5,direction,[details.cover.pane]),true);
+  }
+  const target=details.test.meshes[0].getBoundingInfo().boundingBox.centerWorld,obstacle=b.CreateBox('solid-ray-obstacle',{size:2},scene);
+  obstacle.position.copyFrom(eye.add(target.subtract(eye).scale(.5)));obstacle.isPickable=false;obstacle.computeWorldMatrix(true);
+  assert.equal(interactions.canReachDevice(details.test,eye),false);obstacle.dispose();assert.equal(interactions.canReachDevice(details.test,eye),true);
+});
+
 test('scene authorization rejects wrong storey, ladder, vehicle, airborne and orbit controls', t => {
   const {scene, exterior, point, camera} = setup(t), {RoomScene} = load('Room');
   const room = Object.create(RoomScene.prototype);

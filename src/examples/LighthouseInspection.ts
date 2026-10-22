@@ -83,6 +83,8 @@ export class LighthouseInspection {
     this.record(op, "lighthouse-beacon-main", "system", "equipment-changed", "active-action", "驱动或供电隔离状态变化，旧读数/周期仅作历史；重新现场确认。");
     this.publish();
   }
+  /** A deliberate new observation never copies the previous weather/period's cycle. */
+  renewObservation() {this.optic=undefined;this.resetObservation();this.publish();}
   static canClean(op: LighthouseOperationSnapshot) {
     return op.state === "day-standby" && op.mode === "automatic" && !op.running && op.testSecondsRemaining === 0;
   }

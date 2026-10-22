@@ -38,13 +38,14 @@ export function lighthouseStoryContext(equipment: LighthouseCompleteSession): St
 export function createLighthouseStorySession(id: string, seed: number): LighthouseStorySession {
   const equipment = completeLighthouseSession({clock: new RoomTimeOfDay(), operation: new LighthouseOperation(),
     inspection: new LighthouseInspection(), maintenance: new LighthouseMaintenance(), power: new LighthousePower()}, "duty", seed);
-  equipment.clock.restore(12); synchronizeWeatherDuty(equipment);
+  equipment.clock.restore(12); equipment.weather.useStorySchedule(); synchronizeWeatherDuty(equipment);
   const story = new LighthouseStory(id, lighthouseStoryContext(equipment));
   return {mode: "story", story, equipment};
 }
 function checkSession(session: LighthouseStorySession) {
   const {story, equipment} = session, saved = story.exportState(), c = lighthouseStoryContext(equipment), time = story.calendar();
   if (session.mode !== "story" || equipment.mode !== "duty" || saved.mode !== "story" || equipment.clock.playback.transitioning
+    || equipment.weather.storyScheduled && saved.solarProblem && saved.solarProblem.id !== equipment.weather.storySolarProblemId
     || Math.abs(c.elapsedHours - saved.context.elapsedHours) > EPS || time.day !== equipment.operation.snapshot.dutyDay
     || Math.abs(time.hour - equipment.clock.snapshot.hour) > EPS
     || JSON.stringify(c) !== JSON.stringify(saved.context)) throw new Error("Story and full equipment checkpoint disagree");

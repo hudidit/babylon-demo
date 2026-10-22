@@ -21,6 +21,7 @@ export interface LighthouseMaintenanceSnapshot {
   readonly source: "main" | "backup" | "none"; readonly backupOn: boolean; readonly backupFlash: boolean; readonly backupPhase: number;
   readonly selfTestSecondsRemaining: number;
   readonly backupConfirmed: boolean; readonly mainVerified: boolean; readonly chargerVerified: boolean; readonly sensorVerified: boolean;
+  readonly backupObservationSeconds:number; readonly backupFlashesSeen:boolean;
   readonly inventory: Readonly<{drive: number; charger: number}>;
   readonly action?: MaintenanceAction; readonly trialObserved: number; readonly notice: string;
   readonly evidence: readonly MaintenanceEvidence[]; readonly resolved: boolean;
@@ -129,12 +130,12 @@ export class LighthouseMaintenance {
   configurePower(main: boolean, trial: boolean, backup: boolean, op: LighthouseOperationSnapshot, completed=false) {
     this.powerMain = main; this.powerTrial = trial; this.powerCompleted=completed; this.setBackupAvailable(backup,op);
   }
-  compareSolar(op: LighthouseOperationSnapshot, actualW: number, expectedW: number) {
+  compareSolar(op: LighthouseOperationSnapshot, actualW: number, expectedW: number, recordReading = false) {
     const result = expectedW < 5 ? "当前日照不足，无法从低输入判断表面；可近距细查，或待日照充足时再对照。"
       : `当前输入${actualW.toFixed(1)}W，按日照与天气估算${expectedW.toFixed(1)}W；` + (actualW < expectedW * .95
         ? "输入存在差额，先近距细查面板表面；仅凭读数不能判断内部原因。" : "与当前环境大致相符，仍不能排除内部隐患。");
     const last = this.evidence[this.evidence.length - 1];
-    if (last?.method !== "读数对照" || last.result !== result) this.log(op, "solar", "读数对照", result);
+    if (recordReading || last?.method !== "读数对照" || last.result !== result) this.log(op, "solar", "读数对照", result);
     this.notice = result; this.publish(op);
   }
   confirmCharging(op: LighthouseOperationSnapshot, wh: number, revision: string) {
@@ -338,6 +339,7 @@ export class LighthouseMaintenance {
       forcedBackup: this.forcedBackup,
       source: main ? "main" : backupOn ? "backup" : "none", backupOn, backupFlash: backupOn && this.backupPhase < LIGHTHOUSE_MAINTENANCE.backupBright,
       backupPhase: this.backupPhase, backupConfirmed: this.backupProof, mainVerified: this.mainProof === this.revision.drive,
+      backupObservationSeconds:Math.min(LIGHTHOUSE_MAINTENANCE.observationSeconds,this.backupObserved),backupFlashesSeen:this.backupSeen,
       selfTestSecondsRemaining: this.selfRemaining,
       chargerVerified: this.chargerProof === this.revision.charger, sensorVerified: this.sensorProof === this.revision.sensor,
       inventory: Object.freeze({...this.inventory}), action: this.action, trialObserved: this.trialObserved, notice: this.notice, evidence: this.evidence,

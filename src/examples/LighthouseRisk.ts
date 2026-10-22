@@ -34,7 +34,7 @@ export interface LighthouseProblem {
   readonly revision: number;
   readonly createdHour: number;
   readonly stage: "latent" | "degraded" | "serious";
-  readonly origin?: "existing";
+  readonly origin?: "existing" | "story";
   readonly cause: Readonly<{weather: LighthouseWeatherKind; ratePerHour: number; weatherMultiplier: number;
     conditionMultiplier: number; soil: number; probability: number}>;
 }
@@ -95,6 +95,7 @@ export class LighthouseWeatherRisk {
   private acceptedHours = 0;
   private compensation = 0;
   private seriousCooldownUntil = 0;
+  private storySolar?: string;
   constructor(options: LighthouseWeatherRiskOptions) {
     this.random = new LighthouseRandom(options.seed);
     this.rules = Object.freeze((options.rules ?? LIGHTHOUSE_RISK_RULES).map(rule => {
@@ -118,7 +119,7 @@ export class LighthouseWeatherRisk {
     return {version:LIGHTHOUSE_WEATHER_RISK_VERSION,random:this.random.snapshot,weather:this.weather.exportState(),visibility:this.visibility.exportState(),
       rules:this.rules,remedies:this.remedies,components:{...this.components},problems:[...this.problems],events:[...this.events],
       nextProblem:this.nextProblem,nextEvent:this.nextEvent,ticks:this.ticks,acceptedHours:this.acceptedHours,
-      compensation:this.compensation,seriousCooldownUntil:this.seriousCooldownUntil};
+      compensation:this.compensation,seriousCooldownUntil:this.seriousCooldownUntil,...(this.storySolar?{storySolar:this.storySolar}:{})};
   }
   static fromState(value: unknown) {
     const component=saveEnum(...COMPONENTS),remedy=saveEnum(...COMPONENTS.map(c=>REMEDY[c])),weather=saveEnum("clear","overcast","fog","storm");
@@ -128,10 +129,11 @@ export class LighthouseWeatherRisk {
     const s=saveObject({version:saveEnum(LIGHTHOUSE_WEATHER_RISK_VERSION),random:raw,weather:raw,visibility:raw,
       rules:saveArray(rule,7),remedies:saveArray(remedy,7),components:raw,
       problems:saveArray(saveObject({id:saveText(64),component,objectId:saveText(128),revision:saveRevision,createdHour:number,
-        stage:saveEnum("latent","degraded","serious"),origin:saveOptional(saveEnum("existing")),
+        stage:saveEnum("latent","degraded","serious"),origin:saveOptional(saveEnum("existing","story")),
         cause:saveObject({weather,ratePerHour:number,weatherMultiplier:saveNumber(1,3),conditionMultiplier:number,soil:saveNumber(0,1),probability:saveNumber(0,1)})}),7),
       events:saveArray(saveObject({id:saveDay,hour:number,component,problemId:(v:unknown)=>v===null?null:saveText(64)(v),type:saveEnum("created","escalated","maintained")}),256),
-      nextProblem:saveDay,nextEvent:saveDay,ticks:saveNumber(0,12e9,true),acceptedHours:number,compensation:saveNumber(-1e-6,1e-6),seriousCooldownUntil:number})(value);
+      nextProblem:saveDay,nextEvent:saveDay,ticks:saveNumber(0,12e9,true),acceptedHours:number,compensation:saveNumber(-1e-6,1e-6),seriousCooldownUntil:number,
+      storySolar:saveOptional(saveText(64))})(value);
     const random=LighthouseRandom.fromState(s.random), model=new LighthouseWeatherRisk({seed:random.seed,fixedWeather:"clear",rules:s.rules,remedies:s.remedies});
     const schema={};for(const r of model.rules)schema[r.component]=saveObject({revision:saveRevision,soil:saveNumber(0,1),conditionMultiplier:number,treatmentAvailable:saveBoolean});
     const components=saveObject(schema)(s.components), remainder=s.acceptedHours-s.ticks/12;
@@ -144,9 +146,11 @@ export class LighthouseWeatherRisk {
         ||p.revision!==components[p.component].revision||p.createdHour>s.acceptedHours+1e-9
         ||p.stage==="serious"&&(r.seriousAfterHours===null||p.createdHour<24-1e-9||s.acceptedHours-p.createdHour<r.seriousAfterHours-1e-9)
         ||p.stage==="latent"&&r.seriousAfterHours===null&&r.visibleAfterHours===undefined
-        ||p.origin&&p.stage!=="degraded";})
+        ||p.origin==="existing"&&p.stage!=="degraded" ||p.origin==="story"&&(p.component!=="solar"||p.id!==s.storySolar);})
       ||s.events.some(e=>!components[e.component]||e.hour>s.acceptedHours+1e-9||e.problemId!==null&&!validId(e.problemId))) throw new Error("Inconsistent weather/risk checkpoint");
     model.random=random;model.weather=LighthouseWeatherSequence.fromState(s.weather,random);model.visibility=LighthouseVisibility.fromState(s.visibility);
+    if (s.weather.story && s.weather.story.tick!==s.ticks || s.storySolar && (!s.weather.story||!validId(s.storySolar))) throw new Error("Inconsistent story risk schedule");
+    model.storySolar=s.storySolar;
     const km=model.weather.sample().visibilityKm,v=model.visibility.exportState();
     if(km<2&&!v.required || km<3&&v.recovery>0)throw new Error("Inconsistent visibility history");
     model.components={...components};model.problems=[...s.problems];model.events=[...s.events];model.nextProblem=s.nextProblem;model.nextEvent=s.nextEvent;
@@ -168,9 +172,17 @@ export class LighthouseWeatherRisk {
     return this.random.next(stream);
   }
   setFixedWeather(kind: LighthouseWeatherKind | null) {
+    if (this.weather.storyScheduled) throw new Error("Story weather follows its accepted clock");
     this.weather.setFixed(kind);
     this.visibility = new LighthouseVisibility(this.weather.sample().visibilityKm);
   }
+  /** One shared risk instance, including a problem found before the fog task is opened. */
+  useStorySchedule(solarId?: string) {
+    this.weather.useStorySchedule(this.ticks);
+    this.storySolar ??= solarId || this.problems.find(p=>p.component==="solar")?.id;
+  }
+  get storySolarProblemId() {return this.storySolar;}
+  get storyScheduled() {return this.weather.storyScheduled;}
   /** Reconcile existing teaching/due dirt with the risk pool; never roll a second copy of the same dirt. */
   synchronizeSurface(component: "cover" | "solar", dirty: boolean) {
     const problem = this.problems.find(p => p.component === component), state = this.components[component];
@@ -252,6 +264,20 @@ export class LighthouseWeatherRisk {
     this.components[component] = Object.freeze({...this.components[component], treatmentAvailable: available});
   }
   private riskTick(weather: LighthouseWeatherSnapshot, hour: number) {
+    if (this.weather.storyScheduled && !this.storySolar && hour >= 18-1e-9) {
+      const existing=this.problems.find(p=>p.component==="solar");
+      if (existing) this.storySolar=existing.id;
+      else {
+        const rule=this.rules.find(r=>r.component==="solar"),state=this.components.solar;
+        if (rule&&state&&this.remedies.includes(rule.remedy)&&state.treatmentAvailable) {
+          const id=`weather-problem-${this.nextProblem++}`,revision=state.revision+1;
+          this.storySolar=id;this.components.solar=Object.freeze({...state,revision});
+          this.problems.push(Object.freeze({id,component:"solar",objectId:rule.objectId,revision,createdHour:hour,stage:"latent",origin:"story",
+            cause:Object.freeze({weather:weather.kind,ratePerHour:0,weatherMultiplier:weather.exposureMultiplier,conditionMultiplier:state.conditionMultiplier,soil:state.soil,probability:0})}));
+          this.log("created","solar",id,hour);
+        }
+      }
+    }
     // Advance existing facts first, so an escalation cannot race a new draw on an earlier component.
     for (const rule of this.rules) {
       const previous = this.components[rule.component];
@@ -277,6 +303,7 @@ export class LighthouseWeatherRisk {
     }
     for (const rule of this.rules) {
       const state = this.components[rule.component];
+      if (this.weather.storyScheduled && rule.component==="solar" && !this.storySolar) continue;
       if (!this.remedies.includes(rule.remedy) || !state.treatmentAvailable
         || this.problems.some(problem => problem.component === rule.component)) continue;
       if (state.soil < rule.minimumSoil) continue;
