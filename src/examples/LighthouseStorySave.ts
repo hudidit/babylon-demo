@@ -85,14 +85,14 @@ export class LighthouseStorySave {
       const store = this.storage(), old = store.getItem(LIGHTHOUSE_STORY_SAVE_KEY);
       if (old !== null) {try {decodeLighthouseStorySave(old);} catch {return {...this.inspect(), saved: false};}}
       const raw = encodeLighthouseStorySave(session); store.setItem(LIGHTHOUSE_STORY_SAVE_KEY, raw);
-      return {available: true, invalid: false, saved: true, message: "故事已保存。下次继续时，时间先暂停。"};
+      return {available: true, invalid: false, saved: true, message: "故事和流转设置已保存。"};
     } catch {return {...this.inspect(), saved: false, message: "这次故事没存上。旧档未改动，你可以接着玩，稍后再试一次。"};}
   }
   load(): {session?: LighthouseStorySession; status: LighthouseSaveStatus} {
     try {
       const raw = this.storage().getItem(LIGHTHOUSE_STORY_SAVE_KEY); if (raw === null) return {status: this.inspect()};
       const session = decodeLighthouseStorySave(raw);
-      return {session, status: {available: true, invalid: false, message: "已继续故事，时间先暂停，离线期间没有推进。"}};
+      return {session, status: {available: true, invalid: false, message: "已继续故事，已恢复流转设置，离线期间没有推进。"}};
     } catch {return {status: this.inspect()};}
   }
   clearInvalid(): LighthouseSaveStatus {

@@ -151,7 +151,7 @@ export class LighthouseStoryPanel {
     this.el("story-cover-clear").hidden=!status.invalid;
     this.text("story-cover-status",status.invalid||!status.available?status.message:"");
     this.el<HTMLButtonElement>("story-load").disabled=!status.available;this.el("story-clear").hidden=!status.invalid;
-    this.text("story-storage",status.message.startsWith("故事已保存")?"故事已保存。下次继续时，时间先暂停。":status.message);
+    this.text("story-storage",status.message);
     const objective=this.el<HTMLButtonElement>("story-objective");objective.hidden=!active;
     const title=view?.finished?"本章已完成 · 继续留站":view?.goalsComplete?"这一班的事已记好":view?.objective.title;
     this.text("story-objective-title",active?title:"");

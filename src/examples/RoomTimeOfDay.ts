@@ -210,21 +210,20 @@ export class RoomTimeOfDay {
     return wrapped;
   }
   /** Restore a validated continuous time without a manual fade or offline catch-up. */
-  restore(hour: number) {
+  restore(hour: number, automatic = false) {
     if (typeof hour !== "number" || !Number.isFinite(hour) || hour < 0 || hour >= 24) throw new RangeError("Invalid saved scene time");
-    this.current = evaluateTimeOfDay(hour); this.transition = undefined; this.automatic = false; this.resetDelta();
+    this.current = evaluateTimeOfDay(hour); this.transition = undefined; this.automatic = automatic; this.resetDelta();
     this.accepted = Object.freeze({fromHour: hour, toHour: hour, activeSeconds: 0, automaticHours: 0, midnightCrossings: 0, manualCompleted: false});
   }
   select(hour: number): TimeOfDaySnapshot {
     const wrapped = this.node(hour);
     const wasTransitioning = !!this.transition;
-    this.automatic = false; this.transition = undefined; this.resetDelta();
+    this.transition = undefined; this.resetDelta();
     if (wasTransitioning || wrapped !== this.current.hour) this.current = evaluateTimeOfDay(wrapped);
     return this.current;
   }
   transitionTo(hour: number, reducedMotion = false) {
     const wrapped = this.node(hour);
-    this.automatic = false;
     if (this.transition?.to.hour === wrapped) return;
     if (!this.transition && wrapped === this.current.hour) return;
     // A retarget starts at the actual displayed snapshot, even halfway through a day/moon fade.

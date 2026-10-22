@@ -1,0 +1,15 @@
+{
+  "manifestSha256": "eb9eea3a2ec76c4e61a8a80535ecda4bee7702323ba4eab8065385aa2a9a3e0d",
+  "prefixes": [
+    {
+      "prefix": "/",
+      "files": 496,
+      "passed": true
+    },
+    {
+      "prefix": "/home/",
+      "files": 496,
+      "passed": true
+    }
+  ]
+}

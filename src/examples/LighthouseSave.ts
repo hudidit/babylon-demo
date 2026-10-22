@@ -6,7 +6,7 @@ import { LighthousePower } from "./LighthousePower";
 import { LighthouseWeatherRisk, LIGHTHOUSE_RISK_RULES, LIGHTHOUSE_CURRENT_REMEDIES } from "./LighthouseRisk";
 import { LighthouseDiscovery } from "./LighthouseDiscovery";
 import { lighthouseDiscoveryFacts } from "./LighthouseWeatherSession";
-import { saveObject, saveEnum, saveHour } from "./LighthouseSaveValidation";
+import { saveObject, saveEnum, saveHour, saveOptional, saveBoolean } from "./LighthouseSaveValidation";
 
 // Keep the existing normal key: its value is atomically upgraded, never silently discarded.
 export const LIGHTHOUSE_SAVE_KEY = "babylon-lighthouse-duty-v1";
@@ -33,7 +33,7 @@ export function completeLighthouseSession(s:LighthouseSession,mode:LighthouseSes
 export function decodeLighthouseSave(raw: string): LighthouseSession {
   if (typeof raw !== "string" || raw.length > MAX_SLOT_LENGTH) throw new Error("Invalid duty slot size");
   const parsed=JSON.parse(raw),version=parsed?.version;
-  const base={version:saveEnum(1,2),hour:saveHour,operation:unchecked,inspection:unchecked,maintenance:unchecked,power:unchecked};
+  const base={version:saveEnum(1,2),hour:saveHour,automatic:saveOptional(saveBoolean),operation:unchecked,inspection:unchecked,maintenance:unchecked,power:unchecked};
   const s = saveObject(version===2?{...base,mode:saveEnum("duty","exercise"),weather:unchecked,discovery:unchecked,maintenanceWeather:unchecked}:base)(parsed);
   const operation=LighthouseOperation.fromSave(s.operation),inspection=LighthouseInspection.fromSave(s.inspection);
   if(s.hour!==operation.snapshot.hour||inspection.snapshot.dutyDay!==operation.snapshot.dutyDay)throw new Error("Inconsistent saved calendar");
@@ -56,7 +56,7 @@ export function decodeLighthouseSave(raw: string): LighthouseSession {
   if(weather&&[ [operation.exportState().events,s.operation.events], [maintenance.snapshot.evidence,s.maintenance.evidence],
     [power.exportState().events,s.power.events] ].some(([actual,saved])=>JSON.stringify(actual)!==JSON.stringify(saved)))throw new Error("Restore would append equipment events");
   if(weather&&maintenance.snapshot.navigationRequired!==s.maintenance.lastRequired)throw new Error("Inconsistent saved navigation request");
-  const clock=new RoomTimeOfDay();clock.restore(s.hour);
+  const clock=new RoomTimeOfDay();clock.restore(s.hour,s.automatic??true);
   if(!weather)return {clock,operation,inspection,maintenance,power};
   const discovery=LighthouseDiscovery.fromState(s.discovery,()=>weather.drawInformation("inspection"));
   const duty={weather,operation,inspection,maintenance,power},facts=lighthouseDiscoveryFacts(duty),w=weather.snapshot;
@@ -80,7 +80,7 @@ export function encodeLighthouseSave(s: LighthouseSession) {
   const operation=s.operation.exportState(),full=!!s.weather&&!!s.discovery;
   if(!!s.weather!==!!s.discovery)throw new Error("Incomplete weather session");
   if(!full&&s.maintenance.transientWeatherDemand)operation.detectedDemand=s.maintenance.snapshot.sensorDirty&&!s.maintenance.snapshot.override;
-  const raw=JSON.stringify({version:full?2:1,hour:s.clock.snapshot.hour,operation,inspection:s.inspection.exportState(),
+  const raw=JSON.stringify({version:full?2:1,hour:s.clock.snapshot.hour,automatic:s.clock.playback.automatic,operation,inspection:s.inspection.exportState(),
     maintenance:s.maintenance.exportState(),power:s.power.exportState(),...(full?{mode:s.mode??"duty",weather:s.weather.exportState(),
       discovery:s.discovery.exportState(),maintenanceWeather:s.maintenance.exportWeatherState()}: {})});
   decodeLighthouseSave(raw);return raw;
@@ -104,7 +104,7 @@ export class LighthouseSave {
       if(session.mode&&session.mode!==this.mode||session.weather?.storyScheduled)throw new Error("Wrong session mode");
       const full=session.weather?completeLighthouseSession(session,this.mode,0):completeLighthouseSession(decodeLighthouseSave(encodeLighthouseSave(session)),this.mode,this.seed());
       const raw=encodeLighthouseSave(full);store.setItem(this.key,raw);
-      return {...this.inspect(),message:`${this.mode==="duty"?"值守":"独立演练"}已保存 · 天气、设备和记录一起保存，下次继续时先暂停`};
+      return {...this.inspect(),message:`${this.mode==="duty"?"值守":"独立演练"}已保存 · 天气、设备、记录和流转设置均已保存`};
     }catch{return {...this.inspect(),message:"这次没存上，可能是存储受限、空间不足或时间正在切换。你可以接着玩，稍后再试。"};}
   }
   load():{session?:LighthouseCompleteSession;status:LighthouseSaveStatus} {
@@ -115,7 +115,7 @@ export class LighthouseSave {
         session=completeLighthouseSession(s,this.mode,this.seed());const upgraded=encodeLighthouseSave(session);
         try{store.setItem(this.key,upgraded);}catch{return {status:{...this.inspect(),message:"旧存档升级后没能存上，还没有载入。旧档未改动，你可以接着玩，稍后重试。"}};}
       }else session=s as LighthouseCompleteSession;
-      return {session,status:{available:true,invalid:false,message:`${this.mode==="duty"?"已继续值守":"已继续独立演练"} · 已恢复上次的天气、设备和记录。时间先暂停，按 T 可继续流转`}};
+      return {session,status:{available:true,invalid:false,message:`${this.mode==="duty"?"已继续值守":"已继续独立演练"} · 已恢复天气、设备、记录和流转设置，阅读时暂停`}};
     }catch{return {status:this.inspect()};}
   }
   clearInvalid():LighthouseSaveStatus {

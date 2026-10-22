@@ -8,7 +8,7 @@ const near = (a, b, epsilon = 1e-8) => assert.ok(Math.abs(a - b) < epsilon, `${a
 
 function fixture(hour = 12) {
   const clock = new RoomTimeOfDay(), operation = new LighthouseOperation();
-  const select = hour => {clock.select(hour); operation.selectTime(clock.snapshot.hour);};
+  const select = hour => {clock.setAutomatic(false); clock.select(hour); operation.selectTime(clock.snapshot.hour);};
   select(hour);
   const step = (seconds, paused = false, transitionPaused = paused, visible = true) => {
     clock.advance(seconds, paused, transitionPaused); operation.advance(clock.lastAdvance, visible);

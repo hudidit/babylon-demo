@@ -287,8 +287,7 @@ export class LighthousePanel {
     this.set("lighthouse-continue", `继续${label}`);
     this.el<HTMLButtonElement>("lighthouse-continue").disabled = !status.available;
     this.el("lighthouse-save-clear").hidden = !status.invalid;
-    this.set("lighthouse-save-status", /^(值守|独立演练|故事)已保存/.test(status.message) ? `${label}已保存。下次继续时，时间会先暂停。`
-      : status.message.startsWith("已继续") ? `${label}已继续，时间暂停。返回场景后，可在时间菜单开启自动流转。` : status.message);
+    this.set("lighthouse-save-status", status.message);
     this.el("lighthouse-save-status").dataset.invalid = String(status.invalid);
     if (this.isOpen && continuing && !status.available) this.el(status.invalid ? "lighthouse-save-clear" : "lighthouse-save").focus({preventScroll:true});
     else if (this.isOpen && clearing && !status.invalid) this.el("lighthouse-save").focus({preventScroll:true});

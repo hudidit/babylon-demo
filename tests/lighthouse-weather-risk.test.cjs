@@ -153,12 +153,12 @@ test('same seed and effective commands replay identically across coarse/fine sim
  }
  assert.deepEqual(results[0],results[1]);assert.deepEqual(results[0],results[2]);assert.equal(results[0].ticks,576);
 });
-test('real shared clock receipts are frame invariant, while pause, manual selection and reset never advance hazards',()=>{
+test('real shared clock receipts are frame invariant, while pause, explicit clock stop and reset never advance hazards',()=>{
  const results=[];
  for(const dt of [.1,.05,.02]){
   const clock=new RoomTimeOfDay(),f=model({fixedWeather:undefined});clock.advance(0);const run=(seconds,paused=false)=>{for(let i=0;i<Math.round(seconds/dt);i++){clock.advance(dt,paused,paused);f.advance(clock.lastAdvance);}};
   run(240);const before=f.snapshot;run(2,true);assert.deepEqual(f.snapshot,before);
-  clock.select(21);run(2);assert.deepEqual(f.snapshot,before);
+  clock.setAutomatic(false);clock.select(21);run(2);assert.deepEqual(f.snapshot,before);
   clock.setAutomatic(true);clock.advance(999);f.advance(clock.lastAdvance);assert.deepEqual(f.snapshot,before);
   run(240);results.push(f.snapshot);
  }

@@ -45,10 +45,10 @@ test('weather interval receipts split at fog trigger and sustained recovery, con
  for(let h=0;h<72;h++){a.advance({automaticHours:1},i=>{total+=i.hours;if(i.lowVisibility)low+=i.hours;});b.advance({automaticHours:1});}
  near(total,72);assert.deepEqual(a.snapshot,b.snapshot);assert.ok(low>0&&low<72);
 });
-test('pause, manual selection and resume reset do not advance weather, random streams, Wh or hidden risk',()=>{
+test('pause, explicit clock stop and resume reset do not advance weather, random streams, Wh or hidden risk',()=>{
  const f=fixture('fog');f.run(3);const before={w:f.weather.snapshot,wh:f.power.snapshot.mainWh};
  for(let i=0;i<100;i++)f.step(true);assert.deepEqual(f.weather.snapshot,before.w);assert.equal(f.power.snapshot.mainWh,before.wh);
- f.clock.select(21);f.operation.selectTime(21);f.run(2);assert.deepEqual(f.weather.snapshot,before.w);assert.equal(f.power.snapshot.mainWh,before.wh);
+ f.clock.setAutomatic(false);f.clock.select(21);f.operation.selectTime(21);f.run(2);assert.deepEqual(f.weather.snapshot,before.w);assert.equal(f.power.snapshot.mainWh,before.wh);
  f.clock.setAutomatic(true);f.step();assert.deepEqual(f.weather.snapshot,before.w);
 });
 test('V1 saves from active daytime fog preserve true energy/history without mutating the live weather request',()=>{
@@ -56,7 +56,7 @@ test('V1 saves from active daytime fog preserve true energy/history without muta
  const raw=encodeLighthouseSave({...f,weather:undefined}),restored=decodeLighthouseSave(raw);
  assert.equal(f.operation.snapshot,before);assert.equal(f.operation.snapshot.running,true);assert.equal(restored.operation.snapshot.detectedDemand,false);
  assert.equal(restored.power.snapshot.mainWh,f.power.snapshot.mainWh);assert.equal(JSON.stringify(restored.operation.snapshot.events),JSON.stringify(before.events));
- assert.equal(JSON.parse(raw).version,1);assert.equal(restored.clock.playback.automatic,false);
+ assert.equal(JSON.parse(raw).version,1);assert.equal(restored.clock.playback.automatic,true);
 });
 test('existing teaching/due surfaces suppress duplicates and weather-created dirt changes the actual surface and invalidates evidence',()=>{
  const rules=[{component:'cover',objectId:'lighthouse-optics-cleaning',remedy:'clean-cover',baseRatePerHour:1e6,soilPerHour:.03,minimumSoil:0,seriousAfterHours:null},

@@ -1,0 +1,27 @@
+{
+  "browser": "Chrome visible window",
+  "method": "cua_repl formal DOM controls and read-only DOM text; no runtime state writes",
+  "reads": [
+    {"step":"final-initial","at":"2026-10-22T17:54:26.361Z","text":"12:00 正午"},
+    {"step":"final-ready","at":"2026-10-22T17:54:34.144Z","text":"12:06 正午"},
+    {"step":"final-natural-progress","at":"2026-10-22T17:54:46.962Z","text":"12:19 正午"},
+    {"step":"loaded-on-reading","at":"2026-10-22T17:54:52.605Z","text":"12:00 正午"},
+    {"step":"loaded-on-reading-still-frozen","at":"2026-10-22T17:55:01.254Z","text":"12:00 正午"},
+    {"step":"loaded-on-close","at":"2026-10-22T17:55:01.993Z","text":"12:00 正午"},
+    {"step":"loaded-on-advancing-after-close","at":"2026-10-22T17:55:11.087Z","text":"12:09 正午"},
+    {"step":"saved-manual-off","at":"2026-10-22T17:55:14.471Z","text":"12:09 正午 · 已暂停"},
+    {"step":"subpath-fresh-default","at":"2026-10-22T17:55:27.741Z","text":"12:04 正午"},
+    {"step":"selected-menu-frozen","at":"2026-10-22T17:55:47.312Z","text":"当前 21:00 · 收起后继续流转"},
+    {"step":"selected-time-resumed","at":"2026-10-22T17:55:58.590Z","text":"21:10 入夜"},
+    {"step":"final-duty-remembers-off","at":"2026-10-22T17:56:00.281Z","text":"当前 21:11 · 自动流转已关闭"},
+    {"step":"final-exercise-remembers-on","at":"2026-10-22T17:56:00.310Z","text":"当前 21:11 · 收起后继续流转"},
+    {"step":"final-new-exercise-on","at":"2026-10-22T17:56:07.060Z","text":"当前 12:00 · 收起后继续流转"},
+    {"step":"subpath-loaded-off","at":"2026-10-22T17:56:09.209Z","text":"12:09 正午 · 已暂停"},
+    {"step":"loaded-off-closed","at":"2026-10-22T17:56:13.136Z","text":"12:09 正午 · 已暂停"},
+    {"step":"loaded-off-still-frozen","at":"2026-10-22T17:57:02.191Z","text":"12:09 正午 · 已暂停"},
+    {"step":"re-enabled","at":"2026-10-22T17:57:03.837Z","text":"12:09 正午"},
+    {"step":"re-enabled-advancing","at":"2026-10-22T17:57:21.494Z","text":"12:27 正午"}
+  ],
+  "errorsSince": "2026-10-22T17:54:22.000Z",
+  "warningsAndErrors": []
+}

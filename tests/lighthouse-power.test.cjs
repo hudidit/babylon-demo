@@ -5,7 +5,7 @@ const near=(a,b,e=1e-6)=>assert.ok(Math.abs(a-b)<e,`${a} != ${b}`);
 function setup(initial={},session='normal',hour=12){
  const clock=new RoomTimeOfDay(),op=new LighthouseOperation(),m=new LighthouseMaintenance(session),p=new LighthousePower(initial);
  const sync=()=>{p.synchronize(op.snapshot,m.snapshot);const s=p.snapshot;m.configurePower(s.mainAllowed,s.trialAllowed,s.backupAvailable,op.snapshot,s.exerciseComplete);m.synchronize(op);p.synchronize(op.snapshot,m.snapshot);};
- const select=h=>{clock.select(h);op.selectTime(h);sync();};select(hour);
+ const select=h=>{clock.setAutomatic(false);clock.select(h);op.selectTime(h);sync();};select(hour);
  const step=(dt=.1,paused=false,sight=true)=>{clock.advance(dt,paused,paused);m.synchronize(op);p.advance(clock.lastAdvance,op.snapshot,m.snapshot);sync();op.advance(clock.lastAdvance);m.advance(clock.lastAdvance,op,{action:true,backup:false,main:false,mainOutput:0});
   p.advanceAction(clock.lastAdvance,op.snapshot,m.snapshot,sight,clock.playback.automatic,(wh,r)=>m.confirmCharging(op.snapshot,wh,r));sync();assert.ok(!(op.snapshot.running&&m.snapshot.backupOn));};
  const run=(seconds,dt=.1,paused=false,sight=true)=>{for(let i=0;i<Math.round(seconds/dt);i++)step(dt,paused,sight);};

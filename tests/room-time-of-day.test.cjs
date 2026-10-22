@@ -143,7 +143,7 @@ test('fresh sessions advance automatically from noon and opting out does not cha
   const next = new RoomTimeOfDay(); assert.equal(next.playback.automatic, true); assert.equal(next.snapshot.hour, 12);
 });
 
-test('automatic time takes 24 real minutes, wraps midnight clockwise and manual selection stops it', () => {
+test('automatic time takes 24 real minutes, wraps midnight clockwise and time selection preserves it', () => {
   const clock = new RoomTimeOfDay(); clock.select(21); clock.setAutomatic(true);
   clock.advance(.1); // First resumed frame is deliberately ignored.
   for (let i = 0; i < 1800; i++) clock.advance(.1);
@@ -155,7 +155,21 @@ test('automatic time takes 24 real minutes, wraps midnight clockwise and manual 
   const current = clock.snapshot;
   clock.setAutomatic(false); clock.advance(.1); clock.advance(.1); assert.equal(clock.snapshot, current);
   clock.setAutomatic(true); clock.advance(.1); clock.advance(.1); assert.ok(clock.snapshot.hour > current.hour);
-  clock.transitionTo(12); assert.equal(clock.playback.automatic, false);
+  clock.transitionTo(12); assert.equal(clock.playback.automatic, true);
+});
+
+test('same-node selection and retargeted fades preserve either explicit playback setting', () => {
+  for (const automatic of [true, false]) {
+    const clock = new RoomTimeOfDay(); clock.setAutomatic(automatic);
+    clock.select(12); assert.equal(clock.playback.automatic, automatic);
+    clock.select(21); clock.advance(.1); clock.advance(.1);
+    near(clock.snapshot.hour, 21 + (automatic ? .1 / 60 : 0));
+    clock.transitionTo(6); clock.advance(.1); clock.transitionTo(18, true);
+    clock.advance(.1); clock.advance(.1);
+    assert.equal(clock.snapshot.hour, 18); assert.equal(clock.lastAdvance.automaticHours, 0);
+    assert.equal(clock.playback.automatic, automatic); clock.advance(.1);
+    near(clock.snapshot.hour, 18 + (automatic ? .1 / 60 : 0));
+  }
 });
 
 test('long frames and background restoration never catch up the clock, including invalid deltas', () => {

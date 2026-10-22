@@ -1,0 +1,37 @@
+{
+  "baseline": "2e943cba1fff38b7861ee60b3290999742b18402",
+  "sources": [
+    {
+      "file": "public/index.html",
+      "sha256": "57f93b2ef82b998ab7639df13ebce63443be3b0111806ecfe986809832a33d10"
+    },
+    {
+      "file": "src/components/RoomTimeMenu.ts",
+      "sha256": "c347d34ffe32fba57c0fb9e9e40e1e894cfd0165bb993fecbc0956ba22822eb0"
+    },
+    {
+      "file": "src/examples/LighthousePanel.ts",
+      "sha256": "cffe83405f2a2259b3aa939452df5203b575c738d61f17a7ee8af2ce54ad627c"
+    },
+    {
+      "file": "src/examples/LighthouseSave.ts",
+      "sha256": "2b3c594ddb5380b64e2a519116cd22099c9e10cf94108639ac2e93c472032451"
+    },
+    {
+      "file": "src/examples/LighthouseStoryPanel.ts",
+      "sha256": "1cf26ef8b792eef0399e848d16a29a24bc8b5fc708070a4af4485e2fb149dc88"
+    },
+    {
+      "file": "src/examples/LighthouseStorySave.ts",
+      "sha256": "215f9b23530c4ffffa2cee6956295086a0655f1c80dd3605949389c31f9823d8"
+    },
+    {
+      "file": "src/examples/Room.ts",
+      "sha256": "186beb28d72040f4b2eb0472a985a21c7497480b32a07235f9f4dc7686f6944a"
+    },
+    {
+      "file": "src/examples/RoomTimeOfDay.ts",
+      "sha256": "70ba571481249e587dd093db3aef31c911dbdc8214c3075b6f9b3ff4ae80faa4"
+    }
+  ]
+}

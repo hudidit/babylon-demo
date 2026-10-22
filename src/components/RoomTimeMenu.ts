@@ -42,7 +42,7 @@ export class RoomTimeMenu {
       const state = room.timeOfDay, playback = room.timePlayback;
       const hour = playback.targetHour ?? state.hour;
       const preset = TIME_OF_DAY_PRESETS.find(p => p.hour === (playback.targetHour ?? state.periodHour))!;
-      const label = formatTime(hour) + " " + preset.name;
+      const label = formatTime(hour) + " " + preset.name + (playback.automatic ? "" : " · 已暂停");
       document.querySelector("#time-label")!.textContent = label;
       document.querySelector("#time-symbol")!.textContent = (playback.targetHour == null ? state.primary?.kind : preset.sun.strength > 0 ? "sun" : "moon") === "sun" ? "☼" : "☾";
       toggle.setAttribute("aria-label", "场景时间 " + label + (playback.transitioning ? "，切换中" : ""));
@@ -63,7 +63,7 @@ export class RoomTimeMenu {
       document.querySelector("#weather-label")!.textContent=(story ? "故事 · " : room.lighthouseSessionMode==="exercise"?"演练 · ":"")+weatherLabel;
       document.querySelector("#weather-current")!.textContent=`${weatherLabel}${weather.phase==="entering"?" · 转变中":""} · 能见约${weather.visibilityKm.toFixed(1)} km · 太阳能${Math.round(weather.solarMultiplier*100)}%${weather.rain>=.15?" · 暂缓外廊作业":""}`;
       status.textContent = playback.transitioning ? "切换中…" : "当前 " + formatTime(state.hour)
-        + (playback.automatic ? room.pauseReasons.length ? " · 收起后继续流转" : " · 自动流转中" : " · 手动时间");
+        + (playback.automatic ? room.pauseReasons.length ? " · 收起后继续流转" : " · 自动流转中" : " · 自动流转已关闭");
     };
     const syncPanels = () => {
       const reasons = room.pauseReasons;
@@ -74,7 +74,7 @@ export class RoomTimeMenu {
     };
     const select = (button: HTMLButtonElement) => {
       room.transitionTimeOfDay(Number(button.dataset.timeHour), reduced.matches);
-      live.textContent = "已选择 " + button.textContent!.trim() + "，自动流转已关闭";
+      live.textContent = "已选择 " + button.textContent!.trim() + (room.timePlayback.automatic ? "，收起后继续流转" : "，自动流转仍关闭");
     };
     toggle.addEventListener("click", () => setOpen(menu.hidden), { signal });
     document.querySelector("#time-close")!.addEventListener("click", () => setOpen(false), { signal });
@@ -84,7 +84,7 @@ export class RoomTimeMenu {
       live.textContent = automatic.checked ? "自动流转已开启，收起菜单后继续" : "自动流转已关闭";
     }, { signal });
     weatherSelect.addEventListener("change",()=>{room.setWeather(weatherSelect.value==="automatic"?null:weatherSelect.value as "clear"|"overcast"|"fog"|"storm");live.textContent="已在独立演练中切换天气，正常值守进度保留";},{signal});
-    sessionMode.addEventListener("change",()=>{const ok=room.setLighthouseSessionMode(sessionMode.value as "duty"|"exercise");render();live.textContent=ok?"模式已切换，时间先暂停。想继续走时，请开启自动流转。":"等时间切换完，再换模式。";},{signal});
+    sessionMode.addEventListener("change",()=>{const ok=room.setLighthouseSessionMode(sessionMode.value as "duty"|"exercise");render();live.textContent=ok?"模式已切换，流转设置已恢复。":"等时间切换完，再换模式。";},{signal});
     document.querySelector("#lighthouse-exercise-restart")!.addEventListener("click",()=>{
       const value=seed.value.trim(),n=Number(value);
       const ok=/^\d+$/.test(value)&&room.restartLighthouseExercise(n);

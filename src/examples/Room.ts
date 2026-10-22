@@ -430,7 +430,7 @@ export class RoomScene {
   }
   restartLighthouseExercise(seed:number) {
     if(this.disposed||this.storyBridge||this.timePlayback.transitioning||!Number.isInteger(seed)||seed<0||seed>0xffffffff)return false;
-    const clock=new RoomTimeOfDay();clock.restore(12);
+    const clock=new RoomTimeOfDay();clock.restore(12,true);
     const s=completeLighthouseSession({clock,operation:new LighthouseOperation(),inspection:new LighthouseInspection(),
       maintenance:new LighthouseMaintenance(),power:new LighthousePower()},"exercise",seed);
     synchronizeWeatherDuty(s);
@@ -562,13 +562,13 @@ export class RoomScene {
     if (!this.storySwitchAllowed() || this.storyBridge || !this.storyCheckpoint) return;
     const session = decodeLighthouseStorySave(this.storyCheckpoint);
     this.rememberExploration(); this.applyStory(session);
-    this.storyPanel.notice("已回到这次故事，人在书桌旁。时间先暂停，按 T 可以继续流转。");
+    this.storyPanel.notice("已回到这次故事，人在书桌旁，流转设置已恢复。阅读时暂停。");
   }
   private continueStory() {
     if (!this.storySwitchAllowed()) return;
     const result = this.storySave.load(); this.storyStorage = result.status;
     if (result.session) {this.rememberExploration(); this.applyStory(result.session);}
-    this.storyPanel.notice(result.session ? "故事已继续。时间先暂停，按 T 可以继续流转。" : result.status.message);
+    this.storyPanel.notice(result.session ? "故事已继续，流转设置已恢复。阅读时暂停。" : result.status.message);
     this.renderStory(true);
   }
   private saveStory() {
