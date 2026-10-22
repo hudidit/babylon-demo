@@ -1,0 +1,27 @@
+{
+  "method": "cua_repl, visible Google Chrome, native macOS App.pressKey and App.click, DOM readbacks only; final dist served independently",
+  "scope": "House spawn, native Escape and W, locked exit/unlocked return, repeated toggles, settings/time/map priority, subpath entry. No direct camera or pointer-lock state writes.",
+  "productionLogsAfter": "2026-10-22T17:23:25.460Z",
+  "productionErrorsAndWarnings": [],
+  "steps": [
+    {"step":"ready","views":[["岛屿远景","true"],["自由探索","false"]]},
+    {"step":"escape-entry","views":[["岛屿远景","false"],["自由探索","true"]],"point":"translate(114.4 242.6) rotate(142.2060550727556)"},
+    {"step":"walk-without-pointer-lock-or-button","point":"translate(125.11331014354953 256.41453054065533) rotate(142.2060550727556)"},
+    {"step":"native-click-lock","hint":""},
+    {"step":"native-unlock-exit","views":[["岛屿远景","true"],["自由探索","false"]]},
+    {"step":"native-unlock-return","views":[["岛屿远景","false"],["自由探索","true"]],"point":"translate(125.11331014354953 256.41453054065533) rotate(142.2060550727556)"},
+    {"step":"cycle-1-exit","pressed":"true"},
+    {"step":"cycle-1-return","pressed":"true"},
+    {"step":"cycle-2-exit","pressed":"true"},
+    {"step":"cycle-2-return","pressed":"true"},
+    {"step":"close-#settings-btn","firstPerson":"true"},
+    {"step":"close-#time-toggle","firstPerson":"true"},
+    {"step":"close-#floor-plan-toggle","firstPerson":"true"},
+    {"step":"subpath-escape-entry","firstPerson":"true"},
+    {"step":"held-native-escape-800ms","coast":"true"},
+    {"step":"two-native-escapes-without-observation-between","coast":"true"},
+    {"step":"return-from-another-tab-then-escape","firstPerson":"true"}
+  ],
+  "passed": true,
+  "limitation": "Native Escape can be rejected as pointer-lock activation: perspective and keyboard/drag inputs resume; clicking the scene enables locked mouse look. CDP/headless success must not be claimed as proof of native lock restoration."
+}

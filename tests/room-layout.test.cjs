@@ -1961,3 +1961,23 @@ test("letter inspection uses the existing ray action and preview geometry cannot
   preview.metadata = { inspectionPreview: true }; preview.computeWorldMatrix(true);
   assert.equal(interactions.pick(ray), action, "preview layer meshes must never intercept room interactions");
 });
+
+test("first-person keyboard and drag controls survive a rejected pointer lock, while UI pauses still block them", () => {
+  const room = Object.create(RoomScene.prototype);
+  const camera = () => ({ attached: 0, detachControl() {}, attachControl() { this.attached++; },
+    cameraDirection: { setAll() {} }, cameraRotation: { setAll() {} },
+    movement: { resetPanVelocity() {}, resetRotationVelocity() {} } });
+  room.camera = camera(); room.firstPersonCamera = camera();
+  room.scene = { activeCamera: room.firstPersonCamera }; room.canvas = {};
+  room.controlsEnabled = true; room.pointerLocked = false;
+  room.scooter = { riding: false }; room.ladder = { attached: false };
+  room.updateControls();
+  assert.equal(room.firstPersonCamera.attached, 1, "unlocked first-person still accepts WASD and pointer drag");
+  assert.equal(room.camera.attached, 0);
+  room.controlsEnabled = false; room.updateControls();
+  assert.equal(room.firstPersonCamera.attached, 1, "settings and other pause owners keep inputs detached");
+  room.controlsEnabled = true; room.inspection = { isOpen: true }; room.updateControls();
+  assert.equal(room.firstPersonCamera.attached, 1, "an inspection remains the input owner");
+  room.inspection.isOpen = false; room.pointerLocked = true; room.updateControls();
+  assert.equal(room.firstPersonCamera.attached, 2, "normal locked controls still attach");
+});

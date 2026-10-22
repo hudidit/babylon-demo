@@ -382,7 +382,7 @@ export class RoomScene {
     canvas.addEventListener("pointercancel", this.pointerCancel);
     document.querySelector("#item-inspection-return")!.addEventListener("click", this.returnFromInspection);
     document.querySelector("#item-inspection")!.addEventListener("cancel", this.cancelInspection);
-    document.addEventListener("keydown", this.keyDown);
+    document.addEventListener("keydown", this.keyDown, true);
     document.addEventListener("keyup", this.keyUp);
     window.addEventListener("blur", this.foregroundLost);
     window.addEventListener("blur", this.pauseAudio);
@@ -827,9 +827,9 @@ export class RoomScene {
     this.canvas.setAttribute("aria-label", "海岛灯站三维场景，" + instructions);
     this.updateInteractionHint();
     this.updateFloorPlan();
-    if (firstPerson && this.controlsEnabled) {
+    if (this.controlsEnabled) {
       this.canvas.focus({ preventScroll: true });
-      this.pointerLock?.request();
+      if (firstPerson) this.pointerLock?.request();
     }
     document.querySelectorAll<HTMLButtonElement>("[data-view]").forEach(button => {
       button.setAttribute("aria-pressed", String(button.dataset.view === view));
@@ -1283,7 +1283,7 @@ export class RoomScene {
     this.firstPersonCamera.cameraRotation.setAll(0);
     camera.movement.resetPanVelocity();
     camera.movement.resetRotationVelocity();
-    if (!this.isViewing && this.controlsEnabled && (camera !== this.firstPersonCamera || this.pointerLocked)) {
+    if (!this.isViewing && this.controlsEnabled) {
       camera.attachControl(this.canvas, true);
       if (camera === this.firstPersonCamera && (this.scooter.riding || this.scooterTransition || this.ladder?.attached)) {
         for (const name of ["keyboard", "touch", "gamepad"]) this.firstPersonCamera.inputs.attached[name]?.detachControl();
@@ -1587,7 +1587,7 @@ export class RoomScene {
     this.canvas.removeEventListener("pointermove", this.pointerMove);
     this.canvas.removeEventListener("pointerup", this.pointerUp);
     this.canvas.removeEventListener("pointercancel", this.pointerCancel);
-    document.removeEventListener("keydown", this.keyDown);
+    document.removeEventListener("keydown", this.keyDown, true);
     document.removeEventListener("keyup", this.keyUp);
     window.removeEventListener("blur", this.foregroundLost);
     window.removeEventListener("blur", this.pauseAudio);
