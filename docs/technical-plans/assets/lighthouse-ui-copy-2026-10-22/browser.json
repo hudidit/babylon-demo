@@ -1,0 +1,109 @@
+{
+  "baseline": "024ce93",
+  "errors": [],
+  "warnings": [],
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 800,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "passed": true
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "passed": true
+    }
+  ],
+  "manifestSha256": "e952258ad7a1022127d6524224d9e003cfd97c13fc91431b527e9b0327d029cb",
+  "sources": {
+    "public/index.html": "8d36332e1c3b17703da4f3357eb99d578010ccf34932f11b8d81256dbecc23ea",
+    "src/components/RoomTimeMenu.ts": "9982a3de2c4b4a463b747bef0fbd202657456aa7a9aadf6e0d93d52b4c9bcbc1"
+  },
+  "release": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26473565,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 89433,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2855527,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42523081
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenJs": [
+    {
+      "path": "/js/main.js",
+      "bytes": 435349,
+      "sha256": "dd3e3eb74782a06bcd1a4c1210c6d45320a970e0e56da389e945af0c5ae6aea6"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2072,
+      "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "firstScreenBytes": 3074379,
+  "label": "场景编号",
+  "button": "重新开始演练",
+  "status": "独立演练 · 场景编号 20261022 · 返回值守可恢复原进度",
+  "announcement": "已重新开始演练；设备回到初始状态，正常值守进度保留",
+  "originalProgressRestored": true,
+  "passed": true
+}

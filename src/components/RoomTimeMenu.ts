@@ -55,7 +55,7 @@ export class RoomTimeMenu {
       weatherSelect.value=weather.mode==="automatic"?"automatic":weather.kind;
       sessionMode.value=room.lighthouseSessionMode;
       document.querySelector("#lighthouse-session-current")!.textContent=room.lighthouseSessionMode==="exercise"
-        ?`独立演练 · 种子 ${room.weather.random.seed} · 返回值守可恢复原进度`:"正常值守 · 选择固定天气会进入独立演练";
+        ?`独立演练 · 场景编号 ${room.weather.random.seed} · 返回值守可恢复原进度`:"正常值守 · 选择固定天气会进入独立演练";
       document.querySelector("#weather-label")!.textContent=(room.lighthouseSessionMode==="exercise"?"演练 · ":"")+weatherLabel;
       document.querySelector("#weather-current")!.textContent=`${weatherLabel}${weather.phase==="entering"?" · 转变中":""} · 能见约${weather.visibilityKm.toFixed(1)} km · 太阳能${Math.round(weather.solarMultiplier*100)}%${weather.rain>=.15?" · 暂缓外廊作业":""}`;
       status.textContent = playback.transitioning ? "切换中…" : "当前 " + formatTime(state.hour)
@@ -85,7 +85,7 @@ export class RoomTimeMenu {
       const value=seed.value.trim(),n=Number(value);
       const ok=/^\d+$/.test(value)&&room.restartLighthouseExercise(n);
       seed.setCustomValidity(ok?"":"请输入0至4294967295的整数，且等待时间切换完成");
-      if(!ok)seed.reportValidity();else live.textContent="已按种子重开独立演练；设备回到初始状态，正常值守进度保留";
+      if(!ok)seed.reportValidity();else live.textContent="已重新开始演练；设备回到初始状态，正常值守进度保留";
     },{signal});
     seed.addEventListener("input",()=>seed.setCustomValidity(""),{signal});
     weatherMotion.addEventListener("change",()=>room.setReducedWeatherMotion(weatherMotion.checked),{signal});
