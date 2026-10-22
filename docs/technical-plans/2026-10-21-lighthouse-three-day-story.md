@@ -4,14 +4,14 @@
 
 | 项目 | 内容 |
 | --- | --- |
-| 状态 | 详细设计及剧情步骤一至三已完成，步骤四、五待实施 |
+| 状态 | 详细设计及剧情步骤一至四已完成，步骤五实际体验与发布综合待实施 |
 | 创建及更新日期 | 创建2026-10-21；更新2026-10-22 |
 | 输入代码基线 | `32f4b3f`，天气风险子项目步骤三完成 |
 | 用户已确定的方向 | 安静、略带悬念的叙事体验；情感偏向舍不得离开；原定三天后离开，因天气或特殊情况无法离开，以“未完待续”收尾 |
 | 本方案采用的创作设定 | 小岛灯站、离岛接送艇、外海涌浪导致接送取消、旧呼号消息来源待核实；人物称谓、台词和事件时间均为本次设计，可随后续体验调整 |
 | 工作标题 | 交班之前，标题暂定 |
 | 范围 | 三章值守与一个留站尾声；章节目标、任务、文本线索、联络、交接报告及章节结尾 |
-| 当前交付 | 详细设计、[步骤一纯逻辑/独立封套](2026-10-22-lighthouse-story-state-machine.md)、[步骤二第一章](2026-10-22-lighthouse-story-first-chapter.md)及[步骤三天气与生活章节](2026-10-22-lighthouse-story-weather-chapters.md)已完成；留站尾声和全篇节奏仍待实施 |
+| 当前交付 | 详细设计、[步骤一纯逻辑/独立封套](2026-10-22-lighthouse-story-state-machine.md)、[步骤二第一章](2026-10-22-lighthouse-story-first-chapter.md)及[步骤三天气与生活章节](2026-10-22-lighthouse-story-weather-chapters.md)已完成；[步骤四延班与结尾](2026-10-22-lighthouse-story-epilogue.md)已交付，完整篇章节奏留步骤五 |
 | 关联方案 | [玩法减量与现场界面](2026-10-20-lighthouse-focused-experience.md)、[天气风险与巡检未知机制](2026-10-20-lighthouse-project-03-weather-and-uncertainty.md)、[运行总方案](2026-10-20-lighthouse-operation-and-keeper-routine.md)、[双层灯塔与值守保存](2026-10-21-lighthouse-two-levels-and-save.md) |
 
 ## 背景与设计目标
@@ -316,12 +316,12 @@
 | 检查、薄膜、清洁、证据失效 | 已交付 | 引用真实证据，新增故事实例的互斥登记及完成条件 |
 | 设备与纸质记录保存 | 版本2及三章独立故事槽已交付 | 已保存完整天气/访问、ST01—ST07现场工作、报告/消息/生活选择及故事日程；继续先暂停 |
 | 天气/随机/问题完整恢复与隔离 | [子项目三步骤四已完成](2026-10-22-lighthouse-weather-state-save.md) | 天气版本2与正常/演练隔离已具备；[剧情步骤一](2026-10-22-lighthouse-story-state-machine.md)另加故事身份与完整独立槽，玩家模式入口已随步骤二交付 |
-| 任务、角色联络、章节、结尾 | 纯逻辑及三章场景接线已完成 | 步骤一覆盖ST01—ST11；二/三接入ST01—ST07、天气、报告/回复、等待和生活；尾声留四、五 |
+| 任务、角色联络、章节、结尾 | 纯逻辑、三章及尾声场景接线已完成 | 步骤一覆盖ST01—ST11；二/三接入三章；四交付留站、夜间确认、旧呼号核对及可恢复结束/回看；全篇节奏留五 |
 | 长期平衡与完整故事游玩验收 | 待实施 | 与子项目三步骤五协调，故事节奏另做实际游玩评估 |
 
 ### 状态与事实来源
 
-已在步骤一实现纯逻辑控制器[LighthouseStory.ts](../../src/examples/LighthouseStory.ts)与完整故事封套[LighthouseStorySave.ts](../../src/examples/LighthouseStorySave.ts)。独立界面适配层转发现有[共享时钟](../../src/examples/RoomTimeOfDay.ts)、[运行](../../src/examples/LighthouseOperation.ts)、[表面检查](../../src/examples/LighthouseInspection.ts)、[维护](../../src/examples/LighthouseMaintenance.ts)、[能量](../../src/examples/LighthousePower.ts)、[天气问题](../../src/examples/LighthouseRisk.ts)与[线索](../../src/examples/LighthouseDiscovery.ts)的已提交事实；步骤一交付时没有在Room中建立订阅或玩家入口。步骤二接入第一章，步骤三已接入第二/三章与等待，留站尾声适配仍待步骤四。
+已在步骤一实现纯逻辑控制器[LighthouseStory.ts](../../src/examples/LighthouseStory.ts)与完整故事封套[LighthouseStorySave.ts](../../src/examples/LighthouseStorySave.ts)。独立界面适配层转发现有[共享时钟](../../src/examples/RoomTimeOfDay.ts)、[运行](../../src/examples/LighthouseOperation.ts)、[表面检查](../../src/examples/LighthouseInspection.ts)、[维护](../../src/examples/LighthouseMaintenance.ts)、[能量](../../src/examples/LighthousePower.ts)、[天气问题](../../src/examples/LighthouseRisk.ts)与[线索](../../src/examples/LighthouseDiscovery.ts)的已提交事实；步骤一交付时没有在Room中建立订阅或玩家入口。步骤二接入第一章，步骤三已接入第二/三章与等待，留站尾声已由[步骤四](2026-10-22-lighthouse-story-epilogue.md)接入，含登记后新观察、核对、主动结束与保存恢复。
 
 建议状态至少包含：
 
@@ -371,7 +371,7 @@
 | 一 剧情纯逻辑 | 任务依赖、消息、运输、章节及结尾状态；先用事件夹具跑完整篇 | 重复事件幂等、提前/晚到/失效证据和旧消息可追溯 | 已完成，见[实现与验收](2026-10-22-lighthouse-story-state-machine.md#实际结果)；360测试，本步交付时场景尚未接线 |
 | 二 第一章可玩 | 接班信、主要目标、现有设备证据接入、报告和第一封回复 | 玩家能独立完成接班，所有任务与真实设备一致 | 已完成，见[第一章结果](2026-10-22-lighthouse-story-first-chapter.md#实际结果) |
 | 三 天气与生活章节 | 第二/三章、专用问题实例、联络、等待结算和个人选择 | 明确窗口与可用解法，无随机漏检门槛，无空等卡关 | 已完成，见[天气与生活章节结果](2026-10-22-lighthouse-story-weather-chapters.md#实际结果) |
-| 四 延班与结尾 | 正式取消、夜间确认、旧呼号核对、结束与回看 | 前三天工作得到承认，来源悬念清楚，结束可恢复 | 待实施 |
+| 四 延班与结尾 | 正式取消、夜间确认、旧呼号核对、结束与回看 | 前三天工作得到承认，来源悬念清楚，结束可恢复 | 已完成，见[步骤四结果](2026-10-22-lighthouse-story-epilogue.md#实际结果) |
 | 五 实际体验与发布 | 首次游玩、重玩、存读/迟做/中断、原功能与独立托管 | 剧情和设备结果都通过，预算及交付检查保持 | 待实施 |
 
 剧情目标层独立于原六组设备操作。未来恢复复杂维修、扩岛或制作续章时另设范围，不把本章悬念提前展开成新系统清单。
@@ -426,3 +426,8 @@
 ### 文案跟进（2026-10-22）
 
 基于`93974e4`完成[人物与界面文案优化](2026-10-22-game-copy-and-voice.md)，当前用语依[文案规范](../game-writing-guide.md)和实际界面维护。本方案信件/台词初稿与历史验收保留；任务ID、事实与存档语义保持，正式留站及尾声可玩范围仍待步骤四。
+
+
+### 剧情步骤四跟进（2026-10-22）
+
+基于`9b7af38`完成[延班与结尾](2026-10-22-lighthouse-story-epilogue.md)：ST08—ST11现场登记/夜间主灯或实际备用新观察、旧呼号原文转发/正式核对、主动结束及结尾未看/已看恢复均已交付。结尾确认前三天工作，保留钥匙、留站和来源待查；完成时摘要不被后来天气改写，保存失败保留旧档并可重试。391测试、Chrome新故事全线/受控备用/消息与结尾存读、44故事＋4设备布局、原功能及双路径各496文件通过。实际首屏3,145,216 B，故事交互另载24,245 B，完整发布42,653,964 B，原预算与素材保持。几何定位/有界回执不代表完整步行、首次玩家/重玩节奏或性能实验；这些综合体验仍属步骤五，天气长期平衡仍待实施。

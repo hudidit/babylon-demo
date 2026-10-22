@@ -28,6 +28,8 @@ export function storyWaitPlan(s:LighthouseStorySession,recovery=false):StoryWait
     target=w.kind==="fog"&&h>=6&&h<17?Math.max(at+.5,18.5):nextFog(at+EPS);title=at<18?"休息到明早":"等下一场白天的雾";}
   else if(v.objective.id==="ST06"&&at<42) {target=42.5;title="等第3日的岸站消息";}
   else if(["ST04","ST05","ST07"].includes(v.objective.id)&&(w.rain>=.15||w.kind==="storm"||h<6||h>=18)) {target=nextDry(at);title="等白天风雨小一些";}
+  else if(v.objective.id==="ST08"&&at<72) {target=72;title="等岸站确认接送安排";}
+  else if(v.objective.id==="ST09"&&h>=6&&h<18) {target=at+18-h;title="等今晚亮灯";}
   else return blocked(v.tasks[6].status==="complete"?"交接单收好了，可以保存记录，再去岛上走走。":"手头还有能做的事，先看看值守任务和设备记录。");
   return {target,title,reason:"等待时，岛上时间照常过去，天气和电量也会变化。电量低或出现新问题会停下；看灯、检查面板仍要亲自去。",recovery};
 }

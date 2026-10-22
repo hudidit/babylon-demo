@@ -1,0 +1,36 @@
+start and first chapter
+device cover
+device cover
+device control
+device test
+device log
+native wait
+native wait
+device control
+device test
+device log
+device control
+device lighthouse-solar-array
+device lighthouse-solar-array
+device lighthouse-solar-array
+device control
+device log
+native wait
+native wait
+device control
+device lighthouse-solar-array
+device log
+native wait
+device lighthouse-solar-array
+device control
+device control
+device log
+72-hour cancellation and stay
+page.evaluate: TypeError: Cannot read properties of undefined (reading 'position')
+    at eval (eval at evaluate (:370:30), <anonymous>:1:72)
+    at UtilityScript.evaluate (<anonymous>:372:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at desk (/Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step4-2026-10-22/check-epilogue.cjs:55:27)
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step4-2026-10-22/check-epilogue.cjs:104:73 {
+  log: []
+}

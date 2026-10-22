@@ -9,6 +9,7 @@ export class LighthouseStoryBridge {
   private cursor: number;
   private maintenanceCursor: number;
   private discoveryCursor: number;
+  private nightWatchKey="";
   constructor(readonly story: LighthouseStory, equipment: LighthouseCompleteSession) {
     const events = equipment.inspection.snapshot.events;
     this.cursor = events[events.length - 1]?.id || 0;
@@ -19,8 +20,16 @@ export class LighthouseStoryBridge {
     synchronizeWeatherDuty(equipment);
   }
   synchronize(equipment: LighthouseCompleteSession) {
-    const c = lighthouseStoryContext(equipment), i = equipment.inspection.snapshot;
+    const c = lighthouseStoryContext(equipment);
     this.story.synchronize(c);
+    const watch=this.story.nightWatchKey;
+    if(watch&&watch!==this.nightWatchKey) {
+      equipment.inspection.renewObservation();equipment.maintenance.renewBackupObservation(equipment.operation.snapshot);
+      const events=equipment.inspection.snapshot.events,evidence=equipment.maintenance.snapshot.evidence;
+      this.cursor=events[events.length-1]?.id||0;this.maintenanceCursor=evidence[evidence.length-1]?.id||0;
+    }
+    this.nightWatchKey=watch;
+    const i=equipment.inspection.snapshot;
     if (c.problems.solar) this.story.bindSolarProblem(c.problems.solar);
     for (const event of i.events) {
       if (event.id <= this.cursor) continue;

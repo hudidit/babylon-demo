@@ -13,6 +13,7 @@ export function lighthouseProgress(i: LighthouseInspectionSnapshot, m: Lighthous
   if (i.cleaning) return {kind: "cleaning", label: "擦拭中", fraction: i.cleaningSeconds / 1.5};
   if (m.action) return {kind: m.action.command, label: m.action.command === "clean" ? "擦拭中" : m.action.command === "surface-test" ? "近距细查" : "巡视中", fraction: m.action.elapsed / m.action.duration};
   if (p.action) return {kind: p.action.command, label: "确认供电", fraction: p.action.elapsed / p.action.duration};
+  if(m.backupOn&&!m.backupConfirmed&&m.backupObservationSeconds>0)return {kind:"backup-observation",label:"观察备用灯",fraction:Math.min(.97,m.backupObservationSeconds/10)};
   // Time alone must not draw a complete ring before an actual turn and output are confirmed.
   if (!i.optic && i.observationSeconds > 0) return {kind: "observation", label: "观察灯具", fraction: Math.min(.97, i.observationSeconds / LIGHTHOUSE_INSPECTION.observationSeconds)};
   return undefined;
@@ -36,6 +37,7 @@ export function lighthouseRecords(location: string, i: LighthouseInspectionSnaps
     day: e.day, hour: e.hour, object: "lighthouse-solar-array", action: e.method === "维护到期" ? "例行清洁到期" : e.method === "中断" ? "巡视中断" : e.method === "擦拭完成" ? "清洁面板" : e.method,
     result: e.result
   }));
+  if(all||location==="lighthouse-beacon-backup")m.evidence.filter(e=>e.component==="backup"&&e.method==="实际接替复验").forEach(e=>rows.push({day:e.day,hour:e.hour,object:"lighthouse-beacon-backup",action:"观察备用灯",result:e.result}));
   if (all || location === "lighthouse-battery-main") p.events.filter(e => ["main-protected", "verify-main"].includes(e.type)).forEach(e => rows.push({
     day: e.day, hour: e.hour, object: "lighthouse-battery-main", action: "供电检查", result: e.type === "main-protected" ? "电量偏低，自动保护" : "供电恢复，已确认"
   }));

@@ -5,6 +5,7 @@ const {LighthouseStoryBridge:Bridge}=load('LighthouseStoryBridge');
 const {LighthouseStoryWait:Wait,storyWaitPlan:plan,advanceStoryUnobserved:unobserved}=load('LighthouseStoryWait');
 const {advanceWeatherDuty,synchronizeWeatherDuty,lighthouseDiscoveryFacts}=load('LighthouseWeatherSession');
 const {lighthouseSolarW,LighthousePower}=load('LighthousePower');
+const {epilogueCommand:epilogue,endingRecord,sourceCheckDetails}=load('LighthouseStoryEpilogue');
 const clone=x=>JSON.parse(JSON.stringify(x));
 function fixture(saved){
  const s=saved||create('chapters-real-events',0),e=s.equipment,bridge=new Bridge(s.story,e);let near=[];
@@ -141,4 +142,102 @@ test('uncertainty notes retain real proof and reject invented, action-in-progres
   const value=clone(good);edit(value);assert.throws(()=>decode(JSON.stringify(value)));
  }
  assert.equal(f.s.story.recordSolarUncertainty(),false);assert.equal(encode(decode(JSON.stringify(good))),JSON.stringify(good));
+});
+
+let preparedStory;
+function afterHandover(){
+ if(!preparedStory){const f=fixture(),{s,e}=f;f.arrival();f.to(18.5);f.observe();f.compare();f.solar('surface-test');f.solar('clean');f.solar('inspect');f.compare();
+  assert.equal(s.story.submitReport('solar'),true);s.story.deliverReply('solar-report');s.story.readMessage('solar-ack');f.to(42.5);
+  s.story.readMessage('transport-warning');f.control();assert.equal(s.story.reviewStormPlan(),true);f.to(48.5);
+  f.solar('surface-test');if(e.maintenance.snapshot.solarDirty){f.solar('clean');f.solar('inspect');}f.compare();f.control();
+  assert.equal(s.story.submitReport('handover',s.story.fieldWork.knownIssues),true);preparedStory=encode(s);
+ }
+ return fixture(decode(preparedStory));
+}
+function registerAtNight(f){f.to(78);f.s.story.readMessage('pickup-cancelled');assert.equal(epilogue(f.s,'stay',true),true);f.sync();}
+function readyToFinish(){const f=afterHandover();registerAtNight(f);f.active(30);assert.equal(f.s.story.snapshot.objective.id,'ST10');
+ f.s.story.readMessage('old-call');assert.equal(epilogue(f.s,'check',false),true);f.s.story.deliverReply('source-check');f.s.story.readMessage('source-check-reply');return f;}
+
+test('handover saves continue to the real 72-hour cancellation and offer only the next genuine night wait',()=>{
+ const f=afterHandover();assert.equal(plan(f.s).target,72);assert.equal(epilogue(f.s,'stay',true),false);
+ f.to(72);assert.equal(f.s.story.snapshot.messages.find(m=>m.id==='pickup-cancelled').sentAt,72);
+ assert.equal(epilogue(f.s,'stay',true),false);f.s.story.readMessage('pickup-cancelled');assert.equal(epilogue(f.s,'stay',false),false);
+ assert.equal(epilogue(f.s,'stay',true),true);f.sync();assert.equal(epilogue(f.s,'stay',true),false);
+ assert.equal(plan(f.s).target,78);f.to(78);assert.equal(plan(f.s).target,undefined);
+ assert.equal(f.s.story.snapshot.objective.id,'ST09');assert.equal(f.e.inspection.snapshot.observationSeconds,0);
+ const r=fixture(decode(encode(f.s)));r.active(29.9);assert.equal(r.s.story.snapshot.objective.id,'ST09');r.active(.1);
+ assert.equal(r.s.story.snapshot.objective.id,'ST10');assert.equal(r.s.story.snapshot.tasks[8].completion.facts[0].kind,'main');
+ assert.equal(r.s.story.snapshot.messages.filter(m=>m.id==='old-call').length,1);
+});
+test('a completed main observation before registration cannot be reused and interruption or reload restarts pending work',()=>{
+ const f=afterHandover();f.to(78);f.observe();assert.ok(f.e.inspection.snapshot.optic);f.s.story.readMessage('pickup-cancelled');
+ epilogue(f.s,'stay',true);f.sync();assert.equal(f.e.inspection.snapshot.optic,undefined);assert.equal(f.s.story.snapshot.objective.id,'ST09');
+ f.active(20);f.active(.1,{optic:false,cover:false,output:0,action:false});assert.equal(f.e.inspection.snapshot.observationSeconds,0);
+ f.active(20);const r=fixture(decode(encode(f.s)));r.active(10);assert.equal(r.s.story.snapshot.objective.id,'ST09');
+ r.active(20);assert.equal(r.s.story.snapshot.objective.id,'ST10');
+});
+test('actual backup observation shows read-only progress and needs ten new seconds after registration',()=>{
+ const f=afterHandover();f.to(78);f.e.power=new LighthousePower({mainWh:200,backupWh:120});f.sync();
+ assert.equal(f.e.maintenance.snapshot.source,'backup');f.active(10);assert.equal(f.e.maintenance.snapshot.backupConfirmed,true);
+ f.s.story.readMessage('pickup-cancelled');epilogue(f.s,'stay',true);f.sync();assert.equal(f.e.maintenance.snapshot.backupConfirmed,false);
+ f.active(4);const {lighthouseProgress:progress}=load('LighthouseExperience');
+ assert.equal(progress(f.e.inspection.snapshot,f.e.maintenance.snapshot,f.e.power.snapshot).kind,'backup-observation');
+ f.active(.1,{optic:false,cover:false,output:0,action:false}); // fixture sight.backup follows the actual lamp; explicitly interrupt below.
+ f.e.clock.advance(.1);f.e.maintenance.advance(f.e.clock.lastAdvance,f.e.operation,{action:false,backup:false,main:false,mainOutput:0});f.sync();
+ assert.equal(f.e.maintenance.snapshot.backupObservationSeconds,0);f.active(9.9);assert.equal(f.s.story.snapshot.objective.id,'ST09');
+ f.active(.1);assert.equal(f.s.story.snapshot.objective.id,'ST10');
+ assert.equal(f.s.story.snapshot.tasks[8].completion.facts[0].kind,'backup');assert.equal(f.e.inspection.snapshot.optic,undefined);
+ assert.match(f.s.story.snapshot.tasks[8].completion.facts[0].method,/direct-view/);
+ f.s.story.readMessage('old-call');epilogue(f.s,'check',false);f.s.story.deliverReply('source-check');f.s.story.readMessage('source-check-reply');epilogue(f.s,'finish',false);
+ assert.match(endingRecord(f.s.story.snapshot).pending,/主灯仍需检查和恢复/);
+});
+test('daylight fog backup confirmation cannot satisfy the later night and a lost navigator cannot be bypassed',()=>{
+ const f=afterHandover();f.to(90.5);f.e.power=new LighthousePower({mainWh:200,backupWh:120});f.sync();
+ f.s.story.readMessage('pickup-cancelled');epilogue(f.s,'stay',true);f.sync();assert.equal(f.e.maintenance.snapshot.source,'backup');
+ f.active(10);assert.equal(f.e.maintenance.snapshot.backupConfirmed,true);assert.equal(f.s.story.snapshot.objective.id,'ST09');
+ assert.equal(plan(f.s,true).recovery,true);f.to(102);assert.equal(f.e.maintenance.snapshot.backupConfirmed,false);
+ f.active(9.9);assert.equal(f.s.story.snapshot.objective.id,'ST09');f.active(.1);assert.equal(f.s.story.snapshot.objective.id,'ST10');
+ const g=afterHandover();registerAtNight(g);g.e.power=new LighthousePower({mainWh:0,backupWh:0});g.sync();g.active(35);
+ assert.equal(g.e.maintenance.snapshot.source,'none');assert.equal(g.s.story.snapshot.objective.id,'ST09');assert.equal(plan(g.s).target,undefined);
+ assert.ok(plan(g.s,true).target>g.s.story.snapshot.elapsedHours);assert.equal(epilogue(g.s,'check',false),false);assert.equal(epilogue(g.s,'finish',false),false);
+});
+test('night registration across midnight starts a new watch without changing completed history or sender time',()=>{
+ const f=afterHandover();f.to(83.999);f.s.story.readMessage('pickup-cancelled');epilogue(f.s,'stay',true);f.sync();f.active(15);
+ assert.equal(f.s.story.snapshot.calendar.day,4);f.to(84);assert.equal(f.e.inspection.snapshot.observationSeconds,0);
+ f.active(29.9);assert.equal(f.s.story.snapshot.objective.id,'ST09');f.active(.1);assert.equal(f.s.story.snapshot.objective.id,'ST10');
+ assert.equal(f.s.story.snapshot.tasks[8].completion.context.elapsedHours,84);assert.equal(f.s.story.snapshot.tasks[6].status,'complete');
+ assert.equal(f.s.story.snapshot.messages.find(m=>m.id==='pickup-cancelled').sentAt,72);
+});
+test('source verification and ending restore each distinct boundary without duplicate messages or implicit finish',()=>{
+ let f=afterHandover();registerAtNight(f);f.active(30);const original=f.s.story.snapshot.messages.find(m=>m.id==='old-call');
+ assert.equal(epilogue(f.s,'check',false),false);f.s.story.readMessage('old-call');assert.equal(epilogue(f.s,'check',false),true);
+ assert.equal(epilogue(f.s,'check',false),false);assert.equal(f.s.story.snapshot.sourceCheck.status,'pending');
+ f=fixture(decode(encode(f.s)));assert.equal(f.s.story.snapshot.sourceCheck.status,'pending');assert.equal(f.s.story.snapshot.finished,false);
+ f.s.story.deliverReply('source-check');f=fixture(decode(encode(f.s)));assert.equal(f.s.story.snapshot.goalsComplete,false);
+ assert.equal(f.s.story.snapshot.sourceCheck.sender,null);assert.equal(f.s.story.snapshot.messages.find(m=>m.id==='source-check-reply').state,'unread');
+ f.s.story.readMessage('source-check-reply');assert.equal(f.s.story.snapshot.goalsComplete,true);assert.equal(f.s.story.snapshot.finished,false);
+ f=fixture(decode(encode(f.s)));assert.equal(epilogue(f.s,'finish',false),true);assert.equal(epilogue(f.s,'finish',false),false);
+ f=fixture(decode(encode(f.s)));assert.equal(f.s.story.snapshot.finished,true);assert.equal(f.s.story.snapshot.endingSeen,false);
+ assert.equal(epilogue(f.s,'seen',false),true);const before=encode(f.s);assert.equal(epilogue(f.s,'seen',false),true);assert.equal(encode(f.s),before);
+ const r=fixture(decode(before));assert.equal(r.s.story.snapshot.endingSeen,true);assert.equal(r.s.story.snapshot.transport.stayRegistered,true);
+ assert.deepEqual(r.s.story.snapshot.messages.find(m=>m.id==='old-call'),{...original,readAt:original.sentAt,readOrder:r.s.story.snapshot.messages.find(m=>m.id==='old-call').readOrder,state:'read'});
+ assert.equal(r.s.story.snapshot.messages.filter(m=>m.id==='source-check-reply').length,1);assert.equal(r.e.clock.playback.automatic,false);
+ assert.ok(sourceCheckDetails(r.s.story.snapshot).includes(original.body));assert.match(sourceCheckDetails(r.s.story.snapshot),/来源待核验/);
+});
+test('ending summaries use completion-time work and pending issues while later island play preserves the finished chapter',()=>{
+ const f=readyToFinish();f.s.story.chooseDiary('familiar-path');epilogue(f.s,'finish',false);const record=endingRecord(f.s.story.snapshot),end=f.s.story.snapshot.tasks[10].completion;
+ assert.match(record.work.join('\n'),/30秒.*一圈/s);assert.match(record.work[1],/输入.*W.*估算.*W/s);assert.match(record.source,/发送者仍未查明/);
+ assert.equal(record.diary,'现在不用看地图了。');f.to(110);assert.deepEqual(endingRecord(f.s.story.snapshot),record);
+ assert.deepEqual(f.s.story.snapshot.tasks[10].completion,end);assert.equal(f.s.story.snapshot.messages.filter(m=>m.id==='old-call').length,1);
+ const backup=readyToFinish(),state=backup.s.story.snapshot; // view-only variant tests wording without pretending it is a valid checkpoint.
+ const view=clone(state);view.tasks[8].completion.facts[0].kind='backup';view.tasks[10].completion=view.tasks[9].completion;
+ assert.match(endingRecord(view).work[3],/备用灯.*10秒.*主灯仍需/s);
+});
+test('a failed final save preserves the old slot and the live ending can be retried without repeating its completion',()=>{
+ const {LighthouseStorySave:Save,LIGHTHOUSE_STORY_SAVE_KEY:key}=load('LighthouseStorySave');const f=readyToFinish();let raw=encode(f.s),fail=true;
+ const old=raw,storage={getItem:k=>k===key?raw:null,setItem:(k,v)=>{if(fail)throw Error('quota');raw=v;},removeItem:()=>{}};
+ const slot=new Save(()=>storage);epilogue(f.s,'finish',false);const complete=f.s.story.snapshot.tasks[10].completion;
+ assert.equal(slot.save(f.s).saved,false);assert.equal(raw,old);assert.equal(f.s.story.snapshot.finished,true);
+ epilogue(f.s,'seen',false);assert.equal(slot.save(f.s).saved,false);assert.equal(raw,old);fail=false;assert.equal(slot.save(f.s).saved,true);
+ const restored=slot.load().session;assert.deepEqual(restored.story.snapshot.tasks[10].completion,complete);assert.equal(restored.story.snapshot.endingSeen,true);
 });

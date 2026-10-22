@@ -78,6 +78,9 @@ export class LighthouseMaintenance {
     this.publish({hour: session === "drive" ? 21 : 12, running: false} as LighthouseOperationSnapshot);
   }
   get snapshot() { return this.current; }
+  renewBackupObservation(op:LighthouseOperationSnapshot) {
+    this.backupObserved=0;this.backupSeen=false;this.backupProof=false;this.publish(op);
+  }
   exportWeatherState() {return {solarLatent:this.solarLatent,loggedSurfaceClues:Array.from(this.loggedSurfaceClues)};}
   restoreWeatherState(value:unknown,op:LighthouseOperationSnapshot) {
     const s=saveObject({solarLatent:saveBoolean,loggedSurfaceClues:saveArray(saveDay,128)})(value);

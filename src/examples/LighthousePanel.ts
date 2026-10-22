@@ -257,7 +257,8 @@ export class LighthousePanel {
     const cleaned = previous && last?.id !== previous.inspection && last?.type === "cover-cleaned";
     const solarDone = previous && solar?.id !== previous.maintenance && solar?.component === "solar" && ["现场观察", "表面细查", "擦拭完成"].includes(solar?.method);
     const powerDone = previous && power?.id !== previous.power && power?.type === "verify-main";
-    if (!progress && (inspected || cleaned || solarDone || powerDone)) {
+    const backupDone=previous&&solar?.id!==previous.maintenance&&solar?.component==="backup"&&solar?.method==="实际接替复验";
+    if (!progress && (inspected || cleaned || solarDone || powerDone || backupDone)) {
       this.interrupted = false; this.completedUntil = now + 1100; this.completionLabel = cleaned ? "擦拭完成 · 待复查" : "已记录";
     }
     const cancelled = previous && (last?.id !== previous.inspection && last?.type === "cleaning-cancelled"

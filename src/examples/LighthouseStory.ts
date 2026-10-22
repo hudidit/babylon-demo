@@ -361,6 +361,8 @@ export class LighthouseStory {
   }
   exportState() {return clone(this.s);}
   get revision() {return this.s.sequence;}
+  /** A new watch requires a fresh local observation, including after a checkpoint restore. */
+  get nightWatchKey() {return this.done("ST08")&&!this.done("ST09")?`${this.calendar().day}:${this.daylight(this.s.context.elapsedHours)}`:"";}
   get arrivalChecks() {
     const c = this.s.context, facts = this.s.facts;
     return {control: facts.some(f => f.kind === "control" && this.fresh(f, c)),

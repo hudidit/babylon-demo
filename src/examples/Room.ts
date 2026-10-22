@@ -250,14 +250,16 @@ export class RoomScene {
       accept: () => this.storyCommand(() => this.storyBridge.story.acceptDuty()),
       report: () => this.storyCommand(() => {const story=this.storyBridge.story,work=story.fieldWork;
         return this.canUseStoryRecords()&&!!work.kind&&story.submitReport(work.kind,work.kind==="handover"?work.knownIssues:[]);}),
-      reply: () => this.storyCommand(() => {const id=this.storyBridge.story.snapshot.messages.find(m=>["arrival-report","solar-report"].includes(m.id)&&m.state==="awaiting-reply")?.id;
-        return !!id&&this.storyBridge.story.deliverReply(id as "arrival-report"|"solar-report");}),
+      reply: () => this.storyCommand(() => {const id=this.storyBridge.story.snapshot.messages.find(m=>["arrival-report","solar-report","source-check"].includes(m.id)&&m.state==="awaiting-reply")?.id;
+        return !!id&&this.storyBridge.story.deliverReply(id as "arrival-report"|"solar-report"|"source-check");}),
       read: id => this.storyCommand(() => this.storyBridge.story.readMessage(id)),
       review:()=>this.storyCommand(()=>this.canUseStoryRecords()&&this.storyBridge.story.reviewStormPlan()),
       note:()=>this.storyCommand(()=>this.canUseStoryRecords()&&this.storyBridge.story.recordSolarUncertainty()),
       material:id=>this.storyCommand(()=>this.storyBridge.story.readMaterial(id)),
       diary:choice=>this.storyCommand(()=>this.storyBridge.story.fieldWork.phase==="complete"&&this.storyBridge.story.chooseDiary(choice)),
-      wait:()=>this.startStoryWait(),cancelWait:()=>this.cancelStoryWait()});
+      wait:()=>this.startStoryWait(),cancelWait:()=>this.cancelStoryWait(),
+      epilogue:command=>{const accepted=this.storyCommand(()=>!!this.storyChapters&&this.storyChapters.epilogueCommand(this.storySession,command,this.canUseStoryRecords()));
+        return !!accepted&&((command==="finish"||command==="seen")?this.saveStory().saved:true);}});
     document.querySelector("#story-open")!.addEventListener("click", this.openStoryPanel);
     document.querySelector("#story-objective")!.addEventListener("click", this.openStoryPanel);
     this.interactions.addDevice(lighthouse.panel, () => this.openLighthousePanel("control"));
@@ -599,6 +601,7 @@ export class RoomScene {
     const accepted = command();
     this.storyPanel.notice(accepted ? "记下了。离开或刷新前，记得保存。" : "还不能写下这项结果。看看值守清单，并在书桌或首层记录夹旁填写。");
     this.renderStory(true);
+    return accepted;
   }
   setReducedWeatherMotion(reduced:boolean) {this.reducedWeatherMotion=reduced;this.applyTimeOfDay(this.timeOfDay);}
   private enforceWeatherWork() {

@@ -1,0 +1,47 @@
+start and first chapter
+device cover
+device cover
+device control
+device test
+device log
+native wait
+native wait
+device control
+device test
+device log
+device control
+device lighthouse-solar-array
+device lighthouse-solar-array
+device lighthouse-solar-array
+device control
+device log
+native wait
+native wait
+device control
+device lighthouse-solar-array
+device log
+native wait
+device lighthouse-solar-array
+device control
+device control
+device log
+72-hour cancellation and stay
+native wait
+native wait
+device test
+finish and unseen ending restore
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'story-ending-stay'
+- 'story-ending-title'
+                ^
+
+    at /Users/huzi/work/babylon-demo/docs/technical-plans/assets/lighthouse-story-step4-2026-10-22/check-epilogue.cjs:134:9 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'story-ending-stay',
+  expected: 'story-ending-title',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

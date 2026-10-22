@@ -1,5 +1,7 @@
 import type {LighthouseStory, StoryMaterial} from "./LighthouseStory";
 import type {StoryWaitPlan} from "./LighthouseStoryWait";
+import {renderStoryEpilogue,sourceCheckDetails} from "./LighthouseStoryEpilogue";
+export {epilogueCommand} from "./LighthouseStoryEpilogue";
 export {LighthouseStoryWait, storyWaitPlan} from "./LighthouseStoryWait";
 type View=LighthouseStory["snapshot"];
 export interface StoryWaitView {plan:StoryWaitPlan; allowed:boolean; place:string; running:boolean; progress:string;}
@@ -23,7 +25,7 @@ export function storyMessageText(view:View,id:string) {
     }
     case "stay-registration":return `第${day}日，收到接送取消的通知。我继续留站值守，钥匙仍在我这里，等新的接送安排。`;
     case "old-call":return "海角站，继续值守。收到请回答。\n\n终端标着“岸站旧呼号”。还没有核实是谁发来的。";
-    case "source-check":return "收到一条标着旧呼号的消息，原文和发送时间一并转来。麻烦查一下，是你们发的吗？";
+    case "source-check":return "收到一条标着旧呼号的消息，原文和发送时间一并转来。麻烦查一下，是你们发的吗？\n\n"+sourceCheckDetails(view);
     case "source-check-reply":return "接送取消的通知是我发的。你刚转来的这条，我们这里没有发送记录。\n原文和时间先留着，别删。我继续查。";
     default:return message.body;
   }
@@ -79,7 +81,7 @@ export function renderStoryChapter(document:Document,view:View,work:LighthouseSt
   text("story-report-summary",phase==="handover"?`已留${view.reports.length}份工作报告。还要接着办的事：${work.issueLabels.length?work.issueLabels.join("、"):"暂未查出问题"}。`:
     solar&&view.solarNote?`第${Math.floor((view.solarNote.at+12)/24)+1}日：天气和输入读数记下了，原因还没查清。`:"");
   text("story-save-title",`第${view.calendar.day}日的值守`);text("story-save-detail",done?"交接单已收好，等下一班上岛。":view.objective.title);
-  el("story-wait").hidden=done&&!wait.plan.recovery;text("story-wait-title",wait.plan.title);
+  el("story-wait").hidden=done&&wait.plan.target===undefined&&!wait.plan.recovery;text("story-wait-title",wait.plan.title);
   const target=wait.plan.target,absolute=target===undefined?0:target+12,hour=Math.floor(absolute%24),minute=Math.round((absolute%1)*60);
   text("story-wait-detail",target===undefined?wait.plan.reason:`至第${Math.floor(absolute/24)+1}日 ${String(hour).padStart(2,"0")}:${String(minute).padStart(2,"0")} · 还需${(target-view.elapsedHours).toFixed(1)}小时（岛上时间）\n${wait.plan.reason}`);
   text("story-wait-place",wait.allowed?"可以在这里等一会儿":wait.place);
@@ -95,4 +97,5 @@ export function renderStoryChapter(document:Document,view:View,work:LighthouseSt
   el("story-diary").hidden=!done;
   el("story-diary").querySelectorAll<HTMLButtonElement>("[data-story-diary]").forEach(b=>{b.disabled=!!view.diary;b.setAttribute("aria-pressed",String(view.diary?.choice===b.dataset.storyDiary));});
   text("story-diary-result",view.diary?view.diary.choice==="blank"?"这一页留白。":view.diary.choice==="three-days"?"我以为三天会很快。":"现在不用看地图了。":"想留句话就写在这里，也可以让这一页空着。台灯开不开，由你。");
+  renderStoryEpilogue(document,view,canUseRecords);
 }
