@@ -94,3 +94,7 @@ Wh、燃料只随统一自动场景小时积分，太阳能解析积分并求容
 ## 灯塔故事第一章（2026-10-22）
 
 《交班之前》的交接信、任务、接送安排、接班报告及岸站回复均为项目贡献者原创虚构文稿，适用ISC；周师傅和岸站人物不对应真实个人或历史记录。纸面/联络界面使用原生HTML/CSS，复用既有书桌信件与灯塔记录夹；不将旧信件纹理中的文字作为新人物的经历。入口、真实事件适配和文稿见`LighthouseStoryPanel.ts`、`LighthouseStoryBridge.ts`、`LighthouseStory.ts`及`Room.ts`。当前可玩范围为接班第一章，后续天气章节、等待与结尾仍待实施。没有新增下载素材、配音、字体、几何、灯光、RTT或运行依赖。
+
+## 灯站值守簿界面（2026-10-22）
+
+海墨封皮、雾纸内页、任务书签、信件排版与灯塔线描/页签图标均由项目贡献者以HTML/CSS/内联SVG原创，适用ISC。重设计借鉴[game-ui-ux](https://github.com/gamedev-skills/awesome-gamedev-agent-skills/tree/38a4c2500eeb5ff9ac084336b8f66108069d2f8d/skills/disciplines/game-ui-ux)及[frontend-design](https://github.com/anthropics/skills/tree/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/frontend-design)的设计与验证方法；两套技能以Apache-2.0发布，不包含在运行目录中。没有复制其代码、美术素材或字体，没有新增运行下载或依赖；系统字体回退不保证各平台字形相同。界面只展示当前真实任务/证据/消息状态，不改变剧情与设备判定或存档协议。

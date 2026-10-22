@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-22",
+  "skills": [
+    {
+      "name": "game-ui-ux",
+      "repository": "gamedev-skills/awesome-gamedev-agent-skills",
+      "commit": "38a4c2500eeb5ff9ac084336b8f66108069d2f8d",
+      "path": "skills/disciplines/game-ui-ux",
+      "license": "Apache-2.0",
+      "installed": true,
+      "readFiles": {
+        "SKILL.md": "8a094c84a377503aa8f4c40df676d1c6b6fc07d36ff95554ce06467f1614397e",
+        "references/layout-and-flow.md": "000d944db77155ebf97fde035a3d4fbe69ef0ae348e9dbcaff48c5ea134d7d69"
+      }
+    },
+    {
+      "name": "frontend-design",
+      "repository": "anthropics/skills",
+      "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "path": "skills/frontend-design",
+      "license": "Apache-2.0",
+      "installed": true,
+      "readFiles": {
+        "SKILL.md": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+      }
+    }
+  ],
+  "application": "Layout, safe areas, focus/back, separate player intents; subject-specific palette/type and screenshot critique. No external repository scripts or UI packages were executed or imported."
+}

@@ -1,0 +1,60 @@
+{
+  "files": [
+    "CHANGELOG.md",
+    "docs/technical-plans/README.md",
+    "docs/technical-plans/2026-10-22-lighthouse-story-first-chapter.md",
+    "docs/technical-plans/2026-10-22-game-ui-field-journal.md",
+    "docs/technical-plans/2026-10-21-lighthouse-three-day-story.md",
+    "docs/technical-plans/2026-10-20-lighthouse-focused-experience.md",
+    "docs/technical-plans/2026-10-20-lighthouse-operation-and-keeper-routine.md",
+    "public/STUDY_ASSET_SOURCES.md",
+    "docs/technical-plans/assets/game-ui-journal-2026-10-22/README.md"
+  ],
+  "links": 402,
+  "anchors": 23,
+  "sourceBindings": 23,
+  "errors": [],
+  "node": "v24.21.0",
+  "skills": [
+    {
+      "name": "game-ui-ux",
+      "commit": "38a4c2500eeb5ff9ac084336b8f66108069d2f8d",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "frontend-design",
+      "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "license": "Apache-2.0"
+    }
+  ],
+  "screens": {
+    "chapter-complete.jpg": "df76c8ce44f3f40f995c09006629c8a2fda1da979a29547aa5a2bb13c863c25f",
+    "chapter-one-1280.jpg": "36cbcc2057b0575ec2fd96356fbe782234059f4e1dc503c901387811f01daee1",
+    "chapter-one-390.jpg": "183be20e9085f3f27880f2b004c98da9e60aa91a8ec230ad5dd144496a62e398",
+    "chapter-one-844.jpg": "b76621592869e4285cf984ea7ba3d9b489eb2f346b84862efafc98ac9e8b7395",
+    "cover-1280.jpg": "0d90977712890511de3a99ae6df78c9d23370051dc7749e7ae5a4d7e0d53cc65",
+    "cover-390.jpg": "4cae67d97177df719bc59c94d2828457d5b977c7f636acbe58e065a5f13dae18",
+    "letter-1280.jpg": "a5a5cfb08647c29e9745b92e8886404fae4bb3620c5356e520827af6f3c97299",
+    "overview-1280.jpg": "dc1c9a7c5d48a47bbe7d33b4d25c8bc050117585738c280c5c9af727b91c263a",
+    "overview-390.jpg": "55596239ca36c98ac1a36375a88edc6b22436ff33a4b9f60547c7c88472cb151",
+    "overview-844.jpg": "b96dffb552fd072abe458b270ead648898552e81c0f2233933e2a3ab37942374",
+    "radio-pending-1280.jpg": "781de54cefc2a8e9c03ac5a94e5492c77a50177cec1c5e63687ba539bf28ad51",
+    "radio-reply-1280.jpg": "b1f328ba7d3f7cba90e0a01b396390b361b2a5f9c56f418b060d2394e0096869",
+    "radio-reply-390.jpg": "76dd59e824632a530cab22390837cd81345c99279c95c94789a551ad884ba076",
+    "saved-1280.jpg": "01d12997d9445f6b4e977b0d310f761188844aacd830ae2c0bfd8abb927d7601"
+  },
+  "release": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26544896,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 91529,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2906556,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42596508
+  },
+  "manifestSha256": "f9d1ae0ca510a18874b7592e2b25f190f07d695c4e7c599f8b7eaeff40ecfb5c",
+  "passed": true
+}

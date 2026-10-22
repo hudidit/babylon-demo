@@ -308,22 +308,123 @@
         #lighthouse-gauges .lighthouse-gauge { max-width: 125px; } #lighthouse-actions { flex-direction: column; gap: 0; } .lighthouse-action { margin-top: 10px; }
         .lighthouse-footer { margin-top: 14px; }
       }
-      #story-objective { position: fixed; top: 136px; left: 24px; z-index: 15; max-width: min(350px, calc(100vw - 48px)); padding: 10px 14px; border: 1px solid #cbbca6; border-radius: 8px; background: #eee5d5ed; color: #493c2f; font-size: 12px; text-align: left; }
-      #story-panel { width: min(640px, calc(100% - 24px)); max-height: calc(100dvh - 24px); padding: 22px; border: 1px solid #cbbca6; border-radius: 12px; color: #40392f; background: #f1e8d8; line-height: 1.75; overscroll-behavior: contain; }
-      #story-panel::backdrop { background: #18201dc4; }
-      #story-panel h2, #story-panel h3 { font-weight: 500; margin: 0 0 10px; }
-      #story-panel p, #story-panel li { font-size: 13px; }
-      #story-panel button, #lighthouse-story-record { min-height: 40px; padding: 8px 12px; margin: 4px 4px 4px 0; border: 1px solid #bba98d; border-radius: 6px; color: #493c2f; background: #faf4e9; }
-      #story-panel button:disabled { opacity: .55; cursor: default; }
-      #story-panel header { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0; background: #f1e8d8; }
-      #story-panel section, #story-panel article { border-top: 1px solid #cbbca6; margin-top: 18px; padding-top: 16px; }
-      #story-letter-text, #story-messages p { white-space: pre-wrap; overflow-wrap: anywhere; }
-      #story-letter-text { font-family: "Kaiti SC", "STKaiti", serif; font-size: 16px !important; }
-      #story-storage, #story-notice { color: #73503d; }
-      #story-messages h4 { font-size: 12px; font-weight: 500; }
-      @media(max-width: 600px) { #story-objective { top: 125px; left: 12px; max-width: calc(100vw - 24px); } #story-panel { padding: 16px; } }
-      @media(max-width: 640px) { #story-open { position: fixed; left: 18px; top: 108px; } }
-      @media(max-height: 480px) { #story-objective { top: 66px; left: auto; right: 12px; max-width: 270px; } }
+      #story-panel { --journal-ink:#183238; --journal-deep:#10252b; --journal-paper:#e8e9df; --journal-brass:#c7b17b; --journal-muted:#607979; width:min(1060px, calc(100vw - 48px)); height:min(730px, calc(100dvh - 48px)); max-width:none; max-height:none; padding:0; border:1px solid #7d8c7870; border-radius:7px; color:var(--journal-paper); background:var(--journal-deep); box-shadow:0 30px 100px #0009,0 0 0 5px #10252b45; overflow:hidden; }
+      #lighthouse-story-record { min-height:40px; padding:8px 12px; margin:4px 4px 4px 0; border:1px solid #bba98d; border-radius:6px; color:#493c2f; background:#faf4e9; }
+      #story-panel::backdrop { background:#0d1b20bd; }
+      #story-panel[open] { display:flex; flex-direction:column; animation:journal-open 160ms ease-out; }
+      @keyframes journal-open { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+      #story-panel *, #story-objective * { box-sizing:border-box; }
+      #story-panel button { min-height:44px; border:1px solid #8e9c8e65; border-radius:3px; padding:10px 18px; background:transparent; color:inherit; font-size:14px; line-height:1.45; transition:background 120ms,color 120ms,border-color 120ms; }
+      #story-panel button:hover:not(:disabled) { border-color:var(--journal-brass); background:#c7b17b15; }
+      #story-panel button:active:not(:disabled) { background:#c7b17b30; }
+      #story-panel button:focus-visible, #story-objective:focus-visible { outline:3px solid #b58b3f; outline-offset:3px; }
+      #story-panel button:disabled { color:#748584; border-color:#74858455; cursor:default; }
+      #story-panel .journal-primary { color:#152b2e; background:var(--journal-brass); border-color:var(--journal-brass); font-weight:600; }
+      #story-panel .journal-primary:hover:not(:disabled) { color:#10252b; background:#ddc997; border-color:#ddc997; }
+      #story-panel .journal-primary:disabled { color:#72807b; background:#cbd0c3; border-color:#b5bfb3; }
+      #story-panel .journal-quiet { border-color:transparent; text-decoration:underline; text-underline-offset:5px; }
+      #story-panel svg { width:22px; height:22px; flex-shrink:0; fill:none; stroke:currentColor; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+      #story-panel .story-symbols { position:absolute; width:0; height:0; }
+      .journal-header { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-shrink:0; padding:16px 26px; border-bottom:1px solid #91a29535; background:var(--journal-ink); }
+      .journal-brand { display:flex; align-items:center; gap:12px; color:var(--journal-brass); }
+      #story-title { margin:0; font-size:16px; font-weight:500; letter-spacing:2px; }
+      #story-panel #story-return { padding:7px 12px; border-color:transparent; color:#d5ddd1; }
+      #story-panel kbd { display:inline-block; font-family:inherit; font-size:11px; border:1px solid currentColor; border-radius:3px; line-height:1.25; padding:3px 5px; margin-left:10px; opacity:.65; }
+      #story-cover { position:relative; flex:1; min-height:0; display:grid; grid-template-columns:1.1fr 1fr; align-items:center; gap:24px; padding:36px 56px; overflow:auto; background:radial-gradient(ellipse at 80% 70%,#27484a80,transparent 65%); }
+      .journal-cover-copy { position:relative; z-index:1; }
+      .journal-station { color:#b3c1b6; font-size:14px; margin:0 0 18px; }
+      .journal-cover-title { font:400 clamp(36px,5vw,58px)/1.25 "Songti SC","STSong",serif; letter-spacing:7px; margin:0 0 24px; color:#e8e9df; }
+      .journal-cover-lead { max-width:30em; color:#c3cec3; font-size:16px; line-height:1.9; margin:0 0 28px; }
+      .journal-cover-actions { display:flex; flex-direction:column; align-items:stretch; gap:12px; max-width:310px; }
+      #story-panel .journal-cover-actions button { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; text-align:left; }
+      .journal-cover-caption { color:#a3b4ae; font-size:12px; line-height:1.8; margin:22px 0 0; }
+      #story-panel .journal-cover-art { width:100%; height:auto; max-height:390px; color:#aebca175; stroke-width:.8; }
+      .journal-cover-art .beacon-line { stroke:#dbc890; stroke-width:1.3; }
+      .journal-confirm { position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:clamp(24px,6vw,70px); background:#183238; }
+      .journal-confirm h3 { font:400 30px "Songti SC","STSong",serif; margin:0 0 20px; }
+      .journal-confirm p { max-width:34em; line-height:1.9; color:#c3cec3; margin:0 0 24px; }
+      .journal-action-row { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+      #story-active { flex:1; min-height:0; display:grid; grid-template-columns:178px minmax(0,1fr); grid-template-rows:minmax(0,1fr); }
+      .journal-tabs { display:flex; flex-direction:column; min-height:0; overflow:auto; padding:26px 0 20px 14px; gap:8px; background:var(--journal-ink); }
+      #story-panel .journal-tab { position:relative; display:flex; align-items:center; gap:12px; text-align:left; padding:14px 16px; margin-right:12px; border:0; color:#b3c5b9; border-radius:3px 0 0 3px; }
+      #story-panel .journal-tab[aria-selected="true"] { background:var(--journal-paper); color:#183238; margin-right:0; box-shadow:inset 3px 0 var(--journal-brass); }
+      .journal-tab-label { flex:1; white-space:nowrap; }
+      #story-unread { background:#c7b17b; color:#183238; border-radius:20px; min-width:22px; font-size:12px; text-align:center; padding:1px 5px; }
+      .journal-tab-foot { margin:auto 16px 0; font-size:12px; line-height:1.8; color:#8fa6a1; }
+      #story-pages { min-width:0; min-height:0; overflow:auto; overscroll-behavior:contain; color:var(--journal-ink); background:var(--journal-paper); scrollbar-color:#849589 transparent; }
+      .journal-page { padding:32px clamp(22px,4vw,48px); }
+      #story-panel .journal-page button { border-color:#879a8970; }
+      .journal-page-head { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:24px; }
+      .journal-page-head h3 { margin:0; font:400 27px/1.4 "Songti SC","STSong",serif; }
+      .journal-page-head p { margin:0; font-size:13px; color:#4f6768; }
+      #story-chapter { margin:0 0 12px; color:#556d6b; font-size:13px; }
+      #story-goal { margin:0 0 18px; font:400 clamp(23px,3vw,31px)/1.5 "Songti SC","STSong",serif; }
+      #story-next { margin:0 0 24px; max-width:38em; font-size:15px; line-height:1.9; color:#3d575b; }
+      .journal-steps { display:flex; gap:0; margin:0 0 30px; padding:0; list-style:none; }
+      .journal-steps li { flex:1; position:relative; padding:12px 0 0; border-top:3px solid #bac5b9; color:#60716d; font-size:13px; }
+      .journal-steps li[data-state="complete"] { border-color:#557975; color:#34544f; }
+      .journal-steps li[data-state="active"] { border-color:#a18342; color:#6a521f; font-weight:600; }
+      #story-checks { list-style:none; padding:0; margin:0 0 24px; }
+      #story-checks li { display:grid; grid-template-columns:28px minmax(0,1fr) auto; gap:12px; align-items:center; padding:17px 0; border-bottom:1px solid #b6c2b480; }
+      .journal-check-icon { display:grid; place-items:center; width:26px; height:26px; border:1px solid #879b8b; border-radius:50%; font-size:14px; }
+      #story-checks li[data-state="complete"] .journal-check-icon { background:#2c5652; color:#f4f4e7; border-color:#2c5652; }
+      .journal-check-copy strong { display:block; font-weight:500; font-size:16px; margin-bottom:4px; }
+      .journal-check-copy small { color:#526c6b; font-size:13px; line-height:1.5; }
+      .journal-check-state { color:#3f6461; font-size:13px; white-space:nowrap; }
+      #story-report-hint { font-size:13px; color:#4f6768; line-height:1.8; margin:16px 0; }
+      .journal-letter { position:relative; max-width:590px; padding:34px clamp(20px,4vw,42px); margin:10px auto 24px; background:#f4f3e9; border:1px solid #c3cbbd; box-shadow:2px 4px 0 #cbd0c4; }
+      .journal-letter::before { content:""; position:absolute; width:44px; height:15px; top:-8px; left:calc(50% - 22px); border:1px solid #71877c; border-radius:5px; background:#a5b4a1; }
+      #story-letter-text { white-space:pre-wrap; font:400 18px/2 "Kaiti SC","STKaiti","Songti SC",serif; margin:0; color:#2d4548; }
+      #story-letter-stamp { display:inline-block; margin-top:24px; padding:3px 9px; border:2px solid #6a8275; color:#4d7060; font:500 15px "Songti SC",serif; transform:rotate(-5deg); }
+      .journal-letter-actions { max-width:590px; margin:0 auto; display:flex; flex-wrap:wrap; gap:10px; }
+      .journal-correspondence { display:grid; grid-template-columns:minmax(160px,.8fr) minmax(0,1.6fr); border:1px solid #bac6b7; min-height:300px; }
+      #story-messages { padding:8px; border-right:1px solid #bac6b7; }
+      #story-panel .journal-message { display:block; width:100%; text-align:left; padding:13px 10px; border:0; border-left:3px solid transparent; border-radius:0; color:#425d5b; }
+      #story-panel .journal-message[aria-current="true"] { border-left-color:#9b7c3f; background:#d4ded0; color:#183238; }
+      .journal-message strong { display:block; font-size:14px; font-weight:500; line-height:1.55; }
+      .journal-message small { display:block; font-size:12px; color:#566e68; margin-top:6px; }
+      .journal-message.is-unread strong::before { content:""; display:inline-block; width:6px; height:6px; margin-right:7px; border-radius:50%; background:#9b6a30; }
+      #story-message-reader { padding:24px; min-width:0; background:#f3f3e9; }
+      #story-message-title { font:400 22px/1.5 "Songti SC",serif; margin:0 0 10px; }
+      #story-message-meta { font-size:12px; color:#526b68; line-height:1.7; padding-bottom:18px; margin:0 0 18px; border-bottom:1px solid #c6d0bf; }
+      #story-message-body { white-space:pre-wrap; overflow-wrap:anywhere; font-size:16px; line-height:1.9; margin:0 0 24px; }
+      .journal-radio-heading { display:flex; gap:12px; align-items:center; }
+      #story-reply { margin-bottom:20px; }
+      #story-message-empty { color:#536e6a; font-size:15px; line-height:1.8; }
+      .journal-save-record { padding:24px 0; margin-bottom:22px; border-block:1px solid #b6c2b4; }
+      .journal-save-record h4 { font:400 25px "Songti SC",serif; margin:0 0 12px; }
+      .journal-save-record p { font-size:15px; line-height:1.8; margin:0; color:#4f6768; }
+      #story-storage { font-size:15px; line-height:1.8; padding:18px 0; margin:0; }
+      .journal-save-note { font-size:13px; line-height:1.9; color:#4f6768; margin:24px 0; }
+      #story-panel .journal-danger { color:#8c3e2f; border-color:#a75e4970; }
+      .journal-footer { flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:48px; padding:10px 26px; border-top:1px solid #91a29535; color:#aebeb4; background:var(--journal-deep); font-size:12px; }
+      #story-notice { margin:0; color:#ead39c; font-size:13px; line-height:1.6; }
+      #story-notice:empty { display:none; }
+      .journal-key-help { margin-left:auto; white-space:nowrap; }
+      #story-objective { position:fixed; top:136px; left:24px; z-index:15; display:flex; align-items:center; gap:13px; width:min(318px,calc(100vw - 48px)); padding:14px 16px; border:1px solid #93a18e70; border-left:3px solid #c7b17b; border-radius:3px; background:#183238ed; color:#e8e9df; box-shadow:0 6px 24px #0004; text-align:left; }
+      #story-objective svg { width:25px; height:25px; fill:none; stroke:#c7b17b; stroke-width:1.4; flex-shrink:0; }
+      #story-objective-title { display:block; font-size:15px; font-weight:500; line-height:1.55; }
+      #story-objective-detail { display:block; margin-top:4px; font-size:12px; color:#b1c1b4; }
+      #story-objective kbd { margin-left:auto; padding:3px 6px; border:1px solid #83988a; border-radius:3px; font-size:11px; font-family:inherit; }
+      body.time-menu-open #story-objective { visibility:hidden; }
+      @media(max-width:640px) { #story-open { position:fixed; left:18px; top:108px; } #story-objective { top:120px; left:12px; width:min(318px,calc(100vw - 24px)); } }
+      @media(max-width:700px) {
+        #story-panel { width:calc(100vw - max(16px,env(safe-area-inset-left)) - max(16px,env(safe-area-inset-right))); height:calc(100dvh - max(16px,env(safe-area-inset-top)) - max(16px,env(safe-area-inset-bottom))); }
+        .journal-header { padding:10px 14px; } #story-panel #story-return { font-size:13px; padding-inline:8px; } #story-panel #story-return kbd { display:none; }
+        #story-cover { padding:30px 24px; grid-template-columns:1fr; align-content:start; gap:12px; }
+        #story-panel .journal-cover-art { position:absolute; right:-40px; bottom:8px; width:70%; opacity:.25; pointer-events:none; }
+        .journal-cover-copy { max-width:100%; } .journal-cover-title { font-size:40px; } .journal-cover-lead { font-size:16px; }
+        #story-active { grid-template-columns:1fr; grid-template-rows:auto minmax(0,1fr); }
+        .journal-tabs { flex-direction:row; padding:6px 10px 0; gap:0; } #story-panel .journal-tab { flex:1; justify-content:center; gap:6px; margin:0; padding:12px 5px; border-radius:3px 3px 0 0; font-size:13px; }
+        #story-panel .journal-tab[aria-selected="true"] { box-shadow:inset 0 3px var(--journal-brass); } .journal-tabs svg,.journal-tab-foot { display:none; } .journal-tab-label { flex:none; } #story-unread { min-width:17px; font-size:11px; }
+        .journal-page { padding:24px 20px; } .journal-page-head { gap:8px; margin-bottom:20px; } .journal-page-head h3 { font-size:24px; } .journal-page-head p { font-size:12px; }
+        #story-checks li { grid-template-columns:25px minmax(0,1fr); gap:10px; } .journal-check-state { grid-column:2; } .journal-check-copy strong { font-size:16px; }
+        #story-letter-text { font-size:17px; } .journal-letter { padding:30px 20px; } .journal-correspondence { grid-template-columns:1fr; }
+        #story-messages { display:flex; gap:4px; overflow:auto; border-right:0; border-bottom:1px solid #bac6b7; } #story-panel .journal-message { flex:0 0 165px; }
+        #story-message-reader { padding:22px 18px; } .journal-footer { padding:9px 14px; } .journal-key-help { display:none; }
+      }
+      @media(max-height:480px) { #story-panel { height:calc(100dvh - 20px); width:calc(100vw - 32px); } .journal-header { padding:6px 18px; } .journal-footer { min-height:36px; padding:6px 18px; } .journal-page { padding-block:20px; } .journal-tabs { padding-block:12px; gap:2px; } .journal-tab-foot { display:none; } #story-cover { padding-block:22px; } .journal-cover-title { font-size:36px; margin-bottom:12px; } .journal-cover-lead { margin-bottom:18px; } .journal-cover-caption { margin-top:14px; } #story-objective { top:66px; left:auto; right:12px; width:270px; padding:10px 13px; } }
+      @media(prefers-reduced-motion:reduce) { #story-panel[open] { animation:none; } #story-panel button { transition:none; } }
     </style>
   </head>
   <body>
@@ -338,22 +439,40 @@
       <button id="settings-btn" aria-expanded="false" aria-controls="settings-menu">设置</button>
       <button id="inspect-btn">调试</button>
     </nav>
-    <button id="story-objective" hidden aria-haspopup="dialog"></button>
+    <button id="story-objective" hidden aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v19l-7-4-7 4zM9 7h6M9 11h6"/></svg><span><span id="story-objective-title"></span><span id="story-objective-detail"></span></span><kbd>J</kbd></button>
     <dialog id="story-panel" aria-labelledby="story-title">
-      <header><h2 id="story-title">交班之前</h2><button id="story-return">返回场景</button></header>
-      <p>三天代班，先从一封交接信开始。当前可游玩第一章，后续章节正在制作。</p>
-      <div><button id="story-new">开始新故事</button><button id="story-resume" hidden>返回本次故事</button><button id="story-load">继续已保存故事</button></div>
-      <p id="story-new-warning" hidden>新故事从第一日正午开始；下次保存会替换原故事存档。探索和演练进度各自保留。</p>
-      <button id="story-new-confirm" hidden>从接班信开始</button>
-      <p id="story-storage" role="status"></p>
-      <button id="story-clear" hidden>清除不可用的故事存档</button>
-      <div><button id="story-save" hidden>保存故事</button><button id="story-leave" hidden>保存故事并返回探索</button></div>
-      <p id="story-notice" role="status" aria-live="polite"></p>
+      <svg class="story-symbols" aria-hidden="true"><defs>
+        <symbol id="journal-beacon" viewBox="0 0 24 24"><path d="M8 20l2-12h4l2 12M7 20h10M9 8V5l3-2 3 2v3M8 8h8M3 5l3 1M18 6l3-1M11 13h2"/></symbol>
+        <symbol id="journal-book" viewBox="0 0 24 24"><path d="M5 3h14v18H5a2 2 0 010-4h14M5 3a2 2 0 00-2 2v14M8 7h7M8 11h5"/></symbol>
+        <symbol id="journal-letter" viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 5l9 8 9-8"/></symbol>
+        <symbol id="journal-radio" viewBox="0 0 24 24"><path d="M5 8h14v13H5zM8 8l8-6M8 12h8M9 17h1M14 17h2M2 11v7M22 11v7"/></symbol>
+        <symbol id="journal-save" viewBox="0 0 24 24"><path d="M4 3h14l3 3v15H4zM8 3v6h8V3M8 21v-8h9v8"/></symbol>
+      </defs></svg>
+      <header class="journal-header"><div class="journal-brand"><svg aria-hidden="true"><use href="#journal-beacon"/></svg><h2 id="story-title">灯站值守簿</h2></div><button id="story-return">返回场景<kbd>Esc</kbd></button></header>
+      <section id="story-cover" aria-label="交班之前">
+        <div class="journal-cover-copy"><p class="journal-station">海角灯站 / 三天代班</p><h3 class="journal-cover-title">交班之前</h3><p class="journal-cover-lead">先熟悉这座岛，再照看今晚的灯。<br>你的第一班，从周师傅留下的一封信开始。</p>
+          <div class="journal-cover-actions"><button id="story-resume" class="journal-primary" hidden>返回本次故事<span aria-hidden="true">↗</span></button><button id="story-cover-continue" class="journal-primary" hidden>继续已保存故事<span aria-hidden="true">↗</span></button><button id="story-new">开始新故事<span aria-hidden="true">＋</span></button></div>
+          <p id="story-cover-status" class="journal-cover-caption" role="status"></p><button id="story-cover-clear" class="journal-quiet" hidden>清除不可用的故事存档</button><p class="journal-cover-caption">当前篇章：接班的午后<br>阅读时暂停值守，随时可以返回岛上。</p>
+        </div>
+        <svg class="journal-cover-art" viewBox="0 0 320 390" aria-hidden="true"><path d="M22 312c37-19 54-10 91-24 29-11 59-8 79-19 25-14 55-7 103-26M19 327c54-11 74-9 100-19 31-12 54-9 84-24 24-12 53-6 92-23M18 345c47-15 81-5 113-20 34-15 50-7 78-22 23-11 59-7 88-20M35 364c42-14 62-2 100-15 40-15 62-13 83-23 19-9 42-10 65-15"/><path class="beacon-line" d="M134 273l13-121h40l14 121M124 277h87M143 153v-24h47v24M139 129l28-22 28 22M141 154h53M149 166h37M151 194h37M149 225h42M159 273v-27h18v27M168 107V92M147 141h42"/><path d="M143 136L33 70v153l110-76M191 136l105-65v151l-105-75M167 61v15M167 24v15M94 60l10 13M241 60l-10 13M116 101l-12-8M217 101l12-8"/><circle cx="167" cy="141" r="90" stroke-dasharray="2 6"/><path d="M56 290l10-16h35l9 13M65 275v20h37v-20M82 294v-12h7v12M110 288c28-12 20 2 31-2"/></svg>
+        <section id="story-new-prompt" class="journal-confirm" hidden aria-label="开始新故事确认"><h3>接下这三天值守？</h3><p id="story-new-warning">故事从第一日正午开始。下次保存会替换原故事存档，探索与演练进度各自保留。</p><div class="journal-action-row"><button id="story-new-confirm" class="journal-primary">从接班信开始</button><button id="story-new-cancel">再想一想</button></div></section>
+      </section>
       <div id="story-active" hidden>
-        <section><p id="story-chapter"></p><h3 id="story-goal"></h3><p id="story-next"></p><ul id="story-checks"></ul></section>
-        <section><h3>周师傅的交接信</h3><p id="story-letter-text"></p><button id="story-letter-read">读完交接信</button><button id="story-accept">接下三天值守</button></section>
-        <section><h3>接班报告与联络</h3><p id="story-report-hint"></p><button id="story-report">提交接班报告</button><button id="story-reply" hidden>接收岸站回复</button><div id="story-messages"></div></section>
+        <nav class="journal-tabs" role="tablist" aria-label="值守簿分页" aria-orientation="vertical">
+          <button id="story-tab-duty" class="journal-tab" role="tab" data-story-page="duty" aria-controls="story-page-duty" aria-selected="true"><svg aria-hidden="true"><use href="#journal-book"/></svg><span class="journal-tab-label">值守任务</span></button>
+          <button id="story-tab-letter" class="journal-tab" role="tab" data-story-page="letter" aria-controls="story-page-letter" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#journal-letter"/></svg><span class="journal-tab-label">交接信</span></button>
+          <button id="story-tab-radio" class="journal-tab" role="tab" data-story-page="radio" aria-controls="story-page-radio" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#journal-radio"/></svg><span class="journal-tab-label">岸站联络</span><span id="story-unread" hidden></span></button>
+          <button id="story-tab-save" class="journal-tab" role="tab" data-story-page="save" aria-controls="story-page-save" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#journal-save"/></svg><span class="journal-tab-label">保存与离开</span></button>
+          <p class="journal-tab-foot">海角灯站<br>三天的值守记录</p>
+        </nav>
+        <div id="story-pages">
+          <section id="story-page-duty" class="journal-page" role="tabpanel" aria-labelledby="story-tab-duty" tabindex="0"><p id="story-chapter"></p><h3 id="story-goal"></h3><ol id="story-steps" class="journal-steps" aria-label="第一章接班进度"></ol><p id="story-next"></p><ul id="story-checks"></ul><div class="journal-action-row"><button id="story-view-letter" class="journal-primary">阅读交接信</button><button id="story-report" class="journal-primary">提交接班报告</button><button id="story-view-radio">打开岸站联络</button></div><p id="story-report-hint"></p></section>
+          <section id="story-page-letter" class="journal-page" role="tabpanel" aria-labelledby="story-tab-letter" tabindex="0" hidden><div class="journal-page-head"><h3>周师傅的交接信</h3><p>交接材料 / 可重读</p></div><div class="journal-letter"><p id="story-letter-text"></p><span id="story-letter-stamp">待读</span></div><div class="journal-letter-actions"><button id="story-letter-read">读完交接信</button><button id="story-accept" class="journal-primary">接下三天值守</button></div></section>
+          <section id="story-page-radio" class="journal-page" role="tabpanel" aria-labelledby="story-tab-radio" tabindex="0" hidden><div class="journal-page-head"><div class="journal-radio-heading"><svg aria-hidden="true"><use href="#journal-radio"/></svg><h3>岸站联络</h3></div><p>原文与时间留档</p></div><button id="story-reply" class="journal-primary" hidden>接收岸站回复</button><div class="journal-correspondence"><div id="story-messages" aria-label="联络列表"></div><article id="story-message-reader" aria-labelledby="story-message-title"><h4 id="story-message-title"></h4><p id="story-message-meta"></p><p id="story-message-body"></p><button id="story-message-read">阅读这条联络</button><p id="story-message-empty" hidden>暂未收到联络。先完成当前值守任务。</p></article></div></section>
+          <section id="story-page-save" class="journal-page" role="tabpanel" aria-labelledby="story-tab-save" tabindex="0" hidden><div class="journal-page-head"><h3>保存与离开</h3><p>故事记录独立保管</p></div><div class="journal-save-record"><h4 id="story-save-title">本次值守</h4><p id="story-save-detail"></p></div><div class="journal-action-row"><button id="story-save" class="journal-primary">保存故事</button><button id="story-load">继续已保存故事</button></div><p id="story-storage" role="status"></p><button id="story-clear" class="journal-danger" hidden>清除不可用的故事存档</button><p class="journal-save-note">离开前请保存。再次继续时，时间会先暂停。<br>返回探索会恢复本页面的探索进度；探索记录需单独保存。</p><button id="story-leave">保存故事并返回探索</button></section>
+        </div>
       </div>
+      <footer class="journal-footer"><span id="story-reading-state">阅读时，值守暂停</span><p id="story-notice" role="status" aria-live="polite"></p><span class="journal-key-help">Tab 选择 · Enter 确认</span></footer>
     </dialog>
     <section id="settings-menu" class="settings-panel" aria-labelledby="settings-title" hidden>
       <div class="settings-header">

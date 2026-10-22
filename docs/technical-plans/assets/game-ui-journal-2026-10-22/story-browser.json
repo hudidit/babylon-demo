@@ -1,0 +1,312 @@
+{
+  "baseline": "e5fbf0b",
+  "method": "Final dist, native controls, actual device geometry/rays and shared clock. Poses are fixtures; no full-walk or FPS claim.",
+  "cases": [
+    {
+      "path": "/",
+      "errors": [],
+      "warnings": [],
+      "firstScreenJs": [
+        {
+          "path": "/js/main.js",
+          "bytes": 486378,
+          "sha256": "068d3c4a26249e7eead0f054ec4190b14ad86540d7be2baf4f3d1a8f7902d189"
+        },
+        {
+          "path": "/js/9691.js",
+          "bytes": 2420178,
+          "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+        },
+        {
+          "path": "/js/1203.js",
+          "bytes": 138571,
+          "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+        },
+        {
+          "path": "/js/8558.js",
+          "bytes": 12560,
+          "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+        },
+        {
+          "path": "/js/6612.js",
+          "bytes": 14807,
+          "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+        },
+        {
+          "path": "/js/4742.js",
+          "bytes": 8962,
+          "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+        },
+        {
+          "path": "/js/7449.js",
+          "bytes": 2072,
+          "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+        },
+        {
+          "path": "/js/5587.js",
+          "bytes": 1107,
+          "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+        },
+        {
+          "path": "/js/9615.js",
+          "bytes": 9069,
+          "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+        },
+        {
+          "path": "/js/6560.js",
+          "bytes": 2517,
+          "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+        },
+        {
+          "path": "/js/4472.js",
+          "bytes": 14991,
+          "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+        },
+        {
+          "path": "/js/9915.js",
+          "bytes": 14196,
+          "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+        }
+      ],
+      "screens": [
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "box": {
+            "x": 110,
+            "y": 35,
+            "right": 1170,
+            "bottom": 765,
+            "overflow": false,
+            "documentOverflow": false
+          },
+          "path": "chapter-one-1280.jpg"
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "box": {
+            "x": 16,
+            "y": 16,
+            "right": 374,
+            "bottom": 828,
+            "overflow": false,
+            "documentOverflow": false
+          },
+          "path": "chapter-one-390.jpg"
+        },
+        {
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "box": {
+            "x": 16,
+            "y": 10,
+            "right": 828,
+            "bottom": 380,
+            "overflow": false,
+            "documentOverflow": false
+          },
+          "path": "chapter-one-844.jpg"
+        }
+      ],
+      "firstScreenBytes": 3125408,
+      "keyboardTabsAndTrap": true,
+      "lockedTime": {
+        "before": {
+          "hour": 12,
+          "seed": 3101195734
+        },
+        "after": {
+          "hour": 12,
+          "seed": 3101195734
+        },
+        "mode": false,
+        "restart": false
+      },
+      "explorationRestored": true,
+      "nativeDeskLetter": true,
+      "interruptedCleaning": true,
+      "observation": {
+        "before": {
+          "seconds": 29.900000000000155,
+          "complete": false
+        },
+        "after": {
+          "seconds": 30,
+          "turns": 1.0000000000000264,
+          "output": true,
+          "complete": true
+        },
+        "objective": "ST03"
+      },
+      "nativeTowerRecords": true,
+      "deskResume": {
+        "eye": [
+          3.75,
+          3,
+          -18.750000000000004
+        ],
+        "checks": {
+          "control": true,
+          "main": true,
+          "cover": true
+        },
+        "canUse": true,
+        "canSubmit": true,
+        "clear": true
+      },
+      "firstChapterComplete": true,
+      "failureProtection": true,
+      "reducedMotion": true,
+      "saveFailuresPreserveSession": true,
+      "otherSlotsUnchanged": true,
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0
+      },
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "errors": [],
+      "warnings": [],
+      "firstScreenJs": [
+        {
+          "path": "/home/js/main.js",
+          "bytes": 486378,
+          "sha256": "068d3c4a26249e7eead0f054ec4190b14ad86540d7be2baf4f3d1a8f7902d189"
+        },
+        {
+          "path": "/home/js/9691.js",
+          "bytes": 2420178,
+          "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+        },
+        {
+          "path": "/home/js/1203.js",
+          "bytes": 138571,
+          "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+        },
+        {
+          "path": "/home/js/8558.js",
+          "bytes": 12560,
+          "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+        },
+        {
+          "path": "/home/js/6612.js",
+          "bytes": 14807,
+          "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+        },
+        {
+          "path": "/home/js/4742.js",
+          "bytes": 8962,
+          "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+        },
+        {
+          "path": "/home/js/7449.js",
+          "bytes": 2072,
+          "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+        },
+        {
+          "path": "/home/js/5587.js",
+          "bytes": 1107,
+          "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+        },
+        {
+          "path": "/home/js/9615.js",
+          "bytes": 9069,
+          "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+        },
+        {
+          "path": "/home/js/6560.js",
+          "bytes": 2517,
+          "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+        },
+        {
+          "path": "/home/js/4472.js",
+          "bytes": 14991,
+          "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+        },
+        {
+          "path": "/home/js/9915.js",
+          "bytes": 14196,
+          "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+        }
+      ],
+      "screens": [],
+      "firstScreenBytes": 3125408,
+      "keyboardTabsAndTrap": true,
+      "lockedTime": {
+        "before": {
+          "hour": 12,
+          "seed": 2137005196
+        },
+        "after": {
+          "hour": 12,
+          "seed": 2137005196
+        },
+        "mode": false,
+        "restart": false
+      },
+      "explorationRestored": true,
+      "subpathResume": true,
+      "otherSlotsUnchanged": true,
+      "disposed": {
+        "meshes": 0,
+        "materials": 0,
+        "textures": 0,
+        "lights": 0,
+        "cameras": 0
+      },
+      "passed": true
+    }
+  ],
+  "prefixes": [
+    {
+      "path": "/",
+      "files": 495,
+      "passed": true
+    },
+    {
+      "path": "/home/",
+      "files": 495,
+      "passed": true
+    }
+  ],
+  "manifestSha256": "f9d1ae0ca510a18874b7592e2b25f190f07d695c4e7c599f8b7eaeff40ecfb5c",
+  "release": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26544896,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 91529,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2906556,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42596508
+  },
+  "sources": {
+    "src/examples/Room.ts": "ed6934245b8e0f88539163e9a3dba598bf56bbf8ad773d9557f05dbbf3ababe6",
+    "src/examples/LighthouseStoryBridge.ts": "6998107f8e638f1145ed7003a876ef40dd4aa1b67273547e6d0feed392b44582",
+    "src/examples/LighthouseStoryPanel.ts": "20faab88137e54989bb1846dafc9a01e52119d568c6b096f827d94465a19013c",
+    "src/examples/LighthouseStory.ts": "912498ee485707eac36fa4b615361584361f28b627e1d6a986e259379435b7ac",
+    "src/examples/LighthouseStorySave.ts": "97a9bbd456f035c5064c7a613770569de385dd7d8185a841f160963eeb8cd572",
+    "src/examples/LighthouseInspection.ts": "101d37043abeb460e23f6019e48865cfd90e7d01ecddb9ff5c6ea693804db300",
+    "src/examples/LighthousePanel.ts": "cd4f9893d9d9124503115c273426526109befc57d9e252bdc8112153cd4f8284",
+    "src/examples/RoomPauseState.ts": "e75990566e35a12cf8e956802038071f92c6b07c06b74824b185c5b559adcd70",
+    "src/components/RoomTimeMenu.ts": "32fe639a2b514e10a1d10533ac4719578afd702161da5b11e89cd3dfd5fc87d5",
+    "public/index.html": "111a326b3800313998e757d7a8645d0a70f9e0e4c71b19a06217f939b178e6de",
+    "tests/lighthouse-story-bridge.test.cjs": "726a95bb7c18267a4e5844ff0b0573639cc628eff7a596f6247fc982c0b31415"
+  },
+  "browser": "155.0.8059.86",
+  "passed": true
+}
