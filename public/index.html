@@ -194,10 +194,6 @@
       #lighthouse-exercise-restart { width:100%;min-height:36px;margin-top:6px;border:1px solid #cbbca6;border-radius:5px;background:#e6d9c5;color:#40392f; }
       #weather-current { margin:8px 0; }
       #weather-label { border-left:1px solid #cbbca6;padding-left:8px; }
-      #lighthouse-discovery {padding:12px 16px;border:1px solid #75826d;color:#e4e5cc;font-size:12px;line-height:1.75;}
-      #lighthouse-discovery p {margin:0;} #lighthouse-discovery-next {color:#cdd2bb;margin-top:8px !important;}
-      #lighthouse-discovery {grid-column:1 / -1;}
-      #lighthouse-panel-weather, #lighthouse-panel-session {font-size:11px;line-height:1.7;margin:10px 0;color:#cdd2bb;}
       .time-auto label { display: flex; align-items: center; gap: 9px; min-height: 44px; font-size: 12px; cursor: pointer; }
       #time-automatic { width: 18px; height: 18px; accent-color: #73503d; }
       .time-auto p, #time-current { font-size: 11px; line-height: 1.6; color: #6b6051; margin: 4px 0 0; }
@@ -218,98 +214,135 @@
       body.viewing-lighthouse > .identity, body.viewing-lighthouse > .tools, body.viewing-lighthouse > .settings-panel,
       body.viewing-lighthouse > .scene-controls, body.viewing-lighthouse > #floor-plan-toggle,
       body.viewing-lighthouse > #interaction-reticle, body.viewing-lighthouse > #interaction-hint { visibility: hidden; }
-      #lighthouse-panel { width: min(660px, calc(100% - 28px)); max-height: calc(100dvh - 28px); box-sizing: border-box; padding: 0; margin: auto; border: 1px solid #7e8275; border-radius: 6px; background: #303c38; color: #eee5ce; box-shadow: 0 24px 100px #0009, inset 0 0 0 5px #262f2c, inset 0 0 0 6px #555f54; overflow-y: auto; overscroll-behavior: contain; font-family: system-ui, sans-serif; }
-      #lighthouse-panel::backdrop { background: #0c1819a8; backdrop-filter: blur(3px); }
-      #lighthouse-panel [hidden], #lighthouse-activity[hidden] { display: none !important; }
-      .lighthouse-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 27px 30px 18px; }
-      #lighthouse-panel-place { margin: 0 0 7px; color: #b5b8a4; font-size: 10px; letter-spacing: 2px; }
-      #lighthouse-panel h2 { margin: 0; font-size: 23px; font-weight: 500; letter-spacing: 2px; }
-      #lighthouse-panel button { font: inherit; cursor: pointer; }
-      #lighthouse-panel button:focus-visible { outline: 2px solid #ead49b; outline-offset: 4px; }
-      #lighthouse-panel-return { flex-shrink: 0; min-height: 40px; padding: 9px 12px; border: 1px solid #8c9580; border-radius: 3px; color: #eee5ce; background: #202b28; font-size: 11px !important; }
-      .lighthouse-body { padding: 0 30px 24px; font-size: 13px; line-height: 1.65; }
-      .lighthouse-strip { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid #6d796155; padding: 12px 0; color: #c0c4ad; font-size: 11px; }
-      #lighthouse-panel-clock { margin: 0; font-variant-numeric: tabular-nums; letter-spacing: 1px; }
-      #lighthouse-record-toggle { background: none; border: 0; color: #e2d1a7; padding: 6px 0 6px 10px; font-size: 12px !important; text-decoration: underline; text-underline-offset: 5px; }
-      .lighthouse-status { display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 1px; }
-      #lighthouse-status-lamp { width: 8px; height: 8px; border-radius: 50%; background: #acb6a6; box-shadow: 0 0 0 3px #162421; }
-      #lighthouse-status-lamp[data-tone="good"] { background: #b8d4a1; box-shadow: 0 0 0 3px #162421, 0 0 12px #9fce8355; }
-      #lighthouse-status-lamp[data-tone="warn"] { background: #efbc70; }
-      #lighthouse-panel-state { margin: 0; }
-      #lighthouse-gauges { display: flex; justify-content: center; gap: 24px; margin: 17px 0 0; }
-      .lighthouse-gauge { flex: 1; max-width: 234px; min-width: 0; margin: 0; padding: 17px 8px 12px; background: #e2ddc5; border: 6px solid #182420; border-radius: 8px; box-shadow: 0 2px 0 #83907a66, inset 0 0 0 1px #b6b398, inset 0 6px 16px #3c3f301c; color: #2b3b32; }
-      .lighthouse-gauge svg { display: block; width: 100%; overflow: visible; }
-      .dial-track { fill: none; stroke: #a4ab8b; stroke-width: 7; }
-      .dial-ticks line { stroke: #465846; stroke-width: 1.5; }
-      .lighthouse-gauge text { text-anchor: middle; fill: #56634f; font: 10px system-ui; }
-      .lighthouse-gauge .dial-label { fill: #3c503e; font-size: 11px; letter-spacing: 2px; }
-      .dial-needle path { fill: #a2573c; } .dial-needle circle { fill: #344638; stroke: #d7d0b5; stroke-width: 2; }
-      .lighthouse-gauge figcaption { text-align: center; line-height: 1.5; }
-      .lighthouse-gauge strong { display: block; font: 23px ui-monospace, monospace; letter-spacing: -1px; }
-      .lighthouse-gauge figcaption span { color: #69735d; font-size: 10px; letter-spacing: 2px; }
-      #lighthouse-power-flow { text-align: center; min-height: 18px; margin: 10px 0 14px; font-size: 11px; color: #bdc7b1; letter-spacing: 2px; }
-      #lighthouse-status-face { margin: 24px auto 10px; width: 150px; height: 150px; border: 8px solid #1c2823; border-radius: 50%; background: radial-gradient(circle at 45% 35%, #74806a, #414e40); box-shadow: inset 0 0 0 1px #89917b, inset 0 0 25px #172b2699, 0 1px 0 #99a18966; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px; }
-      #lighthouse-status-face::before { content: "●"; color: #c4d8ab; font-size: 23px; text-shadow: 0 0 15px #d1e4b666; }
-      #lighthouse-status-face[data-tone="warn"]::before { color: #efbd79; }
-      #lighthouse-status-face-label { font-size: 14px; } #lighthouse-status-face-detail { font-size: 10px; color: #c1c8b2; letter-spacing: 2px; }
-      #lighthouse-panel-guide { margin: 0; padding: 13px 16px; background: #202e29; border-left: 2px solid #b6aa79; color: #d3d9c3; font-size: 12px; }
-      #lighthouse-actions { display: flex; gap: 12px; }
-      .lighthouse-action { flex: 1; min-height: 46px; margin: 18px 0 0; padding: 10px 14px; border: 1px solid #cbc3a2; border-bottom: 4px solid #9d987d; border-radius: 3px; background: linear-gradient(#e3dcc1, #c9c8ab); color: #253b30; font-size: 13px !important; letter-spacing: 1px; box-shadow: 0 3px 5px #0004; }
-      .lighthouse-action:active { transform: translateY(2px); border-bottom-width: 2px; box-shadow: none; }
-      .lighthouse-action:disabled { opacity: .5; cursor: default; }
-      #lighthouse-save-controls { border-top: 1px solid #6d796155; margin-top: 18px; padding-top: 14px; }
-      .lighthouse-save-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-      .lighthouse-save-actions button { min-height: 40px; background: #202e29; color: #ded5b9; border: 1px solid #84917c; border-radius: 2px; padding: 8px 14px; font-size: 12px !important; }
-      .lighthouse-save-actions button:disabled { opacity: .4; cursor: default !important; }
-      #lighthouse-save-status { font-size: 11px; color: #b8c3ab; margin: 9px 0 0; }
-      .lighthouse-footer { display: flex; justify-content: space-between; gap: 12px; margin: 21px 0 0; padding-top: 12px; border-top: 1px solid #6d796155; color: #9ea994; font-size: 10px; letter-spacing: 1px; }
-      .lighthouse-screw { color: #b0b8a1; }
-      #lighthouse-paper { position: relative; padding: 23px 25px 15px; color: #394b45; background: repeating-linear-gradient(0deg, #fff0 0 3px, #897e4510 3px 4px), #eee6cd; box-shadow: 1px 3px 0 #b9b49a, 3px 6px 0 #1a2724, inset 0 0 40px #ad8c3c12; }
-      #lighthouse-paper::before { content: ""; position: absolute; top: -5px; left: calc(50% - 30px); width: 60px; height: 12px; background: linear-gradient(#bac0af, #717f70); border: 1px solid #4c5c51; border-radius: 2px; box-shadow: 0 2px 3px #0004; }
-      .lighthouse-paper-heading { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #4e6255; padding-bottom: 10px; margin-bottom: 12px; }
-      .lighthouse-paper-heading h3 { margin: 0; font: 20px Georgia, "Songti SC", serif; letter-spacing: 4px; }
-      .lighthouse-paper-heading span { font-size: 9px; letter-spacing: 2px; }
-      #lighthouse-round-summary { margin: 0 0 7px; font-size: 11px; letter-spacing: 2px; }
-      #lighthouse-checklist { list-style: none; padding: 0; margin: 0 0 14px; font-family: "Kaiti SC", "STKaiti", serif; }
-      #lighthouse-checklist li { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-bottom: 1px solid #87917c55; }
-      #lighthouse-checklist [data-state="complete"] { color: #41634e; }
-      #lighthouse-paper table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 12px; }
-      #lighthouse-paper th { font-weight: 500; color: #6e7661; padding: 7px 4px; text-align: left; border-block: 1px solid #87917c88; }
-      #lighthouse-paper th:first-child { width: 25%; } #lighthouse-paper th:nth-child(2) { width: 27%; }
-      #lighthouse-paper td { padding: 10px 4px; border-bottom: 1px solid #87917c55; overflow-wrap: anywhere; font-family: "Kaiti SC", "STKaiti", serif; font-size: 13px; }
-      #lighthouse-paper .lighthouse-empty { padding: 30px 4px; color: #7d8069; text-align: center; }
-      .lighthouse-paper-pages { display: flex; justify-content: space-between; align-items: center; margin-top: 13px; }
-      .lighthouse-paper-pages button { min-height: 36px; color: #486051; background: none; border: 1px solid #83917d88; padding: 4px 12px; font-size: 11px !important; }
-      .lighthouse-paper-pages button:disabled { opacity: .35; cursor: default !important; }
-      #lighthouse-panel #lighthouse-paper button:focus-visible { outline-color: #466350; }
-      #lighthouse-record-page { font: 11px ui-monospace, monospace; }
-      .lighthouse-paper-note { margin: 12px 0 0; color: #7c816a; font-size: 10px; }
-      body.lighthouse-action-active > #interaction-hint { visibility: hidden; }
-      #lighthouse-activity { position: fixed; top: 50%; left: 50%; width: 72px; height: 72px; transform: translate(-50%, -50%); color: #eee6ce; pointer-events: none; z-index: 21; }
-      #lighthouse-progress { width: 72px; height: 72px; overflow: visible; transform: rotate(-90deg); filter: drop-shadow(0 1px 2px #000b); }
-      #lighthouse-progress circle { fill: none; stroke-width: 2; }
-      #lighthouse-progress .progress-track { stroke: #fff3; }
-      #lighthouse-progress-value { stroke: #e9d3a2; stroke-linecap: round; }
-      #lighthouse-activity[data-state="complete"] #lighthouse-progress-value { stroke: #bbdca7; }
-      #lighthouse-activity-label, #lighthouse-activity-hint { position: absolute; width: 260px; left: 50%; transform: translateX(-50%); text-align: center; text-shadow: 0 1px 4px #000, 0 0 10px #0008; }
-      #lighthouse-activity-label { top: 78px; font-size: 12px; letter-spacing: 2px; }
-      #lighthouse-activity-hint { top: 100px; font-size: 10px; color: #e1d9c5; }
-      @media (max-width: 480px), (max-height: 480px) {
-        .lighthouse-heading { padding: 20px 20px 12px; gap: 10px; } .lighthouse-body { padding: 0 20px 18px; }
-        #lighthouse-panel h2 { font-size: 18px; } #lighthouse-panel-place { letter-spacing: 1px; } #lighthouse-gauges { gap: 12px; margin-top: 10px; }
-        .lighthouse-gauge { padding: 14px 3px 10px; border-width: 4px; } .lighthouse-gauge strong { font-size: 20px; }
-        #lighthouse-paper { padding: 21px 13px 12px; } #lighthouse-paper table, #lighthouse-paper td { font-size: 12px; }
-        .lighthouse-heading #lighthouse-panel-return { padding: 7px 9px; } .lighthouse-footer { letter-spacing: 0; }
+      #lighthouse-panel { --device-ink:#183238; --device-deep:#10252b; --device-paper:#e8e9df; --device-brass:#c7b17b; width:min(1040px,calc(100vw - 48px)); height:min(720px,calc(100dvh - 48px)); max-width:none; max-height:none; margin:auto; padding:0; border:1px solid #7d8c7870; border-radius:7px; color:#e8e9df; background:var(--device-deep); box-shadow:0 30px 100px #0009,0 0 0 5px #10252b45; overflow:hidden; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+      #lighthouse-panel[open] { display:flex; flex-direction:column; }
+      #lighthouse-panel::backdrop { background:#0d1b20bd; }
+      #lighthouse-panel [hidden], #lighthouse-activity[hidden] { display:none !important; }
+      #lighthouse-panel button { min-height:44px; padding:10px 16px; border:1px solid #8e9c8e65; border-radius:3px; color:inherit; background:transparent; font:inherit; font-size:14px; line-height:1.5; cursor:pointer; transition:background 120ms,border-color 120ms; }
+      #lighthouse-panel button:hover:not(:disabled) { background:#c7b17b15; border-color:#bba779; }
+      #lighthouse-panel button:active:not(:disabled) { background:#c7b17b30; }
+      #lighthouse-panel button:disabled { color:#76877e; border-color:#8e9c8e40; cursor:default; }
+      #lighthouse-panel button:focus-visible { outline:3px solid #b58b3f; outline-offset:3px; }
+      #lighthouse-panel [role="tabpanel"]:focus-visible { outline:2px solid #b58b3f; outline-offset:-4px; }
+      #lighthouse-panel .device-primary { color:#152b2e; background:var(--device-brass); border-color:var(--device-brass); font-weight:600; }
+      #lighthouse-panel .device-primary:hover:not(:disabled) { color:#10252b; background:#ddc997; border-color:#ddc997; }
+      #lighthouse-panel .device-primary:disabled { color:#72807b; background:#cbd0c3; border-color:#b5bfb3; }
+      #lighthouse-panel svg { fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; }
+      #lighthouse-panel .device-symbols { position:absolute; width:0; height:0; }
+      .lighthouse-heading { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px 30px 16px; flex-shrink:0; background:var(--device-ink); }
+      .device-heading-name { display:flex; align-items:center; gap:16px; min-width:0; }
+      .device-heading-name > svg { width:32px; height:32px; stroke-width:1.2; color:var(--device-brass); flex-shrink:0; }
+      #lighthouse-panel-place { margin:0 0 7px; color:#a9bdb1; font-size:12px; line-height:1.5; }
+      #lighthouse-panel h2 { margin:0; font:400 28px/1.35 "Songti SC","STSong",serif; letter-spacing:2px; }
+      #lighthouse-panel #lighthouse-panel-return { flex-shrink:0; border-color:transparent; color:#d5ddd1; padding:8px 10px; }
+      #lighthouse-panel kbd { display:inline-block; font-family:inherit; font-size:11px; padding:3px 5px; border:1px solid #83988a; border-radius:3px; margin-left:10px; color:#aebfb3; }
+      .lighthouse-context { display:flex; align-items:center; flex-wrap:wrap; gap:8px 20px; padding:0 30px 17px; background:var(--device-ink); flex-shrink:0; }
+      #lighthouse-panel #lighthouse-panel-clock, #lighthouse-panel #lighthouse-panel-weather { margin:0; color:#b9c9bd; font-size:13px; line-height:1.6; }
+      #lighthouse-panel-clock { font-variant-numeric:tabular-nums; }
+      #lighthouse-panel #lighthouse-panel-session { margin:0 0 0 auto; color:#d1c29a; font-size:12px; line-height:1.6; }
+      .lighthouse-toolbar { display:flex; align-items:center; gap:16px; padding:0 28px; background:var(--device-ink); border-block:1px solid #8e9c8e35; flex-shrink:0; }
+      .device-tabs { display:flex; gap:18px; min-width:0; }
+      #lighthouse-panel .device-tab { border:0; border-bottom:3px solid transparent; border-radius:0; padding:14px 4px 12px; color:#a9beb3; white-space:nowrap; }
+      #lighthouse-panel .device-tab[aria-selected="true"] { color:#f1eedf; border-bottom-color:var(--device-brass); }
+      #lighthouse-panel .device-story-link { margin-left:auto; padding:8px 0 8px 10px; border-color:transparent; font-size:13px; color:var(--device-brass); white-space:nowrap; }
+      .lighthouse-body { flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; scrollbar-color:#81958a transparent; }
+      #lighthouse-instrument { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(280px,1fr); min-height:100%; }
+      .lighthouse-readings { padding:28px 30px; background:var(--device-ink); }
+      .lighthouse-status { display:flex; align-items:center; gap:10px; margin-bottom:26px; }
+      #lighthouse-panel-state { margin:0; color:#dbe5d7; font-size:16px; line-height:1.65; }
+      #lighthouse-status-lamp { width:9px; height:9px; border-radius:50%; background:#9bafa2; box-shadow:0 0 0 4px #10252b; flex-shrink:0; }
+      #lighthouse-status-lamp[data-tone="good"] { background:#b4d3b3; } #lighthouse-status-lamp[data-tone="warn"] { background:#e5bd7e; }
+      #lighthouse-gauges { display:flex; align-items:flex-start; justify-content:center; gap:18px; }
+      .lighthouse-gauge { flex:1; max-width:230px; min-width:0; margin:0; padding:14px 12px 20px; border:1px solid #b5c0ab; border-radius:4px; background:#e8e9df; color:#183238; box-shadow:0 5px 0 #10252b; }
+      .lighthouse-gauge svg { display:block; width:100%; height:auto; overflow:visible; }
+      .lighthouse-gauge .dial-face { fill:#f3f3e9; stroke:#c3ccbc; stroke-width:1; }
+      .dial-track { fill:none; stroke:#bdc8b6; stroke-width:4; }
+      .dial-ticks line { stroke:#506d65; stroke-width:1.2; }
+      #lighthouse-panel .lighthouse-gauge text { stroke:none; fill:#526b63; font:11px system-ui,sans-serif; text-anchor:middle; }
+      #lighthouse-panel .lighthouse-gauge .dial-label { display:block; color:#294b48; font-size:15px; line-height:1.6; margin:2px 0 6px; }
+      .dial-needle path { fill:#986741; stroke:none; } .dial-needle circle { fill:#183e3d; stroke:#e8e9df; stroke-width:3; }
+      .lighthouse-gauge figcaption { text-align:center; }
+      .lighthouse-gauge strong { display:block; font-size:32px; font-weight:500; line-height:1.3; font-variant-numeric:tabular-nums; letter-spacing:-1px; }
+      .lighthouse-gauge figcaption > span { display:block; margin-top:7px; font-size:13px; color:#59736b; line-height:1.5; }
+      #lighthouse-power-flow { text-align:center; margin:23px 0 0; font-size:13px; color:#c0d0bd; line-height:1.7; }
+      #lighthouse-power-flow:empty { display:none; }
+      #lighthouse-status-face { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:260px; padding:24px 0; text-align:center; }
+      #lighthouse-status-face > svg { width:110px; height:110px; stroke-width:.7; color:#b6cbb6; margin-bottom:24px; }
+      #lighthouse-status-face[data-tone="warn"] > svg { color:#dfbf83; }
+      #lighthouse-status-face-label { font:400 26px/1.5 "Songti SC","STSong",serif; color:#e8e9df; }
+      #lighthouse-status-face-detail { margin-top:10px; color:#b4c6b8; font-size:14px; line-height:1.7; }
+      .lighthouse-work { min-width:0; padding:32px 30px; color:#183238; background:var(--device-paper); }
+      #lighthouse-action-heading { margin:0 0 20px; font:400 24px/1.4 "Songti SC","STSong",serif; }
+      #lighthouse-panel-guide { margin:0 0 24px; color:#3d5a5b; font-size:16px; line-height:1.9; }
+      #lighthouse-panel #lighthouse-discovery { padding:16px 0; margin:0 0 22px; border:0; border-block:1px solid #b4c1b1; color:#2e5050; font-size:14px; line-height:1.8; }
+      #lighthouse-discovery p { margin:0; } #lighthouse-panel #lighthouse-discovery-next { color:#526d66; margin:8px 0 0 !important; }
+      #lighthouse-actions { display:flex; flex-direction:column; align-items:stretch; gap:10px; }
+      #lighthouse-panel .lighthouse-action { margin:0; min-height:46px; padding:12px 16px; text-align:left; border-color:#91a18e; }
+      #lighthouse-work-note { margin:24px 0 0; padding-top:18px; border-top:1px solid #b4c1b180; color:#526c65; font-size:13px; line-height:1.9; }
+      #lighthouse-work-note:empty { display:none; }
+      #lighthouse-paper, #lighthouse-save-controls { min-height:100%; padding:28px 38px 32px; color:#183238; background:var(--device-paper); }
+      .lighthouse-paper-heading { display:flex; justify-content:space-between; align-items:baseline; gap:16px; margin-bottom:24px; }
+      .lighthouse-paper-heading h3 { margin:0; font:400 26px/1.4 "Songti SC","STSong",serif; }
+      .lighthouse-paper-heading p { margin:0; color:#526d66; font-size:13px; line-height:1.7; }
+      #lighthouse-round-summary { margin:0 0 8px; color:#4f6a63; font-size:14px; }
+      #lighthouse-checklist { list-style:none; margin:0 0 28px; padding:0; }
+      #lighthouse-checklist li { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:13px 0; border-bottom:1px solid #b4c1b180; font-size:15px; line-height:1.7; }
+      #lighthouse-checklist li span:last-child { font-size:14px; color:#536e64; white-space:nowrap; }
+      #lighthouse-checklist [data-state="complete"] { color:#2d6256; }
+      #lighthouse-paper table { width:100%; table-layout:fixed; border-collapse:collapse; font-size:15px; line-height:1.8; }
+      #lighthouse-paper th { text-align:left; padding:10px 12px; font-size:13px; font-weight:500; color:#526d66; background:#d6decf; }
+      #lighthouse-paper th:first-child { width:25%; } #lighthouse-paper th:nth-child(2) { width:27%; }
+      #lighthouse-paper td { padding:14px 12px; border-bottom:1px solid #b6c3b080; overflow-wrap:anywhere; vertical-align:top; }
+      #lighthouse-paper tbody tr:nth-child(even) { background:#f3f3e94d; }
+      #lighthouse-paper .lighthouse-empty { padding:40px 12px; color:#567168; text-align:center; }
+      .lighthouse-paper-pages { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:20px; }
+      #lighthouse-panel .lighthouse-paper-pages button { border-color:#91a18e; }
+      #lighthouse-record-page { font-size:13px; color:#526d66; font-variant-numeric:tabular-nums; }
+      .lighthouse-paper-note { color:#526d66; font-size:13px; line-height:1.9; margin:22px 0 0; }
+      #lighthouse-save-controls > h3 { font:400 27px/1.4 "Songti SC","STSong",serif; margin:12px 0 18px; }
+      #lighthouse-save-scope { margin:0; font-size:13px; color:#526d66; }
+      .device-save-copy { max-width:40em; margin:0 0 28px; font-size:16px; line-height:1.9; color:#3d5a5b; }
+      .lighthouse-save-actions { display:flex; flex-wrap:wrap; gap:12px; }
+      #lighthouse-panel .lighthouse-save-actions button { border-color:#91a18e; }
+      #lighthouse-panel #lighthouse-save-clear { color:#8c3e2f; border-color:#a75e4970; }
+      #lighthouse-save-status { max-width:45em; margin:26px 0; padding:20px 0; border-block:1px solid #b4c1b1; font-size:15px; line-height:1.9; }
+      #lighthouse-save-status[data-invalid="true"] { color:#8c3e2f; }
+      .lighthouse-footer { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:12px 28px; min-height:44px; color:#acbfb1; font-size:12px; background:var(--device-deep); border-top:1px solid #8e9c8e35; flex-shrink:0; }
+      body.viewing-lighthouse > #story-objective { visibility:hidden; }
+      body.lighthouse-action-active > #interaction-hint { visibility:hidden; }
+      #lighthouse-activity { position:fixed; top:50%; left:50%; width:72px; height:72px; transform:translate(-50%,-50%); color:#e8e9df; pointer-events:none; z-index:21; }
+      #lighthouse-progress { width:72px; height:72px; overflow:visible; transform:rotate(-90deg); filter:drop-shadow(0 1px 2px #000b); }
+      #lighthouse-progress circle { fill:none; stroke-width:2; }
+      #lighthouse-progress .progress-track { stroke:#fff3; }
+      #lighthouse-progress-value { stroke:#c7b17b; stroke-linecap:round; }
+      #lighthouse-activity[data-state="complete"] #lighthouse-progress-value { stroke:#b4d3b3; }
+      #lighthouse-activity-label, #lighthouse-activity-hint { position:absolute; width:280px; left:50%; transform:translateX(-50%); text-align:center; text-shadow:0 1px 4px #000,0 0 10px #0008; }
+      #lighthouse-activity-label { top:78px; font-size:14px; letter-spacing:1px; }
+      #lighthouse-activity-hint { top:104px; font-size:12px; color:#d4dfcf; }
+      @media(max-width:700px) {
+        #lighthouse-panel { width:calc(100vw - max(16px,env(safe-area-inset-left)) - max(16px,env(safe-area-inset-right))); height:calc(100dvh - max(16px,env(safe-area-inset-top)) - max(16px,env(safe-area-inset-bottom))); }
+        .lighthouse-heading { padding:18px 20px 14px; gap:12px; } .device-heading-name { gap:12px; } .device-heading-name > svg { width:25px; height:25px; }
+        #lighthouse-panel h2 { font-size:23px; letter-spacing:1px; } #lighthouse-panel-place { font-size:11px; }
+        #lighthouse-panel #lighthouse-panel-return { padding-inline:4px; font-size:13px; } #lighthouse-panel-return kbd { display:none; }
+        .lighthouse-context { padding:0 20px 14px; gap:6px 12px; } #lighthouse-panel #lighthouse-panel-clock, #lighthouse-panel #lighthouse-panel-weather { font-size:12px; } #lighthouse-panel #lighthouse-panel-session { margin-left:0; }
+        .lighthouse-toolbar { padding:0 16px; gap:8px; flex-wrap:wrap; } .device-tabs { gap:20px; flex:1; }
+        #lighthouse-panel .device-tab { font-size:13px; } #lighthouse-panel .device-story-link { font-size:12px; margin-left:0; padding-left:0; }
+        #lighthouse-instrument { grid-template-columns:1fr; } .lighthouse-readings { padding:22px 20px 26px; } .lighthouse-status { margin-bottom:18px; }
+        #lighthouse-gauges { gap:12px; } .lighthouse-gauge { padding:10px 8px 15px; } .lighthouse-gauge strong { font-size:27px; } .lighthouse-gauge figcaption > span { font-size:12px; }
+        #lighthouse-power-flow { margin-top:20px; } #lighthouse-status-face { min-height:200px; padding-block:8px; } #lighthouse-status-face > svg { width:86px; height:86px; margin-bottom:16px; } #lighthouse-status-face-label { font-size:25px; }
+        .lighthouse-work { padding:26px 24px; } #lighthouse-action-heading { font-size:23px; margin-bottom:14px; } #lighthouse-panel-guide { margin-bottom:20px; }
+        #lighthouse-paper, #lighthouse-save-controls { padding:24px 20px; } .lighthouse-paper-heading { align-items:flex-start; flex-direction:column; gap:8px; } .lighthouse-paper-heading h3 { font-size:24px; }
+        #lighthouse-paper table, #lighthouse-paper tbody { display:block; } #lighthouse-paper thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+        #lighthouse-paper tbody tr { display:grid; grid-template-columns:1fr auto; gap:10px 16px; padding:18px 0; border-bottom:1px solid #b6c3b080; background:transparent; }
+        #lighthouse-paper td { padding:0; border:0; } #lighthouse-paper td:first-child { font-size:13px; color:#526d66; } #lighthouse-paper td:nth-child(2) { font-size:14px; font-weight:500; text-align:right; }
+        #lighthouse-paper td:last-child { grid-column:1 / -1; color:#2d4e4d; font-size:15px; line-height:1.9; } #lighthouse-paper .lighthouse-empty { padding:20px 0; }
+        #lighthouse-checklist li { font-size:14px; }
+        .lighthouse-footer { padding:10px 20px; } .device-key-help { display:none; }
       }
-      @media (max-height: 480px) and (min-width: 600px) {
-        #lighthouse-panel { width: min(720px, calc(100% - 28px)); } #lighthouse-instrument { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
-        .lighthouse-status { grid-column: 1 / -1; } #lighthouse-gauges, #lighthouse-status-face { grid-column: 1; grid-row: 2 / 5; align-self: center; }
-        #lighthouse-panel-guide, #lighthouse-actions, #lighthouse-power-flow { grid-column: 2; align-self: center; } #lighthouse-power-flow { margin: 12px 0 0; }
-        #lighthouse-gauges .lighthouse-gauge { max-width: 125px; } #lighthouse-actions { flex-direction: column; gap: 0; } .lighthouse-action { margin-top: 10px; }
-        .lighthouse-footer { margin-top: 14px; }
-      }
+      @media(max-width:360px) { .device-heading-name > svg { display:none; } .device-tabs { gap:16px; } .lighthouse-heading { padding-inline:16px; } #lighthouse-panel h2 { font-size:21px; } }
+      @media(max-height:480px) { #lighthouse-panel { width:calc(100vw - 32px); height:calc(100dvh - 20px); } .lighthouse-heading { padding:10px 24px 6px; } #lighthouse-panel h2 { font-size:23px; } #lighthouse-panel-place { margin-bottom:3px; } .lighthouse-context { padding:0 24px 8px; } #lighthouse-panel .device-tab { padding-block:10px 8px; } .lighthouse-footer { min-height:36px; padding:8px 24px; } .lighthouse-readings { padding:22px; } .lighthouse-work { padding:24px; } }
+      @media(prefers-reduced-motion:reduce) { #lighthouse-panel button { transition:none; } }
       #story-panel { --journal-ink:#183238; --journal-deep:#10252b; --journal-paper:#e8e9df; --journal-brass:#c7b17b; --journal-muted:#607979; width:min(1060px, calc(100vw - 48px)); height:min(730px, calc(100dvh - 48px)); max-width:none; max-height:none; padding:0; border:1px solid #7d8c7870; border-radius:7px; color:var(--journal-paper); background:var(--journal-deep); box-shadow:0 30px 100px #0009,0 0 0 5px #10252b45; overflow:hidden; }
-      #lighthouse-story-record { min-height:40px; padding:8px 12px; margin:4px 4px 4px 0; border:1px solid #bba98d; border-radius:6px; color:#493c2f; background:#faf4e9; }
       #story-panel::backdrop { background:#0d1b20bd; }
       #story-panel[open] { display:flex; flex-direction:column; animation:journal-open 160ms ease-out; }
       @keyframes journal-open { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
@@ -504,45 +537,59 @@
       </svg><span id="lighthouse-activity-label" role="status"></span><span id="lighthouse-activity-hint"></span>
     </div>
     <dialog id="lighthouse-panel" aria-labelledby="lighthouse-panel-title">
-      <header class="lighthouse-heading"><div><p id="lighthouse-panel-place"></p><h2 id="lighthouse-panel-title">灯塔值守</h2></div><button id="lighthouse-panel-return">返回场景 ↗</button></header>
-      <div class="lighthouse-body">
-        <div class="lighthouse-strip"><p id="lighthouse-panel-clock"></p><button id="lighthouse-record-toggle" aria-controls="lighthouse-paper" aria-expanded="false">翻看记录</button><button id="lighthouse-story-record" hidden>故事与联络</button></div>
-        <p id="lighthouse-panel-weather"></p>
-        <p id="lighthouse-panel-session">正常值守</p>
-        <section id="lighthouse-instrument" aria-label="设备仪表">
-          <div class="lighthouse-status"><span id="lighthouse-status-lamp" aria-hidden="true"></span><p id="lighthouse-panel-state"></p></div>
-          <div id="lighthouse-gauges"></div>
-          <div id="lighthouse-status-face"><span id="lighthouse-status-face-label"></span><span id="lighthouse-status-face-detail"></span></div>
-          <p id="lighthouse-power-flow"></p>
-          <p id="lighthouse-panel-guide" role="status"></p>
-          <aside id="lighthouse-discovery" aria-label="本次表面检查" hidden><p id="lighthouse-discovery-result"></p><p id="lighthouse-discovery-next"></p></aside>
-          <div id="lighthouse-actions">
-            <button class="lighthouse-action" id="lighthouse-test-toggle" hidden></button>
-            <button class="lighthouse-action" id="lighthouse-confirm-control" hidden></button>
-            <button class="lighthouse-action" id="lighthouse-cover-check" hidden></button>
-            <button class="lighthouse-action" id="lighthouse-clean-start" hidden></button>
-            <button class="lighthouse-action" id="lighthouse-solar-inspect" hidden></button>
-            <button class="lighthouse-action" id="lighthouse-solar-test" hidden></button>
-            <button class="lighthouse-action" id="lighthouse-solar-compare" hidden></button>
-            <button class="lighthouse-action" id="lighthouse-solar-clean" hidden></button>
-            <button class="lighthouse-action" id="lighthouse-power-restore" hidden></button>
+      <svg class="device-symbols" aria-hidden="true"><defs>
+        <symbol id="device-beacon" viewBox="0 0 32 32"><path d="M10 28l3-17h6l3 17M8 28h16M11 11V7l5-4 5 4v4M10 11h12M3 7l4 1M25 8l4-1M14 18h4M14 24h4"/></symbol>
+        <symbol id="device-power" viewBox="0 0 32 32"><path d="M6 7h20v21H6zM11 7V4h10v3M11 13h4M13 11v4M20 13h3M18 17l-5 6h5l-2 4"/></symbol>
+        <symbol id="device-solar" viewBox="0 0 32 32"><path d="M7 11h19l-4 14H3zM13 11L9 25M20 11l-4 14M5 18h19M11 25v4M7 29h13M25 2v3M30 6l-2 2M20 5l2 2"/><circle cx="25" cy="8" r="2"/></symbol>
+        <symbol id="device-optics" viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="7"/><path d="M12 12l3-2M18 22l3-2M3 3v5M3 3h5M29 3h-5M29 3v5M29 29v-5M29 29h-5M3 29h5M3 29v-5"/></symbol>
+        <symbol id="device-sensor" viewBox="0 0 32 32"><path d="M8 14h16v13H8zM12 27v3M20 27v3M12 18h8M16 3v5M5 6l4 4M27 6l-4 4"/><circle cx="16" cy="21" r="2"/></symbol>
+        <symbol id="device-generator" viewBox="0 0 32 32"><path d="M5 12h22v14H5zM9 12V8h11v4M24 12V4h5M2 28h28M9 16h6v6H9zM20 16h3M20 19h3M20 22h3M9 28v2M23 28v2"/></symbol>
+        <symbol id="device-book" viewBox="0 0 32 32"><path d="M8 4h18v25H8a3 3 0 010-6h18M8 4a3 3 0 00-3 3v19M12 10h9M12 15h7"/></symbol>
+      </defs></svg>
+      <header class="lighthouse-heading"><div class="device-heading-name"><svg aria-hidden="true" viewBox="0 0 32 32"><use id="lighthouse-heading-symbol" href="#device-beacon"/></svg><div><p id="lighthouse-panel-place"></p><h2 id="lighthouse-panel-title">灯塔值守</h2></div></div><button id="lighthouse-panel-return">返回场景<kbd>Esc</kbd></button></header>
+      <div class="lighthouse-context"><p id="lighthouse-panel-clock"></p><p id="lighthouse-panel-weather"></p><p id="lighthouse-panel-session">正常值守</p></div>
+      <div class="lighthouse-toolbar"><nav class="device-tabs" role="tablist" aria-label="现场工作台分页">
+        <button id="lighthouse-instrument-tab" class="device-tab" role="tab" data-device-page="device" aria-controls="lighthouse-instrument" aria-selected="true">设备现场</button>
+        <button id="lighthouse-record-toggle" class="device-tab" role="tab" data-device-page="records" aria-controls="lighthouse-paper" aria-selected="false" aria-expanded="false" tabindex="-1">巡视记录</button>
+        <button id="lighthouse-save-toggle" class="device-tab" role="tab" data-device-page="save" aria-controls="lighthouse-save-controls" aria-selected="false" tabindex="-1">保存进度</button>
+      </nav><button id="lighthouse-story-record" class="device-story-link" hidden>打开值守簿</button></div>
+      <div class="lighthouse-body" id="lighthouse-pages">
+        <section id="lighthouse-instrument" role="tabpanel" aria-labelledby="lighthouse-instrument-tab" tabindex="0">
+          <div class="lighthouse-readings"><div class="lighthouse-status"><span id="lighthouse-status-lamp" aria-hidden="true"></span><p id="lighthouse-panel-state"></p></div>
+            <div id="lighthouse-gauges"></div>
+            <div id="lighthouse-status-face"><svg viewBox="0 0 32 32" aria-hidden="true"><use id="lighthouse-status-symbol" href="#device-optics"/></svg><span id="lighthouse-status-face-label"></span><span id="lighthouse-status-face-detail"></span></div>
+            <p id="lighthouse-power-flow"></p>
           </div>
+          <aside class="lighthouse-work" aria-labelledby="lighthouse-action-heading"><h3 id="lighthouse-action-heading">现场操作</h3><p id="lighthouse-panel-guide" role="status"></p>
+            <aside id="lighthouse-discovery" aria-label="本次表面检查" hidden><p id="lighthouse-discovery-result"></p><p id="lighthouse-discovery-next"></p></aside>
+            <div id="lighthouse-actions">
+              <button class="lighthouse-action" id="lighthouse-test-toggle" hidden></button>
+              <button class="lighthouse-action" id="lighthouse-confirm-control" hidden></button>
+              <button class="lighthouse-action" id="lighthouse-cover-check" hidden></button>
+              <button class="lighthouse-action" id="lighthouse-clean-start" hidden></button>
+              <button class="lighthouse-action" id="lighthouse-solar-inspect" hidden></button>
+              <button class="lighthouse-action" id="lighthouse-solar-test" hidden></button>
+              <button class="lighthouse-action" id="lighthouse-solar-compare" hidden></button>
+              <button class="lighthouse-action" id="lighthouse-solar-clean" hidden></button>
+              <button class="lighthouse-action" id="lighthouse-power-restore" hidden></button>
+            </div><p id="lighthouse-work-note"></p>
+          </aside>
         </section>
-        <section id="lighthouse-paper" aria-label="纸质值守记录" hidden>
-          <div class="lighthouse-paper-heading"><h3>值守簿</h3><span>灯站 / 巡视与清洁</span></div>
+        <section id="lighthouse-paper" role="tabpanel" aria-labelledby="lighthouse-record-toggle" tabindex="0" hidden>
+          <div class="lighthouse-paper-heading"><h3>巡视记录</h3><p id="lighthouse-record-scope">当前设备的现场记录</p></div>
           <div id="lighthouse-checks"><p id="lighthouse-round-summary"></p><ul id="lighthouse-checklist"></ul></div>
           <table aria-label="巡视与操作记录"><thead><tr><th scope="col">时间</th><th scope="col">项目</th><th scope="col">结果</th></tr></thead><tbody id="lighthouse-record-rows"></tbody></table>
-          <div class="lighthouse-paper-pages"><button id="lighthouse-record-prev" aria-label="上一页记录">← 前页</button><span id="lighthouse-record-page"></span><button id="lighthouse-record-next" aria-label="下一页记录">后页 →</button></div>
-          <p class="lighthouse-paper-note">记录保留最近七日；在首层保存后，可从这里继续值守。</p>
+          <div class="lighthouse-paper-pages"><button id="lighthouse-record-prev" aria-label="上一页记录">前一页</button><span id="lighthouse-record-page"></span><button id="lighthouse-record-next" aria-label="下一页记录">后一页</button></div>
+          <p class="lighthouse-paper-note">保留最近七日的工作记录。查看记录不会代替现场检查。</p>
         </section>
-        <section id="lighthouse-save-controls" aria-label="值守存档" hidden>
-          <p id="lighthouse-save-scope" class="lighthouse-paper-note">正常值守存档</p>
-          <p class="lighthouse-paper-note">保存设备、天气、隐患、线索与记录。继续后先暂停；未完成操作不提交，离线时间不推进。</p>
-          <div class="lighthouse-save-actions"><button id="lighthouse-save">保存值守</button><button id="lighthouse-continue" disabled>继续值守</button><button id="lighthouse-save-clear" hidden>清除异常存档</button></div>
-          <p id="lighthouse-save-status" role="status"></p>
+        <section id="lighthouse-save-controls" role="tabpanel" aria-labelledby="lighthouse-save-toggle" tabindex="0" hidden>
+          <p id="lighthouse-save-scope">正常值守存档</p><h3>下次，从这里继续</h3>
+          <p class="device-save-copy">保存这次值守的设备、天气和工作记录。再次继续时，时间会先暂停，未完成的操作需要重新开始。</p>
+          <div class="lighthouse-save-actions"><button id="lighthouse-save" class="device-primary">保存值守</button><button id="lighthouse-continue" disabled>继续值守</button><button id="lighthouse-save-clear" hidden>清除不可用存档</button></div>
+          <p id="lighthouse-save-status" role="status"></p><p class="lighthouse-paper-note">各模式分别保存。离线期间不推进值守时间。</p>
         </section>
-        <footer class="lighthouse-footer"><span><span class="lighthouse-screw">⊕</span> 灯站值守 / 现场记录</span><span>查看时暂停 · Esc 合上 <span class="lighthouse-screw">⊕</span></span></footer>
       </div>
+      <footer class="lighthouse-footer"><span>查看时，值守暂停</span><span class="device-key-help">方向键切换页签 · Tab 选择 · <span id="lighthouse-back-hint">Esc 返回场景</span></span></footer>
     </dialog>
     <dialog id="item-inspection" aria-labelledby="item-inspection-title">
       <button id="item-audio-toggle" data-audio-toggle aria-pressed="true" aria-label="关闭交互音效">音效：开</button>

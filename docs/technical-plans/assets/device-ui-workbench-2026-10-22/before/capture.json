@@ -1,0 +1,55 @@
+{
+  "commit": "67c33ff",
+  "method": "Unmodified final dist. Native device interactions, local position fixtures, original game state; no fabricated readings or evidence.",
+  "screens": [
+    {
+      "file": "control-desktop.png",
+      "description": "首层运行面板：太阳能输入、主电池、读数与值守保存。",
+      "title": "灯塔值守",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "cover-desktop.png",
+      "description": "顶层保护面：盐膜状态、表面查看与清洁入口。",
+      "title": "灯具保护面",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "test-desktop.png",
+      "description": "顶层灯座：实际试灯中，2 rpm与60秒余时。",
+      "title": "导航灯试灯",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "records-desktop.png",
+      "description": "首层记录夹：实际已确认读数及其余待巡视项。",
+      "title": "值守记录",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "control-mobile.png",
+      "description": "首层运行面板的手机布局。",
+      "title": "灯塔值守",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "errors": [],
+  "manifestSha256": "f9d1ae0ca510a18874b7592e2b25f190f07d695c4e7c599f8b7eaeff40ecfb5c",
+  "browser": "155.0.8059.86",
+  "passed": true
+}

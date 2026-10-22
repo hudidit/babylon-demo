@@ -1,0 +1,1292 @@
+{
+  "baseline": "67c33ff",
+  "method": "Unmodified final production dist. Native interactions and real device rays; grounded local poses are fixtures. Original bounded shared-clock updates; no fabricated evidence, Wh, faults or progress. No FPS/full-walk claim.",
+  "cases": {
+    "allEightDevicesAndOriginalScope": true,
+    "pagesOnlyPresentStateAndPause": true,
+    "keyboardTrapTabsAndBack": true,
+    "cleaningInterruptCompleteAndSeparateRecheck": true,
+    "actualThirtySecondsTurnOutputResetAndPause": true,
+    "solarPatrolCloseInspectionAndComparison": true,
+    "weatherSafetyAndExerciseLabel": true,
+    "rereadAfterEquipmentRevision": true,
+    "recordChecklistFilteringAndPagination": true,
+    "normalSaveContinueAndFailureProtection": true,
+    "reducedMotion": true,
+    "recordBackAndCloseKeepFirstPerson": true
+  },
+  "layouts": [
+    {
+      "name": "lighthouse-drive-hatch",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 1,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 50
+        }
+      ]
+    },
+    {
+      "name": "lighthouse-beacon-backup",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 1,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 50
+        }
+      ]
+    },
+    {
+      "name": "lighthouse-battery-main",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 1,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 50
+        }
+      ]
+    },
+    {
+      "name": "lighthouse-solar-charger",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 2,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 50
+        }
+      ]
+    },
+    {
+      "name": "lighthouse-solar-array",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 2,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-solar-inspect",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-test",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-compare",
+          "height": 47
+        }
+      ]
+    },
+    {
+      "name": "lighthouse-solar-array",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 2,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-solar-inspect",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-test",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-compare",
+          "height": 47
+        }
+      ]
+    },
+    {
+      "name": "lighthouse-solar-array",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 2,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-solar-inspect",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-test",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-compare",
+          "height": 47
+        }
+      ]
+    },
+    {
+      "name": "lighthouse-solar-array",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 2,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-solar-inspect",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-test",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-compare",
+          "height": 47
+        }
+      ]
+    },
+    {
+      "name": "lighthouse-generator",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 0,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 50
+        }
+      ]
+    },
+    {
+      "name": "lighthouse-generator-room",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 0,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 50
+        }
+      ]
+    },
+    {
+      "name": "lighthouse-light-sensor",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 0,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 50
+        }
+      ]
+    },
+    {
+      "name": "control",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 2,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-save-toggle",
+          "height": 50
+        },
+        {
+          "id": "lighthouse-confirm-control",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-compare",
+          "height": 47
+        }
+      ]
+    },
+    {
+      "name": "control",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 2,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-save-toggle",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-confirm-control",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-compare",
+          "height": 47
+        }
+      ]
+    },
+    {
+      "name": "control",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 2,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-save-toggle",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-confirm-control",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-compare",
+          "height": 47
+        }
+      ]
+    },
+    {
+      "name": "control",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 2,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-save-toggle",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-confirm-control",
+          "height": 47
+        },
+        {
+          "id": "lighthouse-solar-compare",
+          "height": 47
+        }
+      ]
+    },
+    {
+      "name": "cover",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 0,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-clean-start",
+          "height": 47
+        }
+      ]
+    },
+    {
+      "name": "cover",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 0,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-instrument-tab",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-clean-start",
+          "height": 47
+        }
+      ]
+    },
+    {
+      "name": "records",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 0,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-save-toggle",
+          "height": 48.5
+        },
+        {
+          "id": "lighthouse-record-next",
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "records",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "within": true,
+      "overflow": false,
+      "bodyOverflow": false,
+      "pageOverflow": false,
+      "footerClear": true,
+      "dialogScroll": false,
+      "gauges": 0,
+      "buttons": [
+        {
+          "id": "lighthouse-panel-return",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-record-toggle",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-save-toggle",
+          "height": 44
+        },
+        {
+          "id": "lighthouse-record-next",
+          "height": 44
+        }
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "file": "device-drive-hatch-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-beacon-backup-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-battery-main-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-solar-charger-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-solar-array-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-solar-array-390.jpg",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "device-solar-array-844.jpg",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      }
+    },
+    {
+      "file": "device-solar-array-320.jpg",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      }
+    },
+    {
+      "file": "device-generator-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-generator-room-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-light-sensor-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-control-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-control-390.jpg",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "device-control-844.jpg",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      }
+    },
+    {
+      "file": "device-control-320.jpg",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      }
+    },
+    {
+      "file": "device-records-empty-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-control-confirmed-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-cover-dirty-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-cover-390.jpg",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "device-cover-844.jpg",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      }
+    },
+    {
+      "file": "device-cleaning-progress.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-cover-recheck-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-cover-records-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-test-running-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-observation-partial.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-observation-half.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-observation-complete.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-solar-inspected-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-solar-storm-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-round-complete-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-records-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-records-390.jpg",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "device-records-844.jpg",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      }
+    },
+    {
+      "file": "device-saved-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-save-failed-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    {
+      "file": "device-save-invalid-1280.jpg",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "firstScreenJs": [
+    {
+      "path": "/js/main.js",
+      "bytes": 490957,
+      "sha256": "1e6b1e0f4a13a4c26713b6cf8dc8670a13c66576c3f9c69ec55c49cd4bb01151"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2072,
+      "sha256": "d6901254c33be255b506f7e46dead6c4df8a278498f88688147ee101000403a7"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "manifestSha256": "fd141e8e5902ebb24db30246431d0daaafb90c4114d8259aa51bf24f406e873f",
+  "release": {
+    "fileCount": 495,
+    "modelBytes": 4332840,
+    "buildBytes": 26556093,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 92163,
+    "manifestBytes": 92706,
+    "initialJsBytes": 2911135,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42608339
+  },
+  "unchangedRuntimeAssets": 36,
+  "sources": {
+    "public/index.html": "c89dbce10ff40c60bcbb512f18bdae8b06db4d36273c09f3897fe9d14f90a5f3",
+    "public/STUDY_ASSET_SOURCES.md": "a54212dcc4e6c3b95cf8310027b5eec9f99294602d95b8b1703a31419cc811d4",
+    "src/examples/LighthousePanel.ts": "cab152219a19916ecc8967ff7b70b29ca74f9eb4fcfe8279a6034a7ecbfd4333",
+    "src/examples/Room.ts": "ed6934245b8e0f88539163e9a3dba598bf56bbf8ad773d9557f05dbbf3ababe6",
+    "src/examples/LighthouseExperience.ts": "f2516a77f774e0b6edb161300b5bf39cc3744801549c00db49d71289d0e700a0",
+    "src/examples/LighthouseOperation.ts": "ba987a98798cdfaebaa471659d46ee524448e135c54e6ec6ed8b0a49be55efba",
+    "src/examples/LighthouseInspection.ts": "101d37043abeb460e23f6019e48865cfd90e7d01ecddb9ff5c6ea693804db300",
+    "src/examples/LighthouseMaintenance.ts": "eccf2a6077e9ba2e7dfe0b178b3d6dc2bf302e5ee23a660c62cdc60332f49ced",
+    "src/examples/LighthousePower.ts": "4944f5e984d5ec774c652afe79772d2c6f01dd5454aac404fe1975f8add012a6",
+    "src/examples/LighthouseWeather.ts": "e0ec7d574f711686fb31083d088ce8a1afdf59597239b003934e56551dad7bb5",
+    "src/examples/LighthouseEquipmentLayout.ts": "787d093bbeb59e44164eef4e64de0a5b6def96bbf534b996f22277f90143ad46",
+    "src/examples/LighthouseStoryPanel.ts": "20faab88137e54989bb1846dafc9a01e52119d568c6b096f827d94465a19013c",
+    "src/examples/LighthouseSave.ts": "d6510dd378885b7e5622b56a9b512613a37b04aa82280016d387689dcd507430"
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3129987,
+  "resources": {
+    "meshes": 716,
+    "vertices": 575398,
+    "materials": 108,
+    "textures": 153,
+    "lights": 22,
+    "cameras": 3
+  },
+  "observationBefore": {
+    "dutyDay": 1,
+    "checks": {
+      "check-control": "pending",
+      "check-optic": "pending",
+      "check-cover": "complete"
+    },
+    "completed": false,
+    "coverEvidence": {
+      "dutyDay": 1,
+      "hour": 12.03833333333334,
+      "result": "保护面洁净，复查通过",
+      "revision": 1
+    },
+    "nextMaintenanceDay": 4,
+    "dirty": false,
+    "coverRevision": 1,
+    "transmission": 1,
+    "observationSeconds": 29.900000000000155,
+    "observedTurns": 0.9966666666666935,
+    "outputSeen": true,
+    "cleaning": false,
+    "cleaningSeconds": 0,
+    "notice": "保护面洁净，复查通过",
+    "days": [
+      {
+        "dutyDay": 1,
+        "checks": {
+          "check-control": "pending",
+          "check-optic": "pending",
+          "check-cover": "complete"
+        },
+        "completed": false
+      }
+    ],
+    "events": [
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "自动值守 / 日间待机",
+        "id": 1,
+        "objectId": "lighthouse-control-panel",
+        "kind": "observation",
+        "type": "control-read",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "保护面有轻度盐膜，需停机擦拭后复查",
+        "revision": 0,
+        "id": 2,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "observation",
+        "type": "cover-observed",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "开始擦拭",
+        "revision": 0,
+        "id": 3,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-started",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12.013333333333335,
+        "result": "离开、视线受阻或设备起动，清洁中断；盐膜保持原状。",
+        "revision": 0,
+        "id": 4,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-cancelled",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12.013333333333335,
+        "result": "开始擦拭",
+        "revision": 0,
+        "id": 5,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-started",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12.03833333333334,
+        "result": "盐膜已清除，待复查",
+        "revision": 1,
+        "id": 6,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cover-cleaned",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12.03833333333334,
+        "result": "驱动或供电隔离状态变化，旧读数/周期仅作历史；重新现场确认。",
+        "id": 7,
+        "objectId": "lighthouse-beacon-main",
+        "kind": "system",
+        "type": "equipment-changed",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12.03833333333334,
+        "result": "保护面洁净，复查通过",
+        "revision": 1,
+        "id": 8,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "observation",
+        "type": "cover-observed",
+        "source": "local-panel"
+      }
+    ]
+  },
+  "observationAfter": {
+    "dutyDay": 1,
+    "checks": {
+      "check-control": "pending",
+      "check-optic": "complete",
+      "check-cover": "complete"
+    },
+    "completed": false,
+    "optic": {
+      "dutyDay": 1,
+      "hour": 12.675000000000106,
+      "result": "本次周期观察正常：连续观察30秒、转台一圈及方向出光"
+    },
+    "coverEvidence": {
+      "dutyDay": 1,
+      "hour": 12.03833333333334,
+      "result": "保护面洁净，复查通过",
+      "revision": 1
+    },
+    "nextMaintenanceDay": 4,
+    "dirty": false,
+    "coverRevision": 1,
+    "transmission": 1,
+    "observationSeconds": 30,
+    "observedTurns": 1.0000000000000269,
+    "outputSeen": true,
+    "cleaning": false,
+    "cleaningSeconds": 0,
+    "notice": "本次周期观察正常，已记录；此结果不代表全面检修。",
+    "days": [
+      {
+        "dutyDay": 1,
+        "checks": {
+          "check-control": "pending",
+          "check-optic": "complete",
+          "check-cover": "complete"
+        },
+        "completed": false
+      }
+    ],
+    "events": [
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "自动值守 / 日间待机",
+        "id": 1,
+        "objectId": "lighthouse-control-panel",
+        "kind": "observation",
+        "type": "control-read",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "保护面有轻度盐膜，需停机擦拭后复查",
+        "revision": 0,
+        "id": 2,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "observation",
+        "type": "cover-observed",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12,
+        "result": "开始擦拭",
+        "revision": 0,
+        "id": 3,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-started",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12.013333333333335,
+        "result": "离开、视线受阻或设备起动，清洁中断；盐膜保持原状。",
+        "revision": 0,
+        "id": 4,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-cancelled",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12.013333333333335,
+        "result": "开始擦拭",
+        "revision": 0,
+        "id": 5,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cleaning-started",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12.03833333333334,
+        "result": "盐膜已清除，待复查",
+        "revision": 1,
+        "id": 6,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "action",
+        "type": "cover-cleaned",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12.03833333333334,
+        "result": "驱动或供电隔离状态变化，旧读数/周期仅作历史；重新现场确认。",
+        "id": 7,
+        "objectId": "lighthouse-beacon-main",
+        "kind": "system",
+        "type": "equipment-changed",
+        "source": "active-action"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12.03833333333334,
+        "result": "保护面洁净，复查通过",
+        "revision": 1,
+        "id": 8,
+        "objectId": "lighthouse-optics-cleaning",
+        "kind": "observation",
+        "type": "cover-observed",
+        "source": "local-panel"
+      },
+      {
+        "dutyDay": 1,
+        "hour": 12.675000000000106,
+        "result": "本次周期观察正常：连续观察30秒、转台一圈及方向出光",
+        "id": 9,
+        "objectId": "lighthouse-beacon-main",
+        "kind": "observation",
+        "type": "optic-observed",
+        "source": "direct-view"
+      }
+    ]
+  },
+  "disposed": {
+    "meshes": 0,
+    "materials": 0,
+    "textures": 0,
+    "lights": 0,
+    "cameras": 0
+  },
+  "passed": true
+}

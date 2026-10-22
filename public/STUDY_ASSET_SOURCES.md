@@ -98,3 +98,7 @@ Wh、燃料只随统一自动场景小时积分，太阳能解析积分并求容
 ## 灯站值守簿界面（2026-10-22）
 
 海墨封皮、雾纸内页、任务书签、信件排版与灯塔线描/页签图标均由项目贡献者以HTML/CSS/内联SVG原创，适用ISC。重设计借鉴[game-ui-ux](https://github.com/gamedev-skills/awesome-gamedev-agent-skills/tree/38a4c2500eeb5ff9ac084336b8f66108069d2f8d/skills/disciplines/game-ui-ux)及[frontend-design](https://github.com/anthropics/skills/tree/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/frontend-design)的设计与验证方法；两套技能以Apache-2.0发布，不包含在运行目录中。没有复制其代码、美术素材或字体，没有新增运行下载或依赖；系统字体回退不保证各平台字形相同。界面只展示当前真实任务/证据/消息状态，不改变剧情与设备判定或存档协议。
+
+## 灯站设备现场工作台（2026-10-22）
+
+设备外壳、雾纸操作页、真实值指针/刻度、保护面/电池/太阳能/灯具/传感器/机房线描及记录/存档页由项目贡献者以HTML/CSS/SVG原创，适用ISC；沿用上方两套固定技能的布局、焦点与视觉复核方法。展示代码为`LighthousePanel.ts`，页面为`index.html`，无外部图片、字体、UI包或新场景渲染资源。设备图标是状态界面符号，非实际新增设备或维修动画；全部数值与工作进度读取原运行快照，页面导航不生成巡视事实，六组命令范围和保存协议保持。
