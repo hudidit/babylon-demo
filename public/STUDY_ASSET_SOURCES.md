@@ -119,3 +119,7 @@ Wh、燃料只随统一自动场景小时积分，太阳能解析积分并求容
 ## 灯站文案与人物口吻（2026-10-22）
 
 信件、岸站联络、工作记录及界面文字由项目贡献者结合当前虚构设定改写，适用ISC。编辑参考[Humanizer-zh](https://github.com/op7418/Humanizer-zh/tree/f4518a8eab97b8bfebc66a89d34320a89bef6930)（MIT，Copyright 2026 歸藏）与[UX Writing](https://github.com/content-designer/ux-writing-skill/tree/98cacde4ba2dd10ed28df43a8d53eef1e321c539)（MIT，Copyright 2026 Christopher Greer）的编辑、人物口吻表与界面方法；未复制技能正文、示例或代码到运行目录。它们是社区技能，不代表游戏行业认证或Stripe官方背书。旧存档消息、来源与时间保持原样，界面按稳定ID呈现当前文案；报告读数与待办来自提交时的事实快照。未新增素材下载、字体、配音或依赖。
+
+## 岛屿景观第二阶段（2026-10-23）
+
+`CoastalLandscape.ts`新增屋后林缘36丛低灌木（含岬角）、两片草甸的68簇简化草与14块岩脊、塔后16棵疏林树，以及岬角4块低岩。全部由项目贡献者原创，适用ISC；固定种子231024，第一阶段几何保持。新增9网格、3,396顶点、4,768三角形，复用背景植被及原远岩PBR，无新增模型/贴图下载、材质、灯、RTT、依赖或逐帧动画。背景装饰不进入步行区、不参与拾取/碰撞/阴影；数量是结构成本，不是FPS或加载耗时结论。累计与分阶段数据见[来源记录](environment/coastal-cliff-source.json)。

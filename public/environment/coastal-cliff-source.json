@@ -247,23 +247,46 @@
   },
   "backgroundLandscape": {
     "updated": "2026-10-23",
-    "stage": "Phase 1: four rear-house groves and three inland hills; B/C/D deferred",
+    "stage": "Phases 1 and 2 complete: A grove transitions, B meadow ridges, C sparse tower groves, D low cape shrubs and E inland hills",
     "source": "src/examples/CoastalLandscape.ts",
     "author": "babylon-demo project contributors",
     "license": "ISC",
     "seed": 231023,
     "trees": {
-      "near": 24,
+      "near": 40,
       "distant": 48
     },
-    "meshes": 10,
-    "vertices": 4221,
-    "triangles": 6432,
+    "meshes": 19,
+    "vertices": 7617,
+    "triangles": 11200,
     "materialsAdded": 1,
     "texturesLightsRenderTargetsAdded": 0,
     "runtimeDownloadsAdded": 0,
     "support": "Exact existing terrain triangles; hill edges buried 0.18m; roots buried 0.22m into the highest terrain/hill triangle. Entire batch footprints remain outside the walking boundary with a minimum 3m buffer.",
-    "rendering": "Opaque static shared geometry, per-group bounds, one unclipped PBR material reusing existing exterior HDR/day-night response; existing far-ground material for hills. No local shadow casting/receiving, collisions, picking, wind animation, alpha cards or LOD switching.",
-    "scope": "Original procedural geometry. AI concept art is not shipped. Coast, sea, lighting, paths and movement remain unchanged. Counts are structural costs, not measured FPS or loading benefits."
+    "rendering": "Opaque static shared geometry, per-group bounds, one unclipped PBR material reusing existing exterior HDR/day-night response; existing far-ground material for hills. No local shadow casting/receiving, collisions, picking, wind animation, alpha cards or LOD switching. Phase two reuses the existing far-rock material, with buried rock base rings and closed opaque grass/shrub shapes.",
+    "scope": "Original procedural geometry. AI concept art is not shipped. Coast, sea, lighting, paths and movement remain unchanged. Counts are structural costs, not measured FPS or loading benefits.",
+    "phaseOne": {
+      "seed": 231023,
+      "trees": {
+        "near": 24,
+        "distant": 48
+      },
+      "meshes": 10,
+      "vertices": 4221,
+      "triangles": 6432,
+      "materialsAdded": 1
+    },
+    "phaseTwo": {
+      "seed": 231024,
+      "trees": 16,
+      "shrubs": 36,
+      "grassClumps": 68,
+      "rocks": 18,
+      "meshes": 9,
+      "vertices": 3396,
+      "triangles": 4768,
+      "materialsAdded": 0,
+      "scope": "Original ISC static geometry; reuses phase-one foliage and existing far-rock PBR. Complete batch bounds outside the walking polygon with at least 3m clearance. Terrain, routes, interaction and phase-one geometry unchanged."
+    }
   }
 }

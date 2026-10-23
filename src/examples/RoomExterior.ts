@@ -104,7 +104,12 @@ export class RoomExterior {
     const forest = s.solid("coastal-background-foliage", "#ffffff");
     for (const group of coastalLandscape()) {
       if (group.ground) make(`coastal-landscape-${group.name}-ground`, group.ground, "distant", s.farGround);
-      make(`coastal-landscape-${group.name}`, group.plants, "distant", forest);
+      const plants = make(`coastal-landscape-${group.name}`, group.plants, "distant", forest);
+      if (group.phase) plants.metadata.landscapePhase = group.phase;
+      if (group.rocks) {
+        const rocks = make(`coastal-landscape-${group.name}-rocks`, group.rocks, "distant", s.farRock);
+        rocks.metadata.landscapePhase = group.phase;
+      }
     }
     this.houseRoof = createCoastalLandmark(scene, s, retain);
     this.lighthouseDoor = createLighthouseInterior(scene, retain);

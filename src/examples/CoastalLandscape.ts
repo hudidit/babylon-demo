@@ -4,6 +4,7 @@ import type { CoastalGeometry, CoastalPoint } from "./CoastalCliff";
 import { planToWorld } from "./HouseLayout";
 
 type LandscapeGeometry = CoastalGeometry & { colors: number[] };
+type Anchor = { x: number; y: number; first: number; kind: "shrub" | "grass" | "rock" };
 type Tree = { x: number; y: number; base: number; height: number; first: number; last: number };
 const empty = (): LandscapeGeometry => ({ positions: [], indices: [], uvs: [], colors: [] });
 
@@ -31,7 +32,7 @@ export function landscapeGroundHeight(x: number, y: number): number | undefined 
 export function coastalLandscape() {
   let seed = 231023;
   const random = () => { seed = Math.imul(seed, 1664525) + 1013904223 | 0; return (seed >>> 0) / 4294967296; };
-  const groups: { name: string; plants: LandscapeGeometry; ground?: LandscapeGeometry; trees: Tree[] }[] = [];
+  const groups: { name: string; plants: LandscapeGeometry; ground?: LandscapeGeometry; rocks?: LandscapeGeometry; phase?: 2; anchors?: Anchor[]; trees: Tree[] }[] = [];
   const hillTriangles: CoastalPoint[][] = [];
   const supported = (x: number, y: number) => {
     const height = landscapeGroundHeight(x, y);
@@ -120,5 +121,80 @@ export function coastalLandscape() {
       tree(group, x + Math.cos(angle) * rx * radius, y + Math.sin(angle) * ry * radius, 4.1 + random() * 2, true);
     }
   });
+  // A separate seed preserves all phase-one silhouettes byte for byte.
+  seed = 231024;
+  const zone = (name: string, rocks = false): typeof groups[number] => {
+    const group: typeof groups[number] = { name, plants: empty(), trees: [], phase: 2, anchors: [] };
+    if (rocks) group.rocks = empty();
+    groups.push(group); return group;
+  };
+  const shrub = (group: typeof groups[number], x: number, y: number, h: number) => {
+    const first = group.plants.positions.length / 3;
+    crown(group.plants, x, y, supported(x, y) + h * .4, h * 1.15, h * .9, h * .6,
+      random() * 6, Color3.FromHexString("#7e875c").toLinearSpace().scale(.85 + random() * .25));
+    group.anchors!.push({ x, y, first, kind: "shrub" });
+  };
+  const grass = (group: typeof groups[number], x: number, y: number) => {
+    const g = group.plants, color = Color3.FromHexString("#9b9c6b").toLinearSpace().scale(.85 + random() * .3);
+    for (let n = 0; n < 5; n++) {
+      const px = x + (random() - .5) * .6, py = y + (random() - .5) * .6;
+      const z = supported(px, py) - .08, width = .12 + random() * .12, h = .45 + random() * .45;
+      const a = vertex(g, px - width, py, z, color.scale(.7));
+      vertex(g, px + width, py, z, color.scale(.7));
+      vertex(g, px, py + width, z, color.scale(.7));
+      vertex(g, px + .25, py + .1, z + h, color);
+      g.indices.push(a, a + 2, a + 1, a, a + 1, a + 3, a + 1, a + 2, a + 3, a + 2, a, a + 3);
+      group.anchors!.push({ x: px, y: py, first: a, kind: "grass" });
+    }
+  };
+  const rock = (group: typeof groups[number], x: number, y: number, radius: number, h: number) => {
+    const g = group.rocks!, first = g.positions.length / 3, base = supported(x, y), color = Color3.White();
+    const phase = random() * 6;
+    for (let ring = 0; ring < 3; ring++) for (let n = 0; n < 8; n++) {
+      const angle = n / 8 * Math.PI * 2, r = radius * [1, .92, .66][ring] * (1 + .13 * Math.sin(n * 3 + phase));
+      const px = x + Math.cos(angle) * r + ring * h * .12, py = y + Math.sin(angle) * r * .55;
+      const z = ring ? base + h * (ring === 1 ? .48 : .88 + .08 * Math.sin(n + phase)) : supported(px, py) - .22;
+      vertex(g, px, py, z, color.scale(ring ? 1 : .85));
+      // Reuse the existing rock texture at its metre-scale projection.
+      g.uvs.splice(g.uvs.length - 2, 2, (px + z * .3) / 2, (py + z * .7) / 2);
+    }
+    const top = vertex(g, x + h * .24, y, base + h, color);
+    const bottom = vertex(g, x, y, base - .35, color.scale(.85));
+    for (let n = 0; n < 8; n++) {
+      const a = first + n, b = first + (n + 1) % 8;
+      g.indices.push(a, b, a + 8, b, b + 8, a + 8, a + 8, b + 8, a + 16,
+        b + 8, b + 16, a + 16, a + 16, b + 16, top, a, bottom, b);
+    }
+    group.anchors!.push({ x, y, first, kind: "rock" });
+  };
+  const edge = zone("grove-edge");
+  for (const [x, y] of [[-17, -30], [-2, -37], [17, -32], [10, -22]]) for (let n = 0; n < 6; n++) {
+    const angle = n * 2.4, distance = 4.5 + random() * 2;
+    shrub(edge, x + Math.cos(angle) * distance, y + Math.sin(angle) * distance * .8, .6 + random() * .55);
+  }
+  // B: two broken outcrops, with grass concentrated at their toes and open space between.
+  for (const [i, [x, y]] of [[-48, -13], [-84, -9]].entries()) {
+    const group = zone(`meadow-${i}`, true);
+    for (let n = 0; n < 7; n++) rock(group, x + (n - 3) * 2.5, y + Math.sin(n * 1.6) * 1.2,
+      1.8 + random() * 1.1, .5 + random() * .7);
+    for (let n = 0; n < 34; n++) {
+      const angle = n * 2.4, distance = 2.5 + random() * 8;
+      grass(group, x + Math.cos(angle) * distance, y + Math.sin(angle) * distance * .55);
+    }
+  }
+  // C: sparse inland trees taper toward the lighthouse; the seaward skyline remains open.
+  for (const [i, [x, y]] of [[-133, 21], [-125, 35]].entries()) {
+    const group = zone(`tower-grove-${i}`);
+    for (let n = 0; n < 8; n++) {
+      const angle = n * 2.4, distance = 1.5 + random() * 4;
+      tree(group, x + Math.cos(angle) * distance, y + Math.sin(angle) * distance, 2.2 + (1 - i * .35) * random() * 2.6, false);
+    }
+  }
+  // D: only low, wind-shaped masses on the narrow cape; no new tall focal point.
+  const cape = zone("cape", true);
+  for (const [x, y] of [[-8, 25], [-7, 29], [-8, 34], [-7, 38]]) {
+    rock(cape, x, y, 1 + random() * .7, .55 + random() * .65);
+    for (let n = 0; n < 3; n++) shrub(cape, x + (random() - .5) * 3, y + (random() - .5) * 2, .45 + random() * .4);
+  }
   return groups;
 }
