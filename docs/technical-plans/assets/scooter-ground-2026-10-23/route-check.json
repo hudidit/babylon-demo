@@ -1,0 +1,39 @@
+{
+  "method": "real controller, fixed 1/60 integration; autonomous keyboard-state guidance; no browser time or travel-time benchmark",
+  "results": [
+    {
+      "direction": "home-to-tower",
+      "simulationSeconds": 25.833333333333332,
+      "maxCrossTrack": 2.715440684918451,
+      "end": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": -122.83890971318533,
+        "y": 81.91551907627432,
+        "heading": -0.9573039780978972,
+        "speed": 0,
+        "distance": 185.63834490740078,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      }
+    },
+    {
+      "direction": "tower-to-home",
+      "simulationSeconds": 23.983333333333334,
+      "maxCrossTrack": 2.729670619033316,
+      "end": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": 14.76877413859358,
+        "y": 1.9876123790702318,
+        "heading": -0.7091996954649363,
+        "speed": 0,
+        "distance": 185.6759606481417,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      }
+    }
+  ]
+}

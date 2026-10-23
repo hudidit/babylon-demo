@@ -1,0 +1,555 @@
+
+> babylon-learning@0.0.1 test
+> node --test tests/*.test.cjs
+
+✔ both equipment formats and the story envelope retain explicit playback choices without mutating the live clock (12.469334ms)
+✔ legacy V1, V2 and story checkpoints default to automatic at the exact saved time with no offline catch-up (1.525167ms)
+✔ optional playback fields reject non-boolean values in all existing save envelopes (9.0225ms)
+✔ loaded automatic time and actual energy freeze for overlapping reading pauses, then resume only after all owners close (11.285875ms)
+✔ coastal deliveries are locked, correctly sized and contain only the reviewed sources (2.844125ms)
+✔ generated RGBE environment is neutral, sun-free and reproducible independently of photographic maps (66.646416ms)
+✔ former blocking boulders are absent while all four vegetation zones retain their exact layout (92.187625ms)
+✔ both formerly reachable boulder sites support continuous walking and riding in both directions (276.375459ms)
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:07]: Babylon.js v9.30.0 - Null engine
+✔ headlight follows twilight continuously and cannot flash at manual sun/moon handover (487.932625ms)
+✔ night riding illuminates outdoor receivers only; day, unmounted and absent receivers stay off (972.983666ms)
+✔ beam origin and direction follow the fork, heading and slope without camera coupling (351.375833ms)
+✔ Room gates the lamp by riding, current view and hidden state, preserving a stationary rider (452.875ms)
+BJS - [15:17:09]: Babylon.js v9.30.0 - Null engine
+✔ parking footprints and dismounts have real support; no safe exit leaves the rider aboard (53.906917ms)
+✔ acceleration uses metres per second and coasting, braking and reversing are bounded (452.897292ms)
+✔ top speed is 40 km/h and full-lock steering is half the earlier response (687.281917ms)
+✔ long frames sweep the entire vehicle against fence, tower and house, including in-place turning (1265.624084ms)
+✔ both directions of the route support wheelbase and full body through all corners (390.043792ms)
+✔ model stays in geometry/material budgets and disposal restores scene-owned resources (728.459291ms)
+✔ former slow zones and edge approaches share the cruise target without automatic braking (174.898125ms)
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+✔ clear weather is the original time snapshot identity, with zero added fog and no changes to the clock (2.953125ms)
+✔ sky/sea cloud, atmosphere, PBR fog and natural light consume one weather snapshot while work lamps retain intensity (516.306ms)
+✔ world rain is one noncolliding, unpickable mesh/material, shares fog and disables only decoration in reduced motion (3.6ms)
+BJS - [15:17:05]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+✔ an entry waits ten active seconds after fully opening, then closes and latches once (38.847667ms)
+✔ automatic closing respects the real swept leaf, waits for a walker, and resumes without pushing them (2.224625ms)
+✔ reopening a partly closed leaf restarts the full delay; invalid or absent ticks cannot advance it (12.165709ms)
+✔ ordinary interior doors retain manual operation (1.216ms)
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+✔ four flush fixtures fit below the roof, emit outside their own geometry and follow ceiling visibility (395.061458ms)
+✔ new sources keep room masks and enough real shader slots on shared walls and late furniture (264.759792ms)
+✔ reachable first-person switches preserve independent lamp state across time, invalidate local shadows and release cleanly (324.574125ms)
+✔ both map viewports include the outward entry leaf with padding beyond the house footprint (1.136667ms)
+✔ map left/right and north agree with an actual north-up left-handed camera projection (630.949708ms)
+✔ map heading follows the same projected movement in all four cardinal directions (0.168834ms)
+✔ revised plan has a direct living-room entry, a compact study and a larger master bedroom (0.302167ms)
+✔ floor spans do not overlap and every doorway lies on both connected room boundaries (0.25375ms)
+✔ every room is reachable from the entry and the private bathroom only connects to the master bedroom (0.161959ms)
+✔ pure immutable layout has stable unique room/door IDs without runtime state (0.42975ms)
+✔ metric coordinates round-trip across rooms, outer corners and balcony; legacy locations stay separate (0.262875ms)
+✔ ready legacy content does not claim that the target layout is built (0.386791ms)
+✔ replaced/disposed builds discard late resources and never register stale readiness (0.107875ms)
+✔ shared resources release only after the last owner; actions/children clean up in reverse order (0.105292ms)
+✔ a failed room retains available resources and does not break another room; retry clears the old generation (0.110083ms)
+✔ cleanup failures are retained for diagnostics without leaking the remaining room resources (0.063ms)
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:07]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:07]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:07]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:08]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:08]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:09]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:09]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:10]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:10]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:10]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:10]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+✔ every fixed observer sees one forward flash per ten seconds, with a dark opposite direction (2.022875ms)
+✔ the optical head rotates around its real centre while the frame, base and floor remain fixed (624.907083ms)
+✔ all rotating geometry fits the protected core and never enters the cached static shadow map (402.730667ms)
+✔ navigation emission follows operation, remains independent from the work lamp, and allocates no light or RTT (342.018625ms)
+✔ the visible shaft reaches the sea within its finite forward range and keeps soft transverse edges (0.212833ms)
+✔ air and ocean share rotating direction, dirty-pane dimming, shutdown and exterior visibility (264.255875ms)
+✔ local controls require a clear short ray; walls, glazing, floor and range block access (359.308416ms)
+✔ running atmospheric light never occludes local buttons or direct observation; solid geometry still blocks access (433.596291ms)
+✔ scene authorization rejects wrong storey, ladder, vehicle, airborne and orbit controls (776.485958ms)
+✔ stationary whole-lamp observation covers a complete rotation from multiple walkable positions (314.903084ms)
+✔ clear lantern glazing permits gallery observation through every turn, while device access and solid occlusion remain blocked (349.952917ms)
+✔ independent lighthouse pause cannot be cleared by another UI and printed records claim no completed inspection (0.230334ms)
+✔ coast disposal releases the optical transform, shader and all generated meshes once (277.260125ms)
+✔ a whole top-floor area accepts a check in every direction without aiming, including the glass gallery (293.097709ms)
+✔ one explicit check starts daylight testing, completes at three seconds and advances the story before ending its test (292.694791ms)
+✔ menus freeze a check; departure cancels owned tests and a retry requires three new active seconds (257.460667ms)
+✔ night navigation and pre-existing tests remain running; unavailable lamps cannot pass (281.419458ms)
+✔ actual E-key handler checks without pointer lock, ignores repeats and gives the ladder back after completion (239.066583ms)
+✔ lamp-panel check button closes its modal, starts a fresh check and keeps its local authority gate (179.200583ms)
+✔ editing the presented voice preserves strict original messages and byte-identical story checkpoints (6.552416ms)
+✔ cancellation copy uses the report available at the original send time, including late handovers (0.116417ms)
+✔ report copy reads the saved measurements and navigation, never the current scene or a blanket all-clear (0.205ms)
+✔ unverified calls retain the actual call and do not invent the sender (0.082792ms)
+✔ ordinary latent patrol caches one honest incomplete result across repeated reads, button presses and unchanged facts (1.004708ms)
+✔ obvious surfaces and deeper checks give definite scoped evidence without any inspection randomness (0.151583ms)
+✔ initial latent discovery thresholds range from .35 to .8 with strict probability boundaries (0.2675ms)
+✔ leaving the area requires ten continuous automatic scene minutes, and pauses/brief returns do not renew a visit (0.120542ms)
+✔ two effective misses point to a deterministic next method and existing suspicion is never erased by a later glance (0.227ms)
+✔ a changed instance or revision invalidates current knowledge while retaining historical evidence (0.104084ms)
+✔ observation out of range and interrupted actions cannot consume information randomness (0.665ms)
+✔ knowledge checkpoints resume the same cached result and independent random stream without extra draws (0.967208ms)
+✔ long histories remain bounded without evicting another devices current cached result or two-miss hint (13.358208ms)
+✔ inspection draws and checkpoint reads never change future weather or equipment events (4.343375ms)
+✔ surface warning affects real solar input before becoming obvious, and never turns into a serious outage (20.419417ms)
+✔ real five-second detection enables only the corresponding cleaning transaction, followed by independent recheck (3.394125ms)
+✔ cross checks use observed environment/input and V1 keeps honest wording without pretending to persist latent state (4.699834ms)
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:07]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:08]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:08]: Babylon.js v9.30.0 - Null engine
+✔ installation identities and state remain honest; main hatch follows actual operation (26.449542ms)
+✔ cabinet, solar panel and generator block the complete body through the shared collision route (34.147917ms)
+✔ the engine room has a usable doorway, a clear service station, bounded ceiling and an outside escape route (1.491333ms)
+✔ original entrance, ladder landings, gallery loop and scooter parking stay clear (28.8335ms)
+✔ shared solids match their rendered group bounds, labels face the stated service side and all eight devices are pickable (716.849833ms)
+✔ new cabinet access uses real floor, distance, occlusion and the existing scene authorization (705.900542ms)
+✔ backup source clears the roof and body while the closed drive hatch stays in the protected core (405.464208ms)
+✔ new geometry has its own budget, preserves old exterior budget and disposes its one atlas and three materials (322.867917ms)
+✔ player commands retain local solar patrol and recovery, excluding the four deferred groups (0.401542ms)
+✔ reticle uses accepted progress and cannot close merely by waiting without turn/output evidence (55.716708ms)
+✔ paper records filter by local object and remove technical events while preserving dirty/clean and interruption (0.291792ms)
+✔ paper pagination clamps changing and empty records and never requires an unbounded scroll (0.382083ms)
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:07]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:07]: Babylon.js v9.30.0 - Null engine
+✔ work light follows the current storey, is explicitly scoped, and switches off away from the tower (799.052125ms)
+✔ panel switch and record are pickable at walking distance, are occluded by walls, and reuse sound cues (370.242458ms)
+✔ record atlas is deterministic, floor map matches real heights and identifies climbs without changing floors (25.939291ms)
+✔ details fit their separate geometry budget, leave all floor and ladder routes clear and release every owned resource (394.761709ms)
+BJS - [15:17:06]: Babylon.js v9.30.0 - Null engine
+✔ fresh session has three unconfirmed checks, deterministic salt, and no invented evidence (0.8965ms)
+✔ reading requires local authority; repeated readings refresh time without duplicating a result event (0.272292ms)
+✔ optic evidence needs three continuous accepted active seconds, actual rotation and output within the test window (4.4485ms)
+✔ leaving the check area or stopping resets observation; pause freezes it and never supplies missed time (0.307834ms)
+✔ a check accepts real lamp output without waiting for a whole cycle (0.211458ms)
+✔ a frozen or artificially discontinuous turntable cannot earn an observation by waiting (0.159458ms)
+✔ cleaning requires a dirty observation and standby; completion changes the surface once, then requires recheck (0.407958ms)
+✔ cancel, lost contact and interruption at the last cleaning frame preserve dirt and record no completed action (0.457041ms)
+✔ starting a test or selecting night cancels immediately, and a last-frame 18:00 crossing cannot commit (0.464917ms)
+✔ three independent checks form the round summary only after cover recheck (1.285833ms)
+✔ manual time never rebuilds tasks; automatic midnight rebuilds checks and retains the clean physical surface (0.360334ms)
+✔ seven-day history prunes observations while retaining current checks, revision and monotonic immutable events (0.318042ms)
+✔ safe top-floor stand can reach the fixed pane and view optics; looking away, outer glass, walls and floor occlude evidence (1438.276792ms)
+BJS - [15:17:07]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:07]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:08]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:08]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:08]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:09]: Babylon.js v9.30.0 - Null engine
+✔ entrance connects the plaza and first room in both directions with no side access (45.073833ms)
+✔ first-floor and every stair support equal actual rendered top faces (672.723042ms)
+✔ inner masonry faces the room, window holes stay open and reveals close the thickness (348.612125ms)
+✔ the door is picked from both sides, masonry occludes it, and a walker pauses its sweep (389.95ms)
+✔ scooter cannot use the newly walkable entrance or the first room (3.014125ms)
+✔ interior reuses shared materials, remains enclosed under cutaway and releases its nodes (290.809042ms)
+✔ a normal one-metre frontal approach can fully open the wider entry without sidestepping (376.499125ms)
+✔ the control panel has a clear frontal operating bay and its complete face can be picked (262.9205ms)
+BJS - [15:17:07]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:07]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:08]: Babylon.js v9.30.0 - Null engine
+✔ two occupied levels preserve the total tower height, with a safe ladder landing at both ends (1.301083ms)
+✔ all storey support and overhead heights match actual rendered floor faces and the well is open (684.49375ms)
+✔ floor selection cannot project upper floors down to the entrance or change levels during a long move (1.219333ms)
+✔ walking and jumping cannot enter the ladder well, cross glazing or leave the gallery edge (10.351417ms)
+✔ vertical input stops exactly at every storey in both directions and consumes held movement (1.153709ms)
+✔ ladder mid-flight stopping, simultaneous keys, endpoints and invalid input stay bounded (0.102084ms)
+✔ camera keeps its orientation, pauses mid-climb and leaves only onto a real storey (804.76775ms)
+✔ entry door vertical clearance and resource ownership remain correct after adding floors (288.597583ms)
+✔ drive drill requires actual backup, isolated diagnosis, correct replacement and one real main cycle before restore (19.140375ms)
+✔ self-test is a separate 12-second local test and cannot supply actual takeover proof (2.749417ms)
+✔ backup flash phase is 10 active seconds, 0.8 bright and pauses do not catch up (1.958375ms)
+✔ trial timeout returns to isolation and backup; frozen phase and absent output cannot pass verification (7.926042ms)
+✔ charger drill excludes surface dirt and requires a current external energy receipt after replacing its separate module (2.128208ms)
+✔ sensor drill requires a controlled daytime override, surface observation and tool retest with override withdrawn; night remains authoritative (1.328584ms)
+✔ unavailable backup blocks night isolation and maintenance; automatic main fallback and inspection invalidation use actual facts (17.081917ms)
+✔ focused scene rejects deferred commands without mutating normal session or consuming inventory (1270.240667ms)
+✔ default noon is session-local standby; schedule includes 18:00 and excludes 06:00 precisely (0.783291ms)
+✔ clock receipts distinguish accepted automatic hours, active seconds, manual fades, skips and invalid frames (0.536417ms)
+✔ automatic 17:59→18:00 and 05:59→06:00 produce exact objective events once (24.301584ms)
+✔ midnight advances duty day only from accepted automatic time, without restarting the beacon (6.297583ms)
+✔ device rotation keeps a thirty-active-second period with manual night time and unequal frame sizes (3.062209ms)
+✔ daytime test lasts sixty active seconds, repeat start does not extend it, and ending is idempotent (0.904875ms)
+✔ night tests and timeout preserve navigation state, phase and original start event (0.906542ms)
+✔ 18:00 takes over daytime test, while a valid night test can continue after 06:00 (4.071ms)
+✔ one clock frame splits schedule crossings and test expiry without counting a stopped segment as running (7.139833ms)
+✔ manual fades settle once, can be retargeted and cannot create a day, work hours or intermediate schedule events (6.451209ms)
+✔ overlapping pauses freeze phase and test; return frame and invalid deltas do not catch up (0.128ms)
+✔ coast hiding freezes visible motion/test while the shared automatic calendar and schedule stay synchronized (4.270875ms)
+✔ daily log keeps seven duty days with monotonic IDs; pruning preserves phase, calendar and work hours (15.109417ms)
+✔ complete 24-minute automatic cycles agree across uniform and unequal steps, with one accepted midnight (138.036083ms)
+✔ all snapshots, receipts and log entries are immutable; rejected selections leave state unchanged (0.294458ms)
+✔ Room updates lighthouse even with a frozen manual hour and guards all mutations after disposal (1466.594708ms)
+✔ solar envelope and analytic integrals obey dawn, noon, dusk and exact daily Wh (40.231792ms)
+✔ scene-hour energy is frame independent through solar, night schedule and capacities (407.793ms)
+✔ 10% protection switches to independent backup at a frame-independent boundary; 25% warning is separate (32.390667ms)
+✔ manual time, automatic off, pauses and recovery frames never consume Wh or fuel (19.522375ms)
+✔ generator output, isolated solar failure and independent backup charging are distinct from main stored energy (7.774042ms)
+✔ fuel exhaustion stops exactly, refuel is stopped-only, cancellation and duplicate commands cannot debit twice (0.941166ms)
+✔ backup full-charge, recovery-ready and fuel boundaries agree across different frame sizes (82.539333ms)
+✔ 20% recovery is latched until local meter verification, and drive faults cannot be cleared by battery checks (7.48275ms)
+✔ actual solar sampling requires automatic time, unchanged revisions and positive main battery Wh; no fabricated test load (1.23825ms)
+✔ depleted main and backup are independent, bounds and snapshots remain immutable and invalid initial state fails (17.098167ms)
+✔ empty battery at dawn cannot accumulate sub-controller solar power through a frame-size artefact (0.1715ms)
+✔ labelled 11% supply exercise completes only after actual protection, refill, recovery and positive generator proof (9.324083ms)
+✔ one slot restores exact fractional time, committed evidence, resources and event identifiers without offline catch-up (6.213709ms)
+✔ saving an unfinished wipe or transaction restores pre-commit state without inventing completion or consuming resources (1.279375ms)
+✔ legacy thirty-second test saves retain their remaining time, phase and committed ten-second observation text (15.581042ms)
+✔ committed module inventory and fuel transactions remain atomic across repeated save/load and stale proofs stay stale (9.703208ms)
+✔ maintenance expiry changes real surfaces/revisions once on accepted day progression; cleaning reschedules and requires recheck (1.949958ms)
+✔ malformed, unknown, excessive, inconsistent and future-revision saves never overwrite an existing slot (5.418875ms)
+✔ storage denial, failed writes and time transitions leave the live session and previous data intact (0.868833ms)
+BJS - [15:17:09]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:09]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:09]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:10]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:10]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:10]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+✔ the entire rounded path width rests on land and clears the original coast pinch point (61.971625ms)
+✔ placement heights equal hits on actual terrain triangles instead of the continuous height formula (89.269583ms)
+✔ the expanded shoreline field covers the new cape with the existing near-house sampling density (235.665083ms)
+✔ coast map landmarks follow the existing house map and a real north-up left-handed camera (3.356166ms)
+✔ road faces remain above actual land while outdoor movement uses the explicit surface controller (379.486208ms)
+✔ walking support matches rendered road, ramp, lookout and plaza top faces including negative heights (399.045375ms)
+✔ the entrance, rounded route and complete ring around the solid tower are continuously walkable both ways (180.006959ms)
+✔ long and airborne moves cannot cross windows, balcony rails, tower or the finite guardrail (8.882166ms)
+✔ visible guardrail follows real terrain and leaves its full support on land (4.329666ms)
+✔ outdoor jumps land on their actual negative or elevated ground without a global indoor ceiling (0.525958ms)
+✔ ramp and main-road slopes can be followed while grounded without tiny repeated falls (2.012166ms)
+✔ walking recovery keeps a valid elevated checkpoint and rejects void or newly obstructed saved poses (395.768791ms)
+✔ restoration checks actual door-leaf transforms after an orbit-view door movement (1.506083ms)
+✔ lighthouse door and windows are real recessed openings while the permanent shaft stays solid between them (314.105667ms)
+✔ all exterior roof pieces hide together and landmark materials cannot inherit the house cutaway (245.491584ms)
+✔ local shadow coverage has hysteresis, caches at rest, stops in background and removes its observer (197.85525ms)
+✔ live native events complete chapter one only after actual cleaning, independent recheck and a full observation (10.890875ms)
+✔ restore and repeated subscriptions cannot turn old events into new current evidence (9.072375ms)
+✔ looking away, reading text and interrupted cleaning provide no patrol proof (0.801125ms)
+✔ later physical revisions invalidate report evidence and an explicit fresh read can renew it (14.351541ms)
+✔ a delayed bridge refuses historical events rather than applying the current revision or time to them (0.726417ms)
+✔ second and third chapters use actual fog navigation, treatment, independent recheck and handover evidence (713.720084ms)
+✔ wait and ordinary unobserved automatic receipts agree exactly, including split waits and checkpoint continuation (336.083292ms)
+✔ waiting never submits actions, observes a main-light cycle or reads messages; cancel keeps accepted time (10.060875ms)
+✔ story solar is one persistent original-risk instance, escalates after two hours and does not recur to satisfy a task (304.54275ms)
+✔ early treatment carries into the fog chapter without duplicate dirt; reports still need new valid evidence (737.056042ms)
+✔ late play keeps original transport times and offers repeated genuine daylight fog windows (887.435791ms)
+✔ low power blocks ordinary rest while a separate recharge wait uses real solar Wh and stops at recovery (14.266334ms)
+✔ unsafe outdoor work and unavailable navigation cannot be papered over with handover or safe-rest controls (351.633792ms)
+✔ new story schedule and uncertainty checkpoints reject corrupt cross-model state and preserve old first-chapter saves (7.29525ms)
+✔ recharge waiting stops for a newly protected main battery and a later loss of actual backup navigation (36.460125ms)
+✔ ordinary save services refuse a story schedule even though its inner equipment codec is shared (1.1335ms)
+✔ uncertainty notes retain real proof and reject invented, action-in-progress or future checkpoints (97.396208ms)
+✔ handover saves continue to the real 72-hour cancellation and offer only the next genuine night wait (395.135833ms)
+✔ a completed main observation before registration cannot be reused and interruption or reload restarts pending work (154.211584ms)
+✔ actual backup observation shows read-only progress and needs ten new seconds after registration (152.688625ms)
+✔ daylight fog backup confirmation cannot satisfy the later night and a lost navigator cannot be bypassed (421.613292ms)
+✔ night registration across midnight starts a new watch without changing completed history or sender time (178.327792ms)
+✔ source verification and ending restore each distinct boundary without duplicate messages or implicit finish (160.626042ms)
+✔ ending summaries use completion-time work and pending issues while later island play preserves the finished chapter (478.211958ms)
+✔ a failed final save preserves the old slot and the live ending can be retried without repeating its completion (157.497708ms)
+✔ independent stories start with explicit identity and deterministic seeds without touching exploration storage (6.986292ms)
+✔ real device events satisfy the first patrol and retain reports through sent, delivered and read checkpoints (13.586834ms)
+✔ fractional accepted time, weather transition and random streams survive repeated complete-story checkpoints (2541.800083ms)
+✔ saving unfinished actual work discards the action without committing proof, consuming resources or emitting a deferred message (1.234166ms)
+✔ story saves use only their own key and neither migrate nor overwrite legacy exploration or exercise data (1.227708ms)
+✔ unknown, corrupt and cross-model saves are retained and cannot replace the live story or any other slot (17.6185ms)
+✔ quota, denied reads, failed deletion, time selection and wrong-mode writes preserve old data and live state (1.61575ms)
+✔ eleven tasks, all chapters and the ending replay identically with a restore at every committed boundary (94.617625ms)
+✔ all optional materials and a personal diary change no work or transport requirements (68.477542ms)
+✔ rejecting an out-of-order command does not consume it and every semantic command is idempotent (32.846792ms)
+✔ early valid observations count, while dirty surfaces, insufficient rotation, no output and text alone cannot complete patrol (1.206375ms)
+✔ crossing a day or changing a physical revision keeps completed history but requires new report evidence (1.905583ms)
+✔ a late arrival report and its unread reply retain their actual dates and late messages are never rescheduled (2.336417ms)
+✔ an extremely late route still completes with true report and extension dates, preserving the original cancellation (13.293583ms)
+✔ departure preparations remain in chapter three until the actual cancellation arrives (8.277334ms)
+✔ ordinary misses do not become a repair, deterministic inspection and a separate post-clean check provide a path (6.057709ms)
+✔ cleaning before the fog task is acknowledged, stale comparisons are not reused and no second problem is created (16.292291ms)
+✔ later surface revisions require current recheck and input facts while retaining the original story treatment (77.255833ms)
+✔ handover refuses unsafe weather, unfinished actions, missing navigation and unreported critical issues (9.798791ms)
+✔ cancellation is independent of local weather and cannot complete departure preparation on its own (0.460625ms)
+✔ night confirmation must follow registration, use the currently running source and defer old calls during actions (24.243584ms)
+✔ a long exploration prunes only the live cache, preserves completed proofs and rejects old source events after reloading (125.359167ms)
+✔ invalid inputs are rejected atomically and snapshots cannot mutate the model (0.346917ms)
+✔ strict checkpoint validation rejects unsupported, contradictory and forged causal state (72.811ms)
+✔ a handover report without its atomic completion is rejected instead of leaving an unfinishable task (24.817834ms)
+✔ production bridge applies the four solar multipliers and daytime fog navigation to real Wh, without duplicate loss (73.042791ms)
+✔ weather bridge replays automatic transitions and energy across different real frame sizes (509.881041ms)
+✔ linear weather/daylight analytic integral agrees with independent numerical quadrature including dawn and dusk (0.87275ms)
+✔ fixed weather changes preserve device facts and problems, low-solar alone never requests navigation (0.281333ms)
+✔ weather interval receipts split at fog trigger and sustained recovery, conserving accepted automatic hours (7.2095ms)
+✔ pause, explicit clock stop and resume reset do not advance weather, random streams, Wh or hidden risk (1.060417ms)
+✔ V1 saves from active daytime fog preserve true energy/history without mutating the live weather request (7.243666ms)
+✔ existing teaching/due surfaces suppress duplicates and weather-created dirt changes the actual surface and invalidates evidence (5.534167ms)
+✔ storm cancels an outdoor wipe without clearing dirt/debiting inventory, while indoor cover cleaning stays available (1.08175ms)
+✔ paper records retain weather causes across V1 saves and never label an automatic change as a player inspection (3.649084ms)
+✔ versioned random streams reproduce seed zero and uint32 boundaries and resume a JSON checkpoint (1.305834ms)
+✔ information stream consumption cannot perturb future weather or equipment events (3.408209ms)
+✔ random seed/checkpoint validation rejects unknown versions, missing streams and nonintegers (0.418458ms)
+✔ four fixed conditions preserve explicit visibility and solar input, without drawing weather randomness (21.299292ms)
+✔ automatic segments last 2–6 hours and fog/storm only enter and leave through overcast (4.519459ms)
+✔ a weather transition is continuous, bounded and complete after four ticks (20 reference active seconds) (0.190583ms)
+✔ visibility hysteresis separates low visibility, gray-zone reset and ten-minute sustained recovery (0.079ms)
+✔ visibility threshold crossings inside a risk interval are continuous and display projections do not mutate history (0.050792ms)
+✔ Poisson probability handles zero, tiny rates and saturation without invalid probabilities (0.068708ms)
+✔ risk waits for a complete five-minute interval and retains its fractional remainder (0.617083ms)
+✔ default candidate pool has only locally treatable surface issues and no random severe outage (22.00675ms)
+✔ empty, zero-rate, insufficient exposure and unavailable treatment pools do not draw equipment randomness (18.587459ms)
+✔ instances and cause survive repeated reads, existing problems are not rerolled, stale repairs fail (0.324375ms)
+✔ soil grows progressively with weather exposure and maintenance reduces only the specified component risk (0.086ms)
+✔ a severe candidate needs a latent warning, full first-day protection, mutual exclusion and repair cooldown (0.379625ms)
+✔ component iteration order is stable even when a configured pool arrives in another order (0.297041ms)
+✔ same seed and effective commands replay identically across coarse/fine simulation frames (5.582125ms)
+✔ real shared clock receipts are frame invariant, while pause, explicit clock stop and reset never advance hazards (51.654ms)
+✔ invalid simulation input fails without changing state and diagnostic snapshots are deeply immutable JSON (0.318833ms)
+✔ weather subintervals cross each shared-clock midnight once across fractional frames and manual time origins (300.371542ms)
+✔ exact weather checkpoints retain fractional risk time, transitions and all stream positions across repeated restores (33.279542ms)
+✔ full V2 sessions resume actual weather, energy, calendar, latent surfaces and knowledge without adding history (582.596875ms)
+✔ daytime fog restores a protected main battery and actual backup source before validating equipment (1.1745ms)
+✔ a cached missed patrol, two-miss hint, deterministic deep check and logged clue IDs survive saving (561.212375ms)
+✔ serious problem protection, maintenance revisions and cooldown are exact model checkpoints (2.230792ms)
+✔ V1 migration is atomic and one-time; read-only inspection never creates a seed or changes the slot (14.153959ms)
+✔ normal and exercise slots are independent, reject cross-slot writes and reproduce boundary seeds (34.325625ms)
+✔ corrupt, unsupported or contradictory V2 data is retained and cannot replace a live session (3.49975ms)
+✔ a full checkpoint cancels unfinished field work without consuming inventory, proving completion or drawing information (650.861584ms)
+✔ paint maps are reproducible, seamless-periodic and retain subtle opaque nonmetal paint channels (3019.185542ms)
+✔ baseline selection keeps the forest default and reads a separate coastal snapshot (3.117ms)
+✔ baseline selection rejects absolute, escaping, non-JSON and symlink paths (2.136042ms)
+✔ frozen files reject missing and same-length modified inputs (1.520708ms)
+✔ snapshot paths reject traversal, duplicate entries and symlink parents (1.867125ms)
+✔ release verification rejects unexpected, changed or omitted delivery files and wrong archive (4.3165ms)
+✔ audio preferences tolerate null, malformed values and clamp valid levels (0.698583ms)
+✔ saved mute does not initialize or request assets; preload shares fetch/decode and prepared objects (2.341584ms)
+✔ locked, muted and background actions never reach the backend or replay after recovery (114.288416ms)
+✔ gesture candidate is short-lived and reversal invalidates it before unlock resolves (45.295083ms)
+✔ blur during a pending unlock remains suspended after the resume Promise resolves (3.90325ms)
+✔ per-item HTTP/decode failure degrades independently, retries at most once and never backfills events (6.764875ms)
+✔ bad decode and excessive decoded PCM do not allocate playable objects (0.941625ms)
+✔ bounded polyphony, high-priority replacement and ended cleanup respect the six-voice cap (39.808041ms)
+✔ moving entities update only in first-person; paper stays 2D; view change stops old voices (38.362625ms)
+✔ disposing in-flight download cancels it and ignores late results (9.755333ms)
+✔ reviewed audio is reproducible, catalog matches whitelist and corrupt/long/unlicensed files fail validation (12.80025ms)
+BJS - [15:17:10]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:10]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:10]: Babylon.js v9.30.0 - Null engine
+✔ six existing curtain assemblies cover each real opening when closed and retain the original open silhouette (524.306417ms)
+✔ real fabric picking supports smooth reversal, window-local light transmission, unchanged artificial lamps and idle shadow caches (265.105292ms)
+✔ curtain actions obey reach/occlusion/cutaway and remove pending animation on room release (224.779ms)
+BJS - [15:17:10]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:12]: Babylon.js v9.30.0 - Null engine
+✔ sky, sea, scoped light and a single cached shadow follow all eight nodes and twilight together (474.380708ms)
+✔ shadow anchor relocation retains the current moon/sun instead of reverting to the old afternoon direction (259.99825ms)
+✔ north/east/south openings only accept incident celestial light and artificial lamp switches survive time changes (5.116708ms)
+✔ indoor materials keep distinct baselines, mirror RTTs/emission are protected and late imports inherit night (2.474167ms)
+✔ outdoor baselines, late-created materials and failed IBL never drift or fall back to indoor daylight (202.921083ms)
+✔ sky and sea bind the reflected eye in mirror passes and restore the real eye for the main camera (198.178125ms)
+✔ manual fades update natural shadow maps together, leave artificial caches intact and share the sky handoff (161.175417ms)
+✔ both real mirror targets retain the shared sky and sea while excluding unrelated rooms and previews (140.14475ms)
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:11]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:12]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:12]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:12]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:12]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:12]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:12]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:13]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:13]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:13]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:13]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:13]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:13]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:14]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:14]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:14]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:14]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:14]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:14]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:14]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:14]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:15]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:15]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:15]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:15]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:15]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:15]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:15]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:16]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+BJS - [15:17:17]: Babylon.js v9.30.0 - Null engine
+✔ ocean time pauses offscreen/background and ignores a stale resume delta (0.5635ms)
+✔ ocean shoreline intersects the real cliff and one deterministic field controls depth and foam (276.97425ms)
+✔ ocean visibility, camera layers, page transitions and disposal stop the shared observer (270.701833ms)
+✔ exterior window sides match their rooms and the guest room shares the balcony's sea direction (0.2735ms)
+✔ window casings stay clear of the wall's cut faces so the reveal cannot z-fight (124.716167ms)
+✔ all window centres see the outside through transparent glass while retaining walker collisions (157.092583ms)
+✔ shared PBR coast keeps house support, sea height, bounded geometry and ownership (156.680834ms)
+✔ coastal terrain is deterministic and cliff rings share the exact closed crest and seabed (147.245ms)
+✔ coastal PBR isolates daylight, reuses maps, caches a local caster list and releases shared resources (145.969542ms)
+✔ outdoor cached shadows select only the static exterior shell and balcony rails (224.829458ms)
+✔ failed coastal downloads retain sunlit fallback surfaces without reflecting the indoor HDR (125.199583ms)
+✔ buried coastal rock clusters have outward normals and repeatable opaque geometry (12.126458ms)
+✔ cliff UVs retain vertical density and exact phase across mesh boundaries (1.061292ms)
+✔ foreground clipping leaves sea, sky and distant coast whole and clears stale planes (120.617625ms)
+✔ bathroom planar mirrors clip behind the actual face, isolate rooms and restore cutaway visibility (85.783292ms)
+✔ balcony furniture and transparent sliding panels fit, stay grounded and clear both tracks (97.830375ms)
+✔ sliding door blocks when shut, opens for a continuous two-way balcony route and remains pickable from both faces (178.327917ms)
+✔ sliding sweep pauses before the walker, reverses smoothly, refreshes only its rooms and releases sound/actions (89.310834ms)
+✔ the fully furnished house has a continuous entrance-to-every-room-and-balcony walking tour (577.4595ms)
+✔ kitchen and public bathroom fit the unchanged shell, ground their fixtures and share downloaded textures (86.023083ms)
+✔ service entrances and usable counter, toilet, vanity and shower paths pass in both directions (167.26775ms)
+✔ service lamps isolate their rooms, avoid self-occlusion and keep two independent real bathroom mirrors (86.251458ms)
+✔ guest bedroom reuses textures, fits its shell and grounds the bed, storage and window seat (78.588125ms)
+✔ guest bedroom allows both bedside paths, wardrobe access and the full entrance door sweep (157.335ms)
+✔ guest lamp controls only its room, emits outside its fixture and releases its two shadow targets (82.874375ms)
+✔ suite components fit inside their rooms, meet the floor and share materials with the second bedroom/bathroom (76.739208ms)
+✔ suite has continuous bed-side, wardrobe and private bathroom/shower routes with solid glass and furniture (163.18475ms)
+✔ suite furniture clears both door sweeps at every angle and cutaway retains glass collision (82.603541ms)
+✔ suite lamps have isolated emissive/light state, room masks and shadow invalidation (75.790875ms)
+✔ migrated furniture, open drawers and bookshelf contents fit the real room bounds (128.275042ms)
+✔ furnished house keeps the living spine and each doorway physically reachable (390.17475ms)
+✔ migrated lights stay below their actual shades and refresh only affected room shadows (47.802541ms)
+✔ house spans deduplicate shared edges, split T junctions and leave full-height doorway gaps (0.237292ms)
+✔ all house doors block when closed and pass the actual walker in both directions when open (179.774667ms)
+✔ overview shows every facade window through a semi-transparent roofless shell while room views stay opaque and selective (67.602708ms)
+✔ mounted door sweep protection uses the fixed yaw and the house walker radius (65.462875ms)
+✔ the entrance swings outside over the ramp and protects walkers on that side (64.732084ms)
+✔ cutaway follows camera direction and hides attached art while retaining wall collisions (66.489292ms)
+✔ outer guard preserves eye height and rejects the balcony concave outside corner (0.131333ms)
+✔ failed shared material initialization cleans only its new resources and can retry (0.363959ms)
+✔ multiple room builders share scene materials and retain explicit ownership after merging (14.057625ms)
+✔ room-level interaction cleanup respects shared ownership and rejects duplicate IDs (0.456125ms)
+✔ adjacent rooms have a real bidirectional passage and closed walls outside it (129.464916ms)
+✔ living room lamps and shadows stay in their room without taking study light slots (90.896125ms)
+✔ single door picks from both rooms, reverse smoothly and move their physical collision (106.332667ms)
+✔ door sweep pauses for a walker, resumes after clearance and supports reversing while blocked (95.33625ms)
+✔ audio events follow actual movement, blocking and completion rather than click timers (103.519583ms)
+✔ section batching preserves singleton artwork/window world transforms and cutaway parenting (100.423125ms)
+✔ collision partitions preserve swept collisions and cull distant geometry without extra draw calls (42.038208ms)
+✔ actual room collision partitions cover every merged index and preserve first-person sweeps (264.200125ms)
+✔ books and vase fit the actual bookshelf model at scale 5.2 (41.820208ms)
+✔ books and vase fit the actual bookshelf model at scale 3.7 (63.801834ms)
+✔ all flower stems connect to both the vase neck and their flower heads (21.749291ms)
+✔ first-person base speed is 50% higher without changing the settings range (0.063292ms)
+✔ first-person jump whitelists seats, the coffee table and beds but not desks, cabinets or outside (0.116666ms)
+✔ first-person jump rises, mantles onto the bed and lands back on the floor or from a fall (0.234166ms)
+✔ changing movement speed applies immediately and clears previous movement (1.163416ms)
+✔ lamp lights emit below their shades and the window is the main light source (28.790292ms)
+✔ floor lamp foot touches the floor and its stacked base joins the stem (137.872792ms)
+✔ sofa_03 fits its room footprint and sits on the floor after glTF conversion (0.685666ms)
+✔ modern_arm_chair_01 fits its room footprint and sits on the floor after glTF conversion (0.571375ms)
+✔ wall colour, normal and ARM maps tile together without modifying other walls (0.528084ms)
+✔ all exterior, shared and lintel walls use the same painted finish while wood remains separate (105.781833ms)
+✔ rugs receive shadows without hiding chair legs; cached shadows refresh after enclosure changes (17.469083ms)
+✔ beveled boards keep their dimensions and have outward, finite surface normals (0.6845ms)
+✔ stacked book covers touch the support and the next book without floating gaps (12.761167ms)
+✔ cloth gathers around its tie and leaves have a thin, curved pointed silhouette (1.268958ms)
+✔ desk accessories, tea tray and small furniture rest on their actual supports (19.828667ms)
+✔ wear masks preserve tangent normals and keep surface variation subtle and reproducible (22.897ms)
+✔ creased letter rests on the blotter and curls only a small distance above it (15.405167ms)
+✔ detail zoom limits and responsive suite framing preserve camera controls across views (2.403917ms)
+✔ all five procedural drawers retain boxes, independent motion and live collisions after merging (35.389416ms)
+✔ actual cabinet drawers move outward through the glTF conversion, preserving their geometry (1.55575ms)
+✔ picking respects occlusion, hidden geometry and first-person reach (0.288ms)
+✔ lamp switches independently restore direct light and their own emission (17.242041ms)
+✔ the inspectable letter remains a complete independent mesh on its original desk support (18.417542ms)
+✔ inspection centres and fits the actual shared geometry, restores the original camera and releases only preview resources (20.273958ms)
+✔ letter inspection uses the existing ray action and preview geometry cannot occlude scene actions (26.718417ms)
+✔ first-person keyboard and drag controls survive a rejected pointer lock, while UI pauses still block them (0.106209ms)
+✔ pointer lock handles browser Escape, explicit release, rejection, late success and disposal (0.761333ms)
+✔ pure room registrations work in a fresh process without the core side-effect barrel (1961.631667ms)
+✔ initial dependency guard rejects broad or unrelated systems while allowing room features (0.634375ms)
+✔ eight immutable nodes match the designed solar and lunar tracks and retain linear colour data (0.988375ms)
+✔ world directions and opposite light vectors put noon shadows north and sunrise/sunset shadows west/east (0.220291ms)
+✔ midnight uses a weak above-horizon moon instead of reversing or recolouring a subterranean sun (2.1235ms)
+✔ continuous evaluation wraps midnight clockwise and interpolates light in linear space (0.1825ms)
+✔ manual selection is atomic, scene-local, node-only and cannot be changed through an old snapshot (0.280416ms)
+✔ invalid evaluation and angles fail explicitly instead of producing NaN lighting values (0.098666ms)
+✔ manual fades change sun/moon direction only while dark and preserve direct-source exclusivity (4.033333ms)
+✔ manual transitions last 1.2 seconds, retarget the displayed state and reject invalid targets atomically (0.674333ms)
+✔ fresh sessions advance automatically from noon and opting out does not change the next session default (2.158708ms)
+✔ automatic time takes 24 real minutes, wraps midnight clockwise and time selection preserves it (17.530125ms)
+✔ same-node selection and retargeted fades preserve either explicit playback setting (0.215334ms)
+✔ long frames and background restoration never catch up the clock, including invalid deltas (0.118375ms)
+✔ overlapping pause owners resume independently; only the time menu allows a manual fade (0.226917ms)
+✔ stars fade with the solar horizon gate, stay absent in daylight and wrap midnight with linear cloud colours (2.75775ms)
+✔ manual cloud/star fades blend the displayed values instead of evaluating an unrelated intermediate hour (0.43675ms)
+✔ formerly rejected gentle shoulders have full real support in both travel directions (55.299292ms)
+✔ home shoulders and the later road no longer stop continuous driving across triangle boundaries (866.944333ms)
+✔ visible bench, walls, service equipment, guardrail and unsupported land stay blocked (92.118041ms)
+✔ gothic_commode.glb retains original geometry, UVs and material graph after image optimization (6.099167ms)
+✔ wooden_bookshelf.glb retains original geometry, UVs and material graph after image optimization (3.882708ms)
+✔ optimized study models stay inside the documented image-quality-adjusted budget (0.262459ms)
+▶ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases
+  ✔ whitelist matches measured runtime assets, copied bytes and full compiled output (24.100542ms)
+  ✔ missing lazy chunk is rejected (1.236041ms)
+  ✔ extra example asset or stale build file is rejected (0.535291ms)
+  ✔ same-size resource corruption is rejected by SHA256 (5.822875ms)
+  ✔ GLB external dependencies require a whitelist review even when manifest hash is updated (8.2095ms)
+  ✔ production mode and fixed budgets cannot silently change (0.721166ms)
+  ✔ oversized initial JS is rejected even with consistent hashes and totals (18.11525ms)
+  ✔ missing white-listed source fails compilation (17.088791ms)
+✔ production packaging includes exact study assets, license sidecars and lazy chunks; rejects broken releases (554.239416ms)
+ℹ tests 411
+ℹ suites 0
+ℹ pass 411
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12616.208375

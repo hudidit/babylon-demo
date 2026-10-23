@@ -36,7 +36,7 @@ export function scooterSupport(p: ScooterPose) {
     const q = scooterOffset(p, side, along), s = walkingSurfaceAt(q.x, q.y);
     return Math.hypot(q.x - COASTAL_SITE.tower.x, q.y - COASTAL_SITE.tower.y) >= COASTAL_SITE.tower.radius + .755
       && !(q.x > 10.65 && q.x < 12.3 && q.y > 3.7 && q.y < 5.6) && !houseRoomAt(q.x, q.y) && !lighthouseServiceRoomAt(q.x, q.y)
-      && walkingPointAllowed(q, .055) && s && s.normal.y >= Math.cos(Math.PI / 10) ? s : undefined;
+      && walkingPointAllowed(q, .055) ? s : undefined;
   };
   const front = sample(0, SCOOTER.wheelbase / 2), rear = sample(0, -SCOOTER.wheelbase / 2);
   const left = sample(-SCOOTER.width / 2, 0), right = sample(SCOOTER.width / 2, 0);
@@ -44,7 +44,8 @@ export function scooterSupport(p: ScooterPose) {
   const height = (front.height + rear.height) / 2;
   const pitch = Math.atan2(front.height - rear.height, SCOOTER.wheelbase);
   const roll = Math.atan2(right.height - left.height, SCOOTER.width);
-  if (Math.abs(pitch) > .18 || Math.abs(roll) > .12) return undefined;
+  // Judge the whole wheelbase, not an individual terrain triangle under a body corner.
+  if (Math.max(Math.abs(pitch), Math.abs(roll)) > Math.PI / 10) return undefined;
   for (const along of [-SCOOTER.length / 2, -.4, 0, .4, SCOOTER.length / 2])
     for (const side of [-SCOOTER.width / 2, 0, SCOOTER.width / 2]) {
       const s = sample(side, along);
