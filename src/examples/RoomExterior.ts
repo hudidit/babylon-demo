@@ -9,6 +9,7 @@ import { CoastalMaterials } from "./CoastalMaterials";
 import { coastalScatter } from "./CoastalScatter";
 import { coastalLandscape } from "./CoastalLandscape";
 import { appendTreeImpostor, coastalForest } from "./CoastalForest";
+import { forestGroundShade } from "./CoastalForestShade";
 import { applySkyTime, createCoastalSky } from "./CoastalSky";
 import { evaluateTimeOfDay, DEFAULT_TIME_OF_DAY } from "./RoomTimeOfDay";
 import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
@@ -57,6 +58,8 @@ export class RoomExterior {
     this.surfaces = new CoastalMaterials(scene);
     this.clippedMaterials.push(this.surfaces.rock, this.surfaces.ground, this.surfaces.foliage);
     this.sky = createCoastalSky(scene);
+    const landscape = coastalLandscape(), cells = coastalForest(landscape);
+    const groundShade = forestGroundShade([...landscape, ...cells]);
     const retain = (mesh: Mesh, layer: ExteriorLayer) => {
       mesh.metadata = { exterior: true, exteriorLayer: layer, exteriorStage: "lighthouse-C", castsShadows: false, lightRooms: [] };
       mesh.metadata.lighthouse = nameIsLighthouse(mesh.name);
@@ -76,6 +79,11 @@ export class RoomExterior {
       const base = mat instanceof StandardMaterial ? Color3.FromHexString(color) : Color3.FromHexString(color).toLinearSpace();
       for (let i = 0; i < data.positions.length; i += 3) colors.push(base.r, base.g, base.b, 1);
       vd.positions = data.positions; vd.indices = data.indices; vd.normals = normals; vd.uvs = data.uvs; vd.colors = data.colors || colors;
+      if (mat === this.surfaces.ground || mat === this.surfaces.farGround)
+        for (let i = 0; i < data.positions.length / 3; i++) {
+          const shade = groundShade(data.positions[i * 3] / 5 + 5.4, data.positions[i * 3 + 2] / 5 + 5.4);
+          for (let channel = 0; channel < 3; channel++) vd.colors[i * 4 + channel] *= shade;
+        }
       vd.applyToMesh(mesh); mesh.material = mat;
       return retain(mesh, layer);
     };
@@ -103,7 +111,6 @@ export class RoomExterior {
     });
     // Shared unclipped batches: alpha-tested pine branches and opaque ground plants; no tree shadows.
     const forest = s.solid("coastal-background-foliage", "#ffffff"), pine = s.pineBranches(), impostor = s.pineBranches(true);
-    const landscape = coastalLandscape();
     for (const group of landscape) {
       if (group.ground) make(`coastal-landscape-${group.name}-ground`, group.ground, "distant", s.farGround);
       const plants = make(`coastal-landscape-${group.name}`, group.plants, "distant", group.trees.length ? pine : forest);
@@ -123,7 +130,7 @@ export class RoomExterior {
         rocks.metadata.landscapeDetailTriangles = group.details ? group.rocks.indices.filter(i => i >= group.details!.rocks).length / 3 : 0;
       }
     }
-    for (const group of coastalForest(landscape)) {
+    for (const group of cells) {
       const name = `coastal-landscape-${group.name}`, count = group.trees.filter(t => t.detailFirst !== undefined).length;
       if (group.plants.positions.length)
         make(name, group.plants, "distant", impostor).metadata.forestCount = group.trees.length - count;

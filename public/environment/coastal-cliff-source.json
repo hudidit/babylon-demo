@@ -409,6 +409,20 @@
       },
       "fallback": "Missing impostor atlas hides 109 affected meshes and removes 15 LOD links; original 88 plus detailed 93 remain. Missing branch atlas hides its 15 detailed groups, preserves other distant forest and terrain.",
       "limits": "Static discrete group LOD without crossfade; fixed crossed cards remain in distant forest. Performance sampling remains paused. Original canopy/ground layouts, four byte budgets and 250000/55000 geometry budgets unchanged."
+    },
+    "grounding": {
+      "date": "2026-10-23",
+      "baseline": "bfe0c62",
+      "plan": "docs/technical-plans/2026-10-23-island-forest-grounding.md",
+      "source": "src/examples/CoastalForestShade.ts",
+      "license": "ISC; original procedural code, no new asset",
+      "plants": 4819,
+      "groundMeshes": 7,
+      "groundVertices": 23273,
+      "method": "One-time 32m spatial-bucket evaluation into existing ground RGB vertex colors. Broad soft canopy darkening plus 1.6m contact core; maximum overlap, multiplier floor 0.28. Shared plan-space field on coast and hills; original ground tints preserved.",
+      "radius": "0.6 * width for new plants; 0.96 * height for original trees",
+      "cost": "No additional geometry, color-buffer elements, texture, material, light, draw pass, shadow caster or per-frame tree work. Initialization and transient buckets are not free.",
+      "limits": "Static ambient-occlusion approximation, not directional sunlight. Coarse distant triangles can miss small roots; nearby original 88 and detailed 93 roots checked on actual ground triangles. Existing lighting/fog still applies. No FPS or load-time measurement."
     }
   }
 }

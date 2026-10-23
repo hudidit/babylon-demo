@@ -27,32 +27,23 @@ export class CoastalSurface extends MaterialPluginBase {
   getCustomCode(type: string) {
     if (type !== "fragment") return null;
     const rock = this.kind === "rock";
+    // Keep literal GLSL compact: the first-screen byte budget includes these strings.
     return {
       CUSTOM_FRAGMENT_DEFINITIONS: `
-        ${rock ? "" : "uniform sampler2D coastalRockSampler;"}
-        ${coastalCrestShader}
-        float coastalMacro(vec3 p) {
-          return .88 + .08*sin(p.x*.061 + sin(p.z*.043)*2.) + .04*sin(p.z*.147+p.y*.11);
-        }
-        float coastalWet(vec3 p) {
-          return 1.-smoothstep(-144., -127., p.y + 1.8*sin(p.x*.08+p.z*.06));
-        }
-        float coastalBare(vec3 p) {
-          vec2 q=p.xz/5.+vec2(5.4);
-          float crest=coastalCrest(q.x);
-          return 1.-smoothstep(.15,2.5,crest-q.y+.35*sin(q.x*3.7)+.2*sin(q.y*5.1));
-        }`,
+${rock ? "" : "uniform sampler2D coastalRockSampler;"}
+${coastalCrestShader}
+float coastalMacro(vec3 p) {
+return .88+.08*sin(p.x*.061+sin(p.z*.043)*2.)+.04*sin(p.z*.147+p.y*.11);}
+float coastalWet(vec3 p) {
+return 1.-smoothstep(-144., -127., p.y+1.8*sin(p.x*.08+p.z*.06));}
+float coastalBare(vec3 p) {
+vec2 q=p.xz/5.+vec2(5.4);float crest=coastalCrest(q.x);return 1.-smoothstep(.15,2.5,crest-q.y+.35*sin(q.x*3.7)+.2*sin(q.y*5.1));}`,
       CUSTOM_FRAGMENT_BEFORE_LIGHTS: rock ? `
-        float strata=.82+.18*sin(vPositionW.y*.43 + sin(vPositionW.x*.07+vPositionW.z*.025)*1.7);
-        surfaceAlbedo *= vec3(1.9,1.85,1.72)*strata*coastalMacro(vPositionW) * mix(vec3(1.),vec3(.48,.53,.51),coastalWet(vPositionW));`
+float strata=.82+.18*sin(vPositionW.y*.43+sin(vPositionW.x*.07+vPositionW.z*.025)*1.7);surfaceAlbedo*= vec3(1.9,1.85,1.72)*strata*coastalMacro(vPositionW)*mix(vec3(1.),vec3(.48,.53,.51),coastalWet(vPositionW));`
         : `
-        vec3 bareRock=surfaceAlbedo;
-        if(coastalRockReady>.5) bareRock=toLinearSpace(texture2D(coastalRockSampler,(vPositionW.xz/5.+vec2(5.4))/2.).rgb);
-        surfaceAlbedo=mix(surfaceAlbedo,bareRock*vec3(.72,.66,.52),coastalBare(vPositionW)*.92*coastalRockReady);
-        surfaceAlbedo*=coastalMacro(vPositionW);`,
+vec3 bareRock=surfaceAlbedo;if(coastalRockReady>.5) bareRock=toLinearSpace(texture2D(coastalRockSampler,(vPositionW.xz/5.+vec2(5.4))/2.).rgb);surfaceAlbedo=mix(surfaceAlbedo,bareRock*vec3(.72,.66,.52),coastalBare(vPositionW)*.92*coastalRockReady);surfaceAlbedo*=coastalMacro(vPositionW);`,
       CUSTOM_FRAGMENT_UPDATE_METALLICROUGHNESS: rock ? `
-        metallicRoughness.r=0.;
-        metallicRoughness.g=clamp(metallicRoughness.g*mix(1.,.58,coastalWet(vPositionW)),.28,1.);`
+metallicRoughness.r=0.;metallicRoughness.g=clamp(metallicRoughness.g*mix(1.,.58,coastalWet(vPositionW)),.28,1.);`
         : `metallicRoughness.r=0.; metallicRoughness.g=max(.82,metallicRoughness.g);`,
     };
   }
