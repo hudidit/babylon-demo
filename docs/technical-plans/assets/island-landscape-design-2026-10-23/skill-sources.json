@@ -1,0 +1,112 @@
+{
+  "checkedDate": "2026-10-23",
+  "metricScope": "GitHub repository stars, not individual skill installs or evidence of shipped game adoption",
+  "repositories": [
+    {
+      "full_name": "Donchitos/Claude-Code-Game-Studios",
+      "html_url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
+      "stargazers_count": 27232,
+      "forks_count": 3864,
+      "updated_at": "2026-10-23T06:53:52Z",
+      "pushed_at": "2026-10-19T02:43:42Z",
+      "license": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "default_branch": "main"
+    },
+    {
+      "full_name": "omer-metin/skills-for-antigravity",
+      "html_url": "https://github.com/omer-metin/skills-for-antigravity",
+      "stargazers_count": 179,
+      "forks_count": 25,
+      "updated_at": "2026-10-22T14:12:43Z",
+      "pushed_at": "2026-01-22T14:24:32Z",
+      "license": {
+        "key": "apache-2.0",
+        "name": "Apache License 2.0",
+        "spdx_id": "Apache-2.0",
+        "url": "https://api.github.com/licenses/apache-2.0",
+        "node_id": "MDc6TGljZW5zZTI="
+      },
+      "default_branch": "main"
+    },
+    {
+      "full_name": "sickn33/agentic-awesome-skills",
+      "html_url": "https://github.com/sickn33/agentic-awesome-skills",
+      "stargazers_count": 48354,
+      "forks_count": 7036,
+      "updated_at": "2026-10-23T08:03:47Z",
+      "pushed_at": "2026-10-23T07:48:22Z",
+      "license": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "default_branch": "main"
+    },
+    {
+      "full_name": "criticaldeveloper/codex-game-studio",
+      "html_url": "https://github.com/criticaldeveloper/codex-game-studio",
+      "stargazers_count": 4,
+      "forks_count": 0,
+      "updated_at": "2026-10-09T11:43:57Z",
+      "pushed_at": "2026-05-01T12:32:13Z",
+      "license": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "default_branch": "main"
+    }
+  ],
+  "inspectedFiles": [
+    {
+      "url": "https://github.com/omer-metin/skills-for-antigravity/blob/main/skills/environment-art/SKILL.md",
+      "sha256": "2ee1850ebe613d13bec2a1b50b619785ba498d2939f7df767c44c3a10c3ef997",
+      "bytes": 3048
+    },
+    {
+      "url": "https://github.com/omer-metin/skills-for-antigravity/blob/main/skills/environment-art/references/patterns.md",
+      "sha256": "85487c4dcf8399c0cc5645aca2f199ee8dd9c572107d548a1fb0eca125cb9503",
+      "bytes": 17680
+    },
+    {
+      "url": "https://github.com/omer-metin/skills-for-antigravity/blob/main/skills/environment-art/references/validations.md",
+      "sha256": "87f8c01777da56bec91408bd840bed0f11158b7a0abca90a77d45a618a0f0f3b",
+      "bytes": 9896
+    },
+    {
+      "url": "https://github.com/omer-metin/skills-for-antigravity/blob/main/skills/environment-art/references/sharp_edges.md",
+      "sha256": "dde5f5d1bdba411111842c8ad9a3cbbad83f93fc0b1316533712c43b7af682da",
+      "bytes": 20824
+    },
+    {
+      "url": "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/main/.claude/skills/art-bible/SKILL.md",
+      "sha256": "7873271f9e19fd6f126f00770c3861a2001afa492350f9232e3609fb4d61518a",
+      "bytes": 24184
+    },
+    {
+      "url": "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/main/.claude/agents/art-director.md",
+      "sha256": "36fecf445d9bfac1af6702ca9ef229013f101bcf0626dcb273886397c975e1dd",
+      "bytes": 7593
+    },
+    {
+      "url": "https://github.com/Donchitos/Claude-Code-Game-Studios/blob/main/.claude/agents/level-designer.md",
+      "sha256": "8cd41d5b2ffa4c1ba5243c10379602a8155481e7e35605fe1e063a45517ca8d0",
+      "bytes": 6310
+    },
+    {
+      "url": "https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/game-development/game-art/SKILL.md",
+      "sha256": "7eca1007b37b806c4b071bce1aa7e269efd0a58fe3b744fde3a8673780d285ab",
+      "bytes": 5495
+    }
+  ]
+}

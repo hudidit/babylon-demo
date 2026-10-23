@@ -1,0 +1,29 @@
+{
+  "method": "A-D polygon interiors sampled every 0.5m against current rendered near-ground support and walking boundary. E needs a separate background triangle query. This is a planning check, not final instance or in-engine acceptance.",
+  "checks": [
+    {
+      "zone": "A",
+      "gridStepMetres": 0.5,
+      "samples": 5110,
+      "minBoundaryDistance": 6.868254573943435
+    },
+    {
+      "zone": "B",
+      "gridStepMetres": 0.5,
+      "samples": 7589,
+      "minBoundaryDistance": 4
+    },
+    {
+      "zone": "C",
+      "gridStepMetres": 0.5,
+      "samples": 3798,
+      "minBoundaryDistance": 11.44652515588595
+    },
+    {
+      "zone": "D",
+      "gridStepMetres": 0.5,
+      "samples": 570,
+      "minBoundaryDistance": 6.0827625302982185
+    }
+  ]
+}
