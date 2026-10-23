@@ -1,12 +1,13 @@
 import { Color3 } from "@babylonjs/core/pure";
 import { COASTAL_CLIFF, coastalGridPoint, coastalSurfaceHeight, coastalTriangleAt } from "./CoastalCliff";
 import type { CoastalGeometry, CoastalPoint } from "./CoastalCliff";
+import { appendCoastalTree } from "./CoastalTree";
 import { planToWorld } from "./HouseLayout";
 
 type LandscapeGeometry = CoastalGeometry & { colors: number[] };
 type Anchor = { x: number; y: number; first: number; kind: "shrub" | "grass" | "rock" };
 type DetailShape = { kind: "shrub" | "grass" | "chip"; first: number };
-type Tree = { x: number; y: number; base: number; height: number; first: number; last: number };
+type Tree = ReturnType<typeof appendCoastalTree> & { x: number; y: number; base: number; height: number; first: number; last: number };
 const empty = (): LandscapeGeometry => ({ positions: [], indices: [], uvs: [], colors: [] });
 
 /** Visual support only. The walking surface and its finite boundary are unchanged. */
@@ -64,44 +65,14 @@ export function coastalLandscape() {
         a + sides, bottom, b + sides);
     }
   };
-  const trunk = (g: LandscapeGeometry, x: number, y: number, z: number, h: number, radius: number) => {
-    const first = g.positions.length / 3, color = Color3.FromHexString("#706a57").toLinearSpace();
-    for (let ring = 0; ring < 2; ring++) for (let col = 0; col <= 6; col++) {
-      const angle = col / 6 * Math.PI * 2, r = radius * (1 - ring * .65);
-      vertex(g, x + Math.cos(angle) * r + ring * h * .08, y + Math.sin(angle) * r,
-        z + ring * h, color.scale(ring ? 1 : .65));
-    }
-    for (let col = 0; col < 6; col++) {
-      const i = first + col; g.indices.push(i, i + 1, i + 7, i + 1, i + 8, i + 7);
-    }
-  };
   const tree = (group: typeof groups[number], x: number, y: number, height: number, far: boolean) => {
     let base = supported(x, y);
     if (far) for (const p of hillTriangles) base = Math.max(base, coastalTriangleAt(x, y, p[0], p[1], p[2])?.height ?? -Infinity);
     const g = group.plants, first = g.positions.length / 3;
-    trunk(g, x, y, base - .22, height * .83, height * .027);
-    // Keep the original scatter RNG sequence: color, radius and orientation.
+    // Preserve the original scatter RNG, root positions, heights and all ground details.
     const shade = .85 + random() * .3, radius = height * (.32 + random() * .06), phase = random() * Math.PI * 2;
-    // Trunk samples the opaque atlas corner. Leaves use alpha-tested photographic needle branches.
-    for (let i = first; i < g.positions.length / 3; i++) {
-      g.uvs[i * 2] = .985; g.uvs[i * 2 + 1] = .015;
-      for (let k = 0; k < 3; k++) g.colors[i * 4 + k] = i < first + 7 ? .65 : 1;
-    }
-    const levels = far ? 3 : 4, color = Color3.White().scale(shade * 1.4);
-    for (let row = 0; row < levels; row++) for (let arm = 0; arm < 4; arm++) {
-      const t = row / (levels - 1), angle = phase + arm * Math.PI / 2 + row * 1.7 + Math.sin(phase + row + arm) * .18;
-      const c = Math.cos(angle), s = Math.sin(angle), length = radius * (1.2 - t * .65) * (.9 + .13 * Math.sin(angle * 3));
-      const z = base + height * (.42 + t * .39 + Math.sin(angle * 2) * .018), cx = x + (z - base) * .08;
-      const firstLeaf = g.positions.length / 3, width = length * .7;
-      for (const [along, across, u, v] of [[0,-1,0,0],[0,1,1,0],[1,-1,0,1],[1,1,1,1]]) {
-        vertex(g, cx + c * length * along - s * width * across,
-          y + s * length * along + c * width * across,
-          z + height * .18 * along + width * across * .18, color.scale(.8 + t * .2));
-        g.uvs.splice(g.uvs.length - 2, 2, .02 + u * .94, .04 + v * .94);
-      }
-      g.indices.push(firstLeaf, firstLeaf + 2, firstLeaf + 1, firstLeaf + 1, firstLeaf + 2, firstLeaf + 3);
-    }
-    group.trees.push({ x, y, base, height, first, last: g.positions.length / 3 });
+    const structure = appendCoastalTree(g, x, y, base, height, far, shade, radius, phase);
+    group.trees.push({ x, y, base, height, first, last: g.positions.length / 3, ...structure });
   };
   // Hand-placed cluster centres and intentional gaps; no uniform scatter over the island.
   for (const [i, centre] of [[-17, -30], [-2, -37], [17, -32], [10, -22]].entries()) {

@@ -57,8 +57,9 @@ test('complete landscape bounds stay outside walking space, with supported roots
   'aab6b6626f6b917ff1c07d79ebdb1c4dd72dda242c3c5487f107f4c819d2b871','all original root positions/heights, hills and non-tree details must stay unchanged');
  assert.deepEqual(groups,coastalLandscape(),'fixed layout must be reproducible');
  for(const group of groups)for(const tree of group.trees){
-  const p=plan(group.plants,tree.first);
-  assert.ok(Math.abs(p.height-(tree.base-.22))<1e-7);
+  const roots=Array.from({length:tree.stemSides},(_,i)=>plan(group.plants,tree.first+i));
+  assert.ok(Math.abs(roots.reduce((sum,p)=>sum+p.height,0)/roots.length-(tree.base-.22))<1e-7);
+  assert.ok(roots.every(p=>p.height<tree.base),'the entire leaning root ring must be buried');
   assert.ok(Number.isFinite(tree.base));
  }
 });
@@ -75,19 +76,44 @@ test('background support and tree roots match ray hits on actual ground and hill
  for(const p of [[NaN,-70],[0,Infinity],[0,-601],[-900,-100],[0,100]])assert.equal(landscapeGroundHeight(...p),undefined);
 });
 
-test('hill and two-sided foliage faces have upward lighting normals and valid cutout UVs', () => {
+test('hill and two-sided foliage have sky-facing lighting normals and isolated leaf/bark UVs', () => {
  for(const group of groups){
-  const n=[];b.VertexData.ComputeNormals(group.plants.positions,group.plants.indices,n);
+  const g=group.plants,n=g.normals;
   for(const tree of group.trees){
-   for(let i=tree.first+14;i<tree.last;i++) {
-    assert.ok(n[i*3+1]>.5,'leaf lighting normals face the sky');
-    assert.ok(group.plants.uvs[i*2]>=.02&&group.plants.uvs[i*2]<=.96);
-    assert.ok(group.plants.uvs[i*2+1]>=.04&&group.plants.uvs[i*2+1]<=.98);
+   assert.equal(n.length,g.positions.length);
+   for(let i=tree.first;i<tree.last;i++) {
+    assert.ok(Math.abs(Math.hypot(...n.slice(i*3,i*3+3))-1)<1e-7);
+    const u=g.uvs[i*2],v=g.uvs[i*2+1];
+    assert.ok(u>0&&u<1&&v>0&&v<1);
+    assert.equal(u>.5&&v<.5,i<tree.foliageFirst,'wood and foliage must sample separate atlas regions');
    }
-   assert.ok(tree.last-tree.first<=78,'bounded per-tree card count');
+   for(let i=tree.foliageFirst;i<tree.last;i++) {
+    assert.ok(n[i*3+1]>.5,'leaf lighting normals face the sky');
+   }
+   assert.ok(tree.last-tree.first<=81,'bounded per-tree geometry');
   }
   if(group.ground){const n=[];b.VertexData.ComputeNormals(group.ground.positions,group.ground.indices,n);
    assert.ok(n.filter((_,i)=>i%3===1).every(v=>v>=0),'hill must not expose its unlit back face');}
+ }
+});
+
+test('forked branches connect to the curved trunk and terminate inside foliage volume', () => {
+ const centre=(g,first,count)=>Array.from({length:count},(_,i)=>plan(g,first+i))
+  .reduce((a,p)=>a.map((v,j)=>v+[p.x,p.height,p.y][j]/count),[0,0,0]);
+ const distance=(a,b)=>Math.hypot(...a.map((v,i)=>v-b[i]));
+ for(const group of groups)for(const tree of group.trees){
+  const g=group.plants,leaves=Array.from({length:tree.last-tree.foliageFirst},(_,i)=>plan(g,tree.foliageFirst+i));
+  for(const branch of tree.branches){
+   const root=centre(g,branch.first,3),tip=centre(g,branch.first+3,3),a=tree.stem[1],z=tree.stem[2];
+   const length=distance(a,z),t=distance(a,root)/length;
+   assert.ok(t>0&&t<1);
+   assert.ok(distance(root,a.map((v,i)=>v+(z[i]-v)*t))<1e-7,'branch root lies on trunk centreline');
+   assert.ok(distance(root,tip)>tree.height*.1,'branch has visible extension');
+   for(let axis=0;axis<3;axis++){
+    const values=leaves.map(p=>[p.x,p.height,p.y][axis]);
+    assert.ok(tip[axis]>Math.min(...values)&&tip[axis]<Math.max(...values),'branch tip is inside the crown');
+   }
+  }
  }
 });
 

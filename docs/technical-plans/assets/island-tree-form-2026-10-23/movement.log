@@ -1,0 +1,160 @@
+{
+  "baseline": "f5172ba",
+  "method": "Final production dist; Playwright keyboard events, local grounded starting poses, 60 Hz reference camera updates. Old speed uses a temporary camera parameter for comparison. No FPS, wall-clock travel or load-time measurement.",
+  "errors": [],
+  "warnings": [],
+  "firstScreenJs": [
+    {
+      "path": "/js/main.js",
+      "bytes": 502049,
+      "sha256": "964b953822556dc6c2105313422bab505a608d70398d7fdead529ab35f5c7d3a"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 1710,
+      "sha256": "331f7c4154f11a002477aae53000cf718e2593f9f9d3c12212bf1e2503b3612e"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "movement": [
+    {
+      "speed": 0.825,
+      "frames": 120,
+      "distance": 2.2953841361679252,
+      "point": {
+        "x": -1.2040000000000006,
+        "y": -0.803615863832075
+      },
+      "grounded": true
+    },
+    {
+      "speed": 1.0725,
+      "frames": 120,
+      "distance": 2.9839993770182582,
+      "point": {
+        "x": -1.2040000000000006,
+        "y": -0.11500062298174285
+      },
+      "grounded": true
+    }
+  ],
+  "collisions": [
+    {
+      "speed": 1.0725,
+      "distance": 1.6889324818193743,
+      "point": {
+        "x": 15.688932481819375,
+        "y": 0
+      },
+      "grounded": true,
+      "continued": {
+        "distance": 0,
+        "point": {
+          "x": 15.688932481819375,
+          "y": 0
+        },
+        "grounded": true
+      }
+    },
+    {
+      "speed": 3.2175,
+      "distance": 1.6790231120100159,
+      "point": {
+        "x": 15.679023112010016,
+        "y": 0
+      },
+      "grounded": true,
+      "continued": {
+        "distance": 0,
+        "point": {
+          "x": 15.679023112010016,
+          "y": 0
+        },
+        "grounded": true
+      }
+    }
+  ],
+  "release": {
+    "fileCount": 498,
+    "modelBytes": 4332840,
+    "buildBytes": 26594789,
+    "runtimeBytes": 16132604,
+    "documentationBytes": 106256,
+    "manifestBytes": 93289,
+    "initialJsBytes": 2922227,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42926938
+  },
+  "manifestSha256": "92fd8def68aed4c2021f6d0bd421c2a49857f0a7a7f0345c7afbd8287c8d8247",
+  "hosted": {
+    "prefixes": [
+      "/",
+      "/home/"
+    ],
+    "filesPerPrefix": 498
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3140717,
+  "custom": {
+    "speed": 2.145,
+    "saved": "2",
+    "label": "2.00×"
+  },
+  "reset": {
+    "speed": 1.0725,
+    "saved": "1",
+    "label": "1.00×"
+  },
+  "distanceRatio": 1.2999999999999805,
+  "passed": true
+}
