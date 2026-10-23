@@ -8,6 +8,7 @@ import type { CoastalGeometry } from "./CoastalCliff";
 import { CoastalMaterials } from "./CoastalMaterials";
 import { coastalScatter } from "./CoastalScatter";
 import { coastalLandscape } from "./CoastalLandscape";
+import { appendTreeImpostor, coastalForest } from "./CoastalForest";
 import { applySkyTime, createCoastalSky } from "./CoastalSky";
 import { evaluateTimeOfDay, DEFAULT_TIME_OF_DAY } from "./RoomTimeOfDay";
 import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
@@ -101,10 +102,17 @@ export class RoomExterior {
       make(`coastal-path-plants-${i}`, g.plants, "vegetation", s.foliage);
     });
     // Shared unclipped batches: alpha-tested pine branches and opaque ground plants; no tree shadows.
-    const forest = s.solid("coastal-background-foliage", "#ffffff"), pine = s.pineBranches();
-    for (const group of coastalLandscape()) {
+    const forest = s.solid("coastal-background-foliage", "#ffffff"), pine = s.pineBranches(), impostor = s.pineBranches(true);
+    const landscape = coastalLandscape();
+    for (const group of landscape) {
       if (group.ground) make(`coastal-landscape-${group.name}-ground`, group.ground, "distant", s.farGround);
       const plants = make(`coastal-landscape-${group.name}`, group.plants, "distant", group.trees.length ? pine : forest);
+      if (group.trees.length) {
+        const data = { positions: [] as number[], indices: [] as number[], normals: [] as number[], uvs: [] as number[], colors: [] as number[] };
+        for (const t of group.trees) appendTreeImpostor(data, t.x, t.y, t.base, t.height, t.height * .95, t.x + t.y);
+        const low = make(`coastal-landscape-${group.name}-lod`, data, "distant", impostor);
+        low.metadata.forestLOD = true; plants.useLODScreenCoverage = true; plants.addLODLevel(.002, low);
+      }
       if (group.phase) plants.metadata.landscapePhase = group.phase;
       plants.metadata.landscapeDetailVertices = group.details ? plants.getTotalVertices() - group.details.plants : 0;
       plants.metadata.landscapeDetailTriangles = group.details ? group.plants.indices.filter(i => i >= group.details!.plants).length / 3 : 0;
@@ -114,6 +122,10 @@ export class RoomExterior {
         rocks.metadata.landscapeDetailVertices = group.details ? rocks.getTotalVertices() - group.details.rocks : 0;
         rocks.metadata.landscapeDetailTriangles = group.details ? group.rocks.indices.filter(i => i >= group.details!.rocks).length / 3 : 0;
       }
+    }
+    for (const group of coastalForest(landscape)) {
+      const mesh = make(`coastal-landscape-${group.name}`, group.plants, "distant", impostor);
+      mesh.metadata.forestCount = group.trees.length;
     }
     this.houseRoof = createCoastalLandmark(scene, s, retain);
     this.lighthouseDoor = createLighthouseInterior(scene, retain);

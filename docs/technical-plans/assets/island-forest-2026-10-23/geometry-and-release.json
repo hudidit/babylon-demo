@@ -1,0 +1,103 @@
+{
+  "baseline": "554fc99",
+  "preservedLayoutGroundDetailsSha256": "aab6b6626f6b917ff1c07d79ebdb1c4dd72dda242c3c5487f107f4c819d2b871",
+  "forest": {
+    "newTrees": 4267,
+    "newShrubs": 464,
+    "batches": 94,
+    "minimumFootprintClearance": 3.209403553058925,
+    "vertices": 61503,
+    "triangles": 37848,
+    "lodBackupVertices": 1144,
+    "lodBackupTriangles": 704
+  },
+  "totals": {
+    "landscapeVertices": 72800,
+    "landscapeTriangles": 48968,
+    "combinedCoastVertices": 228476
+  },
+  "perTreeGeometry": {
+    "existingNear": {
+      "vertices": 81,
+      "triangles": 62
+    },
+    "existingFar": {
+      "vertices": 60,
+      "triangles": 46
+    },
+    "impostor": {
+      "vertices": 13,
+      "triangles": 8
+    }
+  },
+  "added": {
+    "storedLandscapeVertices": 62647,
+    "triangles": 38552,
+    "runtimeBytes": 22291,
+    "firstScreenJsBytes": 3507,
+    "releaseBytes": 31148
+  },
+  "budgets": {
+    "vertices": 250000,
+    "triangles": 55000,
+    "trees": 5400,
+    "batches": 110,
+    "firstScreenHeadroom": 1504,
+    "releaseHeadroom": 33530
+  },
+  "coverage": {
+    "method": "Plan-space raster union of actual new crown alpha >= 0.35, excludes original 88 crowns and existing ground plants; not bounding-box area or screen pixels. Plantable excludes walking polygon plus 3m buffer and landmark corridor plus 1m buffer. PIL boundary rasterization; compare 1m and 0.5m resolution.",
+    "stepMetres": 0.5,
+    "newPlants": 4731,
+    "newTrees": 4267,
+    "newShrubs": 464,
+    "all": {
+      "landArea": 489278.5,
+      "canopyArea": 365084.75,
+      "landCoverage": 0.7461696150556381,
+      "plantableCoverage": 0.7525414278374661
+    },
+    "main": {
+      "landArea": 64468.75,
+      "canopyArea": 40968.5,
+      "landCoverage": 0.6354784294716432,
+      "plantableCoverage": 0.6791184563869641
+    },
+    "near": {
+      "landArea": 18787,
+      "canopyArea": 7318,
+      "landCoverage": 0.3895246713152712,
+      "plantableCoverage": 0.4997183194769278
+    }
+  },
+  "originalRuntimeAssetHashesUnchanged": 37,
+  "dynamicChunksPreserved": true,
+  "identicalCameraPoses": 27,
+  "sourceSha256": {
+    "src/examples/CoastalForest.ts": "bc40f0bc95165dff9e352f7690284d2c4a00dfb069dfe130931c52709f1f3651",
+    "src/examples/CoastalTree.ts": "53af4e3fef9a44ea513c931554b25fcb3a849496e793225898fefc4655811969",
+    "src/examples/CoastalLandscape.ts": "e1aeefaa8062b9eb1cf0807ffdaf0c241255a920887c136951c82e4941e64f21",
+    "src/examples/RoomExterior.ts": "85db543feefeeb031edc4524a543abaea86879c42ec9ec5b3d755b7b520f9c0a",
+    "src/examples/CoastalCliff.ts": "313ecfc00850d766782bccbb0e7aa80c5bbf74da1219ea1831a9ebcde6ea9ba0",
+    "src/examples/CoastalSite.ts": "edb1a6fb8735b4c6726124afdebfab6ed5695e09b3c3b6afa3c94c32f8fa4110",
+    "src/examples/WalkingSurface.ts": "c5e40ab873772df5b974862608783f01cff18c784c9b6a840ae53f94b2023a6e",
+    "src/examples/CoastalMaterials.ts": "2b0edcf9d37fa47985e8aa5fdda86b23cd2c83e10d5744afd8acaf28b3cb848b",
+    "public/environment/coastal-cliff-source.json": "51895f6e460f70561d70861b481ae37d3223c208090213d1da799fc2c031c5e7",
+    "public/STUDY_ASSET_SOURCES.md": "39fc5aafb84e719167fbf850a4bb697a4cd00916c7683d0ba52653cac33740aa",
+    "public/textures/coastal/pine-impostor-source.json": "1d6409be519a8f44bf823cf327c5a0420e29cc1d7c5a21b9e461ba5c25a211e4",
+    "tests/coastal-forest.test.cjs": "d5abce3c279ccfb964d4d6d32de6a093c07cd82f8a92c55f77139ba7d1731ed7",
+    "tests/coastal-landscape.test.cjs": "26d6ab797b1d8a19f03a50c38c7ac1449561bec74b8eab77e3e4f493c5c09d4d",
+    "tests/study-release.test.cjs": "20eafedf91d2fcde075b80162206d74eafe05d60eb80a6e9257d3eb99ae4820d",
+    "tests/room-layout.test.cjs": "587e8f52748921af636dbb1900e888f460003fefac8922906dbec24202e6af93",
+    "tests/lighthouse-equipment.test.cjs": "2dc4f21bf9b90a4a7a4f29897d6b0c8d2845e38debf556e27c75ec25b26b6baf",
+    "tests/lighthouse-ladder.test.cjs": "dc97ac3575376e21e8a22fa62b6a6abc11bd6eb2be1471640e568f2c9d1d5929",
+    "tests/lighthouse-interior.test.cjs": "364d8a618c42bf17b0b23585d214ee68d1cc7ce93bf628b20512541793f03ad4",
+    "tests/lighthouse-site.test.cjs": "4a5a11e64e52b2bde3a58c16c5cbc16be82af9fadf1c50a3f9cf336a8a96633e",
+    "tools/bake-coastal-tree.py": "2a318208a6304b9591d4b13a2ac462dd1ba0b6507f8effe1142fcc41be6e46eb",
+    "tools/study-release.config.cjs": "0a2ac02fc80d4165043a6f9427a4eb08ec9ca83c3a898c2006d6d1f74d36e9e5",
+    "package-lock.json": "e94ba83cc02d96a6954d091bf84233bceee7275e85107453a75f772a8a629dcf",
+    "tsconfig.json": "234ed3ade800b090554ceb3af7216e7daebea4b39d1ddb4bdd967724c4098b3a",
+    "webpack.config.js": "16762abfd7f6dcd688f4f29b527e122aa8a22168ff08acd4c3292307dbf7136b"
+  },
+  "passed": true
+}

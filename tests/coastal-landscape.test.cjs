@@ -120,13 +120,13 @@ test('forked branches connect to the curved trunk and terminate inside foliage v
 test('background plants share opaque/cutout materials, avoid shadows/collisions and dispose cleanly', t => {
  const engine=new b.NullEngine(),scene=new b.Scene(engine);scene.useDelayedTextureLoading=true;
  t.after(()=>{scene.dispose();engine.dispose();});
- const exterior=new(load('RoomExterior').RoomExterior)(scene),meshes=exterior.meshes.filter(m=>m.name.startsWith('coastal-landscape-'));
+ const exterior=new(load('RoomExterior').RoomExterior)(scene),meshes=exterior.meshes.filter(m=>m.name.startsWith('coastal-landscape-')&&!m.metadata.forestLOD&&!m.metadata.forestCount);
  assert.equal(meshes.length,19);
  const added=meshes.filter(m=>m.metadata.landscapePhase===2);
  assert.ok(added.length<=10);assert.ok(added.reduce((n,m)=>n+m.getTotalVertices()-m.metadata.landscapeDetailVertices,0)<=6000);
  assert.ok(added.reduce((n,m)=>n+m.getTotalIndices()/3-m.metadata.landscapeDetailTriangles,0)<=7000);
  const originalCoast=exterior.meshes.filter(m=>!m.metadata.lighthouseEquipment&&!m.metadata.lighthouseInteriorStructure&&!m.metadata.lighthouseDetail);
- assert.ok(originalCoast.reduce((n,m)=>n+m.getTotalVertices(),0)<=166000);
+ assert.ok(originalCoast.reduce((n,m)=>n+m.getTotalVertices(),0)<=250000);
  assert.ok(meshes.reduce((n,m)=>n+(m.metadata.landscapeDetailVertices||0),0)<=2400);
  const shadow=exterior.shadow.getShadowMap().renderList;
  for(const m of meshes){assert.equal(m.metadata.exteriorLayer,'distant');assert.equal(m.isPickable,false);assert.equal(m.checkCollisions,false);assert.equal(m.receiveShadows,false);assert.ok(!shadow.includes(m));assert.equal(m.material.alpha,1);assert.equal(m.material.needAlphaBlending(),false);assert.ok(exterior.sun.includedOnlyMeshes.includes(m));}

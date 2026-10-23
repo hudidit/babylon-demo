@@ -247,7 +247,7 @@
   },
   "backgroundLandscape": {
     "updated": "2026-10-23",
-    "stage": "Phases 1-3 complete; tree form corrected to dense irregular crowns and connected forked branches",
+    "stage": "Phases 1-3 and tree-form correction retained; whole-tree impostor forest coverage complete",
     "source": "src/examples/CoastalLandscape.ts",
     "author": "babylon-demo project contributors",
     "license": "Original geometry ISC; pine twig and bark textures CC0-1.0, see textures/coastal/pine-source.json",
@@ -256,13 +256,13 @@
       "near": 40,
       "distant": 48
     },
-    "meshes": 19,
-    "vertices": 10153,
-    "triangles": 10416,
-    "materialsAdded": 2,
-    "runtimeDownloadsAdded": 1,
-    "support": "Exact existing terrain triangles; hill edges buried 0.18m; roots buried 0.22m into the highest terrain/hill triangle. Entire batch footprints remain outside the walking boundary with a minimum 3m buffer.",
-    "rendering": "19 static batches. Curved tapering trunks and connected forked branches share one 1024px atlas with three dense needle-clump tiles and one bark tile. Near/far trees use 12/9 cutout cards arranged in crossed and sloping clusters. One unclipped PBR material, sky-facing foliage normals approximate canopy illumination on both sides, original day/night response. Non-tree plants remain opaque. No alpha blending, shadows, collisions, picking, wind, LOD switching or per-frame landscape work.",
+    "meshes": 122,
+    "vertices": 72800,
+    "triangles": 48968,
+    "materialsAdded": 3,
+    "runtimeDownloadsAdded": 2,
+    "support": "Original groups keep complete batch clearance. Each new plant footprint clears the walking polygon by at least 3m, plus landmark corridors; roots use the highest actual terrain/hill triangle. Spatial cell bounds may span empty gaps; actual triangles remain outside walking space.",
+    "rendering": "Original 19 batches and their near geometry retained. Nine tree groups can select low-detail whole-tree meshes at screen coverage <0.002; new forest uses 94 static spatial cells and one shared 512x256 cutout atlas. Each plant has 13 vertices/8 triangles (crossed front/side elevations and shallow crown cap). No alpha blending, dynamic tree shadows, collisions, picking, wind or per-tree frame callbacks. See forestCoverage for current totals; other stages are historical.",
     "scope": "All 88 original root positions/height parameters, hills, shrubs, grass and stones are preserved. Sparse tiered tree forms from f5172ba are replaced. Temperate rocky coast is a working art assumption, not confirmed geography or identification of the source pine species. Structural/byte counts are not FPS or loading-time measurements.",
     "phaseOne": {
       "seed": 231023,
@@ -301,7 +301,7 @@
       "materialsAdded": 0,
       "scope": "Limited static detail appended to existing batches. Original phase-one and phase-two geometry prefixes, tree positions, hills and walking boundaries retained. No new downloads, textures, lights, render targets, shadows, dependencies or per-frame callbacks."
     },
-    "texturesAdded": 1,
+    "texturesAdded": 2,
     "lightsRenderTargetsAdded": 0,
     "treeAssetReplacement": {
       "date": "2026-10-23",
@@ -336,6 +336,49 @@
       "newMaterials": 0,
       "newTextures": 0,
       "note": "Three independently baked clumps from fine twig cutouts, fixed seeds 231026-231028; CC0 bark diffuse added to the same atlas. Existing failure fallback retained."
+    },
+    "baseTreeFormSnapshot": {
+      "trees": {
+        "near": 40,
+        "distant": 48
+      },
+      "meshes": 19,
+      "vertices": 10153,
+      "triangles": 10416,
+      "materialsAdded": 2,
+      "runtimeDownloadsAdded": 1,
+      "texturesAdded": 1
+    },
+    "forestCoverage": {
+      "date": "2026-10-23",
+      "baseline": "554fc99",
+      "plan": "docs/technical-plans/2026-10-23-island-forest-coverage.md",
+      "source": "src/examples/CoastalForest.ts",
+      "atlasSource": "textures/coastal/pine-impostor-source.json",
+      "seed": 231029,
+      "newTrees": 4267,
+      "newShrubs": 464,
+      "originalTreesRetained": 88,
+      "newCells": 94,
+      "lodBackupMeshes": 9,
+      "newVerticesIncludingLodBackups": 62647,
+      "newTrianglesIncludingLodBackups": 38552,
+      "combinedCoastVerticesIncludingLodBackups": 228476,
+      "budget": {
+        "combinedCoastVertices": 250000,
+        "landscapeTriangles": 55000,
+        "newPlants": 5400,
+        "newCells": 110
+      },
+      "alphaCanopyCoverage": {
+        "method": "0.5m plan-space union of actual new crown alpha >=0.35; excludes original crowns/ground plants, not screen pixels. Plantable excludes walking +3m and landmark corridors +1m; 1m cross-check differs by <0.1 percentage point across the entire land.",
+        "wholeLand": 0.7461696150556381,
+        "wholePlantable": 0.7525414278374661,
+        "frontRegionYAtLeastMinus180Plantable": 0.6791184563869641,
+        "routeRegionYAtLeastMinus50Plantable": 0.4997183194769278
+      },
+      "fallback": "If new atlas fails, hide only its 103 meshes and remove the nine LOD links, preserving all original tree geometry; never display opaque cards. If original branch atlas fails, hide its nine original tree batches; other forest and terrain remain.",
+      "limits": "One tree silhouette in front/side/top views, fixed crossed cards and discrete batch LOD; repeated crowns/transition visible under close inspection. Neutral baked form shading plus existing PBR daylight, not full volumetric scattering. No measured FPS or loading-time claim."
     }
   }
 }

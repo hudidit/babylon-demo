@@ -1,0 +1,25 @@
+{
+  "method": "Plan-space raster union of actual new crown alpha >= 0.35, excludes original 88 crowns and existing ground plants; not bounding-box area or screen pixels. Plantable excludes walking polygon plus 3m buffer and landmark corridor plus 1m buffer. PIL boundary rasterization; compare 1m and 0.5m resolution.",
+  "stepMetres": 1.0,
+  "newPlants": 4731,
+  "newTrees": 4267,
+  "newShrubs": 464,
+  "all": {
+    "landArea": 489667.0,
+    "canopyArea": 365061.0,
+    "landCoverage": 0.7455291044730399,
+    "plantableCoverage": 0.7517962869528507
+  },
+  "main": {
+    "landArea": 64660.0,
+    "canopyArea": 41019.0,
+    "landCoverage": 0.6343798329724714,
+    "plantableCoverage": 0.67712700980554
+  },
+  "near": {
+    "landArea": 18907.0,
+    "canopyArea": 7335.0,
+    "landCoverage": 0.38795155233511397,
+    "plantableCoverage": 0.49477234401349074
+  }
+}

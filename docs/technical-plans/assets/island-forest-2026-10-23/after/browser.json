@@ -1,0 +1,2888 @@
+{
+  "baseline": "554fc99",
+  "method": "Unmodified production dist, Chrome DPR1 cold cache, fixed cameras and manual renders; screenshots and structural counters only, no FPS/load-time measurements.",
+  "errors": [],
+  "warnings": [
+    "The keyword 'slider-vertical' specified to an 'appearance' property is not standardized. It will be removed in the future. Use <input type=range style=\"writing-mode: vertical-lr; direction: rtl\"> instead."
+  ],
+  "firstScreenJs": [
+    {
+      "path": "/js/main.js",
+      "bytes": 505556,
+      "sha256": "d3ae6f925b2e2cd215bb2c4548e5b8fc033de21185511696d18438e2576df6f9"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 1710,
+      "sha256": "331f7c4154f11a002477aae53000cf718e2593f9f9d3c12212bf1e2503b3612e"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "views": [
+    {
+      "id": "overview",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -351.99999999999994,
+          894.9999999999999,
+          1148
+        ],
+        "target": [
+          -352,
+          -5,
+          198
+        ]
+      },
+      "landmarks": [
+        {
+          "x": -0.3263908691892343,
+          "y": 0.24864765455883445,
+          "z": 0.9942034977371103
+        },
+        {
+          "x": -0.3833083574830696,
+          "y": 0.26802350745665166,
+          "z": 0.9941555252960592
+        },
+        {
+          "x": -0.33775304818568586,
+          "y": 0.2136571751949105,
+          "z": 0.9939668825331852
+        },
+        {
+          "x": -0.39103605977717604,
+          "y": 0.19414263287449782,
+          "z": 0.9940175257993417
+        },
+        {
+          "x": 0.3907409670669436,
+          "y": -0.29978330783824586,
+          "z": 0.9921853234825501
+        },
+        {
+          "x": 0.41621402228064647,
+          "y": -0.15656762651366002,
+          "z": 0.9916106486135804
+        }
+      ]
+    },
+    {
+      "id": "balcony",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          13.499999999999929,
+          3.0000000000000124,
+          30.24999999999997
+        ],
+        "target": [
+          -11,
+          -2.5,
+          158
+        ]
+      }
+    },
+    {
+      "id": "entry",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          38,
+          2.4250000000000007,
+          -42
+        ],
+        "target": [
+          -7.000001146246895,
+          15.000000510149173,
+          -171.99999599236904
+        ]
+      }
+    },
+    {
+      "id": "path",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -282,
+          6.7058823529411775,
+          12.999999999999998
+        ],
+        "target": [
+          -651.9999932670503,
+          60.00000159462006,
+          423.00001041519425
+        ]
+      }
+    },
+    {
+      "id": "lookout",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -377,
+          8.205222824445325,
+          98
+        ],
+        "target": [
+          -0.00000781570622621075,
+          4.99999973797303,
+          -0.000006344248419054566
+        ]
+      }
+    },
+    {
+      "id": "gallery",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -652,
+          101.20000000000002,
+          408
+        ],
+        "target": [
+          -177.00000527666987,
+          10.00000290461199,
+          -126.99999224676378
+        ]
+      }
+    },
+    {
+      "id": "meadow",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -302,
+          7.066176470588237,
+          12.999999999999998
+        ],
+        "target": [
+          -336.9999988136432,
+          -2.4646448970599977e-7,
+          -86.99999751455597
+        ]
+      }
+    },
+    {
+      "id": "tower-grove",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -607,
+          14.698217104314391,
+          288
+        ],
+        "target": [
+          -671.9999997618298,
+          9.999999948889432,
+          112.99999935692628
+        ]
+      }
+    },
+    {
+      "id": "cape",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -47,
+          2.378783908812803,
+          37.5
+        ],
+        "target": [
+          -67.00000030290303,
+          3.711924589921978e-8,
+          127.99999881477227
+        ]
+      }
+    },
+    {
+      "id": "overview",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -351.9999999999994,
+          1942.6923076923076,
+          2253.897435897436
+        ],
+        "target": [
+          -352,
+          -5,
+          198
+        ]
+      },
+      "landmarks": [
+        {
+          "x": -0.5553761905920558,
+          "y": 0.12219004541155115,
+          "z": 0.9976602983809604
+        },
+        {
+          "x": -0.649892358670257,
+          "y": 0.1312406064885091,
+          "z": 0.9976487547821901
+        },
+        {
+          "x": -0.5647117562523217,
+          "y": 0.10316852865161853,
+          "z": 0.9976041510220697
+        },
+        {
+          "x": -0.6562426458605624,
+          "y": 0.09409591218990791,
+          "z": 0.9976160033567708
+        },
+        {
+          "x": 0.5776435675112669,
+          "y": -0.12799134671232767,
+          "z": 0.9972368608025817
+        },
+        {
+          "x": 0.5931423075245386,
+          "y": -0.06443863462360605,
+          "z": 0.9971358791828916
+        }
+      ]
+    },
+    {
+      "id": "balcony",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          13.499999999999929,
+          3.0000000000000124,
+          30.24999999999997
+        ],
+        "target": [
+          -11,
+          -2.5,
+          158
+        ]
+      }
+    },
+    {
+      "id": "entry",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          38,
+          2.4250000000000007,
+          -42
+        ],
+        "target": [
+          -7.000001146246902,
+          15.000000510149174,
+          -171.99999599236907
+        ]
+      }
+    },
+    {
+      "id": "path",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -282,
+          6.7058823529411775,
+          12.999999999999998
+        ],
+        "target": [
+          -651.9999932670503,
+          60.00000159462006,
+          423.00001041519425
+        ]
+      }
+    },
+    {
+      "id": "lookout",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -377,
+          8.205222824445325,
+          98
+        ],
+        "target": [
+          -0.00000781570622621075,
+          4.99999973797303,
+          -0.000006344248419054566
+        ]
+      }
+    },
+    {
+      "id": "gallery",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -652,
+          101.20000000000002,
+          408
+        ],
+        "target": [
+          -177.00000527666987,
+          10.00000290461199,
+          -126.99999224676378
+        ]
+      }
+    },
+    {
+      "id": "meadow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -302,
+          7.066176470588237,
+          12.999999999999998
+        ],
+        "target": [
+          -336.9999988136432,
+          -2.4646448970599977e-7,
+          -86.99999751455597
+        ]
+      }
+    },
+    {
+      "id": "tower-grove",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -607,
+          14.698217104314391,
+          288
+        ],
+        "target": [
+          -671.9999997618298,
+          9.999999948889432,
+          112.99999935692628
+        ]
+      }
+    },
+    {
+      "id": "cape",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -47,
+          2.378783908812803,
+          37.5
+        ],
+        "target": [
+          -67.00000030290303,
+          3.711924589921978e-8,
+          127.99999881477227
+        ]
+      }
+    },
+    {
+      "id": "overview",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -351.9999999999997,
+          894.9999999999999,
+          1148
+        ],
+        "target": [
+          -352,
+          -5,
+          198
+        ]
+      },
+      "landmarks": [
+        {
+          "x": -0.24131267586343955,
+          "y": 0.24864765455883445,
+          "z": 0.9942034977371103
+        },
+        {
+          "x": -0.2833938515297034,
+          "y": 0.26802350745665166,
+          "z": 0.9941555252960592
+        },
+        {
+          "x": -0.24971314927154653,
+          "y": 0.2136571751949105,
+          "z": 0.9939668825331852
+        },
+        {
+          "x": -0.2891072237373482,
+          "y": 0.19414263287449782,
+          "z": 0.9940175257993417
+        },
+        {
+          "x": 0.2888890551269703,
+          "y": -0.29978330783824564,
+          "z": 0.9921853234825501
+        },
+        {
+          "x": 0.3077222143606244,
+          "y": -0.15656762651365977,
+          "z": 0.9916106486135804
+        }
+      ]
+    },
+    {
+      "id": "balcony",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          13.50000000000001,
+          3.0000000000000124,
+          30.249999999999986
+        ],
+        "target": [
+          -11,
+          -2.5,
+          158
+        ]
+      }
+    },
+    {
+      "id": "entry",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          38,
+          2.4250000000000007,
+          -42
+        ],
+        "target": [
+          -7.000001146246902,
+          15.000000510149174,
+          -171.99999599236907
+        ]
+      }
+    },
+    {
+      "id": "path",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -282,
+          6.7058823529411775,
+          12.999999999999998
+        ],
+        "target": [
+          -651.9999932670503,
+          60.00000159462006,
+          423.00001041519425
+        ]
+      }
+    },
+    {
+      "id": "lookout",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -377,
+          8.205222824445325,
+          98
+        ],
+        "target": [
+          -0.00000781570622621075,
+          4.99999973797303,
+          -0.000006344248419054566
+        ]
+      }
+    },
+    {
+      "id": "gallery",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -652,
+          101.20000000000002,
+          408
+        ],
+        "target": [
+          -177.00000527666987,
+          10.00000290461199,
+          -126.99999224676378
+        ]
+      }
+    },
+    {
+      "id": "meadow",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -302,
+          7.066176470588237,
+          12.999999999999998
+        ],
+        "target": [
+          -336.9999988136432,
+          -2.4646448970599977e-7,
+          -86.99999751455597
+        ]
+      }
+    },
+    {
+      "id": "tower-grove",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -607,
+          14.698217104314391,
+          288
+        ],
+        "target": [
+          -671.9999997618298,
+          9.999999948889432,
+          112.99999935692628
+        ]
+      }
+    },
+    {
+      "id": "cape",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -47,
+          2.378783908812803,
+          37.5
+        ],
+        "target": [
+          -67.00000030290303,
+          3.711924589921978e-8,
+          127.99999881477227
+        ]
+      }
+    }
+  ],
+  "release": {
+    "fileCount": 500,
+    "modelBytes": 4332840,
+    "buildBytes": 26598382,
+    "runtimeBytes": 16154895,
+    "documentationBytes": 111117,
+    "manifestBytes": 93692,
+    "initialJsBytes": 2925734,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42958086
+  },
+  "manifestSha256": "524550fb86c0517cd810a91c9c9451075c378f4eec0e27ad26aa03525769a7cb",
+  "hosted": {
+    "prefixes": [
+      "/",
+      "/home/"
+    ],
+    "filesPerPrefix": 500
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3144224,
+  "scene": {
+    "meshes": 838,
+    "vertices": 647054,
+    "storedVertices": 648198,
+    "materials": 111,
+    "textures": 155,
+    "lights": 22,
+    "cameras": 3,
+    "shadowMaps": 19,
+    "landscape": [
+      {
+        "name": "coastal-landscape-grove-0",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 486,
+        "triangles": 372,
+        "material": "coastal-pine-branches",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-0-lod",
+        "forestCount": 0,
+        "forestLOD": true,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 78,
+        "triangles": 48,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-1",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 486,
+        "triangles": 372,
+        "material": "coastal-pine-branches",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-1-lod",
+        "forestCount": 0,
+        "forestLOD": true,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 78,
+        "triangles": 48,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-2",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 486,
+        "triangles": 372,
+        "material": "coastal-pine-branches",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-2-lod",
+        "forestCount": 0,
+        "forestLOD": true,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 78,
+        "triangles": 48,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-3",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 486,
+        "triangles": 372,
+        "material": "coastal-pine-branches",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-3-lod",
+        "forestCount": 0,
+        "forestLOD": true,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 78,
+        "triangles": 48,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-0-ground",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 175,
+        "triangles": 288,
+        "material": "coastal-ground-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-0",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 960,
+        "triangles": 736,
+        "material": "coastal-pine-branches",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-0-lod",
+        "forestCount": 0,
+        "forestLOD": true,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 208,
+        "triangles": 128,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-1-ground",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 175,
+        "triangles": 288,
+        "material": "coastal-ground-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-1",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 960,
+        "triangles": 736,
+        "material": "coastal-pine-branches",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-1-lod",
+        "forestCount": 0,
+        "forestLOD": true,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 208,
+        "triangles": 128,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-2-ground",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 175,
+        "triangles": 288,
+        "material": "coastal-ground-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-2",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 960,
+        "triangles": 736,
+        "material": "coastal-pine-branches",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-2-lod",
+        "forestCount": 0,
+        "forestLOD": true,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 208,
+        "triangles": 128,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-edge",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 2,
+        "detailVertices": 256,
+        "detailTriangles": 448,
+        "vertices": 640,
+        "triangles": 1120,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-meadow-0",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 2,
+        "detailVertices": 160,
+        "detailTriangles": 160,
+        "vertices": 840,
+        "triangles": 840,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-meadow-0-rocks",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 2,
+        "detailVertices": 128,
+        "detailTriangles": 224,
+        "vertices": 310,
+        "triangles": 560,
+        "material": "coastal-rock-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-meadow-1",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 2,
+        "detailVertices": 160,
+        "detailTriangles": 160,
+        "vertices": 840,
+        "triangles": 840,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-meadow-1-rocks",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 2,
+        "detailVertices": 128,
+        "detailTriangles": 224,
+        "vertices": 310,
+        "triangles": 560,
+        "material": "coastal-rock-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-tower-grove-0",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 2,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 648,
+        "triangles": 496,
+        "material": "coastal-pine-branches",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-tower-grove-0-lod",
+        "forestCount": 0,
+        "forestLOD": true,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 104,
+        "triangles": 64,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-tower-grove-1",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 2,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 648,
+        "triangles": 496,
+        "material": "coastal-pine-branches",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-tower-grove-1-lod",
+        "forestCount": 0,
+        "forestLOD": true,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 104,
+        "triangles": 64,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-cape",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 2,
+        "detailVertices": 208,
+        "detailTriangles": 304,
+        "vertices": 400,
+        "triangles": 640,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-cape-rocks",
+        "forestCount": 0,
+        "forestLOD": false,
+        "phase": 2,
+        "detailVertices": 64,
+        "detailTriangles": 112,
+        "vertices": 168,
+        "triangles": 304,
+        "material": "coastal-rock-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--2-0",
+        "forestCount": 87,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 1131,
+        "triangles": 696,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--1-0",
+        "forestCount": 7,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 91,
+        "triangles": 56,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-0-0",
+        "forestCount": 4,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 52,
+        "triangles": 32,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--2--1",
+        "forestCount": 175,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 2275,
+        "triangles": 1400,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-0--1",
+        "forestCount": 84,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 1092,
+        "triangles": 672,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--1--1",
+        "forestCount": 191,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 2483,
+        "triangles": 1528,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--3--1",
+        "forestCount": 3,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 39,
+        "triangles": 24,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--2--2",
+        "forestCount": 175,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 2275,
+        "triangles": 1400,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--1--2",
+        "forestCount": 161,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 2093,
+        "triangles": 1288,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-0--2",
+        "forestCount": 191,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 2483,
+        "triangles": 1528,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--3--2",
+        "forestCount": 150,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 1950,
+        "triangles": 1200,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-1--2",
+        "forestCount": 84,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 1092,
+        "triangles": 672,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--4--2",
+        "forestCount": 10,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 130,
+        "triangles": 80,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--4--3",
+        "forestCount": 62,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 806,
+        "triangles": 496,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--3--3",
+        "forestCount": 94,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 1222,
+        "triangles": 752,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--2--3",
+        "forestCount": 102,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 1326,
+        "triangles": 816,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--1--3",
+        "forestCount": 101,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 1313,
+        "triangles": 808,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-0--3",
+        "forestCount": 101,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 1313,
+        "triangles": 808,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-1--3",
+        "forestCount": 100,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 1300,
+        "triangles": 800,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-2--3",
+        "forestCount": 27,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 351,
+        "triangles": 216,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--5--4",
+        "forestCount": 43,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 559,
+        "triangles": 344,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--4--4",
+        "forestCount": 50,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 650,
+        "triangles": 400,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--3--4",
+        "forestCount": 52,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 676,
+        "triangles": 416,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-1--4",
+        "forestCount": 51,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 663,
+        "triangles": 408,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-2--4",
+        "forestCount": 53,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 689,
+        "triangles": 424,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--2--4",
+        "forestCount": 53,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 689,
+        "triangles": 424,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--1--4",
+        "forestCount": 50,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 650,
+        "triangles": 400,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-0--4",
+        "forestCount": 51,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 663,
+        "triangles": 408,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-3--4",
+        "forestCount": 28,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 364,
+        "triangles": 224,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--6--4",
+        "forestCount": 7,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 91,
+        "triangles": 56,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-4--4",
+        "forestCount": 1,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 13,
+        "triangles": 8,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--6--5",
+        "forestCount": 45,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 585,
+        "triangles": 360,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--5--5",
+        "forestCount": 53,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 689,
+        "triangles": 424,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--4--5",
+        "forestCount": 50,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 650,
+        "triangles": 400,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--3--5",
+        "forestCount": 54,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 702,
+        "triangles": 432,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--2--5",
+        "forestCount": 49,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 637,
+        "triangles": 392,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--1--5",
+        "forestCount": 51,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 663,
+        "triangles": 408,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-0--5",
+        "forestCount": 52,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 676,
+        "triangles": 416,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-1--5",
+        "forestCount": 53,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 689,
+        "triangles": 424,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-2--5",
+        "forestCount": 53,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 689,
+        "triangles": 424,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-3--5",
+        "forestCount": 52,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 676,
+        "triangles": 416,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-4--5",
+        "forestCount": 34,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 442,
+        "triangles": 272,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--7--5",
+        "forestCount": 11,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 143,
+        "triangles": 88,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-5--5",
+        "forestCount": 3,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 39,
+        "triangles": 24,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--7--6",
+        "forestCount": 54,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 702,
+        "triangles": 432,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--6--6",
+        "forestCount": 54,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 702,
+        "triangles": 432,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--5--6",
+        "forestCount": 53,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 689,
+        "triangles": 424,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--4--6",
+        "forestCount": 48,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 624,
+        "triangles": 384,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--3--6",
+        "forestCount": 57,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 741,
+        "triangles": 456,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--2--6",
+        "forestCount": 54,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 702,
+        "triangles": 432,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--1--6",
+        "forestCount": 56,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 728,
+        "triangles": 448,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-0--6",
+        "forestCount": 52,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 676,
+        "triangles": 416,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-1--6",
+        "forestCount": 51,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 663,
+        "triangles": 408,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-2--6",
+        "forestCount": 55,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 715,
+        "triangles": 440,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-3--6",
+        "forestCount": 54,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 702,
+        "triangles": 432,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-4--6",
+        "forestCount": 54,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 702,
+        "triangles": 432,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-5--6",
+        "forestCount": 47,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 611,
+        "triangles": 376,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--8--6",
+        "forestCount": 17,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 221,
+        "triangles": 136,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-6--6",
+        "forestCount": 9,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 117,
+        "triangles": 72,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--8--7",
+        "forestCount": 56,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 728,
+        "triangles": 448,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--7--7",
+        "forestCount": 52,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 676,
+        "triangles": 416,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--6--7",
+        "forestCount": 53,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 689,
+        "triangles": 424,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--5--7",
+        "forestCount": 59,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 767,
+        "triangles": 472,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--4--7",
+        "forestCount": 60,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 780,
+        "triangles": 480,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--3--7",
+        "forestCount": 51,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 663,
+        "triangles": 408,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--2--7",
+        "forestCount": 54,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 702,
+        "triangles": 432,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--1--7",
+        "forestCount": 50,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 650,
+        "triangles": 400,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-0--7",
+        "forestCount": 57,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 741,
+        "triangles": 456,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-1--7",
+        "forestCount": 53,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 689,
+        "triangles": 424,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-2--7",
+        "forestCount": 56,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 728,
+        "triangles": 448,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-3--7",
+        "forestCount": 52,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 676,
+        "triangles": 416,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-4--7",
+        "forestCount": 52,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 676,
+        "triangles": 416,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-5--7",
+        "forestCount": 51,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 663,
+        "triangles": 408,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-6--7",
+        "forestCount": 47,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 611,
+        "triangles": 376,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--9--7",
+        "forestCount": 25,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 325,
+        "triangles": 200,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-7--7",
+        "forestCount": 13,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 169,
+        "triangles": 104,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--2--8",
+        "forestCount": 16,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 208,
+        "triangles": 128,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--1--8",
+        "forestCount": 16,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 208,
+        "triangles": 128,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-2--8",
+        "forestCount": 18,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 234,
+        "triangles": 144,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-3--8",
+        "forestCount": 14,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 182,
+        "triangles": 112,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-4--8",
+        "forestCount": 17,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 221,
+        "triangles": 136,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-5--8",
+        "forestCount": 17,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 221,
+        "triangles": 136,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--10--8",
+        "forestCount": 5,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 65,
+        "triangles": 40,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--9--8",
+        "forestCount": 15,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 195,
+        "triangles": 120,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--8--8",
+        "forestCount": 15,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 195,
+        "triangles": 120,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--7--8",
+        "forestCount": 15,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 195,
+        "triangles": 120,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--6--8",
+        "forestCount": 15,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 195,
+        "triangles": 120,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--5--8",
+        "forestCount": 15,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 195,
+        "triangles": 120,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--4--8",
+        "forestCount": 14,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 182,
+        "triangles": 112,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest--3--8",
+        "forestCount": 15,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 195,
+        "triangles": 120,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-0--8",
+        "forestCount": 17,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 221,
+        "triangles": 136,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-1--8",
+        "forestCount": 16,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 208,
+        "triangles": 128,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-6--8",
+        "forestCount": 15,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 195,
+        "triangles": 120,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-forest-7--8",
+        "forestCount": 12,
+        "forestLOD": false,
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 156,
+        "triangles": 96,
+        "material": "coastal-tree-impostor",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      }
+    ]
+  },
+  "lod": [
+    {
+      "name": "near",
+      "radius": 588.881354773608,
+      "beta": 0.8124186125847132,
+      "selected": [
+        {
+          "name": "coastal-landscape-grove-0",
+          "selected": "coastal-landscape-grove-0"
+        },
+        {
+          "name": "coastal-landscape-grove-1",
+          "selected": "coastal-landscape-grove-1"
+        },
+        {
+          "name": "coastal-landscape-grove-2",
+          "selected": "coastal-landscape-grove-2"
+        },
+        {
+          "name": "coastal-landscape-grove-3",
+          "selected": "coastal-landscape-grove-3"
+        },
+        {
+          "name": "coastal-landscape-hill-0",
+          "selected": "coastal-landscape-hill-0"
+        },
+        {
+          "name": "coastal-landscape-hill-1",
+          "selected": "coastal-landscape-hill-1"
+        },
+        {
+          "name": "coastal-landscape-hill-2",
+          "selected": "coastal-landscape-hill-2"
+        },
+        {
+          "name": "coastal-landscape-tower-grove-0",
+          "selected": "coastal-landscape-tower-grove-0"
+        },
+        {
+          "name": "coastal-landscape-tower-grove-1",
+          "selected": "coastal-landscape-tower-grove-1"
+        }
+      ]
+    },
+    {
+      "name": "far",
+      "radius": 3925.8756984907204,
+      "beta": 0.8124186125847132,
+      "selected": [
+        {
+          "name": "coastal-landscape-grove-0",
+          "selected": "coastal-landscape-grove-0-lod"
+        },
+        {
+          "name": "coastal-landscape-grove-1",
+          "selected": "coastal-landscape-grove-1-lod"
+        },
+        {
+          "name": "coastal-landscape-grove-2",
+          "selected": "coastal-landscape-grove-2-lod"
+        },
+        {
+          "name": "coastal-landscape-grove-3",
+          "selected": "coastal-landscape-grove-3-lod"
+        },
+        {
+          "name": "coastal-landscape-hill-0",
+          "selected": "coastal-landscape-hill-0"
+        },
+        {
+          "name": "coastal-landscape-hill-1",
+          "selected": "coastal-landscape-hill-1"
+        },
+        {
+          "name": "coastal-landscape-hill-2",
+          "selected": "coastal-landscape-hill-2"
+        },
+        {
+          "name": "coastal-landscape-tower-grove-0",
+          "selected": "coastal-landscape-tower-grove-0-lod"
+        },
+        {
+          "name": "coastal-landscape-tower-grove-1",
+          "selected": "coastal-landscape-tower-grove-1-lod"
+        }
+      ]
+    },
+    {
+      "name": "bird",
+      "radius": 1308.62523283024,
+      "beta": 0.12,
+      "selected": [
+        {
+          "name": "coastal-landscape-grove-0",
+          "selected": "coastal-landscape-grove-0"
+        },
+        {
+          "name": "coastal-landscape-grove-1",
+          "selected": "coastal-landscape-grove-1"
+        },
+        {
+          "name": "coastal-landscape-grove-2",
+          "selected": "coastal-landscape-grove-2-lod"
+        },
+        {
+          "name": "coastal-landscape-grove-3",
+          "selected": "coastal-landscape-grove-3-lod"
+        },
+        {
+          "name": "coastal-landscape-hill-0",
+          "selected": "coastal-landscape-hill-0"
+        },
+        {
+          "name": "coastal-landscape-hill-1",
+          "selected": "coastal-landscape-hill-1"
+        },
+        {
+          "name": "coastal-landscape-hill-2",
+          "selected": "coastal-landscape-hill-2"
+        },
+        {
+          "name": "coastal-landscape-tower-grove-0",
+          "selected": "coastal-landscape-tower-grove-0"
+        },
+        {
+          "name": "coastal-landscape-tower-grove-1",
+          "selected": "coastal-landscape-tower-grove-1"
+        }
+      ]
+    }
+  ],
+  "orbit": true,
+  "maps": true,
+  "settings": true,
+  "inspector": true,
+  "subpathReady": true,
+  "textureFailures": {
+    "pine-branches": {
+      "fallback": [
+        "./textures/coastal/pine-branches.png"
+      ],
+      "trees": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "ground": 1,
+      "originals": [
+        {
+          "visibility": 0,
+          "lods": 1
+        },
+        {
+          "visibility": 0,
+          "lods": 1
+        },
+        {
+          "visibility": 0,
+          "lods": 1
+        },
+        {
+          "visibility": 0,
+          "lods": 1
+        },
+        {
+          "visibility": 0,
+          "lods": 1
+        },
+        {
+          "visibility": 0,
+          "lods": 1
+        },
+        {
+          "visibility": 0,
+          "lods": 1
+        },
+        {
+          "visibility": 0,
+          "lods": 1
+        },
+        {
+          "visibility": 0,
+          "lods": 1
+        }
+      ]
+    },
+    "pine-impostor": {
+      "fallback": [
+        "./textures/coastal/pine-impostor.png"
+      ],
+      "trees": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "ground": 1,
+      "originals": [
+        {
+          "visibility": 1,
+          "lods": 0
+        },
+        {
+          "visibility": 1,
+          "lods": 0
+        },
+        {
+          "visibility": 1,
+          "lods": 0
+        },
+        {
+          "visibility": 1,
+          "lods": 0
+        },
+        {
+          "visibility": 1,
+          "lods": 0
+        },
+        {
+          "visibility": 1,
+          "lods": 0
+        },
+        {
+          "visibility": 1,
+          "lods": 0
+        },
+        {
+          "visibility": 1,
+          "lods": 0
+        },
+        {
+          "visibility": 1,
+          "lods": 0
+        }
+      ]
+    }
+  },
+  "passed": true
+}

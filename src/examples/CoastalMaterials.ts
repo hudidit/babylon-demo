@@ -1,4 +1,4 @@
-import { Color3, Constants, HDRCubeTexture, MaterialPluginBase, PBRMaterial, Texture } from "@babylonjs/core/pure";
+import { Mesh, Color3, Constants, HDRCubeTexture, MaterialPluginBase, PBRMaterial, Texture } from "@babylonjs/core/pure";
 import type { BaseTexture, Scene, UniformBuffer } from "@babylonjs/core/pure";
 import { coastalCrestShader } from "./CoastalCliff";
 import { CoastalFinish } from "./CoastalFinish";
@@ -80,9 +80,9 @@ export class CoastalMaterials {
     material.maxSimultaneousLights = 1; material.usePhysicalLightFalloff = false;
     this.materials.push(material); this.trackEnvironment(material); return material;
   }
-  pineBranches() {
-    const m = this.solid("coastal-pine-branches", "#ffffff");
-    const texture = new Texture("./textures/coastal/pine-branches.png", this.scene,
+  pineBranches(impostor = false) {
+    const m = this.solid(impostor ? "coastal-tree-impostor" : "coastal-pine-branches", "#ffffff");
+    const texture = new Texture(impostor ? "./textures/coastal/pine-impostor.png" : "./textures/coastal/pine-branches.png", this.scene,
       false, true, Texture.TRILINEAR_SAMPLINGMODE, undefined, () => this.fallbackFor(texture));
     texture.hasAlpha = true; texture.gammaSpace = true; texture.anisotropicFilteringLevel = 8;
     texture.wrapU = texture.wrapV = Texture.CLAMP_ADDRESSMODE;
@@ -164,7 +164,11 @@ export class CoastalMaterials {
     for (const m of this.materials) {
       // Failed cutout foliage must not turn into opaque rectangular cards.
       if (m.albedoTexture === texture && m.transparencyMode === PBRMaterial.PBRMATERIAL_ALPHATEST)
-        for (const mesh of this.scene.meshes) if (mesh.material === m) mesh.visibility = 0;
+        for (const mesh of this.scene.meshes) {
+          if (mesh.material === m) mesh.visibility = 0;
+          if (mesh instanceof Mesh) for (const level of mesh.getLODLevels())
+            if (level.mesh?.material === m) mesh.removeLODLevel(level.mesh);
+        }
       for (const key of ["albedoTexture", "bumpTexture", "metallicTexture"] as const) {
         if (m[key] === texture) { m[key] = null; if (key === "albedoTexture") m.albedoColor.set(.32, .34, .26); }
       }

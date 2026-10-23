@@ -243,7 +243,7 @@ test('all exterior roof pieces hide together and landmark materials cannot inher
   exterior.setVisible(false);exterior.setHouseEnclosed(true);assert.ok(roofs.every(m=>!m.isVisible));
   exterior.setVisible(true);assert.ok(roofs.every(m=>m.isVisible));
   assert.equal(scene.getMaterialByName('coastal-gravel-path').albedoTexture,exterior.surfaces.rock.albedoTexture);
-  assert.equal(exterior.surfaces.textures.length,10,'eight outdoor downloads plus the two original generated signage atlases');
+  assert.equal(exterior.surfaces.textures.length,11,'nine outdoor downloads plus the two original generated signage atlases');
 });
 
 test('local shadow coverage has hysteresis, caches at rest, stops in background and removes its observer',t=>{

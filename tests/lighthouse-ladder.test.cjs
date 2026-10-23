@@ -81,7 +81,7 @@ test('entry door vertical clearance and resource ownership remain correct after 
   const high=planToWorld(p,a.gallery+1.6);assert.equal(interactions.walkerIsClear(new b.Vector3(high.x,high.y,high.z)),true);
   assert.ok(load('RoomInteractions').doorSweepIsClear(door,0,1,new b.Vector3(high.x,high.y,high.z)));
   const structure=exterior.meshes.filter(m=>m.metadata.lighthouseInteriorStructure);assert.equal(structure.length,5);assert.ok(structure.reduce((n,m)=>n+m.getTotalVertices(),0)<=8000);
-  assert.ok(exterior.meshes.filter(m=>!m.metadata.lighthouseInteriorStructure && !m.metadata.lighthouseDetail && !m.metadata.lighthouseEquipment).reduce((n,m)=>n+m.getTotalVertices(),0)<=166000);
-  assert.equal(scene.getMeshByName('coastal-lighthouse-ground-ceiling'),null);assert.equal(scene.metadata.coastalSite.interiorStage,3);assert.equal(exterior.surfaces.textures.length,10);
+  assert.ok(exterior.meshes.filter(m=>!m.metadata.lighthouseInteriorStructure && !m.metadata.lighthouseDetail && !m.metadata.lighthouseEquipment).reduce((n,m)=>n+m.getTotalVertices(),0)<=250000);
+  assert.equal(scene.getMeshByName('coastal-lighthouse-ground-ceiling'),null);assert.equal(scene.metadata.coastalSite.interiorStage,3);assert.equal(exterior.surfaces.textures.length,11);
   exterior.dispose();exterior.dispose();assert.equal(scene.meshes.length,0);assert.equal(scene.transformNodes.length,0);assert.equal(scene.materials.length,0);
 });
