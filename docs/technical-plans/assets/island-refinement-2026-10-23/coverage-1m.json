@@ -1,0 +1,32 @@
+{
+  "method": "Plan-space raster union of actual new crown alpha >= 0.35, excludes original 88 crowns and existing ground plants; not bounding-box area or screen pixels. Plantable excludes walking polygon plus 3m buffer and landmark corridor plus 1m buffer. PIL boundary rasterization; compare 1m and 0.5m resolution.",
+  "detailMethod": "Second state replaces all 93 selected impostors with a plan raster of actual branch/leaf triangles and pine-branches alpha >=0.35; Two reference states; mixed per-cell camera selections are not asserted to be bounded by these two totals.",
+  "stepMetres": 1.0,
+  "newPlants": 4731,
+  "newTrees": 4267,
+  "newShrubs": 464,
+  "all": {
+    "landArea": 489667.0,
+    "canopyArea": 365475.0,
+    "landCoverage": 0.7463745770084568,
+    "plantableCoverage": 0.75264886683073,
+    "allDetailsLandCoverage": 0.746229580510837,
+    "allDetailsPlantableCoverage": 0.7525026514410453
+  },
+  "main": {
+    "landArea": 64660.0,
+    "canopyArea": 41207.0,
+    "landCoverage": 0.6372873492112588,
+    "plantableCoverage": 0.6802304466968206,
+    "allDetailsLandCoverage": 0.6361892978657594,
+    "allDetailsPlantableCoverage": 0.679058404041071
+  },
+  "near": {
+    "landArea": 18907.0,
+    "canopyArea": 7387.0,
+    "landCoverage": 0.3907018564552811,
+    "plantableCoverage": 0.49827993254637437,
+    "allDetailsLandCoverage": 0.386946633521976,
+    "allDetailsPlantableCoverage": 0.49349072512647557
+  }
+}

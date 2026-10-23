@@ -1,0 +1,14 @@
+BJS - [21:58:47]: Babylon.js v9.30.0 - Null engine
+BJS - [21:58:47]: Babylon.js v9.30.0 - Null engine
+✔ forest layout is deterministic, bounded, and its complete tree footprints clear walking space and terrain edges (242.239083ms)
+✔ detailed leaf cards preserve a continuous 3m route margin and unit lighting normals (30.267583ms)
+✔ stratified forest roots match actual terrain/hill ray hits, and landmark rays remain clear (218.018667ms)
+✔ shared forest material, LOD backups, full stored geometry, fallback and cleanup obey the new budget (344.01775ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1364.807459

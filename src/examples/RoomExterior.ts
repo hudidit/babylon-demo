@@ -111,7 +111,7 @@ export class RoomExterior {
         const data = { positions: [] as number[], indices: [] as number[], normals: [] as number[], uvs: [] as number[], colors: [] as number[] };
         for (const t of group.trees) appendTreeImpostor(data, t.x, t.y, t.base, t.height, t.height * .95, t.x + t.y);
         const low = make(`coastal-landscape-${group.name}-lod`, data, "distant", impostor);
-        low.metadata.forestLOD = true; plants.useLODScreenCoverage = true; plants.addLODLevel(.002, low);
+        low.metadata.forestLOD = true; plants.useLODScreenCoverage = true; plants.addLODLevel(.0008, low);
       }
       if (group.phase) plants.metadata.landscapePhase = group.phase;
       plants.metadata.landscapeDetailVertices = group.details ? plants.getTotalVertices() - group.details.plants : 0;
@@ -124,8 +124,15 @@ export class RoomExterior {
       }
     }
     for (const group of coastalForest(landscape)) {
-      const mesh = make(`coastal-landscape-${group.name}`, group.plants, "distant", impostor);
-      mesh.metadata.forestCount = group.trees.length;
+      const name = `coastal-landscape-${group.name}`, count = group.trees.filter(t => t.detailFirst !== undefined).length;
+      if (group.plants.positions.length)
+        make(name, group.plants, "distant", impostor).metadata.forestCount = group.trees.length - count;
+      if (group.detail.positions.length) {
+        const detail = make(`${name}-detail`, group.detail, "distant", pine);
+        const low = make(`${name}-lod`, group.fallback, "distant", impostor);
+        detail.metadata.forestCount = count; detail.metadata.forestDetail = true; low.metadata.forestLOD = true;
+        detail.useLODScreenCoverage = true; detail.addLODLevel(.0008, low);
+      }
     }
     this.houseRoof = createCoastalLandmark(scene, s, retain);
     this.lighthouseDoor = createLighthouseInterior(scene, retain);

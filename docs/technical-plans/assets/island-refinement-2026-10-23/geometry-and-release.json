@@ -1,0 +1,89 @@
+{
+  "baseline": "3df3fc1",
+  "originalLandscapeSha256": "aab6b6626f6b917ff1c07d79ebdb1c4dd72dda242c3c5487f107f4c819d2b871",
+  "forestRootScaleAngleSha256": "c495ecdfcf4752cf8cb8bb6b24116716d354ae2fb5067a7e8804555b4313b9be",
+  "forest": {
+    "plants": 4731,
+    "detailTrees": 55,
+    "detailShrubs": 38,
+    "staticCells": 94,
+    "detailGroups": 6
+  },
+  "totals": {
+    "vertices": 80333,
+    "triangles": 54734,
+    "combinedCoastVertices": 236009,
+    "allSceneStoredVertices": 655731,
+    "allLodBackupVertices": 2353
+  },
+  "added": {
+    "vertices": 7533,
+    "triangles": 5766,
+    "runtimeBytes": 22335,
+    "firstScreenBytes": 1110,
+    "releaseBytes": 26647
+  },
+  "budgets": {
+    "vertices": 250000,
+    "triangles": 55000,
+    "trees": 5400,
+    "batches": 110,
+    "firstScreenHeadroom": 394,
+    "releaseHeadroom": 6883
+  },
+  "coverage": {
+    "method": "Plan-space raster union of actual new crown alpha >= 0.35, excludes original 88 crowns and existing ground plants; not bounding-box area or screen pixels. Plantable excludes walking polygon plus 3m buffer and landmark corridor plus 1m buffer. PIL boundary rasterization; compare 1m and 0.5m resolution.",
+    "detailMethod": "Second state replaces all 93 selected impostors with a plan raster of actual branch/leaf triangles and pine-branches alpha >=0.35; Two reference states; mixed per-cell camera selections are not asserted to be bounded by these two totals.",
+    "stepMetres": 0.5,
+    "newPlants": 4731,
+    "newTrees": 4267,
+    "newShrubs": 464,
+    "all": {
+      "landArea": 489278.5,
+      "canopyArea": 365654.25,
+      "landCoverage": 0.7473335738234973,
+      "plantableCoverage": 0.7537153260711048,
+      "allDetailsLandCoverage": 0.747188462194844,
+      "allDetailsPlantableCoverage": 0.7535689752816609
+    },
+    "main": {
+      "landArea": 64468.75,
+      "canopyArea": 41175,
+      "landCoverage": 0.6386815317498789,
+      "plantableCoverage": 0.6825415243841793,
+      "allDetailsLandCoverage": 0.6375802229762482,
+      "allDetailsPlantableCoverage": 0.6813645857507542
+    },
+    "near": {
+      "landArea": 18787,
+      "canopyArea": 7384.5,
+      "landCoverage": 0.39306435301006015,
+      "plantableCoverage": 0.5042593509397887,
+      "allDetailsLandCoverage": 0.3892851439825411,
+      "allDetailsPlantableCoverage": 0.4994110316335763
+    }
+  },
+  "unchangedRuntimeAssetHashes": 37,
+  "dynamicChunkSetUnchanged": true,
+  "identicalCameras": 27,
+  "sourceSha256": {
+    "src/examples/CoastalForest.ts": "3ddabdeaf2d83260c66019924b639a24a66654b9fa44ffef2de2f02df5eea335",
+    "src/examples/CoastalTree.ts": "53af4e3fef9a44ea513c931554b25fcb3a849496e793225898fefc4655811969",
+    "src/examples/CoastalLandscape.ts": "e1aeefaa8062b9eb1cf0807ffdaf0c241255a920887c136951c82e4941e64f21",
+    "src/examples/RoomExterior.ts": "5fd38ffbea4e1989ebfc798121d1c7ebb1a4878dde74a55c6a370fb79a0a290c",
+    "src/examples/CoastalCliff.ts": "313ecfc00850d766782bccbb0e7aa80c5bbf74da1219ea1831a9ebcde6ea9ba0",
+    "src/examples/CoastalSite.ts": "edb1a6fb8735b4c6726124afdebfab6ed5695e09b3c3b6afa3c94c32f8fa4110",
+    "src/examples/WalkingSurface.ts": "c5e40ab873772df5b974862608783f01cff18c784c9b6a840ae53f94b2023a6e",
+    "src/examples/CoastalMaterials.ts": "2b0edcf9d37fa47985e8aa5fdda86b23cd2c83e10d5744afd8acaf28b3cb848b",
+    "public/environment/coastal-cliff-source.json": "425f1625f7812b923e295906e59b4e73f9b7b730119db29106eccf4245b4fa9a",
+    "public/STUDY_ASSET_SOURCES.md": "d82d452a0f44f42e9d41f33e4f5e1b6cdd66aa0ad65edb8fe8d56900e78a156f",
+    "public/textures/coastal/pine-impostor-source.json": "33d5bdc1a37bdfb465718ef904282a0891c1d5e9984d338d6fa5d2e9d1a226d5",
+    "tests/coastal-forest.test.cjs": "9069ab6a9435bd2a710b87c803001589c717f2dd276c16aa38dcde6d65aa043b",
+    "tools/bake-coastal-tree.py": "220ea6147f8cf209a9c3b8ec814e33d6fa7f98357f012218d829238bbd619c56",
+    "tools/study-release.config.cjs": "0a2ac02fc80d4165043a6f9427a4eb08ec9ca83c3a898c2006d6d1f74d36e9e5",
+    "package-lock.json": "e94ba83cc02d96a6954d091bf84233bceee7275e85107453a75f772a8a629dcf",
+    "tsconfig.json": "234ed3ade800b090554ceb3af7216e7daebea4b39d1ddb4bdd967724c4098b3a",
+    "webpack.config.js": "16762abfd7f6dcd688f4f29b527e122aa8a22168ff08acd4c3292307dbf7136b"
+  },
+  "passed": true
+}

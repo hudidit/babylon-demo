@@ -1,5 +1,5 @@
 {
-  "asset": "Whole-tree front, side and crown atlas",
+  "asset": "Two whole-tree silhouettes with front, side and crown views",
   "derivedFrom": "textures/coastal/pine-source.json",
   "license": "CC0-1.0 texture source; ISC authored geometry and baker",
   "geometrySource": "src/examples/CoastalTree.ts",
@@ -9,17 +9,27 @@
     "script": "tools/bake-coastal-tree.py",
     "pillow": "12.3.0",
     "numpy": "2.3.5",
-    "tree": {
-      "height": 6,
-      "radius": 1.05,
-      "phase": 2.2
-    },
-    "halfWidth": 2.6,
+    "trees": [
+      {
+        "height": 6,
+        "radius": 1.05,
+        "phase": 2.2
+      },
+      {
+        "height": 6,
+        "radius": 1.05,
+        "phase": 0.6
+      }
+    ],
+    "halfWidths": [
+      2.6,
+      2.45
+    ],
     "verticalBounds": [
       -0.25,
       6
     ],
-    "tiles": [
+    "tilesPerVariant": [
       [
         0,
         0,
@@ -39,13 +49,14 @@
         256
       ]
     ],
+    "variantOffsetX": 512,
     "method": "Orthographic z-buffer rasterization, cutout 0.35, 2x supersampling, neutral ambient form shading, RGB dilation 3px, FASTOCTREE 128-color indexed PNG; no baked sun/cast shadow."
   },
   "output": {
     "file": "textures/coastal/pine-impostor.png",
-    "bytes": 22291,
-    "sha256": "7a1b50e4cbb23decd894404204e74a650e5de21701867465732918df6f7c5622",
-    "width": 512,
+    "bytes": 44626,
+    "sha256": "70a37c4489ffb527070d2f8c48405e0dda4074483c9d3c3be68ff8c4ad9a0b11",
+    "width": 1024,
     "height": 256
   }
 }
