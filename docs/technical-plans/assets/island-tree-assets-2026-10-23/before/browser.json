@@ -1,0 +1,960 @@
+{
+  "baseline": "4d9487e",
+  "method": "Unmodified production dist, Chrome DPR1 cold cache, fixed cameras and manual renders; screenshots and structural counters only, no FPS/load-time measurements.",
+  "errors": [],
+  "warnings": [],
+  "firstScreenJs": [
+    {
+      "path": "/js/main.js",
+      "bytes": 501390,
+      "sha256": "91c0367bdc316e371a48fb27744b883b7d453e45824da765917f52a5602ac9c8"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 1710,
+      "sha256": "331f7c4154f11a002477aae53000cf718e2593f9f9d3c12212bf1e2503b3612e"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "views": [
+    {
+      "id": "overview",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -351.99999999999994,
+          894.9999999999999,
+          1148
+        ],
+        "target": [
+          -352,
+          -5,
+          198
+        ]
+      },
+      "landmarks": [
+        {
+          "x": -0.3263908691892343,
+          "y": 0.24864765455883445,
+          "z": 0.9942034977371103
+        },
+        {
+          "x": -0.3833083574830696,
+          "y": 0.26802350745665166,
+          "z": 0.9941555252960592
+        },
+        {
+          "x": -0.33775304818568586,
+          "y": 0.2136571751949105,
+          "z": 0.9939668825331852
+        },
+        {
+          "x": -0.39103605977717604,
+          "y": 0.19414263287449782,
+          "z": 0.9940175257993417
+        },
+        {
+          "x": 0.3907409670669436,
+          "y": -0.29978330783824586,
+          "z": 0.9921853234825501
+        },
+        {
+          "x": 0.41621402228064647,
+          "y": -0.15656762651366002,
+          "z": 0.9916106486135804
+        }
+      ]
+    },
+    {
+      "id": "balcony",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          13.499999999999929,
+          3.0000000000000124,
+          30.24999999999997
+        ],
+        "target": [
+          -11,
+          -2.5,
+          158
+        ]
+      }
+    },
+    {
+      "id": "entry",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          38,
+          2.4250000000000007,
+          -42
+        ],
+        "target": [
+          -7.000001146246895,
+          15.000000510149173,
+          -171.99999599236904
+        ]
+      }
+    },
+    {
+      "id": "path",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -282,
+          6.7058823529411775,
+          12.999999999999998
+        ],
+        "target": [
+          -651.9999932670503,
+          60.00000159462006,
+          423.00001041519425
+        ]
+      }
+    },
+    {
+      "id": "lookout",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -377,
+          8.205222824445325,
+          98
+        ],
+        "target": [
+          -0.00000781570622621075,
+          4.99999973797303,
+          -0.000006344248419054566
+        ]
+      }
+    },
+    {
+      "id": "gallery",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -652,
+          101.20000000000002,
+          408
+        ],
+        "target": [
+          -177.00000527666987,
+          10.00000290461199,
+          -126.99999224676378
+        ]
+      }
+    },
+    {
+      "id": "meadow",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -302,
+          7.066176470588237,
+          12.999999999999998
+        ],
+        "target": [
+          -336.9999988136432,
+          -2.4646448970599977e-7,
+          -86.99999751455597
+        ]
+      }
+    },
+    {
+      "id": "tower-grove",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -607,
+          14.698217104314391,
+          288
+        ],
+        "target": [
+          -671.9999997618298,
+          9.999999948889432,
+          112.99999935692628
+        ]
+      }
+    },
+    {
+      "id": "cape",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "camera": {
+        "position": [
+          -47,
+          2.378783908812803,
+          37.5
+        ],
+        "target": [
+          -67.00000030290303,
+          3.711924589921978e-8,
+          127.99999881477227
+        ]
+      }
+    },
+    {
+      "id": "overview",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -351.9999999999994,
+          1942.6923076923076,
+          2253.897435897436
+        ],
+        "target": [
+          -352,
+          -5,
+          198
+        ]
+      },
+      "landmarks": [
+        {
+          "x": -0.5553761905920558,
+          "y": 0.12219004541155115,
+          "z": 0.9976602983809604
+        },
+        {
+          "x": -0.649892358670257,
+          "y": 0.1312406064885091,
+          "z": 0.9976487547821901
+        },
+        {
+          "x": -0.5647117562523217,
+          "y": 0.10316852865161853,
+          "z": 0.9976041510220697
+        },
+        {
+          "x": -0.6562426458605624,
+          "y": 0.09409591218990791,
+          "z": 0.9976160033567708
+        },
+        {
+          "x": 0.5776435675112669,
+          "y": -0.12799134671232767,
+          "z": 0.9972368608025817
+        },
+        {
+          "x": 0.5931423075245386,
+          "y": -0.06443863462360605,
+          "z": 0.9971358791828916
+        }
+      ]
+    },
+    {
+      "id": "balcony",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          13.499999999999929,
+          3.0000000000000124,
+          30.24999999999997
+        ],
+        "target": [
+          -11,
+          -2.5,
+          158
+        ]
+      }
+    },
+    {
+      "id": "entry",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          38,
+          2.4250000000000007,
+          -42
+        ],
+        "target": [
+          -7.000001146246902,
+          15.000000510149174,
+          -171.99999599236907
+        ]
+      }
+    },
+    {
+      "id": "path",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -282,
+          6.7058823529411775,
+          12.999999999999998
+        ],
+        "target": [
+          -651.9999932670503,
+          60.00000159462006,
+          423.00001041519425
+        ]
+      }
+    },
+    {
+      "id": "lookout",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -377,
+          8.205222824445325,
+          98
+        ],
+        "target": [
+          -0.00000781570622621075,
+          4.99999973797303,
+          -0.000006344248419054566
+        ]
+      }
+    },
+    {
+      "id": "gallery",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -652,
+          101.20000000000002,
+          408
+        ],
+        "target": [
+          -177.00000527666987,
+          10.00000290461199,
+          -126.99999224676378
+        ]
+      }
+    },
+    {
+      "id": "meadow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -302,
+          7.066176470588237,
+          12.999999999999998
+        ],
+        "target": [
+          -336.9999988136432,
+          -2.4646448970599977e-7,
+          -86.99999751455597
+        ]
+      }
+    },
+    {
+      "id": "tower-grove",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -607,
+          14.698217104314391,
+          288
+        ],
+        "target": [
+          -671.9999997618298,
+          9.999999948889432,
+          112.99999935692628
+        ]
+      }
+    },
+    {
+      "id": "cape",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "camera": {
+        "position": [
+          -47,
+          2.378783908812803,
+          37.5
+        ],
+        "target": [
+          -67.00000030290303,
+          3.711924589921978e-8,
+          127.99999881477227
+        ]
+      }
+    },
+    {
+      "id": "overview",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -351.9999999999997,
+          894.9999999999999,
+          1148
+        ],
+        "target": [
+          -352,
+          -5,
+          198
+        ]
+      },
+      "landmarks": [
+        {
+          "x": -0.24131267586343955,
+          "y": 0.24864765455883445,
+          "z": 0.9942034977371103
+        },
+        {
+          "x": -0.2833938515297034,
+          "y": 0.26802350745665166,
+          "z": 0.9941555252960592
+        },
+        {
+          "x": -0.24971314927154653,
+          "y": 0.2136571751949105,
+          "z": 0.9939668825331852
+        },
+        {
+          "x": -0.2891072237373482,
+          "y": 0.19414263287449782,
+          "z": 0.9940175257993417
+        },
+        {
+          "x": 0.2888890551269703,
+          "y": -0.29978330783824564,
+          "z": 0.9921853234825501
+        },
+        {
+          "x": 0.3077222143606244,
+          "y": -0.15656762651365977,
+          "z": 0.9916106486135804
+        }
+      ]
+    },
+    {
+      "id": "balcony",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          13.50000000000001,
+          3.0000000000000124,
+          30.249999999999986
+        ],
+        "target": [
+          -11,
+          -2.5,
+          158
+        ]
+      }
+    },
+    {
+      "id": "entry",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          38,
+          2.4250000000000007,
+          -42
+        ],
+        "target": [
+          -7.000001146246902,
+          15.000000510149174,
+          -171.99999599236907
+        ]
+      }
+    },
+    {
+      "id": "path",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -282,
+          6.7058823529411775,
+          12.999999999999998
+        ],
+        "target": [
+          -651.9999932670503,
+          60.00000159462006,
+          423.00001041519425
+        ]
+      }
+    },
+    {
+      "id": "lookout",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -377,
+          8.205222824445325,
+          98
+        ],
+        "target": [
+          -0.00000781570622621075,
+          4.99999973797303,
+          -0.000006344248419054566
+        ]
+      }
+    },
+    {
+      "id": "gallery",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -652,
+          101.20000000000002,
+          408
+        ],
+        "target": [
+          -177.00000527666987,
+          10.00000290461199,
+          -126.99999224676378
+        ]
+      }
+    },
+    {
+      "id": "meadow",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -302,
+          7.066176470588237,
+          12.999999999999998
+        ],
+        "target": [
+          -336.9999988136432,
+          -2.4646448970599977e-7,
+          -86.99999751455597
+        ]
+      }
+    },
+    {
+      "id": "tower-grove",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -607,
+          14.698217104314391,
+          288
+        ],
+        "target": [
+          -671.9999997618298,
+          9.999999948889432,
+          112.99999935692628
+        ]
+      }
+    },
+    {
+      "id": "cape",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "camera": {
+        "position": [
+          -47,
+          2.378783908812803,
+          37.5
+        ],
+        "target": [
+          -67.00000030290303,
+          3.711924589921978e-8,
+          127.99999881477227
+        ]
+      }
+    }
+  ],
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26594045,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 99915,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2921568,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42654230
+  },
+  "manifestSha256": "19c1e2386bc822c7bb6efd62b4d222568f86542776b525246d77b5f493a46b2b",
+  "hosted": {
+    "prefixes": [
+      "/",
+      "/home/"
+    ],
+    "filesPerPrefix": 496
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3140058,
+  "scene": {
+    "meshes": 735,
+    "vertices": 585319,
+    "materials": 109,
+    "textures": 153,
+    "lights": 22,
+    "cameras": 3,
+    "shadowMaps": 19,
+    "landscape": [
+      {
+        "name": "coastal-landscape-grove-0",
+        "phase": 1,
+        "detailVertices": 200,
+        "detailTriangles": 352,
+        "vertices": 572,
+        "triangles": 928,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-1",
+        "phase": 1,
+        "detailVertices": 200,
+        "detailTriangles": 352,
+        "vertices": 572,
+        "triangles": 928,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-2",
+        "phase": 1,
+        "detailVertices": 200,
+        "detailTriangles": 352,
+        "vertices": 572,
+        "triangles": 928,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-3",
+        "phase": 1,
+        "detailVertices": 200,
+        "detailTriangles": 352,
+        "vertices": 572,
+        "triangles": 928,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-0-ground",
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 175,
+        "triangles": 288,
+        "material": "coastal-ground-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-0",
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 736,
+        "triangles": 1088,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-1-ground",
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 175,
+        "triangles": 288,
+        "material": "coastal-ground-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-1",
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 736,
+        "triangles": 1088,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-2-ground",
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 175,
+        "triangles": 288,
+        "material": "coastal-ground-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-hill-2",
+        "phase": 1,
+        "detailVertices": 0,
+        "detailTriangles": 0,
+        "vertices": 736,
+        "triangles": 1088,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-grove-edge",
+        "phase": 2,
+        "detailVertices": 256,
+        "detailTriangles": 448,
+        "vertices": 640,
+        "triangles": 1120,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-meadow-0",
+        "phase": 2,
+        "detailVertices": 160,
+        "detailTriangles": 160,
+        "vertices": 840,
+        "triangles": 840,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-meadow-0-rocks",
+        "phase": 2,
+        "detailVertices": 128,
+        "detailTriangles": 224,
+        "vertices": 310,
+        "triangles": 560,
+        "material": "coastal-rock-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-meadow-1",
+        "phase": 2,
+        "detailVertices": 160,
+        "detailTriangles": 160,
+        "vertices": 840,
+        "triangles": 840,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-meadow-1-rocks",
+        "phase": 2,
+        "detailVertices": 128,
+        "detailTriangles": 224,
+        "vertices": 310,
+        "triangles": 560,
+        "material": "coastal-rock-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-tower-grove-0",
+        "phase": 2,
+        "detailVertices": 200,
+        "detailTriangles": 352,
+        "vertices": 696,
+        "triangles": 1120,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-tower-grove-1",
+        "phase": 2,
+        "detailVertices": 200,
+        "detailTriangles": 352,
+        "vertices": 696,
+        "triangles": 1120,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-cape",
+        "phase": 2,
+        "detailVertices": 208,
+        "detailTriangles": 304,
+        "vertices": 400,
+        "triangles": 640,
+        "material": "coastal-background-foliage",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      },
+      {
+        "name": "coastal-landscape-cape-rocks",
+        "phase": 2,
+        "detailVertices": 64,
+        "detailTriangles": 112,
+        "vertices": 168,
+        "triangles": 304,
+        "material": "coastal-rock-distant",
+        "pickable": false,
+        "collisions": false,
+        "receiveShadows": false,
+        "casts": false
+      }
+    ]
+  },
+  "passed": true
+}

@@ -1,0 +1,19 @@
+{
+  "totals": {
+    "vertices": 10129,
+    "triangles": 9216,
+    "minimumBoxClearance": 8.049936400574417
+  },
+  "added": {
+    "vertices": 208,
+    "triangles": -5728,
+    "runtimeBytes": 64049,
+    "firstScreenJsBytes": -223,
+    "releaseBytes": 67546
+  },
+  "budgets": {
+    "firstScreenHeadroom": 5893,
+    "releaseHeadroom": 269840
+  },
+  "passed": true
+}

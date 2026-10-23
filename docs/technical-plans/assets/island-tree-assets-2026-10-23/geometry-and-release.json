@@ -1,0 +1,349 @@
+{
+  "baseline": "4d9487e",
+  "preservedLayoutGroundDetailsSha256": "aab6b6626f6b917ff1c07d79ebdb1c4dd72dda242c3c5487f107f4c819d2b871",
+  "geometry": [
+    {
+      "name": "grove-0",
+      "trees": 6,
+      "meshes": [
+        {
+          "kind": "plants",
+          "vertices": 468,
+          "triangles": 264,
+          "box": {
+            "minX": -22.708644700412137,
+            "maxX": -9.949324668689394,
+            "minY": -35.547144810108996,
+            "maxY": -26.312409282408055
+          },
+          "clearance": 16.78367843875445
+        }
+      ]
+    },
+    {
+      "name": "grove-1",
+      "trees": 6,
+      "meshes": [
+        {
+          "kind": "plants",
+          "vertices": 468,
+          "triangles": 264,
+          "box": {
+            "minX": -8.7384015219783,
+            "maxX": 3.5411313227331167,
+            "minY": -42.29700223349912,
+            "maxY": -32.57914018281756
+          },
+          "clearance": 22.57914018281756
+        }
+      ]
+    },
+    {
+      "name": "grove-2",
+      "trees": 6,
+      "meshes": [
+        {
+          "kind": "plants",
+          "vertices": 468,
+          "triangles": 264,
+          "box": {
+            "minX": 12.986872013141062,
+            "maxX": 22.70502341471044,
+            "minY": -37.7248774477543,
+            "maxY": -26.938230491442432
+          },
+          "clearance": 19.348286889765724
+        }
+      ]
+    },
+    {
+      "name": "grove-3",
+      "trees": 6,
+      "meshes": [
+        {
+          "kind": "plants",
+          "vertices": 468,
+          "triangles": 264,
+          "box": {
+            "minX": 4.513573038946813,
+            "maxX": 16.841108391809342,
+            "minY": -25.961400052531076,
+            "maxY": -18.27542588869388
+          },
+          "clearance": 9.620064170422568
+        }
+      ]
+    },
+    {
+      "name": "hill-0",
+      "trees": 16,
+      "meshes": [
+        {
+          "kind": "ground",
+          "vertices": 175,
+          "triangles": 288,
+          "box": {
+            "minX": -153,
+            "maxX": -63.00000000000001,
+            "minY": -124,
+            "maxY": -74
+          },
+          "clearance": 76.41989269817121
+        },
+        {
+          "kind": "plants",
+          "vertices": 992,
+          "triangles": 576,
+          "box": {
+            "minX": -133.2561847075455,
+            "maxX": -78.11291751643488,
+            "minY": -116.8244665260363,
+            "maxY": -82.9265413662855
+          },
+          "clearance": 88.01547809653098
+        }
+      ]
+    },
+    {
+      "name": "hill-1",
+      "trees": 16,
+      "meshes": [
+        {
+          "kind": "ground",
+          "vertices": 175,
+          "triangles": 288,
+          "box": {
+            "minX": -99,
+            "maxX": -1,
+            "minY": -146,
+            "maxY": -88
+          },
+          "clearance": 78
+        },
+        {
+          "kind": "plants",
+          "vertices": 992,
+          "triangles": 576,
+          "box": {
+            "minX": -83.79762551891388,
+            "maxX": -15.229609376285621,
+            "minY": -132.00204668981115,
+            "maxY": -97.26356405078754
+          },
+          "clearance": 87.75030085466783
+        }
+      ]
+    },
+    {
+      "name": "hill-2",
+      "trees": 16,
+      "meshes": [
+        {
+          "kind": "ground",
+          "vertices": 175,
+          "triangles": 288,
+          "box": {
+            "minX": -29,
+            "maxX": 43,
+            "minY": -118,
+            "maxY": -70
+          },
+          "clearance": 60
+        },
+        {
+          "kind": "plants",
+          "vertices": 992,
+          "triangles": 576,
+          "box": {
+            "minX": -9.081334671212796,
+            "maxX": 24.83778467990159,
+            "minY": -106.54720916595117,
+            "maxY": -76.82449988669838
+          },
+          "clearance": 66.82449988669838
+        }
+      ]
+    },
+    {
+      "name": "grove-edge",
+      "trees": 0,
+      "meshes": [
+        {
+          "kind": "plants",
+          "vertices": 640,
+          "triangles": 1120,
+          "box": {
+            "minX": -22.527008910059045,
+            "maxX": 23.34624800500505,
+            "minY": -42.3019507586093,
+            "maxY": -18.049936400574417
+          },
+          "clearance": 8.049936400574417
+        }
+      ]
+    },
+    {
+      "name": "meadow-0",
+      "trees": 0,
+      "meshes": [
+        {
+          "kind": "plants",
+          "vertices": 840,
+          "triangles": 840,
+          "box": {
+            "minX": -56.00781460865774,
+            "maxX": -38.74387834095396,
+            "minY": -18.774942263817536,
+            "maxY": -7.17350231858099
+          },
+          "clearance": 9.17350231858099
+        },
+        {
+          "kind": "rocks",
+          "vertices": 310,
+          "triangles": 560,
+          "box": {
+            "minX": -58.49782035860246,
+            "maxX": -38.02924761384253,
+            "minY": -15.728567378977973,
+            "maxY": -9.398065781879847
+          },
+          "clearance": 11.398065781879847
+        }
+      ]
+    },
+    {
+      "name": "meadow-1",
+      "trees": 0,
+      "meshes": [
+        {
+          "kind": "plants",
+          "vertices": 840,
+          "triangles": 840,
+          "box": {
+            "minX": -93.71271763205512,
+            "maxX": -75.25733299137934,
+            "minY": -14.430271331516083,
+            "maxY": -2.9900172543433126
+          },
+          "clearance": 17.852572565742335
+        },
+        {
+          "kind": "rocks",
+          "vertices": 310,
+          "triangles": 560,
+          "box": {
+            "minX": -94.59369382998285,
+            "maxX": -74.38821477722416,
+            "minY": -11.584893513442617,
+            "maxY": -5.59939371379188
+          },
+          "clearance": 19.083120972005094
+        }
+      ]
+    },
+    {
+      "name": "tower-grove-0",
+      "trees": 8,
+      "meshes": [
+        {
+          "kind": "plants",
+          "vertices": 624,
+          "triangles": 352,
+          "box": {
+            "minX": -137.61468243575487,
+            "maxX": -125.91453075208952,
+            "minY": 15.394224634635925,
+            "maxY": 27.306342786871376
+          },
+          "clearance": 26.783239756007475
+        }
+      ]
+    },
+    {
+      "name": "tower-grove-1",
+      "trees": 8,
+      "meshes": [
+        {
+          "kind": "plants",
+          "vertices": 624,
+          "triangles": 352,
+          "box": {
+            "minX": -131.67443269427028,
+            "maxX": -119.8341091543246,
+            "minY": 29.621739948368067,
+            "maxY": 39.765822649306834
+          },
+          "clearance": 13.482252612002759
+        }
+      ]
+    },
+    {
+      "name": "cape",
+      "trees": 0,
+      "meshes": [
+        {
+          "kind": "plants",
+          "vertices": 400,
+          "triangles": 640,
+          "box": {
+            "minX": -10.321732883223428,
+            "maxX": -5.120641295999965,
+            "minY": 24.10214502651749,
+            "maxY": 39.992174794402594
+          },
+          "clearance": 9.140998219879107
+        },
+        {
+          "kind": "rocks",
+          "vertices": 168,
+          "triangles": 304,
+          "box": {
+            "minX": -9.60063370203728,
+            "maxX": -5.384952430351744,
+            "minY": 24.15002888679504,
+            "maxY": 39.70897191422803
+          },
+          "clearance": 9.344170200181077
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "vertices": 10129,
+    "triangles": 9216,
+    "minimumBoxClearance": 8.049936400574417
+  },
+  "added": {
+    "vertices": 208,
+    "triangles": -5728,
+    "runtimeBytes": 64049,
+    "firstScreenJsBytes": -223,
+    "releaseBytes": 67546
+  },
+  "budgets": {
+    "firstScreenHeadroom": 5893,
+    "releaseHeadroom": 269840
+  },
+  "existingRuntimeAssetHashesUnchanged": true,
+  "dynamicChunksPreserved": true,
+  "identicalCameraPoses": 27,
+  "sourceSha256": {
+    "src/examples/CoastalLandscape.ts": "12c687fa74517647027f70f2d2cd04bb30e7b88ef438218ad32742543a412ef9",
+    "src/examples/RoomExterior.ts": "1efaf30ba11c287ed5979ac40f70dcae38ec92b7d002a538c2d6a967f4f09f4c",
+    "src/examples/CoastalCliff.ts": "313ecfc00850d766782bccbb0e7aa80c5bbf74da1219ea1831a9ebcde6ea9ba0",
+    "src/examples/CoastalSite.ts": "edb1a6fb8735b4c6726124afdebfab6ed5695e09b3c3b6afa3c94c32f8fa4110",
+    "src/examples/WalkingSurface.ts": "c5e40ab873772df5b974862608783f01cff18c784c9b6a840ae53f94b2023a6e",
+    "src/examples/CoastalMaterials.ts": "e04660d254ceec7e0ef8a5dd418abe522ab3882d2ddc3853142c41dac6e29eab",
+    "public/environment/coastal-cliff-source.json": "98e947a128ff5b74b3c5056d9e4c9186083adf61dfa44465c9db41f30bb2f8a5",
+    "public/STUDY_ASSET_SOURCES.md": "7a209d9558fcc69bf32a60980190932e18d2dcb31bfac3f73e3c589ef8da5c8b",
+    "public/textures/coastal/pine-source.json": "fdfa8b9d6d3e1d76e5157530103e29b37701f31675f2f3e84b722f1f44d1bdf7",
+    "tests/coastal-landscape.test.cjs": "bb82849e157e2487f5bc967da39ba152d9854e71651e997142d3d533206877f9",
+    "tools/prepare-island-foliage.py": "dc36c150c1ebfc4c3afb5b51f6804cb647ed26dd6e910f96cbe4ebe9099535cb",
+    "tools/study-release.config.cjs": "ffdc3889d3eae67b37aee8dc8519522756c1b974d0e99cc7ba280452d4a723ce",
+    "package-lock.json": "e94ba83cc02d96a6954d091bf84233bceee7275e85107453a75f772a8a629dcf",
+    "tsconfig.json": "234ed3ade800b090554ceb3af7216e7daebea4b39d1ddb4bdd967724c4098b3a",
+    "webpack.config.js": "16762abfd7f6dcd688f4f29b527e122aa8a22168ff08acd4c3292307dbf7136b"
+  },
+  "passed": true
+}

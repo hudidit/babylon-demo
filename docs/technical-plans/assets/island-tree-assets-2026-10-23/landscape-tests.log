@@ -1,0 +1,18 @@
+BJS - [18:23:41]: Babylon.js v9.30.0 - Null engine
+BJS - [18:23:41]: Babylon.js v9.30.0 - Null engine
+BJS - [18:23:41]: Babylon.js v9.30.0 - Null engine
+✔ complete landscape bounds stay outside walking space, with supported roots and buried hill edges (30.622667ms)
+✔ background support and tree roots match ray hits on actual ground and hill triangles (99.568667ms)
+✔ hill and two-sided foliage faces have upward lighting normals and valid cutout UVs (1.389833ms)
+✔ background plants share opaque/cutout materials, avoid shadows/collisions and dispose cleanly (260.234875ms)
+✔ phase-two shrubs, grass and rock feet rest on the actual terrain; closed faces point outward (32.84625ms)
+✔ new landscape leaves house and lighthouse sightlines open from the playable route (5.355625ms)
+✔ limited details remain closed, attached, grounded and within the unchanged combined geometry budget (4.668875ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 892.74025

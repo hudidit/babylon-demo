@@ -100,11 +100,11 @@ export class RoomExterior {
       make(`coastal-path-rocks-${i}`, g.rocks, "rocks", s.rock);
       make(`coastal-path-plants-${i}`, g.plants, "vegetation", s.foliage);
     });
-    // A shared, unclipped opaque material; distant crowns never enter the local shadow map.
-    const forest = s.solid("coastal-background-foliage", "#ffffff");
+    // Shared unclipped batches: alpha-tested pine branches and opaque ground plants; no tree shadows.
+    const forest = s.solid("coastal-background-foliage", "#ffffff"), pine = s.pineBranches();
     for (const group of coastalLandscape()) {
       if (group.ground) make(`coastal-landscape-${group.name}-ground`, group.ground, "distant", s.farGround);
-      const plants = make(`coastal-landscape-${group.name}`, group.plants, "distant", forest);
+      const plants = make(`coastal-landscape-${group.name}`, group.plants, "distant", group.trees.length ? pine : forest);
       if (group.phase) plants.metadata.landscapePhase = group.phase;
       plants.metadata.landscapeDetailVertices = group.details ? plants.getTotalVertices() - group.details.plants : 0;
       plants.metadata.landscapeDetailTriangles = group.details ? group.plants.indices.filter(i => i >= group.details!.plants).length / 3 : 0;

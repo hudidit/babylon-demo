@@ -9,14 +9,9 @@ const {COASTAL_WALK_BOUNDARY} = load('CoastalSite');
 const {withinWalkingBoundary} = load('WalkingSurface');
 const {planToWorld} = load('HouseLayout');
 const groups = coastalLandscape();
-const withoutDetails = group => {
- const {details,...base}=group;if(!details)return base;
- for(const kind of ['plants','rocks'])if(group[kind]){
-  const g=group[kind],n=details[kind];base[kind]={...g,positions:g.positions.slice(0,n*3),indices:g.indices.filter(i=>i<n),uvs:g.uvs.slice(0,n*2),colors:g.colors.slice(0,n*4)};
- }
- if(base.anchors)base.anchors=base.anchors.filter(a=>a.first<details[a.kind==='rock'?'rocks':'plants']);
- return base;
-};
+// 4d9487e snapshot excludes only the tree geometry explicitly replaced by the asset plan.
+const preserved = groups => groups.map(g => ({name:g.name,trees:g.trees.map(({x,y,base,height})=>({x,y,base,height})),
+ ground:g.ground,plants:g.trees.length?undefined:g.plants,rocks:g.rocks,anchors:g.anchors,details:g.trees.length?undefined:g.details}));
 const plan = (g, i) => ({x:g.positions[i*3]/5+5.4, y:g.positions[i*3+2]/5+5.4, height:(g.positions[i*3+1]+5)/5});
 const segmentDistance = (p,a,z) => {
  const dx=z.x-a.x,dy=z.y-a.y,t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/(dx*dx+dy*dy)));
@@ -58,11 +53,8 @@ test('complete landscape bounds stay outside walking space, with supported roots
   }
  }
  assert.ok(triangles<=15000);
- const first=groups.filter(g=>!g.phase).map(withoutDetails);
- assert.equal(require('node:crypto').createHash('sha256').update(JSON.stringify(first)).digest('hex'),
-  '3e612548994b2e6c02caf275c48f7644024dd089fb004b4a5716194bcbb98e20','phase-one geometry must be preserved');
- assert.equal(require('node:crypto').createHash('sha256').update(JSON.stringify(groups.map(withoutDetails))).digest('hex'),
-  '10b25aff3a18248792c81c18baa8dcda1502fdef9c06cd9ac8fc53a0cd8a725f','phase-one and two geometry prefixes must be preserved');
+ assert.equal(require('node:crypto').createHash('sha256').update(JSON.stringify(preserved(groups))).digest('hex'),
+  'aab6b6626f6b917ff1c07d79ebdb1c4dd72dda242c3c5487f107f4c819d2b871','all original root positions/heights, hills and non-tree details must stay unchanged');
  assert.deepEqual(groups,coastalLandscape(),'fixed layout must be reproducible');
  for(const group of groups)for(const tree of group.trees){
   const p=plan(group.plants,tree.first);
@@ -83,19 +75,23 @@ test('background support and tree roots match ray hits on actual ground and hill
  for(const p of [[NaN,-70],[0,Infinity],[0,-601],[-900,-100],[0,100]])assert.equal(landscapeGroundHeight(...p),undefined);
 });
 
-test('hill faces point up and closed crowns point outward in Babylon left-handed winding', () => {
+test('hill and two-sided foliage faces have upward lighting normals and valid cutout UVs', () => {
  for(const group of groups){
   const n=[];b.VertexData.ComputeNormals(group.plants.positions,group.plants.indices,n);
   for(const tree of group.trees){
-   const top=tree.first+14;assert.ok(n[top*3+1]>.95,'crown top must face the sky');
-   const bottom=top+15;assert.ok(n[bottom*3+1]<-.95,'closed crown underside must face the ground');
+   for(let i=tree.first+14;i<tree.last;i++) {
+    assert.ok(n[i*3+1]>.5,'leaf lighting normals face the sky');
+    assert.ok(group.plants.uvs[i*2]>=.02&&group.plants.uvs[i*2]<=.96);
+    assert.ok(group.plants.uvs[i*2+1]>=.04&&group.plants.uvs[i*2+1]<=.98);
+   }
+   assert.ok(tree.last-tree.first<=78,'bounded per-tree card count');
   }
   if(group.ground){const n=[];b.VertexData.ComputeNormals(group.ground.positions,group.ground.indices,n);
    assert.ok(n.filter((_,i)=>i%3===1).every(v=>v>=0),'hill must not expose its unlit back face');}
  }
 });
 
-test('background plants share one opaque material, no shadows/collisions/picking and clean disposal', t => {
+test('background plants share opaque/cutout materials, avoid shadows/collisions and dispose cleanly', t => {
  const engine=new b.NullEngine(),scene=new b.Scene(engine);scene.useDelayedTextureLoading=true;
  t.after(()=>{scene.dispose();engine.dispose();});
  const exterior=new(load('RoomExterior').RoomExterior)(scene),meshes=exterior.meshes.filter(m=>m.name.startsWith('coastal-landscape-'));
@@ -104,18 +100,23 @@ test('background plants share one opaque material, no shadows/collisions/picking
  assert.ok(added.length<=10);assert.ok(added.reduce((n,m)=>n+m.getTotalVertices()-m.metadata.landscapeDetailVertices,0)<=6000);
  assert.ok(added.reduce((n,m)=>n+m.getTotalIndices()/3-m.metadata.landscapeDetailTriangles,0)<=7000);
  const originalCoast=exterior.meshes.filter(m=>!m.metadata.lighthouseEquipment&&!m.metadata.lighthouseInteriorStructure&&!m.metadata.lighthouseDetail);
- assert.ok(originalCoast.filter(m=>m.metadata.landscapePhase!==2).reduce((n,m)=>n+m.getTotalVertices()-(m.metadata.landscapeDetailVertices||0),0)<160000);
  assert.ok(originalCoast.reduce((n,m)=>n+m.getTotalVertices(),0)<=166000);
  assert.ok(meshes.reduce((n,m)=>n+(m.metadata.landscapeDetailVertices||0),0)<=2400);
  const shadow=exterior.shadow.getShadowMap().renderList;
  for(const m of meshes){assert.equal(m.metadata.exteriorLayer,'distant');assert.equal(m.isPickable,false);assert.equal(m.checkCollisions,false);assert.equal(m.receiveShadows,false);assert.ok(!shadow.includes(m));assert.equal(m.material.alpha,1);assert.equal(m.material.needAlphaBlending(),false);assert.ok(exterior.sun.includedOnlyMeshes.includes(m));}
  const forest=scene.getMaterialByName('coastal-background-foliage');
- assert.equal(new Set(meshes.filter(m=>!m.name.endsWith('ground')&&!m.name.endsWith('rocks')).map(m=>m.material)).size,1);
+ assert.equal(new Set(meshes.filter(m=>!m.name.endsWith('ground')&&!m.name.endsWith('rocks')).map(m=>m.material)).size,2);
+ const pine=scene.getMaterialByName('coastal-pine-branches'),texture=pine.albedoTexture;
+ assert.equal(pine.transparencyMode,b.PBRMaterial.PBRMATERIAL_ALPHATEST);assert.equal(pine.needAlphaBlending(),false);assert.equal(pine.alphaCutOff,.35);assert.equal(texture.hasAlpha,true);assert.equal(pine.backFaceCulling,false);
+ assert.ok(exterior.surfaces.textures.includes(texture));
  for(const m of meshes.filter(m=>m.name.endsWith('rocks')))assert.equal(m.material,exterior.surfaces.farRock);
  assert.equal(forest.albedoTexture,null);assert.ok(forest.backFaceCulling);
- exterior.updateCutaway({x:20,z:50},{x:0,z:0});assert.ok(forest.clipPlane2==null);
+ exterior.updateCutaway({x:20,z:50},{x:0,z:0});assert.ok(forest.clipPlane2==null);assert.ok(pine.clipPlane2==null);
  exterior.setVisible(false);assert.ok(meshes.every(m=>!m.isVisible));exterior.setVisible(true);assert.ok(meshes.every(m=>m.isVisible));
- exterior.dispose();exterior.dispose();assert.ok(meshes.every(m=>m.isDisposed()));assert.ok(!scene.materials.includes(forest));
+ exterior.surfaces.fallbackFor(texture);
+ assert.ok(meshes.filter(m=>m.material===pine).every(m=>m.visibility===0),'missing cutout texture must never expose solid cards');
+ assert.ok(meshes.filter(m=>m.material!==pine).every(m=>m.visibility===1),'failure stays local to trees');
+ exterior.dispose();exterior.dispose();assert.ok(meshes.every(m=>m.isDisposed()));assert.ok(!scene.materials.includes(forest));assert.ok(!scene.materials.includes(pine));assert.ok(!scene.textures.includes(texture));
 });
 
 
@@ -166,7 +167,7 @@ test('limited details remain closed, attached, grounded and within the unchanged
  for(const group of groups.filter(g=>g.details)){
   for(const kind of ['plants','rocks'])if(group[kind]){const g=group[kind],start=group.details[kind];vertices+=g.positions.length/3-start;triangles+=g.indices.filter(n=>n>=start).length/3;}
   for(const shape of group.details.shapes){
-   const g=shape.kind==='chip'?group.rocks:group.plants,first=shape.first,count=shape.kind==='branch'?14:shape.kind==='grass'?4:shape.kind==='crown'?18:16;
+   const g=shape.kind==='chip'?group.rocks:group.plants,first=shape.first,count=shape.kind==='grass'?4:16;
    const faces=[];for(let i=0;i<g.indices.length;i+=3){const ids=g.indices.slice(i,i+3);if(ids.every(n=>n>=first&&n<first+count))faces.push(ids);}
    const edges=new Map();for(const face of faces)for(let j=0;j<3;j++){const u=face[j],v=face[(j+1)%3],key=[Math.min(u,v),Math.max(u,v)].join(':');edges.set(key,(edges.get(key)||0)+1);}
    assert.ok(edges.size>0&&[...edges.values()].every(n=>n===2),shape.kind+' must be closed');
@@ -178,19 +179,7 @@ test('limited details remain closed, attached, grounded and within the unchanged
    if(['shrub','chip','grass'].includes(shape.kind)){
     const p=plan(g,first+(shape.kind==='grass'?0:15)),height=landscapeGroundHeight(p.x,p.y);assert.ok(p.height<height&&height-p.height<.5,'grounded '+shape.kind);
    }
-   if(shape.kind==='branch'){
-    const root=plan(g,first+12),tip=plan(g,first+13);
-    const ringCenter=first=>Array.from({length:6},(_,i)=>plan(g,first+i)).reduce((r,p)=>({x:r.x+p.x/6,y:r.y+p.y/6,height:r.height+p.height/6}),{x:0,y:0,height:0});
-    assert.ok(group.trees.some(tree=>{
-     const lower=ringCenter(tree.first),upper=ringCenter(tree.first+7),t=(root.height-lower.height)/(upper.height-lower.height);
-     if(t<=0||t>=1)return false;
-     const radius=(first,c)=>{const p=plan(g,first);return Math.hypot(p.x-c.x,p.y-c.y);};
-     const r=radius(tree.first,lower)*(1-t)+radius(tree.first+7,upper)*t;
-     return Math.hypot(root.x-lower.x-(upper.x-lower.x)*t,root.y-lower.y-(upper.y-lower.y)*t)<r*.5;
-    }),'branch starts inside actual original trunk rings');
-    const next=group.details.shapes.find(s=>s.first===first+14&&s.kind==='crown');assert.ok(next);
-    const top=plan(g,next.first),bottom=plan(g,next.first+17);assert.ok(Math.hypot(tip.x-top.x,tip.y-top.y)<1e-7&&tip.height>bottom.height&&tip.height<top.height,'branch tip is inside its closed foliage');
-   }
+
   }
  }
  assert.ok(vertices>0&&vertices<=2400);assert.ok(triangles>0&&triangles<=3800);

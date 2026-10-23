@@ -1,0 +1,48 @@
+{
+  "asset": "Poly Haven Pine Tree 01 — twig maps only",
+  "source": "https://polyhaven.com/a/pine_tree_01",
+  "authors": {
+    "Rob Tuytel": "photography",
+    "Rico Cilliers": "modeling"
+  },
+  "license": "CC0-1.0",
+  "licenseUrl": "https://polyhaven.com/license",
+  "retrieved": "2026-10-23",
+  "inputs": {
+    "pine_tree_01_twig_diff_1k.png": {
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/pine_tree_01/pine_tree_01_twig_diff_1k.png",
+      "bytes": 3208228,
+      "md5": "a4fa4a55aab9231915a4023ea9841577",
+      "sha256": "d02c031de64b8ad671f3dd0da19870fa4783d912ae6674aeab0702871deeaeaa"
+    },
+    "pine_tree_01_twig_alpha_1k.png": {
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/pine_tree_01/pine_tree_01_twig_alpha_1k.png",
+      "bytes": 351928,
+      "md5": "641911a5a3f543911dad04ebb26e7bca",
+      "sha256": "6f91aa99f2c27108d6f817f874954aa7df8bfbb4dea2673e9322555a6ae79d99"
+    }
+  },
+  "processing": {
+    "script": "tools/prepare-island-foliage.py",
+    "pillow": "12.3.0",
+    "crop": [
+      27,
+      35,
+      227,
+      456
+    ],
+    "size": [
+      512,
+      512
+    ],
+    "method": "Deterministic arrangement of 13 source twig cutouts; Lanczos scaling, bicubic rotation, RGB dilation, FASTOCTREE 256-color indexed PNG; alpha test 0.35, sRGB color.",
+    "modelImported": false
+  },
+  "output": {
+    "file": "textures/coastal/pine-branches.png",
+    "bytes": 64049,
+    "sha256": "22ce99da6b1d5ea8ff9a3210d72090356ea88a1f3c650d8680dba6d94cfe8f13",
+    "width": 512,
+    "height": 512
+  }
+}

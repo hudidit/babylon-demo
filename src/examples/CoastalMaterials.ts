@@ -80,6 +80,18 @@ export class CoastalMaterials {
     material.maxSimultaneousLights = 1; material.usePhysicalLightFalloff = false;
     this.materials.push(material); this.trackEnvironment(material); return material;
   }
+  pineBranches() {
+    const m = this.solid("coastal-pine-branches", "#ffffff");
+    const texture = new Texture("./textures/coastal/pine-branches.png", this.scene,
+      false, true, Texture.TRILINEAR_SAMPLINGMODE, undefined, () => this.fallbackFor(texture));
+    texture.hasAlpha = true; texture.gammaSpace = true; texture.anisotropicFilteringLevel = 8;
+    texture.wrapU = texture.wrapV = Texture.CLAMP_ADDRESSMODE;
+    this.textures.push(texture); m.albedoTexture = texture;
+    m.transparencyMode = PBRMaterial.PBRMATERIAL_ALPHATEST; m.alphaCutOff = .35;
+    // Both faces share upward normals: a cheap canopy-lighting approximation.
+    m.backFaceCulling = false; m.twoSidedLighting = false; m.roughness = 1;
+    return m;
+  }
   finish(name: string, color: string, kind: "plaster" | "wood" | "path" | "paving" | "roof") {
     const m = this.solid(name, color);
     new CoastalFinish(m, kind);
@@ -150,6 +162,9 @@ export class CoastalMaterials {
     this.failed.add(texture);
     this.scene.metadata = { ...this.scene.metadata, exteriorFallbacks: [...this.failed].map(t => t.name) };
     for (const m of this.materials) {
+      // Failed cutout foliage must not turn into opaque rectangular cards.
+      if (m.albedoTexture === texture && m.transparencyMode === PBRMaterial.PBRMATERIAL_ALPHATEST)
+        for (const mesh of this.scene.meshes) if (mesh.material === m) mesh.visibility = 0;
       for (const key of ["albedoTexture", "bumpTexture", "metallicTexture"] as const) {
         if (m[key] === texture) { m[key] = null; if (key === "albedoTexture") m.albedoColor.set(.32, .34, .26); }
       }

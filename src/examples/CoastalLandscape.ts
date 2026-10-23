@@ -5,7 +5,7 @@ import { planToWorld } from "./HouseLayout";
 
 type LandscapeGeometry = CoastalGeometry & { colors: number[] };
 type Anchor = { x: number; y: number; first: number; kind: "shrub" | "grass" | "rock" };
-type DetailShape = { kind: "branch" | "crown" | "shrub" | "grass" | "chip"; first: number };
+type DetailShape = { kind: "shrub" | "grass" | "chip"; first: number };
 type Tree = { x: number; y: number; base: number; height: number; first: number; last: number };
 const empty = (): LandscapeGeometry => ({ positions: [], indices: [], uvs: [], colors: [] });
 
@@ -29,7 +29,7 @@ export function landscapeGroundHeight(x: number, y: number): number | undefined 
   return undefined;
 }
 
-/** Original static shapes: four broken groves and three low, overlapping inland hills. */
+/** Static landscape batches with CC0 needle cards; tree layout and terrain stay deterministic. */
 export function coastalLandscape() {
   let seed = 231023;
   const random = () => { seed = Math.imul(seed, 1664525) + 1013904223 | 0; return (seed >>> 0) / 4294967296; };
@@ -45,7 +45,7 @@ export function coastalLandscape() {
     g.positions.push(p.x, p.y, p.z); g.uvs.push(x / 15, y / 15);
     g.colors.push(color.r, color.g, color.b, 1); return index;
   };
-  // Closed ring profiles give rounded, uneven branch masses instead of leaf cards.
+  // Closed low shrubs and stone chips retain the previous ground-detail geometry.
   const crown = (g: LandscapeGeometry, x: number, y: number, z: number,
     radius: number, depth: number, height: number, phase: number, color: Color3, sides = 7) => {
     const first = g.positions.length / 3;
@@ -80,12 +80,27 @@ export function coastalLandscape() {
     if (far) for (const p of hillTriangles) base = Math.max(base, coastalTriangleAt(x, y, p[0], p[1], p[2])?.height ?? -Infinity);
     const g = group.plants, first = g.positions.length / 3;
     trunk(g, x, y, base - .22, height * .83, height * .027);
-    const color = Color3.FromHexString(far ? "#687761" : "#52664b").toLinearSpace().scale(.85 + random() * .3);
-    const radius = height * (.32 + random() * .06), phase = random() * Math.PI * 2;
-    crown(g, x + height * .08, y, base + height * .8, radius, radius * .8, height * .2, phase, color);
-    crown(g, x - radius * .5, y + radius * .23, base + height * .61, radius * .8, radius * .65, height * .15, phase + 1, color.scale(.9));
-    if (!far) crown(g, x + radius * .7, y - radius * .35, base + height * .56,
-      radius * .7, radius * .6, height * .13, phase + 2, color.scale(.82));
+    // Keep the original scatter RNG sequence: color, radius and orientation.
+    const shade = .85 + random() * .3, radius = height * (.32 + random() * .06), phase = random() * Math.PI * 2;
+    // Trunk samples the opaque atlas corner. Leaves use alpha-tested photographic needle branches.
+    for (let i = first; i < g.positions.length / 3; i++) {
+      g.uvs[i * 2] = .985; g.uvs[i * 2 + 1] = .015;
+      for (let k = 0; k < 3; k++) g.colors[i * 4 + k] = i < first + 7 ? .65 : 1;
+    }
+    const levels = far ? 3 : 4, color = Color3.White().scale(shade * 1.4);
+    for (let row = 0; row < levels; row++) for (let arm = 0; arm < 4; arm++) {
+      const t = row / (levels - 1), angle = phase + arm * Math.PI / 2 + row * 1.7 + Math.sin(phase + row + arm) * .18;
+      const c = Math.cos(angle), s = Math.sin(angle), length = radius * (1.2 - t * .65) * (.9 + .13 * Math.sin(angle * 3));
+      const z = base + height * (.42 + t * .39 + Math.sin(angle * 2) * .018), cx = x + (z - base) * .08;
+      const firstLeaf = g.positions.length / 3, width = length * .7;
+      for (const [along, across, u, v] of [[0,-1,0,0],[0,1,1,0],[1,-1,0,1],[1,1,1,1]]) {
+        vertex(g, cx + c * length * along - s * width * across,
+          y + s * length * along + c * width * across,
+          z + height * .18 * along + width * across * .18, color.scale(.8 + t * .2));
+        g.uvs.splice(g.uvs.length - 2, 2, .02 + u * .94, .04 + v * .94);
+      }
+      g.indices.push(firstLeaf, firstLeaf + 2, firstLeaf + 1, firstLeaf + 1, firstLeaf + 2, firstLeaf + 3);
+    }
     group.trees.push({ x, y, base, height, first, last: g.positions.length / 3 });
   };
   // Hand-placed cluster centres and intentional gaps; no uniform scatter over the island.
@@ -202,44 +217,8 @@ export function coastalLandscape() {
   const detail = (group: typeof groups[number]) => group.details ??= {
     plants: group.plants.positions.length / 3, rocks: (group.rocks?.positions.length ?? 0) / 3, shapes: []
   };
-  const branch = (g: LandscapeGeometry, x: number, y: number, z: number,
-    angle: number, length: number, rise: number, radius: number) => {
-    const first = g.positions.length / 3, color = Color3.FromHexString("#706a57").toLinearSpace();
-    const c = Math.cos(angle), s = Math.sin(angle), norm = Math.hypot(length, rise);
-    for (let ring = 0; ring < 2; ring++) for (let n = 0; n < 6; n++) {
-      const a = n / 6 * Math.PI * 2, u = Math.cos(a) * radius * (1 - ring * .65), v = Math.sin(a) * radius * (1 - ring * .65);
-      vertex(g, x + c * length * ring - s * u - c * rise / norm * v,
-        y + s * length * ring + c * u - s * rise / norm * v, z + rise * ring + length / norm * v, color.scale(.8 + ring * .2));
-    }
-    const start = vertex(g, x, y, z, color.scale(.8)), end = vertex(g, x + c * length, y + s * length, z + rise, color);
-    for (let n = 0; n < 6; n++) {
-      const a = first + n, b = first + (n + 1) % 6;
-      g.indices.push(a, b, a + 6, b, b + 6, a + 6, start, b, a, end, a + 6, b + 6);
-    }
-  };
-  for (const group of groups.filter(g => (g.name.startsWith("grove-") && g.trees.length > 0) || g.name.startsWith("tower-grove-"))) {
-    const d = detail(group), g = group.plants;
-    // Positive plan Y faces the existing walk route; select two front trees per grove.
-    for (const tree of [...group.trees].sort((a, b) => b.y - a.y).slice(0, 2)) {
-      const { x, y, base, height: h } = tree;
-      const color = Color3.FromArray(g.colors, (tree.first + 14) * 4);
-      for (let n = 0; n < 2; n++) {
-        const angle = (n ? 2.6 : -.5) + (random() - .5) * .3, z = base + h * (.39 + n * .08);
-        const rootX = x + (z - base + .22) * .08, length = h * .29, rise = h * .18;
-        const px = rootX + Math.cos(angle) * length, py = y + Math.sin(angle) * length;
-        d.shapes.push({ kind: "branch", first: g.positions.length / 3 });
-        branch(g, rootX, y, z, angle, length, rise, h * .018);
-        d.shapes.push({ kind: "crown", first: g.positions.length / 3 });
-        crown(g, px, py, z + rise + h * .02, h * .17, h * .13, h * .13, random() * 6, color.scale(.88), 8);
-      }
-      for (let n = 0; n < 2; n++) {
-        const angle = n * Math.PI + .15 + random() * .2;
-        d.shapes.push({ kind: "crown", first: g.positions.length / 3 });
-        crown(g, x + h * .08 + Math.cos(angle) * h * .38, y + Math.sin(angle) * h * .28,
-          base + h * .8, h * .16, h * .14, h * .14, random() * 6, color.scale(.95 + random() * .1), 8);
-      }
-    }
-  }
+  // The old 12-tree branch/lobe pass consumed 120 random values. Preserve all ground-detail placement.
+  for (let n = 0; n < 120; n++) random();
   for (const group of [edge, cape]) {
     const d = detail(group), g = group.plants, shrubs = group.anchors!.filter(a => a.kind === "shrub");
     const chosen = group === edge ? [0, 6, 12, 18].reduce((chosen, start) => chosen.concat(shrubs.slice(start, start + 6).sort((a, b) => b.y - a.y).slice(0, 2)), [] as Anchor[])

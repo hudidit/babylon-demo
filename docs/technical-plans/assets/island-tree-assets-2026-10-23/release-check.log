@@ -1,0 +1,16 @@
+
+> babylon-learning@0.0.1 verify:release
+> node tools/verify-study-release.cjs
+
+{
+  "fileCount": 498,
+  "modelBytes": 4332840,
+  "buildBytes": 26593823,
+  "runtimeBytes": 15931426,
+  "documentationBytes": 103239,
+  "manifestBytes": 93288,
+  "initialJsBytes": 2921345,
+  "audioBytes": 287568,
+  "audioDecodedBytes": 574080,
+  "releaseBytes": 42721776
+}
