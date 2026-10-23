@@ -7,6 +7,7 @@ import { COASTAL_CLIFF, coastalBoundary, coastalFoundation, coastalLandPatch, co
 import type { CoastalGeometry } from "./CoastalCliff";
 import { CoastalMaterials } from "./CoastalMaterials";
 import { coastalScatter } from "./CoastalScatter";
+import { coastalLandscape } from "./CoastalLandscape";
 import { applySkyTime, createCoastalSky } from "./CoastalSky";
 import { evaluateTimeOfDay, DEFAULT_TIME_OF_DAY } from "./RoomTimeOfDay";
 import type { TimeOfDaySnapshot } from "./RoomTimeOfDay";
@@ -99,6 +100,12 @@ export class RoomExterior {
       make(`coastal-path-rocks-${i}`, g.rocks, "rocks", s.rock);
       make(`coastal-path-plants-${i}`, g.plants, "vegetation", s.foliage);
     });
+    // A shared, unclipped opaque material; distant crowns never enter the local shadow map.
+    const forest = s.solid("coastal-background-foliage", "#ffffff");
+    for (const group of coastalLandscape()) {
+      if (group.ground) make(`coastal-landscape-${group.name}-ground`, group.ground, "distant", s.farGround);
+      make(`coastal-landscape-${group.name}`, group.plants, "distant", forest);
+    }
     this.houseRoof = createCoastalLandmark(scene, s, retain);
     this.lighthouseDoor = createLighthouseInterior(scene, retain);
     this.lighthouseDetails = new LighthouseDetails(scene, s, retain);

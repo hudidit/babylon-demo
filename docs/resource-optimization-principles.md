@@ -30,6 +30,7 @@
 ## 4. 让新功能只引入它实际需要的代码
 
 - 书房运行路径沿用 Babylon pure 导入或经验证的精确路径，类型用 `import type`，建模使用实际需要的独立 builder。其他示例留在独立入口，不因保留示例而进入书房依赖图。
+- 2026-10-23起项目TypeScript输出使用ES2020，与现有未转译Babylon 9.30.0的可选链/空值合并语法一致，减少重复降级包装。修改编译目标仍须复验生产运行、异步加载和Inspector；不将语法压缩解释成FPS收益。取舍与字节见[景观第一阶段](technical-plans/2026-10-23-island-background-landscape.md#8-渐进实施计划2026-10-23)。
 - 新功能所需的运行注册集中维护在 [RoomRuntime.ts](../src/examples/RoomRuntime.ts)，启动着色器维护在 [RoomShaders.ts](../src/examples/RoomShaders.ts)。检查纹理、HDR、材质克隆/解析、阴影、SSAO/后期、射线、碰撞和相机输入，避免类型检查通过但运行能力缺失。
 - 不覆盖第三方包的副作用声明，也不把整个 Babylon 包设置为 `sideEffects: false`。必要注册应显式保留，不能通过关闭渲染效果取得裁剪收益。
 - Inspector 保持按需入口；首次打开及后续编辑器请求单独统计，全部产物仍进入完整发布目录。已经存在的懒加载不能重复算作新收益。

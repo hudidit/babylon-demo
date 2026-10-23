@@ -26,7 +26,8 @@
     "src/examples/LighthouseRecords.ts",
     "src/examples/LighthousePanel.ts",
     "src/examples/LighthouseInspection.ts",
-    "src/examples/LighthouseCover.ts"
+    "src/examples/LighthouseCover.ts",
+    "src/examples/CoastalLandscape.ts"
   ],
   "generation": "Deterministic metre-based terrain, closed chipped/layered cliff, plinth, opaque folded grass and shrub leaves, buried rock clusters. Seed 41723. Photographic Seaside Rock (Dimitrios Savva, 2m) and Aerial Grass Rock (Rob Tuytel, 15m), Poly Haven CC0. Coast-arc/height UV, macro/strata colour, damp lower wall, shore rock blend. Neutral sun-free linear RGBE environment has no baked solar hotspot; dynamic analytic sky, ocean and a scoped sun/moon reuse the eight shared time nodes. 128-face HDR prefilter, per-material environment scale/tint, one cached 1024 local shadow. No AI-generated assets or photographic scenery walls. Ground PBR uses translation-only hex blending, identical geometry weights for albedo/normal/ARM; no tangent rotation. Coast columns share shading normals across patch boundaries, with hard vertical ledges. World-anchored near-dense/far-coarse ocean, three analytic displacement waves, filtered crossing ripple normals, linear Fresnel sky reflection and rough GGX sun/moon highlights from the same time/sky parameters, exterior-only marine haze. A generated 512x512 RGBA8 signed-distance/seabed field intersects the closed rock wall at mean sea level and controls water colour and animated broken foam. No additional image download or ocean reflection/refraction target.",
   "dimensionsMetres": {
@@ -243,5 +244,26 @@
     "scope": "Replaces the historical five-storey layout with service floor and lantern/gallery only. Original three facade windows remain for daylight. Wider shaft, coordinated lantern/gallery/roof, entry threshold/steps and relocated ladder/cabinets share collision data. Total height and beacon optics unchanged. House entry and lighthouse doors close after ten accepted active seconds fully open, retaining swept-body protection. The lighthouse leaf now swings inward to clear a normal one-metre exterior approach; house swing remains unchanged. No extra download, light, shadow target, camera or dependency.",
     "cabinetCleanup": "2026-10-21: Removed four orphaned decorative boxes left at the previous cabinet coordinates: cabinet seam, two handles and charger accent. The shared cabinet/controller solids, labels, collision, interaction and lighting remain. No new asset or dependency.",
     "controlPanelAccess": "2026-10-23: Moved the service-floor operation panel and its three controls from above the west cabinet to the clear entrance-side wall. Shared LIGHTHOUSE.controlPanel local centre (2.4,-1.8)m, radial angle -atan2(3,4), centre 1.5m above floor, face 0.84m wide by 0.74m high, depth 0.14m. Face points toward the tower centre, away from the ladder boarding bay. Original lighthouse-control-panel ID, real-surface picking, 1.5m range and occlusion checks retained. Reuses original ISC procedural geometry, materials and batches; no new download, light or dependency."
+  },
+  "backgroundLandscape": {
+    "updated": "2026-10-23",
+    "stage": "Phase 1: four rear-house groves and three inland hills; B/C/D deferred",
+    "source": "src/examples/CoastalLandscape.ts",
+    "author": "babylon-demo project contributors",
+    "license": "ISC",
+    "seed": 231023,
+    "trees": {
+      "near": 24,
+      "distant": 48
+    },
+    "meshes": 10,
+    "vertices": 4221,
+    "triangles": 6432,
+    "materialsAdded": 1,
+    "texturesLightsRenderTargetsAdded": 0,
+    "runtimeDownloadsAdded": 0,
+    "support": "Exact existing terrain triangles; hill edges buried 0.18m; roots buried 0.22m into the highest terrain/hill triangle. Entire batch footprints remain outside the walking boundary with a minimum 3m buffer.",
+    "rendering": "Opaque static shared geometry, per-group bounds, one unclipped PBR material reusing existing exterior HDR/day-night response; existing far-ground material for hills. No local shadow casting/receiving, collisions, picking, wind animation, alpha cards or LOD switching.",
+    "scope": "Original procedural geometry. AI concept art is not shipped. Coast, sea, lighting, paths and movement remain unchanged. Counts are structural costs, not measured FPS or loading benefits."
   }
 }

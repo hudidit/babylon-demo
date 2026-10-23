@@ -1,0 +1,49 @@
+{
+  "seed": 231023,
+  "groups": [
+    {
+      "name": "grove-0",
+      "trees": 6,
+      "vertices": 372,
+      "triangles": 576
+    },
+    {
+      "name": "grove-1",
+      "trees": 6,
+      "vertices": 372,
+      "triangles": 576
+    },
+    {
+      "name": "grove-2",
+      "trees": 6,
+      "vertices": 372,
+      "triangles": 576
+    },
+    {
+      "name": "grove-3",
+      "trees": 6,
+      "vertices": 372,
+      "triangles": 576
+    },
+    {
+      "name": "hill-0",
+      "trees": 16,
+      "vertices": 911,
+      "triangles": 1376
+    },
+    {
+      "name": "hill-1",
+      "trees": 16,
+      "vertices": 911,
+      "triangles": 1376
+    },
+    {
+      "name": "hill-2",
+      "trees": 16,
+      "vertices": 911,
+      "triangles": 1376
+    }
+  ],
+  "minimumVertexBoundaryDistanceMetres": 11.253867023742096,
+  "proof": "Every complete mesh AABB lies north of the northernmost walk vertex with at least 3m clearance; additional vertex-to-segment distances reported here. Ray/edge/normal/lifecycle checks in tests/coastal-landscape.test.cjs."
+}
