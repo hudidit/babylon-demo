@@ -133,7 +133,7 @@ export class LighthousePanel {
     const focused = this.document.activeElement as HTMLButtonElement;
     this.dialog.dataset.equipment = equipment?.id || "";
     this.set("lighthouse-panel-place", equipment?.place || ({control: "首层维护室 · 运行面板", test: "顶层灯室 · 灯座控制", cover: "顶层灯室 · 固定保护面", log: "首层维护室 · 记录夹"})[location]);
-    this.set("lighthouse-panel-title", equipment?.label || ({control: "灯塔值守", test: "导航灯试灯", cover: "灯具保护面", log: "值守记录"})[location]);
+    this.set("lighthouse-panel-title", equipment?.label || ({control: "灯塔值守", test: "大灯检查", cover: "灯具保护面", log: "值守记录"})[location]);
     const symbol = location === "log" ? "book" : location === "cover" ? "optics" : location === "lighthouse-light-sensor" ? "sensor"
       : location.startsWith("lighthouse-generator") ? "generator" : location.includes("solar") ? "solar" : location.includes("battery") ? "power" : "beacon";
     this.el("lighthouse-heading-symbol").setAttribute("href",`#device-${symbol}`);
@@ -143,7 +143,7 @@ export class LighthousePanel {
     const workAllowed=!weather||weather.rain<.15;
     const weatherLine=this.document.getElementById("lighthouse-panel-weather");
     if(weatherLine)weatherLine.textContent=weather?`${({clear:"晴朗",overcast:"阴天",fog:"海雾",storm:"风雨"})[weather.kind]} · 能见约${weather.visibilityKm.toFixed(1)} km${!workAllowed?" · 暂缓外廊和室外擦拭":m.detectedDemand&&op.hour>=6&&op.hour<18?" · 低能见度导航中":""}`:"";
-    let status = op.running ? "导航灯运行" : "日间待机", guide = i.completed ? "本轮巡视完成，记录已经收好。" : i.control ? "读数已记下，到顶层灯座试灯并观察。" : "先确认读数，再登塔查看灯具。";
+    let status = op.running ? "导航灯运行" : "日间待机", guide = i.completed ? "本轮巡视完成，已记录。" : i.control ? "已读表，到顶层按 E 查灯。" : "先读表，再上楼查灯。";
     let tone = op.running ? "good" : "idle";
     const gauges: {label: string; value: number; max: number; unit: string; note: string}[] = [];
     const battery = () => gauges.push({label: "主电池", value: p.mainFraction * 100, max: 100, unit: "%", note: p.protected ? "低电保护" : p.warning ? "电量偏低" : "电量充足"});
@@ -161,13 +161,13 @@ export class LighthousePanel {
       if (location === "control" && p.protected) {status = "主灯低电保护"; guide = "到右侧电池柜查看供电状态。"; tone = "warn";}
     } else if (location === "cover") {
       status = i.dirty ? "表面有盐膜" : i.checks["check-cover"] === "awaiting-recheck" ? "已清洁 · 待复查" : "保护面洁净"; tone = i.dirty ? "warn" : "good";
-      guide = i.checks["check-cover"] === "pending" ? "先查看表面，再决定是否擦拭。" : i.dirty ? LighthouseInspection.canClean(op) ? "擦拭时保持准星对准保护面，圆环闭合后复查。" : "等待白天停灯后，再擦拭保护面。" : `确认洁净后记入巡检；下次例行清洁在第${i.nextMaintenanceDay}日。`;
+      guide = i.checks["check-cover"] === "pending" ? "先检查表面，再擦拭。" : i.dirty ? LighthouseInspection.canClean(op) ? "对准保护面擦拭，圆环闭合后复查。" : "白天停灯后才能擦拭。" : `确认洁净后记录；下次清洁在第${i.nextMaintenanceDay}日。`;
     } else if (location === "test" || location === "lighthouse-drive-hatch") {
       gauges.push({label: "转台转速", value: op.running ? 60 / LIGHTHOUSE_OPERATION.rotationSeconds : 0, max: 8, unit: "rpm", note: op.running ? `每${LIGHTHOUSE_OPERATION.rotationSeconds}秒一圈` : "转台停止"});
-      guide = location === "test" ? i.optic ? "本次转动与出光已确认。" : "原地看整盏灯，无需追光；白天先试灯。" : "检修口保持关闭。可在灯座试灯，观察转动与出光。";
+      guide = location === "test" ? "留在灯旁3秒，可自由环顾。" : "检修口关闭；到灯旁按 E 查灯。";
     } else if (location === "lighthouse-beacon-backup") {
       status = m.backupOn ? "备用灯接替中" : "备用灯待命"; tone = m.backupOn ? "warn" : "idle";
-      gauges.push({label: "备用电池", value: p.backupFraction * 100, max: 100, unit: "%", note: "独立供电"}); guide = "主灯不可用时自动接替，日常无需切换。";
+      gauges.push({label: "备用电池", value: p.backupFraction * 100, max: 100, unit: "%", note: "独立供电"}); guide = "主灯不可用时自动接替。";
     } else if (location === "lighthouse-light-sensor") {
       status = m.detectedDemand ? "感应器要求亮灯" : "自动感应值守"; guide = "天黑亮灯，天亮待机。日常无需调整。";
     } else if (location === "lighthouse-generator" || location === "lighthouse-generator-room") {
@@ -179,8 +179,8 @@ export class LighthousePanel {
     this.set("lighthouse-panel-guide", guide);
     const evidence = this.el("lighthouse-discovery"); evidence.hidden = location !== "lighthouse-solar-array";
     this.set("lighthouse-discovery-result", clue ? `本次${clue.method === "patrol" ? "普通巡视" : "近距细查"}：${clue.result}`
-      : discovery?.history.length ? "表面情况变了，请再查一次。上次结果留在记录里。" : "还没检查表面。先去看看面板，光看读数不能判断有没有污膜。");
-    this.set("lighthouse-discovery-next", clue?.next || "巡视需2秒，近距细查需5秒。返回场景后，让准星对着面板。");
+      : discovery?.history.length ? "表面已变化，请重查；旧结果已留存。" : "表面待检查；读数不能确认污膜。");
+    this.set("lighthouse-discovery-next", clue?.next || "返回场景后对准面板；巡视2秒，细查5秒。");
     this.el("lighthouse-gauges").replaceChildren(...gauges.map(g => this.gauge(g)));
     this.el("lighthouse-status-face").hidden = gauges.length > 0;
     this.el("lighthouse-panel-state").parentElement.hidden = !gauges.length;
@@ -189,7 +189,7 @@ export class LighthousePanel {
       : location.startsWith("lighthouse-generator") ? "保持入口与通风畅通" : "自动感应值守");
     this.el("lighthouse-status-face").dataset.tone = tone;
     const show = (id: string, visible: boolean, text: string) => {const b = this.el<HTMLButtonElement>(id); b.hidden = !visible; b.textContent = text;};
-    show("lighthouse-test-toggle", location === "test", op.testSecondsRemaining > 0 ? "结束试灯" : "试灯，回场景看灯");
+    show("lighthouse-test-toggle", location === "test", i.optic ? "重新检查大灯" : "检查大灯 · 3秒");
     show("lighthouse-confirm-control", location === "control", i.control ? "重新记下读数" : "记下读数");
     const mayClean = i.dirty && i.checks["check-cover"] === "dirty" && LighthouseInspection.canClean(op);
     show("lighthouse-cover-check", location === "cover" && !mayClean, i.checks["check-cover"] === "awaiting-recheck" ? "再查一遍，记下结果" : i.checks["check-cover"] === "complete" ? "再次查看表面" : "查看保护面");
@@ -205,10 +205,10 @@ export class LighthousePanel {
       .map(id => this.el<HTMLButtonElement>(id)).find(button => !button.hidden && !button.disabled);
     buttons.forEach(button => button.classList.toggle("device-primary",button === primary));
     this.set("lighthouse-action-heading",buttons.some(button => !button.hidden) ? "现场操作" : "值守说明");
-    this.set("lighthouse-work-note",({control:"记下的读数可以到巡视记录里翻看。", test:i.optic ? "本次观察结果可以在巡视记录中回看。" : "试灯60秒。看满30秒、转满一圈且见过出光即完成。",
-      cover:"擦完以后，再看一遍保护面，确认擦净了才算查完。", "lighthouse-solar-array":"巡视和细查都会记下结果。擦完面板，还要回来再查一遍。"})[location] || "");
+    this.set("lighthouse-work-note",({control:"读数可在巡视记录回看。", test:i.optic ? "结果可在巡视记录回看。" : "白天自动试灯，结束后恢复值守。",
+      cover:"擦完再查保护面，确认洁净才算完成。", "lighthouse-solar-array":"巡视与细查自动记录；擦完还需复查。"})[location] || "");
     this.set("lighthouse-power-flow", ["control", "lighthouse-battery-main", "lighthouse-solar-charger", "lighthouse-solar-array"].includes(location)
-      ? `${automatic ? p.mainNetW > .5 ? "↑ 正在储能" : p.mainNetW < -.5 ? "↓ 正在供电" : "电量平稳" : "时间暂停 · 电量不变"}` : location === "test" && op.testSecondsRemaining > 0 ? `试灯余时 ${Math.ceil(op.testSecondsRemaining)} 秒` : "");
+      ? `${automatic ? p.mainNetW > .5 ? "↑ 正在储能" : p.mainNetW < -.5 ? "↓ 正在供电" : "电量平稳" : "时间暂停 · 电量不变"}` : "");
     this.renderPaper(i, m, p);
     this.applyPage();
     if (this.isOpen && buttons.includes(focused) && (focused.hidden || focused.disabled)) (this.primaryAction() || this.el("lighthouse-instrument-tab")).focus({preventScroll:true});
@@ -242,7 +242,7 @@ export class LighthousePanel {
       const tr = this.document.createElement("tr"); tr.dataset.object = row.object;
       [`第${row.day}日 ${lighthouseClockLabel(row.hour)}`, row.action, row.result].forEach(text => {const td = this.document.createElement("td"); td.textContent = text; tr.append(td);}); return tr;
     }));
-    if (!page.rows.length) {const tr = this.document.createElement("tr"), td = this.document.createElement("td"); td.colSpan = 3; td.className = "lighthouse-empty"; td.textContent = "这里还没有记录。完成现场巡视后，会自动记在这里。"; tr.append(td); body.append(tr);}
+    if (!page.rows.length) {const tr = this.document.createElement("tr"), td = this.document.createElement("td"); td.colSpan = 3; td.className = "lighthouse-empty"; td.textContent = "暂无记录，现场巡视后自动记入。"; tr.append(td); body.append(tr);}
     this.set("lighthouse-record-page", `${page.page + 1} / ${page.pages}`);
     this.el<HTMLButtonElement>("lighthouse-record-prev").disabled = page.page === 0;
     this.el<HTMLButtonElement>("lighthouse-record-next").disabled = page.page + 1 === page.pages;
@@ -259,7 +259,7 @@ export class LighthousePanel {
     const powerDone = previous && power?.id !== previous.power && power?.type === "verify-main";
     const backupDone=previous&&solar?.id!==previous.maintenance&&solar?.component==="backup"&&solar?.method==="实际接替复验";
     if (!progress && (inspected || cleaned || solarDone || powerDone || backupDone)) {
-      this.interrupted = false; this.completedUntil = now + 1100; this.completionLabel = cleaned ? "擦拭完成 · 待复查" : "已记录";
+      this.interrupted = false; this.completedUntil = now + 1100; this.completionLabel = cleaned ? "擦拭完成 · 待复查" : inspected ? "大灯检查完成" : "已记录";
     }
     const cancelled = previous && (last?.id !== previous.inspection && last?.type === "cleaning-cancelled"
       || solar?.id !== previous.maintenance && solar?.method === "中断" || power?.id !== previous.power && power?.type === "cancelled");
@@ -275,7 +275,7 @@ export class LighthousePanel {
     const meter = this.el("lighthouse-progress"); meter.setAttribute("aria-valuenow", String(Math.round(fraction * 100)));
     meter.setAttribute("aria-valuetext", complete ? this.completionLabel : `${progress!.label} ${Math.round(fraction * 100)}%`);
     this.set("lighthouse-activity-label", complete ? `${this.interrupted ? "○" : "✓"} ${this.completionLabel}` : progress!.label);
-    this.set("lighthouse-activity-hint", complete ? "" : "保持准星对准 · 移开中断");
+    this.set("lighthouse-activity-hint", complete ? "" : progress!.kind === "observation" ? "留在灯旁 · 可自由环顾" : "保持对准 · 移开中断");
   }
   renderStorage(status: LighthouseSaveStatus, mode:"duty"|"exercise"|"story"="duty") {
     const continuing = this.document.activeElement === this.el("lighthouse-continue");

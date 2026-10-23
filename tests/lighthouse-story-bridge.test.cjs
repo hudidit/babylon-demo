@@ -20,7 +20,7 @@ test('live native events complete chapter one only after actual cleaning, indepe
  assert.deepEqual(s.story.arrivalChecks,{control:true,main:false,cover:false});
  assert.equal(e.inspection.startCleaning(e.operation.snapshot,true),true);f.run(1.5);
  assert.equal(e.inspection.snapshot.dirty,false);assert.equal(s.story.arrivalChecks.cover,false);
- f.cover();e.operation.startTest();f.sync();f.run(29.9);assert.equal(s.story.arrivalChecks.main,false);f.run(.1);
+ f.cover();e.operation.startTest();f.sync();f.run(2.9);assert.equal(s.story.arrivalChecks.main,false);f.run(.1);
  assert.equal(s.story.snapshot.objective.id,'ST03');assert.equal(s.story.canSubmitArrival,true);
  assert.equal(s.story.submitReport('arrival'),true);const saved=encode(s),r=fixture(decode(saved));
  assert.equal(r.s.story.deliverReply('arrival-report'),true);assert.equal(r.s.story.snapshot.objective.id,'ST03');
@@ -38,7 +38,7 @@ test('looking away, reading text and interrupted cleaning provide no patrol proo
  const f=fixture();f.s.story.readMaterial('CL01');f.s.story.acceptDuty();assert.equal(f.s.story.submitReport('arrival'),false);
  f.cover();assert.equal(f.e.inspection.startCleaning(f.e.operation.snapshot,true),true);f.run(.5);f.run(.1,{optic:false,cover:false,output:0});
  assert.equal(f.e.inspection.snapshot.dirty,true);assert.equal(f.s.story.arrivalChecks.cover,false);
- f.e.operation.startTest();f.sync();f.run(15);f.run(.1,{optic:false,cover:false,output:0});f.run(15);
+ f.e.operation.startTest();f.sync();f.run(1.4);f.run(.1,{optic:false,cover:false,output:0});f.run(1.4);
  assert.equal(f.s.story.arrivalChecks.main,false);assert.equal(f.s.story.snapshot.objective.id,'ST02');
 });
 test('later physical revisions invalidate report evidence and an explicit fresh read can renew it',()=>{

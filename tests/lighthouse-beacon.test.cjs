@@ -200,9 +200,33 @@ test('stationary whole-lamp observation covers a complete rotation from multiple
     const before=object[key];object[key]=value;assert.equal(room.canObserveMain(),false,key);object[key]=before;
   }
   room.pauses.set('settings',true);assert.equal(room.canObserveMain(),false);
-  room.pauses.set('settings',false);camera.position.copyFrom(point(0,-3.2,layout.gallery+1.6));aim(beacon.root.position);
-  assert.equal(room.canObserveMain(),false,'range and outer glazing still prevent observation');
+  room.pauses.set('settings',false);camera.position.copyFrom(point(0,-3.8,layout.gallery+1.6));aim(beacon.root.position);
+  assert.equal(room.canObserveMain(),false,'distant visible optics still exceed the three-metre surface range');
 });
+
+test('clear lantern glazing permits gallery observation through every turn, while device access and solid occlusion remain blocked', t => {
+  const {b,scene,exterior,beacon,details,point,camera}=setup(t),room=Object.create(load('Room').RoomScene.prototype);
+  Object.assign(room,{scene,exterior,currentView:'first-person',firstPersonCamera:camera,
+    pauses:new(load('RoomPauseState').RoomPauseState)(),jump:{feet:layout.gallery,grounded:true},ladder:{attached:false},scooter:{riding:false}});
+  const interactions=new(load('RoomInteractions').RoomInteractions)(scene,()=>{}),surface=load('RoomInteractions').interactionSurface;
+  for(const radius of [2.5,2.8])for(let side=0;side<8;side++) {
+    const angle=(side+.5)*Math.PI/4;
+    camera.position.copyFrom(point(radius*Math.cos(angle),radius*Math.sin(angle),layout.gallery+1.6));
+    camera.setTarget(beacon.root.position);camera.getViewMatrix(true);scene.updateTransformMatrix(true);
+    const forward=beacon.root.position.subtract(camera.position).normalize();
+    const glass=scene.pickWithRay(new b.Ray(camera.position,forward,15),m=>surface(m)&&m!==details.cover.pane);
+    if(side!==1)assert.equal(glass.pickedMesh.name,'coastal-lighthouse-glazing');
+    for(let phase=0;phase<32;phase++) {
+      beacon.apply({...new LighthouseOperation().snapshot,rotationTurns:phase/32,rotationRadians:phase/32*Math.PI*2,running:true});
+      assert.equal(room.canObserveMain(),true,JSON.stringify({radius,side,phase}));
+    }
+    if(side!==1)assert.equal(interactions.canReachDevice({id:'optic',label:'optic',meshes:beacon.meshes},camera.position,15,forward,[details.cover.pane]),false);
+  }
+  const obstacle=b.CreateBox('solid-in-front-of-glass',{size:8},scene);
+  obstacle.position.copyFrom(camera.position.add(beacon.root.position).scale(.5));obstacle.computeWorldMatrix(true);
+  assert.equal(room.canObserveMain(),false);obstacle.dispose();assert.equal(room.canObserveMain(),true);
+});
+
 
 test('independent lighthouse pause cannot be cleared by another UI and printed records claim no completed inspection', () => {
   const pauses = new (load('RoomPauseState').RoomPauseState)();
@@ -219,4 +243,95 @@ test('coast disposal releases the optical transform, shader and all generated me
   exterior.dispose(); exterior.dispose(); beacon.apply(new LighthouseOperation().snapshot);
   assert.equal(scene.meshes.length, 0); assert.equal(scene.transformNodes.length, 0); assert.equal(scene.materials.length, 0);
   assert.equal(scene.lights.length, 0);
+});
+
+function simpleCheck(t, hour=12) {
+  const f=setup(t),room=Object.create(load('Room').RoomScene.prototype);
+  const session=load('LighthouseStorySave').createLighthouseStorySession('simple-check',0),e=session.equipment;
+  const bridge=new(load('LighthouseStoryBridge').LighthouseStoryBridge)(session.story,e);
+  e.clock.restore(hour,false);e.operation.selectTime(hour);e.clock.advance(0);
+  Object.assign(room,{scene:f.scene,exterior:f.exterior,currentView:'first-person',firstPersonCamera:f.camera,
+    pauses:new(load('RoomPauseState').RoomPauseState)(),jump:{feet:layout.gallery,grounded:true},ladder:{attached:false},scooter:{riding:false},
+    timeState:e.clock,lighthouseState:e.operation,lighthouseInspectionState:e.inspection,lighthouseMaintenanceState:e.maintenance,
+    lighthousePowerState:e.power,weatherState:e.weather,discovery:e.discovery,timeVisualElapsed:0,
+    synchronizeDiscovery(){},enforceWeatherWork(){},notifyTimeOfDay(){},applyTimeOfDay(){},rain:{apply(){}},renderStory(){},
+    notifyLighthouseOperation(){e.inspection.synchronize(e.operation.snapshot);bridge.synchronize(e);}});
+  const run=seconds=>{for(let n=0;n<Math.round(seconds*10);n++)room.updateTimeOfDay(.1);};
+  return {...f,room,e,story:session.story,run};
+}
+test('a whole top-floor area accepts a check in every direction without aiming, including the glass gallery',t=>{
+  const {room,camera,point}=simpleCheck(t);
+  for(const radius of [1.2,2.5,3.1])for(let n=0;n<16;n++) {
+    const angle=n*Math.PI/8;camera.position.copyFrom(point(radius*Math.cos(angle),radius*Math.sin(angle),layout.gallery+1.6));
+    camera.setTarget(camera.position.add(new(require('@babylonjs/core/pure').Vector3)(Math.cos(angle),0,Math.sin(angle))));
+    assert.equal(room.canObserveMain(false),true,`${radius}/${n}`);
+  }
+  camera.position.copyFrom(point(0,-3.3,layout.gallery+1.6));assert.equal(room.canObserveMain(false),false);
+  camera.position.copyFrom(point(.25,-1.1,layout.gallery+1.6));
+  for(const [object,key,value]of [[room,'currentView','coast'],[room.jump,'grounded',false],[room.jump,'feet',layout.floor],
+    [room.ladder,'attached',true],[room,'ladderTransition',{}],[room.scooter,'riding',true]]) {
+    const before=object[key];object[key]=value;assert.equal(room.canObserveMain(false),false,key);assert.equal(room.beginMainCheck(),false);object[key]=before;
+  }
+  room.pauses.set('settings',true);assert.equal(room.beginMainCheck(),false);
+});
+test('one explicit check starts daylight testing, completes at three seconds and advances the story before ending its test',t=>{
+  const {room,e,story,run,camera,point}=simpleCheck(t);
+  story.readMaterial('CL01');story.acceptDuty();
+  run(4);assert.equal(e.inspection.snapshot.optic,undefined,'proximity alone does not manufacture a check');
+  assert.equal(room.beginMainCheck(),true);assert.equal(room.mainCheck,'test');assert.equal(e.operation.snapshot.mode,'test');
+  run(1);assert.equal(room.beginMainCheck(),false,'repeat press must not restart');
+  camera.position.copyFrom(point(2.8,0,layout.gallery+1.6));camera.rotation.y+=Math.PI;
+  run(1.9);assert.equal(e.inspection.snapshot.optic,undefined);assert.equal(story.arrivalChecks.main,false);
+  run(.1);assert.ok(e.inspection.snapshot.optic);near(e.inspection.snapshot.observedTurns,.1);
+  assert.equal(story.arrivalChecks.main,true);assert.equal(room.mainCheck,undefined);
+  assert.equal(e.operation.snapshot.mode,'automatic');assert.equal(e.operation.snapshot.running,false);
+  const count=e.inspection.snapshot.events.length;run(4);assert.equal(e.inspection.snapshot.events.length,count);
+});
+test('menus freeze a check; departure cancels owned tests and a retry requires three new active seconds',t=>{
+  const {room,e,run,camera,point}=simpleCheck(t);room.beginMainCheck();run(1);
+  room.pauses.set('settings',true);room.updateTimeOfDay(40);near(e.inspection.snapshot.observationSeconds,1);
+  assert.equal(room.mainCheck,'test');room.pauses.set('settings',false);
+  camera.position.copyFrom(point(0,-3.5,layout.gallery+1.6));run(.1);
+  assert.equal(room.mainCheck,undefined);assert.equal(e.operation.snapshot.mode,'automatic');near(e.inspection.snapshot.observationSeconds,0);
+  camera.position.copyFrom(point(.25,-1.1,layout.gallery+1.6));room.beginMainCheck();run(2.9);assert.equal(e.inspection.snapshot.optic,undefined);
+  run(.1);assert.ok(e.inspection.snapshot.optic);
+});
+test('night navigation and pre-existing tests remain running; unavailable lamps cannot pass',t=>{
+  const {room,e,run}=simpleCheck(t,21);assert.equal(room.beginMainCheck(),true);run(3);
+  assert.equal(e.operation.snapshot.running,true);assert.equal(e.operation.snapshot.mode,'automatic');
+  e.operation.selectTime(12);e.operation.startTest();assert.equal(room.beginMainCheck(),true);run(3);
+  assert.equal(e.operation.snapshot.mode,'test');near(e.operation.snapshot.testSecondsRemaining,57);
+  e.operation.endTest();e.maintenance.configurePower(false,false,true,e.operation.snapshot);e.maintenance.synchronize(e.operation);e.inspection.renewObservation();
+  assert.equal(room.beginMainCheck(),false);run(4);assert.equal(e.inspection.snapshot.optic,undefined);
+});
+
+test('actual E-key handler checks without pointer lock, ignores repeats and gives the ladder back after completion',t=>{
+  const {room,e,run}=simpleCheck(t),fs=require('node:fs'),ts=require('typescript');
+  // Bind the production class-field handler without constructing its WebGL/DOM shell.
+  const source=fs.readFileSync(require.resolve('../src/examples/Room.ts'),'utf8');
+  const field=source.slice(source.indexOf('  private keyDown ='),source.indexOf('  private pointerDown =')).replace('private keyDown','this.keyDown');
+  const code=ts.transpileModule(`function bind() {${field}}`,{compilerOptions:{target:ts.ScriptTarget.ES2020}}).outputText;
+  new Function('HTMLElement',`${code};return bind;`)(class {}).call(room);
+  let boarded=0,left=0;
+  Object.assign(room,{controlsEnabled:true,pointerLocked:false,lighthousePanel:{isOpen:false},storyPanel:{isOpen:false},floorPlan:{isOpen:false},inspection:{isOpen:false},
+    ladderTarget(){return undefined;},boardLadder(){boarded++;return true;},leaveLadder(){left++;}});
+  const key=extra=>room.keyDown({code:'KeyE',key:'e',target:null,preventDefault(){this.defaultPrevented=true;},...extra});
+  key({ctrlKey:true});assert.equal(room.mainCheck,undefined);
+  key();assert.equal(room.mainCheck,'test');run(1);key({repeat:true});near(e.inspection.snapshot.observationSeconds,1);
+  assert.equal(boarded,0);run(2);assert.ok(e.inspection.snapshot.optic);
+  key();assert.equal(room.mainCheck,'test','explicit repeat check remains available for new weather evidence');run(3);
+  room.pointerLocked=true;room.ladderTarget=()=>true;key();assert.equal(boarded,1);assert.equal(room.mainCheck,undefined);
+  room.ladder.attached=true;key();assert.equal(left,1);
+});
+
+test('lamp-panel check button closes its modal, starts a fresh check and keeps its local authority gate',t=>{
+  const {room,e,run}=simpleCheck(t);let closed=0,notice=0;
+  room.lighthousePanel={activeLocation:'test',isOpen:true,notice(){notice++;}};
+  room.interactions=new(load('RoomInteractions').RoomInteractions)(room.scene,()=>{});
+  room.pauses.set('lighthouse-panel',true);
+  room.closeLighthousePanel=()=>{closed++;room.lighthousePanel.isOpen=false;room.pauses.set('lighthouse-panel',false);};
+  room.checkLocalMain();assert.equal(closed,1);assert.equal(room.mainCheck,'test');run(3);assert.ok(e.inspection.snapshot.optic);
+  room.lighthousePanel.isOpen=true;room.pauses.set('lighthouse-panel',true);room.checkLocalMain();run(3);
+  assert.equal(e.inspection.snapshot.events.filter(event=>event.type==='optic-observed').length,2);
+  room.currentView='coast';room.checkLocalMain();assert.equal(notice,1);assert.equal(closed,2);
 });

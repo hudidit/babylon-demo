@@ -80,6 +80,7 @@ export class RoomScene {
   private timeState = new RoomTimeOfDay();
   private lighthouseState = new LighthouseOperation();
   private lighthouseInspectionState = new LighthouseInspection();
+  private mainCheck?: "test" | "running";
   private lighthouseMaintenanceState = new LighthouseMaintenance();
   private lighthousePowerState = new LighthousePower();
   private weatherState = new LighthouseWeatherRisk({seed:crypto.getRandomValues(new Uint32Array(1))[0]});
@@ -237,7 +238,7 @@ export class RoomScene {
     this.rain = new CoastalRain(this.scene);
     this.interactions.addDoor(this.exterior.lighthouseDoor);
     const lighthouse = this.exterior.lighthouseDetails;
-    this.lighthousePanel = new LighthousePanel(canvas.ownerDocument, resume => this.closeLighthousePanel(resume), () => this.toggleLocalLighthouseTest(), {
+    this.lighthousePanel = new LighthousePanel(canvas.ownerDocument, resume => this.closeLighthousePanel(resume), () => this.checkLocalMain(), {
       confirm: () => this.confirmLighthouseControl(), cover: () => this.inspectLighthouseCover(), clean: () => this.cleanLighthouseCover(),
       solarInspect: () => this.localLighthouseMaintenance("inspect", "meter"), solarTest: () => this.localLighthouseMaintenance("surface-test", "meter"),
       compare: () => this.compareLighthouseSolar(), solarClean: () => this.localLighthouseMaintenance("clean", "cloth"),
@@ -414,6 +415,7 @@ export class RoomScene {
   }
   private get completeSession():LighthouseCompleteSession {return {clock:this.timeState,...this.weatherDuty,discovery:this.discovery,mode:this.sessionMode};}
   private applyLighthouseSession(s:LighthouseCompleteSession) {
+    this.mainCheck = undefined;
     this.timeState=s.clock;this.lighthouseState=s.operation;this.lighthouseInspectionState=s.inspection;
     this.lighthouseMaintenanceState=s.maintenance;this.lighthousePowerState=s.power;
     this.weatherState=s.weather;this.discovery=s.discovery;this.sessionMode=s.mode;this.restoredDiscovery=true;
@@ -716,12 +718,17 @@ export class RoomScene {
     if (this.lighthouseInspectionState) {
       const inspection = this.lighthouseInspection;
       this.lighthouseInspectionState.advance(this.timeState.lastAdvance, operationBefore, this.lighthouseOperation, {
-        optic: !inspection.optic && this.canObserveMain(),
-        output,
+        optic: !!this.mainCheck && this.canObserveMain(false),
+        output: this.lighthouseOperation.running ? inspection.transmission : 0,
         cover: inspection.cleaning && this.canObserveLighthouse(details.cover.device)
       });
     }
     this.notifyLighthouseOperation();
+    if (this.mainCheck && this.timeState.lastAdvance.activeSeconds > 0
+      && (this.lighthouseInspection.optic || !this.canObserveMain(false) || !this.lighthouseOperation.running)) {
+      const stopTest = this.mainCheck === "test"; this.mainCheck = undefined;
+      if (stopTest) this.endLighthouseTest();
+    }
     this.rain.apply(this.weather.weather,coastalWeatherTime(state,this.weather.weather),this.scene.activeCamera.globalPosition,
       this.timeState.lastAdvance.activeSeconds,this.exterior.isVisible,this.reducedWeatherMotion);
     if (state === before) return;
@@ -1121,14 +1128,24 @@ export class RoomScene {
       && this.interactions.canReachDevice(device, this.firstPersonCamera.position, 7.5,
         this.firstPersonCamera.getForwardRay().direction);
   }
-  private canObserveMain() {
+  private beginMainCheck() {
+    if (!this.canObserveMain(false) || this.mainCheck) return false;
+    const needsTest = !this.lighthouseOperation.running;
+    if (needsTest && !this.startLighthouseTest()) return false;
+    this.lighthouseInspectionState.renewObservation();
+    this.mainCheck = needsTest ? "test" : "running";
+    this.notifyLighthouseOperation(); return true;
+  }
+  private canObserveMain(visual = true) {
     if (!this.atLighthouseFloor(LIGHTHOUSE.gallery) || this.isViewing || this.pauses.blocked) return false;
     const {beacon, cover} = this.exterior.lighthouseDetails, camera = this.firstPersonCamera, eye = camera.position;
+    // The ordinary check covers the nearby top-floor area (3.2 metres at 5 world units/metre).
+    if (!visual) return Math.hypot(eye.x - beacon.root.position.x, eye.z - beacon.root.position.z) <= 16;
     if (!camera.isInFrustum(beacon.meshes[0])) return false;
     // Stable targets cover the whole optic; the player watches a cycle from one position.
     return [[1, 1, 1], [-1, 1, -1], [1, -1, -1], [-1, -1, 1]].some(offset => {
       const direction = beacon.root.position.add(Vector3.FromArray(offset).scale(.8)).subtract(eye).normalize();
-      const hit = this.scene.pickWithRay(new Ray(eye, direction, 15), mesh => interactionSurface(mesh) && mesh !== cover.pane);
+      const hit = this.scene.pickWithRay(new Ray(eye, direction, 15), mesh => interactionSurface(mesh) && mesh !== cover.pane && mesh.name !== "coastal-lighthouse-glazing");
       return hit?.distance <= 15 && beacon.meshes.includes(hit.pickedMesh as Mesh);
     });
   }
@@ -1164,14 +1181,13 @@ export class RoomScene {
     if (resumePointer && this.currentView === "first-person" && this.controlsEnabled) this.pointerLock.request();
   }
 
-  private toggleLocalLighthouseTest() {
+  private checkLocalMain() {
     if (this.lighthousePanel.activeLocation !== "test" || !this.canAccessLighthouse("test")
       || this.pauseReasons.some(reason => reason !== "lighthouse-panel")) {
-      this.lighthousePanel.notice("请在顶层灯座旁恢复操作；当前试灯状态保持。"); return;
+      this.lighthousePanel.notice("请回顶层灯座旁检查。"); return;
     }
-    if (this.lighthouseOperation.testSecondsRemaining > 0) this.endLighthouseTest();
-    else if (!this.startLighthouseTest()) {this.lighthousePanel.notice("主灯暂不可用，请到首层电池柜查看供电状态。"); return;}
-    this.audio.play("switch", "lighthouse-beacon-main"); this.closeLighthousePanel(true);
+    this.closeLighthousePanel(true);
+    this.beginMainCheck();
   }
 
   private lighthouseCommandAllowed(location: LighthousePanelLocation) {
@@ -1359,6 +1375,11 @@ export class RoomScene {
     const editable = event.target instanceof HTMLElement && event.target.matches("input, textarea, select, [contenteditable]");
     if (editable || event.ctrlKey || event.metaKey || event.altKey) return;
     if (!event.repeat && event.code === "KeyJ") {event.preventDefault(); this.openStoryPanel(); return;}
+    if (event.code === "KeyE" && this.canObserveMain(false) && (!this.lighthouseInspection.optic || !this.ladderTarget())) {
+      event.preventDefault();
+      if (!event.repeat) this.beginMainCheck();
+      return;
+    }
     if (this.currentView === "first-person" && this.controlsEnabled && this.pointerLocked) {
       if (this.ladder?.attached) {
         if (["KeyW", "ArrowUp", "KeyS", "ArrowDown"].includes(event.code)) {
@@ -1451,10 +1472,12 @@ export class RoomScene {
     const vehicle = firstPerson && this.pointerLocked && this.controlsEnabled && this.scooterTarget();
     const action = firstPerson && !this.ladder?.attached && !ladderTarget && !this.scooter.riding && !this.scooterTransition && !vehicle && this.pointerLocked && this.controlsEnabled
       ? this.interactions.pick(this.firstPersonCamera.getForwardRay(7.5)) : undefined;
-    reticle?.classList.toggle("has-target", !!action || !!vehicle || !!ladderTarget);
+    const watching = firstPerson && this.controlsEnabled && this.canObserveMain(false);
+    reticle?.classList.toggle("has-target", !!action || !!vehicle || !!ladderTarget || watching);
     if (hint) {
       const ladderFloor = this.ladder?.attached ? lighthouseLadderFloor(this.ladder.feet) : undefined;
-      hint.textContent = firstPerson && this.ladder?.attached ? this.ladderNoticeUntil > performance.now() ? this.ladderNotice
+      hint.textContent = watching && (!this.lighthouseInspection.optic || !ladderTarget) ? this.lighthouseInspection.optic ? "大灯已检查 · E 重新检查"
+        : !this.lighthouseOperation.available ? "大灯不可用 · 请查供电与检修状态" : "E · 检查大灯（3秒）" : firstPerson && this.ladder?.attached ? this.ladderNoticeUntil > performance.now() ? this.ladderNotice
         : ladderFloor ? `已到${ladderFloor.label} · E / 左键离梯 · 松开后按 W/S 继续`
         : "W/↑ 上爬 · S/↓ 下爬 · 松开停留 · 到楼层后按 E 离梯"
         : ladderTarget ? "E / 左键 · 抓住垂直梯" : firstPerson && this.scooter.riding ? this.scooterNoticeUntil > performance.now() ? this.scooterNotice

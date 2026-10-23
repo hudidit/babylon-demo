@@ -3,7 +3,7 @@ import { LIGHTHOUSE_OPERATION } from "./LighthouseOperation";
 import type { LighthouseOperationSnapshot } from "./LighthouseOperation";
 import type { TimeOfDayAdvance } from "./RoomTimeOfDay";
 
-export const LIGHTHOUSE_INSPECTION = Object.freeze({ observationSeconds: LIGHTHOUSE_OPERATION.rotationSeconds, cleaningSeconds: 1.5,
+export const LIGHTHOUSE_INSPECTION = Object.freeze({ observationSeconds: 3, cleaningSeconds: 1.5,
   dirtyTransmission: .82, coverId: "lighthouse-optics-cleaning", retainedDays: 7, maintenanceDays: 3 });
 export type LighthouseCheckId = "check-control" | "check-optic" | "check-cover";
 export type LighthouseCheckStatus = "pending" | "dirty" | "awaiting-recheck" | "complete";
@@ -80,7 +80,7 @@ export class LighthouseInspection {
   }
   invalidateMain(op: LighthouseOperationSnapshot) {
     this.control = this.optic = undefined; this.resetObservation();
-    this.record(op, "lighthouse-beacon-main", "system", "equipment-changed", "active-action", "驱动或供电状态变了，请重新读表、看灯。上次的结果留在记录里。");
+    this.record(op, "lighthouse-beacon-main", "system", "equipment-changed", "active-action", "驱动或供电已变化，请重新读表、查灯；旧结果已留存。");
     this.publish();
   }
   /** A deliberate new observation never copies the previous weather/period's cycle. */
@@ -90,9 +90,9 @@ export class LighthouseInspection {
   }
   soilFromWeather(op: LighthouseOperationSnapshot) {
     if (this.dirty) return;
-    this.cancelCleaning(op, "天气暴露改变保护面，重新检查后操作。");
+    this.cancelCleaning(op, "保护面受天气影响，请重新检查。");
     this.dirty = true; this.revision++; this.cover = undefined; this.coverStatus = "pending";
-    this.record(op, LIGHTHOUSE_INSPECTION.coverId, "system", "maintenance-due", "automatic-clock", "天气暴露使保护面重新积盐，请现场检查、清洁和复查。", this.revision);
+    this.record(op, LIGHTHOUSE_INSPECTION.coverId, "system", "maintenance-due", "automatic-clock", "天气暴露造成积盐，请检查、清洁并复查。", this.revision);
     this.notice = "保护面出现天气暴露污损。"; this.publish();
   }
   /** Called on commands as well as frames, so a running device cancels a pending transaction immediately. */
@@ -105,16 +105,16 @@ export class LighthouseInspection {
       this.history = Object.freeze(this.history.filter(day => day.dutyDay > this.dutyDay - LIGHTHOUSE_INSPECTION.retainedDays));
       this.events = Object.freeze(this.events.filter(event => event.dutyDay > this.dutyDay - LIGHTHOUSE_INSPECTION.retainedDays));
       this.resetObservation();
-      this.record({...op, hour: 0}, "lighthouse-maintenance-log", "system", "duty-day-started", "automatic-clock", "新值守日：三项检查待确认，表面状态保留");
-      this.notice = "新值守日已建立三项检查，表面状态保留。"; this.publish();
+      this.record({...op, hour: 0}, "lighthouse-maintenance-log", "system", "duty-day-started", "automatic-clock", "新值守日：三项待查，表面保持原状");
+      this.notice = "新值守日，三项待查。"; this.publish();
     }
     if (op.dutyDay >= this.nextMaintenanceDay && !this.dirty) {
-      this.cancelCleaning(op, "例行维护到期，重新检查保护面。");
+      this.cancelCleaning(op, "维护到期，请重查保护面。");
       this.dirty = true; this.revision++; this.cover = undefined; this.coverStatus = "pending";
-      this.record(op, LIGHTHOUSE_INSPECTION.coverId, "system", "maintenance-due", "automatic-clock", "保护面例行清洁到期，请现场检查并擦拭复查。", this.revision);
-      this.notice = "保护面例行清洁到期。"; this.publish();
+      this.record(op, LIGHTHOUSE_INSPECTION.coverId, "system", "maintenance-due", "automatic-clock", "保护面清洁到期，请检查、擦拭并复查。", this.revision);
+      this.notice = "保护面清洁到期。"; this.publish();
     }
-    if (this.cleaning && !LighthouseInspection.canClean(op)) this.cancelCleaning(op, "设备已运行，清洁中断；盐膜保持原状。");
+    if (this.cleaning && !LighthouseInspection.canClean(op)) this.cancelCleaning(op, "灯已启动，擦拭中断；盐膜未清除。");
     if (!op.running && !this.optic && this.seconds > 0) {this.resetObservation(); this.publish();}
   }
   confirmControl(op: LighthouseOperationSnapshot, accessible: boolean, recordReading = false) {
@@ -152,14 +152,14 @@ export class LighthouseInspection {
     if (!Number.isFinite(dt) || dt <= 0 || dt > .1 + EPS) return; // Accept only the shared clock's bounded active receipt.
     if (this.cleaning) {
       if (!sight.cover || !LighthouseInspection.canClean(before) || !LighthouseInspection.canClean(op)) {
-        this.cancelCleaning(op, "离开、视线受阻或设备起动，清洁中断；盐膜保持原状。");
+        this.cancelCleaning(op, "离开、遮挡或起灯，擦拭中断；盐膜未清除。");
       } else {
         this.cleanSeconds = Math.min(LIGHTHOUSE_INSPECTION.cleaningSeconds, this.cleanSeconds + dt);
         if (this.cleanSeconds >= LIGHTHOUSE_INSPECTION.cleaningSeconds - EPS) {
           // Revalidate at commit, rather than treating elapsed time as permission to touch a running optic.
           if (LighthouseInspection.canClean(op) && sight.cover) {
             this.dirty = false; this.revision++; this.nextMaintenanceDay = op.dutyDay + LIGHTHOUSE_INSPECTION.maintenanceDays; this.cleaning = false; this.cleanSeconds = 0;
-            this.coverStatus = "awaiting-recheck"; this.notice = "擦完了，再看一遍保护面，确认擦净。";
+            this.coverStatus = "awaiting-recheck"; this.notice = "擦完了，请复查保护面。";
             this.record(op, LIGHTHOUSE_INSPECTION.coverId, "action", "cover-cleaned", "active-action", "盐膜已清除，待复查", this.revision);
           }
         }
@@ -174,10 +174,10 @@ export class LighthouseInspection {
     }
     this.seconds = Math.min(LIGHTHOUSE_INSPECTION.observationSeconds, this.seconds + dt);
     this.turns += phase; this.outputSeen ||= sight.output > .25;
-    if (this.seconds >= LIGHTHOUSE_INSPECTION.observationSeconds - EPS && this.turns >= 1 - EPS && this.outputSeen) {
-      this.optic = this.evidence(op, `本次周期观察正常：连续观察${LIGHTHOUSE_INSPECTION.observationSeconds}秒、转台一圈及方向出光`);
+    if (this.seconds >= LIGHTHOUSE_INSPECTION.observationSeconds - EPS && this.turns >= LIGHTHOUSE_INSPECTION.observationSeconds / LIGHTHOUSE_OPERATION.rotationSeconds - EPS && this.outputSeen) {
+      this.optic = this.evidence(op, `大灯检查${LIGHTHOUSE_INSPECTION.observationSeconds}秒：转台运转、灯具出光正常`);
       this.record(op, "lighthouse-beacon-main", "observation", "optic-observed", "direct-view", this.optic.result);
-      this.notice = "主灯转完一圈，转动和出光正常，已记下。这次只查了这两项。";
+      this.notice = "检查完成，转动与出光正常。";
     }
     this.publish();
   }

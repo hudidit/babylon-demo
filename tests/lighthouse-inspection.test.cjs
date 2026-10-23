@@ -38,13 +38,13 @@ test('reading requires local authority; repeated readings refresh time without d
   assert.match(f.inspection.snapshot.control.result, /夜间导航运行/); assert.equal(f.inspection.snapshot.events.length, 2);
 });
 
-test('optic evidence needs thirty continuous accepted active seconds, one actual turn and output within the test window', () => {
+test('optic evidence needs three continuous accepted active seconds, actual rotation and output within the test window', () => {
   for (const dt of [.1, .05, .02]) {
-    const f = fixture(); f.operation.startTest(); f.run(29.8, dt);
+    const f = fixture(); f.operation.startTest(); f.run(2.8, dt);
     assert.equal(f.inspection.snapshot.checks['check-optic'], 'pending'); f.run(.2, dt);
     assert.equal(f.inspection.snapshot.checks['check-optic'], 'complete');
-    assert.match(f.inspection.snapshot.optic.result, /连续观察30秒/); near(f.inspection.snapshot.observedTurns, 1);
-    assert.equal(f.operation.snapshot.running, true); near(f.operation.snapshot.testSecondsRemaining, 30);
+    assert.match(f.inspection.snapshot.optic.result, /检查3秒/); near(f.inspection.snapshot.observedTurns, .1);
+    assert.equal(f.operation.snapshot.running, true); near(f.operation.snapshot.testSecondsRemaining, 57);
     const count = f.inspection.snapshot.events.length; f.run(5, dt); assert.equal(f.inspection.snapshot.events.length, count);
   }
   const f = fixture(); f.operation.startTest(); f.sight.output = 0; f.run(32);
@@ -52,18 +52,18 @@ test('optic evidence needs thirty continuous accepted active seconds, one actual
   f.sight.output = 1; f.step(); assert.ok(f.inspection.snapshot.optic);
 });
 
-test('turning away or stopping resets observation; pause freezes it and never supplies missed time', () => {
-  const f = fixture(); f.operation.startTest(); f.run(4); near(f.inspection.snapshot.observationSeconds, 4);
-  f.step(1000, true); near(f.inspection.snapshot.observationSeconds, 4);
+test('leaving the check area or stopping resets observation; pause freezes it and never supplies missed time', () => {
+  const f = fixture(); f.operation.startTest(); f.run(1); near(f.inspection.snapshot.observationSeconds, 1);
+  f.step(1000, true); near(f.inspection.snapshot.observationSeconds, 1);
   f.sight.optic = false; f.step(); near(f.inspection.snapshot.observationSeconds, 0);
-  f.sight.optic = true; f.run(3); f.operation.endTest(); f.step(); near(f.inspection.snapshot.observationSeconds, 0);
-  f.operation.startTest(); f.run(5); f.step(.1, false, false); near(f.inspection.snapshot.observationSeconds, 0);
+  f.sight.optic = true; f.run(1); f.operation.endTest(); f.step(); near(f.inspection.snapshot.observationSeconds, 0);
+  f.operation.startTest(); f.run(1); f.step(.1, false, false); near(f.inspection.snapshot.observationSeconds, 0);
 });
 
-test('a fixed observer can watch the whole cycle with only a brief passing flash', () => {
+test('a check accepts real lamp output without waiting for a whole cycle', () => {
   const f=fixture();f.operation.startTest();f.sight.output=0;
-  for(let n=0;n<300;n++) {f.sight.output=n===90?1:0;f.step(.1);}
-  assert.ok(f.inspection.snapshot.optic);near(f.inspection.snapshot.observedTurns,1);
+  for(let n=0;n<30;n++) {f.sight.output=n===9?1:0;f.step(.1);}
+  assert.ok(f.inspection.snapshot.optic);near(f.inspection.snapshot.observedTurns,.1);
   assert.equal(f.inspection.snapshot.outputSeen,true);
 });
 

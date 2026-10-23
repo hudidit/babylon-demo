@@ -34,7 +34,7 @@ export function endingRecord(view:View) {
       `接班巡视 · ${complete(2)?when(complete(2).at):""}\n首层读数、主灯转动和出光、保护面检查均已记下，岸站已回复。`,
       `面板清洁与复查 · ${solar?when(solar.at):""}\n污膜已擦净，表面重新检查，天气、日照和输入重新对照。${comparison?.kind==="comparison"?`当时输入${comparison.data.actualWatts.toFixed(1)} W，估算${comparison.data.expectedWatts.toFixed(1)} W。`:""}`,
       `交接单 · ${handover?when(handover.at):""}\n灯况、已办的事和下一班待办已收好。接班人还没到，钥匙仍由你保管。`,
-      `延班后的夜间导航 · ${night?when(night.at):""}\n${night?.facts[0]?.kind==="backup"?"实际由备用灯接替，已连续观察10秒并看见白闪。主灯仍需继续检查。":"主灯已连续观察30秒，转完一圈并有光照出。"}`
+      `延班后的夜间导航 · ${night?when(night.at):""}\n${night?.facts[0]?.kind==="backup"?"实际由备用灯接替，已连续观察10秒并看见白闪。主灯仍需继续检查。":`主灯已检查${night?.facts[0]?.kind === "main" ? night.facts[0].data.seconds : 0}秒，转动和出光正常。`}`
     ],
     pending:[pending.length?pending.map(issue).join("、")+"。":"",
       night?.facts[0]?.kind==="backup"&&end?.context.navigationSource!=="main"?"备用灯已确认，主灯仍需检查和恢复。":"",
@@ -62,7 +62,7 @@ export function renderStoryEpilogue(document:Document,view:View,canUseRecords:bo
     :view.objective.id==="ST08"?view.transport.status!=="cancelled"?"前三天的交接单收好了。满三天后的中午，岸站会确认接送安排。可以在书桌旁等待，灯站照常运行。"
       :"去岸站联络页读完取消接送的通知，再回书桌或首层记录夹旁登记留站。之前做完的工作都保留，钥匙仍由你保管。"
     :view.objective.id==="ST09"?h>=6&&h<18?"登记好了。等到晚上，再去看这一班的灯。可以回书桌旁等到18点；白天雾里的观察不能代替夜间确认。"
-      :"到顶层看主灯：连续30秒、完整一圈，并确认有光照出。实际由备用灯接替时，到顶层外廊看备用灯白闪，连续10秒；主灯待办仍要留下。两盏灯都没亮时，先查供电。"
+      :"到顶层灯旁按 E 检查大灯，3秒完成，可自由环顾。实际由备用灯接替时，到顶层外廊看备用灯白闪，连续10秒；主灯待办仍要留下。两盏灯都没亮时，先查供电。"
     :view.sourceCheck.status==="pending"?"核对请求发出去了。到岸站联络页接收回复，原消息和发送时间都先留着。"
     :view.sourceCheck.replyId?"岸站的核对回复到了。去联络页读完，原消息和发送时间都留着。":"读完旧呼号来信，再把原文和发送时间转给岸站核对。终端显示的名字还不能证明是谁发来的。");
   const tasks=view.tasks.slice(7),labels=["留站","看灯","核对","收好"];

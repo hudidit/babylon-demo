@@ -66,7 +66,7 @@ test('waiting never submits actions, observes a main-light cycle or reads messag
  wait.batch(20);wait.cancel();assert.ok(f.e.weather.acceptedAutomaticHours>0);assert.equal(f.e.clock.playback.automatic,false);
  assert.deepEqual(f.s.story.exportState().facts,before);assert.equal(f.s.story.snapshot.tasks[3].status,'active');
  const at=f.e.weather.acceptedAutomaticHours;wait.batch(600);assert.equal(f.e.weather.acceptedAutomaticHours,at);
- assert.equal(f.e.inspection.snapshot.observationSeconds,30);assert.equal(f.e.maintenance.snapshot.action,undefined);
+ assert.equal(f.e.inspection.snapshot.observationSeconds,3);assert.equal(f.e.maintenance.snapshot.action,undefined);
  assert.ok(f.s.story.snapshot.messages.filter(m=>m.id==='night-notice').every(m=>m.state==='unread'));
  const paused=encode(f.s);f.e.clock.advance(1000,true,true);assert.equal(encode(f.s),paused);
 });
@@ -165,16 +165,16 @@ test('handover saves continue to the real 72-hour cancellation and offer only th
  assert.equal(epilogue(f.s,'stay',true),true);f.sync();assert.equal(epilogue(f.s,'stay',true),false);
  assert.equal(plan(f.s).target,78);f.to(78);assert.equal(plan(f.s).target,undefined);
  assert.equal(f.s.story.snapshot.objective.id,'ST09');assert.equal(f.e.inspection.snapshot.observationSeconds,0);
- const r=fixture(decode(encode(f.s)));r.active(29.9);assert.equal(r.s.story.snapshot.objective.id,'ST09');r.active(.1);
+ const r=fixture(decode(encode(f.s)));r.active(2.9);assert.equal(r.s.story.snapshot.objective.id,'ST09');r.active(.1);
  assert.equal(r.s.story.snapshot.objective.id,'ST10');assert.equal(r.s.story.snapshot.tasks[8].completion.facts[0].kind,'main');
  assert.equal(r.s.story.snapshot.messages.filter(m=>m.id==='old-call').length,1);
 });
 test('a completed main observation before registration cannot be reused and interruption or reload restarts pending work',()=>{
  const f=afterHandover();f.to(78);f.observe();assert.ok(f.e.inspection.snapshot.optic);f.s.story.readMessage('pickup-cancelled');
  epilogue(f.s,'stay',true);f.sync();assert.equal(f.e.inspection.snapshot.optic,undefined);assert.equal(f.s.story.snapshot.objective.id,'ST09');
- f.active(20);f.active(.1,{optic:false,cover:false,output:0,action:false});assert.equal(f.e.inspection.snapshot.observationSeconds,0);
- f.active(20);const r=fixture(decode(encode(f.s)));r.active(10);assert.equal(r.s.story.snapshot.objective.id,'ST09');
- r.active(20);assert.equal(r.s.story.snapshot.objective.id,'ST10');
+ f.active(2);f.active(.1,{optic:false,cover:false,output:0,action:false});assert.equal(f.e.inspection.snapshot.observationSeconds,0);
+ f.active(2);const r=fixture(decode(encode(f.s)));r.active(1);assert.equal(r.s.story.snapshot.objective.id,'ST09');
+ r.active(2);assert.equal(r.s.story.snapshot.objective.id,'ST10');
 });
 test('actual backup observation shows read-only progress and needs ten new seconds after registration',()=>{
  const f=afterHandover();f.to(78);f.e.power=new LighthousePower({mainWh:200,backupWh:120});f.sync();
@@ -202,9 +202,9 @@ test('daylight fog backup confirmation cannot satisfy the later night and a lost
  assert.ok(plan(g.s,true).target>g.s.story.snapshot.elapsedHours);assert.equal(epilogue(g.s,'check',false),false);assert.equal(epilogue(g.s,'finish',false),false);
 });
 test('night registration across midnight starts a new watch without changing completed history or sender time',()=>{
- const f=afterHandover();f.to(83.999);f.s.story.readMessage('pickup-cancelled');epilogue(f.s,'stay',true);f.sync();f.active(15);
+ const f=afterHandover();f.to(83.999);f.s.story.readMessage('pickup-cancelled');epilogue(f.s,'stay',true);f.sync();f.active(1.5);
  assert.equal(f.s.story.snapshot.calendar.day,4);f.to(84);assert.equal(f.e.inspection.snapshot.observationSeconds,0);
- f.active(29.9);assert.equal(f.s.story.snapshot.objective.id,'ST09');f.active(.1);assert.equal(f.s.story.snapshot.objective.id,'ST10');
+ f.active(2.9);assert.equal(f.s.story.snapshot.objective.id,'ST09');f.active(.1);assert.equal(f.s.story.snapshot.objective.id,'ST10');
  assert.equal(f.s.story.snapshot.tasks[8].completion.context.elapsedHours,84);assert.equal(f.s.story.snapshot.tasks[6].status,'complete');
  assert.equal(f.s.story.snapshot.messages.find(m=>m.id==='pickup-cancelled').sentAt,72);
 });
@@ -226,7 +226,7 @@ test('source verification and ending restore each distinct boundary without dupl
 });
 test('ending summaries use completion-time work and pending issues while later island play preserves the finished chapter',()=>{
  const f=readyToFinish();f.s.story.chooseDiary('familiar-path');epilogue(f.s,'finish',false);const record=endingRecord(f.s.story.snapshot),end=f.s.story.snapshot.tasks[10].completion;
- assert.match(record.work.join('\n'),/30秒.*一圈/s);assert.match(record.work[1],/输入.*W.*估算.*W/s);assert.match(record.source,/发送者仍未查明/);
+ assert.match(record.work.join('\n'),/3秒.*转动和出光正常/s);assert.match(record.work[1],/输入.*W.*估算.*W/s);assert.match(record.source,/发送者仍未查明/);
  assert.equal(record.diary,'现在不用看地图了。');f.to(110);assert.deepEqual(endingRecord(f.s.story.snapshot),record);
  assert.deepEqual(f.s.story.snapshot.tasks[10].completion,end);assert.equal(f.s.story.snapshot.messages.filter(m=>m.id==='old-call').length,1);
  const backup=readyToFinish(),state=backup.s.story.snapshot; // view-only variant tests wording without pretending it is a valid checkpoint.

@@ -16,9 +16,9 @@ test('player commands retain local solar patrol and recovery, excluding the four
 });
 test('reticle uses accepted progress and cannot close merely by waiting without turn/output evidence', () => {
  const {i,m,p}=fixture();assert.equal(lighthouseProgress(i,m,p),undefined);
- assert.equal(lighthouseProgress({...i,observationSeconds:15},m,p).fraction,.5);
- assert.equal(lighthouseProgress({...i,observationSeconds:30,outputSeen:false},m,p).fraction,.97);
- assert.equal(lighthouseProgress({...i,observationSeconds:30,optic:{hour:12}},m,p),undefined);
+ assert.equal(lighthouseProgress({...i,observationSeconds:1.5},m,p).fraction,.5);
+ assert.equal(lighthouseProgress({...i,observationSeconds:3,outputSeen:false},m,p).fraction,.97);
+ assert.equal(lighthouseProgress({...i,observationSeconds:3,optic:{hour:12}},m,p),undefined);
  assert.equal(lighthouseProgress({...i,cleaning:true,cleaningSeconds:.75},m,p).fraction,.5);
  assert.equal(lighthouseProgress(i,{...m,action:{command:'inspect',elapsed:1,duration:2}},p).fraction,.5);
  assert.equal(lighthouseProgress(i,m,{...p,action:{elapsed:.5,duration:2}}).fraction,.25);

@@ -69,8 +69,8 @@ test('rejecting an out-of-order command does not consume it and every semantic c
     ['reviewStormPlan',[]],['registerStay',[]],['readMessage',['old-call']],['requestSourceCheck',[]],['deliverReply',['arrival-report']],['deliverReply',['source-check']],['finishChapter',[]],['acknowledgeEnding',[]]])assert.equal(f.story[command](...args),false,command);
   f.story.synchronize(f.c);assert.deepEqual(f.story.exportState(),ended);
 });
-test('early valid observations count, while dirty surfaces, incomplete turns, no output and text alone cannot complete patrol',()=>{
-  const f=fixture();f.move(0,{navigationSource:'main'});f.fact('control');f.fact('main',{data:{seconds:10,turns:.9,outputSeen:true,weather:'clear'}});f.fact('cover');
+test('early valid observations count, while dirty surfaces, insufficient rotation, no output and text alone cannot complete patrol',()=>{
+  const f=fixture();f.move(0,{navigationSource:'main'});f.fact('control');f.fact('main',{data:{seconds:3,turns:.09,outputSeen:true,weather:'clear'}});f.fact('cover');
   f.call('readMaterial','CL01');f.call('acceptDuty');assert.equal(f.story.snapshot.objective.id,'ST02');
   f.fact('main',{data:{seconds:10,turns:1,outputSeen:false,weather:'clear'}});assert.equal(f.story.snapshot.objective.id,'ST02');
   const {fact}=f.fact('main');assert.equal(f.story.snapshot.objective.id,'ST03');const before=f.story.exportState();assert.equal(f.story.observe(fact),false);assert.deepEqual(f.story.exportState(),before);

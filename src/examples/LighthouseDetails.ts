@@ -98,7 +98,7 @@ export class LighthouseDetails {
     this.record = {id:"lighthouse-maintenance-log",label:"灯塔维护记录",mesh:meshes.find(m=>m.name.endsWith("maintenance-record"))!,displayRotation:Vector3.Zero()};
     this.log = {id: this.record.id, label: this.record.label, meshes: [this.record.mesh]};
     this.panel = {id:"lighthouse-control-panel",label:"首层运行面板",meshes:meshes.filter(m=>/distribution-panel|panel-hardware/.test(m.name))};
-    this.test = {id:"lighthouse-beacon-main",label:"灯室试灯控制",meshes:meshes.filter(m=>/test-control|test-label/.test(m.name))};
+    this.test = {id:"lighthouse-beacon-main",label:"检查大灯",meshes:meshes.filter(m=>/test-control|test-label/.test(m.name))};
     this.beacon = new LighthouseBeacon(scene, surfaces, retain);
     this.cover = new LighthouseCover(scene, surfaces, retain);
     this.equipment = new LighthouseEquipment(scene, surfaces, retain);

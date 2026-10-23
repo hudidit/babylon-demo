@@ -1,3 +1,5 @@
+import { LIGHTHOUSE_INSPECTION } from "./LighthouseInspection";
+import { LIGHTHOUSE_OPERATION } from "./LighthouseOperation";
 import {saveArray, saveBoolean, saveDay, saveEnum, saveHour, saveNumber, saveObject, saveOptional, saveRevision, saveText} from "./LighthouseSaveValidation";
 
 export const LIGHTHOUSE_STORY_VERSION = 1;
@@ -103,7 +105,7 @@ const factKey = (f: StoryFact) => `${f.source}:${f.eventId}`;
 const revisionKey = (f: StoryFact) => f.kind.startsWith("solar-") || f.kind === "comparison" ? "solar" : f.kind as "control" | "main" | "backup" | "cover";
 const currentFact = (f: StoryFact, c: StoryContext) => f.revision === c.revisions[revisionKey(f)]
   && (f.kind === "cover" ? f.problemId === c.problems.cover : ["solar-check", "comparison", "solar-cleaned"].includes(f.kind) ? f.problemId === c.problems.solar : f.problemId === null);
-const observationPassed = (f: StoryFact) => f.kind === "main" ? f.data.seconds >= 10 - EPS && f.data.turns >= 1 - EPS && f.data.outputSeen
+const observationPassed = (f: StoryFact) => f.kind === "main" ? f.data.seconds >= LIGHTHOUSE_INSPECTION.observationSeconds - EPS && f.data.turns >= LIGHTHOUSE_INSPECTION.observationSeconds / LIGHTHOUSE_OPERATION.rotationSeconds - EPS && f.data.outputSeen
   : f.kind === "backup" && f.data.seconds >= 10 - EPS && f.data.flashes > 0;
 const messageIds = ["pickup-plan", "night-notice", "transport-warning", "pickup-cancelled", "arrival-report", "arrival-ack", "solar-report", "solar-ack",
   "handover-report", "stay-registration", "old-call", "source-check", "source-check-reply"];
@@ -330,7 +332,7 @@ export class LighthouseStory {
     const c = this.s.context;
     switch (id) {
       case "ST01": return "读完周师傅的信，接下这三天值守。";
-      case "ST02": return "记下今天的读数，看完主灯一圈，查查保护面；擦完要再看一遍。";
+      case "ST02": return "记下今天的读数，到顶层灯旁按 E 检查大灯，查查保护面；擦完要再看一遍。";
       case "ST03": return this.report("arrival") ? "去联络页看看岸站的接班回复。" : "到书桌或首层记录夹旁，发出今天的接班报告。";
       case "ST04": return c.elapsedHours < 18 ? "等明早雾起。可以回书桌旁休息。" : "白天起雾时看看灯，再到首层对照天气、日照和太阳能输入。";
       case "ST05": return this.report("solar") ? "去联络页看看岸站对面板检查的回复。" : "细查面板，擦去污膜后再检查一遍，白天重新对照输入。看一眼没发现，仍可能有薄膜。";
@@ -338,7 +340,7 @@ export class LighthouseStory {
       case "ST07": return c.actionInProgress ? "先做完或停下手头的操作。" : !c.outsideWorkAllowed || c.weather === "storm" ? "先等风雨缓一缓，雨后再去检查面板。"
         : c.navigationRequired && c.navigationSource === "none" ? "现在需要亮灯。先检查供电和保护面，让主灯或备用灯恢复导航。" : "现在可以去看面板，再读表、核对灯况，把还没处理完的问题写进交接单。";
       case "ST08": return c.elapsedHours < 72 ? "交接单收好了，等满三天时岸站确认接送安排。" : "读完岸站取消接送的通知，登记继续留站。什么时候能接，还没有消息。";
-      case "ST09": return c.navigationSource === "none" ? "两盏灯都没能提供导航，先查供电，让灯恢复工作。" : "登记留站后，晚上再看看灯：看主灯转完一圈并出光，或看备用灯白闪，连续观察10秒。";
+      case "ST09": return c.navigationSource === "none" ? "两盏灯都没能提供导航，先查供电，让灯恢复工作。" : "登记留站后，晚上再看看灯：在主灯旁按 E 检查3秒，或看备用灯白闪，连续观察10秒。";
       case "ST10": return this.message("source-check") ? "等岸站核对。旧消息的原文和发送时间都先留着。" : "读读那条旧呼号消息，再问问岸站是不是他们发的。";
       case "ST11": return "这一班的事记好了。可以再留一会儿，翻翻记录，或在这里结束本章。";
       default: return "未完待续。可以停留或重读记录。";

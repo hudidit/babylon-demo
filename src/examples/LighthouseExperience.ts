@@ -15,7 +15,7 @@ export function lighthouseProgress(i: LighthouseInspectionSnapshot, m: Lighthous
   if (p.action) return {kind: p.action.command, label: "确认供电", fraction: p.action.elapsed / p.action.duration};
   if(m.backupOn&&!m.backupConfirmed&&m.backupObservationSeconds>0)return {kind:"backup-observation",label:"观察备用灯",fraction:Math.min(.97,m.backupObservationSeconds/10)};
   // Time alone must not draw a complete ring before an actual turn and output are confirmed.
-  if (!i.optic && i.observationSeconds > 0) return {kind: "observation", label: "观察灯具", fraction: Math.min(.97, i.observationSeconds / LIGHTHOUSE_INSPECTION.observationSeconds)};
+  if (!i.optic && i.observationSeconds > 0) return {kind: "observation", label: "检查大灯", fraction: Math.min(.97, i.observationSeconds / LIGHTHOUSE_INSPECTION.observationSeconds)};
   return undefined;
 }
 export interface LighthouseRecord {day: number; hour: number; object: string; action: string; result: string;}

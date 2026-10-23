@@ -1,0 +1,181 @@
+{
+  "day": {
+    "checking": false,
+    "seconds": 3,
+    "turns": 0.1005,
+    "complete": true,
+    "result": "大灯检查3秒：转台运转、灯具出光正常",
+    "mode": "automatic",
+    "running": false,
+    "remaining": 0,
+    "paused": [],
+    "wallSeconds": 2.999
+  },
+  "productionLogs": [],
+  "nightTransition": {
+    "checking": false,
+    "seconds": 3,
+    "turns": 0.1006,
+    "complete": true,
+    "result": "大灯检查3秒：转台运转、灯具出光正常",
+    "mode": "automatic",
+    "running": true,
+    "remaining": 0,
+    "paused": [],
+    "wallSeconds": 3.018
+  },
+  "pauseStart": {
+    "checking": true,
+    "seconds": 0.011299999952316285,
+    "turns": 0.0004,
+    "complete": false,
+    "result": "",
+    "mode": "test",
+    "running": true,
+    "remaining": 60,
+    "paused": [
+      "time-menu"
+    ],
+    "wallSeconds": 0.315
+  },
+  "pauseEnd": {
+    "checking": true,
+    "seconds": 0.011299999952316285,
+    "turns": 0.0004,
+    "complete": false,
+    "result": "",
+    "mode": "test",
+    "running": true,
+    "remaining": 60,
+    "paused": [
+      "time-menu"
+    ],
+    "wallSeconds": 17.347
+  },
+  "pauseCompleted": {
+    "checking": false,
+    "seconds": 3,
+    "turns": 0.1004,
+    "complete": true,
+    "result": "大灯检查3秒：转台运转、灯具出光正常",
+    "mode": "automatic",
+    "running": false,
+    "remaining": 0,
+    "paused": [],
+    "wallSeconds": 20.382
+  },
+  "viewportAttempt": {
+    "height": 720,
+    "width": 1280
+  },
+  "cancelled": {
+    "checking": false,
+    "seconds": 0,
+    "turns": 0,
+    "complete": false,
+    "result": "",
+    "mode": "automatic",
+    "running": false,
+    "remaining": 0,
+    "paused": [],
+    "wallSeconds": 0.162
+  },
+  "retry": {
+    "checking": false,
+    "seconds": 3,
+    "turns": 0.1,
+    "complete": true,
+    "result": "大灯检查3秒：转台运转、灯具出光正常",
+    "mode": "automatic",
+    "running": false,
+    "remaining": 0,
+    "paused": [],
+    "wallSeconds": 2.983
+  },
+  "fixtureLogs": [
+    {
+      "level": "error",
+      "message": "living model loading failed RuntimeError: Unable to load from ./models/study/sofa_03.glb: Not Found\n    at createLoadError (webpack://babylon-learning/./node_modules/@babylonjs/core/Loading/sceneLoader.js?:134:12)\n    at errorCallback (webpack://babylon-learning/./node_modules/@babylonjs/core/Loading/sceneLoader.js?:322:34)\n    at eval (webpack://babylon-learning/./node_modules/@babylonjs/core/Misc/fileTools.pure.js?:484:13)\n    at XMLHttpRequest.onReadyStateChange (webpack://babylon-learning/./node_modules/@babylonjs/core/Misc/fileTools.pure.js?:626:25)",
+      "timestamp": "2026-10-23T06:47:22.956Z",
+      "url": "webpack://babylon-learning/./src/examples/Room.ts?"
+    },
+    {
+      "level": "error",
+      "message": "study model loading failed RuntimeError: Unable to load from ./models/wooden_bookshelf.glb: Not Found\n    at createLoadError (webpack://babylon-learning/./node_modules/@babylonjs/core/Loading/sceneLoader.js?:134:12)\n    at errorCallback (webpack://babylon-learning/./node_modules/@babylonjs/core/Loading/sceneLoader.js?:322:34)\n    at eval (webpack://babylon-learning/./node_modules/@babylonjs/core/Misc/fileTools.pure.js?:484:13)\n    at XMLHttpRequest.onReadyStateChange (webpack://babylon-learning/./node_modules/@babylonjs/core/Misc/fileTools.pure.js?:626:25)",
+      "timestamp": "2026-10-23T06:47:22.958Z",
+      "url": "webpack://babylon-learning/./src/examples/Room.ts?"
+    },
+    {
+      "level": "error",
+      "message": "living model loading failed RuntimeError: Unable to load from ./models/study/modern_arm_chair_01.glb: Not Found\n    at createLoadError (webpack://babylon-learning/./node_modules/@babylonjs/core/Loading/sceneLoader.js?:134:12)\n    at errorCallback (webpack://babylon-learning/./node_modules/@babylonjs/core/Loading/sceneLoader.js?:322:34)\n    at eval (webpack://babylon-learning/./node_modules/@babylonjs/core/Misc/fileTools.pure.js?:484:13)\n    at XMLHttpRequest.onReadyStateChange (webpack://babylon-learning/./node_modules/@babylonjs/core/Misc/fileTools.pure.js?:626:25)",
+      "timestamp": "2026-10-23T06:47:50.063Z",
+      "url": "webpack://babylon-learning/./src/examples/Room.ts?"
+    },
+    {
+      "level": "error",
+      "message": "study model loading failed RuntimeError: Unable to load from ./models/wooden_bookshelf.glb: Not Found\n    at createLoadError (webpack://babylon-learning/./node_modules/@babylonjs/core/Loading/sceneLoader.js?:134:12)\n    at errorCallback (webpack://babylon-learning/./node_modules/@babylonjs/core/Loading/sceneLoader.js?:322:34)\n    at eval (webpack://babylon-learning/./node_modules/@babylonjs/core/Misc/fileTools.pure.js?:484:13)\n    at XMLHttpRequest.onReadyStateChange (webpack://babylon-learning/./node_modules/@babylonjs/core/Misc/fileTools.pure.js?:626:25)",
+      "timestamp": "2026-10-23T06:47:50.064Z",
+      "url": "webpack://babylon-learning/./src/examples/Room.ts?"
+    }
+  ],
+  "narrowSize": {
+    "height": 844,
+    "width": 390
+  },
+  "narrowComplete": {
+    "checking": false,
+    "seconds": 3,
+    "turns": 0.1004,
+    "complete": true,
+    "result": "大灯检查3秒：转台运转、灯具出光正常",
+    "mode": "automatic",
+    "running": false,
+    "remaining": 0,
+    "paused": [],
+    "wallSeconds": 3.006
+  },
+  "finalNarrowLogs": [
+    {
+      "level": "error",
+      "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+      "timestamp": "2026-10-23T06:56:11.645Z"
+    }
+  ],
+  "recheckStarted": {
+    "checking": true,
+    "seconds": 0.20029999995231632,
+    "turns": 0.0067,
+    "complete": false,
+    "result": "",
+    "mode": "test",
+    "running": true,
+    "remaining": 60,
+    "paused": [],
+    "wallSeconds": 0.185
+  },
+  "recheckCompleted": {
+    "checking": false,
+    "seconds": 3,
+    "turns": 0.1,
+    "complete": true,
+    "result": "大灯检查3秒：转台运转、灯具出光正常",
+    "mode": "automatic",
+    "running": false,
+    "remaining": 0,
+    "paused": [],
+    "wallSeconds": 2.986
+  },
+  "finalNarrowComplete": {
+    "checking": false,
+    "seconds": 3,
+    "turns": 0.1003,
+    "complete": true,
+    "result": "大灯检查3秒：转台运转、灯具出光正常",
+    "mode": "automatic",
+    "running": false,
+    "remaining": 0,
+    "paused": [],
+    "wallSeconds": 2.997
+  },
+  "finalProductionLogs": []
+}
