@@ -1,0 +1,1109 @@
+{
+  "acousticListening": false,
+  "fpsOrLoadSpeedSampling": false,
+  "errors": [],
+  "warnings": [],
+  "outputs": [
+    {
+      "id": "drawer-slide-1",
+      "peak": 0.045499037951231,
+      "rms": 0.006057705291118898
+    },
+    {
+      "id": "drawer-slide-2",
+      "peak": 0.04375133290886879,
+      "rms": 0.007365233008971272
+    },
+    {
+      "id": "drawer-stop-1",
+      "peak": 0.05249946564435959,
+      "rms": 0.0033116038913643697
+    },
+    {
+      "id": "drawer-stop-2",
+      "peak": 0.09155082702636719,
+      "rms": 0.005749221381599322
+    },
+    {
+      "id": "door-move-1",
+      "peak": 0.04199828952550888,
+      "rms": 0.006601489449526771
+    },
+    {
+      "id": "door-move-2",
+      "peak": 0.04199957475066185,
+      "rms": 0.011988727646450353
+    },
+    {
+      "id": "door-latch-1",
+      "peak": 0.05425122380256653,
+      "rms": 0.003036326040461482
+    },
+    {
+      "id": "door-latch-2",
+      "peak": 0.05075037479400635,
+      "rms": 0.002869543105050437
+    },
+    {
+      "id": "switch-1",
+      "peak": 0.04550042375922203,
+      "rms": 0.0013366785015885738
+    },
+    {
+      "id": "switch-2",
+      "peak": 0.04550042375922203,
+      "rms": 0.0013602901562578206
+    },
+    {
+      "id": "paper-1",
+      "peak": 0.03674962371587753,
+      "rms": 0.002644607688556975
+    },
+    {
+      "id": "paper-2",
+      "peak": 0.03674962371587753,
+      "rms": 0.0013945085202817296
+    },
+    {
+      "id": "door-motion",
+      "peak": 0.08399657905101776,
+      "rms": 0.013160319394258616
+    },
+    {
+      "id": "door-latch",
+      "peak": 0.1015007495880127,
+      "rms": 0.005617407216717925
+    },
+    {
+      "id": "cloth-wipe",
+      "peak": 0.0839991495013237,
+      "rms": 0.010539240394307713
+    }
+  ],
+  "codecs": [
+    {
+      "id": "motor-loop",
+      "format": "wav",
+      "duration": 3,
+      "sampleRate": 48000,
+      "frames": 144000,
+      "channels": 1,
+      "peak": 0.05599914863705635,
+      "minWindowRms": 0.006955639237258039,
+      "active": [
+        "motor-loop"
+      ]
+    },
+    {
+      "id": "motor-loop",
+      "format": "aac",
+      "duration": 3,
+      "sampleRate": 48000,
+      "frames": 144000,
+      "channels": 1,
+      "peak": 0.05461938679218292,
+      "minWindowRms": 0.006928489693065495,
+      "active": [
+        "motor-loop"
+      ]
+    },
+    {
+      "id": "wind-loop",
+      "format": "wav",
+      "duration": 8,
+      "sampleRate": 48000,
+      "frames": 384000,
+      "channels": 1,
+      "peak": 0.04899807646870613,
+      "minWindowRms": 0.005151521683032202,
+      "active": [
+        "wind-loop"
+      ]
+    },
+    {
+      "id": "wind-loop",
+      "format": "aac",
+      "duration": 8,
+      "sampleRate": 48000,
+      "frames": 384000,
+      "channels": 1,
+      "peak": 0.04727412760257721,
+      "minWindowRms": 0.005090054401880414,
+      "active": [
+        "wind-loop"
+      ]
+    },
+    {
+      "id": "rain-loop",
+      "format": "wav",
+      "duration": 8,
+      "sampleRate": 48000,
+      "frames": 384000,
+      "channels": 1,
+      "peak": 0.053198035806417465,
+      "minWindowRms": 0.004569429045483977,
+      "active": [
+        "rain-loop"
+      ]
+    },
+    {
+      "id": "rain-loop",
+      "format": "aac",
+      "duration": 8,
+      "sampleRate": 48000,
+      "frames": 384000,
+      "channels": 1,
+      "peak": 0.05156813934445381,
+      "minWindowRms": 0.0045491501845653926,
+      "active": [
+        "rain-loop"
+      ]
+    },
+    {
+      "id": "sea-loop",
+      "format": "wav",
+      "duration": 2.5,
+      "sampleRate": 48000,
+      "frames": 120000,
+      "channels": 2,
+      "peak": 0.04490066319704056,
+      "minWindowRms": 0.0019392332311003102,
+      "active": [
+        "sea-loop"
+      ]
+    },
+    {
+      "id": "sea-loop",
+      "format": "aac",
+      "duration": 2.5,
+      "sampleRate": 48000,
+      "frames": 120000,
+      "channels": 2,
+      "peak": 0.039150744676589966,
+      "minWindowRms": 0.0019461975220932371,
+      "active": [
+        "sea-loop"
+      ]
+    }
+  ],
+  "hosted": {
+    "prefixes": [
+      "/",
+      "/audio-lab/"
+    ],
+    "filesPerPrefix": 39,
+    "totalBytes": 3217472,
+    "allJsBytes": 185337
+  },
+  "browser": "155.0.8059.86",
+  "beforeGesture": {
+    "ready": false,
+    "buffers": 0,
+    "decodedBytes": 0,
+    "sounds": 0,
+    "active": [],
+    "maxActive": 0,
+    "report": {
+      "plays": [],
+      "events": [],
+      "errors": [],
+      "engineImports": 0,
+      "maxActive": 0
+    }
+  },
+  "ready": {
+    "ready": true,
+    "contextState": "running",
+    "sampleRate": 48000,
+    "buffers": 23,
+    "decodedBytes": 10185600,
+    "sounds": 24,
+    "active": [],
+    "maxActive": 0,
+    "report": {
+      "plays": [],
+      "events": [],
+      "errors": [],
+      "engineImports": 1,
+      "maxActive": 0
+    }
+  },
+  "liveRate": {
+    "beforeHz": 439.453125,
+    "afterHz": 884.765625,
+    "publicSetter": true
+  },
+  "wipeCancelled": {
+    "stats": {
+      "ready": true,
+      "contextState": "running",
+      "sampleRate": 48000,
+      "buffers": 23,
+      "decodedBytes": 10185600,
+      "sounds": 24,
+      "active": [],
+      "maxActive": 1,
+      "report": {
+        "plays": [
+          {
+            "id": "drawer-slide-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 0.13333333333333333
+          },
+          {
+            "id": "drawer-slide-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 0.944
+          },
+          {
+            "id": "drawer-stop-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 1.7546666666666666
+          },
+          {
+            "id": "drawer-stop-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 2.562666666666667
+          },
+          {
+            "id": "door-move-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 3.376
+          },
+          {
+            "id": "door-move-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 4.197333333333333
+          },
+          {
+            "id": "door-latch-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 5.013333333333334
+          },
+          {
+            "id": "door-latch-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 5.8293333333333335
+          },
+          {
+            "id": "switch-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 6.64
+          },
+          {
+            "id": "switch-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 7.456
+          },
+          {
+            "id": "paper-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 8.277333333333333
+          },
+          {
+            "id": "paper-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 9.088
+          },
+          {
+            "id": "door-motion",
+            "format": "wav",
+            "volume": 0.5,
+            "loop": false,
+            "at": 9.904
+          },
+          {
+            "id": "door-latch",
+            "format": "wav",
+            "volume": 0.5,
+            "loop": false,
+            "at": 10.725333333333333
+          },
+          {
+            "id": "cloth-wipe",
+            "format": "wav",
+            "volume": 0.5,
+            "loop": false,
+            "at": 11.541333333333334
+          },
+          {
+            "id": "motor-loop",
+            "format": "wav",
+            "volume": 0.4,
+            "loop": true,
+            "at": 13.792
+          },
+          {
+            "id": "motor-loop",
+            "format": "aac",
+            "volume": 0.4,
+            "loop": true,
+            "at": 20.410666666666668
+          },
+          {
+            "id": "wind-loop",
+            "format": "wav",
+            "volume": 0.4,
+            "loop": true,
+            "at": 27.173333333333332
+          },
+          {
+            "id": "wind-loop",
+            "format": "aac",
+            "volume": 0.4,
+            "loop": true,
+            "at": 44.416
+          },
+          {
+            "id": "rain-loop",
+            "format": "wav",
+            "volume": 0.4,
+            "loop": true,
+            "at": 61.57333333333333
+          },
+          {
+            "id": "rain-loop",
+            "format": "aac",
+            "volume": 0.4,
+            "loop": true,
+            "at": 78.85866666666666
+          },
+          {
+            "id": "sea-loop",
+            "format": "wav",
+            "volume": 0.4,
+            "loop": true,
+            "at": 95.872
+          },
+          {
+            "id": "sea-loop",
+            "format": "aac",
+            "volume": 0.4,
+            "loop": true,
+            "at": 101.59466666666667
+          },
+          {
+            "id": "cloth-wipe",
+            "format": "wav",
+            "volume": 0.6,
+            "loop": false,
+            "at": 107.10933333333334
+          }
+        ],
+        "events": [
+          {
+            "kind": "stop",
+            "id": "motor-loop",
+            "at": 20.288
+          },
+          {
+            "kind": "stop",
+            "id": "motor-loop",
+            "at": 27.045333333333332
+          },
+          {
+            "kind": "stop",
+            "id": "wind-loop",
+            "at": 44.288
+          },
+          {
+            "kind": "stop",
+            "id": "wind-loop",
+            "at": 61.45066666666666
+          },
+          {
+            "kind": "stop",
+            "id": "rain-loop",
+            "at": 78.736
+          },
+          {
+            "kind": "stop",
+            "id": "rain-loop",
+            "at": 95.74933333333334
+          },
+          {
+            "kind": "stop",
+            "id": "sea-loop",
+            "at": 101.472
+          },
+          {
+            "kind": "stop",
+            "id": "sea-loop",
+            "at": 107.088
+          },
+          {
+            "kind": "wipe-start",
+            "token": 34,
+            "at": 107.10933333333334
+          },
+          {
+            "kind": "stop",
+            "id": "cloth-wipe",
+            "at": 107.42933333333333
+          },
+          {
+            "kind": "wipe-cancel",
+            "at": 107.42933333333333
+          }
+        ],
+        "errors": [],
+        "engineImports": 1,
+        "maxActive": 1
+      }
+    },
+    "silence": {
+      "peak": 0,
+      "rms": 0
+    }
+  },
+  "denseMix": {
+    "stats": {
+      "ready": true,
+      "contextState": "running",
+      "sampleRate": 48000,
+      "buffers": 23,
+      "decodedBytes": 10185600,
+      "sounds": 24,
+      "active": [
+        "motor-drive",
+        "wind-loop",
+        "rain-loop",
+        "sea-loop"
+      ],
+      "maxActive": 4,
+      "report": {
+        "plays": [
+          {
+            "id": "drawer-slide-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 0.13333333333333333
+          },
+          {
+            "id": "drawer-slide-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 0.944
+          },
+          {
+            "id": "drawer-stop-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 1.7546666666666666
+          },
+          {
+            "id": "drawer-stop-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 2.562666666666667
+          },
+          {
+            "id": "door-move-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 3.376
+          },
+          {
+            "id": "door-move-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 4.197333333333333
+          },
+          {
+            "id": "door-latch-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 5.013333333333334
+          },
+          {
+            "id": "door-latch-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 5.8293333333333335
+          },
+          {
+            "id": "switch-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 6.64
+          },
+          {
+            "id": "switch-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 7.456
+          },
+          {
+            "id": "paper-1",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 8.277333333333333
+          },
+          {
+            "id": "paper-2",
+            "format": "wav",
+            "volume": 0.25,
+            "loop": false,
+            "at": 9.088
+          },
+          {
+            "id": "door-motion",
+            "format": "wav",
+            "volume": 0.5,
+            "loop": false,
+            "at": 9.904
+          },
+          {
+            "id": "door-latch",
+            "format": "wav",
+            "volume": 0.5,
+            "loop": false,
+            "at": 10.725333333333333
+          },
+          {
+            "id": "cloth-wipe",
+            "format": "wav",
+            "volume": 0.5,
+            "loop": false,
+            "at": 11.541333333333334
+          },
+          {
+            "id": "motor-loop",
+            "format": "wav",
+            "volume": 0.4,
+            "loop": true,
+            "at": 13.792
+          },
+          {
+            "id": "motor-loop",
+            "format": "aac",
+            "volume": 0.4,
+            "loop": true,
+            "at": 20.410666666666668
+          },
+          {
+            "id": "wind-loop",
+            "format": "wav",
+            "volume": 0.4,
+            "loop": true,
+            "at": 27.173333333333332
+          },
+          {
+            "id": "wind-loop",
+            "format": "aac",
+            "volume": 0.4,
+            "loop": true,
+            "at": 44.416
+          },
+          {
+            "id": "rain-loop",
+            "format": "wav",
+            "volume": 0.4,
+            "loop": true,
+            "at": 61.57333333333333
+          },
+          {
+            "id": "rain-loop",
+            "format": "aac",
+            "volume": 0.4,
+            "loop": true,
+            "at": 78.85866666666666
+          },
+          {
+            "id": "sea-loop",
+            "format": "wav",
+            "volume": 0.4,
+            "loop": true,
+            "at": 95.872
+          },
+          {
+            "id": "sea-loop",
+            "format": "aac",
+            "volume": 0.4,
+            "loop": true,
+            "at": 101.59466666666667
+          },
+          {
+            "id": "cloth-wipe",
+            "format": "wav",
+            "volume": 0.6,
+            "loop": false,
+            "at": 107.10933333333334
+          },
+          {
+            "id": "cloth-wipe",
+            "format": "wav",
+            "volume": 0.6,
+            "loop": false,
+            "at": 109.14666666666666
+          },
+          {
+            "id": "motor-drive",
+            "format": "wav",
+            "volume": 0,
+            "loop": true,
+            "at": 110.79466666666667
+          },
+          {
+            "id": "wind-loop",
+            "format": "wav",
+            "volume": 0,
+            "loop": true,
+            "at": 110.82666666666667
+          },
+          {
+            "id": "rain-loop",
+            "format": "wav",
+            "volume": 0,
+            "loop": true,
+            "at": 110.82666666666667
+          },
+          {
+            "id": "sea-loop",
+            "format": "wav",
+            "volume": 0,
+            "loop": true,
+            "at": 110.82666666666667
+          }
+        ],
+        "events": [
+          {
+            "kind": "stop",
+            "id": "motor-loop",
+            "at": 20.288
+          },
+          {
+            "kind": "stop",
+            "id": "motor-loop",
+            "at": 27.045333333333332
+          },
+          {
+            "kind": "stop",
+            "id": "wind-loop",
+            "at": 44.288
+          },
+          {
+            "kind": "stop",
+            "id": "wind-loop",
+            "at": 61.45066666666666
+          },
+          {
+            "kind": "stop",
+            "id": "rain-loop",
+            "at": 78.736
+          },
+          {
+            "kind": "stop",
+            "id": "rain-loop",
+            "at": 95.74933333333334
+          },
+          {
+            "kind": "stop",
+            "id": "sea-loop",
+            "at": 101.472
+          },
+          {
+            "kind": "stop",
+            "id": "sea-loop",
+            "at": 107.088
+          },
+          {
+            "kind": "wipe-start",
+            "token": 34,
+            "at": 107.10933333333334
+          },
+          {
+            "kind": "stop",
+            "id": "cloth-wipe",
+            "at": 107.42933333333333
+          },
+          {
+            "kind": "wipe-cancel",
+            "at": 107.42933333333333
+          },
+          {
+            "kind": "wipe-start",
+            "token": 36,
+            "at": 109.14666666666666
+          },
+          {
+            "kind": "stop",
+            "id": "cloth-wipe",
+            "at": 110.64533333333334
+          },
+          {
+            "kind": "wipe-complete",
+            "token": 36,
+            "at": 110.64533333333334
+          }
+        ],
+        "errors": [],
+        "engineImports": 1,
+        "maxActive": 4
+      }
+    },
+    "output": {
+      "peak": 0.04193803668022156,
+      "rms": 0.011282687276939147
+    }
+  },
+  "inside": {
+    "windGain": 0.07027547806501389,
+    "output": {
+      "peak": 0.03925397992134094,
+      "rms": 0.008293132800012475
+    }
+  },
+  "zeroVolume": {
+    "peak": 0,
+    "rms": 0
+  },
+  "blur": {
+    "ready": true,
+    "contextState": "suspended",
+    "sampleRate": 48000,
+    "buffers": 23,
+    "decodedBytes": 10185600,
+    "sounds": 24,
+    "active": [],
+    "maxActive": 4,
+    "report": {
+      "plays": [
+        {
+          "id": "drawer-slide-1",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 0.13333333333333333
+        },
+        {
+          "id": "drawer-slide-2",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 0.944
+        },
+        {
+          "id": "drawer-stop-1",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 1.7546666666666666
+        },
+        {
+          "id": "drawer-stop-2",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 2.562666666666667
+        },
+        {
+          "id": "door-move-1",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 3.376
+        },
+        {
+          "id": "door-move-2",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 4.197333333333333
+        },
+        {
+          "id": "door-latch-1",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 5.013333333333334
+        },
+        {
+          "id": "door-latch-2",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 5.8293333333333335
+        },
+        {
+          "id": "switch-1",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 6.64
+        },
+        {
+          "id": "switch-2",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 7.456
+        },
+        {
+          "id": "paper-1",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 8.277333333333333
+        },
+        {
+          "id": "paper-2",
+          "format": "wav",
+          "volume": 0.25,
+          "loop": false,
+          "at": 9.088
+        },
+        {
+          "id": "door-motion",
+          "format": "wav",
+          "volume": 0.5,
+          "loop": false,
+          "at": 9.904
+        },
+        {
+          "id": "door-latch",
+          "format": "wav",
+          "volume": 0.5,
+          "loop": false,
+          "at": 10.725333333333333
+        },
+        {
+          "id": "cloth-wipe",
+          "format": "wav",
+          "volume": 0.5,
+          "loop": false,
+          "at": 11.541333333333334
+        },
+        {
+          "id": "motor-loop",
+          "format": "wav",
+          "volume": 0.4,
+          "loop": true,
+          "at": 13.792
+        },
+        {
+          "id": "motor-loop",
+          "format": "aac",
+          "volume": 0.4,
+          "loop": true,
+          "at": 20.410666666666668
+        },
+        {
+          "id": "wind-loop",
+          "format": "wav",
+          "volume": 0.4,
+          "loop": true,
+          "at": 27.173333333333332
+        },
+        {
+          "id": "wind-loop",
+          "format": "aac",
+          "volume": 0.4,
+          "loop": true,
+          "at": 44.416
+        },
+        {
+          "id": "rain-loop",
+          "format": "wav",
+          "volume": 0.4,
+          "loop": true,
+          "at": 61.57333333333333
+        },
+        {
+          "id": "rain-loop",
+          "format": "aac",
+          "volume": 0.4,
+          "loop": true,
+          "at": 78.85866666666666
+        },
+        {
+          "id": "sea-loop",
+          "format": "wav",
+          "volume": 0.4,
+          "loop": true,
+          "at": 95.872
+        },
+        {
+          "id": "sea-loop",
+          "format": "aac",
+          "volume": 0.4,
+          "loop": true,
+          "at": 101.59466666666667
+        },
+        {
+          "id": "cloth-wipe",
+          "format": "wav",
+          "volume": 0.6,
+          "loop": false,
+          "at": 107.10933333333334
+        },
+        {
+          "id": "cloth-wipe",
+          "format": "wav",
+          "volume": 0.6,
+          "loop": false,
+          "at": 109.14666666666666
+        },
+        {
+          "id": "motor-drive",
+          "format": "wav",
+          "volume": 0,
+          "loop": true,
+          "at": 110.79466666666667
+        },
+        {
+          "id": "wind-loop",
+          "format": "wav",
+          "volume": 0,
+          "loop": true,
+          "at": 110.82666666666667
+        },
+        {
+          "id": "rain-loop",
+          "format": "wav",
+          "volume": 0,
+          "loop": true,
+          "at": 110.82666666666667
+        },
+        {
+          "id": "sea-loop",
+          "format": "wav",
+          "volume": 0,
+          "loop": true,
+          "at": 110.82666666666667
+        }
+      ],
+      "events": [
+        {
+          "kind": "stop",
+          "id": "motor-loop",
+          "at": 20.288
+        },
+        {
+          "kind": "stop",
+          "id": "motor-loop",
+          "at": 27.045333333333332
+        },
+        {
+          "kind": "stop",
+          "id": "wind-loop",
+          "at": 44.288
+        },
+        {
+          "kind": "stop",
+          "id": "wind-loop",
+          "at": 61.45066666666666
+        },
+        {
+          "kind": "stop",
+          "id": "rain-loop",
+          "at": 78.736
+        },
+        {
+          "kind": "stop",
+          "id": "rain-loop",
+          "at": 95.74933333333334
+        },
+        {
+          "kind": "stop",
+          "id": "sea-loop",
+          "at": 101.472
+        },
+        {
+          "kind": "stop",
+          "id": "sea-loop",
+          "at": 107.088
+        },
+        {
+          "kind": "wipe-start",
+          "token": 34,
+          "at": 107.10933333333334
+        },
+        {
+          "kind": "stop",
+          "id": "cloth-wipe",
+          "at": 107.42933333333333
+        },
+        {
+          "kind": "wipe-cancel",
+          "at": 107.42933333333333
+        },
+        {
+          "kind": "wipe-start",
+          "token": 36,
+          "at": 109.14666666666666
+        },
+        {
+          "kind": "stop",
+          "id": "cloth-wipe",
+          "at": 110.64533333333334
+        },
+        {
+          "kind": "wipe-complete",
+          "token": 36,
+          "at": 110.64533333333334
+        },
+        {
+          "kind": "stop",
+          "id": "motor-drive",
+          "at": 112.69333333333333
+        },
+        {
+          "kind": "stop",
+          "id": "wind-loop",
+          "at": 112.69333333333333
+        },
+        {
+          "kind": "stop",
+          "id": "rain-loop",
+          "at": 112.69333333333333
+        },
+        {
+          "kind": "stop",
+          "id": "sea-loop",
+          "at": 112.69333333333333
+        }
+      ],
+      "errors": [],
+      "engineImports": 1,
+      "maxActive": 4
+    }
+  },
+  "narrowOverflow": false,
+  "subpath": true
+}

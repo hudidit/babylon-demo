@@ -1,0 +1,62 @@
+{
+  "baselineCommit": "debb314",
+  "baseline": {
+    "fullReleaseBytes": 42987017,
+    "staticInitialJsBytes": 2927218,
+    "runtimeBytes": 16177230,
+    "buildBytes": 26599957,
+    "documentationBytes": 116138
+  },
+  "minifierProbe": {
+    "fullReleaseBytes": 42987452,
+    "staticInitialJsBytes": 2927119,
+    "runtimeBytes": 16177230,
+    "buildBytes": 26600374,
+    "documentationBytes": 116156
+  },
+  "minifierOptions": {
+    "ecma": 2020,
+    "compress": {
+      "passes": 3
+    }
+  },
+  "minifierApplied": false,
+  "losslessTextureProbes": [
+    {
+      "source": "public/textures/study/rough_linen/arm.jpg",
+      "sourceBytes": 1191393,
+      "losslessWebpBytes": 2000382,
+      "savedBytes": -808989,
+      "dimensions": [
+        1024,
+        1026
+      ],
+      "applied": false
+    },
+    {
+      "source": "public/textures/study/rough_linen/normal.jpg",
+      "sourceBytes": 916843,
+      "losslessWebpBytes": 1698388,
+      "savedBytes": -781545,
+      "dimensions": [
+        1024,
+        1026
+      ],
+      "applied": false
+    }
+  ],
+  "audioCandidate": {
+    "wavBytes": 2502068,
+    "compactBytes": 388326,
+    "decodedBytes": 5003520
+  },
+  "existingPcmBytes": 574080,
+  "proposedLaterThresholds": {
+    "runtime": 18874368,
+    "actualAndStaticInitialJs": 3276800,
+    "fullRelease": 46137344,
+    "targetModels": 4456448
+  },
+  "thresholdsAppliedInPhaseA": false,
+  "decision": "Do not promote ineffective minifier/texture probes. Keep current phase A game release unchanged; at first game integration synchronize the concrete 18/3.125/44 MiB capacity route with principles, build thresholds and regression tests. These are delivery byte limits, not measured FPS/loading speed improvements."
+}

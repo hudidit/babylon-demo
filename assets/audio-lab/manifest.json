@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "status": "phase-A-only; no game integration",
+  "generator": "tools/prepare-audio-lab.py",
+  "generatorSha256": "d7c8ffd4b634f800b20fb9661f2d68dd6a5883859236b95efa0576b8c593c364",
+  "decoderEncoder": "macOS afconvert / AudioToolbox, PCM16@48000, AAC 64000 bit/s",
+  "clips": [
+    {
+      "id": "door-motion",
+      "sourceId": "study/door_creak_open.wav",
+      "sourceSha256": "67ec6952f3de32852ea5a188e6118546107e4d2ca15b3fd4cab64d8993877227",
+      "license": "CC0-1.0",
+      "status": "audition-candidate",
+      "sampleRate": 48000,
+      "channels": 1,
+      "frames": 19200,
+      "duration": 0.4,
+      "loop": false,
+      "loopStart": 0,
+      "loopEnd": 0.4,
+      "decodedBytes": 76800,
+      "processing": {
+        "start": 0.11,
+        "inputDuration": 0.4,
+        "crossfadeSeconds": 0,
+        "removeDC": true,
+        "peakTarget": 0.48,
+        "mono": true,
+        "normalizeMp4Timestamps": false
+      },
+      "boundaryStep": 0.0,
+      "adjacentStepRms": 0.013814310610235673,
+      "boundaryToStepRms": 0.0,
+      "formats": [
+        {
+          "format": "wav",
+          "file": "door-motion.3da7f431e2.wav",
+          "bytes": 38444,
+          "sha256": "3da7f431e27457ab63d845f4276c4814fe57478106bc246fcbb7839bab25ba8a"
+        }
+      ]
+    },
+    {
+      "id": "door-latch",
+      "sourceId": "study/door_close.wav",
+      "sourceSha256": "a87ec43cf61afb7a4a1d42e50d8b7331951f4d0417daf607cb110e80c9dd614a",
+      "license": "CC0-1.0",
+      "status": "audition-candidate",
+      "sampleRate": 48000,
+      "channels": 1,
+      "frames": 7680,
+      "duration": 0.16,
+      "loop": false,
+      "loopStart": 0,
+      "loopEnd": 0.16,
+      "decodedBytes": 30720,
+      "processing": {
+        "start": 0.275,
+        "inputDuration": 0.16,
+        "crossfadeSeconds": 0,
+        "removeDC": true,
+        "peakTarget": 0.58,
+        "mono": true,
+        "normalizeMp4Timestamps": false
+      },
+      "boundaryStep": 0.0,
+      "adjacentStepRms": 0.023217968249413377,
+      "boundaryToStepRms": 0.0,
+      "formats": [
+        {
+          "format": "wav",
+          "file": "door-latch.14f3adf741.wav",
+          "bytes": 15404,
+          "sha256": "14f3adf741bf2065f073adf055d815046ffb823c7475e3ff7e030eb9d6e5f9d1"
+        }
+      ]
+    },
+    {
+      "id": "cloth-wipe",
+      "sourceId": "cloth",
+      "sourceSha256": "869d77969052cb9b33e6a476b9bda69bd1f08f99fea407333adb0ede40161dcd",
+      "license": "CC0-1.0",
+      "status": "audition-candidate",
+      "sampleRate": 48000,
+      "channels": 1,
+      "frames": 72000,
+      "duration": 1.5,
+      "loop": false,
+      "loopStart": 0,
+      "loopEnd": 1.5,
+      "decodedBytes": 288000,
+      "processing": {
+        "start": 3.1,
+        "inputDuration": 1.5,
+        "crossfadeSeconds": 0,
+        "removeDC": true,
+        "peakTarget": 0.48,
+        "mono": true,
+        "normalizeMp4Timestamps": false
+      },
+      "boundaryStep": 0.0,
+      "adjacentStepRms": 0.004772693973321742,
+      "boundaryToStepRms": 0.0,
+      "formats": [
+        {
+          "format": "wav",
+          "file": "cloth-wipe.3955863a95.wav",
+          "bytes": 144044,
+          "sha256": "3955863a952953c37621dc644e6fe2b524fb3dea0a88dc104e1586138da7647c"
+        }
+      ]
+    },
+    {
+      "id": "motor-loop",
+      "sourceId": "motor",
+      "sourceSha256": "4cfcc683a042a1a06d7b880c3d67ff096490e6a7ba7546f1201ece9fed41cec3",
+      "license": "CC0-1.0",
+      "status": "audition-candidate",
+      "sampleRate": 48000,
+      "channels": 1,
+      "frames": 144000,
+      "duration": 3.0,
+      "loop": true,
+      "loopStart": 0,
+      "loopEnd": 3.0,
+      "decodedBytes": 576000,
+      "processing": {
+        "start": 5,
+        "inputDuration": 3.25,
+        "crossfadeSeconds": 0.25,
+        "removeDC": true,
+        "peakTarget": 0.4,
+        "mono": true,
+        "normalizeMp4Timestamps": true
+      },
+      "boundaryStep": 0.009071221211842506,
+      "adjacentStepRms": 0.020891850706657025,
+      "boundaryToStepRms": 0.4341990252185764,
+      "formats": [
+        {
+          "format": "wav",
+          "file": "motor-loop.1bb31cb587.wav",
+          "bytes": 288044,
+          "sha256": "1bb31cb5876803e4ab7d4c7b87dba07af444f036b42cbd8b765569cb321625e5"
+        },
+        {
+          "format": "aac",
+          "file": "motor-loop.32cbe7928e.m4a",
+          "bytes": 27507,
+          "sha256": "32cbe7928e6c86ee8a5652ae2962cf1d56c2c47078c6ec3c7c6d16474d49805c"
+        }
+      ]
+    },
+    {
+      "id": "wind-loop",
+      "sourceId": "wind",
+      "sourceSha256": "a2856f794fbf77e05f8241dc4adeade7f62fa21c3c9dc49f7725b6c6218060c3",
+      "license": "CC0-1.0",
+      "status": "audition-candidate",
+      "sampleRate": 48000,
+      "channels": 1,
+      "frames": 384000,
+      "duration": 8.0,
+      "loop": true,
+      "loopStart": 0,
+      "loopEnd": 8.0,
+      "decodedBytes": 1536000,
+      "processing": {
+        "start": 12,
+        "inputDuration": 8.5,
+        "crossfadeSeconds": 0.5,
+        "removeDC": true,
+        "peakTarget": 0.35,
+        "mono": true,
+        "normalizeMp4Timestamps": true
+      },
+      "boundaryStep": 0.0015370212174069253,
+      "adjacentStepRms": 0.006792767254106429,
+      "boundaryToStepRms": 0.22627320500017875,
+      "formats": [
+        {
+          "format": "wav",
+          "file": "wind-loop.faad78e135.wav",
+          "bytes": 768044,
+          "sha256": "faad78e135ea984720465f8aa9c6e74fba5f8e91a92ed6092eeb1d7b4baadb09"
+        },
+        {
+          "format": "aac",
+          "file": "wind-loop.db6cecc4cf.m4a",
+          "bytes": 67288,
+          "sha256": "db6cecc4cf7cf76c23773c2ae1f19d540e5ba8ee1ac9f57f88362645926d52f1"
+        }
+      ]
+    },
+    {
+      "id": "rain-loop",
+      "sourceId": "rain",
+      "sourceSha256": "da5f63758a4d74e10ab9dd1b0bed62aa4c06fd960af6a7cdb83266354d75204f",
+      "license": "CC0-1.0",
+      "status": "audition-candidate",
+      "sampleRate": 48000,
+      "channels": 1,
+      "frames": 384000,
+      "duration": 8.0,
+      "loop": true,
+      "loopStart": 0,
+      "loopEnd": 8.0,
+      "decodedBytes": 1536000,
+      "processing": {
+        "start": 4,
+        "inputDuration": 8.5,
+        "crossfadeSeconds": 0.5,
+        "removeDC": true,
+        "peakTarget": 0.38,
+        "mono": true,
+        "normalizeMp4Timestamps": true
+      },
+      "boundaryStep": 0.006240220986029998,
+      "adjacentStepRms": 0.022604354548480247,
+      "boundaryToStepRms": 0.2760627812949229,
+      "formats": [
+        {
+          "format": "wav",
+          "file": "rain-loop.de211b2b31.wav",
+          "bytes": 768044,
+          "sha256": "de211b2b3138f57242b7302cf4777d5e7dc3396880d01436df6dd59e38c36042"
+        },
+        {
+          "format": "aac",
+          "file": "rain-loop.8cc95fb4ab.m4a",
+          "bytes": 69263,
+          "sha256": "8cc95fb4ab982f52dc31b3bdc1920ea1bb527fb00024e471a1b69d9bda7e6208"
+        }
+      ]
+    },
+    {
+      "id": "sea-loop",
+      "sourceId": "sea",
+      "sourceSha256": "afa112a66c4cafe06ef76d5e2d4d00a701d4520c58eef63b862afa771991d77a",
+      "license": "CC0-1.0",
+      "status": "audition-candidate",
+      "sampleRate": 48000,
+      "channels": 2,
+      "frames": 120000,
+      "duration": 2.5,
+      "loop": true,
+      "loopStart": 0,
+      "loopEnd": 2.5,
+      "decodedBytes": 960000,
+      "processing": {
+        "start": 0.05,
+        "inputDuration": 2.8,
+        "crossfadeSeconds": 0.3,
+        "removeDC": true,
+        "peakTarget": 0.4,
+        "mono": false,
+        "normalizeMp4Timestamps": true
+      },
+      "boundaryStep": 0.013283857700423111,
+      "adjacentStepRms": 0.010035354845381126,
+      "boundaryToStepRms": 1.3237058285524543,
+      "formats": [
+        {
+          "format": "wav",
+          "file": "sea-loop.38c4174a85.wav",
+          "bytes": 480044,
+          "sha256": "38c4174a85c133549dea9c3f9728b05c53ed747a63421234c3cb2c023e0b24d0"
+        },
+        {
+          "format": "aac",
+          "file": "sea-loop.189369afb7.m4a",
+          "bytes": 26376,
+          "sha256": "189369afb761856c86c3b2183b6300b1fd2369ed080b05e33696861aee60f420"
+        }
+      ]
+    }
+  ],
+  "decodedBytes": 5003520,
+  "wavBytes": 2502068,
+  "compactBytes": 388326
+}

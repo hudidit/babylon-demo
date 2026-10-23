@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "audio:lab": "node tools/audio-lab.cjs --serve",
     "test": "node --test tests/*.test.cjs",
     "build": "webpack",
     "build:production": "webpack --mode production && node tools/verify-study-release.cjs dist",

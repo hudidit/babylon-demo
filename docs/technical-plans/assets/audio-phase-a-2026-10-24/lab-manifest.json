@@ -1,0 +1,517 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Phase A isolated production lab; not game dist",
+  "files": [
+    {
+      "path": "audio/study/door-latch-1.a220e2fe5d.wav",
+      "bytes": 15404,
+      "sha256": "a220e2fe5d9244a022c4125c2eac6af200238a2ce7a5451ac098b5bdb7d1178b"
+    },
+    {
+      "path": "audio/study/door-latch-2.fb255ede74.wav",
+      "bytes": 16364,
+      "sha256": "fb255ede7497c01e1d33d9e5ad961568dbf2711cb53187d6ee0f299c4a9c2f2c"
+    },
+    {
+      "path": "audio/study/door-move-1.f0162ae1b8.wav",
+      "bytes": 38444,
+      "sha256": "f0162ae1b8d7198f117e468e914e58a5ce01fc8070c7d0baab231f4b653fb66c"
+    },
+    {
+      "path": "audio/study/door-move-2.9dea4bdbfd.wav",
+      "bytes": 55724,
+      "sha256": "9dea4bdbfd75ae721d9b54d198f555a80ff47508d142f721cd726dd673a495ec"
+    },
+    {
+      "path": "audio/study/drawer-slide-1.8353e0a53c.wav",
+      "bytes": 30764,
+      "sha256": "8353e0a53c67b934acd5fabb307a71b5d67a04d0398e88e36e875c85b24c88a7"
+    },
+    {
+      "path": "audio/study/drawer-slide-2.71ff63e71c.wav",
+      "bytes": 28844,
+      "sha256": "71ff63e71c9b9d896d5cb3fa28d2c31be6546a7e5967b59ab90d42e43f074c47"
+    },
+    {
+      "path": "audio/study/drawer-stop-1.6840b8eb30.wav",
+      "bytes": 11564,
+      "sha256": "6840b8eb3065c6183495d8a216ab53a3d00b6c5d469ff5689d84d8d0ef0f2c2b"
+    },
+    {
+      "path": "audio/study/drawer-stop-2.b34d827382.wav",
+      "bytes": 15404,
+      "sha256": "b34d82738205a0bcbdfe644faaa558a7e892ee2f8d51237074c842b2229bcd83"
+    },
+    {
+      "path": "audio/study/paper-1.ce7576efe6.wav",
+      "bytes": 19244,
+      "sha256": "ce7576efe6003d2b9fb4fa190cc58318493c5754524bc71199cf56e62836e43e"
+    },
+    {
+      "path": "audio/study/paper-2.862694da2b.wav",
+      "bytes": 27884,
+      "sha256": "862694da2b6b945b2e8e08330cbbb0f9bb72cb5651542b2060fa53a4ccdf1b81"
+    },
+    {
+      "path": "audio/study/switch-1.702a81fab4.wav",
+      "bytes": 11564,
+      "sha256": "702a81fab47cd408b8632eb6a5750039da011d13eb63a1f21239f93db7778fad"
+    },
+    {
+      "path": "audio/study/switch-2.927c10f6e3.wav",
+      "bytes": 16364,
+      "sha256": "927c10f6e34488ac763cccb68ff826d07edf25545fd720000447b675c26d4328"
+    },
+    {
+      "path": "baseline-source.json",
+      "bytes": 9699,
+      "sha256": "ff66d9847a2efa52d61e1ba429f0f2d8e3b4af5f00b03d70e8df6207ae78da68"
+    },
+    {
+      "path": "candidates.json",
+      "bytes": 8246,
+      "sha256": "eb80c4d3c0a685f7b51e1dff5b5b8982bfae1c31e1cfe900abc5e473d9859444"
+    },
+    {
+      "path": "candidates/cloth-wipe.3955863a95.wav",
+      "bytes": 144044,
+      "sha256": "3955863a952953c37621dc644e6fe2b524fb3dea0a88dc104e1586138da7647c"
+    },
+    {
+      "path": "candidates/door-latch.14f3adf741.wav",
+      "bytes": 15404,
+      "sha256": "14f3adf741bf2065f073adf055d815046ffb823c7475e3ff7e030eb9d6e5f9d1"
+    },
+    {
+      "path": "candidates/door-motion.3da7f431e2.wav",
+      "bytes": 38444,
+      "sha256": "3da7f431e27457ab63d845f4276c4814fe57478106bc246fcbb7839bab25ba8a"
+    },
+    {
+      "path": "candidates/motor-loop.1bb31cb587.wav",
+      "bytes": 288044,
+      "sha256": "1bb31cb5876803e4ab7d4c7b87dba07af444f036b42cbd8b765569cb321625e5"
+    },
+    {
+      "path": "candidates/motor-loop.32cbe7928e.m4a",
+      "bytes": 27507,
+      "sha256": "32cbe7928e6c86ee8a5652ae2962cf1d56c2c47078c6ec3c7c6d16474d49805c"
+    },
+    {
+      "path": "candidates/rain-loop.8cc95fb4ab.m4a",
+      "bytes": 69263,
+      "sha256": "8cc95fb4ab982f52dc31b3bdc1920ea1bb527fb00024e471a1b69d9bda7e6208"
+    },
+    {
+      "path": "candidates/rain-loop.de211b2b31.wav",
+      "bytes": 768044,
+      "sha256": "de211b2b3138f57242b7302cf4777d5e7dc3396880d01436df6dd59e38c36042"
+    },
+    {
+      "path": "candidates/sea-loop.189369afb7.m4a",
+      "bytes": 26376,
+      "sha256": "189369afb761856c86c3b2183b6300b1fd2369ed080b05e33696861aee60f420"
+    },
+    {
+      "path": "candidates/sea-loop.38c4174a85.wav",
+      "bytes": 480044,
+      "sha256": "38c4174a85c133549dea9c3f9728b05c53ed747a63421234c3cb2c023e0b24d0"
+    },
+    {
+      "path": "candidates/wind-loop.db6cecc4cf.m4a",
+      "bytes": 67288,
+      "sha256": "db6cecc4cf7cf76c23773c2ae1f19d540e5ba8ee1ac9f57f88362645926d52f1"
+    },
+    {
+      "path": "candidates/wind-loop.faad78e135.wav",
+      "bytes": 768044,
+      "sha256": "faad78e135ea984720465f8aa9c6e74fba5f8e91a92ed6092eeb1d7b4baadb09"
+    },
+    {
+      "path": "index.html",
+      "bytes": 4141,
+      "sha256": "190c80317e8d92f56d3018a722f8083e873108592955526ee0ef507b0e9b042a"
+    },
+    {
+      "path": "js/135.js",
+      "bytes": 1051,
+      "sha256": "12e498fde4f8d1025075843625a5e625523ddda73747af6239092ccb44c933a3"
+    },
+    {
+      "path": "js/153.js",
+      "bytes": 96063,
+      "sha256": "32665ff8fe88b613b8a965a699502b2956d9e7dd72f411fc8c5b6aa6da6721bc"
+    },
+    {
+      "path": "js/180.js",
+      "bytes": 14069,
+      "sha256": "64f5c6722441a4f4db8b9d5392045bf5856131b864bb513dcee07c223a951a16"
+    },
+    {
+      "path": "js/405.js",
+      "bytes": 2455,
+      "sha256": "fa22e353f416bc6778f8037288626e6405d3da60ede1139542d228f7866c2116"
+    },
+    {
+      "path": "js/472.js",
+      "bytes": 14938,
+      "sha256": "4291f64fe873e982e21c16a87252d624d3a705bc812445a2217241be74f56a03"
+    },
+    {
+      "path": "js/508.js",
+      "bytes": 3919,
+      "sha256": "c3d7f4c8401075293a55eee988ce13d41a72b56b89cd7ff702159dc464714b0d"
+    },
+    {
+      "path": "js/52.js",
+      "bytes": 34466,
+      "sha256": "93cd15f99291b8f176edb27b5d00a6e26d2e43b4f59dffa6f50f8bb527e262f6"
+    },
+    {
+      "path": "js/615.js",
+      "bytes": 9030,
+      "sha256": "904a6e71cde97a23f8f1c047e52fce59f3aa2c686e1c1e3bcabc828f4420ef5a"
+    },
+    {
+      "path": "js/main.js",
+      "bytes": 9346,
+      "sha256": "742c78982316b5786fedd5ad3755af38ce11a0c812e196bd9786d76549269c20"
+    },
+    {
+      "path": "licenses/babylonjs-license.md",
+      "bytes": 9226,
+      "sha256": "9362ea9ea17cb221a20cbbd63f404710834cc273d2a9a7b60314fd68ab702cd6"
+    },
+    {
+      "path": "licenses/babylonjs-notice.md",
+      "bytes": 793,
+      "sha256": "7f85d099ce3c6e1900a45ee8d5b8fa405e760c746af687b3ee2081416e48f183"
+    },
+    {
+      "path": "sources.json",
+      "bytes": 4119,
+      "sha256": "0e05ebc27bebd522b73458b2064328b45a1514b1c8b762003d1a64c354a5d55c"
+    }
+  ],
+  "bytesExcludingManifest": 3201631,
+  "jsBytes": 185337,
+  "modules": [
+    {
+      "path": "src/examples/RoomAudioCatalog.ts",
+      "bytes": 2413
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/webAudio/webAudioMainOut.js",
+      "bytes": 1582
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/webAudio/webAudioUnmuteUI.js",
+      "bytes": 3359
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/webAudio/webAudioSoundSource.js",
+      "bytes": 5599
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/observable.js",
+      "bytes": 76
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/audioEngineV2.js",
+      "bytes": 10914
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/webAudio/subProperties/spatialWebAudioListener.js",
+      "bytes": 7246
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subProperties/abstractSpatialAudioListener.js",
+      "bytes": 937
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/logger.js",
+      "bytes": 4592
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/tools.pure.js",
+      "bytes": 66029
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/audioUtils.js",
+      "bytes": 4523
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/webRequest.js",
+      "bytes": 10478
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/mainAudioOut.js",
+      "bytes": 468
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/abstractSoundSource.js",
+      "bytes": 2865
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/streamingSound.js",
+      "bytes": 4673
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/streamingSoundInstance.js",
+      "bytes": 1021
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subProperties/abstractSpatialAudio.js",
+      "bytes": 1748
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subProperties/stereoAudio.js",
+      "bytes": 648
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/staticSound.js",
+      "bytes": 5094
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/staticSoundInstance.js",
+      "bytes": 202
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/staticSoundBuffer.js",
+      "bytes": 700
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/webAudio/components/webAudioParameterComponent.js",
+      "bytes": 2775
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/engineStore.js",
+      "bytes": 1156
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/mainAudioBus.js",
+      "bytes": 673
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/audioBus.js",
+      "bytes": 2408
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/observable.pure.js",
+      "bytes": 14407
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subProperties/spatialAudioListener.js",
+      "bytes": 2567
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/webAudio/components/spatialWebAudioUpdaterComponent.js",
+      "bytes": 1298
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/domManagement.js",
+      "bytes": 1753
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/deepCopier.js",
+      "bytes": 4126
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/precisionDate.js",
+      "bytes": 501
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/devTools.js",
+      "bytes": 4192
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/fileTools.pure.js",
+      "bytes": 29980
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/timingTools.js",
+      "bytes": 2084
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/instantiationTools.js",
+      "bytes": 1405
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/guid.js",
+      "bytes": 1211
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/tools.functions.js",
+      "bytes": 2081
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/abstractAudioNode.js",
+      "bytes": 4942
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/abstractSound.js",
+      "bytes": 5809
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/abstractSoundInstance.js",
+      "bytes": 1425
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subProperties/spatialAudio.js",
+      "bytes": 8635
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subProperties/abstractStereoAudio.js",
+      "bytes": 528
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subNodes/stereoAudioSubNode.js",
+      "bytes": 872
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/abstractAudioBus.js",
+      "bytes": 526
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subNodes/spatialAudioSubNode.js",
+      "bytes": 3704
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subNodes/volumeAudioSubNode.js",
+      "bytes": 859
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/webAudio/subNodes/spatialWebAudioSubNode.js",
+      "bytes": 9535
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/webAudio/subNodes/stereoWebAudioSubNode.js",
+      "bytes": 1816
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subNodes/abstractAudioSubGraph.js",
+      "bytes": 4504
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subNodes/audioAnalyzerSubNode.js",
+      "bytes": 1144
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subProperties/abstractAudioAnalyzer.js",
+      "bytes": 1646
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/webAudio/subNodes/volumeWebAudioSubNode.js",
+      "bytes": 1947
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/webAudio/subNodes/webAudioAnalyzerSubNode.js",
+      "bytes": 3494
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Maths/math.constants.js",
+      "bytes": 863
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/arrayTools.js",
+      "bytes": 4186
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/performanceConfigurator.js",
+      "bytes": 1424
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Maths/math.scalar.functions.js",
+      "bytes": 11117
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/typeStore.js",
+      "bytes": 590
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/filesInputStore.js",
+      "bytes": 238
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/retryStrategy.js",
+      "bytes": 760
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/error.js",
+      "bytes": 2475
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/stringTools.js",
+      "bytes": 4133
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/abstractEngine.functions.js",
+      "bytes": 6266
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subProperties/audioAnalyzer.js",
+      "bytes": 4457
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/components/spatialAudioAttacherComponent.js",
+      "bytes": 4056
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Maths/ThinMaths/thinMath.matrix.functions.js",
+      "bytes": 9584
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Buffers/bufferUtils.js",
+      "bytes": 16846
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/Processors/shaderProcessor.js",
+      "bytes": 18186
+    },
+    {
+      "path": "node_modules/@babylonjs/core/AudioV2/abstractAudio/subNodes/abstractAudioSubNode.js",
+      "bytes": 1016
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Misc/halfFloat.js",
+      "bytes": 4674
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/Processors/shaderCodeNode.js",
+      "bytes": 4976
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/Processors/shaderCodeCursor.js",
+      "bytes": 2189
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/Processors/shaderCodeConditionNode.js",
+      "bytes": 543
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/Processors/shaderCodeTestNode.js",
+      "bytes": 269
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/Processors/Expressions/shaderDefineExpression.js",
+      "bytes": 5932
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/Processors/Expressions/Operators/shaderDefineIsDefinedOperator.js",
+      "bytes": 535
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/Processors/Expressions/Operators/shaderDefineOrOperator.js",
+      "bytes": 341
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/Processors/Expressions/Operators/shaderDefineArithmeticOperator.js",
+      "bytes": 1700
+    },
+    {
+      "path": "node_modules/@babylonjs/core/Engines/Processors/Expressions/Operators/shaderDefineAndOperator.js",
+      "bytes": 343
+    }
+  ],
+  "manifestAccounting": "Verify adds this manifest actual file size; all async chunks included"
+}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>海岛声音试听 · 阶段 A</title>
+<link rel="icon" href="data:,">
+<style>
+  :root{font-family:system-ui,sans-serif;color:#1f302d;background:#eef1eb;font-size:16px}body{max-width:900px;margin:36px auto;padding:0 22px 60px}h1{font-size:30px;font-weight:650}h2{font-size:20px;margin:0 0 16px}p{line-height:1.65;color:#52645c}section{padding:24px;margin:18px 0;background:#fff;border:1px solid #d5ded4;border-radius:8px}button,select{font:inherit;padding:10px 14px;border:1px solid #9aafa2;border-radius:5px;background:#f6f8f3;color:#183f31;cursor:pointer}button:hover{background:#e9f1e5}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #277651;outline-offset:3px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.control{display:block;margin:18px 0}input[type=range]{width:min(320px,65%);vertical-align:middle}output{font-variant-numeric:tabular-nums;margin-left:8px}#baseline{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}small{color:#607269}a{color:#236541}#status{min-height:26px}#metrics{white-space:pre-wrap;font-size:13px;color:#52645c}@media(max-width:480px){body{margin:22px auto;padding:0 14px 40px}section{padding:18px}h1{font-size:25px}}
+</style>
+<h1>海岛声音试听</h1>
+<p>阶段 A 的声音候选。先准备试听，再分别比较动作、电机和天气。建议从低音量开始，分别用耳机和扬声器听一遍。</p>
+<div class="row"><button id="prepare">准备试听</button><button id="stop" disabled>停止全部</button></div>
+<p id="status" role="status" aria-live="polite">声音尚未加载。</p>
+<label class="control">总音量 <input id="volume" type="range" min="0" max="100" value="35"><output id="volume-value">35%</output></label>
+<section><h2>已有声音</h2><p>逐条复核当前游戏的十二个短音效。</p><div id="baseline"></div></section>
+<section><h2>门与擦拭</h2><div class="row"><button data-clip="door-motion" disabled>试听门轴</button><button data-clip="door-latch" disabled>试听门扣</button><button id="wipe" disabled>开始擦拭 · 1.5 秒</button><button id="cancel-wipe" disabled>中断擦拭</button></div><p>中断只停止摩擦。擦拭结束的声音不代表复查通过。</p></section>
+<section><h2>电驴电机</h2><div class="row"><button id="motor" disabled>启动电机小样</button><button id="motor-stop" disabled>停下电机</button></div><label class="control">速度 <input id="speed" type="range" min="0" max="40" value="0"><output id="speed-value">0 km/h</output></label><p>比较连续变速时的电机音高和强弱。这个候选来自通用电机录音，是否适合电驴仍需试听。</p></section>
+<section><h2>海风与雨</h2><div class="row"><button id="weather" disabled>播放环境小样</button><label>听音位置 <select id="shelter"><option value="outside">室外</option><option value="inside">室内</option></select></label></div><label class="control">雨量 <input id="rain" type="range" min="0" max="100" value="65"><output id="rain-value">65%</output></label><p>比较风、雨、海浪的层次。室内小样先验证音量过渡，正式房间判定与滤波留到后续阶段。</p></section>
+<section><h2>循环格式比较</h2><div class="row"><label>声音 <select id="compare-clip"><option value="wind-loop">风</option><option value="rain-loop">雨</option><option value="motor-loop">电机</option><option value="sea-loop">海浪</option></select></label><button id="compare-wav" disabled>循环播放 WAV</button><button id="compare-aac" disabled>循环播放 AAC</button></div><p>重点听接缝、短暂空白、刺耳声和每圈重复的痕迹。格式按钮会停止上一段比较。</p></section>
+<section><h2>素材与验证范围</h2><p>新增声音均为 CC0 候选。擦拭、电机使用公开 MP3 预览，尚未取得无损原件；全部候选尚未选定为正式素材。</p><p><a href="sources.json">来源与许可</a> · <a href="candidates.json">候选制作记录</a> · <a href="baseline-source.json">已有声音来源</a></p><pre id="metrics">准备后显示解码数据量。</pre></section>
+</html>

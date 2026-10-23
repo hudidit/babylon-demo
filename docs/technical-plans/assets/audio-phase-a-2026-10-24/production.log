@@ -1,0 +1,88 @@
+
+> babylon-learning@0.0.1 build:production
+> webpack --mode production && node tools/verify-study-release.cjs dist
+
+assets by path js/*.js 25.2 MiB 446 assets
+assets by path textures/ 6.11 MiB 25 assets
+assets by path audio/study/ 291 KiB 14 assets
+assets by path models/ 7.5 MiB 5 assets
+assets by path environment/ 1.6 MiB
+  asset environment/study-interior.hdr 1.57 MiB [emitted] [big]
+  + 2 assets
+assets by path *.json 213 KiB
+  asset bundle-analysis.json 122 KiB [emitted]
+  asset release-manifest.json 91.5 KiB [emitted]
+assets by path licenses/*.md 9.78 KiB
+  asset licenses/babylonjs-Apache-2.0.md 9.01 KiB [emitted]
+  asset licenses/babylonjs-NOTICE.md 793 bytes [emitted]
+asset index.html 69.4 KiB [emitted] [minimized]
+asset STUDY_ASSET_SOURCES.md 27.9 KiB [emitted]
+Entrypoint main [big] 2.79 MiB = js/9691.js 2.31 MiB js/main.js 495 KiB
+orphan modules 27.4 MiB [orphan] 3515 modules
+runtime modules 9.03 KiB 12 modules
+cacheable modules 49.5 MiB 1855 modules
+
+WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets:
+  js/main.js (495 KiB)
+    Largest modules: ./src/app.ts + 92 modules (862 KiB), ./src/examples/LighthouseWeatherSession.ts (3.8 KiB), webpack/runtime/jsonp chunk loading (3.08 KiB)
+  js/5081.js (3.17 MiB)
+    Largest modules: ./node_modules/@babylonjs/inspector/lib/index-CZ1-Y-Rv.js + 443 modules (6.61 MiB), ./node_modules/@fluentui/react-badge/lib/components/PresenceBadge/PresenceBadge.js + 4 modules (771 KiB), ./node_modules/react-dom/cjs/react-dom-client.production.js (611 KiB)
+  js/2083.js (1.79 MiB)
+    Largest modules: ./node_modules/@babylonjs/node-render-graph-editor/dist/babylon.nodeRenderGraphEditor.js (1.8 MiB)
+  js/8083.js (1.88 MiB)
+    Largest modules: ./node_modules/@babylonjs/node-editor/dist/babylon.nodeEditor.js (1.9 MiB)
+  js/1350.js (5.36 MiB)
+    Largest modules: ./node_modules/@babylonjs/node-geometry-editor/dist/babylon.nodeGeometryEditor.js (5.27 MiB), ./node_modules/@babylonjs/serializers/index.js + 82 modules (341 KiB)
+  js/5054.js (1.79 MiB)
+    Largest modules: ./node_modules/@babylonjs/node-particle-editor/dist/babylon.nodeParticleEditor.js (1.8 MiB)
+  js/5001.js (1.75 MiB)
+    Largest modules: ./node_modules/@babylonjs/gui-editor/dist/babylon.guiEditor.js (1.76 MiB)
+  js/2380.js (436 KiB)
+    Largest modules: ./node_modules/@babylonjs/core/ShadersWGSL/ShadersInclude/shadowsFragmentFunctions.js (28 KiB), ./node_modules/@babylonjs/core/ShadersWGSL/ShadersInclude/lightFragment.js (21.8 KiB), ./node_modules/@babylonjs/core/ShadersWGSL/ShadersInclude/openpbrEnvironmentLighting.js (18.1 KiB)
+  js/643.js (2.87 MiB)
+    Largest modules: ./node_modules/@babylonjs/core/index.js + 1295 modules (6.01 MiB), ./node_modules/@babylonjs/core/ShadersWGSL/openpbr.vertex.js (19.2 KiB), ./node_modules/@babylonjs/core/ShadersWGSL/default.fragment.js (19.1 KiB)
+  js/7011.js (626 KiB)
+    Largest modules: ./node_modules/@babylonjs/gui/index.js + 130 modules (1.36 MiB), ./node_modules/@babylonjs/gui/3D/materials/mrdl/shaders/mrdlSliderThumb.fragment.js (15.7 KiB), ./node_modules/@babylonjs/gui/3D/materials/mrdl/shaders/mrdlSliderBar.fragment.js (15.5 KiB)
+  js/9691.js (2.31 MiB)
+    Largest modules: ./node_modules/@babylonjs/core/Maths/math.vector.pure.js (301 KiB), ./node_modules/@babylonjs/core/scene.pure.js + 2 modules (285 KiB), ./node_modules/@babylonjs/core/Meshes/mesh.pure.js (236 KiB)
+  environment/study-interior.hdr (1.57 MiB)
+  textures/coastal/rock-color.jpg (663 KiB)
+  textures/coastal/rock-normal.jpg (284 KiB)
+  textures/coastal/pine-branches.png (259 KiB)
+  models/gothic_commode.glb (1.48 MiB)
+  models/wooden_bookshelf.glb (2.65 MiB)
+  models/study/modern_arm_chair_01.glb (2.57 MiB)
+  models/study/sofa_03.glb (799 KiB)
+  textures/study/wood_floor/color.jpg (717 KiB)
+  textures/study/wood_floor/normal.jpg (413 KiB)
+  textures/study/wood_floor/arm.jpg (437 KiB)
+  textures/study/painted_wall/normal.png (394 KiB)
+  textures/study/rough_linen/normal.jpg (895 KiB)
+  textures/study/rough_linen/arm.jpg (1.14 MiB)
+
+WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  main (2.79 MiB)
+      js/9691.js
+      js/main.js
+
+WARNING in webpack performance recommendations:
+The runtime is part of the initial chunk of main. It describes every other chunk, so a change anywhere in the build rewrites these assets and clients download them again.
+Set 'optimization.runtimeChunk' to emit the runtime as its own chunk.
+For more info visit https://webpack.js.org/configuration/optimization/#optimizationruntimechunk
+
+webpack 5.111.1 compiled with 3 warnings in 25429 ms
+{
+  "fileCount": 500,
+  "modelBytes": 4332840,
+  "buildBytes": 26599957,
+  "runtimeBytes": 16177230,
+  "documentationBytes": 116138,
+  "manifestBytes": 93692,
+  "initialJsBytes": 2927218,
+  "audioBytes": 287568,
+  "audioDecodedBytes": 574080,
+  "releaseBytes": 42987017
+}

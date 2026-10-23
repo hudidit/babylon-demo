@@ -1,0 +1,197 @@
+{
+  "acousticListening": false,
+  "fpsOrLoadSpeedSampling": false,
+  "errors": [],
+  "warnings": [],
+  "firstScreen": [
+    {
+      "path": "/js/main.js",
+      "bytes": 507040,
+      "sha256": "bc1dc9007d14bb21efd4ce3c8e01d29266be84a99e80cb49541149d9f82513c4"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 1710,
+      "sha256": "331f7c4154f11a002477aae53000cf718e2593f9f9d3c12212bf1e2503b3612e"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "drawer-slide-1",
+      "peak": 0.025969792157411575,
+      "playedDelta": 1
+    },
+    {
+      "id": "drawer-slide-2",
+      "peak": 0.024902623146772385,
+      "playedDelta": 1
+    },
+    {
+      "id": "drawer-stop-1",
+      "peak": 0.029999693855643272,
+      "playedDelta": 1
+    },
+    {
+      "id": "drawer-stop-2",
+      "peak": 0.0690554827451706,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-move-1",
+      "peak": 0.02389439195394516,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-move-2",
+      "peak": 0.02399810589849949,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-latch-1",
+      "peak": 0.03100070171058178,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-latch-2",
+      "peak": 0.029000213369727135,
+      "playedDelta": 1
+    },
+    {
+      "id": "switch-1",
+      "peak": 0.026000244542956352,
+      "playedDelta": 1
+    },
+    {
+      "id": "switch-2",
+      "peak": 0.026000244542956352,
+      "playedDelta": 1
+    },
+    {
+      "id": "paper-1",
+      "peak": 0.010499893687665462,
+      "playedDelta": 1
+    },
+    {
+      "id": "paper-2",
+      "peak": 0.010499893687665462,
+      "playedDelta": 1
+    }
+  ],
+  "release": {
+    "fileCount": 500,
+    "modelBytes": 4332840,
+    "buildBytes": 26599957,
+    "runtimeBytes": 16177230,
+    "documentationBytes": 116138,
+    "manifestBytes": 93692,
+    "initialJsBytes": 2927218,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42987017
+  },
+  "hosted": {
+    "prefixes": [
+      "/",
+      "/audio-lab/"
+    ],
+    "filesPerPrefix": 500
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3145708,
+  "beforeGesture": {
+    "diagnostics": {
+      "state": "ready",
+      "context": "running",
+      "preparing": false,
+      "readyFiles": 12,
+      "failedFiles": [],
+      "active": 0,
+      "decodedBytes": 574080,
+      "played": 0,
+      "dropped": 0
+    },
+    "contexts": 1
+  },
+  "mute": {
+    "peak": 0,
+    "diagnostics": {
+      "state": "muted",
+      "context": "running",
+      "preparing": false,
+      "readyFiles": 12,
+      "failedFiles": [],
+      "active": 0,
+      "decodedBytes": 574080,
+      "played": 13,
+      "dropped": 1
+    }
+  },
+  "blur": {
+    "state": "ready",
+    "context": "suspended",
+    "preparing": false,
+    "readyFiles": 12,
+    "failedFiles": [],
+    "active": 0,
+    "decodedBytes": 574080,
+    "played": 13,
+    "dropped": 1
+  },
+  "cleanBeforeGesture": {
+    "contexts": 1,
+    "state": "running",
+    "outputPeak": 0,
+    "note": "Context suspension depends on browser autoplay permission; absence of unsolicited output is the invariant."
+  },
+  "subpathReady": true
+}
