@@ -1,0 +1,85 @@
+{
+  "baseline": "851e55d",
+  "method": "Final production dist; Playwright keyboard events, local grounded starting poses, 60 Hz reference camera updates. Old speed uses a temporary camera parameter for comparison. No FPS, wall-clock travel or load-time measurement.",
+  "errors": [],
+  "warnings": [],
+  "firstScreenJs": [
+    {
+      "path": "/js/main.js",
+      "bytes": 506619,
+      "sha256": "4d578cad547174facc93c519068c4683f3859160e9dd850b6f3efed7ef618dfc"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    }
+  ],
+  "movement": [
+    {
+      "speed": 0.825,
+      "frames": 120,
+      "distance": 2.2953841361679252,
+      "point": {
+        "x": -1.2040000000000006,
+        "y": -0.803615863832075
+      },
+      "grounded": true
+    },
+    {
+      "speed": 1.0725,
+      "frames": 120,
+      "distance": 2.9839993770182582,
+      "point": {
+        "x": -1.2040000000000006,
+        "y": -0.11500062298174285
+      },
+      "grounded": true
+    }
+  ],
+  "collisions": [],
+  "release": {
+    "fileCount": 496,
+    "modelBytes": 4332840,
+    "buildBytes": 26600001,
+    "runtimeBytes": 15867377,
+    "documentationBytes": 95239,
+    "manifestBytes": 92893,
+    "initialJsBytes": 2926797,
+    "audioBytes": 287568,
+    "audioDecodedBytes": 574080,
+    "releaseBytes": 42655510
+  },
+  "manifestSha256": "3953e67271627d544c981b5db76be000bb1b257c5b35eb7ee9f7532a5d0a26d6",
+  "hosted": {
+    "prefixes": [
+      "/",
+      "/home/"
+    ],
+    "filesPerPrefix": 496
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3077928,
+  "custom": {
+    "speed": 2.145,
+    "saved": "2",
+    "label": "2.00×"
+  },
+  "reset": {
+    "speed": 1.0725,
+    "saved": "1",
+    "label": "1.00×"
+  },
+  "distanceRatio": 1.2999999999999805,
+  "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(result.point.x<15.5)\n\n    at /private/tmp/babylon-walk-speed-20261023/check-browser.cjs:75:174"
+}

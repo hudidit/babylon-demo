@@ -1344,8 +1344,8 @@ test("all flower stems connect to both the vase neck and their flower heads", t 
   });
 });
 
-test("first-person base speed is 50% higher without changing the settings range", () => {
-  assert.equal(MOVEMENT_SPEED.base, .825);
+test("first-person base speed is 30% higher than 0.825 without changing the settings range", () => {
+  assert.equal(MOVEMENT_SPEED.base, .825 * 1.3);
   assert.deepEqual({ min: MOVEMENT_SPEED.min, max: MOVEMENT_SPEED.max, default: MOVEMENT_SPEED.default },
     { min: .25, max: 3, default: 1 });
 });

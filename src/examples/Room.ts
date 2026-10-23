@@ -68,7 +68,7 @@ import type {LighthouseStorySession} from "./LighthouseStorySave";
 
 export type RoomView = "overview" | "coast" | "study" | "living" | "master" | "ensuite" | "bedroom" | "kitchen" | "bathroom" | "balcony" | "reading" | "desk" | "details" | "cabinet" | "first-person";
 // The user-requested 50% increase applies to the shared base; the settings multiplier remains unchanged.
-export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 0.825 };
+export const MOVEMENT_SPEED = { min: 0.25, max: 3, default: 1, base: 1.0725 };
 const WALK_HELP = "移动鼠标环顾 · WASD / 方向键移动 · 空格跳跃 · 左键交互 · ESC 退出";
 
 /** Island, lighthouse and house share the same scene and first-person walking world. */
