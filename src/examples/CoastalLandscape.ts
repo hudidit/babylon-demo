@@ -5,6 +5,7 @@ import { planToWorld } from "./HouseLayout";
 
 type LandscapeGeometry = CoastalGeometry & { colors: number[] };
 type Anchor = { x: number; y: number; first: number; kind: "shrub" | "grass" | "rock" };
+type DetailShape = { kind: "branch" | "crown" | "shrub" | "grass" | "chip"; first: number };
 type Tree = { x: number; y: number; base: number; height: number; first: number; last: number };
 const empty = (): LandscapeGeometry => ({ positions: [], indices: [], uvs: [], colors: [] });
 
@@ -32,7 +33,7 @@ export function landscapeGroundHeight(x: number, y: number): number | undefined 
 export function coastalLandscape() {
   let seed = 231023;
   const random = () => { seed = Math.imul(seed, 1664525) + 1013904223 | 0; return (seed >>> 0) / 4294967296; };
-  const groups: { name: string; plants: LandscapeGeometry; ground?: LandscapeGeometry; rocks?: LandscapeGeometry; phase?: 2; anchors?: Anchor[]; trees: Tree[] }[] = [];
+  const groups: { name: string; plants: LandscapeGeometry; ground?: LandscapeGeometry; rocks?: LandscapeGeometry; phase?: 2; anchors?: Anchor[]; trees: Tree[]; details?: { plants: number; rocks: number; shapes: DetailShape[] } }[] = [];
   const hillTriangles: CoastalPoint[][] = [];
   const supported = (x: number, y: number) => {
     const height = landscapeGroundHeight(x, y);
@@ -46,8 +47,8 @@ export function coastalLandscape() {
   };
   // Closed ring profiles give rounded, uneven branch masses instead of leaf cards.
   const crown = (g: LandscapeGeometry, x: number, y: number, z: number,
-    radius: number, depth: number, height: number, phase: number, color: Color3) => {
-    const first = g.positions.length / 3, sides = 7;
+    radius: number, depth: number, height: number, phase: number, color: Color3, sides = 7) => {
+    const first = g.positions.length / 3;
     vertex(g, x, y, z + height, color);
     for (let row = 1; row <= 2; row++) for (let col = 0; col < sides; col++) {
       const theta = row / 3 * Math.PI, phi = col / sides * Math.PI * 2;
@@ -195,6 +196,81 @@ export function coastalLandscape() {
   for (const [x, y] of [[-8, 25], [-7, 29], [-8, 34], [-7, 38]]) {
     rock(cape, x, y, 1 + random() * .7, .55 + random() * .65);
     for (let n = 0; n < 3; n++) shrub(cape, x + (random() - .5) * 3, y + (random() - .5) * 2, .45 + random() * .4);
+  }
+  // Limited near-view detail shares the existing batches; untouched prefixes remain reproducible.
+  seed = 231025;
+  const detail = (group: typeof groups[number]) => group.details ??= {
+    plants: group.plants.positions.length / 3, rocks: (group.rocks?.positions.length ?? 0) / 3, shapes: []
+  };
+  const branch = (g: LandscapeGeometry, x: number, y: number, z: number,
+    angle: number, length: number, rise: number, radius: number) => {
+    const first = g.positions.length / 3, color = Color3.FromHexString("#706a57").toLinearSpace();
+    const c = Math.cos(angle), s = Math.sin(angle), norm = Math.hypot(length, rise);
+    for (let ring = 0; ring < 2; ring++) for (let n = 0; n < 6; n++) {
+      const a = n / 6 * Math.PI * 2, u = Math.cos(a) * radius * (1 - ring * .65), v = Math.sin(a) * radius * (1 - ring * .65);
+      vertex(g, x + c * length * ring - s * u - c * rise / norm * v,
+        y + s * length * ring + c * u - s * rise / norm * v, z + rise * ring + length / norm * v, color.scale(.8 + ring * .2));
+    }
+    const start = vertex(g, x, y, z, color.scale(.8)), end = vertex(g, x + c * length, y + s * length, z + rise, color);
+    for (let n = 0; n < 6; n++) {
+      const a = first + n, b = first + (n + 1) % 6;
+      g.indices.push(a, b, a + 6, b, b + 6, a + 6, start, b, a, end, a + 6, b + 6);
+    }
+  };
+  for (const group of groups.filter(g => (g.name.startsWith("grove-") && g.trees.length > 0) || g.name.startsWith("tower-grove-"))) {
+    const d = detail(group), g = group.plants;
+    // Positive plan Y faces the existing walk route; select two front trees per grove.
+    for (const tree of [...group.trees].sort((a, b) => b.y - a.y).slice(0, 2)) {
+      const { x, y, base, height: h } = tree;
+      const color = Color3.FromArray(g.colors, (tree.first + 14) * 4);
+      for (let n = 0; n < 2; n++) {
+        const angle = (n ? 2.6 : -.5) + (random() - .5) * .3, z = base + h * (.39 + n * .08);
+        const rootX = x + (z - base + .22) * .08, length = h * .29, rise = h * .18;
+        const px = rootX + Math.cos(angle) * length, py = y + Math.sin(angle) * length;
+        d.shapes.push({ kind: "branch", first: g.positions.length / 3 });
+        branch(g, rootX, y, z, angle, length, rise, h * .018);
+        d.shapes.push({ kind: "crown", first: g.positions.length / 3 });
+        crown(g, px, py, z + rise + h * .02, h * .17, h * .13, h * .13, random() * 6, color.scale(.88), 8);
+      }
+      for (let n = 0; n < 2; n++) {
+        const angle = n * Math.PI + .15 + random() * .2;
+        d.shapes.push({ kind: "crown", first: g.positions.length / 3 });
+        crown(g, x + h * .08 + Math.cos(angle) * h * .38, y + Math.sin(angle) * h * .28,
+          base + h * .8, h * .16, h * .14, h * .14, random() * 6, color.scale(.95 + random() * .1), 8);
+      }
+    }
+  }
+  for (const group of [edge, cape]) {
+    const d = detail(group), g = group.plants, shrubs = group.anchors!.filter(a => a.kind === "shrub");
+    const chosen = group === edge ? [0, 6, 12, 18].reduce((chosen, start) => chosen.concat(shrubs.slice(start, start + 6).sort((a, b) => b.y - a.y).slice(0, 2)), [] as Anchor[])
+      : shrubs.filter((_, i) => i % 3 === 0);
+    for (const a of chosen) for (let n = 0; n < 2; n++) {
+      const h = .35 + random() * .2, x = a.x + (n ? -.65 : .65), y = a.y + .35;
+      d.shapes.push({ kind: "shrub", first: g.positions.length / 3 });
+      crown(g, x, y, supported(x, y) + h * .4, h * 1.2, h, h * .6, random() * 6,
+        Color3.FromHexString("#7e875c").toLinearSpace().scale(.8 + random() * .25));
+    }
+  }
+  for (const group of groups.filter(g => g.name.startsWith("meadow-") || g === cape)) {
+    const d = detail(group), g = group.plants, stones = group.rocks!, rocks = group.anchors!.filter(a => a.kind === "rock");
+    for (let n = 0; n < (group === cape ? 4 : 8); n++) {
+      const a = rocks[n % rocks.length];
+      const front = Math.max(...Array.from({ length: 8 }, (_, i) => stones.positions[(a.first + i) * 3 + 2] / 5 + 5.4));
+      const x = a.x + (random() - .5) * 1.8, y = front + .35 + random() * .35, first = g.positions.length / 3;
+      grass(group, x + .5, y + .2);
+      for (let i = first; i < g.positions.length / 3; i += 4) {
+        d.shapes.push({ kind: "grass", first: i });
+        const cx = (g.positions[i * 3] + g.positions[(i + 1) * 3]) / 2, cy = g.positions[i * 3 + 2], base = g.positions[i * 3 + 1];
+        for (let j = i; j < i + 4; j++) {
+          g.positions[j * 3] = cx + (g.positions[j * 3] - cx) * .4;
+          g.positions[j * 3 + 2] = cy + (g.positions[j * 3 + 2] - cy) * .4;
+          g.positions[j * 3 + 1] = base + (g.positions[j * 3 + 1] - base) * .6;
+          for (let k = 0; k < 3; k++) g.colors[j * 4 + k] *= .8;
+        }
+      }
+      d.shapes.push({ kind: "chip", first: stones.positions.length / 3 });
+      crown(stones, x, y, supported(x, y) + .07, .3 + random() * .25, .25, .16, random() * 6, Color3.White());
+    }
   }
   return groups;
 }

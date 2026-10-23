@@ -106,9 +106,13 @@ export class RoomExterior {
       if (group.ground) make(`coastal-landscape-${group.name}-ground`, group.ground, "distant", s.farGround);
       const plants = make(`coastal-landscape-${group.name}`, group.plants, "distant", forest);
       if (group.phase) plants.metadata.landscapePhase = group.phase;
+      plants.metadata.landscapeDetailVertices = group.details ? plants.getTotalVertices() - group.details.plants : 0;
+      plants.metadata.landscapeDetailTriangles = group.details ? group.plants.indices.filter(i => i >= group.details!.plants).length / 3 : 0;
       if (group.rocks) {
         const rocks = make(`coastal-landscape-${group.name}-rocks`, group.rocks, "distant", s.farRock);
         rocks.metadata.landscapePhase = group.phase;
+        rocks.metadata.landscapeDetailVertices = group.details ? rocks.getTotalVertices() - group.details.rocks : 0;
+        rocks.metadata.landscapeDetailTriangles = group.details ? group.rocks.indices.filter(i => i >= group.details!.rocks).length / 3 : 0;
       }
     }
     this.houseRoof = createCoastalLandmark(scene, s, retain);

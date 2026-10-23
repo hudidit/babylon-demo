@@ -117,7 +117,7 @@ test('new geometry has its own budget, preserves old exterior budget and dispose
   for(let i=0;i<normals.length;i+=3)assert.ok(normals[i+1]>.8&&normals[i+2]>.4,'the visible PV front faces up and world +Z (south), not its metal underside');
   assert.ok(equipment.meshes.length<=24);assert.ok(equipment.meshes.reduce((n,m)=>n+m.getTotalVertices(),0)<=20000);
   assert.equal(new Set(equipment.meshes.map(m=>m.material).filter(m=>/solar-cells|equipment-print|backup-white-flash/.test(m.name))).size,3);
-  assert.ok(exterior.meshes.filter(m=>!m.metadata.lighthouseEquipment&&!m.metadata.lighthouseInteriorStructure&&!m.metadata.lighthouseDetail && m.metadata.landscapePhase !== 2).reduce((n,m)=>n+m.getTotalVertices(),0)<160000);
+  assert.ok(exterior.meshes.filter(m=>!m.metadata.lighthouseEquipment&&!m.metadata.lighthouseInteriorStructure&&!m.metadata.lighthouseDetail && m.metadata.landscapePhase !== 2).reduce((n,m)=>n+m.getTotalVertices()-(m.metadata.landscapeDetailVertices||0),0)<160000);
   assert.equal(scene.lights.length,2);assert.equal(scene.cameras.length,0);
   const atlas=scene.getTextureByName('lighthouse-original-equipment-signs');assert.ok(atlas);assert.equal(!!atlas.isRenderTarget,false);
   exterior.dispose();exterior.dispose();assert.equal(scene.meshes.length,0);assert.equal(scene.materials.length,0);assert.equal(scene.lights.length,0);
