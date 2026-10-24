@@ -1,0 +1,38 @@
+{
+  "baseline": "cd57fc1",
+  "before": {
+    "fileCount": 528,
+    "modelBytes": 4332840,
+    "buildBytes": 26616608,
+    "runtimeBytes": 17072195,
+    "documentationBytes": 153896,
+    "manifestBytes": 99390,
+    "initialJsBytes": 2941890,
+    "audioBytes": 1182533,
+    "audioDecodedBytes": 14578560,
+    "releaseBytes": 43942089
+  },
+  "after": {
+    "fileCount": 567,
+    "modelBytes": 4332840,
+    "buildBytes": 26626846,
+    "runtimeBytes": 17835944,
+    "documentationBytes": 208618,
+    "manifestBytes": 107269,
+    "initialJsBytes": 2951946,
+    "audioBytes": 1946282,
+    "audioDecodedBytes": 16448640,
+    "releaseBytes": 44778677
+  },
+  "firstScreenBefore": 3160986,
+  "firstScreenAfter": 3171042,
+  "inspectorJs": [
+    "/js/4593.js",
+    "/js/9318.js",
+    "/js/2033.js",
+    "/js/1326.js",
+    "/js/5081.js",
+    "/js/7665.js"
+  ],
+  "sampling": "Raw byte capacities only; no FPS, load time, acoustic latency or process-memory benefit measured"
+}

@@ -36,7 +36,8 @@ export class LighthousePanel {
   private completionLabel = "";
   private interrupted = false;
   constructor(private readonly document: Document, close: (resume: boolean) => void, test: () => void,
-    actions: {confirm: () => void; cover: () => void; clean: () => void; solarInspect: () => void; solarTest: () => void; compare: () => void; solarClean: () => void; restorePower: () => void; save: () => void; load: () => void; clearSave: () => void; story?: () => void}) {
+    actions: {confirm: () => void; cover: () => void; clean: () => void; solarInspect: () => void; solarTest: () => void; compare: () => void; solarClean: () => void; restorePower: () => void; save: () => void; load: () => void; clearSave: () => void; story?: () => void},
+    private readonly feedback: (cue: "paper" | "ui-contact") => void = () => {}) {
     this.dialog = this.el<HTMLDialogElement>("lighthouse-panel");
     const signal = this.events.signal;
     const listen = (id: string, fn: () => void) => this.el(id).addEventListener("click", fn, {signal});
@@ -82,7 +83,7 @@ export class LighthousePanel {
     const body = this.el("lighthouse-pages"), changed = page !== this.screen;
     if (changed) {this.scroll[this.screen] = body.scrollTop; this.screen = page;}
     this.refresh(); this.applyPage();
-    if (changed) body.scrollTop = this.scroll[page];
+    if (changed) {body.scrollTop = this.scroll[page];if(this.isOpen)this.feedback(page==="records"?"paper":"ui-contact");}
     if (focus) tab.focus({preventScroll:true});
   }
   private applyPage() {
@@ -100,7 +101,9 @@ export class LighthousePanel {
     this.set("lighthouse-back-hint",this.screen === home ? "Esc 返回场景" : home === "records" ? "Esc 返回记录" : "Esc 返回设备");
   }
   private stepRecords(direction: number) {
+    const previous=this.page;
     this.page += direction; this.refresh();
+    if(this.page!==previous && this.isOpen)this.feedback("paper");
     const button = this.el<HTMLButtonElement>(direction < 0 ? "lighthouse-record-prev" : "lighthouse-record-next");
     if (button.disabled) {
       const other = this.el<HTMLButtonElement>(direction < 0 ? "lighthouse-record-next" : "lighthouse-record-prev");

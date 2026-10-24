@@ -77,9 +77,11 @@ function validateAudioResources(root) {
   assert.ok(actionBytes <= audioBudgets.actionBytes, 'Phase B audio allowance exceeded');
   const soundscape = require('./soundscape-audio-resources.cjs').validateSoundscapeAudio(root);
   encodedBytes += soundscape.encodedBytes; decodedBytes += soundscape.decodedBytes; coreBytes += soundscape.coreBytes;
+  const daily = require('./daily-audio-resources.cjs').validateDailyAudio(root);
+  encodedBytes += daily.encodedBytes; decodedBytes += daily.decodedBytes; coreBytes += daily.coreBytes;
   assert.ok(encodedBytes <= audioBudgets.encodedBytes, 'Audio encoded budget exceeded');
   assert.ok(coreBytes <= audioBudgets.coreBytes, 'Audio core budget exceeded');
   assert.ok(decodedBytes <= audioBudgets.decodedBytes, 'Audio PCM budget exceeded');
-  return { files: [...source.files, ...actions.files].map(row => row.file).concat(soundscape.files), encodedBytes, coreBytes, decodedBytes, actionBytes };
+  return { files: [...source.files, ...actions.files].map(row => row.file).concat(soundscape.files,daily.files), encodedBytes, coreBytes, decodedBytes, actionBytes };
 }
 module.exports = { validateAudioResources, audioBudgets };

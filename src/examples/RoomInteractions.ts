@@ -45,7 +45,7 @@ export class RoomInteractions {
   }[] = [];
   private readonly doors: { door: InteractiveDoor; progress: number; open: boolean; blocked: boolean; moving: boolean; openSeconds: number }[] = [];
   private readonly slidingDoors: { door: InteractiveSlidingDoor; progress: number; open: boolean; blocked: boolean; moving: boolean }[] = [];
-  private readonly curtains: { curtain: InteractiveCurtain; progress: number; closed: boolean; light: (amount: number) => void }[] = [];
+  private readonly curtains: { curtain: InteractiveCurtain; progress: number; closed: boolean; moving: boolean; light: (amount: number) => void }[] = [];
 
   constructor(private readonly scene: Scene, private readonly refreshShadows: (owners?: readonly HouseRoomId[]) => void,
     private readonly walkerPosition: () => Vector3 | undefined = () => undefined,
@@ -65,6 +65,7 @@ export class RoomInteractions {
     for (const state of this.drawers) { state.moving = false; this.sound("stop", state.drawer); }
     for (const state of this.doors) { state.moving = false; this.sound("stop", state.door); }
     for (const state of this.slidingDoors) { state.moving = false; this.sound("stop", state.door); }
+    for (const state of this.curtains) { state.moving = false; this.sound("stop", state.curtain); }
   }
 
   /** Preset restoration must not place the walker inside a leaf moved while the orbit view was active. */
@@ -121,10 +122,10 @@ export class RoomInteractions {
 
   addCurtain(curtain: InteractiveCurtain, light: (amount: number) => void = () => {}) {
     if (this.entities.has(curtain.id)) throw new Error("Duplicate interaction: " + curtain.id);
-    const state = { curtain, progress: 0, closed: false, light };
+    const state = { curtain, progress: 0, closed: false, moving: false, light };
     this.curtains.push(state);
     this.add(curtain.id, curtain.meshes, {label: () => `${state.closed ? "打开" : "关闭"}${curtain.label}`,
-      toggle: () => { state.closed = !state.closed; }});
+      toggle: () => {this.sound("stop",curtain);state.moving=false;state.closed = !state.closed; }});
   }
 
   addInspectable(item: InspectableItem, inspect: (item: InspectableItem) => void) {
@@ -258,9 +259,11 @@ export class RoomInteractions {
       const target = state.closed ? 1 : 0;
       if (state.progress === target || step <= 0) continue;
       const travel = Math.max(0, Math.min(deltaSeconds, .05)) / .85;
+      if (!state.moving) {state.moving=true;this.sound("curtain-move",state.curtain);}
       state.progress = target > state.progress ? Math.min(target, state.progress + travel) : Math.max(target, state.progress - travel);
       const eased = state.progress * state.progress * (3 - 2 * state.progress);
       state.curtain.applyClosed(eased); state.light(eased);
+      if (state.progress===target) {state.moving=false;this.sound("stop",state.curtain);}
       roomOwners(state.curtain.root).forEach(id => changed.add(id));
     }
     if (changed.size) this.refreshShadows([...changed]);

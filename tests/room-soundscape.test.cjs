@@ -57,9 +57,9 @@ test('vehicle pan is bounded over a full turn and changes do not create gameplay
 test('soundscape container/provenance and total encoded/PCM budgets reject corrupt or oversized releases',t=>{
   const {validateAudioResources,audioBudgets}=require('../tools/study-audio-resources.cjs');
   const root=path.resolve(__dirname,'../public'), summary=validateAudioResources(root);
-  assert.equal(summary.files.length,38);assert.equal(summary.decodedBytes,14578560);
+  assert.equal(summary.files.length,75);assert.equal(summary.decodedBytes,16448640);
   const temp=fs.mkdtempSync(path.join(os.tmpdir(),'soundscape-resources-'));t.after(()=>fs.rmSync(temp,{recursive:true,force:true}));
-  for(const dir of ['study','actions','soundscape'])fs.cpSync(path.join(root,'audio',dir),path.join(temp,'audio',dir),{recursive:true});
+  for(const dir of ['study','actions','soundscape','daily'])fs.cpSync(path.join(root,'audio',dir),path.join(temp,'audio',dir),{recursive:true});
   const manifest=path.join(temp,'audio/soundscape/source.json'),original=fs.readFileSync(manifest),source=JSON.parse(original);
   const audio=path.join(temp,source.files[0].file), bytes=fs.readFileSync(audio),bad=Buffer.from(bytes);bad[60]^=1;fs.writeFileSync(audio,bad);
   assert.throws(()=>validateAudioResources(temp),/SHA256/);fs.writeFileSync(audio,bytes);

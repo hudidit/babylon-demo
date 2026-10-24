@@ -1,15 +1,18 @@
 /** Small typed catalog; source hashes and processing live in the published source.json. */
 import { ACTION_AUDIO_CLIPS } from "./RoomActionAudioCatalog";
 import { SOUNDSCAPE_AUDIO_CLIPS } from "./RoomSoundscapeAudioCatalog";
+import { DAILY_AUDIO_CLIPS } from "./RoomDailyAudioCatalog";
+export type FootMaterial = "wood" | "hard" | "earth" | "metal" | "soft";
 export type AudioCue = "drawer-slide" | "drawer-stop" | "door-move" | "door-latch" | "switch" | "paper"
   | "metal-door-move" | "metal-door-latch" | "slide-move" | "slide-stop" | "cloth-touch" | "cloth-wipe" | "cloth-lift"
   | "scooter-mount" | "scooter-brake" | "motor-loop" | "roll-loop" | "wind-open" | "wind-sheltered"
-  | "rain-open" | "rain-sheltered" | "sea-open" | "sea-sheltered";
+  | "rain-open" | "rain-sheltered" | "sea-open" | "sea-sheltered"
+  | `footstep-${FootMaterial}` | `landing-${FootMaterial}` | "ladder-rung" | "curtain-move" | "beacon-drive" | "ui-contact";
 export type AudioPoint = { x: number; y: number; z: number };
 export type RoomAudioEvent = { cue: AudioCue | "stop"; entity: string; position?: () => AudioPoint };
 export type AudioGroup = "actions" | "vehicle" | "ambience" | "ui";
 export type AudioMix = {actions: number; ambience: number; ui: number};
-export type WorldAudioTarget = {id: string; gain: number; rate?: number; pan?: number};
+export type WorldAudioTarget = {id: string; gain: number; rate?: number; pan?: number; position?: AudioPoint};
 export type AudioClip = { id: string; cue: AudioCue; file: string; priority: number; gain: number; preload: "core" | "variation" | "world"; loop?: boolean; group?: AudioGroup };
 export const AUDIO_CLIPS: readonly AudioClip[] = [
   {"id": "drawer-slide-1", "cue": "drawer-slide", "file": "audio/study/drawer-slide-1.8353e0a53c.wav", "priority": 1, "gain": 0.25, "preload": "core"},
@@ -26,6 +29,7 @@ export const AUDIO_CLIPS: readonly AudioClip[] = [
   {"id": "paper-2", "cue": "paper", "file": "audio/study/paper-2.862694da2b.wav", "priority": 3, "gain": 0.2, "preload": "variation"},
   ...ACTION_AUDIO_CLIPS,
   ...SOUNDSCAPE_AUDIO_CLIPS,
+  ...DAILY_AUDIO_CLIPS,
 ];
 export const AUDIO_LIMITS = { voices: 14, actionVoices: 6, worldVoices: 8, voicesPerClip: 2,
   decodedBytes: 16 * 1048576, fileBytes: 2.1 * 1048576, coreBytes: 393216 };

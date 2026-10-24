@@ -1,0 +1,945 @@
+{
+  "baseline": "cd57fc1",
+  "acousticListening": false,
+  "fpsOrLoadTimeSampling": false,
+  "errors": [],
+  "warnings": [
+    "The keyword 'slider-vertical' specified to an 'appearance' property is not standardized. It will be removed in the future. Use <input type=range style=\"writing-mode: vertical-lr; direction: rtl\"> instead."
+  ],
+  "firstScreen": [
+    {
+      "path": "/js/main.js",
+      "bytes": 531768,
+      "sha256": "a655d0c7c35f9cadcae8c4d08da96e98282bd3ccf6b5325b0b094672c8b95b7b"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2316,
+      "sha256": "0087613b2f8028d16c8d26acaad98c25becfeb2949f517954d6ba5fb4fc7bd52"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "drawer-slide-1",
+      "peak": 0.015889037400484085,
+      "ready": 66
+    },
+    {
+      "id": "drawer-slide-2",
+      "peak": 0.025000764057040215,
+      "ready": 66
+    },
+    {
+      "id": "drawer-stop-1",
+      "peak": 0.029999693855643272,
+      "ready": 66
+    },
+    {
+      "id": "drawer-stop-2",
+      "peak": 0.0690554827451706,
+      "ready": 66
+    },
+    {
+      "id": "door-move-1",
+      "peak": 0.020159179344773293,
+      "ready": 66
+    },
+    {
+      "id": "door-move-2",
+      "peak": 0.02015979401767254,
+      "ready": 66
+    },
+    {
+      "id": "door-latch-1",
+      "peak": 0.03100070171058178,
+      "ready": 66
+    },
+    {
+      "id": "door-latch-2",
+      "peak": 0.029000213369727135,
+      "ready": 66
+    },
+    {
+      "id": "switch-1",
+      "peak": 0.026000244542956352,
+      "ready": 66
+    },
+    {
+      "id": "switch-2",
+      "peak": 0.026000244542956352,
+      "ready": 66
+    },
+    {
+      "id": "paper-1",
+      "peak": 0.010499893687665462,
+      "ready": 66
+    },
+    {
+      "id": "paper-2",
+      "peak": 0.010499893687665462,
+      "ready": 66
+    },
+    {
+      "id": "metal-door-move-1",
+      "peak": 0.015119385905563831,
+      "ready": 66
+    },
+    {
+      "id": "metal-door-move-2",
+      "peak": 0.015119385905563831,
+      "ready": 66
+    },
+    {
+      "id": "metal-door-latch-1",
+      "peak": 0.027839353308081627,
+      "ready": 66
+    },
+    {
+      "id": "metal-door-latch-2",
+      "peak": 0.027839353308081627,
+      "ready": 66
+    },
+    {
+      "id": "slide-move-1",
+      "peak": 0.025459041818976402,
+      "ready": 66
+    },
+    {
+      "id": "slide-move-2",
+      "peak": 0.021384406834840775,
+      "ready": 66
+    },
+    {
+      "id": "slide-stop-1",
+      "peak": 0.020846715196967125,
+      "ready": 66
+    },
+    {
+      "id": "slide-stop-2",
+      "peak": 0.019199220463633537,
+      "ready": 66
+    },
+    {
+      "id": "cloth-touch-1",
+      "peak": 0.02001522295176983,
+      "ready": 66
+    },
+    {
+      "id": "cloth-touch-2",
+      "peak": 0.01439978089183569,
+      "ready": 66
+    },
+    {
+      "id": "cloth-wipe-1",
+      "peak": 0.017620166763663292,
+      "ready": 66
+    },
+    {
+      "id": "cloth-wipe-2",
+      "peak": 0.016059326007962227,
+      "ready": 66
+    },
+    {
+      "id": "cloth-lift-1",
+      "peak": 0.029699260368943214,
+      "ready": 66
+    },
+    {
+      "id": "cloth-lift-2",
+      "peak": 0.01295986957848072,
+      "ready": 66
+    },
+    {
+      "id": "motor-loop",
+      "peak": 0.02227960340678692,
+      "ready": 67
+    },
+    {
+      "id": "roll-loop",
+      "peak": 0.04556289315223694,
+      "ready": 68
+    },
+    {
+      "id": "wind-open",
+      "peak": 0.0108902333304286,
+      "ready": 69
+    },
+    {
+      "id": "wind-sheltered",
+      "peak": 0.01239726785570383,
+      "ready": 70
+    },
+    {
+      "id": "rain-open",
+      "peak": 0.016183199360966682,
+      "ready": 71
+    },
+    {
+      "id": "rain-sheltered",
+      "peak": 0.025389637798070908,
+      "ready": 72
+    },
+    {
+      "id": "sea-open",
+      "peak": 0.00669664703309536,
+      "ready": 73
+    },
+    {
+      "id": "sea-sheltered",
+      "peak": 0.002932552248239517,
+      "ready": 74
+    },
+    {
+      "id": "scooter-mount-1",
+      "peak": 0.029832983389496803,
+      "ready": 74
+    },
+    {
+      "id": "scooter-brake-1",
+      "peak": 0.034351881593465805,
+      "ready": 74
+    },
+    {
+      "id": "scooter-mount-2",
+      "peak": 0.012959472835063934,
+      "ready": 74
+    },
+    {
+      "id": "scooter-brake-2",
+      "peak": 0.04985949397087097,
+      "ready": 74
+    },
+    {
+      "id": "footstep-wood-1",
+      "peak": 0.06243770197033882,
+      "ready": 74
+    },
+    {
+      "id": "footstep-wood-2",
+      "peak": 0.07166898250579834,
+      "ready": 74
+    },
+    {
+      "id": "footstep-wood-3",
+      "peak": 0.061277199536561966,
+      "ready": 74
+    },
+    {
+      "id": "footstep-wood-4",
+      "peak": 0.06055007129907608,
+      "ready": 74
+    },
+    {
+      "id": "footstep-hard-1",
+      "peak": 0.07072100043296814,
+      "ready": 74
+    },
+    {
+      "id": "footstep-hard-2",
+      "peak": 0.05825088545680046,
+      "ready": 74
+    },
+    {
+      "id": "footstep-hard-3",
+      "peak": 0.061933137476444244,
+      "ready": 74
+    },
+    {
+      "id": "footstep-hard-4",
+      "peak": 0.05924909934401512,
+      "ready": 74
+    },
+    {
+      "id": "footstep-earth-1",
+      "peak": 0.06301037967205048,
+      "ready": 74
+    },
+    {
+      "id": "footstep-earth-2",
+      "peak": 0.0540129616856575,
+      "ready": 74
+    },
+    {
+      "id": "footstep-earth-3",
+      "peak": 0.05349818617105484,
+      "ready": 74
+    },
+    {
+      "id": "footstep-earth-4",
+      "peak": 0.05625972896814346,
+      "ready": 74
+    },
+    {
+      "id": "footstep-metal-1",
+      "peak": 0.053624458611011505,
+      "ready": 74
+    },
+    {
+      "id": "footstep-metal-2",
+      "peak": 0.055908698588609695,
+      "ready": 74
+    },
+    {
+      "id": "footstep-metal-3",
+      "peak": 0.035145021975040436,
+      "ready": 74
+    },
+    {
+      "id": "footstep-metal-4",
+      "peak": 0.06137406453490257,
+      "ready": 74
+    },
+    {
+      "id": "footstep-soft-1",
+      "peak": 0.05371066927909851,
+      "ready": 74
+    },
+    {
+      "id": "footstep-soft-2",
+      "peak": 0.04839418828487396,
+      "ready": 74
+    },
+    {
+      "id": "footstep-soft-3",
+      "peak": 0.025252312421798706,
+      "ready": 74
+    },
+    {
+      "id": "landing-wood-1",
+      "peak": 0.04148541018366814,
+      "ready": 74
+    },
+    {
+      "id": "landing-wood-2",
+      "peak": 0.04760562255978584,
+      "ready": 74
+    },
+    {
+      "id": "landing-hard-1",
+      "peak": 0.07721978425979614,
+      "ready": 74
+    },
+    {
+      "id": "landing-hard-2",
+      "peak": 0.030558740720152855,
+      "ready": 74
+    },
+    {
+      "id": "landing-earth-1",
+      "peak": 0.07214926928281784,
+      "ready": 74
+    },
+    {
+      "id": "landing-earth-2",
+      "peak": 0.06090230867266655,
+      "ready": 74
+    },
+    {
+      "id": "landing-metal-1",
+      "peak": 0.061430949717760086,
+      "ready": 74
+    },
+    {
+      "id": "landing-metal-2",
+      "peak": 0.06466809660196304,
+      "ready": 74
+    },
+    {
+      "id": "landing-soft-1",
+      "peak": 0.03974486514925957,
+      "ready": 74
+    },
+    {
+      "id": "landing-soft-2",
+      "peak": 0.055309440940618515,
+      "ready": 74
+    },
+    {
+      "id": "ladder-rung-1",
+      "peak": 0.05311155319213867,
+      "ready": 74
+    },
+    {
+      "id": "ladder-rung-2",
+      "peak": 0.055297523736953735,
+      "ready": 74
+    },
+    {
+      "id": "ladder-rung-3",
+      "peak": 0.034801583737134933,
+      "ready": 74
+    },
+    {
+      "id": "curtain-move-1",
+      "peak": 0.01048860140144825,
+      "ready": 74
+    },
+    {
+      "id": "curtain-move-2",
+      "peak": 0.008648681454360485,
+      "ready": 74
+    },
+    {
+      "id": "beacon-drive",
+      "peak": 0.015993112698197365,
+      "ready": 75
+    },
+    {
+      "id": "ui-contact-1",
+      "peak": 0.019659744575619698,
+      "ready": 75
+    },
+    {
+      "id": "ui-contact-2",
+      "peak": 0.02034151926636696,
+      "ready": 75
+    }
+  ],
+  "cases": {
+    "walk-wood": {
+      "before": {
+        "x": 6.05,
+        "y": 3.0402,
+        "feet": 0
+      },
+      "after": {
+        "x": 7.65699246923387,
+        "y": 3.0398846350882853,
+        "feet": 0
+      },
+      "played": [
+        {
+          "type": "play",
+          "id": "footstep-wood-1",
+          "position": {
+            "x": 6.362403307958884,
+            "y": -4.4,
+            "z": -11.799622357309111
+          },
+          "at": 25620.5
+        },
+        {
+          "type": "play",
+          "id": "footstep-wood-4",
+          "position": {
+            "x": 9.502720492155312,
+            "y": -4.4,
+            "z": -11.800250296287164
+          },
+          "at": 26229.599999904633
+        }
+      ]
+    },
+    "jump-wood": {
+      "played": [
+        {
+          "type": "play",
+          "id": "landing-wood-1",
+          "position": {
+            "x": 11.28687471799729,
+            "y": -4.4,
+            "z": -11.800576824558576
+          },
+          "at": 27677.799999952316
+        }
+      ],
+      "after": {
+        "x": 7.657374943599458,
+        "y": 3.0398846350882853,
+        "feet": 0
+      }
+    },
+    "walk-soft": {
+      "before": {
+        "x": 6.05,
+        "y": 2.6002,
+        "feet": 0
+      },
+      "after": {
+        "x": 7.540312277005033,
+        "y": 2.599901615774915,
+        "feet": 0
+      },
+      "played": [
+        {
+          "type": "play",
+          "id": "footstep-soft-1",
+          "position": {
+            "x": 6.362403307958884,
+            "y": -4.4,
+            "z": -13.99962235730911
+          },
+          "at": 28812.799999952316
+        },
+        {
+          "type": "play",
+          "id": "footstep-soft-2",
+          "position": {
+            "x": 9.502720492155312,
+            "y": -4.4,
+            "z": -14.000250296287165
+          },
+          "at": 29429.799999952316
+        }
+      ]
+    },
+    "jump-soft": {
+      "played": [
+        {
+          "type": "play",
+          "id": "landing-soft-1",
+          "position": {
+            "x": 10.703473756853104,
+            "y": -4.4,
+            "z": -14.000491921125427
+          },
+          "at": 30921.599999904633
+        }
+      ],
+      "after": {
+        "x": 7.540694751370621,
+        "y": 2.599901615774915,
+        "feet": 0
+      }
+    },
+    "walk-metal": {
+      "before": {
+        "x": -125.65,
+        "y": 88.8802,
+        "feet": 19.64
+      },
+      "after": {
+        "x": -124.04300753076615,
+        "y": 88.8798846350883,
+        "feet": 19.64
+      },
+      "played": [
+        {
+          "type": "play",
+          "id": "footstep-metal-4",
+          "position": {
+            "x": -652.1375966920409,
+            "y": 93.80000000000001,
+            "z": 417.4003776426909
+          },
+          "at": 32118.299999952316
+        },
+        {
+          "type": "play",
+          "id": "footstep-metal-3",
+          "position": {
+            "x": -648.9972795078447,
+            "y": 93.80000000000001,
+            "z": 417.3997497037128
+          },
+          "at": 32679.099999904633
+        }
+      ]
+    },
+    "jump-metal": {
+      "played": [
+        {
+          "type": "play",
+          "id": "landing-metal-1",
+          "position": {
+            "x": -647.2131252820029,
+            "y": 93.80000000000001,
+            "z": 417.3994231754415
+          },
+          "at": 33659.5
+        }
+      ],
+      "after": {
+        "x": -124.04262505640057,
+        "y": 88.8798846350883,
+        "feet": 19.64
+      }
+    },
+    "walk-earth": {
+      "before": {
+        "x": 13.5,
+        "y": 1.5002000000000004,
+        "feet": -0.14
+      },
+      "after": {
+        "x": 15.106992469233871,
+        "y": 1.4998846350882862,
+        "feet": -0.14
+      },
+      "played": [
+        {
+          "type": "play",
+          "id": "footstep-earth-1",
+          "position": {
+            "x": 43.61240330795891,
+            "y": -5.1,
+            "z": -19.499622357309118
+          },
+          "at": 35134.299999952316
+        },
+        {
+          "type": "play",
+          "id": "footstep-earth-3",
+          "position": {
+            "x": 46.75272049215533,
+            "y": -5.1,
+            "z": -19.500250296287163
+          },
+          "at": 35684.299999952316
+        }
+      ]
+    },
+    "jump-earth": {
+      "played": [
+        {
+          "type": "play",
+          "id": "landing-earth-2",
+          "position": {
+            "x": 48.53687471799729,
+            "y": -5.1,
+            "z": -19.50057682455857
+          },
+          "at": 37070.39999985695
+        }
+      ],
+      "after": {
+        "x": 15.107374943599458,
+        "y": 1.4998846350882862,
+        "feet": -0.14
+      }
+    },
+    "walk-hard": {
+      "before": {
+        "x": -121.5,
+        "y": 84.0002,
+        "feet": 3.04
+      },
+      "after": {
+        "x": -119.89300753076616,
+        "y": 83.99988463508832,
+        "feet": 3.04
+      },
+      "played": [
+        {
+          "type": "play",
+          "id": "footstep-hard-3",
+          "position": {
+            "x": -631.3875966920411,
+            "y": 10.8,
+            "z": 393.0003776426909
+          },
+          "at": 38222.799999952316
+        },
+        {
+          "type": "play",
+          "id": "footstep-hard-4",
+          "position": {
+            "x": -628.2472795078446,
+            "y": 10.8,
+            "z": 392.9997497037129
+          },
+          "at": 38776.5
+        }
+      ]
+    },
+    "jump-hard": {
+      "played": [
+        {
+          "type": "play",
+          "id": "landing-hard-1",
+          "position": {
+            "x": -626.4631252820029,
+            "y": 10.8,
+            "z": 392.99942317544156
+          },
+          "at": 40192
+        }
+      ],
+      "after": {
+        "x": -119.89262505640058,
+        "y": 83.99988463508832,
+        "feet": 3.04
+      }
+    },
+    "riding": {
+      "riding": true,
+      "speed": 1.666666666666665,
+      "contacts": []
+    },
+    "wall": {
+      "before": {
+        "x": 6.016526771391065,
+        "y": 3.0873999323487284,
+        "feet": 0
+      },
+      "after": {
+        "x": 6.016526771391065,
+        "y": 3.0873999323487284,
+        "feet": 0
+      },
+      "played": []
+    },
+    "rejectedLadderExit": {
+      "attached": true,
+      "feet": 4.606666666666664
+    },
+    "ladder": {
+      "mid": 4.606666666666664,
+      "top": 19.64,
+      "firstContacts": [
+        {
+          "type": "play",
+          "id": "ladder-rung-2",
+          "position": {
+            "x": -657.5,
+            "y": 14.366666666666674,
+            "z": 425.09999999999997
+          },
+          "at": 46404.09999990463
+        },
+        {
+          "type": "play",
+          "id": "ladder-rung-1",
+          "position": {
+            "x": -657.5,
+            "y": 15.700000000000017,
+            "z": 425.09999999999997
+          },
+          "at": 46620.09999990463
+        },
+        {
+          "type": "play",
+          "id": "ladder-rung-3",
+          "position": {
+            "x": -657.5,
+            "y": 17.166666666666668,
+            "z": 425.09999999999997
+          },
+          "at": 46855
+        },
+        {
+          "type": "play",
+          "id": "ladder-rung-1",
+          "position": {
+            "x": -657.5,
+            "y": 18.499999999999986,
+            "z": 425.09999999999997
+          },
+          "at": 47070.59999990463
+        }
+      ],
+      "after": {
+        "x": -126.1,
+        "y": 89.05,
+        "feet": 19.64
+      }
+    },
+    "curtainFixture": {
+      "target": [
+        -12.949290084628327,
+        3.1750000083110566,
+        26.23992810912563
+      ],
+      "pose": {
+        "x": 2.810141983074335,
+        "y": 9.647985621825125,
+        "feet": 0
+      },
+      "action": "关闭次卧窗帘"
+    },
+    "curtainReverseAt": 0.39215686274509787,
+    "curtain": {
+      "state": 0,
+      "events": [
+        {
+          "type": "play",
+          "id": "curtain-move-1",
+          "position": {
+            "_isDirty": true,
+            "_x": -7.5,
+            "_y": 3.1475000381469727,
+            "_z": 26.26109230518341
+          },
+          "at": 61495.5
+        },
+        {
+          "type": "stop",
+          "id": "curtain-move-1",
+          "at": 61947
+        },
+        {
+          "type": "play",
+          "id": "curtain-move-2",
+          "position": {
+            "_isDirty": true,
+            "_x": -7.5,
+            "_y": 3.1475000381469727,
+            "_z": 26.26109230518341
+          },
+          "at": 61949.799999952316
+        },
+        {
+          "type": "stop",
+          "id": "curtain-move-2",
+          "at": 62406.59999990463
+        }
+      ]
+    },
+    "lowPower": {
+      "protected": true,
+      "running": false
+    },
+    "beacon": {
+      "running": true,
+      "automatic": false,
+      "active": 1,
+      "peak": 0.0026930193416774273,
+      "soakSeconds": 4.5,
+      "restarts": 0,
+      "started": true,
+      "repeated": false
+    },
+    "storyCover": {
+      "paperOpen": 1,
+      "total": 2
+    },
+    "pages": [
+      {
+        "type": "play",
+        "id": "ui-contact-1",
+        "at": 71980
+      },
+      {
+        "type": "play",
+        "id": "paper-2",
+        "at": 72025
+      },
+      {
+        "type": "play",
+        "id": "ui-contact-2",
+        "at": 72332.29999995232
+      }
+    ],
+    "uiOnly": 0.01625015214085579,
+    "uiMuted": 0,
+    "blur": {
+      "context": "suspended",
+      "active": 0,
+      "unstopped": 0
+    },
+    "missingVariation": {
+      "diagnostics": {
+        "state": "partial",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 65,
+        "failedFiles": [
+          "footstep-wood-4"
+        ],
+        "active": 1,
+        "worldActive": 0,
+        "decodedBytes": 2768640,
+        "played": 1,
+        "dropped": 0
+      },
+      "peak": 0.06228181719779968,
+      "attempts": 2
+    },
+    "storyPages": {
+      "feedback": [
+        "paper",
+        "paper",
+        "paper"
+      ],
+      "played": 6
+    }
+  },
+  "method": "Only dist served, unchanged bundles. Native keyboard/clicks with original scene render/collision/jump/ladder controllers. Legal starting poses isolate surfaces, no in-path pose changes. Fixed accepted frame deltas, not a travel-time or FPS benchmark. Individual prepared voices tested explicitly, then real cue routing checked separately. Native post-master analysis is engineering evidence, not human listening.",
+  "release": {
+    "fileCount": 567,
+    "modelBytes": 4332840,
+    "buildBytes": 26626846,
+    "runtimeBytes": 17835944,
+    "documentationBytes": 208618,
+    "manifestBytes": 107269,
+    "initialJsBytes": 2951946,
+    "audioBytes": 1946282,
+    "audioDecodedBytes": 16448640,
+    "releaseBytes": 44778677
+  },
+  "manifestSha256": "de4386d33faf7aef05973281bf89d98cbb0300f0b2dfd2909d019c937d5243ba",
+  "hosted": {
+    "prefixes": [
+      "/",
+      "/audio-lab/"
+    ],
+    "files": 567
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3171042,
+  "beforeGesture": {
+    "sources": 0,
+    "peak": 0,
+    "worldRequests": 0
+  },
+  "decodedBytes": 16448640,
+  "inspectorJs": [
+    "/js/9318.js",
+    "/js/4593.js",
+    "/js/2033.js",
+    "/js/1326.js",
+    "/js/5081.js",
+    "/js/7665.js"
+  ],
+  "passed": true
+}

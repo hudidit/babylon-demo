@@ -173,3 +173,9 @@ Wh、燃料只随统一自动场景小时积分，太阳能解析积分并求容
 8个AAC-LC循环和4个PCM16短声，共569,869 B、参考解码13,355,520 B；全部音效合计1,182,533 B、PCM14,578,560 B。逐文件来源、原料/派生SHA256、参考PCM摘要、处理与声道/时长见[audio/soundscape/source.json](audio/soundscape/source.json)。海浪为transitking / qubodup [Water Waves](https://opengameart.org/content/water-waves)四段FLAC组合；海风为Luke.RUSTLTD [wind1](https://opengameart.org/content/wind1)的PureData合成风；雨为Ylmir [Rain (loopable)](https://opengameart.org/content/rain-loopable)的公开窗边录音MP3；电机为onursamli [Electric Motor 2](https://freesound.org/people/onursamli/sounds/846905/)通用电机HQ MP3预览。作者页均明确CC0 1.0，2026-10-24复核。
 
 上下车接触复用mitchanary布料预览；轮胎/轻刹车为项目ISC许可的离线固定种子带限噪声合成，未冒充电驴实录。风、雨、海浪露天/低通遮蔽版本分别交付并渐变混合；不通过私有节点改音频图。原料及复现脚本在仓库`assets/audio-source/soundscape/`与`tools/prepare-soundscape-audio.py`，不随运行站点发布，无额外运行解码库。
+
+## 阶段 D 日常声音（2026-10-24）
+
+37个新文件（36个PCM16短声/窗帘循环、1个AAC-LC转台循环），共763,749 B、参考PCM1,870,080 B；累计音效75文件、1,946,282 B、PCM16,448,640 B。脚步与轻金属片段来自[Kenney Impact Sounds 1.0](https://kenney.nl/assets/impact-sounds)，2026-10-24官方页面及[包内许可](audio/daily/Kenney-License.txt)均明确CC0；使用官方Ogg交付，未声称无损原件。木、硬地、草地各4个变化，软面3个，剔除原包解码相同的片段。金属踏面/梯级为硬地脚步与金属板轻触组合；落地为两次轻接触组合，均按拟音记录。
+
+窗帘复用mitchanary布料预览，转台复用onursamli通用电机公开预览并降调/低通，不称为现场灯塔实录；轻UI短音为项目ISC离线正弦合成。逐文件摘要、来源层级、处理及参考PCM见[audio/daily/source.json](audio/daily/source.json)。原料与复现脚本位于仓库`assets/audio-source/daily/`和`tools/prepare-daily-audio.py`，不进入运行白名单。

@@ -1,4 +1,4 @@
-import { houseRoomAt, HOUSE_DOORS } from "./HouseLayout";
+import { houseRoomAt, HOUSE_DOORS, planToWorld } from "./HouseLayout";
 import { HOUSE_WINDOWS } from "./HouseStructure";
 import { COASTAL_SITE } from "./CoastalSite";
 import { LIGHTHOUSE } from "./LighthouseLayout";
@@ -11,6 +11,7 @@ export type SoundscapeState = {
   firstPerson: boolean; x: number; y: number; feet: number; yaw: number; shoreDistance: number;
   weather: {rain: number; kind: LighthouseWeatherKind; from: LighthouseWeatherKind; transition: number};
   pauses: readonly string[]; doors: Readonly<Record<string, number>>;
+  beacon?: {running: boolean; visible: boolean};
   scooter: {riding: boolean; speed: number; heading: number; forward: boolean; back: boolean; brake: boolean; exitRequested: boolean};
 };
 type Sink = { world(targets: readonly WorldAudioTarget[]): void; resetWorld(): void; stopEntity(entity: string): void; play(cue: AudioCue, entity?: string): void };
@@ -92,17 +93,22 @@ export class RoomSoundscape {
     const roll = speed > .04 ? .13*Math.pow(n,.65) : 0;
     this.rate += (.65+1.05*Math.sqrt(n)-this.rate)*(1-Math.exp(-dt/.1));
     const pan = clamp(.18*Math.sin(s.scooter.heading-s.yaw),-.18,.18);
+    const tower=COASTAL_SITE.tower, beaconDistance=distance(s.x,s.y,tower.x,tower.y);
+    const beacon=s.firstPerson && !reading && !s.scooter.riding && s.beacon?.running && s.beacon.visible
+      && Math.abs(s.feet-LIGHTHOUSE.gallery)<2 ? .18*clamp(1-beaconDistance/7) : 0;
     const desired: WorldAudioTarget[] = [
       {id:"sea-open",gain:sea*exposure}, {id:"sea-sheltered",gain:sea*(1-exposure)*.5},
       {id:"wind-open",gain:windGain*exposure}, {id:"wind-sheltered",gain:windGain*(1-exposure)*.35},
       {id:"rain-open",gain:rainGain*rainExposure}, {id:"rain-sheltered",gain:rainGain*(1-rainExposure)*.52},
       {id:"motor-loop",gain:motor,rate:this.rate,pan}, {id:"roll-loop",gain:roll,rate:.7+.6*n,pan:pan*.6},
+      {id:"beacon-drive",gain:beacon,position:planToWorld(tower,LIGHTHOUSE.gallery+.65)},
     ];
     const targets = desired.map(value => {
       const previous = this.gains.get(value.id) ?? 0;
       const vehicle = value.id === "motor-loop" || value.id === "roll-loop";
+      const device = value.id === "beacon-drive";
       const smoothing = vehicle ? .1 : value.id.startsWith("rain-") ? .25 : .35;
-      const gain = vehicle && !value.gain ? 0 : previous+(value.gain-previous)*(1-Math.exp(-dt/smoothing));
+      const gain = (vehicle || device) && !value.gain ? 0 : previous+(value.gain-previous)*(1-Math.exp(-dt/smoothing));
       this.gains.set(value.id,gain);
       return {...value,gain};
     });

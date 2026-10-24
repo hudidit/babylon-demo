@@ -26,7 +26,8 @@ export class LighthouseStoryPanel {
   private chapters?:typeof import("./LighthouseStoryChapters");
   private readonly scroll: Partial<Record<Page,number>> = {};
   private readonly waitDisabled = new Map<HTMLButtonElement,boolean>();
-  constructor(private readonly document: Document, private readonly actions: Actions) {
+  constructor(private readonly document: Document, private readonly actions: Actions,
+    private readonly feedback: () => void = () => {}) {
     this.dialog = this.el<HTMLDialogElement>("story-panel");
     const signal = this.events.signal;
     const listen = (id: string, fn: () => void) => this.el(id).addEventListener("click", fn, {signal});
@@ -62,7 +63,7 @@ export class LighthouseStoryPanel {
     tabs.forEach(tab => tab.addEventListener("click", () => this.selectPage(tab.dataset.storyPage as Page), {signal}));
     this.el("story-messages").addEventListener("click", event => {
       const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-story-select]");
-      if (button) this.selectMessage(button.dataset.storySelect!);
+      if (button) this.selectMessage(button.dataset.storySelect!,true);
     }, {signal});
     listen("story-message-read", () => {if (!this.selectedMessage) return; actions.read(this.selectedMessage);
       this.el("story-messages").querySelector<HTMLButtonElement>(`[data-story-select="${this.selectedMessage}"]`)?.focus({preventScroll:true});});
@@ -111,11 +112,12 @@ export class LighthouseStoryPanel {
     this.el("story-page-ending").hidden=page!=="ending";
     this.el("story-tab-duty").setAttribute("aria-controls",page==="ending"?"story-page-ending":"story-page-duty");
     this.el("story-return").firstChild.textContent=page==="ending"?"返回值守任务":"返回场景";
-    if(changed)pages.scrollTop=this.scroll[page]||0;
+    if(changed){pages.scrollTop=this.scroll[page]||0;if(this.isOpen)this.feedback();}
     if(focus&&this.isOpen)this.el(page==="ending"?"story-ending-title":"story-tab-"+page).focus({preventScroll:true});
   }
-  private selectMessage(id:string) {
+  private selectMessage(id:string,feedback=false) {
     const message=this.view?.messages.find(m=>m.id===id);if(!message)return;
+    if(feedback && id!==this.selectedMessage && this.isOpen)this.feedback();
     this.selectedMessage=id;
     this.el("story-messages").querySelectorAll<HTMLButtonElement>("[data-story-select]").forEach(n=>n.setAttribute("aria-current",String(n.dataset.storySelect===id)));
     this.text("story-message-title",messageTitles[id]||(message.direction==="incoming"?"收到的联络":"发出的记录"));

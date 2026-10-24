@@ -143,11 +143,11 @@ test('disposing in-flight download cancels it and ignores late results', async t
 test('reviewed audio is reproducible, catalog matches whitelist and corrupt/long/unlicensed files fail validation', t => {
   const root = path.resolve(__dirname, '../public'), source = require('../public/audio/study/source.json');
   const summary = validateAudioResources(root);
-  assert.equal(summary.encodedBytes, source.totalBytes + require('../public/audio/actions/source.json').totalBytes + require('../public/audio/soundscape/source.json').totalBytes); assert.ok(summary.coreBytes <= AUDIO_LIMITS.coreBytes);
+  assert.equal(summary.encodedBytes, source.totalBytes + require('../public/audio/actions/source.json').totalBytes + require('../public/audio/soundscape/source.json').totalBytes + require('../public/audio/daily/source.json').totalBytes); assert.ok(summary.coreBytes <= AUDIO_LIMITS.coreBytes);
   assert.deepEqual([...AUDIO_CLIPS.map(row => row.file)].sort(), [...summary.files].sort());
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'babylon-audio-'));
   t.after(() => fs.rmSync(temporary, { recursive: true, force: true }));
-  for (const dir of ['actions','soundscape']) fs.cpSync(path.join(root, 'audio',dir), path.join(temporary, 'audio',dir), { recursive: true });
+  for (const dir of ['actions','soundscape','daily']) fs.cpSync(path.join(root, 'audio',dir), path.join(temporary, 'audio',dir), { recursive: true });
   fs.mkdirSync(path.join(temporary, 'audio/study'), { recursive: true });
   fs.copyFileSync(path.join(root, 'audio/study/source.json'), path.join(temporary, 'audio/study/source.json'));
   source.files.forEach(row => fs.copyFileSync(path.join(root, row.file), path.join(temporary, row.file)));
@@ -186,7 +186,7 @@ test('continuous motions prepare loops, remain idempotent and cancel delayed rep
 test('action provenance, loop metadata and the phase B allowance are enforced', t => {
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'babylon-action-audio-'));
   t.after(() => fs.rmSync(temp, { recursive: true, force: true }));
-  for (const dir of ['study', 'actions', 'soundscape']) fs.cpSync(path.resolve(__dirname, '../public/audio', dir), path.join(temp, 'audio', dir), { recursive: true });
+  for (const dir of ['study', 'actions', 'soundscape', 'daily']) fs.cpSync(path.resolve(__dirname, '../public/audio', dir), path.join(temp, 'audio', dir), { recursive: true });
   const file = path.join(temp, 'audio/actions/source.json'), original = fs.readFileSync(file), m = JSON.parse(original);
   m.sources[0].license = 'unknown'; fs.writeFileSync(file, JSON.stringify(m));
   assert.throws(() => validateAudioResources(temp), /source license/);
@@ -243,6 +243,19 @@ test('concurrent decode preparation reserves the PCM limit before awaiting voice
   f.audio.world([{id:'motor-loop',gain:.1},{id:'roll-loop',gain:.1}]); await until(()=>release && f.audio.diagnostics.failedFiles.includes('roll-loop'));
   assert.ok(f.audio.diagnostics.failedFiles.includes('roll-loop')); release(); await f.audio.preload();
   assert.ok(f.audio.diagnostics.decodedBytes<=AUDIO_LIMITS.decodedBytes);
+});
+
+test('four step variants are all selectable without adjacent repetition; spatial device loops update in place',async t=>{
+  const f=await prepared(t);f.audio.unlockFromGesture();await delay(0);
+  const saved=Math.random,choices=[0,.99,.5,.99,0,.5];let calls=0;t.after(()=>Math.random=saved);Math.random=()=>calls++%2?.5:choices.shift()??0;
+  for(let i=0;i<6;i++){f.audio.play('footstep-wood','feet');f.log.voices.forEach(v=>{if(v.played)v.finish();});f.advance(150);}
+  const names=f.log.played.map(v=>v.name.replace(/-[01]$/,''));assert.equal(new Set(names).size,4);
+  for(let i=1;i<names.length;i++)assert.notEqual(names[i],names[i-1]);
+  const position={x:1,y:8,z:2};f.audio.world([{id:'beacon-drive',gain:.1,position}]);await f.audio.preload();f.audio.world([{id:'beacon-drive',gain:.1,position}]);
+  const voice=f.log.voices.find(v=>v.name==='beacon-drive-0');assert.equal(f.log.played.at(-1).position,position);
+  f.audio.world([{id:'beacon-drive',gain:.12,position:{x:2,y:9,z:3}}]);assert.deepEqual(voice.point,{x:2,y:9,z:3});
+  f.audio.setMix({actions:0,ambience:.7,ui:1});await delay(30);assert.equal(f.audio.diagnostics.worldActive,0);
+  f.audio.play('ui-contact','local-read');assert.equal(f.log.played.at(-1).name.startsWith('ui-contact-'),true);
 });
 test('group preferences accept the old setting, clamp each field and do not mutate defaults', () => {
   const {audioMixPreferences,AUDIO_MIX_DEFAULTS}=load('RoomAudioCatalog');

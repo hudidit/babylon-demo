@@ -1,6 +1,22 @@
 const assert = require('node:assert/strict'), fs = require('node:fs'), path = require('node:path');
 const { createHash } = require('node:crypto');
 const hash = b => createHash('sha256').update(b).digest('hex');
+function validateAac(data,row) {
+assert.equal(data.toString('ascii',4,8),'ftyp','Invalid AAC container');
+const entry = data.indexOf(Buffer.from('mp4a')); assert.ok(entry>0,'Missing AAC audio track');
+assert.equal(data.readUInt32BE(entry+28)/65536,row.sampleRate,'AAC rate mismatch');
+// AudioToolbox's legacy mp4a header says 2 even for mono; AAC AudioSpecificConfig is authoritative.
+const descriptor = at => { const tag=data[at++]; let size=0, byte;
+  do { byte=data[at++]; size=(size<<7)|(byte&127); } while(byte&128);
+  assert.ok(at+size<=data.length); return {tag,at,size}; };
+const esds=data.indexOf(Buffer.from('esds')); assert.ok(esds>0);
+const es=descriptor(esds+8); assert.equal(es.tag,3); assert.equal(data[es.at+2],0);
+const decoder=descriptor(es.at+3); assert.equal(decoder.tag,4); assert.equal(data[decoder.at],0x40);
+const config=descriptor(decoder.at+13); assert.equal(config.tag,5); assert.equal(config.size,2);
+const asc=data.readUInt16BE(config.at); assert.equal(asc>>11,2,'AAC LC required');
+assert.equal((asc>>7)&15,3,'AAC 48kHz required');
+assert.equal((asc>>3)&15,row.channels,'AAC channel mismatch');
+}
 function validateSoundscapeAudio(root) {
   const source = JSON.parse(fs.readFileSync(path.join(root,'audio/soundscape/source.json')));
   assert.equal(source.schemaVersion,1); assert.match(source.generatorSha256,/^[a-f0-9]{64}$/);
@@ -29,20 +45,7 @@ function validateSoundscapeAudio(root) {
     assert.ok(row.peak>.05 && row.peak<.71); assert.match(row.referencePcmSha256,/^[a-f0-9]{64}$/);
     if (loop) {
       assert.equal(row.format,'m4a'); assert.ok(row.file.endsWith('.m4a'));
-      assert.equal(data.toString('ascii',4,8),'ftyp','Invalid AAC container');
-      const entry = data.indexOf(Buffer.from('mp4a')); assert.ok(entry>0,'Missing AAC audio track');
-      assert.equal(data.readUInt32BE(entry+28)/65536,row.sampleRate,'AAC rate mismatch');
-      // AudioToolbox's legacy mp4a header says 2 even for mono; AAC AudioSpecificConfig is authoritative.
-      const descriptor = at => { const tag=data[at++]; let size=0, byte;
-        do { byte=data[at++]; size=(size<<7)|(byte&127); } while(byte&128);
-        assert.ok(at+size<=data.length); return {tag,at,size}; };
-      const esds=data.indexOf(Buffer.from('esds')); assert.ok(esds>0);
-      const es=descriptor(esds+8); assert.equal(es.tag,3); assert.equal(data[es.at+2],0);
-      const decoder=descriptor(es.at+3); assert.equal(decoder.tag,4); assert.equal(data[decoder.at],0x40);
-      const config=descriptor(decoder.at+13); assert.equal(config.tag,5); assert.equal(config.size,2);
-      const asc=data.readUInt16BE(config.at); assert.equal(asc>>11,2,'AAC LC required');
-      assert.equal((asc>>7)&15,3,'AAC 48kHz required');
-      assert.equal((asc>>3)&15,row.channels,'AAC channel mismatch');
+      validateAac(data,row);
       assert.ok(row.durationSeconds>=2 && row.durationSeconds<=8);
       assert.ok(row.boundaryStep<.004,'Discontinuous reference loop');
       assert.ok(row.processing.crossfadeSeconds>0);
@@ -60,4 +63,4 @@ function validateSoundscapeAudio(root) {
   assert.ok(encodedBytes<=1.1*1048576,'Phase C audio allowance exceeded');
   return {files:source.files.map(r=>r.file),encodedBytes,decodedBytes,coreBytes};
 }
-module.exports = {validateSoundscapeAudio};
+module.exports = {validateSoundscapeAudio,validateAac};

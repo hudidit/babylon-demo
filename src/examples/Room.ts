@@ -13,6 +13,7 @@ import { RoomPointerLock } from "./RoomPointerLock";
 import { RoomAudio } from "./RoomAudio";
 import { RoomCleaningAudio } from "./RoomCleaningAudio";
 import { RoomSoundscape } from "./RoomSoundscape";
+import { RoomDailyAudio, footMaterial } from "./RoomDailyAudio";
 import { coastalShoreDistance, coastalShoreline } from "./CoastalOcean";
 import { RoomItemInspection } from "./RoomItemInspection";
 import { RoomFloorPlan } from "./RoomFloorPlan";
@@ -81,6 +82,7 @@ export class RoomScene {
   readonly audio = new RoomAudio();
   private readonly cleaningAudio = new RoomCleaningAudio(this.audio);
   private readonly soundscape = new RoomSoundscape(this.audio);
+  private readonly dailyAudio = new RoomDailyAudio(this.audio);
   private readonly soundscapeShore = coastalShoreline();
   private soundscapeElapsed = 0;
   readonly rooms = new HouseRooms();
@@ -251,7 +253,7 @@ export class RoomScene {
       compare: () => this.compareLighthouseSolar(), solarClean: () => this.localLighthouseMaintenance("clean", "cloth"),
       restorePower: () => this.localLighthousePower("verify-main", "meter"),
       save: () => this.saveLighthouseDuty(), load: () => this.continueLighthouseDuty(), clearSave: () => this.clearLighthouseSave(),
-      story: () => this.openStoryPanel()});
+      story: () => this.openStoryPanel()}, cue=>this.audio.play(cue,"lighthouse-page"));
     this.storyPanel = new LighthouseStoryPanel(canvas.ownerDocument, {
       close: resume => this.closeStoryPanel(resume), start: () => this.startStory(), resume: () => this.resumeStory(), load: () => this.continueStory(),
       save: () => this.saveStory(), leave: () => this.leaveStory(), clear: () => {this.storyStorage = this.storySave.clearInvalid(); this.renderStory(true);},
@@ -268,7 +270,7 @@ export class RoomScene {
       diary:choice=>this.storyCommand(()=>this.storyBridge.story.fieldWork.phase==="complete"&&this.storyBridge.story.chooseDiary(choice)),
       wait:()=>this.startStoryWait(),cancelWait:()=>this.cancelStoryWait(),
       epilogue:command=>{const accepted=this.storyCommand(()=>!!this.storyChapters&&this.storyChapters.epilogueCommand(this.storySession,command,this.canUseStoryRecords()));
-        return !!accepted&&((command==="finish"||command==="seen")?this.saveStory().saved:true);}});
+        return !!accepted&&((command==="finish"||command==="seen")?this.saveStory().saved:true);}},()=>this.audio.play("paper","story-page"));
     document.querySelector("#story-open")!.addEventListener("click", this.openStoryPanel);
     document.querySelector("#story-objective")!.addEventListener("click", this.openStoryPanel);
     this.interactions.addDevice(lighthouse.panel, () => this.openLighthousePanel("control"));
@@ -425,6 +427,7 @@ export class RoomScene {
   private applyLighthouseSession(s:LighthouseCompleteSession) {
     this.cleaningAudio.reset();
     this.soundscape.reset();
+    this.dailyAudio?.reset();
     this.mainCheck = undefined;
     this.timeState=s.clock;this.lighthouseState=s.operation;this.lighthouseInspectionState=s.inspection;
     this.lighthouseMaintenanceState=s.maintenance;this.lighthousePowerState=s.power;
@@ -522,12 +525,12 @@ export class RoomScene {
     if (this.lighthousePanel.isOpen) this.closeLighthousePanel(false);
     this.storyStorage = this.storySave.inspect();
     if(this.storyBridge)this.loadStoryChapters();
-    this.storyPanel.open(); this.storyPanel.notice(""); this.renderStory(true);
+    this.storyPanel.open(); this.audio.play("paper","story-page"); this.storyPanel.notice(""); this.renderStory(true);
   };
   private closeStoryPanel(resume: boolean) {
     if (!this.storyPanel.isOpen) return;
     this.cancelStoryWait();
-    this.storyPanel.close(); this.setPaused("story-panel", false);
+    this.storyPanel.close(); this.audio.stopEntity("story-page"); this.audio.play("paper","story-page"); this.setPaused("story-panel", false);
     this.canvas.focus({preventScroll: true});
     if (resume && this.currentView === "first-person" && this.controlsEnabled) this.pointerLock.request();
   }
@@ -630,12 +633,15 @@ export class RoomScene {
     this.lighthouseMaintenanceState.synchronize(this.lighthouseState);
     if (this.lighthouseMaintenance.mainIsolated || this.lighthouseMaintenance.source === "backup") return false;
     const started = this.lighthouseState.startTest();
+    if(started)this.audio?.play("switch","lighthouse-test-contact",()=>this.exterior.lighthouseDetails.beacon.root.position);
     if(started&&this.storyBridge)this.lighthouseInspectionState.renewObservation();
     this.notifyLighthouseOperation(); return started;
   }
   endLighthouseTest(): boolean {
     if (this.disposed) return false;
-    const ended = this.lighthouseState.endTest(); this.notifyLighthouseOperation(); return ended;
+    const ended = this.lighthouseState.endTest();
+    if(ended)this.audio?.play("switch","lighthouse-test-contact",()=>this.exterior.lighthouseDetails.beacon.root.position);
+    this.notifyLighthouseOperation(); return ended;
   }
   private synchronizeDiscovery() {
     if (!this.discovery) return;
@@ -1012,7 +1018,9 @@ export class RoomScene {
       return;
     }
     if (this.pointerLocked && !document.hidden) {
+      const previousFeet=this.ladder.feet;
       const arrived = advanceLighthouseLadder(this.ladder, this.ladderInput, dt);
+      this.dailyAudio?.climb(previousFeet,this.ladder.feet);
       if (arrived) {
         const p = lighthouseLadderLanding(); this.stableWalk = { position: houseVector(p.x, p.y, arrived.height + HOUSE_JUMP.eyeHeight), feet: arrived.height };
       }
@@ -1034,11 +1042,15 @@ export class RoomScene {
     }
     const support = walkingSurfaceAt(point.x, point.y, this.jump.feet, this.jump.grounded && !this.jump.queued ? .18 : 0);
     if (!support) { this.restoreStableWalk(); return; }
-    let remaining = Math.min(.2, Math.max(1 / 240, this.engine.getDeltaTime() / 1000));
+    const audioSeconds=this.engine.getDeltaTime()/1000;
+    let remaining = Math.min(.2, Math.max(1 / 240, audioSeconds));
+    let landed=false, impact=0;
     let frame = { feet: this.jump.feet, grounded: this.jump.grounded } as ReturnType<typeof advanceJump>;
     while (remaining > 1e-8) {
       const dt = Math.min(1 / 60, remaining); remaining -= dt;
+      const fallingSpeed=Math.max(0,-this.jump.velocity);
       frame = advanceJump(this.jump, dt, point, { floor: support.height, ceiling: support.ceiling });
+      if(frame.landed){landed=true;impact=Math.max(impact,fallingSpeed);}
       if (frame.snapped) break;
     }
     if (frame.snapped) {
@@ -1049,6 +1061,9 @@ export class RoomScene {
     camera.position.y = planToWorld(point, frame.feet + HOUSE_JUMP.eyeHeight).y;
     if (!Number.isFinite(frame.feet) || frame.feet < support.height - .3) { this.restoreStableWalk(); return; }
     previous.copyFrom(camera.position);
+    const actual=worldToPlan(camera.position);
+    this.dailyAudio?.walk(audioSeconds,{...actual,feet:frame.feet,grounded:frame.grounded,landed,impact,
+      material:footMaterial(support,actual.x,actual.y,frame.feet,jumpPlatformAt(actual.x,actual.y))});
     if (frame.grounded && Math.abs(frame.feet - support.height) < .06)
       this.stableWalk = { position: camera.position.clone(), feet: frame.feet };
   }
@@ -1069,6 +1084,7 @@ export class RoomScene {
   }
 
   private restoreStableWalk(home = false) {
+    this.dailyAudio?.reset();
     const camera = this.firstPersonCamera;
     const stable = !home && this.stableWalk && this.walkPoseIsValid(this.stableWalk) ? this.stableWalk : undefined;
     const support = walkingSurfaceAt(COASTAL_HOME.x, COASTAL_HOME.y)!;
@@ -1196,12 +1212,13 @@ export class RoomScene {
     // Modal state exists before lock release, preserving the first-person pose.
     this.setPaused("lighthouse-panel", true);
     this.lighthousePanel.renderStorage(this.storyBridge ? this.storySave.inspect() : this.lighthouseSave.inspect(),this.lighthouseSessionMode);
-    this.audio.stopActions(); this.audio.play("switch", "lighthouse-control-panel");
+    this.audio.stopActions(); this.audio.play(location==="log"?"paper":"ui-contact", "lighthouse-control-panel");
     this.updateControls(); this.updateInteractionHint();
   }
 
   private closeLighthousePanel(resumePointer: boolean) {
     if (!this.lighthousePanel.isOpen) return;
+    this.audio.play(this.lighthousePanel.activeLocation==="log"?"paper":"ui-contact","lighthouse-page");
     this.lighthousePanel.close(); this.setPaused("lighthouse-panel", false);
     this.updateControls(); this.updateInteractionHint(); this.canvas.focus({preventScroll: true});
     if (resumePointer && this.currentView === "first-person" && this.controlsEnabled) this.pointerLock.request();
@@ -1232,8 +1249,9 @@ export class RoomScene {
   }
   private localLighthousePower(command:PowerCommand,tool:LighthouseTool) {
     const location=this.lighthousePanel.activeLocation;if(!location || !lighthousePowerAllowed(location, command))return;
+    const wasRunning=this.lighthousePower.generatorRunning;
     const accepted=this.lighthousePowerState.command(command,location,tool,this.lighthouseCommandAllowed(location),this.timePlayback.automatic,this.lighthouseOperation,this.lighthouseMaintenance);
-    if(accepted)this.audio.play('switch',location);
+    if(accepted)this.audio.play(wasRunning!==this.lighthousePower.generatorRunning?'switch':'ui-contact',location);
     this.notifyLighthouseOperation();
     if(accepted&&this.lighthousePower.action)this.closeLighthousePanel(true);
   }
@@ -1295,6 +1313,7 @@ export class RoomScene {
     this.setPaused("map", true);
     this.interactions.silenceMotion();
     this.audio.stopActions();
+    this.audio.play("paper","map-page");
     this.pointerLock.release();
     this.updateControls();
     this.updateInteractionHint();
@@ -1303,6 +1322,7 @@ export class RoomScene {
   private closeFloorPlan(resumePointer: boolean) {
     if (!this.floorPlan.isOpen) return;
     this.floorPlan.close();
+    this.audio.stopEntity("map-page"); this.audio.play("paper","map-page");
     this.setPaused("map", false);
     this.updateControls();
     this.updateInteractionHint();
@@ -1313,6 +1333,7 @@ export class RoomScene {
   }
 
   private updateControls() {
+    this.dailyAudio?.reset();
     this.pointerStart = undefined;
     this.camera.detachControl();
     this.firstPersonCamera.detachControl();
@@ -1591,6 +1612,7 @@ export class RoomScene {
     this.soundscape.update(dt, {firstPerson:this.currentView === "first-person", x:point.x, y:point.y, feet:this.jump.feet,
       yaw:this.firstPersonCamera.rotation.y, shoreDistance:coastalShoreDistance(point.x,point.y,this.soundscapeShore),
       weather:this.weather.weather, pauses:this.pauseReasons,
+      beacon:{running:this.lighthouseOperation.running,visible:this.exterior.isVisible},
       doors:{"entry-door":this.interactions.doorProgress("entry-door"), "balcony-door":this.interactions.doorProgress("balcony-door"),
         "lighthouse-entry-door":this.interactions.doorProgress("lighthouse-entry-door")},
       scooter:{...this.scooter,...this.scooterInput}});
@@ -1625,14 +1647,14 @@ export class RoomScene {
   };
   private foregroundLost = () => { this.setPaused("blur", true); };
   private foregroundReturned = () => { this.setPaused("blur", false); this.resumeAudio(); };
-  private pauseAudio = () => { this.cleaningAudio.reset(); this.soundscape.reset(); this.interactions.silenceMotion(); this.audio.pause(); };
+  private pauseAudio = () => { this.cleaningAudio.reset(); this.soundscape.reset(); this.dailyAudio.reset(); this.interactions.silenceMotion(); this.audio.pause(); };
   private resumeAudio = () => { if (!document.hidden && !this.disposed) this.audio.foreground(); };
   private dispose = () => {
     if (this.disposed) return;
     this.disposed = true;
     this.cancelStoryWait();
     this.pauseScooter(); this.pauseLadder(); this.scooterModel.dispose();
-    this.cleaningAudio.reset(); this.soundscape.reset(); this.audio.dispose();
+    this.cleaningAudio.reset(); this.soundscape.reset(); this.dailyAudio.reset(); this.audio.dispose();
     this.rain.dispose();
     this.storyPanel.dispose();
     document.querySelector("#story-open")?.removeEventListener("click", this.openStoryPanel);

@@ -1,0 +1,17 @@
+{
+  "baseline": "cd57fc1",
+  "node": "24.21.0",
+  "python": "3.9.6",
+  "audio": "macOS afconvert / AudioToolbox PCM16@48000; AAC-LC64k mono",
+  "browser": "155.0.8059.86",
+  "generatorReproduction": "Two generations: all 39 daily delivery files (37 sounds, source.json, license) SHA256 identical",
+  "commands": [
+    "npm test",
+    "npm run typecheck",
+    "npm run build",
+    "npm run build:production",
+    "npm run verify:release",
+    "python3 tools/prepare-daily-audio.py",
+    "node tools/check-daily-audio.cjs"
+  ]
+}

@@ -180,7 +180,7 @@ export class RoomAudio {
       const prepared: AudioVoice[] = [];
       try {
         for (let i = 0; i < (clip.preload === "world" ? 1 : AUDIO_LIMITS.voicesPerClip); i++) {
-          const voice = await this.backend!.voice(buffer, clip.id + "-" + i, clip.cue === "paper", !!clip.loop, clip.group);
+          const voice = await this.backend!.voice(buffer, clip.id + "-" + i, clip.cue === "paper" || clip.group === "ui", !!clip.loop, clip.group);
           if (this.disposed) { voice.dispose(); prepared.forEach(value => value.dispose()); return; }
           prepared.push(voice);
           voice.ended(() => {
@@ -211,8 +211,9 @@ export class RoomAudio {
     if (!this.canPlay()) { this.dropped++; return; }
     const candidates = AUDIO_CLIPS.filter(clip => clip.preload !== "world" && clip.cue === cue && this.voices.has(clip.id));
     if (!candidates.length) { this.dropped++; return; }
-    const clip = candidates.find(value => value.id !== this.previous.get(cue)) || candidates[0];
-    const isUI = cue === "paper" || entity === "preview" || entity === "lighthouse-control-panel";
+    const variations = candidates.filter(value => value.id !== this.previous.get(cue));
+    const clip = variations.length ? variations[Math.floor(Math.random()*variations.length)] : candidates[0];
+    const isUI = clip.group === "ui" || cue === "paper" || entity === "preview" || entity === "lighthouse-control-panel";
     if (!this.groupLevel(clip,isUI)) return;
     const now = this.dependencies.now();
     if (clip.priority === 1 && now - (this.cooldown.get(entity) ?? -Infinity) < 80) return;
@@ -263,7 +264,8 @@ export class RoomAudio {
       const clip = AUDIO_CLIPS.find(c => c.id === value.id && c.preload === "world");
       if (clip && this.groupLevel(clip) && Number.isFinite(value.gain) && value.gain > .0008) desired.set(value.id,
         {id:value.id,gain:Math.min(.5,value.gain),rate:Number.isFinite(value.rate) ? Math.max(.5,Math.min(2,value.rate)) : 1,
-          pan:Number.isFinite(value.pan) ? Math.max(-.18,Math.min(.18,value.pan)) : 0});
+          pan:Number.isFinite(value.pan) ? Math.max(-.18,Math.min(.18,value.pan)) : 0,
+          position:value.position && Object.values(value.position).every(Number.isFinite) ? value.position : undefined});
     }
     this.requestedWorld.clear();
     if (!this.canPlay() || !this.gestured || this.context?.state !== "running") {
@@ -273,12 +275,12 @@ export class RoomAudio {
     for (const [id, entry] of this.worldActive) if (!desired.has(id)) this.stop(entry);
     for (const [id, target] of desired) {
       const entry = this.worldActive.get(id);
-      if (entry) { if (!entry.stopping) entry.voice.update(target.gain,target.rate!,target.pan!); continue; }
+      if (entry) { if (!entry.stopping) {entry.voice.update(target.gain,target.rate!,target.pan!); if(target.position)entry.voice.position(target.position);} continue; }
       const clip = AUDIO_CLIPS.find(c => c.id === id)!, voice = this.voices.get(id)?.[0];
       if (!voice || this.worldActive.size >= AUDIO_LIMITS.worldVoices || this.active.size >= AUDIO_LIMITS.voices) continue;
       const next: ActiveVoice = {voice,clip,entity:"soundscape:"+id,started:this.dependencies.now(),stopping:false,world:true};
       this.active.add(next); this.worldActive.set(id,next);
-      try { voice.play(0,target.rate!); voice.update(target.gain,target.rate!,target.pan!); this.played++; }
+      try { if(this.camera)this.backend!.listener(this.camera); voice.play(0,target.rate!,target.position); voice.update(target.gain,target.rate!,target.pan!); this.played++; }
       catch { this.release(next); this.dropped++; }
     }
     if ([...desired.keys()].some(id => !this.voices.has(id) && !this.failures.has(id))) void this.preload();
