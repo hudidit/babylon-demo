@@ -60,7 +60,7 @@ import type { LighthousePanelLocation } from "./LighthousePanel";
 import { lighthouseEquipmentDefinition, LIGHTHOUSE_EQUIPMENT, LIGHTHOUSE_BACKUP_MOUNT, lighthouseEquipmentReading } from "./LighthouseEquipmentLayout";
 import { LighthouseMaintenance } from "./LighthouseMaintenance";
 import type { LighthouseTool, MaintenanceCommand } from "./LighthouseMaintenance";
-import { lighthouseMaintenanceAllowed, lighthousePowerAllowed } from "./LighthouseExperience";
+import { lighthouseMaintenanceAllowed, lighthousePowerAllowed, lighthouseMainCheckIssue } from "./LighthouseExperience";
 import { LighthousePower } from "./LighthousePower";
 import { LighthouseSave, encodeLighthouseSave, decodeLighthouseSave, completeLighthouseSession } from "./LighthouseSave";
 import type { LighthouseCompleteSession, LighthouseSessionMode } from "./LighthouseSave";
@@ -1171,7 +1171,11 @@ export class RoomScene {
         this.firstPersonCamera.getForwardRay().direction);
   }
   private beginMainCheck() {
-    if (!this.canObserveMain(false) || this.mainCheck) return false;
+    return this.canObserveMain(false) && this.activateMainCheck();
+  }
+  /** Call only after either the world-area or the local panel authority gate passes. */
+  private activateMainCheck() {
+    if (this.mainCheck) return false;
     const needsTest = !this.lighthouseOperation.running;
     if (needsTest && !this.startLighthouseTest()) return false;
     this.lighthouseInspectionState.renewObservation();
@@ -1229,8 +1233,9 @@ export class RoomScene {
       || this.pauseReasons.some(reason => reason !== "lighthouse-panel")) {
       this.lighthousePanel.notice("请回顶层灯座旁检查。"); return;
     }
-    this.closeLighthousePanel(true);
-    this.beginMainCheck();
+    if (this.mainCheck || this.activateMainCheck()) this.closeLighthousePanel(true);
+    else this.lighthousePanel.notice(lighthouseMainCheckIssue(this.lighthouseOperation, this.lighthouseMaintenance, this.lighthousePower)
+      || "检查未开始，请回到灯旁再试一次。");
   }
 
   private lighthouseCommandAllowed(location: LighthousePanelLocation) {

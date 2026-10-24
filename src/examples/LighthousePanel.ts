@@ -7,7 +7,7 @@ import type { LighthouseMaintenanceSnapshot } from "./LighthouseMaintenance";
 import type { LighthousePowerSnapshot } from "./LighthousePower";
 import { lighthouseEquipmentDefinition } from "./LighthouseEquipmentLayout";
 import type { LighthouseEquipmentId } from "./LighthouseEquipmentLayout";
-import { lighthouseProgress, lighthouseRecords, lighthouseRecordPage } from "./LighthouseExperience";
+import { lighthouseProgress, lighthouseRecords, lighthouseRecordPage, lighthouseMainCheckIssue } from "./LighthouseExperience";
 import type { LighthouseDiscovery } from "./LighthouseDiscovery";
 type DiscoveryView = ReturnType<LighthouseDiscovery["view"]>;
 import type { LighthouseWeatherSnapshot } from "./LighthouseWeather";
@@ -126,7 +126,7 @@ export class LighthousePanel {
     this.state = [op, i, m, p, automatic, weather, discovery];
     const clue = discovery?.latest;
     const location = this.location, equipment = lighthouseEquipmentDefinition(location);
-    const key = [location, this.screen, this.page, op.dutyDay, lighthouseClockLabel(op.hour), op.running, Math.ceil(op.testSecondsRemaining),
+    const key = [location, this.screen, this.page, op.dutyDay, lighthouseClockLabel(op.hour), op.running, op.available, m.mainIsolated, m.driveFault, m.source, Math.ceil(op.testSecondsRemaining),
       i.dirty, i.nextMaintenanceDay, i.completed, i.checks["check-cover"], !!i.control, !!i.optic, i.events[i.events.length - 1]?.id,
       m.solarDirty, m.solarLatent, clue?.id, discovery?.history.length, discovery?.history.filter(e => e.valid).length, m.solarRecheck, m.nextSolarMaintenanceDay, m.backupOn, m.detectedDemand, m.evidence[m.evidence.length - 1]?.id,
       Math.round(p.mainFraction * 1000), Math.round(p.backupFraction * 1000), Math.round(p.solarW), Math.sign(p.mainNetW),
@@ -168,6 +168,8 @@ export class LighthousePanel {
     } else if (location === "test" || location === "lighthouse-drive-hatch") {
       gauges.push({label: "转台转速", value: op.running ? 60 / LIGHTHOUSE_OPERATION.rotationSeconds : 0, max: 8, unit: "rpm", note: op.running ? `每${LIGHTHOUSE_OPERATION.rotationSeconds}秒一圈` : "转台停止"});
       guide = location === "test" ? "留在灯旁3秒，可自由环顾。" : "检修口关闭；到灯旁按 E 查灯。";
+      const issue = location === "test" && lighthouseMainCheckIssue(op, m, p);
+      if (issue) {status = "大灯检查暂不可用"; guide = issue; tone = "warn";}
     } else if (location === "lighthouse-beacon-backup") {
       status = m.backupOn ? "备用灯接替中" : "备用灯待命"; tone = m.backupOn ? "warn" : "idle";
       gauges.push({label: "备用电池", value: p.backupFraction * 100, max: 100, unit: "%", note: "独立供电"}); guide = "主灯不可用时自动接替。";

@@ -1,6 +1,6 @@
 const assert = require('node:assert/strict'), {test} = require('node:test');
 const load = require('../docs/technical-plans/assets/lighthouse-d-2026-10-18/source-loader.cjs');
-const {lighthouseMaintenanceAllowed, lighthousePowerAllowed, lighthouseProgress, lighthouseRecords, lighthouseRecordPage} = load('LighthouseExperience');
+const {lighthouseMaintenanceAllowed, lighthousePowerAllowed, lighthouseProgress, lighthouseRecords, lighthouseRecordPage, lighthouseMainCheckIssue} = load('LighthouseExperience');
 const fixture = () => ({i: new (load('LighthouseInspection').LighthouseInspection)().snapshot,
  m: new (load('LighthouseMaintenance').LighthouseMaintenance)().snapshot,
  p: new (load('LighthousePower').LighthousePower)().snapshot});
@@ -22,6 +22,18 @@ test('reticle uses accepted progress and cannot close merely by waiting without 
  assert.equal(lighthouseProgress({...i,cleaning:true,cleaningSeconds:.75},m,p).fraction,.5);
  assert.equal(lighthouseProgress(i,{...m,action:{command:'inspect',elapsed:1,duration:2}},p).fraction,.5);
  assert.equal(lighthouseProgress(i,m,{...p,action:{elapsed:.5,duration:2}}).fraction,.25);
+});
+test('check guidance distinguishes standby, low-power recovery and equipment failures without changing snapshots', () => {
+ const {m,p}=fixture(),op=new(load('LighthouseOperation').LighthouseOperation)().snapshot;
+ assert.equal(lighthouseMainCheckIssue(op,m,p),undefined,'daylight standby is available for automatic testing');
+ const low={...p,protected:true};
+ assert.match(lighthouseMainCheckIssue({...op,available:false},m,low),/低电保护.*首层.*电池柜/);
+ assert.match(lighthouseMainCheckIssue({...op,available:false},m,{...low,recoveryReady:true}),/电量已回升.*确认恢复供电/);
+ assert.match(lighthouseMainCheckIssue({...op,available:false},{...m,mainIsolated:true},p),/隔离/);
+ assert.match(lighthouseMainCheckIssue({...op,available:false},{...m,driveFault:true},p),/驱动异常/);
+ assert.match(lighthouseMainCheckIssue({...op,available:false},m,p),/无法启动/);
+ assert.equal(lighthouseMainCheckIssue({...op,running:true},m,p),undefined,'running navigation can be checked');
+ const before=JSON.stringify({op,m,p});lighthouseMainCheckIssue(op,m,p);assert.equal(JSON.stringify({op,m,p}),before);
 });
 test('paper records filter by local object and remove technical events while preserving dirty/clean and interruption', () => {
  const {i,m,p}=fixture(); const events=[

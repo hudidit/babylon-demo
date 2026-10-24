@@ -335,3 +335,46 @@ test('lamp-panel check button closes its modal, starts a fresh check and keeps i
   assert.equal(e.inspection.snapshot.events.filter(event=>event.type==='optic-observed').length,2);
   room.currentView='coast';room.checkLocalMain();assert.equal(notice,1);assert.equal(closed,2);
 });
+
+test('lamp-panel refusal keeps its modal and explains low power instead of silently returning to the scene',t=>{
+  const {room,e,run}=simpleCheck(t);let closed=0,notice='';
+  room.lighthousePanel={activeLocation:'test',isOpen:true,notice(text){notice=text;}};
+  room.interactions=new(load('RoomInteractions').RoomInteractions)(room.scene,()=>{});
+  room.pauses.set('lighthouse-panel',true);
+  room.closeLighthousePanel=()=>{closed++;room.lighthousePanel.isOpen=false;room.pauses.set('lighthouse-panel',false);};
+  room.lighthousePowerState=new(load('LighthousePower').LighthousePower)({mainWh:200});
+  room.synchronizeLighthousePower();assert.equal(room.lighthouseOperation.available,false);
+  const events=e.inspection.snapshot.events.length;
+  room.checkLocalMain();
+  assert.equal(closed,0,'failed start must leave its explanation visible');
+  assert.equal(room.lighthousePanel.isOpen,true);assert.equal(room.pauses.has('lighthouse-panel'),true);
+  assert.match(notice,/低电保护.*首层.*电池柜/);
+  assert.equal(room.mainCheck,undefined);assert.equal(e.operation.snapshot.mode,'automatic');
+  run(4);assert.equal(e.inspection.snapshot.optic,undefined);assert.equal(e.inspection.snapshot.events.length,events);
+  // Restore a valid supplied model through the existing power synchronization, then retry the same panel.
+  room.lighthousePowerState=new(load('LighthousePower').LighthousePower)();room.synchronizeLighthousePower();
+  room.checkLocalMain();assert.equal(closed,1);run(3);assert.ok(e.inspection.snapshot.optic);
+});
+
+test('lamp-panel resumes an active check without restarting its test or elapsed observation',t=>{
+  const {room,e,run}=simpleCheck(t);room.beginMainCheck();run(1);let closed=0;
+  room.lighthousePanel={activeLocation:'test',isOpen:true,notice(){assert.fail('active check should resume');}};
+  room.interactions=new(load('RoomInteractions').RoomInteractions)(room.scene,()=>{});
+  room.pauses.set('lighthouse-panel',true);
+  room.closeLighthousePanel=()=>{closed++;room.lighthousePanel.isOpen=false;room.pauses.set('lighthouse-panel',false);};
+  const starts=e.operation.snapshot.events.filter(event=>event.type==='test-started').length;
+  room.checkLocalMain();assert.equal(closed,1);near(e.inspection.snapshot.observationSeconds,1);
+  assert.equal(e.operation.snapshot.events.filter(event=>event.type==='test-started').length,starts);
+  run(2);assert.ok(e.inspection.snapshot.optic);
+});
+
+test('lamp-panel refuses a failed drive without closing or manufacturing an observation',t=>{
+  const {room,e,run}=simpleCheck(t);let closed=0,notice='';
+  room.lighthousePanel={activeLocation:'test',isOpen:true,notice(text){notice=text;}};
+  room.interactions=new(load('RoomInteractions').RoomInteractions)(room.scene,()=>{});
+  room.pauses.set('lighthouse-panel',true);room.closeLighthousePanel=()=>{closed++;};
+  room.lighthouseMaintenanceState=new(load('LighthouseMaintenance').LighthouseMaintenance)('drive');room.synchronizeLighthousePower();
+  assert.equal(room.lighthouseOperation.available,false);
+  room.checkLocalMain();assert.equal(closed,0);assert.match(notice,/驱动异常/);
+  run(4);assert.equal(room.mainCheck,undefined);assert.equal(e.inspection.snapshot.optic,undefined);
+});

@@ -1,0 +1,357 @@
+{
+  "baseline": "cd5c978",
+  "errors": [],
+  "warnings": [],
+  "firstScreen": [
+    {
+      "path": "/js/main.js",
+      "bytes": 533454,
+      "sha256": "340a29e7133b526def11fff8086d14a32901141ddd796910c5841772ba767f36"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2316,
+      "sha256": "0087613b2f8028d16c8d26acaad98c25becfeb2949f517954d6ba5fb4fc7bd52"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "cases": {
+    "paused": {
+      "panel": false,
+      "mainCheck": "test",
+      "seconds": 0.517800000190735,
+      "optic": false,
+      "observed": 0,
+      "mode": "test",
+      "running": true,
+      "available": true,
+      "protected": false,
+      "ready": false,
+      "mainWh": 2308.791770300779,
+      "pauses": [
+        "map"
+      ],
+      "guide": "留在灯旁3秒，可自由环顾。",
+      "status": "导航灯运行",
+      "activity": {
+        "hidden": false,
+        "label": "检查大灯"
+      }
+    },
+    "normal-12": {
+      "before": {
+        "panel": true,
+        "location": "test",
+        "seconds": 0,
+        "optic": false,
+        "observed": 0,
+        "mode": "automatic",
+        "running": false,
+        "available": true,
+        "protected": false,
+        "ready": false,
+        "mainWh": 2308.791770300779,
+        "pauses": [
+          "lighthouse-panel"
+        ],
+        "guide": "留在灯旁3秒，可自由环顾。",
+        "status": "日间待机",
+        "activity": {
+          "hidden": true,
+          "label": ""
+        }
+      },
+      "progress": {
+        "panel": false,
+        "mainCheck": "test",
+        "seconds": 0.43450000000000005,
+        "optic": false,
+        "observed": 0,
+        "mode": "test",
+        "running": true,
+        "available": true,
+        "protected": false,
+        "ready": false,
+        "mainWh": 2308.791770300779,
+        "pauses": [],
+        "guide": "留在灯旁3秒，可自由环顾。",
+        "status": "导航灯运行",
+        "activity": {
+          "hidden": false,
+          "label": "检查大灯"
+        }
+      },
+      "after": {
+        "panel": false,
+        "seconds": 3,
+        "optic": true,
+        "observed": 1,
+        "mode": "automatic",
+        "running": false,
+        "available": true,
+        "protected": false,
+        "ready": false,
+        "mainWh": 2308.791770300779,
+        "pauses": [],
+        "guide": "留在灯旁3秒，可自由环顾。",
+        "status": "导航灯运行",
+        "activity": {
+          "hidden": false,
+          "label": "✓ 大灯检查完成"
+        }
+      }
+    },
+    "normal-21": {
+      "before": {
+        "panel": true,
+        "location": "test",
+        "seconds": 3,
+        "optic": true,
+        "observed": 1,
+        "mode": "automatic",
+        "running": true,
+        "available": true,
+        "protected": false,
+        "ready": false,
+        "mainWh": 2308.791770300779,
+        "pauses": [
+          "lighthouse-panel"
+        ],
+        "guide": "留在灯旁3秒，可自由环顾。",
+        "status": "导航灯运行",
+        "activity": {
+          "hidden": true,
+          "label": "✓ 大灯检查完成"
+        }
+      },
+      "progress": {
+        "panel": false,
+        "mainCheck": "running",
+        "seconds": 0.43350000000000005,
+        "optic": false,
+        "observed": 1,
+        "mode": "automatic",
+        "running": true,
+        "available": true,
+        "protected": false,
+        "ready": false,
+        "mainWh": 2308.791770300779,
+        "pauses": [],
+        "guide": "留在灯旁3秒，可自由环顾。",
+        "status": "导航灯运行",
+        "activity": {
+          "hidden": false,
+          "label": "检查大灯"
+        }
+      },
+      "after": {
+        "panel": false,
+        "seconds": 3,
+        "optic": true,
+        "observed": 2,
+        "mode": "automatic",
+        "running": true,
+        "available": true,
+        "protected": false,
+        "ready": false,
+        "mainWh": 2308.791770300779,
+        "pauses": [],
+        "guide": "留在灯旁3秒，可自由环顾。",
+        "status": "导航灯运行",
+        "activity": {
+          "hidden": false,
+          "label": "✓ 大灯检查完成"
+        }
+      }
+    },
+    "departure": {
+      "panel": false,
+      "seconds": 0,
+      "optic": false,
+      "observed": 2,
+      "mode": "automatic",
+      "running": false,
+      "available": true,
+      "protected": false,
+      "ready": false,
+      "mainWh": 2308.791770300779,
+      "pauses": [],
+      "guide": "留在灯旁3秒，可自由环顾。",
+      "status": "导航灯运行",
+      "activity": {
+        "hidden": true,
+        "label": "检查大灯"
+      }
+    },
+    "rejected": {
+      "before": {
+        "panel": true,
+        "location": "test",
+        "seconds": 0,
+        "optic": false,
+        "observed": 2,
+        "mode": "automatic",
+        "running": false,
+        "available": false,
+        "protected": true,
+        "ready": false,
+        "mainWh": 200,
+        "pauses": [
+          "lighthouse-panel"
+        ],
+        "guide": "主电池低电保护中。请到首层电池柜查看，电量回升后确认恢复供电。",
+        "status": "大灯检查暂不可用",
+        "activity": {
+          "hidden": true,
+          "label": "检查大灯"
+        }
+      },
+      "after": {
+        "panel": true,
+        "location": "test",
+        "seconds": 0,
+        "optic": false,
+        "observed": 2,
+        "mode": "automatic",
+        "running": false,
+        "available": false,
+        "protected": true,
+        "ready": false,
+        "mainWh": 200,
+        "pauses": [
+          "lighthouse-panel"
+        ],
+        "guide": "主电池低电保护中。请到首层电池柜查看，电量回升后确认恢复供电。",
+        "status": "大灯检查暂不可用",
+        "activity": {
+          "hidden": true,
+          "label": "检查大灯"
+        }
+      },
+      "narrow": {
+        "width": 390,
+        "scrollWidth": 356,
+        "clientWidth": 356,
+        "guide": "主电池低电保护中。请到首层电池柜查看，电量回升后确认恢复供电。"
+      }
+    },
+    "charging": {
+      "beforeWh": 200,
+      "afterWh": 576.3050093146148,
+      "ready": true,
+      "seconds": 94.89999999999888,
+      "frames": 950
+    },
+    "recovered": {
+      "panel": false,
+      "seconds": 0,
+      "optic": false,
+      "observed": 2,
+      "mode": "automatic",
+      "running": false,
+      "available": true,
+      "protected": false,
+      "ready": false,
+      "mainWh": 576.3050093146148,
+      "pauses": [],
+      "guide": "电量已回升，可以确认恢复供电。",
+      "status": "供电保护中",
+      "activity": {
+        "hidden": false,
+        "label": "✓ 已记录"
+      }
+    },
+    "retried": {
+      "panel": false,
+      "seconds": 3,
+      "optic": true,
+      "observed": 3,
+      "mode": "automatic",
+      "running": false,
+      "available": true,
+      "protected": false,
+      "ready": false,
+      "mainWh": 576.3050093146148,
+      "pauses": [],
+      "guide": "留在灯旁3秒，可自由环顾。",
+      "status": "导航灯运行",
+      "activity": {
+        "hidden": false,
+        "label": "✓ 大灯检查完成"
+      }
+    }
+  },
+  "fpsOrLoadSpeedSampling": false,
+  "method": "Unmodified production dist. Native world/panel clicks and real render clock for three-second checks. Nearby grounded pose fixtures only. Low-power case uses the original power model with legal 200Wh starting energy; recovery advances original shared active-clock receipts, then native battery recovery button.",
+  "release": {
+    "fileCount": 570,
+    "modelBytes": 4332840,
+    "buildBytes": 26628624,
+    "runtimeBytes": 17960471,
+    "documentationBytes": 209382,
+    "manifestBytes": 107854,
+    "initialJsBytes": 2953632,
+    "audioBytes": 2070809,
+    "audioDecodedBytes": 16698240,
+    "releaseBytes": 44906331
+  },
+  "hosted": {
+    "prefixes": [
+      "/",
+      "/audio-lab/"
+    ],
+    "filesPerPrefix": 570
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3172728,
+  "passed": true
+}

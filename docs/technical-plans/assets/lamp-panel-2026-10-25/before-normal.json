@@ -1,0 +1,906 @@
+{
+  "errors": [],
+  "logs": [
+    {
+      "hour": 12,
+      "phase": "before",
+      "state": {
+        "view": "first-person",
+        "pointer": true,
+        "pauses": [],
+        "controls": true,
+        "canAccess": true,
+        "canObserve": true,
+        "panel": false,
+        "optic": false,
+        "seconds": 0,
+        "op": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 12.00331333333254,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "day-standby",
+          "running": false,
+          "available": true,
+          "detectedDemand": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0,
+          "rotationRadians": 0,
+          "automaticOperatingHours": 0,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "day-standby"
+            }
+          ]
+        },
+        "feet": 19.64,
+        "grounded": true,
+        "hint": "E · 检查大灯（3秒）",
+        "guide": ""
+      }
+    },
+    {
+      "hour": 12,
+      "phase": "world-click",
+      "state": {
+        "view": "first-person",
+        "pointer": false,
+        "pauses": [
+          "lighthouse-panel"
+        ],
+        "controls": false,
+        "canAccess": true,
+        "canObserve": false,
+        "panel": true,
+        "location": "test",
+        "optic": false,
+        "seconds": 0,
+        "op": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 12.00331333333254,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "day-standby",
+          "running": false,
+          "available": true,
+          "detectedDemand": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0,
+          "rotationRadians": 0,
+          "automaticOperatingHours": 0,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "day-standby"
+            }
+          ]
+        },
+        "feet": 19.64,
+        "grounded": true,
+        "hint": "",
+        "guide": "留在灯旁3秒，可自由环顾。"
+      }
+    },
+    {
+      "hour": 12,
+      "phase": "button-click",
+      "state": {
+        "view": "first-person",
+        "pointer": false,
+        "pauses": [],
+        "controls": true,
+        "canAccess": true,
+        "canObserve": true,
+        "panel": false,
+        "mainCheck": "test",
+        "optic": false,
+        "seconds": 0,
+        "op": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 12.00331333333254,
+          "dutyDay": 1,
+          "mode": "test",
+          "state": "test-running",
+          "running": true,
+          "available": true,
+          "detectedDemand": false,
+          "testSecondsRemaining": 60,
+          "rotationTurns": 0,
+          "rotationRadians": 0,
+          "automaticOperatingHours": 0,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "test-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 4,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-started",
+              "source": "command",
+              "result": "test-running"
+            }
+          ]
+        },
+        "feet": 19.64,
+        "grounded": true,
+        "hint": "E · 检查大灯（3秒）",
+        "guide": "留在灯旁3秒，可自由环顾。"
+      }
+    },
+    {
+      "hour": 12,
+      "phase": "500ms",
+      "state": {
+        "view": "first-person",
+        "pointer": true,
+        "pauses": [],
+        "controls": true,
+        "canAccess": true,
+        "canObserve": true,
+        "panel": false,
+        "mainCheck": "test",
+        "optic": false,
+        "seconds": 0.48329999995231626,
+        "op": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 12.011368333331742,
+          "dutyDay": 1,
+          "mode": "test",
+          "state": "test-running",
+          "running": true,
+          "available": true,
+          "detectedDemand": false,
+          "testSecondsRemaining": 59.51670000004767,
+          "rotationTurns": 0.016109999998410535,
+          "rotationRadians": 0.10122211528867622,
+          "automaticOperatingHours": 0.008054999999201229,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "test-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 4,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-started",
+              "source": "command",
+              "result": "test-running"
+            }
+          ]
+        },
+        "feet": 19.64,
+        "grounded": true,
+        "hint": "E · 检查大灯（3秒）",
+        "guide": "留在灯旁3秒，可自由环顾。"
+      }
+    },
+    {
+      "hour": 12,
+      "phase": "7s",
+      "state": {
+        "view": "first-person",
+        "pointer": true,
+        "pauses": [],
+        "controls": true,
+        "canAccess": true,
+        "canObserve": true,
+        "panel": false,
+        "optic": true,
+        "seconds": 3,
+        "op": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 12.119970000000752,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "day-standby",
+          "running": false,
+          "available": true,
+          "detectedDemand": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0.10055666666825606,
+          "rotationRadians": 0.6318161705489418,
+          "automaticOperatingHours": 0.050278333334111025,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "test-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 4,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-started",
+              "source": "command",
+              "result": "test-running"
+            },
+            {
+              "id": 5,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "day-standby",
+              "previousState": "test-running"
+            },
+            {
+              "id": 6,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-ended",
+              "source": "command",
+              "result": "day-standby"
+            }
+          ]
+        },
+        "feet": 19.64,
+        "grounded": true,
+        "hint": "大灯已检查 · E 重新检查",
+        "guide": "留在灯旁3秒，可自由环顾。"
+      }
+    },
+    {
+      "hour": 21,
+      "phase": "before",
+      "state": {
+        "view": "first-person",
+        "pointer": true,
+        "pauses": [],
+        "controls": true,
+        "canAccess": true,
+        "canObserve": true,
+        "panel": false,
+        "optic": true,
+        "seconds": 3,
+        "op": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 21.003201666669046,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "night-running",
+          "running": true,
+          "available": true,
+          "detectedDemand": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0.10696000000635775,
+          "rotationRadians": 0.6720495004958754,
+          "automaticOperatingHours": 0.053480000003157,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "test-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 4,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-started",
+              "source": "command",
+              "result": "test-running"
+            },
+            {
+              "id": 5,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "day-standby",
+              "previousState": "test-running"
+            },
+            {
+              "id": 6,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-ended",
+              "source": "command",
+              "result": "day-standby"
+            },
+            {
+              "id": 7,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "manual-time",
+              "result": "night-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 8,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "night-running"
+            }
+          ]
+        },
+        "feet": 19.64,
+        "grounded": true,
+        "hint": "大灯已检查 · E 重新检查",
+        "guide": "留在灯旁3秒，可自由环顾。"
+      }
+    },
+    {
+      "hour": 21,
+      "phase": "world-click",
+      "state": {
+        "view": "first-person",
+        "pointer": false,
+        "pauses": [
+          "lighthouse-panel"
+        ],
+        "controls": false,
+        "canAccess": true,
+        "canObserve": false,
+        "panel": true,
+        "location": "test",
+        "optic": true,
+        "seconds": 3,
+        "op": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 21.003201666669046,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "night-running",
+          "running": true,
+          "available": true,
+          "detectedDemand": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0.10696000000635775,
+          "rotationRadians": 0.6720495004958754,
+          "automaticOperatingHours": 0.053480000003157,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "test-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 4,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-started",
+              "source": "command",
+              "result": "test-running"
+            },
+            {
+              "id": 5,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "day-standby",
+              "previousState": "test-running"
+            },
+            {
+              "id": 6,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-ended",
+              "source": "command",
+              "result": "day-standby"
+            },
+            {
+              "id": 7,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "manual-time",
+              "result": "night-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 8,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "night-running"
+            }
+          ]
+        },
+        "feet": 19.64,
+        "grounded": true,
+        "hint": "",
+        "guide": "留在灯旁3秒，可自由环顾。"
+      }
+    },
+    {
+      "hour": 21,
+      "phase": "button-click",
+      "state": {
+        "view": "first-person",
+        "pointer": true,
+        "pauses": [],
+        "controls": true,
+        "canAccess": true,
+        "canObserve": true,
+        "panel": false,
+        "mainCheck": "running",
+        "optic": false,
+        "seconds": 0,
+        "op": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 21.003201666669046,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "night-running",
+          "running": true,
+          "available": true,
+          "detectedDemand": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0.10696000000635775,
+          "rotationRadians": 0.6720495004958754,
+          "automaticOperatingHours": 0.053480000003157,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "test-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 4,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-started",
+              "source": "command",
+              "result": "test-running"
+            },
+            {
+              "id": 5,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "day-standby",
+              "previousState": "test-running"
+            },
+            {
+              "id": 6,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-ended",
+              "source": "command",
+              "result": "day-standby"
+            },
+            {
+              "id": 7,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "manual-time",
+              "result": "night-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 8,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "night-running"
+            }
+          ]
+        },
+        "feet": 19.64,
+        "grounded": true,
+        "hint": "E · 检查大灯（3秒）",
+        "guide": "留在灯旁3秒，可自由环顾。"
+      }
+    },
+    {
+      "hour": 21,
+      "phase": "500ms",
+      "state": {
+        "view": "first-person",
+        "pointer": true,
+        "pauses": [],
+        "controls": true,
+        "canAccess": true,
+        "canObserve": true,
+        "panel": false,
+        "mainCheck": "running",
+        "optic": false,
+        "seconds": 0.5,
+        "op": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 21.011535000002354,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "night-running",
+          "running": true,
+          "available": true,
+          "detectedDemand": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0.12362666667302445,
+          "rotationRadians": 0.7767692556155354,
+          "automaticOperatingHours": 0.06181333333646499,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "test-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 4,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-started",
+              "source": "command",
+              "result": "test-running"
+            },
+            {
+              "id": 5,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "day-standby",
+              "previousState": "test-running"
+            },
+            {
+              "id": 6,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-ended",
+              "source": "command",
+              "result": "day-standby"
+            },
+            {
+              "id": 7,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "manual-time",
+              "result": "night-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 8,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "night-running"
+            }
+          ]
+        },
+        "feet": 19.64,
+        "grounded": true,
+        "hint": "E · 检查大灯（3秒）",
+        "guide": "留在灯旁3秒，可自由环顾。"
+      }
+    },
+    {
+      "hour": 21,
+      "phase": "7s",
+      "state": {
+        "view": "first-person",
+        "pointer": true,
+        "pauses": [],
+        "controls": true,
+        "canAccess": true,
+        "canObserve": true,
+        "panel": false,
+        "optic": true,
+        "seconds": 3,
+        "op": {
+          "deviceId": "lighthouse-beacon-main",
+          "hour": 21.120133333337062,
+          "dutyDay": 1,
+          "mode": "automatic",
+          "state": "night-running",
+          "running": true,
+          "available": true,
+          "detectedDemand": false,
+          "testSecondsRemaining": 0,
+          "rotationTurns": 0.3408233333428695,
+          "rotationRadians": 2.141456160403888,
+          "automaticOperatingHours": 0.17041166667117302,
+          "events": [
+            {
+              "id": 1,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "initialized",
+              "source": "system",
+              "result": "day-standby"
+            },
+            {
+              "id": 2,
+              "dutyDay": 1,
+              "hour": 12,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "day-standby"
+            },
+            {
+              "id": 3,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "test-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 4,
+              "dutyDay": 1,
+              "hour": 12.00331333333254,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-started",
+              "source": "command",
+              "result": "test-running"
+            },
+            {
+              "id": 5,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "command",
+              "result": "day-standby",
+              "previousState": "test-running"
+            },
+            {
+              "id": 6,
+              "dutyDay": 1,
+              "hour": 12.053591666666652,
+              "objectId": "lighthouse-beacon-main",
+              "type": "test-ended",
+              "source": "command",
+              "result": "day-standby"
+            },
+            {
+              "id": 7,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "state-changed",
+              "source": "manual-time",
+              "result": "night-running",
+              "previousState": "day-standby"
+            },
+            {
+              "id": 8,
+              "dutyDay": 1,
+              "hour": 21,
+              "objectId": "lighthouse-beacon-main",
+              "type": "time-selected",
+              "source": "manual-time",
+              "result": "night-running"
+            }
+          ]
+        },
+        "feet": 19.64,
+        "grounded": true,
+        "hint": "大灯已检查 · E 重新检查",
+        "guide": "留在灯旁3秒，可自由环顾。"
+      }
+    }
+  ]
+}

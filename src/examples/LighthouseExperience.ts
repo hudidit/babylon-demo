@@ -2,12 +2,24 @@ import { LIGHTHOUSE_INSPECTION } from "./LighthouseInspection";
 import type { LighthouseInspectionSnapshot } from "./LighthouseInspection";
 import type { LighthouseMaintenanceSnapshot, MaintenanceCommand } from "./LighthouseMaintenance";
 import type { LighthousePowerSnapshot, PowerCommand } from "./LighthousePower";
+import type { LighthouseOperationSnapshot } from "./LighthouseOperation";
 
 /** The current player scope. Deferred simulations remain independently testable. */
 export const lighthouseMaintenanceAllowed = (location: string, command: MaintenanceCommand) =>
   location === "lighthouse-solar-array" && (command === "inspect" || command === "surface-test" || command === "clean");
 export const lighthousePowerAllowed = (location: string, command: PowerCommand) =>
   location === "lighthouse-battery-main" && command === "verify-main";
+
+/** Explain an unavailable ordinary check without changing equipment state or saved evidence. */
+export function lighthouseMainCheckIssue(op: LighthouseOperationSnapshot, m: LighthouseMaintenanceSnapshot, p: LighthousePowerSnapshot) {
+  if (op.running) return undefined;
+  if (p.protected) return p.recoveryReady ? "电量已回升。请到首层电池柜确认恢复供电，再检查大灯。"
+    : "主电池低电保护中。请到首层电池柜查看，电量回升后确认恢复供电。";
+  if (m.mainIsolated) return "大灯处于隔离检修状态。请到首层查看检修记录。";
+  if (m.driveFault) return "大灯驱动异常，暂时无法检查。请到首层查看检修记录。";
+  if (!op.available || m.source === "backup") return "大灯暂时无法启动。请到首层查看供电与检修记录。";
+  return undefined;
+}
 
 export function lighthouseProgress(i: LighthouseInspectionSnapshot, m: LighthouseMaintenanceSnapshot, p: LighthousePowerSnapshot) {
   if (i.cleaning) return {kind: "cleaning", label: "擦拭中", fraction: i.cleaningSeconds / 1.5};
