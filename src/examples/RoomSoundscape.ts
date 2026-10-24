@@ -9,6 +9,7 @@ import type { LighthouseWeatherKind } from "./LighthouseWeather";
 export type SoundRegion = "outside" | "house" | "balcony" | "tower" | "lantern" | "gallery" | "service";
 export type SoundscapeState = {
   firstPerson: boolean; x: number; y: number; feet: number; yaw: number; shoreDistance: number;
+  hour?: number;
   weather: {rain: number; kind: LighthouseWeatherKind; from: LighthouseWeatherKind; transition: number};
   pauses: readonly string[]; doors: Readonly<Record<string, number>>;
   beacon?: {running: boolean; visible: boolean};
@@ -46,11 +47,12 @@ export class RoomSoundscape {
   private elapsed = 0;
   private lastSpeed = 0;
   private braking = false;
-  private latest?: {region: SoundRegion; wind: number; rain: number; exposure: number; targets: readonly WorldAudioTarget[]};
-  constructor(private readonly audio: Sink) {}
+  private birdWait?: number;
+  private latest?: {region: SoundRegion; wind: number; rain: number; exposure: number; birdInSeconds?: number; targets: readonly WorldAudioTarget[]};
+  constructor(private readonly audio: Sink, private readonly random: () => number = Math.random) {}
   get diagnostics() { return this.latest; }
   private stopContacts() { this.audio.stopEntity("scooter-brake"); this.audio.stopEntity("scooter-contact"); }
-  reset() { this.audio.resetWorld(); this.stopContacts(); this.gains.clear(); this.lastSpeed = 0; this.braking = false; this.rate = .65; this.region = "outside"; this.latest = undefined; }
+  reset() { this.audio.resetWorld(); this.stopContacts(); this.audio.stopEntity("ambient-birds"); this.birdWait=undefined; this.gains.clear(); this.lastSpeed = 0; this.braking = false; this.rate = .65; this.region = "outside"; this.latest = undefined; }
   update(seconds: number, s: SoundscapeState) {
     const dt = clamp(seconds, 0, .2);
     const hardPause = s.pauses.some(r => ["settings","inspector","external","blur","hidden"].includes(r));
@@ -78,10 +80,20 @@ export class RoomSoundscape {
     const reading = s.pauses.length > 0;
     if (reading) this.stopContacts();
     const background = (s.firstPerson ? 1 : .22)*(reading ? .35 : 1);
-    const sea = .17*clamp(1/(1+Math.abs(s.shoreDistance)*.07),.28,1)*background;
-    const rideWind = s.firstPerson && !reading && s.scooter.riding ? .06*clamp(Math.abs(s.scooter.speed)/(40/3.6)) : 0;
-    const windGain = (.07+.18*wind+rideWind)*(1+.05*Math.sin(this.elapsed*.27))*background;
-    const rainGain = .18*rain*background;
+    const sea = .055*clamp(1/(1+Math.abs(s.shoreDistance)*.07),.28,1)*background;
+    const windGain = (.018+.035*wind)*(1+.05*Math.sin(this.elapsed*.27))*background;
+    const rainGain = .09*rain*background;
+    const hour=s.hour ?? 12;
+    const birds=s.firstPerson && !reading && exposure>.65 && rain<.2 && hour>=7 && hour<19
+      && [s.x,s.y,s.feet].every(Number.isFinite);
+    if (!birds) {
+      if(this.birdWait!==undefined)this.audio.stopEntity("ambient-birds");
+      this.birdWait=undefined;
+    } else if(this.birdWait===undefined) this.birdWait=18+12*clamp(this.random());
+    else {
+      this.birdWait-=dt;
+      if(this.birdWait<=0) {this.audio.play("bird-call","ambient-birds");this.birdWait=32+30*clamp(this.random());}
+    }
     const driving = s.firstPerson && !reading && s.scooter.riding;
     const speed = driving ? Math.abs(s.scooter.speed) : 0, n = clamp(speed/(40/3.6));
     const braking = driving && (s.scooter.brake || s.scooter.exitRequested || s.scooter.forward && s.scooter.back
@@ -112,7 +124,7 @@ export class RoomSoundscape {
       this.gains.set(value.id,gain);
       return {...value,gain};
     });
-    this.latest = {region:this.region,wind,rain,exposure,targets};
+    this.latest = {region:this.region,wind,rain,exposure,birdInSeconds:this.birdWait,targets};
     this.audio.world(targets);
   }
 }

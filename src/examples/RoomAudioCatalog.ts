@@ -2,12 +2,13 @@
 import { ACTION_AUDIO_CLIPS } from "./RoomActionAudioCatalog";
 import { SOUNDSCAPE_AUDIO_CLIPS } from "./RoomSoundscapeAudioCatalog";
 import { DAILY_AUDIO_CLIPS } from "./RoomDailyAudioCatalog";
+import { BIRD_AUDIO_CLIPS } from "./RoomBirdAudioCatalog";
 export type FootMaterial = "wood" | "hard" | "earth" | "metal" | "soft";
 export type AudioCue = "drawer-slide" | "drawer-stop" | "door-move" | "door-latch" | "switch" | "paper"
   | "metal-door-move" | "metal-door-latch" | "slide-move" | "slide-stop" | "cloth-touch" | "cloth-wipe" | "cloth-lift"
   | "scooter-mount" | "scooter-brake" | "motor-loop" | "roll-loop" | "wind-open" | "wind-sheltered"
   | "rain-open" | "rain-sheltered" | "sea-open" | "sea-sheltered"
-  | `footstep-${FootMaterial}` | `landing-${FootMaterial}` | "ladder-rung" | "curtain-move" | "beacon-drive" | "ui-contact";
+  | `footstep-${FootMaterial}` | `landing-${FootMaterial}` | "ladder-rung" | "curtain-move" | "beacon-drive" | "ui-contact" | "bird-call";
 export type AudioPoint = { x: number; y: number; z: number };
 export type RoomAudioEvent = { cue: AudioCue | "stop"; entity: string; position?: () => AudioPoint };
 export type AudioGroup = "actions" | "vehicle" | "ambience" | "ui";
@@ -30,6 +31,7 @@ export const AUDIO_CLIPS: readonly AudioClip[] = [
   ...ACTION_AUDIO_CLIPS,
   ...SOUNDSCAPE_AUDIO_CLIPS,
   ...DAILY_AUDIO_CLIPS,
+  ...BIRD_AUDIO_CLIPS,
 ];
 export const AUDIO_LIMITS = { voices: 14, actionVoices: 6, worldVoices: 8, voicesPerClip: 2,
   decodedBytes: 16 * 1048576, fileBytes: 2.1 * 1048576, coreBytes: 393216 };

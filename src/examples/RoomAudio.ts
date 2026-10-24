@@ -213,6 +213,8 @@ export class RoomAudio {
     if (!candidates.length) { this.dropped++; return; }
     const variations = candidates.filter(value => value.id !== this.previous.get(cue));
     const clip = variations.length ? variations[Math.floor(Math.random()*variations.length)] : candidates[0];
+    // Autonomous ambience must never exploit a browser that happens to allow a running context.
+    if (clip.group === "ambience" && !this.gestured) { this.dropped++; return; }
     const isUI = clip.group === "ui" || cue === "paper" || entity === "preview" || entity === "lighthouse-control-panel";
     if (!this.groupLevel(clip,isUI)) return;
     const now = this.dependencies.now();

@@ -2,50 +2,8 @@
   "schemaVersion": 1,
   "verifiedOn": "2026-10-24",
   "generator": "tools/prepare-soundscape-audio.py",
-  "generatorSha256": "8f4e9c81f2b55907890a86c320e57e4965b2ea09e551543541fefcd4eac94b5b",
+  "generatorSha256": "c879e135a0cfaac4968d8396bb0e48117cf430537d25d7f6019eb20a0bf41535",
   "sources": [
-    {
-      "id": "sea-01",
-      "author": "transitking (submitted by qubodup)",
-      "title": "Water Waves, wave 01",
-      "page": "https://opengameart.org/content/water-waves",
-      "url": "https://opengameart.org/sites/default/files/wave_01_cc0-11505__transitking__wavesound.flac",
-      "sha256": "0bd84b2061a82c234470bd4e16efc6ab24851928d3f93e1757bfea048b2d7a33",
-      "bytes": 265335,
-      "tier": "uploader lossless FLAC extract",
-      "license": "CC0-1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "verifiedOn": "2026-10-24",
-      "pageLicenseEvidence": "Source page explicitly links CC0 1.0"
-    },
-    {
-      "id": "sea-03",
-      "author": "transitking (submitted by qubodup)",
-      "title": "Water Waves, wave 03",
-      "page": "https://opengameart.org/content/water-waves",
-      "url": "https://opengameart.org/sites/default/files/wave_03_cc0-11505__transitking__wavesound.flac",
-      "sha256": "1657a0002367e6e97eb34fc9f4d841f4a910981450c634bdc6c09ae1978049c1",
-      "bytes": 401955,
-      "tier": "uploader lossless FLAC extract",
-      "license": "CC0-1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "verifiedOn": "2026-10-24",
-      "pageLicenseEvidence": "Source page explicitly links CC0 1.0"
-    },
-    {
-      "id": "sea-04",
-      "author": "transitking (submitted by qubodup)",
-      "title": "Water Waves, wave 04",
-      "page": "https://opengameart.org/content/water-waves",
-      "url": "https://opengameart.org/sites/default/files/wave_04_cc0-11505__transitking__wavesound.flac",
-      "sha256": "6c5b59562bf9b00e77f7bd8d6550912b6326e190ce97e9b8c1a1faa887bb4fac",
-      "bytes": 338969,
-      "tier": "uploader lossless FLAC extract",
-      "license": "CC0-1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "verifiedOn": "2026-10-24",
-      "pageLicenseEvidence": "Source page explicitly links CC0 1.0"
-    },
     {
       "id": "cloth",
       "title": "WindowWipe.wav",
@@ -77,21 +35,6 @@
       "pageLicenseEvidence": "Creative Commons 0"
     },
     {
-      "id": "wind",
-      "title": "wind1",
-      "author": "Luke.RUSTLTD",
-      "page": "https://opengameart.org/content/wind1",
-      "url": "https://opengameart.org/sites/default/files/wind1.wav",
-      "tier": "original WAV",
-      "bytes": 5291948,
-      "sha256": "a2856f794fbf77e05f8241dc4adeade7f62fa21c3c9dc49f7725b6c6218060c3",
-      "license": "CC0-1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "verifiedOn": "2026-10-24",
-      "pageSha256": "1e995276551817b667df07f5bb2896797486f63b2b62c8f853bb7f79e45fa556",
-      "pageLicenseEvidence": "License(s): CC0 (linked CC0 1.0)"
-    },
-    {
       "id": "rain",
       "title": "Rain (loopable)",
       "author": "Ylmir",
@@ -107,28 +50,23 @@
       "pageLicenseEvidence": "License(s): CC0 (linked CC0 1.0)"
     },
     {
-      "id": "sea",
-      "title": "Water Waves, wave 02",
-      "author": "transitking (submitted by qubodup)",
-      "page": "https://opengameart.org/content/water-waves",
-      "url": "https://opengameart.org/sites/default/files/wave_02_cc0-11505__transitking__wavesound.flac",
-      "tier": "uploader lossless FLAC extract",
-      "bytes": 583157,
-      "sha256": "afa112a66c4cafe06ef76d5e2d4d00a701d4520c58eef63b862afa771991d77a",
-      "license": "CC0-1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "verifiedOn": "2026-10-24",
-      "pageSha256": "4e5dc7edc1c96b5966707d1eb037374235000d177be837d1bce3b8ab0114e66e",
-      "pageLicenseEvidence": "License(s): CC0 (linked CC0 1.0)"
-    },
-    {
       "id": "procedural",
       "author": "babylon-demo contributors",
       "title": "Fixed-seed tyre/brake noise synthesis",
       "page": "https://github.com/hudidit/babylon-demo",
       "license": "ISC",
-      "sha256": "8f4e9c81f2b55907890a86c320e57e4965b2ea09e551543541fefcd4eac94b5b",
+      "sha256": "c879e135a0cfaac4968d8396bb0e48117cf430537d25d7f6019eb20a0bf41535",
       "tier": "project original offline synthesis; not a tyre recording",
+      "verifiedOn": "2026-10-24"
+    },
+    {
+      "id": "calm-beds",
+      "author": "babylon-demo contributors",
+      "title": "Calm non-tonal wind and wave wash",
+      "page": "https://github.com/hudidit/babylon-demo",
+      "license": "ISC",
+      "sha256": "c879e135a0cfaac4968d8396bb0e48117cf430537d25d7f6019eb20a0bf41535",
+      "tier": "project original fixed-seed filtered noise; no embedded bird calls or tonal oscillators; not a field recording",
       "verifiedOn": "2026-10-24"
     }
   ],
@@ -171,7 +109,7 @@
         "procedural"
       ],
       "sourceSha256s": [
-        "8f4e9c81f2b55907890a86c320e57e4965b2ea09e551543541fefcd4eac94b5b"
+        "c879e135a0cfaac4968d8396bb0e48117cf430537d25d7f6019eb20a0bf41535"
       ],
       "license": "ISC",
       "bytes": 20118,
@@ -197,64 +135,64 @@
     },
     {
       "id": "wind-open",
-      "file": "audio/soundscape/wind-open.2d95c49175.m4a",
+      "file": "audio/soundscape/wind-open.daa359f099.m4a",
       "sourceIds": [
-        "wind"
+        "calm-beds"
       ],
       "sourceSha256s": [
-        "a2856f794fbf77e05f8241dc4adeade7f62fa21c3c9dc49f7725b6c6218060c3"
+        "c879e135a0cfaac4968d8396bb0e48117cf430537d25d7f6019eb20a0bf41535"
       ],
-      "license": "CC0-1.0",
-      "bytes": 67502,
-      "sha256": "2d95c49175c14e2a5030a7b9fe18d0e3683a69c1060334db484fff69706113b4",
+      "license": "ISC",
+      "bytes": 67470,
+      "sha256": "daa359f09960e134cc30203c0a3a8c85ced1a3e431eadc534be25214df82f64c",
       "sampleRate": 48000,
       "channels": 1,
       "bitDepth": 16,
       "frames": 384000,
       "durationSeconds": 8.0,
       "decodedBytes": 1536000,
-      "referencePcmSha256": "67bc77101d08cb586258f15eb0b3ccb74c1ffd98eb75c18187b24744e8b4b577",
+      "referencePcmSha256": "6b07a5cca315dd7beb677da0c7f7303f1eb5ae78f54198ef806935b20eb74d21",
       "loop": true,
       "format": "m4a",
       "peak": 0.3499755859375,
-      "boundaryStep": 5.00901036983614e-06,
+      "boundaryStep": 1.4164052260077446e-05,
       "processing": {
         "removeDC": true,
         "crossfadeSeconds": 0.5,
         "lowPassHz": null,
         "peakTarget": 0.35,
-        "recipe": "pinned trim or fixed-seed noise; see generator"
+        "recipe": "fixed-seed non-tonal filtered noise and slow wash envelope; birds separate"
       }
     },
     {
       "id": "wind-sheltered",
-      "file": "audio/soundscape/wind-sheltered.8b5d423c6a.m4a",
+      "file": "audio/soundscape/wind-sheltered.0704e88eac.m4a",
       "sourceIds": [
-        "wind"
+        "calm-beds"
       ],
       "sourceSha256s": [
-        "a2856f794fbf77e05f8241dc4adeade7f62fa21c3c9dc49f7725b6c6218060c3"
+        "c879e135a0cfaac4968d8396bb0e48117cf430537d25d7f6019eb20a0bf41535"
       ],
-      "license": "CC0-1.0",
-      "bytes": 58197,
-      "sha256": "8b5d423c6a475e31c70aeb1a4782768feab71dc83cc8b4016999918dff61dd58",
+      "license": "ISC",
+      "bytes": 66839,
+      "sha256": "0704e88eac17fe8332eddbadf1892a2a7fef17c1bda74cbe2268ca4e7898fba9",
       "sampleRate": 48000,
       "channels": 1,
       "bitDepth": 16,
       "frames": 384000,
       "durationSeconds": 8.0,
       "decodedBytes": 1536000,
-      "referencePcmSha256": "3cda1b12cdf0d1cdc1db36176cc4093c72cfd2c794971ce42affe1c2be09f6c6",
+      "referencePcmSha256": "25b24745312821d211520087896d9c0881e81a08d98e18d363507ba981794e45",
       "loop": true,
       "format": "m4a",
       "peak": 0.3499755859375,
-      "boundaryStep": 2.4456551609700338e-05,
+      "boundaryStep": 6.017947300169927e-06,
       "processing": {
         "removeDC": true,
         "crossfadeSeconds": 0.5,
         "lowPassHz": 900,
         "peakTarget": 0.35,
-        "recipe": "pinned trim or fixed-seed noise; see generator"
+        "recipe": "fixed-seed non-tonal filtered noise and slow wash envelope; birds separate"
       }
     },
     {
@@ -321,76 +259,64 @@
     },
     {
       "id": "sea-open",
-      "file": "audio/soundscape/sea-open.3553960cbd.m4a",
+      "file": "audio/soundscape/sea-open.3e2fcaa222.m4a",
       "sourceIds": [
-        "sea-01",
-        "sea",
-        "sea-03",
-        "sea-04"
+        "calm-beds"
       ],
       "sourceSha256s": [
-        "0bd84b2061a82c234470bd4e16efc6ab24851928d3f93e1757bfea048b2d7a33",
-        "afa112a66c4cafe06ef76d5e2d4d00a701d4520c58eef63b862afa771991d77a",
-        "1657a0002367e6e97eb34fc9f4d841f4a910981450c634bdc6c09ae1978049c1",
-        "6c5b59562bf9b00e77f7bd8d6550912b6326e190ce97e9b8c1a1faa887bb4fac"
+        "c879e135a0cfaac4968d8396bb0e48117cf430537d25d7f6019eb20a0bf41535"
       ],
-      "license": "CC0-1.0",
-      "bytes": 102521,
-      "sha256": "3553960cbd0cdcb44dd09c899155dc6daf0724640d340c3f89e93f202de413b3",
+      "license": "ISC",
+      "bytes": 96181,
+      "sha256": "3e2fcaa222ed4eb14ab107b21055cd97e94e274c8dc558b2846df61ca24155da",
       "sampleRate": 48000,
       "channels": 2,
       "bitDepth": 16,
       "frames": 384000,
       "durationSeconds": 8.0,
       "decodedBytes": 3072000,
-      "referencePcmSha256": "b53ec41e424ec6b4d6c580e34f336ecf4fe351701d8313c9293f87df9e7250b4",
+      "referencePcmSha256": "ecaf395869ec6a0af248799317f501f6d7f1ec8eb5bcdd767dcf8286b5f03740",
       "loop": true,
       "format": "m4a",
       "peak": 0.399993896484375,
-      "boundaryStep": 7.084527965764593e-05,
+      "boundaryStep": 0.0007093379060223344,
       "processing": {
         "removeDC": true,
         "crossfadeSeconds": 0.5,
         "lowPassHz": null,
         "peakTarget": 0.4,
-        "recipe": "four wave circular montage / 0.85 rate"
+        "recipe": "fixed-seed non-tonal filtered noise and slow wash envelope; birds separate"
       }
     },
     {
       "id": "sea-sheltered",
-      "file": "audio/soundscape/sea-sheltered.d03ed4f4d6.m4a",
+      "file": "audio/soundscape/sea-sheltered.f64bb1c096.m4a",
       "sourceIds": [
-        "sea-01",
-        "sea",
-        "sea-03",
-        "sea-04"
+        "calm-beds"
       ],
       "sourceSha256s": [
-        "0bd84b2061a82c234470bd4e16efc6ab24851928d3f93e1757bfea048b2d7a33",
-        "afa112a66c4cafe06ef76d5e2d4d00a701d4520c58eef63b862afa771991d77a",
-        "1657a0002367e6e97eb34fc9f4d841f4a910981450c634bdc6c09ae1978049c1",
-        "6c5b59562bf9b00e77f7bd8d6550912b6326e190ce97e9b8c1a1faa887bb4fac"
+        "c879e135a0cfaac4968d8396bb0e48117cf430537d25d7f6019eb20a0bf41535"
       ],
-      "license": "CC0-1.0",
-      "bytes": 101512,
-      "sha256": "d03ed4f4d6579e25e8bc386d8ecd6bb4bcd15a238eb5aed9e0dc9760d4f9ea48",
+      "license": "ISC",
+      "bytes": 98881,
+      "sha256": "f64bb1c096515f16b5f94dd1329d586392d20492e19259085eb77a77db1b6626",
       "sampleRate": 48000,
       "channels": 2,
       "bitDepth": 16,
       "frames": 384000,
       "durationSeconds": 8.0,
       "decodedBytes": 3072000,
-      "referencePcmSha256": "278a46248e410ca2e7642fd5dc27555c584550314e8cad679ba4e52af2d1d3fc",
+      "referencePcmSha256": "24b671b5d50fe97fe9755ceddb77a9d1224294aaec97b151530c4592cb6e5f78",
       "loop": true,
       "format": "m4a",
       "peak": 0.399993896484375,
-      "boundaryStep": 1.4618046328785956e-05,
+      "boundaryStep": 3.509984173081897e-05,
       "processing": {
         "removeDC": true,
         "crossfadeSeconds": 0.5,
         "lowPassHz": 1100,
         "peakTarget": 0.4,
-        "recipe": "four wave circular montage / 0.85 rate"
+        "recipe": "fixed-seed non-tonal filtered noise and slow wash envelope; birds separate"
       }
     },
     {
@@ -431,7 +357,7 @@
         "procedural"
       ],
       "sourceSha256s": [
-        "8f4e9c81f2b55907890a86c320e57e4965b2ea09e551543541fefcd4eac94b5b"
+        "c879e135a0cfaac4968d8396bb0e48117cf430537d25d7f6019eb20a0bf41535"
       ],
       "license": "ISC",
       "bytes": 17324,
@@ -493,7 +419,7 @@
         "procedural"
       ],
       "sourceSha256s": [
-        "8f4e9c81f2b55907890a86c320e57e4965b2ea09e551543541fefcd4eac94b5b"
+        "c879e135a0cfaac4968d8396bb0e48117cf430537d25d7f6019eb20a0bf41535"
       ],
       "license": "ISC",
       "bytes": 17324,
@@ -518,7 +444,7 @@
       }
     }
   ],
-  "totalBytes": 569869,
+  "totalBytes": 569508,
   "decodedBytes": 13355520,
   "delivery": "AAC64k mono/AAC96k stereo loops; PCM16 short sounds; no runtime decoder library"
 }

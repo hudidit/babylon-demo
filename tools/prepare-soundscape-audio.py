@@ -1,4 +1,4 @@
-"""Phase C: pinned recordings plus explicitly original offline tyre/brake synthesis."""
+"""Pinned recordings, calm non-tonal wind/sea beds and original offline tyre/brake synthesis."""
 from pathlib import Path
 from array import array
 import importlib.util
@@ -55,6 +55,9 @@ def main():
     sources.append({'id': 'procedural', 'author': 'babylon-demo contributors', 'title': 'Fixed-seed tyre/brake noise synthesis',
         'page': 'https://github.com/hudidit/babylon-demo', 'license': 'ISC', 'sha256': generator_hash,
         'tier': 'project original offline synthesis; not a tyre recording', 'verifiedOn': '2026-10-24'})
+    sources.append({'id': 'calm-beds', 'author': 'babylon-demo contributors', 'title': 'Calm non-tonal wind and wave wash',
+        'page': 'https://github.com/hudidit/babylon-demo', 'license': 'ISC', 'sha256': generator_hash,
+        'tier': 'project original fixed-seed filtered noise; no embedded bird calls or tonal oscillators; not a field recording', 'verifiedOn': '2026-10-24'})
     by_id = {s['id']: s for s in sources}
     OUTPUT.mkdir(parents=True, exist_ok=True)
     rows, catalog = [], []
@@ -62,7 +65,7 @@ def main():
         temp = Path(temp)
         decoded = {}
         for s in sources:
-            if s['id'] == 'procedural':
+            if s['id'] in ['procedural','calm-beds']:
                 continue
             p = SOURCE / s['file']; assert audio.digest(p.read_bytes()) == s['sha256']
             decoded[s['id']] = audio.read_pcm(p, temp)
@@ -71,17 +74,18 @@ def main():
             values = mono(key)[round(start*RATE):round((start+duration)*RATE)]
             assert len(values) == round(duration*RATE)
             return [values]
-        # Four independent wave extracts are staggered around an 8.5s ring, then blended to 8s.
-        sea = [[0.] * round(8.5*RATE) for _ in range(2)]
-        for key, start in [('sea-01', 0), ('sea', 1.65), ('sea-03', 4.15), ('sea-04', 6.25)]:
-            src = decoded[key]
-            for c in range(2):
-                values = src[min(c, len(src)-1)]
-                for i in range(round((len(values)-1)/.85)):
-                    at = i*.85; a = int(at); frac = at-a
-                    v = values[a]*(1-frac)+values[min(a+1,len(values)-1)]*frac
-                    envelope = min(1, i/(RATE*.18), (len(values)/.85-1-i)/(RATE*.25))
-                    sea[c][(round(start*RATE)+i) % len(sea[c])] += v*max(0,envelope)
+        # Quiet beds contain only broadband wash and slow envelopes; birds are separate one-shots.
+        count=round(8.5*RATE)
+        bed_rng=random.Random(2026102401)
+        wind=lowpass(lowpass([bed_rng.uniform(-1,1) for _ in range(count)],1200),1200)
+        rumble=lowpass(wind,70);wind=[v-rumble[i] for i,v in enumerate(wind)]
+        wave_rng=random.Random(2026102402)
+        shared=[wave_rng.uniform(-1,1) for _ in range(count)]
+        sea=[]
+        for c in range(2):
+            wash=lowpass([.65*v+.35*wave_rng.uniform(-1,1) for v in shared],2800)
+            low=lowpass(wash,130)
+            sea.append([(v+.35*low[i])*(.65+.25*math.sin(2*math.pi*i/count)+.1*math.sin(4*math.pi*i/count+1)) for i,v in enumerate(wash)])
         rng = random.Random(20261024)
         noise = [rng.uniform(-1,1) for _ in range(round(2.2*RATE))]
         rolling = lowpass(noise, 1400)
@@ -91,9 +95,9 @@ def main():
             ('motor-loop', ['motor'], cut('motor', 5, 3.25), .25, .40, 'vehicle', None),
             ('roll-loop', ['procedural'], [rolling], .2, .35, 'vehicle', None),
         ]
-        for name, ids, raw, hz, peak in [('wind', ['wind'], cut('wind',12,8.5),900,.35),
+        for name, ids, raw, hz, peak in [('wind', ['calm-beds'], [wind],900,.35),
                 ('rain', ['rain'], cut('rain',4,8.5),1500,.38),
-                ('sea', ['sea-01','sea','sea-03','sea-04'], sea,1100,.40)]:
+                ('sea', ['calm-beds'], sea,1100,.40)]:
             recipes.append((name+'-open', ids, raw, .5, peak, 'ambience', None))
             # Two cascaded low-pass passes; normalized to the same peak before gain crossfade.
             sheltered = [lowpass(lowpass(v,hz),hz) for v in raw]
@@ -118,14 +122,14 @@ def main():
             (OUTPUT/name).write_bytes(data)
             row = {'id':clip_id,'file':'audio/soundscape/'+name,'sourceIds':source_ids,
                 'sourceSha256s':[by_id[s]['sha256'] for s in source_ids],
-                'license':'ISC' if source_ids==['procedural'] else 'CC0-1.0',
+                'license':'ISC' if source_ids in [['procedural'],['calm-beds']] else 'CC0-1.0',
                 'bytes':len(data),'sha256':digest,'sampleRate':RATE,'channels':len(channels),'bitDepth':16,
                 'frames':len(channels[0]),'durationSeconds':len(channels[0])/RATE,'decodedBytes':len(pcm)*4,
                 'referencePcmSha256':audio.digest(wav),'loop':bool(overlap),'format':ext,
                 'peak':max(abs(v) for v in pcm)/32768,
                 'boundaryStep':max(abs(v[-1]-v[0]) for v in channels),
                 'processing':{'removeDC':True,'crossfadeSeconds':overlap,'lowPassHz':hz,'peakTarget':peak,
-                    'recipe': 'four wave circular montage / 0.85 rate' if clip_id.startswith('sea-') else 'pinned trim or fixed-seed noise; see generator'}}
+                    'recipe': 'fixed-seed non-tonal filtered noise and slow wash envelope; birds separate' if source_ids==['calm-beds'] else 'pinned trim or fixed-seed noise; see generator'}}
             rows.append(row)
             catalog.append({'id':clip_id,'cue':clip_id if overlap else clip_id[:-2], 'file':row['file'],
                 'priority':0 if group=='ambience' else 2,'gain':1 if overlap else .18,
@@ -134,7 +138,7 @@ def main():
     total = sum(r['bytes'] for r in rows); decoded_bytes = sum(r['decodedBytes'] for r in rows)
     assert total < 1.1*1048576 and decoded_bytes+1223040 < 16*1048576
     manifest = {'schemaVersion':1,'verifiedOn':'2026-10-24','generator':'tools/prepare-soundscape-audio.py',
-        'generatorSha256':generator_hash,'sources':[{k:v for k,v in s.items() if k!='file'} for s in sources],
+        'generatorSha256':generator_hash,'sources':[{k:v for k,v in s.items() if k!='file'} for s in sources if any(s['id'] in r['sourceIds'] for r in rows)],
         'files':rows,'totalBytes':total,'decodedBytes':decoded_bytes,'delivery':'AAC64k mono/AAC96k stereo loops; PCM16 short sounds; no runtime decoder library'}
     (OUTPUT/'source.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     used = {Path(r['file']).name for r in rows}

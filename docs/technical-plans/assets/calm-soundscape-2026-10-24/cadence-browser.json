@@ -1,0 +1,201 @@
+{
+  "baseline": "2d61ec6",
+  "acousticListening": false,
+  "fpsOrLoadTimeSampling": false,
+  "errors": [],
+  "method": "Unchanged production bundles on independent host. Debugger captures existing Room. Legal stationary outdoor pose; scooter speeds are isolated input fixtures at the same pose and matched soundscape elapsed time, not native driving. Original Room snapshots/controller and native Audio V2 output. 100 accepted seconds with 40ms wall-clock waits; no accelerated bird timer or forced bird play. These are cadence/output checks, not acoustic approval.",
+  "browser": "155.0.8059.86",
+  "beforeGesture": {
+    "gestured": false,
+    "peak": 0,
+    "active": 0
+  },
+  "speedTargets": [
+    {
+      "speed": 0,
+      "targets": [
+        {
+          "id": "sea-open",
+          "gain": 0.023563852809051915
+        },
+        {
+          "id": "sea-sheltered",
+          "gain": 0
+        },
+        {
+          "id": "wind-open",
+          "gain": 0.02604086632367368
+        },
+        {
+          "id": "wind-sheltered",
+          "gain": 0
+        },
+        {
+          "id": "rain-open",
+          "gain": 0
+        },
+        {
+          "id": "rain-sheltered",
+          "gain": 0
+        }
+      ]
+    },
+    {
+      "speed": 5,
+      "targets": [
+        {
+          "id": "sea-open",
+          "gain": 0.023563852809051915
+        },
+        {
+          "id": "sea-sheltered",
+          "gain": 0
+        },
+        {
+          "id": "wind-open",
+          "gain": 0.02604086632367368
+        },
+        {
+          "id": "wind-sheltered",
+          "gain": 0
+        },
+        {
+          "id": "rain-open",
+          "gain": 0
+        },
+        {
+          "id": "rain-sheltered",
+          "gain": 0
+        }
+      ]
+    },
+    {
+      "speed": 11.11111111111111,
+      "targets": [
+        {
+          "id": "sea-open",
+          "gain": 0.023563852809051915
+        },
+        {
+          "id": "sea-sheltered",
+          "gain": 0
+        },
+        {
+          "id": "wind-open",
+          "gain": 0.02604086632367368
+        },
+        {
+          "id": "wind-sheltered",
+          "gain": 0
+        },
+        {
+          "id": "rain-open",
+          "gain": 0
+        },
+        {
+          "id": "rain-sheltered",
+          "gain": 0
+        }
+      ]
+    }
+  ],
+  "calmBedPeak": 0.0036019636318087578,
+  "environmentMute": 0,
+  "cadence": {
+    "acceptedSeconds": 100.00000000000443,
+    "wallSeconds": 104.68039999985695,
+    "starts": [
+      {
+        "id": "bird-call-2",
+        "acceptedSeconds": 24.75999999999965,
+        "audioTime": 27.541333333333334,
+        "wallTime": 30991.599999904633
+      },
+      {
+        "id": "bird-call-1",
+        "acceptedSeconds": 77.3600000000009,
+        "audioTime": 82.59733333333334,
+        "wallTime": 86048
+      }
+    ],
+    "diagnostics": {
+      "region": "outside",
+      "wind": 0.2,
+      "rain": 0,
+      "exposure": 1,
+      "birdInSeconds": 27.90901164704841,
+      "targets": [
+        {
+          "id": "sea-open",
+          "gain": 0.023564109189864093
+        },
+        {
+          "id": "sea-sheltered",
+          "gain": 0
+        },
+        {
+          "id": "wind-open",
+          "gain": 0.0253219191330614
+        },
+        {
+          "id": "wind-sheltered",
+          "gain": 0
+        },
+        {
+          "id": "rain-open",
+          "gain": 0
+        },
+        {
+          "id": "rain-sheltered",
+          "gain": 0
+        },
+        {
+          "id": "motor-loop",
+          "gain": 0,
+          "rate": 0.65,
+          "pan": -0.11030823352384922
+        },
+        {
+          "id": "roll-loop",
+          "gain": 0,
+          "rate": 0.7,
+          "pan": -0.06618494011430953
+        },
+        {
+          "id": "beacon-drive",
+          "gain": 0,
+          "position": {
+            "x": -652,
+            "y": 96.44999999999999,
+            "z": 423
+          }
+        }
+      ]
+    },
+    "audio": {
+      "state": "ready",
+      "context": "running",
+      "preparing": false,
+      "readyFiles": 72,
+      "failedFiles": [],
+      "active": 2,
+      "worldActive": 2,
+      "decodedBytes": 12282240,
+      "played": 6,
+      "dropped": 1
+    }
+  },
+  "map": {
+    "wait": null,
+    "active": 0
+  },
+  "reentryWait": 19.713277693858146,
+  "night": {
+    "wait": null
+  },
+  "indoors": {
+    "region": "house",
+    "wait": null
+  },
+  "passed": true
+}

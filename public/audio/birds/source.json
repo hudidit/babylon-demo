@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "generator": "tools/prepare-bird-audio.py",
+  "generatorSha256": "b9bd84a3b2625c4c2ef8dbed4af74e67e064338f168d7303a81852e2c9c87465",
+  "sources": [
+    {
+      "id": "gulls",
+      "title": "Seagulls / gaviotas clean wildtrack.WAV",
+      "author": "Soojay",
+      "page": "https://freesound.org/people/Soojay/sounds/462462/",
+      "url": "https://cdn.freesound.org/previews/462/462462_2752236-hq.mp3",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageLicenseEvidence": "Author page explicitly states Creative Commons 0",
+      "tier": "public HQ MP3 preview; not the original 24-bit WAV",
+      "sha256": "2a5b080e47e45ffc58ef199cf62c4f247c1fc6a11c0f18984f17ac61b6762dc9",
+      "pageSha256": "7f16725d6e6bb1f8c9e616100ead61fbf40703fe54d1d238ff9c75b77476d8cf",
+      "bytes": 1770576
+    }
+  ],
+  "files": [
+    {
+      "id": "bird-call-1",
+      "file": "audio/birds/bird-call-1.bd39f02d0d.wav",
+      "sourceId": "gulls",
+      "sourceSha256": "2a5b080e47e45ffc58ef199cf62c4f247c1fc6a11c0f18984f17ac61b6762dc9",
+      "license": "CC0-1.0",
+      "bytes": 62444,
+      "sha256": "bd39f02d0dbf73d0f79562ebd911f3e89841a51d04dc1670a5eea25283dc03c7",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 31200,
+      "durationSeconds": 0.65,
+      "decodedBytes": 124800,
+      "peak": 0.29998779296875,
+      "loop": false,
+      "processing": {
+        "start": 3.45,
+        "inputDuration": 0.65,
+        "lowPassHz": 4500,
+        "removeDC": true,
+        "fadeIn": 0.003,
+        "fadeOut": 0.015,
+        "peakTarget": 0.3
+      }
+    },
+    {
+      "id": "bird-call-2",
+      "file": "audio/birds/bird-call-2.1e7a730a20.wav",
+      "sourceId": "gulls",
+      "sourceSha256": "2a5b080e47e45ffc58ef199cf62c4f247c1fc6a11c0f18984f17ac61b6762dc9",
+      "license": "CC0-1.0",
+      "bytes": 62444,
+      "sha256": "1e7a730a201758240102b14ceb2a90f602f2dda27cf6e90b8ef82e296d6530aa",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 31200,
+      "durationSeconds": 0.65,
+      "decodedBytes": 124800,
+      "peak": 0.29998779296875,
+      "loop": false,
+      "processing": {
+        "start": 8.7,
+        "inputDuration": 0.65,
+        "lowPassHz": 4500,
+        "removeDC": true,
+        "fadeIn": 0.003,
+        "fadeOut": 0.015,
+        "peakTarget": 0.3
+      }
+    }
+  ],
+  "totalBytes": 124888,
+  "decodedBytes": 249600
+}

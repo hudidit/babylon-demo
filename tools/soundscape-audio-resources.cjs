@@ -25,7 +25,7 @@ function validateSoundscapeAudio(root) {
   assert.deepEqual(source.files.map(r => r.id).sort(),expected,'Incomplete soundscape catalog');
   const sources = new Map(source.sources.map(s => [s.id,s])); assert.equal(sources.size,source.sources.length);
   for (const s of sources.values()) {
-    assert.equal(s.license,s.id === 'procedural' ? 'ISC' : 'CC0-1.0','Unreviewed soundscape source license');
+    assert.equal(s.license,['procedural','calm-beds'].includes(s.id) ? 'ISC' : 'CC0-1.0','Unreviewed soundscape source license');
     assert.ok(s.page.startsWith('https://') && s.author && s.tier && s.verifiedOn,'Missing soundscape provenance');
     assert.match(s.sha256,/^[a-f0-9]{64}$/);
   }
@@ -35,7 +35,8 @@ function validateSoundscapeAudio(root) {
     assert.match(row.file,/^audio\/soundscape\/[a-z0-9-]+\.[a-f0-9]{10}\.(wav|m4a)$/,'Unsafe soundscape path');
     assert.ok(row.sourceIds.length && new Set(row.sourceIds).size === row.sourceIds.length);
     assert.deepEqual(row.sourceSha256s,row.sourceIds.map(id => sources.get(id)?.sha256),'Unreviewed soundscape source');
-    assert.equal(row.license,row.sourceIds.includes('procedural') ? 'ISC' : 'CC0-1.0');
+    assert.equal(row.license,row.sourceIds.some(id=>['procedural','calm-beds'].includes(id)) ? 'ISC' : 'CC0-1.0');
+    if(/^(wind|sea)-/.test(row.id))assert.deepEqual(row.sourceIds,['calm-beds'],'Wind/wave beds must not embed calls');
     const data = fs.readFileSync(path.join(root,row.file)); assert.equal(data.length,row.bytes);
     assert.equal(hash(data),row.sha256,'Soundscape SHA256 mismatch');
     assert.ok(row.file.includes('.'+row.sha256.slice(0,10)+'.'));

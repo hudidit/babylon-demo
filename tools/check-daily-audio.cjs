@@ -19,7 +19,7 @@ function nativeProbe(){
 }
 (async()=>{
  fs.mkdirSync(out,{recursive:true});const server=await serve(dist),base='http://127.0.0.1:'+server.address().port+'/';let browser,page,phase='hosting';
- const report={baseline:'cd57fc1',acousticListening:false,fpsOrLoadTimeSampling:false,errors:[],warnings:[],firstScreen:[],outputs:[],cases:{},
+ const report={baseline:process.env.AUDIO_BASELINE||'cd57fc1',acousticListening:false,fpsOrLoadTimeSampling:false,errors:[],warnings:[],firstScreen:[],outputs:[],cases:{},
   method:'Only dist served, unchanged bundles. Native keyboard/clicks with original scene render/collision/jump/ladder controllers. Legal starting poses isolate surfaces, no in-path pose changes. Fixed accepted frame deltas, not a travel-time or FPS benchmark. Individual prepared voices tested explicitly, then real cue routing checked separately. Native post-master analysis is engineering evidence, not human listening.'};
  try{
   report.release=verifyRelease(dist);const raw=fs.readFileSync(path.join(dist,'release-manifest.json'));report.manifestSha256=sha(raw);
@@ -54,7 +54,7 @@ function nativeProbe(){
     const peak=await measure(170);v.stop(false);return {peak,ready:room.audio.diagnostics.readyFiles};},clip);
    assert.ok(result.peak>1e-6&&result.peak<1,clip.id);report.outputs.push({id:clip.id,...result});
   }
-  report.decodedBytes=await page.evaluate(()=>room.audio.diagnostics.decodedBytes);assert.equal(report.decodedBytes,16448640);
+  report.decodedBytes=await page.evaluate(()=>room.audio.diagnostics.decodedBytes);assert.equal(report.decodedBytes,require('./study-audio-resources.cjs').validateAudioResources(dist).decodedBytes);
   await page.evaluate(()=>{room.audio.stopAll();room.audio.setMix({actions:1,ambience:0,ui:1});room.setWeather('clear');room.setTimeAutomatic(false);room.setTimeOfDay(12);});
   await page.locator('#settings-close').click();await page.locator('[data-view="first-person"]').click();
   const locked=async()=>{await page.waitForFunction(()=>!!document.pointerLockElement&&room.controlsEnabled);};await locked();

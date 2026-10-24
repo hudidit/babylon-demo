@@ -143,11 +143,11 @@ test('disposing in-flight download cancels it and ignores late results', async t
 test('reviewed audio is reproducible, catalog matches whitelist and corrupt/long/unlicensed files fail validation', t => {
   const root = path.resolve(__dirname, '../public'), source = require('../public/audio/study/source.json');
   const summary = validateAudioResources(root);
-  assert.equal(summary.encodedBytes, source.totalBytes + require('../public/audio/actions/source.json').totalBytes + require('../public/audio/soundscape/source.json').totalBytes + require('../public/audio/daily/source.json').totalBytes); assert.ok(summary.coreBytes <= AUDIO_LIMITS.coreBytes);
+  assert.equal(summary.encodedBytes, source.totalBytes + require('../public/audio/actions/source.json').totalBytes + require('../public/audio/soundscape/source.json').totalBytes + require('../public/audio/daily/source.json').totalBytes + require('../public/audio/birds/source.json').totalBytes); assert.ok(summary.coreBytes <= AUDIO_LIMITS.coreBytes);
   assert.deepEqual([...AUDIO_CLIPS.map(row => row.file)].sort(), [...summary.files].sort());
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'babylon-audio-'));
   t.after(() => fs.rmSync(temporary, { recursive: true, force: true }));
-  for (const dir of ['actions','soundscape','daily']) fs.cpSync(path.join(root, 'audio',dir), path.join(temporary, 'audio',dir), { recursive: true });
+  for (const dir of ['actions','soundscape','daily','birds']) fs.cpSync(path.join(root, 'audio',dir), path.join(temporary, 'audio',dir), { recursive: true });
   fs.mkdirSync(path.join(temporary, 'audio/study'), { recursive: true });
   fs.copyFileSync(path.join(root, 'audio/study/source.json'), path.join(temporary, 'audio/study/source.json'));
   source.files.forEach(row => fs.copyFileSync(path.join(root, row.file), path.join(temporary, row.file)));
@@ -186,7 +186,7 @@ test('continuous motions prepare loops, remain idempotent and cancel delayed rep
 test('action provenance, loop metadata and the phase B allowance are enforced', t => {
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'babylon-action-audio-'));
   t.after(() => fs.rmSync(temp, { recursive: true, force: true }));
-  for (const dir of ['study', 'actions', 'soundscape', 'daily']) fs.cpSync(path.resolve(__dirname, '../public/audio', dir), path.join(temp, 'audio', dir), { recursive: true });
+  for (const dir of ['study', 'actions', 'soundscape', 'daily', 'birds']) fs.cpSync(path.resolve(__dirname, '../public/audio', dir), path.join(temp, 'audio', dir), { recursive: true });
   const file = path.join(temp, 'audio/actions/source.json'), original = fs.readFileSync(file), m = JSON.parse(original);
   m.sources[0].license = 'unknown'; fs.writeFileSync(file, JSON.stringify(m));
   assert.throws(() => validateAudioResources(temp), /source license/);
@@ -256,6 +256,14 @@ test('four step variants are all selectable without adjacent repetition; spatial
   f.audio.world([{id:'beacon-drive',gain:.12,position:{x:2,y:9,z:3}}]);assert.deepEqual(voice.point,{x:2,y:9,z:3});
   f.audio.setMix({actions:0,ambience:.7,ui:1});await delay(30);assert.equal(f.audio.diagnostics.worldActive,0);
   f.audio.play('ui-contact','local-read');assert.equal(f.log.played.at(-1).name.startsWith('ui-contact-'),true);
+});
+test('autonomous bird cues require a gesture even if context runs, belong to ambience and cancel with their entity',async t=>{
+  const f=await prepared(t);f.context.state='running';f.audio.play('bird-call','ambient-birds');assert.equal(f.log.played.length,0);
+  f.audio.unlockFromGesture();f.audio.play('bird-call','ambient-birds');assert.equal(f.log.played.length,1);
+  assert.equal(f.log.voices.find(v=>v.name===f.log.played[0].name).group,'ambience');
+  f.audio.stopEntity('ambient-birds');await delay(30);assert.equal(f.audio.diagnostics.active,0);
+  f.audio.setMix({actions:1,ambience:0,ui:1});f.audio.play('bird-call','ambient-birds');assert.equal(f.log.played.length,1);
+  f.audio.play('switch','lamp');assert.equal(f.log.played.length,2);
 });
 test('group preferences accept the old setting, clamp each field and do not mutate defaults', () => {
   const {audioMixPreferences,AUDIO_MIX_DEFAULTS}=load('RoomAudioCatalog');

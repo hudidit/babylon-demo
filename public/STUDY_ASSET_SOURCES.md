@@ -179,3 +179,11 @@ Wh、燃料只随统一自动场景小时积分，太阳能解析积分并求容
 37个新文件（36个PCM16短声/窗帘循环、1个AAC-LC转台循环），共763,749 B、参考PCM1,870,080 B；累计音效75文件、1,946,282 B、PCM16,448,640 B。脚步与轻金属片段来自[Kenney Impact Sounds 1.0](https://kenney.nl/assets/impact-sounds)，2026-10-24官方页面及[包内许可](audio/daily/Kenney-License.txt)均明确CC0；使用官方Ogg交付，未声称无损原件。木、硬地、草地各4个变化，软面3个，剔除原包解码相同的片段。金属踏面/梯级为硬地脚步与金属板轻触组合；落地为两次轻接触组合，均按拟音记录。
 
 窗帘复用mitchanary布料预览，转台复用onursamli通用电机公开预览并降调/低通，不称为现场灯塔实录；轻UI短音为项目ISC离线正弦合成。逐文件摘要、来源层级、处理及参考PCM见[audio/daily/source.json](audio/daily/source.json)。原料与复现脚本位于仓库`assets/audio-source/daily/`和`tools/prepare-daily-audio.py`，不进入运行白名单。
+
+## 室外声景试听调整（2026-10-24，当前）
+
+替代上方阶段C风/浪音色：项目原创ISC固定种子带限噪声制作轻风和浪涌近似，未使用旧风/浪片段，不含内嵌鸟录音或固定音调振荡器，不冒充海岸实录。露天/遮蔽四文件及处理参数见[audio/soundscape/source.json](audio/soundscape/source.json)，该组12文件当前569,508 B；雨、车辆及上下车素材保持。旧CC0风/浪原料只在仓库历史档案留存。
+
+独立鸟叫来自Soojay [Seagulls / gaviotas clean wildtrack.WAV](https://freesound.org/people/Soojay/sounds/462462/)，2026-10-24作者页明确CC0 1.0。实际使用公共HQ MP3预览，未取得原24bit WAV；两处各裁0.65秒，单声道/低通/去直流/短淡化，作为偶发短句，不循环，也不将其认定为场景特定地域的鸟种。两WAV共124,888 B、PCM249,600 B，原料及派生摘要见[audio/birds/source.json](audio/birds/source.json)；仓库归档`assets/audio-source/birds/`，复现脚本`tools/prepare-bird-audio.py`。
+
+全音效累计77文件、2,070,809 B、单份PCM16,698,240 B；核心320,864 B。仍执行总音效2.1 MiB/PCM16 MiB、短6＋持续8共14声部及整体18/3.125/44 MiB上限。首次室外18～30秒、随后32～62秒才尝试短鸟叫，白天且非强雨，阅读/入屋/暂停重置；风浪增益不再读取车速。

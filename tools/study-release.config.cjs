@@ -3,6 +3,7 @@ const audio = require('../public/audio/study/source.json');
 const actions = require('../public/audio/actions/source.json');
 const soundscape = require('../public/audio/soundscape/source.json');
 const daily = require('../public/audio/daily/source.json');
+const birds = require('../public/audio/birds/source.json');
 module.exports = {
   runtime: [
     'environment/study-interior.hdr',
@@ -31,6 +32,7 @@ module.exports = {
     ...actions.files.map(file => file.file),
     ...soundscape.files.map(file => file.file),
     ...daily.files.map(file => file.file),
+    ...birds.files.map(file => file.file),
   ],
   documentation: [
     'STUDY_ASSET_SOURCES.md',
@@ -45,6 +47,7 @@ module.exports = {
     'audio/actions/source.json',
     'audio/soundscape/source.json',
     'audio/daily/source.json',
+    'audio/birds/source.json',
     'audio/daily/Kenney-License.txt',
     'audio/study/credits.html',
   ],

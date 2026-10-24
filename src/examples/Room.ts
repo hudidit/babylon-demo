@@ -1612,6 +1612,7 @@ export class RoomScene {
     this.soundscape.update(dt, {firstPerson:this.currentView === "first-person", x:point.x, y:point.y, feet:this.jump.feet,
       yaw:this.firstPersonCamera.rotation.y, shoreDistance:coastalShoreDistance(point.x,point.y,this.soundscapeShore),
       weather:this.weather.weather, pauses:this.pauseReasons,
+      hour:this.timeOfDay.hour,
       beacon:{running:this.lighthouseOperation.running,visible:this.exterior.isVisible},
       doors:{"entry-door":this.interactions.doorProgress("entry-door"), "balcony-door":this.interactions.doorProgress("balcony-door"),
         "lighthouse-entry-door":this.interactions.doorProgress("lighthouse-entry-door")},
