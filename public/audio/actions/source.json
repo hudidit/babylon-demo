@@ -3,7 +3,7 @@
   "license": "CC0-1.0",
   "verifiedOn": "2026-10-24",
   "generator": "tools/prepare-action-audio.py",
-  "generatorSha256": "4e7fff1008d0aa061c0f8e1e9c6795c57cc449f53b48c227ecd6015c8f18d696",
+  "generatorSha256": "c619a0beb69ffd5bdd8b25502da1ebbeb453b7d6e4bbb1c099375861cf089502",
   "decoder": "macOS afconvert / AudioToolbox PCM16@48000",
   "sources": [
     {
@@ -78,7 +78,7 @@
       "frames": 13440,
       "durationSeconds": 0.28,
       "peak": 0.41998291015625,
-      "loop": true,
+      "loop": false,
       "boundaryStep": 0.0,
       "adjacentStepRms": 0.007969302835031361,
       "processing": {
@@ -107,7 +107,7 @@
       "frames": 13440,
       "durationSeconds": 0.28,
       "peak": 0.41998291015625,
-      "loop": true,
+      "loop": false,
       "boundaryStep": 0.0,
       "adjacentStepRms": 0.00844019902866781,
       "processing": {
@@ -194,7 +194,7 @@
       "frames": 21120,
       "durationSeconds": 0.44,
       "peak": 0.41998291015625,
-      "loop": true,
+      "loop": false,
       "boundaryStep": 0.0,
       "adjacentStepRms": 0.017906414155991594,
       "processing": {
@@ -223,7 +223,7 @@
       "frames": 21120,
       "durationSeconds": 0.44,
       "peak": 0.41998291015625,
-      "loop": true,
+      "loop": false,
       "boundaryStep": 3.0517578125e-05,
       "adjacentStepRms": 0.01586307150904625,
       "processing": {

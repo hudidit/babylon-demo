@@ -89,7 +89,8 @@ function captureNative() {
         return { peak, activeAfter650ms, playedDelta: room.audio.diagnostics.played - before };
       }, clip.id);
       assert.ok(result.peak > .000001 && result.peak < 1, clip.id); assert.equal(result.playedDelta, 1);
-      if (clip.loop || clip.id.startsWith('door-move-')) assert.equal(result.activeAfter650ms, 1, 'loop survives its source duration');
+      if (clip.loop) assert.equal(result.activeAfter650ms, 1, 'loop survives its source duration');
+      else assert.equal(result.activeAfter650ms, 0, 'single action ends without repeating');
       report.outputs.push({ id: clip.id, ...result });
     }
     await page.locator('#settings-close').click();

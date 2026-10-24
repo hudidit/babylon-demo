@@ -20,8 +20,9 @@ export const AUDIO_CLIPS: readonly AudioClip[] = [
   {"id": "drawer-slide-2", "cue": "drawer-slide", "file": "audio/study/drawer-slide-2.71ff63e71c.wav", "priority": 1, "gain": 0.25, "preload": "variation"},
   {"id": "drawer-stop-1", "cue": "drawer-stop", "file": "audio/study/drawer-stop-1.6840b8eb30.wav", "priority": 3, "gain": 0.25, "preload": "core"},
   {"id": "drawer-stop-2", "cue": "drawer-stop", "file": "audio/study/drawer-stop-2.b34d827382.wav", "priority": 3, "gain": 0.25, "preload": "variation"},
-  {"id": "door-move-1", "cue": "door-move", "file": "audio/study/door-move-1.f0162ae1b8.wav", "priority": 1, "gain": 0.21, "preload": "core", "loop": true},
-  {"id": "door-move-2", "cue": "door-move", "file": "audio/study/door-move-2.9dea4bdbfd.wav", "priority": 1, "gain": 0.21, "preload": "variation", "loop": true},
+  // A door's 0.7s motion outlasts these clips; looping repeats the same opening sound.
+  {"id": "door-move-1", "cue": "door-move", "file": "audio/study/door-move-1.f0162ae1b8.wav", "priority": 1, "gain": 0.21, "preload": "core", "loop": false},
+  {"id": "door-move-2", "cue": "door-move", "file": "audio/study/door-move-2.9dea4bdbfd.wav", "priority": 1, "gain": 0.21, "preload": "variation", "loop": false},
   {"id": "door-latch-1", "cue": "door-latch", "file": "audio/study/door-latch-1.a220e2fe5d.wav", "priority": 3, "gain": 0.25, "preload": "core"},
   {"id": "door-latch-2", "cue": "door-latch", "file": "audio/study/door-latch-2.fb255ede74.wav", "priority": 3, "gain": 0.25, "preload": "variation"},
   {"id": "switch-1", "cue": "switch", "file": "audio/study/switch-1.702a81fab4.wav", "priority": 3, "gain": 0.25, "preload": "core"},

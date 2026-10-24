@@ -1,0 +1,77 @@
+{
+  "files": [
+    {
+      "id": "metal-door-move-1",
+      "unchanged": true,
+      "sha256": "85a1690c5b817b230382f5b3df3d62b2c93371c66aaf370f499fd67713acf834"
+    },
+    {
+      "id": "metal-door-move-2",
+      "unchanged": true,
+      "sha256": "6369f8ceb1dd20a93e623f25e38356dcd6370630cebc7522d4949417ea500d9a"
+    },
+    {
+      "id": "metal-door-latch-1",
+      "unchanged": true,
+      "sha256": "65ee685552a95e5e95088703cc248f4db5cb6b02d0cea74875f8a0344cc70171"
+    },
+    {
+      "id": "metal-door-latch-2",
+      "unchanged": true,
+      "sha256": "2131df56a97c424bc3a22410001f8f7967546ae7743542b65ea0b91c16cd8388"
+    },
+    {
+      "id": "slide-move-1",
+      "unchanged": true,
+      "sha256": "462a0af8891c6df7e0534238143aa1b14f027c01bba7ee5f4f1722ec4738431d"
+    },
+    {
+      "id": "slide-move-2",
+      "unchanged": true,
+      "sha256": "22f72fbd28a775a58cc89516d09088288e2ad6a390a7ced543a76933d228f130"
+    },
+    {
+      "id": "slide-stop-1",
+      "unchanged": true,
+      "sha256": "a9768bc7f154bd4918946864e85440347667ec7b6201b6bc26bf94147ac2e98d"
+    },
+    {
+      "id": "slide-stop-2",
+      "unchanged": true,
+      "sha256": "4b451eb6b04667b9540503e803192b56a36052fdc90f7aa1e445911f6cae864b"
+    },
+    {
+      "id": "cloth-touch-1",
+      "unchanged": true,
+      "sha256": "3b42c41465de3421ab070bf0f845a5a0250a79695b94fdac0833051bf0fac433"
+    },
+    {
+      "id": "cloth-touch-2",
+      "unchanged": true,
+      "sha256": "066dd89a97c6181fccf8f79adbefac94e28155ff331b48d3c033e1e7084055f2"
+    },
+    {
+      "id": "cloth-wipe-1",
+      "unchanged": true,
+      "sha256": "1d4dd2ead3b7a92758c859deba705492bab5dbd8e05c6814c86e576c9a6c0fc1"
+    },
+    {
+      "id": "cloth-wipe-2",
+      "unchanged": true,
+      "sha256": "d1d5b638c097ea873da7f84a33bf5bf8c981071e2b44e0d132c3e2281ad33fe9"
+    },
+    {
+      "id": "cloth-lift-1",
+      "unchanged": true,
+      "sha256": "32afe48c26e4de67f8833f38d744abce337891be83fbdf666243f1001a774a8d"
+    },
+    {
+      "id": "cloth-lift-2",
+      "unchanged": true,
+      "sha256": "c2886bed18852b106ffd4ec2b2b6b9b704b0ff17fe0b830da59e05eaa031384c"
+    }
+  ],
+  "repeatBuild": true,
+  "generatorSha256": "c619a0beb69ffd5bdd8b25502da1ebbeb453b7d6e4bbb1c099375861cf089502",
+  "manifestSha256": "09bf16d4386120ff406be1fcb1e6bcf411927cc98b0d43d53d505d18560c0cac"
+}

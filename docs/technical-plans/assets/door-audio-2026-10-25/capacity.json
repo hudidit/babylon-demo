@@ -1,0 +1,27 @@
+{
+  "baseline": "d8b334b",
+  "before": {
+    "fileCount": 570,
+    "modelBytes": 4332840,
+    "buildBytes": 26627722,
+    "runtimeBytes": 17960471,
+    "documentationBytes": 209378,
+    "manifestBytes": 107854,
+    "initialJsBytes": 2952730,
+    "audioBytes": 2070809,
+    "audioDecodedBytes": 16698240,
+    "releaseBytes": 44905425
+  },
+  "after": {
+    "fileCount": 570,
+    "modelBytes": 4332840,
+    "buildBytes": 26627722,
+    "runtimeBytes": 17960471,
+    "documentationBytes": 209382,
+    "manifestBytes": 107854,
+    "initialJsBytes": 2952730,
+    "audioBytes": 2070809,
+    "audioDecodedBytes": 16698240,
+    "releaseBytes": 44905429
+  }
+}

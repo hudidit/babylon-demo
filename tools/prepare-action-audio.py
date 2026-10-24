@@ -55,6 +55,8 @@ def main():
                 data = audio.wav_bytes([[v * scale for v in values]])
                 digest = audio.digest(data)
                 clip_id = cue + '-' + str(variation)
+                # Crossfades preserve the delivered waveform, but only sustained wiping repeats.
+                loop = cue == 'cloth-wipe'
                 name = clip_id + '.' + digest[:10] + '.wav'
                 (OUTPUT / name).write_bytes(data)
                 # Measure the exact delivered PCM, rather than pre-quantization floats.
@@ -65,14 +67,14 @@ def main():
                     'sourceSha256': source_map[source]['sha256'], 'license': 'CC0-1.0',
                     'bytes': len(data), 'sha256': digest, 'sampleRate': audio.RATE, 'channels': 1, 'bitDepth': 16,
                     'frames': len(pcm), 'durationSeconds': len(pcm) / audio.RATE,
-                    'peak': max(abs(v) for v in pcm) / 32768, 'loop': bool(cross),
+                    'peak': max(abs(v) for v in pcm) / 32768, 'loop': loop,
                     'boundaryStep': abs(pcm[-1]-pcm[0]) / 32768, 'adjacentStepRms': step_rms,
                     'processing': {'start': start, 'inputDuration': duration, 'crossfadeSeconds': overlap,
                         'loopRotationFrames': seam if cross else 0,
                         'removeDC': True, 'mono': True, 'peakTarget': peak, 'fadeIn': 0 if cross else .002,
                         'fadeOut': 0 if cross else .012}})
                 catalog.append({'id': clip_id, 'cue': cue, 'file': 'audio/actions/' + name,
-                    'priority': priority, 'gain': gain, 'preload': 'core' if variation == 1 else 'variation', 'loop': bool(cross)})
+                    'priority': priority, 'gain': gain, 'preload': 'core' if variation == 1 else 'variation', 'loop': loop})
     total = sum(r['bytes'] for r in rows)
     assert total <= .35 * 1048576, 'Phase-B encoded allowance exceeded'
     manifest = {'schemaVersion': 1, 'license': 'CC0-1.0', 'verifiedOn': '2026-10-24',

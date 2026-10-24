@@ -1,0 +1,669 @@
+{
+  "acousticListening": false,
+  "fpsOrLoadSpeedSampling": false,
+  "errors": [],
+  "warnings": [],
+  "doors": [
+    {
+      "id": "entry-door",
+      "cue": "door-move",
+      "latch": "door-latch",
+      "variant": 1,
+      "opened": {
+        "peak": 0.019772298634052277,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "door-move-1",
+              "loop": false,
+              "duration": 0.4,
+              "rate": 0.9947806000709534,
+              "started": 0.8053333333333333,
+              "ended": true,
+              "endTime": 1.208
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "door-move-1",
+            "loop": false,
+            "duration": 0.4,
+            "rate": 0.9947806000709534,
+            "started": 0.8053333333333333,
+            "ended": true,
+            "endTime": 1.208
+          }
+        ],
+        "events": [
+          {
+            "clip": "door-move-1",
+            "rate": 0.9947806276114824,
+            "time": 4130.399999856949
+          }
+        ],
+        "progress": 1,
+        "silentPeak": 0,
+        "active": 0
+      },
+      "closed": {
+        "peak": 0.03100070171058178,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "door-move-1",
+              "loop": false,
+              "duration": 0.4,
+              "rate": 1.0071961879730225,
+              "started": 2.1173333333333333,
+              "ended": true,
+              "endTime": 2.514666666666667
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "door-move-1",
+            "loop": false,
+            "duration": 0.4,
+            "rate": 1.0071961879730225,
+            "started": 2.1173333333333333,
+            "ended": true,
+            "endTime": 2.514666666666667
+          },
+          {
+            "clip": "door-latch-1",
+            "loop": false,
+            "duration": 0.16,
+            "rate": 1,
+            "started": 2.864,
+            "ended": true,
+            "endTime": 3.024
+          }
+        ],
+        "events": [
+          {
+            "clip": "door-move-1",
+            "rate": 1.0071961978603614,
+            "time": 5438.199999809265
+          },
+          {
+            "clip": "door-latch-1",
+            "rate": 1,
+            "time": 6189.5
+          }
+        ],
+        "progress": 0,
+        "silentPeak": 0,
+        "active": 0
+      }
+    },
+    {
+      "id": "entry-door",
+      "cue": "door-move",
+      "latch": "door-latch",
+      "variant": 2,
+      "opened": {
+        "peak": 0.020111164078116417,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "door-move-2",
+              "loop": false,
+              "duration": 0.58,
+              "rate": 1.0151070356369019,
+              "started": 3.461333333333333,
+              "ended": true,
+              "endTime": 4.034666666666666
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "door-move-2",
+            "loop": false,
+            "duration": 0.58,
+            "rate": 1.0151070356369019,
+            "started": 3.461333333333333,
+            "ended": true,
+            "endTime": 4.034666666666666
+          }
+        ],
+        "events": [
+          {
+            "clip": "door-move-2",
+            "rate": 1.0151070323300622,
+            "time": 6784.599999904633
+          }
+        ],
+        "progress": 1,
+        "silentPeak": 0,
+        "active": 0
+      },
+      "closed": {
+        "peak": 0.029000213369727135,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "door-move-2",
+              "loop": false,
+              "duration": 0.58,
+              "rate": 1.0130008459091187,
+              "started": 4.752,
+              "ended": true,
+              "endTime": 5.325333333333333
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "door-move-2",
+            "loop": false,
+            "duration": 0.58,
+            "rate": 1.0130008459091187,
+            "started": 4.752,
+            "ended": true,
+            "endTime": 5.325333333333333
+          },
+          {
+            "clip": "door-latch-2",
+            "loop": false,
+            "duration": 0.17,
+            "rate": 1,
+            "started": 5.504,
+            "ended": true,
+            "endTime": 5.674666666666667
+          }
+        ],
+        "events": [
+          {
+            "clip": "door-move-2",
+            "rate": 1.013000819122901,
+            "time": 8075.899999856949
+          },
+          {
+            "clip": "door-latch-2",
+            "rate": 1,
+            "time": 8827.099999904633
+          }
+        ],
+        "progress": 0,
+        "silentPeak": 0,
+        "active": 0
+      }
+    },
+    {
+      "id": "balcony-door",
+      "cue": "slide-move",
+      "latch": "slide-stop",
+      "variant": 1,
+      "opened": {
+        "peak": 0.024966532364487648,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "slide-move-1",
+              "loop": false,
+              "duration": 0.44,
+              "rate": 1.014060616493225,
+              "started": 6.053333333333334,
+              "ended": true,
+              "endTime": 6.488
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "slide-move-1",
+            "loop": false,
+            "duration": 0.44,
+            "rate": 1.014060616493225,
+            "started": 6.053333333333334,
+            "ended": true,
+            "endTime": 6.488
+          }
+        ],
+        "events": [
+          {
+            "clip": "slide-move-1",
+            "rate": 1.0140606444744271,
+            "time": 9375.199999809265
+          }
+        ],
+        "progress": 1,
+        "silentPeak": 0,
+        "active": 0
+      },
+      "closed": {
+        "peak": 0.020055552944540977,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "slide-move-1",
+              "loop": false,
+              "duration": 0.44,
+              "rate": 0.9987029433250427,
+              "started": 7.354666666666667,
+              "ended": true,
+              "endTime": 7.7973333333333334
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "slide-move-1",
+            "loop": false,
+            "duration": 0.44,
+            "rate": 0.9987029433250427,
+            "started": 7.354666666666667,
+            "ended": true,
+            "endTime": 7.7973333333333334
+          },
+          {
+            "clip": "slide-stop-2",
+            "loop": false,
+            "duration": 0.14,
+            "rate": 1,
+            "started": 8.106666666666667,
+            "ended": true,
+            "endTime": 8.248
+          }
+        ],
+        "events": [
+          {
+            "clip": "slide-move-1",
+            "rate": 0.9987029555073611,
+            "time": 10679
+          },
+          {
+            "clip": "slide-stop-2",
+            "rate": 1,
+            "time": 11429.299999952316
+          }
+        ],
+        "progress": 0,
+        "silentPeak": 0,
+        "active": 0
+      }
+    },
+    {
+      "id": "balcony-door",
+      "cue": "slide-move",
+      "latch": "slide-stop",
+      "variant": 2,
+      "opened": {
+        "peak": 0.021380368620157242,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "slide-move-2",
+              "loop": false,
+              "duration": 0.44,
+              "rate": 1.000841736793518,
+              "started": 8.645333333333333,
+              "ended": true,
+              "endTime": 9.082666666666666
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "slide-move-2",
+            "loop": false,
+            "duration": 0.44,
+            "rate": 1.000841736793518,
+            "started": 8.645333333333333,
+            "ended": true,
+            "endTime": 9.082666666666666
+          }
+        ],
+        "events": [
+          {
+            "clip": "slide-move-2",
+            "rate": 1.0008417929825337,
+            "time": 11968.099999904633
+          }
+        ],
+        "progress": 1,
+        "silentPeak": 0,
+        "active": 0
+      },
+      "closed": {
+        "peak": 0.020846715196967125,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "slide-move-2",
+              "loop": false,
+              "duration": 0.44,
+              "rate": 1.0006548166275024,
+              "started": 9.936,
+              "ended": true,
+              "endTime": 10.373333333333333
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "slide-move-2",
+            "loop": false,
+            "duration": 0.44,
+            "rate": 1.0006548166275024,
+            "started": 9.936,
+            "ended": true,
+            "endTime": 10.373333333333333
+          },
+          {
+            "clip": "slide-stop-1",
+            "loop": false,
+            "duration": 0.14,
+            "rate": 1,
+            "started": 10.693333333333333,
+            "ended": true,
+            "endTime": 10.834666666666667
+          }
+        ],
+        "events": [
+          {
+            "clip": "slide-move-2",
+            "rate": 1.0006547862259685,
+            "time": 13260.699999809265
+          },
+          {
+            "clip": "slide-stop-1",
+            "rate": 1,
+            "time": 14017.5
+          }
+        ],
+        "progress": 0,
+        "silentPeak": 0,
+        "active": 0
+      }
+    },
+    {
+      "id": "lighthouse-entry-door",
+      "cue": "metal-door-move",
+      "latch": "metal-door-latch",
+      "variant": 1,
+      "opened": {
+        "peak": 0.014719131402671337,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "metal-door-move-1",
+              "loop": false,
+              "duration": 0.28,
+              "rate": 0.9914513230323792,
+              "started": 11.237333333333334,
+              "ended": true,
+              "endTime": 11.522666666666666
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "metal-door-move-1",
+            "loop": false,
+            "duration": 0.28,
+            "rate": 0.9914513230323792,
+            "started": 11.237333333333334,
+            "ended": true,
+            "endTime": 11.522666666666666
+          }
+        ],
+        "events": [
+          {
+            "clip": "metal-door-move-1",
+            "rate": 0.9914513071953803,
+            "time": 14562.899999856949
+          }
+        ],
+        "progress": 1,
+        "silentPeak": 0,
+        "active": 0
+      },
+      "closed": {
+        "peak": 0.027839353308081627,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "metal-door-move-1",
+              "loop": false,
+              "duration": 0.28,
+              "rate": 0.981968343257904,
+              "started": 12.533333333333333,
+              "ended": true,
+              "endTime": 12.818666666666667
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "metal-door-move-1",
+            "loop": false,
+            "duration": 0.28,
+            "rate": 0.981968343257904,
+            "started": 12.533333333333333,
+            "ended": true,
+            "endTime": 12.818666666666667
+          },
+          {
+            "clip": "metal-door-latch-1",
+            "loop": false,
+            "duration": 0.22,
+            "rate": 1,
+            "started": 13.290666666666667,
+            "ended": true,
+            "endTime": 13.512
+          }
+        ],
+        "events": [
+          {
+            "clip": "metal-door-move-1",
+            "rate": 0.9819683504903228,
+            "time": 15855
+          },
+          {
+            "clip": "metal-door-latch-1",
+            "rate": 1,
+            "time": 16611.299999952316
+          }
+        ],
+        "progress": 0,
+        "silentPeak": 0,
+        "active": 0
+      }
+    },
+    {
+      "id": "lighthouse-entry-door",
+      "cue": "metal-door-move",
+      "latch": "metal-door-latch",
+      "variant": 2,
+      "opened": {
+        "peak": 0.014930819161236286,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "metal-door-move-2",
+              "loop": false,
+              "duration": 0.28,
+              "rate": 0.9902108907699585,
+              "started": 13.834666666666667,
+              "ended": true,
+              "endTime": 14.12
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "metal-door-move-2",
+            "loop": false,
+            "duration": 0.28,
+            "rate": 0.9902108907699585,
+            "started": 13.834666666666667,
+            "ended": true,
+            "endTime": 14.12
+          }
+        ],
+        "events": [
+          {
+            "clip": "metal-door-move-2",
+            "rate": 0.9902109096607233,
+            "time": 17156.89999985695
+          }
+        ],
+        "progress": 1,
+        "silentPeak": 0,
+        "active": 0
+      },
+      "closed": {
+        "peak": 0.027839353308081627,
+        "beforeEndpoint": {
+          "sources": [
+            {
+              "clip": "metal-door-move-2",
+              "loop": false,
+              "duration": 0.28,
+              "rate": 1.012636661529541,
+              "started": 15.125333333333334,
+              "ended": true,
+              "endTime": 15.402666666666667
+            }
+          ],
+          "active": 0
+        },
+        "sources": [
+          {
+            "clip": "metal-door-move-2",
+            "loop": false,
+            "duration": 0.28,
+            "rate": 1.012636661529541,
+            "started": 15.125333333333334,
+            "ended": true,
+            "endTime": 15.402666666666667
+          },
+          {
+            "clip": "metal-door-latch-2",
+            "loop": false,
+            "duration": 0.22,
+            "rate": 1,
+            "started": 15.882666666666667,
+            "ended": true,
+            "endTime": 16.104
+          }
+        ],
+        "events": [
+          {
+            "clip": "metal-door-move-2",
+            "rate": 1.0126366466900345,
+            "time": 18450.199999809265
+          },
+          {
+            "clip": "metal-door-latch-2",
+            "rate": 1,
+            "time": 19204.599999904633
+          }
+        ],
+        "progress": 0,
+        "silentPeak": 0,
+        "active": 0
+      }
+    }
+  ],
+  "firstScreen": [
+    {
+      "path": "/js/main.js",
+      "bytes": 532552,
+      "sha256": "f1704e9b9b9b0797fba2e877a61974aa3543502dcae34fe0b19f1b848d8278c1"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2316,
+      "sha256": "0087613b2f8028d16c8d26acaad98c25becfeb2949f517954d6ba5fb4fc7bd52"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "method": "Unmodified production dist. Native door clicks with nearby orbit pose fixtures; original interactions advance .05 every 50ms. Observe AudioVoice.play and native AudioBufferSourceNode.loop/start/ended; no audio rate or timer acceleration.",
+  "release": {
+    "fileCount": 570,
+    "modelBytes": 4332840,
+    "buildBytes": 26627722,
+    "runtimeBytes": 17960471,
+    "documentationBytes": 209382,
+    "manifestBytes": 107854,
+    "initialJsBytes": 2952730,
+    "audioBytes": 2070809,
+    "audioDecodedBytes": 16698240,
+    "releaseBytes": 44905429
+  },
+  "hosted": {
+    "prefixes": [
+      "/",
+      "/audio-lab/"
+    ],
+    "filesPerPrefix": 570
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3171826,
+  "passed": true
+}

@@ -31,7 +31,7 @@ function validateAudioResources(root) {
     if (action) {
       assert.match(row.file, /^audio\/actions\/[a-z0-9-]+\.[a-f0-9]{10}\.wav$/, 'Unsafe action audio path');
       assert.equal(row.sourceSha256, sources.get(row.sourceId)?.sha256, 'Unreviewed audio source');
-      assert.equal(row.loop, /^(metal-door-move|slide-move|cloth-wipe)-/.test(row.id), 'Unexpected audio loop policy');
+      assert.equal(row.loop, /^cloth-wipe-/.test(row.id), 'Unexpected audio loop policy');
     } else {
       assert.match(row.file, /^audio\/study\/[a-z0-9-]+\.[a-f0-9]{10}\.wav$/, 'Unsafe audio path');
     }
@@ -66,7 +66,7 @@ function validateAudioResources(root) {
       const boundary = Math.abs(data.readInt16LE(44) - data.readInt16LE(data.length - 2)) / 32768;
       assert.equal(boundary, row.boundaryStep);
       assert.equal(Math.sqrt(stepSquares / (row.frames - 1)) / 32768, row.adjacentStepRms);
-      if (row.loop) assert.ok(boundary <= Math.max(.002, row.adjacentStepRms * 2), 'Loop boundary discontinuity');
+      if (row.loop || row.processing.crossfadeSeconds) assert.ok(boundary <= Math.max(.002, row.adjacentStepRms * 2), 'Loop boundary discontinuity');
     }
     encodedBytes += data.length;
     if (row.id.endsWith('-1')) coreBytes += data.length;

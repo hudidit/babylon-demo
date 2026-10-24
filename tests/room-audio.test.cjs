@@ -161,6 +161,27 @@ test('reviewed audio is reproducible, catalog matches whitelist and corrupt/long
   assert.throws(() => validateAudioResources(temporary), /ENOENT/);
 });
 
+test('door movement plays each variation once and releases at its natural end', async t => {
+  const f = await prepared(t); f.audio.unlockFromGesture(); await delay(0);
+  for (const cue of ['door-move', 'metal-door-move', 'slide-move']) {
+    const clips = AUDIO_CLIPS.filter(clip => clip.cue === cue);
+    assert.equal(clips.length, 2);
+    for (const clip of clips) {
+      const other = clips.find(row => row !== clip);
+      f.audio.previous.set(cue, other.id);
+      f.audio.play(cue, 'door');
+      const voice = f.log.voices.find(v => v.played);
+      assert.ok(voice.name.startsWith(clip.id + '-'));
+      assert.equal(voice.loop, false, clip.id + ' must not replay within the 0.7s animation');
+      const count = f.log.played.length;
+      voice.finish(); assert.equal(f.audio.diagnostics.active, 0);
+      f.audio.update(); await delay(0);
+      assert.equal(f.log.played.length, count, 'natural end never schedules a replay');
+      f.advance(100);
+    }
+  }
+});
+
 test('continuous motions prepare loops, remain idempotent and cancel delayed replacement attempts', async t => {
   const f = await prepared(t); f.audio.unlockFromGesture(); await delay(0);
   const loop = f.log.voices.find(v => v.name.startsWith('cloth-wipe-1'));
@@ -193,6 +214,13 @@ test('action provenance, loop metadata and the phase B allowance are enforced', 
   fs.writeFileSync(file, original); m.sources[0].license = 'CC0-1.0'; m.files[0].sourceSha256 = '0'.repeat(64);
   fs.writeFileSync(file, JSON.stringify(m)); assert.throws(() => validateAudioResources(temp), /Unreviewed audio source/);
   fs.writeFileSync(file, original);
+  const wrongLoop = JSON.parse(original); wrongLoop.files[0].loop = true;
+  fs.writeFileSync(file, JSON.stringify(wrongLoop));
+  assert.throws(() => validateAudioResources(temp), /loop policy/);
+  fs.writeFileSync(file, original);
+  for (const clip of AUDIO_CLIPS.filter(c => c.file.startsWith('audio/actions/'))) {
+    assert.equal(clip.loop, JSON.parse(original).files.find(row => row.id === clip.id).loop, 'catalog and provenance agree');
+  }
   const limits = require('../tools/study-audio-resources.cjs').audioBudgets, previous = limits.actionBytes;
   limits.actionBytes = JSON.parse(original).totalBytes - 1;
   try { assert.throws(() => validateAudioResources(temp), /Phase B audio allowance/); }
