@@ -1719,6 +1719,7 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
   room.interactions = { silenceMotion() {} };
   room.audio = { setSpatialCamera() {} };
   room.cleaningAudio = { reset() {} };
+  room.soundscape = { reset() {} };
   room.floorPlan = { isOpen: false, update() {} };
   room.exterior = { setVisible() {}, setHouseEnclosed() {}, updateCutaway() {}, refreshShadows() {} };
   room.canvas = { setAttribute() {} };

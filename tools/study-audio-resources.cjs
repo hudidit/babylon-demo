@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { createHash } = require('node:crypto');
 const hash = data => createHash('sha256').update(data).digest('hex');
-const audioBudgets = { encodedBytes: 1048576, coreBytes: 393216, actionBytes: .35 * 1048576, decodedBytes: 8 * 1048576 };
+const audioBudgets = { encodedBytes: 2.1 * 1048576, coreBytes: 393216, actionBytes: .35 * 1048576, decodedBytes: 16 * 1048576 };
 
 function validateAudioResources(root) {
   const source = JSON.parse(fs.readFileSync(path.join(root, 'audio/study/source.json')));
@@ -75,9 +75,11 @@ function validateAudioResources(root) {
   assert.equal(encodedBytes - actionBytes, source.totalBytes); assert.equal(decodedBytes - actionDecodedBytes, source.decodedBytes);
   assert.equal(actionBytes, actions.totalBytes); assert.equal(actionDecodedBytes, actions.decodedBytes);
   assert.ok(actionBytes <= audioBudgets.actionBytes, 'Phase B audio allowance exceeded');
+  const soundscape = require('./soundscape-audio-resources.cjs').validateSoundscapeAudio(root);
+  encodedBytes += soundscape.encodedBytes; decodedBytes += soundscape.decodedBytes; coreBytes += soundscape.coreBytes;
   assert.ok(encodedBytes <= audioBudgets.encodedBytes, 'Audio encoded budget exceeded');
   assert.ok(coreBytes <= audioBudgets.coreBytes, 'Audio core budget exceeded');
   assert.ok(decodedBytes <= audioBudgets.decodedBytes, 'Audio PCM budget exceeded');
-  return { files: [...source.files, ...actions.files].map(row => row.file), encodedBytes, coreBytes, decodedBytes, actionBytes };
+  return { files: [...source.files, ...actions.files].map(row => row.file).concat(soundscape.files), encodedBytes, coreBytes, decodedBytes, actionBytes };
 }
 module.exports = { validateAudioResources, audioBudgets };

@@ -12,6 +12,8 @@ import { cabinetDrawers, interactionSurface, RoomInteractions } from "./RoomInte
 import { RoomPointerLock } from "./RoomPointerLock";
 import { RoomAudio } from "./RoomAudio";
 import { RoomCleaningAudio } from "./RoomCleaningAudio";
+import { RoomSoundscape } from "./RoomSoundscape";
+import { coastalShoreDistance, coastalShoreline } from "./CoastalOcean";
 import { RoomItemInspection } from "./RoomItemInspection";
 import { RoomFloorPlan } from "./RoomFloorPlan";
 import { RoomMirrors } from "./RoomMirrors";
@@ -78,6 +80,9 @@ export class RoomScene {
   readonly engine: Engine;
   readonly audio = new RoomAudio();
   private readonly cleaningAudio = new RoomCleaningAudio(this.audio);
+  private readonly soundscape = new RoomSoundscape(this.audio);
+  private readonly soundscapeShore = coastalShoreline();
+  private soundscapeElapsed = 0;
   readonly rooms = new HouseRooms();
   private timeState = new RoomTimeOfDay();
   private lighthouseState = new LighthouseOperation();
@@ -328,6 +333,7 @@ export class RoomScene {
       this.updateTimeOfDay(this.engine.getDeltaTime() / 1000);
       this.updateScooterHeadlight();
       this.audio.update();
+      this.updateSoundscape(this.engine.getDeltaTime()/1000);
       if (!this.inspection.isOpen && this.scene.activeCamera === this.camera
         && this.architecture.updateCutaway(this.camera.position, this.camera.target)) {
         this.lighting.refreshShadows(); this.exterior.refreshShadows();
@@ -418,6 +424,7 @@ export class RoomScene {
   private get completeSession():LighthouseCompleteSession {return {clock:this.timeState,...this.weatherDuty,discovery:this.discovery,mode:this.sessionMode};}
   private applyLighthouseSession(s:LighthouseCompleteSession) {
     this.cleaningAudio.reset();
+    this.soundscape.reset();
     this.mainCheck = undefined;
     this.timeState=s.clock;this.lighthouseState=s.operation;this.lighthouseInspectionState=s.inspection;
     this.lighthouseMaintenanceState=s.maintenance;this.lighthousePowerState=s.power;
@@ -769,6 +776,7 @@ export class RoomScene {
   setView(view: RoomView) {
     if (this.isViewing) return;
     this.cleaningAudio.reset();
+    this.soundscape.reset();
     this.pauseScooter(); this.pauseLadder();
     if (this.currentView === "first-person" && !this.scooter.riding) this.saveWalkingPose();
     this.interactions.silenceMotion();
@@ -886,6 +894,7 @@ export class RoomScene {
   private boardScooter() {
     if (!this.scooterTarget() || !scooterSupport(this.scooter)) return false;
     this.pauseScooter(); this.saveWalkingPose(); this.scooter.riding = true;
+    this.audio.play("scooter-mount", "scooter-contact");
     this.updateScooterHeadlight();
     const camera = this.firstPersonCamera, from = camera.position.clone(), yaw = camera.rotation.y;
     this.placeRiderCamera();
@@ -925,6 +934,7 @@ export class RoomScene {
       }
       const from = camera.position.clone(), to = houseVector(point.x, point.y, point.height + HOUSE_JUMP.eyeHeight);
       this.scooter.riding = false; this.pauseScooter(); resetJumpState(this.jump, point.height);
+      this.audio.play("scooter-mount", "scooter-contact");
       this.updateScooterHeadlight();
       this.previousWalk.copyFrom(to); this.stableWalk = { position: to.clone(), feet: point.height };
       this.walkPose = { position: to.clone(), rotation: camera.rotation.clone(), feet: point.height };
@@ -1072,6 +1082,7 @@ export class RoomScene {
 
   private returnHome() {
     this.closeFloorPlan(false);
+    this.soundscape.reset();
     this.pauseScooter(); resetScooter(this.scooter); this.scooterTransition = undefined;
     if (this.ladder) { this.ladder.attached = false; this.ladderTransition = undefined; this.pauseLadder(); }
     this.scooterModel.update(this.scooter, this.currentView !== "overview");
@@ -1112,6 +1123,7 @@ export class RoomScene {
       this.pauseScooter(); this.pauseLadder(); this.jump.queued = false;
       this.interactions.silenceMotion(); this.pointerLock.release();
     }
+    this.updateSoundscape(.04, true);
     this.updateControls();
     this.updateInteractionHint();
     this.notifyTimeOfDay();
@@ -1184,7 +1196,7 @@ export class RoomScene {
     // Modal state exists before lock release, preserving the first-person pose.
     this.setPaused("lighthouse-panel", true);
     this.lighthousePanel.renderStorage(this.storyBridge ? this.storySave.inspect() : this.lighthouseSave.inspect(),this.lighthouseSessionMode);
-    this.audio.stopAll(); this.audio.play("switch", "lighthouse-control-panel");
+    this.audio.stopActions(); this.audio.play("switch", "lighthouse-control-panel");
     this.updateControls(); this.updateInteractionHint();
   }
 
@@ -1282,7 +1294,7 @@ export class RoomScene {
     this.floorPlan.open();
     this.setPaused("map", true);
     this.interactions.silenceMotion();
-    this.audio.stopAll();
+    this.audio.stopActions();
     this.pointerLock.release();
     this.updateControls();
     this.updateInteractionHint();
@@ -1326,7 +1338,7 @@ export class RoomScene {
     if (!this.controlsEnabled || this.isViewing || !this.inspection.open(item)) return;
     this.setPaused("inspection", true);
     this.interactions.silenceMotion();
-    this.audio.stopAll();
+    this.audio.stopActions();
     this.audio.play("paper", "inspection");
     this.pointerLock.release();
     this.updateControls();
@@ -1570,6 +1582,20 @@ export class RoomScene {
     });
   }
 
+  private updateSoundscape(seconds: number, force = false) {
+    const delta = Number.isFinite(seconds) ? Math.max(0,Math.min(.1,seconds)) : 0;
+    this.soundscapeElapsed += delta;
+    if (!force && this.soundscapeElapsed < .04) return;
+    const dt = Math.min(.2,this.soundscapeElapsed); this.soundscapeElapsed = 0;
+    const point = worldToPlan(this.firstPersonCamera.position);
+    this.soundscape.update(dt, {firstPerson:this.currentView === "first-person", x:point.x, y:point.y, feet:this.jump.feet,
+      yaw:this.firstPersonCamera.rotation.y, shoreDistance:coastalShoreDistance(point.x,point.y,this.soundscapeShore),
+      weather:this.weather.weather, pauses:this.pauseReasons,
+      doors:{"entry-door":this.interactions.doorProgress("entry-door"), "balcony-door":this.interactions.doorProgress("balcony-door"),
+        "lighthouse-entry-door":this.interactions.doorProgress("lighthouse-entry-door")},
+      scooter:{...this.scooter,...this.scooterInput}});
+  }
+
   private render = () => this.scene.render();
   private fitSuiteView() {
     const aspect = this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight());
@@ -1599,14 +1625,14 @@ export class RoomScene {
   };
   private foregroundLost = () => { this.setPaused("blur", true); };
   private foregroundReturned = () => { this.setPaused("blur", false); this.resumeAudio(); };
-  private pauseAudio = () => { this.cleaningAudio.reset(); this.interactions.silenceMotion(); this.audio.pause(); };
+  private pauseAudio = () => { this.cleaningAudio.reset(); this.soundscape.reset(); this.interactions.silenceMotion(); this.audio.pause(); };
   private resumeAudio = () => { if (!document.hidden && !this.disposed) this.audio.foreground(); };
   private dispose = () => {
     if (this.disposed) return;
     this.disposed = true;
     this.cancelStoryWait();
     this.pauseScooter(); this.pauseLadder(); this.scooterModel.dispose();
-    this.cleaningAudio.reset(); this.audio.dispose();
+    this.cleaningAudio.reset(); this.soundscape.reset(); this.audio.dispose();
     this.rain.dispose();
     this.storyPanel.dispose();
     document.querySelector("#story-open")?.removeEventListener("click", this.openStoryPanel);

@@ -1,6 +1,7 @@
 // Paths are relative to public and are deliberately limited to the active study.
 const audio = require('../public/audio/study/source.json');
 const actions = require('../public/audio/actions/source.json');
+const soundscape = require('../public/audio/soundscape/source.json');
 module.exports = {
   runtime: [
     'environment/study-interior.hdr',
@@ -27,6 +28,7 @@ module.exports = {
     // Only explicitly reviewed, content-addressed foley files from these manifests.
     ...audio.files.map(file => file.file),
     ...actions.files.map(file => file.file),
+    ...soundscape.files.map(file => file.file),
   ],
   documentation: [
     'STUDY_ASSET_SOURCES.md',
@@ -39,6 +41,7 @@ module.exports = {
     'textures/study/painted_wall/source.json',
     'audio/study/source.json',
     'audio/actions/source.json',
+    'audio/soundscape/source.json',
     'audio/study/credits.html',
   ],
   libraryNotices: [

@@ -1,5 +1,6 @@
 import { MOVEMENT_SPEED, RoomScene, RoomView } from "../examples/Room";
-import { AUDIO_DEFAULTS, AUDIO_STORAGE_KEY, audioPreferences } from "../examples/RoomAudioCatalog";
+import { AUDIO_DEFAULTS, AUDIO_MIX_DEFAULTS, AUDIO_STORAGE_KEY, audioPreferences, audioMixPreferences } from "../examples/RoomAudioCatalog";
+import type { AudioMix } from "../examples/RoomAudioCatalog";
 import { RoomTimeMenu } from "./RoomTimeMenu";
 
 export class ExampleBasicScene {
@@ -56,19 +57,27 @@ export class ExampleBasicScene {
     const status = document.querySelector<HTMLElement>("#audio-status")!;
     const retry = document.querySelector<HTMLButtonElement>("#audio-retry")!;
     const toggles = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-audio-toggle]"));
+    const groupControls = (Object.keys(AUDIO_MIX_DEFAULTS) as (keyof AudioMix)[]).map(key => ({key,
+      input: document.querySelector<HTMLInputElement>("#audio-"+key+"-volume")!,
+      output: document.querySelector<HTMLOutputElement>("#audio-"+key+"-value")!}));
     let saved = AUDIO_DEFAULTS;
-    try { saved = audioPreferences(JSON.parse(localStorage.getItem(AUDIO_STORAGE_KEY) || "null")); } catch {}
+    let savedMix = {...AUDIO_MIX_DEFAULTS};
+    try { const value=JSON.parse(localStorage.getItem(AUDIO_STORAGE_KEY) || "null"); saved=audioPreferences(value); savedMix=audioMixPreferences(value?.groups); } catch {}
     const save = () => {
-      try { localStorage.setItem(AUDIO_STORAGE_KEY, JSON.stringify({ enabled: audio.enabled, volume: audio.volume })); } catch {}
+      try { localStorage.setItem(AUDIO_STORAGE_KEY, JSON.stringify({ enabled: audio.enabled, volume: audio.volume, groups: audio.mix })); } catch {}
     };
     const render = () => {
       enabled.checked = audio.enabled;
       volume.value = String(Math.round(audio.volume * 100)); output.value = volume.value + "%";
       volume.setAttribute("aria-valuetext", output.value);
+      for (const control of groupControls) {
+        control.input.value = String(Math.round(audio.mix[control.key]*100)); control.output.value = control.input.value+"%";
+        control.input.setAttribute("aria-valuetext",control.output.value);
+      }
       for (const button of toggles) {
         button.textContent = audio.enabled ? "音效：开" : "音效：关";
         button.setAttribute("aria-pressed", String(audio.enabled));
-        button.setAttribute("aria-label", audio.enabled ? "关闭交互音效" : "启用交互音效");
+        button.setAttribute("aria-label", audio.enabled ? "关闭声音" : "启用声音");
       }
       const info = audio.diagnostics;
       status.dataset.state = info.state;
@@ -80,12 +89,17 @@ export class ExampleBasicScene {
       document.querySelector<HTMLButtonElement>("#audio-preview")!.disabled = !audio.enabled;
     };
     audio.onChange = render;
+    audio.setMix(savedMix);
     audio.setPreferences(saved.enabled, saved.volume);
     const apply = (isEnabled: boolean, level: number) => { audio.setPreferences(isEnabled, level); save(); };
     const toggle = () => { apply(!audio.enabled, audio.volume); audio.unlockFromGesture(); };
     toggles.forEach(button => button.addEventListener("click", toggle));
     const changeEnabled = () => { apply(enabled.checked, audio.volume); audio.unlockFromGesture(); };
     const changeVolume = () => apply(audio.enabled, volume.valueAsNumber / 100);
+    const groupListeners = groupControls.map(control => {
+      const listener = () => { audio.setMix({...audio.mix,[control.key]:control.input.valueAsNumber/100}); save(); };
+      control.input.addEventListener("input",listener); return () => control.input.removeEventListener("input",listener);
+    });
     const preview = () => { audio.unlockFromGesture(); audio.play("switch", "preview"); };
     const retryAudio = () => { const pending = audio.retryFailed(); audio.unlockFromGesture(); void pending; };
     const gesture = (event: PointerEvent | KeyboardEvent) => {
@@ -106,9 +120,10 @@ export class ExampleBasicScene {
       document.querySelector("#audio-preview")?.removeEventListener("click", preview);
       retry.removeEventListener("click", retryAudio);
       document.removeEventListener("pointerdown", gesture, true); document.removeEventListener("keydown", gesture, true);
+      groupListeners.forEach(remove => remove());
       audio.onChange = () => {};
     });
-    return () => apply(AUDIO_DEFAULTS.enabled, AUDIO_DEFAULTS.volume);
+    return () => { audio.setMix({...AUDIO_MIX_DEFAULTS}); apply(AUDIO_DEFAULTS.enabled, AUDIO_DEFAULTS.volume); };
   }
 
   private bindSettings(room: RoomScene, resetAudio: () => void) {

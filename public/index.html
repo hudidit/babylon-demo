@@ -53,7 +53,10 @@
       .settings-panel { max-height: calc(100% - 90px); overflow-y: auto; }
       .audio-settings { border-top: 1px solid #cbbca6; padding-top: 16px; margin: 18px 0; }
       .audio-enabled-label { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-bottom: 16px; }
-      #audio-volume { width: 100%; accent-color: #73503d; }
+      .audio-settings input[type="range"] { width: 100%; accent-color: #73503d; }
+      .audio-groups { margin-top: 18px; }
+      .audio-groups .setting-label { margin-top: 12px; margin-bottom: 4px; }
+      #audio-groups-description { font-size: 11px; color: #776d5e; line-height: 1.6; }
       #audio-status { color: #776d5e; font-size: 11px; line-height: 1.6; min-height: 18px; }
       .audio-actions { display: flex; gap: 10px; align-items: center; font-size: 11px; }
       .audio-actions button { border: 1px solid #cbbca6; border-radius: 5px; padding: 6px 10px; color: #56564b; background: transparent; }
@@ -539,9 +542,18 @@
       <div class="speed-scale" aria-hidden="true"><span>慢 · 0.25×</span><span>快 · 3.00×</span></div>
       <p id="movement-speed-description">调节第一人称视角中方向键 / WASD 的移动速度，立即生效并自动保存。</p>
       <div class="audio-settings">
-        <label class="audio-enabled-label"><input id="audio-enabled" type="checkbox" checked />交互音效</label>
-        <div class="setting-label"><label for="audio-volume">音效音量</label><output id="audio-volume-value" for="audio-volume">50%</output></div>
+        <label class="audio-enabled-label"><input id="audio-enabled" type="checkbox" checked />声音</label>
+        <div class="setting-label"><label for="audio-volume">总音量</label><output id="audio-volume-value" for="audio-volume">50%</output></div>
         <input id="audio-volume" type="range" min="0" max="100" step="1" value="50" aria-describedby="audio-status" />
+        <div class="audio-groups">
+          <div class="setting-label"><label for="audio-actions-volume">动作与载具</label><output id="audio-actions-value" for="audio-actions-volume">100%</output></div>
+          <input id="audio-actions-volume" type="range" min="0" max="100" step="1" value="100" />
+          <div class="setting-label"><label for="audio-ambience-volume">环境声</label><output id="audio-ambience-value" for="audio-ambience-volume">70%</output></div>
+          <input id="audio-ambience-volume" type="range" min="0" max="100" step="1" value="70" aria-describedby="audio-groups-description" />
+          <div class="setting-label"><label for="audio-ui-volume">界面声</label><output id="audio-ui-value" for="audio-ui-volume">100%</output></div>
+          <input id="audio-ui-volume" type="range" min="0" max="100" step="1" value="100" />
+          <p id="audio-groups-description">可单独降低风、海浪和雨声，保留动作与行驶声音。</p>
+        </div>
         <p id="audio-status" role="status">等待场景就绪</p>
         <div class="audio-actions"><button id="audio-preview">试听</button><button id="audio-retry" hidden>重试音效</button><a href="./audio/study/credits.html" target="_blank" rel="noopener">素材来源</a></div>
       </div>

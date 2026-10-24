@@ -1,0 +1,10 @@
+{
+  "node": "v24.21.0",
+  "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "macOS": "27.0",
+  "decoderEncoder": "/usr/bin/afconvert (macOS AudioToolbox); AAC-LC 64000 mono / 96000 stereo bit/s; 48kHz PCM16 references",
+  "generation": "tools/prepare-soundscape-audio.py; fixed seed 20261024; normalize MP4 mvhd/tkhd/mdhd timestamps",
+  "browser": "Chrome 155.0.8059.86 / Playwright Core; default autoplay policy; DPR1",
+  "listening": false,
+  "fpsOrLoadingTimeSampling": false
+}

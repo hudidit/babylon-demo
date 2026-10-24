@@ -1,0 +1,9 @@
+# 阶段 C 环境与车辆原料
+
+来源与摘要见[source.json](source.json)，交付与处理见[运行清单](../../../public/audio/soundscape/source.json)。原料不进入运行白名单。
+
+2026-10-24复核作者页CC0：新增transitking / qubodup [Water Waves](https://opengameart.org/content/water-waves)的wave_01/03/04 FLAC独立浪段，与已归档wave_02以0.85速率错位组合，交叉淡化为8秒循环；不把组合片段称为连续海岸实录。其余原料复用[阶段A归档](../soundscape-lab/source.json)：Luke.RUSTLTD的[wind1](https://opengameart.org/content/wind1)为作者PureData合成风；Ylmir的[Rain](https://opengameart.org/content/rain-loopable)为窗边单声道录音处理成的公开MP3；onursamli的[Electric Motor 2](https://freesound.org/people/onursamli/sounds/846905/)为通用电机公开HQ MP3预览，未取得原24bit WAV，也未确认是电驴实录。mitchanary的布料预览用于上下车近场接触，层级同阶段B。
+
+[制作脚本](../../../tools/prepare-soundscape-audio.py)使用macOS AudioToolbox解码、固定选段、去直流、峰值余量、循环交叉淡化和低跳变接缝；风/海/雨另制作两级低通遮蔽版本（900/1100/1500Hz），避免运行时访问私有节点。8个循环交付AAC-LC 64k mono/96k stereo，4个短声交付PCM16 mono；AAC日期字段归零。单格式交付，无运行解码库，PCM WAV参考不随站点发布。生成清单包含参考PCM摘要、编码文件摘要、声道/时长与处理参数。
+
+轮胎与轻刹车是项目原创固定种子`20261024`的带限噪声合成辅助，以项目ISC许可；不是购买/下载的轮胎录音。生成脚本摘要作为此原料摘要记录，种子独立于游戏天气/发现随机序列。音色、接缝和长时间重复感仍待人工耳机/扬声器试听。

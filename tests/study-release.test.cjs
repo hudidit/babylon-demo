@@ -46,7 +46,7 @@ test('production packaging includes exact study assets, license sidecars and laz
     const paintPaths = Object.values(paint.files).map(file => file.file);
     const audio = require('../public/audio/study/source.json');
     const coastal = require('../public/textures/coastal/source.json');
-    assert.deepEqual([...config.runtime].sort(), [...retained, ...paintPaths, ...audio.files.map(file => file.file), ...require('../public/audio/actions/source.json').files.map(file => file.file), ...coastal.files.map(file => file.file), require('../public/textures/coastal/pine-source.json').output.file, require('../public/textures/coastal/pine-impostor-source.json').output.file].sort());
+    assert.deepEqual([...config.runtime].sort(), [...retained, ...paintPaths, ...audio.files.map(file => file.file), ...require('../public/audio/actions/source.json').files.map(file => file.file), ...require('../public/audio/soundscape/source.json').files.map(file => file.file), ...coastal.files.map(file => file.file), require('../public/textures/coastal/pine-source.json').output.file, require('../public/textures/coastal/pine-impostor-source.json').output.file].sort());
     const summary = verifyRelease(output);
     assert.equal(summary.runtimeBytes, config.runtime.reduce((sum, file) => sum + fs.statSync(path.join(root, 'public', file)).size, 0));
     assert.ok(!manifest.files.some(file => file.path.includes('/brick_wall_001/')));

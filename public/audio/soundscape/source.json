@@ -1,0 +1,524 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-24",
+  "generator": "tools/prepare-soundscape-audio.py",
+  "generatorSha256": "8f4e9c81f2b55907890a86c320e57e4965b2ea09e551543541fefcd4eac94b5b",
+  "sources": [
+    {
+      "id": "sea-01",
+      "author": "transitking (submitted by qubodup)",
+      "title": "Water Waves, wave 01",
+      "page": "https://opengameart.org/content/water-waves",
+      "url": "https://opengameart.org/sites/default/files/wave_01_cc0-11505__transitking__wavesound.flac",
+      "sha256": "0bd84b2061a82c234470bd4e16efc6ab24851928d3f93e1757bfea048b2d7a33",
+      "bytes": 265335,
+      "tier": "uploader lossless FLAC extract",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageLicenseEvidence": "Source page explicitly links CC0 1.0"
+    },
+    {
+      "id": "sea-03",
+      "author": "transitking (submitted by qubodup)",
+      "title": "Water Waves, wave 03",
+      "page": "https://opengameart.org/content/water-waves",
+      "url": "https://opengameart.org/sites/default/files/wave_03_cc0-11505__transitking__wavesound.flac",
+      "sha256": "1657a0002367e6e97eb34fc9f4d841f4a910981450c634bdc6c09ae1978049c1",
+      "bytes": 401955,
+      "tier": "uploader lossless FLAC extract",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageLicenseEvidence": "Source page explicitly links CC0 1.0"
+    },
+    {
+      "id": "sea-04",
+      "author": "transitking (submitted by qubodup)",
+      "title": "Water Waves, wave 04",
+      "page": "https://opengameart.org/content/water-waves",
+      "url": "https://opengameart.org/sites/default/files/wave_04_cc0-11505__transitking__wavesound.flac",
+      "sha256": "6c5b59562bf9b00e77f7bd8d6550912b6326e190ce97e9b8c1a1faa887bb4fac",
+      "bytes": 338969,
+      "tier": "uploader lossless FLAC extract",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageLicenseEvidence": "Source page explicitly links CC0 1.0"
+    },
+    {
+      "id": "cloth",
+      "title": "WindowWipe.wav",
+      "author": "mitchanary",
+      "page": "https://freesound.org/people/mitchanary/sounds/505171/",
+      "url": "https://cdn.freesound.org/previews/505/505171_1282624-hq.mp3",
+      "tier": "author-page HQ MP3 preview; original 24-bit WAV requires login",
+      "bytes": 603744,
+      "sha256": "869d77969052cb9b33e6a476b9bda69bd1f08f99fea407333adb0ede40161dcd",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageSha256": "b69a8f447593408a25f09a8b122fd5c202609586e70fa81f449627194d7c5b6b",
+      "pageLicenseEvidence": "Creative Commons 0"
+    },
+    {
+      "id": "motor",
+      "title": "Electric Motor 2",
+      "author": "onursamli",
+      "page": "https://freesound.org/people/onursamli/sounds/846905/",
+      "url": "https://cdn.freesound.org/previews/846/846905_5343877-hq.mp3",
+      "tier": "author-page HQ MP3 preview; electric machinery recording, not a verified scooter recording",
+      "bytes": 537240,
+      "sha256": "4cfcc683a042a1a06d7b880c3d67ff096490e6a7ba7546f1201ece9fed41cec3",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageSha256": "4bf263d5e836368e6f4e85b5cb15d553b2d6d65b0f9398af824ffc54cb8c5f86",
+      "pageLicenseEvidence": "Creative Commons 0"
+    },
+    {
+      "id": "wind",
+      "title": "wind1",
+      "author": "Luke.RUSTLTD",
+      "page": "https://opengameart.org/content/wind1",
+      "url": "https://opengameart.org/sites/default/files/wind1.wav",
+      "tier": "original WAV",
+      "bytes": 5291948,
+      "sha256": "a2856f794fbf77e05f8241dc4adeade7f62fa21c3c9dc49f7725b6c6218060c3",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageSha256": "1e995276551817b667df07f5bb2896797486f63b2b62c8f853bb7f79e45fa556",
+      "pageLicenseEvidence": "License(s): CC0 (linked CC0 1.0)"
+    },
+    {
+      "id": "rain",
+      "title": "Rain (loopable)",
+      "author": "Ylmir",
+      "page": "https://opengameart.org/content/rain-loopable",
+      "url": "https://opengameart.org/sites/default/files/1_7.mp3",
+      "tier": "author-page direct MP3 preview track; original ZIP not inspected; lossy source",
+      "bytes": 649507,
+      "sha256": "da5f63758a4d74e10ab9dd1b0bed62aa4c06fd960af6a7cdb83266354d75204f",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageSha256": "bf1a5a3b9f437cffa75d1fcdf40424b99134cd1cc1b87ffb7d751ef9c280d188",
+      "pageLicenseEvidence": "License(s): CC0 (linked CC0 1.0)"
+    },
+    {
+      "id": "sea",
+      "title": "Water Waves, wave 02",
+      "author": "transitking (submitted by qubodup)",
+      "page": "https://opengameart.org/content/water-waves",
+      "url": "https://opengameart.org/sites/default/files/wave_02_cc0-11505__transitking__wavesound.flac",
+      "tier": "uploader lossless FLAC extract",
+      "bytes": 583157,
+      "sha256": "afa112a66c4cafe06ef76d5e2d4d00a701d4520c58eef63b862afa771991d77a",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageSha256": "4e5dc7edc1c96b5966707d1eb037374235000d177be837d1bce3b8ab0114e66e",
+      "pageLicenseEvidence": "License(s): CC0 (linked CC0 1.0)"
+    },
+    {
+      "id": "procedural",
+      "author": "babylon-demo contributors",
+      "title": "Fixed-seed tyre/brake noise synthesis",
+      "page": "https://github.com/hudidit/babylon-demo",
+      "license": "ISC",
+      "sha256": "8f4e9c81f2b55907890a86c320e57e4965b2ea09e551543541fefcd4eac94b5b",
+      "tier": "project original offline synthesis; not a tyre recording",
+      "verifiedOn": "2026-10-24"
+    }
+  ],
+  "files": [
+    {
+      "id": "motor-loop",
+      "file": "audio/soundscape/motor-loop.0448137888.m4a",
+      "sourceIds": [
+        "motor"
+      ],
+      "sourceSha256s": [
+        "4cfcc683a042a1a06d7b880c3d67ff096490e6a7ba7546f1201ece9fed41cec3"
+      ],
+      "license": "CC0-1.0",
+      "bytes": 27303,
+      "sha256": "04481378886acbad6ab46b156dbc43faa9d01ee6873d67fef0cd507c60b57084",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 144000,
+      "durationSeconds": 3.0,
+      "decodedBytes": 576000,
+      "referencePcmSha256": "fa9f8ffdf18ca03bf42d74eb6e7b624cb7e28898810b0392db76bf461099645d",
+      "loop": true,
+      "format": "m4a",
+      "peak": 0.399993896484375,
+      "boundaryStep": 9.55355533320025e-06,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0.25,
+        "lowPassHz": null,
+        "peakTarget": 0.4,
+        "recipe": "pinned trim or fixed-seed noise; see generator"
+      }
+    },
+    {
+      "id": "roll-loop",
+      "file": "audio/soundscape/roll-loop.6ef6cabb53.m4a",
+      "sourceIds": [
+        "procedural"
+      ],
+      "sourceSha256s": [
+        "8f4e9c81f2b55907890a86c320e57e4965b2ea09e551543541fefcd4eac94b5b"
+      ],
+      "license": "ISC",
+      "bytes": 20118,
+      "sha256": "6ef6cabb538608438c35b691359dbff43a2885fcfaa1e24a6ea4c325cfa41b52",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 96000,
+      "durationSeconds": 2.0,
+      "decodedBytes": 384000,
+      "referencePcmSha256": "2ec363485d5a728ab552263cf9f1d2f0a7534757ff2e0c17940c865e29e59f3a",
+      "loop": true,
+      "format": "m4a",
+      "peak": 0.3499755859375,
+      "boundaryStep": 3.662724537763988e-05,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0.2,
+        "lowPassHz": null,
+        "peakTarget": 0.35,
+        "recipe": "pinned trim or fixed-seed noise; see generator"
+      }
+    },
+    {
+      "id": "wind-open",
+      "file": "audio/soundscape/wind-open.2d95c49175.m4a",
+      "sourceIds": [
+        "wind"
+      ],
+      "sourceSha256s": [
+        "a2856f794fbf77e05f8241dc4adeade7f62fa21c3c9dc49f7725b6c6218060c3"
+      ],
+      "license": "CC0-1.0",
+      "bytes": 67502,
+      "sha256": "2d95c49175c14e2a5030a7b9fe18d0e3683a69c1060334db484fff69706113b4",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 384000,
+      "durationSeconds": 8.0,
+      "decodedBytes": 1536000,
+      "referencePcmSha256": "67bc77101d08cb586258f15eb0b3ccb74c1ffd98eb75c18187b24744e8b4b577",
+      "loop": true,
+      "format": "m4a",
+      "peak": 0.3499755859375,
+      "boundaryStep": 5.00901036983614e-06,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0.5,
+        "lowPassHz": null,
+        "peakTarget": 0.35,
+        "recipe": "pinned trim or fixed-seed noise; see generator"
+      }
+    },
+    {
+      "id": "wind-sheltered",
+      "file": "audio/soundscape/wind-sheltered.8b5d423c6a.m4a",
+      "sourceIds": [
+        "wind"
+      ],
+      "sourceSha256s": [
+        "a2856f794fbf77e05f8241dc4adeade7f62fa21c3c9dc49f7725b6c6218060c3"
+      ],
+      "license": "CC0-1.0",
+      "bytes": 58197,
+      "sha256": "8b5d423c6a475e31c70aeb1a4782768feab71dc83cc8b4016999918dff61dd58",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 384000,
+      "durationSeconds": 8.0,
+      "decodedBytes": 1536000,
+      "referencePcmSha256": "3cda1b12cdf0d1cdc1db36176cc4093c72cfd2c794971ce42affe1c2be09f6c6",
+      "loop": true,
+      "format": "m4a",
+      "peak": 0.3499755859375,
+      "boundaryStep": 2.4456551609700338e-05,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0.5,
+        "lowPassHz": 900,
+        "peakTarget": 0.35,
+        "recipe": "pinned trim or fixed-seed noise; see generator"
+      }
+    },
+    {
+      "id": "rain-open",
+      "file": "audio/soundscape/rain-open.29ed5ceaf5.m4a",
+      "sourceIds": [
+        "rain"
+      ],
+      "sourceSha256s": [
+        "da5f63758a4d74e10ab9dd1b0bed62aa4c06fd960af6a7cdb83266354d75204f"
+      ],
+      "license": "CC0-1.0",
+      "bytes": 69063,
+      "sha256": "29ed5ceaf51ac9331999ecec6c31a20ca6f0ec9415e822c5f0d2840085f61894",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 384000,
+      "durationSeconds": 8.0,
+      "decodedBytes": 1536000,
+      "referencePcmSha256": "974e7b1976047fab752cc25a04033faf4042cf6eca3a42f2844bc18b73f887c3",
+      "loop": true,
+      "format": "m4a",
+      "peak": 0.379974365234375,
+      "boundaryStep": 5.9074341431865525e-06,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0.5,
+        "lowPassHz": null,
+        "peakTarget": 0.38,
+        "recipe": "pinned trim or fixed-seed noise; see generator"
+      }
+    },
+    {
+      "id": "rain-sheltered",
+      "file": "audio/soundscape/rain-sheltered.6b349025b1.m4a",
+      "sourceIds": [
+        "rain"
+      ],
+      "sourceSha256s": [
+        "da5f63758a4d74e10ab9dd1b0bed62aa4c06fd960af6a7cdb83266354d75204f"
+      ],
+      "license": "CC0-1.0",
+      "bytes": 69717,
+      "sha256": "6b349025b1918c8ce767399be37de8763711b7422994f68611aa4ebd6ab4f735",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 384000,
+      "durationSeconds": 8.0,
+      "decodedBytes": 1536000,
+      "referencePcmSha256": "359da7d6c85a1a7e923d1614b1141978220813a48880f27ecbf55c1e95d15806",
+      "loop": true,
+      "format": "m4a",
+      "peak": 0.379974365234375,
+      "boundaryStep": 1.550921190158893e-05,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0.5,
+        "lowPassHz": 1500,
+        "peakTarget": 0.38,
+        "recipe": "pinned trim or fixed-seed noise; see generator"
+      }
+    },
+    {
+      "id": "sea-open",
+      "file": "audio/soundscape/sea-open.3553960cbd.m4a",
+      "sourceIds": [
+        "sea-01",
+        "sea",
+        "sea-03",
+        "sea-04"
+      ],
+      "sourceSha256s": [
+        "0bd84b2061a82c234470bd4e16efc6ab24851928d3f93e1757bfea048b2d7a33",
+        "afa112a66c4cafe06ef76d5e2d4d00a701d4520c58eef63b862afa771991d77a",
+        "1657a0002367e6e97eb34fc9f4d841f4a910981450c634bdc6c09ae1978049c1",
+        "6c5b59562bf9b00e77f7bd8d6550912b6326e190ce97e9b8c1a1faa887bb4fac"
+      ],
+      "license": "CC0-1.0",
+      "bytes": 102521,
+      "sha256": "3553960cbd0cdcb44dd09c899155dc6daf0724640d340c3f89e93f202de413b3",
+      "sampleRate": 48000,
+      "channels": 2,
+      "bitDepth": 16,
+      "frames": 384000,
+      "durationSeconds": 8.0,
+      "decodedBytes": 3072000,
+      "referencePcmSha256": "b53ec41e424ec6b4d6c580e34f336ecf4fe351701d8313c9293f87df9e7250b4",
+      "loop": true,
+      "format": "m4a",
+      "peak": 0.399993896484375,
+      "boundaryStep": 7.084527965764593e-05,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0.5,
+        "lowPassHz": null,
+        "peakTarget": 0.4,
+        "recipe": "four wave circular montage / 0.85 rate"
+      }
+    },
+    {
+      "id": "sea-sheltered",
+      "file": "audio/soundscape/sea-sheltered.d03ed4f4d6.m4a",
+      "sourceIds": [
+        "sea-01",
+        "sea",
+        "sea-03",
+        "sea-04"
+      ],
+      "sourceSha256s": [
+        "0bd84b2061a82c234470bd4e16efc6ab24851928d3f93e1757bfea048b2d7a33",
+        "afa112a66c4cafe06ef76d5e2d4d00a701d4520c58eef63b862afa771991d77a",
+        "1657a0002367e6e97eb34fc9f4d841f4a910981450c634bdc6c09ae1978049c1",
+        "6c5b59562bf9b00e77f7bd8d6550912b6326e190ce97e9b8c1a1faa887bb4fac"
+      ],
+      "license": "CC0-1.0",
+      "bytes": 101512,
+      "sha256": "d03ed4f4d6579e25e8bc386d8ecd6bb4bcd15a238eb5aed9e0dc9760d4f9ea48",
+      "sampleRate": 48000,
+      "channels": 2,
+      "bitDepth": 16,
+      "frames": 384000,
+      "durationSeconds": 8.0,
+      "decodedBytes": 3072000,
+      "referencePcmSha256": "278a46248e410ca2e7642fd5dc27555c584550314e8cad679ba4e52af2d1d3fc",
+      "loop": true,
+      "format": "m4a",
+      "peak": 0.399993896484375,
+      "boundaryStep": 1.4618046328785956e-05,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0.5,
+        "lowPassHz": 1100,
+        "peakTarget": 0.4,
+        "recipe": "four wave circular montage / 0.85 rate"
+      }
+    },
+    {
+      "id": "scooter-mount-1",
+      "file": "audio/soundscape/scooter-mount-1.9bbb6ba81f.wav",
+      "sourceIds": [
+        "cloth"
+      ],
+      "sourceSha256s": [
+        "869d77969052cb9b33e6a476b9bda69bd1f08f99fea407333adb0ede40161dcd"
+      ],
+      "license": "CC0-1.0",
+      "bytes": 9644,
+      "sha256": "9bbb6ba81ff2238f62dd7c130d50a5deea7de7d776bc4414ef120df6affe7ded",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 4800,
+      "durationSeconds": 0.1,
+      "decodedBytes": 19200,
+      "referencePcmSha256": "9bbb6ba81ff2238f62dd7c130d50a5deea7de7d776bc4414ef120df6affe7ded",
+      "loop": false,
+      "format": "wav",
+      "peak": 0.3599853515625,
+      "boundaryStep": 0.0,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0,
+        "lowPassHz": null,
+        "peakTarget": 0.36,
+        "recipe": "pinned trim or fixed-seed noise; see generator"
+      }
+    },
+    {
+      "id": "scooter-brake-1",
+      "file": "audio/soundscape/scooter-brake-1.d83991e4cc.wav",
+      "sourceIds": [
+        "procedural"
+      ],
+      "sourceSha256s": [
+        "8f4e9c81f2b55907890a86c320e57e4965b2ea09e551543541fefcd4eac94b5b"
+      ],
+      "license": "ISC",
+      "bytes": 17324,
+      "sha256": "d83991e4ccccac1a5cb537ec4e3760434339bd55072f8c7a657fa27370e1b47a",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 8640,
+      "durationSeconds": 0.18,
+      "decodedBytes": 34560,
+      "referencePcmSha256": "d83991e4ccccac1a5cb537ec4e3760434339bd55072f8c7a657fa27370e1b47a",
+      "loop": false,
+      "format": "wav",
+      "peak": 0.3599853515625,
+      "boundaryStep": 0.0,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0,
+        "lowPassHz": null,
+        "peakTarget": 0.36,
+        "recipe": "pinned trim or fixed-seed noise; see generator"
+      }
+    },
+    {
+      "id": "scooter-mount-2",
+      "file": "audio/soundscape/scooter-mount-2.0a5cdecee4.wav",
+      "sourceIds": [
+        "cloth"
+      ],
+      "sourceSha256s": [
+        "869d77969052cb9b33e6a476b9bda69bd1f08f99fea407333adb0ede40161dcd"
+      ],
+      "license": "CC0-1.0",
+      "bytes": 9644,
+      "sha256": "0a5cdecee4926cb296caa9b2adaf5da50f7e32aedcf2f662d757220cf3f71b36",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 4800,
+      "durationSeconds": 0.1,
+      "decodedBytes": 19200,
+      "referencePcmSha256": "0a5cdecee4926cb296caa9b2adaf5da50f7e32aedcf2f662d757220cf3f71b36",
+      "loop": false,
+      "format": "wav",
+      "peak": 0.3599853515625,
+      "boundaryStep": 0.0,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0,
+        "lowPassHz": null,
+        "peakTarget": 0.36,
+        "recipe": "pinned trim or fixed-seed noise; see generator"
+      }
+    },
+    {
+      "id": "scooter-brake-2",
+      "file": "audio/soundscape/scooter-brake-2.940fd9110c.wav",
+      "sourceIds": [
+        "procedural"
+      ],
+      "sourceSha256s": [
+        "8f4e9c81f2b55907890a86c320e57e4965b2ea09e551543541fefcd4eac94b5b"
+      ],
+      "license": "ISC",
+      "bytes": 17324,
+      "sha256": "940fd9110cb2c34d537977e3136a27cbcb5bab6e6cd652400e0ffadecbbdf203",
+      "sampleRate": 48000,
+      "channels": 1,
+      "bitDepth": 16,
+      "frames": 8640,
+      "durationSeconds": 0.18,
+      "decodedBytes": 34560,
+      "referencePcmSha256": "940fd9110cb2c34d537977e3136a27cbcb5bab6e6cd652400e0ffadecbbdf203",
+      "loop": false,
+      "format": "wav",
+      "peak": 0.3599853515625,
+      "boundaryStep": 0.0,
+      "processing": {
+        "removeDC": true,
+        "crossfadeSeconds": 0,
+        "lowPassHz": null,
+        "peakTarget": 0.36,
+        "recipe": "pinned trim or fixed-seed noise; see generator"
+      }
+    }
+  ],
+  "totalBytes": 569869,
+  "decodedBytes": 13355520,
+  "delivery": "AAC64k mono/AAC96k stereo loops; PCM16 short sounds; no runtime decoder library"
+}

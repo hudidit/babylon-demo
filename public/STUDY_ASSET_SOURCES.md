@@ -162,8 +162,14 @@ Wh、燃料只随统一自动场景小时积分，太阳能解析积分并求容
 ## 林下静态遮蔽（2026-10-23）
 
 `CoastalForestShade.ts`为项目原创ISC代码，按4,819株原有植被生成软遮蔽，在初始化时写入7个地面网格已有的23,273组顶点RGB；保留丘体底色，alpha不变。32m空间桶、较宽林下暗部和1.6m树根暗部，共用世界平面位置，重叠取较深值、倍率最低0.28。未新增图片、几何、材质、阴影投射或逐帧计算。海岸表面及建筑饰面GLSL只清理空白，词元保持。遮蔽不随太阳移动；远处粗网格不能精确刻画每个树根。来源与限制见[景观记录](environment/coastal-cliff-source.json)的`grounding`。
-# 阶段 B 动作音效补充（2026-10-24）
+## 阶段 B 动作音效补充（2026-10-24）
 
 金属门：rubberduck，[100 CC0 metal and wood SFX](https://opengameart.org/content/100-cc0-metal-and-wood-sfx)，作者Ogg交付文件`door_open_01.ogg`/`metal_close_01.ogg`。推拉门：musicandsoundyay，[Sliding door opening and closing.wav](https://freesound.org/people/musicandsoundyay/sounds/452755/)，公共HQ MP3预览。擦拭：mitchanary，[WindowWipe.wav](https://freesound.org/people/mitchanary/sounds/505171/)，复用阶段A公共HQ MP3预览。作者页均明确CC0 1.0，2026-10-24核实；有损交付/预览不声明为原始无损录音。
 
 14个派生WAV共325,096 B、单份解码648,960 B。剪辑、去直流、单声道、峰值调整和循环交叉淡化参数、原料/派生SHA256均见[audio/actions/source.json](audio/actions/source.json)，用于灯塔金属门、住宅阳台推拉门和保护面/太阳能板擦拭。既有木门继续使用laleksic录音。源档位于仓库`assets/audio-source/actions/`，复现脚本为`tools/prepare-action-audio.py`；原料、试听实验及脚本不进入发布白名单。
+
+## 阶段 C 车辆与环境声音（2026-10-24）
+
+8个AAC-LC循环和4个PCM16短声，共569,869 B、参考解码13,355,520 B；全部音效合计1,182,533 B、PCM14,578,560 B。逐文件来源、原料/派生SHA256、参考PCM摘要、处理与声道/时长见[audio/soundscape/source.json](audio/soundscape/source.json)。海浪为transitking / qubodup [Water Waves](https://opengameart.org/content/water-waves)四段FLAC组合；海风为Luke.RUSTLTD [wind1](https://opengameart.org/content/wind1)的PureData合成风；雨为Ylmir [Rain (loopable)](https://opengameart.org/content/rain-loopable)的公开窗边录音MP3；电机为onursamli [Electric Motor 2](https://freesound.org/people/onursamli/sounds/846905/)通用电机HQ MP3预览。作者页均明确CC0 1.0，2026-10-24复核。
+
+上下车接触复用mitchanary布料预览；轮胎/轻刹车为项目ISC许可的离线固定种子带限噪声合成，未冒充电驴实录。风、雨、海浪露天/低通遮蔽版本分别交付并渐变混合；不通过私有节点改音频图。原料及复现脚本在仓库`assets/audio-source/soundscape/`与`tools/prepare-soundscape-audio.py`，不随运行站点发布，无额外运行解码库。

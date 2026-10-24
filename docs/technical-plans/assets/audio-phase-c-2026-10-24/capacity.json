@@ -1,0 +1,80 @@
+{
+  "baselineCommit": "f1c1a01",
+  "baseline": {
+    "runtimeBytes": 16502326,
+    "staticInitialJsBytes": 2931169,
+    "actualInitialJsBytes": 3149663,
+    "releaseBytes": 43336613,
+    "fileCount": 515,
+    "decodedAudioBytes": 1223040
+  },
+  "current": {
+    "fileCount": 528,
+    "modelBytes": 4332840,
+    "buildBytes": 26616608,
+    "runtimeBytes": 17072195,
+    "documentationBytes": 153896,
+    "manifestBytes": 99390,
+    "initialJsBytes": 2941890,
+    "audioBytes": 1182533,
+    "audioDecodedBytes": 14578560,
+    "releaseBytes": 43942089,
+    "actualInitialJsBytes": 3160986
+  },
+  "delta": {
+    "runtimeBytes": 569869,
+    "staticInitialJsBytes": 10721,
+    "actualInitialJsBytes": 11323,
+    "releaseBytes": 605476
+  },
+  "budgets": {
+    "models": 4456448,
+    "runtime": 18874368,
+    "release": 46137344,
+    "staticAndActualInitialJsBytes": 3276800,
+    "audioBytes": 2202009.6,
+    "audioCoreBytes": 393216,
+    "decodedAudioBytes": 16777216,
+    "totalVoices": 14,
+    "shortVoices": 6,
+    "worldVoices": 8
+  },
+  "newAssets": {
+    "files": 12,
+    "loopFiles": 8,
+    "shortFiles": 4,
+    "encodedBytes": 569869,
+    "decodedBytes": 13355520
+  },
+  "twoConsecutiveGenerationsEqual": true,
+  "deliveryFilesIncludingSourceManifest": 13,
+  "deferredUniqueJs": [
+    {
+      "path": "/js/1326.js",
+      "bytes": 93582
+    },
+    {
+      "path": "/js/2033.js",
+      "bytes": 43100
+    },
+    {
+      "path": "/js/4593.js",
+      "bytes": 14090
+    },
+    {
+      "path": "/js/5081.js",
+      "bytes": 3320723
+    },
+    {
+      "path": "/js/7665.js",
+      "bytes": 109982
+    },
+    {
+      "path": "/js/9318.js",
+      "bytes": 8482
+    }
+  ],
+  "firstScreenIncludesStereoAudioModule": true,
+  "subjectiveListening": false,
+  "fpsOrLoadingTimeSampling": false
+}

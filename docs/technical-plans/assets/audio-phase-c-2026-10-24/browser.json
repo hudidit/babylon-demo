@@ -1,0 +1,4734 @@
+{
+  "baseline": "f1c1a01",
+  "acousticListening": false,
+  "fpsOrLoadTimeSampling": false,
+  "errors": [],
+  "warnings": [
+    "The keyword 'slider-vertical' specified to an 'appearance' property is not standardized. It will be removed in the future. Use <input type=range style=\"writing-mode: vertical-lr; direction: rtl\"> instead."
+  ],
+  "firstScreen": [
+    {
+      "path": "/js/main.js",
+      "bytes": 521712,
+      "sha256": "b1fd9266d734efe677f795136eb9d0760bcf750cbb1c09bf6752b2f2daf904b7"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 2316,
+      "sha256": "0087613b2f8028d16c8d26acaad98c25becfeb2949f517954d6ba5fb4fc7bd52"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "shorts": [
+    {
+      "id": "drawer-slide-1",
+      "peak": 0.01548072975128889,
+      "playedDelta": 1
+    },
+    {
+      "id": "drawer-slide-2",
+      "peak": 0.024985168129205704,
+      "playedDelta": 1
+    },
+    {
+      "id": "drawer-stop-1",
+      "peak": 0.029999693855643272,
+      "playedDelta": 1
+    },
+    {
+      "id": "drawer-stop-2",
+      "peak": 0.0690554827451706,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-move-1",
+      "peak": 0.019930092617869377,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-move-2",
+      "peak": 0.020117221400141716,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-latch-1",
+      "peak": 0.03100070171058178,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-latch-2",
+      "peak": 0.029000213369727135,
+      "playedDelta": 1
+    },
+    {
+      "id": "switch-1",
+      "peak": 0.026000244542956352,
+      "playedDelta": 1
+    },
+    {
+      "id": "switch-2",
+      "peak": 0.026000244542956352,
+      "playedDelta": 1
+    },
+    {
+      "id": "paper-1",
+      "peak": 0.010499893687665462,
+      "playedDelta": 1
+    },
+    {
+      "id": "paper-2",
+      "peak": 0.010499893687665462,
+      "playedDelta": 1
+    },
+    {
+      "id": "metal-door-move-1",
+      "peak": 0.014651714824140072,
+      "playedDelta": 1
+    },
+    {
+      "id": "metal-door-move-2",
+      "peak": 0.0150394132360816,
+      "playedDelta": 1
+    },
+    {
+      "id": "metal-door-latch-1",
+      "peak": 0.027839353308081627,
+      "playedDelta": 1
+    },
+    {
+      "id": "metal-door-latch-2",
+      "peak": 0.027839353308081627,
+      "playedDelta": 1
+    },
+    {
+      "id": "slide-move-1",
+      "peak": 0.024923795834183693,
+      "playedDelta": 1
+    },
+    {
+      "id": "slide-move-2",
+      "peak": 0.021381760016083717,
+      "playedDelta": 1
+    },
+    {
+      "id": "slide-stop-1",
+      "peak": 0.020846715196967125,
+      "playedDelta": 1
+    },
+    {
+      "id": "slide-stop-2",
+      "peak": 0.019199220463633537,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-touch-1",
+      "peak": 0.02001522295176983,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-touch-2",
+      "peak": 0.01439978089183569,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-wipe-1",
+      "peak": 0.026879727840423584,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-wipe-2",
+      "peak": 0.026879727840423584,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-lift-1",
+      "peak": 0.029699260368943214,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-lift-2",
+      "peak": 0.01295986957848072,
+      "playedDelta": 1
+    },
+    {
+      "id": "scooter-mount-1",
+      "peak": 0.029832983389496803,
+      "playedDelta": 1
+    },
+    {
+      "id": "scooter-brake-1",
+      "peak": 0.034351881593465805,
+      "playedDelta": 1
+    },
+    {
+      "id": "scooter-mount-2",
+      "peak": 0.012959472835063934,
+      "playedDelta": 1
+    },
+    {
+      "id": "scooter-brake-2",
+      "peak": 0.04985949397087097,
+      "playedDelta": 1
+    }
+  ],
+  "loops": [
+    {
+      "id": "motor-loop",
+      "peak": 0.0280176792293787,
+      "world": 1
+    },
+    {
+      "id": "roll-loop",
+      "peak": 0.025956979021430016,
+      "world": 1
+    },
+    {
+      "id": "wind-open",
+      "peak": 0.010134597308933735,
+      "world": 1
+    },
+    {
+      "id": "wind-sheltered",
+      "peak": 0.01248690765351057,
+      "world": 1
+    },
+    {
+      "id": "rain-open",
+      "peak": 0.010720435529947281,
+      "world": 1
+    },
+    {
+      "id": "rain-sheltered",
+      "peak": 0.014273963868618011,
+      "world": 1
+    },
+    {
+      "id": "sea-open",
+      "peak": 0.007758534513413906,
+      "world": 1
+    },
+    {
+      "id": "sea-sheltered",
+      "peak": 0.009879201650619507,
+      "world": 1
+    }
+  ],
+  "cases": {
+    "accelerating": {
+      "scooter": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": 14,
+        "y": 0.9399305555555569,
+        "heading": 3.141592653589793,
+        "speed": 2.4999999999999996,
+        "distance": 1.260069444444444,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 34,
+        "failedFiles": [],
+        "active": 4,
+        "worldActive": 4,
+        "decodedBytes": 6898560,
+        "played": 36,
+        "dropped": 0
+      },
+      "sound": {
+        "region": "outside",
+        "wind": 0.2,
+        "rain": 0,
+        "exposure": 1,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.07052569122941584
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.1181597529706494
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "rain-open",
+            "gain": 0
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0.08255773095475805,
+            "rate": 1.1383978646875312,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0.048081332116497885,
+            "rate": 0.835,
+            "pan": 0
+          }
+        ]
+      },
+      "pauses": []
+    },
+    "continuousRate": {
+      "lowRate": 1.1383978128433228,
+      "highRate": 1.3176989555358887,
+      "motorStarts": 1
+    },
+    "coasting": {
+      "scooter": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": 14,
+        "y": -3.8720972222222225,
+        "heading": 3.141592653589793,
+        "speed": 3.4999999999999947,
+        "distance": 6.072097222222223,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 34,
+        "failedFiles": [],
+        "active": 4,
+        "worldActive": 4,
+        "decodedBytes": 6898560,
+        "played": 36,
+        "dropped": 0
+      },
+      "sound": {
+        "region": "outside",
+        "wind": 0.2,
+        "rain": 0,
+        "exposure": 1,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.0642056968876267
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.13246759673208672
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "rain-open",
+            "gain": 0
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0.07649974864781411,
+            "rate": 1.2584618340036093,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0.0639741356409197,
+            "rate": 0.8889999999999997,
+            "pan": 0
+          }
+        ]
+      },
+      "pauses": []
+    },
+    "braked": {
+      "scooter": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": 14,
+        "y": -4.733038888888889,
+        "heading": 3.141592653589793,
+        "speed": 0,
+        "distance": 6.9330388888888885,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 34,
+        "failedFiles": [],
+        "active": 2,
+        "worldActive": 2,
+        "decodedBytes": 6898560,
+        "played": 37,
+        "dropped": 0
+      },
+      "sound": {
+        "region": "outside",
+        "wind": 0.2,
+        "rain": 0,
+        "exposure": 1,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.06085394227830287
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.11254592297340921
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "rain-open",
+            "gain": 0
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6501780817369587,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "pauses": []
+    },
+    "reverse": {
+      "scooter": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": 14,
+        "y": -4.329011111111102,
+        "heading": 3.141592653589793,
+        "speed": -1,
+        "distance": 6.529011111111101,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 34,
+        "failedFiles": [],
+        "active": 4,
+        "worldActive": 4,
+        "decodedBytes": 6898560,
+        "played": 39,
+        "dropped": 0
+      },
+      "sound": {
+        "region": "outside",
+        "wind": 0.2,
+        "rain": 0,
+        "exposure": 1,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.06101927360093688
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.11538504968896084
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "rain-open",
+            "gain": 0
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0.07916274111561601,
+            "rate": 0.9597469235130885,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0.026630809179271644,
+            "rate": 0.754,
+            "pan": 0
+          }
+        ]
+      },
+      "pauses": []
+    },
+    "map": {
+      "scooter": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": 14,
+        "y": -4.329011111111102,
+        "heading": 3.141592653589793,
+        "speed": 0,
+        "distance": 6.529011111111101,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 34,
+        "failedFiles": [],
+        "active": 2,
+        "worldActive": 2,
+        "decodedBytes": 6898560,
+        "played": 39,
+        "dropped": 0
+      },
+      "sound": {
+        "region": "outside",
+        "wind": 0.2,
+        "rain": 0,
+        "exposure": 1,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.02150296448686306
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.03871470117112077
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "rain-open",
+            "gain": 0
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6500000000078383,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "pauses": [
+        "map"
+      ]
+    },
+    "nativeMountDismount": true,
+    "rejectedBoarding": {
+      "accepted": false,
+      "delta": 0
+    },
+    "route": {
+      "steps": 1550,
+      "distance": 185.63834490740078,
+      "end": {
+        "x": -122.83890971318438,
+        "y": 81.91551907627573
+      },
+      "trace": [
+        {
+          "x": 13.99999950996378,
+          "y": 2.199479166934946,
+          "speed": 0.041666666666666664,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.061196020505647854
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.09373215167526436
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0,
+                "rate": 0.6500000000000432,
+                "pan": 0
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0,
+                "rate": 0.7,
+                "pan": 0
+              }
+            ]
+          }
+        },
+        {
+          "x": 12.30832446205046,
+          "y": -2.4028593446614632,
+          "speed": 4.40833333333333,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.06708824063267427
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.13013719811121457
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.11215721079801438,
+                "rate": 1.326920156137524,
+                "pan": 4.4087284769304716e-17
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.07347518346444434,
+                "rate": 0.9443499999999998,
+                "pan": 2.645237086158283e-17
+              }
+            ]
+          }
+        },
+        {
+          "x": 10.753420670468385,
+          "y": -3.5379893726463223,
+          "speed": 2.2499999999999987,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.062310397299756286
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.11277121830693226
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.09873777554685056,
+                "rate": 1.096194892458126,
+                "pan": 4.4087284769304716e-17
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.042775262807519816,
+                "rate": 0.8192499999999998,
+                "pan": 2.645237086158283e-17
+              }
+            ]
+          }
+        },
+        {
+          "x": 1.2825671922284645,
+          "y": -4.256540219229515,
+          "speed": 7.2499999999999645,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.059883913996149944
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.13563106413393283
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.15417251599669823,
+                "rate": 1.4842076119769505,
+                "pan": 4.4087284769304716e-17
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.09640095158386039,
+                "rate": 1.089249999999998,
+                "pan": 2.645237086158283e-17
+              }
+            ]
+          }
+        },
+        {
+          "x": -13.286392681143933,
+          "y": 5.108327080970792,
+          "speed": 11.11111111111111,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.06691410062480083
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.1568092204654972
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.18498327638026088,
+                "rate": 1.6998829346618263,
+                "pan": 4.4087284769304716e-17
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.1299812234672765,
+                "rate": 1.2999999999999998,
+                "pan": 2.645237086158283e-17
+              }
+            ]
+          }
+        },
+        {
+          "x": -33.37277534536177,
+          "y": 11.226939301809741,
+          "speed": 11.11111111111111,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.10025893439075773
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.15805887292555912
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.18499999999996553,
+                "rate": 1.6999999999997588,
+                "pan": 4.4087284769304716e-17
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.1299999999999613,
+                "rate": 1.2999999999999998,
+                "pan": 2.645237086158283e-17
+              }
+            ]
+          }
+        },
+        {
+          "x": -55.21433977530575,
+          "y": 8.535413722453246,
+          "speed": 11.11111111111111,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.06871194357612527
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.1603739080423487
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.18499999999999997,
+                "rate": 1.7,
+                "pan": 2.0395940031532725e-16
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.12999999999999998,
+                "rate": 1.2999999999999998,
+                "pan": 1.2237564018919636e-16
+              }
+            ]
+          }
+        },
+        {
+          "x": -62.69934488762863,
+          "y": 13.37533186798781,
+          "speed": 1.4944444444444214,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.059133693118372785
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.11377641719144091
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.08505345476805783,
+                "rate": 1.004348309269488,
+                "pan": -1.2348896395988756e-15
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.03172579009723914,
+                "rate": 0.7784499999999988,
+                "pan": -7.409337837593253e-16
+              }
+            ]
+          }
+        },
+        {
+          "x": -63.1782871142559,
+          "y": 17.329821038965886,
+          "speed": 4.1194444444444365,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.06469686777808972
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.12591572467262604
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.12364918304451251,
+                "rate": 1.270545095598405,
+                "pan": 6.835757469533948e-16
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.06562922164966441,
+                "rate": 0.9201999999999996,
+                "pan": 4.101454481720368e-16
+              }
+            ]
+          }
+        },
+        {
+          "x": -72.24828685004846,
+          "y": 26.965644321402035,
+          "speed": 9.119444444444413,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.08149699427656022
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.1563771243785201
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.16912200715700326,
+                "rate": 1.5888540500990247,
+                "pan": 6.835757469533948e-16
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.11240660423390658,
+                "rate": 1.1901999999999981,
+                "pan": 4.101454481720368e-16
+              }
+            ]
+          }
+        },
+        {
+          "x": -89.08450249874281,
+          "y": 40.23417492878929,
+          "speed": 11.11111111111111,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.09475632861955968
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.1740035196715878
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.18499999051762223,
+                "rate": 1.6999999336233558,
+                "pan": 2.0395940031532725e-16
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.12999998935351645,
+                "rate": 1.2999999999999998,
+                "pan": 1.2237564018919636e-16
+              }
+            ]
+          }
+        },
+        {
+          "x": -106.24907756080755,
+          "y": 54.33837954708631,
+          "speed": 11.11111111111111,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.0926800414619525
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.17367243832242704
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.18499999999999997,
+                "rate": 1.7,
+                "pan": 8.434478624994173e-16
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.12999999999999998,
+                "rate": 1.2999999999999998,
+                "pan": 5.060687174996504e-16
+              }
+            ]
+          }
+        },
+        {
+          "x": -119.11426973115641,
+          "y": 71.69194598005328,
+          "speed": 11.11111111111111,
+          "sound": {
+            "region": "outside",
+            "wind": 0.2,
+            "rain": 0,
+            "exposure": 1,
+            "targets": [
+              {
+                "id": "sea-open",
+                "gain": 0.07410127480780666
+              },
+              {
+                "id": "sea-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "wind-open",
+                "gain": 0.1710042425218019
+              },
+              {
+                "id": "wind-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "rain-open",
+                "gain": 0
+              },
+              {
+                "id": "rain-sheltered",
+                "gain": 0
+              },
+              {
+                "id": "motor-loop",
+                "gain": 0.18499999999999997,
+                "rate": 1.7,
+                "pan": 3.638315158613498e-16
+              },
+              {
+                "id": "roll-loop",
+                "gain": 0.12999999999999998,
+                "rate": 1.2999999999999998,
+                "pan": 2.1829890951680987e-16
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "obstacle": {
+      "scooter": {
+        "id": "home",
+        "label": "家门停车位",
+        "x": 15.079923611111115,
+        "y": 6.612624968354364e-17,
+        "heading": 1.5707963267948966,
+        "speed": 0,
+        "distance": 186.71826851851188,
+        "steer": 0,
+        "riding": true,
+        "exitRequested": false
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 34,
+        "failedFiles": [],
+        "active": 2,
+        "worldActive": 2,
+        "decodedBytes": 6898560,
+        "played": 48,
+        "dropped": 0
+      },
+      "sound": {
+        "region": "outside",
+        "wind": 0.2,
+        "rain": 0,
+        "exposure": 1,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.06812950495532442
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.10118395773496035
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "rain-open",
+            "gain": 0
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6500000000000001,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "pauses": [],
+      "activeWorld": [
+        "sea-open",
+        "wind-open"
+      ]
+    },
+    "liveShelterFade": {
+      "trace": [
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.061657382705381
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.003898221045982193
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.2061455749639438
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.007927051351694372
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.1537850937837092
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.013631751232471179
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.0556765256206427
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.007375446153219193
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.18585100310967098
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.01499424359972687
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.13144622427316532
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.025247963377953993
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.05034158279094271
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.01047714159423616
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.1677472433878565
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.021294419245733037
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.11241029536722871
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.03514664640904104
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.04558279745417308
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.013243863423318403
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.15159769002307097
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.026910394526471718
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.09618894678283246
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.04358174767292709
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.04133794636497648
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.015711787765048866
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.13719129004941238
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.0319160422219772
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.08236602533798335
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.05076966682424863
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.037551526198000604
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.017913183833307054
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.12433978368584966
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.03637725752369421
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.07058690868338732
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.056894807484638564
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.03417402781711039
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.01987683586566416
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.11287524274256769
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.04035281959175928
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.06054940758666487
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.062114308054934245
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.03116128892130345
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.02162841949015529
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.10264787487187814
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.0438951600666812
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.05199601337035129
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.0665620730474173
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.02847391660288484
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.023190837445592485
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.09352406495329665
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.047051048584060236
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.044707291614340165
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.0703522083605431
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.026076772267591145
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.02458451904511175
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.08538462800302243
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.04986220425576367
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.03849625264045239
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.07358194862696474
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.023938512181764224
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.02582768729857378
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.07812325076383217
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.052365841112953476
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.03320355435582684
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.07633415173497002
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.022031177639023652
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.026936597186563205
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.07164510159848135
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.054595154642883725
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.028693414385711068
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.07867942451943022
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.020329829387683827
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.02792574820152538
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.06586559051034908
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.05657975578115999
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.024850126622808656
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.08067793415613948
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.018812221538890832
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.028808073935111075
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.06070926307804396
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.05834605803410984
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.02157509282644152
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.0823809517302504
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.017458510691682236
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.029595111190668363
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.05610881384167285
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.05991762279306861
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.018784293118212832
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.08383216757852932
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.016250996471649907
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.030297150832103107
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.052004206240358834
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.061315467355725614
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.016406130480597043
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.08506881215008953
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.015173890090632924
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03092337234152433
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.04834188759379948
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.06255833968205368
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.014379593959801243
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.08612261114090335
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.014213107901255113
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03148196384507584
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.04507408886339998
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.06366296347738513
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.012652693450491907
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.0870205994057442
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.013356087246940498
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03198022917634547
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.042158200037046636
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.06464425680721131
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.01118112590732137
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.08778581452819288
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.012591622199563328
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.032424683377253925
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.03955621297039899
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.06551552710219831
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.009927138765364328
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.08843788784201054
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.011909717036929007
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.032821137885139955
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.03723422439960304
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.06628864510320313
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.008858561410902145
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.08899354806633088
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.011301455544238522
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.033174776519901174
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.03516199262709623
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.06697420002070559
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.00794797985526725
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.08946705047526102
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.010758884430594582
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03349022326475627
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.03331254208397464
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.0675816379374413
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.007172033438285784
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.08987054261209138
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.010274909336168172
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03377160272689243
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.03166181059840013
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.0681193852639188
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.006510815518484442
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09021437593038807
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.009843202070272764
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.034022594068547914
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.030188334757925844
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.0685949588610631
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.005947362774972569
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09050737135701425
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.009458117867442514
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03424647911370282
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.02887296925171353
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.06901506426989544
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.005467220019212955
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09075704559000926
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.009114621579600708
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.034446185259394566
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.027698636522918256
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.06938568333265244
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.00505806935207528
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09096980393692085
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.008808221839248042
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.034624323752742596
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.026650103457835316
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.06971215235103675
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.004709414152322528
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09115110464079228
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.008534912332825032
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.034783223834171685
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.02571378219192167
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.06999923180356007
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.004412309789362447
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09130559890953152
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.008291119416371473
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.034924963193271576
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.024877552428143334
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07025116853357026
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.004159134151791251
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09143725024106854
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.00807365538853432
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.035051395135517076
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.024130602944383288
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07047175122110574
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.003943392104717395
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09154943610554694
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.007879676809947658
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03516417281506552
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.023463290217550146
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07066435986390325
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.003759548859284553
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09164503459317203
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.007706647323992036
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.035264770850486314
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.02286701231583626
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.0708320099145517
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.003602887979545566
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09172649825063629
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.007552304492797966
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03535450460605783
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.022334096410211824
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07097739165091213
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.003469390383902006
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09179591700037094
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.0074146302148595175
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.0354345473907433
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.021857698434319218
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07110290529459629
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.0033556312369324233
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09185507175679512
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.0072918243374550775
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.035505945799729974
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.021431713580777462
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07121069233670033
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.003258692086404199
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.0919054801150698
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.007182281118845883
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03556963339912897
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.021050696463597737
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07130266348039858
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.003176085991373912
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09194843528448556
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.007084568232485057
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03562644293276947
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.020709789902799477
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07138052356576592
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.0031056937205631006
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09198503926530718
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.006997408038707781
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03567711721069652
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.020404661400055805
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07144579380273881
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.00304570938420044
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09201623112021577
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.006919660879021606
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03572231882174437
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.020131446474760666
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07149983160292787
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.0029945941045337386
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09204281106564245
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.006850310174562255
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03576263879718167
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.019886698119613078
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07154384826959839
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.002951036536444488
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09206546100104886
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.006788449133870586
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03579860433870945
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.019667341714829437
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07157892477713027
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.0029139192253347605
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09208476200282592
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.006733268896188942
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.035830685711859045
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.019470634811468695
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07160602584628761
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.0028822899392094794
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09210120923161107
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.006684047955245207
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03585930239492411
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.01929413125802116
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07162601249934542
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.002855337239488386
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09211522463546604
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ],
+        [
+          {
+            "id": "sea-open",
+            "gain": 0.006640142725235793
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03588482856382678
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.019135649201201716
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07163965325924393
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.002832369663825185
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.0921271677748109
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0
+          }
+        ]
+      ],
+      "peak": 0.006309643387794495,
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 38,
+        "failedFiles": [],
+        "active": 6,
+        "worldActive": 6,
+        "decodedBytes": 14578560,
+        "played": 55,
+        "dropped": 0
+      }
+    },
+    "soak": {
+      "seconds": 16.5,
+      "peak": 0.018520230427384377,
+      "diagnostics": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 38,
+        "failedFiles": [],
+        "active": 8,
+        "worldActive": 8,
+        "decodedBytes": 14578560,
+        "played": 71,
+        "dropped": 0
+      },
+      "events": 70,
+      "buffers": [
+        {
+          "frames": 384000,
+          "channels": 2,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.0015443761076312512
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.000315924764436204
+        },
+        {
+          "frames": 144000,
+          "channels": 1,
+          "duration": 3,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.0038810200640000403
+        },
+        {
+          "frames": 96000,
+          "channels": 1,
+          "duration": 2,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.016800444573163986
+        },
+        {
+          "frames": 144000,
+          "channels": 1,
+          "duration": 3,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.0038810200640000403
+        },
+        {
+          "frames": 96000,
+          "channels": 1,
+          "duration": 2,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.016800444573163986
+        },
+        {
+          "frames": 144000,
+          "channels": 1,
+          "duration": 3,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.0038810200640000403
+        },
+        {
+          "frames": 96000,
+          "channels": 1,
+          "duration": 2,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.016800444573163986
+        },
+        {
+          "frames": 144000,
+          "channels": 1,
+          "duration": 3,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.0038810200640000403
+        },
+        {
+          "frames": 96000,
+          "channels": 1,
+          "duration": 2,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.016800444573163986
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.001956623571459204
+        },
+        {
+          "frames": 384000,
+          "channels": 2,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00036562629975378513
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00009650945867178962
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00012508109284681268
+        },
+        {
+          "frames": 384000,
+          "channels": 2,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00036562629975378513
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00009650945867178962
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00012508109284681268
+        },
+        {
+          "frames": 144000,
+          "channels": 1,
+          "duration": 3,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.0038810200640000403
+        },
+        {
+          "frames": 96000,
+          "channels": 1,
+          "duration": 2,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.016800444573163986
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.000315924764436204
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00009650945867178962
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.001956623571459204
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00012508109284681268
+        },
+        {
+          "frames": 384000,
+          "channels": 2,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.0015443761076312512
+        },
+        {
+          "frames": 384000,
+          "channels": 2,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00036562629975378513
+        },
+        {
+          "frames": 144000,
+          "channels": 1,
+          "duration": 3,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.0038810200640000403
+        },
+        {
+          "frames": 96000,
+          "channels": 1,
+          "duration": 2,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.016800444573163986
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.000315924764436204
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00009650945867178962
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.001956623571459204
+        },
+        {
+          "frames": 384000,
+          "channels": 1,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00012508109284681268
+        },
+        {
+          "frames": 384000,
+          "channels": 2,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.0015443761076312512
+        },
+        {
+          "frames": 384000,
+          "channels": 2,
+          "duration": 8,
+          "zero100msWindows": 0,
+          "boundaryStep": 0.00036562629975378513
+        }
+      ]
+    },
+    "environmentMute": {
+      "peak": 0,
+      "physicalPeak": 0.026000244542956352
+    },
+    "savedGroups": {
+      "enabled": true,
+      "volume": 0.5,
+      "groups": {
+        "actions": 1,
+        "ambience": 1,
+        "ui": 0
+      }
+    },
+    "blur": {
+      "audio": {
+        "state": "ready",
+        "context": "suspended",
+        "preparing": false,
+        "readyFiles": 38,
+        "failedFiles": [],
+        "active": 0,
+        "worldActive": 0,
+        "decodedBytes": 14578560,
+        "played": 79,
+        "dropped": 0
+      },
+      "frozenAnalyserPeak": 0.00021497553098015487,
+      "unstoppedLoops": 0
+    },
+    "hidden": {
+      "audio": {
+        "state": "ready",
+        "context": "suspended",
+        "preparing": false,
+        "readyFiles": 38,
+        "failedFiles": [],
+        "active": 0,
+        "worldActive": 0,
+        "decodedBytes": 14578560,
+        "played": 82,
+        "dropped": 0
+      },
+      "frozenAnalyserPeak": 0.0037801158614456654,
+      "unstoppedLoops": 0
+    },
+    "sessionReset": {
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 38,
+        "failedFiles": [],
+        "active": 3,
+        "worldActive": 3,
+        "decodedBytes": 14578560,
+        "played": 85,
+        "dropped": 0
+      }
+    },
+    "groupReload": true,
+    "mutedReload": {
+      "contexts": 0,
+      "requests": 0
+    },
+    "missingWind": {
+      "state": "partial",
+      "context": "running",
+      "preparing": false,
+      "readyFiles": 31,
+      "failedFiles": [
+        "wind-open"
+      ],
+      "active": 1,
+      "worldActive": 1,
+      "decodedBytes": 4402560,
+      "played": 2,
+      "dropped": 0,
+      "requests": 2
+    }
+  },
+  "method": "Unmodified dist. Native clicks/keys for local driving/boarding, map and settings. Grounded start/region pose fixtures. Manual calls to original updateScooter/updateTimeOfDay plus 25Hz soundscape updates. Full route uses generated input flags with the original controller and no in-trip pose changes. Native post-master tap and AudioBufferSourceNode observations; not physical-device listening.",
+  "release": {
+    "fileCount": 528,
+    "modelBytes": 4332840,
+    "buildBytes": 26616608,
+    "runtimeBytes": 17072195,
+    "documentationBytes": 153896,
+    "manifestBytes": 99390,
+    "initialJsBytes": 2941890,
+    "audioBytes": 1182533,
+    "audioDecodedBytes": 14578560,
+    "releaseBytes": 43942089
+  },
+  "manifestSha256": "50d4b424047b45bfa6ca2b51692b68adf033e99813ce9722459191bcaedc7617",
+  "hosted": {
+    "prefixes": [
+      "/",
+      "/audio-lab/"
+    ],
+    "filesPerPrefix": 528
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3160986,
+  "beforeGesture": {
+    "peak": 0,
+    "sources": 0,
+    "context": "running"
+  },
+  "legacyGroups": {
+    "actions": 1,
+    "ambience": 0.7,
+    "ui": 1
+  },
+  "regions": [
+    {
+      "kind": "clear",
+      "region": "outside",
+      "sound": {
+        "region": "outside",
+        "wind": 0.2,
+        "rain": 0,
+        "exposure": 1,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.06836235617115642
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.10424429151931437
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "rain-open",
+            "gain": 0
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6500000000000001,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 34,
+        "failedFiles": [],
+        "active": 2,
+        "worldActive": 2,
+        "decodedBytes": 6898560,
+        "played": 48,
+        "dropped": 0
+      }
+    },
+    {
+      "kind": "overcast",
+      "region": "outside",
+      "sound": {
+        "region": "outside",
+        "wind": 0.35,
+        "rain": 0,
+        "exposure": 1,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.0683623561770874
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.13940207912668978
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "rain-open",
+            "gain": 0
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6500000000000001,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 34,
+        "failedFiles": [],
+        "active": 2,
+        "worldActive": 2,
+        "decodedBytes": 6898560,
+        "played": 48,
+        "dropped": 0
+      }
+    },
+    {
+      "kind": "fog",
+      "region": "outside",
+      "sound": {
+        "region": "outside",
+        "wind": 0.15,
+        "rain": 0,
+        "exposure": 1,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.0683623561770874
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.0978454398754552
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "rain-open",
+            "gain": 0
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6500000000000001,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 34,
+        "failedFiles": [],
+        "active": 2,
+        "worldActive": 2,
+        "decodedBytes": 6898560,
+        "played": 48,
+        "dropped": 0
+      }
+    },
+    {
+      "kind": "storm",
+      "region": "outside",
+      "sound": {
+        "region": "outside",
+        "wind": 0.85,
+        "rain": 1,
+        "exposure": 1,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.0683623561770874
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.21194881846781896
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.17999999999579522
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6500000000000001,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 35,
+        "failedFiles": [],
+        "active": 3,
+        "worldActive": 3,
+        "decodedBytes": 8434560,
+        "played": 49,
+        "dropped": 0
+      }
+    },
+    {
+      "kind": "storm",
+      "region": "house",
+      "sound": {
+        "region": "house",
+        "wind": 0.85,
+        "rain": 1,
+        "exposure": 0.08,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.006277507027919536
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.03609566221753607
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.017924422331624522
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07214579295514179
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.0027000000008361967
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09219599999956518
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6500000000000001,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 38,
+        "failedFiles": [],
+        "active": 6,
+        "worldActive": 6,
+        "decodedBytes": 14578560,
+        "played": 52,
+        "dropped": 0
+      }
+    },
+    {
+      "kind": "storm",
+      "region": "tower",
+      "sound": {
+        "region": "tower",
+        "wind": 0.85,
+        "rain": 1,
+        "exposure": 0.07,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.005172530911581925
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.034360383867122826
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.016355738683231532
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.07605418478602696
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.004499999999991511
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.09126000000000441
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6500000000000001,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 38,
+        "failedFiles": [],
+        "active": 6,
+        "worldActive": 6,
+        "decodedBytes": 14578560,
+        "played": 52,
+        "dropped": 0
+      }
+    },
+    {
+      "kind": "storm",
+      "region": "lantern",
+      "sound": {
+        "region": "lantern",
+        "wind": 0.85,
+        "rain": 1,
+        "exposure": 0.28,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.020690123484376245
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.02660158756214224
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.061020133930773074
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.05491812103590943
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.008999999999978777
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.08892000000001105
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6500000000000001,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 38,
+        "failedFiles": [],
+        "active": 6,
+        "worldActive": 6,
+        "decodedBytes": 14578560,
+        "played": 52,
+        "dropped": 0
+      }
+    },
+    {
+      "kind": "storm",
+      "region": "gallery",
+      "sound": {
+        "region": "gallery",
+        "wind": 0.85,
+        "rain": 1,
+        "exposure": 0.9,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.07199677122378377
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 0.003999820830290183
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.19283222658663554
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 0.007499031460746497
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.04139999999984719
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 0.07207200000007946
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6500000000000001,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 38,
+        "failedFiles": [],
+        "active": 6,
+        "worldActive": 6,
+        "decodedBytes": 14578560,
+        "played": 52,
+        "dropped": 0
+      }
+    },
+    {
+      "kind": "storm",
+      "region": "solar",
+      "sound": {
+        "region": "outside",
+        "wind": 0.85,
+        "rain": 1,
+        "exposure": 1,
+        "targets": [
+          {
+            "id": "sea-open",
+            "gain": 0.09001141251158754
+          },
+          {
+            "id": "sea-sheltered",
+            "gain": 3.249037774338609e-11
+          },
+          {
+            "id": "wind-open",
+            "gain": 0.2313661410373914
+          },
+          {
+            "id": "wind-sheltered",
+            "gain": 6.091431971754447e-11
+          },
+          {
+            "id": "rain-open",
+            "gain": 0.1799999999993463
+          },
+          {
+            "id": "rain-sheltered",
+            "gain": 3.399119913997461e-13
+          },
+          {
+            "id": "motor-loop",
+            "gain": 0,
+            "rate": 0.6500000000000001,
+            "pan": 0
+          },
+          {
+            "id": "roll-loop",
+            "gain": 0,
+            "rate": 0.7,
+            "pan": 0
+          }
+        ]
+      },
+      "audio": {
+        "state": "ready",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 38,
+        "failedFiles": [],
+        "active": 3,
+        "worldActive": 3,
+        "decodedBytes": 14578560,
+        "played": 52,
+        "dropped": 0
+      }
+    }
+  ],
+  "passed": true,
+  "requests": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/js/main.js",
+      "status": 200
+    },
+    {
+      "path": "/js/9691.js",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/rough_linen/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/rough_linen/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/pine-branches.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/pine-impostor.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/color.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/normal.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/arm.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/pictures/pic1.jpg",
+      "status": 200
+    },
+    {
+      "path": "/environment/study-interior.hdr",
+      "status": 200
+    },
+    {
+      "path": "/js/1203.js",
+      "status": 200
+    },
+    {
+      "path": "/environment/coastal-daylight.hdr",
+      "status": 200
+    },
+    {
+      "path": "/models/study/sofa_03.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/gothic_commode.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/study/modern_arm_chair_01.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/wooden_bookshelf.glb",
+      "status": 200
+    },
+    {
+      "path": "/js/8558.js",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/b682d542-725b-45c1-84fc-1a88453e5c4b",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/870a3174-8d0d-4d8d-acb0-4be42b06a753",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/b2843c37-d113-40f4-944f-434340e938a5",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/e4c07582-7e77-424a-8047-8951ef4f76b8",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/d872203b-9498-4e50-b323-0f8f6d26780b",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/86c3275c-e67c-47ac-926f-c3125ff5fee7",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/ee5cc4e5-4cbd-42d0-b861-8e6778161439",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/30ed38d1-17bb-437c-84ee-2041c01043f4",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/3e8c6fe2-0722-48dd-9b8a-5a60d1acb5c2",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/24c04397-a78a-4cd0-9f8c-9cdf7936bb80",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/149e8d5b-c7ee-4e93-96f2-9a7a31d5f6f4",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/135baa52-c1d0-4bc1-af13-a38826b65e55",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/c5567651-3e26-4a36-974f-25f6887831c8",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/e3a8ec1b-d817-4825-a5be-c8682f2ee3ae",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/e251ac65-8e99-422e-b21d-89e9df40a19b",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/cd863b1f-fb7b-4fe2-8d91-cf300a6194f9",
+      "status": 200
+    },
+    {
+      "path": "/js/7449.js",
+      "status": 200
+    },
+    {
+      "path": "/js/6612.js",
+      "status": 200
+    },
+    {
+      "path": "/js/4742.js",
+      "status": 200
+    },
+    {
+      "path": "/js/5587.js",
+      "status": 200
+    },
+    {
+      "path": "/js/9615.js",
+      "status": 200
+    },
+    {
+      "path": "/js/6560.js",
+      "status": 200
+    },
+    {
+      "path": "/js/4472.js",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200
+    },
+    {
+      "path": "/js/9915.js",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/switch-1.702a81fab4.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/metal-door-move-1.85a1690c5b.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/metal-door-latch-1.65ee685552.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/slide-move-1.462a0af889.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/slide-stop-1.a9768bc7f1.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-touch-1.3b42c41465.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-wipe-1.1d4dd2ead3.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-lift-1.32afe48c26.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/scooter-mount-1.9bbb6ba81f.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/scooter-brake-1.d83991e4cc.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/paper-2.862694da2b.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/metal-door-move-2.6369f8ceb1.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/metal-door-latch-2.2131df56a9.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/slide-move-2.22f72fbd28.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/slide-stop-2.4b451eb6b0.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-touch-2.066dd89a97.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-wipe-2.d1d5b638c0.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-lift-2.c2886bed18.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/scooter-mount-2.0a5cdecee4.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/scooter-brake-2.940fd9110c.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/wind-open.2d95c49175.m4a",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/sea-open.3553960cbd.m4a",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/motor-loop.0448137888.m4a",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/roll-loop.6ef6cabb53.m4a",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/rain-open.29ed5ceaf5.m4a",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/rain-sheltered.6b349025b1.m4a",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/wind-sheltered.8b5d423c6a.m4a",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/sea-sheltered.d03ed4f4d6.m4a",
+      "status": 200
+    },
+    {
+      "path": "/js/2033.js",
+      "status": 200
+    },
+    {
+      "path": "/js/9318.js",
+      "status": 200
+    },
+    {
+      "path": "/js/4593.js",
+      "status": 200
+    },
+    {
+      "path": "/js/1326.js",
+      "status": 200
+    },
+    {
+      "path": "/js/5081.js",
+      "status": 200
+    },
+    {
+      "path": "/js/7665.js",
+      "status": 200
+    },
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/js/main.js",
+      "status": 200
+    },
+    {
+      "path": "/js/9691.js",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/rough_linen/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/rough_linen/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/pine-branches.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/pine-impostor.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/color.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/normal.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/arm.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/pictures/pic1.jpg",
+      "status": 200
+    },
+    {
+      "path": "/environment/study-interior.hdr",
+      "status": 200
+    },
+    {
+      "path": "/js/1203.js",
+      "status": 200
+    },
+    {
+      "path": "/environment/coastal-daylight.hdr",
+      "status": 200
+    },
+    {
+      "path": "/models/study/sofa_03.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/gothic_commode.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/study/modern_arm_chair_01.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/wooden_bookshelf.glb",
+      "status": 200
+    },
+    {
+      "path": "/js/8558.js",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/0e5f2ec2-0a65-4c1c-9d03-ee393c7b965e",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/25549462-2857-4c22-85e8-0f3ea2b5158a",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/5ea36da4-2fc2-41ef-a0d1-4fdaf297f24a",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/4a25ea49-42a3-4ede-b523-9d3b669755cd",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/83138310-c220-47b0-954e-505eb973590d",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/f60c0c80-521c-4598-baa5-1fdbf317db29",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/ca2aff57-268e-40e9-8ee0-dde90d682a94",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/d11aa699-d3f1-4b09-89a8-5f9fb9cdfa5e",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/6a09a63b-5544-40d6-afd4-d1c9d84795f1",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/6e452785-78c3-4cb7-b10f-1950ae888e10",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/7f12b611-988b-4360-a068-d0a87990f365",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/3901c474-5a55-43f1-bcfc-4cc889e28c80",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/36295316-f352-4790-a0e6-9ef65dc55c23",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/18f80004-6ff2-4b2d-8a89-31f1145e3ee6",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/e97ca7b5-2c3d-4798-9a9d-cb5460fa7d23",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/b15d884d-b568-4921-bd1a-35adbcf78869",
+      "status": 200
+    },
+    {
+      "path": "/js/4742.js",
+      "status": 200
+    },
+    {
+      "path": "/js/6612.js",
+      "status": 200
+    },
+    {
+      "path": "/js/7449.js",
+      "status": 200
+    },
+    {
+      "path": "/js/9615.js",
+      "status": 200
+    },
+    {
+      "path": "/js/5587.js",
+      "status": 200
+    },
+    {
+      "path": "/js/6560.js",
+      "status": 200
+    },
+    {
+      "path": "/js/4472.js",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-stop-1.6840b8eb30.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-slide-1.8353e0a53c.wav",
+      "status": 200
+    },
+    {
+      "path": "/js/9915.js",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-move-1.f0162ae1b8.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-latch-1.a220e2fe5d.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/switch-1.702a81fab4.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/paper-1.ce7576efe6.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/metal-door-move-1.85a1690c5b.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/metal-door-latch-1.65ee685552.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/slide-move-1.462a0af889.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/slide-stop-1.a9768bc7f1.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-touch-1.3b42c41465.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-wipe-1.1d4dd2ead3.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-lift-1.32afe48c26.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/scooter-mount-1.9bbb6ba81f.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/scooter-brake-1.d83991e4cc.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-slide-2.71ff63e71c.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/drawer-stop-2.b34d827382.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-move-2.9dea4bdbfd.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/door-latch-2.fb255ede74.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/paper-2.862694da2b.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/study/switch-2.927c10f6e3.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/metal-door-move-2.6369f8ceb1.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/metal-door-latch-2.2131df56a9.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/slide-move-2.22f72fbd28.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/slide-stop-2.4b451eb6b0.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-touch-2.066dd89a97.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-wipe-2.d1d5b638c0.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/actions/cloth-lift-2.c2886bed18.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/scooter-mount-2.0a5cdecee4.wav",
+      "status": 200
+    },
+    {
+      "path": "/audio/soundscape/scooter-brake-2.940fd9110c.wav",
+      "status": 200
+    },
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/js/main.js",
+      "status": 200
+    },
+    {
+      "path": "/js/9691.js",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_table_001/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/rough_linen/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/rough_linen/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/rock-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/pine-branches.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/ground-normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/coastal/pine-impostor.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/color.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/arm.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/wood_floor/normal.jpg",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/color.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/normal.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/study/painted_wall/arm.png",
+      "status": 200
+    },
+    {
+      "path": "/textures/pictures/pic1.jpg",
+      "status": 200
+    },
+    {
+      "path": "/environment/study-interior.hdr",
+      "status": 200
+    },
+    {
+      "path": "/js/1203.js",
+      "status": 200
+    },
+    {
+      "path": "/environment/coastal-daylight.hdr",
+      "status": 200
+    },
+    {
+      "path": "/models/study/sofa_03.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/gothic_commode.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/study/modern_arm_chair_01.glb",
+      "status": 200
+    },
+    {
+      "path": "/models/wooden_bookshelf.glb",
+      "status": 200
+    },
+    {
+      "path": "/js/8558.js",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/3fb7e57a-295f-475a-af51-3c3b62c69737",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/47786e7b-9a2f-41b1-ac3a-6427551e5367",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/844c2791-000d-4f34-9451-cfde393060b1",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/7308317d-f488-4c56-907a-243d8627a5ad",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/c9a3ca04-49b1-4775-a9f8-1cab3c9ed729",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/d4811599-5750-4ca4-91a7-73f7ede8dc4f",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/cdac7ac3-d9ba-4475-957c-5d2955b246cf",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/55dedc41-338d-4d86-978d-a42e694ea8b1",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/af35290f-79a0-49bb-aeb3-fcee5ede7372",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/90703b93-1f5f-4f6d-96cb-034b439e221f",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/65c9a3bf-7160-4370-814b-395eaecdc553",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/6edf516b-f2d9-4ec9-b916-d48b3b9dd7fc",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/01e80a01-405d-4dbb-9133-64e9dff1667c",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/9be0bbb0-6f58-47a7-b91e-562b0d609060",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/f1d07c7b-8f0b-4c17-bf1b-17ee06298e07",
+      "status": 200
+    },
+    {
+      "path": "http://127.0.0.1:59597/72b87192-7521-4578-b49a-2cca3100c6ee",
+      "status": 200
+    }
+  ]
+}

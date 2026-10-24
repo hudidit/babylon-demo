@@ -1,10 +1,10 @@
 import type { Camera } from "@babylonjs/core/pure";
 import type { AudioBackend, AudioVoice } from "./RoomAudioBackend";
-import { AUDIO_CLIPS, AUDIO_DEFAULTS, AUDIO_LIMITS } from "./RoomAudioCatalog";
-import type { AudioClip, AudioCue, AudioPoint, RoomAudioEvent } from "./RoomAudioCatalog";
+import { AUDIO_CLIPS, AUDIO_DEFAULTS, AUDIO_LIMITS, AUDIO_MIX_DEFAULTS, audioMixPreferences } from "./RoomAudioCatalog";
+import type { AudioClip, AudioCue, AudioPoint, AudioMix, WorldAudioTarget, RoomAudioEvent } from "./RoomAudioCatalog";
 
 type ActiveVoice = { voice: AudioVoice; clip: AudioClip; entity: string; position?: () => AudioPoint;
-  started: number; stopping: boolean; timer?: ReturnType<typeof setTimeout> };
+  started: number; stopping: boolean; world?: boolean; ui?: boolean; timer?: ReturnType<typeof setTimeout> };
 type Dependencies = {
   context: () => AudioContext;
   backend: (context: AudioContext) => Promise<AudioBackend>;
@@ -16,12 +16,15 @@ type Dependencies = {
 export class RoomAudio {
   enabled = AUDIO_DEFAULTS.enabled;
   volume = AUDIO_DEFAULTS.volume;
+  private mixValues = {...AUDIO_MIX_DEFAULTS};
   onChange = () => {};
   private context?: AudioContext;
   private backend?: AudioBackend;
   private preparation?: Promise<void>;
   private readonly voices = new Map<string, AudioVoice[]>();
   private readonly active = new Set<ActiveVoice>();
+  private readonly worldActive = new Map<string, ActiveVoice>();
+  private readonly requestedWorld = new Set<string>();
   private readonly loads = new Map<string, Promise<void>>();
   private readonly failures = new Set<string>();
   private readonly attempts = new Map<string, number>();
@@ -37,9 +40,12 @@ export class RoomAudio {
   private disposed = false;
   private unsupported = false;
   private decodedBytes = 0;
+  private reservedBytes = 0;
   private played = 0;
   private dropped = 0;
   private unlocking = false;
+  private gestured = false;
+  private actionGeneration = 0;
   private readonly dependencies: Dependencies;
 
   constructor(dependencies: Partial<Dependencies> = {}) {
@@ -52,14 +58,22 @@ export class RoomAudio {
 
   get diagnostics() {
     return { state: this.disposed ? "closed" : !this.enabled ? "muted" : this.unsupported ? "unavailable"
-      : this.failures.size ? "partial" : this.voices.size === AUDIO_CLIPS.length ? "ready"
+      : this.failures.size ? "partial" : AUDIO_CLIPS.filter(c => c.preload !== "world" || this.requestedWorld.has(c.id)).every(c => this.voices.has(c.id)) ? "ready"
       : this.preparation ? "loading" : "idle", context: this.context?.state || "uninitialized",
       preparing: !!this.preparation,
-      readyFiles: this.voices.size, failedFiles: [...this.failures], active: this.active.size,
+      readyFiles: this.voices.size, failedFiles: [...this.failures], active: this.active.size, worldActive: this.worldActive.size,
       decodedBytes: this.decodedBytes, played: this.played, dropped: this.dropped };
   }
 
   sceneReady() { this.ready = true; void this.preload(); }
+  get mix() { return {...this.mixValues}; }
+  private groupLevel(clip: AudioClip, ui = false) { return this.mixValues[ui || clip.cue === "paper" ? "ui" : clip.group === "vehicle" ? "actions" : clip.group || "actions"]; }
+  setMix(value: AudioMix) {
+    this.actionGeneration++; this.pendingLoops.clear();
+    this.mixValues = audioMixPreferences(value); this.backend?.mix(this.mixValues);
+    for (const entry of this.active) if (!this.groupLevel(entry.clip,entry.ui)) this.stop(entry);
+    this.onChange();
+  }
 
   setPreferences(enabled: boolean, volume: number) {
     if (this.disposed) return;
@@ -75,6 +89,7 @@ export class RoomAudio {
   unlockFromGesture() {
     if (this.disposed || this.paused || !this.enabled || !this.volume) return;
     try {
+      this.gestured = true;
       const context = this.getContext();
       if (context.state !== "running" && context.state !== "closed") {
         this.unlocking = true;
@@ -97,7 +112,7 @@ export class RoomAudio {
     if (retry && !this.disposed && this.context?.state !== "closed") this.unsupported = false;
     if (this.disposed || this.paused || !this.ready || !this.enabled || this.unsupported) return Promise.resolve();
     if (this.preparation) return this.preparation;
-    if (this.backend && !AUDIO_CLIPS.some(clip => !this.voices.has(clip.id)
+    if (this.backend && !AUDIO_CLIPS.some(clip => (clip.preload !== "world" || this.requestedWorld.has(clip.id)) && !this.voices.has(clip.id)
       && (!this.failures.has(clip.id) || retry) && (this.attempts.get(clip.id) || 0) < 2)) return Promise.resolve();
     this.preparation = this.prepare(retry).catch(() => {
       if (!this.disposed) this.unsupported = true;
@@ -126,14 +141,16 @@ export class RoomAudio {
       const backend = await this.dependencies.backend(this.getContext());
       if (this.disposed) { backend.dispose(); return; }
       this.backend = backend;
+      this.backend.mix(this.mixValues);
       this.applyVolume();
     }
-    for (const group of ["core", "variation"]) {
-      const queue = AUDIO_CLIPS.filter(clip => clip.preload === group && !this.voices.has(clip.id)
+    for (const group of ["core", "variation", "world"]) {
+      const queue = AUDIO_CLIPS.filter(clip => clip.preload === group && (group !== "world" || this.requestedWorld.has(clip.id)) && !this.voices.has(clip.id)
         && (!this.failures.has(clip.id) || retry));
       const worker = async () => {
         while (queue.length && !this.disposed && !this.paused && this.enabled) {
-          await this.load(queue.shift()!);
+          const clip = queue.shift()!;
+          if (clip.preload !== "world" || this.requestedWorld.has(clip.id)) await this.load(clip);
         }
       };
       await Promise.all([worker(), worker()]);
@@ -158,11 +175,12 @@ export class RoomAudio {
       const buffer = await this.backend!.decode(data);
       if (this.disposed) return;
       const bytes = buffer.length * buffer.channelCount * 4;
-      if (this.decodedBytes + bytes > AUDIO_LIMITS.decodedBytes) throw new Error("Audio PCM budget exceeded");
+      if (!Number.isFinite(bytes) || bytes <= 0 || this.decodedBytes + this.reservedBytes + bytes > AUDIO_LIMITS.decodedBytes) throw new Error("Audio PCM budget exceeded");
+      this.reservedBytes += bytes;
       const prepared: AudioVoice[] = [];
       try {
-        for (let i = 0; i < AUDIO_LIMITS.voicesPerClip; i++) {
-          const voice = await this.backend!.voice(buffer, clip.id + "-" + i, clip.cue === "paper", !!clip.loop);
+        for (let i = 0; i < (clip.preload === "world" ? 1 : AUDIO_LIMITS.voicesPerClip); i++) {
+          const voice = await this.backend!.voice(buffer, clip.id + "-" + i, clip.cue === "paper", !!clip.loop, clip.group);
           if (this.disposed) { voice.dispose(); prepared.forEach(value => value.dispose()); return; }
           prepared.push(voice);
           voice.ended(() => {
@@ -174,6 +192,7 @@ export class RoomAudio {
         this.decodedBytes += bytes;
         this.failures.delete(clip.id);
       } catch (error) { prepared.forEach(voice => voice.dispose()); throw error; }
+      finally { this.reservedBytes -= bytes; }
     })().catch(() => { if (!this.disposed) this.failures.add(clip.id); }).then(() => {
       clearTimeout(timer); this.controllers.delete(controller); this.onChange();
     });
@@ -190,24 +209,27 @@ export class RoomAudio {
     if (this.pendingLoops.get(entity)?.cue === cue) return;
     if ([...this.active].some(entry => !entry.stopping && entry.entity === entity && entry.clip.cue === cue && entry.clip.loop)) return;
     if (!this.canPlay()) { this.dropped++; return; }
-    const candidates = AUDIO_CLIPS.filter(clip => clip.cue === cue && this.voices.has(clip.id));
+    const candidates = AUDIO_CLIPS.filter(clip => clip.preload !== "world" && clip.cue === cue && this.voices.has(clip.id));
     if (!candidates.length) { this.dropped++; return; }
     const clip = candidates.find(value => value.id !== this.previous.get(cue)) || candidates[0];
+    const isUI = cue === "paper" || entity === "preview" || entity === "lighthouse-control-panel";
+    if (!this.groupLevel(clip,isUI)) return;
     const now = this.dependencies.now();
     if (clip.priority === 1 && now - (this.cooldown.get(entity) ?? -Infinity) < 80) return;
     const generation = this.generations.get(entity) || 0;
+    const actionGeneration = this.actionGeneration;
     const attempt = () => {
       if (!this.canPlay() || this.context?.state !== "running" || generation !== (this.generations.get(entity) || 0)
-        || this.dependencies.now() - now > 100) return;
+        || actionGeneration !== this.actionGeneration || !this.groupLevel(clip,isUI) || this.dependencies.now() - now > 100) return;
       if (clip.loop && [...this.active].some(entry => !entry.stopping && entry.entity === entity && entry.clip.cue === cue)) return;
       const free = this.voices.get(clip.id)?.find(voice => ![...this.active].some(entry => entry.voice === voice));
-      if (this.active.size >= AUDIO_LIMITS.voices || !free) { this.dropped++; return; }
-      const entry: ActiveVoice = { voice: free, clip, entity, position: this.camera && cue !== "paper" ? position : undefined,
+      if ([...this.active].filter(e => !e.world).length >= AUDIO_LIMITS.actionVoices || this.active.size >= AUDIO_LIMITS.voices || !free) { this.dropped++; return; }
+      const entry: ActiveVoice = { voice: free, clip, entity, ui:isUI, position: this.camera && !isUI ? position : undefined,
         started: now, stopping: false };
       this.active.add(entry);
       try {
         if (this.camera) this.backend!.listener(this.camera);
-        free.play(clip.gain, clip.priority === 1 ? 0.98 + Math.random() * 0.04 : 1, entry.position?.());
+        free.play(clip.gain, clip.priority === 1 ? 0.98 + Math.random() * 0.04 : 1, entry.position?.(),isUI);
         this.previous.set(cue, clip.id); this.cooldown.set(entity, now); this.played++;
       } catch { this.active.delete(entry); this.dropped++; }
     };
@@ -225,8 +247,8 @@ export class RoomAudio {
       else this.dropped++;
       return;
     }
-    if (this.active.size >= AUDIO_LIMITS.voices) {
-      const victim = [...this.active].filter(entry => !entry.stopping && entry.clip.priority < clip.priority)
+    if ([...this.active].filter(e => !e.world).length >= AUDIO_LIMITS.actionVoices) {
+      const victim = [...this.active].filter(entry => !entry.world && !entry.stopping && entry.clip.priority < clip.priority)
         .sort((a, b) => a.clip.priority - b.clip.priority || a.started - b.started)[0];
       if (!victim && ![...this.active].some(entry => entry.stopping)) { this.dropped++; return; }
       if (victim) this.stop(victim);
@@ -234,13 +256,45 @@ export class RoomAudio {
     } else attempt();
   }
 
+  /** Only current continuous targets may use late buffers; short events never enter this path. */
+  world(targets: readonly WorldAudioTarget[]) {
+    const desired = new Map<string, WorldAudioTarget>();
+    for (const value of targets) {
+      const clip = AUDIO_CLIPS.find(c => c.id === value.id && c.preload === "world");
+      if (clip && this.groupLevel(clip) && Number.isFinite(value.gain) && value.gain > .0008) desired.set(value.id,
+        {id:value.id,gain:Math.min(.5,value.gain),rate:Number.isFinite(value.rate) ? Math.max(.5,Math.min(2,value.rate)) : 1,
+          pan:Number.isFinite(value.pan) ? Math.max(-.18,Math.min(.18,value.pan)) : 0});
+    }
+    this.requestedWorld.clear();
+    if (!this.canPlay() || !this.gestured || this.context?.state !== "running") {
+      for (const entry of this.worldActive.values()) this.stop(entry); return;
+    }
+    for (const id of desired.keys()) this.requestedWorld.add(id);
+    for (const [id, entry] of this.worldActive) if (!desired.has(id)) this.stop(entry);
+    for (const [id, target] of desired) {
+      const entry = this.worldActive.get(id);
+      if (entry) { if (!entry.stopping) entry.voice.update(target.gain,target.rate!,target.pan!); continue; }
+      const clip = AUDIO_CLIPS.find(c => c.id === id)!, voice = this.voices.get(id)?.[0];
+      if (!voice || this.worldActive.size >= AUDIO_LIMITS.worldVoices || this.active.size >= AUDIO_LIMITS.voices) continue;
+      const next: ActiveVoice = {voice,clip,entity:"soundscape:"+id,started:this.dependencies.now(),stopping:false,world:true};
+      this.active.add(next); this.worldActive.set(id,next);
+      try { voice.play(0,target.rate!); voice.update(target.gain,target.rate!,target.pan!); this.played++; }
+      catch { this.release(next); this.dropped++; }
+    }
+    if ([...desired.keys()].some(id => !this.voices.has(id) && !this.failures.has(id))) void this.preload();
+  }
+  resetWorld() { this.requestedWorld.clear(); for (const entry of this.worldActive.values()) this.stop(entry); }
+
   private canPlay() { return !this.disposed && !this.paused && this.enabled && this.volume > 0 && !!this.backend; }
   private applyVolume() { this.backend?.volume(this.enabled && !this.paused ? this.volume * this.volume : 0); }
   private later(callback: () => void, milliseconds: number) {
     const timer = setTimeout(() => { this.timers.delete(timer); callback(); }, milliseconds);
     this.timers.add(timer);
   }
-  private release(entry: ActiveVoice) { clearTimeout(entry.timer); this.active.delete(entry); }
+  private release(entry: ActiveVoice) {
+    clearTimeout(entry.timer); this.active.delete(entry);
+    if (entry.world && this.worldActive.get(entry.clip.id) === entry) this.worldActive.delete(entry.clip.id);
+  }
   private stop(entry: ActiveVoice, immediate = false) {
     if (entry.stopping && !immediate) return;
     entry.stopping = true;
@@ -256,7 +310,12 @@ export class RoomAudio {
   stopAll(immediate = false) {
     this.pendingLoops.clear();
     this.timers.forEach(clearTimeout); this.timers.clear();
+    this.actionGeneration++; this.requestedWorld.clear();
     for (const entry of this.active) this.stop(entry, immediate);
+  }
+  stopActions() {
+    this.actionGeneration++; this.pendingLoops.clear();
+    for (const entry of this.active) if (!entry.world) this.stop(entry);
   }
   setSpatialCamera(camera?: Camera) { this.stopAll(); this.camera = camera; }
   update() {

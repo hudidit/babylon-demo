@@ -58,6 +58,7 @@ export class RoomInteractions {
       return mesh.getBoundingInfo().boundingBox.centerWorld;
     } });
   }
+  doorProgress(id: string) { return this.doors.find(s => s.door.id === id)?.progress ?? this.slidingDoors.find(s => s.door.id === id)?.progress ?? 0; }
 
   /** Interrupt motion on view/modal/lifecycle changes; it can resume from its real position. */
   silenceMotion() {
