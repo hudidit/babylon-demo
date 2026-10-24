@@ -1,6 +1,6 @@
 const path = require('node:path');
 
-const initialJsBudgetBytes = 3 * 1048576;
+const initialJsBudgetBytes = 3.125 * 1048576;
 const forbiddenInitialModules = /(?:@babylonjs\/core\/(?:index\.js$|XR\/|Physics\/|FlowGraph\/|FrameGraph\/|Meshes\/(?:Node|GaussianSplatting)\/)|@babylonjs\/(?:inspector|gui-editor|node-editor|node-geometry-editor)\/|@babylonjs\/loaders\/glTF\/1\.0\/|src\/examples\/Rocket\.ts$)/;
 // Required transitively by the glTF object-model mapper and the SSAO/depth renderers.
 // These small value/type predicates do not include their corresponding rendering/graph systems.

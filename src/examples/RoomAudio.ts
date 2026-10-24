@@ -28,6 +28,7 @@ export class RoomAudio {
   private readonly previous = new Map<AudioCue, string>();
   private readonly cooldown = new Map<string, number>();
   private readonly generations = new Map<string, number>();
+  private readonly pendingLoops = new Map<string, { cue: AudioCue }>();
   private readonly controllers = new Set<AbortController>();
   private readonly timers = new Set<ReturnType<typeof setTimeout>>();
   private camera?: Camera;
@@ -161,7 +162,7 @@ export class RoomAudio {
       const prepared: AudioVoice[] = [];
       try {
         for (let i = 0; i < AUDIO_LIMITS.voicesPerClip; i++) {
-          const voice = await this.backend!.voice(buffer, clip.id + "-" + i, clip.cue === "paper");
+          const voice = await this.backend!.voice(buffer, clip.id + "-" + i, clip.cue === "paper", !!clip.loop);
           if (this.disposed) { voice.dispose(); prepared.forEach(value => value.dispose()); return; }
           prepared.push(voice);
           voice.ended(() => {
@@ -186,6 +187,8 @@ export class RoomAudio {
   }
 
   play(cue: AudioCue, entity = "preview", position?: () => AudioPoint) {
+    if (this.pendingLoops.get(entity)?.cue === cue) return;
+    if ([...this.active].some(entry => !entry.stopping && entry.entity === entity && entry.clip.cue === cue && entry.clip.loop)) return;
     if (!this.canPlay()) { this.dropped++; return; }
     const candidates = AUDIO_CLIPS.filter(clip => clip.cue === cue && this.voices.has(clip.id));
     if (!candidates.length) { this.dropped++; return; }
@@ -196,6 +199,7 @@ export class RoomAudio {
     const attempt = () => {
       if (!this.canPlay() || this.context?.state !== "running" || generation !== (this.generations.get(entity) || 0)
         || this.dependencies.now() - now > 100) return;
+      if (clip.loop && [...this.active].some(entry => !entry.stopping && entry.entity === entity && entry.clip.cue === cue)) return;
       const free = this.voices.get(clip.id)?.find(voice => ![...this.active].some(entry => entry.voice === voice));
       if (this.active.size >= AUDIO_LIMITS.voices || !free) { this.dropped++; return; }
       const entry: ActiveVoice = { voice: free, clip, entity, position: this.camera && cue !== "paper" ? position : undefined,
@@ -207,17 +211,26 @@ export class RoomAudio {
         this.previous.set(cue, clip.id); this.cooldown.set(entity, now); this.played++;
       } catch { this.active.delete(entry); this.dropped++; }
     };
+    const defer = () => {
+      const pending = { cue };
+      if (clip.loop) this.pendingLoops.set(entity, pending);
+      this.later(() => {
+        if (this.pendingLoops.get(entity) === pending) this.pendingLoops.delete(entity);
+        attempt();
+      }, 25);
+    };
     // Never invoke Audio V2 play while locked: it can queue sounds until a later unlock.
     if (this.context!.state !== "running") {
-      if (this.unlocking) this.later(attempt, 25); // Single short-lived gesture candidate, never a loading queue.
+      if (this.unlocking) defer(); // Single short-lived gesture candidate, never a loading queue.
       else this.dropped++;
       return;
     }
     if (this.active.size >= AUDIO_LIMITS.voices) {
       const victim = [...this.active].filter(entry => !entry.stopping && entry.clip.priority < clip.priority)
         .sort((a, b) => a.clip.priority - b.clip.priority || a.started - b.started)[0];
-      if (!victim) { this.dropped++; return; }
-      this.stop(victim); this.later(attempt, 25);
+      if (!victim && ![...this.active].some(entry => entry.stopping)) { this.dropped++; return; }
+      if (victim) this.stop(victim);
+      defer();
     } else attempt();
   }
 
@@ -236,10 +249,12 @@ export class RoomAudio {
     else entry.timer = setTimeout(() => this.release(entry), 22);
   }
   stopEntity(entity: string) {
+    this.pendingLoops.delete(entity);
     this.generations.set(entity, (this.generations.get(entity) || 0) + 1);
     for (const entry of this.active) if (entry.entity === entity) this.stop(entry);
   }
   stopAll(immediate = false) {
+    this.pendingLoops.clear();
     this.timers.forEach(clearTimeout); this.timers.clear();
     for (const entry of this.active) this.stop(entry, immediate);
   }

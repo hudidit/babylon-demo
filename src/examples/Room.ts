@@ -11,6 +11,7 @@ import { createRoomFinishing } from "./RoomFinishing";
 import { cabinetDrawers, interactionSurface, RoomInteractions } from "./RoomInteractions";
 import { RoomPointerLock } from "./RoomPointerLock";
 import { RoomAudio } from "./RoomAudio";
+import { RoomCleaningAudio } from "./RoomCleaningAudio";
 import { RoomItemInspection } from "./RoomItemInspection";
 import { RoomFloorPlan } from "./RoomFloorPlan";
 import { RoomMirrors } from "./RoomMirrors";
@@ -76,6 +77,7 @@ export class RoomScene {
   readonly scene: Scene;
   readonly engine: Engine;
   readonly audio = new RoomAudio();
+  private readonly cleaningAudio = new RoomCleaningAudio(this.audio);
   readonly rooms = new HouseRooms();
   private timeState = new RoomTimeOfDay();
   private lighthouseState = new LighthouseOperation();
@@ -415,6 +417,7 @@ export class RoomScene {
   }
   private get completeSession():LighthouseCompleteSession {return {clock:this.timeState,...this.weatherDuty,discovery:this.discovery,mode:this.sessionMode};}
   private applyLighthouseSession(s:LighthouseCompleteSession) {
+    this.cleaningAudio.reset();
     this.mainCheck = undefined;
     this.timeState=s.clock;this.lighthouseState=s.operation;this.lighthouseInspectionState=s.inspection;
     this.lighthouseMaintenanceState=s.maintenance;this.lighthousePowerState=s.power;
@@ -666,6 +669,15 @@ export class RoomScene {
       this.exterior.lighthouseDetails.beacon.apply(this.lighthouseOperation, this.lighthouseInspection?.transmission);
       this.exterior.lighthouseDetails.equipment.apply(m,this.lighthousePowerState?.snapshot);
       if (this.lighthouseInspection) this.exterior.lighthouseDetails.cover?.apply(this.lighthouseInspection);
+      const cover = this.lighthouseInspection;
+      this.cleaningAudio.sync([
+        {entity: "lighthouse-optics-cleaning", active: cover.cleaning, revision: cover.coverRevision,
+          clean: !cover.dirty && cover.checks["check-cover"] === "awaiting-recheck",
+          position: () => this.exterior.lighthouseDetails.cover.device.meshes[0].getBoundingInfo().boundingBox.centerWorld},
+        {entity: "lighthouse-solar-array", active: m.action?.command === "clean" && m.action.location === "lighthouse-solar-array",
+          revision: m.revision.solar, clean: !m.solarDirty,
+          position: () => this.exterior.lighthouseDetails.equipment.device("lighthouse-solar-array").meshes[0].getBoundingInfo().boundingBox.centerWorld},
+      ]);
       this.scene.metadata.lighthouseOperation.visualApplied = true;
     }
     if (this.lighthouseInspection) {
@@ -756,6 +768,7 @@ export class RoomScene {
 
   setView(view: RoomView) {
     if (this.isViewing) return;
+    this.cleaningAudio.reset();
     this.pauseScooter(); this.pauseLadder();
     if (this.currentView === "first-person" && !this.scooter.riding) this.saveWalkingPose();
     this.interactions.silenceMotion();
@@ -1088,6 +1101,7 @@ export class RoomScene {
   get pauseReasons() { return this.pauses.snapshot; }
   setPaused(reason: RoomPauseReason, paused: boolean) {
     if (this.disposed || !this.pauses.set(reason, paused)) return;
+    if (paused) this.cleaningAudio.reset();
     this.timeState.resetDelta();
     if (paused) this.lighthouseInspectionState?.cancelCleaning(this.lighthouseOperation, "打开界面或失焦，清洁中断；盐膜保持原状。");
     if (paused) this.lighthouseMaintenanceState?.cancel(this.lighthouseOperation);
@@ -1585,14 +1599,14 @@ export class RoomScene {
   };
   private foregroundLost = () => { this.setPaused("blur", true); };
   private foregroundReturned = () => { this.setPaused("blur", false); this.resumeAudio(); };
-  private pauseAudio = () => { this.interactions.silenceMotion(); this.audio.pause(); };
+  private pauseAudio = () => { this.cleaningAudio.reset(); this.interactions.silenceMotion(); this.audio.pause(); };
   private resumeAudio = () => { if (!document.hidden && !this.disposed) this.audio.foreground(); };
   private dispose = () => {
     if (this.disposed) return;
     this.disposed = true;
     this.cancelStoryWait();
     this.pauseScooter(); this.pauseLadder(); this.scooterModel.dispose();
-    this.audio.dispose();
+    this.cleaningAudio.reset(); this.audio.dispose();
     this.rain.dispose();
     this.storyPanel.dispose();
     document.querySelector("#story-open")?.removeEventListener("click", this.openStoryPanel);

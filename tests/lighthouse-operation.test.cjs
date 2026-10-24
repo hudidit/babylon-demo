@@ -212,6 +212,7 @@ test('all snapshots, receipts and log entries are immutable; rejected selections
 
 test('Room updates lighthouse even with a frozen manual hour and guards all mutations after disposal', () => {
   const {RoomScene} = load('Room'), room = Object.create(RoomScene.prototype);
+  room.cleaningAudio = {sync() {}, reset() {}};
   room.timeState = new RoomTimeOfDay(); room.lighthouseState = new LighthouseOperation(); room.pauses = new RoomPauseState();
   room.lighthouseMaintenanceState = new(load('LighthouseMaintenance').LighthouseMaintenance)();
   room.lighthousePowerState = new(load('LighthousePower').LighthousePower)();

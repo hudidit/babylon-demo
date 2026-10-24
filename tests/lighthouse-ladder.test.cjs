@@ -77,6 +77,7 @@ test('camera keeps its orientation, pauses mid-climb and leaves only onto a real
 
 test('entry door vertical clearance and resource ownership remain correct after adding floors',t=>{
   const {scene,exterior}=setup(t),door=exterior.lighthouseDoor,interactions=new(load('RoomInteractions').RoomInteractions)(scene,()=>{});interactions.addDoor(door);
+  assert.equal(door.audioMaterial, 'metal');
   const p=point(0,a.doorY),eye=planToWorld(p,a.floor+1.6);assert.equal(interactions.walkerIsClear(new b.Vector3(eye.x,eye.y,eye.z)),false);
   const high=planToWorld(p,a.gallery+1.6);assert.equal(interactions.walkerIsClear(new b.Vector3(high.x,high.y,high.z)),true);
   assert.ok(load('RoomInteractions').doorSweepIsClear(door,0,1,new b.Vector3(high.x,high.y,high.z)));

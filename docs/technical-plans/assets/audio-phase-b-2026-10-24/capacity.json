@@ -1,0 +1,50 @@
+{
+  "baselineCommit": "3ad2d8e",
+  "baselineReleaseBytes": 42987017,
+  "baselineActualInitialJsBytes": 3145708,
+  "baselineTotals": {
+    "build": 26599957,
+    "runtime": 16177230,
+    "documentation": 116138
+  },
+  "currentTotals": {
+    "build": 26604097,
+    "runtime": 16502326,
+    "documentation": 133457
+  },
+  "currentRelease": {
+    "fileCount": 515,
+    "modelBytes": 4332840,
+    "buildBytes": 26604097,
+    "runtimeBytes": 16502326,
+    "documentationBytes": 133457,
+    "manifestBytes": 96733,
+    "initialJsBytes": 2931169,
+    "audioBytes": 612664,
+    "audioDecodedBytes": 1223040,
+    "releaseBytes": 43336613
+  },
+  "actualInitialJsBytes": 3149663,
+  "delta": {
+    "runtime": 325096,
+    "release": 349596,
+    "actualInitialJs": 3955
+  },
+  "budgets": {
+    "models": 4456448,
+    "runtime": 18874368,
+    "release": 46137344,
+    "staticAndActualInitialJs": 3276800,
+    "audio": 1048576,
+    "audioCore": 393216,
+    "audioPCM": 8388608,
+    "actionAudio": 367001.6,
+    "voices": 6
+  },
+  "reproducible": {
+    "deliveredFilesIncludingManifest": 15,
+    "twoConsecutiveRunsEqual": true
+  },
+  "subjectiveListening": false,
+  "fpsOrLoadingTimeSampling": false
+}

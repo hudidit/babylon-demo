@@ -498,7 +498,7 @@ test("sliding sweep pauses before the walker, reverses smoothly, refreshes only 
   walker=undefined;state.open=false;interactions.update(.05);const middle=door.root.position.clone();interactions.silenceMotion();
   assert.ok(door.root.position.equals(middle)&&!state.moving);for(let i=0;i<16;i++)interactions.update(.05);assert.equal(state.progress,0);
   assert.ok(door.root.position.equalsWithEpsilon(door.closed,.001));assert.deepEqual([...new Set(refresh)].sort(),['balcony','living']);
-  assert.ok(events.some(e=>e.cue==='door-move')&&events.some(e=>e.cue==='door-latch'));assert.equal(events.filter(e=>e.cue==='door-latch').length,1);
+  assert.ok(events.some(e=>e.cue==='slide-move')&&events.some(e=>e.cue==='slide-stop'));assert.equal(events.filter(e=>e.cue==='slide-stop').length,1);
   interactions.removeRoom('living');assert.equal(interactions.slidingDoors.length,1);
   interactions.removeRoom('balcony');assert.equal(interactions.slidingDoors.length,0);assert.equal(interactions.entities.size,0);assert.equal(events.at(-1).cue,'stop');
 });
@@ -1157,6 +1157,21 @@ test("audio events follow actual movement, blocking and completion rather than c
   assert.ok(events.some(event => event.entity === drawer.id && event.position().x === event.position().x));
 });
 
+test("metal doors retain movement, reversal and endpoint rules while selecting metal foley", t => {
+  const { scene, room } = adjacentRooms(t), events = [], door = room.doors[0];
+  door.audioMaterial = 'metal';
+  const interactions = new RoomInteractions(scene, () => {}, () => undefined, event => events.push(event));
+  interactions.addDoor(door); const state = interactions.doors[0];
+  state.open = true; interactions.update(0); assert.equal(events.length, 0);
+  for (let i = 0; i < 20; i++) interactions.update(.05);
+  assert.ok(events.some(e => e.cue === 'metal-door-move'));
+  assert.ok(!events.some(e => e.cue === 'metal-door-latch'));
+  state.open = false;
+  for (let i = 0; i < 20; i++) interactions.update(.05);
+  assert.equal(events.filter(e => e.cue === 'metal-door-latch').length, 1);
+  assert.ok(!events.some(e => e.cue === 'door-move' || e.cue === 'door-latch'));
+});
+
 test("section batching preserves singleton artwork/window world transforms and cutaway parenting", t => {
   const { scene } = adjacentRooms(t);
   const artwork = scene.getMeshByName("living-study-living-landscape-artwork");
@@ -1703,6 +1718,7 @@ test("detail zoom limits and responsive suite framing preserve camera controls a
   room.scene = scene; room.engine = scene.getEngine(); room.controlsEnabled = false;
   room.interactions = { silenceMotion() {} };
   room.audio = { setSpatialCamera() {} };
+  room.cleaningAudio = { reset() {} };
   room.floorPlan = { isOpen: false, update() {} };
   room.exterior = { setVisible() {}, setHouseEnclosed() {}, updateCutaway() {}, refreshShadows() {} };
   room.canvas = { setAttribute() {} };

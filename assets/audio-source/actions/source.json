@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "metal-motion",
+      "file": "metal-motion.ogg",
+      "author": "rubberduck",
+      "title": "100 CC0 metal and wood SFX",
+      "page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+      "download": "https://opengameart.org/sites/default/files/100-CC0-wood-metal-SFX.zip",
+      "archiveSha256": "be6eba63b03409ac0c77787a956b1503a7c186403d04aef9725c52644a4b7878",
+      "archiveMember": "door_open_01.ogg",
+      "sha256": "58455b99af8f62b10559607435de0f72b9c798ebe085f49101df3c3d9ec043c7",
+      "tier": "uploader Ogg Vorbis delivery; lossy source",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageLicenseEvidence": "Author source page explicitly links CC0 1.0"
+    },
+    {
+      "id": "metal-close",
+      "file": "metal-close.ogg",
+      "author": "rubberduck",
+      "title": "100 CC0 metal and wood SFX",
+      "page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+      "download": "https://opengameart.org/sites/default/files/100-CC0-wood-metal-SFX.zip",
+      "archiveSha256": "be6eba63b03409ac0c77787a956b1503a7c186403d04aef9725c52644a4b7878",
+      "archiveMember": "metal_close_01.ogg",
+      "sha256": "f504b912782760ff3ec25814db6c27bd2d884a94cda2a94d0ffbec921ab478b6",
+      "tier": "uploader Ogg Vorbis delivery; lossy source",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageLicenseEvidence": "Author source page explicitly links CC0 1.0"
+    },
+    {
+      "id": "slide",
+      "file": "slide-preview.mp3",
+      "author": "musicandsoundyay",
+      "title": "Sliding door opening and closing.wav",
+      "page": "https://freesound.org/people/musicandsoundyay/sounds/452755/",
+      "download": "https://cdn.freesound.org/previews/452/452755_6635599-hq.mp3",
+      "sha256": "60831a5820cb2052f292e17c278c72a6882bf0c9d321ef129f3deddb0510bea9",
+      "tier": "public HQ MP3 preview; original WAV not downloaded",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageLicenseEvidence": "Author source page explicitly links CC0 1.0"
+    },
+    {
+      "id": "cloth",
+      "file": "../soundscape-lab/cloth-preview.mp3",
+      "author": "mitchanary",
+      "title": "WindowWipe.wav",
+      "page": "https://freesound.org/people/mitchanary/sounds/505171/",
+      "download": "https://cdn.freesound.org/previews/505/505171_1282624-hq.mp3",
+      "sha256": "869d77969052cb9b33e6a476b9bda69bd1f08f99fea407333adb0ede40161dcd",
+      "tier": "author-page HQ MP3 preview; original 24-bit WAV requires login",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "verifiedOn": "2026-10-24",
+      "pageLicenseEvidence": "Author source page explicitly links CC0 1.0"
+    }
+  ]
+}

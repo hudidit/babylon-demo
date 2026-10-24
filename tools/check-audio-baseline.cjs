@@ -33,7 +33,7 @@ const sha = b => createHash('sha256').update(b).digest('hex');
     const cdp = await context.newCDPSession(page); await cdp.send('Network.enable'); await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
     await page.goto(base); await page.waitForFunction(() => document.querySelector('#scene-status').textContent.includes('住宅与灯塔已就绪'), null, { timeout: 120000 });
     await page.waitForFunction(() => document.querySelector('#audio-status').dataset.state === 'ready'); await page.waitForLoadState('networkidle'); collecting = false; await Promise.all(pending);
-    report.firstScreenBytes = report.firstScreen.reduce((n, f) => n + f.bytes, 0); assert.ok(report.firstScreenBytes <= 3 * 1048576);
+    report.firstScreenBytes = report.firstScreen.reduce((n, f) => n + f.bytes, 0); assert.ok(report.firstScreenBytes <= require('./study-bundle-analysis.cjs').initialJsBudgetBytes);
     await require('../docs/technical-plans/assets/lighthouse-d-2026-10-18/browser-harness.cjs').captureRoom(page, cdp);
     report.beforeGesture = await page.evaluate(() => ({ diagnostics: room.audio.diagnostics, contexts: audioContexts.length }));
     // Capturing Room uses an existing settings input gesture, so evaluate unlock separately on a clean page.

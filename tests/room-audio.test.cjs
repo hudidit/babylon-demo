@@ -15,7 +15,7 @@ function load(name) {
   cache.set(name, module.exports); return module.exports;
 }
 const { RoomAudio } = load('RoomAudio');
-const { AUDIO_CLIPS, audioPreferences, AUDIO_DEFAULTS } = load('RoomAudioCatalog');
+const { AUDIO_CLIPS, audioPreferences, AUDIO_DEFAULTS, AUDIO_LIMITS } = load('RoomAudioCatalog');
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 function fixture(t, overrides = {}) {
   const log = { fetches: [], decoded: 0, voices: [], played: [], disposed: false, backendCalls: 0 };
@@ -24,8 +24,8 @@ function fixture(t, overrides = {}) {
     close: async () => { context.state = 'closed'; } };
   let now = 1000;
   const backend = { decode: async () => { log.decoded++; return { length: 2048, channelCount: 1 }; },
-    voice: async (_buffer, name) => {
-      const voice = { name, played: false, disposed: false, callback: () => {},
+    voice: async (_buffer, name, ui, loop) => {
+      const voice = { name, ui, loop, played: false, disposed: false, callback: () => {},
         play(gain, rate, position) { assert.equal(context.state, 'running', 'never queue in Audio V2 while locked');
           this.played = true; log.played.push({ name, gain, rate, position }); },
         position(point) { this.point = point; }, stop() { this.played = false; },
@@ -53,10 +53,10 @@ test('saved mute does not initialize or request assets; preload shares fetch/dec
   assert.equal(log.backendCalls, 0); assert.equal(log.fetches.length, 0);
   audio.setPreferences(true, .5);
   await Promise.all([audio.preload(), audio.preload(), audio.preload()]);
-  assert.equal(log.backendCalls, 1); assert.equal(new Set(log.fetches).size, 12);
-  assert.equal(log.fetches.length, 12); assert.equal(log.decoded, 12); assert.equal(log.voices.length, 24);
-  assert.equal(audio.diagnostics.decodedBytes, 12 * 2048 * 4);
-  const coreOrder = log.fetches.slice(0, 6).map(url => AUDIO_CLIPS.find(clip => './' + clip.file === url).preload);
+  assert.equal(log.backendCalls, 1); assert.equal(new Set(log.fetches).size, AUDIO_CLIPS.length);
+  assert.equal(log.fetches.length, AUDIO_CLIPS.length); assert.equal(log.decoded, AUDIO_CLIPS.length); assert.equal(log.voices.length, AUDIO_CLIPS.length * 2);
+  assert.equal(audio.diagnostics.decodedBytes, AUDIO_CLIPS.length * 2048 * 4);
+  const coreOrder = log.fetches.slice(0, AUDIO_CLIPS.filter(clip => clip.preload === 'core').length).map(url => AUDIO_CLIPS.find(clip => './' + clip.file === url).preload);
   assert.ok(coreOrder.every(group => group === 'core'));
 });
 test('locked, muted and background actions never reach the backend or replay after recovery', async t => {
@@ -86,18 +86,18 @@ test('per-item HTTP/decode failure degrades independently, retries at most once 
     if (url.includes('switch-1')) { failedFetches++; if (offline) return { ok: false, status: 404 }; }
     return { ok: true, arrayBuffer: async () => new ArrayBuffer(4) };
   } });
-  assert.equal(f.audio.diagnostics.readyFiles, 11); assert.equal(f.audio.diagnostics.failedFiles.length, 1);
+  assert.equal(f.audio.diagnostics.readyFiles, AUDIO_CLIPS.length - 1); assert.equal(f.audio.diagnostics.failedFiles.length, 1);
   f.audio.unlockFromGesture(); await delay(0); f.audio.play('switch'); assert.equal(f.log.played.length, 1);
   await f.audio.preload(true); await f.audio.preload(true); assert.equal(failedFetches, 2);
-  assert.equal(f.audio.diagnostics.readyFiles, 11);
+  assert.equal(f.audio.diagnostics.readyFiles, AUDIO_CLIPS.length - 1);
   offline = false; await f.audio.retryFailed();
-  assert.equal(failedFetches, 3); assert.equal(f.audio.diagnostics.readyFiles, 12);
+  assert.equal(failedFetches, 3); assert.equal(f.audio.diagnostics.readyFiles, AUDIO_CLIPS.length);
   assert.equal(f.log.played.length, 1, 'manual recovery never replays earlier actions');
 });
 test('bad decode and excessive decoded PCM do not allocate playable objects', async t => {
   const f = fixture(t); f.backend.decode = async () => ({ length: 3 * 1048576, channelCount: 1 });
   f.audio.sceneReady(); await f.audio.preload(); assert.equal(f.log.voices.length, 0);
-  assert.equal(f.audio.diagnostics.failedFiles.length, 12); assert.equal(f.audio.diagnostics.decodedBytes, 0);
+  assert.equal(f.audio.diagnostics.failedFiles.length, AUDIO_CLIPS.length); assert.equal(f.audio.diagnostics.decodedBytes, 0);
 });
 test('bounded polyphony, high-priority replacement and ended cleanup respect the six-voice cap', async t => {
   const f = await prepared(t); f.audio.unlockFromGesture(); await delay(0);
@@ -139,10 +139,11 @@ test('disposing in-flight download cancels it and ignores late results', async t
 test('reviewed audio is reproducible, catalog matches whitelist and corrupt/long/unlicensed files fail validation', t => {
   const root = path.resolve(__dirname, '../public'), source = require('../public/audio/study/source.json');
   const summary = validateAudioResources(root);
-  assert.equal(summary.encodedBytes, 287568); assert.ok(summary.coreBytes <= 131072);
+  assert.equal(summary.encodedBytes, source.totalBytes + require('../public/audio/actions/source.json').totalBytes); assert.ok(summary.coreBytes <= AUDIO_LIMITS.coreBytes);
   assert.deepEqual([...AUDIO_CLIPS.map(row => row.file)].sort(), [...summary.files].sort());
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'babylon-audio-'));
   t.after(() => fs.rmSync(temporary, { recursive: true, force: true }));
+  fs.cpSync(path.join(root, 'audio/actions'), path.join(temporary, 'audio/actions'), { recursive: true });
   fs.mkdirSync(path.join(temporary, 'audio/study'), { recursive: true });
   fs.copyFileSync(path.join(root, 'audio/study/source.json'), path.join(temporary, 'audio/study/source.json'));
   source.files.forEach(row => fs.copyFileSync(path.join(root, row.file), path.join(temporary, row.file)));
@@ -154,4 +155,42 @@ test('reviewed audio is reproducible, catalog matches whitelist and corrupt/long
   fs.writeFileSync(manifestFile, JSON.stringify(unlicensed)); assert.throws(() => validateAudioResources(temporary), /license/);
   fs.writeFileSync(manifestFile, JSON.stringify(source)); fs.unlinkSync(file);
   assert.throws(() => validateAudioResources(temporary), /ENOENT/);
+});
+
+test('continuous motions prepare loops, remain idempotent and cancel delayed replacement attempts', async t => {
+  const f = await prepared(t); f.audio.unlockFromGesture(); await delay(0);
+  const loop = f.log.voices.find(v => v.name.startsWith('cloth-wipe-1'));
+  assert.equal(loop.loop, true);
+  f.audio.play('cloth-wipe', 'cover'); f.audio.play('cloth-wipe', 'cover');
+  assert.equal(f.log.played.length, 1); assert.equal(f.audio.diagnostics.active, 1);
+  f.audio.stopEntity('cover'); await delay(30); assert.equal(f.audio.diagnostics.active, 0);
+  for (const [i, cue] of ['drawer-slide', 'drawer-slide', 'door-move', 'door-move', 'paper', 'switch'].entries()) {
+    f.audio.play(cue, 'occupied-' + i); f.advance(100);
+  }
+  const before = f.log.played.length;
+  for (let i = 0; i < 5; i++) f.audio.play('cloth-wipe', 'new-cover');
+  assert.equal([...f.audio.active].filter(entry => entry.stopping).length, 1, 'one pending loop only displaces one voice');
+  await delay(35); assert.equal(f.log.played.length, before + 1, 'pending attempts also deduplicate');
+  f.audio.stopAll(); await delay(30);
+  for (const [i, cue] of ['drawer-slide', 'drawer-slide', 'door-move', 'door-move', 'paper', 'switch'].entries()) {
+    f.audio.play(cue, 'occupied-again-' + i); f.advance(100);
+  }
+  const cancelled = f.log.played.length;
+  f.audio.play('cloth-wipe', 'new-cover'); f.audio.stopEntity('new-cover');
+  await delay(35); assert.equal(f.log.played.length, cancelled, 'cancelled pending loop never starts');
+});
+test('action provenance, loop metadata and the phase B allowance are enforced', t => {
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'babylon-action-audio-'));
+  t.after(() => fs.rmSync(temp, { recursive: true, force: true }));
+  for (const dir of ['study', 'actions']) fs.cpSync(path.resolve(__dirname, '../public/audio', dir), path.join(temp, 'audio', dir), { recursive: true });
+  const file = path.join(temp, 'audio/actions/source.json'), original = fs.readFileSync(file), m = JSON.parse(original);
+  m.sources[0].license = 'unknown'; fs.writeFileSync(file, JSON.stringify(m));
+  assert.throws(() => validateAudioResources(temp), /source license/);
+  fs.writeFileSync(file, original); m.sources[0].license = 'CC0-1.0'; m.files[0].sourceSha256 = '0'.repeat(64);
+  fs.writeFileSync(file, JSON.stringify(m)); assert.throws(() => validateAudioResources(temp), /Unreviewed audio source/);
+  fs.writeFileSync(file, original);
+  const limits = require('../tools/study-audio-resources.cjs').audioBudgets, previous = limits.actionBytes;
+  limits.actionBytes = JSON.parse(original).totalBytes - 1;
+  try { assert.throws(() => validateAudioResources(temp), /Phase B audio allowance/); }
+  finally { limits.actionBytes = previous; }
 });

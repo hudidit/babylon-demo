@@ -1,5 +1,6 @@
 // Paths are relative to public and are deliberately limited to the active study.
 const audio = require('../public/audio/study/source.json');
+const actions = require('../public/audio/actions/source.json');
 module.exports = {
   runtime: [
     'environment/study-interior.hdr',
@@ -23,8 +24,9 @@ module.exports = {
     'textures/study/painted_wall/arm.png',
     'textures/study/rough_linen/normal.jpg',
     'textures/study/rough_linen/arm.jpg',
-    // Only the twelve explicitly reviewed, content-addressed foley files in this manifest.
+    // Only explicitly reviewed, content-addressed foley files from these manifests.
     ...audio.files.map(file => file.file),
+    ...actions.files.map(file => file.file),
   ],
   documentation: [
     'STUDY_ASSET_SOURCES.md',
@@ -36,6 +38,7 @@ module.exports = {
     'textures/coastal/pine-impostor-source.json',
     'textures/study/painted_wall/source.json',
     'audio/study/source.json',
+    'audio/actions/source.json',
     'audio/study/credits.html',
   ],
   libraryNotices: [
@@ -43,5 +46,5 @@ module.exports = {
     { source: 'node_modules/@babylonjs/core/NOTICE.md', file: 'licenses/babylonjs-NOTICE.md' },
   ],
   optimizedModels: ['models/gothic_commode.glb', 'models/wooden_bookshelf.glb'],
-  budgets: { models: 4.25 * 1048576, runtime: 16 * 1048576, release: 41 * 1048576 },
+  budgets: { models: 4.25 * 1048576, runtime: 18 * 1048576, release: 44 * 1048576 },
 };

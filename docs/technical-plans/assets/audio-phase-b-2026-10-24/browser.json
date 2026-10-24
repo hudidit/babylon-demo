@@ -1,0 +1,1253 @@
+{
+  "baseline": "3ad2d8e",
+  "acousticListening": false,
+  "fpsOrLoadSpeedSampling": false,
+  "method": "Original production dist; native clicks/pointer lock. Grounded nearby pose fixtures; original updateTimeOfDay(.05) receipts. Solar soiling seeded once through soilFromWeather(). AudioVoice wrappers only observe real play calls; native output taps are after master gain.",
+  "errors": [],
+  "warnings": [],
+  "outputs": [
+    {
+      "id": "drawer-slide-1",
+      "peak": 0.025990838184952736,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "drawer-slide-2",
+      "peak": 0.02487107366323471,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "drawer-stop-1",
+      "peak": 0.029999693855643272,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "drawer-stop-2",
+      "peak": 0.0690554827451706,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-move-1",
+      "peak": 0.02001997083425522,
+      "activeAfter650ms": 1,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-move-2",
+      "peak": 0.020118525251746178,
+      "activeAfter650ms": 1,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-latch-1",
+      "peak": 0.03100070171058178,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "door-latch-2",
+      "peak": 0.029000213369727135,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "switch-1",
+      "peak": 0.026000244542956352,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "switch-2",
+      "peak": 0.026000244542956352,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "paper-1",
+      "peak": 0.010499893687665462,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "paper-2",
+      "peak": 0.010499893687665462,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "metal-door-move-1",
+      "peak": 0.014933615922927856,
+      "activeAfter650ms": 1,
+      "playedDelta": 1
+    },
+    {
+      "id": "metal-door-move-2",
+      "peak": 0.014920330606400967,
+      "activeAfter650ms": 1,
+      "playedDelta": 1
+    },
+    {
+      "id": "metal-door-latch-1",
+      "peak": 0.027839353308081627,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "metal-door-latch-2",
+      "peak": 0.027839353308081627,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "slide-move-1",
+      "peak": 0.025378217920660973,
+      "activeAfter650ms": 1,
+      "playedDelta": 1
+    },
+    {
+      "id": "slide-move-2",
+      "peak": 0.021331775933504105,
+      "activeAfter650ms": 1,
+      "playedDelta": 1
+    },
+    {
+      "id": "slide-stop-1",
+      "peak": 0.020846715196967125,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "slide-stop-2",
+      "peak": 0.019199220463633537,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-touch-1",
+      "peak": 0.014400221407413483,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-touch-2",
+      "peak": 0.01439978089183569,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-wipe-1",
+      "peak": 0.026879727840423584,
+      "activeAfter650ms": 1,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-wipe-2",
+      "peak": 0.026879727840423584,
+      "activeAfter650ms": 1,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-lift-1",
+      "peak": 0.029699260368943214,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    },
+    {
+      "id": "cloth-lift-2",
+      "peak": 0.01295986957848072,
+      "activeAfter650ms": 0,
+      "playedDelta": 1
+    }
+  ],
+  "cases": {
+    "coverCancelled": {
+      "state": {
+        "i": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "dirty"
+          },
+          "completed": false,
+          "coverEvidence": {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "保护面有轻度盐膜，需停机擦拭后复查",
+            "revision": 0
+          },
+          "nextMaintenanceDay": 4,
+          "dirty": true,
+          "coverRevision": 0,
+          "transmission": 0.82,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "离开、遮挡或起灯，擦拭中断；盐膜未清除。",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "dirty"
+              },
+              "completed": false
+            }
+          ],
+          "events": [
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "保护面有轻度盐膜，需停机擦拭后复查",
+              "revision": 0,
+              "id": 1,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "observation",
+              "type": "cover-observed",
+              "source": "local-panel"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "开始擦拭",
+              "revision": 0,
+              "id": 2,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cleaning-started",
+              "source": "local-panel"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "离开、遮挡或起灯，擦拭中断；盐膜未清除。",
+              "revision": 0,
+              "id": 3,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cleaning-cancelled",
+              "source": "active-action"
+            }
+          ]
+        },
+        "m": {
+          "solarLatent": false,
+          "solarRecheck": false,
+          "nextSolarMaintenanceDay": 6,
+          "session": "normal",
+          "revision": {
+            "drive": 0,
+            "backup": 0,
+            "charger": 0,
+            "solar": 0,
+            "sensor": 0
+          },
+          "driveFault": false,
+          "chargerFault": false,
+          "solarDirty": false,
+          "sensorDirty": false,
+          "mainIsolated": false,
+          "chargeIsolated": false,
+          "override": false,
+          "trial": false,
+          "mainAvailable": true,
+          "detectedDemand": false,
+          "navigationRequired": false,
+          "forcedBackup": false,
+          "source": "none",
+          "backupOn": false,
+          "backupFlash": false,
+          "backupPhase": 0,
+          "backupConfirmed": false,
+          "mainVerified": false,
+          "backupObservationSeconds": 0,
+          "backupFlashesSeen": false,
+          "selfTestSecondsRemaining": 0,
+          "chargerVerified": false,
+          "sensorVerified": false,
+          "inventory": {
+            "drive": 1,
+            "charger": 1
+          },
+          "trialObserved": 0,
+          "notice": "",
+          "evidence": [],
+          "resolved": false
+        },
+        "audio": {
+          "state": "ready",
+          "context": "running",
+          "preparing": false,
+          "readyFiles": 26,
+          "failedFiles": [],
+          "active": 0,
+          "decodedBytes": 1223040,
+          "played": 39,
+          "dropped": 0
+        }
+      },
+      "events": [
+        {
+          "clip": "cloth-touch-1",
+          "gain": 0.18,
+          "rate": 1,
+          "position": {
+            "_isDirty": true,
+            "_x": -652,
+            "_y": 99.25000000000001,
+            "_z": 421.20702073122516
+          },
+          "time": 29962.900000095367
+        },
+        {
+          "clip": "cloth-wipe-1",
+          "gain": 0.28,
+          "rate": 1,
+          "position": {
+            "_isDirty": true,
+            "_x": -652,
+            "_y": 99.25000000000001,
+            "_z": 421.20702073122516
+          },
+          "time": 29963.10000014305
+        }
+      ],
+      "peak": 0
+    },
+    "coverCompleted": {
+      "state": {
+        "i": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "awaiting-recheck"
+          },
+          "completed": false,
+          "coverEvidence": {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "保护面有轻度盐膜，需停机擦拭后复查",
+            "revision": 0
+          },
+          "nextMaintenanceDay": 4,
+          "dirty": false,
+          "coverRevision": 1,
+          "transmission": 1,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "擦完了，请复查保护面。",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "awaiting-recheck"
+              },
+              "completed": false
+            }
+          ],
+          "events": [
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "保护面有轻度盐膜，需停机擦拭后复查",
+              "revision": 0,
+              "id": 1,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "observation",
+              "type": "cover-observed",
+              "source": "local-panel"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "开始擦拭",
+              "revision": 0,
+              "id": 2,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cleaning-started",
+              "source": "local-panel"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "离开、遮挡或起灯，擦拭中断；盐膜未清除。",
+              "revision": 0,
+              "id": 3,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cleaning-cancelled",
+              "source": "active-action"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "开始擦拭",
+              "revision": 0,
+              "id": 4,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cleaning-started",
+              "source": "local-panel"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "盐膜已清除，待复查",
+              "revision": 1,
+              "id": 5,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cover-cleaned",
+              "source": "active-action"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "驱动或供电已变化，请重新读表、查灯；旧结果已留存。",
+              "id": 6,
+              "objectId": "lighthouse-beacon-main",
+              "kind": "system",
+              "type": "equipment-changed",
+              "source": "active-action"
+            }
+          ]
+        },
+        "m": {
+          "solarLatent": false,
+          "solarRecheck": false,
+          "nextSolarMaintenanceDay": 6,
+          "session": "normal",
+          "revision": {
+            "drive": 0,
+            "backup": 0,
+            "charger": 0,
+            "solar": 0,
+            "sensor": 0
+          },
+          "driveFault": false,
+          "chargerFault": false,
+          "solarDirty": false,
+          "sensorDirty": false,
+          "mainIsolated": false,
+          "chargeIsolated": false,
+          "override": false,
+          "trial": false,
+          "mainAvailable": true,
+          "detectedDemand": false,
+          "navigationRequired": false,
+          "forcedBackup": false,
+          "source": "none",
+          "backupOn": false,
+          "backupFlash": false,
+          "backupPhase": 0,
+          "backupConfirmed": false,
+          "mainVerified": false,
+          "backupObservationSeconds": 0,
+          "backupFlashesSeen": false,
+          "selfTestSecondsRemaining": 0,
+          "chargerVerified": false,
+          "sensorVerified": false,
+          "inventory": {
+            "drive": 1,
+            "charger": 1
+          },
+          "trialObserved": 0,
+          "notice": "",
+          "evidence": [],
+          "resolved": false
+        },
+        "audio": {
+          "state": "ready",
+          "context": "running",
+          "preparing": false,
+          "readyFiles": 26,
+          "failedFiles": [],
+          "active": 2,
+          "decodedBytes": 1223040,
+          "played": 43,
+          "dropped": 0
+        }
+      },
+      "events": [
+        {
+          "clip": "cloth-touch-2",
+          "gain": 0.18,
+          "rate": 1,
+          "position": {
+            "_isDirty": true,
+            "_x": -652,
+            "_y": 99.25000000000001,
+            "_z": 421.20702073122516
+          },
+          "time": 31384.400000095367
+        },
+        {
+          "clip": "cloth-wipe-2",
+          "gain": 0.28,
+          "rate": 1,
+          "position": {
+            "_isDirty": true,
+            "_x": -652,
+            "_y": 99.25000000000001,
+            "_z": 421.20702073122516
+          },
+          "time": 31384.800000190735
+        },
+        {
+          "clip": "cloth-lift-1",
+          "gain": 0.18,
+          "rate": 1,
+          "position": {
+            "_isDirty": true,
+            "_x": -652,
+            "_y": 99.25000000000001,
+            "_z": 421.20702073122516
+          },
+          "time": 31499.800000190735
+        }
+      ]
+    },
+    "solarMapCancelled": {
+      "state": {
+        "i": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "awaiting-recheck"
+          },
+          "completed": false,
+          "coverEvidence": {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "保护面有轻度盐膜，需停机擦拭后复查",
+            "revision": 0
+          },
+          "nextMaintenanceDay": 4,
+          "dirty": false,
+          "coverRevision": 1,
+          "transmission": 1,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "擦完了，请复查保护面。",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "awaiting-recheck"
+              },
+              "completed": false
+            }
+          ],
+          "events": [
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "保护面有轻度盐膜，需停机擦拭后复查",
+              "revision": 0,
+              "id": 1,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "observation",
+              "type": "cover-observed",
+              "source": "local-panel"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "开始擦拭",
+              "revision": 0,
+              "id": 2,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cleaning-started",
+              "source": "local-panel"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "离开、遮挡或起灯，擦拭中断；盐膜未清除。",
+              "revision": 0,
+              "id": 3,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cleaning-cancelled",
+              "source": "active-action"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "开始擦拭",
+              "revision": 0,
+              "id": 4,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cleaning-started",
+              "source": "local-panel"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "盐膜已清除，待复查",
+              "revision": 1,
+              "id": 5,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cover-cleaned",
+              "source": "active-action"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "驱动或供电已变化，请重新读表、查灯；旧结果已留存。",
+              "id": 6,
+              "objectId": "lighthouse-beacon-main",
+              "kind": "system",
+              "type": "equipment-changed",
+              "source": "active-action"
+            }
+          ]
+        },
+        "m": {
+          "solarLatent": false,
+          "solarRecheck": false,
+          "nextSolarMaintenanceDay": 6,
+          "session": "normal",
+          "revision": {
+            "drive": 0,
+            "backup": 0,
+            "charger": 0,
+            "solar": 1,
+            "sensor": 0
+          },
+          "driveFault": false,
+          "chargerFault": false,
+          "solarDirty": true,
+          "sensorDirty": false,
+          "mainIsolated": false,
+          "chargeIsolated": false,
+          "override": false,
+          "trial": false,
+          "mainAvailable": true,
+          "detectedDemand": false,
+          "navigationRequired": false,
+          "forcedBackup": false,
+          "source": "none",
+          "backupOn": false,
+          "backupFlash": false,
+          "backupPhase": 0,
+          "backupConfirmed": false,
+          "mainVerified": false,
+          "backupObservationSeconds": 0,
+          "backupFlashesSeen": false,
+          "selfTestSecondsRemaining": 0,
+          "chargerVerified": false,
+          "sensorVerified": false,
+          "inventory": {
+            "drive": 1,
+            "charger": 1
+          },
+          "trialObserved": 0,
+          "notice": "操作中断；未扣备件，设备保持原状。",
+          "evidence": [
+            {
+              "id": 1,
+              "component": "solar",
+              "revision": 1,
+              "day": 1,
+              "hour": 12,
+              "method": "天气暴露污损",
+              "result": "太阳能表面出现污损，等待合适天气现场巡视、擦拭和独立复查。"
+            },
+            {
+              "id": 2,
+              "component": "solar",
+              "revision": 1,
+              "day": 1,
+              "hour": 12,
+              "method": "开始现场观察",
+              "result": "开始现场操作，尚未提交或扣件。"
+            },
+            {
+              "id": 3,
+              "component": "solar",
+              "revision": 1,
+              "day": 1,
+              "hour": 12,
+              "method": "现场观察",
+              "result": "太阳能面板上看得见污损，擦净后再检查一遍。 用布擦净，再回来检查一遍。"
+            },
+            {
+              "id": 4,
+              "component": "solar",
+              "revision": 1,
+              "day": 1,
+              "hour": 12,
+              "method": "开始擦拭表面",
+              "result": "开始现场操作，尚未提交或扣件。"
+            },
+            {
+              "id": 5,
+              "component": "solar",
+              "revision": 1,
+              "day": 1,
+              "hour": 12,
+              "method": "中断",
+              "result": "操作中断；未扣备件，设备保持原状。"
+            }
+          ],
+          "resolved": false
+        },
+        "audio": {
+          "state": "ready",
+          "context": "running",
+          "preparing": false,
+          "readyFiles": 26,
+          "failedFiles": [],
+          "active": 0,
+          "decodedBytes": 1223040,
+          "played": 47,
+          "dropped": 0
+        }
+      },
+      "events": [
+        {
+          "clip": "cloth-touch-1",
+          "gain": 0.18,
+          "rate": 1,
+          "position": {
+            "_isDirty": true,
+            "_x": -628,
+            "_y": 14.300000476837159,
+            "_z": 452
+          },
+          "time": 32377.200000047684
+        },
+        {
+          "clip": "cloth-wipe-1",
+          "gain": 0.28,
+          "rate": 1,
+          "position": {
+            "_isDirty": true,
+            "_x": -628,
+            "_y": 14.300000476837159,
+            "_z": 452
+          },
+          "time": 32377.400000095367
+        }
+      ]
+    },
+    "solarCompleted": {
+      "state": {
+        "i": {
+          "dutyDay": 1,
+          "checks": {
+            "check-control": "pending",
+            "check-optic": "pending",
+            "check-cover": "awaiting-recheck"
+          },
+          "completed": false,
+          "coverEvidence": {
+            "dutyDay": 1,
+            "hour": 12,
+            "result": "保护面有轻度盐膜，需停机擦拭后复查",
+            "revision": 0
+          },
+          "nextMaintenanceDay": 4,
+          "dirty": false,
+          "coverRevision": 1,
+          "transmission": 1,
+          "observationSeconds": 0,
+          "observedTurns": 0,
+          "outputSeen": false,
+          "cleaning": false,
+          "cleaningSeconds": 0,
+          "notice": "擦完了，请复查保护面。",
+          "days": [
+            {
+              "dutyDay": 1,
+              "checks": {
+                "check-control": "pending",
+                "check-optic": "pending",
+                "check-cover": "awaiting-recheck"
+              },
+              "completed": false
+            }
+          ],
+          "events": [
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "保护面有轻度盐膜，需停机擦拭后复查",
+              "revision": 0,
+              "id": 1,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "observation",
+              "type": "cover-observed",
+              "source": "local-panel"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "开始擦拭",
+              "revision": 0,
+              "id": 2,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cleaning-started",
+              "source": "local-panel"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "离开、遮挡或起灯，擦拭中断；盐膜未清除。",
+              "revision": 0,
+              "id": 3,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cleaning-cancelled",
+              "source": "active-action"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "开始擦拭",
+              "revision": 0,
+              "id": 4,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cleaning-started",
+              "source": "local-panel"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "盐膜已清除，待复查",
+              "revision": 1,
+              "id": 5,
+              "objectId": "lighthouse-optics-cleaning",
+              "kind": "action",
+              "type": "cover-cleaned",
+              "source": "active-action"
+            },
+            {
+              "dutyDay": 1,
+              "hour": 12,
+              "result": "驱动或供电已变化，请重新读表、查灯；旧结果已留存。",
+              "id": 6,
+              "objectId": "lighthouse-beacon-main",
+              "kind": "system",
+              "type": "equipment-changed",
+              "source": "active-action"
+            }
+          ]
+        },
+        "m": {
+          "solarLatent": false,
+          "solarRecheck": true,
+          "nextSolarMaintenanceDay": 6,
+          "session": "normal",
+          "revision": {
+            "drive": 0,
+            "backup": 0,
+            "charger": 0,
+            "solar": 2,
+            "sensor": 0
+          },
+          "driveFault": false,
+          "chargerFault": false,
+          "solarDirty": false,
+          "sensorDirty": false,
+          "mainIsolated": false,
+          "chargeIsolated": false,
+          "override": false,
+          "trial": false,
+          "mainAvailable": true,
+          "detectedDemand": false,
+          "navigationRequired": false,
+          "forcedBackup": false,
+          "source": "none",
+          "backupOn": false,
+          "backupFlash": false,
+          "backupPhase": 0,
+          "backupConfirmed": false,
+          "mainVerified": false,
+          "backupObservationSeconds": 0,
+          "backupFlashesSeen": false,
+          "selfTestSecondsRemaining": 0,
+          "chargerVerified": false,
+          "sensorVerified": false,
+          "inventory": {
+            "drive": 1,
+            "charger": 1
+          },
+          "trialObserved": 0,
+          "notice": "污膜擦掉了，再查一遍是否擦净。上次检查的是擦拭前的表面。",
+          "evidence": [
+            {
+              "id": 1,
+              "component": "solar",
+              "revision": 1,
+              "day": 1,
+              "hour": 12,
+              "method": "天气暴露污损",
+              "result": "太阳能表面出现污损，等待合适天气现场巡视、擦拭和独立复查。"
+            },
+            {
+              "id": 2,
+              "component": "solar",
+              "revision": 1,
+              "day": 1,
+              "hour": 12,
+              "method": "开始现场观察",
+              "result": "开始现场操作，尚未提交或扣件。"
+            },
+            {
+              "id": 3,
+              "component": "solar",
+              "revision": 1,
+              "day": 1,
+              "hour": 12,
+              "method": "现场观察",
+              "result": "太阳能面板上看得见污损，擦净后再检查一遍。 用布擦净，再回来检查一遍。"
+            },
+            {
+              "id": 4,
+              "component": "solar",
+              "revision": 1,
+              "day": 1,
+              "hour": 12,
+              "method": "开始擦拭表面",
+              "result": "开始现场操作，尚未提交或扣件。"
+            },
+            {
+              "id": 5,
+              "component": "solar",
+              "revision": 1,
+              "day": 1,
+              "hour": 12,
+              "method": "中断",
+              "result": "操作中断；未扣备件，设备保持原状。"
+            },
+            {
+              "id": 6,
+              "component": "solar",
+              "revision": 1,
+              "day": 1,
+              "hour": 12,
+              "method": "开始擦拭表面",
+              "result": "开始现场操作，尚未提交或扣件。"
+            },
+            {
+              "id": 7,
+              "component": "solar",
+              "revision": 2,
+              "day": 1,
+              "hour": 12,
+              "method": "擦拭完成",
+              "result": "污膜擦掉了，再查一遍是否擦净。上次检查的是擦拭前的表面。"
+            }
+          ],
+          "resolved": false
+        },
+        "audio": {
+          "state": "ready",
+          "context": "running",
+          "preparing": false,
+          "readyFiles": 26,
+          "failedFiles": [],
+          "active": 2,
+          "decodedBytes": 1223040,
+          "played": 51,
+          "dropped": 0
+        }
+      },
+      "events": [
+        {
+          "clip": "cloth-touch-2",
+          "gain": 0.18,
+          "rate": 1,
+          "position": {
+            "_isDirty": true,
+            "_x": -628,
+            "_y": 14.300000476837159,
+            "_z": 452
+          },
+          "time": 33949.60000014305
+        },
+        {
+          "clip": "cloth-wipe-2",
+          "gain": 0.28,
+          "rate": 1,
+          "position": {
+            "_isDirty": true,
+            "_x": -628,
+            "_y": 14.300000476837159,
+            "_z": 452
+          },
+          "time": 33950
+        },
+        {
+          "clip": "cloth-lift-2",
+          "gain": 0.18,
+          "rate": 1,
+          "position": {
+            "_isDirty": true,
+            "_x": -628,
+            "_y": 14.300000476837159,
+            "_z": 452
+          },
+          "time": 34067.90000009537
+        }
+      ],
+      "solarPeak": 0.009031414054334164
+    },
+    "muted": {
+      "peak": 0,
+      "state": {
+        "state": "muted",
+        "context": "running",
+        "preparing": false,
+        "readyFiles": 26,
+        "failedFiles": [],
+        "active": 0,
+        "decodedBytes": 1223040,
+        "played": 51,
+        "dropped": 1
+      }
+    },
+    "inspector": {
+      "visible": true,
+      "paused": true
+    },
+    "blur": {
+      "state": {
+        "state": "ready",
+        "context": "suspended",
+        "preparing": false,
+        "readyFiles": 26,
+        "failedFiles": [],
+        "active": 0,
+        "decodedBytes": 1223040,
+        "played": 52,
+        "dropped": 1
+      },
+      "peak": 0
+    },
+    "missingClip": {
+      "state": "partial",
+      "context": "running",
+      "preparing": false,
+      "readyFiles": 25,
+      "failedFiles": [
+        "metal-door-move-1"
+      ],
+      "active": 0,
+      "decodedBytes": 1169280,
+      "played": 0,
+      "dropped": 0,
+      "requests": 2
+    },
+    "disposed": {
+      "state": "closed",
+      "context": "closed",
+      "preparing": false,
+      "readyFiles": 0,
+      "failedFiles": [],
+      "active": 0,
+      "decodedBytes": 0,
+      "played": 52,
+      "dropped": 1
+    }
+  },
+  "firstScreen": [
+    {
+      "path": "/js/main.js",
+      "bytes": 510991,
+      "sha256": "56d659ee8bd0de92d290b6a15f1b33e864fcb511eafa15c08b028a7aecd260a6"
+    },
+    {
+      "path": "/js/9691.js",
+      "bytes": 2420178,
+      "sha256": "486fee8c9a664e52a5db57a8fb75fda2235de51f4af40758a8e67caf0a9c77d4"
+    },
+    {
+      "path": "/js/1203.js",
+      "bytes": 138571,
+      "sha256": "b96b4f72779f8a992afa2e9dfc442e4cc4b9e2603a79a62b888c1f327c454898"
+    },
+    {
+      "path": "/js/8558.js",
+      "bytes": 12560,
+      "sha256": "e8887dcf5c21c5c52076fe3f146e7d85a5b1f6fcf0632473b6f0f021aea65c7a"
+    },
+    {
+      "path": "/js/7449.js",
+      "bytes": 1714,
+      "sha256": "a184b2b2daa52232c301530bba2b30e4b3c675e9ee14818444e9967e1adcefc6"
+    },
+    {
+      "path": "/js/6612.js",
+      "bytes": 14807,
+      "sha256": "de37b0d0ba2f0ce426d6727cac0f0c029d805dd165bc90944423904210016c08"
+    },
+    {
+      "path": "/js/4742.js",
+      "bytes": 8962,
+      "sha256": "8b2d66e94c4c761ea693213cd85f6be39b0cf93462e790961615fc16315fade4"
+    },
+    {
+      "path": "/js/5587.js",
+      "bytes": 1107,
+      "sha256": "3a70b201e8704eea7499850340ff0c14041581890dfa369017b17dc233903342"
+    },
+    {
+      "path": "/js/9615.js",
+      "bytes": 9069,
+      "sha256": "3cd360508cadac24d08f41dd1686c71d44340ad1702b0c2bced0e247be6ce838"
+    },
+    {
+      "path": "/js/6560.js",
+      "bytes": 2517,
+      "sha256": "9960c29244f96ee7a8af037794364cf7ca444a804719fb9fcad7aa4140837d52"
+    },
+    {
+      "path": "/js/4472.js",
+      "bytes": 14991,
+      "sha256": "a494f09499d3c0826b94ba55b92c3bba354e18fab3de08135d8d81352ab8835e"
+    },
+    {
+      "path": "/js/9915.js",
+      "bytes": 14196,
+      "sha256": "74c974f421772089cb7ec7c0a74f2af6bdbcf768c5f6f631ebf70b56bba0b09a"
+    }
+  ],
+  "release": {
+    "fileCount": 515,
+    "modelBytes": 4332840,
+    "buildBytes": 26604097,
+    "runtimeBytes": 16502326,
+    "documentationBytes": 133457,
+    "manifestBytes": 96733,
+    "initialJsBytes": 2931169,
+    "audioBytes": 612664,
+    "audioDecodedBytes": 1223040,
+    "releaseBytes": 43336613
+  },
+  "manifestSha256": "4457be3d8d5b05af302fcc2cad35128c09a2c4e6d6f796cd4b1a4daeb371f208",
+  "hosted": {
+    "prefixes": [
+      "/",
+      "/audio-lab/"
+    ],
+    "filesPerPrefix": 515
+  },
+  "browser": "155.0.8059.86",
+  "firstScreenBytes": 3149663,
+  "beforeGesture": {
+    "peak": 0,
+    "context": "running"
+  },
+  "doors": [
+    {
+      "id": "entry-door",
+      "opened": 1,
+      "closed": 0,
+      "openPeak": 0.019844142720103264,
+      "silence": 0,
+      "events": [
+        {
+          "clip": "door-move-1",
+          "gain": 0.21,
+          "rate": 1.017923181964326,
+          "time": 23502.5
+        },
+        {
+          "clip": "door-move-2",
+          "gain": 0.21,
+          "rate": 0.9906944502284903,
+          "time": 24373.800000190735
+        },
+        {
+          "clip": "door-latch-1",
+          "gain": 0.25,
+          "rate": 1,
+          "time": 24761.900000095367
+        }
+      ]
+    },
+    {
+      "id": "balcony-door",
+      "opened": 1,
+      "closed": 0,
+      "openPeak": 0.014586316421627998,
+      "silence": 0,
+      "events": [
+        {
+          "clip": "slide-move-1",
+          "gain": 0.24,
+          "rate": 0.9852190304712156,
+          "time": 25556.400000095367
+        },
+        {
+          "clip": "slide-move-2",
+          "gain": 0.24,
+          "rate": 1.0038605421087454,
+          "time": 26430.300000190735
+        },
+        {
+          "clip": "slide-stop-1",
+          "gain": 0.2,
+          "rate": 1,
+          "time": 26820.800000190735
+        }
+      ]
+    },
+    {
+      "id": "lighthouse-entry-door",
+      "opened": 1,
+      "closed": 0,
+      "openPeak": 0.01473801489919424,
+      "silence": 0,
+      "events": [
+        {
+          "clip": "metal-door-move-1",
+          "gain": 0.18,
+          "rate": 0.998179004227177,
+          "time": 27555.60000014305
+        },
+        {
+          "clip": "metal-door-move-2",
+          "gain": 0.18,
+          "rate": 0.9988338325671343,
+          "time": 28423.700000047684
+        },
+        {
+          "clip": "metal-door-latch-1",
+          "gain": 0.24,
+          "rate": 1,
+          "time": 28811.900000095367
+        }
+      ]
+    }
+  ],
+  "passed": true
+}

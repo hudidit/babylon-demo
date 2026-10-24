@@ -14,7 +14,7 @@ export interface AudioVoice {
 }
 export interface AudioBackend {
   decode(data: ArrayBuffer): Promise<AudioBufferData>;
-  voice(buffer: AudioBufferData, name: string, ui: boolean): Promise<AudioVoice>;
+  voice(buffer: AudioBufferData, name: string, ui: boolean, loop?: boolean): Promise<AudioVoice>;
   volume(value: number): void;
   listener(camera: Camera): void;
   dispose(): void;
@@ -29,9 +29,9 @@ export async function createAudioBackend(context: AudioContext): Promise<AudioBa
     const ui = await engine.createBusAsync("room-ui", { volume: 0.5 });
     return {
       decode: data => engine.createSoundBufferAsync(data),
-      async voice(buffer, name, isUI) {
+      async voice(buffer, name, isUI, loop = false) {
         const sound = await engine.createSoundAsync(name, buffer as Awaited<ReturnType<typeof engine.createSoundBufferAsync>>, {
-          autoplay: false, loop: false, maxInstances: 1, outBus: isUI ? ui : effects,
+          autoplay: false, loop, maxInstances: 1, outBus: isUI ? ui : effects,
           spatialEnabled: true, spatialAutoUpdate: false, spatialPanningModel: "equalpower",
           spatialDistanceModel: "inverse", spatialMinDistance: 4, spatialRolloffFactor: 0,
           spatialPanningEnabled: false });

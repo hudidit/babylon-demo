@@ -59,6 +59,6 @@ export function createLighthouseInterior(scene: Scene, retain: (mesh: Mesh, laye
     mesh.parent = root; retain(mesh, "landmark"); mesh.unfreezeWorldMatrix(); mesh.checkCollisions = true;
     mesh.metadata.movingLighthouseDoor = true; return mesh;
   });
-  return { id: "lighthouse-entry-door", label: "灯塔入口门", root, meshes, width,
+  return { id: "lighthouse-entry-door", label: "灯塔入口门", root, meshes, width, audioMaterial: "metal",
     autoCloseSeconds: 10, openAngle: Math.PI / 2, walkerRadius: .26 * u + .08 };
 }

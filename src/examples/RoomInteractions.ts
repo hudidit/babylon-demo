@@ -12,7 +12,7 @@ export type InteractiveLamp = { id: string; label: string; meshes: AbstractMesh[
 export type InteractiveCurtain = { id: string; windowId: string; label: string; root: TransformNode;
   meshes: Mesh[]; applyClosed: (amount: number) => void };
 export type InteractiveDoor = { id: string; label: string; root: TransformNode;
-  meshes: AbstractMesh[]; width: number; openAngle: number; walkerRadius?: number; autoCloseSeconds?: number };
+  meshes: AbstractMesh[]; width: number; openAngle: number; walkerRadius?: number; autoCloseSeconds?: number; audioMaterial?: "wood" | "metal" };
 export type InteractiveSlidingDoor = { id: string; label: string; root: TransformNode;
   meshes: AbstractMesh[]; fixedMeshes: AbstractMesh[]; closed: Vector3; travel: Vector3;
   width: number; halfThickness: number; walkerRadius: number };
@@ -217,7 +217,7 @@ export class RoomInteractions {
         if (state.moving) { state.moving = false; this.sound("stop", state.door); }
         continue;
       }
-      if (!state.moving) { state.moving = true; this.sound("door-move", state.door); }
+      if (!state.moving) { state.moving = true; this.sound(state.door.audioMaterial === "metal" ? "metal-door-move" : "door-move", state.door); }
       state.progress = next;
       const eased = next * next * (3 - 2 * next);
       const { root, openAngle } = state.door;
@@ -226,7 +226,7 @@ export class RoomInteractions {
       root.getChildMeshes().forEach(mesh => mesh.computeWorldMatrix(true));
       if (next === target) {
         state.moving = false; this.sound("stop", state.door);
-        if (!state.open) this.sound("door-latch", state.door);
+        if (!state.open) this.sound(state.door.audioMaterial === "metal" ? "metal-door-latch" : "door-latch", state.door);
       }
       roomOwners(state.door.root).forEach(id => changed.add(id));
     }
@@ -241,7 +241,7 @@ export class RoomInteractions {
         if (state.moving) { state.moving = false; this.sound("stop", state.door); }
         continue;
       }
-      if (!state.moving) { state.moving = true; this.sound("door-move", state.door); }
+      if (!state.moving) { state.moving = true; this.sound("slide-move", state.door); }
       state.progress = next;
       const eased = next * next * (3 - 2 * next);
       state.door.root.position.copyFrom(state.door.closed).addInPlace(state.door.travel.scale(eased));
@@ -249,7 +249,7 @@ export class RoomInteractions {
       state.door.root.getChildMeshes().forEach(mesh => mesh.computeWorldMatrix(true));
       if (next === target) {
         state.moving = false; this.sound("stop", state.door);
-        if (!state.open) this.sound("door-latch", state.door);
+        if (!state.open) this.sound("slide-stop", state.door);
       }
       roomOwners(state.door.root).forEach(id => changed.add(id));
     }

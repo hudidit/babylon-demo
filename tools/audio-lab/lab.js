@@ -1,4 +1,6 @@
-import { AUDIO_CLIPS } from '../../src/examples/RoomAudioCatalog';
+import { AUDIO_CLIPS as GAME_CLIPS } from '../../src/examples/RoomAudioCatalog';
+// Stage A remains a fixed baseline audition, independent from later integrations.
+const AUDIO_CLIPS = GAME_CLIPS.filter(clip => clip.file.startsWith('audio/study/'));
 
 const $ = id => document.getElementById(id);
 const names = { 'drawer-slide': '抽屉滑动', 'drawer-stop': '抽屉到位', 'door-move': '门运动', 'door-latch': '门扣', switch: '开关', paper: '纸张' };
